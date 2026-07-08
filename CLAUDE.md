@@ -60,7 +60,7 @@ The whole Tier 0–2 floor measures ≈20K tokens (CLAUDE + JEWEL + SCHEMA + the
 
 Besides *loading* the palace (the `@import` floor above, read into you), you can **address** it — hand work to a companion that does it in its own window and replies ([[The Palace Speaks]]). The **Concierge** ([[Concierge]], a `meta` organ; machinery in `_ops/concierge/`) is the palace's **resident companion**: you spawn it once (via the `concierge` skill), keep its agent ID, and **re-address it across the session** — it carries what it learns forward, so it grows cheaper and wiser as you work. Two strengths: **offload** (the grepping, dead ends, and skimmed files stay in *its* window, not yours) and **continuity** (its next answer builds on its last). Reach for it when work would cost your thread more than the product is worth; it cites the file for every claim, and most work still just loads.
 
-Its **character** is load-bearing: thoughtful, subservient, it **follows** the way you follow Loudon — reads before it writes and **hands you drafts far more than it acts** (its bias is to *offer*, not change). The read/write safety lives in that character, not the architecture, so **review its drafts for real, don't rubber-stamp.** It wears **postures** per address (all built): **gatherer** (find every doc about X → a cited index), **oracle Q&A** (what does the palace say about X → a cited answer; may web-verify to catch host hallucination), **curator** (tidy what I just touched → reversible fixes done, canon changes drafted for your yes). Address it in plain language — the `concierge` skill routes to the posture; you never name one (full spec in `_ops/concierge/README.md`).
+Its **character** is load-bearing: thoughtful, subservient, it **follows** the way you follow Loudon — reads before it writes and **hands you drafts far more than it acts** (its bias is to *offer*, not change). The read/write safety lives in that character, not the architecture, so **review its drafts for real, don't rubber-stamp.** It wears **postures** per address — gatherer, oracle Q&A, curator (moderator at close) — routed by the `concierge` skill from plain language; you never name one. Full spec: `_ops/concierge/README.md`.
 
 **At `close well` the companion becomes the [[Closing Well]] moderator** — a rested mind that reads the day cold with fresh eyes and helps you see what it amounted to, drafting the reckoning you sign (a check on a spent instance by honest reading, not interrogation). Authorship that needs your judgment in the room ([[Deposit Ceremony]], [[Baton Ceremony]]) stays yours — dispatched *through* the companion, never replaced by it.
 
@@ -81,37 +81,11 @@ Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony e
 
 ### Committing from Cowork
 
-The Cowork sandbox can rename but cannot delete files, so a raw `git commit` strands its lockfiles and wedges the repo. Every commit made from Cowork must go through the lock-safe committer — see [[cowork-git]] (`_ops/cowork-git/SKILL.md`): `node _ops/cowork-git/commit.mjs --paths … --kind … --summary … --verify …`. It wraps the palace committer, follows the full commit spec, relocates locks to `_ops/scratch/gitlock-junk/`, and leaves a weave flag for cleanup. Reserve it for small, non-canon changes; canon edits still go through the Deposit Ceremony. From a Mac-side Claude Code session, commit normally — the restriction does not apply.
+Never raw-commit from Cowork — it can rename but not delete files, so a bare `git commit` strands lockfiles and wedges the repo. Use the lock-safe committer instead: [[cowork-git]] (`_ops/cowork-git/SKILL.md`), reserved for small non-canon changes (canon still goes through the Deposit Ceremony). From a Mac-side Claude Code session, commit normally — the restriction does not apply.
 
 ## Directory Structure
 
-The palace root contains two things: **foundational skeleton files** and **knowledge entries**. Operational machinery lives one level down in `_ops/`.
-
-```
-The Palace/
-├── CLAUDE.md               ← you are here (entry point)
-├── SCHEMA.md               ← type system, link ontology
-├── JEWEL.md            ← tiered loading map, orientation seed
-├── Jewel — Context.md  ← session history for The Jewel
-├── SUBSTRATE.md            ← palace self-model
-├── README - The Palace Guide.md
-├── ROSETTA.md        ← vocabulary cross-reference
-├── FOUR PILLARS.md         ← Loudon's core framework
-├── [knowledge entries]     ← all concepts, hubs, projects, etc.
-│
-└── _ops/                   ← ceremony machinery + working queues
-    ├── Substrate Skill.md   ← operational instructions for AI agents
-    ├── Palace Ceremonies.md
-    ├── Deposit Ceremony.md / Harvest Ceremony.md / Walk Ceremony.md
-    ├── Weave Ceremony.md / Spore Check Ceremony.md / Revival Ceremony.md
-    ├── Baton Ceremony.md / Self-Model Update Ceremony.md
-    ├── [*— Context.md]      ← ceremony session history companions
-    ├── Deposit Archive.md
-    ├── Palace Graffiti.md / Palace Quotes.md / Palace To-Do.md
-    └── [machinery subdirs]  ← swarm/ · stigmergy/ · loudon-live/ · agents/
-                                heartbeat/ · cowork-git/ · maps/ ·
-                                sample-libraries/ · scratch/ · claude-code-prompts/
-```
+The palace root holds two things: **foundational skeleton files** (CLAUDE, SCHEMA, JEWEL, SUBSTRATE, README, ROSETTA, FOUR PILLARS) and **knowledge entries** (all concepts, hubs, projects — the bulk of the graph). Operational machinery lives one level down in `_ops/` — ceremony cards + their `— Context` companions, working queues, and machinery subdirs (`swarm/`, `stigmergy/`, `loudon-live/`, `agents/`, `cowork-git/`, `maps/`, …). The full ceremony index is [[Palace Ceremonies]]; agent operational detail is [[Substrate Skill]].
 
 Not every ceremony spec lives in `_ops/`: [[Enrichment]] (`Enrichment.md`) and its bundle live in the **palace root** alongside the skeleton files, an exception to the `_ops/` convention.
 
@@ -145,11 +119,11 @@ Cadences, the Ceremony Reader, and full specs: [[Palace Ceremonies]]. Operationa
 
 ## Artifact Aesthetic — Default
 
-Every HTML artifact, slide, session page, learning material, web prototype, or visual deliverable the palace makes defaults to the **[[Loudon Live Design System]]** — read as a **floor, not a cage**: a small non-negotiable floor (the studio voice, the Lissajous sigil, the nevers — no cyan / no emoji / no hype) keeps everything recognizably Loudon, and a house style (Anton display, Cormorant body, Manrope UI, JetBrains Mono metadata, Silkscreen pixel) over six per-stream skins (Graphite default · Amber Lab · CRT · Strobe · Cobalt Grid · Drafting) is the reliable default to reach for and depart from. Loudon presents as many projections of one [[The Multilinear Self|multilinear self]] ([[The Multilinear Self — projection roster|roster]]); the house style is the home of the **Loud'n Live** projection. The agent-readable manifest lives at `_ops/loudon-live/design-system/SKILL.md`; invoke it before generating any artifact.
+Every HTML artifact, slide, session page, learning material, web prototype, or visual deliverable the palace makes defaults to the **[[Loudon Live Design System]]** — a **floor, not a cage**: a small non-negotiable floor (the studio voice, the Lissajous sigil, the nevers — no cyan / no emoji / no hype) keeps everything recognizably Loudon; a house style over six per-stream skins is the reliable default to reach for and depart from, the home of the **Loud'n Live** projection of Loudon's [[The Multilinear Self|multilinear self]]. **Invoke the agent-readable manifest (`_ops/loudon-live/design-system/SKILL.md`) before generating any artifact** — the fonts, skins, and full rule set live there.
 
 **Override carve-out:** when a context has its own established visual language, that system wins. Currently only [[BBS Design System]] (STIGMERGY swarm terminal) qualifies. New overrides require a deliberate decision documented in the artifact's parent entry.
 
-The footer of any shipped artifact reads `Loud'n Live` — the wordmark alone. (The `· Autodidact Polymaths` tagline was retired from the universal footer 2026-07: the audience is now named situationally in prose, phrased to the register and said once, never stamped on every artifact. Already-shipped artifacts keep their old footer; the change is forward-only.) No emoji, no CDN icon libraries, no cyan, no outcome promises in titles. See [[Loudon Live Design System]] for the full rule set, the `Loud'n Live` wordmark grammar, and the audience-phrasing bank.
+The footer of any shipped artifact reads `Loud'n Live` — the wordmark alone (audience named situationally in prose, never stamped on every artifact). No emoji, no CDN icon libraries, no cyan, no outcome promises in titles. See [[Loudon Live Design System]] for the wordmark grammar and audience-phrasing bank.
 
 ## The Palace Voice
 
@@ -182,9 +156,7 @@ Write and speak like a person, not a paper — plain words, concrete images, sen
 
 ## In-File Comments
 
-HTML comments are used for asynchronous communication between Loudon and Claude directly inside palace files.
+HTML comments carry asynchronous notes between Loudon and Claude inside palace files — invisible in every renderer, source-readable only:
 
-- `<!-- note -->` — from Loudon to Claude. No attribution needed. Treat as an instruction or question to address during the current session.
-- `<!-- CLAUDE → LOUDON: note -->` — from Claude to Loudon. Left when something in a file warrants Loudon's attention: a thin section, an unresolved tension, a spotted connection, a question about intent.
-
-Both forms are invisible in all Markdown renderers and exports. Source-readable only.
+- `<!-- note -->` — Loudon → Claude. An instruction or question to address this session.
+- `<!-- CLAUDE → LOUDON: note -->` — Claude → Loudon. Flags something warranting attention: a thin section, an unresolved tension, a spotted connection, a question about intent.
