@@ -179,6 +179,21 @@ Fourth heavy run, same session as batch 3 (Loudon: "do Hofstadter, nakashima, tu
 
 **Remaining: 5 interim rebuilds.** Andrei Tarkovsky · Natalie Goldberg · R. Murray Schafer · Sam Maloof · Terrence Malick.
 
+### 2026-07-08 — Move 5 closed by COMPOSTING the final 5 (not rebuilding)
+
+Immediately after batch 4, Loudon's call: **"I'd like to compost those 5 entries."** So the last stretch of Move 5 resolves not by rebuilding the final interim entries to the embodiable-citizen standard but by **composting them** — Andrei Tarkovsky · Natalie Goldberg · R. Murray Schafer · Sam Maloof · Terrence Malick, all marked `stage: composting` (SCHEMA §2 grace period; the next Weave confirms deletion or revives — the files persist until then). Committed `9d0403a`.
+
+**Read-before-touching note:** these were *not* the usual thin/dead compost candidates — all five are well-written, high-beauty (9–10), cross-domain-linked mature entries. So the compost was done with the graph friction logged rather than swallowed. Inbound links that will dangle **if** the Weave confirms deletion (noted in each file's source-visible `COMPOSTING` marker and here so the Weave can redistribute the nutrients):
+
+- **Natalie Goldberg** ← [[Annie Dillard]], [[Shunryu Suzuki]] (entry + dossier)
+- **R. Murray Schafer** ← [[Pauline Oliveros]] (dossier), [[LaMa]] (`contradicts`, invent-the-absence-vs-honor-it)
+- **Sam Maloof** ← [[Move the Ink, Don't Redraw It]] (`contradicts`), **[[George Nakashima]] (`mirrors`, wood-craft-two-methods — wired hours earlier in the batch-4 Nakashima rebuild; its dossier also names Maloof as a dispatch clash-partner, so revisit both if Maloof is deleted)**
+- **Andrei Tarkovsky · Terrence Malick** — leaf nodes (no inbound links). Note Malick's own outbound `mirrors` → [[Yasujirō Ozu]].
+
+**Consequence for the batch-4 wiring:** the Nakashima↔Maloof mirror and the Nakashima-dossier dispatch note pointing at Maloof were made *before* this decision. They are left in place (Maloof still resolves during the grace period) and flagged for the Weave — if Maloof is confirmed for deletion, drop the Nakashima→Maloof link and soften the dossier's dispatch note. This is the one place the compost and the fresh rebuild touch.
+
+**Move 5 is resolved: 25 citizens on the embodiable model, 5 composting, no interim layer remaining.** The `remainder` handoff was closed (full, not partial — no rebuild remainder), the rollout baton retired, and the Active Baton pointer removed from the method card. If the Weave later revives any of the 5, it re-enters the rollout as a fresh build, not an interim rebuild.
+
 ---
 
 ## Experiment queue (tests to run)
@@ -202,6 +217,6 @@ Fourth heavy run, same session as batch 3 (Loudon: "do Hofstadter, nakashima, tu
 ## Rollout tracker
 
 - **Done (embodiable-citizen model, 25):** Spinoza · Donella Meadows · John Cage — plus the 8 most-linked (2026-07-01): Brian Eno · Shunryu Suzuki · Marcus Aurelius · Rick Rubin · Lao Tzu · Leibniz · Pauline Oliveros · Agnes Martin — plus **Move 5 batch 1 (2026-07-06):** Andy Goldsworthy (rebuild) · Martin Heidegger · Martin Buber · Iain McGilchrist (3 new, closing CDR-bridge ghosts) — plus **Move 5 batch 2 (2026-07-07):** Buckminster Fuller · Christopher Alexander · Annie Dillard · Epictetus · Yasujirō Ozu (5 rebuilds) — plus **Move 5 batch 3 (2026-07-08):** Julia Cameron · Seneca (2 rebuilds, women-forward + completes the Stoic trio) — plus **Move 5 batch 4 (2026-07-08):** James Turrell · George Nakashima · Douglas Hofstadter (3 rebuilds; the humility-that-hides-control trio + the LLM-reversal blindspot).
-- **Interim layer (5 remain):** of the ~16 prose-reworked `People/` entries (2026-07-01, `5ff3424`), 11 are now upgraded (Goldsworthy + batch 2's five + batch 3's two + batch 4's three); **5 still await the full model** (no blindspot, no dossier, still `stage: mature`): Andrei Tarkovsky · Natalie Goldberg · R. Murray Schafer · Sam Maloof · Terrence Malick.
-- **Pending:** the 5 remaining rebuilds, in register-diverse batches per heavy-run window (cost-gated). Candidate next batch: **Natalie Goldberg** (keeps the women-forward arc moving — Cameron's writing-practice sibling); **Tarkovsky and/or Malick** (cinema, pairs with the built Ozu — and both would deepen the Turrell/Nakashima material-patience cluster); **Sam Maloof** (woodworking — already `mirrors` the now-rebuilt Nakashima, so building him lets that link fire in a Dialectic on two wood methods); **R. Murray Schafer** (soundscape/acoustic ecology, a register still unrepresented). A natural final batch would be all five at once, or Goldberg + the two filmmakers, then Maloof + Schafer. Order TBD with Loudon.
+- **Interim layer (0 remain):** of the ~16 prose-reworked `People/` entries (2026-07-01, `5ff3424`), 11 were upgraded to the embodiable model (Goldsworthy + batch 2's five + batch 3's two + batch 4's three) and the **final 5 were composted, not rebuilt** (2026-07-08, Loudon's call, `9d0403a`): Andrei Tarkovsky · Natalie Goldberg · R. Murray Schafer · Sam Maloof · Terrence Malick, all `stage: composting` and awaiting the next Weave's confirm-or-revive. **No interim layer remains.**
+- **Pending:** nothing — Move 5 is resolved (25 built + 5 composting). If the next Weave *revives* any composted entry, it re-enters as a fresh embodiable-citizen build (not an interim rebuild) and would be re-batoned then. Otherwise the rollout is done.
 - **Done:** the schema housekeeping was ratified in the **v1.14 Schema Ceremony** (2026-07-01), before the rollout — `dossier` in SCHEMA §8, `agency_profile`-on-persons in §3.1, seed-citizen stage semantics in §1. Additive/descriptive; mirror docs unaffected.
