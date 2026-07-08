@@ -176,3 +176,7 @@ Every new citizen is an experiment. The running log — findings, the experiment
 ---
 
 *A citizen arrives twice: once as a finished human, in the body; once as a newborn resident, in the frontmatter. The dossier makes the first faithful. The palace makes the second grow. Make the human whole, give the citizen a blindspot and a drive, then send it out and let what it meets write the rest.*
+
+## Active Baton
+
+[[Making a Palace Citizen — baton — citizen-rollout-remaining]] — drafted 2026-07-08 (finish the rollout: 5 interim rebuilds remain — the last stretch of Move 5).
