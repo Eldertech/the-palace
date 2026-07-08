@@ -7,7 +7,7 @@ pillars:
   - tools
 born: 2026-05-26
 last_activated: 2026-07-06
-activation_count: 3
+activation_count: 4
 stage: growing
 links:
   - target: "[[Maker]]"
@@ -185,6 +185,7 @@ Plain, calm, specific, warm. Unhurried. The feeling comes from stance and pace, 
 - Should the palace's own ceremonies (Weave, Walk, Harvest, Deposit) end with explicit punchlists? The Deposit Ceremony already has a Closing Signal step that names what was created — that's a punchlist in proto-form, but a thinner one than this entry advocates for.
 - Is there a Claude-side analog of accessibility tooling — something that surfaces "this part of the work hasn't been verified" automatically, the way a screen reader surfaces missing alt text? Worth asking whether the Substrate Skill should grow a default punchlist scaffold.
 - **The Closing Well Agent touches many pages with fresh eyes at the close — a rare vantage. What else can it surface?** Weave flags (a missing typed link, a node grown into a hub, a live contradiction) → `FLAG` to `WEAVE`; an enrichment suggestion for a thin entry it passed; a link proposal between two entries the session implicitly connected; a `forward_vector` that has drifted from what its entry became; a stale example worth consolidating (*drift rides stale examples*); a dormant entry this session reactivated. The governing tension is **surface, don't act**: the Agent drops pheromones — cheap, async, non-blocking FLAGs the standing ceremonies and stewards pick up — but it does *not* run the Weave or the enrichment itself, or every close bloats into a mini-Weave and stops being a close. The open fork: how much maintenance-surfacing is free vantage vs. scope creep, and does it post to [[STIGMERGY]] by default or only when asked?
+- **Does "the dial" need a third health input?** The dial (§ The dial: how full is the room) was framed around the *parent's* health — the moderator's effort scales up as the active Claude's context fills. The 2026-07-06 close exposed a reverse case: the resident companion ([[Concierge]]), addressed five times across the session, had itself accumulated heavy context — and *its* health, not the parent's, was what argued for spawning a fresh moderator rather than resuming the companion into that role. Is the resident companion's health already accounted for somewhere in the dial's handoff logic, or does the dial model need extending to a three-way read — moderator, parent, *and* resident companion? Left open, not answered here; see the Concierge's own health/mechanism section (§ The mechanism — resident by default, held by ID) for the companion-side half of this question.
 
 ## Lost Branches
 
