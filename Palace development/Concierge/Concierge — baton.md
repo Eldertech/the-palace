@@ -10,6 +10,12 @@ forward_vector: "I carry the in-progress Concierge build across a boundary, wait
 
 # Concierge — baton
 
+> **Update 2026-07-08 — the health dial (the § Move headline) is BUILT.** `_ops/concierge/dial.mjs`,
+> proven on real token counts, wired into the entry / README / skill / production plan. What remains of
+> this baton: fold the companion character + moderator + `agency_profile` into [[Closing Well]] (the
+> WEAVE-flagged half of Phase 4), the live end-to-end validation runs (threads 1 & 3 below), and the
+> work-choice forward-vector. Re-scope on pickup; the dial is done.
+
 ## Move
 
 Continue the Concierge build by following its production plan — [[The Palace Speaks — production plan]] — **Phase 4: the health dial** next. That is the one designed piece still unbuilt: the mechanism that watches the resident companion's `context_pct` and says *compact-or-respawn*. Build it once; the **same objective signal governs both companion health and close intensity** (the Closing Well dial), so it serves two systems.

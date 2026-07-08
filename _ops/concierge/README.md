@@ -11,7 +11,8 @@ realizes is [[The Palace Speaks]]; the roadmap is [[The Palace Speaks — produc
 directory is the machinery. The **companion charter** (`prompts/companion.md`) is what you spawn it
 with — its character and lifecycle; the **posture prompts** (`prompts/gatherer.md`, `oracle-qa.md`,
 `curator.md`) are the specific jobs it wears per address. All postures are built; the moderator role
-is designed; the health **dial** (compact-or-respawn on `context_pct`) is the one piece still open.
+is designed; the health **dial** (`dial.mjs` — compact-or-respawn on the objective `subagent_tokens`
+read) landed 2026-07-08.
 
 ## What it's for — offload *and* continuity
 
@@ -51,9 +52,12 @@ The mechanics, verified that day:
    **posture** and handing the posture prompt's slots. Between addresses it is *parked* — it
    consumes nothing until you reopen it, and re-hydrates its own accumulated context on resume
    (confirmed: a parked companion resumed many turns later with full context, zero re-reads).
-3. **Watch its health.** Each resume re-hydrates a *growing* context. Watch the objective
-   `health.context_pct` signal (never the companion's self-report), and **compact or respawn** when
-   it gets heavy. Same dial the close-intensity problem needs.
+3. **Watch its health with the dial.** Each resume re-hydrates a *growing* context and returns the
+   objective read — `subagent_tokens` in the Agent tool's `<usage>` block (never the companion's
+   self-report). Feed it to `node dial.mjs --tokens <N> --model <id>` → green/yellow/red +
+   continue/compact/respawn. Two arms on the one number: **capacity** (÷ window) and **economy**
+   (per-resume cost); it acts on the worse, and on 1M-window models economy is what usually calls the
+   respawn. Same dial serves close-intensity (`--for close`).
 
 Fresh single-shot dispatch is *not* gone — it is still right for a genuine one-off errand, and a
 fresh cold reader is the optional escalation at close (below). But the default is the resident.
@@ -122,30 +126,38 @@ anti-pattern. Authorship that needs Loudon's judgment in the room ([[Deposit Cer
 [[Baton Ceremony]]) stays human-in-the-loop — *dispatched through* the companion, never replaced by
 it.
 
-## The open problem — the health dial (carried, not solved)
+## The health dial — built 2026-07-08 (`dial.mjs`)
 
-The dial governs two things now: **close intensity** (how much the moderator carries — light when the
-parent is fresh, heavy when it is spent) and **companion health** (when to compact-or-respawn). Both
-must read an **objective** signal — never the judged instance's self-report (proven 2026-07-04, when
-an active instance asserted "context full" when it was not):
+The dial governs two things on one signal: **close intensity** (how much the moderator carries — light
+when the parent is fresh, heavy when it is spent) and **companion health** (when to compact-or-respawn).
+It reads an **objective** number — never the judged instance's self-report (the constraint this exists to
+enforce, proven 2026-07-04 when an active instance asserted "context full" while it was not):
 
-- STIGMERGY `health.context_pct` (orchestrator-measured), or
-- a transcript token/turn estimate computed outside the judged instance.
+- **companion health** → `subagent_tokens` from the Agent tool's `<usage>` block on the last resume.
+- **close intensity** → a transcript token estimate for the main thread, computed *outside* the judged
+  instance (e.g. via `_ops/closing-well/transcript-reader.mjs`).
 
-The dial itself is **not built**. This card records the constraint so it is not re-derived wrong:
-*never wire the dial to the active Claude's own sense of how full it is.*
+`node dial.mjs --tokens <N> --model <id> [--for companion|close]` returns a zone + the action. It weighs
+two arms on the one number — **capacity** (÷ the model window; the safety backstop, bites on Haiku's 200K)
+and **economy** (per-resume cost; what bites on the 1M-window models, where capacity almost never binds per
+the sensor-B proof) — and acts on the worse. Thresholds are first-cut and meant to be re-tuned from real
+runs. The load-bearing rule the card still records so it is never re-derived wrong: *never wire the dial to
+the active Claude's own sense of how full it is* — pipe the objective number in.
 
 ## Scope discipline (what is deliberately not built yet)
 
-- **The dial is not built** — the one open piece. It records its input constraint above.
+- **The dial is built** (2026-07-08, `dial.mjs`) but **not yet live-run** end to end — proven on real
+  measured token counts, not yet exercised in an actual heavy close or a long resident session. That
+  live validation is the remaining thread.
 - **Does not add "keep both modes open" to the formal always-loaded invariant list** (JEWEL /
   CLAUDE's "Never violate these"). That is a Schema-Ceremony-weight act, done *once the pattern has
   earned it* — the production plan's Deferred step. Stated here as a working rule; promoting it is later.
 
 ## Forward
 
-- Live-run the resident model end to end (spawn → curate startup → re-address → watch `context_pct`
+- Live-run the resident model end to end (spawn → curate startup → re-address → watch the dial
   → become the moderator at close), then tune the charter from what the first real run teaches.
-- Build the health dial on the objective signal.
+- ~~Build the health dial~~ — **built 2026-07-08** (`dial.mjs`). Next: live-run it and re-tune the
+  first-cut thresholds from real long-session data.
 - Watch that the draft-for-approval bias holds and drafts get genuinely reviewed. If the companion
   drifts toward acting, tighten the charter.

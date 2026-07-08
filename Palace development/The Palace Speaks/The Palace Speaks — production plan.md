@@ -142,14 +142,19 @@ resumed many turns later with full context, zero re-reads; idle = zero cost; ID-
   mechanism), new companion charter `_ops/concierge/prompts/companion.md`, README + skill shim +
   CLAUDE.md floor aligned. The prior disposable-by-default position is deliberately reversed.
 
-### Phase 4 — The moderator posture + the health dial
+### Phase 4 — The moderator posture + the health dial — dial ✓ built 2026-07-08
 Fold the companion character + the moderator role at close + the `agency_profile` into
-[[Closing Well]] (the WEAVE-flagged item), and build the **dial** — now governing *two* things on one
-objective signal (`context_pct`, never self-report): **close intensity** (how much the moderator
-carries) and **companion health** (when to compact/respawn). Most of the close itself is already
-built ([[Closing Well — production plan]] Phases 0–5); the dial is the open piece.
-*Verify gate:* a live close runs at both ends of the dial — slim and heavy — with the companion
-holding its warmth, its guards, and the honesty of its fresh read.
+[[Closing Well]] (the WEAVE-flagged item — *still open*), and build the **dial** — governing *two*
+things on one objective signal (never self-report): **close intensity** (how much the moderator
+carries) and **companion health** (when to compact/respawn).
+**The dial landed** (`_ops/concierge/dial.mjs`): it reads the objective `subagent_tokens` count and
+weighs two arms — **capacity** (÷ the model window) and **economy** (per-resume cost, since every
+resume re-bills the accumulated context) — because on the 1M-window models capacity almost never binds
+(sensor-B proof), so economy is what usually calls the respawn. Proven on real measured token counts
+(the reader probe, the Opus-resident climb). Most of the close itself is already built
+([[Closing Well — production plan]] Phases 0–5).
+*Verify gate (dial built + unit-proven; live half pending):* a live close runs at both ends of the dial
+— slim and heavy — with the companion holding its warmth, its guards, and the honesty of its fresh read.
 
 ### Phase 5 — Migrate one maintenance ceremony (only then)
 Consider moving one *autonomic* ceremony (Weave or Harvest first) from ceremony-you-run to
