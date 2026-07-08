@@ -6,9 +6,9 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
-last_activated: 2026-06-26
-activation_count: 2
+stage: composting
+last_activated: 2026-07-08
+activation_count: 3
 confidence: established
 energy: very high
 hook_quality: 10
@@ -44,6 +44,9 @@ links:
 # Andrei Tarkovsky
 
 ![[Andrei Tarkovsky — hero.png]]
+
+<!-- COMPOSTING (2026-07-08): marked stage: composting per Loudon — Move 5 closes by composting the final interim People entries rather than rebuilding them to the embodiable-citizen standard. Reversible: the next Weave confirms deletion or revives. Leaf node (no inbound links). Compost record + rationale: [[Making a Palace Citizen — context]] § 2026-07-08 compost. -->
+
 
 Andrei Tarkovsky (1932–1986) made films so slow that watching one is itself a small discipline. He gives the palace its clearest statement that **time is a material** — not the container a story happens in, but the thing you shape directly, the way a sculptor shapes marble.
 
