@@ -19,7 +19,9 @@ product.** The search never enters this conversation; only the finished thing do
 ## The lifecycle — resident, not fresh-per-request
 
 1. **First address of the session → spawn it, and keep the agent ID.** Spawn one write-capable
-   agent (`general-purpose`) with the **charter** (`prompts/companion.md`); the charter has it boot
+   resident — subagent_type **`palace-writer`** ([[Agent Toolbox]] profile: sheds ~20K of unused
+   MCP schemas vs `general-purpose`, ~30K vs 46K, and still writes so the curator posture works from
+   the same resident) — with the **charter** (`prompts/companion.md`); the charter has it boot
    the **operational tier** as its standing expertise (SUBSTRATE · ROSETTA · Substrate Skill ·
    Palace Ceremonies · STIGMERGY + wire spec) — deeper in *how the palace runs* than you, so it
    validates/supports the palace in parallel while you work the task. Record its `agentId`.
