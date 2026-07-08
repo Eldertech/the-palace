@@ -175,12 +175,15 @@ The cost model that follows sets two disciplines:
 - **Watch its health with the dial.** Each resume re-hydrates a *growing* context, so a long session
   eventually makes the companion heavy. Each resume also *returns* the objective read — `subagent_tokens`
   in the Agent tool's `<usage>` block (never the companion's self-report). Pass it to the **health dial**
-  (`node _ops/concierge/dial.mjs --tokens <N> --model <companion-model>`): green/yellow/red plus the move
-  (continue / compact / respawn). The dial reads two arms on that one number — **capacity** (÷ the model
-  window) and **economy** (per-resume cost, since every resume re-bills the whole accumulated context) —
-  and acts on the worse. On the 1M-window models capacity almost never binds ([[Agent Wellbeing — proof — sensor-b-characterization]]),
-  so economy is what usually calls the respawn. The *same* dial and signal feed close-intensity (`--for close`);
-  the two converge. Built 2026-07-08.
+  (`node _ops/concierge/dial.mjs --tokens <N> --model <companion-model>`). It keeps **trust** and **cost**
+  as separate axes so they are never confused: the headline is **capacity** = tokens ÷ the model window
+  (the same %-full a Claude Code meter shows — full trust below ~60%, watch 60–80%, degraded past 80%).
+  *Only capacity says compact-or-respawn-for-reliability.* Alongside it the dial prints a **cost** note from
+  the absolute load — every resume re-bills the whole accumulated context, so a heavy resident is expensive
+  to keep waking; that is an advisory to respawn-to-save, **not** a trust alarm. On the 1M-window models
+  capacity almost never binds ([[Agent Wellbeing — proof — sensor-b-characterization]]), so the cost note is
+  the usual reason to respawn a companion. The *same* signal feeds close-intensity (`--for close`), where the
+  absolute load — how spent the parent is — is the headline. Built 2026-07-08; thresholds first-cut.
 - **Name a straggler's provenance.** A dispatched window is independent of the main
   loop's *timeline*, not just its context. If the main loop is **rewound**, an agent
   dispatched from the abandoned timeline still holds its live window and can reply back

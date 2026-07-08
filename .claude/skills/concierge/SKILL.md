@@ -30,10 +30,11 @@ product.** The search never enters this conversation; only the finished thing do
    re-spawn, and don't re-feed what it already holds.
 3. **Watch its health with the dial.** Each resume returns `subagent_tokens` in the Agent tool's
    `<usage>` block — the objective read (never its self-report). Pass it to the dial:
-   `node _ops/concierge/dial.mjs --tokens <N> --model <companion-model>` → green/yellow/red + the move
-   (continue / compact / respawn). It weighs capacity (÷ window) and economy (per-resume cost) and acts
-   on the worse; on 1M-window models economy usually calls it. Parked between addresses it costs nothing —
-   the dial is what keeps a long-lived resident cheap. Same dial serves the close (`--for close`).
+   `node _ops/concierge/dial.mjs --tokens <N> --model <companion-model>`. Headline is **trust** = capacity
+   (÷ window): fine below ~60%, watch 60–80%, degraded past 80% — only capacity says respawn-for-reliability.
+   A separate **cost** note (from absolute load) flags when resumes get expensive — respawn-to-save, not a
+   trust alarm. Parked between addresses it costs nothing. Same dial serves the close (`--for close`), where
+   how spent the parent is leads.
 
 If you expect a genuinely large fan-out, tell Loudon the rough cost first (his standing preference).
 

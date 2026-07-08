@@ -147,12 +147,13 @@ Fold the companion character + the moderator role at close + the `agency_profile
 [[Closing Well]] (the WEAVE-flagged item — *still open*), and build the **dial** — governing *two*
 things on one objective signal (never self-report): **close intensity** (how much the moderator
 carries) and **companion health** (when to compact/respawn).
-**The dial landed** (`_ops/concierge/dial.mjs`): it reads the objective `subagent_tokens` count and
-weighs two arms — **capacity** (÷ the model window) and **economy** (per-resume cost, since every
-resume re-bills the accumulated context) — because on the 1M-window models capacity almost never binds
-(sensor-B proof), so economy is what usually calls the respawn. Proven on real measured token counts
-(the reader probe, the Opus-resident climb). Most of the close itself is already built
-([[Closing Well — production plan]] Phases 0–5).
+**The dial landed** (`_ops/concierge/dial.mjs`): it reads the objective `subagent_tokens` count on two
+kept-separate axes — **capacity** (÷ the model window) as the *trust* signal (fine below ~60%, degraded
+past 80%), and absolute **load** as a *cost* signal (companion: every resume re-bills the accumulated
+context) or *spentness* signal (close: how much arc the moderator carries). Trust and cost stay separate
+so a cheap-to-trust-but-expensive-to-resume resident isn't mistaken for an untrustworthy one — the point
+a first single-zone cut got wrong. Proven on real measured token counts (the reader probe, the
+Opus-resident climb). Most of the close itself is already built ([[Closing Well — production plan]] Phases 0–5).
 *Verify gate (dial built + unit-proven; live half pending):* a live close runs at both ends of the dial
 — slim and heavy — with the companion holding its warmth, its guards, and the honesty of its fresh read.
 

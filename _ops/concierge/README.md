@@ -54,10 +54,10 @@ The mechanics, verified that day:
    (confirmed: a parked companion resumed many turns later with full context, zero re-reads).
 3. **Watch its health with the dial.** Each resume re-hydrates a *growing* context and returns the
    objective read — `subagent_tokens` in the Agent tool's `<usage>` block (never the companion's
-   self-report). Feed it to `node dial.mjs --tokens <N> --model <id>` → green/yellow/red +
-   continue/compact/respawn. Two arms on the one number: **capacity** (÷ window) and **economy**
-   (per-resume cost); it acts on the worse, and on 1M-window models economy is what usually calls the
-   respawn. Same dial serves close-intensity (`--for close`).
+   self-report). Feed it to `node dial.mjs --tokens <N> --model <id>`. Headline = **trust** (capacity ÷
+   window: fine below ~60%, watch 60–80%, degraded past 80%); a separate **cost** note (from absolute
+   load) flags when resumes get expensive — respawn-to-save, never a trust alarm. Same dial serves
+   close-intensity (`--for close`), where how spent the parent is leads.
 
 Fresh single-shot dispatch is *not* gone — it is still right for a genuine one-off errand, and a
 fresh cold reader is the optional escalation at close (below). But the default is the resident.
@@ -137,12 +137,22 @@ enforce, proven 2026-07-04 when an active instance asserted "context full" while
 - **close intensity** → a transcript token estimate for the main thread, computed *outside* the judged
   instance (e.g. via `_ops/closing-well/transcript-reader.mjs`).
 
-`node dial.mjs --tokens <N> --model <id> [--for companion|close]` returns a zone + the action. It weighs
-two arms on the one number — **capacity** (÷ the model window; the safety backstop, bites on Haiku's 200K)
-and **economy** (per-resume cost; what bites on the 1M-window models, where capacity almost never binds per
-the sensor-B proof) — and acts on the worse. Thresholds are first-cut and meant to be re-tuned from real
-runs. The load-bearing rule the card still records so it is never re-derived wrong: *never wire the dial to
-the active Claude's own sense of how full it is* — pipe the objective number in.
+`node dial.mjs --tokens <N> --model <id> [--for companion|close]` reports **two axes that must not be
+confused:**
+- **capacity** = tokens ÷ the model window — the **trust** axis (the same %-full a Claude Code meter
+  shows: full trust below ~60%, watch 60–80%, degraded past 80%). *Only this axis says
+  respawn-for-reliability.* It bites on Haiku's 200K; on the 1M-window models it almost never binds
+  (sensor-B proof).
+- **load** = absolute accumulated tokens — read as **cost** for a companion (every resume re-bills the
+  whole context, so a heavy resident is expensive to keep waking — an advisory to respawn-to-save, never
+  a trust alarm) and as **spentness** for a close (how much arc the moderator must carry — a big day
+  reads heavy even at a small % of a 1M window).
+
+Keeping the two apart is the point: a resident at 25% is fully trustworthy even if it is expensive to
+resume — the old single-zone dial wrongly read that as a health alarm. Thresholds are first-cut and meant
+to be re-tuned from real runs. The load-bearing rule the card still records so it is never re-derived
+wrong: *never wire the dial to the active Claude's own sense of how full it is* — pipe the objective
+number in.
 
 ## Scope discipline (what is deliberately not built yet)
 
