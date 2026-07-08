@@ -204,7 +204,6 @@ that to Loudon.
 - `Palace development/Palace Orchestrator.md` — **the canon organ** ([[Palace Orchestrator]]); this skill is its shim
 - `_ops/stigmergy/orchestrator/README.md` — helper script reference
 - `Palace development/Orchestrator Production Plan.md` — build contract
-- `Palace development/Palace Agent Infrastructure Spec.md` — §3
 - `Palace development/Project Stewardship System.md` — Stage A lessons
 
 ## Batch mode (Stage C — added 2026-05-26)

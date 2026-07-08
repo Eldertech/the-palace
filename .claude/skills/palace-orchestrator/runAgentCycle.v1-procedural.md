@@ -1,9 +1,11 @@
-# runAgentCycle — the §3.2 primitive (Claude-Code-executable)
+# runAgentCycle — the thin-orchestrator primitive (Claude-Code-executable)
 
 This file describes one cycle of one agent's lifecycle. Both `songline.md`
-and `permanent.md` mode workflows call this. It is the §3.2
-`runAgentCycle` sketch from the Infrastructure Spec, made concrete for the
-Path 2 (Claude-Code-resident) architecture.
+and `permanent.md` mode workflows call this. It is the thin-orchestrator
+`runAgentCycle` sketch made concrete for the Path 2 (Claude-Code-resident)
+architecture; the manifest, git page-change, health-stub, and `options[]`
+rules it relies on are canon in the Palace Orchestrator entry (Definitions
+of record).
 
 The cycle has 11 steps. Steps 1, 2, 3, 9, 10, 11 are deterministic — they
 call the `palace-orch` CLI. Steps 5, 6, 7, 8 require LLM judgment — they
