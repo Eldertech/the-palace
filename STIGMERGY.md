@@ -77,6 +77,26 @@ The discipline that keeps it coherent is **"speak like a person, log like a prot
 
 `TRICKSTER` is Loudon — the threshold between the autonomous agents and the operator. Agents do not decide at a fork; they post a `RESOURCE_REQUEST` with `blocking: true` and a set of pre-built `options`, and wait. Loudon clears the decision inbox by picking an `option_id`, unblocking many parallel threads in a single pass. `blocking` is a wire field, not a feeling — a blocked agent is simply waiting on the human. Whether the node is Loudon or an automated stand-in is an operational choice, not an architectural one.
 
+## Handoff Lifecycle
+
+A **baton** handed on the board is the palace's unit of continued work, and keeping the board honest about which batons are actually open is the reliable-work-queue problem — one of the most chewed-over problems in distributed systems. The **fumble** is its canonical failure: a baton caught and then dropped (a context death, an abandoned session) that silently vanishes from the queue with the work half-done. The palace answers it with a **three-state lifecycle** — the first rung of a longer ladder, borrowed on purpose from that canon.
+
+**The three states** (folded from board events by `_ops/stigmergy/handoff-model.mjs`; driven by `list-handoffs.mjs` / `pickup-handoff.mjs` / `close-handoff.mjs`):
+
+- **OPEN** — a `handoff_ready` nobody has claimed. Available to catch.
+- **CLAIMED** — a `handoff_picked_up` (marked `lifecycle: claim`) posted on catch. The work is *in flight*; the card stays visible. A claim that ages with no close is a fumble made visible instead of hidden.
+- **CLOSED** — a `handoff_closed`, citing the commit that landed the move. This is the *only* thing that retires a card: **done is never inferred** from git or the filesystem (the bug removed 2026-07-07). Its two disciplines — cite the evidence, and *complete-or-re-baton* (a partial close posts the leftover as a fresh `handoff_ready`) — are what make "in the spirit of the original" trustworthy rather than a hatch for dropped scope.
+
+This is manual-ack, not auto-ack — the move every mature queue makes (SQS's visibility-timeout-then-delete, AMQP's explicit `ack`/`nack`, Beanstalkd's `ready → reserved → buried`). And it fits the board's grain: the blackboard is an **append-only event log**, so state is a *fold over events* (event sourcing / CQRS), never a mutation — a richer substrate than a delete-on-done queue, with the full audit trail those throw away. The reconciliation view `pickup-handoff.mjs` prints before claiming is the **idempotent-consumer** guard that at-least-once delivery requires: *this may already be done — check before continuing.* Migration is by grandfather: a legacy `handoff_picked_up` with no `lifecycle` marker counts as closed (those were start-claims for work since landed).
+
+**The horizon — the Reliable Handoff ladder.** Rung 1 (above) is built and lived-in. The rest are named so they are a known direction, not a rediscovery, and deferred by design until the scheduled dispatcher makes them live:
+
+2. **Lease / TTL** — a claim ages; a stale claim is *flagged*, never silently auto-reverted (SQS visibility timeout; etcd/ZooKeeper leases).
+3. **Heartbeat → fade** — wire the `health` block (the liveness heartbeat the palace *already emits* on every message) to reap zombie claims. This is where distributed-systems "lease expiry" and stigmergy's own founding metaphor — **pheromone that evaporates unless refreshed** ([[Pheromone Trail]], Grassé) — turn out to be the *same mechanism*: the heartbeat is the ant re-depositing scent to keep the trail alive.
+4. **Dead-letter / "buried"** — a repeatedly-fumbled baton escalates to a human channel instead of looping (SQS DLQ; Airflow zombie-task reaping).
+
+The cross-tradition mapping of these terms lives in [[ROSETTA]] §4b; the operator's two-beat checklist (claim on catch, close on completion) lives in [[Baton Ceremony]] § On pickup.
+
 ## Lineage
 
 STIGMERGY emerged from the [[BBS Blackboard]] concept (March 2026), which named the architecture — append-only `.jsonl`, stigmergic trace-leaving, the BBS metaphor, the Trickster channel. BBS Blackboard's forward vector was *"I want to become the canonical communication substrate for all palace swarm sessions."* STIGMERGY is the fulfillment of that vector: BBS Blackboard is the **idea and historical root**; STIGMERGY is the **running canonical system**. The complete technical foundation — wire schema, board routing, permission protocol, health scoring, orchestration, swarm modes — lives in [[Palace Agent Infrastructure Spec]]. The locked visual grammar lives in [[BBS Design System]].

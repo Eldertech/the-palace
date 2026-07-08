@@ -171,6 +171,13 @@ The link ontology above types edges *between entries*. The Palace also has a sec
 | `health` block | Self-reported agent vitals on every message | Telemetry / liveness heartbeat |
 | `TRICKSTER` | The human node at the threshold | Operator / supervisor in the control loop |
 | stigmergy | Coordination via traces in a shared medium, no central router | Indirect coordination; pheromone/Grassé; eventually-consistent choreography (not orchestration) |
+| `handoff_ready` (open baton) | A unit of continued work left on the board for any catcher | An **enqueued / ready** message in a work queue (SQS message; Beanstalkd `ready` job) |
+| `handoff_picked_up` + `lifecycle: claim` | "I've caught it, starting" — card goes CLAIMED, stays visible | A **reservation / lease / in-flight** receive: SQS visibility-timeout, AMQP unacked delivery, Beanstalkd `reserved` |
+| `handoff_closed` (cites the commit) | The only thing that retires a card — done is explicit, never inferred | An explicit **ack / DeleteMessage / commit-offset**; complete-or-re-baton ≈ a saga's compensating/forward-recovery step |
+| the **fumble** (a claim that ages with no close) | A caught baton dropped mid-move, now *visible* rather than lost | A crashed consumer whose lease expires and the message redelivers; Airflow's **zombie task** |
+| the board as append-only log; state = fold | STATE/QUEUE/LOG projected from the message stream | **Event sourcing / CQRS**; Kafka log + committed offset (vs a mutable delete-on-done queue) |
+| reconciliation-before-work (`pickup-handoff.mjs`) | "This may already be done — check first" | The **idempotent consumer** guard that at-least-once delivery requires |
+| the ladder's rungs 2–4 (lease-TTL · heartbeat-fade · dead-letter) | Deferred hardening of the lifecycle | Visibility-timeout, lease heartbeat, and a **dead-letter queue** — pheromone evaporation *is* lease-TTL. See [[STIGMERGY]] § Handoff Lifecycle |
 
 ### 4c. The Palace ↔ Claude Code (harness-speak)
 
