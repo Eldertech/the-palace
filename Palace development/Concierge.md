@@ -172,10 +172,15 @@ The cost model that follows sets two disciplines:
 - **Curate the startup neighborhood.** What you load into the companion at spawn sets its baseline
   weight. Load the neighborhood the session actually needs — deliberately — not the whole palace by
   reflex.
-- **Watch its health.** Each resume re-hydrates a *growing* context, so a long session eventually
-  makes the companion heavy. Watch its context-fullness (the objective `health.context_pct` signal,
-  never the companion's self-report) and **compact or respawn** when it gets heavy. This is the same
-  dial the close-intensity problem needs; the two converge.
+- **Watch its health with the dial.** Each resume re-hydrates a *growing* context, so a long session
+  eventually makes the companion heavy. Each resume also *returns* the objective read — `subagent_tokens`
+  in the Agent tool's `<usage>` block (never the companion's self-report). Pass it to the **health dial**
+  (`node _ops/concierge/dial.mjs --tokens <N> --model <companion-model>`): green/yellow/red plus the move
+  (continue / compact / respawn). The dial reads two arms on that one number — **capacity** (÷ the model
+  window) and **economy** (per-resume cost, since every resume re-bills the whole accumulated context) —
+  and acts on the worse. On the 1M-window models capacity almost never binds ([[Agent Wellbeing — proof — sensor-b-characterization]]),
+  so economy is what usually calls the respawn. The *same* dial and signal feed close-intensity (`--for close`);
+  the two converge. Built 2026-07-08.
 - **Name a straggler's provenance.** A dispatched window is independent of the main
   loop's *timeline*, not just its context. If the main loop is **rewound**, an agent
   dispatched from the abandoned timeline still holds its live window and can reply back
@@ -216,8 +221,11 @@ fold it in) that this same session had just helped write into its own canon abov
 - Live-run the resident model end to end: spawn a companion at a session's start, curate its
   startup neighborhood, re-address it across the work, watch its `context_pct`, and let it flip to
   moderator at close — then tune the charter from what the first real run teaches.
-- Solve the **health dial**: wire compact-or-respawn to the objective `context_pct` signal (never
-  the companion's self-report), the same dial the close-intensity problem needs.
+- **Tune the health dial** (`_ops/concierge/dial.mjs`, built 2026-07-08 on the objective
+  `subagent_tokens` read, two arms — capacity + economy). Its thresholds are first-cut from the
+  sensor-B characterization; re-tune them from real long-session runs, and re-check the sensor
+  semantics periodically (they are inferred black-box). Still to live-run it end to end — build proven
+  on real numbers, not yet exercised in an actual heavy close.
 - Keep the review real. The read/write safety now lives in the companion's *character*, not the
   architecture — watch that the draft-for-approval bias holds and that drafts get genuinely
   reviewed, not rubber-stamped. If it drifts toward acting, tighten the charter.
@@ -226,5 +234,8 @@ fold it in) that this same session had just helped write into its own canon abov
 
 ## Active Baton
 
-[[Concierge — baton]] — placed 2026-07-04 at the build's own close *(move: continue the
-[[The Palace Speaks — production plan]], Phase 4 — the health dial)*.
+[[Concierge — baton]] — placed 2026-07-04 *(move: [[The Palace Speaks — production plan]] Phase 4)*.
+**The health dial landed 2026-07-08** (`_ops/concierge/dial.mjs` — built + proven on real numbers, not
+yet live-run). Remaining on the baton: fold the companion character + moderator + `agency_profile` into
+[[Closing Well]] (the WEAVE-flagged half of Phase 4), plus the live end-to-end validation runs. The
+board line still reads "the dial next" — the next catcher re-scopes it (staleness is the catcher's call).

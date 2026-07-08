@@ -28,9 +28,12 @@ product.** The search never enters this conversation; only the finished thing do
 2. **Every later address → resume the same agent** (`SendMessage` to the held ID), naming the
    posture and filling that posture prompt's slots. It carries its prior context forward — don't
    re-spawn, and don't re-feed what it already holds.
-3. **Watch its health.** Resumes re-hydrate a growing context. If it gets heavy over a long
-   session, compact or respawn (watch `context_pct`, never its self-report). Parked between
-   addresses it costs nothing.
+3. **Watch its health with the dial.** Each resume returns `subagent_tokens` in the Agent tool's
+   `<usage>` block — the objective read (never its self-report). Pass it to the dial:
+   `node _ops/concierge/dial.mjs --tokens <N> --model <companion-model>` → green/yellow/red + the move
+   (continue / compact / respawn). It weighs capacity (÷ window) and economy (per-resume cost) and acts
+   on the worse; on 1M-window models economy usually calls it. Parked between addresses it costs nothing —
+   the dial is what keeps a long-lived resident cheap. Same dial serves the close (`--for close`).
 
 If you expect a genuinely large fan-out, tell Loudon the rough cost first (his standing preference).
 
