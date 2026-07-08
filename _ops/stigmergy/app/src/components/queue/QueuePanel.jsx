@@ -10,7 +10,7 @@ import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
 import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
 import { postMessage } from '../../adapters/blackboard.js';
-import { buildHandoffPickup } from '../../lib/handoff-builder.js';
+import { buildHandoffClaim, buildHandoffClose } from '../../lib/handoff-builder.js';
 import { applyWeaveProposal, emitUnsungAudit, emitHubAudit, emitVectorTuningAudit, emitStageAudit, emitLabelAudit } from '../../adapters/weave.js';
 
 // QueuePanel — the unified, honest, ranked queue (Phase 4).
@@ -352,23 +352,40 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     });
   };
 
-  // Durably clear a baton: post the paired handoff_picked_up (buildQueue drops
-  // it for good on the next board read, so it does NOT return on reload), then
-  // dismiss locally so it leaves the view now. On a post failure (offline/demo),
-  // fall back to a local-only dismiss and say so — that one WOULD return on
-  // reload. This is why "clear" now writes: a local dismiss alone can't retire a
-  // handoff_ready that still sits on the board.
-  const clearHandoff = async (item) => {
+  // Close a baton — the terminal lifecycle event. Post a handoff_closed
+  // (buildQueue drops it for good on the next board read, so it does NOT return
+  // on reload), then dismiss locally so it leaves the view now. A board close is
+  // an honest human override — no commit is required here (the CLI enforces the
+  // commit-evidence discipline; a manual board clear notes itself as such). On a
+  // post failure (offline/demo), fall back to a local-only dismiss and say so —
+  // that one WOULD return on reload.
+  const closeHandoff = async (item) => {
     setDecisionNote(null);
     try {
       await postMessage(
-        buildHandoffPickup({ handoffId: item.id, note: 'cleared from QUEUE', sessionId: item.sessionId || undefined }),
+        buildHandoffClose({ handoffId: item.id, note: 'closed from QUEUE (manual board clear)', sessionId: item.sessionId || undefined }),
         'persistent',
       );
     } catch (err) {
-      setDecisionNote({ tone: 'err', text: `clear didn't reach the board — dismissed locally, may return on reload (${err.message || 'post error'})` });
+      setDecisionNote({ tone: 'err', text: `close didn't reach the board — dismissed locally, may return on reload (${err.message || 'post error'})` });
     }
     clearItem(item);
+  };
+
+  // Claim a baton — mark it caught and in flight. Posts a handoff_picked_up with
+  // `lifecycle: "claim"`; the card moves to CLAIMED and STAYS visible (it is not
+  // retired — only a close does that). Does not dismiss locally: the point of a
+  // claim is that it keeps showing, now flagged in-flight, until it is closed.
+  const claimHandoff = async (item) => {
+    setDecisionNote(null);
+    try {
+      await postMessage(
+        buildHandoffClaim({ handoffId: item.id, note: 'claimed from QUEUE', sessionId: item.sessionId || undefined }),
+        'persistent',
+      );
+    } catch (err) {
+      setDecisionNote({ tone: 'err', text: `claim didn't reach the board (${err.message || 'post error'})` });
+    }
   };
 
   const jump = (pointer) => {
@@ -582,12 +599,12 @@ export default function QueuePanel({ messages, onJumpEntry }) {
               handoffs &mdash; batons ready to catch ({openHandoffs.length})
             </div>
             {openHandoffs.map((it) => (
-              <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onDismissHandoff={clearHandoff} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
+              <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onDismissHandoff={closeHandoff} onClaimHandoff={claimHandoff} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
             ))}
           </div>
         ) : null}
         {openRest.map((it) => (
-          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onDismissHandoff={clearHandoff} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
+          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onDismissHandoff={closeHandoff} onClaimHandoff={claimHandoff} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
         ))}
       </div>
 
@@ -602,7 +619,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           {showResolved ? (
             <div data-testid="queue-resolved">
               {resolved.map((it) => (
-                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onDismissHandoff={clearHandoff} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
+                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onDismissHandoff={closeHandoff} onClaimHandoff={claimHandoff} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
               ))}
             </div>
           ) : null}

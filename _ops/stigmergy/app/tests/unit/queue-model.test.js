@@ -108,15 +108,17 @@ describe('buildQueue', () => {
     expect(buildQueue([reqMsg(), grant])).toHaveLength(0);
   });
 
-  it('turns a handoff_ready BROADCAST into an item with entry + stale_if', () => {
+  it('turns a handoff_ready BROADCAST into an OPEN item with entry + lifecycle stale_if', () => {
     const q = buildQueue([handoffMsg()]);
     expect(q).toHaveLength(1);
     expect(q[0].kind).toBe('handoff_ready');
     expect(q[0].id).toBe('h1');
+    expect(q[0].state).toBe('open');
     expect(q[0].entry).toBe('Project Stewardship System');
     expect(q[0].handoff_path).toMatch(/handoff\.md$/);
     expect(q[0].pointer).toEqual({ type: 'entry', target: 'Project Stewardship System' });
-    expect(q[0].stale_if).toMatch(/commit touches/);
+    // Done is never inferred from git — the card retires by an explicit board event.
+    expect(q[0].stale_if).toMatch(/handoff_closed/);
     // A move-less/worktree-less baton carries a null worktree, not undefined.
     expect(q[0].worktree).toBeNull();
   });
@@ -127,16 +129,43 @@ describe('buildQueue', () => {
     expect(q[0].worktree).toEqual(wt);
   });
 
-  it('drops a handoff_ready that has been explicitly acked as picked up', () => {
-    const ack = { id: 'a1', type: 'BROADCAST', board: 'GENERAL', ts: '2026-05-29T12:00:00Z', payload: { kind: 'handoff_picked_up', handoff_id: 'h1' } };
-    expect(buildQueue([handoffMsg(), ack])).toHaveLength(0);
+  // ── Handoff lifecycle: OPEN → CLAIMED → CLOSED ──────────────────────────────
+  it('a claim (handoff_picked_up, lifecycle: claim) marks the card CLAIMED but KEEPS it visible', () => {
+    const claim = { id: 'c1', type: 'REPLY', board: 'GENERAL', from: 'Catcher', ts: '2026-05-29T12:00:00Z', re: 'h1', payload: { kind: 'handoff_picked_up', lifecycle: 'claim', handoff_id: 'h1' } };
+    const q = buildQueue([handoffMsg(), claim]);
+    expect(q).toHaveLength(1);
+    expect(q[0].state).toBe('claimed');
+    expect(q[0].claimedBy).toBe('Catcher');
+    expect(q[0].claimedAt).toBe('2026-05-29T12:00:00Z');
   });
 
-  it('drops a handoff_ready acked by a re:-threaded pickup (hand-authored convention, no payload.handoff_id)', () => {
-    // The Baton Ceremony convention: a handoff_picked_up REPLY threaded via the
-    // top-level `re`, carrying no payload.handoff_id. Must clear the card too.
-    const ack = { id: 'p1', type: 'REPLY', board: 'GENERAL', ts: '2026-05-29T12:00:00Z', re: 'h1', payload: { kind: 'handoff_picked_up', entry: 'Project Stewardship System' } };
-    expect(buildQueue([handoffMsg(), ack])).toHaveLength(0);
+  it('a handoff_closed retires the card (drops it)', () => {
+    const close = { id: 'x1', type: 'REPLY', board: 'GENERAL', ts: '2026-05-29T13:00:00Z', re: 'h1', payload: { kind: 'handoff_closed', handoff_id: 'h1', commit: 'abc123' } };
+    expect(buildQueue([handoffMsg(), close])).toHaveLength(0);
+  });
+
+  it('a claim then a close ends CLOSED (dropped) — close wins', () => {
+    const claim = { id: 'c1', type: 'REPLY', board: 'GENERAL', ts: '2026-05-29T12:00:00Z', re: 'h1', payload: { kind: 'handoff_picked_up', lifecycle: 'claim', handoff_id: 'h1' } };
+    const close = { id: 'x1', type: 'REPLY', board: 'GENERAL', ts: '2026-05-29T13:00:00Z', re: 'h1', payload: { kind: 'handoff_closed', handoff_id: 'h1' } };
+    expect(buildQueue([handoffMsg(), claim, close])).toHaveLength(0);
+  });
+
+  it('grandfathers a LEGACY handoff_picked_up (no lifecycle marker) to closed — drops it', () => {
+    // Pre-lifecycle pickups were start-claims for work since landed (and the old
+    // UI "clear" minted them). They retire the card via the migration grandfather.
+    const legacy = { id: 'a1', type: 'BROADCAST', board: 'GENERAL', ts: '2026-05-29T12:00:00Z', payload: { kind: 'handoff_picked_up', handoff_id: 'h1' } };
+    expect(buildQueue([handoffMsg(), legacy])).toHaveLength(0);
+  });
+
+  it('grandfathers a legacy pickup threaded by re: (no payload.handoff_id) to closed', () => {
+    const legacy = { id: 'p1', type: 'REPLY', board: 'GENERAL', ts: '2026-05-29T12:00:00Z', re: 'h1', payload: { kind: 'handoff_picked_up', entry: 'Project Stewardship System' } };
+    expect(buildQueue([handoffMsg(), legacy])).toHaveLength(0);
+  });
+
+  it('never git-reconciles a handoff_ready — done is never inferred from a commit touch', () => {
+    const q = buildQueue([handoffMsg()]);
+    const reconciled = reconcileQueue(q, [{ shortHash: 'zzz', date: '2026-05-30T00:00:00Z', entries: ['Project Stewardship System'], resolves: [] }]);
+    expect(reconciled[0].resolved.done).toBe(false);
   });
 
   it('ranks blocking items first, then newest', () => {
@@ -428,22 +457,19 @@ describe('synthesizeProposalAsk', () => {
 });
 
 describe('reconcileQueue', () => {
-  it('resolves a handoff_ready when a commit carries Palace-Resolves: <id>', () => {
+  // Handoffs never git-reconcile — they close by an explicit board event
+  // (handoff_closed), not a commit. Inferring "done" from a commit was the exact
+  // bug the three-state lifecycle removed.
+  it('does NOT resolve a handoff_ready even via Palace-Resolves: <id>', () => {
     const items = buildQueue([handoffMsg()]);
     const commits = [{ shortHash: 'abc1234', date: '2026-05-29T10:00:00Z', entries: [], resolves: ['h1'] }];
-    const out = reconcileQueue(items, commits);
-    expect(out[0].resolved.done).toBe(true);
-    expect(out[0].resolved.commit).toBe('abc1234');
-    expect(out[0].resolved.reason).toMatch(/resolved by commit/);
+    expect(reconcileQueue(items, commits)[0].resolved.done).toBe(false);
   });
 
-  it('resolves a handoff_ready when a commit touches its entry AFTER it was posted', () => {
+  it('does NOT resolve a handoff_ready on an entry touch (the "inferred done" bug, removed)', () => {
     const items = buildQueue([handoffMsg()]); // posted 09:00
     const commits = [{ shortHash: 'def5678', date: '2026-05-29T10:00:00Z', entries: ['Project Stewardship System'], resolves: [] }];
-    const out = reconcileQueue(items, commits);
-    expect(out[0].resolved.done).toBe(true);
-    expect(out[0].resolved.commit).toBe('def5678');
-    expect(out[0].resolved.reason).toMatch(/touched Project Stewardship System after/);
+    expect(reconcileQueue(items, commits)[0].resolved.done).toBe(false);
   });
 
   it('does NOT resolve when the touching commit predates the item (honest staleness)', () => {
@@ -453,8 +479,9 @@ describe('reconcileQueue', () => {
     expect(out[0].resolved.done).toBe(false);
   });
 
-  it('matches entry case-insensitively', () => {
-    const items = buildQueue([handoffMsg()]);
+  it('matches entry case-insensitively (on a reconcilable kind — vector_proposal)', () => {
+    const proposal = { id: 'vp-ci', type: 'BROADCAST', board: 'WEAVE', ts: '2026-05-29T09:00:00Z', payload: { kind: 'vector_proposal', proposal_type: 'vector_tuning', source_entry: 'Project Stewardship System', proposed_change: 'retune' } };
+    const items = buildQueue([proposal]);
     const commits = [{ shortHash: 'c1', date: '2026-05-29T10:00:00Z', entries: ['project stewardship system'], resolves: [] }];
     expect(reconcileQueue(items, commits)[0].resolved.done).toBe(true);
   });
@@ -480,13 +507,16 @@ describe('reconcileQueue', () => {
 
 describe('partitionQueue', () => {
   it('splits open vs resolved', () => {
-    const items = buildQueue([handoffMsg(), reqMsg()]);
-    const reconciled = reconcileQueue(items, [{ shortHash: 'c1', date: '2026-05-29T10:00:00Z', entries: ['Project Stewardship System'], resolves: [] }]);
+    // A vector_proposal git-reconciles on an entry touch; a handoff never does
+    // (it closes by board event), so it stays open — a clean split to test.
+    const proposal = { id: 'vp1', type: 'BROADCAST', board: 'WEAVE', ts: '2026-05-29T09:00:00Z', payload: { kind: 'vector_proposal', proposal_type: 'vector_tuning', source_entry: 'Kuramoto Coupling', proposed_change: 'retune' } };
+    const items = buildQueue([handoffMsg(), proposal]);
+    const reconciled = reconcileQueue(items, [{ shortHash: 'c1', date: '2026-05-29T10:00:00Z', entries: ['Kuramoto Coupling'], resolves: [] }]);
     const { open, resolved } = partitionQueue(reconciled);
     expect(resolved).toHaveLength(1);
-    expect(resolved[0].kind).toBe('handoff_ready');
+    expect(resolved[0].kind).toBe('vector_proposal');
     expect(open).toHaveLength(1);
-    expect(open[0].kind).toBe('resource_request');
+    expect(open[0].kind).toBe('handoff_ready');
   });
 });
 
