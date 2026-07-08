@@ -5,9 +5,9 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: growing
-last_activated: 2026-06-26
-activation_count: 2
+stage: composting
+last_activated: 2026-07-08
+activation_count: 3
 confidence: established
 energy: high
 hook_quality: 9
@@ -39,6 +39,9 @@ links:
 # Natalie Goldberg
 
 ![[Natalie Goldberg — hero.png]]
+
+<!-- COMPOSTING (2026-07-08): marked stage: composting per Loudon — Move 5 closes by composting the final interim People entries rather than rebuilding them. Reversible: the next Weave confirms deletion or revives. Inbound links to redistribute before any deletion: Annie Dillard, Shunryu Suzuki (+ dossier). Compost record: [[Making a Palace Citizen — context]] § 2026-07-08 compost. -->
+
 
 Natalie Goldberg (1948–) studied with [[Shunryu Suzuki]]'s Zen lineage for years before she figured out what to do with it: not sit longer, but write the same way she sat. *Writing Down the Bones* (1986) is the result — a small book that turned the blank page into a meditation cushion. Her method has one rule and it never gets more complicated than this: set a timer, keep the hand moving, don't stop to fix anything until the timer ends.
 

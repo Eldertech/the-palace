@@ -5,9 +5,9 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
-last_activated: 2026-06-26
-activation_count: 2
+stage: composting
+last_activated: 2026-07-08
+activation_count: 3
 confidence: established
 energy: high
 hook_quality: 9
@@ -46,6 +46,9 @@ links:
 # R. Murray Schafer
 
 ![[R. Murray Schafer — hero.png]]
+
+<!-- COMPOSTING (2026-07-08): marked stage: composting per Loudon — Move 5 closes by composting the final interim People entries rather than rebuilding them. Reversible: the next Weave confirms deletion or revives. Inbound links to redistribute before any deletion: Pauline Oliveros (dossier), Shop/LaMa (contradicts). Compost record: [[Making a Palace Citizen — context]] § 2026-07-08 compost. -->
+
 
 R. Murray Schafer (1933–2021) — Canadian composer, teacher, founder of the World Soundscape Project — made one argument his whole career: the world is already a composition, and most of us have stopped listening to it. He gives the palace its outdoor ear. Where the studio pillars teach you to build a sound from nothing, Schafer teaches you to notice the sound that was already there before you touched a fader.
 

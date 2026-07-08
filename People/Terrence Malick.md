@@ -5,9 +5,9 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
-last_activated: 2026-06-26
-activation_count: 2
+stage: composting
+last_activated: 2026-07-08
+activation_count: 3
 confidence: established
 energy: high
 hook_quality: 9
@@ -45,6 +45,9 @@ links:
 # Terrence Malick
 
 ![[Terrence Malick — hero.png]]
+
+<!-- COMPOSTING (2026-07-08): marked stage: composting per Loudon — Move 5 closes by composting the final interim People entries rather than rebuilding them. Reversible: the next Weave confirms deletion or revives. Leaf node (no inbound links); note its own outbound mirror to Yasujirō Ozu. Compost record: [[Making a Palace Citizen — context]] § 2026-07-08 compost. -->
+
 
 Terrence Malick (1943–) makes films the way a river carves a canyon — slowly, and mostly out of sight. He gives no interviews to speak of, shoots for years, and edits for longer: *The Thin Red Line* (1998) was cut down from roughly three years of footage into a three-hour film. *Days of Heaven* (1978) and *The Tree of Life* (2011) carry the same signature — long silences between releases, images that hold longer than a story needs, voice-over that drifts like a thought rather than driving a plot. Nothing about his method is fast, and that is the whole point.
 

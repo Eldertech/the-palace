@@ -5,9 +5,9 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: growing
-last_activated: 2026-06-26
-activation_count: 2
+stage: composting
+last_activated: 2026-07-08
+activation_count: 3
 confidence: established
 energy: high
 hook_quality: 9
@@ -46,6 +46,9 @@ links:
 # Sam Maloof
 
 ![[Sam Maloof — hero.png]]
+
+<!-- COMPOSTING (2026-07-08): marked stage: composting per Loudon — Move 5 closes by composting the final interim People entries rather than rebuilding them. Reversible: the next Weave confirms deletion or revives. Inbound links to redistribute before any deletion: "Move the Ink, Don't Redraw It" (contradicts), George Nakashima (mirrors — wired 2026-07-08 in the batch-4 rebuild; revisit if Maloof is deleted). Compost record: [[Making a Palace Citizen — context]] § 2026-07-08 compost. -->
+
 
 Sam Maloof (1916–2009) made the same rocking chair for fifty years and never made two alike. No blueprint, no straight lines — every curve shaped by hand, checked against the body it would hold, corrected by feel until it was right. He gives the palace its clearest picture of what it means to go deep on one thing instead of wide across many: *each chair teaches the hand something the last one couldn't.*
 
