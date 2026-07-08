@@ -132,8 +132,8 @@ with strict §2.2 validation), live tail (SSE), and click-to-respond UI
 (Trickster inbox response buttons + confirm modal) are all present.
 
 **v0.2 is not** a daemonized service, an authentication system, the
-orchestrator from the Palace Agent Infrastructure Spec, or a Trickster
-broadcast surface for non-RESOURCE_REQUEST types. Those are v0.3+.
+Palace Orchestrator engine, or a Trickster broadcast surface for
+non-RESOURCE_REQUEST types. Those are v0.3+.
 
 ## How Claude Code uses this directory
 

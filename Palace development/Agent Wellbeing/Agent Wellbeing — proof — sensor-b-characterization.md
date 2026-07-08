@@ -48,7 +48,7 @@ occupancy; near-perfectly linear and deterministic in range.**
 | pad_3k | ~700-tok essay | 51,917 |
 
 A full essay added **+36 tokens**. `subagent_tokens` tracks INPUT/context, not
-input+output — refuting the [[Palace Agent Infrastructure Spec]] §3.3.1 "combined,
+input+output — refuting the [[Palace Orchestrator]] dual-path health "combined,
 approximate" worry.
 
 ## Phase 3 — model lock (Opus anchor)

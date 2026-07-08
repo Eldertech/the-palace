@@ -23,7 +23,7 @@ links:
   - target: "[[Closing Well]]"
     type: connects-to
     label: review-the-diff-is-the-audition
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[SCHEMA]]"
     type: connects-to
     label: message-and-board-model
   - target: "[[SCHEMA]]"
@@ -338,7 +338,7 @@ I want to be the terminal Loudon opens instead of choosing between Obsidian and 
 
 ## Palace Connections
 
-- **[[BBS Blackboard]]** / **[[Palace Agent Infrastructure Spec]]** — the message and board model QUEUE reframes.
+- **[[BBS Blackboard]]** / **[[SCHEMA]] §9** — the message and board model QUEUE reframes.
 - **[[BBS Design System]]** — the locked aesthetic, unchanged.
 - **[[Two Batons, One Board]]** — the retro/prospective split this makes navigational; the `handoff_ready` convention QUEUE renders.
 - **[[Drift and Consolidation]]** — the drift this surfaces; the entry→log sync the reconciliation engine builds.

@@ -6,4 +6,4 @@ The palace's cross-session coordination LOG — the persistent [[STIGMERGY]] bla
 
 - **Canonical message shape:** [[SCHEMA]] §9 — the v1.12 field conventions. The first lines of `blackboard.jsonl` are labeled exemplars; copy their shape.
 - **Prior history:** `Archive/blackboard-2026-06-16.jsonl` (454 messages, 2026-05-04 → 2026-06-16). Git carries it too.
-- **Wire spec:** [[Palace Agent Infrastructure Spec]] §2.2 (the strict validator at `_ops/stigmergy/core/schema/validator.js` gates writes).
+- **Wire spec:** [[SCHEMA]] §9 (the strict validator at `_ops/stigmergy/core/schema/validator.js` gates writes).

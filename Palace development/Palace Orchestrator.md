@@ -17,7 +17,7 @@ links:
   - target: "[[Pages as Agents]]"
     type: deepens
     label: dispatches-the-page-as-agent
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[SCHEMA]]"
     type: connects-to
     label: enforces-the-wire
   - target: "[[Concierge]]"

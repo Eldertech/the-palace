@@ -207,7 +207,7 @@ If approved, the four edits could be applied in one session. If not, the dialogu
 
 ---
 
-**2026-05-05** — In a maker-architecture conversation, re-derived the Trickster / Coordinator / Worker / Palace frame as Director / Producer / Specialist / Palace without first reading [[Palace Agent Infrastructure Spec]]. The re-derivation matched cleanly. Treat this as evidence the existing names hold under independent re-derivation — and as a worked instance of the failure mode the palace's "show before writing" discipline exists to prevent. The maker work that followed is an *application* of PAIS, not a new architecture.
+**2026-05-05** — In a maker-architecture conversation, re-derived the Trickster / Coordinator / Worker / Palace frame as Director / Producer / Specialist / Palace without first reading the agent-infrastructure spec (since retired). The re-derivation matched cleanly. Treat this as evidence the existing names hold under independent re-derivation — and as a worked instance of the failure mode the palace's "show before writing" discipline exists to prevent. The maker work that followed is an *application* of PAIS, not a new architecture.
 
 ---
 

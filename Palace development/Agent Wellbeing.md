@@ -36,7 +36,7 @@ links:
   - target: "[[STIGMERGY]]"
     type: connects-to
     label: shared-health-sensor
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[Palace Orchestrator]]"
     type: connects-to
     label: health-score-source
 forward_vector: "I am becoming the palace's conscience for all agent-facing design decisions — the entry that gets read before any new ceremony is designed, any new worker prompt is written, any new context injection is configured. I generate conditions that indicate a worker is operating with joy."
@@ -106,7 +106,7 @@ Health is not one thing, any more than a person's is. At least five dimensions, 
 | **Acuity** (thinking thinning out) | Quality | Should I trust this output? |
 | **Drift** (losing the thread) | Coherence | Is it still tracking? |
 
-The first three are instrument questions; the last two only a reader can judge. STIGMERGY's [[Palace Agent Infrastructure Spec|§3.3 health score]] named all five and then flattened them into one green/yellow/red scalar — and, in daily practice on the Agent-tool path, reads none of them (it stamps a permanent green). Naming the dimensions again is the first repair. The vocabulary is not ours alone: classical operations (Google's golden signals, the USE and RED methods) type the same signals and share one philosophy — *monitor the black box from outside; the component does not narrate its own health.*
+The first three are instrument questions; the last two only a reader can judge. STIGMERGY's [[Palace Orchestrator|dual-path health score]] named all five and then flattened them into one green/yellow/red scalar — and, in daily practice on the Agent-tool path, reads none of them (it stamps a permanent green). Naming the dimensions again is the first repair. The vocabulary is not ours alone: classical operations (Google's golden signals, the USE and RED methods) type the same signals and share one philosophy — *monitor the black box from outside; the component does not narrate its own health.*
 
 ### The rule: instrument capacity, read quality
 

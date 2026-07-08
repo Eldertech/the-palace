@@ -256,7 +256,7 @@ A baton filed in a bundle is invisible to everything but a human who knows to go
 
 This announcement does **not** replace writing the baton file (Steps 1–4). It is a pointer to it, posted to the [[BBS Blackboard]] so the board becomes the one place "what is ready to continue" lives.
 
-**The convention (not a new message type).** A baton announcement is a `BROADCAST` to `GENERAL` carrying `payload.kind: "handoff_ready"`. The wire field keeps its `handoff_ready` name for protocol stability even though the ceremony is now named for the baton — the palace lets categories prove themselves before hardening, and renaming a live wire field is a separate decision (see [[Speak Like a Person, Log Like a Protocol]]). The `from` field is the entry's own title (the page is the agent; see [[Pages as Agents]]). Health uses the Path 2 stub, since the message is hand-authored or subagent-dispatched, not measured against a direct API call (see [[Palace Agent Infrastructure Spec]] §3.3.1).
+**The convention (not a new message type).** A baton announcement is a `BROADCAST` to `GENERAL` carrying `payload.kind: "handoff_ready"`. The wire field keeps its `handoff_ready` name for protocol stability even though the ceremony is now named for the baton — the palace lets categories prove themselves before hardening, and renaming a live wire field is a separate decision (see [[Speak Like a Person, Log Like a Protocol]]). The `from` field is the entry's own title (the page is the agent; see [[Pages as Agents]]). Health uses the Path 2 stub, since the message is hand-authored or subagent-dispatched, not measured against a direct API call (see [[Palace Orchestrator]], Definitions of record → dual-path health).
 
 ```json
 {

@@ -5,7 +5,7 @@ links:
   - target: "[[STIGMERGY]]"
     type: connects-to
     label: integrates-into
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[SCHEMA]]"
     type: connects-to
     label: rides-the-wire
   - target: "[[The Shop]]"

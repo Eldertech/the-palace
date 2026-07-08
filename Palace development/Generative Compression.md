@@ -14,10 +14,10 @@ beauty: 8
 confidence: working
 forward_vector: "I want to become a named, teachable ceremony that Loudon and palace agents both use — the standard method for ending a productive conversation and seeding the next one, with forward vector as the compression signal."
 links:
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[Palace Orchestrator]]"
     type: connects-to
     label: "automated-by"
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[STIGMERGY]]"
     type: deepens
     label: "operates-at-every-interface-of"
   - target: "[[Swarm Weave]]"
@@ -87,7 +87,7 @@ The Deposit Ceremony transforms conversation material into palace entries. Gener
 - Deposit → palace entry (permanent, typed, linked, part of the organism)
 - Generative Compression → context seed (temporary, working document, used once)
 
-A Generative Compression document may later become the basis for a Deposit — but it is not a deposit in itself. The spec produced in this practice's originating session (see [[Palace Agent Infrastructure Spec]]) is an example: it began as a generative compression of a long design conversation, and was subsequently deposited into the palace as a permanent entry.
+A Generative Compression document may later become the basis for a Deposit — but it is not a deposit in itself. The palace's own agent-infrastructure spec is a worked example with a full arc: it began as a generative compression of a long design conversation, was deposited as an entry, and was later retired once its durable cores had migrated into [[Palace Orchestrator]] — the compression outlived the document.
 
 ## Cross-Domain Resonance
 
@@ -101,9 +101,9 @@ A Generative Compression document may later become the basis for a Deposit — b
 
 - Should Generative Compression become a named ceremony in the palace's ceremony infrastructure, with a formal trigger and documented steps? The current trigger is informal: Loudon ends a long productive conversation and asks Claude to compress it.
 - The clarifying questions step is the most important and least documented part of the method. What are the canonical questions? Can they be templated without losing their adaptive quality?
-  *Refinement (2026-05-05):* The clarifying questions are not flat — they are *interface-specific*. The questions you ask to compress for a Worker (executable specificity) differ from those you ask to compress for the Director's option-set (preservation of trade-space) which differ from those you ask to compress for the Palace (what wants to be incorporated). A canonical templating effort should produce one short question-set per interface, not one universal list. The interfaces are themselves named in [[Palace Agent Infrastructure Spec]]. ([[fv-refinement-q2]])
+  *Refinement (2026-05-05):* The clarifying questions are not flat — they are *interface-specific*. The questions you ask to compress for a Worker (executable specificity) differ from those you ask to compress for the Director's option-set (preservation of trade-space) which differ from those you ask to compress for the Palace (what wants to be incorporated). A canonical templating effort should produce one short question-set per interface, not one universal list. The interfaces are themselves named in [[STIGMERGY]]. ([[fv-refinement-q2]])
 - Is there a meaningful distinction between a Generative Compression that seeds a new session and one that seeds a new palace entry? Should these be named differently?
-  *Resolved (2026-05-05):* Yes, they are different — and the distinction generalizes. Session-seeding and entry-seeding are two specific cases of a broader pattern: every interface in a multi-role system is its own compression site, with its own perception target named by what the next reader needs. Session-seeding compresses for a future Director-self continuing work; entry-seeding compresses for the Palace's growth. They differ because their receivers differ. See [[Palace Agent Infrastructure Spec]] for the role-set this opens onto. ([[fv-answer-q3]])
+  *Resolved (2026-05-05):* Yes, they are different — and the distinction generalizes. Session-seeding and entry-seeding are two specific cases of a broader pattern: every interface in a multi-role system is its own compression site, with its own perception target named by what the next reader needs. Session-seeding compresses for a future Director-self continuing work; entry-seeding compresses for the Palace's growth. They differ because their receivers differ. See [[STIGMERGY]] for the role-set this opens onto. ([[fv-answer-q3]])
 
 ---
 

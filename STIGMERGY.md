@@ -15,9 +15,9 @@ links:
   - target: "[[BBS Blackboard]]"
     type: emerged-from
     label: historical-root
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[Palace Orchestrator]]"
     type: connects-to
-    label: wire-spec-and-orchestration
+    label: orchestrated-by
   - target: "[[SCHEMA]]"
     type: connects-to
     label: coordination-schema-home
@@ -99,7 +99,7 @@ The cross-tradition mapping of these terms lives in [[ROSETTA]] §4b; the operat
 
 ## Lineage
 
-STIGMERGY emerged from the [[BBS Blackboard]] concept (March 2026), which named the architecture — append-only `.jsonl`, stigmergic trace-leaving, the BBS metaphor, the Trickster channel. BBS Blackboard's forward vector was *"I want to become the canonical communication substrate for all palace swarm sessions."* STIGMERGY is the fulfillment of that vector: BBS Blackboard is the **idea and historical root**; STIGMERGY is the **running canonical system**. The complete technical foundation — wire schema, board routing, permission protocol, health scoring, orchestration, swarm modes — lives in [[Palace Agent Infrastructure Spec]]. The locked visual grammar lives in [[BBS Design System]].
+STIGMERGY emerged from the [[BBS Blackboard]] concept (March 2026), which named the architecture — append-only `.jsonl`, stigmergic trace-leaving, the BBS metaphor, the Trickster channel. BBS Blackboard's forward vector was *"I want to become the canonical communication substrate for all palace swarm sessions."* STIGMERGY is the fulfillment of that vector: BBS Blackboard is the **idea and historical root**; STIGMERGY is the **running canonical system**. The complete technical foundation splits across two homes: the wire schema and board routing are ratified in [[SCHEMA]] §9, and the permission/options shape, health scoring, manifest, and git detection live in [[Palace Orchestrator]] (the executor). The locked visual grammar lives in [[BBS Design System]].
 
 ## Cross-Domain Resonance
 
