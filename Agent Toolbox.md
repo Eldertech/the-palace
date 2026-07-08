@@ -30,7 +30,7 @@ The palace's roster of **agent profiles** — each a named worker with a declare
 Two things fall out of a small tool surface, and both matter:
 
 - **Capability is blast radius.** A read-only gatherer *cannot* mutate the palace or the machine — the safety is structural, not a matter of trusting the agent's restraint. Fewer tools, less damage possible. See [[assume multi-agent]].
-- **A lean surface is a light context.** Measured 2026-07-08 ([[Agent Wellbeing — proof — sensor-b-characterization]]): a general-purpose subagent carries ~46K tokens (Haiku) of floor **+ tool schemas** before any work; a read-only agent that drops the heavy MCP toolsets (Blender, Chrome, PDF, computer-use…) runs at ~16K — a **64% lighter baseline**. Those MCP schemas are pure weight for a palace worker that never calls them, and they're the biggest single load an agent carries.
+- **A lean surface is a light context.** Measured 2026-07-08 ([[Agent Wellbeing — proof — sensor-b-characterization]], plus live profile probes on pickup): a `general-purpose` subagent carries ~46K tokens (Haiku) of floor **+ tool schemas** before any work; the `palace-reader` profile, which drops the heavy MCP toolsets (Blender, Chrome, PDF, computer-use…), runs at **~26.5K — a 43% lighter baseline**, the drop equal to the ~20K of shed MCP schemas. (The even-leaner built-in `Explore` reaches ~16K by carrying fewer built-ins; a palace worker that keeps `WebSearch`/`WebFetch` for verification lands between.) Those MCP schemas are pure weight for a palace worker that never calls them, and they're the biggest single load an agent carries.
 
 ## Canon is the source of truth; the harness config is generated
 
@@ -61,6 +61,6 @@ Every generated profile inherits the palace worker character in its system promp
 
 ## Open edges
 
-- **Verify the spawn-tool name.** The orchestrator lists `Task` (Claude Code's canonical subagent tool); this harness surfaces it as `Agent`. First real dispatch confirms which name the config honors — adjust the block if needed.
+- **Spawn-tool name — resolved 2026-07-08.** The roster keeps `Task` (Claude Code's canonical subagent tool) and it works: a live `palace-orchestrator` dispatch spawned a subagent successfully with `Task` in its allowlist, even though the harness *surfaces* the tool to the model as `Agent`. Config name = `Task`; surfaced name = `Agent`; no block change needed.
 - **Per-project toolboxes.** A Specialist that needs Blender genuinely needs Blender. Those stay [[The Shop]]'s per-project `toolbox` bundles; this roster is for *palace-graph* workers, not creative-tool Specialists. Where the two meet (an orchestrator dispatching a Shop Specialist) is an edge to watch.
-- **Concierge wiring.** The `concierge` skill should spawn with `palace-reader` by default and escalate per posture. Wiring that into the skill is the next step once these profiles are proven in a live dispatch.
+- **Concierge wiring — done 2026-07-08.** The `concierge` skill and `_ops/concierge/README.md` now spawn the resident as `palace-writer`, not `general-purpose`. A single write-capable resident was chosen over `palace-reader` + per-posture escalation, because a resident's tool set is fixed at spawn: one `palace-writer` covers gatherer/oracle/curator with continuity intact, and it is the least-privilege profile that still writes. See [[Concierge]].

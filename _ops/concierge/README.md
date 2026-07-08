@@ -37,8 +37,12 @@ only at the close), then kept until the session ends; not auto-spawned at sessio
 sessions never summon it (this reversed the old fresh-dispatch-per-request default on 2026-07-04).
 The mechanics, verified that day:
 
-1. **Spawn once** (Agent tool, `general-purpose` — it must be write-capable for the curator
-   posture). Give it the **charter** (`prompts/companion.md`), which has it boot the **operational
+1. **Spawn once** (Agent tool, `palace-writer` — the [[Agent Toolbox]] profile; it must be
+   write-capable for the curator posture, and `palace-writer` is the least-privilege profile that
+   still writes, shedding ~20K of unused MCP schemas that `general-purpose` would carry. A single
+   write-capable resident covers all three postures — a read-only `palace-reader` would force a
+   second agent for every curator address and lose the resident's accumulated context; wired to
+   `palace-writer` 2026-07-08). Give it the **charter** (`prompts/companion.md`), which has it boot the **operational
    tier** as its standing expertise (SUBSTRATE · ROSETTA · Substrate Skill · Palace Ceremonies ·
    STIGMERGY + the wire spec) — the companion is deeper in *how the palace runs* than the working
    Claude, so it can validate and support the palace in parallel. Per-address *work-targets* come
