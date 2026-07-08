@@ -71,7 +71,7 @@ const FLAG_TYPE_LABEL = {
   standard_reference: 'standard reference',
 };
 
-export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onRespond, onLaunch, onApply }) {
+export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onClaimHandoff, onRespond, onLaunch, onApply }) {
   const resolved = item.resolved?.done;
   // A decision is the human's answer (GRANTED / DENIED / RESPONDED), recorded
   // by QueuePanel. It survives buildQueue dropping the answered item so the
@@ -136,6 +136,15 @@ export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onR
         }}>
           {KIND_LABEL[item.kind] || item.kind}
         </span>
+        {/* Lifecycle badge: a CLAIMED baton is in flight — inverted amber so it
+            reads at a glance that this one is caught, not waiting to be caught. */}
+        {item.kind === 'handoff_ready' && item.state === 'claimed' && !resolved ? (
+          <span data-testid="queue-item-claimed" style={{
+            background: 'var(--warn)', color: 'var(--bg)',
+            border: '1px solid var(--warn)', padding: '0 6px',
+            fontSize: 10, fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '.05em',
+          }}>claimed</span>
+        ) : null}
         <span style={{ flex: 1 }} />
         {/* Age readout on EVERY card — how long it has sat open. Dim by default;
             when stale (>= 3 days) it flips to warn, the passive skepticism cue
@@ -315,6 +324,14 @@ export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onR
               surface: {item.receiving_surface}
             </span>
           ) : null}
+          {item.state === 'claimed' ? (
+            <span data-testid="queue-item-claimed-by" style={{
+              color: 'var(--warn)', fontFamily: 'var(--font-mono)',
+            }}>
+              claimed{item.claimedAt ? ` ${cardAge(item.claimedAt).label || ''} ago` : ''}
+              {item.claimedBy ? ` · by ${item.claimedBy}` : ''}
+            </span>
+          ) : null}
           <span>{vantage(item)}</span>
         </div>
       ) : (
@@ -457,6 +474,27 @@ export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onR
             durably retires it: it posts the paired handoff_picked_up so the
             baton does NOT return on reload (onDismissHandoff); onClear is the
             local-only fallback. */}
+        {/* Claim — mark the baton caught and in flight. Only offered while it is
+            still OPEN; a claim moves it to CLAIMED and keeps it visible until it
+            is closed. */}
+        {!resolved && !decided && item.kind === 'handoff_ready' && item.state !== 'claimed' && typeof onClaimHandoff === 'function' ? (
+          <button
+            data-testid="queue-item-handoff-claim"
+            onClick={() => onClaimHandoff(item)}
+            style={{
+              background: 'transparent', color: 'var(--warn)', textShadow: 'var(--glow)',
+              border: '1px solid var(--warn)', padding: '3px 10px',
+              fontFamily: 'var(--font-mono)', fontSize: 11, cursor: 'pointer',
+              textTransform: 'uppercase', letterSpacing: '.04em',
+            }}
+            title="mark this baton claimed — in flight, stays on the board until it is closed"
+          >claim</button>
+        ) : null}
+
+        {/* Close — the terminal event. Posts a handoff_closed so the baton does
+            NOT return on reload (onDismissHandoff → closeHandoff); onClear is the
+            local-only fallback. A board close is an honest human override; the
+            CLI's close-handoff.mjs is where commit-evidence is enforced. */}
         {!resolved && !decided && item.kind === 'handoff_ready' && (onDismissHandoff || onClear) ? (
           <button
             data-testid="queue-item-handoff-clear"
@@ -467,8 +505,8 @@ export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onR
               fontFamily: 'var(--font-mono)', fontSize: 11, cursor: 'pointer',
               textTransform: 'uppercase', letterSpacing: '.04em',
             }}
-            title="mark this baton picked up and clear it (durable — will not return on reload)"
-          >clear</button>
+            title="close this baton and retire it from the board (durable — will not return on reload)"
+          >close</button>
         ) : null}
 
         {canRespond ? (

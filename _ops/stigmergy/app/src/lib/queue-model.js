@@ -53,19 +53,32 @@ export function buildQueue(messages) {
     }
   }
 
-  // handoff_ready ids that a later message explicitly acknowledges as picked up.
-  // A pickup can name its handoff two ways, and both must clear the card:
-  //   - payload.handoff_id  — the form the UI "clear" button writes.
-  //   - top-level `re`      — the form a hand-authored pickup uses (the Baton
-  //     Ceremony convention: a `re:`-threaded handoff_picked_up REPLY). Without
-  //     this branch the documented hand-caught baton never clears from the QUEUE;
-  //     only git reconciliation greys it. Accept both.
-  const ackedHandoffs = new Set();
+  // Handoff lifecycle — three states, folded from board events (mirrors
+  // _ops/stigmergy/handoff-model.mjs and STIGMERGY.md § Handoff Lifecycle):
+  //   CLOSED  — a handoff_closed points at it, OR a LEGACY handoff_picked_up
+  //             (one with no `lifecycle: "claim"` marker) does. Legacy pickups
+  //             grandfather to closed: they were start-claims for work since
+  //             landed, and the old UI "clear" button minted them. Dropped here.
+  //   CLAIMED — a handoff_picked_up carrying `lifecycle: "claim"` points at it
+  //             and nothing has closed it. Kept visible, flagged in-flight — a
+  //             claim aging with no close is how a fumble surfaces.
+  //   OPEN    — neither. Available to catch.
+  // A lifecycle message names its handoff two ways, both honored: payload
+  // handoff_id and the top-level `re`. Done is NEVER inferred from git — only an
+  // explicit close (or the migration grandfather) retires a card.
+  const closedHandoffs = new Set();
+  const claimByHandoff = new Map();            // handoff_ready id -> its claim message
   for (const m of messages) {
     const p = m?.payload;
-    if (p && p.kind === 'handoff_picked_up') {
-      if (typeof p.handoff_id === 'string') ackedHandoffs.add(p.handoff_id);
-      if (typeof m.re === 'string') ackedHandoffs.add(m.re);
+    if (!p || (p.kind !== 'handoff_closed' && p.kind !== 'handoff_picked_up')) continue;
+    const refs = [];
+    if (typeof p.handoff_id === 'string' && p.handoff_id) refs.push(p.handoff_id);
+    if (typeof m.re === 'string' && m.re) refs.push(m.re);
+    if (refs.length === 0) continue;
+    const isClaim = p.kind === 'handoff_picked_up' && p.lifecycle === 'claim';
+    for (const ref of refs) {
+      if (isClaim) claimByHandoff.set(ref, m);
+      else closedHandoffs.add(ref);            // handoff_closed OR a legacy pickup
     }
   }
 
@@ -237,7 +250,7 @@ export function buildQueue(messages) {
       continue;
     }
 
-    if (p.kind === 'handoff_ready' && !ackedHandoffs.has(m.id)) {
+    if (p.kind === 'handoff_ready' && !closedHandoffs.has(m.id)) {
       const entry = typeof p.entry === 'string' ? p.entry : null;
       const str = (v) => (typeof v === 'string' && v.trim() !== '' ? v.trim() : null);
       // `move` is the in-flight move (the state description), `invocation` is
@@ -250,10 +263,19 @@ export function buildQueue(messages) {
       const move = str(p.move);
       const invocation = str(p.invocation);
       const receivingSurface = str(p.receiving_surface);
+      // Lifecycle state: OPEN unless a claim points at it (CLOSED handoffs were
+      // already dropped by the closedHandoffs gate above). A CLAIMED card stays
+      // in the queue, flagged in-flight, until an explicit close retires it.
+      const claim = claimByHandoff.get(m.id) || null;
+      const state = claim ? 'claimed' : 'open';
       items.push({
         id: m.id,
         sourceId: m.id,
         kind: 'handoff_ready',
+        state,
+        // Who claimed it and when (for the CLAIMED badge); null when open.
+        claimedBy: claim ? (claim.from || null) : null,
+        claimedAt: claim ? (claim.ts || null) : null,
         from: m.from,
         ts: m.ts,
         board: m.board,
@@ -270,9 +292,9 @@ export function buildQueue(messages) {
         // prompt can send the catcher into the right worktree, not the root.
         worktree: (p.worktree && typeof p.worktree === 'object') ? p.worktree : null,
         handoff_path: typeof p.handoff_path === 'string' ? p.handoff_path : null,
-        // The git condition that retires it (mirrors the board convention).
-        stale_if: p.stale_if
-          || (entry ? `a commit touches ${entry} after this was posted` : 'a resolving commit lands'),
+        // A handoff closes by an explicit board event, never by a git guess —
+        // so its stale_if names the lifecycle close, not a commit condition.
+        stale_if: 'a handoff_closed (or grandfathered legacy pickup) retires it — done is never inferred from git',
         pointer: entry ? { type: 'entry', target: entry } : { type: 'board', target: m.board },
         resolved: { done: false, reason: null, commit: null },
         blocking: false,
@@ -310,6 +332,13 @@ export function reconcileQueue(items, commits) {
 
   return items.map((item) => {
     if (item.resolved?.done) return item;
+
+    // Handoffs never git-reconcile — they close by an explicit board event
+    // (handoff_closed), folded in buildQueue. Inferring "done" from a commit
+    // touching the entry is the exact bug the three-state lifecycle removed
+    // (STIGMERGY.md § Handoff Lifecycle): entry files are high-traffic, so a
+    // commit touch does not mean this baton's move landed.
+    if (item.kind === 'handoff_ready') return item;
 
     // (1) explicit Palace-Resolves pointer.
     const byResolve = cs.find((c) => Array.isArray(c.resolves) && c.resolves.includes(item.id));

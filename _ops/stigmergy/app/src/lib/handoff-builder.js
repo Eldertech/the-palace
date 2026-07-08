@@ -1,44 +1,69 @@
-// handoff-builder.js — build the §2.2 message that marks a board-announced
-// baton (a handoff_ready BROADCAST) as picked up.
+// handoff-builder.js — build the §2.2 messages that drive a board-announced
+// baton (a handoff_ready BROADCAST) through its lifecycle from the QUEUE deck.
 //
-// Mirrors the Baton Ceremony's On-pickup step ("post the paired
-// handoff_picked_up referencing the handoff_ready id") and queue-model's ack
-// path: buildQueue drops a handoff_ready item once a message carries
-// payload.handoff_id === that handoff_ready message's id. We set both the
-// `re` correlation (ceremony fidelity) and payload.handoff_id (what the queue
-// actually keys on), so the QUEUE item clears and the board reads honestly.
+// Three states (STIGMERGY.md § Handoff Lifecycle; mirrors the CLI
+// _ops/stigmergy/{pickup,close}-handoff.mjs and the buildQueue fold):
+//   claim  → handoff_picked_up with `lifecycle: "claim"`  → card goes CLAIMED
+//            (in flight; it STAYS on the board — a claim is not a close).
+//   close  → handoff_closed                                → card is retired.
+//
+// Both name the handoff two ways — the top-level `re` correlation (ceremony
+// fidelity) and payload.handoff_id (what the queue fold keys on) — so the QUEUE
+// item transitions and the board reads honestly.
 
-function generateId() {
-  return 'pickup-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+function generateId(prefix) {
+  return prefix + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
 }
 
-export function buildHandoffPickup({ handoffId, note, sessionId } = {}) {
-  if (typeof handoffId !== 'string' || handoffId.trim() === '') {
-    throw new Error('buildHandoffPickup requires a non-empty handoffId');
-  }
-  const payload = { kind: 'handoff_picked_up', handoff_id: handoffId };
-  if (typeof note === 'string' && note.trim() !== '') payload.note = note.trim();
+// The full (human-node) health stub the other TRICKSTER-authored messages use.
+function tricksterHealth() {
+  return {
+    context_pct: 0,
+    stop_reason: 'human_decision',
+    iteration: 1,
+    tokens_this_call: 0,
+    model: 'loudon-trickster',
+    score: 'green',
+  };
+}
 
+function baseMessage({ idPrefix, handoffId, sessionId, payload }) {
   return {
     schema_version: '1.0',
-    id: generateId(),
+    id: generateId(idPrefix),
     ts: new Date().toISOString(),
-    session_id: sessionId || 'trickster-handoff-pickup',
+    session_id: sessionId || 'trickster-handoff',
     from: 'TRICKSTER',
     to: '*',
     type: 'BROADCAST',
     board: 'GENERAL',
     re: handoffId,
-    // Human node marks the pickup — the full (Path 1) health stub the other
-    // TRICKSTER-authored messages use (see response-builder.js).
-    health: {
-      context_pct: 0,
-      stop_reason: 'human_decision',
-      iteration: 1,
-      tokens_this_call: 0,
-      model: 'loudon-trickster',
-      score: 'green',
-    },
+    health: tricksterHealth(),
     payload,
   };
+}
+
+// CLAIM — mark a baton caught and in flight. The card moves to CLAIMED and
+// stays visible until it is closed.
+export function buildHandoffClaim({ handoffId, note, sessionId } = {}) {
+  if (typeof handoffId !== 'string' || handoffId.trim() === '') {
+    throw new Error('buildHandoffClaim requires a non-empty handoffId');
+  }
+  const payload = { kind: 'handoff_picked_up', lifecycle: 'claim', handoff_id: handoffId };
+  if (typeof note === 'string' && note.trim() !== '') payload.note = note.trim();
+  return baseMessage({ idPrefix: 'claim', handoffId, sessionId: sessionId || 'trickster-handoff-claim', payload });
+}
+
+// CLOSE — retire a baton. This is the only thing (besides a grandfathered
+// legacy pickup) that drops a handoff_ready from the queue. `commit` is the
+// evidence when the close follows a landed move; a manual board clear may omit
+// it (it is an honest human override, noted as such).
+export function buildHandoffClose({ handoffId, note, commit, completion, sessionId } = {}) {
+  if (typeof handoffId !== 'string' || handoffId.trim() === '') {
+    throw new Error('buildHandoffClose requires a non-empty handoffId');
+  }
+  const payload = { kind: 'handoff_closed', handoff_id: handoffId, completion: completion === 'partial' ? 'partial' : 'complete' };
+  if (typeof commit === 'string' && commit.trim() !== '') payload.commit = commit.trim();
+  if (typeof note === 'string' && note.trim() !== '') payload.note = note.trim();
+  return baseMessage({ idPrefix: 'close', handoffId, sessionId: sessionId || 'trickster-handoff-close', payload });
 }
