@@ -24,7 +24,7 @@ links:
     type: mirrors
   - target: "[[Four Pillars of Enchanted Agency]]"
     type: connects-to
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[STIGMERGY]]"
     type: connects-to
   - target: "[[Pages as Agents]]"
     type: deepens

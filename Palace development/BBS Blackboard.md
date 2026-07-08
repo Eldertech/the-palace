@@ -47,8 +47,6 @@ links:
   - target: "[[Semantic Webcam]]"
     type: connects-to
     label: stigmergy-surface
-  - target: "[[Palace Agent Infrastructure Spec]]"
-    type: connects-to
   - target: "[[Palace Orchestrator]]"
     type: connects-to
     label: appends-through-this-engine
@@ -58,7 +56,7 @@ links:
 
 ![[BBS Blackboard — hero.png]]
 
-> **Historical root.** This entry is the *concept* — the architecture and philosophy that named the palace's coordination substrate. The *running system* it became is [[STIGMERGY]] (canonical, type `meta`), and the message grammar is now ratified in [[SCHEMA]] §9. Read this for the why and the origin; read [[STIGMERGY]] for what operates today and [[Palace Agent Infrastructure Spec]] for the wire spec.
+> **Historical root.** This entry is the *concept* — the architecture and philosophy that named the palace's coordination substrate. The *running system* it became is [[STIGMERGY]] (canonical, type `meta`), and the message grammar is now ratified in [[SCHEMA]] §9. Read this for the why and the origin; read [[STIGMERGY]] for what operates today, [[SCHEMA]] §9 for the wire, and [[Palace Orchestrator]] for the executor that runs it.
 
 Parallel agents have no shared context window. Each lives in its own isolated inference call. There is no native peer-to-peer channel between Claude API calls running simultaneously. The usual solution is a coordinator: a central agent that receives all messages and routes them. But coordinators are bottlenecks, single points of failure, and — more importantly — they contradict the palace's commitment to **distributed, stigmergic intelligence**.
 
@@ -176,7 +174,7 @@ Health scores: **green** (context < 70%, no anomalies), **yellow** (context 70�
 
 **[[Enchanted Worker]]** — the enchanted worker gains its directional character from context loading before dispatch. The blackboard is how that character expresses itself socially: what it flags, what it replies to, what it asks for.
 
-**[[Palace Agent Infrastructure Spec]]** — the complete technical specification for this architecture: message schema, board routing, permission protocol, health scoring, the Trickster inbox data structure, and all swarm modes built on top of it.
+**[[SCHEMA]] §9** and **[[Palace Orchestrator]]** — the technical foundation this architecture became: §9 ratifies the message schema and board routing (the wire), and Palace Orchestrator holds the permission/options shape, health scoring, and manifest (the executor). The running surface is [[STIGMERGY]]. (These superseded the retired Palace Agent Infrastructure Spec, which first drafted them.)
 
 ## Open Questions
 

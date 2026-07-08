@@ -28,7 +28,7 @@ links:
   - target: "[[BBS Blackboard]]"
     type: connects-to
     label: the-shared-world
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[Palace Orchestrator]]"
     type: connects-to
     label: scheduler-closes-the-loop
   - target: "[[Modes of Collaboration]]"

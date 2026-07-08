@@ -15,7 +15,7 @@ author: "Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Tom Griffiths, Yuan C
 year: 2023
 medium: paper
 links:
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[Palace Orchestrator]]"
     type: enables
     label: "grounds"
   - target: "[[Swarm Weave]]"
@@ -55,7 +55,7 @@ The key design moves:
 
 ## Why It Matters for the Palace
 
-The palace uses Tree of Thoughts as the architectural model for **Branch Exploration** in swarm sessions (see [[Palace Agent Infrastructure Spec]] §10.2).
+Tree of Thoughts was the architectural model for a **Branch Exploration** swarm mode sketched in the palace's (since-retired) agent-infrastructure spec — a design idea, not yet built. If parallel-branch exploration is ever implemented, it would live in [[Palace Orchestrator]].
 
 The manual form: in a conversation with Claude, when context has been built to a moment of maximum useful density, Loudon "rewinds" to that point (using claude.ai's message editing) and explores a different direction. The second path shares everything up to the branch point and diverges cleanly, without contamination from the first path's noise.
 

@@ -21,7 +21,7 @@ links:
   - target: "[[STIGMERGY]]"
     type: enables
     label: visual-substrate
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[STIGMERGY]]"
     type: connects-to
   - target: "[[Swarm Weave]]"
     type: enables

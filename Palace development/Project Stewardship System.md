@@ -16,7 +16,7 @@ links:
   - target: "[[STIGMERGY]]"
     type: connects-to
     label: runs-on
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[Palace Orchestrator]]"
     type: deepens
     label: stage-aware-permanent-agent
   - target: "[[Substrate Skill]]"
@@ -88,7 +88,7 @@ That framing had a Steward (the routine agent) and a Supervisor (the triage laye
 
 ## The Reframe: This Is Already Mostly Specced
 
-After reading [[BBS Blackboard]], BBS Production Plan, and [[Palace Agent Infrastructure Spec]], the architecture map became clear. Most of what was being designed already existed in spec form:
+After reading [[BBS Blackboard]], BBS Production Plan, and the agent-infrastructure spec (since retired; its cores now in [[Palace Orchestrator]]), the architecture map became clear. Most of what was being designed already existed in spec form:
 
 | Concept in seed framing | Existing palace name |
 |---|---|
@@ -238,7 +238,7 @@ Loudon responds to `gsl-steward-002` on the BBS — picks (a), (b), (c), or volu
 
 ### Stage B — Build `runAgentCycle` ✅ Build-complete (2026-05-04) — awaiting smoke-test + push
 
-The orchestrator. This deserves its own production plan, modeled on BBS Production Plan (the autonomous build contract that produced STIGMERGY v0.1) — phased verify gates, stop-reports, vision-validator-equivalent for the spec layer. Likely Node, sibling to STIGMERGY at `_ops/stigmergy/orchestrator/`. Health score, git change detection, posting discipline enforcement, schema validation on every BBS write all live here. The §3.2 sketch in [[Palace Agent Infrastructure Spec]] is detailed enough that this is largely transcription, not invention.
+The orchestrator. This deserves its own production plan, modeled on BBS Production Plan (the autonomous build contract that produced STIGMERGY v0.1) — phased verify gates, stop-reports, vision-validator-equivalent for the spec layer. Likely Node, sibling to STIGMERGY at `_ops/stigmergy/orchestrator/`. Health score, git change detection, posting discipline enforcement, schema validation on every BBS write all live here. The thin-orchestrator sketch (from the since-retired agent-infrastructure spec; now canon in [[Palace Orchestrator]]) was detailed enough that this was largely transcription, not invention.
 
 Schema drift on the existing persistent board (only 3 of 113 messages spec-conformant per BBS Production Plan v0.1 closure notes) gets normalized as part of this stage — either a one-time migration or a quarantine policy for legacy lines.
 
@@ -295,7 +295,7 @@ The fix is **CQRS, not relocation**: the append-only board stays the event log (
 If you are a Claude reading this entry for the first time and Loudon wants to continue the work:
 
 1. Read this entry end-to-end.
-2. Read [[BBS Blackboard]] and [[Palace Agent Infrastructure Spec]] — they contain the architectural ground truth.
+2. Read [[BBS Blackboard]], [[SCHEMA]] §9 (the wire), and [[Palace Orchestrator]] (the executor) — they contain the architectural ground truth.
 3. Read [[Substrate Skill]] § Stage as Alignment Confidence — the operating posture.
 4. Read BBS Production Plan for the autonomous build contract pattern (template for Stage B).
 5. Read [[Generative Sample Libraries]] and [[Talking Keyboard]] — the case study where stage-mismatch was first surfaced empirically.
@@ -320,7 +320,7 @@ The pattern of the conversation itself was the first concrete instance of the sy
 ## Palace Connections
 
 - **[[BBS Blackboard]]** — the communication substrate the Steward uses
-- **[[Palace Agent Infrastructure Spec]]** — the canonical technical foundation
+- **[[Palace Orchestrator]]** — the executor and canonical technical foundation (wire in [[SCHEMA]] §9)
 - **BBS Production Plan** — the build-contract template Stage B should follow
 - **[[Substrate Skill]]** — the operating posture for stage-conditional agent work
 - **[[Trickster]]** — the role Loudon (or a future automated proxy) plays in triage

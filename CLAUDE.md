@@ -148,7 +148,7 @@ Write and speak like a person, not a paper — plain words, concrete images, sen
 - **[[SCHEMA]]** — Type system, link ontology, ceremony linter, schema change protocol. Read before creating any new entry or ceremony. (`SCHEMA.md`)
 - **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates) (`README - The Palace Guide.md`)
 - **[[SUBSTRATE]]** — The palace's self-model (architecture, current state) (`SUBSTRATE.md`)
-- **[[STIGMERGY]]** — The palace's running front-end and coordination engine: the append-only blackboard plus the three-deck terminal (STATE / QUEUE / LOG). Recognition lives in [[SCHEMA]] §9; the wire spec in [[Palace Agent Infrastructure Spec]]. (`STIGMERGY.md`)
+- **[[STIGMERGY]]** — The palace's running front-end and coordination engine: the append-only blackboard plus the three-deck terminal (STATE / QUEUE / LOG). Recognition and the wire spec live in [[SCHEMA]] §9; the executor that runs it is [[Palace Orchestrator]]. (`STIGMERGY.md`)
 - **[[FOUR PILLARS]]** — Loudon's core framework (`FOUR PILLARS.md`)
 - **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`ROSETTA.md`)
 - **[[Palace Ceremonies]]** — Full ceremony list with triggers and specs (`_ops/Palace Ceremonies.md`)

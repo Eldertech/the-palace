@@ -57,7 +57,7 @@ links:
     type: connects-to
   - target: "[[Palace Enchantment]]"
     type: connects-to
-  - target: "[[Palace Agent Infrastructure Spec]]"
+  - target: "[[STIGMERGY]]"
     type: connects-to
     label: seed-of
   - target: "[[Dialogue Moderator]]"
