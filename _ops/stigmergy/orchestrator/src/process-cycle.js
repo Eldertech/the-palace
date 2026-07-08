@@ -165,14 +165,14 @@ export function reconcilePendingRequests(board, home) {
 /**
  * Build the health-block note string for a Path-2 dispatch. The token figures
  * are telemetry only — buildHealthBlock ignores them and stamps the green stub
- * (see health.js / Infrastructure Spec §3.3.1).
+ * (see health.js / the Palace Orchestrator entry, Definitions of record).
  */
 export function buildCycleNote(usage, leaf, cycleN) {
   const turns = Math.max(1, usage.n_assistant_turns || 0);
   const avgCache = Math.round((usage.cache_read_input_tokens_sum || 0) / turns);
   return `${leaf} cycle ${cycleN} — ${turns} assistant turn(s); `
     + `cumulative output tokens ${usage.total_output_tokens || 0}, avg cache_read/turn ${avgCache}. `
-    + `Path 2 (claude-code-subagent): token-level metrics are not authoritatively tracked; see Infrastructure Spec §3.3.1.`;
+    + `Path 2 (claude-code-subagent): token-level metrics are not authoritatively tracked; see the Palace Orchestrator entry (Definitions of record).`;
 }
 
 /**

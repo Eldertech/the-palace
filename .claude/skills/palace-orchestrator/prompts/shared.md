@@ -82,7 +82,7 @@ hand — UPPER_CASE verbs (`APPROVE`) or kebab-case (`tweak-model`,
 sentence (lead with the id so the button text is self-explanatory). Use
 `{ id, label }` always — never bare strings, never `{ value, text }` or
 other ad-hoc shapes. The asker-defined `options[]` shape is normative;
-see Infrastructure Spec §2.6.
+see the Palace Orchestrator entry (Definitions of record).
 
 Still summarize the same tradeoffs in `rationale` prose — a reader
 skimming the rationale should see the same fork the buttons offer. The
@@ -254,10 +254,10 @@ artifacts) is fair game for the cycle's work.
 
 ## Schema (every message must)
 
-Every line you emit becomes a §2.2-conformant JSON object on the board
+Every line you emit becomes a SCHEMA §9-conformant JSON object on the board
 after the orchestrator parses, validates, and appends it. The
-orchestrator stamps the `health` block (a minimal Path-2 stub per
-Infrastructure Spec §3.3) — **you do not write `health` at all**. If
+orchestrator stamps the `health` block (a minimal Path-2 stub per the
+Palace Orchestrator entry, Definitions of record) — **you do not write `health` at all**. If
 you produce malformed output the cycle will be marked
 `validator_rejected` and you do not advance.
 

@@ -1,4 +1,4 @@
-// git.js — page-change detection per Infrastructure Spec §3.2.
+// git.js — page-change detection per the Palace Orchestrator entry (Definitions of record).
 //
 // Wraps `git log` to detect commits to a palace entry since a given timestamp.
 // The orchestrator skill calls this before each cycle to construct

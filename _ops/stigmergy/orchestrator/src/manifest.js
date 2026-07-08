@@ -1,6 +1,7 @@
 // manifest.js — load + validate orchestrator manifests.
 //
-// Implements Infrastructure Spec §3.1 with the v0.1 amendments:
+// Implements the manifest from the Palace Orchestrator entry (Definitions of
+// record) with the v0.1 amendments:
 //   - Gap 1: `session_id` is nullable for `long_duration_background` mode;
 //            permanent agents may carry `cycle_id` instead.
 //   - Gap 2: `blackboard_session_path` is ignored when mode is

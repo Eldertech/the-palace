@@ -7,8 +7,8 @@ The skill (a Claude Code `SKILL.md` workflow) drives the model dispatch — it
 calls a sub-agent for each cycle. These helpers handle everything that does
 NOT need an LLM:
 
-- **Manifest validation** against Infrastructure Spec §3.1 + v0.1 amendments
-- **Outgoing-message validation** against §2.2 (re-uses STIGMERGY v0.2's
+- **Manifest validation** against the Palace Orchestrator entry (Definitions of record) + v0.1 amendments
+- **Outgoing-message validation** against SCHEMA §9 (re-uses STIGMERGY v0.2's
   strict validator) plus §3.4 posting discipline
 - **Atomic append** to `.jsonl` blackboards
 - **Health-block construction** from Agent-tool usage
@@ -129,7 +129,7 @@ Fixtures:
 ## See also
 
 - `Palace development/Orchestrator Production Plan.md` — build contract
-- `Palace development/Palace Agent Infrastructure Spec.md` — §3 architecture
+- `Palace development/Palace Orchestrator.md` — Definitions of record (manifest, git detection, dual-path health, options[] shape)
 - `Palace development/Project Stewardship System.md` — Stage A lessons (9 gaps + 4 findings)
-- `_ops/stigmergy/app/server/validator.js` — the imported §2.2 validator
+- `_ops/stigmergy/app/server/validator.js` — the imported SCHEMA §9 validator
 - `.claude/skills/palace-orchestrator/SKILL.md` — runtime workflow

@@ -1,13 +1,14 @@
-// health.js — build the §2.2 message-level `health` block.
+// health.js — build the SCHEMA §9 message-level `health` block.
 //
 // Path 2 (claude-code-subagent dispatch) is what this orchestrator does, and
-// it does not have the input_tokens breakdown §3.3 originally assumed. The
-// Agent tool returns total_tokens (input+output combined) and per-turn cache
-// stats — useful for cost telemetry but not for the strict per-call usage
-// figure context_pct needs.
+// it does not have the input_tokens breakdown the Path-1 design originally
+// assumed. The Agent tool returns total_tokens (input+output combined) and
+// per-turn cache stats — useful for cost telemetry but not for the strict
+// per-call usage figure context_pct needs.
 //
-// Per Infrastructure Spec §3.3 (dual-path clause), Path 2 stamps a minimal
-// stub: { score: "green", model, _orchestrator_metadata }. The validator
+// Per the Palace Orchestrator entry (Definitions of record → dual-path
+// health), Path 2 stamps a minimal stub: { score: "green", model,
+// _orchestrator_metadata }. The validator
 // recognises the dispatch_mode marker and relaxes the other field
 // requirements. The score is a sentinel — real escalation (yellow/red)
 // requires Path 1's authoritative input_tokens-from-API metric.
@@ -47,7 +48,7 @@ export function scoreFor({ context_pct, duplicate_flags = 0, posting_discipline_
  *
  * All other usage fields the caller passes (total_tokens, iteration, etc.)
  * are ignored — they were heuristics, not authoritative signal, and stamping
- * approximate numbers as if they were authoritative is exactly the trap §3.3
+ * approximate numbers as if they were authoritative is exactly the trap
  * Path 2 mode exists to avoid.
  *
  * @param {object} usage
@@ -63,7 +64,7 @@ export function buildHealthBlock(usage) {
 
   const note = typeof usage.note === 'string' && usage.note.trim() !== ''
     ? usage.note
-    : 'Path 2 (claude-code-subagent) dispatch — token-level metrics not authoritatively tracked; see Infrastructure Spec §3.3.';
+    : 'Path 2 (claude-code-subagent) dispatch — token-level metrics not authoritatively tracked; see the Palace Orchestrator entry (Definitions of record).';
 
   return {
     score: 'green',

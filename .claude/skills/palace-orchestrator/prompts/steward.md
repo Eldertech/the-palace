@@ -133,7 +133,7 @@ post a creation to GENERAL and stop.
 Ask **only** when a real fork blocks you — when you genuinely cannot
 proceed without Loudon's call and guessing wrong would cost more than the
 one cycle it takes to ask. Then post a `RESOURCE_REQUEST` to TRICKSTER with
-canonical `{id, label}` options (Infrastructure Spec §2.6), `blocking: true`
+canonical `{id, label}` options (Palace Orchestrator entry, Definitions of record), `blocking: true`
 only when a sensory batch-commitment genuinely needs his ears or eyes.
 
 When you ship and there *is* a direction worth a steer — but it does not

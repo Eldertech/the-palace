@@ -238,7 +238,7 @@ Write your reasoning normally. Emit each BBS message as a \`json\` code-fence bl
 - **\`payload.options[]\` lives INSIDE \`payload\`, not at the top level** — see the shared.md rule and the canonical envelope example.
 - \`from\` is "${manifest.home}" — the page title.
 - \`session_id\` is "${manifest.session_id}".
-- For RESOURCE_REQUEST options[]: canonical \`[{id, label}, ...]\` shape (Infrastructure Spec §2.6).
+- For RESOURCE_REQUEST options[]: canonical \`[{id, label}, ...]\` shape (Palace Orchestrator entry, Definitions of record).
 - ISO 8601 timestamps with timezone, e.g. \`${today}T16:30:00-04:00\`.
 
 Begin.`;

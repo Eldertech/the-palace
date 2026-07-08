@@ -1,7 +1,8 @@
 // health.test.js — Path 2 (claude-code-subagent) stub health block.
 //
-// Per Infrastructure Spec §3.3 dual-path clause, Path 2 dispatch stamps a
-// minimal stub: { score: "green", model, _orchestrator_metadata }. The
+// Per the Palace Orchestrator entry (Definitions of record → dual-path
+// health), Path 2 dispatch stamps a minimal stub: { score: "green", model,
+// _orchestrator_metadata }. The
 // validator recognizes the dispatch_mode marker and relaxes the other
 // per-call usage requirements.
 
@@ -67,9 +68,9 @@ describe('buildHealthBlock — Path 2 stub', () => {
     expect(h._orchestrator_metadata.note).toMatch(/GSL cycle 13/);
   });
 
-  it('falls back to a generic spec-reference note when none given', () => {
+  it('falls back to a generic canon-reference note when none given', () => {
     const h = buildHealthBlock({ model: 'claude-opus-4-7' });
-    expect(h._orchestrator_metadata.note).toMatch(/Infrastructure Spec §3\.3/);
+    expect(h._orchestrator_metadata.note).toMatch(/Palace Orchestrator/);
   });
 
   it('throws on missing usage object', () => {
