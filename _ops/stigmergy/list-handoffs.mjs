@@ -1,121 +1,62 @@
 #!/usr/bin/env node
 // list-handoffs.mjs — the "list handoffs" fast path.
 //
-// Reads the persistent blackboard, finds every open handoff_ready card, and
-// git-checks each one so a stale ghost (its entry committed after the baton was
-// posted) is flagged, not presented as live work. This is the by-hand read
-// Claude did on 2026-07-03, frozen into one command.
+// Lists the handoff board in its three lifecycle states (rung 1 of the Reliable
+// Handoff ladder — STIGMERGY.md § Handoff Lifecycle). The board is the single
+// source of truth; state is a fold over its events (see handoff-model.mjs), not
+// a guess from git or the filesystem.
 //
-// Open  = a handoff_ready with no matching handoff_picked_up ack on the board.
-// Live  = open AND no commit has touched its entry since it was posted.
-// Ghost = open BUT a later commit touched its entry — the move already landed.
+//   OPEN     — handoff_ready, not yet claimed. Available to catch.
+//   CLAIMED  — someone posted a claim (handoff_picked_up, lifecycle: claim) but
+//              no close yet. In flight. Stays visible — a claim aging with no
+//              close is how a fumble surfaces.
+//   (closed) — retired by an explicit handoff_closed (or a grandfathered legacy
+//              pickup). Not shown.
 //
-// Usage:  node _ops/stigmergy/list-handoffs.mjs
-// Run from anywhere; paths resolve against this file.
+//   claim a card → node _ops/stigmergy/pickup-handoff.mjs <id | entry>
+//   close a card → node _ops/stigmergy/close-handoff.mjs  <id | entry> --commit <hash>
+//
+// Usage:  node _ops/stigmergy/list-handoffs.mjs [--board <path>]
+// Run from anywhere; paths resolve against the owner worktree.
 
-import { readFileSync } from 'node:fs';
-import { execSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'node:path';
+import { boardPath, loadBoard, foldHandoffs, age, C } from './handoff-model.mjs';
 
-const HERE = dirname(fileURLToPath(import.meta.url));
+const boardArg = process.argv.includes('--board')
+  ? process.argv[process.argv.indexOf('--board') + 1] : undefined;
 
-// Resolve the OWNER (main) worktree, not wherever this copy is checked out.
-// Palace convention: every worktree appends to the owner's physical board, so
-// a worktree-local blackboard.jsonl can be stale — always read the owner's.
-// `git worktree list --porcelain` lists the main worktree first.
-function ownerRoot() {
-  try {
-    const out = execSync('git worktree list --porcelain', { cwd: HERE, encoding: 'utf8' });
-    const first = out.split('\n').find((l) => l.startsWith('worktree '));
-    if (first) return first.slice('worktree '.length).trim();
-  } catch { /* fall through */ }
-  return resolve(HERE, '../..');                            // fallback: this checkout's root
-}
+const board = boardPath(boardArg);
+const fold = foldHandoffs(loadBoard(board));
+const { open, claimed } = fold;
+const total = open.length + claimed.length;
 
-const ROOT = ownerRoot();
-const BOARD = resolve(ROOT, '_ops/swarm/persistent/blackboard.jsonl');
-
-const lines = readFileSync(BOARD, 'utf8').trim().split('\n')
-  .map((l) => { try { return JSON.parse(l); } catch { return null; } })
-  .filter(Boolean);
-
-// Board-level pickup acks retire a card immediately. A picked_up message points
-// at the handoff_ready it retires either way the convention is written: the
-// documented form is a REPLY whose message-level `re` names the handoff id (Baton
-// Ceremony on-pickup step 4), and some acks also carry `payload.handoff_id`.
-// Honor both so a spec-correct pickup is never missed and mistaken for a ghost.
-const acked = new Set();
-for (const m of lines) {
-  const p = m.payload || {};
-  if (p.kind !== 'handoff_picked_up') continue;
-  if (typeof p.handoff_id === 'string') acked.add(p.handoff_id);
-  if (typeof m.re === 'string') acked.add(m.re);
-}
-
-const open = lines
-  .filter((m) => (m.payload || {}).kind === 'handoff_ready' && !acked.has(m.id));
-
-// git: most-recent commit touching an entry's files, as epoch ms (or 0).
-function lastTouch(entry) {
-  if (!entry) return { ms: 0, hash: null };
-  try {
-    const out = execSync(
-      `git -C "${ROOT}" log -1 --format=%cI%x09%h -- "*${entry}*"`,
-      { encoding: 'utf8' },
-    ).trim();
-    if (!out) return { ms: 0, hash: null };
-    const [iso, hash] = out.split('\t');
-    return { ms: Date.parse(iso), hash };
-  } catch {
-    return { ms: 0, hash: null };
-  }
-}
-
-function age(ts) {
-  const then = Date.parse(ts);
-  if (!Number.isFinite(then)) return '?';
-  const d = Math.max(0, Date.now() - then);
-  const m = Math.floor(d / 60000), h = Math.floor(m / 60), day = Math.floor(h / 24);
-  if (m < 60) return `${m}m`;
-  if (h < 24) return `${h}h`;
-  if (day < 7) return `${day}d`;
-  if (day < 30) return `${Math.floor(day / 7)}w`;
-  if (day < 365) return `${Math.floor(day / 30)}mo`;
-  return `${Math.floor(day / 365)}y`;
-}
-
-const cards = open.map((m) => {
-  const p = m.payload;
-  const touch = lastTouch(p.entry);
-  const posted = Date.parse(m.ts);
-  const ghost = touch.ms > posted;
-  return { m, p, ghost, touch, posted };
-});
-
-const live = cards.filter((c) => !c.ghost);
-const ghosts = cards.filter((c) => c.ghost);
-
-const B = '\x1b[1m', D = '\x1b[2m', G = '\x1b[32m', Y = '\x1b[33m', R = '\x1b[0m';
-
-if (cards.length === 0) {
-  console.log(`${B}HANDOFFS${R} — none open. Clean board.`);
+if (total === 0) {
+  console.log(`${C.B}HANDOFFS${C.R} — none open. Clean board.`);
 } else {
-  console.log(`${B}HANDOFFS${R} — ${cards.length} open (${G}${live.length} live${R}, ${D}${ghosts.length} superseded${R})\n`);
+  const claimedTail = claimed.length ? `, ${C.Y}${claimed.length} claimed${C.R}` : '';
+  console.log(`${C.B}HANDOFFS${C.R} — ${C.G}${open.length} open${C.R}${claimedTail}\n`);
 }
 
-for (const c of live) {
-  const wt = c.p.worktree;
-  console.log(`${G}●${R} ${B}${c.p.entry}${R}  ${D}[${age(c.m.ts)} · ${c.m.from}]${R}`);
-  if (c.p.move) console.log(`    ${c.p.move}`);
-  if (wt) console.log(`    ${D}→ worktree ${wt.branch} (${wt.dir})${R}`);
-  if (c.p.handoff_path) console.log(`    ${D}baton: ${c.p.handoff_path}${R}`);
+function printCard(c, dot) {
+  const p = c.p, wt = p.worktree;
+  console.log(`${dot} ${C.B}${p.entry}${C.R}  ${C.D}[${age(c.m.ts)} · ${c.m.from}]${C.R}  ${C.D}${c.m.id}${C.R}`);
+  if (p.move) console.log(`    ${p.move}`);
+  if (wt) console.log(`    ${C.D}→ worktree ${wt.branch} (${wt.dir})${C.R}`);
+  if (p.handoff_path) console.log(`    ${C.D}baton: ${p.handoff_path}${C.R}`);
   console.log('');
 }
 
-if (ghosts.length) {
-  console.log(`${D}${Y}○ superseded — entry committed after the baton was posted:${R}`);
-  for (const c of ghosts) {
-    console.log(`  ${D}${c.p.entry} — ${(c.p.move || c.p.summary || '').slice(0, 60)}  [${age(c.m.ts)}, commit ${c.touch.hash} after]${R}`);
+for (const c of open) printCard(c, `${C.G}●${C.R}`);
+
+if (claimed.length) {
+  console.log(`${C.Y}◐ claimed — in flight, awaiting a close:${C.R}`);
+  for (const c of claimed) {
+    const who = (c.claim && c.claim.from) || c.m.from;
+    console.log(`  ${C.Y}◐${C.R} ${C.B}${c.p.entry}${C.R}  ${C.D}[claimed ${age(c.claim ? c.claim.ts : c.m.ts)} ago · ${who}]${C.R}  ${C.D}${c.m.id}${C.R}`);
+    if (c.p.move) console.log(`      ${C.D}${c.p.move.slice(0, 80)}${C.R}`);
   }
+  console.log('');
+}
+
+if (total) {
+  console.log(`${C.D}claim → pickup-handoff.mjs <id | entry>   ·   close → close-handoff.mjs <id> --commit <hash>${C.R}`);
 }
