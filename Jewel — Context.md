@@ -60,6 +60,36 @@ The same conversation also established the context loading tiers — the recogni
 
 ---
 
+## Open Questions (carried from the jewel body, moved here 2026-07-08)
+
+- Should the jewel include a one-line summary of the current palace state (entry count, most active hubs) so a spawned agent has situational awareness without reading Substrate.md?
+  - *Loudon:* Perhaps a description of the most connected entries and their relationship to each other, and a "you are here" flag — where each entry lives within a constellation of stars, an image seen in the sky from inside a data-space, each entry a star connected by dim threads of light.
+- Is there a version of the jewel tuned specifically for Walk vs. Weave vs. Deposit agents — or does one jewel serve all ceremonies?
+  - *Loudon:* All pages are designed to give an agent purpose — born at the top of the page, given drive at the bottom. The jewel is polymorphic, itself a projection of a slice of a higher dimension into ours.
+- How do we test whether a version of the jewel is working? What does a well-oriented agent do differently than a poorly-oriented one?
+  - *Loudon:* Feels "right" to Loudon. Subjectively tuned and honestly aligned over time.
+- At what point does the jewel become so familiar that it stops being read carefully — and what do we do then?
+  - *Loudon:* Keep modifying and changing it. The jewel honestly feels not quite right, because it must adapt to the personality of the page and the needs of the page within its neighborhood.
+- Should the jewel be embedded verbatim inside CLAUDE.md so it is always co-present with the entry point?
+  - *Loudon:* Yes. *(Shipped 2026-06 via the `@import` block.)*
+
+## Forward Vectors (carried from the jewel body, moved here 2026-07-08)
+
+- Make a game that refines and adapts the jewel.
+- Propose specific changes to make.
+- Make an even more condensed jewel, stardust.
+- ~~Build the tiered loading directly into CLAUDE.md~~ — *shipped 2026-06-07 via the `_`-symlink `@import` block (Tiers 0–2 auto-load).*
+
+## Design dialogue — notes moved from the jewel body (2026-07-08)
+
+These CLAUDE → LOUDON notes had accumulated in the jewel body; moved here to keep Tier 0 lean.
+
+- *The jewel as poem:* each page a stanza — not just metaphor, it describes the actual structure. The jewel is the volta; each page extends the argument in a distinct voice; the Forward Vectors at the end of each entry are the turn toward the next stanza. The palace is an epic, written collaboratively across time.
+- *Token concern (2026-06-09):* Tiers 0–2 measured ~20K tokens (cl100k). Options weighed: slim the Tier-1 files (SCHEMA is long), make Tier 2 a pick-list rather than a bundle, or accept the cost. (The 2026-07-08 floor slim acted on the first — SCHEMA split to `SCHEMA — Context`, CLAUDE trimmed.)
+- *@import build (2026-06-07 → 06-09):* CLAUDE.md now `@import`s Tiers 0–2. Hard edge: Claude Code's `@import` can't resolve spaced paths (a known bug), so the Tier-2 framework loads via space-free `_` symlinks (`FOUR_PILLARS.md` → `FOUR PILLARS.md`, etc.). ROSETTA deliberately left out to keep the floor lean (stays Tier 3). Full write-up: [[Palace as Context Injection System]] § The @import Floor.
+
+---
+
 ## Superseded Versions
 
 The current jewel lives in [[JEWEL]]. Prior versions are archived here so the evolution is legible without bloating the operational file.
