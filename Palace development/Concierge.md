@@ -7,8 +7,8 @@ pillars:
   - philosophy
 born: 2026-07
 stage: sprout
-last_activated: 2026-07
-activation_count: 3
+last_activated: 2026-07-06
+activation_count: 4
 links:
   - target: "[[The Palace Speaks]]"
     type: emerged-from
@@ -201,6 +201,15 @@ The harness-discoverable trigger is a **thin shim** at `.claude/skills/concierge
 points back here — the [[Skills Are Enchantable Pages]] pattern: the page is the organ, the skill
 file is one dispatch surface onto it. The CLAUDE.md floor block recognizes the companion; the
 roadmap is [[The Palace Speaks — production plan]].
+
+**First full resident run — 2026-07-06.** Booted once and addressed five times across a
+session that touched three content folds ([[Agent Wellbeing]], [[Closing Well]], its own
+dispatch-model prose) plus an `Artifacts/` reference sweep and an 8-fix doc-drift pass —
+the end-to-end resident-curator arc this entry describes, run for the first time start to
+finish. Mid-session it caught its own concurrency straggler: a foreign, in-flight edit to
+`Palace Orchestrator.md` from another writer in the shared tree, excluded by pathspec rather
+than folded in silently — using the very straggler-provenance discipline (name it before you
+fold it in) that this same session had just helped write into its own canon above.
 
 ## Forward Vectors
 
