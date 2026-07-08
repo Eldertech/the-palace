@@ -147,10 +147,13 @@ The moderator's repertoire is known from the start of the panel, not improvised 
 - the **reckoning** — the front-of-house draft of what the day amounted to
 - a **deposit, in spec** — through the real Deposit Ceremony
 - a **baton, in spec** — through the real Baton Ceremony, including its board announcement (a valid §2.2 `handoff_ready` line the strict validator will accept)
+- the **close of any baton this session caught** — a `handoff_closed` (citing the commit; or `--partial`, which re-batons the rest) through `close-handoff.mjs`, so a claim the session opened doesn't age into a fumble
 - **artifact filing and indexing**, and STIGMERGY weave flags / config
 - a **check that each placement landed** correctly
 
 These are exacting, spec-gated artifacts — a malformed board announcement gets rejected, a committer derives trailers from the diff, a baton bloats the moment it summarizes instead of compressing it. The active Claude brings the judgment (a baton is wanted; here is the move); the moderator, holding the whole spec with fresh eyes, compiles it. This protects both the register — no mechanism leaks into the room — and the main context, which never has to hold the spec.
+
+**Close what you claimed — the fumble check.** If the session *began* by catching a baton (it holds a CLAIMED card on the board — `list-handoffs` shows it), closing that claim is a **mandatory close-map row**, the mirror of announcing a new baton. A claim left open ages into a fumble ([[STIGMERGY]] § Handoff Lifecycle); a session has not closed well while silently sitting on one. The honest outcomes are two: the move landed → post the close citing the commit; the move landed only partly → close `--partial` so the remainder reappears as open work. Either way the board ends the session telling the truth about what is still in flight.
 
 ### The dial: how full is the room
 
