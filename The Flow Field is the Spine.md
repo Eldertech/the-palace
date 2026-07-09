@@ -44,7 +44,7 @@ tags: [concept, flow-field, simulation, motion, blueline, seed]
 
 **One authored vector field, rendered at three resolutions of reality.**
 
-A single flow field per shot is the heart of [[BLUELINE]] — the same quantity expressed three ways:
+A single-*source* field is the heart of [[BLUELINE]] — the same quantity expressed three ways (and a panel composites a **stack** of such fields; see § Single-source, not single-field, below):
 
 1. **Drawn** — graphic speed lines, in the comic register.
 2. **Steers** — dense per-frame motion conditioning of the render.
@@ -82,5 +82,9 @@ coupling (pose → field → clock): [[BLUELINE — Motion and Flow]]. Evidence:
 ## Why it's a spine and not a feature
 
 A spine is what the rest hangs off. Because all three resolutions sample the *same* field, the comic and the cinema stay in register automatically — the speed line in panel three and the dust plume in the hyperreal expansion are literally the same arrow at different fidelities. Coherence is structural, not curated. This is the deep kinship with [[Flocking]]: a vector field over space, read by many consumers, producing coordinated behavior from one source.
+
+## Single-source, not single-field (reframed 2026-07-09)
+
+Loudon relaxed the singular reading: **one field per panel is over-restrictive.** Re-read what the spine actually bought — **single-source coherence**, the three legs agreeing because they derive from one source. The prize was coherence, never singularity of *number*. So the discipline is **one source per motion**, and a panel carries a **stack** of fields — a global wind, a figure-attached wake, a beat-keyed impact burst, an ambient drift — each single-source, each rendered across the three registers, composited like buses on a mixer. The doctrine was already violated in practice: the **Swing Solver** ([[The Aftermath Frame]]) ships a second, non-curl field-source. Pluralizing just lets the spine tell the truth. Coherence stays structural *within* each field; composition is the freedom *between* them. The stack lives at the panel — home: [[BLUELINE — Motion and Flow]] and [[BLUELINE — The Page]] § file structure.
 
 <!-- CLAUDE → LOUDON: spike reported 2026-06-13 — strong claim falsified, shared-source-plus-mapping holds (thin per-leg scalar). confidence bumped hypothesis→working, stage seed→sprout, "The bet" section now carries the result. Consider whether to rewrite the lead paragraph to foreground shared-source-plus-mapping over "one untouched field" (I left your framing + added the result rather than rewriting your prose). -->
