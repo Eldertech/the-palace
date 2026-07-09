@@ -122,9 +122,21 @@ The working wisdom from the build, so the next agent doesn't relearn it.
 
 **Recipes:**
 - *One figure, in costume:* pose (± weak depth), denoise ~0.95, no canny.
-- *Multi-figure scene (current best):* generate the env layer `["depth","canny"]`, then **inpaint**
-  each figure (pose-conditioned) into its region over the env — placement, scale, costume, and blending
-  all handled in one step. `shootout.py` is the reference. The alpha-mask composite is superseded.
+- *Multi-figure scene, baked-in (one-shot):* generate the env `["depth","canny"]`, then **inpaint**
+  each figure (pose) into its region over the env — placement, scale, costume, blending in one step.
+  `shootout.py` is the reference. Best when you want a single finished frame.
+- *Multi-figure scene, reusable LAYERS (accurate alpha):* **rich-first / stylize-last** (`rich_first.py`,
+  adopted from BLUELINE `new-story/rich_pipeline.py` + `silhouette.py`). Render each figure **rich**
+  (shaded, *not* pen-flow) via img2img from its plate + pose; **GrabCut seeded by the skeleton
+  silhouette** → an edge-accurate **alpha** that follows the cloth; composite RGBA layers over a rich
+  env; one **stylize-last** img2img pass fuses everything to pen-flow. Gives reusable figure layers +
+  a coherent unified drawing (render_017), vs inpaint baking into the env. *The mask problem's real
+  root: we stylized too early — pen-flow ink has no edges for a clean cut; render rich, cut, then
+  stylize last.*
+- **Scale must be imposed at generation, every approach** *(learned 3×: segment, inpaint region,
+  rich-first)*. A standalone txt2img figure fills the frame regardless of the pose skeleton's size, and
+  any after-the-fact cutout then grows to the giant. Impose scale via the inpaint region **or** the
+  img2img init (the figure's own plate is already at the right screen scale).
 
 ## Forward Vectors
 
