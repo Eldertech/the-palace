@@ -61,5 +61,14 @@
   "seed": 33,
   "dt": 93.3,
   "note": "multi-cam composite: figure (own prompt) over ruined-temple env (own prompt), matched optics"
+ },
+ {
+  "n": 8,
+  "ts": "2026-07-09 11:47",
+  "prompt": "a lone warrior standing ready, dramatic action manga, dynamic ink",
+  "denoise": 0.9,
+  "seed": 77,
+  "dt": 61.5,
+  "note": "AUTO-RANGE depth (near/far bracket the figure ~0.4bu vs old 1.2) \u2014 depth carries volume not just outline; Track-IV lesson"
  }
 ]

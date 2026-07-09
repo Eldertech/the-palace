@@ -53,9 +53,15 @@ a panel's `layers/` in [[BLUELINE — The Page]].
 
 The camera emits **streams** and a headless local ComfyUI turns them into a frame:
 
-- **Streams** — *beauty* (the img2img init / what the camera sees), *true depth* (a shader that maps
+- **Streams** — *beauty* (the img2img init / what the camera sees), *true depth* (a shader mapping
   camera distance to a MiDaS-style map), and an *OpenPose pose plate* projected geometrically from the
   rig's `ORG-` bones (never DWPose-on-greybox — armature projection). Canny is derived from beauty.
+- **Depth gotcha — auto-range the near/far** *(the BLUELINE Track-IV lesson,
+  `proofs/track-IV-bench/bench.py`)*. A depth pass reads **flat — a silhouette, not volume** — if the
+  MapRange near/far is wider than the subject (a ~0.4 bu figure inside a 1.2 bu range fills only a
+  quarter of 0→1). The fix: **compute near/far from the subject's actual camera-space depth every
+  render** (`cam_z_range` in `blender_panel.py`) so it always fills the gradient. The same auto-range
+  gives an *environment* layer proper recession (near ground bright → far dark) for free.
 - **Render** — SDXL base + an **SDXL-Lightning 8-step LoRA** + Depth/Canny/OpenPose ControlNets,
   img2img at high denoise so the ink style takes while the geometry holds the pose.
 - **Two modes** — **live** (writes only `latest.png`, shown in a hovering window; *nothing is kept*
@@ -75,9 +81,10 @@ change — the offline→realtime translation discipline of [[BLUELINE — The P
 ## The rig
 
 The working implementation lives in this entry's bundle (`GenAI Camera/`): `genai_camera.py` (the
-headless driver — reuses BLUELINE's `lib/comfy.py` pattern), a Blender N-panel (prompt / denoise / seed /
-fast / pose, Render · Save · Multi-Cam), `live.html` (the hovering window), and the scroll
-(`GenAI Camera — scroll.html`) with its proof `renders/`.
+headless driver — reuses BLUELINE's `lib/comfy.py` pattern), `blender_panel.py` (the reproducible
+Blender N-panel — prompt / denoise / seed / fast / pose, Render · Save · Multi-Cam, with the
+auto-range depth; register via `exec(open(...).read())`), `live.html` (the hovering window), and the
+scroll (`GenAI Camera — scroll.html`) with its proof `renders/`.
 
 ## Forward Vectors
 
