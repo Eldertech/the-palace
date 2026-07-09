@@ -21,7 +21,7 @@ Invoke with the ComfyUI venv python (has PIL/numpy):
   _tools/ComfyUI/venv/bin/python3 genai_camera.py --mode live --prompt "..." [--fast] [--pose] [--multi]
 """
 import os, sys, json, time, uuid, argparse, datetime, shutil, urllib.request, urllib.parse
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
 HOST = os.environ.get("COMFY_HOST", "127.0.0.1:8188")
 DIR  = os.path.dirname(os.path.abspath(__file__))
@@ -224,6 +224,9 @@ def main():
             else:
                 bimg = Image.open(beauty)
                 mask = bimg.split()[-1] if bimg.mode == "RGBA" else None
+                if mask is not None:
+                    # dilate the nude-silhouette mask so pose-grown clothing isn't clipped
+                    mask = mask.filter(ImageFilter.MaxFilter(ly.get("dilate", 25) | 1))
                 base = Image.composite(im.convert("RGB"), base, mask) if mask else im.convert("RGB")
         meta = {"prompt": " + ".join(l["prompt"][:24] for l in layers), "denoise": a.denoise,
                 "seed": a.seed, "dt": round(dt_total, 1),

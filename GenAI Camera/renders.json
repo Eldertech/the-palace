@@ -88,5 +88,14 @@
   "seed": 21,
   "dt": 229.6,
   "note": "two-figure composite v2: figures depth-only @0.97 so robes/fur grow (canny was locking the nude); env keeps canny"
+ },
+ {
+  "n": 11,
+  "ts": "2026-07-09 13:01",
+  "prompt": "a misty ruined battlefie + an ethereal ice sorceres + a hulking scarred barbar",
+  "denoise": 0.9,
+  "seed": 21,
+  "dt": 130.2,
+  "note": "pose-only figures (Loudon's call): skeleton frees clothing where depth locked the nude volume; dilated mask for billowing robes/fur"
  }
 ]
