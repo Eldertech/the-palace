@@ -86,6 +86,41 @@ Blender N-panel — prompt / denoise / seed / fast / pose, Render · Save · Mul
 auto-range depth; register via `exec(open(...).read())`), `live.html` (the hovering window), and the
 scroll (`GenAI Camera — scroll.html`) with its proof `renders/`.
 
+## Gotchas & recipes (accumulated 2026-07-09)
+
+The working wisdom from the build, so the next agent doesn't relearn it.
+
+**What works:**
+- **Multi-camera = matched-optics view layers.** One shared camera + per-collection visibility renders
+  each subject as its own layer that registers by construction. Proven figure+env, then *two figures*.
+- **Per-layer ControlNet + denoise** (`layers.json` `cn` / `denoise` / `dilate`). Condition each camera
+  differently — env on `["depth","canny"]` (hard architecture), figures on `["pose"]` (free costume).
+- **Live / proof / save split.** The live loop writes only `latest.png` (hovering window, keeps
+  nothing); **proof** appends to [[The Scroll]] (Claude's verification surface); **Save** persists one.
+
+**Gotchas (each cost a cycle):**
+1. **Depth reads flat unless the near/far brackets the subject.** A ~0.4 bu figure inside a 1.2 bu
+   range fills a quarter of 0→1 → a silhouette, not volume. `cam_z_range()` auto-brackets each render.
+2. **Depth LOCKS the surface; pose FREES it.** Conditioning a figure on *depth* pins the filled nude
+   body volume, so any garment hugs the skin (the figures read as clay nudes). Conditioning on *pose*
+   pins only the skeleton, so the model builds robes / fur / armor around the stance. **Use pose, not
+   depth, when you want costume.** Full principle: [[ControlNet as Topology]] § Pose vs depth.
+3. **Canny also locks the nude edges** — drop it (and depth) for a figure that should restyle.
+4. **The composite mask is the weak link.** Masking a pose-generated (clothed) figure by its *nude*
+   silhouette clips the billowing cloth with hard edges. Dilating helps but goes blocky. The real fix:
+   mask by the figure's own **generated content** (segment) or **inpaint** it onto the env. *(Open — a
+   segment-vs-inpaint shootout is the next move.)*
+5. **Mac/MPS is ~40 s/frame** (~5 s/step SDXL, 2 ControlNets) — an *authoring* loop, not a live
+   viewport. The 4090 is the only path to real-time; the loop's shape does not change.
+6. **Blender 5.1 seams:** the compositor moved to `scene.compositing_node_group` and the File Output
+   node API changed — **sidestep it** with a material-override depth shader (Camera `View Z Depth` →
+   MapRange → Emission). EEVEE-Next `use_pass_z` / passes work; `film_transparent` gives the alpha mask.
+
+**Recipes:**
+- *One figure, in costume:* pose (± weak depth), denoise ~0.95, no canny.
+- *Multi-figure scene:* env layer `["depth","canny"]`; figure layers `["pose"]` + dilated mask;
+  composite back→front. The mask artifact (gotcha 4) is the current ceiling.
+
 ## Forward Vectors
 
 The near work: land the pose plate's face points more precisely, and let each layer of a multi-cam

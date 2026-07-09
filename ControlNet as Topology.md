@@ -71,6 +71,17 @@ This is the theory under three things BLUELINE already knows in its hands:
 - **Why seed-lock beat the render-noise-warp.** The denoise×weight geometry above is the whole explanation — [[The Flow Field is the Spine|the field]] wins as *composition*, high in the fog, not as jittered noise low in a valley.
 - **The GenAI Camera** *(a lost branch, its own entry once we've built it)* is this made spatial: a camera that carves canyons into the render from one viewpoint, and several matched-optics cameras each cutting a different channel of the same terrain.
 
+## Pose vs depth — canyons of different shape (2026-07-09)
+
+Two conditioners can carve canyons of very **different width**, and it changes what the model is free
+to draw. **Depth** carves a canyon at the *surface* — the whole filled body volume is pinned, so
+anything drawn hugs it. **Pose** carves a canyon at the *skeleton* — a handful of joints — leaving the
+body and everything around it free. So the rule, learned building the [[GenAI Camera]]: **to keep a
+form but free its surface, condition on pose; to pin the surface, condition on depth.** A nude mannequin
+conditioned on depth yields body-hugging clothing (garments painted onto skin); the *same* mannequin
+conditioned on pose yields real robes and fur, because the model only had to honor the stance. This is
+the carving metaphor made operational — *choose your conditioner by how tight a canyon you want.*
+
 ## Cross-domain resonance
 
 The score — the rate-of-change function the ball follows at each point — plays exactly the role the coupling term plays in **[[Kuramoto Coupling]]** (`dθ/dt = ω + (K/N)·Σ sin(θⱼ − θᵢ)`): the local law that says which way to move next, learned rather than hand-derived. Two systems, one shape — a field of directional pulls a walker integrates one step at a time.
