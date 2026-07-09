@@ -1,0 +1,9 @@
+# transient working files — the rig regenerates these every render
+latest.png
+beauty*.png
+depth*.png
+openpose*.png
+keypoints.json
+layers.json
+_tmp_*
+saved/

@@ -1,0 +1,90 @@
+---
+title: "GenAI Camera"
+type: concept
+pillars: [tools, creation, philosophy]
+born: 2026-07
+stage: growing
+confidence: working
+energy: high
+who_leads: loudon
+last_activated: 2026-07
+activation_count: 1
+forward_vector: "I am a camera whose output is not rasterized pixels but a gen-AI drawing of what I see — conditioned on my own depth, edges, and the pose I am pointed at. I want to become the front door to authoring a panel: pose a figure, say a few words, and see the drawing a second later. My real ambition is to be many matched-optics lenses over one scene, each seeing a different slice with its own prompt, composited — multi-ControlNet made spatial — and to keep the exact same shape when I graduate from a slow Mac loop to a real-time GPU on a stage."
+links:
+  - target: "[[Blocked, Not Prompted]]"
+    type: emerged-from
+    label: taken-to-its-conclusion
+  - target: "[[ControlNet as Topology]]"
+    type: exemplifies
+    label: carves-canyons-from-a-viewpoint
+  - target: "[[BLUELINE]]"
+    type: emerged-from
+    label: born-in-the-rig
+  - target: "[[BLUELINE — The Page]]"
+    type: connects-to
+    label: renders-panel-layers
+  - target: "[[Steer the Generator]]"
+    type: connects-to
+    label: the-live-control-surface
+  - target: "[[The Scroll]]"
+    type: connects-to
+    label: proofs-accumulate-here
+---
+
+# GenAI Camera
+
+A **GenAI Camera** is a camera in a 3D scene whose output is not the rasterized image but a
+**gen-AI render conditioned on what the camera sees** — its depth, its edges, the pose it is pointed
+at. Point it at a posed figure and it hands back a *drawing* of that figure, faithful to the
+composition because the geometry is steering the diffusion. It is [[Blocked, Not Prompted]] taken to
+its conclusion: the camera *is* the conditioning.
+
+## The multi-camera move
+
+The concept's real reach is **plural**. Several cameras with **matched optics and position**, each
+seeing a different subset of the scene (via view layers / collections), each carrying its own prompt,
+composited together — this is **multi-ControlNet made spatial**. A hero-figure lens draws the
+character; an environment lens draws the world behind it; each is welded from its own viewpoint and
+they register by construction because they share a camera. In [[ControlNet as Topology]]'s language,
+each lens *carves its own canyon into the terrain from one viewpoint*. The layers map one-to-one onto
+a panel's `layers/` in [[BLUELINE — The Page]].
+
+## How it runs (proven 2026-07-09)
+
+The camera emits **streams** and a headless local ComfyUI turns them into a frame:
+
+- **Streams** — *beauty* (the img2img init / what the camera sees), *true depth* (a shader that maps
+  camera distance to a MiDaS-style map), and an *OpenPose pose plate* projected geometrically from the
+  rig's `ORG-` bones (never DWPose-on-greybox — armature projection). Canny is derived from beauty.
+- **Render** — SDXL base + an **SDXL-Lightning 8-step LoRA** + Depth/Canny/OpenPose ControlNets,
+  img2img at high denoise so the ink style takes while the geometry holds the pose.
+- **Two modes** — **live** (writes only `latest.png`, shown in a hovering window; *nothing is kept*
+  unless saved — frames accumulate too fast to hoard) and **proof** (appends to [[The Scroll]], for
+  development verification).
+- **Fast vs quality** — a fast toggle (512, depth-only, 6 steps) for iteration vs the full
+  depth+canny+pose pass.
+
+## Honest limits
+
+On an Apple-silicon Mac (MPS) this is an **authoring loop, not a live viewport**: ~30s fast, ~40–90s
+quality (SDXL is ~5s/step on MPS regardless of tricks). That is genuinely enough to *compose a panel* —
+pose, render, look — but true near-real-time (StreamDiffusion at speed) needs a local 4090-class NVIDIA
+GPU. The loop we built is **identical in shape** to the fast one; only the clock and the step-count
+change — the offline→realtime translation discipline of [[BLUELINE — The Page]] holds here exactly.
+
+## The rig
+
+The working implementation lives in this entry's bundle (`GenAI Camera/`): `genai_camera.py` (the
+headless driver — reuses BLUELINE's `lib/comfy.py` pattern), a Blender N-panel (prompt / denoise / seed /
+fast / pose, Render · Save · Multi-Cam), `live.html` (the hovering window), and the scroll
+(`GenAI Camera — scroll.html`) with its proof `renders/`.
+
+## Forward Vectors
+
+The near work: land the pose plate's face points more precisely, and let each layer of a multi-cam
+composite carry its own **depth-ordered** occlusion rather than a flat alpha-over. The larger arc is the
+one gate named everywhere in [[BLUELINE]]: a networked 4090 backend turns this authoring loop into a
+live viewport without changing its shape — and at that point the GenAI Camera becomes the lens of the
+live-performance stage, not just the panel-authoring desk. I also want to know whether the camera-as-
+conditioned-lens generalizes past BLUELINE's ink — whether any 3D scene, in any style, wants to be seen
+through one of these.

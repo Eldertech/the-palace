@@ -1,0 +1,98 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>BLUELINE · GenAI Camera — scroll</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  --display:'Anton',sans-serif; --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --bg:#0a0a0f; --bg1:#12121a; --bg2:#1a1a28; --border:#4a4a5e; --border-soft:rgba(255,255,255,.06);
+  --fg1:#e8e8f0; --fg2:#c8c8d8; --fg3:#8a8aa0; --accent:#e8b84a; --ok:#00ff66;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg1);font-family:var(--sans);font-weight:300}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 100px}
+header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,var(--bg) 72%,rgba(10,10,15,0));
+  padding:26px 0 16px;border-bottom:1px solid var(--border);backdrop-filter:blur(3px)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font-family:var(--display);font-weight:400;font-size:38px;letter-spacing:.01em;text-transform:uppercase;margin:0}
+.sub{font-family:var(--serif);font-size:17px;color:var(--fg2);margin:8px 0 0;max-width:720px}
+.status{font-family:var(--mono);font-size:12px;color:var(--fg3);margin-top:12px;display:flex;gap:16px;align-items:center}
+.live{display:inline-flex;align-items:center;gap:7px;color:var(--ok)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);animation:p 1.6s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.35}}
+.card{background:var(--bg1);border:1px solid var(--border);border-radius:3px;margin:22px 0;overflow:hidden}
+.card-top{display:grid;grid-template-columns:150px 26px 1fr;gap:14px;padding:16px;align-items:center}
+@media(max-width:640px){.card-top{grid-template-columns:1fr}}
+.streams{display:flex;flex-direction:column;gap:8px}
+.streams figure{margin:0}
+.streams img{width:100%;border:1px solid var(--border);border-radius:2px;display:block;background:#000}
+.streams figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg3);margin-top:3px}
+.arrow{font-family:var(--mono);color:var(--accent);font-size:20px;text-align:center}
+@media(max-width:640px){.arrow{display:none}}
+.out img{width:100%;border:1px solid var(--border);border-radius:2px;display:block;background:#000}
+.meta{border-top:1px solid var(--border-soft);padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px 20px;align-items:baseline}
+.n{font-family:var(--display);font-size:22px;color:var(--accent);line-height:1}
+.prompt{font-family:var(--serif);font-size:16px;color:var(--fg1);flex:1 1 320px}
+.params{font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.03em}
+.params b{color:var(--fg2);font-weight:500}
+.note{font-family:var(--sans);font-size:13px;color:var(--fg3);flex-basis:100%;font-style:italic}
+.empty{font-family:var(--serif);font-size:18px;color:var(--fg3);padding:60px 0;text-align:center}
+footer{padding:48px 0 0;text-align:center}
+.wm{font-family:var(--display);font-size:22px;letter-spacing:.04em}
+.wm .lv{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--accent);text-shadow:0 0 12px rgba(232,184,74,.45)}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">● BLUELINE · GenAI Camera</p>
+  <h1>The Scroll</h1>
+  <p class="sub">Every frame the camera draws, in the order it was made — the input streams the
+  camera sent (depth · beauty) and the gen-AI frame that came back. Appends live; nothing is deleted.</p>
+  <div class="status"><span class="live"><span class="dot"></span>watching</span>
+    <span id="count">—</span><span id="last">—</span></div>
+</header>
+<div id="feed"><p class="empty">no renders yet — fire the driver and they appear here.</p></div>
+<footer><div class="wm">LOUD<span class="lv">’N</span> LIVE</div></footer>
+</div>
+
+<script>
+const feed = document.getElementById('feed');
+const shown = new Set();
+function card(r){
+  const d = document.createElement('div'); d.className='card';
+  d.innerHTML = `
+   <div class="card-top">
+     <div class="streams">
+       <figure><img loading="lazy" src="renders/render_${String(r.n).padStart(3,'0')}_depth.png"><figcaption>depth</figcaption></figure>
+       <figure><img loading="lazy" src="renders/render_${String(r.n).padStart(3,'0')}_beauty.png"><figcaption>beauty</figcaption></figure>
+     </div>
+     <div class="arrow">▸</div>
+     <div class="out"><img loading="lazy" src="renders/render_${String(r.n).padStart(3,'0')}.png"></div>
+   </div>
+   <div class="meta">
+     <span class="n">${String(r.n).padStart(3,'0')}</span>
+     <span class="prompt">${r.prompt||''}</span>
+     <span class="params">denoise <b>${r.denoise}</b> · seed <b>${r.seed}</b> · <b>${r.dt}s</b> · ${r.ts||''}</span>
+     ${r.note?`<span class="note">${r.note}</span>`:''}
+   </div>`;
+  return d;
+}
+async function poll(){
+  try{
+    const res = await fetch('renders.json?t='+Date.now(), {cache:'no-store'});
+    if(!res.ok) return;
+    const data = await res.json();
+    data.sort((a,b)=>a.n-b.n);
+    const fresh = data.filter(r=>!shown.has(r.n));
+    if(fresh.length){
+      if(shown.size===0) feed.innerHTML='';
+      for(const r of fresh){ shown.add(r.n); feed.insertBefore(card(r), feed.firstChild); }
+      document.getElementById('count').textContent = data.length+' frame'+(data.length!==1?'s':'');
+      const latest = data[data.length-1];
+      document.getElementById('last').textContent = 'latest #'+String(latest.n).padStart(3,'0')+' · '+(latest.ts||'');
+    }
+  }catch(e){}
+}
+poll(); setInterval(poll, 3000);
+</script>
