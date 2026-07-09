@@ -106,10 +106,14 @@ The working wisdom from the build, so the next agent doesn't relearn it.
    pins only the skeleton, so the model builds robes / fur / armor around the stance. **Use pose, not
    depth, when you want costume.** Full principle: [[ControlNet as Topology]] § Pose vs depth.
 3. **Canny also locks the nude edges** — drop it (and depth) for a figure that should restyle.
-4. **The composite mask is the weak link.** Masking a pose-generated (clothed) figure by its *nude*
-   silhouette clips the billowing cloth with hard edges. Dilating helps but goes blocky. The real fix:
-   mask by the figure's own **generated content** (segment) or **inpaint** it onto the env. *(Open — a
-   segment-vs-inpaint shootout is the next move.)*
+4. **Compositing pose-generated figures — INPAINT beats segment** *(shootout 2026-07-09: render_012
+   segment vs render_013 inpaint; `shootout.py`).* **Inpaint wins:** generate the env, then inpaint each
+   figure into a generous region (`VAEEncodeForInpaint` + pose CN) — the cloth grows in-context, blends
+   with no hard edge, and the **region imposes scale + placement**. **Segment loses:** a *standalone*
+   pose-gen doesn't respect scale/position (SDXL fills the frame), so `rembg` faithfully cuts out a
+   **giant** figure — the nude mask had secretly been doing the placement all along. The lesson:
+   **placement and scale must be imposed at generation (the inpaint region), not recovered after.**
+   Segment only cleans edges of a generation that already got the scale wrong.
 5. **Mac/MPS is ~40 s/frame** (~5 s/step SDXL, 2 ControlNets) — an *authoring* loop, not a live
    viewport. The 4090 is the only path to real-time; the loop's shape does not change.
 6. **Blender 5.1 seams:** the compositor moved to `scene.compositing_node_group` and the File Output
@@ -118,8 +122,9 @@ The working wisdom from the build, so the next agent doesn't relearn it.
 
 **Recipes:**
 - *One figure, in costume:* pose (± weak depth), denoise ~0.95, no canny.
-- *Multi-figure scene:* env layer `["depth","canny"]`; figure layers `["pose"]` + dilated mask;
-  composite back→front. The mask artifact (gotcha 4) is the current ceiling.
+- *Multi-figure scene (current best):* generate the env layer `["depth","canny"]`, then **inpaint**
+  each figure (pose-conditioned) into its region over the env — placement, scale, costume, and blending
+  all handled in one step. `shootout.py` is the reference. The alpha-mask composite is superseded.
 
 ## Forward Vectors
 

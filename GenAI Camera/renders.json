@@ -97,5 +97,23 @@
   "seed": 21,
   "dt": 130.2,
   "note": "pose-only figures (Loudon's call): skeleton frees clothing where depth locked the nude volume; dilated mask for billowing robes/fur"
+ },
+ {
+  "n": 12,
+  "ts": "2026-07-09 13:40",
+  "prompt": "segment vs inpaint shootout",
+  "denoise": 1.0,
+  "seed": 21,
+  "dt": 0,
+  "note": "SEGMENT: figure generated standalone (pose) -> rembg cutout follows the cloth -> composited over env"
+ },
+ {
+  "n": 13,
+  "ts": "2026-07-09 13:41",
+  "prompt": "segment vs inpaint shootout",
+  "denoise": 1.0,
+  "seed": 21,
+  "dt": 0,
+  "note": "INPAINT: env base, each figure inpainted in (pose-conditioned) so cloth grows in-context and blends, no hard mask"
  }
 ]
