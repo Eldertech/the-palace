@@ -27,6 +27,9 @@ links:
   - target: "[[The Shop]]"
     type: connects-to
     label: each-thread-ships-a-capability
+  - target: "[[BLUELINE — The Page]]"
+    type: connects-to
+    label: thread-9-output-aesthetic
 ---
 
 # BLUELINE — Production Plan
@@ -45,7 +48,7 @@ language, and a point of view. **The bias is the product.**
 
 Its novelty is **point of view and coupling, not components**: nearly every piece already exists off
 the shelf (Blender→ControlNet conditioning, the ComfyUI render core, flow-guided motion diffusion, an
-Ableton clock). What BLUELINE *authors* is the curated vocabulary, the single-source flow-field spine,
+Ableton clock). What BLUELINE *authors* is the curated vocabulary, the single-source flow-field stack,
 and the **comic↔cinema transduction** (the storyboard speaks comic; the render speaks cinema; the
 system's job is the transduction between them). The two load-bearing ideas: **[[Blocked, Not Prompted]]**
 (camera and pose authored as geometry, so the model fills a composition Loudon dictated) and
@@ -54,14 +57,19 @@ system's job is the transduction between them). The two load-bearing ideas: **[[
 ## 2. Goals & locked scope
 
 **The destination:** a full song realized end-to-end as an *instrument* — storyboard → animatic →
-motion → hyperreal impact → beat-locked cut — where the render stays a deterministic function of the
-song playhead, not a video paired with audio.
+motion → hyperreal impact → beat-locked cut → **performed live** — where the render stays a
+deterministic (offline) or steerable (live) function of the song, not a video paired with audio. Live
+performance is the **final stage**, and every offline stage is built to survive the crossing into it
+(the spine principle — see [[BLUELINE — The Page]]).
 
 Locked scope decisions (do not relitigate without a reason):
 - **Fixed tempo** — sync is deterministic arithmetic (beats fall on whole frames), not elastic alignment.
 - **Staged, not simulated** — comic motion is camera + FX + pose, never simulated *contact*. **(Relaxed 2026-07-03:** the *held-pose* constraint is lifted — **pose-blend-along-flow** is now in scope as a bounded experiment; simulated physical contact between figures stays out. This greenlights Motion & Flow **Edge 3**, which moves from a decision to the build queue below.)
 - **Humanoid only** — animal motion is out of scope (the one data-starved hard case, retired by decision).
 - **Each milestone ships** — every rung is a usable tool, never a down-payment on the next.
+- **Live performance is the final stage** *(2026-07-09)* — the last rung, not a separate project; built so every offline stage survives the crossing into real time (same record, same audio→parameter map, same warm-started render; only the clock source and step-count change). → [[BLUELINE — The Page]].
+- **The flow field is a stack, not one field** *(2026-07-09)* — coherence is single-source-*per-motion*, not one field per panel; fields (wind, wake, impact, ambient) compose like buses. → [[BLUELINE — Motion and Flow]].
+- **The page persists through the pipeline** *(2026-07-09)* — the screen is a comic page, panels arriving in musical time; adopt the comic lexicon (**panel** is the unit; "frame" is reserved for the 1/24s image). → [[BLUELINE — The Page]].
 
 Quality is measured the palace way — [[Quality Manifesto]]'s wellbeing / integrity / relationship, and
 "how do you feel?", not output volume.
@@ -82,6 +90,7 @@ lineage is noted where it maps.)*
 | 6 | **Style & Identity** (was Track II) | ✅ house style locked · identity via InstantID next | [[Steer the Generator]] | `proofs/style-lock`, `style-atlas`, `visual-language-console` |
 | 7 | **Text & Lettering** | ✅ rung 1 proven (material register + Living Balloon) | [[BLUELINE — Text Layer]] | `proofs/text-layer`, `proofs/lyrics-layer` |
 | 8 | **Line-Art Decomposition** | ✅ validated (convert-first flat-cel) | [[Line-Art Layer Decomposition]] | `proofs/blender-fire` |
+| 9 | **The Page** ← new | ○ seed (locked 2026-07-09) | [[BLUELINE — The Page]] | — (compositor spec) |
 
 **One-line each:**
 1. **Clock & Sync** — the music-time substrate. Max-for-Live transport + clip-scan → OSC → WebSocket → browser; `(bar,beat)→frame` is exact arithmetic. The rendered-board **animatic** plays the 6 boards on *Ascension_v8* (120 BPM → 12 fr/beat).
@@ -92,6 +101,7 @@ lineage is noted where it maps.)*
 6. **Style & Identity** — house look **locked = `pen-flow`** (via the Taste Breeder); the [[Graphic Storytelling|Visual Language Console]] is the vocabulary tool; identity is a swappable face-slot → InstantID.
 7. **Text & Lettering** — text is a vector overlay, never diffused. Rung 1 (material register + the Living Balloon) proven. See [[Shop/Lettering]].
 8. **Line-Art Decomposition** — convert flat-ink → flat-cel first, *then* SAM/Depth-Anything/LaMa, then stylize back.
+9. **The Page** *(new, locked 2026-07-09)* — the screen as a comic page: panels arrive in musical time, layers breathe inside them, and the compositor is a clock-driven browser app that renders offline and performs live. The comic lexicon and the panel file structure live here. See [[BLUELINE — The Page]].
 
 ## 4. Retired — do not reinvest
 

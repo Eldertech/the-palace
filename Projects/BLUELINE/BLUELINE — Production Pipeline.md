@@ -58,6 +58,11 @@ Four traditions, four layers — they don't compete:
 | 6 | The motion spine | **FX** | one flow field | *effects animation*, authored once across registers | spans all |
 | 7 | The cut | **Editor** | shots + track | *the edit / online*, beat-mux | cinema |
 
+> **Stage 7 reframed (2026-07-09) — the page persists.** The cut is no longer one shot at a time: the
+> screen is a **comic page**, panels arriving in musical time, layers breathing inside them. The page
+> structure born at Stage 2 is *kept* to output instead of flattened, and this is where **live
+> performance** enters as the final register. Full spec + the comic lexicon: [[BLUELINE — The Page]].
+
 ## The two seams — opposite kinds of problem
 
 A conditioned pipeline has seams exactly where the downstream stops being a human.

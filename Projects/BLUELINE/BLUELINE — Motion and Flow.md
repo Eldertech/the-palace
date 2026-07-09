@@ -49,6 +49,13 @@ and every thread that tried to *regenerate* motion frame-by-frame lost:
 Read together they say: **the flow field is the geometry**, it can **know the pose**, and it should
 **move on the clock**. That sentence is the whole design.
 
+**Reframed 2026-07-09 — the field is a *stack*, not one field.** A panel composites several
+single-source fields (a global **wind** · a figure-attached **wake** · a beat-keyed **impact** burst ·
+an ambient **drift**), each rendered across the three registers. The coherence discipline is
+single-source-*per-motion*, not one field per panel — the Swing Solver already ships a second, non-curl
+source. Fields live at the panel ([[BLUELINE — The Page]] § file structure); [[The Flow Field is the Spine]]
+carries the full reframe.
+
 ## The seven threads, placed and graded
 
 1. **Flow-field spine — blind** (`proofs/session-3-flowfield`, ✅). One divergence-free field (curl of

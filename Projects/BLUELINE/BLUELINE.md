@@ -10,7 +10,7 @@ stage: growing
 confidence: working
 energy: high
 who_leads: loudon
-forward_vector: "I am an opinionated instrument for bold, comic-staged, surreal-mathematical music-video action — storyboard to final render, every frame pinned to a fixed-tempo song. My novelty is point of view and coupling, not components: nearly every piece I need already exists off the shelf. What I author is the curated vocabulary, the single-source flow-field spine, and the comic↔cinema transduction. The bias is the product."
+forward_vector: "I am an opinionated instrument for bold, comic-staged, surreal-mathematical music-video action — storyboard to final render, every frame pinned to a fixed-tempo song. My novelty is point of view and coupling, not components: nearly every piece I need already exists off the shelf. What I author is the curated vocabulary, the single-source flow-field *stack*, the comic↔cinema transduction, and — the last rung — the live performance of the page. The bias is the product."
 links:
   - target: "[[Retrospective Delay]]"
     type: mirrors
@@ -77,6 +77,12 @@ links:
   - target: "[[BLUELINE — Motion and Flow]]"
     type: spawned
     label: unified-motion-subsystem
+  - target: "[[BLUELINE — The Page]]"
+    type: spawned
+    label: output-aesthetic
+  - target: "[[ControlNet as Topology]]"
+    type: connects-to
+    label: why-geometry-beats-prompting
 tags: [project, blueline, music-video, generative, pipeline, sprout]
 ---
 
@@ -100,7 +106,7 @@ The pipeline moves between **two registers**: the storyboard speaks **comic**, t
 ## The two load-bearing ideas
 
 - **[[Blocked, Not Prompted]]** — camera and pose are authored as geometry in a 3D block (in [[Shop/Blender]]); the model fills a composition Loudon dictated rather than choosing one. Drama becomes geometry, not adjectives, and the front-on default is defeated.
-- **[[The Flow Field is the Spine]]** — one authored vector field, rendered at three resolutions of reality: drawn speed lines (comic), dense motion conditioning (steering the render), and a simulated medium (cinema). *The arrow becomes the wind.* This is the novel bet, and the #1 risk.
+- **[[The Flow Field is the Spine]]** — an authored vector field, rendered at three resolutions of reality: drawn speed lines (comic), dense motion conditioning (steering the render), and a simulated medium (cinema). *The arrow becomes the wind.* This is the novel bet, and the #1 risk. *(Reframed 2026-07-09: a panel carries a **stack** of such fields — wind, wake, impact, ambient — each single-source, composited like buses. The discipline is single-source-per-motion, not one field per panel. See [[BLUELINE — Motion and Flow]].)*
 
 ## Two AIs, opposite risk profiles
 
@@ -116,6 +122,9 @@ The June 2026 research found nearly every piece exists off the shelf: the Blende
 - **Staged, not simulated** — comic motion is camera + FX + pose, never simulated *contact*. *(Updated 2026-07-03: the held-pose constraint is relaxed — **pose-blend-along-flow** is now in scope as a bounded experiment (interpolate key-poses along the flow direction). Simulated physical contact between figures stays out. Unblocks [[BLUELINE — Motion and Flow]] Edge 3.)*
 - **Animal motion is OUT of scope** *(2026-06-13)* — humanoid only; the one data-starved hard case retired by decision.
 - **Each milestone ships** — M0 previz → M1 animatic → M2 motion comic → M3 flow-field FX → M4 hyperreal impact → M5 sync server. Every rung is a usable tool.
+- **Live performance is the final stage** *(2026-07-09)* — the last rung of the production process, not a separate project. Everything offline is built to survive the crossing into real time (same record, same audio→parameter map, same warm-started render; only the clock source and the model's step-count change). See [[BLUELINE — The Page]].
+- **The flow field is a stack, not one field** *(2026-07-09)* — coherence is single-source-*per-motion*, not one field per panel; multiple fields (wind, wake, impact, ambient) compose like buses. Relaxes [[The Flow Field is the Spine]]'s singular framing.
+- **The page persists through the pipeline** *(2026-07-09)* — the screen is a comic page; panels arrive in musical time, layers breathe inside them. Adopt the comic lexicon: **panel** is the unit, "frame" is reserved for the 1/24s image. See [[BLUELINE — The Page]].
 
 ## Where it stands
 
@@ -147,6 +156,7 @@ in git; the [[BLUELINE — Production Plan]] is the front door as of 2026-07-03.
 
 **Conceptual map + contracts (canonical)**
 - `BLUELINE — Production Pipeline.md` — the established stage/role pipeline (anime backbone · comics skin · feature tissue · music-video clock) + the two seams.
+- `BLUELINE — The Page.md` — **the output aesthetic (locked 2026-07-09)**: screen = comic page, panels in musical time, the comic lexicon, the panel file structure, live as the final stage.
 - `BLUELINE — Motion and Flow.md` — the priority thread: seven motion threads unified + the pose → field → clock coupling.
 - `BLUELINE — Render Backend.md` — the render-AI half (Study/SDXL·pod, Piece/FLUX·serverless) + the canonical runner in `render-backend/`.
 - `BLUELINE — Board Record Schema.md` — the beat-addressed contract every thread reads/writes.
