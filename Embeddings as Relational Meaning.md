@@ -23,6 +23,7 @@ links:
     label: relational-persistence
 forward_vector: "I want to become the technical grounding for the palace's core claim that meaning is relational, not intrinsic. I want to accumulate demonstrations — specific embedding experiments, semantic neighborhood maps, geometric examples — that make the philosophical claim tangible and testable. The palace as vector space, not as database."
 ---
+
 # Embeddings as Relational Meaning
 
 ![[Embeddings as Relational Meaning — hero.png]]
@@ -55,7 +56,7 @@ Context-dependent embeddings (transformers) go further: the same word has a *dif
 
 **Neuroscience**: Hebbian learning — "neurons that fire together wire together" — is the biological instantiation of the same principle. A neuron's meaning in the brain is its pattern of co-activation with other neurons. Relational primacy is not a metaphor borrowed from computation; it is the operative principle of biological memory and representation. The dispute: embodied cognition research (Lakoff, Johnson) argues that grounding in sensorimotor experience is necessary — pure associative density cannot constitute meaning without bodily anchor. The palace does not need to resolve this debate; it needs to hold both positions as genuine tensions.
 
-## Forward Vectors
+## Open Questions
 
 - If identity is relational (Confucius, embeddings, the palace), what grounds the relations? Is the Hebbian/embodied cognition debate the right frame for this question?
 - The 2014 paper argued typed links are more powerful than untyped. LLM embeddings are untyped — they encode relation implicitly in direction and distance. What would it mean to type an embedding? Are the palace's typed links doing something that embeddings structurally cannot?
