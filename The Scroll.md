@@ -51,8 +51,41 @@ pieces as they pile up.
 Named 2026-07-04 with Loudon: *"the continually developed Proof HTML document, the expanding
 artifact, the scroll."*
 
+## Building a live scroll — template & gotchas (2026-07-09)
+
+The base scroll is a static page you append to by hand. When an entry is making media *in a loop*
+(renders piling up while you work), a **live** variant pays off — it refreshes itself so Loudon
+watches the browser instead of waiting for the agent to reveal each image and stall the workflow.
+First built for [[BLUELINE]]'s GenAI Camera — copy `Projects/BLUELINE/proofs/genai-camera/` as the
+working template (driver + manifest + polling scroll + redirect).
+
+**The three-part pattern:**
+1. **A manifest** — `renders.json`, a list of records `{n, ts, prompt, params…, note}`, one per render.
+2. **The maker appends it.** The tool that produces the media (`genai_camera.py`) writes the image
+   *and* appends its record to the manifest (atomic: write `.tmp`, then `os.replace`). The scroll
+   updates itself; the agent never pauses to reveal.
+3. **The scroll polls.** The HTML `fetch`es the manifest every ~3 s and *prepends* new cards — track a
+   `Set` of shown ids so appends don't re-render or lose scroll position. Newest on top.
+
+**Gotchas (each cost a cycle):**
+- **`file://` blocks `fetch`.** A polling scroll MUST be served over HTTP
+  (`python3 -m http.server 8830 --bind 127.0.0.1` in the folder). A static, no-fetch scroll can open
+  as a plain file. The local server dies with the session — restart it; the frames persist, only the
+  live-refresh pauses.
+- **The em-dash in `[Entry] — scroll.html` breaks the URL** (` — ` encodes to `%20%E2%80%94%20`). Drop
+  a one-line `index.html` redirect in the folder so the URL is just `http://host:port/`.
+- **Show the making, not just the result.** For a conditioning pipeline each card ran *inputs →
+  output* (depth · beauty → the gen-AI frame) — the arc reads, instead of a wall of finals.
+- **Keep the media beside the manifest** in a stable proof folder with relative paths, never a temp
+  dir — the scroll references real files.
+
+**Naming (a data point for the open question):** this was a *qualified* sub-scroll
+(`BLUELINE — scroll — genai-camera.html`), not the entry's single `— scroll.html`. A busy entry wanted
+a scroll per *making-thread*, not one per entry — one-scroll-per-entry holds only loosely.
+
 ## Forward Vector
 
-Try the first real scroll on an entry mid-making — BLUELINE or Generative Sample Libraries — and
-let the loose standards tighten only where use demands. Watch whether one scroll per entry holds,
-or whether a busy entry wants several proofs the scroll indexes rather than contains.
+The first real scroll landed 2026-07-09 — [[BLUELINE]]'s GenAI Camera, as the **live** (self-polling)
+variant, template + gotchas above. Early finding: a busy entry wants a scroll per *making-thread*, not
+one per entry. Next: watch whether the live variant becomes the default when media is made in a loop,
+and whether the manifest+poll rig wants to become a tiny reusable helper rather than copied per proof.
