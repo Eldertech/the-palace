@@ -137,6 +137,13 @@ The working wisdom from the build, so the next agent doesn't relearn it.
   rich-first)*. A standalone txt2img figure fills the frame regardless of the pose skeleton's size, and
   any after-the-fact cutout then grows to the giant. Impose scale via the inpaint region **or** the
   img2img init (the figure's own plate is already at the right screen scale).
+- **Figure depth strength is a costume↔form dial** *(sweep 2026-07-09, render_018, `depth_sweep.py`)*.
+  Pose held at 0.9, sweeping figure depth 0.0→0.8: **0.0–0.15** full robes, loose body form (max
+  costume); **~0.30–0.45 the sweet spot** — real 3D body form *and* the costume still drapes over it;
+  **0.60+** depth locks the nude, costume retreats to the periphery (cape / crown / train). Default
+  figures to **depth ~0.30 + pose** for clothed-with-form; drop to 0.0 for maximal flow, raise past 0.6
+  only for deliberately revealing. This refines the binary "depth locks / pose frees" into a continuous
+  control — and even the extremes are expressive, so it's a creative dial, not just a correctness knob.
 
 ## Forward Vectors
 
