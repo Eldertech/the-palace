@@ -20,7 +20,7 @@ Multi-camera: --multi reads layers.json = [{name, prompt, pose?}] (ordered BACK-
 Invoke with the ComfyUI venv python (has PIL/numpy):
   _tools/ComfyUI/venv/bin/python3 genai_camera.py --mode live --prompt "..." [--fast] [--pose] [--multi]
 """
-import os, sys, json, time, uuid, argparse, datetime, shutil, urllib.request, urllib.parse
+import os, sys, io, json, time, uuid, argparse, datetime, shutil, urllib.request, urllib.parse
 from PIL import Image, ImageDraw, ImageFilter
 
 HOST = os.environ.get("COMFY_HOST", "127.0.0.1:8188")
@@ -169,6 +169,58 @@ def draw_pose_if_any():
         return draw_openpose(kj, os.path.join(DIR, "openpose.png"))
     return None
 
+# ---------------------------------------------------------------- inpaint (multi-cam default)
+def _save_tmp(im, name):
+    p = os.path.join(DIR, name); im.save(p); return p
+
+def _to_pil(b):
+    return Image.open(io.BytesIO(b)).convert("RGB")
+
+def inpaint_graph(base_fn, mask_fn, pose_fn, prompt, seed, steps):
+    """Paint a pose-conditioned figure INTO a base image within the masked region (blends, no hard edge)."""
+    g = {
+      "ckpt": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": CKPT}},
+      "lora": {"class_type": "LoraLoader", "inputs": {"model": ["ckpt", 0], "clip": ["ckpt", 1],
+               "lora_name": LORA, "strength_model": 1.0, "strength_clip": 1.0}},
+      "pos":  {"class_type": "CLIPTextEncode", "inputs": {"text": f"{prompt}, {PENFLOW}", "clip": ["lora", 1]}},
+      "neg":  {"class_type": "CLIPTextEncode", "inputs": {"text": NEG, "clip": ["lora", 1]}},
+      "init": {"class_type": "LoadImage", "inputs": {"image": base_fn}},
+      "mask": {"class_type": "LoadImageMask", "inputs": {"image": mask_fn, "channel": "red"}},
+      "enc":  {"class_type": "VAEEncodeForInpaint", "inputs": {"pixels": ["init", 0], "vae": ["ckpt", 2],
+               "mask": ["mask", 0], "grow_mask_by": 16}},
+      "cnl":  {"class_type": "ControlNetLoader", "inputs": {"control_net_name": CN["pose"]}},
+      "pim":  {"class_type": "LoadImage", "inputs": {"image": pose_fn}},
+      "ap":   {"class_type": "ControlNetApplyAdvanced", "inputs": {"positive": ["pos", 0], "negative": ["neg", 0],
+               "control_net": ["cnl", 0], "image": ["pim", 0], "strength": 0.65, "start_percent": 0.0,
+               "end_percent": 0.8, "vae": ["ckpt", 2]}},
+      "samp": {"class_type": "KSampler", "inputs": {"model": ["lora", 0], "positive": ["ap", 0],
+               "negative": ["ap", 1], "latent_image": ["enc", 0], "seed": seed, "steps": steps,
+               "cfg": 1.8, "sampler_name": "euler", "scheduler": "sgm_uniform", "denoise": 1.0}},
+      "dec":  {"class_type": "VAEDecode", "inputs": {"samples": ["samp", 0], "vae": ["ckpt", 2]}},
+      "save": {"class_type": "SaveImage", "inputs": {"filename_prefix": "genai_inp", "images": ["dec", 0]}},
+    }
+    return g
+
+def inpaint_into(base_im, region_im, pose_fn, prompt, seed, fast):
+    steps = 6 if fast else 8
+    bfn = upload(_save_tmp(base_im, "_mb_base.png"))
+    mfn = upload(_save_tmp(region_im.convert("RGB"), "_mb_mask.png"))
+    pfn = upload(pose_fn)
+    b, dt = run_graph(inpaint_graph(bfn, mfn, pfn, prompt, seed, steps))
+    return _to_pil(b), dt
+
+def region_from_beauty(beauty_path, dilate):
+    im = Image.open(beauty_path)
+    a = im.split()[-1] if im.mode == "RGBA" else Image.new("L", im.size, 255)
+    return a.filter(ImageFilter.MaxFilter(int(dilate) | 1)).convert("RGB")
+
+def layer_pose(nm):
+    """Ensure openpose_<nm>.png exists (draw from keypoints_<nm>.json if needed); return path or None."""
+    op = os.path.join(DIR, f"openpose_{nm}.png"); kp = os.path.join(DIR, f"keypoints_{nm}.json")
+    if not os.path.exists(op) and os.path.exists(kp):
+        draw_openpose(kp, op)
+    return op if os.path.exists(op) else None
+
 # ---------------------------------------------------------------- modes
 def next_n():
     if os.path.exists(MANI):
@@ -209,28 +261,33 @@ def main():
     a = ap.parse_args()
 
     if a.multi:
+        # Default multi-cam: the FIRST layer is the base (generated); each later layer is INPAINTED
+        # into it (pose-conditioned), so figures are placed/scaled by their region and blend with no
+        # hard edge (shootout winner). A layer with "composite": true falls back to legacy alpha-over.
         layers = json.load(open(os.path.join(DIR, "layers.json")))   # back -> front
         base = None; dt_total = 0.0
         for ly in layers:
             nm = ly["name"]
             beauty = os.path.join(DIR, f"beauty_{nm}.png")
             depth  = os.path.join(DIR, f"depth_{nm}.png")
-            pose   = os.path.join(DIR, f"openpose_{nm}.png") if ly.get("pose") else None
-            im, dt = generate(beauty, depth, pose, ly["prompt"], ly.get("denoise", a.denoise),
-                              a.seed, a.fast, ly.get("cn"))
-            dt_total += dt
-            if base is None:
+            pose   = layer_pose(nm) if ly.get("pose") else None
+            if base is None:                                     # base layer (env) — generate
+                im, dt = generate(beauty, depth, pose, ly["prompt"], ly.get("denoise", a.denoise),
+                                  a.seed, a.fast, ly.get("cn"))
                 base = im.convert("RGB")
-            else:
-                bimg = Image.open(beauty)
-                mask = bimg.split()[-1] if bimg.mode == "RGBA" else None
-                if mask is not None:
-                    # dilate the nude-silhouette mask so pose-grown clothing isn't clipped
-                    mask = mask.filter(ImageFilter.MaxFilter(ly.get("dilate", 25) | 1))
-                base = Image.composite(im.convert("RGB"), base, mask) if mask else im.convert("RGB")
+            elif ly.get("composite"):                            # legacy alpha-over
+                im, dt = generate(beauty, depth, pose, ly["prompt"], ly.get("denoise", a.denoise),
+                                  a.seed, a.fast, ly.get("cn"))
+                mask = region_from_beauty(beauty, ly.get("dilate", 25)).convert("L")
+                base = Image.composite(im.convert("RGB"), base, mask)
+            else:                                                # DEFAULT — inpaint the figure into base
+                region = region_from_beauty(beauty, ly.get("dilate", 81))
+                base, dt = inpaint_into(base, region, pose, ly["prompt"], a.seed, a.fast)
+                base = base.convert("RGB")
+            dt_total += dt
         meta = {"prompt": " + ".join(l["prompt"][:24] for l in layers), "denoise": a.denoise,
                 "seed": a.seed, "dt": round(dt_total, 1),
-                "note": a.note or f"multi-cam composite ({len(layers)} layers)"}
+                "note": a.note or f"multi-cam inpaint ({len(layers)} layers)"}
         n = emit(base, a.mode, meta)
         print(f"OK multi {dt_total:.1f}s{'' if n is None else f' -> render_{n:03d}'}")
         return

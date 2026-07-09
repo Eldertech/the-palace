@@ -79,8 +79,8 @@ _BODY = {1:"ORG-neck_01", 2:"ORG-upperarm_r",3:"ORG-lowerarm_r",4:"ORG-hand_r",
          5:"ORG-upperarm_l",6:"ORG-lowerarm_l",7:"ORG-hand_l",
          8:"ORG-thigh_r",9:"ORG-calf_r",10:"ORG-foot_r",
          11:"ORG-thigh_l",12:"ORG-calf_l",13:"ORG-foot_l"}
-def emit_keypoints(res):
-    sc = bpy.context.scene; cam = sc.camera; arm = bpy.data.objects.get("FigureRig")
+def emit_keypoints(res, armname="FigureRig", out="keypoints.json"):
+    sc = bpy.context.scene; cam = sc.camera; arm = bpy.data.objects.get(armname)
     if not (cam and arm): return False
     mw = arm.matrix_world; W, H = res; world = [None]*18
     for idx, bn in _BODY.items():
@@ -101,7 +101,7 @@ def emit_keypoints(res):
         co = world_to_camera_view(sc, cam, wp)
         vis = 1 if (co.z > 0 and 0 <= co.x <= 1 and 0 <= co.y <= 1) else 0
         kps.append([round(co.x*W,1), round((1-co.y)*H,1), vis])
-    json.dump({"res":[W,H], "keypoints":kps}, open(os.path.join(PROOF,"keypoints.json"),"w"))
+    json.dump({"res":[W,H], "keypoints":kps}, open(os.path.join(PROOF, out),"w"))
     return True
 
 # ---------------- minimal environment (for multi-cam) ----------------
@@ -150,16 +150,20 @@ class GENAI_OT_multi(bpy.types.Operator):
         sc = context.scene
         if not sc.camera: self.report({'ERROR'}, "No active camera"); return {'CANCELLED'}
         ensure_env(); res = _res(sc)
-        render_plates(res, "GenAI_Env", False, "env")
-        render_plates(res, "GenAI_Figure", True, "figure")
-        json.dump([{"name":"env","prompt":sc.genai_env_prompt},
-                   {"name":"figure","prompt":sc.genai_prompt}],
-                  open(os.path.join(PROOF,"layers.json"),"w"))
+        render_plates(res, "GenAI_Env", False, "env")           # base
+        render_plates(res, "GenAI_Figure", True, "figure")      # transparent -> inpaint region
+        emit_keypoints(res, "FigureRig", "keypoints_figure.json")
+        op = os.path.join(PROOF, "openpose_figure.png")         # force redraw from fresh keypoints
+        if os.path.exists(op): os.remove(op)
+        # env = generated base (depth+canny); figure = inpainted in (pose), the shootout winner
+        json.dump([{"name": "env", "prompt": sc.genai_env_prompt, "cn": ["depth", "canny"]},
+                   {"name": "figure", "prompt": sc.genai_prompt, "pose": True, "dilate": 81}],
+                  open(os.path.join(PROOF, "layers.json"), "w"))
         args = [VENV, DRIVER, "--mode","live", "--multi",
                 "--denoise", f"{sc.genai_denoise:.2f}", "--seed", str(sc.genai_seed)]
         if sc.genai_fast: args.append("--fast")
         subprocess.Popen(args)
-        self.report({'INFO'}, "Multi-cam sent — watch live.html"); return {'FINISHED'}
+        self.report({'INFO'}, "Multi-cam (inpaint) sent — watch live.html"); return {'FINISHED'}
 
 class GENAI_PT_panel(bpy.types.Panel):
     bl_label = "GenAI Camera"; bl_idname = "GENAI_PT_panel"
