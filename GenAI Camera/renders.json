@@ -151,5 +151,83 @@
   "seed": 21,
   "dt": 143.9,
   "note": "left column now shows EVERY stream sent to ComfyUI: env beauty + env depth + each figure's OpenPose skeleton"
+ },
+ {
+  "n": 16,
+  "ts": "2026-07-09 15:45",
+  "streams": [
+   {
+    "label": "env beauty",
+    "f": "render_016_env_beauty.png"
+   },
+   {
+    "label": "env depth",
+    "f": "render_016_env_depth.png"
+   },
+   {
+    "label": "sorceress pose",
+    "f": "render_016_sorceress_pose.png"
+   },
+   {
+    "label": "sorceress sharp-\u03b1",
+    "f": "render_016_sorceress_sharp-\u03b1.png"
+   },
+   {
+    "label": "barbarian pose",
+    "f": "render_016_barbarian_pose.png"
+   },
+   {
+    "label": "barbarian sharp-\u03b1",
+    "f": "render_016_barbarian_sharp-\u03b1.png"
+   },
+   {
+    "label": "rich composite (pre-stylize)",
+    "f": "render_016_rich_composite_(pre-stylize).png"
+   }
+  ],
+  "prompt": "rich-first / stylize-last",
+  "denoise": 0.8,
+  "seed": 909,
+  "dt": 49.8,
+  "note": "RICH-FIRST: render rich -> GrabCut-seeded-by-silhouette alpha cutout -> composite -> stylize last (adopted from BLUELINE rich_pipeline)"
+ },
+ {
+  "n": 17,
+  "ts": "2026-07-09 15:51",
+  "streams": [
+   {
+    "label": "env beauty",
+    "f": "render_017_env_beauty.png"
+   },
+   {
+    "label": "env depth",
+    "f": "render_017_env_depth.png"
+   },
+   {
+    "label": "sorceress pose",
+    "f": "render_017_sorceress_pose.png"
+   },
+   {
+    "label": "sorceress sharp-\u03b1",
+    "f": "render_017_sorceress_sharp-\u03b1.png"
+   },
+   {
+    "label": "barbarian pose",
+    "f": "render_017_barbarian_pose.png"
+   },
+   {
+    "label": "barbarian sharp-\u03b1",
+    "f": "render_017_barbarian_sharp-\u03b1.png"
+   },
+   {
+    "label": "rich composite (pre-stylize)",
+    "f": "render_017_rich_composite_(pre-stylize).png"
+   }
+  ],
+  "prompt": "rich-first / stylize-last",
+  "denoise": 0.8,
+  "seed": 909,
+  "dt": 85.0,
+  "note": "RICH-FIRST: render rich -> GrabCut-seeded-by-silhouette alpha cutout -> composite -> stylize last (adopted from BLUELINE rich_pipeline)"
  }
 ]
