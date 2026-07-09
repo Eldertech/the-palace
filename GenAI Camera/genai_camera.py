@@ -135,18 +135,28 @@ def run_graph(g):
         time.sleep(0.4)
 
 # ---------------------------------------------------------------- generation
-def cn_set(depth_fn, pose_fn, fast):
-    cns = [{"type": "depth", "image_fn": upload(depth_fn), "strength": 0.55, "end": 0.85}]
-    if not fast:
-        cns.append({"type": "canny", "image_fn": None, "strength": 0.40, "end": 0.80})
-        if pose_fn and os.path.exists(pose_fn):
-            cns.append({"type": "pose", "image_fn": upload(pose_fn), "strength": 0.55, "end": 0.80})
-    return cns
+def cns_from(types, depth_fn, pose_fn):
+    strengths = {"depth": (0.55, 0.85), "canny": (0.40, 0.80), "pose": (0.55, 0.80)}
+    out = []
+    for t in types:
+        s, e = strengths[t]
+        if t == "canny":
+            out.append({"type": "canny", "image_fn": None, "strength": s, "end": e})
+        elif t == "depth":
+            out.append({"type": "depth", "image_fn": upload(depth_fn), "strength": s, "end": e})
+        elif t == "pose" and pose_fn and os.path.exists(pose_fn):
+            out.append({"type": "pose", "image_fn": upload(pose_fn), "strength": s, "end": e})
+    return out
 
-def generate(beauty_fn, depth_fn, pose_fn, prompt, denoise, seed, fast):
+def default_cns(pose_fn, fast):
+    if fast: return ["depth"]
+    return (["depth", "canny", "pose"] if (pose_fn and os.path.exists(pose_fn)) else ["depth", "canny"])
+
+def generate(beauty_fn, depth_fn, pose_fn, prompt, denoise, seed, fast, cn_types=None):
     steps = 6 if fast else 8
     init = upload(beauty_fn)
-    g = build_graph(init, prompt, denoise, seed, steps, cn_set(depth_fn, pose_fn, fast))
+    types = cn_types if cn_types is not None else default_cns(pose_fn, fast)
+    g = build_graph(init, prompt, denoise, seed, steps, cns_from(types, depth_fn, pose_fn))
     png_bytes, dt = run_graph(g)
     tmp = os.path.join(DIR, f"_tmp_{uuid.uuid4().hex[:6]}.png")
     open(tmp, "wb").write(png_bytes)
@@ -206,7 +216,8 @@ def main():
             beauty = os.path.join(DIR, f"beauty_{nm}.png")
             depth  = os.path.join(DIR, f"depth_{nm}.png")
             pose   = os.path.join(DIR, f"openpose_{nm}.png") if ly.get("pose") else None
-            im, dt = generate(beauty, depth, pose, ly["prompt"], a.denoise, a.seed, a.fast)
+            im, dt = generate(beauty, depth, pose, ly["prompt"], ly.get("denoise", a.denoise),
+                              a.seed, a.fast, ly.get("cn"))
             dt_total += dt
             if base is None:
                 base = im.convert("RGB")
