@@ -25,6 +25,7 @@ h1{font-family:var(--display);font-weight:400;font-size:38px;letter-spacing:.01e
 .card-top{display:grid;grid-template-columns:150px 26px 1fr;gap:14px;padding:16px;align-items:center}
 @media(max-width:640px){.card-top{grid-template-columns:1fr}}
 .streams{display:flex;flex-direction:column;gap:8px}
+.streams .sent{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1px}
 .streams figure{margin:0}
 .streams img{width:100%;border:1px solid var(--border);border-radius:2px;display:block;background:#000}
 .streams figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg3);margin-top:3px}
@@ -60,15 +61,17 @@ footer{padding:48px 0 0;text-align:center}
 const feed = document.getElementById('feed');
 const shown = new Set();
 function card(r){
+  const p = String(r.n).padStart(3,'0');
+  const streams = (r.streams && r.streams.length) ? r.streams
+      : [{label:'depth', f:`render_${p}_depth.png`}, {label:'beauty', f:`render_${p}_beauty.png`}];
+  const streamsHTML = streams.map(s =>
+      `<figure><img loading="lazy" src="renders/${s.f}"><figcaption>${s.label}</figcaption></figure>`).join('');
   const d = document.createElement('div'); d.className='card';
   d.innerHTML = `
    <div class="card-top">
-     <div class="streams">
-       <figure><img loading="lazy" src="renders/render_${String(r.n).padStart(3,'0')}_depth.png"><figcaption>depth</figcaption></figure>
-       <figure><img loading="lazy" src="renders/render_${String(r.n).padStart(3,'0')}_beauty.png"><figcaption>beauty</figcaption></figure>
-     </div>
+     <div class="streams"><div class="sent">sent → ComfyUI</div>${streamsHTML}</div>
      <div class="arrow">▸</div>
-     <div class="out"><img loading="lazy" src="renders/render_${String(r.n).padStart(3,'0')}.png"></div>
+     <div class="out"><img loading="lazy" src="renders/render_${p}.png"></div>
    </div>
    <div class="meta">
      <span class="n">${String(r.n).padStart(3,'0')}</span>

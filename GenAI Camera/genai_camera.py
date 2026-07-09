@@ -233,16 +233,23 @@ def append_manifest(rec):
     data.append(rec); tmp = MANI + ".tmp"
     json.dump(data, open(tmp, "w"), indent=1); os.replace(tmp, MANI)
 
-def emit(im, mode, meta):
-    """live -> latest.png only.  proof -> renders/ + manifest append (the scroll)."""
+def emit(im, mode, meta, streams=None):
+    """live -> latest.png only.  proof -> renders/ + manifest append (the scroll).
+    streams: list of (label, abs_src_path) — every conditioning image sent to ComfyUI, so the
+    scroll's left column shows the WHOLE input stack (beauty · depth · the multicolored pose plate …)."""
     im.save(os.path.join(DIR, "latest.png"))
     if mode == "proof":
         n = next_n(); base = os.path.join(RDIR, f"render_{n:03d}")
         im.save(base + ".png")
-        for s in ("beauty", "depth"):
-            src = os.path.join(DIR, s + ".png")
-            if os.path.exists(src): shutil.copyfile(src, f"{base}_{s}.png")
-        rec = {"n": n, "ts": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), **meta}
+        if streams is None:
+            streams = [("beauty", os.path.join(DIR, "beauty.png")), ("depth", os.path.join(DIR, "depth.png"))]
+        recs = []
+        for label, src in streams:
+            if os.path.exists(src):
+                dst = f"render_{n:03d}_{label.replace(':','-').replace(' ','_')}.png"
+                shutil.copyfile(src, os.path.join(RDIR, dst))
+                recs.append({"label": label, "f": dst})
+        rec = {"n": n, "ts": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), "streams": recs, **meta}
         append_manifest(rec)
         return n
     return None
@@ -288,7 +295,15 @@ def main():
         meta = {"prompt": " + ".join(l["prompt"][:24] for l in layers), "denoise": a.denoise,
                 "seed": a.seed, "dt": round(dt_total, 1),
                 "note": a.note or f"multi-cam inpaint ({len(layers)} layers)"}
-        n = emit(base, a.mode, meta)
+        streams = []
+        for i, ly in enumerate(layers):
+            nm = ly["name"]
+            if i == 0:
+                streams += [(f"{nm} beauty", os.path.join(DIR, f"beauty_{nm}.png")),
+                            (f"{nm} depth", os.path.join(DIR, f"depth_{nm}.png"))]
+            if ly.get("pose"):
+                streams.append((f"{nm} pose", os.path.join(DIR, f"openpose_{nm}.png")))
+        n = emit(base, a.mode, meta, streams)
         print(f"OK multi {dt_total:.1f}s{'' if n is None else f' -> render_{n:03d}'}")
         return
 
@@ -297,7 +312,9 @@ def main():
                       pose_fn, a.prompt, a.denoise, a.seed, a.fast)
     meta = {"prompt": a.prompt, "denoise": a.denoise, "seed": a.seed, "dt": round(dt, 1),
             "note": a.note or ("fast preview" if a.fast else ("depth+canny+pose" if a.pose else "depth+canny"))}
-    n = emit(im, a.mode, meta)
+    streams = [("beauty", os.path.join(DIR, "beauty.png")), ("depth", os.path.join(DIR, "depth.png"))]
+    if pose_fn: streams.append(("pose", pose_fn))
+    n = emit(im, a.mode, meta, streams)
     print(f"OK {dt:.1f}s{'' if n is None else f' -> render_{n:03d}'}  | {a.prompt[:46]}")
 
 if __name__ == "__main__":
