@@ -124,5 +124,32 @@
   "seed": 21,
   "dt": 136.9,
   "note": "REFACTOR TEST: inpaint is now the driver --multi default (env base -> figures inpainted in)"
+ },
+ {
+  "n": 15,
+  "ts": "2026-07-09 15:31",
+  "streams": [
+   {
+    "label": "env beauty",
+    "f": "render_015_env_beauty.png"
+   },
+   {
+    "label": "env depth",
+    "f": "render_015_env_depth.png"
+   },
+   {
+    "label": "sorceress pose",
+    "f": "render_015_sorceress_pose.png"
+   },
+   {
+    "label": "barbarian pose",
+    "f": "render_015_barbarian_pose.png"
+   }
+  ],
+  "prompt": "a misty ruined battlefie + an ethereal ice sorceres + a hulking scarred barbar",
+  "denoise": 0.9,
+  "seed": 21,
+  "dt": 143.9,
+  "note": "left column now shows EVERY stream sent to ComfyUI: env beauty + env depth + each figure's OpenPose skeleton"
  }
 ]
