@@ -1,0 +1,33 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>GenAI Camera — live</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--bg:#0a0a0f;--fg:#e8e8f0;--fg3:#8a8aa0;--accent:#e8b84a;--ok:#00ff66}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:'JetBrains Mono',monospace;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.bar{position:fixed;top:0;left:0;right:0;display:flex;gap:14px;align-items:center;padding:8px 14px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg3);
+  background:linear-gradient(180deg,var(--bg),rgba(10,10,15,0))}
+.live{display:inline-flex;gap:7px;align-items:center;color:var(--ok)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);animation:p 1.4s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+.wrap{max-width:96vw;max-height:92vh;display:flex;align-items:center;justify-content:center}
+img{max-width:96vw;max-height:88vh;object-fit:contain;border:1px solid #2a2a3a;background:#000;
+  box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.title{font-family:'Anton',sans-serif;letter-spacing:.06em;color:var(--fg);font-size:13px}
+</style>
+<div class="bar">
+  <span class="title">GENAI CAMERA</span>
+  <span class="live"><span class="dot"></span>live</span>
+  <span id="ts"></span>
+  <span style="margin-left:auto;color:var(--accent)">latest only · Save in Blender to keep</span>
+</div>
+<div class="wrap"><img id="frame" alt="waiting for the first frame…"></div>
+<script>
+const img = document.getElementById('frame'), ts = document.getElementById('ts');
+function tick(){ img.src = 'latest.png?t=' + Date.now(); }
+img.addEventListener('load', ()=>{ ts.textContent = new Date().toLocaleTimeString(); });
+tick(); setInterval(tick, 1500);
+</script>
