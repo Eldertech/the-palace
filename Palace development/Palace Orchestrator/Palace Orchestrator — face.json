@@ -1,0 +1,12 @@
+{
+  "title": "Palace Orchestrator",
+  "idiom": "Constructivist printmaking",
+  "hero_prompt": "Wide ~12:5 banner in Constructivist printmaking idiom \u2014 bold hand-cut linocut style, limited palette of deep red, black, and cream. One dominant scene: a large open book or page at center-left rising up and transforming into an angular geometric human-abstract figure mid-stride, arms raised in dispatch, radiating hard-edged rays and gear-like cogs outward across the composition. Diagonal compositional axes, strong geometric shapes, overlapping angular planes, mechanical rhythm. Hand-printed texture, visible carving marks, slight ink imperfection. Purely pictorial, no letters, no numerals, no words, no labels anywhere. One dominant metaphor, legible when darkened and desaturated as a backdrop.",
+  "icon_prompt": "Bold high-contrast Constructivist linocut emblem, square, survives at 24\u201348px. A single stark silhouette: an angular geometric figure emerging from a rectangular page, one arm thrust forward in a dispatch gesture, radiating three thick hard-edged rays. Deep red and black on cream, heavy shapes only, no fine linework, no gradients, strong silhouette. Purely pictorial, no letters, no numerals, no words, no labels.",
+  "seeds": {
+    "hero": 730423,
+    "icon": 496595
+  },
+  "rendered_at": "2026-07-09T01:28:02Z",
+  "history": []
+}

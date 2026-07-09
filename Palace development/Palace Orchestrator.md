@@ -33,6 +33,8 @@ links:
 
 # Palace Orchestrator
 
+![[Palace Orchestrator — hero.png]]
+
 The palace's **executor** — the engine that turns a page into a running agent. Where the
 [[Concierge]] is the front door you *address*, the orchestrator is the muscle that *dispatches*:
 it reads a manifest, wakes the home page as a Claude Code subagent (Path 2 — no Anthropic API
