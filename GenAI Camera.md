@@ -137,6 +137,14 @@ The working wisdom from the build, so the next agent doesn't relearn it.
   rich-first)*. A standalone txt2img figure fills the frame regardless of the pose skeleton's size, and
   any after-the-fact cutout then grows to the giant. Impose scale via the inpaint region **or** the
   img2img init (the figure's own plate is already at the right screen scale).
+- **The OpenPose plate MUST use the real `controlnet_aux` draw, not a hand-rolled skeleton**
+  *(caught 2026-07-09 — the sweep figures weren't holding the pose)*. The xinsir openpose ControlNet is
+  trained on **thick, tapered, filled limbs** (`draw_bodypose`); a **thin stick figure reads
+  out-of-distribution and the pose barely takes.** Functional test (`pose_check.py`, pose-only txt2img
+  @1.0): thin plate → arms drift down; thick plate → arms spread to match the skeleton. `draw_openpose`
+  now imports the real draw (BLUELINE's `draw_openpose.py` did this all along — a search-first miss).
+  Corollary: earlier "pose frees clothing" results were partly the img2img init + high denoise carrying
+  the stance while the thin pose contributed little — worth re-verifying now that pose actually bites.
 - **Pose and depth ARE aligned; pose just doesn't bound SIZE** *(verified by overlay 2026-07-09)*.
   Both plates come from the same camera projection, so the skeleton sits inside the depth silhouette at
   the same scale — no misalignment. But a pose skeleton constrains joint *locations*, not body *mass*:
