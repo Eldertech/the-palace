@@ -125,6 +125,13 @@ The working wisdom from the build, so the next agent doesn't relearn it.
 - *Multi-figure scene, baked-in (one-shot):* generate the env `["depth","canny"]`, then **inpaint**
   each figure (pose) into its region over the env — placement, scale, costume, blending in one step.
   `shootout.py` is the reference. Best when you want a single finished frame.
+- **Alpha cutout — GrabCut is body-clean but bleeds a busy background** *(`alpha_check.py`, render_023:
+  figure on a transparency checker + edge zoom)*. GrabCut-seeded-by-silhouette gives a solid body
+  cutout, but (a) a **dark/busy generated background near the head gets included** (it can't separate
+  dark-bg from dark-hood/hair), and (b) **flared costume beyond the body silhouette gets clipped**. Two
+  fixes: render the rich figure on a **plain flat light background** (rich_pipeline's "plain ground"
+  plate) so separation is trivial; and/or use **rembg/matting** — now viable because crop-first removed
+  the scale problem that sank rembg in the shootout. Cleaner edges, esp. hair/wisps.
 - *Multi-figure scene, reusable LAYERS (accurate alpha):* **rich-first / stylize-last** (`rich_first.py`,
   adopted from BLUELINE `new-story/rich_pipeline.py` + `silhouette.py`). Render each figure **rich**
   (shaded, *not* pen-flow) via img2img from its plate + pose; **GrabCut seeded by the skeleton

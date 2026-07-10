@@ -350,5 +350,24 @@
   "seed": 21,
   "dt": 0,
   "note": "barbarian: figure DEPTH 0.0->0.8 (pose held 0.9). Top row = the conditioning sent in (beauty init \u00b7 pose \u00b7 depth). Does bulky fur/armor find the same ~0.3 sweet spot as robes?"
+ },
+ {
+  "n": 23,
+  "ts": "2026-07-09 22:59",
+  "streams": [
+   {
+    "label": "beauty",
+    "f": "render_023_beauty.png"
+   },
+   {
+    "label": "pose",
+    "f": "render_023_pose.png"
+   }
+  ],
+  "prompt": "alpha-mask check \u00b7 sorceress",
+  "denoise": 0.72,
+  "seed": 21,
+  "dt": 0,
+  "note": "sorceress: how clean is the GrabCut alpha cutout? rich render -> GrabCut-seeded-by-silhouette -> composited on a transparency checkerboard, with an edge zoom. Judge the fringing / clipped wisps."
  }
 ]
