@@ -7,7 +7,7 @@
   --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
   --display:'Anton',sans-serif; --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
   --bg:#0a0a0f; --bg1:#12121a; --bg2:#1a1a28; --border:#4a4a5e; --border-soft:rgba(255,255,255,.06);
-  --fg1:#e8e8f0; --fg2:#c8c8d8; --fg3:#8a8aa0; --accent:#e8b84a; --ok:#00ff66;
+  --fg1:#e8e8f0; --fg2:#c8c8d8; --fg3:#8a8aa0; --accent:#e8b84a; --ok:#00ff66; --warn:#ff9b4a;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--fg1);font-family:var(--sans);font-weight:300}
@@ -38,6 +38,8 @@ h1{font-family:var(--display);font-weight:400;font-size:38px;letter-spacing:.01e
 .params{font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.03em}
 .params b{color:var(--fg2);font-weight:500}
 .note{font-family:var(--sans);font-size:13px;color:var(--fg3);flex-basis:100%;font-style:italic}
+.caveat{font-family:var(--sans);font-size:12.5px;color:var(--warn);flex-basis:100%;border-left:2px solid var(--warn);padding-left:9px;margin-top:2px}
+.caveat b{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--warn)}
 .empty{font-family:var(--serif);font-size:18px;color:var(--fg3);padding:60px 0;text-align:center}
 footer{padding:48px 0 0;text-align:center}
 .wm{font-family:var(--display);font-size:22px;letter-spacing:.04em}
@@ -78,6 +80,7 @@ function card(r){
      <span class="prompt">${r.prompt||''}</span>
      <span class="params">denoise <b>${r.denoise}</b> · seed <b>${r.seed}</b> · <b>${r.dt}s</b> · ${r.ts||''}</span>
      ${r.note?`<span class="note">${r.note}</span>`:''}
+     ${r.caveat?`<span class="caveat"><b>CAVEAT · </b>${r.caveat}</span>`:''}
    </div>`;
   return d;
 }
