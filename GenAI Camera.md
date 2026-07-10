@@ -137,6 +137,13 @@ The working wisdom from the build, so the next agent doesn't relearn it.
   rich-first)*. A standalone txt2img figure fills the frame regardless of the pose skeleton's size, and
   any after-the-fact cutout then grows to the giant. Impose scale via the inpaint region **or** the
   img2img init (the figure's own plate is already at the right screen scale).
+- **Pose and depth ARE aligned; pose just doesn't bound SIZE** *(verified by overlay 2026-07-09)*.
+  Both plates come from the same camera projection, so the skeleton sits inside the depth silhouette at
+  the same scale — no misalignment. But a pose skeleton constrains joint *locations*, not body *mass*:
+  pose-only lets the figure/robe balloon larger and forward (reads "close"); depth pins it to its exact
+  pixel silhouette (correct scale). So depth also **stabilizes scale**, a second reason for the ~0.3
+  default. *(Also fixed here: the OpenPose face keypoints sat at the crown, not the face — now placed
+  proportional to the head bone in `blender_panel.py`.)*
 - **Figure depth strength is a costume↔form dial** *(sweep 2026-07-09, render_018, `depth_sweep.py`)*.
   Pose held at 0.9, sweeping figure depth 0.0→0.8: **0.0–0.15** full robes, loose body form (max
   costume); **~0.30–0.45 the sweet spot** — real 3D body form *and* the costume still drapes over it;

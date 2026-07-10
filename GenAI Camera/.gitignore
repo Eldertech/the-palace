@@ -5,5 +5,5 @@ depth*.png
 openpose*.png
 keypoints.json
 layers.json
-_tmp_*
+_*
 saved/

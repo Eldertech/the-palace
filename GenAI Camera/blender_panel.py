@@ -88,13 +88,14 @@ def emit_keypoints(res, armname="FigureRig", out="keypoints.json"):
         if pb: world[idx] = mw @ pb.head
     hb = arm.pose.bones.get("ORG-head")
     if hb:
-        mid = (mw @ hb.head + mw @ hb.tail) * 0.5
-        FWD = mathutils.Vector((0,-1,0)); UP = mathutils.Vector((0,0,1)); RIGHT = mathutils.Vector((-1,0,0))
-        world[0]  = mid + FWD*0.09
-        world[14] = mid + FWD*0.07 + UP*0.03 + RIGHT*0.03
-        world[15] = mid + FWD*0.07 + UP*0.03 - RIGHT*0.03
-        world[16] = mid + RIGHT*0.07
-        world[17] = mid - RIGHT*0.07
+        # place face points ON the face (proportional to the head bone), not at the crown.
+        base = mw @ hb.head; top = mw @ hb.tail; hv = top - base; hl = hv.length or 0.18
+        FWD = mathutils.Vector((0,-1,0)); RIGHT = mathutils.Vector((-1,0,0))
+        world[0]  = base + hv*0.45 + FWD*hl*0.55                    # nose (~45% up the head, forward)
+        world[14] = base + hv*0.58 + FWD*hl*0.42 + RIGHT*hl*0.22    # R eye
+        world[15] = base + hv*0.58 + FWD*hl*0.42 - RIGHT*hl*0.22    # L eye
+        world[16] = base + hv*0.52 + RIGHT*hl*0.5                   # R ear
+        world[17] = base + hv*0.52 - RIGHT*hl*0.5                   # L ear
     kps = []
     for wp in world:
         if wp is None: kps.append([0,0,0]); continue
