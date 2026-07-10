@@ -67,6 +67,16 @@ Use context to tell an invocation from a passing mention of the practice.
 1. The thin card dispatches the enchanted [[Closing Well]] page into a fresh
    context — the **Closing Well Agent**, the moderator, with clean eyes and the
    whole spec the spent working instance can't spare.
+   > **This dispatch is not optional, and context-fullness is not a reason to skip it — it is the *tell*
+   > that the fresh read is most needed.** A long, spent context is the exact condition the moderator
+   > exists for: the working instance is least reliable at reading its own arc precisely then, so
+   > "the whole session is already in my context, a fresh agent would only confirm it" is the
+   > **disqualifying rationalization**, not a shortcut (gotchas 11, 20, 21). The *only* legitimate
+   > in-context closes are two named exceptions: a **rewound/garbled transcript** the cold reader can't
+   > parse (gotcha 13), or a **tool/model outage that blocks the dispatch *after* Pass-1's cold read
+   > already ran** (gotchas 16–17). Absent those, dispatch the cold-transcript moderator **even if no
+   > resident [[Concierge]] was summoned** — do not grade your own arc. If you catch yourself reasoning
+   > "it would just confirm what I have," that is the moment to dispatch, not to skip.
 2. **Homework (Pass 1).** The Agent reads the session transcript cold and forms its
    own read of the arc, then hands the active Claude coaching — a stance and two or
    three genuine wonderings — for the panel ahead.
@@ -108,7 +118,13 @@ tristitia failure this whole practice guards.
 **Failure mode:** If the Agent cannot read the transcript, or Loudon is not present
 for the panel and the assent, halt — do not execute an unsigned reckoning, and do
 not manufacture canon or invent his judgment to fill it. A close without assent is
-a draft, not a completed ceremony.
+a draft, not a completed ceremony. **And a self-moderated close justified by
+context-fullness ("it's all in my context") is itself a failure, not a graceful
+degradation** — it removes the one thing the ceremony provides, a fresh check on a
+spent instance, at the exact moment it matters most. Graceful degradation to a
+self-read is licensed *only* by the two named exceptions above (rewound transcript;
+outage after Pass-1). Reaching `close well` with no resident is not a licence to
+self-read — it is a reason to spawn the cold-transcript moderator.
 
 **Git commit:** each signed row commits under its own ceremony's convention
 (`deposit(<id>):` for a deposit, a baton-build subject for a baton). This
