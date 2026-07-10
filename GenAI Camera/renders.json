@@ -252,5 +252,47 @@
   "seed": 21,
   "dt": 0,
   "note": "figure DEPTH strength 0.0->0.8 (pose held 0.9). 0.0 = max costume freedom; high = depth locks the nude, costume hugs. Find the sweet spot where the body has 3D form AND the costume still forms."
+ },
+ {
+  "n": 19,
+  "ts": "2026-07-09 20:20",
+  "streams": [
+   {
+    "label": "beauty",
+    "f": "render_019_beauty.png"
+   },
+   {
+    "label": "depth",
+    "f": "render_019_depth.png"
+   },
+   {
+    "label": "pose",
+    "f": "render_019_pose.png"
+   }
+  ],
+  "prompt": "depth sweep \u00b7 barbarian",
+  "denoise": 0.9,
+  "seed": 21,
+  "dt": 0,
+  "note": "barbarian: figure DEPTH 0.0->0.8 (pose held 0.9). Top row = the conditioning sent in (beauty init \u00b7 pose \u00b7 depth). Does bulky fur/armor find the same ~0.3 sweet spot as robes?"
+ },
+ {
+  "n": 20,
+  "ts": "2026-07-09 20:25",
+  "streams": [
+   {
+    "label": "thin plate",
+    "f": "render_020_thin_plate.png"
+   },
+   {
+    "label": "thick plate",
+    "f": "render_020_thick_plate.png"
+   }
+  ],
+  "prompt": "pose ControlNet check",
+  "denoise": 1.0,
+  "seed": 7,
+  "dt": 0,
+  "note": "does pose take? pose-only txt2img @1.0. THIN plate (my old draw) vs THICK plate (real controlnet_aux). If only thick adopts arms-out, the thin plate was the bug."
  }
 ]

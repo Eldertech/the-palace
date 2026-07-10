@@ -21,6 +21,7 @@ Invoke with the ComfyUI venv python (has PIL/numpy):
   _tools/ComfyUI/venv/bin/python3 genai_camera.py --mode live --prompt "..." [--fast] [--pose] [--multi]
 """
 import os, sys, io, json, time, uuid, argparse, datetime, shutil, urllib.request, urllib.parse
+import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
 HOST = os.environ.get("COMFY_HOST", "127.0.0.1:8188")
@@ -67,18 +68,31 @@ _COLORS = [(255,0,0),(255,85,0),(255,170,0),(255,255,0),(170,255,0),(85,255,0),(
            (0,255,85),(0,255,170),(0,255,255),(0,170,255),(0,85,255),(0,0,255),(85,0,255),
            (170,0,255),(255,0,255),(255,0,170),(255,0,85)]
 
+_CA_SRC = "/Users/loudonstearns/Documents/The Palace/_tools/ComfyUI/custom_nodes/comfyui_controlnet_aux/src"
 def draw_openpose(keypoints_json, out_png):
-    d = json.load(open(keypoints_json))
-    W, H = d["res"]; kp = d["keypoints"]
-    img = Image.new("RGB", (W, H), (0, 0, 0)); dr = ImageDraw.Draw(img)
-    for i, (a, b) in enumerate(_LIMBS):
-        if kp[a][2] and kp[b][2]:
-            dr.line([tuple(kp[a][:2]), tuple(kp[b][:2])], fill=_COLORS[i % 18], width=4)
-    for i, (x, y, v) in enumerate(kp):
-        if v:
-            dr.ellipse([x-4, y-4, x+4, y+4], fill=_COLORS[i])
-    img.save(out_png)
-    return out_png
+    """Draw the OpenPose plate with the REAL controlnet_aux draw_bodypose — thick tapered limbs,
+    pixel-identical to what the openpose ControlNet was trained on. A thin stick figure reads
+    out-of-distribution and the pose barely takes; this is why BLUELINE's draw_openpose.py uses the
+    real draw. Keypoints.json holds PIXEL coords; controlnet_aux wants NORMALIZED, so divide by W/H.
+    Falls back to a thin draw only if the lib can't import."""
+    d = json.load(open(keypoints_json)); W, H = d["res"]; kps = d["keypoints"]
+    try:
+        if _CA_SRC not in sys.path: sys.path.insert(0, _CA_SRC)
+        from custom_controlnet_aux.open_pose.util import draw_bodypose
+        from custom_controlnet_aux.open_pose.body import Keypoint
+        canvas = np.zeros((H, W, 3), dtype=np.uint8)
+        kp = [Keypoint(x/W, y/H) if v else None for (x, y, v) in kps]
+        canvas = draw_bodypose(canvas, kp)
+        Image.fromarray(canvas).save(out_png)
+        return out_png
+    except Exception as e:
+        print("  [draw_openpose] controlnet_aux unavailable, thin fallback:", e)
+        img = Image.new("RGB", (W, H), (0, 0, 0)); dr = ImageDraw.Draw(img)
+        for i, (a, b) in enumerate(_LIMBS):
+            if kps[a][2] and kps[b][2]: dr.line([tuple(kps[a][:2]), tuple(kps[b][:2])], fill=_COLORS[i % 18], width=4)
+        for i, (x, y, v) in enumerate(kps):
+            if v: dr.ellipse([x-4, y-4, x+4, y+4], fill=_COLORS[i])
+        img.save(out_png); return out_png
 
 # ---------------------------------------------------------------- graph
 def build_graph(init_fn, prompt, denoise, seed, steps, cns):
