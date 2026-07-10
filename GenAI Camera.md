@@ -129,11 +129,11 @@ The working wisdom from the build, so the next agent doesn't relearn it.
   first check render_023)*. Three methods on a checker: **GrabCut** bleeds the dark background in (black
   halo at the head) — worst; **rembg (u2net)** is clean on the *default* render with **no prompt change**
   — removes the halo, sharp edges (one quirk: punches a dark interior slit transparent → hole-fill the
-  mask); **green-screen prompt → chroma key** is also clean (ML-free) but the green backdrop **changes
-  the generation** (costume shifted) and can leave green spill. **Default to rembg** (now viable because
-  crop-first fixed the scale problem that sank it in the segment shootout); reserve green-screen for a
-  dependency-free key when you don't mind the backdrop shaping the art. Swap rembg in for GrabCut in
-  `rich_first.py`'s cutout step.
+  mask); **green-screen prompt → chroma key** — ML-free, but its **edges came out poor: green spills
+  and blends into the figure**, needing real cleanup to matte cleanly, and the green backdrop also
+  **changes the generation** (costume shifted) — not worth it over rembg. **Default to rembg** (now viable
+  because crop-first fixed the scale problem that sank it in the segment shootout). Swap rembg in for
+  GrabCut in `rich_first.py`'s cutout step.
 - *Multi-figure scene, reusable LAYERS (accurate alpha):* **rich-first / stylize-last** (`rich_first.py`,
   adopted from BLUELINE `new-story/rich_pipeline.py` + `silhouette.py`). Render each figure **rich**
   (shaded, *not* pen-flow) via img2img from its plate + pose; **GrabCut seeded by the skeleton
