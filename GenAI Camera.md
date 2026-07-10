@@ -144,7 +144,9 @@ The working wisdom from the build, so the next agent doesn't relearn it.
   @1.0): thin plate → arms drift down; thick plate → arms spread to match the skeleton. `draw_openpose`
   now imports the real draw (BLUELINE's `draw_openpose.py` did this all along — a search-first miss).
   Corollary: earlier "pose frees clothing" results were partly the img2img init + high denoise carrying
-  the stance while the thin pose contributed little — worth re-verifying now that pose actually bites.
+  the stance while the thin pose contributed little. **Re-verified** — the clean thick-pose sweeps
+  (render_021/022) hold the arms-out stance across the *entire* depth range, where the thin-pose ones
+  let it drift; so the fix propagated and the pose now genuinely holds the stance.
 - **Pose and depth ARE aligned; pose just doesn't bound SIZE** *(verified by overlay 2026-07-09)*.
   Both plates come from the same camera projection, so the skeleton sits inside the depth silhouette at
   the same scale — no misalignment. But a pose skeleton constrains joint *locations*, not body *mass*:
@@ -152,13 +154,15 @@ The working wisdom from the build, so the next agent doesn't relearn it.
   pixel silhouette (correct scale). So depth also **stabilizes scale**, a second reason for the ~0.3
   default. *(Also fixed here: the OpenPose face keypoints sat at the crown, not the face — now placed
   proportional to the head bone in `blender_panel.py`.)*
-- **Figure depth strength is a costume↔form dial** *(sweep 2026-07-09, render_018, `depth_sweep.py`)*.
-  Pose held at 0.9, sweeping figure depth 0.0→0.8: **0.0–0.15** full robes, loose body form (max
-  costume); **~0.30–0.45 the sweet spot** — real 3D body form *and* the costume still drapes over it;
-  **0.60+** depth locks the nude, costume retreats to the periphery (cape / crown / train). Default
-  figures to **depth ~0.30 + pose** for clothed-with-form; drop to 0.0 for maximal flow, raise past 0.6
-  only for deliberately revealing. This refines the binary "depth locks / pose frees" into a continuous
-  control — and even the extremes are expressive, so it's a creative dial, not just a correctness knob.
+- **Figure depth strength is a costume↔form dial** *(clean sweeps 2026-07-09 on correct conditioning:
+  render_021 sorceress robes, render_022 barbarian fur+armor; `depth_sweep.py`)*. Pose held 0.9, depth
+  0.0→0.8: **0.0–0.15** full garment, loose form; **~0.30–0.45 the sweet spot** — real 3D body form
+  *and* the costume still reads; **0.60+** depth locks the nude, costume retreats to the periphery (cape
+  / crown / loincloth). **The ~0.30 sweet spot generalizes across garment types** — flowing robes *and*
+  bulky fur/armor both find it (fur is body-hugging so it tolerates a hair more depth, but strips to
+  nude by 0.6 same as robes). Default figures to **depth ~0.30 + pose**; 0.0 for maximal flow, past 0.6
+  only for deliberately revealing. An expressive dial, not just a correctness knob. *(The earlier
+  render_018/019 sweeps are superseded — thin pose + framing recomposition; kept on the scroll, labeled.)*
 
 ## Forward Vectors
 

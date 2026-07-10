@@ -304,5 +304,51 @@
   "dt": 0,
   "note": "does pose take? pose-only txt2img @1.0. THIN plate (my old draw) vs THICK plate (real controlnet_aux). If only thick adopts arms-out, the thin plate was the bug.",
   "caveat": "The diagnosis: thin plate (mine) -> arms drift down; thick plate (real controlnet_aux) -> arms match the skeleton. This is why pose was weak before."
+ },
+ {
+  "n": 21,
+  "ts": "2026-07-09 20:40",
+  "streams": [
+   {
+    "label": "beauty",
+    "f": "render_021_beauty.png"
+   },
+   {
+    "label": "depth",
+    "f": "render_021_depth.png"
+   },
+   {
+    "label": "pose",
+    "f": "render_021_pose.png"
+   }
+  ],
+  "prompt": "depth sweep \u00b7 sorceress",
+  "denoise": 0.9,
+  "seed": 21,
+  "dt": 0,
+  "note": "sorceress: figure DEPTH 0.0->0.8 (pose held 0.9). Top row = the conditioning sent in (beauty init \u00b7 pose \u00b7 depth). Does bulky fur/armor find the same ~0.3 sweet spot as robes?"
+ },
+ {
+  "n": 22,
+  "ts": "2026-07-09 20:46",
+  "streams": [
+   {
+    "label": "beauty",
+    "f": "render_022_beauty.png"
+   },
+   {
+    "label": "depth",
+    "f": "render_022_depth.png"
+   },
+   {
+    "label": "pose",
+    "f": "render_022_pose.png"
+   }
+  ],
+  "prompt": "depth sweep \u00b7 barbarian",
+  "denoise": 0.9,
+  "seed": 21,
+  "dt": 0,
+  "note": "barbarian: figure DEPTH 0.0->0.8 (pose held 0.9). Top row = the conditioning sent in (beauty init \u00b7 pose \u00b7 depth). Does bulky fur/armor find the same ~0.3 sweet spot as robes?"
  }
 ]
