@@ -58,6 +58,10 @@ here if it feeds that, or if it is cheap and unblocks something that does.
 
 - [ ] **Donella Meadows** — person-page, persistent ghost across four cycles, referenced from [[Leverage Points Framework]]. Build her as an embodiable citizen per [[Making a Palace Citizen]], not a description — the leverage-points framing is going to do public work.
 
+- [ ] **Deposit the June–July harvest** — five candidates found on 2026-08-25 and written up at [[Harvest — 2026-08-25 — the June-July making]]. The top three travel furthest and are ready to draft: *impose it at generation, don't recover it after*; *rich first, stylize last* (used in five project files with no owning entry); *the model's prior is part of the interface* (a semantically valid but out-of-distribution input fails quietly, and corrupts the experiment built on it). Two more are smaller: the correctness-knob-turned-expressive-dial, and keeping the compromised record labeled — that last one recommends merging into [[Closing Well]] rather than a new entry.
+
+- [ ] **Decide whether `breakthrough` is still a live type** — nine exist, none since June, while July produced [[The Palace Speaks]], [[The Multilinear Self]], [[The Blindspot Is the Surprise Fuel]] and others all typed `concept`. Either the bar rose deliberately, which should be written into [[SCHEMA]] §1, or the type is dead vocabulary in the always-loaded floor. One decision either way.
+
 ## Palace upkeep that is cheap and unblocks something
 
 - [ ] **Finish the flat-file companion migration into bundles** — the steward half is done (19 stewards have bundle-local plans). Still flat: `Jewel — Context.md` and the three ceremony Context companions in `_ops/`. Per [[SCHEMA]] §8 they need only minimal frontmatter after the move. Next action: four `git mv`s and a link sweep.
