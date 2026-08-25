@@ -33,7 +33,7 @@ per permanent cycle (~$0.05-0.15).
 
 ## What v0.1-orchestrator is
 
-A Claude Code skill at `.claude/skills/palace-orchestrator/` that
+A Claude Code skill at `_ops/orchestrator/` that
 dispatches palace pages as Claude Code subagents in two modes —
 **songline** (sequential walk through a named path) and
 **long_duration_background** (one cycle of a permanent steward). The
@@ -179,7 +179,7 @@ end-to-end against a real palace project.
 ## Files added (v0.1)
 
 ```
-.claude/skills/palace-orchestrator/
+_ops/orchestrator/
 ├── SKILL.md                   ← entry point (skill matching)
 ├── songline.md                ← songline mode workflow
 ├── permanent.md               ← long_duration_background mode workflow

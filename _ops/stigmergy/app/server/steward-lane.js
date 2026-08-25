@@ -46,9 +46,9 @@ const FALLBACK_MODEL = 'claude-opus-4-7';
 // The steward-cycle prompt templates are part of the CODEBASE, not the palace
 // data dir. Resolve them from this module's location (palace/_ops/stigmergy/
 // app/server/) so the prompt assembles correctly even when palaceRoot is a temp
-// dir under test. buildCyclePrompt's default (skillRoot = palaceRoot/.claude…)
+// dir under test. buildCyclePrompt's default (skillRoot = palaceRoot/_ops/…)
 // would otherwise miss the templates.
-const SKILL_ROOT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../../.claude/skills/palace-orchestrator');
+const SKILL_ROOT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../../_ops/orchestrator');
 
 // ── pure helpers (exported for unit tests) ──────────────────────────────────
 

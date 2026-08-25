@@ -96,7 +96,7 @@ describe('buildCyclePrompt (integration)', () => {
     mkdirSync(agentDir, { recursive: true });
     mkdirSync(path.join(root, '_ops/swarm/persistent'), { recursive: true });
     // Minimal skill template.
-    const promptsDir = path.join(root, '.claude/skills/palace-orchestrator/prompts');
+    const promptsDir = path.join(root, '_ops/orchestrator/prompts');
     mkdirSync(promptsDir, { recursive: true });
     writeFileSync(path.join(promptsDir, 'steward.md'), 'STEWARD SYSTEM home={{home}} cycle={{cycle_id}} stage={{stage_at_last_activation}}');
     // Steward dir files.

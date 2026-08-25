@@ -23,7 +23,7 @@ merges, no page edits) until live execution is opted into.
 | 2 reconcile | `_ops/stigmergy/orchestrator/src/two-paths-reconcile.js` | `tests/unit/two-paths-reconcile.test.js` (7) |
 | 3 emit | `_ops/stigmergy/orchestrator/src/two-paths-card.js` | `tests/unit/two-paths-card.test.js` (6) |
 | 4 merge | `_ops/stigmergy/orchestrator/src/two-paths-merge.js` | `tests/unit/two-paths-merge.test.js` (7) |
-| skill doc | `.claude/skills/palace-orchestrator/two-paths.md` | — |
+| skill doc | `_ops/orchestrator/two-paths.md` | — |
 
 Suites after build: trickster-auto **91**, orchestrator **158**, app **352** (app
 untouched — Phase 3 consumes the already-merged v0.4 `choice` primitive, so its

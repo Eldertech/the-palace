@@ -91,7 +91,7 @@ different from `state.stewardship.vector_at_last_activation`:
 ```js
 import { loadAndRender } from './_ops/stigmergy/orchestrator/src/prompts.js';
 const prompt = loadAndRender({
-  skillRoot: '.claude/skills/palace-orchestrator',
+  skillRoot: '_ops/orchestrator',
   templateName: 'steward',
   vars: {
     home: manifest.home,

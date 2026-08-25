@@ -104,7 +104,7 @@ export function filterBoardForAgent(sliceLines, { agentId, neighborhood = [], re
  * @param {number} opts.cycleN
  * @param {string} [opts.extraMandate] — this cycle's specific mandate
  * @param {string} [opts.today] — YYYY-MM-DD; defaults to today
- * @param {string} [opts.skillRoot] — defaults to the in-repo skill dir
+ * @param {string} [opts.skillRoot] — defaults to the in-repo runbook dir (_ops/orchestrator)
  * @param {string} [opts.boardPath] — defaults to the persistent board
  * @returns {{ systemPrompt: string, userTurn: string, full: string }}
  */
@@ -115,7 +115,7 @@ export function buildCyclePrompt(opts) {
     cycleN,
     extraMandate = '',
     today = new Date().toISOString().slice(0, 10),
-    skillRoot = join(palaceRoot, '.claude/skills/palace-orchestrator'),
+    skillRoot = join(palaceRoot, '_ops/orchestrator'),
     boardPath = join(palaceRoot, '_ops/swarm/persistent/blackboard.jsonl'),
     // 'headless' (default) — the orchestrated cycle: emit json blocks for the
     // orchestrator to parse/validate/append. 'interactive' — a launched terminal

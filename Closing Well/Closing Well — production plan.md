@@ -46,7 +46,7 @@ Most of the machinery already exists. The Agent is mostly *wiring*, not inventio
 |---|---|
 | baton authoring, board announcement, strict validation | [[Baton Ceremony]] (§ Announcing the Baton on the Board; `_ops/stigmergy/app/server/validator.js`) |
 | canon commit, "the commit is the record" | [[Deposit Ceremony]] |
-| running a page as a subagent (Path 2, no API key), health stub | `.claude/skills/palace-orchestrator/` |
+| running a page as a subagent (Path 2, no API key), health stub | `_ops/orchestrator/` |
 | the append-only board, `handoff_ready`/`handoff_picked_up` | [[STIGMERGY]] |
 | deposits-to-owner, batons-per-worktree, one-write-path | `_ops/worktree/SKILL.md` § Ceremonies in a worktree |
 | surfacing deposit candidates from a session | [[Harvest Ceremony]] |

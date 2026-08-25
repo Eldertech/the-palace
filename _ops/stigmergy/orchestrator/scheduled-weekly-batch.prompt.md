@@ -8,7 +8,7 @@ starts firing on the cron. Until then nothing runs on a timer.
 - **cron:** `0 6 * * 1`  (every Monday 6:00 AM, local time)
 - **where it will live once created:** `/Users/loudonstearns/Documents/Claude/Scheduled/palace-steward-weekly-batch/SKILL.md`
 - **what it does:** opens the palace and runs the batch workflow
-  (`.claude/skills/palace-orchestrator/batch.md`) — i.e. cycles every
+  (`_ops/orchestrator/batch.md`) — i.e. cycles every
   enchanted, due steward once, then stops.
 
 ## How to test it WITHOUT creating the schedule
@@ -42,14 +42,14 @@ You are running the weekly palace steward batch — Stage C of the Project Stewa
 
 GOAL: advance every enchanted, due project-steward by one cycle, leaving any questions on the BBS for Loudon to answer later. This is deliberately thin: a loop over the existing per-steward cycle. Do not invent new structure.
 
-STEPS — follow `.claude/skills/palace-orchestrator/batch.md`, which means:
+STEPS — follow `_ops/orchestrator/batch.md`, which means:
 
 1. Plan (no model dispatch): run
    `node _ops/stigmergy/orchestrator/src/batch-plan.js`
    It prints JSON with `due[]` (stewards to cycle this run), `skipped[]` (with reasons — leave them alone), and `unenchanted[]` (informational only — never act on these).
    If `due[]` is empty, do nothing, report "nothing due," and stop.
 
-2. For EACH steward in `due[]`, follow `.claude/skills/palace-orchestrator/permanent.md` exactly — one cycle, one subagent:
+2. For EACH steward in `due[]`, follow `_ops/orchestrator/permanent.md` exactly — one cycle, one subagent:
    - Validate the manifest and run the register-check via `node _ops/stigmergy/orchestrator/src/cli.js`.
    - Run `check-page <home> <state.last_active>`. If the home page's `forward_vector` changed since last activation, do NOT dispatch that steward — post a request to the TRICKSTER board noting the vector changed, and move on.
    - Render the steward system prompt via `prompts.js` (templateName "steward"), build the user-turn (home-entry body + neighborhood frontmatter + state + history-since-last-CYCLE_COMPLETE + the blackboard slice since `last_read_cursor`), and dispatch the project PAGE as a subagent via the Agent tool, model opus. Instruct the subagent to return JSON BBS messages only (omit the health field) plus a short close note.
@@ -70,6 +70,6 @@ POSTURE for this unattended run:
    renders on the TRICKSTER tab. Do NOT pass `--live` in the unattended run —
    write authority is Loudon's to enable once the shadow proposals match his own
    decisions. The hard rule holds regardless: auditions and irreversible actions
-   always escalate, never auto-grant. See `.claude/skills/palace-orchestrator/trickster-auto.md`.
+   always escalate, never auto-grant. See `_ops/orchestrator/trickster-auto.md`.
 
 REPORT at the end: one short paragraph — which stewards ran, the message ids each posted, the digest's headline counts (pending / escalate / auto-grant-proposed), and any blocking auditions now at the top of the digest for Loudon. Then stop.

@@ -1,7 +1,7 @@
 # Palace Orchestrator — Helpers
 
 Deterministic Node helpers for the **Palace Orchestrator v0.1** skill at
-`.claude/skills/palace-orchestrator/`.
+`_ops/orchestrator/`.
 
 The skill (a Claude Code `SKILL.md` workflow) drives the model dispatch — it
 calls a sub-agent for each cycle. These helpers handle everything that does

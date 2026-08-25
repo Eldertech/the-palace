@@ -23,7 +23,7 @@ import { loadAndRender } from '../../src/prompts.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PALACE_ROOT = resolve(__dirname, '..', '..', '..', '..', '..');
-const SKILL_ROOT = resolve(PALACE_ROOT, '.claude', 'skills', 'palace-orchestrator');
+const SKILL_ROOT = resolve(PALACE_ROOT, '_ops', 'orchestrator');
 const FIXTURE_MANIFEST = resolve(__dirname, '..', 'fixtures', 'manifests', 'permanent-fixtures-test.json');
 
 let tmp;
