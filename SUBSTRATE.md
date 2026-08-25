@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-06
-activation_count: 6
+last_activated: 2026-08
+activation_count: 7
 stage: growing
 confidence: hypothesis
 energy: very high
@@ -115,17 +115,25 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 ## Current State
 
-*Refreshed 2026-06-16 via a full topology scan (Self-Model Update ceremony).*
+*Refreshed 2026-08-25 via a full topology scan (Self-Model Update ceremony). The previous refresh was 2026-06-16; its figures had drifted materially and are corrected below.*
 
-The palace holds **~410 typed entries** (by frontmatter `type`), inside a larger tree of ~710 markdown files — the remainder are bundle files (batons, context, plans, staging, sketches) and untyped artifacts. By location: ~136 root, 195 `Projects/`, 120 `_ops/`, 57 `Enrichment/`, 47 `Palace development/`, 30 `Shop/`, plus `People/`, `Cross-Domain Resonances/`, and per-entry bundles. The `Artifacts/` folder — formerly ~103 files — was dissolved into bundles on 2026-06-16. (Tool installs and virtualenvs are excluded from the count.)
+The palace holds **355 typed entries** (by frontmatter `type`), inside a tree of **812 markdown files** — the remainder are bundle files (batons, context, plans, staging, proofs, sketches) and untyped artifacts. By location: 170 root, 42 `Projects/`, 40 `_ops/`, 32 `Shop/`, 30 `People/`, 27 `Palace development/`, 10 `Cross-Domain Resonances/`, plus per-entry bundles. (Tool installs and virtualenvs are excluded.)
 
-**Type distribution:** 110 concept · 75 meta · 49 project · 35 theme · 27 person · 24 practice · 24 hub · 22 specialist · 11 source · 7 breakthrough · 4 question · 3 maker · 2 spore. *(`theme` and a handful of `proof`/`artifact`/`spec` types are non-canonical — not among [[SCHEMA]]'s ratified types — a flagged drift item for a future pass.)*
+*Correction to the 2026-06-16 figures:* that scan reported ~410 entries in ~710 files. The entry count was inflated — it counted files carrying non-canonical `type:` values (`theme`, `proof`, `spec`, `artifact`) that have since been normalized or demoted to bundle files. The self-model over-reported the organism by about 15% for two months, which is the exact failure this ceremony exists to catch.
 
-**Stages:** 111 mature · 105 growing · 77 sprout · 52 seed · 11 foundational · 4 fruiting · 2 composting · 1 dormant. The centre of mass has moved to `mature`/`growing` — the palace is now mostly developed connective tissue, not seedlings.
+**Type distribution:** 122 concept · 48 meta · 41 project · 39 practice · 30 person · 28 specialist · 21 hub · 9 breakthrough · 6 source · 5 maker · 4 question · 2 spore. Every entry now carries a canonical [[SCHEMA]] type — **the `theme` drift flagged in June is fully resolved**, and that open question is closed.
 
-**Hub nodes** (by inbound typed-link degree): [[FOUR PILLARS]] (155) towers over everything, then [[Kuramoto Coupling]] (71), [[Spinoza Conatus]] (60), [[Hilaritas Generator]] (47), [[2D Torus Wavetable Synthesizer]] (43), [[Pages as Agents]] (40), [[Cooperation Yields Agency]] (39), [[Boundary-Crossing Instruments]] (38), [[BBS Blackboard]] (35), [[SUBSTRATE]] (34), [[Trickster]] (33), [[Hyperdimensional Prism]] (32), [[Frequency-Time Duality]] (30).
+**Stages:** 127 growing · 60 sprout · 54 seed · 54 mature · 11 composting · 6 foundational · 6 fruiting · 4 dormant.
 
-**What the hub list reveals about growth.** In March the hubs were almost purely philosophical (Cooperation, Four Pillars, Spinoza, Hilaritas). Now several of the top hubs are *agent-infrastructure* — [[Pages as Agents]], [[BBS Blackboard]], [[Trickster]], [[The Shop]] — and several are *synthesizer projects* — [[2D Torus Wavetable Synthesizer]], [[Action Potential Oscillator]], [[Boundary-Crossing Instruments]]. The palace has crossed a fourth threshold: from a system that weaves, maintains, and enchants itself to one **operated by a coordinating swarm** — permanent stewards (pages running as agents) coordinating on the [[STIGMERGY]] blackboard, plus a [[The Shop]] sub-system of 22 specialists + 3 makers dispatching real creative tools. Coordination ([[SCHEMA]] §9) is now a first-class layer alongside the entry graph.
+**Topology:** 2,852 typed frontmatter links, averaging 8 per entry, of which **1,692 (59%) carry a resonant `label`** — the second register is in real use, not aspirational. Link types: 1,471 `connects-to` · 268 `mirrors` · 195 `deepens` · 175 `enables` · 163 `couples-with` · 143 `spawned` · 130 `emerged-from` · 75 `exemplifies` · 66 `member-of` · 60 `contradicts`. **Zero orphans. Zero entries with no outbound links.** 37 entries have no inbound link (unsung paths, the Weave's standing work). 26 frontmatter targets dangle across 21 distinct names — nearly all genuine forward-ghosts, which the palace treats as invitations.
+
+**Hub nodes** (by inbound typed-link degree): [[FOUR PILLARS]] (119) still towers, then [[Kuramoto Coupling]] (76), [[Hilaritas Generator]] (72), [[Spinoza Conatus]] (68), [[Cooperation Yields Agency]] (55), [[The Shop]] (50), [[Quality Manifesto]] (46), [[Pages as Agents]] (42), [[Hyperdimensional Prism]] (42), [[Maker]] (41), [[Boundary-Crossing Instruments]] (37), [[Trickster]] (36), [[SUBSTRATE]] (32).
+
+**What the topology reveals about where the palace stands.** The philosophical core held its place at the top through every era — the March hubs are still the March hubs. Around them, two later layers accreted: agent infrastructure ([[Pages as Agents]], [[The Shop]], [[Maker]], [[Trickster]]) and the synthesizer/visual project families. The organism is now mostly developed connective tissue, not seedlings.
+
+One asymmetry is worth naming because it is structural, not cosmetic: **[[Loudon Live]] takes 28 inbound links and emits none.** Its `links:` and `pillars:` fields are empty and its stage is `sprout`. In a graph with zero other zero-outbound entries, the palace's stated public destination is the single node not participating in its own relational logic. It is not neglect — Loudon Live launches September 2026, and much of the last five months of palace work has been preparation for it. But by the palace's own commitment that relations are primary, the entry should point back at what feeds it before the channel goes live.
+
+Eleven entries sit at `stage: composting`. Per §2's composting protocol each is owed a confirm-or-revive decision at the next Weave; that decision is outstanding.
 
 ## Token Economy
 
@@ -135,7 +143,8 @@ The design principle to hold: **ceremony files should stay lean — trigger, pro
 
 ## Open Questions
 
-- ~35 entries carry a non-canonical `type: theme` (plus stray `proof`/`artifact`/`spec`/`recipe` types) not among [[SCHEMA]]'s canonical types — ratify `theme` via a Schema Ceremony, or normalize them to canonical types? (Surfaced by the 2026-06-16 scan.)
+- ~~Non-canonical `type: theme` entries~~ — **resolved.** The 2026-08-25 scan found zero; `proof` and `spec` were ratified as *bundle-file* types in [[SCHEMA]] §8 (2026-07-04) and the rest normalized.
+- Does [[SCHEMA]] belong in the auto-loaded `@import` floor? It is 45% of the floor (~11K of ~24K tokens) and is a reference consulted when creating an entry or changing the type system, not something needed to hold a conversation. Dropping it to Tier 3 — with CLAUDE.md keeping the trigger to read it — would nearly halve every session's opening cost. Open decision, deliberately not made unilaterally.
 - How do we handle versioning? Entries evolve. Should we preserve earlier versions, or let the current state overwrite?
 - How does this wiki interact with Loudon's other Claude Projects (RNBO, Ableton Extensions, etc.)? Is it a meta-project that links TO them, or does it absorb them?
 - What's the minimum ceremony frequency that keeps the network alive without feeling like maintenance?

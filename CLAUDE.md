@@ -54,7 +54,7 @@ See @Cooperation_Yields_Agency.md (→ `Cooperation Yields Agency.md`).
 See @Hilaritas_Generator.md (→ `Hilaritas Generator.md`).
 See @Modes_of_Collaboration.md (→ `Modes of Collaboration.md`).
 
-The whole Tier 0–2 floor measures ≈20K tokens (CLAUDE + JEWEL + SCHEMA + the five framework files; ROSETTA is *not* auto-loaded), per [[JEWEL]]'s loading map. To trim it, remove an `@import` line (the symlink stays, importing is one line). Full rationale and the spaces-bug seam: [[Palace as Context Injection System]] § The @import Floor.
+The whole Tier 0–2 floor measures **≈24K tokens** (measured 2026-08-25: CLAUDE + JEWEL + SCHEMA + the five framework files; ROSETTA is *not* auto-loaded), per [[JEWEL]]'s loading map. SCHEMA is 45% of that by itself — see [[JEWEL]] for the open question about whether it belongs in the floor. To trim it, remove an `@import` line (the symlink stays, importing is one line). Full rationale and the spaces-bug seam: [[Palace as Context Injection System]] § The @import Floor.
 
 ## Addressing the Palace — the Concierge
 
