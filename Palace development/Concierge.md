@@ -256,12 +256,11 @@ return, takes the wheel at the close.**
 
 ## Active Baton
 
-[[Concierge — baton]] — re-batoned 2026-08-25 from the partial close of the original build
-handoff (`concierge-remainder-20260825T224537Z`). **Two of the three moves have landed:** the health
-dial (`_ops/concierge/dial.mjs`, 2026-07-08) and the WEAVE-flagged fold of the companion character +
-moderator into [[Closing Well]] (`bc3731e`, 2026-08-25). What remains: the **live end-to-end
-validation runs** — the V3 "companion takes the wheel" close has exactly one real data point and needs
-many more — — and, until 2026-08-25, the **work-choice vector**, which has now **landed** (the `scout` posture +
-`return-map.mjs`; see § The work-choice vector above). What is left on this baton is the live
-validation: running both the close model and the scout for real, and tuning them from what real runs
-teach.
+[[Concierge — baton]] — re-batoned 2026-08-25 from the partial close of the work-choice handoff
+(`concierge-remainder-20260825T225852Z`). **Three of the four moves have landed:** the health dial
+(`dial.mjs`, 2026-07-08), the fold of the companion character + moderator into [[Closing Well]]
+(`bc3731e`), and the **work-choice vector** — the scout posture + `return-map.mjs` (`30c3b8a`). What
+remains is the one thing building cannot finish: **live validation.** The V3 "companion takes the
+wheel" close has exactly one real data point, and the scout has never chosen work in a real return.
+Both are tuned by use, not by more machinery — the right session to catch this baton is one that was
+going to return or close anyway.
