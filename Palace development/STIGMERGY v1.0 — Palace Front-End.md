@@ -29,7 +29,7 @@ links:
   - target: "[[SCHEMA]]"
     type: connects-to
     label: the-type-system-the-ui-enforces
-  - target: "[[Enrichment Ceremony]]"
+  - target: "[[Enrichment]]"
     type: connects-to
     label: the-actuator-and-card-queue-to-absorb
   - target: "[[Map Build Ceremony]]"
