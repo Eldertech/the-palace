@@ -71,6 +71,7 @@ You address the palace in plain language and it routes to a posture — you neve
 |---|---|---|
 | "find / collect / gather every doc about X" — wants the **material** | gatherer — `prompts/gatherer.md` | a file-cited **index** of pointers |
 | "what does the palace say about X / how does Z work" — wants an **answer** | oracle Q&A — `prompts/oracle-qa.md` | a synthesized **answer** that cites its pointers (may web-verify) |
+| "what should I work on / what's open / I'm back" — wants **one move** | scout — `prompts/scout.md` | a **return map** ending on one recommended move, runners-up in a line each |
 | "tidy / tend the links around what I just touched" | curator — `prompts/curator.md` | reversible fixes done, canon changes **drafted** for your yes |
 | "close this session well" | moderator — the [[Closing Well]] machinery, `close well` | a moderated close; the companion reads the day cold and drafts the reckoning |
 | anything a cheap file-read settles | — | just read the file; don't address |
@@ -154,11 +155,49 @@ to be re-tuned from real runs. The load-bearing rule the card still records so i
 wrong: *never wire the dial to the active Claude's own sense of how full it is* — pipe the objective
 number in.
 
+## The work-choice vector — built 2026-08-25 (`scout.md` + `return-map.mjs`)
+
+The scout is the posture for the question *"what should I work on?"* — and it exists because of a
+measurable cost. When the main window asks that, its instinct is to open every baton and choose among
+them. That burns the window Loudon came back to work in, and it skews the choice toward whichever
+baton happens to read as most urgent — **urgency of prose is not priority of work.** The scout takes
+the survey into its own window and hands back **one recommended move**, runners-up in a line each so
+the parent can overrule it without another dispatch.
+
+It is split deliberately in two, and the split is the design:
+
+- **`return-map.mjs` gathers evidence and refuses to interpret.** One command runs the whole
+  [[Return Ceremony]] query block — last commit and the arc, open/claimed handoffs, anyone blocked on
+  a decision, baton files with no board line, the linters, worktrees, unpushed and uncommitted work —
+  printing each probe *beside the command that produced it*, so every row of a map can cite a command
+  rather than an inference. A probe that cannot run prints `unavailable` with its error; a missing
+  answer stays visible rather than being replaced by a reasonable-sounding one. `--json` for structured
+  output, `--since <date>` when the last session's date is known.
+- **`scout.md` reads that evidence and makes the call.** The record answers; the reader judges. A
+  script that only gathers cannot quietly become an oracle, and a posture that must cite the script
+  cannot quietly reason from the file tree.
+
+**Load-bearing for a ceremony.** The [[Return Ceremony]] (v1.16) names summoning this companion as its
+**first act**, precisely so a returning session does not do the work-choice by hand — the 2026-08-25
+return did it by hand and produced five wrong claims before anyone read the handoff board. This is the
+machinery that ceremony assumes exists. It also closes the ledger's gotcha 20: summoned at the return,
+the resident is warm and resumable by the time the session reaches `close well`. **Summoned at the
+return, takes the wheel at the close.**
+
+The scout may not claim a handoff, touch a baton, or start the work — claiming is the parent's act with
+Loudon in the room. And it may open a baton body only to break a genuine tie between two candidates,
+one file, never the set: committing the very failure it was built to prevent, on the parent's behalf,
+is the one thing that would make it worse than nothing.
+
 ## Scope discipline (what is deliberately not built yet)
 
 - **The dial is built** (2026-07-08, `dial.mjs`) but **not yet live-run** end to end — proven on real
   measured token counts, not yet exercised in an actual heavy close or a long resident session. That
   live validation is the remaining thread.
+- **The scout is built** (2026-08-25) but **not yet run in a real return** — the ranking rules are
+  reasoned from the 2026-08-25 failure, not yet tuned by a live work-choice. Watch whether "an open
+  handoff outranks a fresh idea" holds when the fresh idea is genuinely better, and whether the
+  one-move discipline survives a board with three equally live candidates.
 - **Does not add "keep both modes open" to the formal always-loaded invariant list** (JEWEL /
   CLAUDE's "Never violate these"). That is a Schema-Ceremony-weight act, done *once the pattern has
   earned it* — the production plan's Deferred step. Stated here as a working rule; promoting it is later.
@@ -169,5 +208,6 @@ number in.
   → become the moderator at close), then tune the charter from what the first real run teaches.
 - ~~Build the health dial~~ — **built 2026-07-08** (`dial.mjs`). Next: live-run it and re-tune the
   first-cut thresholds from real long-session data.
+- Run the scout on a real return and tune its ranking rules from what the choice actually needed.
 - Watch that the draft-for-approval bias holds and drafts get genuinely reviewed. If the companion
   drifts toward acting, tighten the charter.
