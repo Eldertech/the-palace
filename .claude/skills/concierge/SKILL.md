@@ -1,6 +1,6 @@
 ---
 name: concierge
-description: Address the palace instead of loading it — spawn a resident companion once, keep its agent ID, and re-address it in plain language across the session; it works in its own context window, carries what it learns forward, and hands back finished products, keeping the main thread clean (offload + continuity). Use when Loudon or a working Claude "addresses the palace" — "concierge, …", "ask the palace …", "spin up the concierge", "find me every palace doc about X", "collect the entries on X and Y" (→ gatherer posture), "what does the palace say about X", "where does the palace stand on Y", "how does ceremony Z work" (→ oracle Q&A posture, may web-verify), or "tidy / tend the links around what I just touched" (→ curator posture — the writing job: reads the whole palace + web to verify, performs reversible mechanical fixes, and drafts canon changes for your yes). Do NOT use to close a session — that is the moderator role at Closing Well, triggered by "close well".
+description: Address the palace instead of loading it — spawn a resident companion once, keep its agent ID, and re-address it in plain language across the session; it works in its own context window, carries what it learns forward, and hands back finished products, keeping the main thread clean (offload + continuity). Use when Loudon or a working Claude "addresses the palace" — "concierge, …", "ask the palace …", "spin up the concierge", "find me every palace doc about X", "collect the entries on X and Y" (→ gatherer posture), "what does the palace say about X", "where does the palace stand on Y", "how does ceremony Z work" (→ oracle Q&A posture, may web-verify), or "what should I work on", "what's open", "I'm back" (→ scout posture — surveys the board and open work and recommends ONE move, so the main window never loads every baton to choose among them), or "tidy / tend the links around what I just touched" (→ curator posture — the writing job: reads the whole palace + web to verify, performs reversible mechanical fixes, and drafts canon changes for your yes). Do NOT use to close a session — that is the moderator role at Closing Well, triggered by "close well".
 ---
 
 # The Concierge (front-desk shim — the address verb)
@@ -44,6 +44,7 @@ If you expect a genuinely large fan-out, tell Loudon the rough cost first (his s
 |---|---|---|
 | "find / collect / gather every doc/link/entry about X" — wants the **material** | **gatherer** (read-only) | `_ops/concierge/prompts/gatherer.md` |
 | "what does the palace say about X / how does Z work" — wants an **answer** | **oracle Q&A** (read-only, may web-verify) | `_ops/concierge/prompts/oracle-qa.md` |
+| "what should I work on / what's open / I'm back" — wants **one move**, not a pile | **scout** (read-only) | `_ops/concierge/prompts/scout.md` |
 | "tidy / tend the links around what I touched" | **curator** (writes) | `_ops/concierge/prompts/curator.md` |
 | "close this session well" | **moderator** (at the close) | not this skill — the `close well` trigger |
 | anything a cheap file-read settles | — | just read the file; don't address |

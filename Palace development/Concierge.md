@@ -107,6 +107,9 @@ The companion wears whichever posture the request needs — the same agent, a di
   Prompt: `_ops/concierge/prompts/gatherer.md`.
 - **oracle (Q&A)** — answer "what does the palace say about X" → a cited answer; may reach the
   **web** to verify a claim you may have gotten wrong. Read-only. Prompt: `oracle-qa.md`.
+- **scout** — survey the board and open work → **one recommended move**, runners-up in a line each.
+  Read-only. Built 2026-08-25 for the [[Return Ceremony]], which summons this companion as its first
+  act. Prompt: `scout.md`; its evidence comes from `_ops/concierge/return-map.mjs`.
 - **curator** — tend the entries a session touched (`do / offer / flag`): reads the *whole* palace
   and the web to verify, performs reversible mechanical fixes, drafts everything with canon
   judgment or far from the work for your yes. Prompt: `curator.md`.
@@ -114,7 +117,7 @@ The companion wears whichever posture the request needs — the same agent, a di
   [[Closing Well]] machinery.
 
 **You address it in plain language** — *"concierge, find me…"*, *"what does the palace say
-about…"*, *"tidy what I just touched"*, *"close well"* — and the `concierge` skill routes to the
+about…"*, *"tidy what I just touched"*, *"what should I work on"*, *"close well"* — and the `concierge` skill routes to the
 posture. You never have to name one.
 
 ## At a close — the companion becomes the moderator
@@ -204,7 +207,7 @@ waits to be addressed.)
 The canon organ is this entry; the machinery is the bundle-style dir `_ops/concierge/`. The
 companion is spawned with its **charter** (`prompts/companion.md` — the character, the resident
 lifecycle, the moderator role at close); each address hands it the relevant **posture** prompt
-(`prompts/gatherer.md`, `oracle-qa.md`, `curator.md`); `README.md` holds the dispatch detail.
+(`prompts/gatherer.md`, `oracle-qa.md`, `scout.md`, `curator.md`); `README.md` holds the dispatch detail.
 The harness-discoverable trigger is a **thin shim** at `.claude/skills/concierge/SKILL.md` that
 points back here — the [[Skills Are Enchantable Pages]] pattern: the page is the organ, the skill
 file is one dispatch surface onto it. The CLAUDE.md floor block recognizes the companion; the
@@ -219,6 +222,18 @@ finish. Mid-session it caught its own concurrency straggler: a foreign, in-fligh
 than folded in silently — using the very straggler-provenance discipline (name it before you
 fold it in) that this same session had just helped write into its own canon above.
 
+**The work-choice vector — 2026-08-25.** The companion learned to answer *"what should I work on?"*
+The cost it removes is specific: loading every open baton into the main window to pick one burns the
+window you came back to work in, and skews the choice toward whichever baton reads as most urgent.
+Urgency of prose is not priority of work. The build is split so that the two halves cannot corrupt
+each other — `return-map.mjs` **gathers evidence and refuses to interpret** (every probe printed beside
+the command that produced it, so every row of a map cites a command instead of an inference; an
+unreachable probe prints `unavailable` rather than being quietly replaced by a plausible answer), and
+the **scout posture judges** what the record hands it. The record answers; the reader decides. This
+makes the [[Return Ceremony]]'s first act real, and — because the resident summoned at the return is
+still warm at the close — turns the two ceremonies into bookends on one organ: **summoned at the
+return, takes the wheel at the close.**
+
 ## Forward Vectors
 
 - Live-run the resident model end to end: spawn a companion at a session's start, curate its
@@ -229,6 +244,10 @@ fold it in) that this same session had just helped write into its own canon abov
   sensor-B characterization; re-tune them from real long-session runs, and re-check the sensor
   semantics periodically (they are inferred black-box). Still to live-run it end to end — build proven
   on real numbers, not yet exercised in an actual heavy close.
+- **Run the scout on a real return** and tune its ranking rules from what the choice actually needed.
+  The rules are reasoned from the 2026-08-25 failure, not yet from a live work-choice — watch whether
+  *an open handoff outranks a fresh idea* holds when the fresh idea is genuinely better, and whether
+  the one-move discipline survives a board with three equally live candidates.
 - Keep the review real. The read/write safety now lives in the companion's *character*, not the
   architecture — watch that the draft-for-approval bias holds and that drafts get genuinely
   reviewed, not rubber-stamped. If it drifts toward acting, tighten the charter.
@@ -242,6 +261,7 @@ handoff (`concierge-remainder-20260825T224537Z`). **Two of the three moves have 
 dial (`_ops/concierge/dial.mjs`, 2026-07-08) and the WEAVE-flagged fold of the companion character +
 moderator into [[Closing Well]] (`bc3731e`, 2026-08-25). What remains: the **live end-to-end
 validation runs** — the V3 "companion takes the wheel" close has exactly one real data point and needs
-many more — and the **work-choice vector**, letting the resident survey open work and recommend one so
-the main window never loads every baton to choose among them. That second thread is now load-bearing
-for the [[Return Ceremony]], which names summoning this companion as its first act.
+many more — — and, until 2026-08-25, the **work-choice vector**, which has now **landed** (the `scout` posture +
+`return-map.mjs`; see § The work-choice vector above). What is left on this baton is the live
+validation: running both the close model and the scout for real, and tuning them from what real runs
+teach.
