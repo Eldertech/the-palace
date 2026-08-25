@@ -45,7 +45,7 @@ Tooling for the write-back lives in this dir: `unsung_apply.py`, `normalize_appl
 - `ca78394` cleanup(deprecation) — Artifacts/ + stale assets/ deletions
 - `e11c889` feat(Swarm Weave) — **FACE CHECK** = worker's 6th task (+ fixed a duplicate
   GRAFFITI block; linked Swarm Weave → Hero and Avatar Maker). Also edited
-  `_ops/swarm/worker-prompt-template.md`.
+  `_ops/swarm/Single-Doc Worker Prompt Template.md`.
 - `5087bcf` deposit(Comic and Cinema — Two Ways of Seeing) — new sprout + repointed 5
   inbound links (renamed from "…as Two Registers" per Loudon: avoid "register" jargon)
 

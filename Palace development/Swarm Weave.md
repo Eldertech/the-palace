@@ -67,7 +67,7 @@ forward_vector: "I am the palace's colony architecture — the why and the shape
 
 ![[Swarm Weave — hero.png]]
 
-> **This entry is the *why* and the *architecture*, not the operational manual.** Running the Weave as a swarm is now the [[Weave Ceremony]]'s default — that card owns the contract (steps, postconditions, the linters), and the executable prompts live in the swarm templates (`_ops/swarm/worker-prompt-template.md`, `coordinator-synthesis-template.md`) beside the deterministic helpers (`build-map-*.py`, `new-entry-catchup.py`, the `lint-*.py` scans, `face-audit.py`). This page carries the *ideas those implement* — the colony model, the coordinator's scaling constraint, the biological frame, and the frontier. When the *how* changes it changes there; read this for the shape, not the syntax.
+> **This entry is the *why* and the *architecture*, not the operational manual.** Running the Weave as a swarm is now the [[Weave Ceremony]]'s default — that card owns the contract (steps, postconditions, the linters), and the executable prompts live in the swarm templates (`_ops/swarm/Single-Doc Worker Prompt Template.md`, `Coordinator Synthesis Template.md`) beside the deterministic helpers (`build-map-*.py`, `new-entry-catchup.py`, the `lint-*.py` scans, `face-audit.py`). This page carries the *ideas those implement* — the colony model, the coordinator's scaling constraint, the biological frame, and the frontier. When the *how* changes it changes there; read this for the shape, not the syntax.
 
 The [[Weave Ceremony]] has a structural ceiling. A single Claude instance reading
 the full palace holds every entry in a shared context window — attention gets
@@ -124,7 +124,7 @@ its work.
 ## Architecture: the shape
 
 *The exact worker prompt, coordinator synthesis steps, and output schema are the
-templates' job (`worker-prompt-template.md`, `coordinator-synthesis-template.md`).
+templates' job (`worker-prompt-template.md`, `Coordinator Synthesis Template.md`).
 What follows is the architecture those encode — the ideas, not the syntax.*
 
 ### The Worker
@@ -161,7 +161,7 @@ auto-resolving, spotting an entry flagged by three workers *not* assigned to it
 the graffiti action queue, the forward-vector batch, and the face-request batch.
 It presents to Loudon in staged order — unsung paths first (near-zero
 deliberation), then graffiti, then vectors, then new introductions. The granular
-step list is in `coordinator-synthesis-template.md`.
+step list is in `Coordinator Synthesis Template.md`.
 
 **Context budget summary:**
 
@@ -243,7 +243,7 @@ community-connection pass (~8, splitting the big communities) + a mirror gem-pas
 pass (~12) ran the first Multi-Lens Weave with ~32 agents over 301 entries — nexus entries
 multiply-read *on purpose*. The tool it needs is built: `_ops/swarm/partition-palace.py` cuts the map
 by a `--lens` parameter (folder · community · mirror · random), and the worker mandate lives in
-`_ops/swarm/multi-lens-worker-template.md`. **First run: 2026-07-06 — idea → practiced.**
+`_ops/swarm/Multi-Lens Worker Prompt Template.md`. **First run: 2026-07-06 — idea → practiced.**
 
 ## The cut and the mandate are one choice
 
