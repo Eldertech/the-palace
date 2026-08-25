@@ -8,7 +8,7 @@
 //   3. Neither present → fields are null; renderer surfaces the dim
 //      "no catchup written" pill and falls back to rationale full-width.
 //
-// See voice rule 6 in .claude/skills/palace-orchestrator/prompts/shared.md
+// See voice rule 6 in _ops/orchestrator/prompts/shared.md
 // and the override map in src/lib/catchup-overrides.js.
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';

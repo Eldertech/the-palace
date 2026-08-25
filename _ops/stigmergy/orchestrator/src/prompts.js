@@ -1,6 +1,6 @@
 // prompts.js — load + render the skill's prompt templates.
 //
-// Templates live at `.claude/skills/palace-orchestrator/prompts/`. They use
+// Templates live at `_ops/orchestrator/prompts/`. They use
 // `{{var}}` placeholders that get filled from manifest values. A template may
 // `{{>shared}}` to include the shared template inline (single-level include).
 
@@ -49,7 +49,7 @@ export function renderTemplate(template, vars, loadInclude) {
  * Load + render a named template from the skill's prompts/ directory.
  *
  * @param {object} opts
- * @param {string} opts.skillRoot — absolute path to .claude/skills/palace-orchestrator/
+ * @param {string} opts.skillRoot — absolute path to _ops/orchestrator/
  * @param {string} opts.templateName — `songline` | `steward` | `shared`
  * @param {object} opts.vars — manifest + extras to substitute
  * @returns {string} rendered prompt

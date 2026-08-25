@@ -102,7 +102,7 @@ helper module imported into a small Node one-liner:
 node --input-type=module -e "
   import('./_ops/stigmergy/orchestrator/src/prompts.js').then(m => {
     const out = m.loadAndRender({
-      skillRoot: '.claude/skills/palace-orchestrator',
+      skillRoot: '_ops/orchestrator',
       templateName: '<songline|steward>',
       vars: <manifest-vars>,
     });

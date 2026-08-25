@@ -9,7 +9,7 @@ import { dirname, resolve } from 'node:path';
 import { loadAndRender, renderTemplate } from '../../src/prompts.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SKILL_ROOT = resolve(__dirname, '..', '..', '..', '..', '..', '.claude', 'skills', 'palace-orchestrator');
+const SKILL_ROOT = resolve(__dirname, '..', '..', '..', '..', '..', '_ops', 'orchestrator');
 
 describe('renderTemplate', () => {
   it('substitutes a single placeholder', () => {
@@ -136,7 +136,7 @@ describe('loadAndRender — steward template', () => {
 });
 
 describe('shared template (the four-clause page-agent voice rule)', () => {
-  it('exists at .claude/skills/palace-orchestrator/prompts/shared.md', () => {
+  it('exists at _ops/orchestrator/prompts/shared.md', () => {
     // Implicit: loadAndRender includes it via {{>shared}} above. Confirm file directly.
     const out = renderTemplate('{{>shared}}', {}, (name) => {
       expect(name).toBe('shared');
