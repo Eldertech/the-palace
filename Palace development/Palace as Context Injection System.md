@@ -1,6 +1,6 @@
 ---
 title: Palace as Context Injection System
-type: breakthrough
+type: meta
 pillars:
   - philosophy
   - tools

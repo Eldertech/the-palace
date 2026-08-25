@@ -67,12 +67,16 @@ describe('validateMessage', () => {
     expect(v._warnings).toContain('unknown-board:XYZ');
   });
 
-  test('accepts every documented type', () => {
+  // The ratified §9 enum set, v1.17. QUERY / PAGE_UPDATE / HEALTH_NOTICE and the
+  // BRANCHES board were design-time proposals the spec explicitly says are "not part
+  // of the wire" — the validators had accepted them anyway for a year, so the gate was
+  // looser than the rule it enforced. None was ever posted; they were removed in v1.17
+  // and RETRACT was ratified in their place.
+  test('accepts every ratified type', () => {
     const types = [
-      'BROADCAST', 'REPLY', 'FLAG', 'PROOF',
+      'BROADCAST', 'REPLY', 'FLAG', 'PROOF', 'RETRACT',
       'RESOURCE_REQUEST', 'RESOURCE_GRANT', 'RESOURCE_DENY',
-      'QUERY', 'SESSION_INIT', 'SESSION_CLOSE',
-      'PAGE_UPDATE', 'HEALTH_NOTICE',
+      'SESSION_INIT', 'SESSION_CLOSE',
     ];
     for (const t of types) {
       const v = validateMessage({ ...SPEC_CONFORMANT, type: t });
@@ -80,8 +84,17 @@ describe('validateMessage', () => {
     }
   });
 
-  test('accepts every documented board', () => {
-    const boards = ['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER', 'BRANCHES'];
+  test('rejects the retired design-time proposals', () => {
+    for (const t of ['QUERY', 'PAGE_UPDATE', 'HEALTH_NOTICE']) {
+      const v = validateMessage({ ...SPEC_CONFORMANT, type: t });
+      expect(v._warnings).toContain(`unknown-type:${t}`);
+    }
+    const v = validateMessage({ ...SPEC_CONFORMANT, board: 'BRANCHES' });
+    expect(v._warnings).toContain('unknown-board:BRANCHES');
+  });
+
+  test('accepts every ratified board', () => {
+    const boards = ['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER'];
     for (const b of boards) {
       const v = validateMessage({ ...SPEC_CONFORMANT, board: b });
       expect(v._warnings).not.toContain(`unknown-board:${b}`);

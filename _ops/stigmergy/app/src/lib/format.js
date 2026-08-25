@@ -1,7 +1,7 @@
 // Formatting helpers — message-type glyphs, timestamp formatting,
 // column alignment, board metadata.
 
-export const BOARDS = ['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER', 'BRANCHES'];
+export const BOARDS = ['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER'];
 
 // Per Infrastructure Spec §2.4 + BBS Production Plan Phase 3 spec.
 export const TYPE_GLYPHS = {
@@ -12,11 +12,9 @@ export const TYPE_GLYPHS = {
   RESOURCE_REQUEST: '?',
   RESOURCE_GRANT: '+',
   RESOURCE_DENY: 'x',
-  QUERY: '?',
+  RETRACT: '-',
   SESSION_INIT: '·',
   SESSION_CLOSE: '·',
-  PAGE_UPDATE: '~',
-  HEALTH_NOTICE: '!',
 };
 
 // Per-type accent color tokens (CSS variable references). The accent is
@@ -29,11 +27,9 @@ export const TYPE_ACCENT = {
   RESOURCE_REQUEST: 'var(--ansi-bright-cyan)',
   RESOURCE_GRANT: 'var(--phosphor)',
   RESOURCE_DENY: 'var(--error)',
-  QUERY: 'var(--ansi-bright-cyan)',
+  RETRACT: 'var(--warn)',
   SESSION_INIT: 'var(--phosphor-dim)',
   SESSION_CLOSE: 'var(--phosphor-dim)',
-  PAGE_UPDATE: 'var(--ansi-bright-cyan)',
-  HEALTH_NOTICE: 'var(--warn)',
 };
 
 export function glyphFor(type) {

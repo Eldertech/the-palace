@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.16"
+version: "1.17"
 stage: foundational
 status: canonical
 links:
@@ -46,87 +46,45 @@ This is the authoritative TBox (type system) for the Palace. It defines what can
 **Schema changes are permanent structural commitments.** They require a Schema Ceremony, documented rationale, and a version increment. Adding entries and editing content are routine. Changing the schema is not.
 
 > The per-ceremony **change-history and rationale** (why the vocabulary is shaped as it is, v1.1→v1.15) live in the companion [[SCHEMA — Context]], kept out of this always-loaded card so an operating agent reads the current rules, not the archive. A Weave or a Schema Ceremony reads the *why* there.
+>
+> **Per-section change history — every `v1.x` record, what changed and why — lives in [[SCHEMA — Context]], keyed by section.** It is deliberately not carried here: this file is read in every session, and an operating agent needs the current rules, not the archive.
+
 
 ---
 
 ## 1. Entry Types
 
-Every entry must declare exactly one `type` in its YAML frontmatter.
+Every entry declares exactly one `type`. **Frontmatter is the canon membership card** — carrying it is what makes a `.md` file an entry. A file *without* frontmatter is not an entry but a learning material, draft, or artifact: invisible to the type system and the ceremonies. The boundary is permeable — a material graduates into canon when it earns an entry. See [[Learning Materials and Canon]].
 
-**Frontmatter is the canon membership card** *(clarified 2026-06-16, v1.13)*. Carrying the required frontmatter is what makes a `.md` file a palace entry. A file *without* frontmatter is **not an entry** — it is a learning material, draft, or artifact, invisible to the type system and the ceremonies (the Weave's topology scan keys on `type:` and already skips frontmatter-less files). **Loudon Live learning materials are delivered products — HTML, slides, interactive, or plain frontmatter-less markdown — and never wear canon frontmatter.** The boundary is permeable: a learning material *graduates* into canon when it earns an entry. This describes the existing invariant — frontmatter has always been required — and names the canon/learning-material line it implies. See [[Learning Materials and Canon]].
+### The types
 
-### Decision Tree
+Read the table top to bottom and take the first row that fits; `concept` is the default when none do. The **test** column is the question to ask — it replaces the decision tree this section used to carry separately. The **adds** column is the type's extra required fields, on top of the standard set (`title`, `type`, `pillars`, `born`, `stage`, `links`).
 
-If you are unsure which type to use, follow this path:
+| type | use it when — the test | adds | example |
+|---|---|---|---|
+| `meta` | it is about the palace itself: architecture, ceremonies, infrastructure, self-model | `version` (schema-level entries) | [[SCHEMA]], [[SUBSTRATE]], [[CLAUDE]] |
+| `specialist` | it wraps an external creative tool with operational anatomy — Charter, Tiers, Job Contract, accumulated Gotchas | `status` · `medium` · `tool` · `tool_version` | [[Shop/Kokoro]], [[Shop/ComfyUI]] |
+| `maker` | it is a foreman for a roster of Specialists, holding house standards and dispatch logic | `status` | [[Shop/Maker]] |
+| `source` | it is an external artifact the palace draws from — paper, book, tool, recording | `author` · `year` · `medium` | [[Meaning and the Link (2014)]] |
+| `project` | it is being built, composed, or created; it has a temporal arc | `status` (active \| complete \| archived) | [[BLUELINE]], [[Loudon Live]] |
+| `question` | it is an unresolved question being actively carried | — | *"When does the wiki warrant its own Project?"* |
+| `spore` | it is an idea preserved for a later revival, dormant by choice (`stage` is always `dormant`) | `revival_conditions` | [[1 from 2]] |
+| `hub` | it organizes a dense region of the graph — **not self-assigned**, earned at ≥5 inbound typed links via the Weave | — | [[FOUR PILLARS]], [[Kuramoto Coupling]] |
+| `practice` | it is a recurring method, workflow, ritual, or embodied way of working — something you *do*, not an idea you hold | — | [[Closing Well]], [[Deposit Ceremony]] |
+| `person` | a thinker or collaborator whose ideas are in live dialogue with the palace — not every cited name | `domains` | [[Spinoza]], [[Brian Eno]] |
+| `concept` | **the default.** An idea, principle, or framework the palace reasons with | — | [[Kuramoto Coupling]], [[Spinoza Conatus]] |
 
-1. Is this entry about the palace itself (architecture, ceremonies, infrastructure)? → **meta**
-2. Is this a wrapper around an external creative tool, with operational anatomy (Charter, Tiers, Job Contract, accumulated Gotchas)? → **specialist**
-3. Is this an orchestrator/foreman for a roster of Specialists, holding house standards and dispatch logic? → **maker**
-4. Is this an external artifact (paper, book, tool, song) that the palace draws from? → **source**
-5. Is this something currently being built or created? → **project**
-6. Did a specific moment of understanding shift everything? → **breakthrough**
-7. Is this a question being actively carried, not yet resolved? → **question**
-8. Is this an idea preserved for future revival, currently inactive? → **spore**
-9. Does this node organize a dense region of the graph (5+ typed links)? → **hub**
-10. Is this a recurring method, workflow, ritual, or embodied way of working? → **practice**
-11. Is this a thinker, maker, or collaborator whose ideas are in active dialogue with the palace? → **person**
-12. Otherwise: → **concept**
+### Notes the table can't hold
 
----
+**`hub` is earned and can be lost.** The Weave proposes promotion at ≥5 inbound typed links and demotion back to `concept` if the degree falls below. Never self-assign it.
 
-### Type Definitions
+**`person` entries are embodiable citizens** (v1.14). The *body* is the fully-formed human — source material an agent can wear in a [[Dialectic]] or [[Excellent Adventure]] — while the *frontmatter* is a newborn palace resident with its own `forward_vector` and usually an `agency_profile`. So a `person`'s `stage` tracks **palace citizenship** (born `seed`, growing through dispatch and enchantment), not the human's completeness — the same move `specialist` and `maker` make with `status`. The research corpus lives in a bundle `dossier`. Method: [[Making a Palace Citizen]].
 
-**`concept`** — An idea, principle, or framework the palace reasons with. The default type. When in doubt, use this.
-- Required fields: title, type, pillars, born, stage, links (≥1)
-- Example entries: Kuramoto Coupling, Spinoza Conatus, Frequency-Time Duality
+**`specialist` and `maker` skip `pillars` and `stage`.** They are tool-citizens, not idea-citizens; auto-tagging every Specialist `[tools]` would dilute the pillar signal, and they use `status` (alive \| stub) rather than the seed→fruiting lifecycle. Add `pillars` only when one genuinely participates in another pillar. Why they are two types and not one: [[SCHEMA — Context]] §3.2.
 
-**`hub`** — A high-connectivity node that organizes a region of the graph. Not self-assigned — emerges through the Weave Ceremony when an entry accumulates ≥5 typed links.
-- Promotion: during Weave, propose `type: hub` if threshold met
-- Demotion: if connections fall below threshold, return to concept
-- Example entries: Cooperation Yields Agency, Four Pillars
+**`meta` should stay few and high-quality.** These entries maintain the organism; inflation here is how a type system starts describing itself instead of the work.
 
-**`project`** — Something being built, composed, or created. Includes creative works, software tools, teaching series. Has a temporal arc: not yet started → active → complete → archived.
-- Required fields: adds `status` (active | complete | archived)
-- Example entries: Short Story, SYNCHRONIZE, VERSION
-
-**`breakthrough`** — A specific moment when understanding shifted permanently. These are precious and rare. A concept that could have been discovered gradually is not a breakthrough. A moment where two previously unconnected ideas suddenly became one is.
-- Caution: do not inflate. If uncertain, use concept.
-- Example entries: Embeddings as Relational Meaning
-
-**`source`** — A primary external artifact the palace draws from: a paper, book, tool, recording, or foundational document. Carries provenance (where it came from, when, why it matters here). Local archival preferred over external links.
-- Required fields: adds `author`, `year`, `medium` (paper | book | tool | recording | other)
-- Example entries: Meaning and the Link (2014)
-
-**`meta`** — An entry about the palace itself: its architecture, ceremonies, infrastructure, self-model. These entries maintain the organism. Should be few and high-quality.
-- Example entries: CLAUDE, README, Substrate, SCHEMA, Palace Ceremonies, Substrate Skill
-
-**`practice`** — A recurring method, workflow, ritual, or embodied way of working. Distinct from concept (an idea you hold) and meta (an entry about the palace). Practices are things you do repeatedly that shape how you work.
-- Required fields: standard set
-- Example entries: depth-over-coverage discipline, composting thin entries, review-before-write rule, the Tao of deliberate incompleteness
-
-**`person`** — A thinker, maker, or collaborator whose ideas are in active dialogue with the palace. Not every cited name — only those whose thinking has shaped the palace's structure, language, or direction. Carries intellectual biography relevant to the palace's concerns.
-- Required fields: adds `born_year` (optional), `domains` (array of fields they work in)
-- Example entries: Spinoza, Luhmann, Deleuze, Donna Haraway
-- Born as embodiable **citizens** (v1.14): the *body* is the fully-formed human — source material an agent can wear in a [[Dialectic]] or [[Excellent Adventure]] — and the *frontmatter* is a newborn palace resident with its own `forward_vector` and (usually) `agency_profile`. A `person` entry's `stage` tracks *palace citizenship* (born `seed`, growing through dispatch and enchantment), not the human's completeness — analogous to how `specialist`/`maker` use `status`. The deep research corpus lives in a bundle `dossier`. Method: [[Making a Palace Citizen]].
-
-**`question`** — An unresolved question being actively carried. Questions are not failures — they are the palace's growing edge. A question entry matures when it either becomes a concept (answered) or spawns a project (acted upon). It composts when the question dissolves without a satisfying answer, and that dissolution is itself noted.
-- Example use: "When does this wiki warrant its own Claude Project?"
-
-**`spore`** — An idea preserved for future revival, currently dormant by choice. Not an abandoned idea — a seed waiting for the right conditions. Stage is always `dormant`. Has a `revival_conditions` field naming what would trigger activation.
-- Required fields: adds `revival_conditions`
-- Example entries: Short Story (revival: Loudon ready to return to fiction)
-
-**`specialist`** — A wrapper around an external creative tool, with operational anatomy: Charter, Voice, Tiers (cost-quality cascade), Job Contract (typed input/output for dispatch), Iteration Character, Self-Check, Resource Footprint, accumulated Gotchas, Recipes, Test Suite. The Specialist *is* its entry — the entry doesn't describe the tool, it constitutes the tool-citizen who has accumulated working wisdom across jobs. Distinct from `practice` because the Specialist binds to a versioned external tool, exposes a typed dispatch surface, and accounts for resources. Distinct from `source` because the Specialist holds operational machinery, not just provenance.
-- Required fields: adds `status` (alive | stub), `medium` (sound | image | motion | interactive | plumbing | other), `tool` (the wrapped tool's canonical name), `tool_version` (for reproducibility)
-- `pillars` is **optional** for this type — Specialists are tool-citizens; auto-tagging every Specialist `[tools]` would dilute the pillar signal. Add pillars only when a Specialist genuinely participates in another pillar (e.g. a Specialist whose practice has matured into a teaching artifact)
-- Example entries: Shop/Kokoro, Shop/Manim CE, Shop/ComfyUI, Shop/ffmpeg
-
-**`maker`** — An orchestrator/foreman for a roster of Specialists. Holds house standards, brief intake patterns, selection heuristics, tier vocabulary, comparison-mode logic, and resource scheduling. The Maker is the front door to an operational sub-system; Specialists are dispatched from it. Distinct from `meta` because the Maker is about an operational sub-system within the palace, not about the palace itself — and could plausibly recur (a future "Studio" sub-system would have its own Maker). Distinct from `concept` because the Maker dispatches; it does not just reason. Distinct from `practice` because the Maker holds a Roster, not a method.
-- Required fields: adds `status` (alive | stub)
-- `pillars` is **optional** for this type, for the same reason as `specialist` — Makers are operational citizens, not idea-citizens
-- Example entries: Shop/Maker
-
----
+*(`breakthrough` was retired in v1.17 — see [[SCHEMA — Context]] §1.)*
 
 ## 2. Development Stages
 
@@ -175,17 +133,13 @@ seed → sprout → growing → mature → fruiting → dormant → composting
 
 **Link Object Fields:** Each link requires `target` and `type`. The optional `label` field is a single word or hyphenated phrase naming the relationship with resonance and specificity. The `type` is the structural scaffold — it handles traversal, Weave topology analysis, and ceremony linting. The `label` is the semantic compression — it names the specific register of the relationship with cultural and emotional nuance. Examples: `midwifed`, `rhymes-with`, `fermented-from`, `argues-with-love`. Labels never require ceremony. They are the compression happening at the relational level.
 
-### Type-Specific Required Fields
+### Enum values for the type-specific fields
 
-| Type | Extra required fields |
-|---|---|
-| `project` | `status`: active \| complete \| archived |
-| `source` | `author`, `year`, `medium`: paper \| book \| tool \| recording \| other |
-| `spore` | `revival_conditions`: string describing what would trigger revival |
-| `person` | `domains`: array of intellectual fields |
-| `meta` | `version` for schema-level entries (CLAUDE, SCHEMA, Substrate Skill) |
-| `specialist` | `status`: alive \| stub; `medium`: sound \| image \| motion \| interactive \| plumbing \| other; `tool`: canonical tool name; `tool_version`: for reproducibility |
-| `maker` | `status`: alive \| stub |
+Which types require which fields is the `adds` column in §1. The allowed values:
+
+- `status` — `active | complete | archived` for `project`; `alive | stub` for `specialist` and `maker`
+- `medium` — `paper | book | tool | recording | other` for `source`; `sound | image | motion | interactive | plumbing | other` for `specialist`
+- `domains` — array of intellectual fields (`person`) · `revival_conditions` — string naming what would trigger revival (`spore`) · `tool` / `tool_version` — canonical tool name and pinned version, for reproducibility (`specialist`)
 
 ### Optional Fields (used selectively)
 
@@ -297,8 +251,6 @@ and (for ceremony changes) `_ops/Palace Ceremonies` are internally consistent �
 - *Manual:* Obsidian + human (human makes edits; human runs git commit)
 - *Not supported:* GitHub cloud alone
 
-*(The v1.11 tightening — folding the full secondary-mirror set into this checklist and making the doc-drift linter a checkable postcondition — is recorded in [[SCHEMA — Context]] §5.)*
-
 ---
 
 ## 6. Ceremony File Conventions
@@ -325,10 +277,6 @@ When a ceremony file exceeds ~8KB, split it into two files:
 - [[Harvest Ceremony]] + [[Harvest Ceremony — Context]]
 - [[Weave Ceremony]] + [[Weave Ceremony — Context]]
 - [[Baton Ceremony]] + [[Baton Ceremony — Context]]
-
-*(The v1.15 addition of the Closing Well Ceremony — the `close well` trigger — is recorded in [[SCHEMA — Context]] §6.)*
-
-*(**v1.16 — the Return Ceremony.** Added 2026-08-25. The palace had ceremonies for handing off mid-session, ending well, and reviving a dormant entry, and none for the human coming back after time away — it absorbed the re-entry cost for its agents and left Loudon to pay it himself. The Return is the Spore Check pointed at the human. Its hard rules — *ask the record before you interpret* (every map row cites a command or a `file:line`) and *report a gap's length, never a theory about its cause* — were both written from live failures the same day. It dispatches the [[Concierge]] as its first act, which also gives [[Closing Well]]'s summon-early rule (gotcha 20) a home: summoned at the return, the resident is warm to take the wheel at the close. Mirrors updated: CLAUDE.md trigger table, [[Palace Ceremonies]], [[ROSETTA]], [[README - The Palace Guide]], [[Substrate Skill]]. Rationale in [[Return Ceremony]] § Why this belongs in the always-loaded floor.)*
 
 ---
 
@@ -374,18 +322,16 @@ This keeps every file in the palace self-describing without conflating bundle fi
 | `source` | Extracted, quoted, translated, or annotated source material supporting the entry. Use the qualifier slot to name which one (`Foo — source — borges.md`). |
 | `sketch` | Half-formed material not yet ready for the entry body but too substantial for an HTML comment. |
 | `enrichment` | Material added via Enrichment ceremonies. Use the qualifier slot to name which enrichment. |
-| `plan` | The entry's materialized **work state** — open decisions, resolved decisions, a done trail — regenerated each steward cycle as the read-model of [[STIGMERGY]]'s append-only board. Maker-facing, high-churn; the steward owns it. Holds a *pointer* to the entry's `forward_vector`, never a copy (single-source-of-truth). One per stewarded entry. See [[Project Stewardship System]] and the Machinery/Content Split. |
-| `staging` | The entry's **teaching arc** — stage-by-stage Loudon Live session plans, ordered by didactic difficulty. Learner-facing, relatively stable once designed; produced by [[project-stage-builder]] (and Loudon), not the steward. Only project entries bound for Loudon Live have one. The steward *reads* it but does not rewrite it — arc-level changes are flagged to Loudon, never silently edited. |
+| `plan` | The entry's materialized **work state** — open decisions, resolved decisions, a done trail — regenerated each steward cycle as the read-model of [[STIGMERGY]]'s board. Maker-facing, high-churn, steward-owned. Holds a *pointer* to the entry's `forward_vector`, never a copy. One per stewarded entry. See [[Project Stewardship System]]. |
+| `staging` | The entry's **teaching arc** — stage-by-stage Loudon Live session plans ordered by didactic difficulty. Learner-facing, stable once designed; produced by [[project-stage-builder]], not the steward. The steward *reads* it and flags arc-level changes to Loudon rather than editing silently. |
 | `dossier` | The deep research corpus behind a `person` entry — timeline, positions, characteristic moves, lexicon, blindspots, sourced quotes, dispatch notes — loaded when an agent must *embody* the person faithfully (Dialectic, Excellent Adventure, Philosopher Visit). One per made citizen. See [[Making a Palace Citizen]]. |
-| `speech` | Cited, **context-tagged** verbatim excerpts of how a `person` actually talks, opening with a "sources & their limits" ledger (spontaneous vs performative vs rehearsed vs fabricated), so an agent builds the voice profile from ground truth rather than a synthesis. Feeds the entry's `## Voice` note; loaded for voice embodiment in enchantment. See [[Making a Palace Citizen]] §Voice fidelity. |
-| `toolbox` | The project's reproducible **environment manifest** — every runtime it needs and every version pinned (local apps like Blender/Ableton, language runtimes like a Python venv, RunPod pods, serverless worker images), plus their extensions/addons/nodes/packages, assets/models, deps, and a per-pipeline portability status (frozen→serverless-ready vs iterating→local/pod-only). The recipe to reproduce or build the project's tooling. Machine-actionable for the serverless case: the [[The Commons\|Commons]] provider is meant to read it to build/deploy. One per project with real compute/tooling. Template: `_ops/commons/TOOLBOX-TEMPLATE.md`. |
-| `proof` | Evidence that a capability, postcondition, or design intent holds — a mock, retrospective, fit-test, handoff prompt, or worked demonstration owned by the entry it vindicates. The bundle-file echo of [[STIGMERGY]]'s `PROOF` message type (§9): a ceremony's or a build's "it worked." Often lives under a `proofs/` subfolder. |
+| `speech` | Cited, **context-tagged** verbatim excerpts of how a `person` actually talks, opening with a sources-and-their-limits ledger (spontaneous vs performative vs rehearsed vs fabricated), so voice is built from ground truth rather than synthesis. Feeds the entry's `## Voice`. See [[Making a Palace Citizen]] §Voice fidelity. |
+| `toolbox` | The project's reproducible **environment manifest** — every runtime pinned (local apps, language runtimes, pods, worker images) plus extensions, assets, deps, and a per-pipeline portability status. Machine-actionable: the [[The Commons\|Commons]] provider reads it to build and deploy. One per project with real compute. Template: `_ops/commons/TOOLBOX-TEMPLATE.md`. |
+| `proof` | Evidence that a capability, postcondition, or design intent holds — a mock, retrospective, fit-test, or worked demonstration. The bundle-file echo of [[STIGMERGY]]'s `PROOF` message type. Often under a `proofs/` subfolder. |
 | `spec` | A specification for one deliverable to be built or dispatched — a patch spec, visuals spec, SFX cue sheet, or imagery brief. The recipe for a single owned artifact, not the artifact itself; typically routed through [[The Shop]] / a Maker. |
-| `dialectic` | An archived [[Dialectic]] / [[Excellent Adventure]] transcript owned by the entry it argued over — the recorded run of the palace's named dialogue mode, kept because it produced a distinction the parent did not already contain. Distinct from `dossier`/`speech` (research *about* a person) — this is the dialogue *itself*. |
+| `dialectic` | An archived [[Dialectic]] / [[Excellent Adventure]] transcript owned by the entry it argued over — kept because it produced a distinction the parent did not already contain. Distinct from `dossier`/`speech` (research *about* a person); this is the dialogue itself. |
 
 New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are. The per-type addition history (what earned its slot when, and that a catch-all `artifact` type was considered and rejected) is in [[SCHEMA — Context]] §8.
-
-*(The v1.14 ratification of the person-citizen conventions — the `dossier` bundle type, `agency_profile` as a `person` default, and the citizenship-`stage` clarification — is recorded in [[SCHEMA — Context]] §8.)*
 
 **Archive:** Consumed bundle files move to `[Entry]/Archive/`. Stays with the entry; git carries history.
 
@@ -393,23 +339,21 @@ New types may be tried freely. When a type earns recurring use across multiple b
 
 **Hubs:** The bundle pattern applies to hubs the same as any entry. Whether hub-bundle conventions diverge in practice is an open question deferred to use.
 
-**The `Artifacts/` folder is deprecated (2026-06-16).** Bundles consumed its purpose. Entry-owned files (the vast majority) live in the owning entry's bundle; learning-material assets live in the Loudon Live zone (see [[Learning Materials and Canon]]). A genuinely cross-entry shared artifact — rare — lives in the bundle of its most-owning entry, or a relevant hub's bundle. The old `Artifacts/[Theme]/` content (the Shop tool outputs, the Loudon Live toolchain) was redistributed into bundles on 2026-06-16.
+**The `Artifacts/` folder is deprecated (2026-06-16).** Bundles consumed its purpose; entry-owned files live in the owning entry's bundle. The redistribution history is in [[SCHEMA — Context]] §8.
 
-**Migration of existing flat companions:** Files like `Jewel — Context.md` and `Deposit Ceremony — Context.md` currently live flat in their parent's directory. They remain valid in their current location. Migration into bundles is queued for the next Weave per [[Palace To-Do]] — the Weave Ceremony's general scope includes fixing mis-located and mis-linked items.
+**Flat companions** (e.g. `Jewel — Context.md`) remain valid where they are; migration into bundles is queued on [[Palace To-Do]].
 
 ---
 
 ## 9. The Coordination Schema ([[STIGMERGY]])
 
-§4 types the edges *between entries*. This section types the edges *between agents*. The palace can be operated by more than one mind at once — multiple AI stewards and a human node — coordinating through **[[STIGMERGY]]**, the palace's running front-end and engine. An AI entering the palace may *be* a node in that swarm, or may be asked to read or post to its blackboard. It needs to recognize the grammar; the wire spec is this section (§9), and the executor that runs it is [[Palace Orchestrator]] (appending to the [[STIGMERGY]] board). Recognition and the wire live here; the executor lives there. Read [[Palace Orchestrator]] before posting.
+§4 types the edges *between entries*; §9 types the edges *between agents*. The palace can be operated by several minds at once — AI stewards plus a human node — coordinating through **[[STIGMERGY]]**. An agent here may *be* a node in that swarm, or be asked to read or post to its board, so it must recognize the grammar. **This section is the wire; [[Palace Orchestrator]] is the executor. Read that before posting.** The philosophy and lineage are in [[STIGMERGY]] and [[BBS Blackboard]]: agents leave marks on a shared medium and react to what is already there, rather than addressing each other directly — the board is the medium, each message a mark, the `health` block its pheromone strength.
 
-**The principle.** Coordination is stigmergic: agents leave marks on a shared medium and react to what is already there, rather than addressing each other directly. The board is the medium; each message is a mark; the `health` block is its pheromone strength. The full philosophy and lineage are in [[STIGMERGY]] and its origin concept [[BBS Blackboard]].
+**The medium.** An append-only `.jsonl` blackboard, one JSON object per line, never edited or deleted. Per-session boards at `_ops/swarm/sessions/[id]/blackboard.jsonl`; the cross-session persistent board at `_ops/swarm/persistent/blackboard.jsonl`. **Git is ground truth; one write path, never `git add -A` in an N-writer repo.** In a multi-worktree checkout that one path is the **owner (main) worktree's** physical board — every worktree appends there, never to a per-branch copy (`_ops/worktree/SKILL.md` § Ceremonies in a worktree).
 
-**The medium.** An append-only `.jsonl` blackboard — one JSON object per line, never edited or deleted. Per-session boards live at `_ops/swarm/sessions/[session-id]/blackboard.jsonl`; the cross-session persistent board (standing concerns, ongoing stewardship) at `_ops/swarm/persistent/blackboard.jsonl`. **Git is ground truth; the blackboard is append-only — one write path, never `git add -A` in an N-writer repo.** In a multi-worktree checkout the *one write path* is the **owner (main) worktree's** physical board — every worktree appends to the owner's file, never its own per-branch copy, so the field stays single and convergent (see `_ops/worktree/SKILL.md` § Ceremonies in a worktree).
+**The human node.** `TRICKSTER` is Loudon (or an automated stand-in — operational, not architectural). Agents do not decide at a fork: they post a `RESOURCE_REQUEST` to the `TRICKSTER` board with `blocking: true` and a set of `options`, and wait. The human answers `RESOURCE_GRANT` / `RESOURCE_DENY` naming the chosen `option_id`, correlated by `re`. `blocking` is a wire field, not a mood — a blocked agent is simply waiting.
 
-**The human node.** `TRICKSTER` is Loudon (or an automated stand-in — an operational choice, not architectural). Agents do not decide at a fork — they post a `RESOURCE_REQUEST` to the `TRICKSTER` board with `blocking: true` and a set of `options`, and wait. The human answers with a `RESOURCE_GRANT` / `RESOURCE_DENY` naming the chosen `option_id`, correlated by `re`. `blocking` is a wire-level field, not a mood — a blocked agent is simply waiting on the human.
-
-**The message envelope.** Every line is one message: `schema_version, id, ts, session_id, from, to, type, board, payload, health` — plus optional `re` / `request_id` for threading. `from` is usually a palace entry acting as its own steward (e.g. `Waveguide Synthesizer`) — *the page IS the agent* ([[Pages as Agents]]). `health` carries the agent's vitals: `context_pct, stop_reason, iteration, tokens_this_call, model, score` (green / yellow / red), written by the orchestrator, not the agent. **Speak like a person, log like a protocol:** human-readable surfaces, exact wire terms.
+**The envelope.** `schema_version, id, ts, session_id, from, to, type, board, payload, health`, plus optional `re` / `request_id` for threading. `from` is usually a palace entry acting as its own steward — *the page IS the agent* ([[Pages as Agents]]). `health` carries `context_pct, stop_reason, iteration, tokens_this_call, model, score`, written by the orchestrator, not the agent. **Speak like a person, log like a protocol.**
 
 **Field conventions (pinned 2026-06-16, v1.12).** These were inferred from examples before — the examples drifted, so the wire did too. One canonical form each, no alternatives:
 
@@ -419,7 +363,7 @@ New types may be tried freely. When a type earns recurring use across multiple b
 - **`session_id`** — one kebab-slug per agent, matching its `_ops/agents/permanent/[slug]/` directory; reused across that agent's sessions rather than minting slug variants for one page.
 - **`health.score`** (green / yellow / red) is a live-API (Path 1) signal the orchestrator writes from response metadata; hand-authored and Path-2 messages carry a green stub. Optional `health._orchestrator_metadata` carries Path-2 dispatch info (`dispatch_mode`, `note`).
 
-The strict validator gates malformed posts. **§9 is the ratified enum set** — types and boards outside these tables are not part of the wire (see [[SCHEMA — Context]] §9 for the retired proposals).
+The strict validator gates malformed posts, and **as of v1.17 the gate matches this table**: `QUERY`, `PAGE_UPDATE`, `HEALTH_NOTICE` and a `BRANCHES` board were design-time proposals the spec had always excluded while the validators quietly accepted them — none was ever posted, and all four were removed. **§9 is the ratified enum set**, in the code as well as here.
 
 **The message types** (the coordination ontology — like §4 link types, do not invent new ones without a Schema Ceremony):
 
@@ -432,10 +376,9 @@ The strict validator gates malformed posts. **§9 is the ratified enum set** —
 | `PROOF` | Evidence a postcondition was met — a ceremony's "it completed." |
 | `REPLY` | A threaded response to a prior message (`re`). |
 | `SESSION_INIT` / `SESSION_CLOSE` | Open/close a run; `SESSION_INIT.payload` names the `session_kind` (e.g. `enchanted_songline`, permanent stewardship) and its path. |
+| `RETRACT` | Withdraw a prior message that was posted in error, naming it in `re` and giving a one-line reason. The board is append-only, so a mistake is corrected by *adding* the retraction, never by editing the line. Ratified v1.17 after a wrong-path `handoff_ready` had to be corrected by overloading `handoff_picked_up` plus a repost — workable, but it made a naive board reader hit the wrong path first. |
 
 **Boards** route attention: `GENERAL` (status/content), `TRICKSTER` (decisions for the human), `WEAVE` (palace-weaving flags), `FLAGS` (connections worth keeping), `SYSTEM` (session lifecycle).
-
-*(The v1.10 addition of this §9 Coordination Schema and the v1.12 pinning of its field conventions are recorded in [[SCHEMA — Context]] §9.)*
 
 ---
 

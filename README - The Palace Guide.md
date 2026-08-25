@@ -115,7 +115,6 @@ The authoritative type definitions and the decision tree live in [[SCHEMA]] §1;
 | `hub` | High-connectivity node that organizes a region of the network |
 | `concept` | An idea, principle, or framework (the default) |
 | `project` | Something being built (adds `status`) |
-| `breakthrough` | A moment where understanding shifted (precious — mark these) |
 | `meta` | An entry about the palace itself (like this one) |
 | `practice` | A recurring method, workflow, ritual, or embodied way of working |
 | `person` | A thinker/maker/collaborator in active dialogue with the palace (adds `domains`) |
@@ -170,7 +169,7 @@ The palace draws in three registers, each with its own standard. [[Mermaid Diagr
 
 ### Creating a New Entry
 
-1. Create a new `.md` file in the **palace root** — all knowledge entries (concepts, hubs, projects, breakthroughs, questions, spores, sources) live here. The `_ops/` subfolder is reserved for ceremony machinery and working queues only.
+1. Create a new `.md` file in the **palace root** — all knowledge entries (concepts, hubs, projects, questions, spores, sources) live here. The `_ops/` subfolder is reserved for ceremony machinery and working queues only.
 2. Add YAML frontmatter with at minimum: `title`, `type`, `pillars`, `born`, `stage`
 3. Add at least 2-3 typed links in the frontmatter connecting to existing entries
 4. Write the body: an Origin section (how this idea arrived), the core content, Cross-Pillar Connections, and a Forward Vector (the agent's drive — see "Reading an Entry" above)

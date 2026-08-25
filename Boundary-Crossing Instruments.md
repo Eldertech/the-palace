@@ -1,6 +1,6 @@
 ---
 title: Boundary-Crossing Instruments
-type: breakthrough
+type: concept
 pillars:
   - tools
   - creation

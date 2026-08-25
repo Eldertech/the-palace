@@ -1,6 +1,6 @@
 ---
 title: Excellent Adventure
-type: breakthrough
+type: practice
 pillars:
   - practice
   - philosophy

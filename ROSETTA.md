@@ -66,7 +66,6 @@ For the authoritative decision tree and full definitions, see [[SCHEMA]]. This t
 | `concept` | An idea, framework, or principle the Palace reasons with | Named class instance | Entity |
 | `hub` | High-connectivity node (≥5 typed links) organizing a graph region | Well-connected named individual | Aggregate root |
 | `project` | Something being built or created, with a temporal arc | Named individual with temporal extent | Aggregate root |
-| `breakthrough` | A specific moment when understanding shifted permanently | Provenance assertion | Domain Event |
 | `source` | An external artifact (paper, book, tool) the Palace draws from | Bibliographic assertion | External reference |
 | `meta` | An entry about the Palace itself — architecture, ceremonies, infrastructure | Ontology annotation | Context map document |
 | `practice` | A recurring method, ritual, or embodied way of working | Process pattern | Domain Service |
@@ -234,7 +233,7 @@ The Palace/
 ├── SCHEMA.md               ← Type system (TBox). Authoritative list of entry types, link types, YAML fields, Ceremony Linter.
 ├── ROSETTA.md              ← This file. Cross-tradition glossary. Self-description.
 ├── README - The Palace Guide.md  ← Philosophy, founding principles, palace manual.
-├── [Content entries]       ← concept, hub, project, breakthrough, source, practice, person, question, spore, specialist, maker entries
+├── [Content entries]       ← concept, hub, project, source, practice, person, question, spore, specialist, maker entries
 │
 ├── Shop/                   ← Operational sub-system: specialist + maker entries (added v1.6, 2026-05)
 │

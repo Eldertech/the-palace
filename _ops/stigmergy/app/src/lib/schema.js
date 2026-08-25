@@ -14,15 +14,13 @@
 const REQUIRED_FIELDS = ['schema_version', 'id', 'ts', 'session_id', 'from', 'to', 'type', 'board'];
 
 const VALID_TYPES = new Set([
-  'BROADCAST', 'REPLY', 'FLAG', 'PROOF',
+  'BROADCAST', 'REPLY', 'FLAG', 'PROOF', 'RETRACT',
   'RESOURCE_REQUEST', 'RESOURCE_GRANT', 'RESOURCE_DENY',
-  'QUERY',
   'SESSION_INIT', 'SESSION_CLOSE',
-  'PAGE_UPDATE', 'HEALTH_NOTICE',
 ]);
 
 const VALID_BOARDS = new Set([
-  'GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER', 'BRANCHES',
+  'GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER',
 ]);
 
 // Matches full ISO 8601 with timezone. Examples that pass:

@@ -121,7 +121,7 @@ The palace holds **355 typed entries** (by frontmatter `type`), inside a tree of
 
 *Correction to the 2026-06-16 figures:* that scan reported ~410 entries in ~710 files. The entry count was inflated — it counted files carrying non-canonical `type:` values (`theme`, `proof`, `spec`, `artifact`) that have since been normalized or demoted to bundle files. The self-model over-reported the organism by about 15% for two months, which is the exact failure this ceremony exists to catch.
 
-**Type distribution:** 122 concept · 48 meta · 41 project · 39 practice · 30 person · 28 specialist · 21 hub · 9 breakthrough · 6 source · 5 maker · 4 question · 2 spore. Every entry now carries a canonical [[SCHEMA]] type — **the `theme` drift flagged in June is fully resolved**, and that open question is closed.
+**Type distribution:** 129 concept · 49 meta · 41 project · 40 practice · 30 person · 28 specialist · 21 hub · 6 source · 5 maker · 4 question · 2 spore. (`breakthrough` was retired in the v1.17 Schema Ceremony; its nine entries redistributed to `concept`, `practice`, and `meta`.) Every entry now carries a canonical [[SCHEMA]] type — **the `theme` drift flagged in June is fully resolved**, and that open question is closed.
 
 **Stages:** 127 growing · 60 sprout · 54 seed · 54 mature · 11 composting · 6 foundational · 6 fruiting · 4 dormant.
 

@@ -1,6 +1,6 @@
 ---
 title: "Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work"
-type: breakthrough
+type: concept
 pillars:
   - philosophy
   - practice

@@ -2,18 +2,17 @@ import { describe, test, expect } from 'vitest';
 import { BOARDS, TYPE_GLYPHS, glyphFor, accentFor, healthColor, formatTs, padCell, tsToEpoch, tsCompare } from '../../src/lib/format.js';
 
 describe('BOARDS', () => {
-  test('exposes the six channels in the documented order', () => {
-    expect(BOARDS).toEqual(['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER', 'BRANCHES']);
+  test('exposes the five ratified channels in the documented order', () => {
+    expect(BOARDS).toEqual(['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER']);
   });
 });
 
 describe('glyphFor', () => {
   test('returns a glyph string for every documented type', () => {
     const types = [
-      'BROADCAST', 'REPLY', 'FLAG', 'PROOF',
+      'BROADCAST', 'REPLY', 'FLAG', 'PROOF', 'RETRACT',
       'RESOURCE_REQUEST', 'RESOURCE_GRANT', 'RESOURCE_DENY',
-      'QUERY', 'SESSION_INIT', 'SESSION_CLOSE',
-      'PAGE_UPDATE', 'HEALTH_NOTICE',
+      'SESSION_INIT', 'SESSION_CLOSE',
     ];
     for (const t of types) {
       expect(typeof glyphFor(t)).toBe('string');
