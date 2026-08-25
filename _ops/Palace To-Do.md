@@ -76,6 +76,8 @@ here if it feeds that, or if it is cheap and unblocks something that does.
 
 - [ ] **Spore check on [[1 from 2]]** — dormant, revival condition is "Loudon ready to return to fiction." Worth one honest read against current work rather than carrying indefinitely: either the condition has moved, or the entry should be re-parked with a date.
 
+- [ ] **Decide whether SCHEMA drops from the auto-loaded `@import` floor** — deliberately deferred (Loudon, 2026-08-25) rather than decided at close: post-v1.17 SCHEMA is 34.7KB (~9.4K tokens), 41% of a ~23.0K-token floor, and still a reference consulted at entry-creation/type-system time, not conversation material. Revival condition: the v1.17 changes have been felt across enough real sessions to judge how a leaner, restructured SCHEMA lands — it isn't currently causing major problems, and the call would reshape every agent's palace understanding, so it wants full attention, not a tail-end call. See [[JEWEL]] and [[SUBSTRATE]] § Open Questions.
+
 ---
 
 ## Hygiene rules
