@@ -223,10 +223,7 @@ agency_profile:
 
 All four sub-fields are optional within the object — include only the dimensions with genuinely distinct content. An entry with a strong tools dimension but no distinct practice concern should populate only `tools`.
 
-**Use in enchantment:** Coordinators read the `agency_profile` before spawning enchanted agents. The `tools` sub-field makes resource estimates legible before the dialogue opens. The `philosophy` sub-field informs the moderator's framing of opening tension. The `practice` sub-field surfaces self-revision needs that the agent can act on during Free Enchantment.
-
-**Use in BBS:** `tools` sub-field content translates directly to `RESOURCE_REQUEST` messages on the TRICKSTER board — the estimated cost is already specified. An agent with a well-formed `agency_profile.tools` can post a precise resource request without deliberating.
-
+**Use:** coordinators read `agency_profile` before spawning an enchanted agent — `tools` makes the resource estimate legible up front (and translates directly into a `RESOURCE_REQUEST`), `philosophy` informs a moderator's framing, `practice` names what the agent should revise in itself. Worked detail: [[SCHEMA — Context]] §3.1.
 ---
 
 ### 3.2 The `specialist` and `maker` Types
@@ -384,7 +381,7 @@ This keeps every file in the palace self-describing without conflating bundle fi
 | `spec` | A specification for one deliverable to be built or dispatched — a patch spec, visuals spec, SFX cue sheet, or imagery brief. The recipe for a single owned artifact, not the artifact itself; typically routed through [[The Shop]] / a Maker. |
 | `dialectic` | An archived [[Dialectic]] / [[Excellent Adventure]] transcript owned by the entry it argued over — the recorded run of the palace's named dialogue mode, kept because it produced a distinction the parent did not already contain. Distinct from `dossier`/`speech` (research *about* a person) — this is the dialogue *itself*. |
 
-New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are. `plan` and `staging` were added 2026-06-09 once the 19-steward stewardship migration gave them recurring use across many bundles — documentation, not ceremony; `dossier` was added 2026-07-01 with the embodiable-citizen model ([[Making a Palace Citizen]]), likewise documentation, formalized in the v1.14 descriptive ceremony below for discoverability; `toolbox` was added 2026-07-02 with [[The Commons]]' serverless direction (the project's frozen compute-environment spec) — documentation, not ceremony. `proof` and `spec` were added 2026-07-04 after a bundle-audit cleanup found ~15 files carrying them jammed into the entry-level `type:` field (invalid there); both had earned recurring use (8 proofs, 4 specs). A broader `artifact` type was considered and **rejected** — too vague to carry signal; specific types beat one catch-all, and further ones (`script`, `audition`) join the table as they recur. `dialectic` was added the same day (two archived Dialectics across two bundles — [[Spinoza Conatus]], [[The Fortress and the Threshold]] — met the recurring-use bar), alongside the code-folder-README naming exception above.
+New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are. The per-type addition history (what earned its slot when, and that a catch-all `artifact` type was considered and rejected) is in [[SCHEMA — Context]] §8.
 
 *(The v1.14 ratification of the person-citizen conventions — the `dossier` bundle type, `agency_profile` as a `person` default, and the citizenship-`stage` clarification — is recorded in [[SCHEMA — Context]] §8.)*
 
@@ -420,7 +417,7 @@ New types may be tried freely. When a type earns recurring use across multiple b
 - **`session_id`** — one kebab-slug per agent, matching its `_ops/agents/permanent/[slug]/` directory; reused across that agent's sessions rather than minting slug variants for one page.
 - **`health.score`** (green / yellow / red) is a live-API (Path 1) signal the orchestrator writes from response metadata; hand-authored and Path-2 messages carry a green stub. Optional `health._orchestrator_metadata` carries Path-2 dispatch info (`dispatch_mode`, `note`).
 
-These ratify the convention already corrected in practice ([[Substrate Skill]], [[STIGMERGY]]); the strict validator gates malformed posts. **§9 is the ratified enum set.** A now-retired design spec once sketched further message types and boards (`QUERY`, `PAGE_UPDATE`, `HEALTH_NOTICE`, and a `BRANCHES` board); these were design-time proposals, never ratified or built, and are not part of the wire.
+The strict validator gates malformed posts. **§9 is the ratified enum set** — types and boards outside these tables are not part of the wire (see [[SCHEMA — Context]] §9 for the retired proposals).
 
 **The message types** (the coordination ontology — like §4 link types, do not invent new ones without a Schema Ceremony):
 
