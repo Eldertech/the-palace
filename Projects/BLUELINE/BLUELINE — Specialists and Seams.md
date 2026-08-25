@@ -21,7 +21,7 @@ links:
   - target: "[[Adopt the Craft, Author the Seam]]"
     type: exemplifies
     label: the-seams-are-the-only-new-work
-  - target: "[[Trickster (Loudon)]]"
+  - target: "[[Trickster]]"
     type: connects-to
     label: loudon-is-producer-not-director
 ---
@@ -137,7 +137,7 @@ in the palace, and they all put him *above* the foreman, never inside the pipeli
    (Loudon) plays the Producer role*" for cross-medium, multi-day briefs ([[Shop/Maker]] Open Questions;
    [[The Shop]]). The Shop even *rejected* "Director" as the orchestrator name (its Lost Branches:
    '"Director" as the layer name — replaced by "Maker"').
-3. **[[Trickster (Loudon)|TRICKSTER]]** — the wire-level/swarm name for the human-decision node who can
+3. **[[Trickster|TRICKSTER]]** — the wire-level/swarm name for the human-decision node who can
    reach into any running stage and change it ([[SCHEMA]] §9: posts `RESOURCE_GRANT`/`RESOURCE_DENY`).
 
 So **"Director" in the pipeline is an AI *stage-role*** that drafts a treatment/beat-board — it is *not*
