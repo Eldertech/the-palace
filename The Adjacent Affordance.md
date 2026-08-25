@@ -1,6 +1,6 @@
 ---
 title: The Adjacent Affordance
-type: breakthrough
+type: concept
 pillars:
   - philosophy
   - tools

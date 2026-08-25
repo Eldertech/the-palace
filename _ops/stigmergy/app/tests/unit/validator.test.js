@@ -164,7 +164,7 @@ describe('validateMessage — type enum', () => {
   const validTypes = [
     'BROADCAST', 'FLAG', 'REPLY', 'PROOF',
     'RESOURCE_REQUEST', 'RESOURCE_GRANT', 'RESOURCE_DENY',
-    'QUERY', 'SESSION_INIT', 'SESSION_CLOSE', 'PAGE_UPDATE', 'HEALTH_NOTICE',
+    'RETRACT', 'SESSION_INIT', 'SESSION_CLOSE',
   ];
 
   for (const t of validTypes) {
@@ -186,7 +186,7 @@ describe('validateMessage — type enum', () => {
 });
 
 describe('validateMessage — board enum', () => {
-  const validBoards = ['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER', 'BRANCHES'];
+  const validBoards = ['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER'];
 
   for (const b of validBoards) {
     test(`accepts valid board: ${b}`, () => {

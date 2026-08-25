@@ -21,15 +21,13 @@ const REQUIRED_FIELDS = [
 ];
 
 const VALID_TYPES = new Set([
-  'BROADCAST', 'FLAG', 'REPLY', 'PROOF',
+  'BROADCAST', 'FLAG', 'REPLY', 'PROOF', 'RETRACT',
   'RESOURCE_REQUEST', 'RESOURCE_GRANT', 'RESOURCE_DENY',
-  'QUERY',
   'SESSION_INIT', 'SESSION_CLOSE',
-  'PAGE_UPDATE', 'HEALTH_NOTICE',
 ]);
 
 const VALID_BOARDS = new Set([
-  'GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER', 'BRANCHES',
+  'GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER',
 ]);
 
 const VALID_SCORES = new Set(['green', 'yellow', 'red']);

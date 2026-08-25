@@ -1,6 +1,6 @@
 ---
 title: 4 Pillars Framework - The Founding Conversation
-type: breakthrough
+type: concept
 pillars:
   - creation
   - tools

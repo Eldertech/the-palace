@@ -1,6 +1,6 @@
 ---
 title: Metaphor as Coupling Medium
-type: breakthrough
+type: concept
 pillars:
   - philosophy
   - practice

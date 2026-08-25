@@ -138,7 +138,7 @@ Write and speak like a person, not a paper — plain words, concrete images, sen
 
 **Typed links** — YAML frontmatter links name the relationship: `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies` (A is an instance of B), `member-of` (A belongs to collection B). Do not create new link types without discussion. Each link may carry an optional `label` field — a single evocative word naming the relationship's specific register (e.g. `midwifed`, `rhymes-with`, `fermented-from`). Labels never require ceremony. See [[Resonant Link Labels]].
 
-**Entry types** — `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. The last two were added in the v1.6 Schema Ceremony (2026-05-09) to formalize [[The Shop]] pattern — see [[SCHEMA]] §3.2.
+**Entry types** — `concept`, `hub`, `project`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. `specialist`/`maker` came in v1.6 for [[The Shop]]; `breakthrough` was retired in v1.17 (nine existed, none after June 2026 — the real insights were being typed `concept` anyway). Full table with the test for each: [[SCHEMA]] §1.
 
 **Development stages** — `seed` → `sprout` → `growing` → `mature` → `fruiting` → `dormant` → `composting`
 

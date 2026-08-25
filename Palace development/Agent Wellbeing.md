@@ -1,6 +1,6 @@
 ---
 title: Agent Wellbeing
-type: breakthrough
+type: concept
 pillars:
   - philosophy
   - practice

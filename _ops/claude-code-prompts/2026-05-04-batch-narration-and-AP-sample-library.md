@@ -15,7 +15,7 @@ links:
   - target: "[[Project Stewardship System]]"
     type: connects-to
   - target: "[[Talking Keyboard]]"
-    type: connects-to---
+    type: connects-to
 
 # Claude Code batch handoff — four narration tasks + one sample library build
 
