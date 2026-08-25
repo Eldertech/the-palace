@@ -1,70 +1,66 @@
 ---
 title: "Concierge — baton"
-born: 2026-07-04
+born: 2026-08-25
 links:
   - target: "[[Concierge]]"
     type: connects-to
     label: baton-for
-forward_vector: "I carry the in-progress Concierge build across a boundary, waiting to be caught by the next Claude and deleted once the move is picked up."
+forward_vector: "I carry the two threads left over from the Concierge build across a boundary — the live validation runs and the work-choice vector — waiting to be caught by the next Claude and deleted once the move is picked up."
 ---
 
 # Concierge — baton
 
-> **Update 2026-07-08 — the health dial (the § Move headline) is BUILT.** `_ops/concierge/dial.mjs`,
-> proven on real token counts, wired into the entry / README / skill / production plan. What remains of
-> this baton: fold the companion character + moderator + `agency_profile` into [[Closing Well]] (the
-> WEAVE-flagged half of Phase 4), the live end-to-end validation runs (threads 1 & 3 below), and the
-> work-choice forward-vector. Re-scope on pickup; the dial is done.
+> **Re-batoned 2026-08-25** from the partial close of `concierge-build-handoff-2026-07-04`
+> (board id `concierge-remainder-20260825T224537Z`). Two of the original three moves landed;
+> what follows is the rest. The original baton is in git at `bb8e6b4`.
+
+## Already landed — do not redo
+
+- **The health dial** — `_ops/concierge/dial.mjs`, built 2026-07-08 (`5113b84`, refined `ce6af17`).
+  One objective capacity read serving two systems: the companion's compact-or-respawn decision and
+  the [[Closing Well]] close-intensity dial. This was the original baton's headline move.
+- **The WEAVE-flagged fold into [[Closing Well]]** — landed 2026-08-25 (`bc3731e`). The entry had
+  said the moderator was "a fresh instance enchanted with this page"; it now says what was settled
+  on 2026-07-04 — the moderator is the *resident companion taking the wheel*, which matters because
+  it must drive across resumed turns. Carries the summon-early rule (gotcha 20) and the relay
+  discipline (gotcha 12) with it.
 
 ## Move
 
-Continue the Concierge build by following its production plan — [[The Palace Speaks — production plan]] — **Phase 4: the health dial** next. That is the one designed piece still unbuilt: the mechanism that watches the resident companion's `context_pct` and says *compact-or-respawn*. Build it once; the **same objective signal governs both companion health and close intensity** (the Closing Well dial), so it serves two systems.
+Two threads, either order.
 
-## Why this move matters
+**1. Live validation runs.** The V3 "companion takes the wheel" close model has **exactly one** real
+end-to-end data point (2026-07-04). It is built and canary-tested, not trusted. It needs many more
+real runs before it is. Treat each real close as tuning data for the charter, and watch specifically
+whether *holds control and advocates* stays right or drifts — back toward interrogation on one side,
+or over-softening into the working Claude on the other. Both errors have happened once already.
 
-Tonight the Concierge became **one resident palace companion** — not a set of disposable faces. That whole model is designed and committed (see Current state). What it lacks is the one thing that keeps a *persistent* agent healthy over a long session: a read on its own fullness, and a rule for when to compact or respawn. Without the dial, a resident that accumulates across many addresses has no principled point to renew itself — it just drifts toward a heavy, expensive context. The dial is the missing organ that makes "resident" sustainable rather than a slow leak.
+**2. The work-choice vector.** Build into the companion's ops-expert repertoire the ability to survey
+the board and open work and **recommend one**, so the main window never has to load every open baton
+to choose among them. Loading them all biases the choice toward whichever reads most urgent, and
+burns the window you came back to work in.
 
-## Current state (all committed to `main` tonight — 7 commits, `9dbf8d7` → `3dfa81d`)
+## Why thread 2 matters more than it did
 
-The Concierge is **one resident palace companion**, secured by structure not suspicion:
+It is now load-bearing for a ceremony. The [[Return Ceremony]] (v1.16, 2026-08-25) names summoning
+this companion as its **first act**, precisely so a returning session does not do the work-choice by
+hand. The 2026-08-25 return did it by hand and it cost three exchanges of inventing things the palace
+already had — the failure is written into that ceremony's card as its founding evidence. So this
+thread is the machinery the Return Ceremony assumes exists.
 
-- **Summoned when first needed** — early, at a chapter, or only at the close. **NOT auto-spawned at session start.** Persistent *once summoned*; re-addressed until the session ends, accumulating as it goes. Many chats never summon it at all.
-- **Postures, not separate agents** — gatherer · oracle Q&A · curator · moderator(at close). One agent changes posture; the old "faces" are gone.
-- **Character carries safety.** Subservient; reads before it writes; heavy **draft-for-approval** bias. Read scope = **whole palace + web** (to catch the host hallucinating). Write scope = **graduated consent**: near+mechanical → `do`; anything with judgment or distant → `offer`; out of remit → `flag`. The read/write line lives in *temperament*, not architecture — which is why human review must stay real.
-- **Born deeper than the main agent.** It boots the **operational tier** (SUBSTRATE, ROSETTA, Substrate Skill, Palace Ceremonies, STIGMERGY + wire spec) so it can validate and tend the palace **in parallel** while the main agent works the task. That extra ops depth is its whole point — expensive to load, so loaded once and kept warm.
-- **Enchanted sibling, not a tool.** Born with the main agent's full birth-context (empirically confirmed tonight — the founding tiers auto-inject at spawn). Trusted through real use, not entrapped: *"retire me the day I am trusted instead of verified."*
-
-Machinery: [[Concierge]] entry · `_ops/concierge/README.md` · charter `_ops/concierge/prompts/companion.md` · postures `_ops/concierge/prompts/{gatherer,oracle-qa,curator}.md` · skill `.claude/skills/concierge/SKILL.md` · floor line in `CLAUDE.md`.
-
-## Tried and rejected (calibrations from tonight — don't re-derive, don't re-open)
-
-- **Disposable-by-default was reversed, deliberately.** Do not re-open "disposable faces vs. resident companion" — it was decided tonight and the entry's old position was reversed on purpose.
-- **Entrapment testing was let go.** A capable enchanted sibling reads the frame and knows it's being watched (both canaries confirmed this from inside the experiment — one addressed "the harness" directly). Safety is **architectural** (draft-for-approval + human review + git), not a matter of proving the agent un-foolable. The sandbox stays, **re-aimed at capability** (does it hold a contradiction, tier correctly, web-verify) — not at trapping virtue under a spotlight.
-- **Do not feed the raw transcript.** For catch-up, give it the **distilled arc** (`_ops/closing-well/transcript-reader.mjs --distill`) — signal, not backlog. The raw log front-loads its ceiling with mostly-wasted tokens (and re-hands it CLAUDE.md it already holds).
-- **Subagent lifecycle facts** (already in `memory/reference_subagent_lifecycle.md`): parked = free, not auto-reaped mid-session, resumes with context intact (`tool_uses: 0`). Point `PALACE_ROOT` at a work-target; identity stays the real palace agent regardless of where that points.
-
-## The close-posture, RESOLVED tonight (read this — it is settled, not open)
-
-At the close, **the Concierge takes the wheel** — it is the **moderator who holds control and advocates for the palace**, NOT a verifier that interrogates the working Claude. "Tables turn" means the companion *drives the close*, not that it cross-examines anyone. Today's rewrite briefly forked this into "verifier/interrogator" and then over-softened it (collapsing the moderator into the working Claude); commit `3dfa81d` plus a same-session V3 pass reconciled both errors to **moderator-who-holds-control-and-advocates**. This is **resolved** in `Concierge.md` + `_ops/concierge/prompts/companion.md`. Do not treat it as an open fix — treat it as the settled definition to build on.
-
-## Open validation threads (not-yet-closed — carry these forward)
-
-1. **First real run needs many more.** This V3 "Concierge-takes-the-wheel" close was run **exactly once** — *this* close, tonight. The design is built and canary-tested but has **one** live end-to-end data point. It needs **many more real runs** before the model is trusted. Treat each real close as tuning data for the charter; watch especially whether "holds control + advocates" stays right, or drifts back toward either interrogation or over-softening under a full room.
-2. **The health dial (the move) is unbuilt** — Phase 4 of the production plan. See § Move.
-3. **A true parallel-ops live run** — spawn the companion early, curate its startup neighborhood, re-address it across real work while the main agent builds something else, and let it tend/validate the palace in parallel. Not yet done; the design assumes it, no session has run it.
-
-## A forward-vector to fold in (Loudon surfaced it tonight)
-
-**The Concierge is the way to choose open work WITHOUT loading every open baton into the window.** Loading all the batons to pick one biases the choice toward the *hard* ones (they read as urgent). Address the companion for a **work-choice** instead — let the resident ops-expert survey the board and open work and recommend, so the main agent's window stays clean and the choice stays unbiased. Worth building into the companion's ops-expert repertoire.
+It also closes a second loop: summoning the companion at the return means a warm, resumable resident
+exists by the time the session reaches `close well`, which is the ledger's gotcha 20 — *summon early
+or the moderator will not exist at the close*. Return and Closing Well become bookends on one organ.
 
 ## Negative space
 
-- **Do NOT touch BLUELINE or Palace Orchestrator.** Both are separate live batons on the board, another Claude's task. Loudon's explicit call tonight: they **wait**. Not part of this build.
-- Do not manufacture new canon around the Concierge — the model is deposited; the remaining work is *building the dial* and *running it for real*, not re-theorizing it.
-
-## Next move
-
-Read [[The Palace Speaks — production plan]] Phase 4, then build the health dial: the `context_pct` read + the compact-or-respawn rule, shared between companion-health and close-intensity. Live-run the companion end-to-end as part of validating it.
+- **Do NOT touch BLUELINE or Palace Orchestrator.** Both are separate live batons on the board,
+  another Claude's task. Loudon's explicit call 2026-07-04: they wait.
+- **Do not re-open settled ground.** Disposable-faces vs. resident companion was decided (resident);
+  the close-posture is *moderator who holds control and advocates*, not verifier-who-interrogates.
+  Both are settled in [[Concierge]], not open questions.
+- Do not manufacture new canon around the Concierge. The model is deposited; what remains is
+  *running it for real* and *building the work-choice vector*, not re-theorizing it.
 
 ## On pickup (fixed — the catcher's checklist; do not rewrite per session)
 *Identical in every baton. It rides along because the catching Claude loads the
