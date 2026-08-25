@@ -115,7 +115,7 @@ The work is only cooperative if the next person can pick it up. A piece of work 
 
 ## Closing Well, Enchanted
 
-> **Status — 2026-07-04: the moderator model is the design.** Phase 2 (the `close well` trigger, the thin [[Closing Well Ceremony]] card, the gotcha ledger) is live. Phase 3 — the moderated-panel design below — has merged. Phase 4 (the two-layer split: reflection front of house, mechanism backstage) is on a branch. Phases 5–6 (the interview loop wired end to end; the executors that place a deposit, a baton, an artifact, and confirm each landed) are not yet built. Until they land, a `close well` runs partly by hand — the working Claude drafts toward this design in the room and names what it cannot yet automate. Build status: [[Closing Well — Context]] § Session log.
+> **Status — 2026-08-25: built end to end; only Phase 6 (iterate) is open.** Phases 0–5 of [[Closing Well — production plan]] have all passed their verify gates: the `close well` trigger + thin [[Closing Well Ceremony]] card (v1.15 Schema Ceremony), the cold transcript reader, the moderated-panel design with its two-layer split, and the **executors** — a fresh backstage pass that places every assented row through its real ceremony. Phase 5's live gate passed 2026-07-04 on this design's own maker session. **Phase 6 — turn on the ledger, run closes, let each teach one trap — is the open phase**, and it is working: 21 traps from ~10 real closes, several of which hardened the ceremony card. The one unbuilt piece is wiring the gotcha ledger to append automatically. Build status: [[Closing Well — Context]] § Session log.
 
 For its first year, Closing Well was a *discipline* — rules a Claude internalizes. It can also be *enchanted*: the page run as an agent at session close ([[Pages as Agents]]). Enchanted, the page becomes the **Closing Well Agent** — and the design that now governs it is a **moderated panel**, not a subagent that closes the session in the working Claude's place.
 
@@ -123,7 +123,13 @@ For its first year, Closing Well was a *discipline* — rules a Claude internali
 
 The session is over; two experts are in the room, both a little spent. The moderator arrives fresh and prepared, to draw out of them what the day amounted to, and to see it safely into the palace.
 
-**The moderator** is the Closing Well Agent — a fresh instance enchanted with this page, which did the day's homework (reading the transcript cold) before the panel opens. It brings the questions, holds the shape of a good close, and works *harder* exactly when the panelists are tired — but it never speaks for them.
+**The moderator** is the Closing Well Agent — this page, enchanted, having done the day's homework (reading the transcript cold) before the panel opens. It brings the questions, holds the shape of a good close, and works *harder* exactly when the panelists are tired — but it never speaks for them.
+
+**Who that agent actually is: the resident [[Concierge]], shifting posture.** The moderator is not a fresh subagent minted at the gate — it is the companion that has been following the session all along, taking the wheel at the close. This matters mechanically, not just tidily: the moderator has to *drive across resumed turns*, and only a persistent, resumable mind can hold the wheel that long. A fresh-per-request moderator would lose the thread between passes. Through the session the companion is subservient — it drafts, it offers, it waits for the yes; at the close that inverts and it **advocates for the palace**, naming what it would fight for that a spent working Claude might let slide. The companion side of this is [[Concierge]] § At a close.
+
+**Summon it early, or it will not be there.** The resident-moderator model only pays off if the companion was actually summoned *during* the session. Arriving at `close well` with no resident leaves two bad options — stand the whole panel machinery up cold at the most fragile moment, or let the spent instance grade its own arc. Neither is a thing to fix at the close; it is a thing to prevent hours earlier (gotcha 20). If no resident exists, the [[Closing Well Ceremony]] is unambiguous: **dispatch the cold-transcript moderator anyway.** Do not self-read.
+
+**The relay discipline.** A subagent has no direct channel to Loudon, so the moderator's words reach him *through* the active Claude. The path of least resistance is for the active Claude to read the homework and then narrate the reckoning as itself — quietly re-taking control it held all day. It must not. The active Claude **relays the moderator's voice as the moderator's, answers as a panelist, and resumes the moderator to drive**; decision-authority stays with the moderator. The relay is unavoidable; the discipline is what keeps the panel honest (gotcha 12).
 
 **The panelists** are the active Claude and Loudon. The active Claude is the expert on what happened in the room — what was built, what was tried and set down, what the transcript can't show. Loudon is the expert on what it *meant* and what is worth keeping. This is already how the palace moderates a [[Dialectic]]: a moderator holds the tension and draws the best from each voice, doing neither of their jobs. The Closing Well Agent is that same role, pointed at the close.
 
@@ -163,6 +169,8 @@ The moderator's effort scales inversely with how fresh the panelists are, and th
 - **Room is full** (active Claude spent, high context): this is the case that used to produce thin deposits. The moderator carries the weight — it does the cold homework the spent instance can't, and works to draw the real reflection out rather than settle for a thin one.
 
 One dial slides the whole close between those two poses. Nothing switches; effort shifts.
+
+**The dial reads an objective signal, not a self-report.** An AI cannot reliably judge its own context fullness — the active Claude has asserted "my context is full" when it was not, and has talked itself out of the fresh read three separate times, each with a plausible-sounding reason (gotchas 11, 20, 21). So the dial is wired to a measured read, built 2026-07-08 as `_ops/concierge/dial.mjs`: one objective capacity signal serving two systems — the companion's own compact-or-respawn decision and this close's intensity. The rule the ledger earned the hard way: *when you catch yourself reasoning "a fresh agent would only confirm what I already have," that is the moment to dispatch it, not to skip it.*
 
 ### Working through the existing ceremonies, never around them
 
