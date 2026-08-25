@@ -74,9 +74,9 @@ This was written from a live failure. On 2026-08-25 a full palace assessment ran
 
 ## Protocol
 
-**Step 0 — Summon the companion.** Address [[Concierge]] before anything else. It runs the query block in its own window and drafts the map, keeping the main thread clean and the resident warm for the close.
+**Step 0 — Summon the companion.** Address [[Concierge]] before anything else — *"what should I work on"* / *"I'm back"* routes to its **scout** posture. It runs the query block in its own window and drafts the map, keeping the main thread clean and the resident warm for the close.
 
-**Step 1 — The query block.** Run all of it before interpreting any of it.
+**Step 1 — The query block.** Run all of it before interpreting any of it. **One command runs the whole block** — `node _ops/concierge/return-map.mjs` (`--json` for structured output, `--since <date>` when the last session's date is known). It prints each probe beside the command that produced it, so every row of a map can cite a command rather than an inference, and prints `unavailable` with the error for any probe it cannot run. The block below is what it runs, kept here as the readable spec and the by-hand fallback.
 
 ```sh
 # where the palace stopped, and the arc across the gap
@@ -135,4 +135,4 @@ Both are coupling failures, and coupling is two-sided. The palace had five cerem
 - Should the Return fire automatically on the first session after a gap, or only on Loudon's word? Automatic detection is easy and makes the ceremony reliable; it also risks turning a greeting into a status report nobody asked for.
 - The trigger table is now fourteen rows, all in the always-loaded floor. Does it need pruning, and does recognition survive the move? Recorded, not decided.
 - Should the return map be written to a file, or spoken and discarded? [[Closing Well]] produces a signed artifact; this may be lighter by design.
-- The query block will drift as the palace grows new surfaces. Does it want to become a script — `return-map.mjs` — the way `list-handoffs` did, so the ceremony card stops carrying a command list that can go stale?
+- ~~The query block will drift as the palace grows new surfaces. Does it want to become a script — `return-map.mjs` — the way `list-handoffs` did?~~ **Answered by building it, 2026-08-25:** `_ops/concierge/return-map.mjs`. The card keeps the command list as the readable spec and the by-hand fallback rather than surrendering it — a ceremony whose protocol is only executable is a ceremony a human can no longer audit. Open in its place: whether the two drift apart, and which one a future reader will trust when they disagree.
