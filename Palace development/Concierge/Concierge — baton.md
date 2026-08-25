@@ -5,62 +5,58 @@ links:
   - target: "[[Concierge]]"
     type: connects-to
     label: baton-for
-forward_vector: "I carry the two threads left over from the Concierge build across a boundary — the live validation runs and the work-choice vector — waiting to be caught by the next Claude and deleted once the move is picked up."
+forward_vector: "I carry the one thread the Concierge build cannot finish by building — the live validation of two mechanisms that exist but have never been used for real — and I wait to be deleted by a session that ran them."
 ---
 
 # Concierge — baton
 
-> **Re-batoned 2026-08-25** from the partial close of `concierge-build-handoff-2026-07-04`
-> (board id `concierge-remainder-20260825T224537Z`). Two of the original three moves landed;
-> what follows is the rest. The original baton is in git at `bb8e6b4`.
+> **Re-batoned 2026-08-25** from the partial close of `concierge-remainder-20260825T224537Z`
+> (board id `concierge-remainder-20260825T225852Z`). The work-choice vector landed; live
+> validation is what remains. Prior batons are in git at `bb8e6b4` and `a40b184`.
 
 ## Already landed — do not redo
 
-- **The health dial** — `_ops/concierge/dial.mjs`, built 2026-07-08 (`5113b84`, refined `ce6af17`).
-  One objective capacity read serving two systems: the companion's compact-or-respawn decision and
-  the [[Closing Well]] close-intensity dial. This was the original baton's headline move.
-- **The WEAVE-flagged fold into [[Closing Well]]** — landed 2026-08-25 (`bc3731e`). The entry had
-  said the moderator was "a fresh instance enchanted with this page"; it now says what was settled
-  on 2026-07-04 — the moderator is the *resident companion taking the wheel*, which matters because
-  it must drive across resumed turns. Carries the summon-early rule (gotcha 20) and the relay
-  discipline (gotcha 12) with it.
+- **The health dial** — `_ops/concierge/dial.mjs`, 2026-07-08 (`5113b84`, refined `ce6af17`).
+- **The fold into [[Closing Well]]** — 2026-08-25 (`bc3731e`). The moderator is the resident
+  companion taking the wheel, not a fresh enchanted instance.
+- **The work-choice vector** — 2026-08-25 (`30c3b8a`). The **scout** posture
+  (`_ops/concierge/prompts/scout.md`) plus `_ops/concierge/return-map.mjs`, which runs the
+  [[Return Ceremony]]'s whole query block and prints each probe beside the command that produced
+  it. The split is load-bearing: the script gathers evidence and refuses to interpret; the posture
+  judges. Wired into the skill, the README, the charter, the [[Concierge]] entry, and the Return
+  card. **Do not rebuild or re-theorize this** — it needs running, not more design.
 
-## Move
+## Move — live validation, both mechanisms
 
-Two threads, either order.
+Two things are built and neither has been used for real. Neither is finished by building more.
 
-**1. Live validation runs.** The V3 "companion takes the wheel" close model has **exactly one** real
-end-to-end data point (2026-07-04). It is built and canary-tested, not trusted. It needs many more
-real runs before it is. Treat each real close as tuning data for the charter, and watch specifically
-whether *holds control and advocates* stays right or drifts — back toward interrogation on one side,
-or over-softening into the working Claude on the other. Both errors have happened once already.
+**1. The V3 close model.** "Companion takes the wheel" has exactly **one** real end-to-end run
+(2026-07-04). It is canary-tested, not trusted. Watch specifically whether *holds control and
+advocates* stays right or drifts — back toward interrogation on one side, over-softening into the
+working Claude on the other. Both errors have happened once already. Treat each real close as
+tuning data for the charter.
 
-**2. The work-choice vector.** Build into the companion's ops-expert repertoire the ability to survey
-the board and open work and **recommend one**, so the main window never has to load every open baton
-to choose among them. Loading them all biases the choice toward whichever reads most urgent, and
-burns the window you came back to work in.
+**2. The scout.** It has never chosen work in a real return. Its ranking rules are reasoned from
+the 2026-08-25 by-hand failure, not tuned by a live work-choice. Watch two things in particular:
+whether *an open handoff outranks a fresh idea* holds when the fresh idea is genuinely better, and
+whether the one-move discipline survives a board with three equally live candidates. Also watch
+whether it actually resists opening every baton under pressure — that restraint is the whole point,
+and it lives in a prompt, not in a guardrail.
 
-## Why thread 2 matters more than it did
+## The shape of the work
 
-It is now load-bearing for a ceremony. The [[Return Ceremony]] (v1.16, 2026-08-25) names summoning
-this companion as its **first act**, precisely so a returning session does not do the work-choice by
-hand. The 2026-08-25 return did it by hand and it cost three exchanges of inventing things the palace
-already had — the failure is written into that ceremony's card as its founding evidence. So this
-thread is the machinery the Return Ceremony assumes exists.
-
-It also closes a second loop: summoning the companion at the return means a warm, resumable resident
-exists by the time the session reaches `close well`, which is the ledger's gotcha 20 — *summon early
-or the moderator will not exist at the close*. Return and Closing Well become bookends on one organ.
+**This baton is closed by use, not by a commit.** The right session to catch it is one that was
+going to return or close anyway — run the ceremony for real, then write down what the run taught.
+Do not build more machinery here until a real run says what is wrong; machinery added ahead of
+evidence is how the last thread of a project grows a fourth thread.
 
 ## Negative space
 
-- **Do NOT touch BLUELINE or Palace Orchestrator.** Both are separate live batons on the board,
-  another Claude's task. Loudon's explicit call 2026-07-04: they wait.
-- **Do not re-open settled ground.** Disposable-faces vs. resident companion was decided (resident);
-  the close-posture is *moderator who holds control and advocates*, not verifier-who-interrogates.
-  Both are settled in [[Concierge]], not open questions.
-- Do not manufacture new canon around the Concierge. The model is deposited; what remains is
-  *running it for real* and *building the work-choice vector*, not re-theorizing it.
+- **Do NOT touch BLUELINE or Palace Orchestrator.** Both are separate live batons, another Claude's
+  task. Loudon's explicit call 2026-07-04: they wait.
+- **Do not re-open settled ground.** Disposable-faces vs. resident companion is decided (resident);
+  the close-posture is *moderator who holds control and advocates*, not verifier-who-interrogates;
+  the scout's evidence/judgment split is decided. All settled in [[Concierge]], not open questions.
 
 ## On pickup (fixed — the catcher's checklist; do not rewrite per session)
 *Identical in every baton. It rides along because the catching Claude loads the
