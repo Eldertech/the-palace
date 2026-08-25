@@ -47,7 +47,7 @@ export function runHook(msgPath, { author = null } = {}) {
     return 0;
   }
 
-  const { valid, warnings } = validateCommitMessage(text);
+  const { valid, errors, warnings } = validateCommitMessage(text);
   if (valid) {
     // Conformant -- pass through. Surface warnings but never block.
     for (const w of warnings) process.stderr.write(`[palace commit-msg] note: ${w}\n`);
@@ -59,6 +59,12 @@ export function runHook(msgPath, { author = null } = {}) {
   try {
     writeFileSync(msgPath, annotated, 'utf8');
     process.stderr.write('[palace commit-msg] non-spec commit annotated (ops/couldnt) -- not blocked.\n');
+    // Say WHY. The reason was computed and then discarded, so a well-formed
+    // deposit demoted to ops/couldnt by one bad trailer looked identical to a
+    // raw Obsidian commit. The most common cause is prose in Palace-Verify,
+    // which is an enum (verified|unverified|couldnt), not a sentence.
+    for (const e of errors || []) process.stderr.write(`[palace commit-msg]   why: ${e}\n`);
+    for (const w of warnings || []) process.stderr.write(`[palace commit-msg]   note: ${w}\n`);
   } catch (e) {
     process.stderr.write(`[palace commit-msg] could not annotate ${msgPath}: ${e.message} -- passing through.\n`);
   }
