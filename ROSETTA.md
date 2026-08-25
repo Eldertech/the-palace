@@ -48,6 +48,7 @@ This is a **meta-entry**: a document about the Palace itself. Its purpose is to 
 | **Walk Ceremony** | `traverse()` | Graph traversal query | SPARQL path query | Hypertext navigation | Domain exploration |
 | **Weave Ceremony** | `analyzeGraph()` | Topology report / lineage scan | Inferencing / entailment run | Structural analysis pass | Bounded context mapping |
 | **Spore Check** | `audit()` / `gc()` | Data quality scan | Orphan node detection | Dead link check | Stale aggregate review |
+| **Return** | `git log` since last session / `onResume()` | Changelog since last run | Delta since last crawl | Diff since last snapshot | Replay events since last checkpoint |
 | **Schema Ceremony** | Refactoring / interface change | Schema migration | TBox update | Macro redefinition | Ubiquitous language revision |
 | **Ceremony Linter** (lives in [[Palace Ceremonies]]) | A unit test suite for method contracts | A pipeline validation check | An ontology consistency check | A structural correctness test | A domain invariant check |
 | **The Palace Keeper** | The runtime / interpreter | The pipeline orchestrator | The reasoner / triplestore engine | The literate programming tool | The domain expert / ubiquitous language guardian |
@@ -212,6 +213,7 @@ The gap in the last row is the point: where the harness has a word, the palace s
 | **Deposit** | "Let's deposit" / "Add this to the palace" | Source material identified | Draft entry → review → write to palace → commit as `deposit(<id>):` with the synthesis in the commit body | Entry file exists; the commit self-classifies on the LOG deck (`Palace-Kind: deposit`) — no archive row (the [[Deposit Archive]] is frozen) |
 | **Walk** | "Let's walk" | ≥1 entry with typed links | Follow typed links entry to entry, narrating connections | Path described; surprise named; metadata updated if needed; commit if files changed | [[Walk Ceremony]] |
 | **Weave** | "Let's weave" | ≥5 entries + filesystem access | Orient to recent deposits → full topology report → propose links → propose stage transitions | Topology report produced; ≥3 links proposed; commit made | [[Weave Ceremony]] |
+| **Return** | "I'm back" / "return" | a gap since the last session | Read the arc from git; show a return map; Loudon signs | Gap read from history not guessed; one re-entry move named; nothing written before the map is signed | [[Return Ceremony]] |
 | **Spore Check** | "Spore check" | ≥1 dormant entry | Review all dormant entries; assign revive / hold / compost | Every dormant entry has a disposition; commit made | [[Spore Check Ceremony]] |
 | **Revival** | "Let's revive [entry]" | Named entry is dormant; revival rationale is statable | Re-enter dormant entry; add Revival Note; update stage; add new typed links | Stage updated; Revival Note written; new links added; commit made | [[Revival Ceremony]] |
 | **Baton** | "baton" / "pass the baton" / "baton this" | An in-progress move exists | Compress the session's operating state into a baton the next Claude can catch; write to the entry bundle | Baton written to `[Entry]/[Entry] — baton.md`; deleted on pickup (git is the archive) | [[Baton Ceremony]] |

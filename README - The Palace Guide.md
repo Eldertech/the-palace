@@ -227,6 +227,8 @@ The palace stays alive through periodic ceremonies — intentional acts of revie
 
 **The Weave** (monthly, ~30-60 min) — Review the full graph. Which entries are growing? Which are orphaned? Which clusters are forming? Update metadata. Propose new connections. This is the elder weaving the blanket.
 
+**The Return** (on coming back after a gap) — Read the arc from git across the gap and show a return map: where you stopped, what is mid-sentence, what went stale, and one move to re-enter with. Report the gap's length, never a theory about its cause.
+
 **The Spore Check** (quarterly) — Review all `stage: dormant` entries. Have conditions changed? Is anything ready to revive?
 
 **The Self-Model Update** (when it feels right) — Revise [[SUBSTRATE]] page. Update the organism's self-description.
