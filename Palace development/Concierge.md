@@ -237,8 +237,11 @@ fold it in) that this same session had just helped write into its own canon abov
 
 ## Active Baton
 
-[[Concierge — baton]] — placed 2026-07-04 *(move: [[The Palace Speaks — production plan]] Phase 4)*.
-**The health dial landed 2026-07-08** (`_ops/concierge/dial.mjs` — built + proven on real numbers, not
-yet live-run). Remaining on the baton: fold the companion character + moderator + `agency_profile` into
-[[Closing Well]] (the WEAVE-flagged half of Phase 4), plus the live end-to-end validation runs. The
-board line still reads "the dial next" — the next catcher re-scopes it (staleness is the catcher's call).
+[[Concierge — baton]] — re-batoned 2026-08-25 from the partial close of the original build
+handoff (`concierge-remainder-20260825T224537Z`). **Two of the three moves have landed:** the health
+dial (`_ops/concierge/dial.mjs`, 2026-07-08) and the WEAVE-flagged fold of the companion character +
+moderator into [[Closing Well]] (`bc3731e`, 2026-08-25). What remains: the **live end-to-end
+validation runs** — the V3 "companion takes the wheel" close has exactly one real data point and needs
+many more — and the **work-choice vector**, letting the resident survey open work and recommend one so
+the main window never loads every baton to choose among them. That second thread is now load-bearing
+for the [[Return Ceremony]], which names summoning this companion as its first act.
