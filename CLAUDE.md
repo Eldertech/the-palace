@@ -85,7 +85,7 @@ Never raw-commit from Cowork — it can rename but not delete files, so a bare `
 
 ## Directory Structure
 
-The palace root holds two things: **foundational skeleton files** (CLAUDE, SCHEMA, JEWEL, SUBSTRATE, README, ROSETTA, FOUR PILLARS) and **knowledge entries** (all concepts, hubs, projects — the bulk of the graph). Operational machinery lives one level down in `_ops/` — ceremony cards + their `— Context` companions, working queues, and machinery subdirs (`swarm/`, `stigmergy/`, `loudon-live/`, `agents/`, `cowork-git/`, `maps/`, …). The full ceremony index is [[Palace Ceremonies]]; agent operational detail is [[Substrate Skill]].
+The palace root holds two things: **foundational skeleton files** (CLAUDE, SCHEMA, JEWEL, SUBSTRATE, README, ROSETTA, FOUR PILLARS) and **knowledge entries** (all concepts, hubs, projects — the bulk of the graph). Operational machinery lives one level down in `_ops/` — ceremony cards + their `— Context` companions, working queues, and machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, `_ops/cowork-git/`, `_ops/maps/`, …). The full ceremony index is [[Palace Ceremonies]]; agent operational detail is [[Substrate Skill]].
 
 Not every ceremony spec lives in `_ops/`: [[Enrichment]] (`Enrichment.md`) and its bundle live in the **palace root** alongside the skeleton files, an exception to the `_ops/` convention.
 
@@ -102,6 +102,7 @@ These verbs ARE invocations. When Loudon uses one as an instruction — bare wor
 | "deposit", "let's deposit", "add this to the palace", "memorialize this" | **Deposit** — draft entry/edits from the conversation; show before writing; the commit *is* the record (`Palace-Kind: deposit` + synthesis in the body) — the [[Deposit Archive]] is frozen, no row | [[Deposit Ceremony]] |
 | "baton", "pass the baton", "baton this", "baton it to [surface]" | **Baton** — compress the live session into a baton (a file) the next Claude catches and runs with; delete on pickup, git is the archive | [[Baton Ceremony]] |
 | "close well", "let's close well", "close this session well" | **Closing Well** — dispatch the enchanted [[Closing Well]] page as the Closing Well Agent: read the session arc with fresh eyes, draft a **close map** (deposit / baton / artifacts, or fewer), one gate (Loudon signs), then execute each row via its own ceremony — "deposit: none" is a first-class outcome | [[Closing Well Ceremony]] |
+| "I'm back", "returning", "what did I miss", "let's pick this back up", "return" | **Return** — meet Loudon after time away: read the arc from git, show a **return map** (where you stopped · what's mid-sentence · what went stale · *one* move to re-enter with), he signs it. Never interpret why the gap happened | [[Return Ceremony]] |
 | "harvest", "let's harvest" | **Harvest** — search past work, surface deposit candidates to a working list | [[Harvest Ceremony]] |
 | "weave", "let's weave" | **Weave** — Swarm Weave: map build → parallel audit → synthesis; topology, unsung paths, new links | [[Weave Ceremony]] |
 | "walk", "let's walk" | **Walk** — follow typed links from one entry, surface an unexpected connection | [[Walk Ceremony]] |

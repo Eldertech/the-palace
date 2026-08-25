@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.14"
+version: "1.16"
 stage: foundational
 status: canonical
 links:
@@ -327,6 +327,8 @@ When a ceremony file exceeds ~8KB, split it into two files:
 - [[Baton Ceremony]] + [[Baton Ceremony — Context]]
 
 *(The v1.15 addition of the Closing Well Ceremony — the `close well` trigger — is recorded in [[SCHEMA — Context]] §6.)*
+
+*(**v1.16 — the Return Ceremony.** Added 2026-08-25. The palace had ceremonies for handing off mid-session, ending well, and reviving a dormant entry, and none for the human coming back after time away — it absorbed the re-entry cost for its agents and left Loudon to pay it himself. The Return is the Spore Check pointed at the human. Its one hard rule — report a gap's length, never a theory about its cause — was written from a live failure the same day. Mirrors updated: CLAUDE.md trigger table, [[Palace Ceremonies]], [[ROSETTA]], [[README - The Palace Guide]], [[Substrate Skill]]. Rationale in [[Return Ceremony]] § Why this belongs in the always-loaded floor.)*
 
 ---
 

@@ -19,6 +19,8 @@ links:
     type: enables
   - target: "[[Weave Ceremony]]"
     type: enables
+  - target: "[[Return Ceremony]]"
+    type: connects-to
   - target: "[[Spore Check Ceremony]]"
     type: enables
   - target: "[[Self-Model Update Ceremony]]"
@@ -48,6 +50,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 |---|---|---|---|---|
 | The Walk | "Let's walk" | Weekly | Pick a starting entry, follow typed links, note surprises, surface one unexpected connection | [[Walk Ceremony]] |
 | The Weave | "Let's weave" | Monthly | Full palace structural audit, run as a **Swarm Weave** (parallel workers + coordinator synthesis). Opens with a Map Build. Reports topology, formalizes unsung paths, proposes label enrichment and new typed links. | [[Weave Ceremony]] |
+| The Return | "I'm back" / "what did I miss" / "return" | On returning after a gap | Read the arc from git across the gap; show a return map (where you stopped, what's mid-sentence, what went stale, one re-entry move); Loudon signs. Report the gap's length, never its cause. | [[Return Ceremony]] |
 | The Spore Check | "Spore check" | Quarterly | Read all `stage: dormant` entries. Assign disposition: revive / hold / compost. | [[Spore Check Ceremony]] |
 | The Self-Model Update | "Self-model update" | As needed | Revise [[SUBSTRATE]] — update the palace's self-description to reflect current state | [[Self-Model Update Ceremony]] |
 | The Enrichment | "Let's enrich" / "Enrich [target]" / "Make-teach-move-on" / "Let's go oblique" | Whenever | Studio visit. Five-card queue of small varied artifacts — sound, image, interactive, voice act, person-to-reach-out-to, sharper vector, harder question. Each artifact carries a freeform purpose tag. Approved cards are placed inline in entries; the git log is the biography. The no-end principle: when easy moves run out, raise the stakes (harder questions, vector reconsideration). | [[Enrichment]] |
