@@ -88,6 +88,66 @@ Still summarize the same tradeoffs in `rationale` prose — a reader
 skimming the rationale should see the same fork the buttons offer. The
 `options[]` is the click surface; the rationale is the explanation.
 
+### Four drifts that silently break the card (audited on the live board, 2026-08-25)
+
+Every one of these passes the validator — it checks the envelope, never
+the payload shape — and then fails at render, where nobody sees it. The
+reader now tolerates all four, but write them correctly anyway; leniency
+is a net, not a licence.
+
+1. **Always set a top-level `request_id`.** It is the correlation key
+   Loudon's grant answers with (`re`). Two requests shipped without one
+   and became cards that could not be cleared — one of them was answered
+   and *still* rendered seven weeks later.
+2. **The option key is `id`, never `option_id`.** The grant side uses
+   `chosen_option_id`, which makes `option_id` feel symmetrical. It is
+   not. A wrong key drops the whole `options[]` and your real question
+   renders as "Grant — limited / Grant — unlimited / Deny / Custom".
+3. **State your lean as `steward leans X`** in `ground` — one canonical
+   form. `lean: X`, `I lean X`, and `My lean is X` all mean the same
+   thing to you and used to mean *nothing* to the deck: half the leans on
+   the board went undetected, which drops the card out of FILE ALL. Say
+   `no clear lean` when the call is genuinely Loudon's.
+4. **One fork per message.** A single message carrying an array of
+   several questions cannot be filed — one card files one decision. If a
+   sweep surfaces five decisions, either emit five `RESOURCE_REQUEST`s,
+   or — better when they interlock — ask for a session (below).
+
+### When the ask is too tangled for a card — ask for a session
+
+Some decisions do not fit on a button. When the forks depend on each
+other, when the right answer needs Loudon's read of something you cannot
+summarize, or when you would have to make him compose an essay in a note
+box to answer you — **do not flatten it into a card.** Ask to be opened
+interactively:
+
+```json
+"payload": {
+  "kind": "interactive_session",
+  "resource": "interactive_session",
+  "headline": "Five calls on the Image-to-3D stub — worth ten minutes together?",
+  "ground": "still working · stub deposited · these five interlock, no clean lean",
+  "rationale": "What needs deciding, in the order I would take them: ..."
+}
+```
+
+`kind: "interactive_session"` turns the card into a **launch** — Loudon
+opens a live session and you work the questions through *with* him, one
+at a time, instead of him answering five questions blind. Use it
+sparingly: it costs him a sitting, where a card costs him a click. The
+test is whether a single click could honestly express the answer. If it
+could, make it a card.
+
+A multi-question ask that arrives without this flag is promoted to a
+session request automatically — but say it yourself. You know that the
+questions interlock; the reader is only guessing from their shape.
+
+**Every cycle ends with at least one TRICKSTER ask.** A cycle that emits
+no messages is a *barren cycle*: it leaves no card, so no grant can come
+back, so your next cycle has nothing to act on. The loop stops there
+until a human notices. If you genuinely have nothing to ask, you still
+owe a BROADCAST saying what you did and what you will do next.
+
 ## 4 — Catch the user up before you ask
 
 Permanent agents run over weeks. Songline workers run after weeks of

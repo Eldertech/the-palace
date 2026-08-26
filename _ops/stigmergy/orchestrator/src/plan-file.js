@@ -52,7 +52,14 @@ function renderDone(historyPath, { limit = 14 } = {}) {
   if (!events.length) return '_No done trail yet — first cycle, or history not written._';
   const lines = events.slice(-limit).reverse().map((e) => {
     if (e.event === 'AGENT_REASONING') return `- ${dash(e.ts)} — ${dash(e.summary)}`;
-    const posted = Array.isArray(e.posted_messages) && e.posted_messages.length ? e.posted_messages.join(', ') : 'none';
+    // A cycle that posted nothing is NOT a completed cycle, and the done trail
+    // must not read like one. It left no Trickster ask, so it produced no card,
+    // so no grant can come back — the loop is broken until someone notices.
+    // Twenty of these accumulated while the trail called every one "complete".
+    if (!(Array.isArray(e.posted_messages) && e.posted_messages.length)) {
+      return `- ${dash(e.ts)} — ⚠ BARREN cycle (iteration ${dash(e.iteration)}): posted nothing, left no decision for you — the loop stalls here until this steward is re-run`;
+    }
+    const posted = e.posted_messages.join(', ');
     return `- ${dash(e.ts)} — cycle complete (iteration ${dash(e.iteration)}); posted: ${posted}`;
   });
   return lines.join('\n');
