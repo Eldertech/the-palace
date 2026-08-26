@@ -179,4 +179,19 @@ describe('materializePlan', () => {
     expect(res.written).toBe(false);
     expect(res.reason).toBe('entry-file-not-found');
   });
+  test('a cycle that posted nothing reads as BARREN, never as "cycle complete"', () => {
+    const root = mkdtempSync(path.join(tmpdir(), 'palace-plan-'));
+    try {
+      const hist = path.join(root, 'history.jsonl');
+      writeFileSync(hist, [
+        JSON.stringify({ event: 'CYCLE_COMPLETE', ts: '2026-08-26T02:35:07Z', iteration: 6, posted_messages: [] }),
+      ].join('\n'));
+      const md = renderPlanMarkdown({ home: 'Waveguide Synthesizer', state: SAMPLE_STATE, stage: 'growing', today: '2026-08-26', historyPath: hist });
+      expect(md).toContain('BARREN cycle (iteration 6)');
+      expect(md).toContain('the loop stalls here');
+      expect(md).not.toContain('posted: none');
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
 });

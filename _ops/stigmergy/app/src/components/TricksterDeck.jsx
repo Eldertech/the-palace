@@ -134,12 +134,19 @@ export default function TricksterDeck({
       });
       return;
     }
+    // The unregistered-asker path (a Shop sweep, a one-off page — anything with
+    // no permanent steward directory). A session request lands here too, and it
+    // needs the questions in hand: it is opening BECAUSE the ask was too tangled
+    // to file, so a mandate that says "resolve the decision" would be wrong on
+    // its face. Carry the rationale in — that is where the fork list lives.
     setLaunchContext({
       kind: 'steward',
       id: item.request_id,
       entry: item.from,
       from: item.from,
-      summary: `It paused on a decision it left you — "${ask}". Read its request on the TRICKSTER board, work it through, then resolve it (file the grant) and continue the cycle.`,
+      summary: wantsSession
+        ? `It asked to talk this through with you rather than leave it on a card — "${ask}". Here is what it needs decided:\n\n${item.rationale || item.ground || '(see its request on the TRICKSTER board)'}\n\nTake them ONE at a time, in order. Give your read and a recommendation on each, wait for Loudon's answer before moving to the next, and don't bundle them back up into a single question. When they are all settled, post the outcome to the board.`
+        : `It paused on a decision it left you — "${ask}". Read its request on the TRICKSTER board, work it through, then resolve it (file the grant) and continue the cycle.`,
     });
   };
 

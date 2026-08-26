@@ -59,7 +59,17 @@ function normalizeRequestOptions(raw) {
 
     // Canonical object form: { id, label, next? }.
     if (typeof o === 'object' && !Array.isArray(o)) {
-      const id = typeof o.id === 'string' && o.id.trim() !== '' ? o.id : null;
+      // `option_id` is accepted alongside `id`: stewards drift to it because
+      // that is the field name the GRANT side uses (`chosen_option_id`), so
+      // the two halves of the wire read as a matched pair to the writer. Four
+      // options on the persistent board use it — and without this alias the
+      // whole options[] was dropped, silently falling back to the generic
+      // Grant/Deny template. Sam Maloof's "commit or hold?" rendered as
+      // "Grant — limited / Grant — unlimited / Deny / Custom".
+      const rawId = typeof o.id === 'string' && o.id.trim() !== ''
+        ? o.id
+        : (typeof o.option_id === 'string' && o.option_id.trim() !== '' ? o.option_id : null);
+      const id = rawId;
       const label = typeof o.label === 'string' && o.label.trim() !== '' ? o.label : null;
       if (!id || !label) continue;
       const next = typeof o.next === 'string' && o.next.trim() !== '' ? o.next : null;
@@ -81,6 +91,54 @@ function normalizeRequestOptions(raw) {
     }
   }
   return out.length > 0 ? out : null;
+}
+
+// Render a request's "why" prose. Normally that is payload.rationale verbatim.
+// A Shopkeeper-shaped sweep instead carries `decisions_needed[]` — an array of
+// {id, question, note?, file?} — which nothing on the read path understood, so
+// five real forks (Hi3DGen vs Hunyuan3D-2, whether TripoSplat earns its own
+// Specialist, ...) rendered as a blank card and sat unanswered from 2026-06-23.
+// Flattening them into readable prose is a floor, not a fix: one card still
+// cannot FILE five separate decisions.
+export function renderRationale(payload = {}) {
+  const base = typeof payload.rationale === 'string' && payload.rationale.trim()
+    ? payload.rationale.trim()
+    : null;
+  const list = Array.isArray(payload.decisions_needed) ? payload.decisions_needed : null;
+  if (!list || list.length === 0) return base ?? payload.rationale;
+
+  const lines = list
+    .map((d, i) => {
+      if (!d || typeof d !== 'object') return null;
+      const q = typeof d.question === 'string' && d.question.trim() ? d.question.trim() : null;
+      if (!q) return null;
+      const tag = typeof d.id === 'string' && d.id.trim() ? d.id.trim() : String(i + 1);
+      const note = typeof d.note === 'string' && d.note.trim() ? `\n     ${d.note.trim()}` : '';
+      const file = typeof d.file === 'string' && d.file.trim() ? `\n     ${d.file.trim()}` : '';
+      return `${tag}. ${q}${note}${file}`;
+    })
+    .filter(Boolean);
+  if (lines.length === 0) return base ?? payload.rationale;
+
+  const header = lines.length === 1
+    ? '1 decision needed:'
+    : `${lines.length} decisions needed — too many to file on one card, so open this interactive and we'll work through them together:`;
+  return [base, header, lines.join('\n')].filter(Boolean).join('\n\n');
+}
+
+// The card's `kind`. An explicit `payload.kind` from the steward always wins.
+// Otherwise a multi-fork ask (several `decisions_needed[]`, no options[] to
+// click) is promoted to a SESSION REQUEST: it is structurally unfileable as a
+// card, and the honest response to "five interlocking decisions" is to open a
+// conversation, not to type an essay into a note box. One question with no
+// options stays an ordinary card — freetext answers that fine.
+export function deriveKind(payload = {}) {
+  const explicit = typeof payload.kind === 'string' && payload.kind.trim() ? payload.kind.trim() : null;
+  if (explicit) return explicit;
+  const list = Array.isArray(payload.decisions_needed) ? payload.decisions_needed : [];
+  const questions = list.filter((d) => d && typeof d.question === 'string' && d.question.trim());
+  const hasOptions = Array.isArray(payload.options) && payload.options.length > 0;
+  return questions.length > 1 && !hasOptions ? 'interactive_session' : null;
 }
 
 function ifPresent(v, dflt) {
@@ -105,7 +163,22 @@ function ifPresent(v, dflt) {
 // — FILE ALL must never auto-file a decision the steward left to the human.
 // When voice-rule-7 lands, replace pass 1 with a direct payload flag read.
 const LEAN_LABEL_MARKER = /\((?:recommended|my lean|my pick|my call|expected|default)\)/i;
-const GROUND_LEAN = /\bsteward\s+(?:leans|expects)\s+([A-Za-z][A-Za-z0-9_-]*)/i;
+// Phrasings observed on the persistent board, all meaning the same thing:
+//   "steward leans KEEP-DECOMPOSITION"   (the original convention)
+//   "My lean is HARDEN-WORKSHEET"
+//   "I lean VERIFY-IN-SYNTH (only you can do it)"
+//   "lean: greenlight"
+// Only the first was matched, so HALF the leans on the board were invisible:
+// of 34 requests carrying options, 32 state a lean in prose and 16 were
+// detected. An undetected lean costs twice — no `rec` marker on the card, and
+// FILE ALL skips it, which is the whole catchup path.
+//
+// The negative lookbehind keeps "no clear lean" / "no lean" leanless: a card
+// the steward deliberately left to the human must never be auto-filed. The
+// captured token is also cross-referenced against the option ids/labels below,
+// so a stray capture that matches no option still resolves to no lean.
+const GROUND_LEAN =
+  /(?<!\bno\s)(?<!\bno\s\w{1,12}\s)\b(?:steward\s+(?:leans|expects)|(?:my|i)\s+lean(?:s|ing)?(?:\s+is)?|leans?)\s*:?\s+([A-Za-z][A-Za-z0-9_-]*)/i;
 
 // Tag the recommended option (if any) on a normalized options[] list.
 // Returns { options, recommendedOption, leanSource }:
@@ -165,8 +238,21 @@ export function buildInbox(messages) {
   }
 
   // Filter for unresponded RESOURCE_REQUESTs and shape them per §2.6.
+  //
+  // Correlation matches BOTH ids, mirroring the write path: response-builder
+  // sets `re: request.request_id ?? request.id`, so a request carrying no
+  // top-level `request_id` is answered by its own message `id`. Reading only
+  // `request_id` made `responded.has(undefined)` always false — such a card
+  // could never be cleared, no matter how many valid grants were filed against
+  // it. Two live cases sat on the deck for months (Shopkeeper 2026-06-23, Sam
+  // Maloof 2026-07-05 — the latter answered 2026-08-25 and still rendering).
+  // Read and write must agree on the correlation key or cards become zombies.
+  const isResponded = (m) =>
+    (m.request_id != null && responded.has(m.request_id)) ||
+    (m.id != null && responded.has(m.id));
+
   const pending_requests = trickster
-    .filter((m) => m.type === 'RESOURCE_REQUEST' && !responded.has(m.request_id))
+    .filter((m) => m.type === 'RESOURCE_REQUEST' && !isResponded(m))
     .map((m) => {
       const payload = m.payload || {};
       // Catchup fields — see voice rule 6 in prompts/shared.md.
@@ -176,17 +262,38 @@ export function buildInbox(messages) {
       // The override map is data-shaped and shrinks to empty as stewards
       // start emitting headline+ground natively on every cycle.
       const override = CATCHUP_OVERRIDES[m.request_id] || {};
+      // `headline` is what the card renders as THE QUESTION, directly above the
+      // options. `payload.question` and `payload.summary` are the same beat
+      // under other names — both appear on the board, neither was read, so
+      // those cards rendered with no question at all. Sam Maloof's "Commit the
+      // deposit candidate … ?" was invisible on a card marked blocking: true.
       const headline =
-        (typeof payload.headline === 'string' && payload.headline.trim()) || override.headline || null;
+        (typeof payload.headline === 'string' && payload.headline.trim()) ||
+        (typeof payload.question === 'string' && payload.question.trim()) ||
+        (typeof payload.summary === 'string' && payload.summary.trim()) ||
+        override.headline || null;
       const ground =
         (typeof payload.ground === 'string' && payload.ground.trim()) || override.ground || null;
+      // A multi-question request (the Shopkeeper sweep's `decisions_needed[]`)
+      // has no single options[] to render — it is N forks in one message, which
+      // one card cannot file. Rather than drop it to an empty card with generic
+      // Grant/Deny buttons, render the questions as the rationale so they are
+      // at least READABLE and answerable by freetext. The right long-term fix
+      // is one message per fork; see the note left on the Shopkeeper prompt.
+      const rationale = renderRationale(payload);
       // Normalize request-supplied options, then detect the steward's lean.
       const normalizedOptions =
         normalizeRequestOptions(payload.options) ?? normalizeRequestOptions(m.options);
       const { options: taggedOptions, recommendedOption, leanSource } =
-        tagRecommendation(normalizedOptions, { ground, rationale: payload.rationale });
+        tagRecommendation(normalizedOptions, { ground, rationale });
       return {
-        request_id: m.request_id,
+        // Effective correlation id — the wire `request_id` when present, else
+        // the message's own `id` (the same `??` the response builder applies).
+        // Downstream this key does triple duty: the grant's `re`, the React
+        // list key, and the `selections` map key in trickster-keys. When it
+        // came through undefined, TWO such cards collapsed onto a single
+        // selection slot — picking an option on one filled the other.
+        request_id: m.request_id ?? m.id,
         from: m.from,
         ts: m.ts,
         resource: payload.resource,
@@ -196,10 +303,20 @@ export function buildInbox(messages) {
         // watch+steer session at a critical moment (the emit half of the
         // request-interactive loop). The card foregrounds the launch CTA for it.
         // null for an ordinary decision request (the common case).
-        kind: typeof payload.kind === 'string' && payload.kind.trim() ? payload.kind.trim() : null,
+        //
+        // DERIVED for a multi-fork ask: a request carrying several questions
+        // and no single options[] cannot be answered by a card at all — one
+        // card files one decision. Cramming five interlocking calls (which
+        // engine? does that output earn its own Specialist? what is the first
+        // real job?) into a note box asks Loudon to compose an essay against a
+        // wall of prose. Those are a CONVERSATION, so the card asks to be
+        // opened interactively instead — the launch CTA the session-request
+        // path already provides. The steward should say so itself (see
+        // prompts/shared.md); this derivation catches the ones that don't.
+        kind: deriveKind(payload),
         headline,
         ground,
-        rationale: payload.rationale,
+        rationale,
         query_intent: payload.query_intent,
         // Inline artifacts declared on the wire (payload.artifacts[] or the
         // legacy payload.artifact_path). Read straight off the message the same

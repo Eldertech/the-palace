@@ -291,9 +291,12 @@ export function processCycle(opts) {
     context_pct: health.context_pct ?? null,
     avg_output_tokens_last_5: null,
     duplicate_flags: 0,
-    posting_discipline_violations: 0,
+    // A cycle that emitted nothing broke the "every cycle ends with a Trickster
+    // ask" rule — count it, and let the steward's dot go yellow rather than
+    // reporting green health for a cycle that did no work.
+    posting_discipline_violations: appended.length === 0 ? 1 : 0,
     max_tokens_hits: 0,
-    score: health.score,
+    score: appended.length === 0 && health.score === 'green' ? 'yellow' : health.score,
   };
   if (cycleNotesKey) {
     state._pilot_metadata = state._pilot_metadata || {};
@@ -307,7 +310,13 @@ export function processCycle(opts) {
     ...(cycleNotes ? [{ event: 'AGENT_REASONING', ts: tsNow, summary: String(cycleNotes).slice(0, 400) }] : []),
     ...backstop.map((b) => ({ event: 'ARTIFACT_BACKSTOP', ts: tsNow, request_id: b.request_id, injected: b.added, dropped: b.dropped })),
     ...appended.map((id) => ({ event: 'TOOL_CALL', ts: tsNow, tool: 'write_blackboard', args: { message_id: id }, result: 'emitted+validated+appended' })),
-    { event: 'CYCLE_COMPLETE', ts: tsNow, iteration, stop_reason: 'end_turn', posted_messages: appended, pending_after: stillPending.map((p) => p.request_id) },
+    // A barren cycle (zero messages emitted) violates the standing steward rule
+    // that every cycle ends with a Trickster ask. Record it as its own event and
+    // a distinct stop_reason so it is greppable and never reads as a clean run.
+    ...(appended.length === 0
+      ? [{ event: 'CYCLE_BARREN', ts: tsNow, iteration, note: 'posted no messages — no Trickster ask, so no card and no grant can come back; the loop stalls until this steward is re-run' }]
+      : []),
+    { event: 'CYCLE_COMPLETE', ts: tsNow, iteration, stop_reason: appended.length === 0 ? 'no_messages' : 'end_turn', posted_messages: appended, pending_after: stillPending.map((p) => p.request_id) },
   ];
   for (const e of events) appendFileSync(histPath, JSON.stringify(e) + '\n');
 
