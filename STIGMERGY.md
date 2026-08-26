@@ -95,7 +95,7 @@ This is manual-ack, not auto-ack — the move every mature queue makes (SQS's vi
 3. **Heartbeat → fade** — wire the `health` block (the liveness heartbeat the palace *already emits* on every message) to reap zombie claims. This is where distributed-systems "lease expiry" and stigmergy's own founding metaphor — **pheromone that evaporates unless refreshed** ([[Pheromone Trail]], Grassé) — turn out to be the *same mechanism*: the heartbeat is the ant re-depositing scent to keep the trail alive.
 4. **Dead-letter / "buried"** — a repeatedly-fumbled baton escalates to a human channel instead of looping (SQS DLQ; Airflow zombie-task reaping).
 
-The cross-tradition mapping of these terms lives in [[ROSETTA]] §4b; the operator's two-beat checklist (claim on catch, close on completion) lives in [[Baton Ceremony]] § On pickup.
+The cross-tradition mapping of these terms lives in [[ROSETTA]] §4b; the operator's two-beat checklist (claim on catch, close on completion) is [[Baton Ceremony — on-pickup]] — the one copy of the text, which every baton carries verbatim and `_ops/swarm/lint-baton-footer.py` holds to that.
 
 ## Lineage
 

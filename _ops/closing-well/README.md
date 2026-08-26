@@ -13,8 +13,9 @@ The Agent reads a spent session cold (Phase 3), then closes it as a **moderated 
 wonderings, and — after the panel — drafts what the day amounted to in two layers: the
 **reckoning** (front of house, the four gestures) and the **backstage checklist** (the
 in-spec mechanism). The **executors** — turning an approved backstage row into an actual
-deposit / baton / board post — are Phase 5 and **not built yet**; until then an approved
-close is executed by hand through the existing ceremonies.
+deposit / baton / board post — are Phase 5, **built and live-gated 2026-07-04** (see
+§ Phase 5 below). This paragraph said "not built yet" until 2026-08-26, seven weeks after
+they shipped.
 
 | File | Role |
 |---|---|
@@ -130,9 +131,19 @@ Exit codes: `0` ok · `1` usage / not-found · `2` parse failure.
 - **Executors** (`executor.md` + `baton-executor.mjs`) — turning an assented `candidate`
   backstage row into an actual deposit commit / baton file + board announcement / artifact
   index, each delegating to its existing ceremony, honoring the two routing rules
-  (canon → owner/main; baton → worktree + announced on the owner board). The baton executor
-  is unit-tested end to end (scaffold + validated announce + printed commit); deposit and
+  (canon → owner/main; baton → worktree + announced on the owner board). Deposit and
   artifact reuse the committer directly.
+- **The baton executor's tests** — `tests/baton-executor.test.mjs` (`node --test
+  _ops/closing-well/tests/baton-executor.test.mjs`). Until 2026-08-26 this README claimed
+  the executor was "unit-tested end to end"; it was not — the only check had been a manual
+  run at build time (`c4c2fdf`), and nothing in the repo referenced the script. That gap is
+  why its hardcoded On-pickup checklist went stale for seven weeks. The tests now cover the
+  seam that broke: a written baton carries the ONE canonical checklist
+  (`_ops/Baton Ceremony/Baton Ceremony — on-pickup.md`) verbatim, that checklist still names
+  both lifecycle beats, the pre-2026-07-07 delete-at-pickup text is gone, and a missing
+  fragment makes the executor refuse rather than write a footerless baton. Paired with
+  `_ops/swarm/lint-baton-footer.py`, which fails if a second copy of the text reappears
+  anywhere or if a live baton drifts from it.
 - **Backstage execution** (`prompts/closing-well-executor.md`) — execution is a *third
   dispatch*, a fresh backstage moderator that places the assented rows, so the spent working
   instance never runs the mechanism.

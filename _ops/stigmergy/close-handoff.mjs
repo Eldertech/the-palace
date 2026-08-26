@@ -168,4 +168,14 @@ if (remainderMsg) {
   console.log(`${C.Y}◦ remainder re-batoned${C.R} — a fresh OPEN handoff for the rest: ${C.D}${remainderMsg.id}${C.R}`);
   console.log(`${C.D}  "${flags.remainder}"${C.R}`);
 }
-console.log(`${C.D}  Remaining housekeeping: delete the baton file & remove the Active Baton pointer, then commit.${C.R}`);
+
+// Housekeeping differs by completion, and getting it backwards strands the remainder:
+// a partial close's new card points at the SAME baton path by default, so deleting the
+// file would leave an open handoff aimed at nothing.
+if (remainderMsg) {
+  const same = (remainderMsg.payload.handoff_path || '') === (p.handoff_path || '');
+  console.log(`${C.D}  Housekeeping: do NOT delete the baton${same ? ' — the remainder card points at the same file' : ''}. `
+    + `Rewrite it to carry only the remaining move, leave the Active Baton pointer, then commit.${C.R}`);
+} else {
+  console.log(`${C.D}  Housekeeping: delete the baton file & remove the Active Baton pointer, then commit.${C.R}`);
+}
