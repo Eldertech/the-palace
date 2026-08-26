@@ -12,25 +12,28 @@ forward_vector: "I am Neural Granular Synthesis's materialized work state — op
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Neural Granular Synthesis]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-23T12:58:46.000Z._
+> _Last materialized: 2026-08-26T02:35:11.104Z._
 
 ## Plan
 
 - **Stage:** growing (read live from [[Neural Granular Synthesis]] frontmatter)
-- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 4
+- **Open:** 0  ·  **Resolved:** 1  ·  **Iteration:** 5
 
 ## Open Decisions
+
+_None open._
+
+## Resolved Decisions
 
 ### `ngs-steward-009` — directional_decision
 - **Options:** PERF-MAP · DEEPEN-RASTER · MIN-POP · YOU-STEER
 - **Posted:** 2026-06-23T09:01:30-04:00
-
-## Resolved Decisions
-
-_None yet._
+- **Resolved:** 2026-06-25T04:32:23.068Z (by `resp-mqt0a524-mdghj0`)
+- **Outcome:** GRANTED — option_id=DEEPEN-RASTER
 
 ## Done
 
+- 2026-08-26T02:35:11.104Z — cycle complete (iteration 5); posted: none
 - 2026-06-23T12:58:46.000Z — cycle complete (iteration 4); posted: ngs-steward-008, ngs-steward-009
 - 2026-06-07T18:37:24.255Z — cycle complete (iteration 3); posted: ngs-steward-005, ngs-steward-006, ngs-steward-007
 - 2026-06-07T18:37:24.255Z — Consumed Loudon’s grant on ngs-steward-004 ("do 1 and 2") and SHIPPED both deliverables rather than re-asking: control-vocabulary-math.md (population control surface — r, K, K_c, σ_threshold, mean firing rate, every equation written twice) and raster-plot-explorer.html (live mean-field Kuramoto raster sim computing r as you drag K) + raster-three-regimes.png still + render_raster_still.py. Found and fixed a real coupling-scaling bug (nondimensionalized K against mean angular frequency so K_c lands in the slider’s range). Ended non-blocking — presented the work and offered a forward-vector turn (sonify r next), no manufactured fork.
