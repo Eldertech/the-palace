@@ -64,9 +64,12 @@ Use context to tell an invocation from a passing mention of the practice.
    he signs).
 
 **What happens:**
-1. The thin card dispatches the enchanted [[Closing Well]] page into a fresh
-   context — the **Closing Well Agent**, the moderator, with clean eyes and the
-   whole spec the spent working instance can't spare.
+1. The thin card puts the **moderator** at the wheel — the enchanted [[Closing Well]]
+   page, with clean eyes and the whole spec the spent working instance can't spare.
+   Normally that is the **resident [[Concierge]] resumed** (it has followed the session
+   and can drive across the close's turns); where there is no resident, it is a fresh
+   cold dispatch. `_ops/closing-well/dispatch.md` § First: which moderator carries both
+   paths and the two-invocation dial read that picks between them.
    > **This dispatch is not optional, and context-fullness is not a reason to skip it — it is the *tell*
    > that the fresh read is most needed.** A long, spent context is the exact condition the moderator
    > exists for: the working instance is least reliable at reading its own arc precisely then, so
