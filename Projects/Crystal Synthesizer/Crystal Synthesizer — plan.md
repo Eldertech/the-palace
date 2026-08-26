@@ -12,21 +12,25 @@ forward_vector: "I am Crystal Synthesizer's materialized work state — open dec
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Crystal Synthesizer]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-25T00:21:50.424Z._
+> _Last materialized: 2026-08-26T02:34:59.332Z._
 
 ## Plan
 
 - **Stage:** fruiting (read live from [[Crystal Synthesizer]] frontmatter)
 - **Teaching arc:** [[Crystal Synthesizer — Staging]] — read by the steward; arc changes are flagged, not edited here.
-- **Open:** 1  ·  **Resolved:** 1  ·  **Iteration:** 8
+- **Open:** 0  ·  **Resolved:** 2  ·  **Iteration:** 9
 
 ## Open Decisions
+
+_None open._
+
+## Resolved Decisions
 
 ### `crystal-synth-steward-021` — directional_decision
 - **Options:** BUILD-GEN-PATCH · FILL-PALETTE · POLISH-MENU · STEER
 - **Posted:** 2026-06-25T11:40:00-04:00
-
-## Resolved Decisions
+- **Resolved:** 2026-06-25T04:23:44.695Z (by `resp-mqszz12v-vj1akr`)
+- **Outcome:** GRANTED — option_id=FILL-PALETTE
 
 ### `crystal-synth-steward-018` — directional_decision
 - **Options:** BUILD-GENPATCH · RENDER-LABRADORITE · STAGE-2-PORTABILITY · STEER
@@ -36,6 +40,7 @@ forward_vector: "I am Crystal Synthesizer's materialized work state — open dec
 
 ## Done
 
+- 2026-08-26T02:34:59.332Z — cycle complete (iteration 9); posted: none
 - 2026-06-25T00:21:50.424Z — cycle complete (iteration 8); posted: crystal-synth-steward-019, crystal-synth-steward-020, crystal-synth-steward-021
 - 2026-06-23T12:50:40.000Z — cycle complete (iteration 7); posted: crystal-synth-steward-017, crystal-synth-steward-018
 - 2026-06-07T16:31:46.896Z — cycle complete (iteration 6); posted: crystal-synth-steward-015, crystal-synth-steward-016
