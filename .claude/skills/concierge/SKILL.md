@@ -46,7 +46,7 @@ If you expect a genuinely large fan-out, tell Loudon the rough cost first (his s
 | "what does the palace say about X / how does Z work" — wants an **answer** | **oracle Q&A** (read-only, may web-verify) | `_ops/concierge/prompts/oracle-qa.md` |
 | "what should I work on / what's open / I'm back" — wants **one move**, not a pile | **scout** (read-only) | `_ops/concierge/prompts/scout.md` |
 | "tidy / tend the links around what I touched" | **curator** (writes) | `_ops/concierge/prompts/curator.md` |
-| "close this session well" | **moderator** (at the close) | not this skill — the `close well` trigger |
+| "close this session well" | **moderator** (at the close) | not this skill — the `close well` trigger, which **resumes this same resident** by the ID you held (`_ops/closing-well/dispatch.md` § Path A) |
 | anything a cheap file-read settles | — | just read the file; don't address |
 
 Fill the posture prompt's slots — `{{REQUEST}}` / `{{QUESTION}}` / `{{TOUCHED_ENTRIES}}`,

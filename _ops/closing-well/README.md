@@ -17,19 +17,34 @@ deposit / baton / board post — are Phase 5, **built and live-gated 2026-07-04*
 § Phase 5 below). This paragraph said "not built yet" until 2026-08-26, seven weeks after
 they shipped.
 
+**Who the moderator is.** Not a fresh subagent by default — the **resident [[Concierge]]
+taking the wheel**, resumed across the close's turns ([[Closing Well]] § A close is a
+moderated panel; `_ops/concierge/prompts/companion.md` § At a close). A fresh cold dispatch
+is the fallback for when there is no resident. `dispatch.md` carries both paths and the
+dial rule that picks between them; it is the runbook, and until 2026-08-26 it described
+only the cold path.
+
 | File | Role |
 |---|---|
+| `dispatch.md` | **The runbook** — the two paths (resume the resident / dispatch cold), which to use, and the thin-waist prompt for each pass. Start here. |
 | `transcript-reader.mjs` | Resolves the current session's transcript on disk and distills it into a readable arc. Two verbs: `--resolve`, `--distill`. |
-| `prompts/closing-well-agent.md` | **Pass 1** — the moderator's **homework + coaching**: runs [[Closing Well]] as a fresh subagent, reads the arc cold, returns Part A (the homework — its own read of the day) and Part B (the coaching — stance + two-or-three wonderings handed to the active Claude to moderate the panel with). |
+| `prompts/closing-well-agent.md` | **Pass 1** — the moderator's **homework + coaching**: reads the arc cold, returns Part A (the homework — its own read of the day) and Part B (the coaching — stance + two-or-three wonderings handed to the active Claude to moderate the panel with). Written to be run by either a resumed resident or a fresh subagent. |
 | `close-map-format.md` | The backstage-checklist schema: the species, the load-bearing `status` column, `provisional`/`none` as first-class, and the template. (The front-of-house reckoning is prose, not a table.) |
 | `prompts/closing-well-agent-map.md` | **Pass 2** — the **reckoning + backstage checklist**: takes the homework + the working Claude's witness + Loudon's drawn-out judgment (or the `UNFILLED` sentinel), and drafts the two layers. The moderator never answers for a panelist. |
 
-## The dispatch (how `close well` runs today, Phases 3–4)
+## The dispatch
 
-Run by the working Claude (the ceremony card points here). Two passes of the Agent
-with the panel between them. (Phase 5 replaces the pasted prompts below with a **thin
-dispatch** — a pointer to each prompt file, not the pasted text — but the flow is the
-same.)
+> **`dispatch.md` is the runbook — read that, not this section.** What follows is the
+> long-form walkthrough of the *cold* path, kept because it explains the reasoning
+> (why the main loop resolves, why distill instead of raw JSONL). `dispatch.md` is the
+> thin-waist form of the same flow, and since 2026-08-26 it carries the part this
+> section does not: **the moderator is normally the resident [[Concierge]] resumed, not
+> a fresh subagent** — so the close has two paths, and the cold one below is the
+> *fallback*. Choosing between them is a two-invocation dial read; `dispatch.md`
+> § First: which moderator has the rule.
+
+Run by the working Claude (the ceremony card points here). Two passes of the moderator
+with the panel between them, then the backstage execution on assent.
 
 ### Pass 1 — the homework + coaching (read the session cold)
 
