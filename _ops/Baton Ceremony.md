@@ -188,28 +188,16 @@ Anything Loudon corrected, accepted, or surprised you with that diverges from de
 ## Load these files first
 Tiered list of what the next Claude should read before doing anything. Most-load-bearing first.
 
-## On pickup (fixed — the catcher's checklist; do not rewrite per session)
-*Identical in every baton. It rides along because the catching Claude loads the
-baton and the entry, not this ceremony — so the catcher's obligations live where
-the catcher will see them. Omit nothing here.*
-A pickup has two beats: **claim** it when you catch it, **close** it when the move lands. The card stays visible in between — a claim that ages with no close is how a dropped baton (a "fumble") surfaces instead of vanishing. (A parent-entry baton that was never announced on the board has no card; skip the board posts — just remove the pointer and delete the file at close, step 8.)
+[[Baton Ceremony — on-pickup]] — paste it in verbatim; do not retype it. It is one file:
 
-**Catch it — claim:**
-1. State the move back in one sentence. If you can't, the baton wasn't caught — stop and ask Loudon.
-2. Check it may already be done before you commit to it. The baton is a snapshot from when it was written; the project may have moved past it. Re-read the parent entry and `git log` it since the baton's `born` date, and confirm the "Current state" the baton quotes still matches the file. For a board-announced baton, `node _ops/stigmergy/pickup-handoff.mjs <id>` prints exactly this reconciliation view — every commit that touched the entry since the baton posted — and then claims the card, so run it and read the list *before* you continue. If the move is already done, superseded, or no longer wanted, STOP — do not claim it; surface to Loudon, and if it plainly landed already, close it as a reconciler (step 7). A stale baton followed silently produces drift. (The auto-staleness heuristic is off by design — the freshness call is yours.)
-3. If this baton or its board line is still uncommitted (authored on a surface that couldn't commit — e.g. Cowork), commit them first. That commit is the git archive step 8 relies on.
-4. Claim it. For a board-announced baton (it shows in `list-handoffs`), the `pickup-handoff.mjs` from step 2 has already posted the claim (`handoff_picked_up`, `lifecycle: claim`) — the card moves to **CLAIMED (in flight)**; it does *not* leave the board. Leave the "Active Baton" pointer and the baton file in place for now — they come out at close, so a fumble mid-move never erases the work.
-5. If the baton names a receiving-surface capability delta or a worktree coordinate, confirm it holds before relying on it (the [[Surfaces and Capabilities]] catalog can be stale) — for a worktree, check `git worktree list` and recreate it (`node _ops/worktree/new-worktree.mjs --name <branch> --profile <p>`) if it is gone. A build that was supposed to run here but can't is a finding to report, not a failure to hide.
-6. Act on the move, holding the calibrations above.
-
-**Close it — when the move lands:**
-7. Post the close. `node _ops/stigmergy/close-handoff.mjs <id | entry> --commit <hash>` retires the card — an explicit close is the *only* thing that clears it (done is never inferred). Cite the commit that landed the move: it makes the close a checkable claim, not a self-report. **Complete, or re-baton the rest:** if you finished the whole move, close plain; if you did only part, `--partial --remainder "<what's left>"` posts the leftover as a fresh `handoff_ready` so it reappears as open work. Never let "in the spirit of the original" quietly drop scope — a gap becomes a new baton, not silence.
-8. Delete the baton file (git is its archive) and remove the "Active Baton" section from the parent entry. On a surface that can't delete (Cowork), remove the pointer and note "deletion pending." Steward batons are the exception — updated in place, never deleted or closed.
+    cat "_ops/Baton Ceremony/Baton Ceremony — on-pickup.md"
 ```
 
 *Cold-start variant:* when the baton commissions un-started work (§ The Scope, The cold-start variant), replace the **Tried and rejected** and **Current state** sections with a single **`## Cold start`** block that says so plainly — *"COLD START — this work has not begun; no prior state, no tried-and-rejected"* — and carry the captured framing under **Move / Why this move matters / Next move**. Never leave the two sections blank: a blank reads as lost residue, the label reads as intent. Everything else in the template is unchanged, and the freshness check in the On-pickup footer becomes *more* load-bearing, not less.
 
 *Why the last section is fixed, not authored:* the **author** runs this ceremony — you triggered it by saying "baton," so the authoring discipline lives in this spec. The **catcher** does not — it arrives on a work invocation and reads only the baton and the entry, never this file. So the one half of the ceremony the catcher must obey has to travel inside the artifact it actually opens. Everything else still compresses toward the move; this rides along.
+
+*And why it lives in its own file rather than inline here:* it has two authors — a Claude running this ceremony by hand, and `_ops/closing-well/baton-executor.mjs`, which writes batons at a [[Closing Well]] close. Both used to carry their own copy of the text, and they drifted: the three-state lifecycle landed in this spec on 2026-07-07 and never reached the executor, so for seven weeks every machine-written baton shipped a checklist telling the catcher to delete the baton at pickup and never post a close — which silently retires the card with no commit cited. One file, read at write time, is the repair. **Edit [[Baton Ceremony — on-pickup]]; never paste a second copy anywhere.** `_ops/swarm/lint-baton-footer.py` fails if one reappears.
 
 **Step 3: Show**
 
@@ -238,11 +226,13 @@ Tell Loudon the baton path and the suggested invocation for the next Claude. Exa
 
 Wait for confirmation that the next session has caught the baton, or for Loudon to indicate he's done.
 
-**Step 6: Delete on pickup**
+**Step 6: Delete when the move lands**
 
-When the next Claude has picked up the move, the baton has done its job. It is **deleted** — git history is its archive (any cross-session baton will have been committed at least once, so its full content is recoverable via `git log --follow`). The palace keeps no `Archive/` graveyard of spent batons; the entry and the deposit are the permanent record, not the baton.
+When the move the baton carried has landed, the baton has done its job. It is **deleted** — git history is its archive (any cross-session baton will have been committed at least once, so its full content is recoverable via `git log --follow`). The palace keeps no `Archive/` graveyard of spent batons; the entry and the deposit are the permanent record, not the baton.
 
-Deletion is normally performed by the *incoming* Claude as its first act (per the On-pickup footer), not by the outgoing one. The consume-marker is the **entry pointer, not the file**: removing the "Active Baton" section from the entry is the logical "caught" signal, and it works on any surface because it is an edit, not a delete. The file deletion follows.
+Deletion is performed by the *incoming* Claude — but at the **close**, not at the catch (On-pickup step 8). This is the one beat the three-state lifecycle moved: a catch posts a claim and changes nothing on disk, so the pointer and the file both survive a fumble. The consume-marker is the **entry pointer, not the file**: removing the "Active Baton" section is the logical "spent" signal, and it works on any surface because it is an edit, not a delete. The file deletion follows.
+
+*One exception the tooling can't infer:* on a `--partial` close the remainder card usually points at the **same baton path**, so the file stays — update it to carry only what's left. `close-handoff.mjs` prints its housekeeping line either way; on a partial, delete nothing.
 
 *Surface caveat:* the Cowork sandbox can rename but cannot delete. An incoming Cowork Claude removes the "Active Baton" pointer (marking the baton spent) and notes "baton caught — deletion pending"; a later delete-capable touch (Mac-side or Loudon) removes the file. Permanent-agent steward batons are the exception to all of this — updated in place, never deleted.
 
@@ -312,7 +302,9 @@ The outgoing Baton is complete when:
 The incoming Baton is complete when:
 
 1. The incoming Claude has read the baton and the entry
-2. The incoming Claude has picked up the move (acted on it)
-3. The catch is marked — the "Active Baton" pointer removed, or for a board-announced baton the `handoff_picked_up` REPLY posted — the baton committed if it wasn't already, and the file deleted (or marked deletion-pending where the surface can't delete)
+2. **The catch is claimed** — for a board-announced baton, `pickup-handoff.mjs <id>` has posted the `handoff_picked_up` (`lifecycle: claim`) and the card reads **CLAIMED**; the baton is committed if it wasn't already. Nothing is deleted yet.
+3. The incoming Claude has picked up the move (acted on it)
+4. **The claim is closed** — `close-handoff.mjs <id> --commit <hash>` retires the card citing the commit that landed the move, or `--partial --remainder "…"` re-batons the rest. A claim left open ages into a fumble; a session has not finished while silently sitting on one.
+5. The baton file is deleted and the "Active Baton" pointer removed (or marked deletion-pending where the surface can't delete) — on a *complete* close only; a partial close keeps the file for its remainder
 
 If the incoming Claude finds the baton incoherent, stale, or insufficient: stop, ask Loudon, do not improvise. A bad baton that gets followed silently produces drift.

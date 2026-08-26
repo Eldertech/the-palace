@@ -3,8 +3,9 @@
 //
 // Places an assented baton row into the palace through the real Baton Ceremony:
 //   1. scaffolds the bundle file  <Entry>/<Entry> — baton.md  with correct §8
-//      frontmatter and the FIXED On-pickup checklist appended (canonical here, so it
-//      never drifts from a hand-retype),
+//      frontmatter and the FIXED On-pickup checklist appended — read at write time
+//      from its single home, `_ops/Baton Ceremony/Baton Ceremony — on-pickup.md`,
+//      so it can never drift from the ceremony that specifies it,
 //   2. adds the "## Active Baton" pointer to the parent entry,
 //   3. builds + validates the handoff_ready announce and (with --post) appends it to the
 //      OWNER persistent board via the canonical _ops/commons/board-post.mjs,
@@ -110,15 +111,35 @@ const ts = arg('--ts') || new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
 const slug = entry.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const id = arg('--id') || `${slug}-handoff-${ts.slice(0, 10)}`;
 
-// ---- the fixed On-pickup checklist (canonical; single-sourced here) -------
-const ON_PICKUP = `## On pickup (fixed — the catcher's checklist; do not rewrite per session)
-1. State the move back in one sentence. If you can't, the baton wasn't caught — stop and ask Loudon.
-2. Check it is still live before you commit to it. The baton is a snapshot from when it was written; the project may have moved past it. Re-read the parent entry and \`git log\` it since the baton's \`born\` date, and confirm the "Current state" the baton quotes still matches the file. If the move is already done, superseded, or no longer wanted, STOP — surface it to Loudon and do not execute. A stale baton followed silently produces drift. (Receive every baton with this skepticism; the auto-staleness heuristic is off by design — the freshness call is yours.)
-3. If this baton or its board line is still uncommitted (authored on a surface that couldn't commit — e.g. Cowork), commit them first. That commit is the git archive Step 7 relies on.
-4. Mark it caught: remove the "Active Baton" section from the parent entry; for a board-announced baton with no parent entry, post the paired \`handoff_picked_up\` REPLY (\`re:\` the \`handoff_ready\` id) instead.
-5. Delete the baton file (git is its archive). On a surface that can't delete (Cowork), remove the marker and note "deletion pending."
-6. If the baton names a receiving-surface capability delta or a worktree coordinate, confirm it holds before relying on it (the [[Surfaces and Capabilities]] catalog can be stale) — for a worktree, check \`git worktree list\` and recreate it if it is gone. A build that was supposed to run here but can't is a finding to report, not a failure to hide.
-7. Act on the move, holding the calibrations above. Steward batons are the exception — updated in place, never deleted.`;
+// ---- the fixed On-pickup checklist (read from its ONE home, never retyped) ----
+// The text lives in the Baton Ceremony's own bundle. This script does NOT carry a
+// copy: it carried one until 2026-08-26 and it went stale, because the ceremony's
+// three-state lifecycle (claim/close, 2026-07-07) landed in the spec and never
+// reached this file — so every baton written here shipped a checklist telling the
+// catcher to delete the baton at pickup and never post a handoff_closed. A hand-
+// posted pickup with no `lifecycle: claim` folds as a LEGACY terminal pickup
+// (handoff-model.mjs), so the card silently retired with no commit cited. One copy,
+// read at write time, is the fix. Edit the fragment; never inline it back here.
+const ON_PICKUP_PATH = join(HERE, '..', 'Baton Ceremony', 'Baton Ceremony — on-pickup.md');
+function loadOnPickup() {
+  let raw;
+  try {
+    raw = readFileSync(ON_PICKUP_PATH, 'utf8');
+  } catch {
+    return die(1, `the canonical On-pickup checklist is missing at ${ON_PICKUP_PATH}. `
+      + 'A baton without it is unfinished — the catcher reads the baton, not the ceremony. Refusing to write one.');
+  }
+  // Drop the §8 bundle frontmatter and the editor note; keep the checklist verbatim
+  // from its own heading down.
+  const at = raw.indexOf('## On pickup');
+  if (at < 0) {
+    return die(1, `${ON_PICKUP_PATH} has no "## On pickup" heading — that is not the checklist. `
+      + 'Refusing to write a baton with a malformed footer.');
+  }
+  return raw.slice(at).trim();
+}
+const ON_PICKUP = loadOnPickup();
+
 
 // ---- 1 & 2: scaffold the baton file + the parent pointer ------------------
 const born = ts.slice(0, 10);
