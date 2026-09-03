@@ -18,7 +18,12 @@ product.** The search never enters this conversation; only the finished thing do
 
 ## The lifecycle — resident, not fresh-per-request
 
-1. **First address of the session → spawn it, and keep the agent ID.** Spawn one write-capable
+0. **Summon at the open.** Spawn it at the top of any palace discussion, not when a task finally
+   looks expensive enough — and **narrate the spawn so Loudon can see it**, which is how he knows
+   the process is running. Where the surface cannot spawn, say so at the open instead. Step 1 *is*
+   that spawn; the rest is how.
+
+1. **The spawn — one resident, and keep the agent ID.** Spawn one write-capable
    resident — subagent_type **`palace-writer`** ([[Agent Toolbox]] profile: sheds ~20K of unused
    MCP schemas vs `general-purpose`, ~30K vs 46K, and still writes so the curator posture works from
    the same resident) — with the **charter** (`prompts/companion.md`); the charter has it boot
