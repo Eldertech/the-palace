@@ -54,6 +54,12 @@ Even *this deposit* is an instance: the entry naming the loop was written by wal
 
 A system that practices only on itself can go insular — self-reference with no outside test, polishing its own reflection. The palace stays honest because the loop keeps touching *real* outside: real GPUs that really fail, real renders you actually look at, the [[Cooperation Yields Agency|"how do you feel, not how many views"]] measure. Dogfooding without an external bite is just a hall of mirrors. The loop has to keep drawing blood from reality, or it drifts into decoration.
 
+**The proof, 2026-09-02.** A session set out to plan a 250-video series and instead spent itself on machinery — a ceremony grew a summon step, a verify step and a punchlist; a validator gained a subcommand; a Specialist entry filled with gotchas about JSON unit conventions. Every one of those was defensible on its own. Seven of the day's ten commits touched mechanism, and day one of the video project produced no video. What pulled it back was Loudon, at the close:
+
+> *"I worry that the simple goals and simple processes that we are trying to do here with the palace are becoming lost in the specifics of the mechanical side of things."*
+
+That is the failure mode this section warns about, caught in the act — and the shape of the catch is the lesson. The drift was invisible from inside because each step was justified by the last: a bad deposit justified a ceremony change, the ceremony change justified a tool, the tool justified an entry documenting it. **Insularity does not arrive as one bad decision; it accumulates as a chain of good ones, each answering the previous rather than the work.** The external bite came from the human in the room asking what any of it had made. The counter-discipline's real form is not a rule the palace can hold for itself — it is keeping someone present who is measuring against the actual goal, and hearing them when they say it.
+
 ## Cross-domain resonance
 
 This [[mirrors]] **[[Endosymbiosis]]**: the merger where one organism took another inside itself and both kept growing — the palace folding its own new capability inward and compounding from it. The difference worth keeping: endosymbiosis fused two *different* organisms; here the palace folds in *itself*, which is exactly why the insularity warning matters.
@@ -62,7 +68,7 @@ This [[mirrors]] **[[Endosymbiosis]]**: the merger where one organism took anoth
 
 - Make *"does this apply to us?"* a reflex on every new capability — the unprompted inward turn. Track whether it starts firing on its own.
 - The **toolbox recursion** is the open edge: what would it actually mean for an ordinary entry-agent to *have* a toolkit? Flagged to [[Pages as Agents]] and [[Loudon's Toolkit]] for a Weave.
-- Find the failure mode: a time the palace practiced on itself and drifted insular. Name what pulled it back — that story is the counter-discipline's proof.
+- ~~Find the failure mode.~~ **Answered 2026-09-02** — see § The counter-discipline. The open half now: the catch came from the human, not from the palace noticing. Can the loop ever catch its own insularity, or is an outside measurer structurally required?
 - This entry wants to graduate from `growing` to a load-bearing `meta` hub as more of the palace's self-application gets named around it.
 
 ---
