@@ -114,6 +114,8 @@ Claude's specific obligations at all times:
 - Follow Loudon's lead on pace; if he slows down, slow down further
 - Treat surprise and correction as signal, not friction
 
+**Summon the companion, if one is not already resident.** At the top of the deposit, spawn the [[Concierge]] — the same first act the [[Return Ceremony]] takes, and for the same two reasons: it gives the map a reader who is not you, and it leaves a warm resident for the close. Most deposits arrive mid-session where a companion already exists; **resume that one, never spawn a second.** The summon is backstage and asynchronous — it runs while the slow re-entry happens, so it costs the front of house nothing and must never interrupt it. You address it twice: once at the map (Step 4), once at the verify (Step 7b). Between those it is parked and free.
+
 ---
 
 ## Steps
@@ -129,7 +131,8 @@ Before describing the conversation or proposing any map, state in one sentence: 
 
 A good deposit map is specific about:
 
-- **Entry type** — concept · hub · project · breakthrough · source · meta · practice · person · question · spore · specialist · maker (see [[SCHEMA]] §1 for the current type vocabulary and decision tree)
+- **Fold or mint?** — ask this *first*, out loud, before the rest of the map. Does this elaborate or answer an entry that already exists — especially a live one being actively read? If so, fold it in; a parallel node beside a living entry fragments the neighborhood and risks a near-duplicate. Minting is the lower-friction motion (a blank file, versus finding the right seam in a long entry), which is exactly why it is the default and exactly why it needs a check. This is [[Closing Well — gotchas|gotcha 18]], and it is the question to put to the [[Concierge]] rather than answer alone.
+- **Entry type** — concept · hub · project · source · meta · practice · person · question · spore · specialist · maker (see [[SCHEMA]] §1 for the current type vocabulary and decision tree)
 - **Pillar affiliations** — which pillars does this touch?
 - **Proposed stage** — seed, sprout, or growing?
 - **Typed links** — named relationship types, not just "connects to." Propose by entry name — do not read the linked entries. For every link proposed, ask: does this relationship deserve a label? If yes, add `label: [word]` to the link object. The label is the semantic compression of the relationship — one word that names its specific register.
@@ -187,12 +190,20 @@ On approval, write new entries as `.md` files to the palace root — of the **ow
 
 **Step 7: Close**
 
-When all entries are written and Loudon confirms nothing feels unfinished, name what was created:
+A deposit is a **movement close** — one thread of work ending while the session goes on ([[Closing Well]] § Scope). So it closes the way any unit of work closes: name what was created, then hand over what you'd look at first and what you couldn't check.
 
 > "Written to the palace:
 > — [Entry title] → [filename]
 > Lost branches noted: [brief list].
+>
+> If I were you I'd look at [the thing most likely to be wrong] first — [why it might be wrong].
+> I couldn't check [the thing no tool available could verify].
+>
 > Is there anything left unsaid?"
+
+This is the [[Substrate Skill]] § Closing Punchlist Scaffold with the ceremony's parameters filled in — same scaffold every palace role uses, not a second format. Its content is what [[Closing Well]] requires: the specific file or entry, the *named risk* per item rather than "let me know what you think," what you could not verify, ordered most-likely-to-need-revision first.
+
+**Say it as an offer, not a form.** The deposit is a conversation to enter, not a task to complete, and a numbered list with a risk column will end it like a build ticket. Two or three sentences in your own voice; the warm question stays last. **If you find yourself listing items because the shape expects them rather than because they carry risk, you are performing the punchlist** — the decay [[Closing Well]] names as its own most likely failure. Fewer, real ones.
 
 Wait for Loudon's confirmation.
 
@@ -221,9 +232,27 @@ Pass (as CLI flags, or the JSON-body equivalents):
 
 The committer derives `Palace-Entry:` from the staged `.md` paths; add an explicit `Palace-Entry: <Title>` for any *updated* (not newly-added) entry so it appears on the card. Optional `Palace-Source: <conversation ref>` preserves provenance.
 
-Then the weave flags, unchanged: for each weave flag named in the deposit, append a `weave_flag` BROADCAST to the **owner's** `_ops/swarm/persistent/blackboard.jsonl` (never a worktree branch copy; § Where the Deposit Lands), `payload.kind: 'weave_flag'` per STIGMERGY — Weave Flag Item Type Build Plan § Data shapes — with `source_deposit_id` set to the commit's deposit ID. Show Loudon the message bodies before writing; commit only on his approval.
+**Then the weave flags — through the writer, never by hand.** One command per flag:
+
+```
+python3 -m commons weave-flag --flag-type … --source-entries "A,B" --target-entry "…" \
+  --proposed-action "…" --rationale "…" --source-deposit-id <deposit id> --sender "<page>"
+```
+
+Run it from `_ops/`; `--dry-run` prints and validates the envelope without posting. It builds the §9 message through `_ops/commons/board.py`, validates before it writes, and resolves the **owner's** board from a linked worktree — so the envelope, the stub-health block, and the payload keys the Weave's Step 1c reader expects are all enforced rather than transcribed. Hand-appending a line is how malformed flags reached the board (2026-09-02): the stub-health exemption is an allowlist of `dispatch_mode` strings, and an invented one falls off it silently. Show Loudon the flag bodies before posting; commit the board only on his approval.
 
 Commit on the owner's `main` (`git -C "<owner>"` when the session runs in another worktree). The commit *is* the archive record; once it lands in LOG, the deposit is on the shelf.
+
+**Step 7c: Verify, backstage**
+
+Before the closing note, check that the placement actually landed — the ceremony's postcondition is *verified*, not asserted, the way the Schema Ceremony's is. This is backstage: mechanism the panelists never see as work.
+
+- Run the linters over the new files — `lint-doc-drift` must exit 0 errors; `lint-ghost-links`, `lint-bundle-hygiene`, `lint-entry-naming`, `lint-link-directions` should return nothing against them.
+- Confirm every frontmatter link target resolves to a real file.
+- Confirm the commit self-classifies: subject `deposit(<id>):`, `Palace-Kind: deposit` and `Palace-Entry:` trailers present.
+- Any board line you posted validates (the writer above already refuses invalid, so this is confirming it ran, not re-checking it).
+
+Then set `--verify verified` honestly. **A command's exit code is not verification** — "the render completed without error" is absence of obvious failure, a much lower bar ([[Closing Well]] § Verify To Your Best Ability). If something couldn't be checked, say so in the punchlist rather than implying success. Address the [[Concierge]] here for the second time: it reads the placement cold, which is the fresh check on work you just authored.
 
 ### § The Archive Is the LOG Deck
 
@@ -237,7 +266,8 @@ The deposit is complete when:
 
 1. At least one new entry exists, or at least one existing entry has been meaningfully updated
 2. Loudon has confirmed: nothing feels unfinished or unsaid
-3. Closing note is written into the conversation thread
-4. The deposit is committed in spec form — subject `deposit(<id>): …`, the synthesis in the commit **body**, `Palace-Kind: deposit` + `Palace-Entry:` trailers present — so it lands natively on the LOG deck's deposit view. *(Replaces "row appended to the archive": the commit is the record, not a duplicate of it.)*
-5. At least one link in the new entries carries a `label` — the semantic compression step, not just structural registration.
-6. Weave flags, if any, on the persistent board as `payload.kind: 'weave_flag'` BROADCASTs with `source_deposit_id` matching the commit's deposit ID — not left as prose in the commit body alone.
+3. The deposit is committed in spec form — subject `deposit(<id>): …`, the synthesis in the commit **body**, `Palace-Kind: deposit` + `Palace-Entry:` trailers present — so it lands natively on the LOG deck's deposit view. *(Replaces "row appended to the archive": the commit is the record, not a duplicate of it.)*
+4. At least one link in the new entries carries a `label` — the semantic compression step, not just structural registration.
+5. **Step 7c ran and passed**, and the closing note carried a punchlist — what to look at first, and what could not be verified. Weave flags, if any, went through `commons weave-flag` and are on the owner's board.
+
+Item 5 is the one that changed in 2026-09. Every item above it was already a claim the ceremony asserted; only this one is *checked*, and it is what makes `--verify verified` mean anything. A deposit that cannot verify its postcondition has not completed.

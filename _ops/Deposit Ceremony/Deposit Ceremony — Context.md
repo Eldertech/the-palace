@@ -162,3 +162,21 @@ Three additions to the Deposit Ceremony operational card, developed in conversat
 **Open Questions & Budding Branches** — The standard entry section `## Open Questions` has been renamed `## Open Questions & Budding Branches` in the README minimum viable entry template. The section now explicitly names three things that live there: unresolved questions, actively carried questions, and unfollowed paths from conversation. This is the growing edge of an entry — the place lost branches attach to living knowledge rather than floating free.
 
 **Step 3: Reflection voice note** — If Loudon's response to the Step 3 reflection question reveals something significant, it is treated as deposit material and added to the most relevant existing entry or its Context file. Loudon's words are preserved as closely as possible — quoted directly or edited lightly for clarity only. The palace is largely written by AI; these reflection moments are in his voice, and that has value worth keeping.
+
+---
+
+## What the LDN RTM deposit taught (2026-09-02)
+
+The deposit that created [[LDN RTM]] closed on four claims and none of them had been checked. Loudon asked for an audit against [[Closing Well]], and the audit is what produced the ceremony's 2026-09 revision. Recording it here because the traps were structural, not careless — a fresh instance would have hit every one.
+
+**Three weave flags were malformed, and the reason is worth naming precisely.** They were built by copying the `health` block from an existing line on the board rather than from the [[SCHEMA]] §9 envelope spec. The validator exempts hand-authored posts from full health data, but the exemption is an **allowlist of `dispatch_mode` strings** (`validator.js` § STUB_HEALTH_DISPATCH) — an invented variant falls off it silently and the line is rejected. Five *pre-existing* flags on the board carried the same defect, which is the tell: this was never one agent being sloppy, it was a missing write path. Every agent hand-rolling a line copies its nearest neighbor, so one malformed example propagates to everyone who comes after. *Drift rides stale examples* — and the fix is a tool, not a rule, because a rule saying "validate first" gets read and then the neighbor gets copied anyway.
+
+**The ceremony asserted its postcondition instead of verifying it.** Its Completion Signal was six items, every one a claim. Compare the Schema Ceremony, gated on `lint-doc-drift.py` exiting clean. So a deposit could be "complete" by the ceremony's own standard while carrying invalid board lines and unresolved links. Step 7c exists because of this.
+
+**The fold-vs-fragment check never ran.** A new entry was minted beside `Loudon Live.md`, which already carried a § describing the same thing. It was the right call in the end, but nobody asked the question — it lived in the [[Closing Well — gotchas|gotcha ledger]] as gotcha 18, where a deposit ceremony never reads it. The map now asks it first, and asks it of the [[Concierge]] rather than of the drafter, since minting is the drafter's lower-friction default.
+
+**And the tooling proposal was itself a Search-Before-You-Build violation** — a second one, inside the fix for the first. The plan was to build `_ops/swarm/post-board.mjs`; the [[Concierge]], addressed for a fresh read, found `_ops/commons/board-post.mjs` and `board.py::make_message()` already doing exactly that, the latter emitting precisely the stub-health block whose absence caused the bug. Building fresh would have put a third board writer in the tree and re-earned two solved problems (owner-tree resolution, the payload cap). What shipped instead was a forty-line `weave-flag` subcommand over the existing bridge.
+
+The through-line: **every one of these was caught by a reader who was not the drafter.** The ceremony now summons that reader at Step 1 rather than hoping for one, which is the [[Return Ceremony]]'s move applied one scale down — and it completes a lifecycle the palace had two-thirds of already: Return opens a session with a resident, the Deposit guarantees one exists mid-session, [[Closing Well]] consumes it as moderator.
+
+*(This also answers half of gotcha 9's open question — where verification-checks live in the close's species set. They live backstage, at Step 7c. Where weave-flags live is still open.)*

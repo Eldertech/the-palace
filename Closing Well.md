@@ -185,6 +185,26 @@ The close does not reinvent depositing or handing off — it *recognizes* what t
 5. **Assent.** Loudon sits with the reckoning and says whether it's true — anything left unsaid?
 6. **Placing.** The moderator runs each gesture through its real ceremony, in spec, and confirms it landed. The commit is the record.
 
+### Scope — the practice runs at two scales
+
+Closing well is not a thing you do to a *session*. It is a thing you do to a **unit of work** — and a session is only the largest unit. The practice runs at two scales, and confusing them is how a mid-session deposit ends up half-closed.
+
+A **movement close** ends one thread of work while the session continues — the scale the [[Deposit Ceremony]] runs at. A **session close** ends the day, and is what `close well` invokes. Only the second has a trigger of its own; the first is reached through the ceremony whose work is ending.
+
+| | Movement close | Session close |
+|---|---|---|
+| Reached by | the ceremony that is finishing (today: "deposit") | `close well` |
+| Always | the human gate · a punchlist · verification · a trap in the ledger | the same four |
+| Adds | — | the cold transcript read + the moderator · the four gestures · a baton |
+
+What is constant is the point. **The punchlist and the verification are what "closing well" means at any scale** — the expensive machinery is session-scoped and mostly doesn't apply to a movement.
+
+**Why a movement close needs no moderator, honestly.** Not because it's small — because Loudon is *in the room and fresh*. He approves the map and the drafts; his attention is the check. The moderator exists because at a session close **both** panelists are spent and no fresh judgment is left in the room. Mid-session there is.
+
+**And the guard, because this is the dangerous misreading:** a movement close is *not* a licence to skip the session close's dispatch. That rule is hardened in [[Closing Well Ceremony]] for reasons the ledger earned three separate times, and nothing here softens it. If you find yourself reasoning "this is really just a movement close" at the end of a long day, you are running the rationalization gotcha 21 names.
+
+Both scales feed the same [[Closing Well — gotchas|gotcha ledger]]. A movement close that teaches a trap is as professional as a session close that does.
+
 ### Register
 
 Plain, calm, specific, warm. Unhurried. The feeling comes from stance and pace, not ornate language — the Deposit Ceremony is proof: "notice the arc, notice where things opened" is evocative and every word is plain. A graceful close, not a scripted liturgy.
@@ -193,8 +213,8 @@ Plain, calm, specific, warm. Unhurried. The feeling comes from stance and pace, 
 
 - At what point does closing-well become invisible because it's habit, and how do I notice when the habit has decayed into theater? The punchlist as performance — items listed because the format demands it, not because they actually carry risk — is the most likely failure mode.
 - Does the verification practice scale to every artifact, or are there classes of work where "verify to your best ability" produces more friction than it prevents? The Specialist `Self-Check` sections already encode this question; the Shop's experience over the next several projects will sharpen it.
-- Should the palace's own ceremonies (Weave, Walk, Harvest, Deposit) end with explicit punchlists? The Deposit Ceremony already has a Closing Signal step that names what was created — that's a punchlist in proto-form, but a thinner one than this entry advocates for.
-- Is there a Claude-side analog of accessibility tooling — something that surfaces "this part of the work hasn't been verified" automatically, the way a screen reader surfaces missing alt text? Worth asking whether the Substrate Skill should grow a default punchlist scaffold.
+- ~~Should the palace's own ceremonies end with explicit punchlists?~~ **Answered 2026-09-02, for the Deposit at least** — yes, and § Scope is where the answer lives. A deposit ran without one, closed on four unverified claims, and three of its board posts were malformed; the Deposit Ceremony's thin "name what was created" was what let that read as complete. The question stays open for the Walk, the Harvest, and the Weave, which have not been tested the same way.
+- Is there a Claude-side analog of accessibility tooling — something that surfaces "this part of the work hasn't been verified" automatically, the way a screen reader surfaces missing alt text? The [[Substrate Skill]] has since grown the default punchlist scaffold this line asked for (§ Closing Punchlist Scaffold); what is still missing is the *automatic* surfacing, not the format.
 - **The Closing Well Agent touches many pages with fresh eyes at the close — a rare vantage. What else can it surface?** Weave flags (a missing typed link, a node grown into a hub, a live contradiction) → `FLAG` to `WEAVE`; an enrichment suggestion for a thin entry it passed; a link proposal between two entries the session implicitly connected; a `forward_vector` that has drifted from what its entry became; a stale example worth consolidating (*drift rides stale examples*); a dormant entry this session reactivated. The governing tension is **surface, don't act**: the Agent drops pheromones — cheap, async, non-blocking FLAGs the standing ceremonies and stewards pick up — but it does *not* run the Weave or the enrichment itself, or every close bloats into a mini-Weave and stops being a close. The open fork: how much maintenance-surfacing is free vantage vs. scope creep, and does it post to [[STIGMERGY]] by default or only when asked?
 - **Does "the dial" need a third health input?** The dial (§ The dial: how full is the room) was framed around the *parent's* health — the moderator's effort scales up as the active Claude's context fills. The 2026-07-06 close exposed a reverse case: the resident companion ([[Concierge]]), addressed five times across the session, had itself accumulated heavy context — and *its* health, not the parent's, was what argued for spawning a fresh moderator rather than resuming the companion into that role. Is the resident companion's health already accounted for somewhere in the dial's handoff logic, or does the dial model need extending to a three-way read — moderator, parent, *and* resident companion? Left open, not answered here; see the Concierge's own health/mechanism section (§ The mechanism — resident by default, held by ID) for the companion-side half of this question.
 
