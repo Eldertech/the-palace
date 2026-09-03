@@ -47,14 +47,16 @@ Machine: 16" MacBook Pro M1 Max, panel 3456×2234, desktop at 2056×1392 points.
 | Live window | **1920×1080 points** at (0, 38) — y clamps to 38, the notched menu-bar height |
 | Backing capture | **3840×2160 px**, verified — a clean 2:1 downscale to 1080p, no resampling |
 | Live display zoom | **150%** (`Cmd ,` → Display & Input → Display) |
-| OBS source | **Window Capture** on Live, canvas and output both 1920×1080 |
-| Cam | **346×256** at (13, 767) in output points — exactly covers the Info View panel |
+| OBS source | **Application Capture** on `com.ableton.live`, canvas and output both 1920×1080 |
+| Cam | **346×277** at (13, 745) in output points — covers the Info View panel *and* its title line |
 
-**Why window capture, not display capture:** the desktop's aspect is ~1.48 against 16:9, so a full-screen grab must letterbox or crop and you decide what to lose every session. A window grab is 1:1 and decides nothing.
+**Why application capture, not display or window.** Display capture is out twice over: the desktop's aspect is ~1.48 against 16:9, so a full-screen grab must letterbox or crop and you re-decide what to lose every session — and cropping it to Live's region is *not* isolation, because anything overlapping that region records too (OBS's own window did, on the first test). Window capture isolates correctly but binds to a window id that changes between launches. Application capture targets the bundle id, isolates Live's windows from whatever sits on top, and survives a relaunch mid-session. *(Corrected 2026-09-02 — this section said "window capture" until a screenshot showed the occlusion.)*
 
-**The Info View is not square** — 346×256, aspect 1.35. The cam is 4:3, which is an ordinary talking-head shape and covers the panel exactly. A square cam would either leave a live strip of hover text visible to viewers or overflow into the device row.
+**The Info View is not square** — the panel measures 346×256, aspect 1.35, so the cam is 4:3 rather than the square first assumed. A square cam would either leave a live strip of hover text visible to viewers or overflow into the device row. The cam is 21 points taller than the panel because the Info View's *title line* sits just above it and shows whatever was last hovered — uncovered, that is a changing label above Loudon's head for the length of the series.
 
 **The trick, stated once:** the cam exists only in OBS. On the physical screen the Info View stays fully readable, so the same rectangle is dead space for the viewer and a teleprompter for Loudon. It also fixes the cam's position for the life of the series — no reframing decision, ever.
+
+**The rig is driven, not clicked.** `Projects/LDN RTM/obs/rtm.py` operates OBS over its WebSocket — preflight, roll, stop-and-rename, advance, batch — so no setting is ever hand-entered and every one can be read back. Editing OBS's config files instead produced three silent failures in one afternoon; see [[OBS]] § Gotchas.
 
 **The window is set by script, not by hand** — `osascript … set {position, size} to {{0, 38}, {1920, 1080}}` — so the frame is reproducible rather than eyeballed. Requires Accessibility permission for the host app (granted to `Claude.app`, 2026-09-02). The 136 points to the right and 274 below are where OBS, the manual PDF, and notes live, permanently off-camera.
 

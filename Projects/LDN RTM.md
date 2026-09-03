@@ -69,13 +69,15 @@ That perspective is not a designated segment. It is continuous, because it is si
 
 The rule is absolute: **no editing timeline is ever opened.** Everything after recording is a batch script.
 
-**Frame.** Live's Info View stays open in the lower left for the entire series, and the webcam sits square on top of it — a perfect crop over a panel Loudon never refers to and viewers never need. It is a dead zone and a teleprompter in the same rectangle, and it means the cam placement is decided once and never re-checked. Closely cropped, boom mic out of frame, Hue lights on a filming preset, a repeatable backdrop. Clothing changes; the geometry doesn't.
+**Frame.** Live's Info View stays open in the lower left for the entire series, and the webcam sits exactly on top of it — a crop over a panel Loudon never refers to and viewers never need (4:3, not square: the panel isn't). It is a dead zone and a teleprompter in the same rectangle, and it means the cam placement is decided once and never re-checked. Closely cropped, boom mic out of frame, Hue lights on a filming preset, a repeatable backdrop. Clothing changes; the geometry doesn't.
 
-**Legibility.** Live's display zoom at 125–150%, captured at 1920×1080. This one setting is the difference between watchable and not on a phone, which is where a search for *Vocoder formant shift* happens at 1am.
+**Legibility.** Live's display zoom at 150%, captured at 1920×1080. This one setting is the difference between watchable and not on a phone, which is where a search for *Vocoder formant shift* happens at 1am.
 
 **Shape.** Three seconds of title card with the Lissajous in motion, then straight into the work — no verbal intro, no throat-clearing, first words are content. Two to six minutes, hard cap eight; over cap splits into `a` / `b`. Ends on the last word, then a single still frame of the Lissajous. No audio tag, no subscribe ask, and never a held frame of Loudon's face.
 
-**Machinery.** An OBS text source reads the next section from the checklist file, so the title card writes itself and OBS is never touched between takes. Mic and program audio record to separate tracks in one crash-safe file, so loudness is fixed in the batch rather than in a take. One ffmpeg pass per recording day does remux, normalize, tail, and rename from the checklist row.
+**Machinery.** The rig is *driven*, not clicked: `Projects/LDN RTM/obs/rtm.py` operates [[OBS]] over its WebSocket. One command runs a preflight that asserts the canvas, every transform, the capture target, the audio device, and live meters proving signal is arriving — and refuses to roll if any of it is wrong. One command rolls a take: card up, record, cut to the work. One ends it: end frame, stop, rename from the checklist row, advance the queue. Mic and program audio land on separate tracks, so a bad balance is a batch fix rather than a re-shoot, and the tail is an end-card held before the stop rather than an ffmpeg pad — so the video stream is copied, never re-encoded, and the batch touches audio only.
+
+**The operator is a checker, not a co-host.** It asserts the rig before a take, stays silent during, and reports after; on a first batch it also checks the *process*, feeding back how the working method should change. The role has no palace entry yet — it earns one when it has run real takes and accumulated its own decisions. The seam is held open at [[Loudon Live Post-producer]] § Deferred.
 
 **The retake rule replaces editing.** Flub and restart. Budget of two — the third take ships with the stumble in it. A 250-video catalog with no stumbles reads as a product; one with them reads as a person, which is the honesty the [[Loudon Live Design System]] asks for.
 
@@ -94,6 +96,10 @@ The stated purpose is to become genuinely comfortable making screen content and 
 - **Queued:** Serum, Soundtoys, and the [[Toolkit — Audio Plugins]] shortlist (H3000 Factory, Diva, Zebra2, Reaktor 6, Surge XT, Vital, MeldaProduction).
 - **Sponsored:** a manufacturer buying an RTM is buying a slot in an established, numbered, exhaustive format — a much better thing to sell than a one-off, and the reputation path [[Loudon Live]] already names.
 
+## The control panel — a documented aesthetic override
+
+The recording control panel — the operator's surface, on a second screen — wears the [[BBS Design System]] terminal aesthetic rather than the [[Loudon Live Design System]] house style. CLAUDE.md requires a new override to be a deliberate decision documented in the artifact's parent entry, so: **this is an instrument, not a teaching artifact.** It is read at a glance by one person mid-work, it displays live state — queue position, levels, dropped frames, coverage — and that is the register the swarm terminal already speaks. The house style governs everything the audience sees; the terminal governs what the operator sees. Because capture is scoped to Live's application windows, a panel on a second screen cannot leak into a recording.
+
 ## Cross-Domain Resonances
 
 - **[[Loudon Live]]** — RTM is one activity of a sprawling school that also holds workshops, concept videos, interactive artifacts, and retreats. Not the channel; a thing the channel does.
@@ -109,4 +115,4 @@ A fixed cadence of twenty videos every other week — proposed and rejected; the
 
 *See YAML `forward_vector`.*
 
-The immediate move is the OBS template and the batch script, then a pilot chunk: all eight MIDI effects, complete, shipped. Open: whether the Post-producer's promotion ladder counts RTM chunks the way it counts sessions, and whether the public checklist page wants to live in the palace or only on the channel.
+The rig is built and tested end to end — preflight, take, stop, rename, batch. What remains before the pilot chunk is `RTM Sandbox.als` (the fixed bed, drum loop, and held chord), one take recorded with real audio, and one video watched at speed. Then: all eight MIDI effects, complete, shipped. After that the control panel, and the YouTube posting path — which arrives at the same connector [[Loudon Live Post-producer]] defers for publishing, from a second direction. Open: whether the Post-producer's promotion ladder counts RTM chunks the way it counts sessions, and whether the public checklist page wants to live in the palace or only on the channel.
