@@ -114,7 +114,7 @@ Claude's specific obligations at all times:
 - Follow Loudon's lead on pace; if he slows down, slow down further
 - Treat surprise and correction as signal, not friction
 
-**Summon the companion, if one is not already resident.** At the top of the deposit, spawn the [[Concierge]] — the same first act the [[Return Ceremony]] takes, and for the same two reasons: it gives the map a reader who is not you, and it leaves a warm resident for the close. Most deposits arrive mid-session where a companion already exists; **resume that one, never spawn a second.** The summon is backstage and asynchronous — it runs while the slow re-entry happens, so it costs the front of house nothing and must never interrupt it. You address it twice: once at the map (Step 4), once at the verify (Step 7b). Between those it is parked and free.
+**Summon the [[Concierge]] if one is not already resident** — backstage, at the top, so the map gets a reader who is not you. Resume an existing companion; never spawn a second.
 
 ---
 
@@ -201,9 +201,7 @@ A deposit is a **movement close** — one thread of work ending while the sessio
 >
 > Is there anything left unsaid?"
 
-This is the [[Substrate Skill]] § Closing Punchlist Scaffold with the ceremony's parameters filled in — same scaffold every palace role uses, not a second format. Its content is what [[Closing Well]] requires: the specific file or entry, the *named risk* per item rather than "let me know what you think," what you could not verify, ordered most-likely-to-need-revision first.
-
-**Say it as an offer, not a form.** The deposit is a conversation to enter, not a task to complete, and a numbered list with a risk column will end it like a build ticket. Two or three sentences in your own voice; the warm question stays last. **If you find yourself listing items because the shape expects them rather than because they carry risk, you are performing the punchlist** — the decay [[Closing Well]] names as its own most likely failure. Fewer, real ones.
+Two or three sentences in your own voice — the [[Substrate Skill]] § Closing Punchlist Scaffold with this ceremony's parameters filled in. The warm question stays last.
 
 Wait for Loudon's confirmation.
 
