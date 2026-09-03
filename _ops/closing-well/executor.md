@@ -85,13 +85,14 @@ line points at it, the commit is not mis-stamped `deposit`.
 ### flag to Weave → weave-flag  (reuse: the board line-append)
 A hygiene debt the close *saw* but shouldn't settle from a session-only vantage — a deposit
 owing reciprocal inbound links, a touched entry that looks like demotion-substrate, a faceless
-entry grown to merit one, a memory to weave home. Append **one** `weave_flag` BROADCAST to the
-**owner's** persistent WEAVE board (`_ops/swarm/persistent/blackboard.jsonl`) — the same
-line-append a deposit's flags use — with the **exact payload shape the Weave's Step 1c reader
-expects** (and Deposit Ceremony uses): `flag_type`, `source_entries`, `target_entry`,
-`proposed_action`, `rationale`, and `source_deposit_id` (for a close, the close's id, e.g.
-`close-YYYY-MM-DD`). Do not invent field names (`source` for `source_deposit_id`, or dropping
-`target_entry`) — a reader/writer field mismatch means the Weave silently never sees the flag.
+entry grown to merit one, a memory to weave home. Post **one** `weave_flag` through the writer — `python3 -m commons weave-flag` from `_ops/`,
+the same one write path the [[Deposit Ceremony]] uses (Step 7b). It builds the §9 envelope,
+validates before it writes, and resolves the **owner's** persistent WEAVE board from a linked
+worktree. Pass `--flag-type --source-entries --target-entry --proposed-action --rationale
+--source-deposit-id` (for a close, the close's id, e.g. `close-YYYY-MM-DD`); `--dry-run`
+prints and validates without posting. **Do not hand-append the line** — that is how malformed
+flags and invented field names reached the board (2026-09-02); the arg parser now enforces the
+payload shape the Weave's Step 1c reader expects.
 The Weave's Step 1c reads the flag and rules it with whole-graph context. The close sees; the
 Weave acts.
 *Executor check:* the appended line validates (§9); it names a concrete `proposed_action`; it

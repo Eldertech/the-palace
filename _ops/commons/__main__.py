@@ -8,9 +8,11 @@ Run from the _ops dir, or with the repo's _ops on PYTHONPATH. reap/terminate arr
 in Phase 5 (the reaper).
 """
 import argparse
+import json
 import sys
 import time
 
+from . import board as _board
 from . import identity
 from . import providers as _providers
 from . import reaper as _reaper
@@ -78,6 +80,43 @@ def cmd_terminate(args):
     print(f"resource {args.id!r} not found on any provider")
 
 
+
+def cmd_weave_flag(args):
+    """Post one weave_flag BROADCAST to the WEAVE board, validated before it lands.
+
+    The one write path for a weave flag. Ceremonies (Deposit Step 7b, the Closing Well
+    executor) call this instead of hand-appending a line: `make_message` supplies the
+    stub-health block the validator's exempt set expects, and the arg parser enforces
+    the payload keys the Weave's Step 1c reader looks for. Hand-rolling both is how
+    malformed flags reached the board (2026-09-02).
+    """
+    payload = {
+        "kind": "weave_flag",
+        "flag_type": args.flag_type,
+        "source_entries": [e.strip() for e in args.source_entries.split(",") if e.strip()],
+        "target_entry": args.target_entry,
+        "proposed_action": args.proposed_action,
+        "rationale": args.rationale,
+        "source_deposit_id": args.source_deposit_id,
+    }
+    msg = _board.make_message("BROADCAST", "WEAVE", payload,
+                              from_=args.sender or _board.STEWARD_DEFAULT, session_id=args.session_id)
+    if args.dry_run:
+        print(json.dumps(msg, ensure_ascii=False, indent=2))
+        res = _board.validate(msg)
+        ok = bool(res.get("ok"))
+        print(f"\nvalidate: {'OK' if ok else 'INVALID'}")
+        for e in res.get("errors") or []:
+            print(f"  {e.get('path')}: {e.get('message')}")
+        return 0 if ok else 1
+    res = _board.post(msg, silent=False)
+    if not res.get("ok"):
+        print(f"NOT POSTED: {res}", file=sys.stderr)
+        return 1
+    print(f"posted {msg['id']} -> WEAVE (target: {args.target_entry})")
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="commons", description="The Commons — shared-resource coordination")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -95,8 +134,20 @@ def main(argv=None):
     tm.add_argument("id")
     tm.set_defaults(func=cmd_terminate)
 
+    wf = sub.add_parser("weave-flag", help="post one validated weave_flag to the WEAVE board")
+    wf.add_argument("--flag-type", required=True, help="e.g. section-superseded, lifecycle-contradiction")
+    wf.add_argument("--source-entries", required=True, help="comma-separated entry titles the flag came from")
+    wf.add_argument("--target-entry", required=True, help="the entry a Weave should act on")
+    wf.add_argument("--proposed-action", required=True, help="the concrete change to consider")
+    wf.add_argument("--rationale", required=True, help="why, in the flag's own words")
+    wf.add_argument("--source-deposit-id", required=True, help="deposit id (D-YYYY-MM-DD-SLUG) or close id")
+    wf.add_argument("--sender", default=None, help="the posting steward page title (from)")
+    wf.add_argument("--session-id", default=None)
+    wf.add_argument("--dry-run", action="store_true", help="print + validate the envelope, do not post")
+    wf.set_defaults(func=cmd_weave_flag)
+
     args = ap.parse_args(argv)
-    args.func(args)
+    return args.func(args)
 
 
 if __name__ == "__main__":
