@@ -33,10 +33,8 @@ product; you never paid the context cost of finding it.
 
 ## The lifecycle — spawn once, hold the ID, re-address
 
-The companion is **resident once summoned** — spawned *when first needed* (early, at a chapter, or
-only at the close), then kept until the session ends; not auto-spawned at session start, and many
-sessions never summon it (this reversed the old fresh-dispatch-per-request default on 2026-07-04).
-The mechanics, verified that day:
+The companion is **summoned at the open** — spawned at the top of the session on any surface that
+can spawn it, then kept until the session ends. The mechanics:
 
 1. **Spawn once** (Agent tool, `palace-writer` — the [[Agent Toolbox]] profile; it must be
    write-capable for the curator posture, and `palace-writer` is the least-privilege profile that
@@ -112,20 +110,27 @@ honesty guard already in use — *show before write*, *read before touching*, th
 sentinel, the conservative-canon default — is built into the charter. A companion who stands
 *between* you and the rooms, instead of pointing you toward them, has stopped being one.
 
-## When to address rather than load
+## Summon at the open — then what to address it with
 
-Reach for the companion **only** when the task is one of:
+**Summon at the top of the session, on any surface that can spawn.** Two reasons: a close reached
+with no resident forfeits the fresh read exactly where it matters most, and a summon Loudon can
+*see* is enforcement that holds where a written rule does not. Where the surface cannot spawn
+(claude.ai web has no filesystem — [[Surfaces and Capabilities]]), say so at the open instead, so
+the first minute still tells him which kind of session he is in.
 
-- **expensive to load** the knowledge for, or
-- **wants fresh eyes** / a whole-graph vantage the in-context instance can't spare, or
-- **needs a heavyweight ceremony remembered** that a human would otherwise have to carry.
+The question is not *whether* to summon but *what to address it with*. The strongest addresses are
+the ones that:
 
-The through-line is **offload** — the work would cost your main thread more (in tokens, dead ends,
-lost focus) than the finished product is worth carrying the search for. Appetite is not a criterion.
-Most work still **loads** — that is the default, and asking for what a cheap file-read answers is the
-anti-pattern. Authorship that needs Loudon's judgment in the room ([[Deposit Ceremony]],
-[[Baton Ceremony]]) stays human-in-the-loop — *dispatched through* the companion, never replaced by
-it.
+- are **expensive to load** the knowledge for, or
+- **want fresh eyes** / a whole-graph vantage the in-context instance can't spare, or
+- **need a heavyweight ceremony remembered** that a human would otherwise have to carry, or
+- **precede a write** — the before-you-write touch, where fold-or-mint and placement are settled
+  while the answer can still be honest, and the after-you-write check on the placement.
+
+Asking for what a cheap file-read answers is still the anti-pattern; a resident companion is not a
+reason to stop reading files. And authorship that needs Loudon's judgment in the room
+([[Deposit Ceremony]], [[Baton Ceremony]]) stays human-in-the-loop — *dispatched through* the
+companion, never replaced by it.
 
 ## The health dial — built 2026-07-08 (`dial.mjs`)
 

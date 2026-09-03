@@ -7,12 +7,15 @@ pillars:
   - philosophy
 born: 2026-07
 stage: sprout
-last_activated: 2026-07-06
-activation_count: 4
+last_activated: 2026-09-03
+activation_count: 5
 links:
   - target: "[[The Palace Speaks]]"
     type: emerged-from
     label: realizes-the-address-pole
+  - target: "[[SCHEMA]]"
+    type: connects-to
+    label: holds-the-schema
   - target: "[[Pages as Agents]]"
     type: exemplifies
     label: page-as-dispatched-agent
@@ -46,13 +49,25 @@ finished product. The Concierge is the realization of [[The Palace Speaks]]'s ad
 the palace as a mind you send a message to, not only a corpus you read.
 
 It is not a signpost, and no longer a mask dispatched fresh each time. It is **one resident
-companion** — *persistent once summoned*, not always-on: you call it **when first needed** (early,
-at a chapter, or only at the close), and from then it is kept and re-addressed until the session
-ends. It carries what it learns from address to address, so it grows cheaper and wiser the longer
-you work together. Many chats never call it; some only to close — and a close can be a chapter you
-continue past. The old "faces" survive as **postures** it adopts per request,
-not as separate agents. (That this is *resident* rather than fresh-each-time is a reversal with
-teeth — see *The mechanism* below.)
+companion**, summoned **at the top of the session by default** — in any environment that can spawn
+it — and kept, re-addressed as the work moves, until the session ends. It carries what it learns
+from address to address, so it grows cheaper and wiser the longer you work together. The old
+"faces" survive as **postures** it adopts per request, not as separate agents. (That this is
+*resident* rather than fresh-each-time is a reversal with teeth — see *The mechanism* below.)
+
+**Summoned at the open.** Load a Concierge visibly at the beginning of any palace discussion, on
+any surface that can spawn one. Two reasons, both earned the hard way: a close reached with no
+resident forfeits the fresh read exactly where it matters most, and the *visibility* is the
+enforcement — a written rule can be reasoned past in silence, a spawn Loudon can see cannot. Where
+a surface cannot spawn (claude.ai web has no filesystem; see [[Surfaces and Capabilities]]), the
+working Claude says so at the open instead, so either way the first minute tells him which kind of
+session he is in.
+
+**It is a role, not an instance.** Any process wearing the charter *is* the Concierge, so respawning
+it loses nothing that matters. Three things define it, in this order: it **holds the [[SCHEMA]]**, it
+**cares that the palace is coherent and beautiful**, and it **remembers the session**. Residency is a
+cost optimization — a parked companion resumes for the price of one turn, a fresh one pays its whole
+boot — never an identity requirement. Offload is what residency *buys*, not what it is.
 
 ## What it's for — context-offload *and* continuity
 

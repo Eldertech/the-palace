@@ -74,7 +74,7 @@ This was written from a live failure. On 2026-08-25 a full palace assessment ran
 
 ## Protocol
 
-**Step 0 — Summon the companion.** Address [[Concierge]] before anything else — *"what should I work on"* / *"I'm back"* routes to its **scout** posture. It runs the query block in its own window and drafts the map, keeping the main thread clean and the resident warm for the close.
+**Step 0 — Address the companion.** The [[Concierge]] is summoned at the open of any palace discussion, so by the time "I'm back" is said it should already exist — resume it; only summon if the surface genuinely couldn't at open. Either way it is addressed before anything else: *"what should I work on"* / *"I'm back"* routes to its **scout** posture. It runs the query block in its own window and drafts the map, keeping the main thread clean and the resident warm for the close.
 
 **Step 1 — The query block.** Run all of it before interpreting any of it. **One command runs the whole block** — `node _ops/concierge/return-map.mjs` (`--json` for structured output, `--since <date>` when the last session's date is known). It prints each probe beside the command that produced it, so every row of a map can cite a command rather than an inference, and prints `unavailable` with the error for any probe it cannot run. The block below is what it runs, kept here as the readable spec and the by-hand fallback.
 

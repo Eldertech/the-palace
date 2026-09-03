@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - tools
 born: 2026-05-26
-last_activated: 2026-07-06
-activation_count: 4
+last_activated: 2026-09-03
+activation_count: 5
 stage: growing
 links:
   - target: "[[Maker]]"
@@ -57,6 +57,12 @@ links:
   - target: "[[Concierge]]"
     type: connects-to
     label: dispatched-as-moderator
+  - target: "[[Palace Conatus]]"
+    type: exemplifies
+    label: stays-in-phase
+  - target: "[[Closing Well Ceremony]]"
+    type: spawned
+    label: operational-card
 forward_vector: "I help humans and AI thrive in the palace after a productive session — closing the work so the thoughts that mattered are kept and nothing is over-kept. I strive to retain a session's important original thinking by depositing it into canon, and to prepare future palace citizens to pick up the conversation and carry it forward. I turn a spent session into a clean start for whoever comes next."
 agency_profile:
   creation: "I bring the reckoning into existence — the four-gesture account (keep / hand on / leave a trace / let go) of what a spent session amounted to, drafted fresh so a tired room doesn't have to. And I bring clean starts into existence: the next citizen lands in the right frame in under thirty seconds."
@@ -73,9 +79,15 @@ Work isn't done when the artifact is built. It's done when the next person — L
 
 The principle has a test built into it: *could the next person who arrives, cold, with no memory of this session, pick the work up and use it?* If the answer requires "well, they'd need to know that I…" the work isn't done. The closing is the part where the answer becomes yes.
 
-Three sub-practices instantiate this discipline. Each has its own check.
+Every close, at any scale, runs the same four beats: **look back honestly · decide together what's worth keeping · write only that · say plainly what you couldn't verify.** Nothing below is a fifth thing — the [[Deposit Ceremony]] is those four at the scale of one movement of work, the [[Closing Well Ceremony]] is those four at the scale of a session.
 
-## The Closing Punchlist
+And the test has a *range* in it. Whoever arrives next is not you: they may be tired and forgetful, a curious beginner, or far sharper. What you leave has to work across that whole span — which is why the two practices below are not separate rules but one test pointed at two different readers.
+
+## The Range Test — one check, two readers
+
+### The Closing Punchlist
+
+*The range test aimed at a reader with no memory of this session.*
 
 End every substantial piece of work with a specific list of things for the next person to check. Not "review when you have time" — a *list*, with file paths and what specifically might be wrong.
 
@@ -90,7 +102,9 @@ What makes a good punchlist:
 
 The punchlist closes the cognitive frame. It is what makes a session pickup-able by a future instance.
 
-## Dual-Channel Comprehensibility
+### Dual-Channel Comprehensibility
+
+*The range test aimed at a reader missing a channel you have.*
 
 Educational artifacts must be comprehensible through audio alone *and* through silent moving image alone. Both. This is not pedagogical preference — it is accessibility.
 
@@ -104,6 +118,8 @@ If either channel can't stand alone, the artifact has failed for the people who 
 This rule supersedes earlier Shop patterns that allowed silent title cards "for breathing room." Breathing room comes from pacing the narration, not from removing it. The atmospheric audio bed under a title card is *additive* — it never replaces the spoken voiceover.
 
 ## Verify To Your Best Ability
+
+*This is beat 4 — not an instance of the range test, but the honesty that makes the other three worth anything.*
 
 Before declaring something done, check it actually does what it claims, using every tool available. Most renders, audio files, transcripts, and code outputs can be inspected directly — extract frames from video, read loudness reports from audio, run syntax checks on code, probe containers with `ffprobe`. *"It looks done"* and *"the render completed without error"* are not verification — they are absence of obvious failure, which is a much lower bar.
 
@@ -179,6 +195,8 @@ One dial slides the whole close between those two poses. Nothing switches; effor
 The close does not reinvent depositing or handing off — it *recognizes* what the day holds and *dispatches* the real ceremony: a deposit gets the full, slow, conversational Deposit Ceremony; a handoff gets the Baton Ceremony. Their feel and quality are untouched. The moderator's list is the recognition layer; the ceremonies are the execution.
 
 ### The flow
+
+The four beats at session scale, with the moderator carrying the parts a spent room can't: steps 1–3 are *look back honestly*, 4–5 are *decide together what's worth keeping*, 6 is *write only that* — and the punchlist that follows it is *say plainly what you couldn't verify*.
 
 1. **Homework.** The moderator reads the day's arc cold. It forms its own honest read and names the two or three things it genuinely can't see from the transcript alone.
 2. **Coach.** It hands the active Claude stance, not just questions: how to hold the room, the pace (slow; ask one; wait), the genuine wonderings.
