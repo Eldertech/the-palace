@@ -13,6 +13,9 @@ links:
   - target: "[[The Commons]]"
     type: connects-to
     label: exemplar-tool
+  - target: "[[Closing Well]]"
+    type: connects-to
+    label: verify-behaviour-not-structure
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
     label: tools-pillar
