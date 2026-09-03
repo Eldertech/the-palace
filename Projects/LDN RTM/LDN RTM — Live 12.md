@@ -38,6 +38,30 @@ Not a schedule. Easiest units first, so the pipeline gets built on simple materi
 
 Live's Info View stays open, display zoom fixed, dark theme fixed, cam crop unchanged. The catalog should look like one object.
 
+### The frame — measured 2026-09-02, locked
+
+Machine: 16" MacBook Pro M1 Max, panel 3456×2234, desktop at 2056×1392 points.
+
+| | |
+|---|---|
+| Live window | **1920×1080 points** at (0, 38) — y clamps to 38, the notched menu-bar height |
+| Backing capture | **3840×2160 px**, verified — a clean 2:1 downscale to 1080p, no resampling |
+| Live display zoom | **150%** (`Cmd ,` → Display & Input → Display) |
+| OBS source | **Window Capture** on Live, canvas and output both 1920×1080 |
+| Cam | **346×256** at (13, 767) in output points — exactly covers the Info View panel |
+
+**Why window capture, not display capture:** the desktop's aspect is ~1.48 against 16:9, so a full-screen grab must letterbox or crop and you decide what to lose every session. A window grab is 1:1 and decides nothing.
+
+**The Info View is not square** — 346×256, aspect 1.35. The cam is 4:3, which is an ordinary talking-head shape and covers the panel exactly. A square cam would either leave a live strip of hover text visible to viewers or overflow into the device row.
+
+**The trick, stated once:** the cam exists only in OBS. On the physical screen the Info View stays fully readable, so the same rectangle is dead space for the viewer and a teleprompter for Loudon. It also fixes the cam's position for the life of the series — no reframing decision, ever.
+
+**The window is set by script, not by hand** — `osascript … set {position, size} to {{0, 38}, {1920, 1080}}` — so the frame is reproducible rather than eyeballed. Requires Accessibility permission for the host app (granted to `Claude.app`, 2026-09-02). The 136 points to the right and 274 below are where OBS, the manual PDF, and notes live, permanently off-camera.
+
+**Escape hatch if text reads soft after the pilot:** output 2160p from the same window — a pure 1:1 grab, no other change, nothing re-shot. YouTube's higher bitrate tier does the rest. Costs upload time across 250 videos, which is why 1080p is the default.
+
+*These numbers are valid for this window size, this zoom, and the browser hidden. Change any one and re-measure before trusting the cam crop.*
+
 ## Running state
 
 Nothing recorded yet. This section becomes the ledger: chunk shipped, date, sections covered.
