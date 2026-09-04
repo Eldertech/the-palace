@@ -14,8 +14,7 @@ wonderings, and — after the panel — drafts what the day amounted to in two l
 **reckoning** (front of house, the four gestures) and the **backstage checklist** (the
 in-spec mechanism). The **executors** — turning an approved backstage row into an actual
 deposit / baton / board post — are Phase 5, **built and live-gated 2026-07-04** (see
-§ Phase 5 below). This paragraph said "not built yet" until 2026-08-26, seven weeks after
-they shipped.
+§ Phase 5 below).
 
 **Who the moderator is.** Not a fresh subagent by default — the **resident [[Concierge]]
 taking the wheel**, resumed across the close's turns ([[Closing Well]] § A close is a

@@ -110,7 +110,7 @@ until Loudon signs. One gate, not one-per-row:
    existing ceremony (deposit → [[Deposit Ceremony]]; baton → [[Baton Ceremony]];
    artifact → bundle + index; weave-flag → append a `weave_flag` BROADCAST to the
    persistent WEAVE board, the same line-append a deposit uses) — *that wiring is
-   Phase 5, not Phase 4*.
+   the Phase 5 executors, live since 2026-07-04*.
 4. `landed` and `none` rows execute nothing — they are ledger, not work.
 
 **Failure mode:** an unsigned map is a draft, not a completed close. Never execute an
@@ -126,6 +126,7 @@ walked into and this rule closes).
 - **Built (Phase 4):** this format; the interview loop that feeds it (gap list →
   Loudon → distilled answers); the map-drafting enchantment pass
   (`prompts/closing-well-agent-map.md`); the single gate (draft + sign).
-- **Deferred (Phase 5):** the **executors** — turning a signed `candidate` row into
-  an actual deposit commit / baton file / board post. Until Phase 5, a signed map is
-  executed *by hand* through the existing ceremonies, and the map says so.
+- **Phase 5:** the **executors** — turning a signed `candidate` row into an actual
+  deposit commit / baton file / board post. Built and live-gated 2026-07-04
+  (`_ops/closing-well/README.md` § Phase 5). A signed map's rows execute through them;
+  a row can still be run by hand through its own ceremony.

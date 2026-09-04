@@ -33,7 +33,7 @@ links:
 
 **Postconditions:**
 1. Operator can describe the path taken — starting entry, links followed, entries visited
-2. At least one unexpected connection or surprise has been named
+2. What the path turned up has been named honestly — a connection, a tension, or nothing. **A walk that surfaced nothing is complete.** Requiring a surprise guarantees one gets manufactured; the postcondition is the honest look-back, not the find.
 3. Any proposed metadata updates (activation counts, stage changes, new links) have been shown to Loudon
 4. If metadata was updated: git commit made — `Walk — [date] — [starting entry] — metadata updates`
 5. If no metadata changed: no commit required — the Walk leaves a trace in conversation, not necessarily in files
