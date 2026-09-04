@@ -71,7 +71,7 @@ After writing a new entry, check whether existing entries should link BACK to th
 
 ### The Typed Link Ontology
 
-Use only the link types defined in [[SCHEMA]] §4 (auto-loaded — that is the single source for their directionality and labels): `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies`, `member-of`. When unsure, use `connects-to`; do not introduce new link types without discussing with Loudon.
+Use only the link types defined in [[SCHEMA]] §4 (auto-loaded — that is the single source for their directionality and labels; the fields a link object takes are [[SCHEMA — Reference]] §3): `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies`, `member-of`. When unsure, use `connects-to`; do not introduce new link types without discussing with Loudon.
 
 YAML frontmatter links are reserved for structural relationships that matter. Body text [[wiki links]] are casual and abundant. YAML links are curated and intentional.
 
@@ -95,7 +95,7 @@ When a bundle file is consumed (e.g., a spent enrichment card or superseded sour
 
 Bundle files are not first-class entries. They do not appear in Weave audits, do not need full entry frontmatter (no `type`, `pillars`, or `stage`), and do not require typed-link participation in the palace graph. But every bundle file carries minimal YAML — title, born, at least one link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing.
 
-The current vocabulary of bundle types lives in [[SCHEMA]] §8. Treat the list as open — try new types when needed and surface frequently-used ones for inclusion.
+The current vocabulary of bundle types lives in [[SCHEMA — Reference]] §8. That file is not auto-loaded — read it before creating a bundle file. Treat the list as open — try new types when needed and surface frequently-used ones for inclusion.
 
 ### Palace Ceremonies
 

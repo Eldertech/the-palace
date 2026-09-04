@@ -113,3 +113,37 @@ v1.16 — the Return Ceremony.** Added 2026-08-25. The palace had ceremonies for
 **`RETRACT` ratified; four unratified names removed from the code.** The board is append-only, so a message posted in error can only be corrected by adding another — and §9 had no kind for it. The 2026-07-04 wrong-path `handoff_ready` was corrected by overloading `handoff_picked_up` plus a repost, which worked but left a naive board reader hitting the wrong path first; gotcha 12 named the gap and deliberately did not mint a kind ad hoc. `RETRACT` is that kind.
 
 The same pass found the reverse problem: **the validators were looser than the spec.** `QUERY`, `PAGE_UPDATE`, `HEALTH_NOTICE` and a `BRANCHES` board were design-time proposals §9 explicitly called "not part of the wire" — and `validator.js`, the app's read-side `schema.js`, and the display layer's `format.js` had all accepted them for a year. None was ever posted. All four removed, in the code and its tests, so the gate now matches the rule it enforces. This is the palace-maintenance principle applied literally: drift rides stale data and examples, so fix the enforcement, not just the prose.
+
+---
+
+## Tiering — v1.18, the floor split (2026-09-04)
+
+**SCHEMA left the auto-loaded floor by splitting, not by moving.** The open question carried since
+v1.17 — does SCHEMA belong in the `@import` floor at all — resolved as a split: the card keeps what
+*exists* (§1 types, §2 stages, §4 the link ontology, §7 the self-description test); [[SCHEMA — Reference]]
+takes the rules for *writing* (§3 frontmatter fields, §5 the change protocol, §6 ceremony-file
+conventions, §8 bundles, §9 the [[STIGMERGY]] wire) to Tier 3.
+
+**The argument is not token cost.** That was the v1.17 framing and it was the weaker one — the audit
+behind `5857594` later showed the saving is a *relocation*, not a deletion, since an agent that writes
+still pays for the rules. The argument that carried is the floor's own: **length is a claim about
+importance.** A reference occupying 41% of the floor told every arriving agent that the type system was
+41% of what matters here — the same distortion as hours spent on a hard but minor topic teaching a
+student it was a major one. Reach mattered too: the fields are needed at the moment of writing and at no
+other, which is precisely what a tier is for.
+
+**Measured:** floor 88.6KB → 68.3KB (≈24K → ≈18.5K tokens, a 23% cut); SCHEMA's share 39% → 21%.
+
+**Section numbers were held fixed, deliberately.** Roughly 180 `SCHEMA §N` references across ~78 files
+pin sections by number. Renumbering would have broken every one; instead the card keeps §1, §2, §4, §7
+and leaves a one-line pointer at each gap, so a `SCHEMA §8` pin still names the right rules and finds
+them one hop away. The cost is a card with visible holes — which is honest about what happened.
+
+**The risk accepted:** the floor no longer carries the writing rules, so an agent that skips the trigger
+can write malformed frontmatter. Three guards, none of them sufficient alone — the [[Concierge]] holds
+the Reference at birth and CLAUDE.md already routes writes through it; `lint-doc-drift.py` catches
+malformed frontmatter after the fact; and the card's own opening says plainly not to write frontmatter
+from memory of it. Every rule in the gotcha ledger that failed, failed silently; this one is worth
+watching.
+
+**The successor question:** CLAUDE.md is now the largest file in the floor at 21.6KB.

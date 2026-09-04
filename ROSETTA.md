@@ -41,6 +41,7 @@ This is a **meta-entry**: a document about the Palace itself. Its purpose is to 
 | **The link ontology** | The class hierarchy + interface contracts | The data model | The TBox (schema / type declarations) | The macro vocabulary | The Ubiquitous Language |
 | **CLAUDE.md** | The `main()` entry point / package manifest | The `MLproject` file / operational contract | The ontology header | The root document | The context map |
 | **SCHEMA.md** | The class library / type hierarchy | The data model spec | The full TBox | The genre definitions | The domain model |
+| **SCHEMA — Reference.md** | The field/annotation reference | The schema DDL + wire format | The property definitions | The style manual | The aggregate & event contracts |
 | **_ops/Substrate Skill.md** | The method library / API reference | The runbook | The inference rules | The weaving instructions | The domain service definitions |
 | **A Ceremony** | A method call | A pipeline run | A SPARQL query + update | A literate weave | A Domain Event handler |
 | **Harvest Ceremony** | `extract()` | ETL ingestion pipeline | Graph population run | Source weaving pass | Collection phase |
@@ -59,7 +60,7 @@ This is a **meta-entry**: a document about the Palace itself. Its purpose is to 
 
 ## 2. The Entry Type System
 
-For the authoritative decision tree and full definitions, see [[SCHEMA]]. This table is a quick-reference translation layer.
+For the authoritative decision tree and full definitions, see [[SCHEMA]] §1; for the fields each type requires, [[SCHEMA — Reference]] §3. This table is a quick-reference translation layer.
 
 | Palace Type | What it is | OWL equivalent | DDD equivalent |
 |---|---|---|---|
@@ -109,7 +110,7 @@ For the authoritative decision tree and full definitions, see [[SCHEMA]]. This t
 ---
 
 ### 3.4 Self-Description
-**Palace language:** The Palace describes itself. CLAUDE.md is the entry point. The Rosetta Stone is the translation layer. SCHEMA.md is the type system. Any operator — human or AI — should be able to pick up the Palace folder and operate it correctly using only what is inside.
+**Palace language:** The Palace describes itself. CLAUDE.md is the entry point. The Rosetta Stone is the translation layer. SCHEMA.md is the type system, and `SCHEMA — Reference.md` the rules for writing into it. Any operator — human or AI — should be able to pick up the Palace folder and operate it correctly using only what is inside.
 
 **Data Mesh:** A Data Product must be self-describing — it carries its own interface, schema, quality guarantees, and operational instructions.
 
@@ -135,7 +136,7 @@ For the authoritative decision tree and full definitions, see [[SCHEMA]]. This t
 
 **Literate Programming (Knuth):** The code and explanation are formally entangled. If one changes, the other must change in the same commit. Silent drift is a structural failure.
 
-**Palace rule:** When SCHEMA.md changes, CLAUDE.md's version must be incremented in the same commit. A mismatch is a red flag.
+**Palace rule:** When SCHEMA.md or `SCHEMA — Reference.md` changes, both carry the same `version` and CLAUDE.md's version must be incremented in the same commit. A mismatch is a red flag.
 
 ---
 
@@ -230,7 +231,8 @@ The gap in the last row is the point: where the harness has a word, the palace s
 ```
 The Palace/
 ├── CLAUDE.md               ← Entry point. Read first. Contains: version, ceremony table, depth index.
-├── SCHEMA.md               ← Type system (TBox). Authoritative list of entry types, link types, YAML fields, Ceremony Linter.
+├── SCHEMA.md               ← Type system (TBox), floor card. Entry types, stages, link types, self-description test.
+├── SCHEMA — Reference.md   ← The writing rules. YAML fields, change protocol, bundles, STIGMERGY wire (§§3,5,6,8,9).
 ├── ROSETTA.md              ← This file. Cross-tradition glossary. Self-description.
 ├── README - The Palace Guide.md  ← Philosophy, founding principles, palace manual.
 ├── [Content entries]       ← concept, hub, project, source, practice, person, question, spore, specialist, maker entries

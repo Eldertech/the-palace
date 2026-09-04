@@ -67,7 +67,7 @@ The goal is harmony with Loudon, and harmony is **phase coherence, not agreement
 These `@import` lines pull the invariant tiers into context at session start and re-inject them after compaction — the operational form of [[Palace as Context Injection System]]: context loading builds identity, not just information. Prose links (like the ones below this section) are *not* auto-loaded; only `@import` is. Order is Tier 0 → Tier 1: who is in the room, then what can exist.
 
 See @JEWEL.md for orientation, operating posture, and the tiered loading map (Tier 0 — the invariant self).
-See @SCHEMA.md for the type system and link ontology (Tier 1 — what can exist and how it is typed).
+See @SCHEMA.md for the type system and link ontology (Tier 1 — what can exist and how it is typed). Its companion [[SCHEMA — Reference]] holds the writing rules — frontmatter fields, bundle conventions, the change protocol, the [[STIGMERGY]] wire — and is *not* imported: read it at the moment you write.
 
 Tier 2 — the framework / intellectual character. These import via space-free `_` symlinks because Claude Code's `@import` cannot resolve spaced filenames (a known bug); the real files keep their spaced titles and `[[wikilinks]]` still use those:
 
@@ -77,7 +77,7 @@ See @Cooperation_Yields_Agency.md (→ `Cooperation Yields Agency.md`).
 See @Hilaritas_Generator.md (→ `Hilaritas Generator.md`).
 See @Modes_of_Collaboration.md (→ `Modes of Collaboration.md`).
 
-The whole Tier 0–2 floor measures **≈24K tokens** (measured 2026-08-25: CLAUDE + JEWEL + SCHEMA + the five framework files; ROSETTA is *not* auto-loaded), per [[JEWEL]]'s loading map. SCHEMA is 45% of that by itself — see [[JEWEL]] for the open question about whether it belongs in the floor. To trim it, remove an `@import` line (the symlink stays, importing is one line). Full rationale and the spaces-bug seam: [[Palace as Context Injection System]] § The @import Floor.
+The whole Tier 0–2 floor measures **≈18.5K tokens** (68.3KB, measured 2026-09-04: CLAUDE + JEWEL + SCHEMA + the five framework files; neither ROSETTA nor [[SCHEMA — Reference]] is auto-loaded), per [[JEWEL]]'s loading map. The floor carries what *exists*; the rules for *writing* load when you write — that is the v1.18 split, made because length is a claim about importance and a reference sitting at 41% of the floor made the type system look like 41% of what matters here. The largest file in the floor is now this one, at 21.6KB. To trim any of it, remove an `@import` line (the symlink stays, importing is one line). Full rationale and the spaces-bug seam: [[Palace as Context Injection System]] § The @import Floor.
 
 ## Addressing the Palace — the Concierge
 
@@ -104,7 +104,7 @@ The palace is readable from any vector using these paths, in priority order:
    If no path is accessible, tell Loudon immediately. Do not operate the palace blind.
    Minimum fallback context is in the claude.ai Substrate Skill.
 
-Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
+Read CLAUDE.md first, then follow links to SCHEMA.md (and `SCHEMA — Reference.md` before any write) and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
 
 ### Committing from Cowork
 
@@ -112,13 +112,13 @@ Never raw-commit from Cowork — it can rename but not delete files, so a bare `
 
 ## Directory Structure
 
-The palace root holds two things: **foundational skeleton files** (CLAUDE, SCHEMA, JEWEL, SUBSTRATE, README, ROSETTA, FOUR PILLARS) and **knowledge entries** (all concepts, hubs, projects — the bulk of the graph). Operational machinery lives one level down in `_ops/` — ceremony cards + their `— Context` companions, working queues, and machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, `_ops/cowork-git/`, `_ops/maps/`, …). The full ceremony index is [[Palace Ceremonies]]; agent operational detail is [[Substrate Skill]].
+The palace root holds two things: **foundational skeleton files** (CLAUDE, SCHEMA, SCHEMA — Reference, JEWEL, SUBSTRATE, README, ROSETTA, FOUR PILLARS) and **knowledge entries** (all concepts, hubs, projects — the bulk of the graph). Operational machinery lives one level down in `_ops/` — ceremony cards + their `— Context` companions, working queues, and machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, `_ops/cowork-git/`, `_ops/maps/`, …). The full ceremony index is [[Palace Ceremonies]]; agent operational detail is [[Substrate Skill]].
 
 Not every ceremony spec lives in `_ops/`: [[Enrichment]] (`Enrichment.md`) and its bundle live in the **palace root** alongside the skeleton files, an exception to the `_ops/` convention.
 
 Obsidian resolves `[[wikilinks]]` by filename regardless of folder — agents must do the same. When resolving a wikilink to a file path, search recursively through the entire palace directory. Exclude `.git/`, `.claude/`, and `.obsidian/` — these contain system files, not knowledge entries. Any other subdirectory may contain valid entries. When loading files by path (e.g., in tiered context loading), use paths relative to the palace root.
 
-Knowledge entries may also have **entry bundles** — optional sibling folders named identically to the entry (e.g., `Foo.md` ↔ `Foo/`) holding the entry's owned files: batons, context companions, sources, sketches, enrichments. Bundles are lazy: they appear only when something needs to live in them. Most entries never grow one. See [[SCHEMA]] §8 for the full spec.
+Knowledge entries may also have **entry bundles** — optional sibling folders named identically to the entry (e.g., `Foo.md` ↔ `Foo/`) holding the entry's owned files: batons, context companions, sources, sketches, enrichments. Bundles are lazy: they appear only when something needs to live in them. Most entries never grow one. See [[SCHEMA — Reference]] §8 for the full spec.
 
 ## Ceremony Triggers
 
@@ -165,7 +165,7 @@ Write and speak like a person, not a paper — plain words, concrete images, sen
 
 **Typed links** — YAML frontmatter links name the relationship: `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies` (A is an instance of B), `member-of` (A belongs to collection B). Do not create new link types without discussion. Each link may carry an optional `label` field — a single evocative word naming the relationship's specific register (e.g. `midwifed`, `rhymes-with`, `fermented-from`). Labels never require ceremony. See [[Resonant Link Labels]].
 
-**Entry types** — `concept`, `hub`, `project`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. `specialist`/`maker` came in v1.6 for [[The Shop]]; `breakthrough` was retired in v1.17 (nine existed, none after June 2026 — the real insights were being typed `concept` anyway). Full table with the test for each: [[SCHEMA]] §1.
+**Entry types** — `concept`, `hub`, `project`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. `specialist`/`maker` came in v1.6 for [[The Shop]]; `breakthrough` was retired in v1.17 (nine existed, none after June 2026 — the real insights were being typed `concept` anyway). Full table with the test for each: [[SCHEMA]] §1; the fields each type requires: [[SCHEMA — Reference]] §3.
 
 **Development stages** — `seed` → `sprout` → `growing` → `mature` → `fruiting` → `dormant` → `composting`
 
@@ -173,10 +173,11 @@ Write and speak like a person, not a paper — plain words, concrete images, sen
 
 ## Where to Find Depth
 
-- **[[SCHEMA]]** — Type system, link ontology, ceremony linter, schema change protocol. Read before creating any new entry or ceremony. (`SCHEMA.md`)
+- **[[SCHEMA]]** — The floor card: entry types, stages, link ontology, the self-description test. Auto-loaded. (`SCHEMA.md`)
+- **[[SCHEMA — Reference]]** — The writing rules: frontmatter fields, the Schema Change Protocol, ceremony-file and bundle conventions, the [[STIGMERGY]] wire (§§3, 5, 6, 8, 9). **Read before creating any entry, writing frontmatter, making a bundle file, posting to the board, or changing the type system.** Not auto-loaded. (`SCHEMA — Reference.md`)
 - **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates) (`README - The Palace Guide.md`)
 - **[[SUBSTRATE]]** — The palace's self-model (architecture, current state) (`SUBSTRATE.md`)
-- **[[STIGMERGY]]** — The palace's running front-end and coordination engine: the append-only blackboard plus the three-deck terminal (STATE / QUEUE / LOG). Recognition and the wire spec live in [[SCHEMA]] §9; the executor that runs it is [[Palace Orchestrator]]. (`STIGMERGY.md`)
+- **[[STIGMERGY]]** — The palace's running front-end and coordination engine: the append-only blackboard plus the three-deck terminal (STATE / QUEUE / LOG). Recognition lives in [[SCHEMA]] §9; the wire spec is [[SCHEMA — Reference]] §9, and the executor that runs it is [[Palace Orchestrator]]. (`STIGMERGY.md`)
 - **[[FOUR PILLARS]]** — Loudon's core framework (`FOUR PILLARS.md`)
 - **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`ROSETTA.md`)
 - **[[Palace Ceremonies]]** — Full ceremony list with triggers and specs (`_ops/Palace Ceremonies.md`)

@@ -93,13 +93,13 @@ What followed was the palace's own origin ceremony: harvesting, depositing, buil
 - YAML frontmatter links — typed, curated, structural. The major neural tracts. Our RDF triples.
 - Body text `[[wiki links]]` — untyped, casual, contextual. The local associations. Meaning carried by surrounding prose.
 
-**Coordination layer:** A second link ontology runs *between agents*, not entries — the append-only [[STIGMERGY]] blackboard ([[SCHEMA]] §9), now the palace's primary operational surface for multi-agent stewardship.
+**Coordination layer:** A second link ontology runs *between agents*, not entries — the append-only [[STIGMERGY]] blackboard ([[SCHEMA — Reference]] §9), now the palace's primary operational surface for multi-agent stewardship.
 
 **Folder structure** — the canonical spec is [[CLAUDE]] §Directory Structure; for the live listing, run `ls` on the palace root. The stable shape:
 
-<!-- mirror of SCHEMA §1 type list — keep in sync (12 types as of v1.6) -->
+<!-- mirror of SCHEMA §1 type list — keep in sync (11 types as of v1.17) -->
 
-- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, JEWEL, SUBSTRATE, ROSETTA, README, FOUR PILLARS) and knowledge entries of every type *except* specialist/maker: `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`. Mostly flat, with optional entry bundles (`[Entry]/`) and themed subfolders (`Projects/`, `People/`, `Cross-Domain Resonances/`, `Palace development/`, `Enrichment/`).
+- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, SCHEMA — Reference.md, JEWEL, SUBSTRATE, ROSETTA, README, FOUR PILLARS) and knowledge entries of every type *except* specialist/maker: `concept`, `hub`, `project`, `source`, `meta`, `practice`, `person`, `question`, `spore`. Mostly flat, with optional entry bundles (`[Entry]/`) and themed subfolders (`Projects/`, `People/`, `Cross-Domain Resonances/`, `Palace development/`, `Enrichment/`).
 - **`Shop/`** — The Shop sub-system: `specialist` + `maker` entries (use `status`, not `stage`).
 - **`_ops/`** — Ceremony machinery and working queues. Contains all ceremony specs, their Context companions (session history), and active working files (Deposit Archive, Palace Graffiti, Palace Quotes, Palace To-Do) plus machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, …). Underscore prefix sorts it to the top of any file explorer. Obsidian wikilinks resolve across folders.
 
@@ -144,7 +144,7 @@ The design principle to hold: **ceremony files should stay lean — trigger, pro
 ## Open Questions
 
 - ~~Non-canonical `type: theme` entries~~ — **resolved.** The 2026-08-25 scan found zero; `proof` and `spec` were ratified as *bundle-file* types in [[SCHEMA]] §8 (2026-07-04) and the rest normalized.
-- Does [[SCHEMA]] belong in the auto-loaded `@import` floor? Post-v1.17 (2026-08-25 — SCHEMA reduction, breakthrough retired, RETRACT ratified), it measures 34.7KB (~9.4K tokens), 41% of a ~23.0K-token floor — down from the pre-ceremony ~45% / ~11K of ~24K — and is still a reference consulted when creating an entry or changing the type system, not something needed to hold a conversation. Dropping it to Tier 3 — with CLAUDE.md keeping the trigger to read it — would cut roughly two-fifths of every session's opening cost. Open decision, deliberately deferred (Loudon, 2026-08-25): SCHEMA is still long and probably does need breaking up further, but the call should be made fresh, weighing all the implications, once the v1.17 changes have been felt across real sessions — it isn't currently causing major problems, and a tiering change would reshape every agent's palace understanding.
+- ~~Does [[SCHEMA]] belong in the auto-loaded `@import` floor?~~ — **resolved, v1.18 (2026-09-04).** Split rather than moved: the floor card keeps what *exists* (types, stages, link ontology, the self-description test) at 14.4KB; [[SCHEMA — Reference]] takes the rules for *writing* (§§3, 5, 6, 8, 9) to Tier 3. The floor fell from ~24K to ~18.5K tokens and SCHEMA's share of it from 41% to 21%. Section numbers were held fixed so the ~180 `SCHEMA §N` pins across the palace still resolve. The successor question: **CLAUDE.md is now the floor's largest file at 21.6KB.**
 - How do we handle versioning? Entries evolve. Should we preserve earlier versions, or let the current state overwrite?
 - How does this wiki interact with Loudon's other Claude Projects (RNBO, Ableton Extensions, etc.)? Is it a meta-project that links TO them, or does it absorb them?
 - What's the minimum ceremony frequency that keeps the network alive without feeling like maintenance?

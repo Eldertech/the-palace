@@ -108,7 +108,7 @@ When in doubt, use `connects-to`. You can always differentiate later — link ty
 
 The authoritative type definitions and the decision tree live in [[SCHEMA]] §1; this is the friendly gloss.
 
-<!-- mirror of SCHEMA §1 — keep in sync (12 entry types as of v1.6) -->
+<!-- mirror of SCHEMA §1 — keep in sync (11 entry types as of v1.17) -->
 
 | Type | What It Is |
 |---|---|
@@ -159,7 +159,7 @@ Cross-entry shared artifacts (HTML, images, audio that serve multiple entries) a
 
 Stewarded project entries grow two further bundle types under the **Machinery/Content Split** ([[Project Stewardship System]], Bundle-Local Stewardship — Production Plan): `Foo — plan.md`, the steward's materialized **work state** (open/resolved decisions + done trail, regenerated each cycle from the [[STIGMERGY]] board — it points to the entry's `forward_vector`, never copies it), and `Foo — staging.md`, the **teaching arc** of stage-by-stage Loudon Live sessions. The steward owns `plan.md` and only reads `staging.md`. The engine's runtime files (manifest, state, history) stay in `_ops/` — content lives with the entry, machinery stays in ops.
 
-Bundle files carry minimal YAML — title, born, a typed link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing. Full spec: [[SCHEMA]] §8.
+Bundle files carry minimal YAML — title, born, a typed link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing. Full spec: [[SCHEMA — Reference]] §8.
 
 ### The Visual Language
 

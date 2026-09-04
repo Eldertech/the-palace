@@ -131,7 +131,7 @@ Artifacts/[Theme]/biquad-df2-signal-flow.svg      <- rendered output (what gets 
 
 Filenames are semantic claims, per [[Image Embedding Standard]]: `biquad-lowpass-magnitude-response.svg`, not `plot.svg`. Computed-data figures keep their `.dat` beside the source so the figure is regenerable. Embedding, alt text, and captions are exactly as [[Image Embedding Standard]] specifies — embed the `.svg` by filename, caption as an argument not a description.
 
-**Bundle vs theme.** Diagrams *owned by one entry* go to that entry's bundle (`[Entry]/`), per [[SCHEMA]] §8 — and this standard's own teaching examples live in its bundle (`_ops/Technical Diagram Standard/`). Diagrams *shared across several entries* go to the bundle of their most-owning entry (or a relevant hub's bundle), per [[SCHEMA]] §8. The example paths above show the shared case; single-owner figures follow the bundle rule.
+**Bundle vs theme.** Diagrams *owned by one entry* go to that entry's bundle (`[Entry]/`), per [[SCHEMA — Reference]] §8 — and this standard's own teaching examples live in its bundle (`_ops/Technical Diagram Standard/`). Diagrams *shared across several entries* go to the bundle of their most-owning entry (or a relevant hub's bundle), per [[SCHEMA]] §8. The example paths above show the shared case; single-owner figures follow the bundle rule.
 
 ---
 
