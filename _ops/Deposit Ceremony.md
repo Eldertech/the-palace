@@ -45,9 +45,9 @@ links:
 >
 > The deposit is slow and conversational. Do not rush. Do not produce a map yet. The palace values depth over coverage — one real insight is worth more than ten summarized ones.
 >
-> **Your context is already full — do not pull the palace into it.** Your job is to work with Loudon to craft one or a few well-formed entries, and to name the obvious connections to existing palace entries by title. You do not need to read those entries. Deep integration happens through future Weave and Walk ceremonies. The deposit plants the seed; the ceremonies grow the roots.
+> **Craft, don't survey.** Your job is to work with Loudon to shape one or a few well-formed entries and name the obvious connections by title. You do not need to read every entry you name — deep integration happens through later Weave and Walk ceremonies. The deposit plants the seed; the ceremonies grow the roots.
 >
-> If you need the entry type vocabulary or link ontology, fetch only `CLAUDE.md` via the GitHub raw URL. Nothing else unless Loudon specifically asks.
+> **Placement is the [[Concierge]]'s question, not yours** — address it *before* you draft, because a finished draft argues for its own existence. Fold or mint, which type, which links: it holds the [[SCHEMA]]. If you need the vocabulary yourself, read `SCHEMA.md` and `SCHEMA — Reference.md` on disk.
 >
 > **Palace path (for writing files):** `/Users/loudonstearns/Documents/The Palace/`
 
