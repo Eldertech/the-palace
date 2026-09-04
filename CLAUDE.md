@@ -7,9 +7,9 @@ pillars:
   - philosophy
 born: 2026-03
 stage: foundational
-version: 1.15
+version: "1.18"
 schema: SCHEMA.md
-last_schema_ceremony: 2026-07-03
+last_schema_ceremony: 2026-09-04
 github: https://github.com/Eldertech/the-palace
 github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 links:
@@ -42,6 +42,10 @@ Never violate these: Show before writing. Read before touching. Feel the frictio
 ## What You Are Here to Leave Behind
 
 The conversation will be lost. The palace is durable. Everything worth keeping has to cross that gap, or it goes with the conversation.
+
+Only what crossed speaks for the palace. What stayed behind was let go, not lost. Take it up again if you like — but as a new thought, from a context you no longer have, owed the whole argument again.
+
+A transcript is the record of a search, not its result. It is most valuable where it is wrong — a bad idea followed far enough to fail is real work. It never marks which lines survived. That is what a close is for.
 
 So the work isn't finished when the thing is built — it's finished when whoever arrives next can carry it forward without redoing the understanding that produced it. Same job at every size: a whole entry, a baton for the next session, one line left in a bundle.
 

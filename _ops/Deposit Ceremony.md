@@ -136,7 +136,7 @@ A good deposit map is specific about:
 - **Pillar affiliations** — which pillars does this touch?
 - **Proposed stage** — seed, sprout, or growing?
 - **Typed links** — named relationship types, not just "connects to." Propose by entry name — do not read the linked entries. For every link proposed, ask: does this relationship deserve a label? If yes, add `label: [word]` to the link object. The label is the semantic compression of the relationship — one word that names its specific register.
-- **Lost branches** — paths in the source that weren't followed and deserve naming
+- **Lost branches** — paths in the source that weren't followed and deserve naming. **Say which kind: queued or declined.** A queued branch goes on [[Palace To-Do]], where it can be picked up on its own terms. A declined one is named and let go. "Deferred" alone says neither, and a later session reads the name as a worklist and goes back for content that was never kept — the material arrives with no standing, and re-reading it does not give it any.
 - **Tension Map** — does any proposed entry create productive tension with an existing palace entry? Name the entry and the specific contradiction in one sentence. If yes, flag it for a `contradicts` link and note the tension explicitly. These are the most generative deposits — they add to the palace's connective tissue rather than just its nodes.
 - **Existing entries to flag for Weave** — entries that may want updating once this deposit lands; flag the name and what might change. Do not read or update them now.
 
