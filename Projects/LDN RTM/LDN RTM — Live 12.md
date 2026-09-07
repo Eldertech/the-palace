@@ -54,6 +54,17 @@ Machine: 16" MacBook Pro M1 Max, panel 3456×2234, desktop at 2056×1392 points.
 
 **The Info View is nearly square, and it is taller than it looks** — measured off the running app by colour-matching its fill: a border at y=688, a lighter title strip 690–714, the body 716–1023, all spanning x 14–359. So the widget is **346×335**, not the 346×256 first eyeballed, and the cam is 347×337 to cover it with a point to spare. The first attempt covered only the lower two-thirds, leaving the title and the first wrapped line of hover text visible above Loudon's head — a label changing with every mouse move, caught in the first real recording rather than in any inspection. A 16:9 camera fills this near-square box by cropping its sides, which is the right trade for a close head shot.
 
+**OPEN — the Info View height changes with Live's bottom view, so no single cam size is right.** Found 2026-09-02 while recording: Live's bottom panel is taller in **Clip View** than in **Device / Effects View**, and the Info View sits inside it, so the panel's *top edge* moves while its bottom stays put.
+
+| Live's bottom view | Info View panel (output points) |
+|---|---|
+| **Clip View** | top **688**, bottom 1023 — height **335** |
+| **Device / Effects View** | top **767**, bottom 1022 — height **256** |
+
+Both span x 14–359. The two demands conflict: a cam sized for Clip View (347×337 at 13,688 — what is set now) **overflows into the device row by ~79 points when Effects is showing**; a cam sized for Device View (346×256 at 13,767 — the earlier setting) **leaves the Info View's title and first wrapped line visible above Loudon's head in Clip View**, which is how the problem was first seen.
+
+Not resolved, and deliberately not changed mid-session. The options when it is picked up: fix the bottom view for the whole series so only one geometry exists; size for the shorter panel and accept the label in Clip View; size for the taller and accept covering a strip of the device row; or drive the cam transform from the current view, which is possible over the socket but means the frame is no longer a constant — the thing § The trick claims as its main benefit. **Whatever is chosen, the two measurements above are the ground truth; do not re-derive them.**
+
 **The trick, stated once:** the cam exists only in OBS. On the physical screen the Info View stays fully readable, so the same rectangle is dead space for the viewer and a teleprompter for Loudon. It also fixes the cam's position for the life of the series — no reframing decision, ever.
 
 **The rig is driven, not clicked.** `Projects/LDN RTM/obs/rtm.py` operates OBS over its WebSocket — preflight, roll, stop-and-rename, advance, batch — so no setting is ever hand-entered and every one can be read back. Editing OBS's config files instead produced three silent failures in one afternoon; see [[OBS]] § Gotchas.
@@ -66,7 +77,7 @@ Machine: 16" MacBook Pro M1 Max, panel 3456×2234, desktop at 2056×1392 points.
 
 **Escape hatch if text reads soft after the pilot:** output 2160p from the same window — a pure 1:1 grab, no other change, nothing re-shot. YouTube's higher bitrate tier does the rest. Costs upload time across 250 videos, which is why 1080p is the default.
 
-*These numbers are valid for this window size, this zoom, and the browser hidden. Change any one and re-measure before trusting the cam crop.*
+*These numbers are valid for this window size, this zoom, and the browser hidden. Change any one and re-measure before trusting the cam crop. **And the cam row is not settled** — see the open item above; it is correct for Clip View only.*
 
 ## Running state
 
