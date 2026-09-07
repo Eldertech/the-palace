@@ -366,6 +366,7 @@ def cmd_levels(a):
             continue
         rec, inp = v["rec"], v["inp"]
         fader = rec - inp
+        active = v.get("active", 0.0)
         if inp <= -50:
             verdict, bad = "SILENT at the input -- check the interface and routing", True
         elif inp > -3:
@@ -379,13 +380,18 @@ def cmd_levels(a):
                             f"{-fader:.1f} dB -- raise it"), True
         elif rec > -3:
             verdict, bad = "TOO HOT -- clipping risk", True
+        elif active < 0.05:
+            # the window was near-silent; a peak reading here says nothing about the
+            # source, only that nothing was played into it
+            verdict = (f"nothing played into it -- only {active*100:.0f}% of the window "
+                       f"had signal, so this reading is not a verdict. Re-run and talk.")
         elif rec < -30:
             verdict, bad = (f"too quiet to record well"
                             f"{f'; the OBS fader is down {-fader:.1f} dB' if fader < -1 else ''}"), True
         else:
             verdict = "good"
         print(f"  {name:18s} records {rec:6.1f} dBFS   (input {inp:6.1f}, "
-              f"fader {fader:+.1f} dB)")
+              f"fader {fader:+.1f} dB, active {active*100:3.0f}%)")
         print(f"  {'':18s} {verdict}\n")
     print("  'records' is post-fader -- what lands in the file. 'input' is the wire.")
     return 1 if bad else 0
