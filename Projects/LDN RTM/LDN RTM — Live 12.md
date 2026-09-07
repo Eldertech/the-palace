@@ -63,7 +63,9 @@ Machine: 16" MacBook Pro M1 Max, panel 3456×2234, desktop at 2056×1392 points.
 
 Both span x 14–359. The two demands conflict: a cam sized for Clip View (347×337 at 13,688 — what is set now) **overflows into the device row by ~79 points when Effects is showing**; a cam sized for Device View (346×256 at 13,767 — the earlier setting) **leaves the Info View's title and first wrapped line visible above Loudon's head in Clip View**, which is how the problem was first seen.
 
-Not resolved, and deliberately not changed mid-session. The options when it is picked up: fix the bottom view for the whole series so only one geometry exists; size for the shorter panel and accept the label in Clip View; size for the taller and accept covering a strip of the device row; or drive the cam transform from the current view, which is possible over the socket but means the frame is no longer a constant — the thing § The trick claims as its main benefit. **Whatever is chosen, the two measurements above are the ground truth; do not re-derive them.**
+**Decided 2026-09-02, to be built after the current session: two scenes, and Loudon switches.** `BODY` keeps the **Device / Effects** geometry (346×256 at 13,767) as the default, because a clip view can be opened *above* the effects panel with a different key command when he only needs a glance. A second scene — `BODY CLIP` — carries the taller cam (347×337 at 13,688) for a video whose whole subject is audio editing or clip properties. He chooses per video, not per moment.
+
+This keeps the constant-frame property that makes the Info View trick work: the frame is fixed *for the length of a video*, which is the unit that matters, rather than fixed forever. Rejected: driving the cam transform from Live's current view, which would move the frame mid-take. **The two measurements above are the ground truth; do not re-derive them.**
 
 **The trick, stated once:** the cam exists only in OBS. On the physical screen the Info View stays fully readable, so the same rectangle is dead space for the viewer and a teleprompter for Loudon. It also fixes the cam's position for the life of the series — no reframing decision, ever.
 
