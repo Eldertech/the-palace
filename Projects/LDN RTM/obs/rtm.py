@@ -188,18 +188,47 @@ def cmd_check(_):
 
 
 def cmd_setup(_):
+    """Size and place Live's main window.
+
+    Not `window 1` — AppleScript's window order is not stable, and Live keeps small
+    floating palettes that can sort first (a 66x20 one did, and got resized instead
+    of the main window on the rig's first real use). Pick by largest area.
+    """
     x, y, w, h = WINDOW
-    script = (f'tell application "Live" to activate\ndelay 0.5\n'
-              f'tell application "System Events" to tell process "Live" to tell window 1 '
-              f'to set {{position, size}} to {{{{{x}, {y}}}, {{{w}, {h}}}}}\ndelay 0.3\n'
-              f'tell application "System Events" to tell process "Live" to get size of window 1')
-    g = subprocess.run(["osascript", "-e", script], capture_output=True, text=True, timeout=20)
+    script = f'''tell application "Live" to activate
+delay 0.5
+tell application "System Events" to tell process "Live"
+    set best to missing value
+    set bestArea to 0
+    repeat with win in windows
+        set sz to size of win
+        set a to (item 1 of sz) * (item 2 of sz)
+        if a > bestArea then
+            set bestArea to a
+            set best to win
+        end if
+    end repeat
+    if best is missing value then return "no windows"
+    set position of best to {{{x}, {y}}}
+    set size of best to {{{w}, {h}}}
+    delay 0.3
+    set sz2 to size of best
+    return (name of best) & "|" & ((item 1 of sz2) as string) & "," & ((item 2 of sz2) as string)
+end tell'''
+    g = subprocess.run(["osascript", "-e", script], capture_output=True, text=True, timeout=25)
     if g.returncode != 0:
         print(g.stderr.strip())
         print("\nGrant Accessibility to the app running this, then restart it.")
         return 1
-    ok = g.stdout.strip().replace(" ", "") == f"{w},{h}"
-    print(f"Live window: {g.stdout.strip()}  {'OK' if ok else '<-- expected ' + f'{w}, {h}'}")
+    raw = g.stdout.strip()
+    name, _, dims = raw.partition("|")
+    got = [int(n) for n in re.findall(r"-?\d+", dims)][:2]
+    ok = got == [w, h]
+    shown = "x".join(str(n) for n in got) if got else "?"
+    print(f"Live window {name!r}: {shown}  {'OK' if ok else f'<-- expected {w}x{h}'}")
+    if not ok:
+        print("  (if it clamped smaller, Live may be full-screen or zoomed — "
+              "regular windowed state only)")
     print("preflight:")
     return 1 if (check() or not ok) else 0
 
