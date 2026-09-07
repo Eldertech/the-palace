@@ -103,14 +103,22 @@ class Obs:
             if m.get("op") != 5 or m["d"].get("eventType") != "InputVolumeMeters":
                 continue
             for inp in m["d"]["eventData"]["inputs"]:
-                cur = peaks.setdefault(inp["inputName"], {"rec": 0.0, "inp": 0.0})
+                cur = peaks.setdefault(inp["inputName"],
+                                       {"rec": 0.0, "inp": 0.0, "hot": 0, "frames": 0})
+                loud = False
                 for ch in inp.get("inputLevelsMul", []):
                     if len(ch) >= 3:
                         cur["rec"] = max(cur["rec"], ch[1])
                         cur["inp"] = max(cur["inp"], ch[2])
+                        if ch[2] > 0.00316:      # -50 dBFS: something is happening
+                            loud = True
+                cur["frames"] += 1
+                cur["hot"] += 1 if loud else 0
         ws.close()
         db = lambda v: 20 * math.log10(v) if v > 0 else -120.0
-        return {n: {"rec": db(v["rec"]), "inp": db(v["inp"])} for n, v in peaks.items()}
+        return {n: {"rec": db(v["rec"]), "inp": db(v["inp"]),
+                    "active": (v["hot"] / v["frames"] if v["frames"] else 0.0)}
+                for n, v in peaks.items()}
 
     def close(self):
         try:

@@ -60,6 +60,8 @@ Machine: 16" MacBook Pro M1 Max, panel 3456×2234, desktop at 2056×1392 points.
 
 **The window is set by script, not by hand** — `osascript … set {position, size} to {{0, 38}, {1920, 1080}}` — so the frame is reproducible rather than eyeballed. Requires Accessibility permission for the host app (granted to `Claude.app`, 2026-09-02). The 136 points to the right and 274 below are where OBS, the manual PDF, and notes live, permanently off-camera.
 
+**Audio, set 2026-09-02.** Loopback trimmed at the Arturia interface so the wire arrives near **−12 dBFS**, with the OBS fader at unity — nothing attenuated inside OBS, so what the meter shows is what records. Boom mic likewise at unity, peaking around −13 while speaking. The earlier arrangement (a hot −1 dBFS input pulled down 20 dB by the OBS fader) looked fine on the meter and was one loud moment from clipping before OBS ever saw it. **Trim at the source; leave the OBS faders alone.** `rtm.py levels` reports both taps and an `active %` so a quiet window is not mistaken for a quiet source.
+
 **Escape hatch if text reads soft after the pilot:** output 2160p from the same window — a pure 1:1 grab, no other change, nothing re-shot. YouTube's higher bitrate tier does the rest. Costs upload time across 250 videos, which is why 1080p is the default.
 
 *These numbers are valid for this window size, this zoom, and the browser hidden. Change any one and re-measure before trusting the cam crop.*
