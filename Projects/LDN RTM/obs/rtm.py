@@ -40,14 +40,15 @@ SERIES = "LDN RTM · Live 12"
 WINDOW = (0, 38, 1920, 1080)
 TITLE_HOLD = 3.0          # seconds of card before the work starts
 END_HOLD = 1.2            # seconds of sigil after the last word
-MIC_LUFS, PROGRAM_LUFS = -16.0, -20.0
+MIC_LUFS, PROGRAM_LUFS = -16.0, -20.0   # stage 1: balance -- voice 4 LU over program
+DELIVER_LUFS = -14.0                     # stage 2: delivery -- YouTube's own target
 AUDIO_DEVICE_HINT = "MiniFuse"   # substring the production interface must match
 
 EXPECT = {
     "canvas": (1920, 1080),
     "scenes": {"TITLE", "BODY", "END"},
     "screen": dict(scale=0.5, crop=(0, 76, 272, 422), pos=(0, 0)),
-    "webcam": dict(pos=(13, 745), bounds=(346, 277), bounds_type="OBS_BOUNDS_SCALE_OUTER"),
+    "webcam": dict(pos=(13, 688), bounds=(347, 337), bounds_type="OBS_BOUNDS_SCALE_OUTER"),
 }
 
 
@@ -140,9 +141,9 @@ def check(o=None, quiet=False):
                        "— other windows will record on top of Live")
 
         wt = o.transform("BODY", "Webcam")
-        if not (_near(wt["boundsWidth"], 346) and _near(wt["boundsHeight"], 277)):
+        if not (_near(wt["boundsWidth"], 347) and _near(wt["boundsHeight"], 337)):
             bad.append(f"Webcam bounds {wt['boundsWidth']:.0f}x{wt['boundsHeight']:.0f}, "
-                       f"expected 346x277")
+                       f"expected 347x337 — the Info View is taller than the cam")
         if not wt["cropToBounds"]:
             bad.append("Webcam cropToBounds is off — the cam will spill past its box")
         if wt["scaleX"] < 0:
@@ -329,10 +330,14 @@ def cmd_process(_):
         if dest.exists():
             print(f"  skip (done)  {src.name}")
             continue
+        # Two stages, because they answer different questions. Stage 1 sets the
+        # BALANCE between voice and program; stage 2 sets the DELIVERED level. Doing
+        # it in one pass leaves delivery to wherever the sum happens to land -- which
+        # was -16.7 LUFS on the first real take, about 3 dB under YouTube's target.
         fc = (f"[0:a:0]loudnorm=I={MIC_LUFS}:TP=-1.5:LRA=11[m];"
               f"[0:a:1]loudnorm=I={PROGRAM_LUFS}:TP=-1.5:LRA=11[p];"
-              f"[m][p]amix=inputs=2:duration=longest:normalize=0,"
-              f"alimiter=limit=0.97[a]")
+              f"[m][p]amix=inputs=2:duration=longest:normalize=0[x];"
+              f"[x]loudnorm=I={DELIVER_LUFS}:TP=-1.0:LRA=11,alimiter=limit=0.97[a]")
         cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(src),
                "-filter_complex", fc, "-map", "0:v:0", "-map", "[a]",
                "-c:v", "copy", "-c:a", "aac", "-b:a", "256k",
