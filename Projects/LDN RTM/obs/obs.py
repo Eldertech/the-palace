@@ -76,11 +76,20 @@ class Obs:
                           "sceneItemTransform": tf})
 
     def meters(self, seconds=4.0):
-        """Peak dBFS per input, watched live. The only honest check that signal
-        is actually arriving — track assignment says nothing about the wire."""
+        """Peak dBFS per input, watched live -- post-fader AND pre-fader.
+
+        `inputLevelsMul` gives three floats per channel: [0] magnitude, [1] peak,
+        [2] **input peak, which is PRE-fader**. Taking max() across them silently
+        reports the pre-fader tap, so OBS's own volume slider appears to do nothing
+        (found 2026-09-02, by Loudon moving a fader and seeing no change).
+
+        `rec` is what actually lands in the file; `inp` is what arrives at the wire.
+        The gap between them is the fader, and the two failures they separate are
+        different: no signal at all, versus signal thrown away by an OBS slider.
+        """
+        import math
         import time as _t
-        ws = websocket.create_connection(self.ws.url if hasattr(self.ws, "url") else URL,
-                                         timeout=6)
+        ws = websocket.create_connection(URL, timeout=6)
         json.loads(ws.recv())
         # eventSubscriptions = InputVolumeMeters (1 << 16), nothing else
         ws.send(json.dumps({"op": 1, "d": {"rpcVersion": 1, "eventSubscriptions": 1 << 16}}))
@@ -94,13 +103,14 @@ class Obs:
             if m.get("op") != 5 or m["d"].get("eventType") != "InputVolumeMeters":
                 continue
             for inp in m["d"]["eventData"]["inputs"]:
-                name = inp["inputName"]
+                cur = peaks.setdefault(inp["inputName"], {"rec": 0.0, "inp": 0.0})
                 for ch in inp.get("inputLevelsMul", []):
-                    if ch:
-                        peaks[name] = max(peaks.get(name, 0.0), max(ch))
+                    if len(ch) >= 3:
+                        cur["rec"] = max(cur["rec"], ch[1])
+                        cur["inp"] = max(cur["inp"], ch[2])
         ws.close()
-        import math
-        return {n: (20 * math.log10(v) if v > 0 else -120.0) for n, v in peaks.items()}
+        db = lambda v: 20 * math.log10(v) if v > 0 else -120.0
+        return {n: {"rec": db(v["rec"]), "inp": db(v["inp"])} for n, v in peaks.items()}
 
     def close(self):
         try:
