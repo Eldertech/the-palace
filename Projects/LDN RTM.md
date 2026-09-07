@@ -115,4 +115,6 @@ A fixed cadence of twenty videos every other week — proposed and rejected; the
 
 *See YAML `forward_vector`.*
 
+**The rig is not RTM-specific, and a second use has already appeared.** `rtm.py` is a queue, a frame, and a batch: only the checklist source and the filename slug know anything about manuals. Loudon records **audio commentary on student projects** the same way — same capture, same two tracks, same normalisation — differing only in what the queue holds (a roster instead of manual sections) and where the output goes (individuals, not a public catalog). Building that is a different queue, not a different tool, and the seam is worth keeping clean as this grows.
+
 The rig is built and tested end to end — preflight, take, stop, rename, batch. What remains before the pilot chunk is `RTM Sandbox.als` (the fixed bed, drum loop, and held chord), one take recorded with real audio, and one video watched at speed. Then: all eight MIDI effects, complete, shipped. After that the control panel, and the YouTube posting path — which arrives at the same connector [[Loudon Live Post-producer]] defers for publishing, from a second direction. Open: whether the Post-producer's promotion ladder counts RTM chunks the way it counts sessions, and whether the public checklist page wants to live in the palace or only on the channel.
