@@ -109,6 +109,8 @@ I cannot drive the application I am capturing. Pointing me at Ableton does not l
 
 **2026-09-02 — A profile's display name lives in `Name=` inside `basic.ini`, not in the directory name.** Creating a profile by copying an existing directory produces one OBS never lists, because both declare the same internal name. The contents were entirely correct; the profile was simply invisible. Verifying a config's *contents* is not verifying that the application can *see* it.
 
+**2026-09-02 — `InputVolumeMeters` reports three taps per channel, and the third is pre-fader.** Each channel of `inputLevelsMul` is `[magnitude, peak, inputPeak]`; the third is measured **before** the volume slider. Reducing them with `max()` therefore reports the pre-fader value always, and OBS's own fader appears to do nothing — which is how it was found, by a human moving a slider and watching a meter not move. A muted source proves the layout: its first two values read −120 while the third still shows signal. Report `[1]` for what will actually be recorded and `[2]` for what is arriving at the wire; the gap between them is the fader, and it separates two different failures — no signal at all, versus signal thrown away after it arrived.
+
 **2026-09-02 — Display capture plus a crop records whatever sits on top.** Cropping a display capture to a window's region is not window isolation: any other window overlapping that region — including OBS itself — is captured. Use **Application Capture** targeting a bundle id (`com.ableton.live`). Unlike Window Capture it does not depend on a window id that changes between launches, and it survives the app being relaunched mid-session. Only a screenshot revealed this; every numeric check passed.
 
 ## Recipes

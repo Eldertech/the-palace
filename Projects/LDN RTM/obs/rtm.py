@@ -351,24 +351,43 @@ def cmd_process(_):
 def cmd_levels(a):
     """Watch the real meters. Talk, and play something through Live."""
     secs = float(a[0]) if a else 5.0
-    print(f"listening {secs:.0f}s — talk, and play a sound in Live ...")
+    print(f"listening {secs:.0f}s -- talk, and play a sound in Live ...\n")
     with Obs() as o:
         pk = o.meters(secs)
     if not pk:
-        print("  no meter data — is anything routed?")
+        print("  no meter data -- is anything routed?")
         return 1
     bad = False
     for name in ("Boom Mic", "Minifuse LoopBack"):
-        db = pk.get(name, -120.0)
-        if db <= -50:
-            verdict, bad = "SILENT — check the interface and routing", True
-        elif db > -3:
-            verdict, bad = "TOO HOT — clipping risk", True
-        elif db < -30:
-            verdict = "quiet; usable but raise it if you can"
+        v = pk.get(name)
+        if not v:
+            print(f"  {name:18s} no meter -- source missing from the scene?")
+            bad = True
+            continue
+        rec, inp = v["rec"], v["inp"]
+        fader = rec - inp
+        if inp <= -50:
+            verdict, bad = "SILENT at the input -- check the interface and routing", True
+        elif inp > -3:
+            # OBS cannot un-clip. A hot input is a source problem, and pulling the
+            # OBS fader down hides it on the meter while the damage is already done.
+            verdict, bad = (f"INPUT IS HOT ({inp:.1f} dBFS at the wire) -- lower it at "
+                            f"the interface or Live's master, not with the OBS fader; "
+                            f"OBS cannot un-clip what arrives clipped", True)
+        elif rec <= -50:
+            verdict, bad = (f"signal arriving, but the OBS fader is throwing away "
+                            f"{-fader:.1f} dB -- raise it"), True
+        elif rec > -3:
+            verdict, bad = "TOO HOT -- clipping risk", True
+        elif rec < -30:
+            verdict, bad = (f"too quiet to record well"
+                            f"{f'; the OBS fader is down {-fader:.1f} dB' if fader < -1 else ''}"), True
         else:
             verdict = "good"
-        print(f"  {name:18s} peak {db:6.1f} dBFS   {verdict}")
+        print(f"  {name:18s} records {rec:6.1f} dBFS   (input {inp:6.1f}, "
+              f"fader {fader:+.1f} dB)")
+        print(f"  {'':18s} {verdict}\n")
+    print("  'records' is post-fader -- what lands in the file. 'input' is the wire.")
     return 1 if bad else 0
 
 
