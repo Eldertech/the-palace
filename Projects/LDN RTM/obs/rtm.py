@@ -12,7 +12,9 @@ by hand. The checklist TSV is the queue; state lives in .rtm-state.json.
   python3 rtm.py take            card up, roll, cut to Live — then talk
   python3 rtm.py stop            end frame, stop, rename, advance
   python3 rtm.py levels [secs]   watch real meters — proves signal is arriving
-  python3 rtm.py process         normalise + finish the day's takes (ffmpeg)
+  python3 rtm.py process [--out DIR] [FILES...]
+                                 normalise + finish. Renders land in a final/ beside
+                                 the sources; --out overrides
   python3 rtm.py remaining       coverage by chapter
 
 The tail is an END frame held for a beat before the recording stops, not an ffmpeg
@@ -33,15 +35,24 @@ HERE = Path(__file__).resolve().parent
 CHECKLIST = HERE.parent / "LDN RTM — Live 12 checklist.tsv"
 STATE = HERE / ".rtm-state.json"
 TITLE, SUBTITLE = HERE / "title.txt", HERE / "subtitle.txt"
-TAKES = HERE.parent / "takes"
-FINAL = HERE.parent / "final"
+TAKES = HERE.parent / "takes"          # RTM's own queue, when `take`/`stop` drive it
+# No default output folder inside the palace. Renders land beside their sources —
+# a `final/` next to the footage — because that is where a person goes looking for
+# them. The first student batch was written into the palace repo and had to be
+# hunted for (2026-09-02); a knowledge graph is not a media library.
 
 SERIES = "LDN RTM · Live 12"
 WINDOW = (0, 38, 1920, 1080)
 TITLE_HOLD = 3.0          # seconds of card before the work starts
 END_HOLD = 1.2            # seconds of sigil after the last word
-MIC_LUFS, PROGRAM_LUFS = -16.0, -20.0   # stage 1: balance -- voice 4 LU over program
-DELIVER_LUFS = -14.0                     # stage 2: delivery -- YouTube's own target
+MIC_LUFS = -16.0        # stage 1: the voice anchor
+PROGRAM_GAP = 16.0      # stage 1: how far under the voice the program sits, in LU.
+                        # 16 chosen by ear over a 12/16/20 A/B on real material,
+                        # 2026-09-02: at 20 the music a critique is *about* goes too
+                        # quiet to hear. Background music would want a wider gap;
+                        # program you are discussing is content, not a bed.
+DELIVER_LUFS = -14.0    # stage 2: delivered level -- YouTube's own target
+PROGRAM_LUFS = MIC_LUFS - PROGRAM_GAP
 AUDIO_DEVICE_HINT = "MiniFuse"   # substring the production interface must match
 
 EXPECT = {
@@ -314,19 +325,50 @@ def cmd_stop(_):
     return 0
 
 
-def cmd_process(_):
-    """Normalise the two tracks independently and mux. Video is copied, never re-encoded."""
+def cmd_process(a):
+    """Normalise the two tracks independently and mux. Video is copied, never re-encoded.
+
+    With no arguments, processes takes/. With paths, processes those -- the rig is a
+    queue, a frame and a batch, and the batch half is useful to any two-track
+    recording, not only to an RTM take.
+    """
     if not shutil.which("ffmpeg"):
         print("ffmpeg not found — brew install ffmpeg")
         return 1
-    FINAL.mkdir(parents=True, exist_ok=True)
-    takes = sorted(p for p in TAKES.glob("RTM-*") if p.suffix in (".mov", ".mp4", ".mkv"))
+    out_dir = None
+    if a and a[0] == "--out":
+        if len(a) < 2:
+            print("--out needs a folder")
+            return 1
+        out_dir = Path(a[1]).expanduser()
+        a = a[2:]
+    if a:
+        takes = [Path(x).expanduser() for x in a]
+        missing = [t for t in takes if not t.exists()]
+        if missing:
+            print("no such file: " + ", ".join(str(m) for m in missing))
+            return 1
+        if out_dir is None:
+            # beside the sources. If they are scattered, refuse rather than guess.
+            parents = {t.resolve().parent for t in takes}
+            if len(parents) > 1:
+                print("sources are in different folders — say where the renders go "
+                      "with --out DIR")
+                return 1
+            out_dir = parents.pop() / "final"
+    else:
+        takes = sorted(p for p in TAKES.glob("RTM-*") if p.suffix in (".mov", ".mp4", ".mkv"))
+        if out_dir is None:
+            out_dir = TAKES.parent / "final"
     if not takes:
         print(f"nothing to process in {TAKES}")
         return 0
+    out_dir.mkdir(parents=True, exist_ok=True)
+    print(f"voice {MIC_LUFS:.0f} LUFS · program {PROGRAM_GAP:.0f} LU under · "
+          f"delivered {DELIVER_LUFS:.0f} LUFS\n")
     fail = 0
     for src in takes:
-        dest = FINAL / (src.stem + ".mp4")
+        dest = out_dir / (src.stem + ".mp4")
         if dest.exists():
             print(f"  skip (done)  {src.name}")
             continue
@@ -349,7 +391,7 @@ def cmd_process(_):
             fail += 1
         else:
             print(f" -> {dest.name}  ({dest.stat().st_size/1e6:.0f} MB)")
-    print(f"\n{len(takes)-fail} finished in {FINAL}")
+    print(f"\n{len(takes)-fail} finished in {out_dir}")
     return 1 if fail else 0
 
 
