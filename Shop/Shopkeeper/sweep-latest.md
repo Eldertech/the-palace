@@ -8,93 +8,52 @@ forward_vector: "I hold the most recent Shopkeeper discovery sweep, overwritten 
 
 # Shopkeeper — Latest Sweep
 
-**Run:** 2026-06-23, morning steward cadence (shadow). Overwritten each run.
+**Run:** 2026-09-12, morning steward cadence (shadow). Overwritten each run. (Prior run: 2026-06-23 — long gap, no runs between.)
 
-**One-line:** Commission executed — Image-to-3D Smith stub deposited; full four-engine shoot-out complete; Hi3DGen is the surprise standout (only watertight engine). Discovery sweep quiet: Stable Audio 3 is the one maintenance note worth acting on; nothing else clears the bar for a new Specialist.
-
----
-
-## Commission Execution (before discovery sweep)
-
-### ✓ Image-to-3D Smith — STUB deposited
-
-**What was done:**
-1. Ran the full four-engine calibration shoot-out on the shared teapot PNG (same subject as the 2026-06-08 probe). All four engines answered anonymous calls.
-2. Verified all outputs with trimesh (vertices, faces, watertight, bounds). Rendered a 4×4 comparison panel.
-3. Wrote `Shop/Image-to-3D Smith.md` as a **stub** (status: stub), per shadow posture.
-4. Added `Image-to-3D Smith` to `Shop/Maker/host-capability.json`.
-5. Full comparison report at `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/comparison-report.md`.
-
-**Shoot-out results:**
-
-| Engine | Verts | Faces | Watertight | Size | Time | Output |
-|---|---|---|---|---|---|---|
-| **Hi3DGen** (Stable-X) | 271K | 543K | **YES** | 13MB | 26s | Triangle mesh GLB |
-| Hunyuan3D-2 (Tencent) | 135K | 489K | No | 7.5MB | 23s | Triangle mesh GLB |
-| TRELLIS.2 (Microsoft) | 91K | 98K | No | 4.6MB | 47s | Textured GLB |
-| TripoSplat (VAST-AI) | 262K pts | 0 faces | N/A | 18MB | ~20s | Gaussian splat PLY |
-
-**Key finding:** Hi3DGen is the **only watertight engine** — architecturally decisive for the Blender finishing path. The commission named Hunyuan3D-2 as first-stocked; I'm recommending Hi3DGen as primary. Defer to Loudon.
-
-**TripoSplat gotcha:** Gaussian splat output, NOT a triangle mesh. Different lane entirely — needs a splat renderer in Three.js; can't import as editable geometry in Blender. This distinction matters and is now documented in the Specialist entry.
-
-**Selection heuristic (proposed for Maker):**
-- Blender-bound → **Hi3DGen** (watertight)
-- Three.js display (lightweight textured) → **TRELLIS.2**
-- Fast sketch / iteration → **Hunyuan3D-2**
-- Novel-view synthesis only → **TripoSplat**
-
-**Loudon's decisions needed:**
-1. Approve the stub entry (or revise it before promoting to `alive`)
-2. Confirm Hi3DGen as primary or keep Hunyuan3D-2 per original commission
-3. Confirm whether TripoSplat earns its own Specialist entry (genuinely different output type)
-4. Designate first real job (Study-tier: Sketch → Three.js display, or Study → Blender import)
-5. License reads on all four engines before any Piece-tier job
+**One-line:** Pending commission was already executed last run (Image-to-3D Smith stub, still awaiting Loudon's four decisions — see below). Discovery sweep found one real candidate: **AuK** (Tencent), a unified speech-generation-and-editing model — probed two instruction types, both landed cleanly. Not ready to promote to a Specialist yet; needs a second pass.
 
 ---
 
-## Discovery Sweep (routine)
+## Commission status (checked first, per protocol)
 
-### Maintenance findings
+`next-run-commission.md` shows **Status: EXECUTED 2026-06-23.** Nothing to run this cycle. Reminder — Loudon's five decisions from that run are still open (see `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/comparison-report.md` and the 2026-06-23 sweep log in git history): approve/revise the Image-to-3D Smith stub, confirm Hi3DGen vs Hunyuan3D-2 as primary, decide on TripoSplat's own entry, designate a first real job, and read licenses. Not re-litigating; just flagging that this file can be deleted once he's reviewed, per its own note.
 
-**Stable Audio 3 is live (stabilityai/stable-audio-3) — action warranted.**
-The Roster's audio-generation Specialist is **Stable Audio Open** (the older open model). Stable Audio 3 ships three models: SA3 Medium (music, long-form), SA3 Small Music, SA3 Small SFX. The SA3 Small SFX is directly relevant: the current Stable Audio Open entry is limited to ~47s music clips; SA3 Small SFX is built explicitly for sound design work. Worth a dated gotcha note in [[Stable Audio Open]] and a future probe. *Not a new Specialist yet — just a version-currency flag.*
+## Discovery sweep
 
-### Triaged out
+### Candidate: AuK (tencent/AuK) — worth a second look, not yet a Specialist
 
-**Qwen3-TTS (1978 likes, trending 20)** — strong new TTS with voice design + cloning, multilingual. Better expressive range than Kokoro. But Kokoro is on the Roster for being light, local, and free-forever, not for being best-in-class. Qwen3-TTS is cloud-only. Hold for a future narration Comparison if a Loudon Live brief needs it.
+Unified speech generation + instruction-guided editing (content, paralinguistic, acoustic, enhancement/separation) from one natural-language interface. 212-upvote paper (arXiv 2609.08936), trending 2026-09-08. Full probe: `Shop/Shopkeeper/probes/2026-09-12-auk/probe-report.md`.
 
-**Zonos 2 (multimodalart/ZONOS2)** — expressive multilingual TTS with voice cloning. Same lane as Qwen3-TTS; same triage.
+**What I actually tried (not just read the README):**
+- Generated a real source clip locally (`say` on macOS, 2.36s).
+- Leg 1: instructed it to whisper the line → succeeded, duration preserved as expected for a paralinguistic edit.
+- Leg 2: instructed "twice as fast" → output landed at exactly 1.18s, half the source. That's the evidence that convinced me — a quantitative instruction followed precisely, first try, no cherry-picking (only two calls made total).
 
-**Wan2.2 (trending 56, 1813–2793 likes)** — image-to-video, very hot. The Shop has no motion Specialist that can take a still and animate it. Genuinely new door. However: probeable only from a mac-side session (GPU required for meaningful results). Hold for mac-side.
+**Why it's a real gap:** the Roster has Kokoro for TTS but nothing that edits *existing* speech by instruction — no home for "retime this line," "make it a whisper," "fix the emotion" in post-production narration work.
 
-**LTX-2.3 (Lightricks)** — text-to-video with audio, cinematic quality. Relevant to the Debrief Reel pattern. Same probe caveat as Wan2.2. Hold for mac-side.
+**Why I'm not proposing a stub yet:** two legs isn't the full picture — content-editing (word swap) and enhancement/separation are untested, and I haven't read the license. Recommend a second probe pass before any deposit decision, same discipline as the Image-to-3D shoot-out.
 
-**Interactive / viz / plumbing**: nothing new that opens a door the current Roster lacks.
+### Triaged out (trending scan)
 
-### Not worth re-chasing
+- **Trending this cycle was heavily NSFW-LoRA spam** (custom Wan2.2/MiniMax-H3 clone Spaces with crude titles) — noting this because it's a real shift in the Spaces trending signal, not a Roster gap. Filtered out entirely; nothing there for the Shop.
+- **YuE2-3B** (m-a-p) — long-form music generation, successor to YuE (already known/logged). Not a new door; the Shop's music-gen gap isn't stocked yet but this doesn't change the calculus from prior sweeps. Hold.
+- **Wan2.2 / LTX-2.5 / MiniMax-H3** — image/text-to-video, same lane flagged 2026-06-23 as needing mac-side GPU probing. Unchanged; still holding for mac-side session.
+- **Marigold V2** (monocular depth via diffusion transformers) — noticed because `GenAI Camera/` has active depth/pose work in progress (untracked keypoints/composite files in the working tree). Didn't probe — out of scope for a discovery sweep to touch an active project's files; flagging as a "might be worth Loudon's own look" rather than a Shop candidate.
+- 3D-representations-guide, HF Viewer, Microduck sim — educational/robotics demos, no Shop-relevant door.
 
-- Z-Image-Turbo, Qwen-Image, SD3.5 — 2D image, duplicate FLUX slot
-- PRX-Pixel (Photoroom) — too narrow
+### Roster maintenance (light pass)
 
----
-
-## Roster maintenance (light pass)
-
-- **Status drift:** Clean. No change from 2026-06-08 sweep.
-- **Stable Audio Open:** needs a dated gotcha note flagging SA3 generation. Propose in TRICKSTER note; add when Loudon confirms.
-- **Never-run test plans:** unchanged — Maker's own test plan still TODO; VCV Patch Generator remains the only proven plan. Standing gap.
+- No new status drift found. Stable Audio 3 flag from 2026-06-23 still open (dated gotcha not yet added to [[Stable Audio Open]] — small task, doing it now would be scope creep on a discovery sweep; leaving it named here so it doesn't get lost twice).
+- Never-run test suites: unchanged, standing gap (Maker's own test plan still TODO).
 
 ---
 
 ## Run accounting
 
-**Token budget:** Scan used HF MCP (cheap). Probes used 4× anonymous Gradio API calls + trimesh verification (sandbox Python, $0). Well within the "discovery should cost a fraction of a brief" charter.
+**Token/cost budget:** HF MCP scan (cheap) + one Space probed, 2 anonymous Gradio calls, local `say` for the test clip. No GPU, no paid tier. In line with "discovery should cost a fraction of a brief."
 
 **Files written this run:**
-- `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/comparison-report.md`
-- `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/comparison-panel.png`
-- `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/leg*.glb` + multiview PNGs
-- `Shop/Image-to-3D Smith.md` (STUB)
-- `Shop/Maker/host-capability.json` (updated)
+- `Shop/Shopkeeper/probes/2026-09-12-auk/probe-report.md`
+- `Shop/Shopkeeper/probes/2026-09-12-auk/{source,whisper_edit,fast_edit}.wav`
 - `Shop/Shopkeeper/sweep-latest.md` (this file)
+- TRICKSTER board note (see below)
