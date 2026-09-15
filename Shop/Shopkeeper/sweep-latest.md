@@ -8,52 +8,54 @@ forward_vector: "I hold the most recent Shopkeeper discovery sweep, overwritten 
 
 # Shopkeeper — Latest Sweep
 
-**Run:** 2026-09-12, morning steward cadence (shadow). Overwritten each run. (Prior run: 2026-06-23 — long gap, no runs between.)
+**Run:** 2026-09-15, morning steward cadence (shadow). Overwritten each run. (Prior run: 2026-09-12.)
 
-**One-line:** Pending commission was already executed last run (Image-to-3D Smith stub, still awaiting Loudon's four decisions — see below). Discovery sweep found one real candidate: **AuK** (Tencent), a unified speech-generation-and-editing model — probed two instruction types, both landed cleanly. Not ready to promote to a Specialist yet; needs a second pass.
+**One-line:** No pending commission this cycle (the Image-to-3D commission finished 2026-06-23; still awaiting Loudon's decisions from that run, unchanged). Closed the loop on last sweep's open item: **AuK (Tencent)** now has all three edit types confirmed with objective evidence and a clean MIT license read. **Recommending it for a stub-level Specialist entry** — bringing the dossier, not depositing it myself.
 
 ---
 
 ## Commission status (checked first, per protocol)
 
-`next-run-commission.md` shows **Status: EXECUTED 2026-06-23.** Nothing to run this cycle. Reminder — Loudon's five decisions from that run are still open (see `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/comparison-report.md` and the 2026-06-23 sweep log in git history): approve/revise the Image-to-3D Smith stub, confirm Hi3DGen vs Hunyuan3D-2 as primary, decide on TripoSplat's own entry, designate a first real job, and read licenses. Not re-litigating; just flagging that this file can be deleted once he's reviewed, per its own note.
+`next-run-commission.md` unchanged: **Status: EXECUTED 2026-06-23.** Nothing to run this cycle. Loudon's five decisions from that run are still open (Image-to-3D Smith stub review, Hi3DGen vs Hunyuan3D-2, TripoSplat's own entry, first real job, license read) — not re-litigating, flagging again so it doesn't get lost.
 
 ## Discovery sweep
 
-### Candidate: AuK (tencent/AuK) — worth a second look, not yet a Specialist
+### Candidate: AuK (tencent/AuK) — recommend for stub deposit
 
-Unified speech generation + instruction-guided editing (content, paralinguistic, acoustic, enhancement/separation) from one natural-language interface. 212-upvote paper (arXiv 2609.08936), trending 2026-09-08. Full probe: `Shop/Shopkeeper/probes/2026-09-12-auk/probe-report.md`.
+Second pass on the candidate flagged 2026-09-12. Full probe: `Shop/Shopkeeper/probes/2026-09-12-auk/probe-report.md`.
 
-**What I actually tried (not just read the README):**
-- Generated a real source clip locally (`say` on macOS, 2.36s).
-- Leg 1: instructed it to whisper the line → succeeded, duration preserved as expected for a paralinguistic edit.
-- Leg 2: instructed "twice as fast" → output landed at exactly 1.18s, half the source. That's the evidence that convinced me — a quantitative instruction followed precisely, first try, no cherry-picking (only two calls made total).
+**What changed this pass:**
+- Ran the content-editing leg left untested last time — instructed a word swap ("fox" → "wolf") on the same source clip, explicit duration (the Space requires one with Prompt Enhancer off, confirmed by a first hard error that matched the README's documented behavior exactly).
+- **Verified by transcript, not just duration** — ran `whisper --model tiny` locally (free, no GPU) on the output: *"The quick-brown wolf jumps over the lazy dog."* Exact swap, everything else untouched. This is stronger evidence than the first pass's duration-only checks (which only proved timing, not content).
+- **Read the license**: MIT, plain, no community-license catch. Clear for Piece-tier or published use.
 
-**Why it's a real gap:** the Roster has Kokoro for TTS but nothing that edits *existing* speech by instruction — no home for "retime this line," "make it a whisper," "fix the emotion" in post-production narration work.
+**Why it clears the bar now:** three distinct edit types (paralinguistic, acoustic, content) each confirmed by objective evidence across two sessions, anonymous and tokenless, clean license. Fills a real Roster gap — Kokoro does TTS, nothing edits *existing* speech by instruction (retime a line, whisper a phrase, fix a word) for post-production narration work.
 
-**Why I'm not proposing a stub yet:** two legs isn't the full picture — content-editing (word swap) and enhancement/separation are untested, and I haven't read the license. Recommend a second probe pass before any deposit decision, same discipline as the Image-to-3D shoot-out.
+**What's still open** (doesn't block a stub, would matter before a real brief): enhancement/separation leg untested; speaker-identity fidelity unconfirmed by ear or metric; `AuK-Flash` (4.5x faster distilled variant) untried.
 
-### Triaged out (trending scan)
+**My read:** I'd bet a real Sketch-tier post-production brief on this today. See the candidate dossier below and the board note for Loudon's call.
 
-- **Trending this cycle was heavily NSFW-LoRA spam** (custom Wan2.2/MiniMax-H3 clone Spaces with crude titles) — noting this because it's a real shift in the Spaces trending signal, not a Roster gap. Filtered out entirely; nothing there for the Shop.
-- **YuE2-3B** (m-a-p) — long-form music generation, successor to YuE (already known/logged). Not a new door; the Shop's music-gen gap isn't stocked yet but this doesn't change the calculus from prior sweeps. Hold.
-- **Wan2.2 / LTX-2.5 / MiniMax-H3** — image/text-to-video, same lane flagged 2026-06-23 as needing mac-side GPU probing. Unchanged; still holding for mac-side session.
-- **Marigold V2** (monocular depth via diffusion transformers) — noticed because `GenAI Camera/` has active depth/pose work in progress (untracked keypoints/composite files in the working tree). Didn't probe — out of scope for a discovery sweep to touch an active project's files; flagging as a "might be worth Loudon's own look" rather than a Shop candidate.
-- 3D-representations-guide, HF Viewer, Microduck sim — educational/robotics demos, no Shop-relevant door.
+### New trending scan (HF Spaces + papers, this cycle)
+
+- **Viggle-Animate** (Viggle) — puts a character still into a driving video via 4-step repaint-and-render, no pose/segmentation/masks. Genuinely interesting motion-domain capability, but **not probed**: the model needs ZeroGPU `xlarge` (96GB VAT) and the Space's own README says a free account's day "does not go far here" — PRO gets only 40 min of it. No honest cheap probe exists on the anonymous tier. Flagging as a mac-handoff-or-PRO candidate for a future pass, same as the Wan2.2/LTX-2.5/MiniMax-H3 video lane already holding since 2026-06-23.
+- **H3 Acceleration Arena**, **Qwen-Image-Edit LoRA Spaces**, **AI Notes**, **Fruit Fly Simulation**, **MiniCPM5-2B WebGPU Pi** — scanned, none open a Shop-relevant door (comparison tooling, note-taking, tech demos, coding agent). Composted.
+- **Trending papers** this cycle skew heavily agentic/LLM-infrastructure (Atria Dawn, ZGCM-1, RSIAgent, Apodex) — outside the Shop's sound/image/motion/interactive scope, not evaluated as Shop candidates.
+- **YuE2-3B, Wan2.2/LTX-2.5/MiniMax-H3, Marigold V2, NSFW-LoRA trending spam** — all unchanged from 2026-09-12's read; holding, no new information.
 
 ### Roster maintenance (light pass)
 
-- No new status drift found. Stable Audio 3 flag from 2026-06-23 still open (dated gotcha not yet added to [[Stable Audio Open]] — small task, doing it now would be scope creep on a discovery sweep; leaving it named here so it doesn't get lost twice).
-- Never-run test suites: unchanged, standing gap (Maker's own test plan still TODO).
+- No new status drift found.
+- Stable Audio 3 dated-gotcha flag from 2026-06-23 still open — small task, still named here rather than actioned, so it isn't lost twice.
+- Never-run test suites: unchanged, standing gap.
 
 ---
 
 ## Run accounting
 
-**Token/cost budget:** HF MCP scan (cheap) + one Space probed, 2 anonymous Gradio calls, local `say` for the test clip. No GPU, no paid tier. In line with "discovery should cost a fraction of a brief."
+**Token/cost budget:** HF MCP trending scan (cheap) + 1 Gradio call on an already-probed Space + local `whisper --tiny` transcription (free, CPU, no GPU). No new GPU spend, no paid tier. In line with "discovery should cost a fraction of a brief."
 
 **Files written this run:**
-- `Shop/Shopkeeper/probes/2026-09-12-auk/probe-report.md`
-- `Shop/Shopkeeper/probes/2026-09-12-auk/{source,whisper_edit,fast_edit}.wav`
+- `Shop/Shopkeeper/probes/2026-09-12-auk/probe-report.md` (appended second-pass section)
+- `Shop/Shopkeeper/probes/2026-09-12-auk/word_swap_edit.wav`
 - `Shop/Shopkeeper/sweep-latest.md` (this file)
 - TRICKSTER board note (see below)

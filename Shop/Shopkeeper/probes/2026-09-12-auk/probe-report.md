@@ -18,15 +18,23 @@ Both calls succeeded on the free anonymous tier, ~15-25s each. No token needed.
 
 Clears it. Two independent instruction types, both landed correctly, on the first anonymous try, no cherry-picking (these are the only two calls made). Opens a real door: instructed post-production editing of narration/voice-over, which the Shop currently has no tool for.
 
+## Second pass — 2026-09-15
+
+**Leg 3 — content edit (word swap):** instruction `"Replace the word 'fox' with the word 'wolf', keep everything else the same."`, explicit `gen_seconds=2.36` (Prompt Enhancer off requires a manual duration — the API rejected a blank/zero duration exactly as the Space's README documents, first-try confirmation the docs are accurate). Output: `word_swap_edit.wav`, 2.36s, duration preserved as expected for a content edit.
+
+**Verified by transcript, not just duration this time** — ran local `whisper --model tiny` (free, no GPU, already on this Mac) on the output: *"The quick-brown wolf jumps over the lazy dog."* Exact word swap, rest of the sentence untouched, first try. This closes the gap the first pass left open (duration alone isn't proof the *content* changed) — three edit types now confirmed by objective evidence, not just plausibility.
+
+**License read:** `tencent/AuK` Space ships its own `LICENSE` file — **MIT**, plain and unencumbered, no separate community-license catch like Hunyuan3D-2's. Clear for Piece-tier or published use as far as licensing goes.
+
+**Not yet tried:** enhancement/separation leg, and no speaker-similarity check (identity fidelity claim from the paper still unconfirmed by ear or metric). Neither blocks a stub-level entry — both are the kind of thing a first real job would surface.
+
 ## Honest cost / caveats
-- **Not yet tried:** content editing (word swap) and enhancement/separation legs — the two I ran were paralinguistic + acoustic, chosen because they're the most checkable (duration is objective evidence). Worth a follow-up probe before promoting past stub.
-- **Speaker identity fidelity unverified** — I didn't run a speaker-similarity check; the paper claims it's preserved under acoustic/paralinguistic edits but I haven't confirmed by ear or metric.
-- **License:** unread. Confirm before any Piece-tier/published use — same discipline as the Image-to-3D commission.
-- Host class: cloud-via-HF (free), same as other Shop probes; no GPU needed on our end.
+- Host class: cloud-via-HF (free anonymous tier), same as other Shop probes; no GPU needed on our end.
 - `AuK-Flash` variant (4-step, 4.5x faster) exists but untested — worth trying if latency matters for a real brief.
+- API quirk for any future recipe: `use_pe=False` requires an explicit `gen_seconds` > 0; blank/zero is rejected before GPU allocation (matches the Space's own README, so this is documented behavior, not a bug to route around).
 
 ## Recommendation
-Not a Specialist deposit yet — this is a first-pass Sketch probe, one session, two legs. Worth a second pass (content-editing leg + a license read) before proposing a stub entry. Flagging to Loudon now because the door is real and the bar was cleared, not because it's ready to promote.
+**Clears the bar for a stub-level Specialist entry now.** Three edit types (paralinguistic, acoustic, content) each confirmed by objective evidence across two sessions, license is clean MIT, reachable anonymously with no token. This is the kind of "worthy few" the sweep exists to surface — bringing it to Loudon as a candidate dossier rather than depositing myself, per the Charter (I bring the evidence, he makes the call).
 
 ## Files
-- `source.wav`, `whisper_edit.wav`, `fast_edit.wav` — all in this folder.
+- `source.wav`, `whisper_edit.wav`, `fast_edit.wav`, `word_swap_edit.wav` — all in this folder.
