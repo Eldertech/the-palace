@@ -323,3 +323,120 @@ def _smoke_test(out_dir: str = ".") -> None:
 
 if __name__ == "__main__":
     _smoke_test()
+
+
+# ---------------------------------------------------------------------------
+# Stage 3 — The Glide (portamento; STAGE-3 grant, 2026-06-25)
+# ---------------------------------------------------------------------------
+#
+# Stage 2 moved the stack in discrete semitone steps and deliberately SHOWED
+# the wrap seam. Stage 3 replaces the steps with a continuous glide and asks
+# the design question the home entry raises: what has to be true about the
+# glide for the illusion to survive?
+#
+# The answer, implemented here: the stack must glide as ONE unit. There is a
+# single pitch trajectory in log2-Hz; every octave voice is that trajectory
+# plus an integer offset. Because every voice shares one trajectory, the
+# octave spacing is EXACTLY preserved at every instant of the glide — and
+# octave equivalence only fuses the stack into one perceived pitch class when
+# the spacing is exact. Give each voice its own glide time (render_stage3 with
+# `voice_time_spread` > 0) and the spacing goes momentarily non-octave during
+# every transition: the stack audibly splits into separate voices and the
+# illusion collapses. That negative control is the teaching artifact.
+#
+# Second difference from Stage 2: the wrap is now FREE AND HIDDEN, not shown.
+# Voices wrap by exactly 2**wrap_octaves at the edge of the stack, where the
+# Gaussian envelope weight is ~1e-5 — inaudible. Stage 2 lit the seam to prove
+# the mechanism; Stage 3 lets the glide close over it to prove the illusion.
+
+@dataclass(frozen=True)
+class ShepardStage3Params:
+    """Stage 3: continuous monophonic portamento across the octave stack."""
+
+    targets_semitones: Sequence[float] = (0.0, 4.0, 7.0, 12.0)  # pitch targets, in semitones from start
+    hold_s: float = 1.0                  # time spent at/heading to each target
+    glide_ms: float = 450.0              # one-pole portamento time constant
+    start_midi: float = 60.0             # the trajectory's starting pitch (C4)
+    sample_rate: int = 48_000
+    n_octaves: int = 11                  # voices, centred on the envelope centroid
+    centroid_log2hz: float = DEFAULT_CENTROID_LOG2HZ
+    sigma_octaves: float = DEFAULT_SIGMA_OCTAVES
+    peak_amplitude: float = 0.5
+    fade_ms: float = 25.0
+    voice_time_spread: float = 0.0       # >0 = per-voice glide times (the broken control)
+    endless_rate_st_per_s: float | None = None  # if set, ignore targets: ramp forever
+
+
+def _pitch_trajectory(params: ShepardStage3Params) -> np.ndarray:
+    """Per-sample pitch trajectory in semitones-from-start (pre-portamento target)."""
+    sr = params.sample_rate
+    if params.endless_rate_st_per_s is not None:
+        n = int(round(params.hold_s * len(params.targets_semitones) * sr))
+        t = np.arange(n, dtype=np.float64) / sr
+        return t * params.endless_rate_st_per_s
+    hold_n = int(round(params.hold_s * sr))
+    seg = [np.full(hold_n, tgt, dtype=np.float64) for tgt in params.targets_semitones]
+    return np.concatenate(seg) if seg else np.zeros(0)
+
+
+def _one_pole(target: np.ndarray, time_constant_ms: float, sample_rate: int) -> np.ndarray:
+    """Exponential portamento: glide in log-pitch space, which is what the ear
+    hears as a linear slide. time_constant_ms == 0 gives an instant step."""
+    if time_constant_ms <= 0.0:
+        return target.copy()
+    a = math.exp(-1.0 / (time_constant_ms * 1e-3 * sample_rate))
+    out = np.empty_like(target)
+    y = target[0] if len(target) else 0.0
+    for i in range(len(target)):
+        y = a * y + (1.0 - a) * target[i]
+        out[i] = y
+    return out
+
+
+def render_stage3(params: ShepardStage3Params) -> np.ndarray:
+    """Render a continuously gliding Shepard tone.
+
+    Every voice shares one pitch trajectory (offset by whole octaves), so the
+    octave spacing is exact at every sample. Amplitude is recomputed per
+    sample from the Gaussian-in-log2 envelope, so a voice fades as it drifts
+    out of the bright zone and wraps silently at the edge.
+    """
+    sr = params.sample_rate
+    target = _pitch_trajectory(params)
+    if len(target) == 0:
+        return np.zeros(0, dtype=np.float32)
+
+    base_log2 = math.log2(A4_HZ) + (params.start_midi - A4_MIDI) / 12.0
+    half = params.n_octaves // 2
+    offsets = np.arange(-half, -half + params.n_octaves, dtype=np.float64)
+    wrap_span = float(params.n_octaves)
+
+    out = np.zeros(len(target), dtype=np.float64)
+    for k, off in enumerate(offsets):
+        # Per-voice glide time. Identical for every voice by default (the
+        # correct monophonic-stack portamento); spread > 0 detunes the
+        # transitions and breaks the fusion on purpose.
+        gm = params.glide_ms * (1.0 + params.voice_time_spread * (k - half) / max(half, 1))
+        glided = _one_pole(target, max(gm, 0.0), sr)
+
+        log2f = base_log2 + glided / 12.0 + off
+        # Hidden wrap: fold back by whole octaves at the edges of the stack,
+        # where the envelope weight is ~1e-5.
+        log2f = params.centroid_log2hz + (
+            ((log2f - params.centroid_log2hz + wrap_span / 2.0) % wrap_span) - wrap_span / 2.0
+        )
+
+        freqs = np.power(2.0, log2f)
+        freqs = np.minimum(freqs, sr / 2.0 * 0.98)
+        amp = np.exp(-((log2f - params.centroid_log2hz) ** 2) / (2.0 * params.sigma_octaves ** 2))
+        phase = 2.0 * math.pi * np.cumsum(freqs) / sr
+        out += amp * np.sin(phase)
+
+    peak = np.max(np.abs(out))
+    if peak > 0:
+        out *= params.peak_amplitude / peak
+    fade_n = max(1, min(int(round(params.fade_ms * 1e-3 * sr)), len(out) // 2))
+    ramp = np.linspace(0.0, 1.0, fade_n)
+    out[:fade_n] *= ramp
+    out[-fade_n:] *= ramp[::-1]
+    return out.astype(np.float32)
