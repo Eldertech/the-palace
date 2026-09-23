@@ -59,7 +59,7 @@
 <body>
 
 <header>
-  <div class="meta">Project · Crystal Synthesizer · cycle 8 · 2026-06-25</div>
+  <div class="meta">Project · Crystal Synthesizer · cycle 10 · 2026-09-15</div>
   <h1>Proofs Menu<span class="sub">Hearing what crystal symmetry sounds like</span></h1>
   <p class="lede">
     A crystal synthesizer makes the optical properties of crystals <em>audible</em>.
@@ -72,7 +72,91 @@
 
 <hr>
 
-<!-- ─────────────  THE TRICLINIC PROOF — NEW THIS CYCLE  ───────────── -->
+<!-- ─────────────  THE FULL PALETTE — NEW THIS CYCLE  ───────────── -->
+<section class="card full">
+  <span class="tag new">New · 2026-09-15 · the palette is complete</span>
+  <h2>All Seven Minerals, One Engine</h2>
+  <h3>Five crystals added — ruby, amethyst, fluorite, emerald, topaz</h3>
+  <p class="claim">
+    Diamond and labradorite were the poles. These five fill the middle. Every strike below uses the
+    <em>identical</em> additive engine, envelope and root pitch (A2, 110&nbsp;Hz) — the only thing that
+    changes between them is the phonon ratio table. That is what makes this a controlled experiment
+    rather than seven nice sounds.
+  </p>
+
+  <table>
+    <thead><tr><th>crystal</th><th>space group</th><th>partials</th><th>span</th><th>octaves</th><th>centroid&nbsp;Hz</th><th>signature</th></tr></thead>
+    <tbody>
+        <tr><td><b>Diamond</b></td><td>cubic Fd-3m</td><td class="num">5</td><td class="num">1.65×</td><td class="num">0.72</td><td class="num">142</td><td>maximum compression — everything inside a fifth-plus</td></tr>
+        <tr><td><b>Fluorite</b></td><td>cubic Fm-3m</td><td class="num">6</td><td class="num">2.48×</td><td class="num">1.31</td><td class="num">146</td><td>five low modes, silence, then one lone LO</td></tr>
+        <tr><td><b>Emerald</b></td><td>hexagonal P6/mcc</td><td class="num">7</td><td class="num">3.33×</td><td class="num">1.74</td><td class="num">159</td><td>ring-breathing mode at 1.68 is the heartbeat</td></tr>
+        <tr><td><b>Ruby</b></td><td>trigonal R-3c</td><td class="num">7</td><td class="num">1.98×</td><td class="num">0.99</td><td class="num">130</td><td>the 1.10/1.14 doublet beats at 4.4 Hz</td></tr>
+        <tr><td><b>Amethyst</b></td><td>trigonal P3₁21</td><td class="num">9</td><td class="num">8.32×</td><td class="num">3.06</td><td class="num">241</td><td>three families, soft mode at 1.62, gap 3.6→5.5</td></tr>
+        <tr><td><b>Topaz</b></td><td>orthorhombic Pbnm</td><td class="num">8</td><td class="num">6.05×</td><td class="num">2.60</td><td class="num">213</td><td>eight modes spread evenly — no cluster, no gap</td></tr>
+        <tr><td><b>Labradorite</b></td><td>triclinic C-1</td><td class="num">8</td><td class="num">17.50×</td><td class="num">4.13</td><td class="num">400</td><td>four octaves with no organising ratio</td></tr>
+    </tbody>
+  </table>
+
+  <div class="audio-row">
+    <div class="label"><b>Diamond</b>cubic Fd-3m</div>
+    <audio controls preload="none" src="triclinic-proof/diamond_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Fluorite</b>cubic Fm-3m · new</div>
+    <audio controls preload="none" src="palette-strikes/fluorite_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Emerald</b>hexagonal P6/mcc · new</div>
+    <audio controls preload="none" src="palette-strikes/emerald_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Ruby</b>trigonal R-3c · new</div>
+    <audio controls preload="none" src="palette-strikes/ruby_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Amethyst</b>trigonal P3₁21 · new</div>
+    <audio controls preload="none" src="palette-strikes/amethyst_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Topaz</b>orthorhombic Pbnm · new</div>
+    <audio controls preload="none" src="palette-strikes/topaz_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Labradorite</b>triclinic C-1</div>
+    <audio controls preload="none" src="triclinic-proof/labradorite_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Palette tour</b>all seven, symmetry order · new</div>
+    <audio controls preload="none" src="palette-strikes/palette_tour.wav"></audio>
+  </div>
+
+  <div class="grid">
+    <div><h3 style="color:#b28bff">Fluorite</h3><div class="visual"><object type="image/svg+xml" data="palette-strikes/fluorite_strike.svg"></object></div></div>
+    <div><h3 style="color:#5fd39b">Emerald</h3><div class="visual"><object type="image/svg+xml" data="palette-strikes/emerald_strike.svg"></object></div></div>
+    <div><h3 style="color:#ff6b6b">Ruby</h3><div class="visual"><object type="image/svg+xml" data="palette-strikes/ruby_strike.svg"></object></div></div>
+    <div><h3 style="color:#c08bff">Amethyst</h3><div class="visual"><object type="image/svg+xml" data="palette-strikes/amethyst_strike.svg"></object></div></div>
+    <div><h3 style="color:#ffd166">Topaz</h3><div class="visual"><object type="image/svg+xml" data="palette-strikes/topaz_strike.svg"></object></div></div>
+  </div>
+
+  <div class="teach">
+    <b>What the numbers say — and where the hypothesis bends</b>
+    The home entry ladders its predictions by symmetry class: cubic is brightest and densest, triclinic
+    is the most scattered. Measured spectral centroid does <em>not</em> follow that ladder. Ruby (trigonal,
+    seven modes) is the <b>darkest</b> sound in the whole palette at 130&nbsp;Hz — darker than cubic diamond —
+    because all seven of its modes live inside r<sub>n</sub>&nbsp;1.98. Topaz sits below amethyst for the same
+    reason. What actually predicts brightness is the <b>span</b> of the ratio table, not the symmetry class:
+    log-span against centroid correlates at r&nbsp;=&nbsp;0.94, while partial count manages only r&nbsp;=&nbsp;0.60.
+    Symmetry still determines the span — lower symmetry lifts degeneracies and lets modes spread — but it does
+    so loosely enough that chemistry overrides it case by case. Diamond and fluorite are both cubic and sound
+    nothing alike; the entry already said so, and the numbers now agree. The ruby doublet is the clean win:
+    1.10 and 1.14 over A2 are 121.0 and 125.4&nbsp;Hz, beating at 4.4&nbsp;Hz — a slow natural chorus, exactly the
+    shimmer the trigonal hypothesis predicted.
+  </div>
+</section>
+
+<hr>
+
+<!-- ─────────────  THE TRICLINIC PROOF — cycle 8  ───────────── -->
 <section class="card full">
   <span class="tag new">New · 2026-06-25 · closes the hypothesis arc</span>
   <h2>Symmetry Determines Timbre</h2>
