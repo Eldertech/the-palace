@@ -71,7 +71,7 @@ thirty citizens include no clinicians, no psychologists, no HCI researchers.
 | 3 | The acceptance thread — technology-induced job insecurity; coping vs acceptance | **fold (minimal)** | Not critical, but the citation is good and belongs in the palace. One paragraph added to [[Creative Coach]] where it does work — as evidence that the closed room matters rather than merely being preferred. No entry, no `source` node: one citation used by one page doesn't earn one. |
 | 4 | Lateral access & defenses — Vaillant's hierarchy mapped to practice | **fold → [[Creative Coach]]** | The [[Lateral Access]] connection was forced (Loudon) and that entry was not touched. The defenses belong to coaching: a coach works from the artist's words and actions, and a defense makes both unreliable at once, so recognising them is part of the work. |
 | 5 | The palace as holding — Winnicott; the machinery↔traditions mapping | **decline — nothing deposits** | Nine rows checked against the files: two hold, three overstated, four wrong, and the failures cluster on one error — the palace's mechanisms act on *entries*, these traditions act on *people*. The two that hold are the two whose subject is Loudon, which inverts the section's thesis. *Holding* is a pun on *holding to*: the palace impinges by design. Loudon's call was that nothing deposits, including the small folds. |
-| 6 | The lineage — Fischer, Engelbart, Papert, Clark & Chalmers, Luhmann, Star & Griesemer, Schön; the homogenisation risk | **in progress — 4 folds** | Fischer → [[Self-Describing Knowledge Module]] (done). Engelbart → [[The Palace Practices on Itself]]. Constructionism → personal, Mindstorms, objects-to-think-with. Schön → reflective practice, the largest. Luhmann already on the lineage list; Star & Griesemer, Clark & Chalmers, Papert-as-citation declined. |
+| 6 | The lineage — Fischer, Engelbart, Papert, Clark & Chalmers, Luhmann, Star & Griesemer, Schön; the homogenisation risk | **3 folds + 2 mints** | Fischer → [[Self-Describing Knowledge Module]]. Engelbart → [[The Palace Practices on Itself]]. Constructionism → [[Objects to Think With]] (minted). Schön → [[Reflective Practice]] (minted 2026-09-22), the largest. Luhmann already on the lineage list; Star & Griesemer, Clark & Chalmers, Papert-as-citation declined. |
 | 7 | The triad — artist / coach / AI; offers-not-commits; the environment never decides | open | |
 | 8 | Threads to test — Balint for artists; Instruments That Hold You; Molting in public | open | |
 | 9 | People — sixteen names proposed as citizens | open | |
@@ -308,7 +308,7 @@ students — no, doesn't scale; **yes, depth > breadth**"*, an explicit closed-r
 page's own phrase, in an entry [[Creative Coach]] already cites. That sentence on Creative Coach is
 now corrected to cite it.
 
-### §6 — The lineage · in progress
+### §6 — The lineage · settled 2026-09-22
 
 **A method correction from Loudon that outranks the section.** I applied "does naming it change a
 move" — a *deposit* rule — as a *reading* rule, and told him seven thinkers weren't worth his attention
@@ -387,6 +387,23 @@ own AI collaborator.
 
 `exemplifies` reciprocals added on the four clearest projects; the other seventeen flagged for a Weave
 rather than edited from a deposit.
+
+**Schön → [[Reflective Practice]] · minted 2026-09-22.** Carried across a baton and picked up the
+next session. `concept`, not `meta` — the §5 guard. It holds the two-mode sort (twelve mechanisms
+reflect *on* action, three *in* action; the sort is not yet re-audited), consolidates the
+**reflecting surface** from about nine files into its two senses (the felt reading, the reframing
+question that points at the next session), and names **over-reflection** with a threshold taken from
+Schön himself: his four fears (p. 278) and his answer that the regress happens only once thinking is
+split from doing — *"each sets boundaries for the other"* (p. 280). Insularity becomes its one dated
+instance; *overlearning* (p. 61) the opposite failure.
+
+Three things the reading found that the baton did not carry. Schön's founding case of
+reflection-in-action is **improvising musicians** (p. 56). His 1987 coaching stances include the
+**hall of mirrors** — a technique, where the palace uses the phrase only as a warning; both held, not
+resolved. And the sharpest contrary is Goldberg in [[No Mind Checks Itself]] — *editor and generator
+never in the same pass* — which reflection-in-action does by definition; that became the `contradicts`
+link. The 1983 quotes were checked against a page-cited transcription, not the book; the 1987 stances
+against secondary summaries only. No Schön `person` entry — §9 argues people.
 
 ---
 
