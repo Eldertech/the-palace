@@ -1,7 +1,7 @@
 {
-  "iteration": 4,
-  "last_active": "2026-09-23T04:58:40.000Z",
-  "last_read_cursor": "particle-synthesis-007",
+  "iteration": 5,
+  "last_active": "2026-09-23T05:12:34.000Z",
+  "last_read_cursor": "particle-synthesis-009",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
