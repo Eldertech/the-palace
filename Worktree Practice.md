@@ -60,6 +60,10 @@ A worktree isolates HEAD, which is exactly what makes canon and coordination nee
 
 A worktree has a lifecycle, and teardown is a *close* — the same boundary [[Closing Well]] is about, in a new register (branch + directory, not session + instance). `--remove` is symlink-safe and `--delete-branch` **safe-deletes** (`git branch -d`, refusing to drop commits not merged to the trunk; `--force-delete` is the deliberate-discard escape), but the tool only guards *mechanical* loss. The close itself is yours: before tearing down, is the canon committed to the trunk, the in-progress move merged / cherry-picked / **batoned** (with its worktree coordinate), the lost branches parked in their owning entries, and the unverified named? A teardown that drops an unmerged thread with no punchlist is a failed close. And the canon-trunk rule is itself [[Closing Well]] at the branch boundary: canon stranded on a feature branch is work the next person, sitting on `main`, cannot pick up.
 
+## Gotchas
+
+- **Don't `git stash` in the shared primary.** It resets mtimes on every file it touches (dating evidence lost twice, 2026-09-22) and can sweep another session's uncommitted work along with yours — the same branch-thrashing risk this practice exists to end. Commit or move the work into your own worktree instead.
+
 ## The resonance
 
 A worktree is [[The Dichotomy of Control]] in git: your own HEAD is the one thing fully yours, immune to what other agents do to the shared trunk. The practice draws the Stoic line — act within your worktree (*prohairesis*), converge on the trunk (the shared *fortuna* of canon) only deliberately.
