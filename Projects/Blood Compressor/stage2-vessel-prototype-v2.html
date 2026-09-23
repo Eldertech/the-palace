@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blood Compressor — Vessel Prototype v2</title>
+<style>
+  :root{
+    --bg:#0B0B10; --panel:#101018; --line:#1c1c26;
+    --blood:#C8254C; --blood-dk:#7a1830; --wall:#8B4A5E;
+    --baro:#F5C16C; --ink:#E8E8F0;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:Manrope,system-ui,-apple-system,sans-serif;height:100%;}
+  .wrap{display:grid;grid-template-rows:auto 1fr auto auto;height:100vh;padding:14px;gap:10px;}
+  h1{font-family:Anton,Impact,sans-serif;letter-spacing:.04em;margin:0 0 2px;font-size:22px;}
+  .sub{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;opacity:.7;}
+  canvas{width:100%;height:100%;display:block;background:var(--panel);
+    border:1px solid var(--line);border-radius:6px;}
+  .ctrls{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;font-size:12px;}
+  .ctrls label{display:flex;flex-direction:column;gap:4px;
+    font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.03em;}
+  .ctrls input[type=range]{accent-color:var(--blood);width:100%;}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  button{background:var(--blood);color:var(--ink);border:0;padding:8px 14px;
+    font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;
+    border-radius:4px;cursor:pointer;letter-spacing:.05em;}
+  button.alt{background:transparent;border:1px solid var(--wall);color:var(--ink);}
+  .readout{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;opacity:.85;}
+  .tag{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;
+    border:1px solid var(--line);border-radius:3px;padding:3px 7px;opacity:.8;}
+  footer{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;opacity:.5;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <h1>BLOOD COMPRESSOR — VESSEL PROTOTYPE v2</h1>
+    <div class="sub">pressure lane (input vs threshold) · vessel narrowing · transfer curve — threshold is live with the audio off</div>
+  </div>
+
+  <canvas id="cv"></canvas>
+
+  <div class="ctrls">
+    <label>THRESHOLD · systolic<input id="th" type="range" min="-60" max="0" value="-24" step="0.5"><span class="readout" id="th_r">-24.0 dB</span></label>
+    <label>RATIO · wall elasticity<input id="ra" type="range" min="1" max="20" value="4" step="0.1"><span class="readout" id="ra_r">4.0:1</span></label>
+    <label>KNEE · wall plasticity<input id="kn" type="range" min="0" max="24" value="6" step="0.5"><span class="readout" id="kn_r">6.0 dB</span></label>
+    <label>ATTACK · baroreceptor delay<input id="at" type="range" min="0.005" max="0.4" value="0.05" step="0.005"><span class="readout" id="at_r">50 ms</span></label>
+    <label>RELEASE · smooth muscle<input id="re" type="range" min="0.05" max="2" value="0.4" step="0.01"><span class="readout" id="re_r">400 ms</span></label>
+    <label>INPUT GAIN · cardiac output<input id="ig" type="range" min="-24" max="24" value="6" step="0.5"><span class="readout" id="ig_r">+6.0 dB</span></label>
+  </div>
+
+  <div class="row">
+    <button id="play">START · pulse source</button>
+    <button class="alt" id="mode">SOURCE: sine-pulse</button>
+    <button class="alt" id="byp">BYPASS: off</button>
+    <span class="tag" id="in_r">in: -inf dB</span>
+    <span class="tag" id="gr">GR: 0.0 dB</span>
+    <span class="tag" id="bp">baroreceptors: idle</span>
+    <span style="flex:1"></span>
+    <footer>Loud'n Live</footer>
+  </div>
+</div>
+
+<script>
+"use strict";
+const cv = document.getElementById('cv');
+const g2 = cv.getContext('2d');
+const $ = id => document.getElementById(id);
+
+let DPR = 1, W = 0, H = 0;
+function resize(){
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  const r = cv.getBoundingClientRect();
+  cv.width  = Math.max(1, Math.round(r.width  * DPR));
+  cv.height = Math.max(1, Math.round(r.height * DPR));
+  W = cv.width; H = cv.height;
+}
+addEventListener('resize', resize);
+
+/* ---------------- params ---------------- */
+const P = { th:-24, ra:4, kn:6, at:0.05, re:0.4, ig:6 };
+function bind(id, fmt, apply){
+  const el = $(id), out = $(id + '_r');
+  const upd = () => { P[id] = +el.value; out.textContent = fmt(+el.value); apply && apply(+el.value); };
+  el.addEventListener('input', upd);
+  upd();
+}
+bind('th', v => v.toFixed(1) + ' dB',            v => comp && (comp.threshold.value = v));
+bind('ra', v => v.toFixed(1) + ':1',             v => comp && (comp.ratio.value = v));
+bind('kn', v => v.toFixed(1) + ' dB',            v => comp && (comp.knee.value = v));
+bind('at', v => (v*1000).toFixed(0) + ' ms',     v => comp && (comp.attack.value = v));
+bind('re', v => (v*1000).toFixed(0) + ' ms',     v => comp && (comp.release.value = v));
+bind('ig', v => (v>0?'+':'') + v.toFixed(1) + ' dB', v => inGain && (inGain.gain.value = Math.pow(10, v/20)));
+
+/* ---------------- audio ---------------- */
+let ac = null, srcNode = null, inGain = null, comp = null;
+let preAn = null, postAn = null, preBuf = null, postBuf = null;
+let dry = null, wet = null;
+let playing = false, bypass = false, srcMode = 'sine';
+
+function buildSource(){
+  if (srcNode){ try { srcNode.stop(); } catch(e){} try { srcNode.disconnect(); } catch(e){} srcNode = null; }
+  if (srcMode === 'sine'){
+    // 220 Hz carrier, amplitude-pulsed at 1.2 Hz — a clean "heartbeat" test signal
+    const o = ac.createOscillator(); o.frequency.value = 220;
+    const g = ac.createGain(); g.gain.value = 0;
+    const lfo = ac.createOscillator(); lfo.frequency.value = 1.2;
+    const lg = ac.createGain(); lg.gain.value = 0.45;
+    const base = ac.createConstantSource(); base.offset.value = 0.5;
+    lfo.connect(lg); lg.connect(g.gain); base.connect(g.gain);
+    o.connect(g); o.start(); lfo.start(); base.start();
+    g.stop = () => { try{o.stop();lfo.stop();base.stop();}catch(e){} };
+    srcNode = g;
+  } else {
+    const len = Math.floor(ac.sampleRate * 2);
+    const b = ac.createBuffer(1, len, ac.sampleRate);
+    const d = b.getChannelData(0);
+    let l = 0;
+    for (let i = 0; i < len; i++){
+      const w = Math.random()*2 - 1;
+      l = (l + 0.02*w) / 1.02;
+      const env = Math.pow(Math.max(0, Math.sin(i/ac.sampleRate * Math.PI*2 * 1.3)), 3);
+      d[i] = l * 6 * env;
+    }
+    const bs = ac.createBufferSource(); bs.buffer = b; bs.loop = true; bs.start();
+    srcNode = bs;
+  }
+  srcNode.connect(inGain);
+}
+
+async function start(){
+  if (!ac){
+    ac = new (window.AudioContext || window.webkitAudioContext)();
+    inGain = ac.createGain();
+    comp   = ac.createDynamicsCompressor();
+    preAn  = ac.createAnalyser();  preAn.fftSize  = 2048;
+    postAn = ac.createAnalyser();  postAn.fftSize = 2048;
+    dry = ac.createGain(); wet = ac.createGain();
+    preBuf  = new Float32Array(preAn.fftSize);
+    postBuf = new Float32Array(postAn.fftSize);
+
+    inGain.gain.value    = Math.pow(10, P.ig/20);
+    comp.threshold.value = P.th;
+    comp.ratio.value     = P.ra;
+    comp.knee.value      = P.kn;
+    comp.attack.value    = P.at;
+    comp.release.value   = P.re;
+
+    // pre-analyser taps the INPUT — this is what lets you SEE the signal cross threshold
+    inGain.connect(preAn);
+    inGain.connect(comp);
+    comp.connect(wet);
+    inGain.connect(dry);
+    wet.connect(postAn); dry.connect(postAn);
+    postAn.connect(ac.destination);
+    setBypass(bypass);
+  }
+  await ac.resume();
+  buildSource();
+  playing = true;
+  $('play').textContent = 'STOP';
+}
+function stop(){
+  if (srcNode){ try { srcNode.stop(); } catch(e){} try { srcNode.disconnect(); } catch(e){} srcNode = null; }
+  playing = false;
+  $('play').textContent = 'START · pulse source';
+}
+function setBypass(b){
+  bypass = b;
+  $('byp').textContent = 'BYPASS: ' + (b ? 'ON' : 'off');
+  if (wet && dry){ wet.gain.value = b ? 0 : 1; dry.gain.value = b ? 1 : 0; }
+}
+$('play').onclick = () => playing ? stop() : start();
+$('byp').onclick  = () => setBypass(!bypass);
+$('mode').onclick = () => {
+  srcMode = (srcMode === 'sine') ? 'noise' : 'sine';
+  $('mode').textContent = 'SOURCE: ' + (srcMode === 'sine' ? 'sine-pulse' : 'noise-bursts');
+  if (playing) buildSource();
+};
+
+/* ---------------- analysis ---------------- */
+const DB_MIN = -60, DB_MAX = 6;
+const dbToY = (db, top, h) => top + h * (1 - (Math.max(DB_MIN, Math.min(DB_MAX, db)) - DB_MIN) / (DB_MAX - DB_MIN));
+const rmsDb = buf => {
+  let s = 0;
+  for (let i = 0; i < buf.length; i++) s += buf[i]*buf[i];
+  const r = Math.sqrt(s / buf.length);
+  return r > 1e-6 ? 20*Math.log10(r) : -Infinity;
+};
+// static compressor curve, WebAudio soft-knee convention
+function curveOut(x){
+  const T = P.th, R = P.ra, K = P.kn;
+  if (K > 0 && x > T - K/2 && x < T + K/2){
+    const d = x - T + K/2;
+    return x + (1/R - 1) * d*d / (2*K);
+  }
+  return x > T ? T + (x - T)/R : x;
+}
+
+const HIST = 240;
+const inHist = new Array(HIST).fill(-Infinity);
+const outHist = new Array(HIST).fill(-Infinity);
+let lastPush = 0;
+let baroLatch = 0, baroFire = 0, envGR = 0;
+
+/* ---------------- draw ---------------- */
+function draw(now){
+  requestAnimationFrame(draw);
+  if (!W) resize();
+
+  let inDb = -Infinity, outDb = -Infinity;
+  if (playing && preAn){
+    preAn.getFloatTimeDomainData(preBuf);
+    postAn.getFloatTimeDomainData(postBuf);
+    inDb = rmsDb(preBuf) + 3;   // +3 → approximate peak-ish reading for a sine
+    outDb = rmsDb(postBuf) + 3;
+  }
+  if (now - lastPush > 16){
+    lastPush = now;
+    inHist.push(inDb); inHist.shift();
+    outHist.push(outDb); outHist.shift();
+  }
+
+  const gr = comp ? comp.reduction : 0;                 // truth, from the node
+  const modelGr = isFinite(inDb) ? Math.min(0, curveOut(inDb) - inDb) : 0; // what the curve predicts
+  // our own attack/release follower drives the vessel so the delay is VISIBLE
+  const target = bypass ? 0 : modelGr;
+  const coef = target < envGR ? (1 - Math.exp(-0.016 / Math.max(0.005, P.at)))
+                              : (1 - Math.exp(-0.016 / Math.max(0.005, P.re)));
+  envGR += (target - envGR) * coef;
+
+  $('in_r').textContent = 'in: ' + (isFinite(inDb) ? inDb.toFixed(1) + ' dB' : '-inf dB');
+  $('gr').textContent   = 'GR: ' + (bypass ? '0.0 (bypassed)' : gr.toFixed(1) + ' dB');
+
+  const over = isFinite(inDb) && inDb > P.th;
+  if (over && baroLatch <= 0){ baroLatch = 1; baroFire = P.at * 1000; }
+  if (!over) baroLatch = 0;
+  if (baroFire > 0) baroFire -= 16;
+  const firing = over && baroFire <= 0 && !bypass;
+  $('bp').textContent = 'baroreceptors: ' + (bypass ? 'bypassed' : over ? (baroFire > 0 ? 'SENSING (' + Math.max(0,baroFire|0) + ' ms)' : 'FIRING') : 'idle');
+
+  g2.fillStyle = '#101018'; g2.fillRect(0, 0, W, H);
+
+  const pad = 12*DPR;
+  const laneH = Math.round(H * 0.40);
+  const curveW = Math.round(Math.min(220*DPR, W * 0.26));
+  const laneW = W - curveW - pad*3;
+  const laneX = pad, laneY = pad;
+
+  /* ---- PANEL 1: pressure lane — input vs threshold ---- */
+  g2.strokeStyle = '#1c1c26'; g2.lineWidth = 1*DPR;
+  g2.strokeRect(laneX, laneY, laneW, laneH);
+  g2.font = (10*DPR) + "px 'JetBrains Mono', monospace";
+
+  for (let db = 0; db >= DB_MIN; db -= 12){
+    const y = dbToY(db, laneY, laneH);
+    g2.globalAlpha = .18; g2.strokeStyle = '#E8E8F0';
+    g2.beginPath(); g2.moveTo(laneX, y); g2.lineTo(laneX + laneW, y); g2.stroke();
+    g2.globalAlpha = .4; g2.fillStyle = '#E8E8F0';
+    g2.fillText(db + '', laneX + 4*DPR, y - 3*DPR);
+    g2.globalAlpha = 1;
+  }
+
+  const thY = dbToY(P.th, laneY, laneH);
+  // overpressure zone — everything above the systolic line
+  g2.fillStyle = 'rgba(200,37,76,0.10)';
+  g2.fillRect(laneX, laneY, laneW, thY - laneY);
+
+  // input pressure trace
+  const step = laneW / HIST;
+  g2.strokeStyle = '#E8E8F0'; g2.globalAlpha = .75; g2.lineWidth = 1.4*DPR;
+  g2.beginPath();
+  let started = false;
+  for (let i = 0; i < HIST; i++){
+    const v = inHist[i];
+    if (!isFinite(v)){ started = false; continue; }
+    const x = laneX + i*step, y = dbToY(v, laneY, laneH);
+    started ? g2.lineTo(x, y) : g2.moveTo(x, y);
+    started = true;
+  }
+  g2.stroke(); g2.globalAlpha = 1;
+
+  // output trace — the clamped pressure
+  g2.strokeStyle = '#C8254C'; g2.lineWidth = 1.8*DPR;
+  g2.beginPath(); started = false;
+  for (let i = 0; i < HIST; i++){
+    const v = outHist[i];
+    if (!isFinite(v)){ started = false; continue; }
+    const x = laneX + i*step, y = dbToY(v, laneY, laneH);
+    started ? g2.lineTo(x, y) : g2.moveTo(x, y);
+    started = true;
+  }
+  g2.stroke();
+
+  // THE threshold line — thick, labelled, moves the instant you drag the slider
+  g2.strokeStyle = '#F5C16C'; g2.lineWidth = 2*DPR;
+  g2.setLineDash([6*DPR, 4*DPR]);
+  g2.beginPath(); g2.moveTo(laneX, thY); g2.lineTo(laneX + laneW, thY); g2.stroke();
+  g2.setLineDash([]);
+  g2.fillStyle = '#F5C16C';
+  g2.fillText('SYSTOLIC THRESHOLD  ' + P.th.toFixed(1) + ' dB',
+              laneX + laneW - 190*DPR, thY - 5*DPR);
+  g2.fillStyle = '#E8E8F0'; g2.globalAlpha = .5;
+  g2.fillText('pressure lane · white = input · red = after the vessel', laneX + 4*DPR, laneY + laneH - 5*DPR);
+  g2.globalAlpha = 1;
+
+  /* ---- PANEL 2: transfer curve (alive with the audio off) ---- */
+  const cX = laneX + laneW + pad, cY = laneY, cS = Math.min(curveW, laneH);
+  g2.strokeStyle = '#1c1c26'; g2.strokeRect(cX, cY, cS, cS);
+  const mapX = db => cX + cS * (db - DB_MIN) / (0 - DB_MIN);
+  const mapY = db => cY + cS * (1 - (db - DB_MIN) / (0 - DB_MIN));
+  g2.strokeStyle = '#E8E8F0'; g2.globalAlpha = .22; g2.lineWidth = 1*DPR;
+  g2.beginPath(); g2.moveTo(mapX(DB_MIN), mapY(DB_MIN)); g2.lineTo(mapX(0), mapY(0)); g2.stroke();
+  g2.globalAlpha = 1;
+  g2.strokeStyle = '#C8254C'; g2.lineWidth = 2*DPR;
+  g2.beginPath();
+  for (let db = DB_MIN; db <= 0; db += 0.5){
+    const x = mapX(db), y = mapY(Math.max(DB_MIN, curveOut(db)));
+    db === DB_MIN ? g2.moveTo(x, y) : g2.lineTo(x, y);
+  }
+  g2.stroke();
+  g2.strokeStyle = '#F5C16C'; g2.lineWidth = 1.5*DPR; g2.setLineDash([4*DPR,3*DPR]);
+  g2.beginPath(); g2.moveTo(mapX(P.th), cY); g2.lineTo(mapX(P.th), cY + cS); g2.stroke();
+  g2.setLineDash([]);
+  if (isFinite(inDb) && inDb > DB_MIN){
+    g2.fillStyle = '#FFFFFF';
+    g2.beginPath();
+    g2.arc(mapX(Math.min(0,inDb)), mapY(Math.max(DB_MIN, Math.min(0, curveOut(inDb)))), 4*DPR, 0, Math.PI*2);
+    g2.fill();
+  }
+  g2.fillStyle = '#E8E8F0'; g2.globalAlpha = .55;
+  g2.fillText('in → out  ·  ratio ' + P.ra.toFixed(1) + ':1  ·  knee ' + P.kn.toFixed(1),
+              cX + 5*DPR, cY + cS - 6*DPR);
+  g2.globalAlpha = 1;
+
+  /* ---- PANEL 3: the vessel ---- */
+  const vTop = laneY + laneH + pad*1.6;
+  const vH = H - vTop - pad;
+  const cy = vTop + vH/2;
+  const baseR = vH * 0.36;
+  const narrow = Math.min(1, Math.abs(envGR) / 24);
+  const r = baseR * (1 - 0.72*narrow);
+
+  g2.fillStyle = '#8B4A5E';
+  g2.fillRect(laneX, cy - baseR - 7*DPR, W - pad*2, 7*DPR);
+  g2.fillRect(laneX, cy + baseR,          W - pad*2, 7*DPR);
+
+  const grad = g2.createLinearGradient(0, cy - r, 0, cy + r);
+  grad.addColorStop(0, '#7a1830'); grad.addColorStop(.5, '#C8254C'); grad.addColorStop(1, '#7a1830');
+  g2.fillStyle = grad;
+  const x0 = laneX, x1 = W - pad;
+  const t = now / 200;
+  g2.beginPath();
+  for (let x = x0; x <= x1; x += 6*DPR){
+    const u = (x - x0) / (x1 - x0);
+    const wob = Math.sin(t + u*8) * 4*DPR * (1 - narrow*0.6);
+    x === x0 ? g2.moveTo(x, cy - r + wob) : g2.lineTo(x, cy - r + wob);
+  }
+  for (let x = x1; x >= x0; x -= 6*DPR){
+    const u = (x - x0) / (x1 - x0);
+    const wob = Math.sin(t + u*8 + Math.PI) * 4*DPR * (1 - narrow*0.6);
+    g2.lineTo(x, cy + r + wob);
+  }
+  g2.closePath(); g2.fill();
+
+  // corpuscles — speed up where the vessel is tight
+  g2.fillStyle = 'rgba(255,200,210,0.5)';
+  for (let i = 0; i < 26; i++){
+    const ph = (now/1000 * (0.25 + 0.5*narrow) + i/26) % 1;
+    const x = x0 + ph * (x1 - x0);
+    const y = cy + Math.sin(i*2.7) * r * 0.62;
+    g2.beginPath(); g2.arc(x, y, 2.4*DPR, 0, Math.PI*2); g2.fill();
+  }
+
+  // baroreceptors on the wall: dim = idle, amber = sensing, white flash = firing
+  const flash = firing ? 1 : (over ? 0.5 : 0.15);
+  for (const px of [0.18, 0.5, 0.82]){
+    const bx = x0 + px * (x1 - x0);
+    g2.fillStyle = firing ? '#FFFFFF' : '#F5C16C';
+    g2.globalAlpha = flash;
+    g2.beginPath(); g2.arc(bx, cy - baseR - 3.5*DPR, (5 + 3*flash)*DPR, 0, Math.PI*2); g2.fill();
+    g2.beginPath(); g2.arc(bx, cy + baseR + 3.5*DPR, (5 + 3*flash)*DPR, 0, Math.PI*2); g2.fill();
+  }
+  g2.globalAlpha = 1;
+
+  g2.fillStyle = '#E8E8F0'; g2.globalAlpha = .55;
+  g2.fillText('vessel diameter = gain  ·  narrowing follows attack ' + (P.at*1000|0) +
+              ' ms / release ' + (P.re*1000|0) + ' ms  ·  modelled GR ' + envGR.toFixed(1) + ' dB',
+              x0 + 4*DPR, vTop + 12*DPR);
+  g2.globalAlpha = 1;
+}
+resize();
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
