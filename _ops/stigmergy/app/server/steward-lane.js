@@ -145,6 +145,51 @@ export function stewardRow({ entry, state, manifest, board, palaceRoot }) {
   };
 }
 
+/**
+ * The run cap for a steward: an explicit override, else the manifest's
+ * `stopping_conditions.max_iterations`, else 1. (`max_iterations` was validated
+ * but never enforced before 2026-09-23; the run gives it its meaning.)
+ */
+export function runCapFor(manifest, override = null) {
+  if (Number.isInteger(override) && override > 0) return override;
+  const m = manifest && manifest.stopping_conditions && manifest.stopping_conditions.max_iterations;
+  return Number.isInteger(m) && m > 0 ? m : 1;
+}
+
+/**
+ * Decide the next step of a run from the cycle's stop_hint. Returns the next
+ * run descriptor to fire, or null when the run ends.
+ *
+ *   shipped              → continue while position < cap
+ *   barren               → retry once (retryOfBarren), then stop (stalled)
+ *   blocking_ask         → stop (Loudon's move)
+ *   interactive_session  → stop (a conversation, not a cycle)
+ *   spawn_failed         → stop at once, no retry — the worker never ran
+ *                          (retrying an environment failure just repeats it)
+ */
+export function nextRunStep(run, stopHint) {
+  const r = run || { cap: 1, position: 1, retried: false };
+  if (stopHint === 'spawn_failed') return null;
+  if (stopHint === 'barren') {
+    if (r.retried) return null;
+    return { cap: r.cap, position: r.position, retried: true, retryOfBarren: true };
+  }
+  if (stopHint === 'shipped' && r.position < r.cap) {
+    return { cap: r.cap, position: r.position + 1, retried: false };
+  }
+  return null;
+}
+
+/** Why a run ended, in one word for the log + the deck. */
+export function stopReason(run, stopHint) {
+  if (stopHint === 'spawn_failed') return 'spawn_failed';
+  if (stopHint === 'barren') return run && run.retried ? 'stalled' : 'barren';
+  if (stopHint === 'blocking_ask') return 'paused_on_loudon';
+  if (stopHint === 'interactive_session') return 'wants_a_session';
+  if (stopHint === 'shipped') return 'run_cap';
+  return stopHint || 'unknown';
+}
+
 // ── the lane ────────────────────────────────────────────────────────────────
 
 /**
@@ -184,6 +229,8 @@ export function createStewardLane(opts = {}) {
   let queue = [];
   let batch = { total: 0, done: 0 };
   let current = null;
+  let currentRun = null;          // { name, cap, position, retried, cycle_n } while a run is live
+  let pendingCapOverride = null;  // advance({ maxCycles }) → applies to the next fireOne only
 
   const realArgv = (prompt) => stewardArgv(prompt, pendingModel);
 
@@ -214,9 +261,11 @@ export function createStewardLane(opts = {}) {
   // a throw can never escape into the exit handler -- that would crash Vite.
   function reap(ctx) {
     const meta = ctx && ctx.meta;
+    const run = (meta && meta.run) || { cap: 1, position: 1, retried: false };
+    let next = null; // the next fire of THIS steward's run, if any
     try {
       if (dryReap) {
-        writeLastCycle({ ok: true, stub: true, name: meta && meta.home, cycle_n: meta && meta.cycleN, ts: meta && meta.tsNow });
+        writeLastCycle({ ok: true, stub: true, name: meta && meta.home, cycle_n: meta && meta.cycleN, ts: meta && meta.tsNow, run });
         return;
       }
       if (!meta || !meta.transcriptPath) throw new Error('reap: missing fire metadata');
@@ -230,12 +279,30 @@ export function createStewardLane(opts = {}) {
         dispatchedBy: 'bbs-actuator',
         boardPath,
       });
-      writeLastCycle({ ok: true, name: meta.home, cycle_n: meta.cycleN, ts: meta.tsNow, ...summary });
+      // The run controller (2026-09-23). A steward activation is a RUN of up
+      // to `cap` cycles: keep firing the same steward while it ships and
+      // nothing is waiting on Loudon. A barren cycle earns exactly one retry
+      // (with a mandate that says so); a second barren cycle is STALLED
+      // (processCycle flagged state + scroll) and the run stops. A paused ask
+      // (`blocking: true`) or a live-session request also ends the run — the
+      // next move is Loudon's, not another cycle.
+      next = nextRunStep(run, summary.stop_hint);
+      writeLastCycle({
+        ok: summary.stop_hint !== 'spawn_failed', name: meta.home, cycle_n: meta.cycleN, ts: meta.tsNow, ...summary,
+        ...(summary.stop_hint === 'spawn_failed' ? { error: 'the worker never spoke — see the lane log (auth? permission mode? root?); the cycle was not counted' } : {}),
+        run: { ...run, stop_hint: summary.stop_hint, continued: !!next, stopped_because: next ? null : stopReason(run, summary.stop_hint) },
+      });
+      logLine(`run: ${meta.home} cycle ${meta.cycleN} (${run.position}/${run.cap}) -> ${summary.stop_hint}${next ? (next.retryOfBarren ? ' -> retrying once' : ` -> continuing (${next.position}/${next.cap})`) : ` -> run ends (${stopReason(run, summary.stop_hint)})`}`);
     } catch (e) {
       logLine(`ERROR: steward reap failed: ${e.message}`);
-      writeLastCycle({ ok: false, name: meta && meta.home, error: e.message, ts: meta && meta.tsNow });
+      writeLastCycle({ ok: false, name: meta && meta.home, error: e.message, ts: meta && meta.tsNow, run });
     } finally {
-      drainQueue();
+      if (next && meta && meta.home) {
+        const r = fireOne(meta.home, next);
+        if (!r.fired) { logLine(`run: could not continue ${meta.home}: ${r.msg}`); drainQueue(); }
+      } else {
+        drainQueue();
+      }
     }
   }
 
@@ -243,6 +310,7 @@ export function createStewardLane(opts = {}) {
   function drainQueue() {
     if (batch.total > 0 && batch.done < batch.total) batch.done += 1;
     current = null;
+    currentRun = null;
     if (queue.length > 0) {
       const next = queue.shift();
       fireOne(next);
@@ -252,9 +320,10 @@ export function createStewardLane(opts = {}) {
     }
   }
 
-  // Resolve, build the prompt, and fire ONE steward cycle. Returns a structured
-  // result; never throws.
-  function fireOne(name) {
+  // Resolve, build the prompt, and fire ONE steward cycle — the first of a run
+  // or a continuation of one (`run` = { cap, position, retried, retryOfBarren }).
+  // Returns a structured result; never throws.
+  function fireOne(name, run = null) {
     let registry;
     try { registry = readRegistry(registryPath); } catch (e) {
       return { ok: false, fired: false, found: false, msg: `registry unreadable: ${e.message}`, name };
@@ -275,6 +344,9 @@ export function createStewardLane(opts = {}) {
     const cycleN = iteration + 1;
     const tsNow = new Date().toISOString();
     const model = manifest.model?.name || FALLBACK_MODEL;
+    // The run cap: an explicit override, else the manifest's
+    // stopping_conditions.max_iterations (10 by default since 2026-09-23), else 1.
+    const thisRun = run || { cap: runCapFor(manifest, pendingCapOverride), position: 1, retried: false };
 
     let prompt;
     try {
@@ -285,6 +357,9 @@ export function createStewardLane(opts = {}) {
         boardPath,
         skillRoot: SKILL_ROOT,
         today: tsNow.slice(0, 10),
+        runPosition: thisRun.position,
+        runCap: thisRun.cap,
+        retryOfBarren: !!thisRun.retryOfBarren,
       }));
     } catch (e) {
       return { ok: false, fired: false, found: true, msg: `could not build cycle prompt: ${e.message}`, name };
@@ -295,10 +370,11 @@ export function createStewardLane(opts = {}) {
 
     const r = actuator.fire(prompt, {
       transcriptPath,
-      meta: { agentDir: entry.dir, home: entry.home, cycleN, tsNow, transcriptPath, model },
+      meta: { agentDir: entry.dir, home: entry.home, cycleN, tsNow, transcriptPath, model, run: thisRun },
     });
     current = r.fired ? name : null;
-    return { ok: !!r.fired, fired: !!r.fired, found: true, msg: r.msg, name, cycle_n: cycleN, model };
+    currentRun = r.fired ? { name, ...thisRun, cycle_n: cycleN } : null;
+    return { ok: !!r.fired, fired: !!r.fired, found: true, msg: r.msg, name, cycle_n: cycleN, model, run: thisRun };
   }
 
   // ── public surface ──
@@ -325,7 +401,7 @@ export function createStewardLane(opts = {}) {
   }
 
   /** Advance one steward by a cycle. Refuses (busy) if a worker is alive. */
-  function advance({ name } = {}) {
+  function advance({ name, maxCycles } = {}) {
     if (typeof name !== 'string' || name.trim() === '') {
       return { ok: false, fired: false, found: false, msg: 'missing steward name' };
     }
@@ -335,11 +411,12 @@ export function createStewardLane(opts = {}) {
     // Not part of a batch: clear batch state so status() reads cleanly.
     queue = [];
     batch = { total: 0, done: 0 };
+    pendingCapOverride = Number.isInteger(maxCycles) && maxCycles > 0 ? maxCycles : null;
     return fireOne(name);
   }
 
   /** Advance every ready steward serially (or an explicit `names` list). */
-  function advanceAll({ names } = {}) {
+  function advanceAll({ names, maxCycles } = {}) {
     if (actuator.isAlive().running) {
       return { ok: false, busy: true, msg: 'a steward cycle is already running', ...status() };
     }
@@ -349,6 +426,7 @@ export function createStewardLane(opts = {}) {
     }
     queue = targets.slice();
     batch = { total: targets.length, done: 0 };
+    pendingCapOverride = Number.isInteger(maxCycles) && maxCycles > 0 ? maxCycles : null;
     const first = queue.shift();
     const r = fireOne(first);
     return { ok: r.ok, queued: targets, first: r, ...status() };
@@ -360,6 +438,7 @@ export function createStewardLane(opts = {}) {
     return {
       ...a,
       current,
+      current_run: currentRun,
       queue: queue.slice(),
       batch: { total: batch.total, done: batch.done, remaining: queue.length },
       last_cycle: readLastCycle(),

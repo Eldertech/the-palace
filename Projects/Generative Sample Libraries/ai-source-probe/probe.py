@@ -1,11 +1,17 @@
-"""Matrix runner: (instrument × pitch × adapter × seed) -> results.jsonl.
+"""AI-source probe — render and grade one arm of the comparison.
 
-Usage:
-    python3 probe.py --adapter mock          # smoke-test the pipeline
-    python3 probe.py --adapter stable_audio  # real SA3 sweep (needs wire-up)
+Rendering and grading are separate steps on purpose: each model renders in
+its own venv (SA3's, MusicGen's), and grading runs in the probe venv that
+has librosa. run-on-mac.sh strings them together.
 
-Emits results.jsonl (one row per render) and report.html (inline audio
-players + cents-error table) into the bundle root.
+    python3 probe.py render --adapter stable_audio [--quick]
+    python3 probe.py verify --adapter stable_audio
+    python3 probe.py run    --adapter mock            # both, one process
+
+Adapters: crystal (palace reference), mock + mock_flawed (grader tests),
+stable_audio, musicgen_melody,
+musicgen_text. Output: renders.<adapter>.jsonl, results.<adapter>.jsonl,
+WAVs under samples/<adapter>/ (or --samples-root).
 """
 from __future__ import annotations
 import argparse
@@ -14,98 +20,97 @@ import json
 import os
 import sys
 import time
+import traceback
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from verify import verify  # noqa: E402
+
+ADAPTERS = ["mock", "mock_flawed", "crystal", "stable_audio", "musicgen_melody", "musicgen_text"]
 
 
-def load_matrix() -> dict:
-    return json.loads((HERE / "matrix.json").read_text())
+def load_matrix(quick: bool = False) -> dict:
+    m = json.loads((HERE / "matrix.json").read_text())
+    if quick:
+        q = m["quick"]
+        m["instruments"] = [i for i in m["instruments"] if i["name"] in q["instruments"]]
+        m["seeds"] = q["seeds"]
+    return m
 
 
-def load_adapter(name: str):
-    return importlib.import_module(f"adapters.{name}")
+def _rel(p: Path) -> str:
+    try:
+        return str(p.resolve().relative_to(HERE))
+    except ValueError:
+        return str(p.resolve())
 
 
-def run(adapter_name: str, dry_run: bool = False) -> Path:
-    matrix = load_matrix()
-    adapter = load_adapter(adapter_name)
-    out_root = HERE / "samples" / adapter_name
-    out_root.mkdir(parents=True, exist_ok=True)
-    results_path = HERE / f"results.{adapter_name}.jsonl"
-
-    with results_path.open("w") as out:
-        for inst in matrix["instruments"]:
-            for pitch in matrix["pitches"]:
-                for seed in matrix["seeds"]:
-                    fn = f"{inst['name']}_{pitch['name']}_s{seed}.wav"
-                    wav_path = str(out_root / fn)
-                    t0 = time.time()
-                    try:
-                        meta = adapter.render(
-                            instrument=inst["name"],
-                            target_hz=pitch["hz"],
-                            seed=seed,
-                            out_path=wav_path,
-                            **({"note_name": pitch["name"],
-                                "prompt_hint": inst["prompt_hint"]}
-                               if adapter_name != "mock" else {}),
-                        )
-                    except NotImplementedError as e:
-                        row = {"instrument": inst["name"], "pitch": pitch["name"],
-                               "target_hz": pitch["hz"], "seed": seed,
-                               "adapter": adapter_name, "status": "not_wired",
-                               "note": str(e)}
-                        out.write(json.dumps(row) + "\n"); continue
-                    render_sec = time.time() - t0
-                    v = verify(wav_path, pitch["hz"]) if not dry_run else {}
-                    row = {"instrument": inst["name"], "pitch": pitch["name"],
-                           "target_hz": pitch["hz"], "seed": seed,
-                           "adapter": adapter_name, "wav": wav_path,
-                           "render_sec": render_sec, "meta": meta, **v}
+def render(adapter_name: str, quick: bool = False, samples_root: str | None = None) -> Path:
+    matrix = load_matrix(quick)
+    adapter = importlib.import_module(f"adapters.{adapter_name}")
+    root = Path(samples_root) if samples_root else HERE / "samples"
+    out_dir = root / adapter_name
+    out_dir.mkdir(parents=True, exist_ok=True)
+    log = HERE / f"renders.{adapter_name}.jsonl"
+    cells = [(i, p, s) for i in matrix["instruments"] for p in matrix["pitches"]
+             for s in matrix["seeds"]]
+    ok = 0
+    with log.open("w") as out:
+        for n, (inst, pitch, seed) in enumerate(cells, 1):
+            wav = out_dir / f"{inst['name']}_{pitch['name']}_s{seed}.wav"
+            row = {"adapter": adapter_name, "instrument": inst["name"],
+                   "pitch": pitch["name"], "target_hz": pitch["hz"],
+                   "midi": pitch["midi"], "seed": seed, "wav": _rel(wav)}
+            t0 = time.time()
+            try:
+                meta = adapter.render(instrument=inst["name"], target_hz=pitch["hz"],
+                                      seed=seed, out_path=str(wav),
+                                      note_name=pitch["name"],
+                                      prompt_hint=inst["prompt_hint"])
+                row.update(status="ok", meta=meta)
+                ok += 1
+            except Exception as e:  # one bad cell should not sink a long run
+                row.update(status="error", error=f"{type(e).__name__}: {e}")
+                if ok == 0 and n == 1:   # the first cell failing means the arm is not wired
                     out.write(json.dumps(row) + "\n")
-                    print(f"[{adapter_name}] {inst['name']:8s} {pitch['name']} s{seed}  "
-                          f"target={pitch['hz']:.1f}Hz  "
-                          f"cents_err={v.get('cents_err')}  voiced={v.get('voiced_pct')}")
-    write_report(adapter_name, results_path, matrix)
-    return results_path
+                    traceback.print_exc()
+                    sys.exit(f"[{adapter_name}] first render failed — arm not wired. See {log.name}.")
+            row["render_sec"] = round(time.time() - t0, 3)
+            out.write(json.dumps(row) + "\n")
+            out.flush()
+            print(f"[{adapter_name}] {n:3d}/{len(cells)} {inst['name']:8s} {pitch['name']} "
+                  f"s{seed}  {row['status']}  {row['render_sec']:.1f}s")
+    print(f"[{adapter_name}] rendered {ok}/{len(cells)} → {log.name}")
+    return log
 
 
-def write_report(adapter_name: str, results_path: Path, matrix: dict) -> None:
-    rows = [json.loads(l) for l in results_path.read_text().splitlines() if l.strip()]
-    acc = matrix["acceptance"]
-    usable_pct = (sum(1 for r in rows if r.get("usable")) / max(1, len(rows)))
-    verdict = ("PASS" if usable_pct >= acc["min_cells_pct"] else "FAIL")
-    html = [f"<!doctype html><meta charset='utf-8'>",
-            f"<title>AI-source probe · {adapter_name}</title>",
-            "<style>body{font:14px/1.4 -apple-system,sans-serif;max-width:1000px;margin:2em auto;padding:0 1em}",
-            "table{border-collapse:collapse;width:100%}td,th{border:1px solid #ddd;padding:.4em .6em;text-align:left}",
-            ".ok{background:#e8f5e9}.bad{background:#ffebee}.warn{background:#fff8e1}audio{width:180px}</style>",
-            f"<h1>AI-source probe — {adapter_name}</h1>",
-            f"<p>Cells usable: <b>{usable_pct*100:.0f}%</b> · gate {acc['min_cells_pct']*100:.0f}% · <b>{verdict}</b></p>",
-            "<table><tr><th>instrument</th><th>pitch</th><th>seed</th>",
-            "<th>target Hz</th><th>measured Hz</th><th>cents err</th>",
-            "<th>voiced %</th><th>audio</th></tr>"]
-    for r in rows:
-        cls = "ok" if r.get("usable") else ("warn" if r.get("voiced_pct", 0) > 0.3 else "bad")
-        wav_rel = os.path.relpath(r.get("wav", ""), HERE) if r.get("wav") else ""
-        html.append(
-            f"<tr class='{cls}'><td>{r['instrument']}</td><td>{r['pitch']}</td>"
-            f"<td>{r['seed']}</td><td>{r['target_hz']:.1f}</td>"
-            f"<td>{(r.get('measured_hz') or 0):.1f}</td>"
-            f"<td>{r.get('cents_err')}</td><td>{r.get('voiced_pct')}</td>"
-            f"<td><audio controls src='{wav_rel}'></audio></td></tr>")
-    html.append("</table>")
-    (HERE / f"report.{adapter_name}.html").write_text("\n".join(html))
+def verify_all(adapter_name: str) -> Path:
+    from verify import verify
+    acc = json.loads((HERE / "matrix.json").read_text())["acceptance"]
+    log = HERE / f"renders.{adapter_name}.jsonl"
+    res = HERE / f"results.{adapter_name}.jsonl"
+    rows = [json.loads(l) for l in log.read_text().splitlines() if l.strip()]
+    with res.open("w") as out:
+        for r in rows:
+            if r.get("status") == "ok":
+                wav = Path(r["wav"]) if os.path.isabs(r["wav"]) else HERE / r["wav"]
+                r.update(verify(str(wav), r["target_hz"], acc))
+            else:
+                r.update(grade="error", reason=r.get("error", "render failed"))
+            out.write(json.dumps(r) + "\n")
+            print(f"[{adapter_name}] {r['instrument']:8s} {r['pitch']} s{r['seed']}  "
+                  f"{r.get('grade'):9s} cents={r.get('cents_err')}  {r.get('reason', '')}")
+    return res
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--adapter", default="mock",
-                    choices=["mock", "stable_audio", "musicgen", "audioldm2"])
-    ap.add_argument("--dry-run", action="store_true")
-    args = ap.parse_args()
-    p = run(args.adapter, dry_run=args.dry_run)
-    print(f"results → {p}")
+    ap.add_argument("step", choices=["render", "verify", "run"])
+    ap.add_argument("--adapter", required=True, choices=ADAPTERS)
+    ap.add_argument("--quick", action="store_true", help="2 instruments × 4 pitches × 1 seed")
+    ap.add_argument("--samples-root", default=None)
+    a = ap.parse_args()
+    if a.step in ("render", "run"):
+        render(a.adapter, a.quick, a.samples_root)
+    if a.step in ("verify", "run"):
+        verify_all(a.adapter)

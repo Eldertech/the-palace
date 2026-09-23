@@ -10,8 +10,13 @@
 //   4. reconciles the steward's asks against the board (the board is the single
 //      source of truth for decision state — open vs. resolved),
 //   5. updates state.json (pure runtime now) + history.jsonl, and
-//   6. materializes the bundle-local plan.md read-model from the board-derived
-//      decision view (never from state, which no longer carries the arrays).
+//   6. materializes the bundle-local `[Entry] — scroll.md` (the project's front
+//      door — Now zone + append-only making trail) from the board-derived view.
+//      The scroll replaced the older plan.md read-model on 2026-09-23.
+//   7. returns a `stop_hint` so a multi-cycle run (steward-lane.js) knows
+//      whether to keep going: 'shipped' | 'barren' | 'blocking_ask' |
+//      'interactive_session' | 'spawn_failed' (the worker never spoke — the
+//      cycle is not counted at all).
 //
 // Promoted from /tmp/process-cycle-v2.mjs (the 2026-05-27 batch finalizer).
 // Two changes from that throwaway: the palace root is configurable (no
@@ -27,8 +32,7 @@ import { buildHealthBlock } from './health.js';
 import { validateForPosting } from '@stigmergy/core/schema';
 import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 import { scanBundleMedia, applyArtifactBackstop, lintArtifactReferences } from './artifact-backstop.js';
-import { materializePlan } from './plan-file.js';
-import { readEntryMeta } from './entry-frontmatter.js';
+import { materializeScroll } from './scroll-file.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
 
@@ -214,6 +218,29 @@ export function processCycle(opts) {
   const home = manifest.home;
   const model = modelOverride || manifest.model?.name || 'claude-opus-5-5';
 
+  // ── A worker that never spoke is a SPAWN FAILURE, not a barren cycle ─────
+  // (found 2026-09-23: `claude -p --permission-mode bypassPermissions` refuses
+  // to run as root, exits in 400 ms with an empty transcript, and the lane
+  // counted it as a barren cycle, retried once, and marked four stewards
+  // STALLED in six seconds). A transcript with zero assistant turns means the
+  // model was never reached: the steward did not fail to ship — nothing ran.
+  // So: no iteration advance, no CYCLE_COMPLETE, no barren accounting, no
+  // stall. Record the failure in history so it is greppable, refresh nothing
+  // else, and hand the lane a `spawn_failed` stop hint.
+  if ((usage.n_assistant_turns || 0) === 0) {
+    const histPath = join(agentDirAbs, 'history.jsonl');
+    appendFileSync(histPath, JSON.stringify({
+      event: 'CYCLE_SPAWN_FAILED', ts: tsNow, attempted_cycle: cycleN, dispatched_by: dispatchedBy, model,
+      note: 'the worker produced no assistant turns — the model was never reached (auth, permission mode, missing binary); not a barren cycle, iteration not advanced',
+    }) + '\n');
+    return {
+      posted_ids: [], valid_count: 0, invalid_ids: [], errors: [{ spawn_failed: true, transcriptPath }],
+      pending_after: null, resolved_count_after: null, backstop: [], artifact_lint_warnings: [],
+      stop_hint: 'spawn_failed', barren: false, stalled: false, spawn_failed: true,
+      scroll: { written: false, reason: 'spawn-failed' },
+    };
+  }
+
   const health = buildHealthBlock({ model, note: buildCycleNote(usage, basename(agentDirAbs), cycleN) });
 
   // ── Layer 2: inline-asset backstop ───────────────────────────────────────
@@ -284,6 +311,23 @@ export function processCycle(opts) {
   delete state.resolved_requests;
   delete state.stewardship;
 
+  // Barren = the cycle appended nothing. Two barren cycles in a row = STALLED:
+  // the loop is broken (no card, no grant, nothing for the next cycle to act
+  // on) and the lane has already spent its one retry. The flag is written here
+  // — the single writer of state.json — and cleared the moment a cycle ships.
+  const barren = appended.length === 0;
+  const prevBarren = (() => {
+    try {
+      const lines = readFileSync(join(agentDirAbs, 'history.jsonl'), 'utf8').trim().split('\n').filter(Boolean);
+      for (let i = lines.length - 1; i >= 0; i--) {
+        let e; try { e = JSON.parse(lines[i]); } catch { continue; }
+        if (e.event === 'CYCLE_COMPLETE') return !(Array.isArray(e.posted_messages) && e.posted_messages.length);
+      }
+    } catch { /* no history */ }
+    return false;
+  })();
+  const stalled = barren && prevBarren;
+
   state.iteration = iteration;
   state.last_active = tsNow;
   state.last_read_cursor = appended[appended.length - 1] || state.last_read_cursor;
@@ -291,12 +335,13 @@ export function processCycle(opts) {
     context_pct: health.context_pct ?? null,
     avg_output_tokens_last_5: null,
     duplicate_flags: 0,
-    // A cycle that emitted nothing broke the "every cycle ends with a Trickster
-    // ask" rule — count it, and let the steward's dot go yellow rather than
-    // reporting green health for a cycle that did no work.
-    posting_discipline_violations: appended.length === 0 ? 1 : 0,
+    // A cycle that emitted nothing broke the "every cycle ships a made thing"
+    // rule — count it, and let the steward's dot go yellow (red once stalled)
+    // rather than reporting green health for a cycle that did no work.
+    posting_discipline_violations: barren ? 1 : 0,
     max_tokens_hits: 0,
-    score: appended.length === 0 && health.score === 'green' ? 'yellow' : health.score,
+    score: stalled ? 'red' : (barren && health.score === 'green' ? 'yellow' : health.score),
+    stalled,
   };
   if (cycleNotesKey) {
     state._pilot_metadata = state._pilot_metadata || {};
@@ -313,37 +358,36 @@ export function processCycle(opts) {
     // A barren cycle (zero messages emitted) violates the standing steward rule
     // that every cycle ends with a Trickster ask. Record it as its own event and
     // a distinct stop_reason so it is greppable and never reads as a clean run.
-    ...(appended.length === 0
-      ? [{ event: 'CYCLE_BARREN', ts: tsNow, iteration, note: 'posted no messages — no Trickster ask, so no card and no grant can come back; the loop stalls until this steward is re-run' }]
+    ...(barren
+      ? [{ event: 'CYCLE_BARREN', ts: tsNow, iteration, stalled, note: stalled
+          ? 'posted no messages for the second cycle running — STALLED; the lane stops the run and the scroll flags it'
+          : 'posted no messages — nothing shipped, no card; the lane retries once before calling the steward stalled' }]
       : []),
-    { event: 'CYCLE_COMPLETE', ts: tsNow, iteration, stop_reason: appended.length === 0 ? 'no_messages' : 'end_turn', posted_messages: appended, pending_after: stillPending.map((p) => p.request_id) },
+    { event: 'CYCLE_COMPLETE', ts: tsNow, iteration, stop_reason: barren ? 'no_messages' : 'end_turn', posted_messages: appended, pending_after: stillPending.map((p) => p.request_id) },
   ];
   for (const e of events) appendFileSync(histPath, JSON.stringify(e) + '\n');
 
-  // ── Materialize the bundle-local plan read-model (Bundle-Local Stewardship Phase 1b/1c) ──
-  // Write `[Entry] — plan.md` into the entry's bundle from the board-derived
-  // decision view + the history tail we just appended. Additive and defensive:
-  // it runs AFTER state.json/history.jsonl are written, so a failure here never
-  // costs the cycle its runtime state. `stage` is read LIVE from the entry's
-  // frontmatter and `pending`/`resolved` are passed straight from the board
-  // reconcile — neither is read from the (now slim) state.json. That is the
-  // single-source-of-truth half of the migration (Phase 1a + SSOT cutover).
-  let plan;
+  // ── The run's stop hint (multi-cycle runs, 2026-09-23) ───────────────────
+  // A run keeps cycling the same steward while it ships and nothing is waiting
+  // on Loudon. It stops on: a barren cycle (the lane retries once), a
+  // RESOURCE_REQUEST that pauses the steward (`blocking: true`), or a request
+  // for a live session (the next move is a conversation, not a cycle).
+  const askedBlocking = valid.some((m) => m.type === 'RESOURCE_REQUEST' && m.payload && m.payload.blocking === true);
+  const askedSession = valid.some((m) => m.type === 'RESOURCE_REQUEST' && m.payload && m.payload.kind === 'interactive_session');
+  const stop_hint = barren ? 'barren' : askedSession ? 'interactive_session' : askedBlocking ? 'blocking_ask' : 'shipped';
+
+  // ── Materialize the bundle-local scroll (the project's front door) ────────
+  // Write `[Entry] — scroll.md` into the entry's bundle: the Now zone from the
+  // board-derived view + the state we just wrote, and one new making section
+  // per shipped message this cycle. Additive and defensive: it runs AFTER
+  // state.json/history.jsonl are written, so a failure here never costs the
+  // cycle its runtime state. Everything it shows is read live (entry
+  // frontmatter, the board, git) — never from a copy.
+  let scroll;
   try {
-    const meta = readEntryMeta(palaceRoot, home);
-    plan = materializePlan({
-      palaceRoot,
-      home,
-      state,
-      stage: meta?.stage,
-      tsNow,
-      iteration,
-      historyPath: histPath,
-      pending: stillPending,
-      resolved: nowResolved,
-    });
+    scroll = materializeScroll({ palaceRoot, home, agentDir: agentDirAbs, boardPath: boardFile, tsNow });
   } catch (e) {
-    plan = { written: false, reason: `error: ${e.message}` };
+    scroll = { written: false, reason: `error: ${e.message}` };
   }
 
   return {
@@ -357,8 +401,12 @@ export function processCycle(opts) {
     backstop,
     // Layer 3: declared-but-unreferenced artifact warnings (advisory only).
     artifact_lint_warnings,
-    // Bundle-Local Stewardship: where the materialized plan read-model landed.
-    plan,
+    // The run controller's read: keep going, retry, or stop.
+    stop_hint,
+    barren,
+    stalled,
+    // Where the project's scroll landed (replaces the plan.md read-model).
+    scroll,
   };
 }
 

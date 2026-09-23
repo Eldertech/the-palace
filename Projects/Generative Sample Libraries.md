@@ -326,6 +326,7 @@ Wavetable formats moved to [[Generative Wavetable Libraries]] on 2026-05-02.
 
 This page is tended by a permanent steward and **may lag its live state** — the steward has made decisions and built artifacts not yet consolidated into the body above. Current truth lives in the log:
 
+- **Scroll (the live front door):** [[Generative Sample Libraries — scroll]] — where it stands now, standing orders, and everything shipped, newest first; open it on STIGMERGY's PROJECTS deck
 - **Steward state + history:** `_ops/agents/permanent/generative-sample-libraries/`
 - **Live thread (BBS):** session `permanent-stewardship-2026-05-03` — open in STIGMERGY
 - **As of last consolidation:** cycle 17 (2026-06-23) · no blocking auditions · Phase 3 sources one and two shipped (Crystal Hexagonal · Shepard-tone) · Interview skill `status: active`, user-skill-space deposit still pending
