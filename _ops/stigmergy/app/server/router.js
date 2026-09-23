@@ -12,6 +12,7 @@ import { entriesRoutes } from './api/entries.js';
 import { logRoutes } from './api/log.js';
 import { workerRoutes } from './api/worker.js';
 import { stewardsRoutes } from './api/stewards.js';
+import { projectsRoutes } from './api/projects.js';
 import { cardsRoutes } from './api/cards.js';
 import { digestRoutes } from './api/digest.js';
 import { entrySaveRoutes } from './api/entry-save.js';
@@ -29,6 +30,7 @@ const FAMILIES = [
   logRoutes,
   workerRoutes,
   stewardsRoutes,
+  projectsRoutes,
   cardsRoutes,
   digestRoutes,
   entrySaveRoutes,

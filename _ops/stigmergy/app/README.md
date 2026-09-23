@@ -109,6 +109,31 @@ rendering on any message type, no validator/schema change:
   `choice` or `ranking`) correlated to the card — the asking agent reads the
   result. Picking writes only on `SEND`.
 
+## The PROJECTS deck + project scrolls (2026-09-23)
+
+The STEWARDS roster became the **PROJECTS** deck (`[P]`; `W` and `?deck=stewards`
+still land there). Every `type: project` entry is one row — stewarded or not —
+grouped by what it needs: *needs you* (open asks / a running cycle) · *ready to
+advance* (an answer filed since the steward last ran) · *stalled* (two barren
+cycles) · *tended* · *no steward*. The signal column is computed by the same
+rule as the scroll's Now zone (`server/projects.js` → the orchestrator's
+`computeNow`), so the table and the scroll never disagree.
+
+Click a name to open the project's **scroll** (`[Entry] — scroll.md` in its
+bundle, the front door that replaced `plan.md`): the **Now** zone regenerated on
+every fetch, the project's **open asks** as the same TricksterCards the
+TRICKSTER deck uses, **Standing Orders** (Loudon's zone, editable only here in
+the terminal, read by the steward at the top of every cycle), and **The making**
+(the trail, newest first, media inline). Advancing fires a *run* — up to the
+manifest's `stopping_conditions.max_iterations` consecutive cycles while the
+steward ships and nothing waits on Loudon.
+
+- `GET /api/projects` — the rows + the lane's worker status.
+- `GET /api/projects/scroll?home=<Title>[&write=1]` — the scroll with a live Now
+  zone (in memory; `write=1` persists it).
+- `PUT /api/projects/orders` `{ home, orders }` — write Standing Orders.
+- `POST /api/steward/advance` `{ name, max_cycles? }` — start a run.
+
 ## Run
 
 From this directory (`_ops/stigmergy/app/`):
