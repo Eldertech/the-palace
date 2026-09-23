@@ -62,7 +62,7 @@ describe('launchInteractive (server)', () => {
     // `open`ed.
     const script = readFileSync(join(dir, 'launch.command'), 'utf8');
     expect(script).toContain(`cd '/Users/x/The Palace'`);
-    expect(script).toContain(`claude --model 'claude-opus-4-8' --effort 'high' --permission-mode 'acceptEdits' "$(cat '${join(dir, 'prompt.txt')}')"`);
+    expect(script).toContain(`claude --model 'claude-opus-5-5' --effort 'high' --permission-mode 'acceptEdits' "$(cat '${join(dir, 'prompt.txt')}')"`);
     expect(script).toContain(`rm -rf '${dir}'`);
     // The launched session opens in acceptEdits (low-friction, like a configured
     // desktop session) and prints the /desktop nudge once at startup.

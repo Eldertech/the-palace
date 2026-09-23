@@ -19,7 +19,7 @@ set -uo pipefail
 # ── config ──────────────────────────────────────────────────────────────────
 PALACE="/Users/loudonstearns/Documents/The Palace"   # MAIN worktree (where stewards + tools live)
 INTERVAL_DAYS=2                                       # every-other-morning; set 1 for daily
-MODEL="opus"                                          # richer voice over many cycles; pin to claude-opus-4-7 if you prefer
+MODEL="claude-opus-5-5"                               # exact id — the `opus` alias has lagged the latest Opus
 CLAUDE_BIN="${CLAUDE_BIN:-claude}"                    # if launchd can't find it, hardcode: which claude
 
 # ── make `claude`/node resolvable under launchd's minimal environment ────────

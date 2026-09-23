@@ -27,7 +27,7 @@
 //   --remainder-baton <p>  baton path for the remainder (default: reuse the entry's)
 //   --from <page>          who closed it (default: the claim's author, else entry)
 //   --note <text>          how the move landed; any deviation from the letter
-//   --model <id>           health.model (default: claude-opus-4-8)
+//   --model <id>           health.model (default: claude-opus-5-5)
 //   --board <path>         board override (default: owner persistent board)
 //   --force                skip the commit-exists verification
 //   --dry-run              print what would post; write nothing

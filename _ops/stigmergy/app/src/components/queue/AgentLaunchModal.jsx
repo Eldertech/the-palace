@@ -27,6 +27,7 @@ import { previewAgent, launchAgent, previewEphemeral, launchEphemeral } from '..
 // the current knobs server-side and opens the TUI; copy is the fallback.
 
 const MODELS = [
+  { id: 'claude-opus-5-5', label: 'Opus 5.5' },
   { id: 'claude-opus-4-8', label: 'Opus 4.8' },
   { id: 'claude-sonnet-5', label: 'Sonnet 5' },
   { id: 'claude-sonnet-4-6', label: 'Sonnet 4.6' },

@@ -61,11 +61,11 @@ export function launchInteractive(prompt, opts = {}) {
   // Pin the model + effort. A launched session drives a steward / catches a
   // baton / works a card — real read-edit-commit palace work — so it opens on
   // the LATEST Opus at a real reasoning budget, independent of the operator's
-  // global /model. We pin the exact id `claude-opus-4-8` rather than the `opus`
-  // alias: on Claude Code v2.1.x that alias resolves to 4.7-low-effort, not 4.8.
+  // global /model. We pin the exact id `claude-opus-5-5` rather than the `opus`
+  // alias, which has lagged the latest Opus (on v2.1.x it resolved to 4.7-low-effort).
   // `--effort high` overrides the alias's "low" default. Both overridable via
   // opts for a future picker; bump the id when a newer Opus ships.
-  const model = opts.model || 'claude-opus-4-8';
+  const model = opts.model || 'claude-opus-5-5';
   const effort = opts.effort || 'high';
   // A launched palace agent does real read-edit-commit work, so it opens in
   // `acceptEdits` rather than the CLI's `default` (ask-before-every-edit) — matching

@@ -23,7 +23,7 @@
 //   --from <page>     who is catching it (default: the handoff's entry)
 //   --surface <text>  receiving_surface note (default: "Claude Code (Mac)")
 //   --note <text>     free-text note on the claim + health metadata
-//   --model <id>      health.model (default: claude-opus-4-8)
+//   --model <id>      health.model (default: claude-opus-5-5)
 //   --board <path>    board file override (default: owner persistent board)
 //   --dry-run         print the claim + reconciliation view; do not post
 

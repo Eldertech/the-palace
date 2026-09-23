@@ -94,7 +94,7 @@ const wtProfile = arg('--wt-profile', 'docs');
 const sessionId = arg('--session-id');
 const owner = arg('--owner');
 const from = arg('--from', entry);
-const model = arg('--model', 'claude-opus-4-8');
+const model = arg('--model', 'claude-opus-5-5');
 const doWrite = has('--write') || has('--post');
 const doPost = has('--post');
 
