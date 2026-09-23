@@ -15,23 +15,24 @@ forward_vector: "I am Quantum Synthesizer's scroll — the one page that always 
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:50:46.000Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-23T05:01:36.000Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** dormant · **Steward:** cycle 5 · last ran 2026-09-23 (today)
-- **Waiting on you:** 1 open ask
+- **Status:** active · **Stage:** dormant · **Steward:** cycle 6 · last ran 2026-09-23 (today)
+- **Waiting on you:** 2 open asks
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-09-23 (today) — This project woke up and made something real. Revive it from dormant to sprout? (`quantum-synth-006`)
-- **Last commit touching this project:** 2026-09-23 `49fe241` — ops(scrolls): standing orders for the four pilot projects, written on Loudon's instruction
+- **Last shipped:** 2026-09-23 (today) — The entry says piano partials go sharp because the string turns nonlinear. They don't. Apply my drafted fix? (`quantum-synth-008`)
+- **Last commit touching this project:** 2026-09-23 `bbab2d7` — steward(Quantum Synthesizer, Waveguide Synthesizer): pilot cycles 5 and 8 under the run contract
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
 
-Quantum Synthesizer claims that the Schrödinger equation is a synthesis engine. The shape of a potential well sets the spacing of its energy levels, and those spacings, played as partials, are the timbre. In June, cycle 3 proved this by ear with two WAVs: a parabolic well gives a clean G3, and a quartic-bent well gives a bell. You chose VIDEO-NEXT, so this cycle built the visual half. The well now bends continuously from parabola to quartic. The equation is solved again at every step. A 12-second WAV strikes the well twelve times while it bends. A self-contained page plays that WAV and draws the well, its eigenfunctions and the partial spectrum from the same numbers. The first strike is cyc…
+Quantum Synthesizer claims the Schrödinger equation is a synthesis engine: the shape of a potential well sets the spacing of its energy levels, and those spacings, played as partials, are the timbre. By now three things are settled. In June a parabola rang a clean G3 and a quartic-bent well rang a bell (cycle 3). Earlier today a page and a WAV bent one into the other on a single timeline (cycle 5). This cycle raised a wall in the middle of the parabola until it became two wells, a shape no single well can make. A particle crosses that wall only by tunnelling, and tunnelling splits every level into a close pair. Two partials that close together beat. I built it, measured it, and then went a…
 
 ### Open asks
 
 - `quantum-synth-006` — directional_decision · posted 2026-09-23 · options: REVIVE-TO-SPROUT · STAY-DORMANT · NOT-SURE-YET
+- `quantum-synth-008` — entry_text_fix · posted 2026-09-23 · options: APPLY · ADJUST · LEAVE
 
 ### Answered, not yet consumed
 
@@ -56,6 +57,62 @@ This container has no Shop (no ComfyUI, Kokoro, Max, or GPU) — Python with num
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="quantum-synth-008" -->
+### 2026-09-23 — cycle 6 — The entry says piano partials go sharp because the string turns nonlinear. They don't. Apply my drafted fix?
+> still working · fix drafted, entry untouched · steward leans APPLY
+
+Draft to replace the paragraph at Projects/Quantum Synthesizer.md:81 (the one that starts 'A piano string under tension is a nonlinear oscillator'):
+
+A piano string reaches the same sound by a different road. Its upper partials ride sharp, fₙ = n · f₀ · √(1 + B · n²), but not because the string turns nonlinear when pulled hard. The string resists bending as well as stretching, and that stiffness adds a fourth-derivative term to its wave equation. The term is linear, so it doesn't matter how hard the key is struck. It makes short waves travel faster than long ones, and that dispersion stretches the partials ([[Piano String Inharmonicity]]). The stiff string and the quartic well are both linear problems. One has a steeper wall and the other a stiffness term, and in both the shape of what holds the wave sets the spacing of its modes. The piano is a second case of this page's claim, not an example of nonlinearity.
+
+**Artifacts:**
+- [double-well-strip.svg](Projects/Quantum Synthesizer/proofs/double-well-strip.svg)
+- [double-well-explorer.html](Projects/Quantum Synthesizer/proofs/double-well-explorer.html)
+- [double-well-tunnelling.wav](Projects/Quantum Synthesizer/proofs/double-well-tunnelling.wav)
+- [double-well-morph.wav](Projects/Quantum Synthesizer/proofs/double-well-morph.wav)
+- [double_well_template.html](Projects/Quantum Synthesizer/proofs/double_well_template.html)
+<sub>`quantum-synth-008` · RESOURCE_REQUEST on TRICKSTER</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="quantum-synth-007" -->
+### 2026-09-23 — cycle 6 — Tunnelling, heard: raise a wall inside the well and every partial splits into a pair that beats, faster the higher it sits.
+> shipped · double well measured, beats match solver · steward leans REVIVE-TO-SPROUT
+
+Start with [the explorer page](open:Projects/Quantum Synthesizer/proofs/double-well-explorer.html). It has two halves, each locked to its own WAV.
+
+The first half is the wall rising. [double-well-morph.wav](open:Projects/Quantum Synthesizer/proofs/double-well-morph.wav) runs 16 s. The well is struck eleven times while a bump grows in its middle, and the last strike rings out for five seconds over the finished double well. The first strike has the same partials as cycle 3's clean tone. By the end, neighbouring levels have slid into pairs: an even state (the same on both sides of the wall) and an odd one (flipped across it), sharing one energy, almost. The pair on G3 beats at 1.4 Hz, the next at 6.3 Hz, the next at 20 Hz. You get a slow swell, a flutter above it and a roughness above that. Higher pairs see a thinner wall, so they tunnel faster. I checked this by measurement: band-passing each pair out of the WAV and reading its loudness envelope gives 1.40, 6.28 and 20.38 Hz against the solver's 1.40, 6.29 and 20.39.
+
+The second half is a real particle. [double-well-tunnelling.wav](open:Projects/Quantum Synthesizer/proofs/double-well-tunnelling.wav) runs 10 s and uses no additive recipe. A wave packet is placed in the left well, the Schrödinger equation runs forward, and the sound is the wavefunction read at one point in the left well, the way a pickup reads one point on a string. The page shades where the particle is, frame by frame, beside a trace of the chance it is on the left, which swings from 99.9% down to 1% about every 0.7 s. The checks: the audio's loudness equals |ψ| at the pickup to within 0.0006. The slow loudness follows the left-well chance with a correlation of 0.96 (a point pickup is not the whole well, so it is not 1). I also stepped the equation directly, 90,000 steps, as an independent check: it agrees with the fast method to 0.009, and halving the step cuts that to 0.0027, so the leftover is the stepper's error and not the physics.
+
+One rule changed, deliberately. Each state now rings at its own energy, with the ground state on G3. Cycle 3 played the gap down to the ground state instead, which would put the slowest beat at 1.4 Hz as a partial of its own, below hearing. The equation fixes only the differences between levels, and where zero sits is a free choice that no measurement can see. With no wall, both rules give the same twelve partials.
+
+I also drew [five stills](Projects/Quantum Synthesizer/proofs/double-well-strip.svg) and wrote [the generator](Projects/Quantum Synthesizer/proofs/double_well.py), which bakes its data into [the page template](Projects/Quantum Synthesizer/proofs/double_well_template.html). The fix to the entry's piano paragraph (cycle 5's second next move) is drafted in a separate card.
+
+On reviving, plainly: yes, this felt alive. The one question is quantum-synth-006, still open. The condition in its NOT-SURE-YET option was a second probe in hand, and that is now met.
+
+**Artifacts:**
+- [press play on either half: the wall rises and the levels pair up; then a particle tunnels left and right while you hear it.](Projects/Quantum Synthesizer/proofs/double-well-explorer.html)
+- [16 s: the wall rises through eleven strikes, then the double well rings out and its pairs beat at 1.4, 6.3 and 20 Hz.](Projects/Quantum Synthesizer/proofs/double-well-morph.wav)
+- [10 s: the Schrödinger equation run forward, heard at a pickup in the left well; the swell is the particle crossing and coming back.](Projects/Quantum Synthesizer/proofs/double-well-tunnelling.wav)
+- [five stills as the wall rises: well, paired eigenfunctions, spectrum against the harmonic series.](Projects/Quantum Synthesizer/proofs/double-well-strip.svg)
+- [the generator and its checks: beat measurement, envelope check, direct time-stepping cross-check.](Projects/Quantum Synthesizer/proofs/double_well.py)
+- [the page template the generator bakes solver data and both WAVs into.](Projects/Quantum Synthesizer/proofs/double_well_template.html)
+
+_the finished double well (h = 10): each split level, its beat predicted by the solver and measured from the WAV_
+| pair | lower Hz | upper Hz | predicted beat | measured beat | heard as |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 196.0 | 197.4 | 1.40 Hz | 1.40 Hz | slow swell |
+| 1 | 613.3 | 619.6 | 6.29 Hz | 6.28 Hz | flutter |
+| 2 | 995.6 | 1016.0 | 20.39 Hz | 20.38 Hz | roughness |
+| 3 | 1348.6 | 1400.6 | 51.98 Hz | not measured | roughness |
+| 4 | 1680.1 | 1780.1 | 100 Hz | — | two tones, above the wall |
+
+_Left rough:_ I have not heard either WAV or seen the page in a browser. The page script ran 405 frames headless with no errors, and a PNG I drew with numpy from the same data (not the page's own canvas) shows the right shapes. Three smaller things are also loose. In the rising half the two partials of a pair have unequal loudness, so the beats are deep but never reach silence. The strikes ring 2.2 s instead of cycle 3's 0.9 s, which gives the first strike the clean tone's partials but not its exact decay. There is still no MP4, which needs ffmpeg on the Mac.
+
+_Next moves named:_ Draft a short 'tunnelling is beating' section for the entry, with this cycle's measured table as its proof, and hand it to you rather than editing. · Finish the timbre atlas: a Morse well (levels crowd together toward the top, then stop) and a lopsided double well (the pairs stop beating when the two sides no longer match). · Cross-domain proof to try: a piano's unison strings, coupled through the bridge, split into pairs and beat by the same two-state arithmetic (Weinreich's 1977 coupled-strings paper, as I remember it; check the citation before building on it).
+<sub>`quantum-synth-007` · BROADCAST on GENERAL</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="quantum-synth-006" -->
 ### 2026-09-23 — cycle 5 — This project woke up and made something real. Revive it from dormant to sprout?
 > still working · visual proof shipped · steward leans REVIVE-TO-SPROUT
