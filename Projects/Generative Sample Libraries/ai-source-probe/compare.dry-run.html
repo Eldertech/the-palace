@@ -1,0 +1,189 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Dry run · the grader on a known instrument and a simulated one</title>
+<style>
+:root{--bg:#0a0a0f;--e1:#12121a;--e2:#1a1a28;--bd:#4a4a5e;--soft:rgba(255,255,255,.06);
+--f1:#e8e8f0;--f2:#c8c8d8;--f3:#8a8aa0;--acc:#e8b84a;--accs:rgba(232,184,74,.10);
+--ok:#00ff66;--oks:rgba(0,255,102,.08);--bad:#ff2a2a;--bads:rgba(255,42,42,.08);
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;
+--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--display:'Anton','Bebas Neue',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--f1);font:17px/1.6 var(--serif)}
+main{max-width:1080px;margin:0 auto;padding:40px 24px 64px}
+.eyebrow{font:11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--f3)}
+h1{font:52px/1.05 var(--display);letter-spacing:.005em;margin:.2em 0 .1em;text-transform:uppercase}
+h2{font:500 28px/1.2 var(--sans);margin:2em 0 .5em}
+p{max-width:70ch;color:var(--f2)}
+.banner{border:1px solid var(--acc);background:var(--accs);padding:12px 16px;font:14px/1.5 var(--sans);color:var(--f1);margin:20px 0}
+table{border-collapse:collapse;width:100%;font:13px/1.4 var(--sans)}
+th,td{border:1px solid var(--soft);padding:7px 9px;text-align:left;vertical-align:top}
+th{font:11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--f3);background:var(--e1)}
+td.num{font-family:var(--mono);font-size:12px}
+.v{font:11px var(--mono);letter-spacing:.14em;display:block;margin-bottom:2px}
+.on_target,.ON-TARGET{background:var(--oks)}.on_target .v,.ON-TARGET .v{color:var(--ok)}
+.retunable,.RETUNABLE{background:var(--accs)}.retunable .v,.RETUNABLE .v{color:var(--acc)}
+.texture,.TEXTURE-ONLY,.error{background:var(--bads)}.texture .v,.TEXTURE-ONLY .v,.error .v{color:var(--bad)}
+.eq{background:var(--e1);border-left:2px solid var(--acc);padding:10px 14px;margin:10px 0;font:13px/1.7 var(--mono);color:var(--f1)}
+.eq .w{color:var(--f3)}
+details{margin:12px 0;border:1px solid var(--soft);background:var(--e1)}
+summary{cursor:pointer;padding:10px 14px;font:500 15px var(--sans)}
+audio{width:170px;height:28px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--soft);font:13px var(--sans);color:var(--f3)}
+footer b{font-weight:500;color:var(--f2)}footer i{font-weight:300}
+</style></head><body><main>
+<div class='eyebrow'>Generative Sample Libraries · Phase 3 · AI-source probe</div>
+<h1>Dry run · the grader on a known instrument and a simulated one</h1>
+<div class='eyebrow'>generated 2026-09-23 05:00 · tracker pyin-librosa-0.11.0</div>
+<div class='banner'><b>Simulated arms: mock_flawed.</b> These are mocks, not models. Their numbers say nothing about Stable Audio or MusicGen; they show that the grader and this page tell the three grades apart. The model comparison is compare.html, written on the Mac by run-on-mac.sh.</div>
+<p>Each render is asked for one note on one instrument. The grader tracks its pitch frame by frame and asks two things: <i>did it land where we asked</i>, and <i>does it hold still</i>. A sampler can fix a wrong note with <code>pitch_keycenter</code> and <code>tune</code>. It cannot fix a wandering one.</p>
+<div class='eq'>stable = voiced ≥ 60% ∧ spread ≤ 30¢ ∧ dominance ≥ 80%<br><span class='w'>stable = (share of frames that have a pitch) ≥ 60% ∧ (width of the middle half of the pitch readings) ≤ 30¢ ∧ (share of frames within ±50¢ of their median) ≥ 80%</span></div>
+<div class='eq'>on_target = stable ∧ |cents_err| ≤ 20¢ &nbsp;·&nbsp; retunable = stable ∧ |cents_err| &gt; 20¢ &nbsp;·&nbsp; texture = ¬stable<br><span class='w'>on_target = stable ∧ |distance from the note we asked for| ≤ 20¢ &nbsp;·&nbsp; retunable = stable ∧ |distance from the note we asked for| &gt; 20¢, any octave &nbsp;·&nbsp; texture = ¬stable, not stable</span></div>
+<p>An instrument passes on an arm when 75% of its cells are on target (<b>ON TARGET</b>) or at least retunable (<b>RETUNABLE</b>). Below that it is <b>TEXTURE ONLY</b>: fine for beds, not for a keyboard.</p>
+<h2>Verdict by instrument</h2><table><tr><th>instrument</th>
+<th>crystal</th>
+<th>mock_flawed</th>
+</tr>
+<tr><td>piano</td>
+<td class='ON-TARGET'><span class='v'>ON TARGET</span>8/8 on target · 8/8 steady</td>
+<td class='ON-TARGET'><span class='v'>ON TARGET</span>8/8 on target · 8/8 steady</td>
+</tr>
+<tr><td>violin</td>
+<td class='ON-TARGET'><span class='v'>ON TARGET</span>8/8 on target · 8/8 steady</td>
+<td class='TEXTURE-ONLY'><span class='v'>TEXTURE ONLY</span>2/8 on target · 3/8 steady</td>
+</tr>
+<tr><td>marimba</td>
+<td class='ON-TARGET'><span class='v'>ON TARGET</span>8/8 on target · 8/8 steady</td>
+<td class='RETUNABLE'><span class='v'>RETUNABLE</span>4/8 on target · 6/8 steady</td>
+</tr>
+<tr><td>flute</td>
+<td class='ON-TARGET'><span class='v'>ON TARGET</span>8/8 on target · 8/8 steady</td>
+<td class='RETUNABLE'><span class='v'>RETUNABLE</span>2/8 on target · 6/8 steady</td>
+</tr>
+<tr><td>bass</td>
+<td class='ON-TARGET'><span class='v'>ON TARGET</span>8/8 on target · 8/8 steady</td>
+<td class='RETUNABLE'><span class='v'>RETUNABLE</span>1/8 on target · 6/8 steady</td>
+</tr>
+<tr><td>choir</td>
+<td class='ON-TARGET'><span class='v'>ON TARGET</span>8/8 on target · 8/8 steady</td>
+<td class='TEXTURE-ONLY'><span class='v'>TEXTURE ONLY</span>1/8 on target · 3/8 steady</td>
+</tr>
+</table>
+<h2>Arms side by side</h2><table><tr><th></th>
+<th>crystal</th>
+<th>mock_flawed</th>
+</tr>
+<tr><th>what it is</th><td class='num'>palace reference · the shipped Crystal instrument, exact pitch</td><td class='num'>SIMULATED · seeded flaws, not a model</td></tr>
+<tr><th>verdict, all cells</th><td class='num'>ON TARGET</td><td class='num'>TEXTURE ONLY</td></tr>
+<tr><th>on target</th><td class='num'>48/48</td><td class='num'>18/48</td></tr>
+<tr><th>retunable</th><td class='num'>0/48</td><td class='num'>14/48</td></tr>
+<tr><th>texture</th><td class='num'>0/48</td><td class='num'>16/48</td></tr>
+<tr><th>render errors</th><td class='num'>0</td><td class='num'>0</td></tr>
+<tr><th>median |cents| (steady cells)</th><td class='num'>0.6</td><td class='num'>5.0</td></tr>
+<tr><th>median |cents| ignoring octave</th><td class='num'>0.6</td><td class='num'>3.7</td></tr>
+<tr><th>octave slips</th><td class='num'>0</td><td class='num'>8</td></tr>
+<tr><th>median spread ¢</th><td class='num'>0.0</td><td class='num'>0.0</td></tr>
+<tr><th>median render s</th><td class='num'>0.4</td><td class='num'>0.0</td></tr>
+</table>
+<h2>Median cents from target, by pitch (steady cells)</h2><table><tr><th>arm</th><th>A2</th><th>E3</th><th>C4</th><th>G5</th></tr>
+<tr><td>crystal</td><td class='num'>0.3</td><td class='num'>0.5</td><td class='num'>0.6</td><td class='num'>1.5</td></tr>
+<tr><td>mock_flawed</td><td class='num'>-1.4</td><td class='num'>1.9</td><td class='num'>-1.5</td><td class='num'>-3.0</td></tr>
+</table>
+<h2>Every cell</h2><p>Open an arm to hear each render next to its grade. The last column is the SFZ line a steady render would get.</p>
+<details><summary>crystal · 48 cells</summary><table><tr><th>cell</th><th>grade</th><th>measured Hz</th><th>cents</th><th>spread</th><th>voiced</th><th>listen</th><th>sfz</th></tr>
+<tr class='on_target'><td>piano A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>110.013</td><td class='num'>0.21</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>piano A2 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>110.023</td><td class='num'>0.36</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>piano E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>164.874</td><td class='num'>0.67</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-1</td></tr>
+<tr class='on_target'><td>piano E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>164.836</td><td class='num'>0.28</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=0</td></tr>
+<tr class='on_target'><td>piano C4 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>261.723</td><td class='num'>0.61</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>piano C4 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>261.708</td><td class='num'>0.52</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>piano G5 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>784.829</td><td class='num'>1.85</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-2</td></tr>
+<tr class='on_target'><td>piano G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>784.516</td><td class='num'>1.16</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-1</td></tr>
+<tr class='on_target'><td>violin A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>110.013</td><td class='num'>0.21</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>violin A2 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>110.023</td><td class='num'>0.36</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>violin E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>164.874</td><td class='num'>0.67</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-1</td></tr>
+<tr class='on_target'><td>violin E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>164.836</td><td class='num'>0.28</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=0</td></tr>
+<tr class='on_target'><td>violin C4 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>261.723</td><td class='num'>0.61</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>violin C4 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>261.708</td><td class='num'>0.52</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>violin G5 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>784.829</td><td class='num'>1.85</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-2</td></tr>
+<tr class='on_target'><td>violin G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>784.516</td><td class='num'>1.16</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-1</td></tr>
+<tr class='on_target'><td>marimba A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>110.013</td><td class='num'>0.21</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>marimba A2 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>110.023</td><td class='num'>0.36</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>marimba E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>164.874</td><td class='num'>0.67</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-1</td></tr>
+<tr class='on_target'><td>marimba E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>164.836</td><td class='num'>0.28</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=0</td></tr>
+<tr class='on_target'><td>marimba C4 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>261.723</td><td class='num'>0.61</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>marimba C4 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>261.708</td><td class='num'>0.52</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>marimba G5 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>784.829</td><td class='num'>1.85</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-2</td></tr>
+<tr class='on_target'><td>marimba G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>784.516</td><td class='num'>1.16</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-1</td></tr>
+<tr class='on_target'><td>flute A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>110.013</td><td class='num'>0.21</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>flute A2 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>110.023</td><td class='num'>0.36</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>flute E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>164.874</td><td class='num'>0.67</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-1</td></tr>
+<tr class='on_target'><td>flute E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>164.836</td><td class='num'>0.28</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=0</td></tr>
+<tr class='on_target'><td>flute C4 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>261.723</td><td class='num'>0.61</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>flute C4 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>261.708</td><td class='num'>0.52</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>flute G5 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>784.829</td><td class='num'>1.85</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-2</td></tr>
+<tr class='on_target'><td>flute G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>784.516</td><td class='num'>1.16</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-1</td></tr>
+<tr class='on_target'><td>bass A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>110.013</td><td class='num'>0.21</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>bass A2 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>110.023</td><td class='num'>0.36</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>bass E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>164.874</td><td class='num'>0.67</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-1</td></tr>
+<tr class='on_target'><td>bass E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>164.836</td><td class='num'>0.28</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=0</td></tr>
+<tr class='on_target'><td>bass C4 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>261.723</td><td class='num'>0.61</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>bass C4 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>261.708</td><td class='num'>0.52</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>bass G5 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>784.829</td><td class='num'>1.85</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-2</td></tr>
+<tr class='on_target'><td>bass G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>784.516</td><td class='num'>1.16</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-1</td></tr>
+<tr class='on_target'><td>choir A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>110.013</td><td class='num'>0.21</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>choir A2 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>110.023</td><td class='num'>0.36</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=0</td></tr>
+<tr class='on_target'><td>choir E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>164.874</td><td class='num'>0.67</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-1</td></tr>
+<tr class='on_target'><td>choir E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>164.836</td><td class='num'>0.28</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=0</td></tr>
+<tr class='on_target'><td>choir C4 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>261.723</td><td class='num'>0.61</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>choir C4 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>261.708</td><td class='num'>0.52</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-1</td></tr>
+<tr class='on_target'><td>choir G5 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>784.829</td><td class='num'>1.85</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-2</td></tr>
+<tr class='on_target'><td>choir G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>784.516</td><td class='num'>1.16</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-1</td></tr>
+</table></details>
+<details><summary>mock_flawed · 48 cells</summary><table><tr><th>cell</th><th>grade</th><th>measured Hz</th><th>cents</th><th>spread</th><th>voiced</th><th>listen</th><th>sfz</th></tr>
+<tr class='on_target'><td>piano A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>109.899</td><td class='num'>-1.58</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=2</td></tr>
+<tr class='on_target'><td>piano A2 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>109.911</td><td class='num'>-1.41</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=1</td></tr>
+<tr class='on_target'><td>piano E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>165.165</td><td class='num'>3.72</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-4</td></tr>
+<tr class='on_target'><td>piano E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>164.973</td><td class='num'>1.71</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-2</td></tr>
+<tr class='on_target'><td>piano C4 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>262.253</td><td class='num'>4.12</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=-4</td></tr>
+<tr class='on_target'><td>piano C4 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>261.672</td><td class='num'>0.28</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=0</td></tr>
+<tr class='on_target'><td>piano G5 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>783.114</td><td class='num'>-1.94</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=2</td></tr>
+<tr class='on_target'><td>piano G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>782.638</td><td class='num'>-2.99</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=3</td></tr>
+<tr class='on_target'><td>violin A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>110.043</td><td class='num'>0.68</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=-1</td></tr>
+<tr class='texture'><td>violin A2 s2</td><td><span class='v'>texture</span>spread 80c &gt; 30c</td><td class='num'>110.0</td><td class='num'>0.0</td><td class='num'>80.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='texture'><td>violin E3 s1</td><td><span class='v'>texture</span>spread 60c &gt; 30c</td><td class='num'>164.81</td><td class='num'>0.0</td><td class='num'>60.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='on_target'><td>violin E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>165.328</td><td class='num'>5.43</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-5</td></tr>
+<tr class='texture'><td>violin C4 s1</td><td><span class='v'>texture</span>spread 90c &gt; 30c; only 57% of frames near one pitch</td><td class='num'>261.63</td><td class='num'>0.0</td><td class='num'>90.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='texture'><td>violin C4 s2</td><td><span class='v'>texture</span>spread 100c &gt; 30c; only 55% of frames near one pitch</td><td class='num'>261.63</td><td class='num'>0.0</td><td class='num'>100.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='texture'><td>violin G5 s1</td><td><span class='v'>texture</span>spread 90c &gt; 30c; only 64% of frames near one pitch</td><td class='num'>783.99</td><td class='num'>0.0</td><td class='num'>90.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='retunable'><td>violin G5 s2</td><td><span class='v'>retunable</span>off by -45c</td><td class='num'>763.741</td><td class='num'>-45.3</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=45</td></tr>
+<tr class='on_target'><td>marimba A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>109.806</td><td class='num'>-3.06</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=3</td></tr>
+<tr class='texture'><td>marimba A2 s2</td><td><span class='v'>texture</span>voiced 9% &lt; 60%; spread 50c &gt; 30c; only 78% of frames near one pitch</td><td class='num'>27.981</td><td class='num'>-2370.0</td><td class='num'>50.0</td><td class='num'>0.092</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='on_target'><td>marimba E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>164.989</td><td class='num'>1.88</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-2</td></tr>
+<tr class='on_target'><td>marimba E3 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>165.245</td><td class='num'>4.56</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-5</td></tr>
+<tr class='retunable'><td>marimba C4 s1</td><td><span class='v'>retunable</span>off by -55c</td><td class='num'>253.412</td><td class='num'>-55.25</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=59 tune=-45</td></tr>
+<tr class='texture'><td>marimba C4 s2</td><td><span class='v'>texture</span>voiced 25% &lt; 60%; spread 55c &gt; 30c</td><td class='num'>66.551</td><td class='num'>-2370.0</td><td class='num'>55.0</td><td class='num'>0.252</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='retunable'><td>marimba G5 s1</td><td><span class='v'>retunable</span>octave -1</td><td class='num'>393.015</td><td class='num'>-1195.5</td><td class='num'>10.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=67 tune=-4</td></tr>
+<tr class='on_target'><td>marimba G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>784.62</td><td class='num'>1.39</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-1</td></tr>
+<tr class='texture'><td>flute A2 s1</td><td><span class='v'>texture</span>spread 80c &gt; 30c</td><td class='num'>110.0</td><td class='num'>0.0</td><td class='num'>80.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='retunable'><td>flute A2 s2</td><td><span class='v'>retunable</span>off by +31c</td><td class='num'>112.012</td><td class='num'>31.38</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=-31</td></tr>
+<tr class='on_target'><td>flute E3 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>165.247</td><td class='num'>4.59</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=-5</td></tr>
+<tr class='retunable'><td>flute E3 s2</td><td><span class='v'>retunable</span>off by -44c</td><td class='num'>160.636</td><td class='num'>-44.41</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=52 tune=44</td></tr>
+<tr class='texture'><td>flute C4 s1</td><td><span class='v'>texture</span>spread 90c &gt; 30c; only 57% of frames near one pitch</td><td class='num'>261.63</td><td class='num'>0.0</td><td class='num'>90.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='retunable'><td>flute C4 s2</td><td><span class='v'>retunable</span>off by -46c</td><td class='num'>254.714</td><td class='num'>-46.38</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=46</td></tr>
+<tr class='retunable'><td>flute G5 s1</td><td><span class='v'>retunable</span>off by -50c</td><td class='num'>761.568</td><td class='num'>-50.23</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=78 tune=-50</td></tr>
+<tr class='on_target'><td>flute G5 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>784.927</td><td class='num'>2.07</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=79 tune=-2</td></tr>
+<tr class='retunable'><td>bass A2 s1</td><td><span class='v'>retunable</span>octave +1</td><td class='num'>220.793</td><td class='num'>1206.23</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=57 tune=-6</td></tr>
+<tr class='retunable'><td>bass A2 s2</td><td><span class='v'>retunable</span>octave -1</td><td class='num'>55.028</td><td class='num'>-1199.11</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=33 tune=-1</td></tr>
+<tr class='texture'><td>bass E3 s1</td><td><span class='v'>texture</span>spread 50c &gt; 30c</td><td class='num'>41.923</td><td class='num'>-2370.0</td><td class='num'>50.0</td><td class='num'>0.648</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='retunable'><td>bass E3 s2</td><td><span class='v'>retunable</span>octave -1</td><td class='num'>82.618</td><td class='num'>-1195.53</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=40 tune=-4</td></tr>
+<tr class='texture'><td>bass C4 s1</td><td><span class='v'>texture</span>voiced 23% &lt; 60%; spread 50c &gt; 30c</td><td class='num'>66.359</td><td class='num'>-2375.0</td><td class='num'>50.0</td><td class='num'>0.232</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='on_target'><td>bass C4 s2</td><td><span class='v'>on target</span>clean</td><td class='num'>261.408</td><td class='num'>-1.47</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=60 tune=1</td></tr>
+<tr class='retunable'><td>bass G5 s1</td><td><span class='v'>retunable</span>octave -1</td><td class='num'>391.321</td><td class='num'>-1202.98</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=67 tune=3</td></tr>
+<tr class='retunable'><td>bass G5 s2</td><td><span class='v'>retunable</span>octave +1</td><td class='num'>1575.922</td><td class='num'>1208.75</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=91 tune=-9</td></tr>
+<tr class='on_target'><td>choir A2 s1</td><td><span class='v'>on target</span>clean</td><td class='num'>110.362</td><td class='num'>5.69</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=45 tune=-6</td></tr>
+<tr class='retunable'><td>choir A2 s2</td><td><span class='v'>retunable</span>octave -1</td><td class='num'>55.058</td><td class='num'>-1198.18</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=33 tune=-2</td></tr>
+<tr class='retunable'><td>choir E3 s1</td><td><span class='v'>retunable</span>octave -1</td><td class='num'>82.229</td><td class='num'>-1203.7</td><td class='num'>0.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>pitch_keycenter=40 tune=4</td></tr>
+<tr class='texture'><td>choir E3 s2</td><td><span class='v'>texture</span>spread 60c &gt; 30c</td><td class='num'>41.923</td><td class='num'>-2370.0</td><td class='num'>60.0</td><td class='num'>0.628</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='texture'><td>choir C4 s1</td><td><span class='v'>texture</span>voiced 23% &lt; 60%; spread 50c &gt; 30c</td><td class='num'>66.936</td><td class='num'>-2360.0</td><td class='num'>50.0</td><td class='num'>0.228</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='texture'><td>choir C4 s2</td><td><span class='v'>texture</span>spread 700c &gt; 30c; only 31% of frames near one pitch</td><td class='num'>261.63</td><td class='num'>0.0</td><td class='num'>700.0</td><td class='num'>0.992</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='texture'><td>choir G5 s1</td><td><span class='v'>texture</span>spread 1200c &gt; 30c; only 32% of frames near one pitch</td><td class='num'>783.99</td><td class='num'>0.0</td><td class='num'>1200.0</td><td class='num'>0.976</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+<tr class='texture'><td>choir G5 s2</td><td><span class='v'>texture</span>spread 90c &gt; 30c; only 65% of frames near one pitch</td><td class='num'>783.99</td><td class='num'>0.0</td><td class='num'>90.0</td><td class='num'>1.0</td><td><span class='eyebrow'>not in bundle</span></td><td class='num'>—</td></tr>
+</table></details>
+<footer><b>Loud’n <i>Live</i></b></footer></main></body></html>
