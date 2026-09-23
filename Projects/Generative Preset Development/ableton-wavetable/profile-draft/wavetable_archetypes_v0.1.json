@@ -1,0 +1,6978 @@
+{
+ "source": "/Applications/Ableton Live 12 Suite.app/Contents/App-Resources/Core Library/Devices/Instruments/Wavetable",
+ "ear_confirmed": false,
+ "archetypes": {
+  "Ambient & Evolving": {
+   "preset_count": 17,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 17
+    },
+    "Voice_Filter1_Drive": {
+     "median": 4.6875,
+     "p25": 0.0,
+     "p75": 9.5625,
+     "n": 17
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 993.800293,
+     "p25": 170.91925,
+     "p75": 4154.19971,
+     "n": 17
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.4861111045,
+     "p25": 0.0,
+     "p75": 0.625,
+     "n": 17
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Filter2_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 4.875,
+     "n": 17
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 1050.03918,
+     "p25": 280.423279,
+     "p75": 6816.10742,
+     "n": 17
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.2556818128,
+     "p25": 0.0,
+     "p75": 0.6534090638,
+     "n": 17
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Global_Glide": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.046875,
+     "n": 17
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 17
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 17
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.5011875629,
+     "p25": 0.5011875629,
+     "p75": 0.9731556177,
+     "n": 17
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.7864833474,
+     "p25": 0.0278544724,
+     "p75": 1.04071224,
+     "n": 17
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 1.31590462,
+     "n": 17
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 2.4869895,
+     "p25": 1.25140631,
+     "p75": 3.16056228,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.0,
+     "p75": 2.35741019,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 4.1263957,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 2.1171751,
+     "p25": 0.5999999642,
+     "p75": 4.04905558,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.9108911157,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.0519480519,
+     "p75": 0.5,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.4705882072,
+     "p75": 0.5,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.001000000164,
+     "p75": 1.51233613,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 1.59441721,
+     "p25": 0.5999999642,
+     "p75": 5.00707531,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.07961914688,
+     "p75": 0.5999999642,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.0519480519,
+     "p75": 0.5,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.5859375,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 0.6771969199,
+     "p25": 0.04497884214,
+     "p75": 1.77525496,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 13.0,
+     "p75": 15.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.421875,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.4186832905,
+     "p25": 0.1839922369,
+     "p75": 0.9999998808,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 17
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.28125,
+     "n": 17
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 1.0,
+     "p25": 0.7469879389,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": -0.015625,
+     "p25": -0.453125,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": -0.0234375,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.3781512678,
+     "p25": 0.2758620679,
+     "p75": 0.5042017102,
+     "n": 17
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0234375,
+     "n": 17
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 17
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 1.0,
+     "p25": 0.8067227006,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.453125,
+     "n": 17
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.015625,
+     "n": 17
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": -7.0,
+     "p75": 0.0,
+     "n": 17
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.4252873659,
+     "p25": 0.2095238119,
+     "p75": 0.5142857432,
+     "n": 17
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.4609375,
+     "p25": 0.203125,
+     "p75": 0.5011875033,
+     "n": 17
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.3412698507,
+     "n": 17
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 17
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.3515625,
+     "p25": 0.2578125,
+     "p75": 0.6015625,
+     "n": 17
+    },
+    "Voice_Unison_Mode": {
+     "median": 2.0,
+     "p25": 2.0,
+     "p75": 3.0,
+     "n": 17
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 3.0,
+     "p25": 2.0,
+     "p75": 4.0,
+     "n": 17
+    }
+   }
+  },
+  "Bass": {
+   "preset_count": 45,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 2.0,
+     "p25": 2.0,
+     "p75": 4.0,
+     "n": 45
+    },
+    "Voice_Filter1_Drive": {
+     "median": 6.9375,
+     "p25": 4.6875,
+     "p75": 11.625,
+     "n": 45
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 379.645752,
+     "p25": 110.074524,
+     "p75": 1308.48315,
+     "n": 45
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.4417322576,
+     "p25": 0.3472222388,
+     "p75": 0.6051587462,
+     "n": 45
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 2.0,
+     "p25": 0.0,
+     "p75": 4.0,
+     "n": 45
+    },
+    "Voice_Filter2_Drive": {
+     "median": 5.625,
+     "p25": 2.0625,
+     "p75": 10.125,
+     "n": 45
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 280.423279,
+     "p25": 98.5981827,
+     "p75": 3721.55884,
+     "n": 45
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.555555582,
+     "p25": 0.3373016119,
+     "p75": 0.693359375,
+     "n": 45
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Filter2_Type": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Global_Glide": {
+     "median": 0.03404736519,
+     "p25": 0.001544952393,
+     "p75": 0.078125,
+     "n": 45
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 0.8125,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.625,
+     "p25": 0.0,
+     "p75": 0.71875,
+     "n": 45
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 45
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.46875,
+     "p25": 0.4375,
+     "p75": 0.5,
+     "n": 45
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.7715485692,
+     "p25": 0.5011875629,
+     "p75": 0.9084472656,
+     "n": 45
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.001128335833,
+     "p25": 0.0007450580597,
+     "p75": 0.0048828125,
+     "n": 45
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 2.08573532,
+     "p25": 0.5999999642,
+     "p75": 7.45152235,
+     "n": 45
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.05419259146,
+     "p25": 0.01598887704,
+     "p75": 0.156843096,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.3692307472,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5625,
+     "p25": 0.3230769634,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.004147199448,
+     "p25": 0.0001788884401,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 1.33137548,
+     "p25": 0.5,
+     "p75": 8.47572899,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5462170243,
+     "p25": 0.156843096,
+     "p75": 1.17509913,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.109375,
+     "p25": 0.0,
+     "p75": 0.4609375,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 0.9864864945,
+     "p25": 0.7265625,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.5024154782,
+     "p25": 0.359375,
+     "p75": 0.9140625,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.1907348633,
+     "p25": 0.001000000164,
+     "p75": 2.08439159,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 2.43976021,
+     "p25": 0.5999999642,
+     "p75": 5.00707531,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.2333220392,
+     "p75": 0.5999999642,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.01941747591,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 0.992307663,
+     "p25": 0.921875,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.359375,
+     "p75": 0.65625,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.765625,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": -0.046875,
+     "p75": 0.25,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.01448996365,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 1.59588182,
+     "p25": 0.6771969199,
+     "p75": 3.25590682,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 11.0,
+     "p75": 15.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.671875,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.4375,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.04579544067,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.9999999404,
+     "p25": 0.5720608234,
+     "p75": 3.75874996,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 10.0,
+     "p75": 15.0,
+     "n": 45
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": -0.078125,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.015625,
+     "n": 45
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.2265625,
+     "n": 45
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 2.0,
+     "p25": 1.0,
+     "p75": 2.0,
+     "n": 45
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 0.8739495873,
+     "p25": 0.7563025355,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": -0.15625,
+     "p25": -0.25,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.310924381,
+     "p25": 0.1848739535,
+     "p75": 0.5042017102,
+     "n": 45
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.00100004673,
+     "n": 45
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.0703125,
+     "p25": 0.0,
+     "p75": 0.2734375,
+     "n": 45
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 2.0,
+     "n": 45
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 0.8487395048,
+     "p25": 0.7394958138,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.046875,
+     "p25": 0.0,
+     "p75": 0.203125,
+     "n": 45
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": -12.0,
+     "p75": 0.0,
+     "n": 45
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.420168072,
+     "p25": 0.2184873968,
+     "p75": 0.5798319578,
+     "n": 45
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.5011875033,
+     "p25": 0.4375,
+     "p75": 0.609375,
+     "n": 45
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.5546875,
+     "p25": 0.25,
+     "p75": 0.8125,
+     "n": 45
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 45
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.171875,
+     "p25": 0.046875,
+     "p75": 0.3671875,
+     "n": 45
+    },
+    "Voice_Unison_Mode": {
+     "median": 2.0,
+     "p25": 1.0,
+     "p75": 5.0,
+     "n": 45
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 2.0,
+     "p25": 2.0,
+     "p75": 4.0,
+     "n": 45
+    }
+   }
+  },
+  "Brass": {
+   "preset_count": 9,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 9
+    },
+    "Voice_Filter1_Drive": {
+     "median": 6.375,
+     "p25": 2.25,
+     "p75": 6.375,
+     "n": 9
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 940.665161,
+     "p25": 190.797211,
+     "p75": 1272.43604,
+     "n": 9
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.555555582,
+     "p25": 0.3869047761,
+     "p75": 0.6150793433,
+     "n": 9
+    },
+    "Voice_Filter1_Slope": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Filter2_Drive": {
+     "median": 2.0625,
+     "p25": 0.0,
+     "p75": 3.375,
+     "n": 9
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 4637.33252,
+     "p25": 3931.86475,
+     "p75": 11182.0996,
+     "n": 9
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.4265873134,
+     "p25": 0.3600000143,
+     "p75": 0.446428597,
+     "n": 9
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Global_Glide": {
+     "median": 0.01192092896,
+     "p25": 0.0,
+     "p75": 0.02471923828,
+     "n": 9
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.4761904478,
+     "p25": 0.4761904478,
+     "p75": 0.5,
+     "n": 9
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.4375,
+     "p25": 0.3030302525,
+     "p75": 0.4375,
+     "n": 9
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.8936157227,
+     "p25": 0.765625,
+     "p75": 0.9084472656,
+     "n": 9
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 4.656612873e-05,
+     "p25": 4.656612873e-05,
+     "p75": 0.0003051757812,
+     "n": 9
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 6.56027508,
+     "p25": 6.56027508,
+     "p75": 6.87316322,
+     "n": 9
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.03060164861,
+     "p25": 0.03060164861,
+     "p75": 0.06412980705,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.03076922894,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.1396358758,
+     "p25": 0.06034970284,
+     "p75": 0.6817746758,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 8.38656521,
+     "p25": 6.32915068,
+     "p75": 11.3111582,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.3969781697,
+     "p25": 0.2562014461,
+     "p75": 1.10234034,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.015625,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 0.9921875,
+     "p25": 0.8918918967,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.515625,
+     "p25": 0.1015625,
+     "p75": 0.5859375,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": -0.171875,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": -0.34375,
+     "p75": 0.5,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.0001788884401,
+     "p75": 0.078125,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 1.41512203,
+     "p25": 0.5999999642,
+     "p75": 3.84613323,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 0.5999999642,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.992307663,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.359375,
+     "p75": 0.5,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 0.375,
+     "p25": 0.3203125,
+     "p75": 0.4453125,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.328125,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.333596468,
+     "p25": 0.333596468,
+     "p75": 0.7327270508,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 0.9999998808,
+     "p25": 0.2076878995,
+     "p75": 0.9999998808,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 6.0,
+     "p25": 3.0,
+     "p75": 12.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 0.6328125,
+     "p25": 0.515625,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.078125,
+     "p25": 0.0,
+     "p75": 0.375,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.078125,
+     "p25": 0.0,
+     "p75": 0.078125,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.6231273413,
+     "p25": 0.1080860719,
+     "p75": 0.9999998808,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 9
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": -0.078125,
+     "p25": -0.078125,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": -0.109375,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.046875,
+     "n": 9
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 2.0,
+     "p25": 2.0,
+     "p75": 2.0,
+     "n": 9
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 0.9747899175,
+     "p25": 0.840336144,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": -0.34375,
+     "p25": -0.484375,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.078125,
+     "n": 9
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": -12.0,
+     "p25": -12.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.4789915979,
+     "p25": 0.3529411852,
+     "p75": 0.4964539111,
+     "n": 9
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": -0.0625,
+     "p25": -1.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.015625,
+     "p25": 0.0,
+     "p75": 0.2265625,
+     "n": 9
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 2.0,
+     "n": 9
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 0.5546218753,
+     "p25": 0.4537815154,
+     "p75": 0.7478991747,
+     "n": 9
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.296875,
+     "p25": 0.046875,
+     "p75": 0.5,
+     "n": 9
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": -0.0234375,
+     "p25": -0.0234375,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 9
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.6554622054,
+     "p25": 0.5177304745,
+     "p75": 0.6554622054,
+     "n": 9
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.296875,
+     "p25": 0.171875,
+     "p75": 0.5011875033,
+     "n": 9
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.84375,
+     "p25": 0.4921875,
+     "p75": 0.84375,
+     "n": 9
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 9
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.375,
+     "p25": 0.2421875,
+     "p75": 0.6796875,
+     "n": 9
+    },
+    "Voice_Unison_Mode": {
+     "median": 6.0,
+     "p25": 5.0,
+     "p75": 6.0,
+     "n": 9
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 5.0,
+     "p25": 3.0,
+     "p75": 6.0,
+     "n": 9
+    }
+   }
+  },
+  "Effects": {
+   "preset_count": 21,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 21
+    },
+    "Voice_Filter1_Drive": {
+     "median": 5.0,
+     "p25": 0.0,
+     "p75": 7.3125,
+     "n": 21
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 1308.47803,
+     "p25": 164.200623,
+     "p75": 3562.46851,
+     "n": 21
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.4662698507,
+     "p25": 0.277777791,
+     "p75": 0.6448412538,
+     "n": 21
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Filter2_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 6.75,
+     "n": 21
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 3931.86475,
+     "p25": 412.150513,
+     "p75": 10042.9512,
+     "n": 21
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.3125,
+     "p25": 0.0,
+     "p75": 0.5158730149,
+     "n": 21
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Global_Glide": {
+     "median": 0.00970967114,
+     "p25": 0.0,
+     "p75": 0.1999999881,
+     "n": 21
+    },
+    "Voice_Global_Transpose": {
+     "median": -5.0,
+     "p25": -12.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.125,
+     "n": 21
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.609375,
+     "n": 21
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 21
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.5011875629,
+     "p25": 0.2921840549,
+     "p75": 0.8444119692,
+     "n": 21
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.0004322195018,
+     "p75": 0.01281183772,
+     "n": 21
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 1.10234034,
+     "p25": 0.5999999642,
+     "p75": 5.83600998,
+     "n": 21
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.047292009,
+     "p75": 3.3264761,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.453125,
+     "p75": 0.5268816948,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.06504451483,
+     "p25": 0.0,
+     "p75": 0.8537669182,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 0.791254282,
+     "p25": 0.5616144538,
+     "p75": 3.77529907,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5462170243,
+     "p75": 1.36896682,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.8918918967,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.125,
+     "p25": 0.0,
+     "p75": 0.6747967601,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.01192092896,
+     "p25": 0.001000000164,
+     "p75": 1.59303665,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.156843096,
+     "p75": 2.43976021,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 0.5999999642,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.9514563084,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.3984375,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.84375,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.8125,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": -0.453125,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 2.28173637,
+     "p25": 1.14697766,
+     "p75": 9.42682076,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 11.0,
+     "p75": 15.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.125,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.9999999404,
+     "p25": 0.9999998808,
+     "p75": 6.53858042,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 21
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.109375,
+     "n": 21
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.171875,
+     "p25": 0.0,
+     "p75": 0.7578125,
+     "n": 21
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 2.0,
+     "p25": 0.0,
+     "p75": 3.0,
+     "n": 21
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 1.0,
+     "p25": 0.8151260614,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": 0.0,
+     "p25": -0.34375,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.04872047901,
+     "n": 21
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": -12.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.5350000262,
+     "p25": 0.4680851102,
+     "p75": 0.7284768224,
+     "n": 21
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.125,
+     "n": 21
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 21
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 1.0,
+     "p25": 0.9425287247,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.3125,
+     "n": 21
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": -12.0,
+     "p75": 0.0,
+     "n": 21
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.3708609343,
+     "p25": 0.0,
+     "p75": 0.5078125,
+     "n": 21
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.5011875033,
+     "p25": 0.4140625,
+     "p75": 0.5011875033,
+     "n": 21
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.5873016119,
+     "p25": 0.0,
+     "p75": 0.734375,
+     "n": 21
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 21
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.700787425,
+     "p25": 0.421875,
+     "p75": 0.78125,
+     "n": 21
+    },
+    "Voice_Unison_Mode": {
+     "median": 3.0,
+     "p25": 2.0,
+     "p75": 4.0,
+     "n": 21
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 4.0,
+     "p25": 3.0,
+     "p75": 7.0,
+     "n": 21
+    }
+   }
+  },
+  "Guitar & Plucked": {
+   "preset_count": 7,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 2.0,
+     "p25": 0.0,
+     "p75": 4.0,
+     "n": 7
+    },
+    "Voice_Filter1_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.5625,
+     "n": 7
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 1238.45752,
+     "p25": 736.8597715000001,
+     "p75": 3275.3149399999998,
+     "n": 7
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.20585317537,
+     "n": 7
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter2_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 14723.8945,
+     "p25": 238.4286725,
+     "p75": 20000.1035,
+     "n": 7
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1488095224,
+     "n": 7
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Global_Glide": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 7
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 7
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.1198224947,
+     "p25": 0.0,
+     "p75": 0.30710363015,
+     "n": 7
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 1.907348633e-05,
+     "p75": 0.001000000164,
+     "n": 7
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.30614775415,
+     "p75": 1.81329018,
+     "n": 7
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.3878988028,
+     "p75": 1.0591764130499999,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.00058944430205,
+     "p75": 0.001000000164,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 0.2333220392,
+     "p25": 0.12328403816,
+     "p75": 1.0422330343000001,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 3.065001845,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.169230774,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.001000000164,
+     "p75": 0.026896764522,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.31147029995000003,
+     "p75": 0.5999999642,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 0.5999999642,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.9961538315,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 0.9999998808,
+     "p25": 0.521082870665,
+     "p75": 0.9999998808,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.9999998808,
+     "p25": 0.7680734396,
+     "p75": 0.9999998808,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 7
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.5859375,
+     "n": 7
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.04296875,
+     "n": 7
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.5,
+     "n": 7
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 1.0,
+     "p25": 0.99159663915,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": -0.15625,
+     "p25": -0.4453125,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": -6.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.3781512678,
+     "p25": 0.0,
+     "p75": 0.58700442315,
+     "n": 7
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.015625,
+     "p25": 0.0,
+     "p75": 0.21484375,
+     "n": 7
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.5,
+     "n": 7
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 1.0,
+     "p25": 0.9075630307,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.40625,
+     "p25": 0.0,
+     "p75": 0.5390625,
+     "n": 7
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0078125,
+     "n": 7
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": -6.0,
+     "p75": 0.0,
+     "n": 7
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.5126050711,
+     "p25": 0.15748898685,
+     "p75": 0.651260525,
+     "n": 7
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.5011875033,
+     "p25": 0.40873016414999996,
+     "p75": 0.5011875033,
+     "n": 7
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.234375,
+     "p25": 0.0625,
+     "p75": 0.6953125,
+     "n": 7
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 7
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.3000000119,
+     "p25": 0.1484375,
+     "p75": 0.33359375594999996,
+     "n": 7
+    },
+    "Voice_Unison_Mode": {
+     "median": 3.0,
+     "p25": 1.0,
+     "p75": 4.5,
+     "n": 7
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 3.0,
+     "p25": 3.0,
+     "p75": 3.0,
+     "n": 7
+    }
+   }
+  },
+  "Mallets": {
+   "preset_count": 12,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 1.5,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 12
+    },
+    "Voice_Filter1_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.3125,
+     "n": 12
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 2299.166995,
+     "p25": 1795.9963975,
+     "p75": 3998.8893425,
+     "n": 12
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.1190476194,
+     "p25": 0.0,
+     "p75": 0.3977167085,
+     "n": 12
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Filter2_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 1459.549255,
+     "p25": 551.82811,
+     "p75": 20000.1035,
+     "n": 12
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.0568181835,
+     "p25": 0.0,
+     "p75": 0.41914682839999995,
+     "n": 12
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.25,
+     "n": 12
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.25,
+     "n": 12
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.25,
+     "n": 12
+    },
+    "Voice_Global_Glide": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Amount": {
+     "median": 0.984375,
+     "p25": 0.853192672125,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.375,
+     "p75": 0.5,
+     "n": 12
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.241319417925,
+     "p75": 0.5,
+     "n": 12
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.30454045534999996,
+     "p25": 4.95736640025e-05,
+     "p75": 0.522436082325,
+     "n": 12
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.001000000164,
+     "p75": 0.002175034839,
+     "n": 12
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 0.7081470787499999,
+     "p25": 0.48768277842499996,
+     "p75": 6.70402288,
+     "n": 12
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.9356344938000001,
+     "p25": 0.597335621675,
+     "p75": 1.6134319575,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.001000000164,
+     "p75": 0.00521780923,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 2.1199820347,
+     "p25": 0.73571269215,
+     "p75": 3.8145883675,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 1.3072088354,
+     "p25": 0.5999999642,
+     "p75": 3.6728663425,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.3325828686,
+     "p25": 0.0,
+     "p75": 0.673828125,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.001000000164,
+     "p75": 0.152410622675,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.24320030210000002,
+     "p75": 1.81854284,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.566781572975,
+     "p75": 0.5999999642,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 0.712890625,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 0.94140625,
+     "p25": 0.265625,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.00390625,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 0.7499998659,
+     "p25": 0.32043191047499997,
+     "p75": 1.1004845206,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 0.94921875,
+     "p25": 0.3671875,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.25,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.7680734396,
+     "p25": 0.5239115357,
+     "p75": 1.0570400956000001,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 12
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.33190822602500003,
+     "n": 12
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.25,
+     "n": 12
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 0.9957983196,
+     "p25": 0.8319327831000001,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": -0.2109375,
+     "p25": -0.4609375,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": -0.005859375,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.43460960685,
+     "p25": 0.0,
+     "p75": 0.6554622054,
+     "n": 12
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.025390625,
+     "n": 12
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 12
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 0.93277311325,
+     "p25": 0.77521009745,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.4453125,
+     "p25": 0.0,
+     "p75": 0.53125,
+     "n": 12
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 12
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.41123345494999997,
+     "p25": 0.29831933975,
+     "p75": 0.5929199457,
+     "n": 12
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.5011875033,
+     "p25": 0.448846727575,
+     "p75": 0.5011875033,
+     "n": 12
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.3984375,
+     "n": 12
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 12
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.19140625,
+     "p25": 0.125,
+     "p75": 0.297656252975,
+     "n": 12
+    },
+    "Voice_Unison_Mode": {
+     "median": 2.5,
+     "p25": 1.0,
+     "p75": 3.5,
+     "n": 12
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 2.0,
+     "p25": 2.0,
+     "p75": 3.0,
+     "n": 12
+    }
+   }
+  },
+  "Percussive": {
+   "preset_count": 8,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 2.25,
+     "n": 8
+    },
+    "Voice_Filter1_Drive": {
+     "median": 7.875,
+     "p25": 3.796875,
+     "p75": 11.90625,
+     "n": 8
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 321.70511650000003,
+     "p25": 37.684685675,
+     "p75": 780.2527925,
+     "n": 8
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.42004869879999995,
+     "p25": 0.15760281495,
+     "p75": 0.5397727489,
+     "n": 8
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 8
+    },
+    "Voice_Filter2_Drive": {
+     "median": 2.625,
+     "p25": 0.0,
+     "p75": 5.25,
+     "n": 8
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 1084.850585,
+     "p25": 81.266641575,
+     "p75": 9163.733400000001,
+     "n": 8
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Filter2_On": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.35511362550000003,
+     "p25": 0.081845238825,
+     "p75": 0.7262355546,
+     "n": 8
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Global_Glide": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0172019191075,
+     "n": 8
+    },
+    "Voice_Global_Transpose": {
+     "median": -19.0,
+     "p25": -29.5,
+     "p75": -7.5,
+     "n": 8
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 0.998046875,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1201298833,
+     "n": 8
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.78941059115,
+     "p25": 0.4673076868,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 8
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.00050016683336295,
+     "p25": 0.0,
+     "p75": 0.001118129643,
+     "n": 8
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 1.184909705,
+     "p25": 0.92938573355,
+     "p75": 2.0719097875,
+     "n": 8
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.2226124257,
+     "p25": 0.00499596586425,
+     "p75": 0.646981075375,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.25,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.142473131425,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.78937727215,
+     "p25": 0.5,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.0,
+     "p75": 0.06647773645499999,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 0.7276014685500001,
+     "p25": 0.584970012275,
+     "p75": 1.856191992975,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.020768689455000003,
+     "p75": 1.13176207315,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.25,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.8174014762249999,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.081245880565,
+     "p25": 0.0,
+     "p75": 0.3096153848,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1462264061,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.75,
+     "p25": 0.5,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.0,
+     "p75": 0.00236914388375,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 0.5902597606,
+     "p25": 0.27732042965,
+     "p75": 0.76285155065,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 0.751772016275,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.9966216236250001,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.13803418912999998,
+     "p25": 0.0,
+     "p75": 0.307432435475,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": -0.02734375,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 2.5,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 2.25581044,
+     "p25": 0.9999999254999999,
+     "p75": 13.6288903,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": -0.01953125,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.25,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.9999999105999999,
+     "p25": 0.9999998808,
+     "p75": 11.18626428,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 8
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": -0.125,
+     "p25": -0.328125,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.00390625,
+     "n": 8
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 8
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.3059298098,
+     "p25": 0.16975308585,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 1.0,
+     "p25": 0.9978991598,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Oscillator2_On": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 9.25,
+     "n": 8
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.38721168045,
+     "p25": 0.0,
+     "p75": 0.555701285575,
+     "n": 8
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.5011875033,
+     "p25": 0.5011875033,
+     "p75": 0.5011875033,
+     "n": 8
+    },
+    "Voice_SubOscillator_On": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 8
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 8
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.234375,
+     "p25": 0.1640625,
+     "p75": 0.389062508925,
+     "n": 8
+    },
+    "Voice_Unison_Mode": {
+     "median": 1.5,
+     "p25": 0.0,
+     "p75": 3.25,
+     "n": 8
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 2.5,
+     "p25": 2.0,
+     "p75": 3.5,
+     "n": 8
+    }
+   }
+  },
+  "Piano & Keys": {
+   "preset_count": 3,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 1.0,
+     "p25": 0.5,
+     "p75": 2.0,
+     "n": 3
+    },
+    "Voice_Filter1_Drive": {
+     "median": 1.5,
+     "p25": 0.75,
+     "p75": 3.65625,
+     "n": 3
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 265.411469,
+     "p25": 258.30467250000004,
+     "p75": 904.3144395,
+     "n": 3
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.3472222388,
+     "p25": 0.32738095525,
+     "p75": 0.362103194,
+     "n": 3
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 3
+    },
+    "Voice_Filter2_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1875,
+     "n": 3
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 1820.38989,
+     "p25": 1771.5711649999998,
+     "p75": 10910.246695000002,
+     "n": 3
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 0.5,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.3769841492,
+     "p25": 0.1884920746,
+     "p75": 0.39682541785000003,
+     "n": 3
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Global_Glide": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Global_Transpose": {
+     "median": -12.0,
+     "p25": -12.0,
+     "p75": -6.0,
+     "n": 3
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0734374500000001,
+     "n": 3
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.171875,
+     "n": 3
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.40625,
+     "p25": 0.375,
+     "p75": 0.453125,
+     "n": 3
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.546875,
+     "p25": 0.5234375,
+     "p75": 0.7421875,
+     "n": 3
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.390625,
+     "p25": 0.1953125,
+     "p75": 0.44590628145,
+     "n": 3
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 9.655952454e-05,
+     "p25": 4.827976227e-05,
+     "p75": 0.006008744242270001,
+     "n": 3
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 5.5745039,
+     "p25": 3.0872519321,
+     "p75": 6.22383356,
+     "n": 3
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.1266317517,
+     "p25": 0.098467137685,
+     "p75": 0.86052448085,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": -0.07692307235,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.7269230485,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 1.25,
+     "p25": 0.6250232830643649,
+     "p75": 2.44696152,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 0.5134616494,
+     "p25": 0.34591776875,
+     "p75": 3.2915256297,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.3705626875,
+     "p75": 5.6027815821,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 0.9805825353,
+     "p25": 0.9777912795499999,
+     "p75": 0.99029126765,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.5078125,
+     "p25": 0.4375,
+     "p75": 0.75390625,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.000500000082,
+     "p75": 0.001000000164,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 0.5999999642,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 1.7516447621,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.4296875,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 0.7890625,
+     "p25": 0.61328125,
+     "p75": 0.89453125,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 2.48567581,
+     "p25": 1.2429273492200499,
+     "p75": 2.48567581,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 4.12129259,
+     "p25": 2.1007750960200005,
+     "p75": 7.278122645,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 1.0,
+     "p25": 0.5,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 13.0,
+     "p75": 15.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.953125,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0390625,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1159197092,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.9999998808,
+     "p25": 0.5940673351500001,
+     "p75": 1.1140803104,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 15.0,
+     "p75": 15.0,
+     "n": 3
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": -0.0515625477,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": -0.015625,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0625,
+     "p25": 0.03125,
+     "p75": 0.1953125,
+     "n": 3
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 2.0,
+     "p25": 1.0,
+     "p75": 2.0,
+     "n": 3
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 0.9831932783,
+     "p25": 0.9621848762,
+     "p75": 0.99159663915,
+     "n": 3
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": -0.53125,
+     "p25": -0.53125,
+     "p75": -0.4296875,
+     "n": 3
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": -0.05859375,
+     "p75": 0.046875,
+     "n": 3
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.4339007139,
+     "p25": 0.39342094955,
+     "p75": 0.44804279505,
+     "n": 3
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.09375,
+     "p25": 0.046875,
+     "p75": 0.1484375,
+     "n": 3
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.1953125,
+     "p25": 0.09765625,
+     "p75": 0.4453125,
+     "n": 3
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 2.0,
+     "p25": 1.0,
+     "p75": 2.5,
+     "n": 3
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 0.7647058964,
+     "p25": 0.64285716415,
+     "p75": 0.8613445461,
+     "n": 3
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.484375,
+     "p25": 0.4765625,
+     "p75": 0.59375,
+     "n": 3
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.08375000955,
+     "n": 3
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 3
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.210084036,
+     "p25": 0.1795101017,
+     "p75": 0.36134455354999995,
+     "n": 3
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.2265625,
+     "p25": 0.2021945417,
+     "p75": 0.30078125,
+     "n": 3
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 3
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.3125,
+     "p25": 0.15625,
+     "p75": 0.59765625,
+     "n": 3
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 3
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.15625,
+     "p25": 0.10546875,
+     "p75": 0.2890625,
+     "n": 3
+    },
+    "Voice_Unison_Mode": {
+     "median": 2.0,
+     "p25": 1.5,
+     "p75": 4.0,
+     "n": 3
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 3.0,
+     "p25": 2.5,
+     "p75": 4.0,
+     "n": 3
+    }
+   }
+  },
+  "Synth Keys": {
+   "preset_count": 44,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.25,
+     "n": 44
+    },
+    "Voice_Filter1_Drive": {
+     "median": 3.65625,
+     "p25": 0.0,
+     "p75": 6.375,
+     "n": 44
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 1116.1424550000002,
+     "p25": 189.47110775,
+     "p75": 2908.54089,
+     "n": 44
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.42309957745,
+     "p25": 0.18616691605,
+     "p75": 0.555555582,
+     "n": 44
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_Drive": {
+     "median": 1.59375,
+     "p25": 0.0,
+     "p75": 3.375,
+     "n": 44
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 3721.534305,
+     "p25": 986.291916,
+     "p75": 12067.414550000001,
+     "n": 44
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.4117063582,
+     "p25": 0.0,
+     "p75": 0.500992074625,
+     "n": 44
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Global_Glide": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.02471923828,
+     "n": 44
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0703125,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.4761904478,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.4375,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.7756379843,
+     "p25": 0.47597483542499996,
+     "p75": 0.9084472656,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 4.656612873e-05,
+     "p75": 0.0012043677270000002,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 6.56027508,
+     "p25": 0.5999999642,
+     "p75": 6.70402288,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.61748975515,
+     "p25": 0.03060164861,
+     "p75": 1.4321848424999999,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.0048888635355,
+     "p25": 0.000440068084575,
+     "p75": 0.4295111299,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 2.092990875,
+     "p25": 0.27899233625,
+     "p75": 11.3111582,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.2562014461,
+     "p75": 1.7902503,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1796875,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 0.99609375,
+     "p25": 0.83461782335,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.5696677863499999,
+     "p25": 0.00576923077425,
+     "p75": 0.7578125,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": -0.171875,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.11860793832500005,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.001000000164,
+     "p75": 0.033276733012500004,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 2.43976021,
+     "p25": 0.5999999642,
+     "p75": 3.84613323,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 0.5999999642,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.992307663,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.359375,
+     "p75": 0.58155618605,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 0.74609375,
+     "p25": 0.375,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.328125,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.001064017414902985,
+     "p25": 0.0,
+     "p75": 0.333596468,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 0.53665305675,
+     "p25": 0.2076878995,
+     "p75": 0.9999999404,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 14.5,
+     "p25": 6.0,
+     "p75": 15.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 0.61328125,
+     "p25": 0.33203125,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.375,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.000373125076298,
+     "p25": 0.0,
+     "p75": 0.078125,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.47129741310000006,
+     "p25": 0.04141785949,
+     "p75": 0.9999998808,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.25,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 14.0,
+     "p75": 15.0,
+     "n": 44
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": -0.078125,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.109375,
+     "n": 44
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 2.0,
+     "p25": 0.75,
+     "p75": 2.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 1.0,
+     "p25": 0.7542016953,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": 0.0,
+     "p25": -0.296875,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": -1.75,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.42692939934999996,
+     "p25": 0.26260505245,
+     "p75": 0.531467855,
+     "n": 44
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": -0.47265625,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.01953125,
+     "p25": 0.0,
+     "p75": 0.2265625,
+     "n": 44
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 0.76470589635,
+     "p25": 0.5546218753,
+     "p75": 0.950135231025,
+     "n": 44
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 0.75,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.0859375,
+     "p25": 0.0,
+     "p75": 0.33984375,
+     "n": 44
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": -0.0234375,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.48024360835,
+     "p25": 0.20168067515,
+     "p75": 0.6554622054,
+     "n": 44
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.35318656265000004,
+     "p25": 0.21875,
+     "p75": 0.5011875033,
+     "n": 44
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.6535218358,
+     "p25": 0.0,
+     "p75": 0.837890625,
+     "n": 44
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.2421875,
+     "p25": 0.125,
+     "p75": 0.4140625,
+     "n": 44
+    },
+    "Voice_Unison_Mode": {
+     "median": 3.0,
+     "p25": 1.75,
+     "p75": 5.25,
+     "n": 44
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 3.5,
+     "p25": 2.0,
+     "p75": 5.0,
+     "n": 44
+    }
+   }
+  },
+  "Synth Lead": {
+   "preset_count": 44,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 2.0,
+     "p25": 0.0,
+     "p75": 3.0,
+     "n": 44
+    },
+    "Voice_Filter1_Drive": {
+     "median": 6.375,
+     "p25": 2.765625,
+     "p75": 10.96875,
+     "n": 44
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 622.8741454999999,
+     "p25": 241.650024,
+     "p75": 2605.5888075000003,
+     "n": 44
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.48949314655,
+     "p25": 0.3472222388,
+     "p75": 0.5987328439999999,
+     "n": 44
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 3.0,
+     "n": 44
+    },
+    "Voice_Filter2_Drive": {
+     "median": 3.375,
+     "p25": 0.0,
+     "p75": 8.625,
+     "n": 44
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 874.319336,
+     "p25": 157.55714425000002,
+     "p75": 3821.504155,
+     "n": 44
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.4613095373,
+     "p25": 0.2236211933,
+     "p75": 0.622442319975,
+     "n": 44
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Global_Glide": {
+     "median": 0.03404736519,
+     "p25": 0.0002288818359,
+     "p75": 0.054609831422500005,
+     "n": 44
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 0.77734375,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.625,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.4761904478,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.4375,
+     "p75": 0.7217548191500001,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.665163368,
+     "p25": 0.5011875629,
+     "p75": 0.915954589825,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.00025302171703500004,
+     "p75": 0.00237941741975,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 0.7776645124,
+     "p25": 0.5999999642,
+     "p75": 6.8175075025,
+     "n": 44
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.091799709935,
+     "p25": 0.0271618096175,
+     "p75": 0.97160634385,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1875,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.197368383375,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.019151605665,
+     "p25": 0.000936264637925,
+     "p75": 0.420148164025,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 4.101559399999999,
+     "p25": 0.5904035866,
+     "p75": 8.79853654,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.2562014461,
+     "p75": 1.2876288625,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.4609375,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 0.93496620655,
+     "p25": 0.71484375,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.0578725962,
+     "p75": 0.8828125,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": -0.171875,
+     "p75": 0.3692307472,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.094282776135,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.06880767643,
+     "p25": 0.001000000164,
+     "p75": 0.6543567031749999,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 2.43976021,
+     "p25": 0.716137886,
+     "p75": 4.5001310725,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.2279964834,
+     "p75": 1.03811874935,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.3359375,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.985026121125,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.515625,
+     "p25": 0.359375,
+     "p75": 0.708984375,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 0.94140625,
+     "p25": 0.28125,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 163.828125,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.328125,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.013304054740000001,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 0.8363955319,
+     "p25": 0.2076878995,
+     "p75": 1.59588182,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 13.0,
+     "p25": 11.75,
+     "p75": 15.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.400390625,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 4.921875,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.375,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0303397141425,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.9999998808,
+     "p25": 0.41868334265,
+     "p75": 2.1133347775,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 13.0,
+     "p75": 15.0,
+     "n": 44
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": -0.078125,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.08203125,
+     "n": 44
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.232421860125,
+     "n": 44
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 1.5,
+     "p25": 0.75,
+     "p75": 2.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 0.9033613503,
+     "p25": 0.720588251975,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": 0.0,
+     "p25": -0.21875,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": -0.00390625,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.33053222299999996,
+     "p25": 0.16188199072499998,
+     "p75": 0.5010504275500001,
+     "n": 44
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": -0.11328125,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.21484375,
+     "n": 44
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 0.84390997885,
+     "p25": 0.6197479218499999,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.046875,
+     "p25": 0.0,
+     "p75": 0.25390625,
+     "n": 44
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": -0.015625,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 44
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.31681638955,
+     "p25": 0.13054331205,
+     "p75": 0.595793515425,
+     "n": 44
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.5011875033,
+     "p25": 0.326171875,
+     "p75": 0.65234375,
+     "n": 44
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.67578125,
+     "p25": 0.3828125,
+     "p75": 0.818359375,
+     "n": 44
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 44
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.28515625,
+     "p25": 0.0859375,
+     "p75": 0.505859375,
+     "n": 44
+    },
+    "Voice_Unison_Mode": {
+     "median": 3.0,
+     "p25": 1.0,
+     "p75": 4.0,
+     "n": 44
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 3.0,
+     "p25": 2.0,
+     "p75": 5.25,
+     "n": 44
+    }
+   }
+  },
+  "Synth Pad": {
+   "preset_count": 31,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.5,
+     "n": 31
+    },
+    "Voice_Filter1_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.40625,
+     "n": 31
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 1543.198,
+     "p25": 695.3042905,
+     "p75": 2611.4019799999996,
+     "n": 31
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.3373016119,
+     "p25": 0.0,
+     "p75": 0.5116877556,
+     "n": 31
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Filter2_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.375,
+     "n": 31
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 1172.15234,
+     "p25": 532.925781,
+     "p75": 5083.889160000001,
+     "n": 31
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.3174603283,
+     "p25": 0.0,
+     "p75": 0.4921565056,
+     "n": 31
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Global_Glide": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 0.9609375,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.140625,
+     "n": 31
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 31
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 31
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.8139178157,
+     "p25": 0.5011875629,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.3635645509,
+     "p25": 0.053614415230000004,
+     "p75": 0.6741092205,
+     "n": 31
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.5835770369,
+     "p75": 7.641871215,
+     "n": 31
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 1.50276303,
+     "p25": 0.8744137883,
+     "p75": 1.74622154,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.375,
+     "p75": 0.5,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.001000000164,
+     "p75": 2.660733935,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 1.17509913,
+     "p25": 0.5999999642,
+     "p75": 9.121344090000001,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 1.21873623,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.8641304373500001,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.08108107745,
+     "p75": 0.6328125,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.02910383046,
+     "p25": 0.001000000164,
+     "p75": 1.0992716253,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 1.59441721,
+     "p25": 0.5999999642,
+     "p75": 6.460715055,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.48631767929999997,
+     "p75": 0.8511701521,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.0,
+     "p75": 0.69140625,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 0.796875,
+     "p25": 0.4765625,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0073915720009999995,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 0.9999998808,
+     "p25": 0.10074281695000001,
+     "p75": 0.9999998808,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 5.0,
+     "p75": 15.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 0.65625,
+     "p25": 0.4453125,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.01721445471,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.9999998808,
+     "p25": 0.47129741310000006,
+     "p75": 1.69242144,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 3.5,
+     "p75": 15.0,
+     "n": 31
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0625,
+     "n": 31
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 2.0,
+     "p25": 0.5,
+     "p75": 3.0,
+     "n": 31
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 0.8067227006,
+     "p25": 0.70233878495,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": -0.53125,
+     "p25": -0.6953125,
+     "p75": -0.078125,
+     "n": 31
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": -0.0625,
+     "p75": 0.026718749665,
+     "n": 31
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.4827586114,
+     "p25": 0.33211156725,
+     "p75": 0.5674981475,
+     "n": 31
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0546875,
+     "n": 31
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1099286452,
+     "n": 31
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 2.0,
+     "p25": 1.0,
+     "p75": 2.0,
+     "n": 31
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 0.8739495873,
+     "p25": 0.74789917465,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.40625,
+     "p25": 0.0,
+     "p75": 0.5703125,
+     "n": 31
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": -0.03515625,
+     "p75": 0.0546875,
+     "n": 31
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": -9.5,
+     "p75": 0.0,
+     "n": 31
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.4827586114,
+     "p25": 0.4033613503,
+     "p75": 0.66091954705,
+     "n": 31
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.5011875033,
+     "p25": 0.33203125,
+     "p75": 0.5011875033,
+     "n": 31
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.4444444478,
+     "p25": 0.16896081715,
+     "p75": 0.6171875,
+     "n": 31
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 31
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.3000000119,
+     "p25": 0.2109375,
+     "p75": 0.46484375,
+     "n": 31
+    },
+    "Voice_Unison_Mode": {
+     "median": 3.0,
+     "p25": 2.0,
+     "p75": 3.0,
+     "n": 31
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 3.0,
+     "p25": 2.0,
+     "p75": 4.0,
+     "n": 31
+    }
+   }
+  },
+  "Synth Rhythmic": {
+   "preset_count": 29,
+   "cloud": {
+    "Voice_Filter1_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Filter1_CircuitLpHp": {
+     "median": 2.0,
+     "p25": 0.0,
+     "p75": 3.0,
+     "n": 29
+    },
+    "Voice_Filter1_Drive": {
+     "median": 3.1875,
+     "p25": 0.0,
+     "p75": 6.5625,
+     "n": 29
+    },
+    "Voice_Filter1_Frequency": {
+     "median": 1238.44604,
+     "p25": 349.431152,
+     "p75": 2932.98633,
+     "n": 29
+    },
+    "Voice_Filter1_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Filter1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Filter1_Resonance": {
+     "median": 0.5853174925,
+     "p25": 0.3670635223,
+     "p75": 0.6547619104,
+     "n": 29
+    },
+    "Voice_Filter1_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Filter1_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Filter2_CircuitLpHp": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 29
+    },
+    "Voice_Filter2_Drive": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 6.75,
+     "n": 29
+    },
+    "Voice_Filter2_Frequency": {
+     "median": 890.281982,
+     "p25": 98.5973053,
+     "p75": 3931.86475,
+     "n": 29
+    },
+    "Voice_Filter2_Morph": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Filter2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Filter2_Resonance": {
+     "median": 0.5853174925,
+     "p25": 0.3174603283,
+     "p75": 0.6944444776,
+     "n": 29
+    },
+    "Voice_Filter2_Slope": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Filter2_Type": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 29
+    },
+    "Voice_Global_FilterRouting": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Global_Glide": {
+     "median": 0.06034970284,
+     "p25": 0.0,
+     "p75": 0.1553547382,
+     "n": 29
+    },
+    "Voice_Global_Transpose": {
+     "median": 0.0,
+     "p25": -12.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_Amount": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.34375,
+     "n": 29
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 29
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 29
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+     "median": 0.7825443149,
+     "p25": 0.5166015625,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+     "median": 0.001090839505,
+     "p25": 9.655952454e-05,
+     "p75": 0.00970967114,
+     "n": 29
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.501924932,
+     "p75": 2.95935559,
+     "n": 29
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+     "median": 0.07961914688,
+     "p25": 0.004362000618,
+     "p75": 0.1451813579,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.4285714626,
+     "p75": 0.6769230366,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.0001788884401,
+     "p75": 0.03200000152,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.2807340026,
+     "p75": 1.7902503,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.1738518625,
+     "p75": 0.7879244089,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+     "median": 0.992307663,
+     "p25": 0.9453125,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.3666666746,
+     "p75": 0.75,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+     "median": 0.5,
+     "p25": 0.5,
+     "p75": 0.5,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+     "median": 0.001000000164,
+     "p25": 0.0003051757812,
+     "p75": 0.08443505317,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+     "median": 0.5999999642,
+     "p25": 0.5999999642,
+     "p75": 2.43976021,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+     "median": 0.5999999642,
+     "p25": 0.1266317517,
+     "p75": 0.5999999642,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+     "median": 1.0,
+     "p25": 0.8671875,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+     "median": 0.5,
+     "p25": 0.3076923192,
+     "p75": 0.65625,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.6875,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+     "median": 0.0,
+     "p25": -0.046875,
+     "p75": 0.03125,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+     "median": 2.0,
+     "p25": 1.0,
+     "p75": 3.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0003051757812,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+     "median": 1.14697766,
+     "p25": 0.6231273413,
+     "p75": 2.38922,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+     "median": 13.0,
+     "p25": 11.0,
+     "p75": 15.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+     "median": 1.0,
+     "p25": 0.8359375,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 143.4375,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+     "median": 0.0,
+     "p25": -0.484375,
+     "p75": 0.125,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Shape_Type": {
+     "median": 2.0,
+     "p25": 1.0,
+     "p75": 3.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0003051757812,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+     "median": 0.9999998808,
+     "p25": 0.8582822084,
+     "p75": 2.50874996,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+     "median": 15.0,
+     "p25": 12.0,
+     "p75": 17.0,
+     "n": 29
+    },
+    "Voice_Modulators_TimeScale": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.234375,
+     "n": 29
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+     "median": 0.0546875,
+     "p25": 0.0,
+     "p75": 0.3515625,
+     "n": 29
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 2.0,
+     "n": 29
+    },
+    "Voice_Oscillator1_Gain": {
+     "median": 1.0,
+     "p25": 0.8487395048,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Oscillator1_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Oscillator1_Pan": {
+     "median": -0.296875,
+     "p25": -0.53125,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Oscillator1_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+     "median": 0.5,
+     "p25": 0.3277311027,
+     "p75": 0.571428597,
+     "n": 29
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.1484375,
+     "n": 29
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 2.0,
+     "n": 29
+    },
+    "Voice_Oscillator2_Gain": {
+     "median": 0.8571428657,
+     "p25": 0.7478991747,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Oscillator2_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Oscillator2_Pan": {
+     "median": 0.296875,
+     "p25": 0.0,
+     "p75": 0.46875,
+     "n": 29
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Oscillator2_Pitch_Transpose": {
+     "median": 0.0,
+     "p25": 0.0,
+     "p75": 0.0,
+     "n": 29
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+     "median": 0.4712643623,
+     "p25": 0.2773109376,
+     "p75": 0.5668449402,
+     "n": 29
+    },
+    "Voice_SubOscillator_Gain": {
+     "median": 0.5011875033,
+     "p25": 0.40625,
+     "p75": 0.6640625,
+     "n": 29
+    },
+    "Voice_SubOscillator_On": {
+     "median": 1.0,
+     "p25": 1.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_SubOscillator_Tone": {
+     "median": 0.4047619104,
+     "p25": 0.0,
+     "p75": 0.765625,
+     "n": 29
+    },
+    "Voice_SubOscillator_Transpose": {
+     "median": 1.0,
+     "p25": 0.0,
+     "p75": 1.0,
+     "n": 29
+    },
+    "Voice_Unison_Amount": {
+     "median": 0.3515625,
+     "p25": 0.1875,
+     "p75": 0.546875,
+     "n": 29
+    },
+    "Voice_Unison_Mode": {
+     "median": 3.0,
+     "p25": 1.0,
+     "p75": 4.0,
+     "n": 29
+    },
+    "Voice_Unison_VoiceCount": {
+     "median": 3.0,
+     "p25": 2.0,
+     "p75": 4.0,
+     "n": 29
+    }
+   }
+  }
+ }
+}
