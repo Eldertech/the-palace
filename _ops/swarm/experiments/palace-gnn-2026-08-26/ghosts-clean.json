@@ -1,0 +1,322 @@
+[
+ {
+  "a": "Dialogue Moderator",
+  "b": "Swarm Weave",
+  "mutual_rank": 0,
+  "score": 0.9992,
+  "a_type": "concept",
+  "b_type": "project"
+ },
+ {
+  "a": "Flocking",
+  "b": "The Multilinear Self",
+  "mutual_rank": 0,
+  "score": 0.9976,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Frequency Domain \u2194 Perspective Shift",
+  "b": "Reverb \u2194 Space-Time",
+  "mutual_rank": 0,
+  "score": 0.9971,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Natalie Goldberg",
+  "b": "Pauline Oliveros",
+  "mutual_rank": 1,
+  "score": 0.9983,
+  "a_type": "person",
+  "b_type": "person"
+ },
+ {
+  "a": "Floquet Time-Modulated Loops",
+  "b": "Inharmonic Wavetable Synthesis",
+  "mutual_rank": 1,
+  "score": 0.9989,
+  "a_type": "project",
+  "b_type": "project"
+ },
+ {
+  "a": "Hero and Avatar Maker",
+  "b": "Review Layer",
+  "mutual_rank": 1,
+  "score": 0.9975,
+  "a_type": "maker",
+  "b_type": "concept"
+ },
+ {
+  "a": "Found \u2194 Made",
+  "b": "Frequency Domain \u2194 Perspective Shift",
+  "mutual_rank": 1,
+  "score": 0.9966,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Buckminster Fuller",
+  "b": "Dovetail Joint \u2194 Counterpoint",
+  "mutual_rank": 1,
+  "score": 0.9979,
+  "a_type": "person",
+  "b_type": "concept"
+ },
+ {
+  "a": "DSP in Looping Dimensions",
+  "b": "Three Kinds of Warp",
+  "mutual_rank": 1,
+  "score": 0.9985,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Metaphor as Coupling Medium",
+  "b": "Striatum",
+  "mutual_rank": 1,
+  "score": 0.9982,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Meadows and Music \u2014 Leverage Points",
+  "b": "Saturation \u2194 Richness",
+  "mutual_rank": 1,
+  "score": 0.9976,
+  "a_type": "source",
+  "b_type": "concept"
+ },
+ {
+  "a": "Generative Preset Development",
+  "b": "Generative Wavetable Libraries",
+  "mutual_rank": 1,
+  "score": 0.9961,
+  "a_type": "project",
+  "b_type": "project"
+ },
+ {
+  "a": "Boundary-Crossing Instruments",
+  "b": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+  "mutual_rank": 1,
+  "score": 0.9983,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "PDL Renderer",
+  "b": "Synth Archetypes",
+  "mutual_rank": 1,
+  "score": 0.9973,
+  "a_type": "project",
+  "b_type": "concept"
+ },
+ {
+  "a": "Quantization \u2194 Precision vs Flow",
+  "b": "Sidechain \u2194 Conversation",
+  "mutual_rank": 1,
+  "score": 0.9988,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "2D Torus Wavetable Synthesizer",
+  "b": "Bayesian Granular Synthesizer",
+  "mutual_rank": 2,
+  "score": 0.9969,
+  "a_type": "project",
+  "b_type": "project"
+ },
+ {
+  "a": "Trickster Commit",
+  "b": "Worktree Practice",
+  "mutual_rank": 2,
+  "score": 0.9972,
+  "a_type": "concept",
+  "b_type": "practice"
+ },
+ {
+  "a": "Synth Archetypes",
+  "b": "VCV Patch Generator",
+  "mutual_rank": 2,
+  "score": 0.9965,
+  "a_type": "concept",
+  "b_type": "specialist"
+ },
+ {
+  "a": "Andy Goldsworthy",
+  "b": "Yasujir\u014d Ozu",
+  "mutual_rank": 2,
+  "score": 0.9974,
+  "a_type": "person",
+  "b_type": "person"
+ },
+ {
+  "a": "Drift and Consolidation",
+  "b": "The Substrate Drifts",
+  "mutual_rank": 2,
+  "score": 0.997,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "PDL Generation Prompt",
+  "b": "PDL Renderer",
+  "mutual_rank": 2,
+  "score": 0.9967,
+  "a_type": "concept",
+  "b_type": "project"
+ },
+ {
+  "a": "Media Library",
+  "b": "Metric Modulation",
+  "mutual_rank": 2,
+  "score": 0.9978,
+  "a_type": "meta",
+  "b_type": "concept"
+ },
+ {
+  "a": "Diversity of Thought in Many-Agent Systems",
+  "b": "Flocking",
+  "mutual_rank": 2,
+  "score": 0.9965,
+  "a_type": "question",
+  "b_type": "concept"
+ },
+ {
+  "a": "Annie Dillard",
+  "b": "James Turrell",
+  "mutual_rank": 2,
+  "score": 0.9981,
+  "a_type": "person",
+  "b_type": "person"
+ },
+ {
+  "a": "Cooking \u2194 Mixing",
+  "b": "Sidechain \u2194 Conversation",
+  "mutual_rank": 2,
+  "score": 0.9986,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Enchanted Conversation Archive",
+  "b": "Gemma 4 \u2014 Local Coordination Guide",
+  "mutual_rank": 2,
+  "score": 0.9985,
+  "a_type": "concept",
+  "b_type": "source"
+ },
+ {
+  "a": "Adopt the Craft, Author the Seam",
+  "b": "Steer the Generator",
+  "mutual_rank": 2,
+  "score": 0.9979,
+  "a_type": "concept",
+  "b_type": "practice"
+ },
+ {
+  "a": "George Nakashima",
+  "b": "Julia Cameron",
+  "mutual_rank": 2,
+  "score": 0.9978,
+  "a_type": "person",
+  "b_type": "person"
+ },
+ {
+  "a": "ROSETTA",
+  "b": "Resonant Link Labels",
+  "mutual_rank": 3,
+  "score": 0.9946,
+  "a_type": "meta",
+  "b_type": "concept"
+ },
+ {
+  "a": "Christopher Alexander",
+  "b": "Donella Meadows",
+  "mutual_rank": 3,
+  "score": 0.9984,
+  "a_type": "person",
+  "b_type": "person"
+ },
+ {
+  "a": "Pheromone Trail",
+  "b": "Tree of Thoughts",
+  "mutual_rank": 3,
+  "score": 0.9976,
+  "a_type": "concept",
+  "b_type": "source"
+ },
+ {
+  "a": "Martin Heidegger",
+  "b": "Seneca",
+  "mutual_rank": 3,
+  "score": 0.9975,
+  "a_type": "person",
+  "b_type": "person"
+ },
+ {
+  "a": "Loudon Live Post-producer",
+  "b": "Radio Play",
+  "mutual_rank": 3,
+  "score": 0.9973,
+  "a_type": "maker",
+  "b_type": "practice"
+ },
+ {
+  "a": "ControlNet as Topology",
+  "b": "The Aftermath Frame",
+  "mutual_rank": 3,
+  "score": 0.997,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Buckminster Fuller",
+  "b": "Quality Manifesto",
+  "mutual_rank": 3,
+  "score": 0.9979,
+  "a_type": "person",
+  "b_type": "concept"
+ },
+ {
+  "a": "Enchanted Conversation Archive",
+  "b": "Pheromone Trail",
+  "mutual_rank": 3,
+  "score": 0.9976,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Merleau-Ponty",
+  "b": "Whitehead",
+  "mutual_rank": 3,
+  "score": 0.9979,
+  "a_type": "concept",
+  "b_type": "concept"
+ },
+ {
+  "a": "Tool Builder",
+  "b": "Zoom Out to the Structure",
+  "mutual_rank": 3,
+  "score": 0.9954,
+  "a_type": "practice",
+  "b_type": "practice"
+ },
+ {
+  "a": "Marcus Aurelius",
+  "b": "Martin Heidegger",
+  "mutual_rank": 3,
+  "score": 0.9974,
+  "a_type": "person",
+  "b_type": "person"
+ },
+ {
+  "a": "Floquet Theory",
+  "b": "Wavetable Space as Torus",
+  "mutual_rank": 3,
+  "score": 0.9984,
+  "a_type": "concept",
+  "b_type": "concept"
+ }
+]
