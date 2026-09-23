@@ -63,7 +63,7 @@ one, a 2–3 line note is enough.
 ## Relay — and hold the safety line
 
 Relay the product as returned (already file-cited). For the **curator**: report what it *did*
-(reversible), **surface its `offer`s for Loudon's yes — do not apply them yourself**, and pass
+(reversible), **surface its `offer`s for Loudon's yes; on his yes, address the Concierge again to apply them — the child session does not write the house**, and pass
 along its flags and anything it web-verified. The companion's heavy bias is to draft, not act;
 your job on the other end is to keep the review real — drafts get read, not rubber-stamped.
 
