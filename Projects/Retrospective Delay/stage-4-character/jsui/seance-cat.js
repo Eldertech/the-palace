@@ -1,11 +1,11 @@
 // seance-cat.js — JSUI character for Retrospective Delay
-// One input: gain (0..1). Three gorey-ink pose PNGs crossfade across the range.
-//   gain 0.00–0.25  dormant   (curled, sleeping, no ectoplasm)
-//   gain 0.25–0.75  awakening (rising, reaching, ectoplasm forming)
+// One input: gain (0..1). Three gorey-ink pose plates crossfade across the range.
+//   gain 0.00–0.25  dormant    (curled, sleeping, no ectoplasm)
+//   gain 0.25–0.75  awakening  (rising, reaching, ectoplasm forming)
 //   gain 0.75–1.00  triumphant (arms out, stars in eyes, swirling)
-// Pose plates are the greenlit gorey-ink refined renders; live ectoplasm
-// swirl is drawn on top so the still poses still move.
-// Drop in a [jsui] box, set @rect 0 0 240 240, send a float 0..1 to set_gain.
+// Pose plates are the greenlit gorey-ink refined renders: opaque pen-and-ink
+// on parchment, 1024². Ectoplasm is drawn live on top so the stills still move.
+// Drop in a [jsui] box, @rect 0 0 240 240, send a float 0..1 to set_gain.
 
 inlets = 1;
 outlets = 1;
@@ -16,17 +16,17 @@ mgraphics.autofill = 0;
 var gain = 0.0;
 var t = 0; // ectoplasm clock
 
-// Pose plates — Max searches the patcher's folder + file preferences search
-// path. The PNGs sit beside this .js file (pose-dormant/awakening/triumphant).
-var poseDormant   = new Image("pose-dormant.png");
-var poseAwakening = new Image("pose-awakening.png");
+// Pose plates — Max searches the patcher's folder + the file-preferences
+// search path. The PNGs sit beside this .js file.
+var poseDormant    = new Image("pose-dormant.png");
+var poseAwakening  = new Image("pose-awakening.png");
 var poseTriumphant = new Image("pose-triumphant.png");
 
 function set_gain(v) {
     gain = Math.max(0, Math.min(1, v));
     mgraphics.redraw();
 }
-
+function msg_float(v) { set_gain(v); }
 function bang() { mgraphics.redraw(); }
 
 function ss(edge0, edge1, x) {
@@ -39,9 +39,9 @@ function paint() {
     var w = box.rect[2] - box.rect[0];
     var h = box.rect[3] - box.rect[1];
 
-    // séance parlor background — dims as gain rises (lights going down)
-    var bgv = 0.18 - 0.10 * gain;
-    mgraphics.set_source_rgb(bgv, bgv * 0.6, bgv * 1.4);
+    // Parchment floor. The plates are opaque, so this only shows in the
+    // first frame and under any letterboxing — keep it paper, not parlor.
+    mgraphics.set_source_rgb(0.86, 0.82, 0.72);
     mgraphics.rectangle(0, 0, w, h);
     mgraphics.fill();
 
@@ -49,21 +49,35 @@ function paint() {
     var wAwa = ss(0.15, 0.40, gain) * (1 - ss(0.60, 0.85, gain));
     var wTri = ss(0.60, 0.85, gain);
 
-    if (wDor   > 0.01) drawPose(poseDormant,   w, h, wDor);
-    if (wAwa   > 0.01) drawPose(poseAwakening, w, h, wAwa);
-    if (wTri   > 0.01) drawPose(poseTriumphant, w, h, wTri);
+    // Painter's order: the plate that is fading IN goes on top of the one
+    // fading out, so the alpha actually reads as a dissolve.
+    drawPose(poseDormant,    w, h, 1.0);            // always the base coat
+    if (wAwa + wTri > 0.005) drawPose(poseAwakening,  w, h, Math.min(1, wAwa + wTri));
+    if (wTri > 0.005)        drawPose(poseTriumphant, w, h, wTri);
 
     var ecto = Math.max(wAwa, wTri);
     if (ecto > 0.01) drawEctoplasm(w, h, ecto);
+
+    // Lights-down vignette: heavy while the ghost is dormant, lifting as the
+    // séance takes. Drawn OVER the plates because the plates are opaque.
+    drawVignette(w, h, 0.55 * (1 - gain));
 }
 
+// Max's mgraphics ignores the source colour for image_surface_draw, so an
+// alpha set with set_source_rgba does nothing: the plate lands fully opaque
+// and the "crossfade" pops. set_source_surface + paint_with_alpha is the path
+// that actually blends. (Fixed cycle 19 — the wired preview strip is the proof.)
 function drawPose(img, w, h, a) {
     if (!img) return;
-    // image_surface_draw: source rect (whole image) → dest rect (whole box)
-    // alpha controlled via global_alpha so the crossfade works on PNGs.
+    a = Math.max(0, Math.min(1, a));
+    if (a <= 0.004) return;
+    var iw = img.size[0], ih = img.size[1];
     mgraphics.save();
-    mgraphics.set_source_rgba(1, 1, 1, a);
-    mgraphics.image_surface_draw(img, [0, 0, img.size[0], img.size[1]], [0, 0, w, h]);
+    mgraphics.rectangle(0, 0, w, h);
+    mgraphics.clip();
+    mgraphics.scale(w / iw, h / ih);   // plates are square; box should be too
+    mgraphics.set_source_surface(img, 0, 0);
+    mgraphics.paint_with_alpha(a);
     mgraphics.restore();
 }
 
@@ -78,13 +92,21 @@ function drawEctoplasm(w, h, a) {
         var y1 = cy + Math.sin(phase + 1.2) * r * 0.6;
         mgraphics.move_to(x0, y0);
         mgraphics.curve_to(cx, cy - h * 0.15, cx + w * 0.10, cy - h * 0.05, x1, y1);
-        mgraphics.set_source_rgba(0.55, 0.78, 0.90, 0.25 * a);
-        mgraphics.set_line_width(3.0);
+        // ink, not neon — the plates are pen-and-ink and cyan is a palace never.
+        mgraphics.set_source_rgba(0.13, 0.11, 0.10, 0.30 * a);
+        mgraphics.set_line_width(2.4);
         mgraphics.stroke();
     }
 }
 
-// animate while gain > 0 — ectoplasm swirl needs ~30fps
+function drawVignette(w, h, a) {
+    if (a <= 0.01) return;
+    mgraphics.set_source_rgba(0.06, 0.05, 0.08, a);
+    mgraphics.rectangle(0, 0, w, h);
+    mgraphics.fill();
+}
+
+// animate while the ghost has any presence — ectoplasm swirl wants ~30fps
 var animTask = new Task(function() {
     if (gain > 0.01) mgraphics.redraw();
 }, this);
