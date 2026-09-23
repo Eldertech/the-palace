@@ -1,0 +1,2 @@
+An ancient Egyptian scorpion goddess Serqet motif, hammered gold and lapis lazuli inlay, hieroglyphic carvings, temple wall relief, warm torchlight, ornate
+seed=9232628 steps=28 guidance=3.5 1024x1024

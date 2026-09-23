@@ -1,0 +1,2 @@
+A mechanical chrome scorpion, cyberpunk, glowing neon circuitry along its segmented tail, wet rain-slick metal, teal and magenta rim light, cinematic, highly detailed
+seed=10582402 steps=28 guidance=3.5 1024x1024

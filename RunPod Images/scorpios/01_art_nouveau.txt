@@ -1,0 +1,2 @@
+An ornamental scorpion in Art Nouveau stained-glass style, Alphonse Mucha, flowing organic linework, gold leaf and jewel-toned glass panels, symmetrical decorative border, elegant
+seed=10373529 steps=28 guidance=3.5 1024x1024

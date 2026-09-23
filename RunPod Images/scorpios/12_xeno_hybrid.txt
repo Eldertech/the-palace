@@ -1,0 +1,2 @@
+An alien xenomorph-scorpion hybrid, elongated ribbed skull, biomechanical black chitin, dripping slime, HR Giger creature design, skeletal tail arched high, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, wet biolatex surfaces, dark industrial lair, terrifying and beautiful
+seed=6718447 steps=28 guidance=3.5 1024x1024

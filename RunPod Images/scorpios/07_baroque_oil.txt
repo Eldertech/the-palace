@@ -1,0 +1,2 @@
+A dramatic scorpion in Baroque oil painting style, Caravaggio chiaroscuro, deep shadow, single warm light source, rich amber and umber, museum masterwork
+seed=9079277 steps=28 guidance=3.5 1024x1024
