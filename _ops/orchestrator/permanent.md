@@ -254,8 +254,11 @@ What does NOT survive:
   history grows indefinitely. Compression policy is v0.2.
 - **Cron / daemon scheduling.** Cycles run on Loudon's invocation only.
   Scheduled execution requires Path 1 (API key); out of scope for v0.1.
-- **Multi-cycle batches.** One cycle per invocation. Loudon can re-invoke
-  for cycle N+1.
+- ~~**Multi-cycle batches.** One cycle per invocation.~~ **Built 2026-09-23
+  as the run:** one activation cycles the same steward up to
+  `stopping_conditions.max_iterations` times while it ships and nothing waits
+  on Loudon — see `runAgentCycle.md` § The run. A barren cycle gets one
+  retry; a second means STALLED and the run stops.
 - **Deposit ceremony automation.** When a steward proposes a page edit,
   it goes through the human Deposit Ceremony — the orchestrator does not
   write directly to the home entry.

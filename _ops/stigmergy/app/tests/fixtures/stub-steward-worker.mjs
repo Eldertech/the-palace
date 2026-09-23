@@ -17,7 +17,9 @@
 //   --sleep <ms>     stay alive before emitting + exiting (default 0)
 //   --from <name>    the emitted message's `from` / page title (default "Stub Steward")
 //   --msg-id <id>    the emitted message id (default stub-msg-<ts>-<rand>)
-//   --emit <mode>    message | none   (default message)
+//   --emit <mode>    message | none | blocking | session   (default message)
+//                    blocking/session emit a RESOURCE_REQUEST that ends a run
+//   --count-file <p> when set, append one line per invocation (run-loop tests)
 
 const args = process.argv.slice(2);
 function flag(name, def) {
@@ -29,6 +31,8 @@ const sleepMs = parseInt(flag('--sleep', '0'), 10) || 0;
 const from = flag('--from', 'Stub Steward');
 const msgId = flag('--msg-id', `stub-msg-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`);
 const emit = flag('--emit', 'message');
+const countFile = flag('--count-file', null);
+if (countFile) { try { (await import('node:fs')).appendFileSync(countFile, `${Date.now()}\n`); } catch { /* ignore */ } }
 
 function emitTranscript() {
   if (emit === 'none') return;
@@ -45,6 +49,12 @@ function emitTranscript() {
     board: 'GENERAL',
     payload: { subject: 'stub cycle', content: 'stub steward cycle ran; grants consumed by the reaper' },
   };
+  if (emit === 'blocking' || emit === 'session') {
+    message.to = 'TRICKSTER'; message.type = 'RESOURCE_REQUEST'; message.board = 'TRICKSTER'; message.request_id = msgId;
+    message.payload = emit === 'blocking'
+      ? { resource: 'audition_verification', blocking: true, headline: 'stub pause', options: [{ id: 'OK', label: 'OK' }] }
+      : { resource: 'interactive_session', kind: 'interactive_session', blocking: false, headline: 'stub session', options: [{ id: 'NOT-NOW', label: 'NOT-NOW' }] };
+  }
   const text = `Catch-up: a stub steward cycle ran.\n\n\`\`\`json\n${JSON.stringify(message)}\n\`\`\`\n`;
   const record = {
     type: 'assistant',

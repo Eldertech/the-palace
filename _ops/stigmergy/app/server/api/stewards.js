@@ -1,6 +1,6 @@
 // server/api/stewards.js — permanent-steward lane endpoints.
 //   GET  /api/stewards            — registered stewards + grant state + worker
-//   POST /api/steward/advance     — advance ONE steward by a cycle
+//   POST /api/steward/advance     — advance ONE steward by a run (up to max_cycles / manifest max_iterations)
 //   POST /api/stewards/advance-all — advance every ready steward
 
 import { jsonResponse, readBody } from '../http.js';
@@ -37,7 +37,10 @@ export async function stewardsRoutes(ctx) {
     }
     const name = body && typeof body.name === 'string' ? body.name.trim() : '';
     if (name === '') { jsonResponse(res, 400, { error: 'missing or empty name' }); return true; }
-    const result = stewardLane.advance({ name });
+    // `max_cycles` (optional) caps this activation's run; otherwise the
+    // manifest's stopping_conditions.max_iterations applies (see steward-lane).
+    const maxCycles = Number.isInteger(body.max_cycles) && body.max_cycles > 0 ? body.max_cycles : undefined;
+    const result = stewardLane.advance({ name, maxCycles });
     if (!result.ok) {
       // unknown steward -> 404; busy -> 409; anything else -> 500.
       const status = result.found === false ? 404 : (result.busy ? 409 : 500);
@@ -61,7 +64,8 @@ export async function stewardsRoutes(ctx) {
       }
     }
     const names = Array.isArray(body.names) ? body.names : undefined;
-    const result = stewardLane.advanceAll({ names });
+    const maxCycles = Number.isInteger(body.max_cycles) && body.max_cycles > 0 ? body.max_cycles : undefined;
+    const result = stewardLane.advanceAll({ names, maxCycles });
     if (!result.ok && result.busy) {
       jsonResponse(res, 409, { ...result });
       return true;

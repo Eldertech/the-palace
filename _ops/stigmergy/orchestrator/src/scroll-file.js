@@ -455,7 +455,7 @@ export function materializeScroll(opts) {
   let state = opts.state === undefined ? null : opts.state;
   let history = [];
   if (opts.agentDir) {
-    const dirAbs = join(palaceRoot, opts.agentDir).startsWith(palaceRoot) && !opts.agentDir.startsWith('/') ? join(palaceRoot, opts.agentDir) : opts.agentDir;
+    const dirAbs = opts.agentDir.startsWith('/') ? opts.agentDir : join(palaceRoot, opts.agentDir);
     try { state = JSON.parse(readFileSync(join(dirAbs, 'state.json'), 'utf8')); } catch { /* keep given state */ }
     history = readHistory(join(dirAbs, 'history.jsonl'));
   }

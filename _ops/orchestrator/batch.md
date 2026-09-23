@@ -45,16 +45,20 @@ standing consent.
 
 ### Step 3 — Cycle each due steward
 
-For each entry in `due[]`, follow `permanent.md` exactly — one cycle, one
-subagent, validate-and-append via the CLI, then post-process with
-`process-cycle.js`, which updates that steward's `state.json` +
-`history.jsonl` **and materializes the bundle-local `[Entry] — plan.md`
-read-model** from the cycle's decisions (Bundle-Local Stewardship,
-2026-06-09 — see [[Bundle-Local Stewardship — Production Plan]]). The plan
-write is part of every cycle, not an optional extra: use the
+For each entry in `due[]`, give it a **run** per `permanent.md` +
+`runAgentCycle.md` § The run: one subagent per cycle, validate-and-append via
+the CLI, then post-process with `process-cycle.js`, which updates that
+steward's `state.json` + `history.jsonl` **and materializes the bundle-local
+`[Entry] — scroll.md`** — the project's front door (Now zone + making trail;
+it replaced the plan.md read-model on 2026-09-23). Then read the summary's
+`stop_hint`: `shipped` → cycle the same steward again (up to its manifest
+`max_iterations`, 10 by default); `barren` → retry once, and a second barren
+cycle is STALLED (flagged in state and on the scroll — stop that steward);
+`blocking_ask` / `interactive_session` → stop, the next move is Loudon's. The
+scroll write is part of every cycle, not an optional extra: use the
 `process-cycle.js` helper so it always happens — don't hand-roll
-post-processing and silently skip it, or the bundle read-models go stale.
-The order is the `due[]` order.
+post-processing and silently skip it, or the scrolls go stale. The order is
+the `due[]` order; each steward's whole run finishes before the next starts.
 
 One steward's failure does not halt the batch. If a cycle errors or its
 output is rejected, note it and move to the next steward.
@@ -75,12 +79,13 @@ record; STIGMERGY shows them.
 - **Do not edit canon directly** in an unattended run: never touch a project
   entry's `.md` body or frontmatter. Stewards propose page edits via the BBS;
   Loudon (or a later interactive cycle) deposits. Writing the bundle-local
-  `[Entry] — plan.md`, the steward machinery (`state.json`/`history.jsonl`),
+  `[Entry] — scroll.md`, the steward machinery (`state.json`/`history.jsonl`),
   and board messages is **expected** — that is the cycle's normal output, not
-  a canon edit.
+  a canon edit. The scroll's **Standing Orders** zone is Loudon's: the
+  materializer never touches it and neither does any agent.
 - **The subagent never commits.** Under the Mac-side heartbeat the *wrapper*
   makes one scoped, lock-safe commit after the batch returns — machinery +
-  `plan.md`, text-only, via the palace committer (`_ops/heartbeat/`,
+  `scroll.md`, text-only, via the palace committer (`_ops/heartbeat/`,
   `palace-commit.mjs`; never `git add -A`). An interactive batch leaves the
   working tree for Loudon to commit. Either way the agent itself runs no git.
 

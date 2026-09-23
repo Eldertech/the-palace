@@ -283,28 +283,80 @@ describe('processCycle (integration)', () => {
     expect(summary.artifact_lint_warnings[0].warn).toBe(true);
   });
 
-  // Bundle-Local Stewardship Phase 1b/1c: when the home entry exists, the cycle
-  // materializes [Entry] — plan.md into its bundle from the reconciled state.
-  test('materializes the bundle-local plan read-model when the home entry exists', () => {
+  // The project scroll (2026-09-23, replacing the plan.md read-model): when the
+  // home entry exists, the cycle materializes [Entry] — scroll.md into its
+  // bundle — Now zone from the board-derived view, one making section per
+  // shipped message.
+  test('materializes the bundle-local scroll when the home entry exists', () => {
     const { agentDir } = makePalace();
-    // Give the steward a home entry so the bundle path resolves (frontmatter stage is read live).
-    writeFileSync(path.join(root, 'Test Steward.md'), '---\nstage: growing\nforward_vector: "I want to become the proof."\n---\n# Test Steward');
+    writeFileSync(path.join(root, 'Test Steward.md'), '---\nstage: growing\nstatus: active\nforward_vector: "I want to become the proof."\n---\n# Test Steward');
     const transcriptPath = path.join(root, 'transcript.jsonl');
-    writeFileSync(transcriptPath, assistantLine([resourceRequest({ blocking: true })]));
+    const shipped = {
+      schema_version: '1.0', id: 'ship-1', ts: '2026-05-27T16:01:00-04:00',
+      session_id: 'sess-1', from: 'Test Steward', to: '*', type: 'BROADCAST', board: 'GENERAL',
+      payload: { kind: 'shipped_artifact', headline: 'the first proof', ground: 'shipped · steward leans ON', content: 'Catch-up — this is the proof.\n\nRendered it.', artifacts: [{ path: 'Test Steward/proof.wav', caption: 'the proof' }], left_rough: 'no loop points' },
+    };
+    writeFileSync(transcriptPath, assistantLine([shipped, resourceRequest({ blocking: true })]));
 
     const summary = processCycle({
-      palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-05-27T16:05:00-04:00',
+      palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-05-27T20:05:00Z',
     });
 
-    expect(summary.plan.written).toBe(true);
-    const planPath = path.join(root, 'Test Steward', 'Test Steward — plan.md');
-    expect(summary.plan.planPath).toBe(planPath);
-    const plan = readFileSync(planPath, 'utf8');
-    expect(plan).toContain('# Test Steward — plan');
-    expect(plan).toContain('**Stage:** growing'); // read live from frontmatter
-    expect(plan).toContain('`tr-1`');             // the open decision landed
-    expect(plan).toContain('see [[Test Steward]] frontmatter `forward_vector`'); // pointer, not copy
-    expect(plan).not.toContain('I want to become the proof.'); // vector never copied
+    expect(summary.scroll.written).toBe(true);
+    const scrollPath = path.join(root, 'Test Steward', 'Test Steward — scroll.md');
+    expect(summary.scroll.scrollPath).toBe(scrollPath);
+    expect(summary.stop_hint).toBe('blocking_ask'); // a paused steward ends the run
+    expect(summary.barren).toBe(false);
+    const scroll = readFileSync(scrollPath, 'utf8');
+    expect(scroll).toContain('# Test Steward — scroll');
+    expect(scroll).toContain('**Stage:** growing');            // read live from frontmatter
+    expect(scroll).toContain('`tr-1`');                         // the open ask landed in Now
+    expect(scroll).toContain('steward paused on this');
+    expect(scroll).toContain('id="ship-1"');                    // the making trail opened
+    expect(scroll).toContain('[the proof](Test Steward/proof.wav)');
+    expect(scroll).toContain('this is the proof.');             // Where this stands, prefix stripped
+    expect(scroll).not.toContain('I want to become the proof.'); // vector never copied
+  });
+
+  test('a barren cycle reports stop_hint barren; two in a row mark the steward STALLED (health red) and the scroll says so', () => {
+    const { agentDir } = makePalace();
+    writeFileSync(path.join(root, 'Test Steward.md'), '---\nstage: growing\nstatus: active\n---\n# Test Steward');
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    writeFileSync(transcriptPath, JSON.stringify({ type: 'assistant', message: { usage: {}, content: [{ type: 'text', text: 'I thought about it and did nothing.' }] } }));
+
+    const one = processCycle({ palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-08-26T02:35:07Z' });
+    expect(one.stop_hint).toBe('barren');
+    expect(one.stalled).toBe(false);
+    let state = JSON.parse(readFileSync(path.join(root, agentDir, 'state.json'), 'utf8'));
+    expect(state.health.score).toBe('yellow');
+    expect(state.health.stalled).toBe(false);
+
+    const two = processCycle({ palaceRoot: root, transcriptPath, agentDir, cycleN: 2, iteration: 2, tsNow: '2026-08-26T02:40:07Z' });
+    expect(two.stop_hint).toBe('barren');
+    expect(two.stalled).toBe(true);
+    state = JSON.parse(readFileSync(path.join(root, agentDir, 'state.json'), 'utf8'));
+    expect(state.health.score).toBe('red');
+    expect(state.health.stalled).toBe(true);
+    const hist = readFileSync(path.join(root, agentDir, 'history.jsonl'), 'utf8');
+    expect(hist).toMatch(/"event":"CYCLE_BARREN".*"stalled":true/);
+    expect(readFileSync(path.join(root, 'Test Steward', 'Test Steward — scroll.md'), 'utf8')).toContain('**STALLED**');
+
+    // a cycle that ships clears the flag
+    writeFileSync(transcriptPath, assistantLine([resourceRequest({ blocking: false })]));
+    const three = processCycle({ palaceRoot: root, transcriptPath, agentDir, cycleN: 3, iteration: 3, tsNow: '2026-08-26T02:45:07Z' });
+    expect(three.stop_hint).toBe('shipped');
+    state = JSON.parse(readFileSync(path.join(root, agentDir, 'state.json'), 'utf8'));
+    expect(state.health.stalled).toBe(false);
+  });
+
+  test('a request for a live session ends the run with stop_hint interactive_session', () => {
+    const { agentDir } = makePalace();
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    const req = resourceRequest({ blocking: false });
+    req.payload.kind = 'interactive_session';
+    writeFileSync(transcriptPath, assistantLine([req]));
+    const summary = processCycle({ palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-05-27T16:05:00-04:00' });
+    expect(summary.stop_hint).toBe('interactive_session');
   });
 
   // SSOT cutover (2026-06-09): the append-only board is the source of truth for
@@ -344,13 +396,13 @@ describe('processCycle (integration)', () => {
       palaceRoot: root, transcriptPath, agentDir, cycleN: 2, iteration: 2, tsNow: '2026-05-27T16:05:00-04:00',
     });
 
-    // The plan reflects the BOARD, not the stale state: old-ask is resolved, not open.
-    const plan = readFileSync(path.join(root, 'Test Steward', 'Test Steward — plan.md'), 'utf8');
-    const openBlock = plan.slice(plan.indexOf('## Open Decisions'), plan.indexOf('## Resolved Decisions'));
-    const resolvedBlock = plan.slice(plan.indexOf('## Resolved Decisions'), plan.indexOf('## Done'));
+    // The scroll reflects the BOARD, not the stale state: old-ask is decided, not open.
+    const scroll = readFileSync(path.join(root, 'Test Steward', 'Test Steward — scroll.md'), 'utf8');
+    const openBlock = scroll.slice(scroll.indexOf('### Open asks'), scroll.indexOf('### Answered, not yet consumed'));
+    const decidedBlock = scroll.slice(scroll.indexOf('### Decided'), scroll.indexOf('<!-- scroll:now:end -->'));
     expect(openBlock).not.toContain('old-ask');
-    expect(resolvedBlock).toContain('`old-ask`');
-    expect(resolvedBlock).toContain('GRANTED');
+    expect(decidedBlock).toContain('`old-ask`');
+    expect(decidedBlock).toContain('GRANTED');
 
     // state.json is slimmed to pure runtime — decision arrays + stewardship gone.
     const after = JSON.parse(readFileSync(statePath, 'utf8'));
@@ -361,7 +413,7 @@ describe('processCycle (integration)', () => {
     expect(after.last_read_cursor).toBe('bc-x');
   });
 
-  test('cycle still completes (plan written:false, no throw) when the home entry is absent', () => {
+  test('cycle still completes (scroll written:false, no throw) when the home entry is absent', () => {
     const { agentDir } = makePalace(); // no Test Steward.md entry file in this palace
     const transcriptPath = path.join(root, 'transcript.jsonl');
     writeFileSync(transcriptPath, assistantLine([resourceRequest({ blocking: false })]));
@@ -370,7 +422,7 @@ describe('processCycle (integration)', () => {
       palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-05-27T16:05:00-04:00',
     });
     expect(summary.posted_ids).toEqual(['tr-1']); // cycle's real work is unaffected
-    expect(summary.plan.written).toBe(false);
-    expect(summary.plan.reason).toBe('entry-file-not-found');
+    expect(summary.scroll.written).toBe(false);
+    expect(summary.scroll.reason).toBe('entry-file-not-found');
   });
 });

@@ -21,6 +21,8 @@ import { findEntryFile } from './entry-paths.js';
 import { readEntryMeta } from './entry-frontmatter.js';
 import { findStagingTitle } from './plan-file.js';
 import { reconcilePendingRequests } from './process-cycle.js';
+import { MARK, readZone, readStandingOrders } from './scroll-file.js';
+import { resolveBundleDir } from './entry-paths.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
 
@@ -123,11 +125,19 @@ export function buildCyclePrompt(opts) {
     // write" and the steward posts to the board itself. The CONTEXT (identity,
     // state, board, posture) is identical across modes — one source of truth.
     mode = 'headless',
-    // include = { board, history, pageChange, staging } — which OPTIONAL context
-    // layers to inject. Omitted/true = present (the canonical cycle, unchanged).
-    // The identity (the home page) and the injected state are NEVER toggled —
-    // they ARE the agent. Used by the interactive launcher's context toggles.
+    // include = { board, history, pageChange, staging, scroll } — which OPTIONAL
+    // context layers to inject. Omitted/true = present (the canonical cycle,
+    // unchanged). The identity (the home page) and the injected state are NEVER
+    // toggled — they ARE the agent. Used by the interactive launcher's toggles.
     include = {},
+    // The run (2026-09-23): a steward activation may cycle up to
+    // `manifest.stopping_conditions.max_iterations` times in a row while it keeps
+    // shipping and nothing is waiting on Loudon. `runPosition` / `runCap` tell the
+    // steward where it is in that run so it can plan a larger jump; `retryOfBarren`
+    // marks the one retry the lane spends after a cycle that posted nothing.
+    runPosition = 1,
+    runCap = 1,
+    retryOfBarren = false,
   } = opts;
 
   const inc = {
@@ -135,6 +145,7 @@ export function buildCyclePrompt(opts) {
     history: include.history !== false,
     pageChange: include.pageChange !== false,
     staging: include.staging !== false,
+    scroll: include.scroll !== false,
   };
 
   if (!agentDir) throw new Error('buildCyclePrompt: agentDir is required');
@@ -184,6 +195,31 @@ export function buildCyclePrompt(opts) {
           + 'This is your stage-by-stage Loudon Live teaching arc. Weigh each decision against it — note in your plan when a choice advances or threatens a staged goal. You do **not** edit this file; if a decision implies the arc itself should change, FLAG it to Loudon (a RESOURCE_REQUEST / FLAG), do not silently rewrite the design.\n\n'
           + '```markdown\n' + stagingBody + '\n```\n';
       }
+    }
+  }
+
+  // The scroll seam (2026-09-23). The project's `[Entry] — scroll.md` carries
+  // two things the steward must read before it acts: Loudon's STANDING ORDERS
+  // (taste and direction written once, so the steward stops re-asking) and the
+  // NOW zone (where the project stands, including answers filed since the last
+  // cycle). The steward never writes the scroll — process-cycle regenerates it
+  // from what the steward posts.
+  let scrollSection = '';
+  let standingOrders = '';
+  if (inc.scroll) {
+    const bundle = resolveBundleDir(palaceRoot, manifest.home);
+    const scrollPath = bundle ? join(bundle.bundleDir, `${manifest.home} — scroll.md`) : null;
+    let scrollText = '';
+    if (scrollPath && existsSync(scrollPath)) { try { scrollText = readFileSync(scrollPath, 'utf8'); } catch { /* unreadable */ } }
+    if (scrollText) {
+      standingOrders = readStandingOrders(scrollText);
+      const nowZone = readZone(scrollText, MARK.nowStart, MARK.nowEnd) || '';
+      scrollSection = `# Your scroll — standing orders and where you stand\n\n`
+        + (standingOrders
+          ? `## Standing Orders (Loudon's direction — written once, binding every cycle)\n\n${standingOrders}\n\nThese outrank your own lean and any older grant. Do not ask a question a standing order already answers; act on it and say that you did.\n\n`
+          : `## Standing Orders\n\n_None written yet. When Loudon writes standing orders on your scroll they appear here and bind every cycle._\n\n`)
+        + `## Where you stand (the scroll's Now zone, regenerated before this cycle)\n\n${nowZone.trim() || '(empty)'}\n\n`
+        + `Your scroll is the project's front door in STIGMERGY; every made thing you post becomes a section of its making trail. You do not edit the scroll yourself.\n\n`;
     }
   }
 
@@ -298,14 +334,32 @@ ${stagingSection}
 ${JSON.stringify(stateForPrompt, null, 2)}
 \`\`\`
 
-${historySection}${boardSection}${pageChangeSection}# This cycle's mandate
+${scrollSection}${historySection}${boardSection}${pageChangeSection}# This cycle's mandate
 
-${extraMandate || `Run cycle ${cycleN} per the steward template's posting discipline. Apply the "every cycle ends with a TRICKSTER ask" rule.`}
+${extraMandate || defaultMandate({ cycleN, runPosition, runCap, retryOfBarren })}
 
 ${closingSection}
 `;
 
-  return { systemPrompt, userTurn, full: systemPrompt + '\n\n---\n\n' + userTurn };
+  return { systemPrompt, userTurn, full: systemPrompt + '\n\n---\n\n' + userTurn, standingOrders };
+}
+
+/**
+ * The default mandate for a cycle, aware of its place in a run. Ship-first (the
+ * 2026-06-07 Steward Boldness rule) — never the retired "end with a TRICKSTER
+ * ask" rule, which manufactured questions and suppressed building.
+ */
+export function defaultMandate({ cycleN, runPosition = 1, runCap = 1, retryOfBarren = false }) {
+  const parts = [];
+  parts.push(`Run cycle ${cycleN} per the steward template: catch Loudon up, **ship a made thing** and announce it on GENERAL, add a TRICKSTER ask only when a real fork blocks you, and set the work down honestly.`);
+  if (runCap > 1) {
+    const left = runCap - runPosition;
+    parts.push(`This activation is a **run of up to ${runCap} cycles**; you are on cycle ${runPosition} of ${runCap}${left > 0 ? ` (${left} more may follow)` : ' (the last one)'}. The run continues automatically after this cycle *as long as you shipped something and nothing is waiting on Loudon* — a paused ask (\`blocking: true\`) or a request for a live session ends it. So plan a larger jump: make the whole next move, not one step of it, and leave the next cycle a clean place to start from.`);
+  }
+  if (retryOfBarren) {
+    parts.push('**This is a retry.** Your previous cycle posted nothing — no made thing, no message — which leaves the project stalled. Ship something this time, even rough, and if you truly cannot, post a BROADCAST saying exactly what blocks you.');
+  }
+  return parts.join('\n\n');
 }
 
 function main() {
