@@ -1,0 +1,112 @@
+{
+ "arm": "crystal",
+ "instrument": "reference",
+ "probe_verdict": "ON TARGET",
+ "cells": {
+  "on_target": 8,
+  "retunable": 0,
+  "texture": 0,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 4,
+ "built": true,
+ "sfz": "crystal_reference.sfz",
+ "keys": [
+  "A1",
+  "G6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [],
+ "regions": [
+  {
+   "sample": "piano_A2_s2.wav",
+   "lokey": 33,
+   "hikey": 48,
+   "pitch_keycenter": 45,
+   "tune": 0,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 0.36,
+   "measured_hz": 110.023
+  },
+  {
+   "sample": "piano_E3_s2.wav",
+   "lokey": 49,
+   "hikey": 56,
+   "pitch_keycenter": 52,
+   "tune": 0,
+   "offset": 0,
+   "asked_for": "E3",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 0.28,
+   "measured_hz": 164.836
+  },
+  {
+   "sample": "piano_C4_s2.wav",
+   "lokey": 57,
+   "hikey": 69,
+   "pitch_keycenter": 60,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 0.52,
+   "measured_hz": 261.708
+  },
+  {
+   "sample": "piano_G5_s2.wav",
+   "lokey": 70,
+   "hikey": 91,
+   "pitch_keycenter": 79,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 1.16,
+   "measured_hz": 784.516
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 0.21,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 0.67,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 0.61,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 1.85,
+   "why": "seed 2 ranked higher"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 59,
+  "on_target": 59,
+  "worst_abs_cents_on_target": 1.75,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

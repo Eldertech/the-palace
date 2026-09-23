@@ -67,12 +67,55 @@ grid. A whole-window autocorrelation was tried for this job and rejected:
 the crystal's inharmonic partials pulled it up to 22¢ flat where pyin, YIN
 and an FFT peak agreed within 2¢.
 
+## From graded run to instrument (build_sfz.py)
+
+`run-on-mac.sh` ends by turning each model arm's graded run into a
+playable SFZ per instrument row, under `instruments/<arm>/<instrument>/`.
+
+- **Which render.** Only renders that hold still are candidates. Per note:
+  on target before retunable, then the octave nearest the one asked for,
+  then the steadiest, then the closest pitch class.
+- **Where it goes.** By the pitch it actually sounds at (the grader's
+  `sfz_keycenter` + `sfz_tune`), not the note we asked for. A render that
+  came out an octave high is mapped an octave high, retuned. Two notes that
+  came out on the same key keep the better one.
+- **Key ranges.** Split at the midpoint between neighbours; the outer
+  samples reach at most 12 semitones (`--stretch`). Wider gaps stay silent
+  and are named in the file header and `picks.json`.
+- **Envelope.** `one_shot` for piano and marimba (they ring out),
+  `no_loop` for the rest (key-up releases). No loop points yet — that is
+  Phase 4.
+- **Onset.** −30 dBFS, 2 ms back-off, 3 ms fade-in. This is the third copy
+  of the Phoneme Choir trim; `responsive_onset.py` is still unbuilt.
+
+`--check` reads the regions back out of the written `.sfz`, plays every
+mapped key through a small numpy sampler using the SFZ pitch rule
+(`cents = (key − pitch_keycenter) × 100 + tune`), and grades each key
+against its own pitch with `verify.py`. It checks the mapping arithmetic,
+not how sforzando sounds (resampling is linear interpolation).
+`--audition` writes a rising line across the keyboard.
+
+The shipped proof is `instruments/crystal/reference/`, built from the
+crystal arm's `piano` row (the crystal arm plays the crystal on every row,
+so the samples keep the row's name): 4 samples, A1–G6, 59 of 59 keys on
+target, worst 1.75¢, `one_shot`. WAVs are gitignored in this project
+(`.gitignore:53`), so git carries its `.sfz`, `picks.json` and
+`keycheck.json` but not its samples; `run-on-mac.sh` rebuilds it.
+
 ## What is checked, and on what
 
 Checked here: all 48 `mock_flawed` cells land in the grade their simulated
 flaw should earn, under both pyin and YIN; the crystal reference grades 48
 of 48 on target, worst 1.85¢, under both trackers; the perfect mock reads
 within 0.32¢. The dry-run page is `compare.dry-run.html`.
+
+The instrument builder, checked on `mock_flawed` (built to a scratch
+folder, not kept): all six rows build, and every mapped key of every one
+plays on target, worst 1.53¢ — including zones made from 30–50¢-off
+renders and octave slips, which is the retune claim above tested rather
+than assumed. The violin's missing C4 leaves a reported two-key gap
+(F4–F♯4). With one region's `tune` zeroed by hand, exactly that zone's 16
+keys fail, each 31¢ sharp: the check can fail.
 
 Not yet run anywhere: either model. The SA3 load/generate call is the one
 proven in `Kuramoto Coupling/atmospheric-beds-sa3.py`; the adapter passes
@@ -85,8 +128,9 @@ those two arms cannot be sold.
 
 `run-on-mac.sh` · `probe.py` (render / verify one arm) · `verify.py` (the
 grade) · `compare.py` (the head-to-head page + `compare.json`) ·
-`matrix.json` · `adapters/`. Each arm leaves `renders.<arm>.jsonl`,
-`results.<arm>.jsonl`, and WAVs under `samples/<arm>/`.
+`build_sfz.py` (graded run → SFZ) · `matrix.json` · `adapters/`. Each arm
+leaves `renders.<arm>.jsonl`, `results.<arm>.jsonl`, WAVs under
+`samples/<arm>/`, and (model arms) instruments under `instruments/<arm>/`.
 
 ## After the run
 

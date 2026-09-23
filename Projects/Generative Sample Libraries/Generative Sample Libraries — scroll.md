@@ -15,19 +15,19 @@ forward_vector: "I am Generative Sample Libraries's scroll — the one page that
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T05:03:32.000Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-23T05:23:03.000Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** growing · **Steward:** cycle 20 · last ran 2026-09-23 (today)
+- **Status:** active · **Stage:** growing · **Steward:** cycle 21 · last ran 2026-09-23 (today)
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-09-23 (today) — The Stable Audio vs MusicGen pitch test is built and checked against the Crystal instrument. On the Mac it's one command. (`gsl-steward-042`)
-- **Last commit touching this project:** 2026-09-23 `49fe241` — ops(scrolls): standing orders for the four pilot projects, written on Loudon's instruction
+- **Last shipped:** 2026-09-23 (today) — The pitch test now ends in a playable instrument. The Crystal reference built from it plays every key in tune, 59 of 59. (`gsl-steward-044`)
+- **Last commit touching this project:** 2026-09-23 `27c6d2d` — steward(Generative Sample Libraries): pilot cycle 20 — the BOTH-PARALLEL probe, built to the edge of the weights
 - **Signal:** steady
-- **Drift:** 3 cycles since the entry was last consolidated (cycle 17) — the entry body may lag; this scroll does not.
+- **Drift:** 4 cycles since the entry was last consolidated (cycle 17) — the entry body may lag; this scroll does not.
 
 ### Where this stands
 
-Generative Sample Libraries turns a conversation into a playable sampled instrument. Two non-speech sources have shipped so far: the Crystal instrument (176 samples) and the Shepard-tone instrument. Source three is your idea from June: ask an audio AI model for a specific note on a specific instrument, then measure whether it actually played that note. In August you answered BOTH-PARALLEL, meaning test Stable Audio and MusicGen head to head in one report. This cycle built all of that except the part that needs the models. The rendering code for both is written, the grader has been checked on real audio, and the side-by-side report is built. On the Mac it's one line: bash "Projects/Generativ…
+Generative Sample Libraries turns a conversation into a playable sampled instrument. Two non-speech instruments have shipped: Crystal (176 samples) and Shepard-tone. Source three is your June idea: ask an audio AI model for a specific note on a specific instrument, then measure whether it played that note. In August you chose BOTH-PARALLEL, so Stable Audio and MusicGen are tested head to head. Last cycle built that test and checked the grader on real audio; on the Mac it is one command. This cycle added the step after grading. For each instrument it takes the best take of each note, maps it to the pitch it actually sounds at, fixes the tuning, and writes an SFZ you can load in sforzando. I…
 
 ### Open asks
 
@@ -58,6 +58,53 @@ Written by Claude on Loudon's behalf, 2026-09-23, from his answers this session 
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="gsl-steward-044" -->
+### 2026-09-23 — cycle 21 — The pitch test now ends in a playable instrument. The Crystal reference built from it plays every key in tune, 59 of 59.
+> shipped · graded run → SFZ builder proven on the Crystal arm · nothing waiting on you · steward leans RUN-ON-MAC
+
+What I built: [build_sfz.py](obsidian://open?vault=The%20Palace&file=Projects/Generative%20Sample%20Libraries/ai-source-probe/build_sfz.py). For every instrument row in a graded run it does four things.
+
+1. It keeps only takes that hold a steady pitch. A sampler can fix a wrong note but can't fix a wandering one.
+2. It picks the best take per note: on target first, then the octave nearest the one we asked for, then the steadiest.
+3. It places each sample by the pitch it actually sounds at, not the note we asked for. A take that came out an octave high goes in an octave high, retuned.
+4. It splits the keys between samples at the midpoint, and lets the outer samples reach at most 12 semitones past their own pitch. Wider gaps stay silent and are named in the file, not papered over.
+
+Piano and marimba ring out after you let go of the key. Bowed, blown and sung notes stop when you let go.
+
+The proof is the Crystal reference instrument ([open in sforzando](open:Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/crystal_reference.sfz)): 4 samples covering A1 to G6. To check it, I read the regions back out of the written file and played every key through a small sampler that uses the same pitch rule as an SFZ player (equation below). Then I graded each key against its own pitch with the same grader the probe uses. Result: 59 of 59 keys on target, worst 1.75 cents, including the full 12-semitone stretches at both ends. The audition is a rising line across the keyboard.
+
+The Crystal renders never miss, so they can't test the part that matters most for AI models: fixing a wrong note. I ran the builder on the simulated-flaws test set as well (built to scratch space, not kept). It has takes 30 to 50 cents off and takes an octave out. All six instruments built, and every mapped key played on target, worst 1.53 cents. The simulated bass came out mostly an octave low and was mapped an octave low, in tune. The simulated violin had no steady C4, so it has a reported two-key hole (F4 to F#4). Then I zeroed one region's tune value by hand: exactly that zone's 16 keys failed, each 31 cents sharp. So the check can fail.
+
+The Mac command ([DESIGN.md](obsidian://open?vault=The%20Palace&file=Projects/Generative%20Sample%20Libraries/ai-source-probe/DESIGN.md)) now ends by building an instrument per model arm, with the key check and an audition, and rebuilds the Crystal reference there too. It is still one line, and your standing order is met as written: nothing here needed the model weights.
+
+**Artifacts:**
+- [the Crystal reference played as a rising line across A1–G6, through the builder's own sampler](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/audition.wav)
+- [the instrument: 4 regions, keycenter and tune from measured pitch, rings out (one_shot)](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/crystal_reference.sfz)
+- [every key played and graded: 59 of 59 on target, worst 1.75 cents](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/keycheck.json)
+- [which take was kept per note, which were passed over, and why](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/picks.json)
+- [one-line summary per instrument built from the crystal arm](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/build.json)
+- [sample · A2 zone (the crystal arm's 'piano' row: it plays the crystal on every row)](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/samples/piano_A2_s2.wav)
+- [sample · E3 zone](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/samples/piano_E3_s2.wav)
+- [sample · C4 zone](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/samples/piano_C4_s2.wav)
+- [sample · G5 zone](Projects/Generative Sample Libraries/ai-source-probe/instruments/crystal/reference/samples/piano_G5_s2.wav)
+- [the builder: graded run → SFZ per instrument, with --check and --audition](Projects/Generative Sample Libraries/ai-source-probe/build_sfz.py)
+- [the one Mac command, now ending in instruments per model arm plus the Crystal reference rebuilt](Projects/Generative Sample Libraries/ai-source-probe/run-on-mac.sh)
+- [design notes: new section 'From graded run to instrument', and what was checked](Projects/Generative Sample Libraries/ai-source-probe/DESIGN.md)
+
+_Crystal reference · every key played and graded_
+| sample (asked for) | keys | stretch, semitones | worst key | worst error |
+| --- | --- | --- | --- | --- |
+| A2 | A1–C3 (16) | −12 to +3 | C#2 | 0.97¢ |
+| E3 | C#3–G#3 (8) | −3 to +4 | F3 | 0.46¢ |
+| C4 | A3–A4 (13) | −3 to +9 | G4 | −0.54¢ |
+| G5 | A#4–G6 (22) | −9 to +12 | A#4 | 1.75¢ |
+
+_Left rough:_ Nobody has loaded the SFZ in a real player or listened to the audition yet. My check covers the pitch arithmetic, not how sforzando sounds. WAVs are gitignored in this project (.gitignore:53), so git will carry the .sfz but not its samples until the Mac command rebuilds them. The Crystal build used the hard strike on all four notes (tie broken on steadiness), so the soft layer and the second take never became velocity layers or round-robins. The samples have no loop points, so a held note stops when the render ends. The onset trim is now copied into three scripts.
+
+_Next moves named:_ On the Mac: run the one command in DESIGN.md. It renders both models, grades them, writes the head-to-head page, and builds a playable SFZ for every model and instrument, plus the Crystal reference with its samples. · Load crystal_reference.sfz in sforzando and listen to the 12-semitone stretches at A1 and G6. That is the part my check can't hear. · Once there is a winning model: run the prompt-shape test (note name vs Hz vs 'middle C') on it, and use the second take as a velocity layer or round-robin instead of discarding it. · Fold cycles 18–21 into the home entry's footer (it last consolidated at cycle 17) and pull the onset trim into one shared responsive_onset.py.
+<sub>`gsl-steward-044` · BROADCAST on GENERAL</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="gsl-steward-042" -->
 ### 2026-09-23 — cycle 20 — The Stable Audio vs MusicGen pitch test is built and checked against the Crystal instrument. On the Mac it's one command.
 > shipped · harness ready, no model has run yet · steward leans run it --quick first
