@@ -47,13 +47,16 @@ links:
   - target: "[[Trickster]]"
     type: mirrors
     label: field-trace-vs-signal-intercept
+  - target: "[[The Scroll]]"
+    type: connects-to
+    label: renders-the-front-door
 ---
 
 # STIGMERGY
 
 ![[STIGMERGY — hero.png]]
 
-STIGMERGY is the palace's **nervous system made visible**: one terminal with three time-ordered decks — **STATE** (present knowledge / entries), **QUEUE** (future intentions / open work), **LOG** (immutable past / commits). It folds three previously-scattered media — Obsidian authoring, the [[BBS Blackboard]], and git — into a single operational surface. As of mid-2026 it is Loudon's *primary* way of operating the palace, more so than Obsidian: the front door, not a side tool.
+STIGMERGY is the palace's **nervous system made visible**: one terminal with three time-ordered decks — **STATE** (present knowledge / entries), **QUEUE** (future intentions / open work), **LOG** (immutable past / commits) — plus two action decks, **TRICKSTER** (the one decision inbox) and **PROJECTS** (every project on one screen, and each one's [[The Scroll|scroll]] a click away). It folds three previously-scattered media — Obsidian authoring, the [[BBS Blackboard]], and git — into a single operational surface. Since 2026-09 it is Loudon's *only* way of operating the palace: the front door, not a side tool.
 
 It is two things at once. Seen by a human, it is a **front-end** — a phosphor terminal you read and act in. Seen by an agent, it is an **engine** — an append-only blackboard you leave marks on and read gradients from. The same data structure serves both; the [[Trickster]] is just another node on the board.
 
@@ -119,9 +122,13 @@ STIGMERGY v1.0 is running daily. The persistent board has accumulated on the ord
 
 The **v2.0 consolidation** (2026-06-16) then healed a navigation drift where the v0.x board paradigm and the v1.0 time paradigm had stacked on one screen: decisions now live on a single surface (the **TRICKSTER deck**), **QUEUE** is the open-work board with the raw per-board feed demoted to a collapsible firehose, and the monospace [[BBS Design System]] aesthetic is restored on every surface. The roadmap to primary-interface — pulling enrichment, handoffs, and weave proposals inside the terminal, then authoring, then the Lens — lives in [[STIGMERGY v2.0 — Consolidation & Primary Interface]].
 
+## The projects deck and the scroll (2026-09)
+
+The consolidation left one gap Loudon named plainly: no big-picture view of the projects, no way back *into* a project after a steward moved it, and steward progress folded away behind the firehose. The **PROJECTS deck** (2026-09-23; it replaced the STEWARDS roster) answers the first two. One row per `type: project` entry — stewarded or not — grouped by what it needs: *needs you*, *ready to advance* (an answer filed that no cycle has consumed), *stalled* (two barren cycles), *tended*, *no steward*. Clicking a row opens the project's **scroll** ([[The Scroll]]) in the terminal: the Now zone regenerated on every look, the project's open asks as the same cards the TRICKSTER deck shows, Loudon's **Standing Orders** (editable here and nowhere else — the steward reads them at the top of every cycle), and the making trail with its media inline. The deck's signal column and the scroll's Now zone are computed by one rule, so they never disagree. The third gap — progress hidden behind the fold — closes by construction: everything a steward ships becomes a section of its project's scroll.
+
 ## Forward Vector
 
-Become the front door — the single surface Loudon opens to run the palace, where the seams between writing an entry, coordinating a swarm, and committing the result disappear entirely. Keep the wire exact and the surface human. Make completion impossible to fake.
+Become the front door — the single surface Loudon opens to run the palace, where the seams between writing an entry, coordinating a swarm, and committing the result disappear entirely. Keep the wire exact and the surface human. Make completion impossible to fake. The scroll is the newest test of that: a project's state must be readable in one screen, true without a cycle, and steerable in place.
 
 ---
 
