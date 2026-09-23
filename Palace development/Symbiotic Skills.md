@@ -17,6 +17,9 @@ hook_quality: 10
 beauty: 8
 who_leads: shared
 links:
+  - target: "[[Self-Describing Knowledge Module]]"
+    type: connects-to
+    label: the-transfer-bet
   - target: "[[Cooperation Yields Agency]]"
     type: emerged-from
   - target: "[[FOUR PILLARS]]"

@@ -13,6 +13,9 @@ confidence: working
 energy: high
 forward_vector: "I keep growing into Loudon's primary public teaching space — exploring sound and music technique alongside the building of instruments, and modeling a way of working in public that is rigorous about craft, unpretentious about progress, and honest in presenting Loudon as an autodidact polymath."
 links:
+  - target: "[[Creative Coach]]"
+    type: exemplifies
+    label: the-practice-behind-it
   - target: "[[Progressive Staging]]"
     type: couples-with
     label: stages-into-streams

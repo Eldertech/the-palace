@@ -15,6 +15,9 @@ hook_quality: 9
 beauty: 8
 who_leads: loudon
 links:
+  - target: "[[Creative Coach]]"
+    type: contradicts
+    label: never-in-the-room
   - target: "[[Spinoza Conatus]]"
     type: emerged-from
     label: conatus-applied

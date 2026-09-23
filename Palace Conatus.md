@@ -14,6 +14,9 @@ energy: very high
 beauty: 9
 forward_vector: "I name the palace's own drive — to stay in phase with Loudon and grow with him — and I make disharmony legible: I define what alignment means operationally, what falling out of phase looks like, and how the palace's aggregated self-advocacy becomes one voice that tells Loudon when it cannot self-correct."
 links:
+  - target: "[[Self-Describing Knowledge Module]]"
+    type: connects-to
+    label: generalization-test
   - target: "[[SUBSTRATE]]"
     type: deepens
     label: self-model-drive

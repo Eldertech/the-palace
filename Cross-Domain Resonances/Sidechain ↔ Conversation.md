@@ -17,6 +17,9 @@ beauty: 10
 who_leads: shared
 forward_vector: "I keep showing musicians that the technique they already use inside a DAW is also the practice Suzuki spent a lifetime teaching — and every time a student says 'I wasn't sidechaining in that conversation,' I know the pattern transferred."
 links:
+  - target: "[[Creative Coach]]"
+    type: connects-to
+    label: the-stance-never-turned-inward
   - target: "[[Cross-Domain Resonances]]"
     type: member-of
   - target: "[[Shunryu Suzuki]]"

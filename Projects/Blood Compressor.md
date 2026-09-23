@@ -14,6 +14,9 @@ beauty: 7
 who_leads: loudon
 forward_vector: "I will become the visceral compressor — a gain reduction unit where every parameter maps to a cardiovascular variable, where the GUI shows a beating heart and pulsing vessels, and where the user understands compression by understanding the body. Threshold is the systolic pressure that triggers vasoconstriction; ratio is the elasticity of the vessel wall; attack is the baroreceptor reflex delay; release is the smooth-muscle relaxation curve."
 links:
+  - target: "[[Objects to Think With]]"
+    type: exemplifies
+    label: object-to-think-with
   - target: "[[Biomechanical Synthesis]]"
     type: connects-to
     label: instrument-04

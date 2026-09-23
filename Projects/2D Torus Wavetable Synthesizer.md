@@ -11,6 +11,9 @@ stage: fruiting
 status: active
 forward_vector: "I want to become a working RNBO instrument with the seven-surface library validated, the Hopf fibration control surface implemented, and the warp tier system tested in performance — the first concrete instrument that incarnates DSP in Looping Dimensions. I want to demand a commercial-grade decision: ship as Loudon's signature device or remain a pedagogical test bed."
 links:
+  - target: "[[Objects to Think With]]"
+    type: exemplifies
+    label: object-to-think-with
   - target: "[[DSP in Looping Dimensions]]"
     type: couples-with
     label: incarnates

@@ -14,6 +14,9 @@ hook_quality: 8
 beauty: 7
 who_leads: shared
 links:
+  - target: "[[Creative Coach]]"
+    type: connects-to
+    label: repertoire-not-children
   - target: "[[Excellent Adventure]]"
     type: connects-to
   - target: "[[Hilaritas Generator]]"
