@@ -152,41 +152,29 @@ An entry's `stage` field doubles as a confidence interval on alignment between L
 **The Machinery/Content Split — where stewardship state lives** (named 2026-06-09; full rationale in Bundle-Local Stewardship — Production Plan and [[Project Stewardship System]] § The Machinery/Content Split). Shared engine code, indexes, schedulers, and runtime bookkeeping belong in `_ops/`. Anything *about a specific entry* — its plan, its open decisions, its working memory — belongs in that entry's bundle. The design is CQRS, not relocation:
 
 - The append-only board stays the event log (machinery — *what happened*). Decisions are `RESOURCE_REQUEST` / `RESOURCE_GRANT` messages; one write path, never a second write surface.
-- `[Entry] — plan.md` in the bundle is the materialized **read-model** of the steward's work state, regenerated each cycle by the orchestrator from the **board-derived** open/resolved decision view (reconciled from the append-only board — the single source of truth, not a copy in `state.json`) + done events. An agent or Loudon reads it cold without parsing JSONL in `_ops`.
-- `_ops/agents/permanent/[slug]/` keeps only slim runtime: iteration, cursor, health. Vector and stage are read **live from the entry's frontmatter**, never copied — copying just moves the drift.
+- `[Entry] — scroll.md` in the bundle is the project's **front door** ([[The Scroll]]): a **Now** zone materialized by the orchestrator from the **board-derived** open/resolved decision view (reconciled from the append-only board — the single source of truth, not a copy in `state.json`) plus the steward's runtime, the entry's live frontmatter and git — regenerated every cycle *and* on every look in STIGMERGY, so it never lies while the steward sleeps; Loudon's **Standing Orders**, never regenerated; and an append-only **making** trail, one section per shipped thing. An agent or Loudon reads it cold without parsing JSONL in `_ops`. It replaced the `plan.md` read-model on 2026-09-23.
+- `_ops/agents/permanent/[slug]/` keeps only slim runtime: iteration, cursor, health (now including `stalled`). Vector and stage are read **live from the entry's frontmatter**, never copied — copying just moves the drift.
 
-**The `[Entry] — plan.md` template** (§8 bundle type; keep internals loose — categories earn their place across many runs before hardening):
+**The scroll's zones** (SCHEMA — Reference §8 bundle type `scroll`; the materializer is `_ops/stigmergy/orchestrator/src/scroll-file.js`, and the three HTML-comment marker pairs are the contract):
 
 ```markdown
----
-title: "[Entry] — plan"
-born: YYYY-MM-DD
-links:
-  - target: "[[Entry]]"
-    type: connects-to
-    label: plan-for
-forward_vector: "I am [Entry]'s materialized work state — open decisions, resolved decisions, and done trail — regenerated each steward cycle so the entry can be read cold without opening _ops."
----
-
-# [Entry] — plan
-
-> Materialized read-model of the steward's work state. Regenerated each cycle from the STIGMERGY board; do not hand-edit the decision sections.
-> **Forward vector:** see the entry's own `forward_vector` frontmatter — not copied here (single-source-of-truth).
-
-## Plan
-(brief work-state note; pointer to `[Entry] — staging.md` when one exists)
-
-## Open Decisions
-(one per pending RESOURCE_REQUEST: request_id, topic, options, blocking, posted_at)
-
-## Resolved Decisions
-(one per resolved request: outcome / chosen option_id, resolved_at)
-
-## Done
-(the trail of what shipped / what each grant set in motion)
+<!-- scroll:now:start -->      machine-owned; rewritten on every materialization
+## Now
+- Status · Stage · Steward (cycle, last ran) · Waiting on you · Ready to advance · Last shipped · Signal (steady | barren once | STALLED) · Drift
+### Where this stands        (the steward's latest catch-up, in its own words)
+### Open asks · ### Answered, not yet consumed · ### Decided
+<!-- scroll:now:end -->
+## Standing Orders
+<!-- scroll:orders:start -->   Loudon's; never regenerated; injected into every cycle prompt
+<!-- scroll:orders:end -->
+## The making
+<!-- scroll:making:start -->   append-only, newest first; one <!-- scroll:entry id="…" --> per shipped message
+<!-- scroll:making:end -->
 ```
 
-**The read seam.** When an entry has a `[Entry] — staging.md` (the teaching arc), the steward *reads* it — the orchestrator loads it into context — so decisions are weighed against the staged design. But the steward **writes only `plan.md`**. If a decision implies the staging arc itself should change, the steward *flags* it (a `RESOURCE_REQUEST` / `FLAG` to Loudon) rather than editing `staging.md`. Read freely, write only your own file, surface arc-level changes for the human.
+**The read seam.** When an entry has a `[Entry] — staging.md` (the teaching arc), the steward *reads* it — the orchestrator loads it into context — so decisions are weighed against the staged design. The steward also reads its scroll's **Standing Orders** and **Now** zone, injected at the top of every cycle, and treats the orders as binding. But the steward **writes neither file**: the scroll is materialized by the orchestrator from what the steward *posts* (a `shipped_artifact` BROADCAST with `headline · ground · catchup · content · artifacts · left_rough` is the shape that lands cleanly), and the orders zone is Loudon's alone. If a decision implies the staging arc itself should change, the steward *flags* it (a `RESOURCE_REQUEST` / `FLAG` to Loudon) rather than editing `staging.md`. Read freely, post what you made, surface arc-level changes for the human.
+
+**The run.** One activation cycles a steward up to its manifest's `stopping_conditions.max_iterations` (10 since 2026-09-23) consecutive times while each cycle ships and nothing waits on Loudon. A cycle that posts nothing is *barren*: it earns one retry, and a second barren cycle marks the steward **STALLED** (health red, the scroll and the PROJECTS deck say so) until a cycle ships. A paused ask (`blocking: true`) or a request for a live session ends the run — the next move is Loudon's.
 
 ### Writing Conventions
 
