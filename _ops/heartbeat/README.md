@@ -26,10 +26,12 @@ already uses to advance a steward from the board).
 Both wrappers and STIGMERGY's lanes (`_ops/stigmergy/app/server/claude-bin.js`) resolve the
 binary the same way: `$CLAUDE_BIN` if set, else `~/.local/bin/claude` if present, else bare
 `claude`. On 2026-09-23 the Homebrew CLI (2.1.236) was too old for `claude-opus-5-5` (needs
-≥ 2.1.280) and `brew upgrade claude-code` was blocked on the Xcode license, so a shim was
-placed at `~/.local/bin/claude` that execs the newest CLI the Claude desktop app bundles
-(`~/Library/Application Support/Claude/claude-code/<version>/…`). Once
-`sudo xcodebuild -license accept && brew upgrade claude-code` succeeds, delete the shim.
+≥ 2.1.280) and `brew upgrade claude-code` was blocked on the Xcode license, so for one evening
+a shim at `~/.local/bin/claude` exec'd the CLI the Claude desktop app bundles
+(`~/Library/Application Support/Claude/claude-code/<version>/…`). Resolved the same night by
+switching casks — the plain `claude-code` cask lags; `claude-code@latest` tracks the current
+release — and the shim was deleted. If the pin ever bites again, that shim is the stopgap:
+a one-line script that execs the newest bundled version, removed once Homebrew catches up.
 
 ## Cadence note
 
