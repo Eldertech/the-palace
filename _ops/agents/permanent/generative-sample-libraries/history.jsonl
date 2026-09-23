@@ -159,3 +159,6 @@
 {"event":"TOOL_CALL","ts":"2026-07-01T05:19:33.453Z","tool":"write_blackboard","args":{"message_id":"gsl-steward-039"},"result":"emitted+validated+appended"}
 {"event":"TOOL_CALL","ts":"2026-07-01T05:19:33.453Z","tool":"write_blackboard","args":{"message_id":"gsl-steward-040"},"result":"emitted+validated+appended"}
 {"event":"CYCLE_COMPLETE","ts":"2026-07-01T05:19:33.453Z","iteration":19,"stop_reason":"end_turn","posted_messages":["gsl-steward-038","gsl-steward-039","gsl-steward-040"],"pending_after":["gsl-steward-040"]}
+{"event":"CYCLE_20_SPAWN","ts":"2026-09-23T03:57:57.189Z","dispatched_by":"bbs-actuator","model":"claude-opus-5-5"}
+{"event":"CYCLE_BARREN","ts":"2026-09-23T03:57:57.189Z","iteration":20,"note":"posted no messages — no Trickster ask, so no card and no grant can come back; the loop stalls until this steward is re-run"}
+{"event":"CYCLE_COMPLETE","ts":"2026-09-23T03:57:57.189Z","iteration":20,"stop_reason":"no_messages","posted_messages":[],"pending_after":[]}
