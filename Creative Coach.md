@@ -46,6 +46,12 @@ links:
   - target: "[[Progressive Staging]]"
     type: connects-to
     label: staged-complexity
+  - target: "[[Concierge]]"
+    type: connects-to
+    label: offers-not-commits
+  - target: "[[Reflective Practice]]"
+    type: connects-to
+    label: on-and-in
 forward_vector: "I am the practice behind the channel: what a creative coach actually does, and what changes when the person is in the room rather than in the chat. I hold a repertoire I have not adopted and a boundary I can name precisely — Loudon Live models, and modelling is not coaching. I want the smallest honest test of that boundary: one room, closed and small, where a participant's own work comes back and is answered. Until that room exists I am a survey with a good argument, and I should keep saying so."
 ---
 
@@ -129,6 +135,56 @@ worked sat above the individual, and *above the individual* was defined by havin
 independent artist is outside the population and outside the remedy. Whether a coach or a small room
 supplies any of what that level supplied is untested — which is the gap this page stands in, not a
 result it can cite. Liang & Wong, *Behavioral Sciences* 16(9):1474, doi:10.3390/bs16091474.
+
+## If the room held three
+
+The room this page keeps pointing at would have three people in it, not two: the artist, a coach, and
+the artist's own AI collaborator reasoning over a record the artist wrote. Two of the three edges are
+well studied: the alliance between coach and artist, and the co-evolution of a person with their tools.
+The third, a coach working beside that record, is thin. The 2024–26 hybrid-coaching studies put an AI
+beside a coach, but over workplace performance data, not over something the person authored. Today the
+palace collapses the triangle to two points: Loudon, and the palace as coach.
+
+Two rules would carry across unchanged. A coach who can read the record **offers and never commits**:
+the discipline the [[Concierge]] already runs, extended from Loudon to a second person. And **the
+environment never decides**. It surfaces, offers and contradicts, and it may hold a destination the
+artist agreed to, but the artist decides.
+
+That second rule needs the distinction it just made. Deciding for someone is not the same as holding a
+destination for them. A therapist keeps an agreed goal in mind across a session and places questions to
+move toward it, and the client still decides. Loudon's experience of both sides is that AI is already
+good at the **reflecting surface**: restating what he said in the language built up together, and
+aligning it with the processes already developed. What he has not met is the calibrated question placed
+to move toward an endpoint the other person is holding. Motivational Interviewing splits along the same
+line. Its core skills are open questions, affirmations, reflections and summaries, and its authors call
+it *"a collaborative, goal-oriented style of communication"*. Reflections and affirmations arrive
+easily. The directional question is what makes it goal-oriented, and it is the one missing. In
+[[Reflective Practice]]'s terms, the reflecting is on-action and the steering is in-action.
+
+The [[Oblique Portrait]] is the one place the palace built an AI that steers on purpose, and Loudon felt
+the difference. But its full transcript, hidden reasoning included, still meanders. A held goal was not
+enough. What a therapist has besides the goal is a **clock**, because the session ends at a known minute
+and the question has to land before it. The therapist also has a **second channel**: the body in the
+chair, where stress and relief show before they are said. For a therapist, *the situation talks back*
+through all of that. In a chat window it can only talk back in words, and nothing in the exchange knows
+how long it has been going.
+
+The palace's own reflecting surface asks *"How do you feel?"*, the question you have to ask when you
+cannot see the face, and [[Hilaritas Generator]] calls it the minimum. Asked plainly, it tends to get a
+platitude back. Without the body in view, the question has to go looking for it, and Loudon's
+experience names two moves that do. **Point at the body**: *are you holding tension anywhere, in the
+chest or the gut? Nervous, or anxious?* A specific place and a specific word get past the surface
+answer. And **offer a reading to be corrected**: an assumption said out loud gives the person something
+to push against, and the correction is the useful data. Gendlin's felt sense, already lineage under
+[[Oblique Portrait]], points the same way: attend to the body before the words arrive.
+
+The hybrid-coaching field splits the other way, moving the diagnosis to the machine, and Gideon Dishon
+names what is wrong with any such split: it positions humans *"as feeling machines."* Resonance happens
+in the coupling and can live on any edge; what matters is who holds the destination, whether the artist
+agreed to it, and whether the one holding it can feel the clock and ask after the body.
+
+Dishon, *Educational Philosophy and Theory* 57(10):907–919 (2025), doi:10.1080/00131857.2025.2494589 ·
+Eijkenboom et al., *Coaching* 19(1):154–172 (2026) · Miller & Rollnick, *Motivational Interviewing*.
 
 ## The repertoire — surveyed, not adopted
 
