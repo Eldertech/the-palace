@@ -254,3 +254,62 @@ describe('POST /api/stewards/advance-all', () => {
     expect(res.body.queued).toEqual([]);
   });
 });
+
+describe('the run: max_cycles keeps one steward cycling; barren retries once; a pause ends it', () => {
+  let root, server, stewardLane, countFile;
+  const readHistory = (agentDir) => readFileSync(join(agentDir, 'history.jsonl'), 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
+  afterEach(async () => {
+    try { await waitFor(() => !existsSync(stewardLane.paths.pidFile) && !stewardLane.status().running, { timeout: 8000 }); } catch (_) { /* ignore */ }
+    rmSync(root, { recursive: true, force: true });
+  });
+
+  test('a run of 3 fires three consecutive cycles of the same steward (each shipping), then stops at the cap', async () => {
+    root = makeTempPalace();
+    countFile = join(root, 'fires.txt');
+    ({ server, stewardLane } = makeServer(root, { extra: ['--from', 'Run Steward', '--sleep', '30', '--count-file', countFile] }));
+    const { agentDir } = seedSteward(root, { name: 'Run Steward', slug: 'run-steward', requestId: 'run-001' });
+
+    const res = await request(server).post('/api/steward/advance').send({ name: 'Run Steward', max_cycles: 3 });
+    expect(res.status).toBe(200);
+    expect(res.body.run).toMatchObject({ cap: 3, position: 1 });
+
+    await waitFor(() => readState(agentDir).iteration === 4 && !stewardLane.status().running, { timeout: 12000 });
+    const fires = readFileSync(countFile, 'utf8').trim().split('\n').length;
+    expect(fires).toBe(3);
+    const last = JSON.parse(readFileSync(stewardLane.paths.lastCycleFile, 'utf8'));
+    expect(last.run).toMatchObject({ cap: 3, position: 3, continued: false, stopped_because: 'run_cap' });
+    expect(last.stop_hint).toBe('shipped');
+  }, 20000);
+
+  test('two barren cycles: the run retries once, then stops STALLED with the flag in state', async () => {
+    root = makeTempPalace();
+    countFile = join(root, 'fires.txt');
+    ({ server, stewardLane } = makeServer(root, { extra: ['--emit', 'none', '--sleep', '30', '--count-file', countFile] }));
+    const { agentDir } = seedSteward(root, { name: 'Barren Steward', slug: 'barren-steward', requestId: 'barren-001' });
+
+    await request(server).post('/api/steward/advance').send({ name: 'Barren Steward', max_cycles: 5 });
+    await waitFor(() => readState(agentDir).iteration === 3 && !stewardLane.status().running, { timeout: 12000 });
+    expect(readFileSync(countFile, 'utf8').trim().split('\n').length).toBe(2); // one cycle + one retry, not five
+    const st = readState(agentDir);
+    expect(st.health.stalled).toBe(true);
+    expect(st.health.score).toBe('red');
+    const last = JSON.parse(readFileSync(stewardLane.paths.lastCycleFile, 'utf8'));
+    expect(last.run.stopped_because).toBe('stalled');
+    expect(readHistory(agentDir).filter((e) => e.event === 'CYCLE_BARREN')).toHaveLength(2);
+  }, 20000);
+
+  test('a paused ask (blocking) ends the run after one cycle even with cycles left', async () => {
+    root = makeTempPalace();
+    countFile = join(root, 'fires.txt');
+    ({ server, stewardLane } = makeServer(root, { extra: ['--from', 'Pause Steward', '--emit', 'blocking', '--sleep', '30', '--count-file', countFile] }));
+    const { agentDir } = seedSteward(root, { name: 'Pause Steward', slug: 'pause-steward', requestId: 'pause-001' });
+
+    await request(server).post('/api/steward/advance').send({ name: 'Pause Steward', max_cycles: 4 });
+    await waitFor(() => readState(agentDir).iteration === 2 && !stewardLane.status().running, { timeout: 12000 });
+    await new Promise((r) => setTimeout(r, 200)); // give a wrongful continuation time to show
+    expect(readFileSync(countFile, 'utf8').trim().split('\n').length).toBe(1);
+    const last = JSON.parse(readFileSync(stewardLane.paths.lastCycleFile, 'utf8'));
+    expect(last.stop_hint).toBe('blocking_ask');
+    expect(last.run.stopped_because).toBe('paused_on_loudon');
+  }, 20000);
+});

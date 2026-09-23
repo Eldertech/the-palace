@@ -4,6 +4,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   slugFromDir, transcriptNameFor, stewardArgv, grantsWaitingFor, stewardRow,
+  runCapFor, nextRunStep, stopReason,
 } from '../../server/steward-lane.js';
 import { extractMessagesFromTranscript } from '../../../orchestrator/src/process-cycle.js';
 
@@ -106,5 +107,38 @@ describe('stub steward worker (transcript contract)', () => {
     expect(messages).toHaveLength(1);
     expect(messages[0]).toMatchObject({ id: 'u-1', from: 'Unit Steward', type: 'BROADCAST', board: 'GENERAL' });
     expect('health' in messages[0]).toBe(false);
+  });
+});
+
+describe('the run controller (multi-cycle activation, 2026-09-23)', () => {
+  test('runCapFor: override > manifest max_iterations > 1', () => {
+    expect(runCapFor({ stopping_conditions: { max_iterations: 10 } })).toBe(10);
+    expect(runCapFor({ stopping_conditions: { max_iterations: 10 } }, 3)).toBe(3);
+    expect(runCapFor({})).toBe(1);
+    expect(runCapFor(null, 0)).toBe(1);
+  });
+
+  test('nextRunStep: shipped continues to the cap, then stops', () => {
+    expect(nextRunStep({ cap: 3, position: 1, retried: false }, 'shipped')).toEqual({ cap: 3, position: 2, retried: false });
+    expect(nextRunStep({ cap: 3, position: 3, retried: false }, 'shipped')).toBeNull();
+    expect(nextRunStep({ cap: 1, position: 1, retried: false }, 'shipped')).toBeNull();
+  });
+
+  test('nextRunStep: a barren cycle earns exactly one retry, then the run stops (stalled)', () => {
+    const retry = nextRunStep({ cap: 5, position: 2, retried: false }, 'barren');
+    expect(retry).toEqual({ cap: 5, position: 2, retried: true, retryOfBarren: true });
+    expect(nextRunStep(retry, 'barren')).toBeNull();
+    expect(stopReason(retry, 'barren')).toBe('stalled');
+    expect(stopReason({ cap: 5, position: 2, retried: false }, 'barren')).toBe('barren');
+    // a shipped cycle after the retry continues the run with the retry flag cleared
+    expect(nextRunStep(retry, 'shipped')).toEqual({ cap: 5, position: 3, retried: false });
+  });
+
+  test('nextRunStep: a paused ask or a live-session request ends the run regardless of cap', () => {
+    expect(nextRunStep({ cap: 10, position: 1, retried: false }, 'blocking_ask')).toBeNull();
+    expect(nextRunStep({ cap: 10, position: 1, retried: false }, 'interactive_session')).toBeNull();
+    expect(stopReason({ cap: 10, position: 1 }, 'blocking_ask')).toBe('paused_on_loudon');
+    expect(stopReason({ cap: 10, position: 1 }, 'interactive_session')).toBe('wants_a_session');
+    expect(stopReason({ cap: 10, position: 10 }, 'shipped')).toBe('run_cap');
   });
 });
