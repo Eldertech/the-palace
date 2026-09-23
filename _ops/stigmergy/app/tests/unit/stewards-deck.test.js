@@ -1,11 +1,11 @@
-// Unit tests for the StewardsDeck per-row "running" indicator — the row that
+// Unit tests for the PROJECTS deck per-row "running" indicator (moved from StewardsDeck 2026-09-23) — the row that
 // marks the steward whose cycle the lane is actively computing. The lane reports
 // the live steward by agent_id in worker.current (server/steward-lane.js); the
 // row keys on the same agent_id, so the marked row must match worker.current.
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { isStewardRunning, RunningTag, RowStatus } from '../../src/components/stewards/StewardsDeck.jsx';
+import { isStewardRunning, RunningTag, RowStatus } from '../../src/components/projects/status.jsx';
 
 describe('isStewardRunning — the marked row matches worker.current', () => {
   const worker = { running: true, current: 'waveguide-synthesizer' };

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waveguide Study v1.1 — In Tune, Stiff, Audible</title>
+<style>
+  html, body { margin:0; padding:0; background:#0b0d10; color:#cfd3d8;
+    font-family: ui-monospace, Menlo, monospace; overflow:hidden; height:100%; }
+  #ui { position:absolute; top:10px; left:12px; z-index:10;
+    background:rgba(11,13,16,0.80); padding:12px 14px; border:1px solid #1e242b;
+    border-radius:4px; font-size:12px; line-height:1.55; max-width:290px; }
+  #ui h1 { margin:0 0 2px 0; font-size:13px; letter-spacing:0.04em; }
+  #ui .sub { font-size:10px; opacity:0.55; margin-bottom:8px; }
+  #ui label { display:block; margin-top:7px; }
+  #ui input[type=range] { width:100%; }
+  #ui .row { display:flex; justify-content:space-between; font-variant-numeric:tabular-nums; }
+  #ui button { margin-top:9px; margin-right:6px; background:#1a2128; color:#cfd3d8;
+    border:1px solid #2a323b; padding:6px 12px; font:inherit; cursor:pointer; border-radius:3px; }
+  #ui button:hover { background:#232c35; }
+  #ui button.on { background:#3a2a1c; border-color:#8a6a3d; }
+  #status { margin-top:9px; font-size:10px; opacity:0.6; }
+  #hint { position:absolute; bottom:10px; left:12px; font-size:11px; opacity:0.6; }
+  #wordmark { position:absolute; bottom:10px; right:14px; font-size:11px; opacity:0.4; letter-spacing:0.06em; }
+  canvas { display:block; }
+</style>
+</head>
+<body>
+<div id="ui">
+  <h1>waveguide · study v1.1</h1>
+  <div class="sub">one string. what you see is what you hear.</div>
+  <label>pitch <span class="row"><span></span><span id="vFreq">196</span> Hz</span>
+    <input id="freq" type="range" min="60" max="880" value="196" step="1"></label>
+  <label>brightness (loop LP) <span class="row"><span></span><span id="vBright">0.55</span></span>
+    <input id="bright" type="range" min="0" max="1" value="0.55" step="0.01"></label>
+  <label>bridge loss <span class="row"><span></span><span id="vBridge">0.985</span></span>
+    <input id="bridge" type="range" min="0.9" max="1.0" value="0.985" step="0.0005"></label>
+  <label>nut loss <span class="row"><span></span><span id="vNut">0.995</span></span>
+    <input id="nut" type="range" min="0.9" max="1.0" value="0.995" step="0.0005"></label>
+  <label>stiffness (dispersion) <span class="row"><span></span><span id="vStiff">0.00</span></span>
+    <input id="stiff" type="range" min="0" max="1" value="0" step="0.01"></label>
+  <label>pickup (where you listen) <span class="row"><span></span><span id="vPick">0.82</span></span>
+    <input id="pick" type="range" min="0.05" max="0.95" value="0.82" step="0.01"></label>
+  <button id="pluck">pluck (center)</button>
+  <button id="strike">strike (center)</button>
+  <button id="damp">damp (hold D)</button>
+  <div id="status">click = pluck · shift-click = strike, at that point · drag empty space to orbit</div>
+</div>
+<div id="hint">the orange line IS the delay-line state · the small ring is the pickup — the speaker hears the string there</div>
+<div id="wordmark">Loud'n Live</div>
+
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script id="worklet-src" type="text/plain">
+// Bidirectional digital waveguide, v1.1.
+//
+// Two rails: rBuf (right-going) and lBuf (left-going). Displacement at
+// position n is rBuf[n] + lBuf[n] — that sum is the shape of the string,
+// and v1.1 hears the string at one point on it (the pickup), so the sound is
+// read off the same numbers the screen draws.
+//
+// v1.1 changes over study v1 — each one found by running v1's own worklet
+// headless in node and measuring it (Projects/Waveguide Synthesizer/offline-v1/):
+//   1. Stiffness now stretches partials. v1 used positive allpass
+//      coefficients, which delay highs MORE than lows — that compresses the
+//      partials, the opposite of a stiff string — and only four gentle
+//      sections, so the effect measured at about -2 cents on partial 30:
+//      inaudible. v1.1 uses eight sections with a NEGATIVE coefficient, so
+//      high partials go round the loop faster and ride sharp, as in a piano.
+//   2. In tune. v1 set the loop to 2*floor(sr/2f) samples and ignored the
+//      delay hiding inside the loop filters, so pitch drifted by up to tens
+//      of cents (and the dispersion delay pulled it flat). v1.1 measures the
+//      phase delay of every filter in the loop at the fundamental and makes up
+//      the fractional remainder with a tuning allpass at the nut.
+//   3. Audible. v1 tapped the output at the bridge, where the string barely
+//      moves: peak level about -35 dBFS. v1.1 listens at a pickup point on the
+//      string (default 0.82 of the way to the bridge).
+const VIS_N = 180;
+const NAP = 8;              // dispersion allpass sections in the loop
+const C_MAX = 0.8;          // |coefficient| at stiffness = 1
+const MIN_LEN = 8;
+
+class WG extends AudioWorkletProcessor {
+  constructor() {
+    super();
+    this.sr = sampleRate;
+    this.maxLen = Math.ceil(this.sr / 60);
+    this.rBuf = new Float32Array(this.maxLen);
+    this.lBuf = new Float32Array(this.maxLen);
+    this.len = 100;
+    this.p = 0; this.q = 0;
+
+    this.freq = 196;
+    this.bright = 0.55;
+    this.bridge = 0.985;
+    this.nut    = 0.995;
+    this.stiff  = 0.0;
+    this.pickup = 0.82;
+    this.damping = false;
+
+    this.lpBridge = 0; this.lpNut = 0;
+    this.apX = new Float32Array(NAP); this.apY = new Float32Array(NAP);
+    this.c = 0;                 // dispersion coefficient (<= 0)
+    this.eta = 0; this.tX = 0; this.tY = 0;   // tuning allpass
+    this.retune();
+
+    this.vis = new Float32Array(VIS_N);
+    this.samplesSincePost = 0;
+    this.postEvery = Math.floor(this.sr / 60);
+
+    this.port.onmessage = (e) => {
+      const m = e.data;
+      if (m.type === 'pluck') {
+        const len = this.len;
+        const center = Math.max(1, Math.min(len - 2, Math.floor((m.position ?? 0.5) * len)));
+        const isStrike = m.mode === 'strike';
+        const width = Math.max(isStrike ? 2 : 6, Math.floor(len * (isStrike ? 0.035 : 0.25)));
+        const peak = isStrike ? 0.85 : 0.5;
+        this.rBuf.fill(0); this.lBuf.fill(0);
+        this.p = 0; this.q = 0;
+        for (let i = 0; i < len; i++) {
+          const disp = Math.max(0, 1 - Math.abs(i - center) / width);
+          this.rBuf[i] = peak * disp;
+          this.lBuf[i] = peak * disp;
+        }
+        this.apX.fill(0); this.apY.fill(0);
+        this.lpBridge = 0; this.lpNut = 0; this.tX = 0; this.tY = 0;
+      } else if (m.type === 'params') {
+        let re = false;
+        if (m.freq   !== undefined) { this.freq = m.freq; re = true; }
+        if (m.bright !== undefined) { this.bright = m.bright; re = true; }
+        if (m.stiff  !== undefined) { this.stiff = m.stiff; re = true; }
+        if (m.bridge !== undefined) this.bridge = m.bridge;
+        if (m.nut    !== undefined) this.nut = m.nut;
+        if (m.pickup !== undefined) this.pickup = m.pickup;
+        if (re) this.retune();
+      } else if (m.type === 'damp') {
+        this.damping = !!m.on;
+      }
+    };
+  }
+
+  // Phase delay (in samples) at radian frequency w, for the two filter kinds
+  // in the loop. Tuning = the loop's total phase delay at the fundamental
+  // must equal sr / f exactly.
+  static tauLP(a, w) { return Math.atan2(a * Math.sin(w), 1 - a * Math.cos(w)) / w; }
+  static tauAP(c, w) {
+    const ph = Math.atan2(-Math.sin(w), c + Math.cos(w)) - Math.atan2(-c * Math.sin(w), 1 + c * Math.cos(w));
+    return -ph / w;
+  }
+
+  retune() {
+    const w = 2 * Math.PI * this.freq / this.sr;
+    const D = this.sr / this.freq;              // required loop delay, samples
+    this.a = (1 - this.bright) * 0.9;           // loop lowpass coefficient
+    const tLP = 2 * WG.tauLP(this.a, w);
+    // Dispersion eats loop length. If the requested stiffness would leave
+    // too little string, back the coefficient off until the string fits.
+    // Taper: stretch grows steeply as |c| nears 1, so the slider bends to
+    // spread the audible range evenly instead of bunching it at the top.
+    let c = -C_MAX * Math.pow(this.stiff, 0.6);
+    let rem = D - tLP - NAP * WG.tauAP(c, w);
+    while (rem < 2 * MIN_LEN + 0.5 && c < 0) {
+      c = Math.min(0, c + 0.01);
+      rem = D - tLP - NAP * WG.tauAP(c, w);
+    }
+    this.c = c;
+    const len = Math.max(MIN_LEN, Math.min(this.maxLen - 1, Math.floor((rem - 0.5) / 2)));
+    const target = rem - 2 * len;               // fractional remainder, ~[0.5, 2.5)
+    let dd = target;
+    for (let k = 0; k < 4; k++) {               // solve tauAP(eta, w) = target
+      const eta = (1 - dd) / (1 + dd);
+      dd += target - WG.tauAP(eta, w);
+    }
+    this.eta = (1 - dd) / (1 + dd);
+    if (len !== this.len) { this.len = len; this.p = 0; this.q = 0; }
+  }
+
+  dispersion(x) {
+    const c = this.c;
+    let v = x;
+    for (let k = 0; k < NAP; k++) {
+      const y = c * v + this.apX[k] - c * this.apY[k];
+      this.apX[k] = v; this.apY[k] = y;
+      v = y;
+    }
+    return v;
+  }
+
+  process(_in, outputs) {
+    const out = outputs[0][0];
+    const N = out.length;
+    const len = this.len;
+    const r = this.rBuf, l = this.lBuf;
+    const a = this.a, eta = this.eta;
+    const dampGain = this.damping ? 0.985 : 1.0;
+    const pk = Math.max(1, Math.min(len - 2, Math.round(this.pickup * (len - 1))));
+
+    for (let n = 0; n < N; n++) {
+      const rOut = r[(this.p + len - 1) % len];    // r[len-1] — arriving at bridge
+      const lOut = l[this.q];                      // l[0] — arriving at nut
+
+      // Output: the string's displacement at the pickup — the orange line, read at one point.
+      out[n] = 0.5 * (r[(this.p + pk) % len] + l[(this.q + pk) % len]);
+
+      // Bridge: sign flip, lowpass, loss, dispersion.
+      this.lpBridge = a * this.lpBridge + (1 - a) * rOut;
+      const bridgeRefl = this.dispersion(-this.lpBridge * this.bridge) * dampGain;
+
+      // Nut: sign flip, lowpass, loss, fractional tuning allpass.
+      this.lpNut = a * this.lpNut + (1 - a) * lOut;
+      const x = -this.lpNut * this.nut * dampGain;
+      const nutRefl = eta * x + this.tX - eta * this.tY;
+      this.tX = x; this.tY = nutRefl;
+
+      this.p = (this.p + len - 1) % len;
+      r[this.p] = nutRefl;
+      const qOld = this.q;
+      this.q = (this.q + 1) % len;
+      l[qOld] = bridgeRefl;
+    }
+
+    this.samplesSincePost += N;
+    if (this.samplesSincePost >= this.postEvery) {
+      this.samplesSincePost = 0;
+      const step = len / VIS_N;
+      for (let i = 0; i < VIS_N; i++) {
+        const si = Math.min(len - 1, Math.floor(i * step));
+        this.vis[i] = r[(this.p + si) % len] + l[(this.q + si) % len];
+      }
+      this.port.postMessage({ type: 'wave', data: this.vis.slice(), pickup: this.pickup, c: this.c });
+    }
+    return true;
+  }
+}
+registerProcessor('wg', WG);
+</script>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const VIS_N = 180;
+let audioCtx = null, wgNode = null, latestWave = null;
+const params = { freq: 196, bright: 0.55, bridge: 0.985, nut: 0.995, stiff: 0.0, pickup: 0.82 };
+
+async function startAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const src = document.getElementById('worklet-src').textContent;
+  const url = URL.createObjectURL(new Blob([src], { type: 'application/javascript' }));
+  await audioCtx.audioWorklet.addModule(url);
+  wgNode = new AudioWorkletNode(audioCtx, 'wg', { outputChannelCount: [1] });
+  wgNode.port.onmessage = (e) => { if (e.data.type === 'wave') latestWave = e.data.data; };
+  wgNode.connect(audioCtx.destination);
+  sendParams();
+  $('status').textContent = 'audio: ' + audioCtx.sampleRate + ' Hz · in tune · you hear the string at the pickup';
+}
+function sendParams() { if (wgNode) wgNode.port.postMessage({ type: 'params', ...params }); }
+function pluck(position = 0.5, mode = 'pluck') {
+  if (!audioCtx) { startAudio().then(() => pluck(position, mode)); return; }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  wgNode.port.postMessage({ type: 'pluck', position, mode });
+}
+function setDamp(on) {
+  if (wgNode) wgNode.port.postMessage({ type: 'damp', on });
+  $('damp').classList.toggle('on', on);
+}
+
+const bind = (id, key, span, fmt) => $(id).addEventListener('input', (e) => {
+  params[key] = +e.target.value; $(span).textContent = fmt(params[key]); sendParams();
+});
+bind('freq','freq','vFreq', v => v);
+bind('bright','bright','vBright', v => v.toFixed(2));
+bind('bridge','bridge','vBridge', v => v.toFixed(3));
+bind('nut','nut','vNut', v => v.toFixed(3));
+bind('stiff','stiff','vStiff', v => v.toFixed(2));
+bind('pick','pickup','vPick', v => v.toFixed(2));
+$('pluck').addEventListener('click', () => pluck(0.5, 'pluck'));
+$('strike').addEventListener('click', () => pluck(0.5, 'strike'));
+$('damp').addEventListener('pointerdown', () => setDamp(true));
+window.addEventListener('pointerup', () => setDamp(false));
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') { e.preventDefault(); pluck(0.5); }
+  if (e.key === 'd' || e.key === 'D') setDamp(true);
+});
+window.addEventListener('keyup', (e) => { if (e.key === 'd' || e.key === 'D') setDamp(false); });
+
+// ---- Three.js scene: one string, nothing else pretending to be the string ----
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0d10);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+camera.position.set(0, 0.85, 4.0);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0, 0); controls.update();
+
+const STRING_LEN = 3.2;
+const positions = new Float32Array(VIS_N * 3);
+for (let i = 0; i < VIS_N; i++) {
+  positions[i*3]   = -STRING_LEN/2 + (i/(VIS_N-1)) * STRING_LEN;
+  positions[i*3+1] = 0; positions[i*3+2] = 0;
+}
+const geom = new THREE.BufferGeometry();
+geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const dLine = new THREE.Line(geom, new THREE.LineBasicMaterial({ color: 0xff7a3d }));
+scene.add(dLine);
+
+// A dim rest line, so zero displacement is legible as zero.
+const restGeom = new THREE.BufferGeometry();
+restGeom.setAttribute('position', new THREE.BufferAttribute(
+  new Float32Array([-STRING_LEN/2, 0, 0, STRING_LEN/2, 0, 0]), 3));
+scene.add(new THREE.Line(restGeom, new THREE.LineBasicMaterial({ color: 0x232b34 })));
+
+const pickMesh = new THREE.Mesh(new THREE.BoxGeometry(STRING_LEN, 0.5, 0.5),
+  new THREE.MeshBasicMaterial({ visible: false }));
+scene.add(pickMesh);
+
+const nutMesh = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 12),
+  new THREE.MeshBasicMaterial({ color: 0x556070 }));
+nutMesh.position.x = -STRING_LEN/2; scene.add(nutMesh);
+const bridgeMesh = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.4, 0.4),
+  new THREE.MeshBasicMaterial({ color: 0x8a6a3d }));
+bridgeMesh.position.x = STRING_LEN/2; scene.add(bridgeMesh);
+
+// The pickup: the one point on the string the speaker hears.
+const pickMarker = new THREE.Mesh(new THREE.TorusGeometry(0.06, 0.012, 8, 24),
+  new THREE.MeshBasicMaterial({ color: 0xe8e2d4 }));
+scene.add(pickMarker);
+
+const raycaster = new THREE.Raycaster(), mouse = new THREE.Vector2();
+let dragStart = null;
+renderer.domElement.addEventListener('pointerdown', (e) => { dragStart = { x: e.clientX, y: e.clientY }; });
+renderer.domElement.addEventListener('pointerup', (e) => {
+  if (!dragStart) return;
+  const dx = e.clientX - dragStart.x, dy = e.clientY - dragStart.y;
+  dragStart = null;
+  if (dx*dx + dy*dy > 16) return;
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObject(pickMesh);
+  if (hits.length > 0) {
+    const pos = (hits[0].point.x + STRING_LEN/2) / STRING_LEN;
+    pluck(Math.max(0.02, Math.min(0.98, pos)), e.shiftKey ? 'strike' : 'pluck');
+  } else { startAudio(); }
+});
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+const AMP = 1.5;
+function tick() {
+  if (latestWave) {
+    const p = dLine.geometry.attributes.position.array;
+    for (let i = 0; i < VIS_N; i++) p[i*3+1] = latestWave[i] * AMP;
+    dLine.geometry.attributes.position.needsUpdate = true;
+  }
+  const pi = Math.round(params.pickup * (VIS_N - 1));
+  pickMarker.position.set(-STRING_LEN/2 + params.pickup * STRING_LEN, latestWave ? latestWave[pi] * AMP : 0, 0);
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
+</body>
+</html>

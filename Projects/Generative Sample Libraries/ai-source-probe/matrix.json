@@ -9,14 +9,22 @@
   ],
   "pitches": [
     {"name": "A2", "hz": 110.00, "midi": 45},
-    {"name": "A3", "hz": 220.00, "midi": 57},
-    {"name": "A4", "hz": 440.00, "midi": 69},
-    {"name": "A5", "hz": 880.00, "midi": 81}
+    {"name": "E3", "hz": 164.81, "midi": 52},
+    {"name": "C4", "hz": 261.63, "midi": 60},
+    {"name": "G5", "hz": 783.99, "midi": 79}
   ],
   "seeds": [1, 2],
+  "quick": {"instruments": ["piano", "violin"], "seeds": [1]},
   "acceptance": {
     "max_cents_err": 20,
-    "min_cells_pct": 0.75,
-    "min_voiced_pct": 0.60
+    "min_voiced_pct": 0.60,
+    "max_spread_cents": 30,
+    "min_dominance": 0.80,
+    "dominance_band_cents": 50,
+    "min_cells_pct": 0.75
+  },
+  "notes": {
+    "pitches": "Four different notes (A, E, C, G) across the same A2-A5 span. v0 used four A's, which could not tell a model that follows the pitch from one that happens to like A.",
+    "acceptance": "max_cents_err, min_voiced_pct and min_cells_pct are unchanged from v0. Spread and dominance are new: a render must hold one steady pitch before its accuracy counts. An instrument passes on an arm when min_cells_pct of its cells are on target (ON TARGET) or at least retunable (RETUNABLE)."
   }
 }

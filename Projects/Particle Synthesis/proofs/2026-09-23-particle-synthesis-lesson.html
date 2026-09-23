@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-graphite">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Particle Synthesis · a sketch in seven moves</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{
+  --serif:'Cormorant Garamond','Source Serif 4',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif;
+  --display:'Anton','Bebas Neue',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --bg:#0a0a0f;--bg-elev-1:#12121a;--bg-elev-2:#1a1a28;--bg-elev-3:#22222e;
+  --border:#4a4a5e;--border-soft:rgba(255,255,255,0.06);
+  --fg-1:#e8e8f0;--fg-2:#c8c8d8;--fg-3:#8a8aa0;--fg-4:#4a4a5a;--fg-on-accent:#0a0a0f;
+  --accent:#e8b84a;--accent-dim:#7a6030;--accent-soft:rgba(232,184,74,0.10);--accent-line:rgba(232,184,74,0.50);
+  --r-sm:3px;--ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg-1)}
+body{font-family:var(--serif);font-size:17px;line-height:1.75;letter-spacing:.005em}
+.wrap{max-width:980px;margin:0 auto;padding:0 28px}
+header.top{padding:56px 0 28px;border-bottom:1px solid var(--border-soft)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3)}
+h1{font-family:var(--display);font-weight:400;font-size:52px;line-height:1.05;letter-spacing:.005em;margin:10px 0 14px;text-transform:uppercase}
+h1 em{font-family:var(--sans);font-weight:300;font-style:italic;text-transform:none;color:var(--accent)}
+.lead{font-size:20px;color:var(--fg-2);max-width:62ch;margin:0}
+section{padding:44px 0;border-bottom:1px solid var(--border-soft)}
+h2{font-family:var(--sans);font-weight:500;font-size:28px;line-height:1.2;margin:4px 0 14px}
+h2 .n{font-family:var(--mono);font-size:13px;color:var(--accent);margin-right:10px;letter-spacing:.1em}
+p{max-width:66ch;margin:0 0 14px;color:var(--fg-2)}
+p strong{color:var(--fg-1);font-weight:500}
+.mono{font-family:var(--mono);font-size:12px}
+/* timeline */
+.arc{display:grid;gap:0;margin-top:18px;border-left:1px solid var(--border);margin-left:6px}
+.stop{position:relative;padding:4px 0 18px 22px}
+.stop::before{content:'';position:absolute;left:-5px;top:12px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--accent-dim)}
+.stop.now::before{background:var(--accent);border-color:var(--accent)}
+.stop.next::before{border-style:dashed;border-color:var(--fg-3)}
+.stop .d{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--fg-3);text-transform:uppercase}
+.stop .t{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--fg-1)}
+.stop .b{font-size:16px;color:var(--fg-2);max-width:64ch;line-height:1.6}
+.stop a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-line)}
+/* equations */
+.eq{background:var(--bg-elev-1);border:1px solid var(--border-soft);border-radius:var(--r-sm);padding:14px 18px;margin:12px 0;max-width:720px}
+.eq .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px}
+.eq .sym{font-family:var(--serif);font-size:22px;color:var(--fg-1);font-style:italic}
+.eq .word{font-family:var(--mono);font-size:12.5px;color:var(--fg-2);margin-top:4px;line-height:1.55}
+/* instrument panels */
+.bench{display:grid;grid-template-columns:1fr 270px;gap:0;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--bg-elev-1);margin-top:18px;overflow:hidden}
+.bench canvas{display:block;width:100%;background:#07070b}
+.ctrl{padding:14px 16px;border-left:1px solid var(--border-soft);display:grid;gap:11px;align-content:start;font-family:var(--sans);font-size:12.5px}
+.ctrl label{display:flex;justify-content:space-between;color:var(--fg-2)}
+.ctrl label .v{font-family:var(--mono);color:var(--accent);font-size:12px}
+.ctrl input[type=range]{width:100%;accent-color:var(--accent)}
+.ctrl .hint{font-family:var(--mono);font-size:11px;color:var(--fg-3);line-height:1.5}
+button{font-family:var(--sans);font-weight:500;font-size:13px;border-radius:var(--r-sm);padding:10px 12px;cursor:pointer;border:1px solid var(--border);background:var(--bg-elev-2);color:var(--fg-1);transition:border-color .15s var(--ease)}
+button:hover{border-color:var(--accent-line)}
+button.primary{background:var(--accent);color:var(--fg-on-accent);border-color:var(--accent);box-shadow:0 0 18px rgba(232,184,74,.25)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.seg button.on{border-color:var(--accent);color:var(--accent)}
+.readout{font-family:var(--mono);font-size:11px;color:var(--fg-3);padding:8px 14px;border-top:1px solid var(--border-soft);grid-column:1/-1}
+/* renders */
+.renders{display:grid;gap:14px;margin-top:16px}
+.render{display:grid;grid-template-columns:230px 1fr;gap:16px;align-items:center;padding:12px 14px;background:var(--bg-elev-1);border:1px solid var(--border-soft);border-radius:var(--r-sm)}
+.render .name{font-family:var(--mono);font-size:12px;color:var(--fg-1)}
+.render .cap{font-size:15.5px;color:var(--fg-2);line-height:1.5}
+.render audio{width:100%;height:32px;margin-top:6px}
+figure{margin:18px 0 0}
+figure img{width:100%;display:block;border:1px solid var(--border-soft);border-radius:var(--r-sm)}
+figcaption{font-family:var(--mono);font-size:11.5px;color:var(--fg-3);margin-top:8px;line-height:1.55}
+table{border-collapse:collapse;font-family:var(--mono);font-size:12px;margin:14px 0;width:100%;max-width:760px}
+td,th{border-bottom:1px solid var(--border-soft);padding:7px 10px;text-align:left;vertical-align:top}
+th{color:var(--fg-3);font-weight:400;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+td{color:var(--fg-2)}
+td:first-child{color:var(--fg-1)}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.card{background:var(--bg-elev-1);border:1px solid var(--border-soft);border-radius:var(--r-sm);padding:14px 16px}
+.card .where{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-family:var(--sans);font-weight:500;font-size:16px;margin:6px 0 6px}
+.card p{font-size:15.5px;line-height:1.55;margin:0}
+footer{padding:36px 0 60px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-family:var(--sans);font-size:15px;color:var(--fg-2);letter-spacing:.02em}
+.wordmark .live{font-weight:300;font-style:italic;color:var(--accent)}
+footer .meta{font-family:var(--mono);font-size:11px;color:var(--fg-3)}
+@media (max-width:760px){.bench{grid-template-columns:1fr}.ctrl{border-left:none;border-top:1px solid var(--border-soft)}.render{grid-template-columns:1fr}.road{grid-template-columns:1fr}h1{font-size:38px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top" id="s-top">
+  <div class="eyebrow">Particle Synthesis · sketch · 2026-09-23</div>
+  <h1>A fountain on <em>ice</em></h1>
+  <p class="lead">What if every grain in a granular synth were a real particle — thrown, falling, bouncing — and the sound came from the physics of where it landed rather than from knobs? Let's walk the arc of this project in seven moves, then play with the thing it has become.</p>
+</header>
+
+<section id="s-idea">
+  <h2><span class="n">01</span>The idea</h2>
+  <p>A granular synth chops sound into tiny grains and scatters them. Usually each grain is a scheduled event with a pitch, a length and an envelope, all set by parameters. <strong>Particle Synthesis</strong> asks the grain to be a thing instead: a particle with position, velocity and mass, moved by the same kind of physics a game engine uses for sparks and rain.</p>
+  <p>The test the project set itself is strict. It should sound like <strong>physics, not parameter modulation</strong> — the kind of sound your ear files under "something happened in a real place," not "an LFO is sweeping a filter."</p>
+</section>
+
+<section id="s-arc">
+  <h2><span class="n">02</span>The arc so far</h2>
+  <div class="arc">
+    <div class="stop"><div class="d">2026-01</div><div class="t">The conversation</div><div class="b">Grains as particles, dispersion as the physics, the prism as the picture. An Inharmonicity Explorer was built in chat. The page went dormant with the instrument unbuilt.</div></div>
+    <div class="stop"><div class="d">2026-05-04</div><div class="t">Grain clouds</div><div class="b">Two browser sketches where moving particles drove grain parameters (<a href="2026-05-04-particle-grain-cloud-v2.html">v2</a>). Honest read: still parameter modulation — particles steering knobs.</div></div>
+    <div class="stop"><div class="d">2026-06-08</div><div class="t">The dispersion prism</div><div class="b">A visual: one wideband grain split by a dispersive medium, highs racing ahead of lows (<a href="2026-06-08-dispersion-prism.html">prism</a>). The physics, but only on screen.</div></div>
+    <div class="stop"><div class="d">2026-06-23</div><div class="t">The first chirp</div><div class="b">One click pushed through a dispersion law and rendered to audio: <a href="2026-06-23-dispersion-03-strong.wav">the strong seed</a>. The chirp was not programmed in; it fell out of the law. But there was one grain and no particle.</div></div>
+    <div class="stop"><div class="d">2026-09-23 · morning</div><div class="t">The fountain on ice</div><div class="b">The particles become the source. A fountain throws them; they fall and skip across a stiff plate; every strike travels through the plate to two pickups and arrives as a chirp. Where it lands, how hard, how heavy — the physics of the particle decides the sound. 64 particles, then 1000.</div></div>
+    <div class="stop now"><div class="d">2026-09-23 · this sketch</div><div class="t">Grains that meet</div><div class="b">Two fountains throw at each other, so the grains stop merely adding up and start hitting one another. A meeting in the air is a dry clack; a landing on the ice is a chirp. A collision sends a grain somewhere new, and sometimes into the next grain. Move 06.</div></div>
+    <div class="stop next"><div class="d">next</div><div class="t">Where it's going</div><div class="b">Grains that ring when they meet, a per-particle oscillator for Gen~ on the Mac, and the GPU version the page has always pointed at. Move 07.</div></div>
+  </div>
+</section>
+
+<section id="s-law">
+  <h2><span class="n">03</span>The law under the ice</h2>
+  <p>Strike a frozen lake with a stone and you hear a descending <em>pew</em>. Bending waves in a stiff plate travel at a speed that depends on their frequency: high frequencies outrun low ones. A strike contains every frequency at once, so by the time it reaches you it has been sorted into a sweep, highs first. That sorting is <strong>dispersion</strong>, and it is the whole sound.</p>
+  <div class="eq"><div class="lab">the plate's dispersion law</div>
+    <div class="sym">ω = C · k²</div>
+    <div class="word">(angular frequency) = (plate stiffness) × (wavenumber)²</div></div>
+  <div class="eq"><div class="lab">when each frequency arrives</div>
+    <div class="sym">τ(ω) = r ⁄ (2 · √(C · ω))</div>
+    <div class="word">(arrival time of a frequency) = (distance to the pickup) ⁄ (2 × √((plate stiffness) × (angular frequency)))</div></div>
+  <div class="eq"><div class="lab">turned around — the pitch you hear at each instant</div>
+    <div class="sym">ω(t) = r² ⁄ (4 · C · t²)</div>
+    <div class="word">(pitch heard at time t) = (distance)² ⁄ (4 × (plate stiffness) × (time since the strike)²)</div></div>
+  <p>That last line is the one to keep. It says a strike heard from farther away sweeps more slowly: double the distance and the chirp takes twice as long. Try it.</p>
+
+  <div class="bench">
+    <canvas id="strikeCv" width="700" height="360"></canvas>
+    <div class="ctrl">
+      <label>distance to pickup <span class="v" id="rV"></span></label>
+      <input id="rIn" type="range" min="1" max="25" step="0.1" value="10">
+      <label>particle mass <span class="v" id="mV"></span></label>
+      <input id="mIn" type="range" min="4" max="40" step="0.5" value="10">
+      <label>impact speed <span class="v" id="vV"></span></label>
+      <input id="vIn" type="range" min="0.5" max="7" step="0.1" value="5">
+      <div class="seg"><button id="sDisp" class="on">ice</button><button id="sDry">no dispersion</button></div>
+      <button id="strikeBtn" class="primary">strike</button>
+      <div class="hint">top: when each frequency arrives. bottom: the sound itself. heavier = longer contact = darker strike.</div>
+    </div>
+    <div class="readout" id="strikeRead"></div>
+  </div>
+</section>
+
+<section id="s-fountain">
+  <h2><span class="n">04</span>The fountain — play it</h2>
+  <p>Now the particles. An emitter throws them upward; gravity and a little air drag bring them down; they skip across the plate, losing a bit more than half their bounce each time. Every strike is heard through the law above, at both pickups. Walk the fountain away from the pickups and listen to the chirps stretch. Switch the ice off and the same strikes become plain clicks — that difference is what dispersion adds.</p>
+  <div class="bench">
+    <canvas id="fountCv" width="700" height="380"></canvas>
+    <div class="ctrl">
+      <label>fountain distance <span class="v" id="dV"></span></label>
+      <input id="dIn" type="range" min="1.5" max="20" step="0.1" value="6">
+      <label>particles per second <span class="v" id="pV"></span></label>
+      <input id="pIn" type="range" min="1" max="120" step="1" value="8">
+      <label>launch speed <span class="v" id="lV"></span></label>
+      <input id="lIn" type="range" min="2" max="8" step="0.1" value="5.5">
+      <label>typical mass <span class="v" id="kV"></span></label>
+      <input id="kIn" type="range" min="4" max="40" step="0.5" value="10">
+      <div class="seg"><button id="fDisp" class="on">ice</button><button id="fDry">no dispersion</button></div>
+      <button id="fountBtn" class="primary">start the fountain</button>
+      <div class="hint">pickups sit at the left edge. brighter dots are heavier particles. rings mark strikes.</div>
+    </div>
+    <div class="readout" id="fountRead">stopped</div>
+  </div>
+</section>
+
+<section id="s-renders">
+  <h2><span class="n">05</span>The offline renders</h2>
+  <p>The same model rendered exactly in Python, frequency by frequency, with the fountain walking from 3 m to 18 m away over ten seconds. The browser above uses a closed-form shortcut for the chirp; checked against the exact render on twenty strikes it matches with a correlation of 0.997 or better, so what you play here is the same sound, just computed differently.</p>
+  <div class="renders">
+    <div class="render"><div><div class="name">00 · one particle</div></div><div><div class="cap">One particle, thrown once, skipping five times to rest about 12 m away. The unit of everything else.</div><audio controls preload="none" src="2026-09-23-fountain-00-one-particle.wav"></audio></div></div>
+    <div class="render"><div><div class="name">01 · 64 particles, no dispersion</div></div><div><div class="cap">The reference. Same 320 strikes, a plate where every frequency travels at one speed. Clicks.</div><audio controls preload="none" src="2026-09-23-fountain-01-cloud64-dry.wav"></audio></div></div>
+    <div class="render"><div><div class="name">02 · 64 particles on ice</div></div><div><div class="cap">The audition. Same strikes through the dispersive plate. The chirps lengthen and darken as the fountain walks away.</div><audio controls preload="none" src="2026-09-23-fountain-02-cloud64-ice.wav"></audio></div></div>
+    <div class="render"><div><div class="name">03 · 1000 particles on ice</div></div><div><div class="cap">The page's own number. 5,005 strikes. Density turns the chirps into weather.</div><audio controls preload="none" src="2026-09-23-fountain-03-cloud1000-ice.wav"></audio></div></div>
+  </div>
+  <figure>
+    <img src="2026-09-23-fountain-cloud64.png" alt="Top: side view of 64 particle trajectories arcing and skipping along a plate, the fountain moving right over time. Bottom: spectrogram of the resulting sound, a forest of descending chirps whose slant grows longer from left to right.">
+    <figcaption>top · every trajectory of the 64-particle cloud, side view, pickups at the far left, later particles brighter. bottom · spectrogram of render 02, 60 Hz to 16 kHz on a log scale, 12 seconds. Each slanted line is one strike arriving highs-first; the slant gets longer as the fountain recedes. Nobody drew those slants.</figcaption>
+  </figure>
+  <p style="margin-top:16px">Each file is peak-normalised on its own. Dispersion only moves energy in time, never adds or removes it, so the dry and iced clouds carry the same energy — the clicks just spend it all in an instant, which is why 01 sounds thinner at the same peak.</p>
+</section>
+
+<section id="s-meet">
+  <h2><span class="n">06</span>Grains that meet</h2>
+  <p>Until now every grain has fallen alone. A thousand of them only add up, like rain, and none of them knows the others are there. The page always asked the harder question: <strong>what happens when grains interact rather than superpose?</strong> So let's aim two fountains at each other. They stand 3 m apart and fire together, and the grains are small balls of ice, a centimetre or two across. When two meet in the air they bounce apart, and you hear that meeting <strong>through the air</strong>. When a grain lands, you hear it <strong>through the ice</strong>, as before.</p>
+  <p>The clack is not a sample. Two ice balls touch for about a tenth of a millisecond (Hertz's law for two spheres, with ice's real stiffness), so the clack is bright and dry. Each ball gets shoved and pushes on the air like a tiny loudspeaker. The two are shoved in opposite directions, so their sounds cancel off to the side and add up along the line of impact. Nobody coded that pattern. It comes out of adding the two balls together.</p>
+  <div class="eq"><div class="lab">how long two ice balls touch · Hertz</div>
+    <div class="sym">T꜀ = 2.87 · ( m² ⁄ (R · E*² · v) )^(1/5)</div>
+    <div class="word">(contact time) = 2.87 × ( (paired mass)² ⁄ ((paired radius) × (ice stiffness)² × (closing speed)) )^(1/5)</div></div>
+  <div class="eq"><div class="lab">the clack at a microphone · two balls, pushed apart</div>
+    <div class="sym">p(t) = Σ ± (3ρₐ ⁄ (8π ρᵢ c)) · (cos θ ⁄ r) · dF⁄dt (t − r⁄c)</div>
+    <div class="word">(pressure) = sum over both balls of ± (3 × air density ⁄ (8π × ice density × speed of sound)) × (cos(angle off the impact line) ⁄ distance) × (rate of change of the contact force, delayed by distance ⁄ speed of sound)</div></div>
+  <p>Tighten the aim and listen. With loose aim the streams mostly pass through each other and only land. As the aim closes, meetings thicken, deflected grains land in new places, and now and then a grain bouncing back knocks the next one straight up. Switch to <em>pass through</em> and the same fountains go back to rain.</p>
+  <div class="bench">
+    <canvas id="meetCv" width="700" height="380"></canvas>
+    <div class="ctrl">
+      <label>where the streams cross <span class="v" id="xV"></span></label>
+      <input id="xIn" type="range" min="4" max="16" step="0.1" value="8">
+      <label>aim scatter <span class="v" id="aV"></span></label>
+      <input id="aIn" type="range" min="0.1" max="6" step="0.05" value="1.5">
+      <label>shots per second <span class="v" id="sV"></span></label>
+      <input id="sIn" type="range" min="1" max="12" step="1" value="6">
+      <div class="seg"><button id="mMeetB" class="on">grains meet</button><button id="mPassB">pass through</button></div>
+      <button id="meetBtn" class="primary">start the fountains</button>
+      <div class="hint">each shot fires one stone from each nozzle, the same size. white crosses mark meetings. pickups at the left edge.</div>
+    </div>
+    <div class="readout" id="meetRead">stopped</div>
+  </div>
+  <div class="renders">
+    <div class="render"><div><div class="name">04 · pass through</div></div><div><div class="cap">Two fountains, 36 shots, the aim tightening from 6° of scatter to 0.15°. The grains go through each other. 360 strikes on the ice, no meetings.</div><audio controls preload="none" src="2026-09-23-grains-04-crossing-pass-through.wav"></audio></div></div>
+    <div class="render"><div><div class="name">05 · grains meet</div></div><div><div class="cap">The same launches, but the grains can hit each other. 13 meetings in the air, 2 in the loose first half and 11 in the tight second half, with 2 cascades. Both files share one gain, so compare them straight.</div><audio controls preload="none" src="2026-09-23-grains-05-crossing-collide.wav"></audio></div></div>
+  </div>
+  <figure>
+    <img src="2026-09-23-grains-that-meet.png" alt="Top: side view of two fountains' arcs crossing in a dome, with white crosses where grains met near its crown, and a few grains knocked short or straight up. Middle: a row of thirteen tick marks. Bottom: spectrogram full of slanted chirps, with thin bright vertical lines under each tick.">
+    <figcaption>top · every flight in render 05, zoomed on the crossing (3.5–12.5 m). grains that met are bright, crosses mark the meetings. The spike over the left nozzle is a cascade: a grain bouncing back knocked a fresh one straight up. ticks · when each clack reaches the left air mic. bottom · spectrogram of 05. The slants are landings on the ice. The thin verticals under the ticks are meetings in the air.</figcaption>
+  </figure>
+  <table>
+    <tr><th>measured</th><th>04 pass through</th><th>05 grains meet</th></tr>
+    <tr><td>strikes on the ice</td><td>360</td><td>360</td></tr>
+    <tr><td>meetings in the air</td><td>0</td><td>13 (2 loose aim · 11 tight)</td></tr>
+    <tr><td>grains that met at least once</td><td>—</td><td>24 of 72</td></tr>
+    <tr><td>cascades (a grain already hit, hit again)</td><td>—</td><td>2</td></tr>
+    <tr><td>strikes from a grain that had been deflected</td><td>—</td><td>119 of 360</td></tr>
+    <tr><td>average sideways drift at landing</td><td>0.15 m</td><td>0.60 m</td></tr>
+    <tr><td>average landing distance</td><td>8.00 m</td><td>8.05 m</td></tr>
+  </table>
+  <p>Two honest readings of that table. First, the meetings did not change the average chirp length. The fountains are mirror images, so a head-on meeting just swaps which side each grain lands on. What they did change is the <strong>spread</strong>: landings drift sideways four times as far, which widens the stereo picture across the two pickups. Second, <strong>aim is the knob that sets how much the grains interact.</strong> Centimetre grains thrown 1.7 m need aim inside about half a degree to meet reliably. That is a real finding about the instrument, not a setting I chose.</p>
+  <table>
+    <tr><th>one head-on clack, 5 m away</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>75°</th><th>90°</th></tr>
+    <tr><td>level vs on the impact line</td><td>0 dB</td><td>−0.6</td><td>−1.9</td><td>−5.5</td><td>−15.1</td><td>−48.9</td></tr>
+  </table>
+  <p>The browser bench uses the same equations sample by sample. Checked against the exact Python render on six real meetings, it matches with a correlation of 0.987 or better and within 10% on energy.</p>
+</section>
+
+<section id="s-map">
+  <h2><span class="n">07</span>Where it's going</h2>
+  <p>This is how the particle's physics becomes sound, with nothing assigned by hand:</p>
+  <table>
+    <tr><th>particle</th><th>physics</th><th>what you hear</th></tr>
+    <tr><td>where it lands</td><td>distance r to each pickup</td><td>how slowly the chirp sweeps</td></tr>
+    <tr><td>how fast it hits</td><td>impulse, mass × speed</td><td>how loud the strike is</td></tr>
+    <tr><td>how heavy it is</td><td>contact time, longer for heavy</td><td>how dark the strike is</td></tr>
+    <tr><td>how it bounces</td><td>each hop about half the last</td><td>the skip-skip-skip rhythm</td></tr>
+  </table>
+  <div class="eq"><div class="lab">strike length · Hertz contact</div>
+    <div class="sym">T꜀ ∝ m^(2/5) · v^(−1/5)</div>
+    <div class="word">(strike duration) ∝ (mass)^(2/5) × (impact speed)^(−1/5)</div></div>
+  <div class="road">
+    <div class="card"><div class="where">next · here</div><h3>Grains that ring</h3><p>Solid ice balls ring far above hearing, so a meeting is only a tick. Hollow shells ring low enough to hear. Give each grain its own small resonator and a meeting gets a pitch set by the grain's size. That is the page's first forward direction: a particle carrying its own differential equation.</p></div>
+    <div class="card"><div class="where">needs the Mac</div><h3>A chirp oscillator in Gen~</h3><p>The closed form means no FFT per grain: each strike is one oscillator whose pitch follows r² ⁄ (4Ct²). That is a per-sample voice Gen~ can run, with the particle carrying its own state — the page's first forward direction.</p></div>
+    <div class="card"><div class="where">needs a GPU</div><h3>The compute shader</h3><p>A thousand particles stepping physics, each strike a voice summed into one signal — the parallel shape the page has pointed at from the start. The Python render took about 34 seconds of CPU for 12 seconds of the 1000-particle cloud; that is the number to beat.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wordmark">Loud’n <span class="live">Live</span></div>
+  <div class="meta">Particle Synthesis · sketch · review layer on</div>
+</footer>
+</div>
+
+<script>
+/* ============ the model — same constants as 2026-09-23-fountain-on-ice.py ============ */
+const C = 0.316, F_ATTEN = 80000, M0 = 0.010, TC0 = 0.00045, V0 = 5.0, E = 0.45, G = 9.81, DRAG = 1e-4;
+const PICKUPS = [[0, -1.5], [0, 1.5]];
+const TAU = Math.PI * 2;
+
+function contactTime(m, v) { return TC0 * Math.pow(m / M0, 0.4) * Math.pow(Math.max(v, 0.2) / V0, -0.2); }
+function halfSine(f, tc) {
+  const x = 2 * f * tc; let d = 1 - x * x; if (Math.abs(d) < 1e-6) d = 1e-6;
+  return (2 * tc / Math.PI) * Math.cos(Math.PI * f * tc) / d;
+}
+function band(f) { return 1 / (1 + Math.pow(70 / Math.max(f, 1e-6), 6)) / (1 + Math.pow(f / 16000, 8)); }
+
+/* one strike heard at distance r — stationary-phase chirp, omega(t) = r^2 / (4 C t^2) */
+function chirp(r, m, vn, sr, dispersive) {
+  r = Math.max(r, 0.5);
+  const tc = contactTime(m, vn), amp = m * vn * (1 + E) / M0, sq = Math.sqrt(r);
+  if (!dispersive) {
+    // the same strike on a plate where all frequencies travel together: the force pulse itself,
+    // softened by the same distance loss (one-pole low-pass at the attenuation corner)
+    const n = Math.ceil((tc + 0.01) * sr), y = new Float32Array(n);
+    const fc = Math.min(F_ATTEN / r, sr * 0.45), a = Math.exp(-TAU * fc / sr);
+    let z = 0;
+    for (let i = 0; i < n; i++) {
+      const t = i / sr, x = t < tc ? Math.sin(Math.PI * t / tc) : 0;
+      z = (1 - a) * x + a * z; y[i] = amp / sq * z;
+    }
+    return y;
+  }
+  const tEnd = r / (2 * Math.sqrt(C * TAU * 60));
+  const n = Math.ceil(tEnd * sr), y = new Float32Array(n), k = r * r / (4 * C);
+  const g0 = amp / sq / Math.PI, g1 = TAU * 4 * Math.sqrt(C) / r, fr = r / F_ATTEN, pi4 = Math.PI / 4;
+  // the envelope moves slowly, so compute it every 4th sample and interpolate; the phase is exact every sample
+  let envA = 0, envB = 0;
+  const env = t => {
+    const w = k / (t * t), f = w / TAU;
+    if (f > 20000) return 0;
+    const q = 70 / f, q2 = q * q, p = f / 16000, p2 = p * p, p4 = p2 * p2;
+    const bandv = 1 / ((1 + q2 * q2 * q2) * (1 + p4 * p4));
+    return g0 * halfSine(f, tc) * bandv * Math.exp(-f * fr) * Math.sqrt(g1 * w * Math.sqrt(w));
+  };
+  for (let i = 0; i < n; i++) {
+    const t = (i + 0.5) / sr;
+    if ((i & 3) === 0) { envA = env(t); envB = env(t + 4 / sr); }
+    const e = envA + (envB - envA) * ((i & 3) / 4);
+    y[i] = e * Math.cos(-k / t + pi4);
+  }
+  // soften the tail so the low end does not stop on a cliff
+  const fade = Math.min(n, Math.floor(0.04 * sr));
+  for (let i = 0; i < fade; i++) y[n - 1 - i] *= i / fade;
+  return y;
+}
+
+/* ============ audio ============ */
+let ac = null, master = null;
+function audio() {
+  if (ac) { if (ac.state === 'suspended') ac.resume(); return ac; }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  const comp = ac.createDynamicsCompressor();
+  comp.threshold.value = -14; comp.ratio.value = 6; comp.attack.value = 0.002; comp.release.value = 0.15;
+  master = ac.createGain(); master.gain.value = 0.9;
+  master.connect(comp).connect(ac.destination);
+  return ac;
+}
+function play(chL, chR, gain, when) {
+  const a = audio(), n = Math.max(chL.length, chR.length);
+  const buf = a.createBuffer(2, n, a.sampleRate);
+  buf.getChannelData(0).set(chL); buf.getChannelData(1).set(chR);
+  const src = a.createBufferSource(), g = a.createGain(); g.gain.value = gain;
+  src.buffer = buf; src.connect(g).connect(master); src.start(when || a.currentTime + 0.02);
+}
+
+/* ============ 03 · one strike ============ */
+const sc = document.getElementById('strikeCv'), sx = sc.getContext('2d');
+const rIn = document.getElementById('rIn'), mIn = document.getElementById('mIn'), vIn = document.getElementById('vIn');
+let strikeDisp = true;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function drawStrike() {
+  const r = +rIn.value, m = +mIn.value / 1000, v = +vIn.value;
+  document.getElementById('rV').textContent = r.toFixed(1) + ' m';
+  document.getElementById('mV').textContent = (m * 1000).toFixed(1) + ' g';
+  document.getElementById('vV').textContent = v.toFixed(1) + ' m/s';
+  const W = sc.width, H = sc.height, top = 200, T = 0.75;
+  sx.fillStyle = '#07070b'; sx.fillRect(0, 0, W, H);
+  const X = t => 40 + (t / T) * (W - 56);
+  const Y = f => 16 + (1 - Math.log(f / 60) / Math.log(16000 / 60)) * (top - 34);
+  // grid
+  sx.strokeStyle = 'rgba(255,255,255,0.06)'; sx.lineWidth = 1; sx.fillStyle = '#8a8aa0'; sx.font = '10px JetBrains Mono, monospace';
+  [100, 300, 1000, 3000, 10000].forEach(f => { sx.beginPath(); sx.moveTo(40, Y(f)); sx.lineTo(W - 16, Y(f)); sx.stroke(); sx.fillText(f >= 1000 ? (f / 1000) + 'k' : f, 6, Y(f) + 3); });
+  for (let t = 0; t <= T + 1e-9; t += 0.1) { sx.beginPath(); sx.moveTo(X(t), 16); sx.lineTo(X(t), H - 10); sx.stroke(); sx.fillText(Math.round(t * 1000) + 'ms', X(t) - 12, top - 6); }
+  // arrival curve
+  sx.strokeStyle = css('--accent'); sx.lineWidth = 2; sx.beginPath();
+  let first = true;
+  for (let lf = Math.log(60); lf <= Math.log(16000); lf += 0.01) {
+    const f = Math.exp(lf), t = strikeDisp ? r / (2 * Math.sqrt(C * TAU * f)) : r / 340;
+    if (t > T) { first = true; continue; }
+    first ? sx.moveTo(X(t), Y(f)) : sx.lineTo(X(t), Y(f)); first = false;
+  }
+  sx.stroke();
+  // waveform
+  const y = chirp(r, m, v, 48000, strikeDisp);
+  let pk = 1e-9; for (let i = 0; i < y.length; i++) pk = Math.max(pk, Math.abs(y[i]));
+  const mid = top + (H - top) / 2 + 4, amp = (H - top) / 2 - 14;
+  sx.strokeStyle = '#c8c8d8'; sx.lineWidth = 1; sx.beginPath();
+  const px = W - 56;
+  for (let p = 0; p < px; p++) {
+    const i0 = Math.floor(p / px * T * 48000), i1 = Math.floor((p + 1) / px * T * 48000);
+    let lo = 0, hi = 0; for (let i = i0; i < i1 && i < y.length; i++) { lo = Math.min(lo, y[i]); hi = Math.max(hi, y[i]); }
+    sx.moveTo(40 + p, mid - hi / pk * amp); sx.lineTo(40 + p, mid - lo / pk * amp + 0.5);
+  }
+  sx.stroke();
+  const tc = contactTime(m, v), tHi = r / (2 * Math.sqrt(C * TAU * 8000)), tLo = r / (2 * Math.sqrt(C * TAU * 150));
+  document.getElementById('strikeRead').textContent = strikeDisp
+    ? `8 kHz arrives at ${(tHi * 1000).toFixed(0)} ms · 150 Hz at ${(tLo * 1000).toFixed(0)} ms · sweep ${((tLo - tHi) * 1000).toFixed(0)} ms · strike lasts ${(tc * 1000).toFixed(2)} ms, bright up to ~${(1.5 / tc / 1000).toFixed(1)} kHz`
+    : `no dispersion: every frequency arrives together at ${(r / 340 * 1000).toFixed(0)} ms · strike lasts ${(tc * 1000).toFixed(2)} ms`;
+  return y;
+}
+function strike() {
+  const r = +rIn.value, m = +mIn.value / 1000, v = +vIn.value;
+  const L = chirp(Math.hypot(r, 1.5), m, v, audio().sampleRate, strikeDisp);
+  const R = chirp(Math.hypot(r, 1.5) * 1.02, m, v, ac.sampleRate, strikeDisp);
+  play(L, R, strikeDisp ? 0.5 : 0.15);
+}
+[rIn, mIn, vIn].forEach(e => e.addEventListener('input', drawStrike));
+document.getElementById('strikeBtn').onclick = strike;
+const sDisp = document.getElementById('sDisp'), sDry = document.getElementById('sDry');
+sDisp.onclick = () => { strikeDisp = true; sDisp.classList.add('on'); sDry.classList.remove('on'); drawStrike(); };
+sDry.onclick = () => { strikeDisp = false; sDry.classList.add('on'); sDisp.classList.remove('on'); drawStrike(); };
+drawStrike();
+
+/* ============ 04 · the fountain ============ */
+const fc = document.getElementById('fountCv'), fx = fc.getContext('2d');
+const dIn = document.getElementById('dIn'), pIn = document.getElementById('pIn'), lIn = document.getElementById('lIn'), kIn = document.getElementById('kIn');
+let running = false, fDispOn = true, parts = [], rings = [], spawnAcc = 0, lastT = 0, heard = 0, total = 0, frameStrikes = 0, rate = 0;
+const MAX_PARTS = 1200, MAX_VOICES_PER_SEC = 60;
+function labels() {
+  document.getElementById('dV').textContent = (+dIn.value).toFixed(1) + ' m';
+  document.getElementById('pV').textContent = pIn.value + ' / s';
+  document.getElementById('lV').textContent = (+lIn.value).toFixed(1) + ' m/s';
+  document.getElementById('kV').textContent = (+kIn.value).toFixed(1) + ' g';
+}
+function spawn() {
+  const sp = +lIn.value * (0.8 + 0.4 * Math.random()), el = (55 + 25 * Math.random()) * Math.PI / 180, az = Math.random() * TAU;
+  const m = (+kIn.value / 1000) * Math.exp((Math.random() * 2 - 1) * Math.log(2.2));
+  parts.push({ x: +dIn.value, y: 0.001, z: 0, vx: sp * Math.cos(el) * Math.cos(az), vy: sp * Math.sin(el), vz: sp * Math.cos(el) * Math.sin(az), m });
+}
+function onStrike(p, vn) {
+  rings.push({ x: p.x, r: 0, a: 1 });
+  frameStrikes++; total++;
+  // past the voice budget, hear a random share of strikes and lift each one so the cloud keeps its energy
+  const keep = Math.min(1, MAX_VOICES_PER_SEC / Math.max(rate, 1e-9));
+  if (!ac || Math.random() > keep) return;
+  const sr = ac.sampleRate, lift = 1 / Math.sqrt(keep);
+  const L = chirp(Math.hypot(p.x - PICKUPS[0][0], p.z - PICKUPS[0][1]), p.m, vn, sr, fDispOn);
+  const R = chirp(Math.hypot(p.x - PICKUPS[1][0], p.z - PICKUPS[1][1]), p.m, vn, sr, fDispOn);
+  play(L, R, (fDispOn ? 0.35 : 0.1) * lift, ac.currentTime + 0.03);
+  heard++;
+}
+function step(dt) {
+  spawnAcc += dt * +pIn.value;
+  while (spawnAcc >= 1) { spawnAcc -= 1; if (parts.length < MAX_PARTS) spawn(); }
+  const sub = 4, h = dt / sub;
+  for (let s = 0; s < sub; s++) {
+    for (const p of parts) {
+      const v = Math.hypot(p.vx, p.vy, p.vz), k = DRAG / p.m * v;
+      p.vx -= k * p.vx * h; p.vy -= (G + k * p.vy) * h; p.vz -= k * p.vz * h;
+      p.x += p.vx * h; p.y += p.vy * h; p.z += p.vz * h;
+      if (p.y <= 0 && p.vy < 0) {
+        const vn = -p.vy; p.y = 0; p.vy = vn * E; p.vx *= 0.8; p.vz *= 0.8;
+        onStrike(p, vn);
+        if (p.vy < 0.12) p.dead = true;
+      }
+    }
+    parts = parts.filter(p => !p.dead);
+  }
+}
+function drawFountain() {
+  const W = fc.width, H = fc.height, floor = H - 36;
+  const X = x => 30 + (x + 1) / 23 * (W - 50), Y = y => floor - y / 3.0 * (floor - 20);
+  fx.fillStyle = '#07070b'; fx.fillRect(0, 0, W, H);
+  // plate + distance ticks
+  fx.strokeStyle = '#4a4a5e'; fx.lineWidth = 1; fx.beginPath(); fx.moveTo(0, floor + 0.5); fx.lineTo(W, floor + 0.5); fx.stroke();
+  fx.fillStyle = '#8a8aa0'; fx.font = '10px JetBrains Mono, monospace';
+  for (let m = 0; m <= 20; m += 5) { fx.fillRect(X(m), floor + 4, 1, 5); fx.fillText(m + ' m', X(m) - 8, floor + 20); }
+  // pickups
+  fx.fillStyle = css('--accent'); fx.fillRect(X(0) - 2, floor - 10, 4, 10);
+  fx.fillText('pickups', X(0) + 6, floor - 3);
+  // emitter
+  fx.strokeStyle = 'rgba(232,184,74,0.5)'; fx.beginPath(); fx.moveTo(X(+dIn.value) - 6, floor); fx.lineTo(X(+dIn.value), floor - 8); fx.lineTo(X(+dIn.value) + 6, floor); fx.stroke();
+  // rings
+  for (const r of rings) {
+    fx.strokeStyle = `rgba(232,184,74,${r.a * 0.6})`; fx.beginPath(); fx.ellipse(X(r.x), floor, r.r, r.r * 0.25, 0, 0, TAU); fx.stroke();
+    r.r += 1.6; r.a -= 0.03;
+  }
+  rings = rings.filter(r => r.a > 0);
+  // particles
+  for (const p of parts) {
+    const b = Math.min(1, 0.35 + p.m / 0.04);
+    fx.fillStyle = `rgba(${Math.round(160 + 90 * b)},${Math.round(120 + 70 * b)},${Math.round(50 + 40 * b)},${0.55 + 0.45 * b})`;
+    const s = 1.2 + p.m * 90;
+    fx.beginPath(); fx.arc(X(p.x), Y(p.y), s, 0, TAU); fx.fill();
+  }
+}
+function loop(ts) {
+  const t = ts / 1000, dt = Math.min(0.05, t - (lastT || t)); lastT = t;
+  labels();
+  if (running) { frameStrikes = 0; step(dt); if (dt > 0) rate = 0.92 * rate + 0.08 * (frameStrikes / dt); }
+  drawFountain();
+  const d = +dIn.value, tHi = d / (2 * Math.sqrt(C * TAU * 8000)), tLo = d / (2 * Math.sqrt(C * TAU * 150));
+  document.getElementById('fountRead').textContent = running
+    ? `${parts.length} particles in the air · ${rate.toFixed(0)} strikes/s${rate > MAX_VOICES_PER_SEC ? ` · voicing ~${Math.round(100 * MAX_VOICES_PER_SEC / rate)}% of them to spare the CPU` : ''} · at ${d.toFixed(1)} m a strike sweeps about ${((tLo - tHi) * 1000).toFixed(0)} ms`
+    : 'stopped · press start (audio needs one click to wake)';
+  requestAnimationFrame(loop);
+}
+const fountBtn = document.getElementById('fountBtn');
+fountBtn.onclick = () => {
+  audio(); running = !running;
+  fountBtn.textContent = running ? 'stop the fountain' : 'start the fountain';
+  if (!running) parts = [];
+};
+const fDisp = document.getElementById('fDisp'), fDry = document.getElementById('fDry');
+fDisp.onclick = () => { fDispOn = true; fDisp.classList.add('on'); fDry.classList.remove('on'); };
+fDry.onclick = () => { fDispOn = false; fDry.classList.add('on'); fDisp.classList.remove('on'); };
+requestAnimationFrame(loop);
+
+/* ============ 06 · grains that meet — same constants as 2026-09-23-grains-that-meet.py ============ */
+const RHO_ICE = 917, E_STAR = 9e9 / (2 * (1 - 0.33 * 0.33)), E_GRAIN = 0.70;
+const RHO_AIR = 1.2, C_AIR = 343, AIR_GAIN = 0.35;
+const AIR_MICS = [[0, 1.2, -1.5], [0, 1.2, 1.5]];
+function grainRadius(m) { return Math.cbrt(3 * m / (4 * Math.PI * RHO_ICE)); }
+function hertzTc(m1, m2, r1, r2, vn) {
+  const me = m1 * m2 / (m1 + m2), re = r1 * r2 / (r1 + r2);
+  return 2.87 * Math.pow(me * me / (re * E_STAR * E_STAR * Math.max(vn, 0.05)), 0.2);
+}
+/* the clack at one air mic: two balls pushed apart by a half-sine force, each a compact dipole.
+   Each output sample is the dipole pressure averaged over one sample period, which is exact
+   because the average of dF/dt over a window is just the change in F across it.
+   Sample i sits at time t0 + i/sr after the contact began. */
+function clack(ev, mic, sr, t0, n) {
+  const tc = hertzTc(ev.m1, ev.m2, ev.r1, ev.r2, ev.vn), F0 = ev.J * Math.PI / (2 * tc);
+  const F = t => t <= 0 ? 0 : t >= tc ? 0 : F0 * Math.sin(Math.PI * t / tc);
+  const k0 = 3 * RHO_AIR / (8 * Math.PI * RHO_ICE * C_AIR);
+  const src = [[ev.c1, -1], [ev.c2, +1]].map(([c, s]) => {
+    const rv = [mic[0] - c[0], mic[1] - c[1], mic[2] - c[2]], r = Math.hypot(rv[0], rv[1], rv[2]);
+    const cos = (ev.n[0] * rv[0] + ev.n[1] * rv[1] + ev.n[2] * rv[2]) / r;
+    return { g: s * k0 * cos / r, d: r / C_AIR, r };
+  });
+  const y = new Float32Array(n), h = 1 / sr;
+  for (let i = 0; i < n; i++) {
+    const t = t0 + i * h;
+    let v = 0;
+    for (const s of src) v += s.g * (F(t - s.d + h / 2) - F(t - s.d - h / 2)) / h;
+    y[i] = v;
+  }
+  return y;
+}
+
+{
+  const mc = document.getElementById('meetCv'), mx = mc.getContext('2d');
+  const xIn = document.getElementById('xIn'), aIn = document.getElementById('aIn'), sIn = document.getElementById('sIn');
+  const SPEED = 6.0, ELEV = 60 * Math.PI / 180, HALF = 1.5, NOZ_Y = 0.2, SUB_H = 1 / 1000;
+  const MAX_GRAINS = 160, MAX_VOICES = 60;
+  let on = false, meet = true, gs = [], marks = [], rings = [], acc = 0, last = 0;
+  let nClack = 0, nCasc = 0, recent = [], rate = 0, frameStrikes = 0;
+  const gauss = () => Math.sqrt(-2 * Math.log(1 - Math.random())) * Math.cos(TAU * Math.random());
+  function shoot() {
+    const d = +xIn.value, sp = +aIn.value * Math.PI / 180;
+    const mb = M0 * Math.exp(Math.log(0.4) + Math.random() * Math.log(10));   // one size bin per shot
+    for (const side of [-1, 1]) {
+      const el = ELEV + gauss() * sp, az = gauss() * sp, s = SPEED * (1 + 0.3 * sp * gauss());
+      const m = mb * Math.exp((Math.random() * 2 - 1) * 0.2);
+      gs.push({ x: d + side * HALF, y: NOZ_Y, z: 0, vx: -side * s * Math.cos(el) * Math.cos(az), vy: s * Math.sin(el),
+                vz: s * Math.cos(el) * Math.sin(az), m, r: grainRadius(m), hits: 0 });
+    }
+  }
+  function landed(g, vn) {
+    rings.push({ x: g.x, r: 0, a: 1 }); frameStrikes++;
+    const keep = Math.min(1, MAX_VOICES / Math.max(rate, 1e-9));
+    if (!ac || Math.random() > keep) return;
+    const sr = ac.sampleRate, lift = 1 / Math.sqrt(keep);
+    const L = chirp(Math.hypot(g.x - PICKUPS[0][0], g.z - PICKUPS[0][1]), g.m, vn, sr, true);
+    const R = chirp(Math.hypot(g.x - PICKUPS[1][0], g.z - PICKUPS[1][1]), g.m, vn, sr, true);
+    play(L, R, 0.35 * lift, ac.currentTime + 0.03);
+  }
+  function met(a, b, n, vn, J, now) {
+    const ev = { c1: [a.x, a.y, a.z], c2: [b.x, b.y, b.z], n, vn, m1: a.m, m2: b.m, r1: a.r, r2: b.r, J };
+    nClack++; if (a.hits || b.hits) nCasc++; a.hits++; b.hits++;
+    recent.push(now);
+    marks.push({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, a: 1 });
+    if (!ac) return;
+    const sr = ac.sampleRate, tc = hertzTc(a.m, b.m, a.r, b.r, vn);
+    const dist = mic => Math.min(Math.hypot(mic[0] - a.x, mic[1] - a.y, mic[2] - a.z), Math.hypot(mic[0] - b.x, mic[1] - b.y, mic[2] - b.z));
+    const dL = dist(AIR_MICS[0]), dR = dist(AIR_MICS[1]);
+    const t0 = Math.min(dL, dR) / C_AIR - 16 / sr, len = 32 + Math.ceil((tc + Math.abs(dL - dR) / C_AIR) * sr);
+    const L = clack(ev, AIR_MICS[0], sr, t0, len), R = clack(ev, AIR_MICS[1], sr, t0, len);
+    for (let i = 0; i < len; i++) { L[i] *= AIR_GAIN; R[i] *= AIR_GAIN; }
+    play(L, R, 0.35, ac.currentTime + 0.03 + Math.max(t0, 0));   // arrives after the sound's flight time
+  }
+  function substep(h, now) {
+    for (const g of gs) {
+      const v = Math.hypot(g.vx, g.vy, g.vz), k = DRAG / g.m * v;
+      g.vx -= k * g.vx * h; g.vy -= (G + k * g.vy) * h; g.vz -= k * g.vz * h;
+      g.x += g.vx * h; g.y += g.vy * h; g.z += g.vz * h;
+      if (g.y <= g.r && g.vy < 0) {
+        const vn = -g.vy; g.y = g.r; g.vy = vn * E; g.vx *= 0.8; g.vz *= 0.8;
+        landed(g, vn);
+        if (g.vy < 0.12) g.dead = true;
+      }
+    }
+    if (meet) {
+      for (let i = 0; i < gs.length; i++) for (let j = i + 1; j < gs.length; j++) {
+        const a = gs[i], b = gs[j], dx = b.x - a.x, dy = b.y - a.y, dz = b.z - a.z, rs = a.r + b.r;
+        const d2 = dx * dx + dy * dy + dz * dz;
+        if (d2 >= rs * rs) continue;
+        const d = Math.sqrt(d2) || 1e-9, n = [dx / d, dy / d, dz / d];
+        const vn = (a.vx - b.vx) * n[0] + (a.vy - b.vy) * n[1] + (a.vz - b.vz) * n[2];
+        if (vn <= 0) continue;
+        const J = (1 + E_GRAIN) * (a.m * b.m / (a.m + b.m)) * vn;
+        a.vx -= J / a.m * n[0]; a.vy -= J / a.m * n[1]; a.vz -= J / a.m * n[2];
+        b.vx += J / b.m * n[0]; b.vy += J / b.m * n[1]; b.vz += J / b.m * n[2];
+        met(a, b, n, vn, J, now);
+      }
+    }
+    gs = gs.filter(g => !g.dead);
+  }
+  function stepMeet(dt, now) {
+    acc += dt * +sIn.value;
+    while (acc >= 1) { acc -= 1; if (gs.length < MAX_GRAINS) shoot(); }
+    const steps = Math.max(1, Math.round(dt / SUB_H)), h = dt / steps;
+    for (let s = 0; s < steps; s++) substep(h, now);
+  }
+  function drawMeet() {
+    const W = mc.width, H = mc.height, floor = H - 36;
+    const X = x => 30 + (x + 1) / 23 * (W - 50), Y = y => floor - y / 3.0 * (floor - 20);
+    mx.fillStyle = '#07070b'; mx.fillRect(0, 0, W, H);
+    mx.strokeStyle = '#4a4a5e'; mx.lineWidth = 1; mx.beginPath(); mx.moveTo(0, floor + 0.5); mx.lineTo(W, floor + 0.5); mx.stroke();
+    mx.fillStyle = '#8a8aa0'; mx.font = '10px JetBrains Mono, monospace';
+    for (let m = 0; m <= 20; m += 5) { mx.fillRect(X(m), floor + 4, 1, 5); mx.fillText(m + ' m', X(m) - 8, floor + 20); }
+    mx.fillStyle = css('--accent'); mx.fillRect(X(0) - 2, floor - 10, 4, 10); mx.fillText('pickups', X(0) + 6, floor - 3);
+    mx.strokeStyle = 'rgba(232,184,74,0.5)';
+    for (const side of [-1, 1]) {
+      const nx = X(+xIn.value + side * HALF);
+      mx.beginPath(); mx.moveTo(nx - 6, floor); mx.lineTo(nx, floor - 8); mx.lineTo(nx + 6, floor); mx.stroke();
+    }
+    for (const r of rings) {
+      mx.strokeStyle = `rgba(232,184,74,${r.a * 0.6})`; mx.beginPath(); mx.ellipse(X(r.x), floor, r.r, r.r * 0.25, 0, 0, TAU); mx.stroke();
+      r.r += 1.6; r.a -= 0.03;
+    }
+    rings = rings.filter(r => r.a > 0);
+    for (const g of gs) {
+      const b = Math.min(1, 0.35 + g.m / 0.04);
+      mx.fillStyle = g.hits ? 'rgba(250,236,200,0.95)' : `rgba(${Math.round(160 + 90 * b)},${Math.round(120 + 70 * b)},${Math.round(50 + 40 * b)},${0.55 + 0.45 * b})`;
+      mx.beginPath(); mx.arc(X(g.x), Y(g.y), 1.2 + g.m * 90, 0, TAU); mx.fill();
+    }
+    for (const k of marks) {
+      mx.strokeStyle = `rgba(250,236,200,${k.a})`; mx.lineWidth = 1.5; const px = X(k.x), py = Y(k.y), s = 7 + 6 * (1 - k.a);
+      mx.beginPath(); mx.moveTo(px - s, py); mx.lineTo(px + s, py); mx.moveTo(px, py - s); mx.lineTo(px, py + s); mx.stroke();
+      k.a -= 0.02;
+    }
+    mx.lineWidth = 1;
+    marks = marks.filter(k => k.a > 0);
+  }
+  function loopMeet(ts) {
+    const now = ts / 1000, dt = Math.min(0.05, now - (last || now)); last = now;
+    document.getElementById('xV').textContent = (+xIn.value).toFixed(1) + ' m';
+    document.getElementById('aV').textContent = (+aIn.value).toFixed(2) + '°';
+    document.getElementById('sV').textContent = sIn.value + ' / s';
+    if (on) { frameStrikes = 0; stepMeet(dt, now); if (dt > 0) rate = 0.92 * rate + 0.08 * (frameStrikes / dt); }
+    recent = recent.filter(t => now - t < 5);
+    drawMeet();
+    document.getElementById('meetRead').textContent = on
+      ? `${gs.length} grains in the air · ${nClack} meetings so far (${nCasc} cascades) · ${(recent.length / 5).toFixed(1)} meetings/s lately · ${meet ? 'grains meet' : 'passing through'}`
+      : 'stopped · press start (audio needs one click to wake)';
+    requestAnimationFrame(loopMeet);
+  }
+  const meetBtn = document.getElementById('meetBtn');
+  meetBtn.onclick = () => {
+    audio(); on = !on;
+    meetBtn.textContent = on ? 'stop the fountains' : 'start the fountains';
+    if (!on) { gs = []; nClack = 0; nCasc = 0; recent = []; }
+  };
+  const mB = document.getElementById('mMeetB'), pB = document.getElementById('mPassB');
+  mB.onclick = () => { meet = true; mB.classList.add('on'); pB.classList.remove('on'); };
+  pB.onclick = () => { meet = false; pB.classList.add('on'); mB.classList.remove('on'); };
+  requestAnimationFrame(loopMeet);
+}
+</script>
+
+<script>
+/* =====================================================================
+ *  Review Layer — drop-in per-moment commenting surface
+ *  Palace concept: [[Review Layer]].  One method (DOM-anchored), not the
+ *  definition of the layer — for slides / video / image / sound, invent
+ *  an anchoring that fits the format (see the entry).
+ *
+ *  Usage (single-file artifact):
+ *    <script src="review-layer.js"><\/script>   // or paste this whole file
+ *    <script>
+ *      mountReviewLayer({
+ *        project: 'wavetable-scanner',          // names the storage key + export
+ *        round: 1,                              // bump each revision pass
+ *        review: true,                          // false (or omit) ships clean
+ *        moments: [
+ *          { id:'concept', label:'Concept & framing', tag:'text',    sel:'.lead' },
+ *          { id:'sound',   label:'Overall sound & mix', tag:'sound' },           // panel-only
+ *          // GRANULARITY: one moment per natural section — NOT one per slider.
+ *        ],
+ *      });
+ *    <\/script>
+ *
+ *  Styling reads Loudon Live design tokens (--accent, --bg, --fg-*, --border,
+ *  --mono, --sans…) with safe fallbacks, so it also works outside the system.
+ *  Export gives both shapes: JSON keyed per moment (individual responses) and
+ *  a markdown digest ("Copy for Claude").
+ * ===================================================================== */
+(function (global) {
+  function injectStyles() {
+    if (document.getElementById('rv-styles')) return;
+    const css = `
+    .rv-pin{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+      font-family:var(--mono,'JetBrains Mono',monospace);font-size:11px;line-height:1;
+      color:var(--fg-3,#8a8a99);background:transparent;border:1px solid var(--border,#4a4a5e);
+      border-radius:3px;width:17px;height:17px;margin-left:6px;vertical-align:middle;
+      transition:color .12s,border-color .12s;user-select:none}
+    .rv-pin:hover{color:var(--accent,#e8b84a);border-color:var(--accent,#e8b84a)}
+    .rv-pin.filled{color:var(--bg,#0a0a0f);background:var(--accent,#e8b84a);border-color:var(--accent,#e8b84a)}
+    #rv-panel{position:fixed;top:0;right:0;height:100vh;width:326px;z-index:2147483600;
+      display:flex;flex-direction:column;
+      background:color-mix(in srgb, var(--bg-elev-2,#16161d) 94%, transparent);
+      border-left:1px solid var(--border,#4a4a5e);box-shadow:-8px 0 28px rgba(0,0,0,.4);
+      transform:translateX(0);transition:transform .22s ease}
+    #rv-panel.collapsed{transform:translateX(326px)}
+    #rv-panel .rv-head{padding:14px 14px 10px;border-bottom:1px solid var(--border-soft,#2a2a36)}
+    #rv-panel .rv-title{font-family:var(--mono,monospace);text-transform:uppercase;
+      letter-spacing:.08em;font-size:11px;color:var(--accent,#e8b84a)}
+    #rv-panel .rv-sub{font-family:var(--mono,monospace);font-size:10px;color:var(--fg-3,#8a8a99);
+      margin-top:4px;letter-spacing:.03em}
+    #rv-panel .rv-body{flex:1;overflow-y:auto;padding:6px 12px 12px}
+    #rv-panel .rv-row{padding:9px 0 7px;border-bottom:1px solid var(--border-soft,#2a2a36)}
+    #rv-panel .rv-row label{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+      font-family:var(--sans,'Manrope',system-ui,sans-serif);font-weight:500;font-size:12.5px;
+      color:var(--fg-1,#ececf2);cursor:pointer}
+    #rv-panel .rv-row .tag{font-family:var(--mono,monospace);font-size:9px;text-transform:uppercase;
+      letter-spacing:.06em;color:var(--fg-3,#8a8a99);border:1px solid var(--border-soft,#2a2a36);
+      border-radius:2px;padding:1px 4px;white-space:nowrap}
+    #rv-panel textarea{width:100%;margin-top:6px;background:var(--bg,#0a0a0f);color:var(--fg-1,#ececf2);
+      border:1px solid var(--border,#4a4a5e);border-radius:var(--r-sm,3px);
+      font-family:var(--mono,monospace);font-size:11.5px;line-height:1.45;padding:6px 7px;
+      resize:vertical;min-height:0;height:30px;transition:height .12s,border-color .12s;box-sizing:border-box}
+    #rv-panel textarea:focus{outline:none;border-color:var(--accent,#e8b84a);height:64px}
+    #rv-panel textarea.has{height:56px;border-color:var(--accent,#e8b84a)}
+    #rv-panel .rv-foot{padding:10px 12px;border-top:1px solid var(--border-soft,#2a2a36);
+      display:flex;flex-wrap:wrap;gap:6px}
+    #rv-panel .rv-foot button{font-family:var(--mono,monospace);font-size:10.5px;letter-spacing:.04em;
+      text-transform:uppercase;cursor:pointer;border:1px solid var(--border,#4a4a5e);
+      background:var(--bg-elev-1,#101017);color:var(--fg-2,#c4c4d0);padding:6px 9px;border-radius:var(--r-sm,3px)}
+    #rv-panel .rv-foot button.primary{background:var(--accent,#e8b84a);color:var(--bg,#0a0a0f);
+      border-color:var(--accent,#e8b84a);font-weight:500}
+    #rv-panel .rv-foot button:hover{border-color:var(--accent,#e8b84a)}
+    #rv-tab{position:fixed;top:14px;right:14px;z-index:2147483601;font-family:var(--mono,monospace);
+      font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;padding:6px 10px;
+      border-radius:var(--r-sm,3px);border:1px solid var(--border,#4a4a5e);
+      background:var(--bg-elev-1,#101017);color:var(--fg-2,#c4c4d0)}
+    #rv-tab:hover{border-color:var(--accent,#e8b84a);color:var(--accent,#e8b84a)}
+    #rv-toast{position:fixed;bottom:18px;right:18px;z-index:2147483602;font-family:var(--mono,monospace);
+      font-size:11px;background:var(--accent,#e8b84a);color:var(--bg,#0a0a0f);padding:8px 12px;
+      border-radius:var(--r-sm,3px);opacity:0;transition:opacity .2s;pointer-events:none}
+    #rv-toast.show{opacity:1}`;
+    const s = document.createElement('style'); s.id = 'rv-styles'; s.textContent = css;
+    document.head.appendChild(s);
+  }
+
+  function mountReviewLayer(opts) {
+    opts = opts || {};
+    if (opts.review === false) return;            // shipped clean — mount nothing
+    const project = opts.project || 'artifact';
+    const round = opts.round || 1;
+    const moments = opts.moments || [];
+    const KEY = (opts.storageKey || ('review-' + project)) + '-r' + round;
+    if (!moments.length) { console.warn('[review-layer] no moments given'); return; }
+
+    injectStyles();
+
+    let store = {};
+    try { store = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { store = {}; }
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} };
+    const count = () => Object.values(store).filter(v => v && v.trim()).length;
+
+    const panel = document.createElement('div'); panel.id = 'rv-panel';
+    panel.innerHTML =
+      `<div class="rv-head"><div class="rv-title">Review · Round ${round}</div>
+         <div class="rv-sub" id="rv-sub"></div></div>
+       <div class="rv-body" id="rv-body"></div>
+       <div class="rv-foot">
+         <button class="primary" id="rv-copy">Copy for Claude</button>
+         <button id="rv-json">Download .json</button>
+         <button id="rv-md">Download .md</button>
+         <button id="rv-hide">Hide</button>
+         <button id="rv-clear">Clear all</button>
+       </div>`;
+    document.body.appendChild(panel);
+    const tab = document.createElement('div'); tab.id = 'rv-tab'; tab.textContent = '◇ Review';
+    document.body.appendChild(tab);
+    const toast = document.createElement('div'); toast.id = 'rv-toast'; document.body.appendChild(toast);
+    const body = panel.querySelector('#rv-body'), sub = panel.querySelector('#rv-sub');
+    const flash = (m) => { toast.textContent = m; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1400); };
+    const refreshSub = () => { sub.textContent = `${count()} of ${moments.length} moments noted`; };
+
+    const areas = {}, pins = {};
+    function syncPin(id) { const p = pins[id]; if (!p) return; const has = (store[id] || '').trim(); p.textContent = has ? '◆' : '◇'; p.classList.toggle('filled', !!has); }
+    function openTo(id) { panel.classList.remove('collapsed'); const ta = areas[id]; if (ta) { ta.scrollIntoView({ block: 'center' }); ta.focus(); } }
+
+    moments.forEach(m => {
+      const row = document.createElement('div'); row.className = 'rv-row';
+      row.innerHTML = `<label>${m.label}${m.tag ? `<span class="tag">${m.tag}</span>` : ''}</label>`;
+      const ta = document.createElement('textarea'); ta.placeholder = 'note for next round…'; ta.value = store[m.id] || '';
+      if (ta.value.trim()) ta.classList.add('has');
+      ta.addEventListener('input', () => { store[m.id] = ta.value; ta.classList.toggle('has', !!ta.value.trim()); save(); syncPin(m.id); refreshSub(); });
+      row.appendChild(ta); body.appendChild(row); areas[m.id] = ta;
+
+      if (m.sel) {
+        const el = document.querySelector(m.sel);
+        if (el) {
+          const pin = document.createElement('span'); pin.className = 'rv-pin'; pin.title = 'Comment on this'; pin.textContent = '◇';
+          pin.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); openTo(m.id); });
+          el.appendChild(pin); pins[m.id] = pin; syncPin(m.id);
+        }
+      }
+    });
+
+    function buildJSON() {
+      return {
+        project, round, exported: new Date().toISOString(),
+        responses: moments
+          .map(m => ({ id: m.id, label: m.label, tag: m.tag || null, note: (store[m.id] || '').trim() }))
+          .filter(r => r.note),
+      };
+    }
+    function buildMarkdown() {
+      const d = new Date().toISOString().slice(0, 10);
+      let md = `# ${project} — Round ${round} review notes\n_${count()} of ${moments.length} moments · ${d}_\n`;
+      let any = false;
+      moments.forEach(m => { const v = (store[m.id] || '').trim(); if (v) { any = true; md += `\n## ${m.label}\n${v}\n`; } });
+      if (!any) md += `\n_(no notes yet)_\n`;
+      return md;
+    }
+    function download(name, text, type) {
+      const blob = new Blob([text], { type }); const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = name; a.click(); URL.revokeObjectURL(url);
+    }
+
+    panel.querySelector('#rv-copy').addEventListener('click', async () => {
+      const md = buildMarkdown();
+      try { await navigator.clipboard.writeText(md); flash('Copied — paste to Claude'); return; } catch (e) {}
+      const t = document.createElement('textarea'); t.value = md; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); flash('Copied — paste to Claude'); } catch (e) { flash('Copy blocked — use Download'); }
+      t.remove();
+    });
+    panel.querySelector('#rv-json').addEventListener('click', () => { download(`${project}-review-r${round}.json`, JSON.stringify(buildJSON(), null, 2), 'application/json'); flash('Downloaded .json'); });
+    panel.querySelector('#rv-md').addEventListener('click', () => { download(`${project}-review-r${round}.md`, buildMarkdown(), 'text/markdown'); flash('Downloaded .md'); });
+    panel.querySelector('#rv-clear').addEventListener('click', () => {
+      if (!confirm('Clear all notes for this round?')) return;
+      store = {}; save(); moments.forEach(m => { areas[m.id].value = ''; areas[m.id].classList.remove('has'); syncPin(m.id); }); refreshSub();
+    });
+    panel.querySelector('#rv-hide').addEventListener('click', () => panel.classList.add('collapsed'));
+    tab.addEventListener('click', () => panel.classList.toggle('collapsed'));
+    refreshSub();
+  }
+
+  global.mountReviewLayer = mountReviewLayer;
+})(typeof window !== 'undefined' ? window : this);
+
+</script>
+<script>
+mountReviewLayer({
+  project: 'particle-synthesis-lesson',
+  round: 1,
+  review: true,
+  moments: [
+    { id: 'framing', label: 'Title and the idea (01)', tag: 'text',    sel: '#s-idea h2' },
+    { id: 'arc',     label: 'The arc so far (02)',     tag: 'text',    sel: '#s-arc h2' },
+    { id: 'law',     label: 'The law and the strike bench (03)', tag: 'control', sel: '#s-law h2' },
+    { id: 'fountain',label: 'The live fountain (04)',  tag: 'control', sel: '#s-fountain h2' },
+    { id: 'renders', label: 'The offline renders (05)', tag: 'sound',  sel: '#s-renders h2' },
+    { id: 'meet',    label: 'Grains that meet (06)',   tag: 'control', sel: '#s-meet h2' },
+    { id: 'road',    label: 'Where it is going (07)',  tag: 'text',    sel: '#s-map h2' },
+  ],
+});
+</script>
+</body>
+</html>

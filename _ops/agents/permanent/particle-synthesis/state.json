@@ -1,14 +1,15 @@
 {
-  "iteration": 3,
-  "last_active": "2026-06-25T00:34:39.059Z",
-  "last_read_cursor": "particle-synthesis-004",
+  "iteration": 5,
+  "last_active": "2026-09-23T05:12:34.000Z",
+  "last_read_cursor": "particle-synthesis-009",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
     "max_tokens_hits": 0,
-    "score": "green"
+    "score": "green",
+    "stalled": false
   },
   "_pilot_metadata": {
     "cycle_1_notes": "Palace heartbeat batch 2026-06-06T10:39:37Z. ~69925 subagent tokens, 15 tool uses."

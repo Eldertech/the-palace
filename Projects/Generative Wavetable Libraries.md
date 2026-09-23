@@ -185,6 +185,7 @@ Eventually, an instrument is generated from a single conversation that produces 
 
 This page is tended by a permanent steward and **may lag its live state** — the steward has made decisions and built artifacts not yet consolidated into the body above. Current truth lives in the log:
 
+- **Scroll (the live front door):** [[Generative Wavetable Libraries — scroll]] — where it stands now, standing orders, and everything shipped, newest first; open it on STIGMERGY's PROJECTS deck
 - **Steward state + history:** `_ops/agents/permanent/generative-wavetable-libraries/`
 - **Live thread (BBS):** session `gwl-steward-2026-05-27` — open in STIGMERGY
 - **As of last consolidation:** cycle 9 (2026-06-07) · no open auditions

@@ -1,0 +1,31 @@
+[
+ {
+  "arm": "crystal",
+  "instrument": "reference",
+  "probe_verdict": "ON TARGET",
+  "cells": {
+   "on_target": 8,
+   "retunable": 0,
+   "texture": 0,
+   "error": 0,
+   "n": 8
+  },
+  "notes_kept": 4,
+  "built": true,
+  "sfz": "crystal_reference.sfz",
+  "keys": [
+   "A1",
+   "G6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [],
+  "keycheck": {
+   "keys_played": 59,
+   "on_target": 59,
+   "worst_abs_cents_on_target": 1.75,
+   "misses": []
+  },
+  "audition": "audition.wav",
+  "built_from_row": "piano"
+ }
+]

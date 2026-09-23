@@ -2,7 +2,8 @@ import { describe, test, expect, afterEach } from 'vitest';
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { sliceBoardSinceCursor, filterBoardForAgent, buildCyclePrompt, findEntryFile } from '../../src/build-cycle-prompt.js';
+import { sliceBoardSinceCursor, filterBoardForAgent, buildCyclePrompt, findEntryFile, defaultMandate } from '../../src/build-cycle-prompt.js';
+import { MARK, ORDERS_PLACEHOLDER } from '../../src/scroll-file.js';
 
 describe('sliceBoardSinceCursor', () => {
   const lines = [
@@ -323,5 +324,72 @@ describe('findEntryFile', () => {
     const found = findEntryFile(root, 'Target');
     expect(found).toBe(path.join(root, 'sub/deep/Target.md'));
     expect(findEntryFile(root, 'Nope')).toBeNull();
+  });
+});
+
+describe('the scroll seam + the run mandate (2026-09-23)', () => {
+  let root;
+  afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
+
+  function palace({ orders } = {}) {
+    root = mkdtempSync(path.join(tmpdir(), 'palace-bcp-scroll-'));
+    const agentDir = path.join(root, '_ops/agents/permanent/shep');
+    mkdirSync(agentDir, { recursive: true });
+    mkdirSync(path.join(root, '_ops/swarm/persistent'), { recursive: true });
+    mkdirSync(path.join(root, '_ops/orchestrator/prompts'), { recursive: true });
+    writeFileSync(path.join(root, '_ops/orchestrator/prompts/steward.md'), '# steward {{home}} {{cycle_id}} {{stage_at_last_activation}}\n{{>shared}}\n');
+    writeFileSync(path.join(root, '_ops/orchestrator/prompts/shared.md'), 'shared rules\n');
+    writeFileSync(path.join(agentDir, 'manifest.json'), JSON.stringify({ agent_id: 'Shep', home: 'Shep', session_id: 's', mode: 'long_duration_background', model: { name: 'm' }, stopping_conditions: { max_iterations: 10 } }));
+    writeFileSync(path.join(agentDir, 'state.json'), JSON.stringify({ iteration: 3, last_active: null, last_read_cursor: null }));
+    writeFileSync(path.join(agentDir, 'history.jsonl'), '');
+    writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), '');
+    mkdirSync(path.join(root, 'Projects', 'Shep'), { recursive: true });
+    writeFileSync(path.join(root, 'Projects', 'Shep.md'), '---\nstage: growing\n---\n# Shep');
+    if (orders !== undefined) {
+      writeFileSync(path.join(root, 'Projects', 'Shep', 'Shep — scroll.md'), [
+        '---\ntitle: "Shep — scroll"\n---\n# Shep — scroll',
+        MARK.nowStart, '## Now\n- **Status:** active · **Stage:** growing', MARK.nowEnd,
+        '## Standing Orders', MARK.ordersStart, orders, MARK.ordersEnd,
+        '## The making', MARK.makingStart, '', MARK.makingEnd,
+      ].join('\n'));
+    }
+    return { agentDir: '_ops/agents/permanent/shep' };
+  }
+
+  test('injects Standing Orders and the Now zone from the scroll when one exists', () => {
+    const { agentDir } = palace({ orders: 'Never ask about crossfades. Prefer the illusion.' });
+    const { userTurn, standingOrders } = buildCyclePrompt({ palaceRoot: root, agentDir, cycleN: 4, skillRoot: path.join(root, '_ops/orchestrator'), today: '2026-09-23' });
+    expect(standingOrders).toBe('Never ask about crossfades. Prefer the illusion.');
+    expect(userTurn).toContain('## Standing Orders (Loudon\'s direction');
+    expect(userTurn).toContain('Prefer the illusion.');
+    expect(userTurn).toContain('## Where you stand');
+    expect(userTurn).toContain('**Stage:** growing');
+    expect(userTurn).toContain('You do not edit the scroll yourself');
+  });
+
+  test('a scroll with the placeholder orders reads as "none written yet"; no scroll → no section', () => {
+    const a = palace({ orders: ORDERS_PLACEHOLDER });
+    const r1 = buildCyclePrompt({ palaceRoot: root, agentDir: a.agentDir, cycleN: 4, skillRoot: path.join(root, '_ops/orchestrator'), today: '2026-09-23' });
+    expect(r1.standingOrders).toBe('');
+    expect(r1.userTurn).toContain('_None written yet.');
+    rmSync(root, { recursive: true, force: true }); root = null;
+    const b = palace();
+    const r2 = buildCyclePrompt({ palaceRoot: root, agentDir: b.agentDir, cycleN: 4, skillRoot: path.join(root, '_ops/orchestrator'), today: '2026-09-23' });
+    expect(r2.userTurn).not.toContain('# Your scroll');
+    const r3 = buildCyclePrompt({ palaceRoot: root, agentDir: b.agentDir, cycleN: 4, skillRoot: path.join(root, '_ops/orchestrator'), today: '2026-09-23', include: { scroll: false } });
+    expect(r3.userTurn).not.toContain('# Your scroll');
+  });
+
+  test('the default mandate is ship-first, names the run position, and marks a barren retry', () => {
+    expect(defaultMandate({ cycleN: 4 })).toContain('**ship a made thing**');
+    expect(defaultMandate({ cycleN: 4 })).not.toContain('every cycle ends with a TRICKSTER ask');
+    const run = defaultMandate({ cycleN: 4, runPosition: 2, runCap: 10 });
+    expect(run).toContain('run of up to 10 cycles');
+    expect(run).toContain('cycle 2 of 10 (8 more may follow)');
+    expect(run).toContain('plan a larger jump');
+    expect(defaultMandate({ cycleN: 4, runPosition: 10, runCap: 10 })).toContain('(the last one)');
+    expect(defaultMandate({ cycleN: 5, runPosition: 2, runCap: 10, retryOfBarren: true })).toContain('**This is a retry.**');
+    const { userTurn } = (() => { const { agentDir } = palace(); return buildCyclePrompt({ palaceRoot: root, agentDir, cycleN: 4, skillRoot: path.join(root, '_ops/orchestrator'), today: '2026-09-23', runPosition: 1, runCap: 10 }); })();
+    expect(userTurn).toContain('cycle 1 of 10');
   });
 });

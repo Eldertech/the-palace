@@ -9,7 +9,7 @@ import StateDeck from './components/state/StateDeck.jsx';
 import LogDeck from './components/log/LogDeck.jsx';
 import TricksterDeck from './components/TricksterDeck.jsx';
 import QueuePanel from './components/queue/QueuePanel.jsx';
-import StewardsDeck from './components/stewards/StewardsDeck.jsx';
+import ProjectsDeck from './components/projects/ProjectsDeck.jsx';
 import CompanionHost from './components/CompanionHost.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
@@ -19,7 +19,7 @@ import { buildInbox } from './lib/inbox.js';
 import { BOARDS } from './lib/format.js';
 import { DEMO_MESSAGES } from './lib/demo-data.js';
 import { validateAll } from './lib/schema.js';
-import { useDeckNavigation } from './lib/url-nav.js';
+import { useDeckNavigation, useProjectNavigation } from './lib/url-nav.js';
 
 // Demo mode from the ?demo= query param:
 //   '1'     → demo data PREPENDED onto live palace data (the default showcase)
@@ -46,6 +46,9 @@ export default function App() {
   // so no deck change escapes the history timeline.
   const { deck, navigateDeck } = useDeckNavigation();
   const setDeck = navigateDeck;
+  // The open project on the PROJECTS deck (`?project=`): its scroll view.
+  const { project, openProject, closeProject } = useProjectNavigation();
+  const openProjectScroll = useCallback((home) => { openProject(home); setDeck('PROJECTS'); }, [openProject]);
   // Default board (when QUEUE is active) is TRICKSTER -- the inbox is the
   // page that earns its keep moment-to-moment.
   const [activeBoard, setActiveBoard] = useState('TRICKSTER');
@@ -172,7 +175,7 @@ export default function App() {
       if (k === 'q' || k === 'Q') return setDeck('QUEUE');
       if (k === 'l' || k === 'L') return setDeck('LOG');
       if (k === 't' || k === 'T') return setDeck('TRICKSTER');
-      if (k === 'w' || k === 'W') return setDeck('STEWARDS');
+      if (k === 'p' || k === 'P' || k === 'w' || k === 'W') return setDeck('PROJECTS');
       if (k === '`' || k === '~') return toggleAgent();
       if (deck === 'QUEUE' && /^[1-6]$/.test(k)) {
         const idx = parseInt(k, 10) - 1;
@@ -264,6 +267,8 @@ export default function App() {
       { key: 'S', label: 'state' },
       { key: 'Q', label: 'queue' },
       { key: 'L', label: 'log' },
+      { key: 'T', label: 'trickster' },
+      { key: 'P', label: 'projects' },
     ];
     const trailing = [
       { key: '~', label: agentOpen ? 'close companion' : 'companion' },
@@ -288,6 +293,7 @@ export default function App() {
     if (k === 'Q') return setDeck('QUEUE');
     if (k === 'L') return setDeck('LOG');
     if (k === 'T') return setDeck('TRICKSTER');
+    if (k === 'P') return setDeck('PROJECTS');
     if (k === '~') return toggleAgent();
     if (k === 'R') return loadAll();
     if (deck === 'QUEUE') {
@@ -302,6 +308,7 @@ export default function App() {
   const commandBarActive = deck === 'QUEUE' ? activeBoard
     : deck === 'STATE' ? 'S'
     : deck === 'TRICKSTER' ? 'T'
+    : deck === 'PROJECTS' ? 'P'
     : 'L';
 
   return (
@@ -322,7 +329,15 @@ export default function App() {
         />
       )}
       {deck === 'LOG' && <LogDeck />}
-      {deck === 'STEWARDS' && <StewardsDeck />}
+      {deck === 'PROJECTS' && (
+        <ProjectsDeck
+          messages={visibleMessages}
+          onConfirmed={handleOptimisticAppend}
+          project={project}
+          onOpenProject={openProjectScroll}
+          onCloseProject={closeProject}
+        />
+      )}
       {deck === 'TRICKSTER' && (
         <TricksterDeck
           messages={visibleMessages}

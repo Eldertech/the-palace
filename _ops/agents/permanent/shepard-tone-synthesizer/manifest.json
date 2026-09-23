@@ -31,8 +31,13 @@
     "write_blackboard"
   ],
   "stopping_conditions": {
-    "max_iterations": 1,
-    "stop_on": ["cycle_complete", "blocked_unresolved_10_cycles"]
+    "max_iterations": 10,
+    "stop_on": [
+      "cycle_complete",
+      "blocking_ask",
+      "interactive_session",
+      "stalled"
+    ]
   },
   "blackboard_session_path": null,
   "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl",
@@ -49,6 +54,8 @@
     "spawned": "2026-05-27",
     "spawned_by": "palace-orchestrator skill (Claude Code parent), to extend batch mode coverage and to bridge with GSL cycle 11's SECOND-PALACE grant choice of Shepard tones as Phase 3 source two",
     "first_activation": null,
-    "related_active_threads": ["gsl-steward-017 (granted SECOND-PALACE — GSL Steward will build a Shepard-tone instrument as Phase 3 source two; this Steward and GSL may collaborate via the BBS)"]
+    "related_active_threads": [
+      "gsl-steward-017 (granted SECOND-PALACE — GSL Steward will build a Shepard-tone instrument as Phase 3 source two; this Steward and GSL may collaborate via the BBS)"
+    ]
   }
 }

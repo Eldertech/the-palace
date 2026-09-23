@@ -109,6 +109,31 @@ rendering on any message type, no validator/schema change:
   `choice` or `ranking`) correlated to the card — the asking agent reads the
   result. Picking writes only on `SEND`.
 
+## The PROJECTS deck + project scrolls (2026-09-23)
+
+The STEWARDS roster became the **PROJECTS** deck (`[P]`; `W` and `?deck=stewards`
+still land there). Every `type: project` entry is one row — stewarded or not —
+grouped by what it needs: *needs you* (open asks / a running cycle) · *ready to
+advance* (an answer filed since the steward last ran) · *stalled* (two barren
+cycles) · *tended* · *no steward*. The signal column is computed by the same
+rule as the scroll's Now zone (`server/projects.js` → the orchestrator's
+`computeNow`), so the table and the scroll never disagree.
+
+Click a name to open the project's **scroll** (`[Entry] — scroll.md` in its
+bundle, the front door that replaced `plan.md`): the **Now** zone regenerated on
+every fetch, the project's **open asks** as the same TricksterCards the
+TRICKSTER deck uses, **Standing Orders** (Loudon's zone, editable only here in
+the terminal, read by the steward at the top of every cycle), and **The making**
+(the trail, newest first, media inline). Advancing fires a *run* — up to the
+manifest's `stopping_conditions.max_iterations` consecutive cycles while the
+steward ships and nothing waits on Loudon.
+
+- `GET /api/projects` — the rows + the lane's worker status.
+- `GET /api/projects/scroll?home=<Title>[&write=1]` — the scroll with a live Now
+  zone (in memory; `write=1` persists it).
+- `PUT /api/projects/orders` `{ home, orders }` — write Standing Orders.
+- `POST /api/steward/advance` `{ name, max_cycles? }` — start a run.
+
 ## Run
 
 From this directory (`_ops/stigmergy/app/`):
@@ -151,6 +176,7 @@ success (`V0.2-COMPLETE.md` written) or a stop condition
 Hard-won cautions for anyone building or testing this app:
 
 - **The Playwright e2e fires REAL stewards.** `playwright.config.js` has `reuseExistingServer: !CI`, so `npx playwright test` attaches to whatever dev server is on :5173. If that server was started without `STIGMERGY_STUB_WORKER`, `stewards.spec.js` fires a real `claude -p` steward cycle (~60 s) that posts to the persistent blackboard, mutates `_ops/agents/permanent/*/state.json`, and can write real entries/wavetables — passing the stub env on the *test* command does NOT reach an already-running server. To verify a change safely, run only your surface's specs (`state-deck.spec.js`, etc.), not the full suite; the `stewards:41` "reap to idle" 15 s assertion fails against a non-stub server (real cycle ~60 s) — environmental, not a regression.
+- **The steward lane cannot fire as root.** `claude -p --permission-mode bypassPermissions` refuses to run under root/sudo ("cannot be used with root/sudo privileges"), exits in ~400 ms, and leaves an empty transcript. Cloud containers (Claude Code on the web) run as root, so the lane's real worker never speaks there; the Mac is fine. Since 2026-09-23 an empty transcript is a **spawn failure** (`stop_hint: spawn_failed`, `CYCLE_SPAWN_FAILED` in history, iteration untouched, no retry, no stall, last-cycle reads FAILED) rather than a barren cycle — before that fix, one click marked four stewards STALLED in six seconds. In a root container dispatch cycles through the Agent tool (the runbook's Path 2) and wrap the subagent's final message as a one-record transcript for `process-cycle.js`. *(2026-09-23)*
 - **The vitest suite has a known load-flake.** The full app suite (~67 files / ~1054 tests) intermittently fails **exactly one** integration test under concurrent load (an SSE `fs.watch` delivery or `entry-save` stage-trailer check); each passes 100% in isolation. Never treat a single such failure as a regression — re-run the file isolated (`npx vitest run <file>`) or the suite once to confirm green.
 - **`core/` edits are inert in a worktree.** `@stigmergy/core` is imported as a *package*; a worktree's `node_modules` symlinks to the owner's, whose `@stigmergy/core` points back at the owner's `_ops/stigmergy/core/`. So a worktree edit to `core/` is not what the tests/app load — make and verify `core/` changes on the **owner (main)**. (App `src/…` edits import by relative path and are fine in a worktree.)
 - **A preview server run from a worktree traps board writes.** The app roots its board at its own cwd, so a dev server launched from a worktree writes companion/coordination state to *that worktree's* `blackboard.jsonl` + `.actuator-companion` — lost on `git worktree remove --force`. Before tearing down a stigmergy worktree, `git status` for a modified board and rescue any messages you didn't author to the owner tree. Prefer running previews from the owner.

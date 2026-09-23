@@ -14,7 +14,7 @@ already uses to advance a steward from the board).
 
 | File | Role |
 |---|---|
-| `run-steward-batch.sh` | Wrapper: advances every *due* steward one cycle via the orchestrator skill (batch mode), then makes one scoped, text-only commit (machinery + `plan.md` + board). See **Posture** below. |
+| `run-steward-batch.sh` | Wrapper: gives every *due* steward a **run** (up to its manifest `max_iterations` cycles, stopping on a blocking ask, a session request, or a stall) via the orchestrator skill (batch mode), then makes one scoped, text-only commit (machinery + `[Entry] — scroll.md` + board). See **Posture** below. |
 | `run-shopkeeper-sweep.sh` | Wrapper: runs the Shopkeeper commission-then-sweep loop, frugally, then commits the `Shop/Shopkeeper` bundle markdown + board note (text-only). |
 | `launchd/com.loudon.palace.steward-batch.plist` | Timer: daily 06:00 (→ every-other-morning via the wrapper's guard). |
 | `launchd/com.loudon.palace.shopkeeper-sweep.plist` | Timer: daily 06:30 (→ every-other-morning). |
@@ -35,7 +35,7 @@ Both jobs run the agent in a **shadow posture** and let the *wrapper* commit:
 
 - **The agent never edits canon and never runs git.** It does not touch a
   project entry's `.md` body or frontmatter, and it does not deposit. It *does*
-  write its normal cycle output: the bundle-local `[Entry] — plan.md`
+  write its normal cycle output: the bundle-local `[Entry] — scroll.md`
   read-model, the steward machinery (`state.json` / `history.jsonl`), and
   append-only Trickster-board messages. This is the Bundle-Local Stewardship
   cycle (Bundle-Local Stewardship — Production Plan) — "shadow" means
@@ -45,7 +45,7 @@ Both jobs run the agent in a **shadow posture** and let the *wrapper* commit:
   which stages only the paths the wrapper names — **never `git add -A`**
   (SCHEMA §9, N-writer repo) — and clears stale git locks itself. The
   steward-batch commits steward machinery + the board + every changed
-  `[Entry] — plan.md`; the shopkeeper-sweep commits the `Shop/Shopkeeper`
+  `[Entry] — scroll.md`; the shopkeeper-sweep commits the `Shop/Shopkeeper`
   bundle markdown + its board note.
 - **Text-only (decided 2026-06-09).** Rendered media — `.wav` / `.png` /
   `.svg` / `.html` a steward or the Shopkeeper produces — is **left
@@ -57,7 +57,7 @@ Both jobs run the agent in a **shadow posture** and let the *wrapper* commit:
 This replaces the old "do NOT commit, leave the tree for Loudon" rule — a
 Cowork-era holdover. That constraint existed because the Cowork sandbox could
 not delete files, so a raw commit stranded lockfiles; Mac-side, commits are
-normal. Leaving 19 stewards' `plan.md` + machinery churning uncommitted every
+normal. Leaving 19 stewards' `scroll.md` + machinery churning uncommitted every
 other morning would only bury the signal (the actual asks) under a growing
 pile of machinery diffs.
 

@@ -33,10 +33,12 @@
     "write_blackboard"
   ],
   "stopping_conditions": {
-    "max_iterations": 1,
+    "max_iterations": 10,
     "stop_on": [
       "cycle_complete",
-      "blocked_unresolved_10_cycles"
+      "blocking_ask",
+      "interactive_session",
+      "stalled"
     ]
   },
   "blackboard_session_path": null,

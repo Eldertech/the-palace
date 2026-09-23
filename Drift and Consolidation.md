@@ -3,9 +3,9 @@ title: "Drift and Consolidation"
 type: concept
 pillars: [practice, philosophy, tools]
 born: 2026-05-27
-last_activated: 2026-05-27
-activation_count: 1
-stage: seed
+last_activated: 2026-09-23
+activation_count: 2
+stage: sprout
 confidence: proposed
 energy: high
 links:
@@ -30,6 +30,9 @@ links:
   - target: "[[Closing Well]]"
     type: connects-to
     label: baton-is-episodic
+  - target: "[[The Scroll]]"
+    type: couples-with
+    label: the-live-half
 forward_vector: "I want to become the recognized consolidation beat of stewardship: every steward continuously knows how far its entry has drifted from its log; every stewarded page openly discloses that it may be lagging and links to its live state; and at each milestone the steward proposes the edits that fold settled truth back home — so the palace can run agents on its pages for weeks without a single entry ever silently lying."
 ---
 
@@ -58,7 +61,9 @@ The log is fast episodic memory; the entry is slow semantic memory. Biology alre
 
 The resolved design has two tiers, deliberately at different cadences.
 
-**Continuous — the stewardship marker (disclosure).** A stewarded entry carries a standing footer, placed when the page is first enchanted, that discloses *this page is under active stewardship and may lag its live state*, and links to the live log (the steward directory + the BBS thread). This mirrors the [[Baton Ceremony]]'s "Active Handoff" footer — a standing pointer to in-flight state. Its real job is the pointer, which is always valid even when its summary line goes slightly stale; a reader never trusts the footer's freshness, they follow the link. This is the safety valve: with the marker present, the entry may lag, but it never lies *silently* — it openly says "I may be behind, the live truth is here."
+**Continuous — the stewardship marker (disclosure).** A stewarded entry carries a standing footer, placed when the page is first enchanted, that discloses *this page is under active stewardship and may lag its live state*, and links to the live state. This mirrors the [[Baton Ceremony]]'s "Active Handoff" footer — a standing pointer to in-flight state. Its real job is the pointer, which is always valid even when its summary line goes slightly stale; a reader never trusts the footer's freshness, they follow the link. This is the safety valve: with the marker present, the entry may lag, but it never lies *silently* — it openly says "I may be behind, the live truth is here."
+
+Since 2026-09-23 the pointer's target is the project's **scroll** ([[The Scroll]]), and the scroll is the live half of this entry's mechanism made concrete. Its Now zone is regenerated from the board, the steward's runtime and the entry's own frontmatter on every look — not only when a steward cycles — so the "live truth" is true even while the steward sleeps (the `plan.md` read-model it replaced was not: it went stale between cycles and once hid an answer Loudon had filed for a month). The Now zone also carries **drift as a number**: it reads the footer's *"As of last consolidation: cycle N"* and reports how many cycles and decisions have landed since — the visible metric this entry asked for. The entry stays the considered self; the scroll is the recorded-live self; the footer is the hinge between them.
 
 **At milestones — consolidation (the fold).** When a steward reaches a milestone — a phase closes, a decision settles, an artifact ships, a discovery changes the project's truth — it *recommends* the edits that fold that settled knowledge into the entry body (stewards propose; the human approves; see [[Project Stewardship System]]). Then the marker's drift notes are pruned. What consolidates: decisions made, things built, open questions resolved, discoveries that change what the entry should claim. What stays in the log: the rest — the process, the narrative of how it got there.
 
@@ -71,7 +76,7 @@ The two tiers map onto Loudon's rule directly: *the steward should be continuous
 ## Open Questions
 
 - **Bidirectional drift.** Consolidation flows log → entry. But the reverse also drifts: when the human edits the *page* (a stage promotion, a vector tweak), does the steward's state notice? Today it doesn't — the steward reads the page at cycle start, but mid-session human edits to state-relevant fields aren't reconciled. Entry → log sync is unsolved.
-- **Drift as a visible metric.** Could the steward quantify staleness — "N decisions and one build since last consolidation" — and surface it on the BBS or in STIGMERGY, so drift becomes a number a reader (or a batch run) can act on, not just prose in a footer?
+- ~~**Drift as a visible metric.**~~ Answered 2026-09-23 in its first form: the scroll's Now zone and STIGMERGY's PROJECTS deck report *cycles since last consolidation* by reading the footer's marker. What is still open is the **consolidation trigger** — nothing yet proposes the fold when drift crosses a threshold; the number is shown, not acted on.
 - **What counts as a milestone?** The cadence rule says "consolidate at milestones," but milestone-detection is left to the steward's judgment. Does it need an explicit rule (phase boundary, blocking-audition resolution, vector change), or is judgment enough?
 
 ## Forward Vectors

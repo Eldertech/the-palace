@@ -17,7 +17,7 @@ describe('resolveContext', () => {
   });
 
   it('grounds in STIGMERGY (app_feedback) on every other deck with no selection', () => {
-    for (const deck of ['LOG', 'TRICKSTER', 'QUEUE', 'STEWARDS']) {
+    for (const deck of ['LOG', 'TRICKSTER', 'QUEUE', 'PROJECTS']) {
       expect(resolveContext({ deck })).toEqual({ kind: 'app_feedback', deck });
     }
   });

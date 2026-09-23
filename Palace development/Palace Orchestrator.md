@@ -52,7 +52,8 @@ runs the body. It spans the family's tempos: a one-shot **songline** dispatch, a
 - **Path 2 dispatch** — the page IS the agent ([[Pages as Agents]]); identity is the page's own
   title, never an invented handle. No API key; dispatch is the Agent tool.
 - **Cost posture** — songline ≈ 3–4 subagents (sonnet default); a steward cycle = 1 (opus, for
-  voice across cycles). Confirm scope before firing real credits.
+  voice across cycles), and a steward *run* up to `max_iterations` of them. Confirm scope before
+  firing real credits.
 - **The wire it enforces** — strict [[SCHEMA]] §9 validation before every board append; `health`
   written by the orchestrator, never by the woken agent; `request_id` top-level.
 - **The voice it protects** — no protocol jargon in agent-written prose ([[Speak Like a Person,
@@ -78,6 +79,22 @@ every cycle. It is the agent's whole identity: `agent_id`, `home` (the page titl
 `partner_id`, `trickster_mode`, `parallel_safe`. Adding a mode means a new loop variant + template;
 existing agents are untouched. The live manifests and their v0.1 amendments are in
 `_ops/agents/permanent/*/manifest.json` and the orchestrator README.
+
+**The run** (2026-09-23). `stopping_conditions.max_iterations` was validated from v0.1 but never
+enforced; it now names the **run**: one activation cycles the same steward up to that many times in
+a row while each cycle ships and nothing waits on Loudon (10 by default — Loudon's starting point).
+After every cycle `process-cycle.js` returns a `stop_hint` — `shipped` (continue to the cap) ·
+`barren` (retry once, then STALLED: `state.health.stalled`, score red, the scroll says so) ·
+`blocking_ask` · `interactive_session` (stop; the next move is Loudon's). The steward lane in
+STIGMERGY runs this loop in code; a hand-run or heartbeat batch runs it in prose
+(`runAgentCycle.md` § The run). The mandate tells the woken page which cycle of the run it is on.
+
+**The scroll** (2026-09-23). Every cycle ends by materializing the project's `[Entry] — scroll.md`
+([[The Scroll]]) from what the page posted — the orchestrator writes the scroll, the page never
+does — and every cycle begins by injecting the scroll's **Standing Orders** (binding) and **Now**
+zone into the prompt. The canonical shape a made thing lands in is the `shipped_artifact`
+BROADCAST (`headline · ground · catchup · content · artifacts · left_rough · next_moves`,
+`prompts/shared.md`).
 
 **Git page-change detection.** Before each cycle the orchestrator runs `git log` on the home page
 since `state.last_active`. If the page changed, it appends a `PAGE_UPDATE_NOTICE` (the diff + commit

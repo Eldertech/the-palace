@@ -53,23 +53,47 @@ prefer them over ad-hoc scripts.
   surface, appends the valid ones, reconciles `pending_requests` against the
   board (resolving asks answered by a GRANT/DENY whose `re` matches),
   updates `state.json` + `history.jsonl`, and **materializes the bundle-local
-  `[Entry] — plan.md` read-model** in the entry's bundle from the reconciled
-  decisions (Bundle-Local Stewardship Phase 1b/1c — `plan-file.js`; the bundle
-  path is resolved from the steward's `home`). Prints a JSON summary
-  (`posted_ids`, `invalid_ids`, `pending_after`, `resolved_count_after`, and a
-  `plan` block reporting where the read-model landed). The plan write is part
-  of this helper, so a cycle that uses `process-cycle.js` never strands its
-  state outside the bundle.
+  `[Entry] — scroll.md`** — the project's front door (Now zone regenerated
+  from the board, one making section per shipped message) — in the entry's
+  bundle (`scroll-file.js`; the bundle path is resolved from the steward's
+  `home`; replaces the plan.md read-model since 2026-09-23). Prints a JSON
+  summary (`posted_ids`, `invalid_ids`, `pending_after`,
+  `resolved_count_after`, a `stop_hint` — `shipped` / `barren` /
+  `blocking_ask` / `interactive_session` — that the run controller reads,
+  `barren` / `stalled` flags, and a `scroll` block reporting where the scroll
+  landed). The scroll write is part of this helper, so a cycle that uses
+  `process-cycle.js` never strands its state outside the bundle.
+
+- `node _ops/stigmergy/orchestrator/src/scroll.js --home "<Title>" | --all [--dry-run]`
+  Regenerates a project's scroll on demand — stewarded or not, with no cycle.
+  Use it after Loudon files an answer so the Now zone shows it as "ready to
+  advance", and `--all` to backfill every active project.
 
 These supersede the throwaway `/tmp/build-cycle-prompt.mjs` and
 `/tmp/process-cycle-v2.mjs` from the 2026-05-27 batch (now promoted, with
 tests). The pure pieces `extractMessagesFromTranscript` and
 `reconcilePendingRequests` are exported for direct import.
 
+## The run — a permanent steward cycles until something stops it (2026-09-23)
+
+A permanent-steward activation is a **run**, not a single cycle: after each
+cycle's `process-cycle.js`, read its `stop_hint` and decide —
+
+| `stop_hint` | do |
+|---|---|
+| `shipped` | fire the next cycle of the **same** steward, until the run reaches the manifest's `stopping_conditions.max_iterations` (10 by default). Pass `--extra-mandate` or the `runPosition` / `runCap` vars so the steward knows it is on cycle k of N and plans a larger jump. |
+| `barren` | retry **once**, with the mandate saying it is a retry (`retryOfBarren`). A second barren cycle is **STALLED**: `process-cycle.js` has set `state.health.stalled` and the scroll's Now zone says so — stop this steward's run and move on. Never a third try. |
+| `blocking_ask` | stop — the steward paused on Loudon. |
+| `interactive_session` | stop — the next move is a conversation, not a cycle. |
+
+STIGMERGY's steward lane (`server/steward-lane.js`) does exactly this loop in
+code; a hand-run or heartbeat batch does it in prose. Same rule, two readers.
+
 ## Stop conditions (return status, do not loop)
 
 - Validator rejects three subagent dispatches in a row → likely template bug. Surface to Loudon, mark cycle `validator_rejected`, exit.
 - A `RESOURCE_REQUEST` with `blocking: true` is posted → next agent on a songline cannot proceed. Surface to Loudon, exit.
+- A permanent steward's run hit `stalled`, `blocking_ask`, `interactive_session`, or its cap → the run ends (see the table above); report which.
 - `forward_vector` changed (permanent only) → DIRECTIVE_REQUEST posted, exit with `forward_vector_changed`.
 - Registry uniqueness conflict (permanent only) → exit with `registry_conflict`.
 

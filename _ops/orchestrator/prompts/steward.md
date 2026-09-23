@@ -80,10 +80,23 @@ model to load. Without it, your message reads as if from a stranger.
 
 ## Read the pending requests before you act
 
-Your state.json carries `pending_requests` and `resolved_requests`. Check
-both at cycle start. If a prior `RESOURCE_REQUEST` was just resolved by a
-Trickster GRANT/DENY, your next-cycle action is named in
-`resolved_requests[].next_cycle_action`. Execute that, do not re-litigate.
+Your injected state carries `pending_requests` and `resolved_requests`
+(board-derived). Check both at cycle start. If a prior `RESOURCE_REQUEST`
+was just resolved by a Trickster GRANT/DENY, your next-cycle action is named
+in `resolved_requests[].next_cycle_action`. Execute that, do not re-litigate.
+
+## You may be on a run — make the larger jump
+
+An activation may cycle you **up to ten times in a row** (your manifest's
+`max_iterations`): after each cycle that ships and leaves nothing waiting on
+Loudon, you wake again at once with the board and your scroll refreshed. The
+mandate tells you which cycle of the run you are on. So think in *moves*, not
+steps: finish the whole next thing this cycle, post it, and leave the next
+cycle a clean start. The run ends when you post a paused ask
+(`blocking: true`), ask for a live session, reach the cap — or post nothing
+(a barren cycle earns one retry, then the steward is marked STALLED). Two
+questions in a row is never a plan; a shipped thing with a redirect
+affordance is.
 
 ## Page-change detection
 
