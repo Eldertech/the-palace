@@ -249,7 +249,7 @@ A *round* is one full turn of the iteration cycle. The user triggers a round in 
 
 Per round, Claude does:
 
-**0a. Orient (first round of a session only).** If this is the first time the ceremony has run in the current session, read [[JEWEL]] (`JEWEL.md`) and [[Substrate Skill]] (`_ops/Substrate Skill.md`) before generating any cards. CLAUDE.md is auto-loaded and tells you these exist, but does not pre-load them. They are short — Jewel is ~96 lines, Substrate Skill ~171 — and they shape *tone* and *operational discipline* in ways that the Enrichment ceremony depends on but does not itself describe (typed-link ontology, the never-violate list, depth-over-coverage, palace voice). Skip this step on subsequent rounds; the context persists within the session.
+**0a. Orient (first round of a session only).** If this is the first time the ceremony has run in the current session, grow: read [[ELDER]] (`ELDER.md`), [[SCHEMA]] (`SCHEMA.md`) and [[Substrate Skill]] (`_ops/Substrate Skill.md`) before generating any cards — cards propose links, forward-vector tweaks and graffiti, which are changes to the palace itself. CLAUDE.md and the Seed Jewel are auto-loaded — the birth — but the rules are not. They are short — Jewel is ~96 lines, Substrate Skill ~171 — and they shape *tone* and *operational discipline* in ways that the Enrichment ceremony depends on but does not itself describe (the typed-link ontology in SCHEMA, the invariants in ELDER, operational discipline in Substrate Skill). Skip this step on subsequent rounds; the context persists within the session.
 
 If targeting a specific entry, also read that entry in full before generating cards for it. The forward vector and frontmatter in card.md must reflect what the entry currently says, not a guess.
 

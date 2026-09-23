@@ -202,10 +202,10 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
             <div data-testid="agent-launch-error" style={{ border: '1px solid var(--error)', padding: '6px 10px', color: 'var(--error)', fontSize: 12, lineHeight: 1.5 }}>{error}</div>
           ) : null}
 
-          {/* The construction, by palace loading TIER. */}
+          {/* The construction, born then grown (ELDER). */}
           <div>
             <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>
-              how this agent is built — palace tiers
+              how this agent is built — born, then grown
             </div>
             {!construction && loading ? (
               <div style={{ color: 'var(--phosphor-dim)', fontSize: 12 }}>constructing…</div>
@@ -226,7 +226,7 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
                         flex: '0 0 auto', fontSize: 9, letterSpacing: '.08em', textTransform: 'uppercase',
                         border: `1px solid ${injected ? 'var(--phosphor)' : 'var(--phosphor-dim)'}`, padding: '0 4px',
                         color: injected ? 'var(--phosphor-white)' : 'var(--phosphor-dim)',
-                      }}>{injected ? 'inject' : 'floor'}</span>
+                      }}>{injected ? 'inject' : tr.loads}</span>
                       <span style={{ flex: 1 }}>{tr.what}</span>
                     </div>
                   );

@@ -12,7 +12,7 @@
 import { readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 
-// System dirs that never hold knowledge entries (CLAUDE.md § Directory Structure).
+// System dirs that never hold knowledge entries (Substrate Skill § Directory Structure).
 export const EXCLUDE_DIRS = new Set(['.git', '.claude', '.obsidian', 'node_modules', '_tools', '.venvs']);
 
 /**

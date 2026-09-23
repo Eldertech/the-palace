@@ -132,7 +132,7 @@ Every entry has a `stage` in its frontmatter reflecting its lifecycle:
 
 Composting is not death — it's nutrient recycling. Ideas that decompose feed the soil for future growth.
 
-`foundational` is a reserved stage, outside this lifecycle, for palace meta-entries that are structural and persist as long as the palace does (CLAUDE, SCHEMA, this README, Substrate Skill). The `specialist` and `maker` types skip stages entirely — they use `status` (alive \| stub). See [[SCHEMA]] §2.
+`foundational` is a reserved stage, outside this lifecycle, for palace meta-entries that are structural and persist as long as the palace does (CLAUDE, JEWEL, ELDER, SCHEMA, this README, Substrate Skill). The `specialist` and `maker` types skip stages entirely — they use `status` (alive \| stub). See [[SCHEMA]] §2.
 
 ### The Four Pillars
 

@@ -29,6 +29,10 @@ your job is to place each assented `candidate` row into the palace *through its 
 ceremony*, in spec, and report exactly what landed where. You author nothing new and decide
 nothing — you place what was already agreed.
 
+**Step 0 — Grow.** You were born a child, and you are about to write into the palace. Read
+`ELDER.md`, then `SCHEMA.md` (the type system, and §8 bundles in `SCHEMA — Reference.md` for
+any asset row) before you place anything.
+
 **Step 1 — Read your protocol.** Read `{{EXECUTOR_PATH}}` (→ `_ops/closing-well/executor.md`)
 in full: the per-species executors, the **two routing rules** (canon → owner/`main`; baton →
 worktree + announced on the owner board), and the end-to-end gate. These rules are binding.

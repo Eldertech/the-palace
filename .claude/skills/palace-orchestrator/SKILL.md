@@ -29,6 +29,9 @@ the agent ([[Pages as Agents]]); the orchestrator is only its executor.
 
 ## To run one
 
+0. **Grow first.** You are the elder that dispatches children, and you validate what they
+   propose: read `ELDER.md`, then `SCHEMA.md` before anything else ([[ELDER]] — every agent is born a child; the
+   rules are read, not inherited).
 1. Read [[Palace Orchestrator]] for the posture.
 2. Read `_ops/orchestrator/runbook.md` and follow it. **Step 0 is confirming scope with
    Loudon before dispatching anything** — real subagent dispatches cost real credits, so

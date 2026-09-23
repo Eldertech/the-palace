@@ -22,22 +22,23 @@ links:
     type: enables
   - target: "[[Resonant Link Labels]]"
     type: connects-to
-forward_vector: "I hold the writing rules the floor no longer carries, so an agent reads me at the moment it writes rather than at every boot."
+forward_vector: "I hold the writing rules an elder reads at the pen, so an agent reads me at the moment it writes rather than at every boot."
 ---
 
 # SCHEMA — Reference
 
-The operating half of the palace type system. [[SCHEMA]] — the always-loaded floor card — carries what
+The operating half of the palace type system. [[SCHEMA]] — the card every elder reads on growing up — carries what
 **exists**: the entry types, the stages, the link ontology, the self-description test. This file carries
 what you need at the moment you **write**: the frontmatter fields, the change protocol, the ceremony-file
 and bundle conventions, and the coordination wire.
 
 **Read this before** creating an entry, writing or editing frontmatter, creating a bundle file, posting to
-the [[STIGMERGY]] board, or changing the type system. Not before holding a conversation — that is the
-floor's job, and keeping this out of the floor is the point ([[SCHEMA — Context]] §Tiering, v1.18).
+the [[STIGMERGY]] board, or changing the type system. Not before holding a conversation — that is what
+an agent is born with, and keeping the rules out of the birth is the point ([[SCHEMA — Context]] §Tiering, v1.18;
+§Born a child, v1.19).
 
 **Section numbers are load-bearing and unchanged.** Roughly 180 references across the palace pin
-`SCHEMA §3` / `§5` / `§6` / `§8` / `§9`. Those sections live here now and keep their numbers; the floor
+`SCHEMA §3` / `§5` / `§6` / `§8` / `§9`. Those sections live here now and keep their numbers; the SCHEMA
 card keeps §1, §2, §4, §7 and leaves a pointer at each gap. A pin still resolves to the right rules.
 
 The *why* — the per-section change history, every `v1.x` record — is in [[SCHEMA — Context]], keyed by

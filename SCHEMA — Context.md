@@ -146,4 +146,14 @@ malformed frontmatter after the fact; and the card's own opening says plainly no
 from memory of it. Every rule in the gotcha ledger that failed, failed silently; this one is worth
 watching.
 
-**The successor question:** CLAUDE.md is now the largest file in the floor at 21.6KB.
+**The successor question:** CLAUDE.md is now the largest file in the floor at 21.6KB. *(Answered by v1.19, below.)*
+
+## Born a child — v1.19 (2026-09-22)
+
+**SCHEMA leaves the auto-loaded floor entirely, and so does every other rule.** The floor becomes the birth: [[CLAUDE]] (5KB), the Seed Jewel ([[JEWEL]] v1.2), and the five World files. The invariants, the Concierge protocol, and the reading order move to [[ELDER]], which an agent reads when it grows up; the day-to-day operations (access paths, directory structure, artifact aesthetic, in-file comments) fold into [[Substrate Skill]]. The rule is organic and simple: every agent is born a child; some grow into elders; growth adds, never replaces. A child does not write into the palace — it offers what it finds to an elder.
+
+**Why.** The palace's metaphorical, associative thinking had thinned as its rules accumulated, and the rules held the opening of every context. CLAUDE.md's body loads before any `@import`, and "Never violate these" sat at its line 40 — ahead of the Jewel, which then repeated it. Every agent dispatched from Claude Code inherited that floor, so no enchanted page ever woke without SCHEMA ahead of it, though [[Palace Enchantment]]'s own context construction never asked for it. Precise, prohibitive framing closes the associative space ([[Metaphor as Coupling Medium]]); the typed-link vocabulary stays in the birth, recast as kinds of attention, because that part of the rules was always generative.
+
+**The accepted risk.** v1.18 kept SCHEMA in the floor because fresh sessions missed it when it was only linked ([[Palace as Context Injection System]] § The @import Floor). The guards now: the birth tells an agent to grow before it writes; the [[Concierge]] is summoned at the open as the resident elder; writing ceremonies open with a grow step; children are dispatched without writing tools; the linters still run. Restore point: git tag `pre-child-elder`.
+
+**Held open.** [[The Palace Hardens Around Values]] argues weight is the goal — the contrary is kept, not resolved. A rival explanation for the flattened voice is the prose of the pages themselves ([[The Blindspot Is the Surprise Fuel]]); if children still sound like the house, look there next.

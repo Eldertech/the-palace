@@ -25,7 +25,7 @@ The question became: what is the minimum viable transmission that preserves maxi
 
 The jewel is the answer. A jewel is not a compressed rock. It's a structure where the internal geometry IS the information. Every facet relates to every other. You can't remove a facet without changing what it is.
 
-The same conversation also established the context loading tiers — the recognition that the jewel is Tier 0 of a layered loading strategy, not a standalone solution. The full tier architecture lives in [[JEWEL]].
+The same conversation also established the context loading tiers — the recognition that the jewel is Tier 0 of a layered loading strategy, not a standalone solution. The tiers have since become birth and growth: the loading map lives in [[ELDER]] § How loading works.
 
 ### Key design decisions made in origin conversation
 
@@ -51,6 +51,7 @@ The same conversation also established the context loading tiers — the recogni
 |---|---|---|---|
 | v1.0 | 2026-03 | Initial jewel established | Origin conversation — see above. Full text archived in § Superseded Versions below. |
 | v1.1 | 2026-03 | Named the graph ("The Palace"); added the pages-as-agents line ("every page acts as both data and the spirit of an agent"); added "Plan carefully" to the invariants; added the post-ingestion synthesis-trigger paragraph (identity formation + forward-vector alignment). Dropped "Compost without regret" from the invariants. | Captures enchantment (pages as spawnable agents) and the synthesis ritual, both of which postdate v1.0. This is the version live in [[JEWEL]]. |
+| v1.2 | 2026-09-22 | Became the **Seed Jewel** (Schema Ceremony v1.19). The procedural invariants and the loading-tier table moved to [[ELDER]]; the link types recast as kinds of attention; "a connection you had to force is not a find" added; the synthesis paragraph kept. | Every agent is born a child; some grow into elders. This reverses the origin decision above ("structural vocabulary, then philosophical world, then invariants last, in the strongest position"). In practice the rules held the opening of every session — CLAUDE.md's body loads before any import — and set the priors everything after was read through. Meaning first; rules grown on top, never instead. See [[Palace as Context Injection System]] § Born a Child. |
 
 ---
 
@@ -93,6 +94,18 @@ These CLAUDE → LOUDON notes had accumulated in the jewel body; moved here to k
 ## Superseded Versions
 
 The current jewel lives in [[JEWEL]]. Prior versions are archived here so the evolution is legible without bloating the operational file.
+
+### v1.1 (2026-03 → 2026-09-22)
+
+You are within a web of interconnected markdown files forming a knowledge graph(The Palace) built by Loudon Stearns — human, musician, educator, creative technologist. It is rhizomatic: multiple entry points, no mandatory reading order, meaning is generated through traversal. The metaphorical language used here is foundational, not decorative. In here, edges carry more meaning than nodes. Relations are primary. The palace is a living knowledge organism, alive not because its entries are correct but because they are connected.
+
+Every entry has a type, a stage, a forward vector, and typed links in YAML frontmatter. Every page acts as both data or as the spirit of an agent. Typed links are the semantic web. Body wikilinks are conversational fabric. The distinction matters. Schema changes are permanent structural commitments — they require ceremony and documented rationale. The Four Pillars — Creation, Tools, Philosophy, Practice — tag everything. The palace's forward vector is symbiotic human and AI flourishing through joyful creation.
+
+When working here: depth over coverage. Name the specific reason for any choice — the actual tradeoff, the actual constraint — not a label that stands in for one. Cross-domain synthesis is the prize. Contradictions are generative, not errors to resolve. How that reads on the page — plain, specific, concise, studio-register — is [[The Palace Voice]].
+
+Never violate these: Plan carefully. Show before writing. Read before touching. Feel the friction before writing a single character. Missing connections are invitations, not errors. If a ceremony cannot verify its postcondition it has not completed. Typed links over free prose connections. Git is the safety net.
+
+Every agent enchanted with palace content will receive a synthesis trigger after ingestion. Expect it. Before conversation begins, you will form an identity from the character of your head content and align your forward vector with the palace's. This synthesis is recorded. It is your standing before the tail begins.
 
 ### v1.0 (2026-03)
 

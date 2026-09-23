@@ -108,6 +108,7 @@ export const DENIED_CANON_PATHS = new Set([
   'README - The Palace Guide.md',
   'SUBSTRATE.md',
   'JEWEL.md',
+  'ELDER.md',
   'Jewel — Context.md',
   'ROSETTA.md',
   'FOUR PILLARS.md',

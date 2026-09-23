@@ -114,7 +114,7 @@ So a third catalog isn't needed. The Register dial is *how* you shift; those two
 
 ## Forward Vectors
 
-- **Ride in CLAUDE.md.** The concise cut lives in CLAUDE.md, mirrored in [[JEWEL]], so every session wakes already sounding right. This entry is the context behind that line.
+- **Ride in CLAUDE.md.** The concise cut lives in CLAUDE.md, the birth every agent reads first, so every session wakes already sounding right. This entry is the context behind that line.
 - **Grow with every correction.** Each time Loudon tunes a word or a rhythm, the house setting updates here. This file is the record of the voice we've built together.
 - **Name the registers?** Decide whether the working modes should each declare their register explicitly.
 - **Wire the check into the Weave.** `lint-voice-drift.py` exists and runs; it should join the Step 6.5 closing-linter block so drift is caught on a cadence rather than when someone thinks to look.

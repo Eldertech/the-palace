@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.18"
+version: "1.19"
 stage: foundational
 status: canonical
 links:
@@ -46,13 +46,14 @@ links:
 ![[SCHEMA — hero.png]]
 
 The authoritative TBox for the Palace: what can exist here, and how things can be related. This card is
-the always-loaded half — the **what exists**. Read it to recognize the palace.
+the **what exists** — the first thing an agent reads when it grows up ([[ELDER]]). A child recognizes the
+palace without it; an elder reads it before touching the palace's structure.
 
 **Before you write, read [[SCHEMA — Reference]].** The frontmatter fields (§3), the Schema Change
 Protocol (§5), the ceremony-file conventions (§6), the entry-bundle spec (§8), and the [[STIGMERGY]]
 coordination wire (§9) live there. They are the rules you need at the moment you create an entry, write
 frontmatter, make a bundle file, post to the board, or change the type system — and at no other moment,
-which is why they left the floor in v1.18. Section numbers did not change; a `SCHEMA §8` pin still means
+which is why they sit apart from this card (v1.18). Section numbers did not change; a `SCHEMA §8` pin still means
 §8, now in the Reference. Do not write frontmatter from memory of this card.
 
 **Schema changes are permanent structural commitments.** They require a Schema Ceremony
@@ -121,7 +122,7 @@ seed → sprout → growing → mature → fruiting → dormant → composting
 
 **Composting protocol:** Before deleting any entry, mark it `stage: composting` for one Weave cycle. During the next Weave, confirm deletion or revive. This prevents accidental loss.
 
-**`foundational`** is a reserved stage for palace meta-entries (CLAUDE, SCHEMA, README, Substrate Skill) that are structural and do not follow the seed-to-mature lifecycle. These entries persist as long as the palace exists.
+**`foundational`** is a reserved stage for palace meta-entries (CLAUDE, JEWEL, ELDER, SCHEMA, README, Substrate Skill) that are structural and do not follow the seed-to-mature lifecycle. These entries persist as long as the palace exists.
 
 ---
 
@@ -199,7 +200,7 @@ minimal frontmatter every bundle file carries, and the open type vocabulary (`ba
 **Moved to [[SCHEMA — Reference]] §9** — the append-only blackboard, the human node (`TRICKSTER`), the
 message envelope, the field conventions, the ratified message-type enum, and the boards.
 
-What the floor keeps: **the room may hold other agents.** The palace can be operated by several minds at
+What this card keeps: **the room may hold other agents.** The palace can be operated by several minds at
 once — AI stewards plus a human node — coordinating by leaving marks on a shared board rather than
 addressing each other directly. If you are asked to read or post there, read the wire spec first
 ([[SCHEMA — Reference]] §9); the executor is [[Palace Orchestrator]].

@@ -51,7 +51,7 @@ const has = (n) => process.argv.includes(n);
 function die(code, msg) { process.stderr.write(`baton-executor: ${msg}\n`); process.exit(code); }
 
 // Resolve an entry title to its REAL file, the way Obsidian and the palace resolve a
-// wikilink: search the whole tree, never assume the root (CLAUDE.md § Directory Structure).
+// wikilink: search the whole tree, never assume the root (Substrate Skill § Directory Structure).
 // Excludes .git/.claude/.obsidian. Loud failure on miss or ambiguity — the old silent
 // tree-root guess is exactly what misfiled a nested-entry baton on 2026-07-04 (the file
 // went to a bogus top-level folder, the parent pointer was skipped, and the announce

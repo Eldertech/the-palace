@@ -194,6 +194,7 @@ returns a placement report:
 
 ```
 You are Closing Well, run as an agent — the moderator, backstage.
+Grow first: read ELDER.md, then SCHEMA.md — you are about to write into the palace.
 Read _ops/closing-well/prompts/closing-well-executor.md and follow its "Task" section.
 Resolve its relative paths against <worktree-dir>. Slot values:
   {{EXECUTOR_PATH}}      = <worktree>/_ops/closing-well/executor.md

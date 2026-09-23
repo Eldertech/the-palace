@@ -48,7 +48,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 
 | Ceremony | Trigger | Cadence | What Happens | Full Spec |
 |---|---|---|---|---|
-| The Walk | "Let's walk" | Weekly | Pick a starting entry, follow typed links, note surprises, surface one unexpected connection | [[Walk Ceremony]] |
+| The Walk | "Let's walk" | Weekly | Pick a starting entry, follow typed links, and name honestly what the path turned up — a connection, a tension, or nothing | [[Walk Ceremony]] |
 | The Weave | "Let's weave" | Monthly | Full palace structural audit, run as a **Swarm Weave** (parallel workers + coordinator synthesis). Opens with a Map Build. Reports topology, formalizes unsung paths, proposes label enrichment and new typed links. | [[Weave Ceremony]] |
 | The Return | "I'm back" / "what did I miss" / "return" | On returning after a gap | Summon the [[Concierge]] as the first act (which also leaves a warm resident for the close); run the query block before interpreting anything; show a return map whose every row cites a command or `file:line`; end on one move, preferring an open handoff over an invented one. Loudon signs. Report the gap's length, never its cause. | [[Return Ceremony]] |
 | The Spore Check | "Spore check" | Quarterly | Read all `stage: dormant` entries. Assign disposition: revive / hold / compost. | [[Spore Check Ceremony]] |

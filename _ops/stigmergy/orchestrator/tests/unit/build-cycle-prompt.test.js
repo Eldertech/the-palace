@@ -283,6 +283,33 @@ describe('buildCyclePrompt (integration)', () => {
   });
 });
 
+describe('buildCyclePrompt — the type system layer (v1.19)', () => {
+  let root;
+  afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
+
+  test('injects SCHEMA after the home entry when SCHEMA.md exists, and include.schema:false drops it', () => {
+    root = mkdtempSync(path.join(tmpdir(), 'bcp-schema-'));
+    const agentRel = '_ops/agents/permanent/demo';
+    mkdirSync(path.join(root, agentRel), { recursive: true });
+    writeFileSync(path.join(root, 'Demo.md'), '---\ntitle: Demo\ntype: project\nstage: sprout\nforward_vector: "I want to be heard"\n---\n# Demo\nbody text here\n');
+    writeFileSync(path.join(root, 'SCHEMA.md'), '---\ntitle: SCHEMA\n---\n# SCHEMA\n## 4. The Typed Link Ontology\nmirrors\n');
+    writeFileSync(path.join(root, agentRel, 'manifest.json'), JSON.stringify({ agent_id: 'Demo', home: 'Demo' }));
+    writeFileSync(path.join(root, agentRel, 'state.json'), JSON.stringify({ iteration: 0, last_active: null, last_read_cursor: null }));
+    writeFileSync(path.join(root, agentRel, 'history.jsonl'), '');
+    mkdirSync(path.join(root, '_ops/swarm/persistent'), { recursive: true });
+    writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), '');
+    mkdirSync(path.join(root, '_ops/orchestrator/prompts'), { recursive: true });
+    writeFileSync(path.join(root, '_ops/orchestrator/prompts/steward.md'), 'STEWARD home={{home}} cycle={{cycle_id}} stage={{stage_at_last_activation}}');
+    const on = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 1, today: '2026-09-22' }).userTurn;
+    expect(on).toContain("The palace's type system");
+    expect(on).toContain('The Typed Link Ontology');
+    expect(on).not.toContain('title: SCHEMA');
+    expect(on.indexOf('Your home entry')).toBeLessThan(on.indexOf("The palace's type system"));
+    const off = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 1, today: '2026-09-22', include: { schema: false } }).userTurn;
+    expect(off).not.toContain("The palace's type system");
+  });
+});
+
 describe('findEntryFile', () => {
   let root;
   afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });

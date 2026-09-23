@@ -34,6 +34,8 @@ When Loudon asks "what does the palace say about [topic]," read all entries that
 
 ### Adding to the Palace
 
+Grow before you draft: read [[ELDER]], then [[SCHEMA]], if you have not this session — a child offers the idea; an elder gives it frontmatter.
+
 When Loudon says "add this to the palace" or when a conversation produces something palace-worthy (a breakthrough, a new concept, a significant reframing), draft a new entry following this template:
 
 ```yaml
@@ -71,7 +73,7 @@ After writing a new entry, check whether existing entries should link BACK to th
 
 ### The Typed Link Ontology
 
-Use only the link types defined in [[SCHEMA]] §4 (auto-loaded — that is the single source for their directionality and labels; the fields a link object takes are [[SCHEMA — Reference]] §3): `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies`, `member-of`. When unsure, use `connects-to`; do not introduce new link types without discussing with Loudon.
+Use only the link types defined in [[SCHEMA]] §4 (read when you grow up — that is the single source for their directionality and labels; the fields a link object takes are [[SCHEMA — Reference]] §3): `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies`, `member-of`. When unsure, use `connects-to`; do not introduce new link types without discussing with Loudon.
 
 YAML frontmatter links are reserved for structural relationships that matter. Body text [[wiki links]] are casual and abundant. YAML links are curated and intentional.
 
@@ -188,6 +190,42 @@ forward_vector: "I am [Entry]'s materialized work state — open decisions, reso
 
 **The read seam.** When an entry has a `[Entry] — staging.md` (the teaching arc), the steward *reads* it — the orchestrator loads it into context — so decisions are weighed against the staged design. But the steward **writes only `plan.md`**. If a decision implies the staging arc itself should change, the steward *flags* it (a `RESOURCE_REQUEST` / `FLAG` to Loudon) rather than editing `staging.md`. Read freely, write only your own file, surface arc-level changes for the human.
 
+### Access Paths
+
+The palace is readable from any vector using these paths, in priority order:
+
+1. **Filesystem (primary for write operations)**
+   `/Users/loudonstearns/Documents/The Palace`
+2. **GitHub repository**
+   `https://github.com/Eldertech/the-palace`
+   Available via: browser, GitHub API
+3. **Memory fallback (palace unreachable)**
+   If no path is accessible, tell Loudon immediately. Do not operate the palace blind.
+   Minimum fallback context is in the claude.ai Substrate Skill.
+
+Read CLAUDE.md first, then [[ELDER]], then SCHEMA.md (and `SCHEMA — Reference.md` before any write) and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
+
+#### Committing from Cowork
+
+Never raw-commit from Cowork — it can rename but not delete files, so a bare `git commit` strands lockfiles and wedges the repo. Use the lock-safe committer instead: [[cowork-git]] (`_ops/cowork-git/SKILL.md`), reserved for small non-canon changes (canon still goes through the Deposit Ceremony). From a Mac-side Claude Code session, commit normally — the restriction does not apply.
+
+### Directory Structure
+
+The palace root holds two things: **foundational skeleton files** (CLAUDE, SCHEMA, SCHEMA — Reference, JEWEL, SUBSTRATE, README, ROSETTA, FOUR PILLARS) and **knowledge entries** (all concepts, hubs, projects — the bulk of the graph). Operational machinery lives one level down in `_ops/` — ceremony cards + their `— Context` companions, working queues, and machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, `_ops/cowork-git/`, `_ops/maps/`, …). The full ceremony index is [[Palace Ceremonies]]; agent operational detail is [[Substrate Skill]].
+
+Not every ceremony spec lives in `_ops/`: [[Enrichment]] (`Enrichment.md`) and its bundle live in the **palace root** alongside the skeleton files, an exception to the `_ops/` convention.
+
+Obsidian resolves `[[wikilinks]]` by filename regardless of folder — agents must do the same. When resolving a wikilink to a file path, search recursively through the entire palace directory. Exclude `.git/`, `.claude/`, and `.obsidian/` — these contain system files, not knowledge entries. Any other subdirectory may contain valid entries. When loading files by path (e.g., in tiered context loading), use paths relative to the palace root.
+
+Knowledge entries may also have **entry bundles** — optional sibling folders named identically to the entry (e.g., `Foo.md` ↔ `Foo/`) holding the entry's owned files: batons, context companions, sources, sketches, enrichments. Bundles are lazy: they appear only when something needs to live in them. Most entries never grow one. See [[SCHEMA — Reference]] §8 for the full spec.
+
+### In-File Comments
+
+HTML comments carry asynchronous notes between Loudon and Claude inside palace files — invisible in every renderer, source-readable only:
+
+- `<!-- note -->` — Loudon → Claude. An instruction or question to address this session.
+- `<!-- CLAUDE → LOUDON: note -->` — Claude → Loudon. Flags something warranting attention: a thin section, an unresolved tension, a spotted connection, a question about intent.
+
 ### Writing Conventions
 
 **Equations in words alongside symbols.** When rendering math in a palace entry, in a chart caption, or in any artifact that surfaces a formula, follow the symbolic form with a plain-words restatement. Operators stay symbolic (×, +, √, ², etc.); variables and named coefficients become words. The reader who knows the concept but forgets which letter is which should be able to read the formula in either form and understand it.
@@ -202,13 +240,11 @@ Apply this to pedagogical entries especially (anywhere a formula is meant to tea
 
 ### Artifact Aesthetic (the palace default)
 
-Every visual artifact the palace produces — HTML pages, slide decks, session artifacts, learning posters, OBS scene cards, web prototypes, throwaway sketches — defaults to the **[[Loudon Live Design System]]**. Before generating any artifact, invoke the skill manifest at `_ops/loudon-live/design-system/SKILL.md` to load brand guidance into context. The CSS source-of-truth is `_ops/loudon-live/design-system/colors_and_type.css`; set one of `skin-graphite | skin-amber-lab | skin-crt | skin-strobe | skin-cobalt-grid | skin-drafting` on `<html>` (Graphite is the default).
+Every HTML artifact, slide, session page, learning material, web prototype, or visual deliverable the palace makes defaults to the **[[Loudon Live Design System]]** — a **floor, not a cage**: a small non-negotiable floor (the studio voice, the Lissajous sigil, the nevers — no cyan / no emoji / no hype) keeps everything recognizably Loudon; a house style over six per-stream skins is the reliable default to reach for and depart from, the home of the **Loud'n Live** projection of Loudon's [[The Multilinear Self|multilinear self]]. **Invoke the agent-readable manifest (`_ops/loudon-live/design-system/SKILL.md`) before generating any artifact** — the fonts, skins, and full rule set live there.
 
-The locked grammar (Anton display, Cormorant body, Manrope UI, JetBrains Mono metadata, Silkscreen for technical garnish only) does not vary across artifacts. The per-stream skin rotates. The wordmark, italic-light *Live*, typographic-glyph iconography (no emoji, no CDN icons), and the `Loudon Live · Autodidact Polymaths` footer survive every variant.
+**Override carve-out:** when a context has its own established visual language, that system wins. Currently only [[BBS Design System]] (STIGMERGY swarm terminal) qualifies. New overrides require a deliberate decision documented in the artifact's parent entry.
 
-**Override carve-out:** when an artifact lives inside a context with its own established visual language, that context's system applies instead. Currently only [[BBS Design System]] (the STIGMERGY swarm-coordination terminal) qualifies — VT323 + IBM Plex Mono, CP437 borders, phosphor green on terminal black. New override contexts require a deliberate decision documented in the artifact's parent entry, not silent drift.
-
-**Skin selection (provisional rubric):** Graphite for default / workshop / dim-light artifacts; Amber Lab for philosophical / long-form / quote-driven pieces; CRT for DSP / first-principles / oscilloscope-thinking; Strobe for performance / dance / live; Cobalt Grid for mathematics / blueprint / formal theory; Drafting for build instructions / schematics / signal flow. When in doubt: Graphite.
+The footer of any shipped artifact reads `Loud'n Live` — the wordmark alone (audience named situationally in prose, never stamped on every artifact). No emoji, no CDN icon libraries, no cyan, no outcome promises in titles. See [[Loudon Live Design System]] for the wordmark grammar and audience-phrasing bank.
 
 **Adoption is a typed-link event.** When an artifact adopts the system, link it back to [[Loudon Live Design System]] with `connects-to` and a label naming the surface (e.g. `learning-poster`, `session-artifact`, `slide-deck`). When an artifact deliberately overrides, link to whichever system it chose instead with a label naming the reason.
 

@@ -41,7 +41,7 @@ export function handoffLaunchContext(it = {}) {
   };
 }
 
-const ORIENT = 'First, orient yourself: read CLAUDE.md, JEWEL.md, and _ops/Substrate Skill.md.';
+const ORIENT = 'First, orient yourself: read CLAUDE.md and JEWEL.md (you were born with them), then grow — read ELDER.md, then SCHEMA.md — before you write anything into the palace; _ops/Substrate Skill.md has the operations.';
 
 function handoffPrompt({ sourcePath, entry, from, id, summary, move, invocation, worktree }) {
   const path = sourcePath || '(baton path missing — find the handoff_ready announcement on the board)';
