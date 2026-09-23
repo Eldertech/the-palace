@@ -35,13 +35,14 @@ import {
 } from 'node:fs';
 import { resolve, join, dirname } from 'node:path';
 import { logTail as tailLines, lastFireStatus } from '../src/lib/worker-log.js';
+import { resolveClaudeBin } from './claude-bin.js';
 
 // The default real-worker argv. The `bypassPermissions` flag doubles as the
 // liveness signature (scar #2) -- that flag combination effectively never
 // appears in unrelated processes, and survives however the `claude` binary is
 // named (node / claude / a shell wrapper).
 export function defaultBuildArgv(prompt) {
-  return ['claude', '-p', prompt, '--permission-mode', 'bypassPermissions'];
+  return [resolveClaudeBin(), '-p', prompt, '--permission-mode', 'bypassPermissions'];
 }
 
 const DEFAULT_SIGNATURE = 'bypassPermissions';

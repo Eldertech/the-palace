@@ -26,6 +26,7 @@ import { buildCompanionPrompt } from './companion-prompt.js';
 import { armedWriteEntry, revertCommit, previewEdit } from './armed-write.js';
 import { appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
+import { resolveClaudeBin } from './claude-bin.js';
 
 const DEFAULT_STATE_DIR_REL = '_ops/stigmergy/.actuator-companion';
 const PERSISTENT_REL = '_ops/swarm/persistent/blackboard.jsonl';
@@ -45,7 +46,7 @@ export function companionFrom(title) {
 
 /** The real (non-stub) Companion worker argv — a headless capability-first cycle. */
 export function companionArgv(prompt, model) {
-  return ['claude', '-p', prompt, '--model', model || DEFAULT_MODEL, '--permission-mode', 'bypassPermissions'];
+  return [resolveClaudeBin(), '-p', prompt, '--model', model || DEFAULT_MODEL, '--permission-mode', 'bypassPermissions'];
 }
 
 /**

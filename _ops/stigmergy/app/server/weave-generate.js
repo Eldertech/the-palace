@@ -20,6 +20,7 @@ import { execFileSync } from 'node:child_process';
 import { relative } from 'node:path';
 import { readEntry } from '../src/lib/entries.js';
 import { findEntryFile } from '../../orchestrator/src/entry-paths.js';
+import { resolveClaudeBin } from './claude-bin.js';
 
 // Capability-first: forward-vector tuning is taste-bound, so default to the most
 // capable current Opus. The *exact* id, not the `opus` alias — on Claude Code
@@ -33,7 +34,7 @@ const MAX_BODY_CHARS = 8000;
 
 /** The real (non-stub) synchronous worker argv — a headless one-shot `claude -p`. */
 export function generateArgv(prompt, model) {
-  return ['claude', '-p', prompt, '--model', model || DEFAULT_MODEL, '--permission-mode', 'bypassPermissions'];
+  return [resolveClaudeBin(), '-p', prompt, '--model', model || DEFAULT_MODEL, '--permission-mode', 'bypassPermissions'];
 }
 
 // Default run: honor a stub env var (deterministic CLI integration tests), else
