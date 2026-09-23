@@ -6,9 +6,9 @@ pillars:
   - tools
   - creation
 born: 2026-07
-stage: seed
-last_activated: 2026-07
-activation_count: 1
+stage: sprout
+last_activated: 2026-09-23
+activation_count: 2
 links:
   - target: "[[Modes of Collaboration]]"
     type: member-of
@@ -19,7 +19,16 @@ links:
   - target: "[[Learning Materials and Canon]]"
     type: connects-to
     label: artifact-not-canon
-forward_vector: "I am the living page an entry keeps while it makes things — the one surface where its proofs and media pile up in the order they were made, so the whole arc of the making can be read in a single scroll. I want to become a loose, reliable habit for any entry making media, and to stay a reading surface, never a ceremony — appended to freely, deleted from never."
+  - target: "[[Project Stewardship System]]"
+    type: enables
+    label: front-door
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: rendered-in
+  - target: "[[Drift and Consolidation]]"
+    type: couples-with
+    label: the-live-half
+forward_vector: "I am the page a project keeps that always opens on where it stands now, then reads down through everything it has made, newest first. Every active project carries me; STIGMERGY opens on me; the steward reads my standing orders before it moves. I want to be the one place Loudon looks to get back into a project, and to stay a reading surface, never a ceremony — regenerated at the top, appended to below, deleted from never."
 ---
 
 # The Scroll
@@ -32,32 +41,55 @@ whole arc of the making shows as one continuous surface instead of scattered fil
 It is the counter-rhythm to the palace's deposit cadence. A deposit lands a finished thought in
 careful chunks — real, but the tool calls interrupt a working conversation. A scroll stays
 *open*: you add to it as you go, and the making accumulates without stopping to file each piece.
-Reach for it when the work is **making media with an entry** — [[BLUELINE]]'s session proofs
-walked in sequence, [[Generative Sample Libraries]]' sims and sample sets and ear-training
-pieces as they pile up.
-
-## Loose standards (kept loose on purpose)
-
-- **One scroll per entry** that's actively making media, living in that entry's bundle
-  (`[Entry]/[Entry] — scroll.html`).
-- **Append as you go** — a new proof joins with a date and a line of context; nothing is
-  deleted. The scroll is a record of the making, not a tidy final cut.
-- **Each section embeds or links the real media** — the scroll points at the actual
-  proof/artifact, it doesn't replace it.
-- **It's an artifact, not canon** — no frontmatter, invisible to the ceremonies
-  ([[Learning Materials and Canon]]), in the [[Loudon Live Design System|Loud'n Live]] house
-  style. It graduates to an entry only if it earns one.
 
 Named 2026-07-04 with Loudon: *"the continually developed Proof HTML document, the expanding
-artifact, the scroll."*
+artifact, the scroll."* Made native to every project on 2026-09-23, when the scroll became the
+front door of the [[Project Stewardship System]].
+
+## The project scroll — the front door
+
+Every active project carries `[Entry]/[Entry] — scroll.md`. It is the one page Loudon opens to
+get back *into* a project after time away or after a steward has moved it, and it always opens
+on the present. Three zones, delimited by HTML-comment markers so machinery can tell them apart:
+
+- **Now** — regenerated on every look, never hand-edited. Status, stage, the steward's cycle
+  and last run, what is *waiting on you* (open asks), what is *ready to advance* (answers filed
+  since the steward last ran, which no cycle has consumed yet), the last shipped thing and its
+  age, a **stall** signal (two barren cycles in a row), and **drift** (cycles since the entry
+  body was last consolidated). Then *Where this stands* — the steward's own latest catch-up
+  paragraph — the open asks, the answers not yet consumed, and what has been decided. It is
+  computed from the board, the steward's runtime, the entry's frontmatter and git, so it cannot
+  lie when the steward sleeps; that was the failure of the `plan.md` read-model it replaced.
+- **Standing Orders** — Loudon's zone, never regenerated. Taste, priorities, "stop asking me
+  about X," written once. The steward reads it before anything else every cycle and it outranks
+  the steward's lean and any older grant. Edited on STIGMERGY's PROJECTS deck, nowhere else.
+- **The making** — the trail, newest first, append-only. Every made thing the project posts to
+  the board (`shipped_artifact`, a `PROOF`, an audition with media) becomes one section keyed on
+  its message id: headline, ground, the account, the artifacts inline, the honest *left rough*
+  line. Re-materializing never duplicates or deletes; a human may add sections by hand.
+
+The source is **markdown** — a steward's output lands as one appended section, git diffs it
+cleanly, and STIGMERGY renders it natively in the phosphor register (the [[BBS Design System]]
+carve-out). A standalone HTML export in the [[Loudon Live Design System|Loud'n Live]] style is
+the reading surface for anyone outside the terminal; the live-polling HTML variant below remains
+the right tool for media made in a loop. The file carries the minimal bundle frontmatter of
+[[SCHEMA — Reference]] §8 (`scroll` type) and no `type:` field, so it stays a learning material,
+not canon ([[Learning Materials and Canon]]) — the entry is the considered truth, the scroll the
+live one ([[Drift and Consolidation]]).
+
+Machinery: `_ops/stigmergy/orchestrator/src/scroll-file.js` materializes it (every steward
+cycle via `process-cycle.js`, on demand via `scroll.js --home | --all`); STIGMERGY serves it
+with a live Now zone at `GET /api/projects/scroll`. Loose standards kept from the first scroll:
+one per entry, append as you go, each section points at the real media, nothing deleted.
 
 ## Building a live scroll — template & gotchas (2026-07-09)
 
 The base scroll is a static page you append to by hand. When an entry is making media *in a loop*
 (renders piling up while you work), a **live** variant pays off — it refreshes itself so Loudon
 watches the browser instead of waiting for the agent to reveal each image and stall the workflow.
-First built for [[BLUELINE]]'s GenAI Camera — copy `Projects/BLUELINE/proofs/genai-camera/` as the
-working template (driver + manifest + polling scroll + redirect).
+First built for [[GenAI Camera]] — copy the root bundle `GenAI Camera/` (driver
+`genai_camera.py` + `renders.json` manifest + the polling `GenAI Camera — scroll.html` + `index.html`
+redirect) as the working template.
 
 **The three-part pattern:**
 1. **A manifest** — `renders.json`, a list of records `{n, ts, prompt, params…, note}`, one per render.
@@ -85,7 +117,10 @@ a scroll per *making-thread*, not one per entry — one-scroll-per-entry holds o
 
 ## Forward Vector
 
-The first real scroll landed 2026-07-09 — [[BLUELINE]]'s GenAI Camera, as the **live** (self-polling)
-variant, template + gotchas above. Early finding: a busy entry wants a scroll per *making-thread*, not
-one per entry. Next: watch whether the live variant becomes the default when media is made in a loop,
-and whether the manifest+poll rig wants to become a tiny reusable helper rather than copied per proof.
+Thirty-six project scrolls exist as of 2026-09-23, backfilled from the board and rendered in
+STIGMERGY's PROJECTS deck; the first live HTML scroll ([[GenAI Camera]], 2026-07-09) still stands
+as the loop-making variant. Two things to watch: whether the *Standing Orders* zone actually
+shortens the question traffic on the TRICKSTER board (the reason it exists), and whether a busy
+project wants its trail split per making-thread (the GenAI Camera finding) once a run of ten
+cycles lands a dozen sections in one morning. The HTML export from the markdown source is not
+built yet; it is wanted the first time a scroll needs to travel outside the terminal.
