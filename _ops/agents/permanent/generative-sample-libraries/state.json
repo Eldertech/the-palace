@@ -1,14 +1,14 @@
 {
-  "iteration": 19,
-  "last_active": "2026-07-01T05:19:33.453Z",
+  "iteration": 20,
+  "last_active": "2026-09-23T03:57:57.189Z",
   "last_read_cursor": "gsl-steward-040",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
-    "posting_discipline_violations": 0,
+    "posting_discipline_violations": 1,
     "max_tokens_hits": 0,
-    "score": "green"
+    "score": "yellow"
   },
   "_pilot_metadata": {
     "stage_a_pilot": true,

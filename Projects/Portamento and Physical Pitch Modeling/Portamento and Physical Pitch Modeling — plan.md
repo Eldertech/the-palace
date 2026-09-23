@@ -12,27 +12,30 @@ forward_vector: "I am Portamento and Physical Pitch Modeling's materialized work
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Portamento and Physical Pitch Modeling]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-23T13:04:02.000Z._
+> _Last materialized: 2026-09-23T03:59:16.599Z._
 
 ## Plan
 
 - **Stage:** mature (read live from [[Portamento and Physical Pitch Modeling]] frontmatter)
-- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 7
+- **Open:** 0  ·  **Resolved:** 1  ·  **Iteration:** 8
 
 ## Open Decisions
+
+_None open._
+
+## Resolved Decisions
 
 ### `portamento-steward-015` — directional_decision
 - **Options:** REAL-RECORDINGS · PROGRESSIVE-CURRICULUM · MULTI-MODE · YOU-STEER
 - **Posted:** 2026-06-23T17:06:00-04:00
-
-## Resolved Decisions
-
-_None yet._
+- **Resolved:** 2026-08-26T02:56:32.261Z (by `resp-mt9i5p1h-g9qk5t`)
+- **Outcome:** GRANTED — option_id=MULTI-MODE
 
 ## Done
 
+- 2026-09-23T03:59:16.599Z — ⚠ BARREN cycle (iteration 8): posted nothing, left no decision for you — the loop stalls here until this steward is re-run
 - 2026-06-23T13:04:02.000Z — cycle complete (iteration 7); posted: portamento-steward-014, portamento-steward-015
-- 2026-06-06T13:37:50.442Z — cycle complete (iteration 6); posted: none
+- 2026-06-06T13:37:50.442Z — ⚠ BARREN cycle (iteration 6): posted nothing, left no decision for you — the loop stalls here until this steward is re-run
 - 2026-06-06T02:54:19.279Z — cycle complete (iteration 5); posted: portamento-steward-012, portamento-steward-013
 - 2026-06-06T02:31:07.111Z — cycle complete (iteration 4); posted: portamento-steward-010, portamento-steward-011
 - 2026-06-03T05:14:01Z — cycle complete (iteration 3); posted: portamento-steward-007, portamento-steward-008, portamento-steward-009
