@@ -4,7 +4,8 @@
 #   bash "Projects/Generative Sample Libraries/ai-source-probe/run-on-mac.sh"
 #
 # Renders the matrix (6 instruments × 4 notes × 2 seeds) through four arms,
-# grades every render, writes compare.html + compare.json here, opens the page.
+# grades every render, writes compare.html + compare.json here, builds a
+# playable SFZ per instrument per model arm under instruments/, opens the page.
 #
 #   crystal          palace reference — the shipped Crystal instrument
 #   stable_audio     Stable Audio 3 small-music, pitch named in the prompt
@@ -99,7 +100,23 @@ echo; echo "── compare"
 (cd "$HERE" && "$PROBE_PY" compare.py crystal stable_audio musicgen_melody musicgen_text \
     --out compare --title "Head to head")
 
+# graded run -> playable SFZ, one per instrument row, every key played + graded.
+# WAVs are gitignored in this project, so the crystal reference instrument is
+# rebuilt here too — its .sfz is in git, its samples are not.
+BUILT=""
+for arm in $RAN; do
+  echo; echo "── instruments · $arm"
+  EXTRA=""   # a plain string, not "$@": macOS bash 3.2 + set -u rejects an empty "$@"
+  [ "$arm" = crystal ] && EXTRA="--instrument piano --name reference --loop-mode one_shot"
+  if (cd "$HERE" && "$PROBE_PY" build_sfz.py "$arm" $EXTRA --check --audition); then
+    BUILT="$BUILT $arm"
+  else
+    echo "   instrument build failed for $arm"
+  fi
+done
+
 echo
 echo "rendered + graded:${RAN:- none}"
+if [ -n "$BUILT" ]; then echo "instruments (SFZ):$BUILT  → instruments/<arm>/<instrument>/"; fi
 if [ -n "$FAILED" ]; then echo "did not render:$FAILED  (see renders.<arm>.jsonl and run-on-mac.log)"; fi
 if [ "$OPEN" = 1 ] && command -v open >/dev/null; then open "$HERE/compare.html"; fi
