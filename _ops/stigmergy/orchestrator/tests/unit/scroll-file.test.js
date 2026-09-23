@@ -231,3 +231,21 @@ describe('materializeScroll', () => {
     expect(existsSync(r.scrollPath)).toBe(false);
   });
 });
+
+describe('payloadProse — messages with no canonical prose still read on the trail', () => {
+  test('BLUELINE-style result payloads render their own fields; path arrays become artifacts', async () => {
+    const { payloadProse, payloadPathArtifacts } = await import('../../src/scroll-file.js');
+    const p = { kind: 'result', entry: 'BLUELINE', move: 'M3.7 test', verdict: 'seed-lock wins', design_rule: 'flow field = spine', next: 'Track II', proof: ['Projects/BLUELINE/proofs/a.md', 'Projects/BLUELINE/proofs/b.png'], cost_usd_cumulative: 3.2, worktree: 'wt' };
+    const prose = payloadProse(p);
+    expect(prose).toContain('**move:** M3.7 test');
+    expect(prose).toContain('**design rule:** flow field = spine');
+    expect(prose).not.toContain('worktree');
+    expect(prose).not.toContain('proof');
+    expect(payloadPathArtifacts(p)).toEqual([{ path: 'Projects/BLUELINE/proofs/a.md', caption: null }, { path: 'Projects/BLUELINE/proofs/b.png', caption: null }]);
+    const s = renderMakingSection(msg({ id: 'r1', payload: p }));
+    expect(s).toContain('### 2026-06-06 — M3.7 test');
+    expect(s).toContain('[b.png](Projects/BLUELINE/proofs/b.png)');
+    expect(payloadProse({ content: 'canon wins' , move: 'x' })).toBe('canon wins');
+    expect(payloadProse(null)).toBe('');
+  });
+});

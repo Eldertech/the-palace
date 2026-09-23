@@ -78,6 +78,41 @@ function firstParagraph(text, max = 700) {
   return para.length > max ? para.slice(0, max - 1).trimEnd() + '…' : para;
 }
 
+// Payload keys that are wire plumbing, never prose worth showing on a trail.
+const PLUMBING_KEYS = new Set(['kind', 'entry', 'entry_path', 'turn_id', 'in_reply_to', 'worktree', 'headline', 'ground', 'catchup', 'content', 'rationale', 'summary', 'subject', 'artifacts', 'artifact_path', 'caption', 'options', 'table', 'left_rough', 'next_moves', 'equations', 'resource', 'blocking', 'choice_mode', 'prompt', 'request_id']);
+
+/**
+ * The prose a message carries, in order of preference: the canonical fields,
+ * else every other string field the steward wrote (BLUELINE's `result`
+ * messages carry `move` / `verdict` / `m3_7` / `design_rule` / `next` and no
+ * `content` at all). Returns '' when there is genuinely nothing to show.
+ */
+export function payloadProse(p) {
+  if (!p || typeof p !== 'object') return '';
+  const canon = p.content || p.rationale || p.summary || '';
+  if (canon) return String(canon).trim();
+  const lines = [];
+  for (const [k, v] of Object.entries(p)) {
+    if (PLUMBING_KEYS.has(k)) continue;
+    if (typeof v === 'string' && v.trim() && !/^[\w-]+:\/\//.test(v)) lines.push(`**${k.replace(/_/g, ' ')}:** ${v.trim()}`);
+    else if (typeof v === 'number' || typeof v === 'boolean') lines.push(`**${k.replace(/_/g, ' ')}:** ${v}`);
+    else if (Array.isArray(v) && v.length && v.every((x) => typeof x === 'string') && !v.every((x) => /\.[a-z0-9]{2,5}$/i.test(x))) lines.push(`**${k.replace(/_/g, ' ')}:** ${v.join(' · ')}`);
+  }
+  return lines.join('\n');
+}
+
+/** String-array payload fields that look like file paths → artifacts. */
+export function payloadPathArtifacts(p) {
+  const out = [];
+  if (!p || typeof p !== 'object') return out;
+  for (const [k, v] of Object.entries(p)) {
+    if (PLUMBING_KEYS.has(k)) continue;
+    const arr = Array.isArray(v) ? v : (typeof v === 'string' && /\.(png|jpe?g|gif|webp|svg|wav|mp3|ogg|flac|mp4|mov|html?|pdf|md)$/i.test(v) ? [v] : []);
+    for (const x of arr) if (typeof x === 'string' && /\.[a-z0-9]{2,5}$/i.test(x) && !/^[\w-]+:\/\//.test(x)) out.push({ path: x, caption: null });
+  }
+  return out;
+}
+
 function optionsLine(options) {
   if (!Array.isArray(options) || !options.length) return null;
   return options.map((o) => (typeof o === 'string' ? o : (o.id || o.label || String(o)))).join(' · ');
@@ -154,18 +189,19 @@ function cycleIndex(history) {
 /** Render one shipped message as a making section. */
 export function renderMakingSection(m, { cycle } = {}) {
   const p = m.payload || {};
-  const headline = p.headline || p.subject || (p.kind ? p.kind.replace(/_/g, ' ') : m.type.toLowerCase());
+  const headline = p.headline || p.subject || p.move || p.verdict || p.note || (p.kind ? p.kind.replace(/_/g, ' ') : m.type.toLowerCase());
   const cyc = cycle != null ? ` — cycle ${cycle}` : '';
   const lines = [];
   lines.push(`<!-- scroll:entry id="${m.id}" -->`);
   lines.push(`### ${day(m.ts)}${cyc} — ${headline}`);
   if (p.ground) lines.push(`> ${p.ground}`);
-  const body = p.content || p.rationale || p.summary || '';
-  if (body) { lines.push(''); lines.push(String(body).trim()); }
+  const body = payloadProse(p);
+  if (body) { lines.push(''); lines.push(body); }
   const artifacts = [];
   if (Array.isArray(p.artifacts)) for (const a of p.artifacts) if (a && a.path) artifacts.push(a);
   if (typeof p.artifact_path === 'string' && p.artifact_path && !artifacts.some((a) => a.path === p.artifact_path)) artifacts.push({ path: p.artifact_path, caption: p.caption || null });
   if (Array.isArray(p.options)) for (const o of p.options) if (o && o.artifact_path && !artifacts.some((a) => a.path === o.artifact_path)) artifacts.push({ path: o.artifact_path, caption: o.caption || o.label || null });
+  for (const a of payloadPathArtifacts(p)) if (!artifacts.some((x) => x.path === a.path)) artifacts.push(a);
   if (artifacts.length) {
     lines.push('');
     lines.push('**Artifacts:**');
@@ -266,8 +302,8 @@ export function computeNow({ home, board = [], state = null, history = [], meta 
     if (/^catch-?up\b/i.test(para)) stands = para.replace(/^catch-?up\s*[—:-]\s*/i, '');
   }
   // 3. the latest made thing's opening paragraph, then the latest message's
-  for (let i = spoken.length - 1; i >= 0 && !stands; i--) if (isMakingMessage(spoken[i])) stands = firstParagraph(spoken[i].payload.content || spoken[i].payload.rationale || '');
-  for (let i = spoken.length - 1; i >= 0 && !stands; i--) stands = firstParagraph(spoken[i].payload.content || spoken[i].payload.rationale || '');
+  for (let i = spoken.length - 1; i >= 0 && !stands; i--) if (isMakingMessage(spoken[i])) stands = firstParagraph(payloadProse(spoken[i].payload));
+  for (let i = spoken.length - 1; i >= 0 && !stands; i--) stands = firstParagraph(payloadProse(spoken[i].payload));
 
   return {
     status: typeof meta?.data?.status === 'string' ? meta.data.status : null,
