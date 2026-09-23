@@ -1,0 +1,2 @@
+A glossy black latex techno-organic scorpion, wet rubber sheen, segmented ribbed carapace, tight surface tension highlights, fetish industrial aesthetic, HR Giger biomechanical, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, acid-green glow, near-black background, sinister
+seed=13180323 steps=28 guidance=3.5 1024x1024

@@ -1,0 +1,2 @@
+flat black and white vector logo of a scorpion, pure black mark on a clean solid white background, bold minimal silhouette, sharp aggressive angular geometry, powerful memorable iconic shape, high contrast, no shading, no gradient, no texture, no background detail, crisp clean edges, techno emblem, centered, professional brand mark, contained inside a sharp hexagonal tech badge frame, symmetrical, high-tech insignia, angular scorpion glyph inside
+seed=7211400 steps=28 guidance=4.0 1024x1024

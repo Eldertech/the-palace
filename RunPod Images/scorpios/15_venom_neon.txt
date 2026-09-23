@@ -1,0 +1,2 @@
+A dark biomechanical latex scorpion, matte black wet carapace, dramatic vivid acid-green bioluminescent venom as the hero element dripping thickly from the raised stinger into a glowing toxic pool, HR Giger, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, black background, high contrast neon accent, intense
+seed=3206156 steps=28 guidance=3.5 1024x1024

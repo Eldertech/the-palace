@@ -1,0 +1,2 @@
+flat black and white vector logo of a scorpion, pure black mark on a clean solid white background, bold minimal silhouette, sharp aggressive angular geometry, powerful memorable iconic shape, high contrast, no shading, no gradient, no texture, no background detail, crisp clean edges, techno emblem, centered, professional brand mark, bold stencil cut-paper style, thick heavy solid black shapes with hard breaks, brutal high-contrast, military tech feel
+seed=7018447 steps=28 guidance=4.0 1024x1024

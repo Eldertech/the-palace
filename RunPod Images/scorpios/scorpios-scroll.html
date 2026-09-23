@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stylized Scorpios — a scroll</title>
+<style>
+:root{
+  --bg:#0b0b0d; --panel:#141417; --line:#26262c; --ink:#e8e6e2; --mut:#8b8f96;
+  --accent:#7fe0a8; --venom:#9be870;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  line-height:1.5}
+header{padding:56px 6vw 30px;border-bottom:1px solid var(--line);
+  background:radial-gradient(120% 90% at 50% -10%, #17171b 0%, var(--bg) 70%)}
+h1{font-size:clamp(30px,5vw,52px);margin:0;letter-spacing:.01em;font-weight:800}
+.sub{color:var(--mut);margin-top:12px;max-width:60ch;font-size:15px}
+.meta{color:var(--mut);font-size:12.5px;margin-top:18px;font-variant-numeric:tabular-nums}
+nav{position:sticky;top:0;z-index:10;background:#0b0b0dcc;backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);padding:12px 6vw;display:flex;gap:22px;flex-wrap:wrap;font-size:13px}
+nav a{color:var(--mut);text-decoration:none;transition:color .15s}
+nav a:hover{color:var(--accent)}
+section{padding:44px 6vw}
+.sh{max-width:70ch;margin-bottom:26px}
+h2{font-size:23px;margin:0 0 8px;font-weight:700}
+.sh p{color:var(--mut);margin:0;font-size:14.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  display:flex;flex-direction:column}
+.card a.imgwrap{display:block;background:#000;line-height:0}
+.card img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover;
+  transition:opacity .2s}
+.card a.imgwrap:hover img{opacity:.9}
+.body{padding:15px 17px 17px;display:flex;flex-direction:column;gap:10px}
+.name{font-weight:700;font-size:15px;letter-spacing:.02em}
+.prompt{color:#cfcdc8;font-size:13px;line-height:1.55}
+.params{color:var(--mut);font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:11px;
+  border-top:1px solid var(--line);padding-top:9px;word-break:break-all}
+footer{padding:40px 6vw 60px;color:var(--mut);font-size:12px;border-top:1px solid var(--line)}
+footer .big{color:var(--ink);font-size:14px;margin-bottom:6px}
+</style>
+</head><body>
+<header>
+  <h1>Stylized Scorpios</h1>
+  <div class="sub">A scroll of the making — every render in the order it was made, with the prompt
+  and seed that produced it. From a first sweep of styles into a dark techno-latex, Giger-biomechanical
+  vein, then variations refined toward wet latex, heavy venom, and a subtle alien lair.</div>
+  <div class="meta">24 images · FLUX.1-dev · 3 passes · click any frame for full resolution</div>
+</header>
+<nav><a href="#batch1">Batch 1</a><a href="#batch2">Batch 2</a><a href="#v9">Version 9</a></nav>
+
+  <section id="batch1">
+    <div class="sh"><h2>Batch 1 — A range of styles</h2><p>Eight scorpions, each a distinct visual tradition. The opening sweep — finding which directions had heat.</p></div>
+    <div class="grid">
+      <div class="card">
+        <a class="imgwrap" href="01_art_nouveau.png" target="_blank" rel="noopener">
+          <img src="01_art_nouveau.png" alt="Art Nouveau" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Art Nouveau</div>
+          <div class="prompt">An ornamental scorpion in Art Nouveau stained-glass style, Alphonse Mucha, flowing organic linework, gold leaf and jewel-toned glass panels, symmetrical decorative border, elegant</div>
+          <div class="params">seed=10373529 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="02_cyberpunk.png" target="_blank" rel="noopener">
+          <img src="02_cyberpunk.png" alt="Cyberpunk" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Cyberpunk</div>
+          <div class="prompt">A mechanical chrome scorpion, cyberpunk, glowing neon circuitry along its segmented tail, wet rain-slick metal, teal and magenta rim light, cinematic, highly detailed</div>
+          <div class="params">seed=10582402 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="03_ukiyo_e.png" target="_blank" rel="noopener">
+          <img src="03_ukiyo_e.png" alt="Ukiyo E" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Ukiyo E</div>
+          <div class="prompt">A scorpion in Japanese ukiyo-e woodblock print style, Hokusai, flat inked outlines, muted indigo and ochre, cresting wave motif, textured washi paper, traditional</div>
+          <div class="params">seed=16079250 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="04_bioluminescent.png" target="_blank" rel="noopener">
+          <img src="04_bioluminescent.png" alt="Bioluminescent" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Bioluminescent</div>
+          <div class="prompt">A translucent glass scorpion deep in the abyssal ocean, bioluminescent blue and violet glow pulsing through its body, dark water, ethereal, macro photography</div>
+          <div class="params">seed=13860426 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="05_egyptian_gold.png" target="_blank" rel="noopener">
+          <img src="05_egyptian_gold.png" alt="Egyptian Gold" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Egyptian Gold</div>
+          <div class="prompt">An ancient Egyptian scorpion goddess Serqet motif, hammered gold and lapis lazuli inlay, hieroglyphic carvings, temple wall relief, warm torchlight, ornate</div>
+          <div class="params">seed=9232628 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="06_watercolor.png" target="_blank" rel="noopener">
+          <img src="06_watercolor.png" alt="Watercolor" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Watercolor</div>
+          <div class="prompt">A scorpion as a delicate botanical watercolor illustration, soft pigment bleeds, loose brush strokes, cream paper, naturalist field-guide plate, light and airy</div>
+          <div class="params">seed=10896390 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="07_baroque_oil.png" target="_blank" rel="noopener">
+          <img src="07_baroque_oil.png" alt="Baroque Oil" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Baroque Oil</div>
+          <div class="prompt">A dramatic scorpion in Baroque oil painting style, Caravaggio chiaroscuro, deep shadow, single warm light source, rich amber and umber, museum masterwork</div>
+          <div class="params">seed=9079277 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="08_low_poly.png" target="_blank" rel="noopener">
+          <img src="08_low_poly.png" alt="Low Poly" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Low Poly</div>
+          <div class="prompt">A low-poly crystalline scorpion, faceted geometric planes, iridescent gemstone facets, minimal studio background, sharp edges, modern 3D render aesthetic</div>
+          <div class="params">seed=7890113 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="batch2">
+    <div class="sh"><h2>Batch 2 — Dark techno-latex / Giger</h2><p>The cyberpunk chrome from batch 1, pushed dark and wet. H.R. Giger biomechanical, venom off the stinger.</p></div>
+    <div class="grid">
+      <div class="card">
+        <a class="imgwrap" href="09_giger_biomech.png" target="_blank" rel="noopener">
+          <img src="09_giger_biomech.png" alt="Giger Biomech" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Giger Biomech</div>
+          <div class="prompt">A biomechanical scorpion in the style of H.R. Giger, airbrushed black chrome and ribbed latex exoskeleton, fused bone and machinery, intricate tubing and vertebrae, dark erotic techno-organic horror, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, deep shadow, monochrome with cold highlights, intense</div>
+          <div class="params">seed=1074744 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="10_techno_latex.png" target="_blank" rel="noopener">
+          <img src="10_techno_latex.png" alt="Techno Latex" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Techno Latex</div>
+          <div class="prompt">A glossy black latex techno-organic scorpion, wet rubber sheen, segmented ribbed carapace, tight surface tension highlights, fetish industrial aesthetic, HR Giger biomechanical, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, acid-green glow, near-black background, sinister</div>
+          <div class="params">seed=13180323 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="11_liquid_chrome.png" target="_blank" rel="noopener">
+          <img src="11_liquid_chrome.png" alt="Liquid Chrome" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Liquid Chrome</div>
+          <div class="prompt">A scorpion of liquid chrome and oil-slick iridescence, molten metallic biomechanical body, sharp reflective plating, HR Giger meets high-tech, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, dripping mercury venom, black void background, cinematic rim light, ominous</div>
+          <div class="params">seed=11098991 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="12_xeno_hybrid.png" target="_blank" rel="noopener">
+          <img src="12_xeno_hybrid.png" alt="Xeno Hybrid" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Xeno Hybrid</div>
+          <div class="prompt">An alien xenomorph-scorpion hybrid, elongated ribbed skull, biomechanical black chitin, dripping slime, HR Giger creature design, skeletal tail arched high, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, wet biolatex surfaces, dark industrial lair, terrifying and beautiful</div>
+          <div class="params">seed=6718447 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="13_obsidian_acid.png" target="_blank" rel="noopener">
+          <img src="13_obsidian_acid.png" alt="Obsidian Acid" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Obsidian Acid</div>
+          <div class="prompt">A scorpion forged from obsidian and surgical steel, gothic biomechanical machinery, exposed hydraulic sinew, HR Giger, corrosive glowing acid dripping from stinger and pooling below, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, cold blue-green light, pitch dark, brutal</div>
+          <div class="params">seed=2180546 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="14_industrial_flesh.png" target="_blank" rel="noopener">
+          <img src="14_industrial_flesh.png" alt="Industrial Flesh" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Industrial Flesh</div>
+          <div class="prompt">A techno-organic scorpion of fused flesh and machine, pistons and cabling woven through raw muscle and ribbed latex plating, HR Giger biomechanical body horror, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, venom drooling in long strands, dim red industrial glow, intense and grotesque</div>
+          <div class="params">seed=8883414 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="15_venom_neon.png" target="_blank" rel="noopener">
+          <img src="15_venom_neon.png" alt="Venom Neon" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Venom Neon</div>
+          <div class="prompt">A dark biomechanical latex scorpion, matte black wet carapace, dramatic vivid acid-green bioluminescent venom as the hero element dripping thickly from the raised stinger into a glowing toxic pool, HR Giger, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, black background, high contrast neon accent, intense</div>
+          <div class="params">seed=3206156 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="16_cathedral_biomech.png" target="_blank" rel="noopener">
+          <img src="16_cathedral_biomech.png" alt="Cathedral Biomech" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Cathedral Biomech</div>
+          <div class="prompt">A colossal HR Giger biomechanical scorpion as living cathedral architecture, ribbed spinal vaults and vertebral arches forming its body, airbrushed bone-and-chrome, ornate techno-organic detail, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, venom dripping through the vaulting, sepulchral light, awe and dread</div>
+          <div class="params">seed=10830923 steps=28 guidance=3.5 1024x1024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="v9">
+    <div class="sh"><h2>Version 9 — variations</h2><p>Variations on #09: chrome-latex Giger body, more latex, more venom, dark ominous light, a subtle alien lair behind. Lair + venom color swapped across the set.</p></div>
+    <div class="grid">
+      <div class="card">
+        <a class="imgwrap" href="v9/v9-1_cathedral.png" target="_blank" rel="noopener">
+          <img src="v9/v9-1_cathedral.png" alt="Cathedral" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Cathedral</div>
+          <div class="prompt">A menacing biomechanical scorpion, airbrushed black chrome exoskeleton sheathed in wet glossy latex, ribbed segmented carapace with slick high-specular sheen, fused bone and machinery, HR Giger techno-organic, tail arched high, thick luminous acid-green venom dripping in long viscous strands from the raised stinger and pooling on the floor below, very dark ominous low-key lighting, deep black shadow, a single dim cold teal light source, a vast Giger biomechanical cathedral of ribbed vaulted arches subtly visible in the murky gloom behind it, atmospheric haze, cinematic, intense, hyper-detailed</div>
+          <div class="params">seed=6184622 steps=30 guidance=3.2 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="v9/v9-2_derelict_hull.png" target="_blank" rel="noopener">
+          <img src="v9/v9-2_derelict_hull.png" alt="Derelict Hull" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Derelict Hull</div>
+          <div class="prompt">A menacing biomechanical scorpion, airbrushed black chrome exoskeleton sheathed in wet glossy latex, ribbed segmented carapace with slick high-specular sheen, fused bone and machinery, HR Giger techno-organic, tail arched high, thick luminous toxic amber venom dripping in long viscous strands from the raised stinger and pooling on the floor below, very dark ominous low-key lighting, deep black shadow, a single dim flickering amber light source, a derelict alien spaceship corridor of wet pipes and bulkheads subtly visible in the murky gloom behind it, atmospheric haze, cinematic, intense, hyper-detailed</div>
+          <div class="params">seed=10840299 steps=30 guidance=3.2 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="v9/v9-3_egg_chamber.png" target="_blank" rel="noopener">
+          <img src="v9/v9-3_egg_chamber.png" alt="Egg Chamber" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Egg Chamber</div>
+          <div class="prompt">A menacing biomechanical scorpion, airbrushed black chrome exoskeleton sheathed in wet glossy latex, ribbed segmented carapace with slick high-specular sheen, fused bone and machinery, HR Giger techno-organic, tail arched high, thick luminous electric teal venom dripping in long viscous strands from the raised stinger and pooling on the floor below, very dark ominous low-key lighting, deep black shadow, a single dim sickly blue-green light source, an alien egg chamber with faintly glowing pods subtly visible in the murky gloom behind it, atmospheric haze, cinematic, intense, hyper-detailed</div>
+          <div class="params">seed=6693505 steps=30 guidance=3.2 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="v9/v9-4_hive_tunnel.png" target="_blank" rel="noopener">
+          <img src="v9/v9-4_hive_tunnel.png" alt="Hive Tunnel" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Hive Tunnel</div>
+          <div class="prompt">A menacing biomechanical scorpion, airbrushed black chrome exoskeleton sheathed in wet glossy latex, ribbed segmented carapace with slick high-specular sheen, fused bone and machinery, HR Giger techno-organic, tail arched high, thick luminous violet venom dripping in long viscous strands from the raised stinger and pooling on the floor below, very dark ominous low-key lighting, deep black shadow, a single dim dim violet light source, a dripping biomechanical hive tunnel of fused bone and cable subtly visible in the murky gloom behind it, atmospheric haze, cinematic, intense, hyper-detailed</div>
+          <div class="params">seed=15961515 steps=30 guidance=3.2 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="v9/v9-5_nest_wall.png" target="_blank" rel="noopener">
+          <img src="v9/v9-5_nest_wall.png" alt="Nest Wall" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Nest Wall</div>
+          <div class="prompt">A menacing biomechanical scorpion, airbrushed black chrome exoskeleton sheathed in wet glossy latex, ribbed segmented carapace with slick high-specular sheen, fused bone and machinery, HR Giger techno-organic, tail arched high, thick luminous sickly yellow venom dripping in long viscous strands from the raised stinger and pooling on the floor below, very dark ominous low-key lighting, deep black shadow, a single dim low amber light source, a wet ribbed alien nest wall of sinew and resin subtly visible in the murky gloom behind it, atmospheric haze, cinematic, intense, hyper-detailed</div>
+          <div class="params">seed=3220936 steps=30 guidance=3.2 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="v9/v9-6_flooded_reactor.png" target="_blank" rel="noopener">
+          <img src="v9/v9-6_flooded_reactor.png" alt="Flooded Reactor" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Flooded Reactor</div>
+          <div class="prompt">A menacing biomechanical scorpion, airbrushed black chrome exoskeleton sheathed in wet glossy latex, ribbed segmented carapace with slick high-specular sheen, fused bone and machinery, HR Giger techno-organic, tail arched high, thick luminous molten orange venom dripping in long viscous strands from the raised stinger and pooling on the floor below, very dark ominous low-key lighting, deep black shadow, a single dim orange glow light source, a flooded reactor lair with black water reflecting the scorpion subtly visible in the murky gloom behind it, atmospheric haze, cinematic, intense, hyper-detailed</div>
+          <div class="params">seed=15907975 steps=30 guidance=3.2 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="v9/v9-7_bone_vault.png" target="_blank" rel="noopener">
+          <img src="v9/v9-7_bone_vault.png" alt="Bone Vault" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Bone Vault</div>
+          <div class="prompt">A menacing biomechanical scorpion, airbrushed black chrome exoskeleton sheathed in wet glossy latex, ribbed segmented carapace with slick high-specular sheen, fused bone and machinery, HR Giger techno-organic, tail arched high, thick luminous cyan-green venom dripping in long viscous strands from the raised stinger and pooling on the floor below, very dark ominous low-key lighting, deep black shadow, a single dim cold cyan light source, a bone-and-cable alien vault with hanging biomechanical tendrils subtly visible in the murky gloom behind it, atmospheric haze, cinematic, intense, hyper-detailed</div>
+          <div class="params">seed=2466606 steps=30 guidance=3.2 1024x1024</div>
+        </div>
+      </div>
+      <div class="card">
+        <a class="imgwrap" href="v9/v9-8_misty_hull.png" target="_blank" rel="noopener">
+          <img src="v9/v9-8_misty_hull.png" alt="Misty Hull" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="name">Misty Hull</div>
+          <div class="prompt">A menacing biomechanical scorpion, airbrushed black chrome exoskeleton sheathed in wet glossy latex, ribbed segmented carapace with slick high-specular sheen, fused bone and machinery, HR Giger techno-organic, tail arched high, thick luminous blood red venom dripping in long viscous strands from the raised stinger and pooling on the floor below, very dark ominous low-key lighting, deep black shadow, a single dim red rim light source, a misty derelict alien hull with a single distant light subtly visible in the murky gloom behind it, atmospheric haze, cinematic, intense, hyper-detailed</div>
+          <div class="params">seed=3528412 steps=30 guidance=3.2 1024x1024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+<footer>
+  <div class="big">Stylized Scorpios</div>
+  Generated on the palace FLUX serverless endpoint · each image has a sidecar .txt with its full prompt and seed for reproduction.
+</footer>
+</body></html>

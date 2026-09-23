@@ -1,0 +1,2 @@
+A translucent glass scorpion deep in the abyssal ocean, bioluminescent blue and violet glow pulsing through its body, dark water, ethereal, macro photography
+seed=13860426 steps=28 guidance=3.5 1024x1024

@@ -1,0 +1,2 @@
+A scorpion forged from obsidian and surgical steel, gothic biomechanical machinery, exposed hydraulic sinew, HR Giger, corrosive glowing acid dripping from stinger and pooling below, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, cold blue-green light, pitch dark, brutal
+seed=2180546 steps=28 guidance=3.5 1024x1024

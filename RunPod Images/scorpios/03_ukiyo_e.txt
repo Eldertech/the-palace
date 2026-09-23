@@ -1,0 +1,2 @@
+A scorpion in Japanese ukiyo-e woodblock print style, Hokusai, flat inked outlines, muted indigo and ochre, cresting wave motif, textured washi paper, traditional
+seed=16079250 steps=28 guidance=3.5 1024x1024

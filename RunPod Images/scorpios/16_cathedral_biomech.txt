@@ -1,0 +1,2 @@
+A colossal HR Giger biomechanical scorpion as living cathedral architecture, ribbed spinal vaults and vertebral arches forming its body, airbrushed bone-and-chrome, ornate techno-organic detail, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, venom dripping through the vaulting, sepulchral light, awe and dread
+seed=10830923 steps=28 guidance=3.5 1024x1024

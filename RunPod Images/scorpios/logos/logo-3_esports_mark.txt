@@ -1,0 +1,2 @@
+flat black and white vector logo of a scorpion, pure black mark on a clean solid white background, bold minimal silhouette, sharp aggressive angular geometry, powerful memorable iconic shape, high contrast, no shading, no gradient, no texture, no background detail, crisp clean edges, techno emblem, centered, professional brand mark, aggressive esports mascot style, angry snapping pincers and slashing stinger, dynamic diagonal energy, razor-sharp points
+seed=2264881 steps=28 guidance=4.0 1024x1024

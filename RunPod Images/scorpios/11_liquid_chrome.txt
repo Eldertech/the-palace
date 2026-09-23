@@ -1,0 +1,2 @@
+A scorpion of liquid chrome and oil-slick iridescence, molten metallic biomechanical body, sharp reflective plating, HR Giger meets high-tech, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, dripping mercury venom, black void background, cinematic rim light, ominous
+seed=11098991 steps=28 guidance=3.5 1024x1024

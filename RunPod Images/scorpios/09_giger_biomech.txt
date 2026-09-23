@@ -1,0 +1,2 @@
+A biomechanical scorpion in the style of H.R. Giger, airbrushed black chrome and ribbed latex exoskeleton, fused bone and machinery, intricate tubing and vertebrae, dark erotic techno-organic horror, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, deep shadow, monochrome with cold highlights, intense
+seed=1074744 steps=28 guidance=3.5 1024x1024

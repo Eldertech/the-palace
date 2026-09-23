@@ -1,0 +1,2 @@
+A techno-organic scorpion of fused flesh and machine, pistons and cabling woven through raw muscle and ribbed latex plating, HR Giger biomechanical body horror, a bead of luminous toxic venom dripping from the curved stinger, wet viscous drop, glistening, venom drooling in long strands, dim red industrial glow, intense and grotesque
+seed=8883414 steps=28 guidance=3.5 1024x1024

@@ -1,0 +1,2 @@
+A scorpion as a delicate botanical watercolor illustration, soft pigment bleeds, loose brush strokes, cream paper, naturalist field-guide plate, light and airy
+seed=10896390 steps=28 guidance=3.5 1024x1024

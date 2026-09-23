@@ -1,0 +1,2 @@
+flat black and white vector logo of a scorpion, pure black mark on a clean solid white background, bold minimal silhouette, sharp aggressive angular geometry, powerful memorable iconic shape, high contrast, no shading, no gradient, no texture, no background detail, crisp clean edges, techno emblem, centered, professional brand mark, techno circuit-board scorpion, angular pcb trace linework forming the body and legs, sharp right-angle and 45-degree segments
+seed=2734640 steps=28 guidance=4.0 1024x1024

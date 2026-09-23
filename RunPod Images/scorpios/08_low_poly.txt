@@ -1,0 +1,2 @@
+A low-poly crystalline scorpion, faceted geometric planes, iridescent gemstone facets, minimal studio background, sharp edges, modern 3D render aesthetic
+seed=7890113 steps=28 guidance=3.5 1024x1024
