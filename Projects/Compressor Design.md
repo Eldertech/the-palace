@@ -9,6 +9,9 @@ born: 2026-01
 stage: mature
 status: complete
 links:
+  - target: "[[Objects to Think With]]"
+    type: exemplifies
+    label: object-to-think-with
   - target: "[[Boundary-Crossing Instruments]]"
     type: connects-to
   - target: "[[Harmonicity and Inharmonicity]]"

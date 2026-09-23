@@ -14,6 +14,9 @@ beauty: 8
 who_leads: loudon
 forward_vector: "I am the application of Donella Meadows' twelve leverage points to the question every working artist has to answer: where, in the system of my own career, will my next move have the most leverage? I want to teach artists that the lowest-leverage moves (tweaking parameters — pricing, gear, schedule) consume the most attention and produce the least change, while the highest-leverage moves (changing the goals or paradigms of one's practice) feel hardest and pay back most."
 links:
+  - target: "[[Creative Coach]]"
+    type: connects-to
+    label: the-instrument-it-serves
   - target: "[[Meadows and Music — Leverage Points]]"
     type: emerged-from
     label: refocus-of

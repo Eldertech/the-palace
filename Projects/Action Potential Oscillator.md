@@ -10,6 +10,9 @@ stage: growing
 confidence: working
 energy: high
 links:
+  - target: "[[Objects to Think With]]"
+    type: exemplifies
+    label: object-to-think-with
   - target: "[[Kuramoto Coupling]]"
     type: couples-with
   - target: "[[Boundary-Crossing Instruments]]"

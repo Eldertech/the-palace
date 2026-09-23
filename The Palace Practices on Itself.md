@@ -7,8 +7,8 @@ pillars:
   - tools
 born: 2026-07
 stage: growing
-last_activated: 2026-07
-activation_count: 1
+last_activated: 2026-09
+activation_count: 2
 forward_vector: "I want to name the loop that grows this place — build a capability, then turn it back on myself and grow from what I learn. I want every new tool to ask, unprompted, 'does this apply to us?' — and I keep watch that practicing on myself never becomes only looking inward."
 links:
   - target: "[[Zoom Out to the Structure]]"
@@ -23,6 +23,9 @@ links:
   - target: "[[The Commons]]"
     type: connects-to
     label: proven-on-itself
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: the-distribution-test
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
     label: measured-by
@@ -39,6 +42,17 @@ Dogfooding, in the plain software sense of *eat your own cooking* — but here i
 ## The loop
 
 Zoom out to build a structure ([[Zoom Out to the Structure]]); apply that structure to the palace itself; learn from what breaks or clicks; feed that back in. Outward, then inward, then again. The two moves are one breath — generalize, then fold back. Zoom-out is the inhale; practicing-on-itself is the exhale.
+
+Engelbart gave this three levels, in his later ABC model, and the palace has a worked instance of each. **A** is the
+work itself. **B** is improving the work. **C** is improving how you improve — and his argument was
+that C is where the leverage sits and almost nobody spends there. The v1.17 reduction was B: the
+schema was fixed. The v1.18 floor split was C: it restructured the thing every session reads before
+doing anything, so it changed how every later improvement would happen. His other half is
+**co-evolution** — his 1962 **H-LAM/T** system is a Human using Language, Artifacts, Methodology and
+Training, and moving one leg forces the others. Change the schema and the ceremonies must follow;
+change a ceremony and the training in `CLAUDE.md` must follow. The palace has been doing that all
+along without a name for the constraint. He called the practice **bootstrapping** — augmenting human
+intellect by using the tool to build the tool.
 
 ## This session as the worked example
 
@@ -60,9 +74,40 @@ A system that practices only on itself can go insular — self-reference with no
 
 That is the failure mode this section warns about, caught in the act — and the shape of the catch is the lesson. The drift was invisible from inside because each step was justified by the last: a bad deposit justified a ceremony change, the ceremony change justified a tool, the tool justified an entry documenting it. **Insularity does not arrive as one bad decision; it accumulates as a chain of good ones, each answering the previous rather than the work.** The external bite came from the human in the room asking what any of it had made. The counter-discipline's real form is not a rule the palace can hold for itself — it is keeping someone present who is measuring against the actual goal, and hearing them when they say it.
 
+### The check the palace can hold itself
+
+The counter-discipline above ends by admitting it is not a rule the palace can run alone. There is one
+it can.
+
+Engelbart's claim is that capability lives in the whole H-LAM/T system, and that raising one leg while
+the others stay put does not raise capability at all. Spinoza said the same thing about a body.
+*Ethics* IV: mirth — **hilaritas** — *"consists in all parts of the body being affected equally… the
+body's power of activity is increased in such a manner that the several parts maintain their former
+proportion of motion and rest."* Its opposite, **titillatio**, *"consists in one or some of its parts
+being affected more than the rest,"* and can leave the body *"incapable of being affected in a variety
+of other ways."* Hilaritas cannot be excessive. Titillatio can, and the excess is what does the damage.
+
+[[Hilaritas Generator]] already builds on this: hilaritas is the whole-being joy that accompanies an
+increase in **power-to-act**, and the four pillars firing together are what make the increase global
+rather than local.
+
+So the 2026-09-02 failure has a name older than software. The Artifacts and Methodology legs grew — a
+ceremony gained steps, a validator gained a subcommand, an entry filled with gotchas — and the work
+did not. That is titillatio: one part affected more than the rest, mistaken for the whole body gaining
+power. **The check is a question, and the palace can ask it of itself: which legs grew?** If the
+answer is one, the increase was local, whatever it felt like.
+
 ## Cross-domain resonance
 
 This [[mirrors]] **[[Endosymbiosis]]**: the merger where one organism took another inside itself and both kept growing — the palace folding its own new capability inward and compounding from it. The difference worth keeping: endosymbiosis fused two *different* organisms; here the palace folds in *itself*, which is exactly why the insularity warning matters.
+
+The same distinction applies to Engelbart. His bootstrapping aimed at collective capability inside an
+institutional research programme, and he never asked whether the augmented human was well — for him
+the felt reading was not part of the instrument. Here it is the instrument. Though the gap is narrower
+than it looks: if joy is the felt sign that power-to-act has increased, then measuring flourishing and
+measuring capability are one measurement taken from two sides, and this palace simply takes the reading
+from the side Engelbart left out. Wellbeing stays primary because it is the reading; capability is what
+is being read.
 
 ## Forward Vectors
 
