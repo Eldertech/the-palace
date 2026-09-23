@@ -27,6 +27,7 @@ links:
 1. The named entry exists in the palace with `stage: dormant` or `stage: composting`
 2. A reason for revival can be articulated — either from a Spore Check disposition or from new work that intersects the dormant entry
 3. The entry is readable in full
+4. The operator has grown this session — [[ELDER]] and [[SCHEMA]] read — since the revival writes a stage change and proposes typed links
 
 **Postconditions:**
 1. Entry stage has been updated from `dormant` to `seed`, `sprout`, or `growing` (depending on body depth)

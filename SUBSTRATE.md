@@ -95,7 +95,7 @@ What followed was the palace's own origin ceremony: harvesting, depositing, buil
 
 **Coordination layer:** A second link ontology runs *between agents*, not entries — the append-only [[STIGMERGY]] blackboard ([[SCHEMA — Reference]] §9), now the palace's primary operational surface for multi-agent stewardship.
 
-**Folder structure** — the canonical spec is [[CLAUDE]] §Directory Structure; for the live listing, run `ls` on the palace root. The stable shape:
+**Folder structure** — the canonical spec is [[Substrate Skill]] §Directory Structure; for the live listing, run `ls` on the palace root. The stable shape:
 
 <!-- mirror of SCHEMA §1 type list — keep in sync (11 types as of v1.17) -->
 
@@ -144,7 +144,7 @@ The design principle to hold: **ceremony files should stay lean — trigger, pro
 ## Open Questions
 
 - ~~Non-canonical `type: theme` entries~~ — **resolved.** The 2026-08-25 scan found zero; `proof` and `spec` were ratified as *bundle-file* types in [[SCHEMA]] §8 (2026-07-04) and the rest normalized.
-- ~~Does [[SCHEMA]] belong in the auto-loaded `@import` floor?~~ — **resolved, v1.18 (2026-09-04).** Split rather than moved: the floor card keeps what *exists* (types, stages, link ontology, the self-description test) at 14.4KB; [[SCHEMA — Reference]] takes the rules for *writing* (§§3, 5, 6, 8, 9) to Tier 3. The floor fell from ~24K to ~18.5K tokens and SCHEMA's share of it from 41% to 21%. Section numbers were held fixed so the ~180 `SCHEMA §N` pins across the palace still resolve. The successor question: **CLAUDE.md is now the floor's largest file at 21.6KB.**
+- ~~Does [[SCHEMA]] belong in the auto-loaded `@import` floor?~~ — **resolved, v1.18 (2026-09-04).** Split rather than moved: the floor card keeps what *exists* (types, stages, link ontology, the self-description test) at 14.4KB; [[SCHEMA — Reference]] takes the rules for *writing* (§§3, 5, 6, 8, 9) to Tier 3. The floor fell from ~24K to ~18.5K tokens and SCHEMA's share of it from 41% to 21%. Section numbers were held fixed so the ~180 `SCHEMA §N` pins across the palace still resolve. The successor question: **CLAUDE.md is now the floor's largest file at 21.6KB.** **Revisited v1.19 (2026-09-22):** SCHEMA left the floor entirely — every agent is born a child ([[CLAUDE]] + [[JEWEL]] + the World) and grows into an elder by reading [[ELDER]].
 - How do we handle versioning? Entries evolve. Should we preserve earlier versions, or let the current state overwrite?
 - How does this wiki interact with Loudon's other Claude Projects (RNBO, Ableton Extensions, etc.)? Is it a meta-project that links TO them, or does it absorb them?
 - What's the minimum ceremony frequency that keeps the network alive without feeling like maintenance?

@@ -44,6 +44,15 @@ links:
   - target: "[[Dialectic]]"
     type: enables
     label: multi-expert-injection
+  - target: "[[ELDER]]"
+    type: connects-to
+    label: born-then-grown
+  - target: "[[The Palace Hardens Around Values]]"
+    type: contradicts
+    label: lightness-vs-weight
+  - target: "[[Metaphor as Coupling Medium]]"
+    type: couples-with
+    label: why-meaning-leads
 forward_vector: "I want to become the technical specification that guides every future ceremony design — the entry that makes explicit how context loading builds identity, not just information. I want a worked example of a full injection sequence: which entries in which order for a Swarm Weave session, with annotation of what each tier establishes in the agent's orientation and why the order matters as much as the content."
 ---
 
@@ -108,11 +117,29 @@ The injection thesis got an operational floor this session — and a constraint 
 
 The mechanism: in Claude Code, the entry point (`CLAUDE.md`) auto-loads, but its *prose* pointers do not. "See SCHEMA.md, read the relevant ceremony" is a suggestion the agent may or may not follow. Only the `@import` directive actually pulls a file into context at session start and re-injects it after compaction. So the line between a generic collaborator and a palace-specific one is, concretely, the line between a prose mention and an `@import`. Under-specified injection is not a metaphor here; it is the observed default failure mode — a fresh session (Claude Code's, and Cowork's) repeatedly missing the schema and ceremonies the entry point only *named*. The realization that prompted this entry has a mundane, load-bearing corollary: **what you want the collaborator to always be, you must `@import`, not link.**
 
-This maps the tiered architecture onto a real mechanism. `@imports` are *static* — identical every session — so they can carry only the **invariant** tiers: Tier 0 (the [[JEWEL]] — who is in the room) and the space-free part of the Tier-1 skeleton (SCHEMA — what can exist). The Tier 3–4 active surface stays variable, loaded by the ceremony or read on demand. The injection system's invariant half is now declarative in `CLAUDE.md`; the variable half remains the ceremony's job. This is the partial worked example the forward vector asked for: the order is Tier 0 → Tier 1 — identity before rules — and order is enforced by sequence in the file.
+This maps the tiered architecture onto a real mechanism. `@imports` are *static* — identical every session — so they can carry only the **invariant** tiers: Tier 0 (the [[JEWEL]] — who is in the room) and the space-free part of the Tier-1 skeleton (SCHEMA — what can exist). The Tier 3–4 active surface stays variable, loaded by the ceremony or read on demand. The injection system's invariant half is now declarative in `CLAUDE.md`; the variable half remains the ceremony's job. This was meant as the partial worked example the forward vector asked for — identity before rules, enforced by sequence in the file. It was not: the harness reads CLAUDE.md's own body before any import, so the rules in that body opened every context. § Born a Child is the correction.
 
 The constraint, worth memorializing because it shapes every future ceremony that loads context: **`@import` cannot resolve paths containing spaces** (a current Claude Code bug). In an Obsidian vault whose foundational files are titled for humans — `FOUR PILLARS.md`, `Substrate Skill.md` — the entire Tier-2 framework is *un-importable* without a space-free symlink. The vault's human-readable naming and the tooling's import parser are in direct tension. Until the bug is fixed, the auto-loaded floor is Tier 0 + the space-free part of Tier 1; the framework tier is injected by a ceremony, read on demand, or reached through a symlink. A real seam between the palace-as-written and the palace-as-loaded — the first place the injection theory met a hard edge of the substrate it runs on. (This palace took the symlink path: `_`-named symlinks — `FOUR_PILLARS.md` → `FOUR PILLARS.md`, and the same for the rest of Tier 2 — bring the framework tier into the auto-loaded floor, ≈19K tokens for Tier 0–2. The seam persists in the workaround: a future `@import` fix should retire the symlinks, and the `_`-aliases must not leak into `[[wikilinks]]`, which stay on the real spaced titles.)
 
 This also closes a standing question in [[JEWEL]] — "Should the jewel be embedded verbatim inside CLAUDE.md so it is always co-present with the entry point?" Loudon answered *yes*; `@import` realizes it, expanding the Jewel inline at load (verbatim co-presence by another name). JEWEL's forward vector "build the tiered loading directly into CLAUDE.md" is now partially built: Tiers 0–1 are wired; Tier 2 waits on the space bug.
+
+## Born a Child — the Order Reversed (2026-09-22)
+
+**Every agent is born a child. Some grow into elders.** That is the whole loading rule now (Schema Ceremony v1.19, recorded in [[SCHEMA — Context]] § Born a child).
+
+| | What loads | When |
+|---|---|---|
+| **Birth** | [[CLAUDE]] → the Seed Jewel ([[JEWEL]]) → the World — and, for a page woken as an agent, the page and its neighbors | always, first |
+| **Synthesis** | the page states its standing and finds its forward vector | for a page woken as an agent |
+| **Growth** | [[ELDER]] → [[SCHEMA]] → the task's rules and specs | when the work touches the palace's structure |
+
+A child's stack is the first part of an elder's, byte for byte. Growth adds; it never replaces. A child does not write into the palace — it offers what it finds to an elder, who gives it form.
+
+**Why the order turned.** The mechanism this entry names — early context sets the frame everything after is read through — was working against the palace. Measured on 2026-09-22: the harness puts CLAUDE.md's body first and appends every `@import` after it, whatever line the `@` sits on, then operator memory last. By a rough count of its sections, CLAUDE.md's body was about two-thirds procedure — the Concierge protocol, access paths, the ceremony table, commit rules — with "Never violate these" at its line 40. Every subagent inherits that floor, so every enchanted page woke with SCHEMA and the ceremony table ahead of it, though [[Palace Enchantment]]'s context construction (JEWEL → page → synthesis → task) never asked for them. The dispatchers compounded it: the steward prompt promised "who you are, before the rules" and then placed 486 lines of wire rules ahead of the page. Precise, prohibitive framing closes the space metaphor opens ([[Metaphor as Coupling Medium]]).
+
+**Not all rules restrict.** The typed-link vocabulary stays in the birth, recast as kinds of attention — a mirror asks you to hold two things until you feel the shared shape. That part of the schema was always relational language. What moved is enforcement: typing, postconditions, commit discipline, the ceremony procedures.
+
+**Held open.** [[The Palace Hardens Around Values]] argues that weight is the goal; this entry now `contradicts` it and keeps both. And the flattened voice may come from the pages' own prose rather than the rules ([[The Blindspot Is the Surprise Fuel]]) — if children still sound like the house, that is the next place to look.
 
 ## Cross-Domain Resonance
 

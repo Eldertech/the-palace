@@ -267,7 +267,7 @@ return, takes the wheel at the close.**
   architecture — watch that the draft-for-approval bias holds and that drafts get genuinely
   reviewed, not rubber-stamped. If it drifts toward acting, tighten the charter.
 - When has the companion earned a place among the always-loaded invariants? Promoting "keep both
-  modes open" to the floor's *Never violate these* is a Schema-Ceremony-weight act, done once proven.
+  modes open" to [[ELDER]]'s invariants is a Schema-Ceremony-weight act, done once proven.
 
 ## Active Baton
 

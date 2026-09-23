@@ -71,7 +71,7 @@ Native macOS on Apple Silicon, with Loudon's full environment: sudo, Homebrew, p
 
 ### Fresh chat (claude.ai web)
 
-No filesystem. It reads the palace through the GitHub repository or, when that is unreachable, through the Substrate skill's minimum fallback context (see [[CLAUDE]] § Access Paths). It is a thinking-and-planning surface, not a build surface — good for synthesis, dialogue, and drafting when Loudon is away from the Mac, with the understanding that any write must be deferred to a Cowork or Claude Code session.
+No filesystem. It reads the palace through the GitHub repository or, when that is unreachable, through the Substrate skill's minimum fallback context (see [[Substrate Skill]] § Access Paths). It is a thinking-and-planning surface, not a build surface — good for synthesis, dialogue, and drafting when Loudon is away from the Mac, with the understanding that any write must be deferred to a Cowork or Claude Code session.
 
 ### BBS / STIGMERGY (Chrome at `localhost:5173`)
 

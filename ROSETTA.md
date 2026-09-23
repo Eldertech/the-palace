@@ -193,7 +193,7 @@ The link ontology above types edges *between entries*. The Palace also has a sec
 | a **face / mask** — a page run as an agent ([[Pages as Agents]]) | a **subagent** (an `agentType`) | the page brings the *who*, the model brings the thinking |
 | the [[Concierge]] **dispatching a fresh mask** — do the work, hand it back, vanish | the **Agent tool** — spawn a subagent; its final message returns; its context is discarded | this *is* "hand it back and vanish" — the basis of context-offload |
 | the **thin shim** — a `.claude/skills/…` file pointing at a canon page | a skill file used as a **pointer to the organ**, not the organ itself | canon page = organ; skill = one dispatch surface onto it |
-| **CLAUDE.md** (the auto-loaded floor) | the project's **`CLAUDE.md`** — read into every session | not an analogy: literally the same file |
+| **CLAUDE.md** (the birth) | the project's **`CLAUDE.md`** — read into every session and every subagent | not an analogy: literally the same file |
 | the `_`-symlink **`@import`** block | **`@import`** in CLAUDE.md | harness-native mechanism |
 | **Path 2 dispatch** (e.g. the `palace-orchestrator` skill) | **subagents via the Agent tool**, no API key required | how the palace runs agents without an Anthropic key |
 | a **Baton** (session hand-off) | a fresh session / subagent **picking up a task**; session continuation | the palace adds the compression discipline the harness doesn't |
@@ -230,8 +230,9 @@ The gap in the last row is the point: where the harness has a word, the palace s
 
 ```
 The Palace/
-├── CLAUDE.md               ← Entry point. Read first. Contains: version, ceremony table, depth index.
-├── SCHEMA.md               ← Type system (TBox), floor card. Entry types, stages, link types, self-description test.
+├── CLAUDE.md               ← The birth. Read first, by every agent. Contains: version, the child/elder rule, ceremony trigger words.
+├── ELDER.md                ← What an agent reads to grow up: the limits of age, the invariants, what to read next.
+├── SCHEMA.md               ← Type system (TBox), read on growing up. Entry types, stages, link types, self-description test.
 ├── SCHEMA — Reference.md   ← The writing rules. YAML fields, change protocol, bundles, STIGMERGY wire (§§3,5,6,8,9).
 ├── ROSETTA.md              ← This file. Cross-tradition glossary. Self-description.
 ├── README - The Palace Guide.md  ← Philosophy, founding principles, palace manual.

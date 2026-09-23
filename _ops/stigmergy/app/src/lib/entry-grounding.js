@@ -4,7 +4,7 @@
 // it discusses or edits a passage it must be grounded in (1) the page itself,
 // (2) the page's typed-link neighborhood — each neighbor's title, stage, and
 // forward_vector, the directional desire that says what the neighbor is for —
-// and (3) the palace floor (the Tier-0 invariants every agent shares).
+// and (3) the palace floor (the birth every agent shares).
 //
 // This module is page-agnostic: the grounding is assembled at runtime from
 // whatever entry is open, read from frontmatter. It is pure over the filesystem
@@ -19,14 +19,14 @@ import { resolve } from 'node:path';
 import { readEntry, listEntries } from './entries.js';
 import { buildIndex, resolveWikilink } from './wikilink.js';
 
-// The Tier-0 floor every Companion inherits. Invariant across entries, so it is
-// a small cached descriptor rather than a per-call file read — the full floor
-// text (JEWEL/SCHEMA/pillars) is injected into the worker prompt at edit time;
-// here it only needs to tell the reader the floor is present and what it is.
+// The birth every Companion inherits (CLAUDE + the Seed Jewel + the World,
+// auto-@imported). Invariant across entries, so it is a small cached descriptor
+// rather than a per-call file read. The rules (ELDER, SCHEMA) are not part of it;
+// the worker prompt points at them on disk.
 export const PALACE_FLOOR = Object.freeze({
   forward_vector: 'symbiotic human and AI flourishing through joyful creation',
   pillars: ['creation', 'tools', 'philosophy', 'practice'],
-  note: 'Tier-0 invariants (the Jewel, the Four Pillars, the link ontology) are injected at edit time.',
+  note: 'Born with the Jewel and the Four Pillars; the rules (ELDER, SCHEMA) are read on disk before any frontmatter change.',
 });
 
 // A neighbor as the readout/worker wants it: who it is, how it relates, and what

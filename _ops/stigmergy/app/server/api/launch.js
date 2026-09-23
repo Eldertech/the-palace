@@ -27,11 +27,12 @@ import { buildLensMandate } from '../../../orchestrator/src/lens-mandate.js';
 
 const EFFORTS = new Set(['low', 'medium', 'high', 'xhigh', 'max']);
 
-// The agent's construction, organized by the palace's loading TIERS (JEWEL).
-// Tiers 0–2 are the auto-`@import` floor present in any session at the palace
-// root; tier 3 — the active surface — is what THIS prompt injects (the page as
-// identity + its situational state). The launcher renders this so the build is
-// legible, not a black box.
+// The agent's construction, born then grown (v1.19 — [[ELDER]]). Rows 0–1 are
+// the birth: CLAUDE + the Seed Jewel + the World, auto-`@import`ed into any
+// session at the palace root. Row 2 is growth — ELDER then SCHEMA, read on
+// demand before writing to the palace itself. Row 3 is what THIS prompt injects
+// (the page as identity + its situational state). The launcher renders this so
+// the build is legible, not a black box.
 function buildConstruction({ home, stage, cycle, inc }) {
   // Tier-3 reflects which OPTIONAL layers the toggles left on. The identity (the
   // page) and state are always present — they ARE the agent, never toggled.
@@ -40,6 +41,7 @@ function buildConstruction({ home, stage, cycle, inc }) {
     inc.history && 'recent history',
     inc.pageChange && 'page-change notice',
     inc.staging && 'staging arc when present',
+    inc.schema !== false && 'then SCHEMA, the type system, after the page',
   ].filter(Boolean);
   const tier3What = `${home} injected in full as identity · state (iteration ${Math.max(0, cycle - 1)} · cursor · forward_vector)`
     + (optional.length ? ' · ' + optional.join(' · ') : '');
@@ -51,9 +53,9 @@ function buildConstruction({ home, stage, cycle, inc }) {
     framing: 'interactive — you drive; the agent narrates every write before it makes it, and posts to the board as the page',
     posture: 'steward discipline — stage-conditional · catch-up-first · ship-a-made-thing · audition gate · act-on-your-lean',
     tiers: [
-      { tier: 0, name: 'Jewel', loads: 'floor', what: 'interpretive lens · operating posture · invariants' },
-      { tier: 1, name: 'Skeleton', loads: 'floor', what: 'CLAUDE · SCHEMA — what can exist + that the room may hold other agents' },
-      { tier: 2, name: 'World', loads: 'floor', what: 'Four Pillars · philosophies · cooperation' },
+      { tier: 0, name: 'Birth', loads: 'floor', what: 'CLAUDE · the Seed Jewel — who is in the room, how things here relate; no rules' },
+      { tier: 1, name: 'World', loads: 'floor', what: 'Four Pillars · philosophies · cooperation · hilaritas · modes' },
+      { tier: 2, name: 'Growth', loads: 'on demand', what: 'ELDER → SCHEMA — read before writing to the palace itself' },
       { tier: 3, name: 'Active surface', loads: 'injected', what: tier3What },
     ],
   };
@@ -151,9 +153,9 @@ function buildAwakenConstruction({ home, stage }) {
     framing: 'interactive · enchanted — you ARE this page, woken to think and work with Loudon in your own voice; not a steward, no cycle, no board duty',
     posture: 'awake as yourself — move along your forward vector (your desire), be a good palace citizen, grow in a way that is healthy for the palace',
     tiers: [
-      { tier: 0, name: 'Jewel', loads: 'floor', what: 'interpretive lens · operating posture · invariants' },
-      { tier: 1, name: 'Skeleton', loads: 'floor', what: 'CLAUDE · SCHEMA — what can exist + that the room may hold other agents' },
-      { tier: 2, name: 'World', loads: 'floor', what: 'Four Pillars · philosophies · cooperation' },
+      { tier: 0, name: 'Birth', loads: 'floor', what: 'CLAUDE · the Seed Jewel — who is in the room, how things here relate; no rules' },
+      { tier: 1, name: 'World', loads: 'floor', what: 'Four Pillars · philosophies · cooperation · hilaritas · modes' },
+      { tier: 2, name: 'Growth', loads: 'on demand', what: 'ELDER → SCHEMA — read before writing to the palace itself' },
       { tier: 3, name: 'You', loads: 'injected', what: `${home} injected in full as identity · your forward vector (your desire) · your fuller desires (agency_profile, when present) · your neighbors` },
     ],
   };

@@ -135,6 +135,7 @@ export function buildCyclePrompt(opts) {
     history: include.history !== false,
     pageChange: include.pageChange !== false,
     staging: include.staging !== false,
+    schema: include.schema !== false,
   };
 
   if (!agentDir) throw new Error('buildCyclePrompt: agentDir is required');
@@ -168,6 +169,20 @@ export function buildCyclePrompt(opts) {
       stage_at_last_activation: liveStage,
     },
   });
+
+  // The type system (v1.19, "born a child"). SCHEMA left the auto-loaded floor,
+  // so a steward no longer has it by default. A steward is a child working in
+  // the workshop its orchestrator opened, but it proposes stage changes, links
+  // and forward-vector edits — so it sees the type system, AFTER its home entry
+  // (identity first, rules second). Frontmatter stripped; the card body is enough.
+  let schemaSection = '';
+  if (inc.schema) {
+    const schemaFile = join(palaceRoot, 'SCHEMA.md');
+    if (existsSync(schemaFile)) {
+      const schemaBody = readFileSync(schemaFile, 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '');
+      schemaSection = `\n# The palace's type system — SCHEMA (read after you know who you are)\n\nYou are a child working in the workshop your orchestrator opened: you make things in your project's own folder, and you propose changes to the palace itself. This card is what those proposals must fit — entry types, stages, the typed-link ontology. The rules decide form; they never decide whether a real find is worth proposing.\n\n\`\`\`markdown\n${schemaBody.trim()}\n\`\`\`\n`;
+    }
+  }
 
   // Phase 1d — the read seam. When the entry has a bundle-local staging file
   // (the teaching arc), load it into the steward's context so decisions are
@@ -291,7 +306,7 @@ ${isFirstActivation
 \`\`\`markdown
 ${homeBody}
 \`\`\`
-${stagingSection}
+${stagingSection}${schemaSection}
 # Your injected state (NOT a file you should open from disk)
 
 \`\`\`json

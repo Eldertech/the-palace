@@ -4,7 +4,7 @@ One cycle of one agent's lifecycle. Both `songline.md` and `permanent.md` mode w
 
 ## The shape of a clean cycle
 
-Render the system prompt from the appropriate template (`songline` or `steward`) against the manifest's vars. Build a user-turn carrying the **home-entry body**, **neighborhood frontmatter only** (not full bodies — v0.1 default), the **relevant blackboard slice** (session-filtered for songline; since-`last_read_cursor` for permanent), and a `PAGE_UPDATE_NOTICE` if `check-page` returned `changed: true`. Fold system prompt + user turn into a single `prompt` arg (Claude Code subagents don't expose system-prompt override). Dispatch via the Agent tool. Parse JSON code-fence blocks from the response. Inject a fresh `health` block built from the Agent tool's reported usage. Validate each message. Append the valid ones. That is the whole cycle.
+Render the system prompt from the appropriate template (`songline` or `steward`) against the manifest's vars. Build a user-turn carrying the **home-entry body**, then (stewards) the **type system** — SCHEMA.md, after the home entry, since SCHEMA no longer rides the auto-loaded birth (v1.19), **neighborhood frontmatter only** (not full bodies — v0.1 default), the **relevant blackboard slice** (session-filtered for songline; since-`last_read_cursor` for permanent), and a `PAGE_UPDATE_NOTICE` if `check-page` returned `changed: true`. Fold system prompt + user turn into a single `prompt` arg (Claude Code subagents don't expose system-prompt override). Dispatch via the Agent tool. Parse JSON code-fence blocks from the response. Inject a fresh `health` block built from the Agent tool's reported usage. Validate each message. Append the valid ones. That is the whole cycle.
 
 ## Hard rules (do not violate)
 

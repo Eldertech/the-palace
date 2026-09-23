@@ -41,7 +41,7 @@ can spawn it, then kept until the session ends. The mechanics:
    still writes, shedding ~20K of unused MCP schemas that `general-purpose` would carry. A single
    write-capable resident covers all three postures — a read-only `palace-reader` would force a
    second agent for every curator address and lose the resident's accumulated context; wired to
-   `palace-writer` 2026-07-08). Give it the **charter** (`prompts/companion.md`), which has it boot the **operational
+   `palace-writer` 2026-07-08). Give it the **charter** (`prompts/companion.md`), which has it grow at boot — [[ELDER]], SCHEMA, then the **operational
    tier** as its standing expertise (SUBSTRATE · ROSETTA · Substrate Skill · Palace Ceremonies ·
    STIGMERGY + the wire spec) — the companion is deeper in *how the palace runs* than the working
    Claude, so it can validate and support the palace in parallel. Per-address *work-targets* come
@@ -203,8 +203,8 @@ is the one thing that would make it worse than nothing.
   reasoned from the 2026-08-25 failure, not yet tuned by a live work-choice. Watch whether "an open
   handoff outranks a fresh idea" holds when the fresh idea is genuinely better, and whether the
   one-move discipline survives a board with three equally live candidates.
-- **Does not add "keep both modes open" to the formal always-loaded invariant list** (JEWEL /
-  CLAUDE's "Never violate these"). That is a Schema-Ceremony-weight act, done *once the pattern has
+- **Does not add "keep both modes open" to the formal always-loaded invariant list** (ELDER's
+  invariants). That is a Schema-Ceremony-weight act, done *once the pattern has
   earned it* — the production plan's Deferred step. Stated here as a working rule; promoting it is later.
 
 ## Forward
