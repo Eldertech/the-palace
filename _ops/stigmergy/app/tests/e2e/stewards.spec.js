@@ -14,8 +14,8 @@ import { test, expect } from '@playwright/test';
 // dryReap on (no palace mutation).
 
 async function gotoStewards(page) {
-  await page.goto('/?deck=stewards');
-  await expect(page.getByTestId('stewards-screen')).toBeVisible({ timeout: 10_000 });
+  await page.goto('/?deck=projects');
+  await expect(page.getByTestId('projects-screen')).toBeVisible({ timeout: 10_000 });
 }
 
 test.describe('Stewards deck — surface', () => {
@@ -23,7 +23,7 @@ test.describe('Stewards deck — surface', () => {
     await gotoStewards(page);
     await expect(page.getByTestId('advance-all')).toBeVisible({ timeout: 10_000 });
     await expect(page.getByTestId('worker-status')).toBeVisible();
-    await expect(page.locator('[data-testid^="steward-row-"]').first()).toBeVisible();
+    await expect(page.locator('[data-testid^="project-row-"]').first()).toBeVisible();
   });
 
   test('a first advance click opens a two-step confirm and fires nothing', async ({ page }) => {

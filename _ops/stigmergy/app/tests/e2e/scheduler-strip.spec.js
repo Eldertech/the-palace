@@ -7,8 +7,8 @@ import { test, expect } from '@playwright/test';
 // .paused flag) and NEVER advances a steward (that would fire a real cycle).
 
 async function gotoStewards(page) {
-  await page.goto('/?deck=STEWARDS');
-  await expect(page.getByTestId('stewards-screen')).toBeVisible({ timeout: 10_000 });
+  await page.goto('/?deck=PROJECTS');
+  await expect(page.getByTestId('projects-screen')).toBeVisible({ timeout: 10_000 });
 }
 
 test.describe('STEWARDS — heartbeat scheduler strip', () => {

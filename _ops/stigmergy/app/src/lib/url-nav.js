@@ -16,7 +16,7 @@
 // pass through untouched so the existing e2e tests don't break.
 
 import { useCallback, useEffect, useState } from 'react';
-import { DECKS } from './decks.js';
+import { DECKS, DECK_ALIASES } from './decks.js';
 
 // Parse `?commit=<sha>` from the URL. Returns the sha or null. SSR-safe.
 export function parseCommitFromUrl(searchString) {
@@ -272,11 +272,58 @@ export function deckFromSearch(searchString) {
   const params = new URLSearchParams(typeof searchString === 'string' ? searchString : '');
   const v = params.get('deck');
   if (typeof v === 'string') {
-    const up = v.toUpperCase();
+    const up = DECK_ALIASES[v.toUpperCase()] || v.toUpperCase();
     if (DECKS.includes(up)) return up;
   }
   if (params.get('demo')) return 'QUEUE';
   return 'STATE';
+}
+
+// ---------------------------------------------------------------------------
+// Project navigation — `?project=<home>` opens that project's scroll on the
+// PROJECTS deck. Same push-in-setter discipline as the sibling hooks, so the
+// browser back button steps from the scroll back to the table.
+
+export function parseProjectFromUrl(searchString) {
+  if (typeof searchString !== 'string') return null;
+  const v = new URLSearchParams(searchString).get('project');
+  return v && v !== '' ? v : null;
+}
+
+export function buildProjectSearch(searchString, home) {
+  const params = new URLSearchParams(searchString || '');
+  params.delete('project');
+  if (home) params.set('project', home);
+  const s = params.toString();
+  return s === '' ? '' : `?${s}`;
+}
+
+export function useProjectNavigation() {
+  const initial = typeof window === 'undefined' ? null : parseProjectFromUrl(window.location.search);
+  const [project, setProjectState] = useState(initial);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    function onPop() { setProjectState(parseProjectFromUrl(window.location.search)); }
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  const openProject = useCallback((home) => {
+    const target = home || null;
+    if (typeof window !== 'undefined') {
+      const nextSearch = buildProjectSearch(window.location.search, target);
+      const currentSearch = window.location.search || '';
+      if (nextSearch !== currentSearch) {
+        const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
+        window.history.pushState({ project: target }, '', nextUrl);
+      }
+    }
+    setProjectState(target);
+  }, []);
+
+  const closeProject = useCallback(() => openProject(null), [openProject]);
+  return { project, openProject, closeProject };
 }
 
 // Build a search string with `deck` set (uppercased), preserving every other
@@ -311,7 +358,8 @@ export function useDeckNavigation() {
 
   const navigateDeck = useCallback((next) => {
     if (!next) return;
-    const target = String(next).toUpperCase();
+    const up = String(next).toUpperCase();
+    const target = DECK_ALIASES[up] || up;
     if (typeof window !== 'undefined') {
       const nextSearch = buildDeckSearch(window.location.search, target);
       const currentSearch = window.location.search || '';
