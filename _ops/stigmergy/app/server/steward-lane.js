@@ -37,6 +37,7 @@ import { readRegistry, findAgent } from '../../orchestrator/src/registry.js';
 import { readEntryMeta } from '../../orchestrator/src/entry-frontmatter.js';
 import { dueForCycle } from '../../orchestrator/src/batch-due.js';
 import { readJsonl } from '@stigmergy/core/blackboard';
+import { resolveClaudeBin } from './claude-bin.js';
 
 const DEFAULT_REGISTRY_REL = '_ops/agents/permanent/REGISTRY.json';
 const DEFAULT_STATE_DIR_REL = '_ops/stigmergy/.actuator-steward';
@@ -66,7 +67,7 @@ export function transcriptNameFor(slug, cycleN, tsIso) {
 /** The real (non-stub) worker argv: a headless stream-json claude cycle. */
 export function stewardArgv(prompt, model) {
   return [
-    'claude', '-p', prompt,
+    resolveClaudeBin(), '-p', prompt,
     '--model', model || FALLBACK_MODEL,
     '--output-format', 'stream-json',
     '--verbose',

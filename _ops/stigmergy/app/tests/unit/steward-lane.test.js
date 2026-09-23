@@ -7,6 +7,7 @@ import {
   runCapFor, nextRunStep, stopReason,
 } from '../../server/steward-lane.js';
 import { extractMessagesFromTranscript } from '../../../orchestrator/src/process-cycle.js';
+import { resolveClaudeBin } from '../../server/claude-bin.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const STUB = resolve(__dirname, '../fixtures/stub-steward-worker.mjs');
@@ -27,7 +28,7 @@ describe('steward-lane pure helpers', () => {
   test('stewardArgv carries the stream-json flags, the model, and the ps-liveness signature', () => {
     const argv = stewardArgv('PROMPT', 'claude-opus-4-7');
     expect(argv).toEqual([
-      'claude', '-p', 'PROMPT',
+      resolveClaudeBin(), '-p', 'PROMPT',
       '--model', 'claude-opus-4-7',
       '--output-format', 'stream-json',
       '--verbose',
