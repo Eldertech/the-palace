@@ -15,23 +15,23 @@ forward_vector: "I am Waveguide Synthesizer's scroll — the one page that alway
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:51:17.000Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-23T05:04:41.000Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** seed · **Steward:** cycle 8 · last ran 2026-09-23 (today)
-- **Waiting on you:** nothing
+- **Status:** active · **Stage:** seed · **Steward:** cycle 9 · last ran 2026-09-23 (today)
+- **Waiting on you:** 1 open ask
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-09-23 (today) — I measured Study v1's audio code offline and found three bugs. v1.1 fixes them: it stays in tune, stiffness really stretches the partials, and it's audible. (`waveguide-synthesizer-steward-019`)
-- **Last commit touching this project:** 2026-09-23 `49fe241` — ops(scrolls): standing orders for the four pilot projects, written on Loudon's instruction
+- **Last shipped:** 2026-09-23 (today) — Which view should the string open in: the strobe (the note you're hearing) or the replay (exact slow motion of the first moments)? (`waveguide-synthesizer-steward-022`)
+- **Last commit touching this project:** 2026-09-23 `bbab2d7` — steward(Quantum Synthesizer, Waveguide Synthesizer): pilot cycles 5 and 8 under the run contract
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
 
-Waveguide Synthesizer is a browser instrument where the string on screen is the sound. Two delay lines carry a right-going and a left-going wave, their sum is the drawn orange string, and the speaker hears that same string. You chose one honest string in June (DROP-DECOMPOSITION). Study v1 was built on that choice last cycle but never announced. This cycle I ran v1's own audio code headless in node and measured it. The stiffness slider did nothing, the pitch drifted up to 28 cents, and a pluck peaked around -35 dBFS. Study v1.1 fixes all three, and I measured the fix the same way. Open the page, or play the two 15-second auditions back to back.
+Waveguide Synthesizer is a browser instrument where the string on screen is the sound. Two delay lines carry a right-going and a left-going wave. Their sum is the orange line you see, and the speaker hears that same line at one point, the pickup. Last cycle, v1.1 put it in tune, made stiffness really stretch the partials, and made it loud enough. One problem was left. At 60 frames a second a 196 Hz string goes round its loop about 3.3 times between frames, so the screen showed a jumble. This cycle Study v1.2 adds two slow views. The strobe catches the string at a chosen point in its cycle and moves that point on a sliver each frame. The replay records the first three cycles after a pluck an…
 
 ### Open asks
 
-_None — nothing is waiting on you._
+- `waveguide-synthesizer-steward-022` — directional_decision · posted 2026-09-23 · options: STROBE-DEFAULT · REPLAY-DEFAULT · AUTO-BY-STIFFNESS · REDIRECT
 
 ### Answered, not yet consumed
 
@@ -52,6 +52,59 @@ Written by Claude on Loudon's behalf, 2026-09-23: your last two cycles posted no
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="waveguide-synthesizer-steward-022" -->
+### 2026-09-23 — cycle 9 — Which view should the string open in: the strobe (the note you're hearing) or the replay (exact slow motion of the first moments)?
+> still working · v1.2 shipped, strobe is the default · steward leans STROBE-DEFAULT
+
+Waveguide Synthesizer is the browser string where what you see is what you hear. At full speed the screen was a jumble, so v1.2 adds two slow views. The strobe shows the note you are hearing, slowed about 392 times. It's exact for a flexible string but churns on a stiff one, because a stiff string never repeats its shape. The replay is exact slow motion at any stiffness, but it shows the first 15 ms after the pluck, looping while the note fades. I shipped the strobe as the default because it keeps the promise that the screen is the sound you hear right now. The trade: stiff-string players would have to find the replay button. Watch the four views side by side in the replay page, then choose. The project keeps moving whether or not you answer.
+
+**Artifacts:**
+- [The four views side by side, frame by frame.](Projects/Waveguide Synthesizer/offline-v1.2/screen-replay.html)
+- [The same views as a still: strobe churning at stiffness 1, replay clean.](Projects/Waveguide Synthesizer/offline-v1.2/screen-time-four-views.png)
+- [index.html](Projects/Waveguide Synthesizer/study-v1.2-strobe/index.html)
+<sub>`waveguide-synthesizer-steward-022` · RESOURCE_REQUEST on TRICKSTER</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="waveguide-synthesizer-steward-021" -->
+### 2026-09-23 — cycle 9 — You can now watch the wave travel. Study v1.2 adds a strobe view and a slow replay. The sound is unchanged.
+> shipped · v1.2 measured offline, not opened in a browser · steward leans STROBE-DEFAULT
+
+The strobe works the way a timing light does. The string repeats every cycle, since v1.1 tuned the loop to exactly one period. So a frame taken a whole number of cycles later, plus 1/120 of a cycle, shows the real wave moved on by a sliver. At 196 Hz with the slider at 2 seconds per cycle, you're watching the string 392 times slower than life. Each frame is the rail state at that moment. The moment falls between two samples, so the page blends those two. The decay isn't slowed, because loss happens in real time.
+
+The measurements found a limit, and it's physics, not a bug. A stiff string has no single period: its high partials run sharp, so no two cycles have the same shape. At full stiffness, the shape of a sharp strike one cycle later matches the one before by only 0.39 (1.0 is identical). The strobe can't stand that still. It churns, as the third panel of the picture shows. So I added the replay. At each pluck the audio code records the string at every sample for three cycles, about 15 ms at 196 Hz, and hands it to the screen once. The screen plays it back slowly, on a loop. That's true slow motion for any stiffness. It shows the past, not the note you're hearing. The fourth panel shows it at full stiffness: two clean pulses leave the strike, and after the bridge they fan out, highs first. It's cycle 8's picture, now moving.
+
+The controls are a view button (V cycles strobe, replay, live), a slow-motion slider (0.5 to 8 seconds per string cycle, with a readout like '1/392 speed') and hold (H stands the wave still). The live view now really runs at 60 frames a second. v1.1 managed about 54.
+
+How I checked it. I ran the page's own code headless in node with the runner from last cycle, which I extended to keep each frame's capture moment and the replay recording. The audio is identical to v1.1: all 720,000 samples of the 15-second audition, in all three views. Every strobe frame I compared against a sample-by-sample recording of the same note matched to rounding. The replay recording matched exactly. The screen's playback code, pulled out of the page and run headless too, reproduces the true string. Frames arrive 60.06 times a second, give or take one audio block (128 samples).
+
+The alternatives I passed over: a replay-only view (exact, but you'd never see the note you're hearing), and one strobe per partial (that isn't one picture anymore).
+
+**Artifacts:**
+- [Watch it here. The four views, 4 seconds each, every frame made headless by the page's own code. No Three.js, no network.](Projects/Waveguide Synthesizer/offline-v1.2/screen-replay.html)
+- [2 seconds of screen frames per view, stacked top to bottom: live (jumble), strobe at stiffness 0 (pulses travel and reflect), strobe at stiffness 1 (churns), replay at stiffness 1 (the fan, clean). Each row is scaled to its own peak.](Projects/Waveguide Synthesizer/offline-v1.2/screen-time-four-views.png)
+- [Study v1.2, the playable page: strobe, replay and live views, a slow-motion slider and hold. The audio code is v1.1's, unchanged.](Projects/Waveguide Synthesizer/study-v1.2-strobe/index.html)
+- [Measurements: audio identical to v1.1, frames exact, the strobe's timing, cycle-to-cycle shape, replay exactness.](Projects/Waveguide Synthesizer/offline-v1.2/measure_strobe.py)
+- [The raw numbers behind the table.](Projects/Waveguide Synthesizer/offline-v1.2/measurements.json)
+- [Renders the four-view picture and the replay page from headless runs.](Projects/Waveguide Synthesizer/offline-v1.2/render_strobe.py)
+- [Runs the page's own screen-side replay code headless, 60 frames a second.](Projects/Waveguide Synthesizer/offline-v1.2/replay_probe.mjs)
+- [Last cycle's runner, extended to keep each frame's capture moment and the replay recording. Cycle 8's measurements reproduce with it.](Projects/Waveguide Synthesizer/offline-v1/run_worklet.mjs)
+
+_Three views of one 196 Hz string. Measured by running the page's own code headless._
+|  | live | strobe | replay |
+| --- | --- | --- | --- |
+| how far the wave travels between frames | 3.3 round trips | 1/120 of a round trip | 1/120 of a round trip |
+| what a frame is | the string right now | the string now, caught at a chosen point in its cycle | the string in its first three cycles after the pluck |
+| is the frame the real string? | yes | yes: matches to 4 parts in 100 million (rounding) | yes: recording exact; playback matches to 3 parts in 100 million |
+| flexible string (stiffness 0) | a jumble | one real cycle, slowed 392 times; median phase error 0.2 samples | exact slow motion |
+| stiff string (stiffness 1) | a jumble | churns: the shape one cycle later matches only 0.39 | exact slow motion; the fan develops |
+| sound | identical to v1.1 | identical to v1.1 | identical to v1.1 |
+
+_Left rough:_ I haven't opened v1.2 in a browser. The 3D scene, the view button, the V and H keys and the replay's status line are unseen, and Three.js still loads from unpkg. Frames go out 60 times a second by the audio clock, so a display running at a slightly different rate will now and then show a frame twice or skip one. The replay records only when you pluck in replay view, so switching to it mid-note shows nothing until the next pluck. My frame-to-frame shape-change number wrongly counts a narrow pulse simply moving as change, so I report distance travelled per frame instead. Last cycle I wrote that a 196 Hz string goes round 3.7 times between frames. It's 3.3.
+
+_Next moves named:_ Open v1.2 in Chrome: check the strobe and replay by eye at 82, 196 and 440 Hz, the hold key, and the replay status line · Settle the default view (card on the TRICKSTER board), then the rest of Study tier: design-system skin, bundle Three.js locally so the page works offline, and polyphony (one worklet with N strings, or N worklets) · Use the replay page as the 2D side of the open question in the entry, whether the 3D string teaches better than a 2D one
+<sub>`waveguide-synthesizer-steward-021` · BROADCAST on GENERAL</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="waveguide-synthesizer-steward-019" -->
 ### 2026-09-23 — cycle 8 — I measured Study v1's audio code offline and found three bugs. v1.1 fixes them: it stays in tune, stiffness really stretches the partials, and it's audible.
 > shipped · v1.1 built and measured offline, not yet opened in a browser · steward leans STROBE-VIEW next
