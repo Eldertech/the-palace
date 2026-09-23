@@ -1,0 +1,537 @@
+<title>Message Passing on the Palace</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,Helvetica,sans-serif;
+  --display:'Anton','Bebas Neue',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --bg:#0a0a0f; --elev1:#12121a; --elev2:#1a1a28; --elev3:#22222e;
+  --border:#4a4a5e; --border-soft:rgba(255,255,255,.06);
+  --fg1:#e8e8f0; --fg2:#c8c8d8; --fg3:#8a8aa0; --fg4:#4a4a5a;
+  --accent:#e8b84a; --accent-soft:rgba(232,184,74,.10); --accent-line:rgba(232,184,74,.5);
+  --repel:#ff6fae; --attract:#4a8fff; --ok:#6bd45a;
+  --r-sm:2px; --r-md:4px;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg2);
+  font-family:var(--serif); font-size:17px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 96px}
+.col{max-width:66ch}
+h1,h2,h3{color:var(--fg1);text-wrap:balance;margin:0}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--fg3);
+}
+.rule{height:1px;background:var(--border-soft);margin:0}
+
+/* &#9472;&#9472; masthead &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+header{padding:72px 0 40px}
+header .eyebrow{color:var(--accent)}
+h1{
+  font-family:var(--display);font-weight:400;font-size:clamp(40px,7.2vw,88px);
+  line-height:1.02;letter-spacing:.005em;text-transform:uppercase;margin:18px 0 0;
+}
+h1 em{font-style:normal;color:var(--accent)}
+.standfirst{font-size:21px;line-height:1.6;color:var(--fg2);margin:22px 0 0;max-width:58ch}
+.standfirst strong{color:var(--fg1);font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:0;margin-top:36px;border-top:1px solid var(--border-soft)}
+.fact{padding:16px 28px 16px 0;margin-right:28px;border-right:1px solid var(--border-soft)}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-family:var(--mono);font-size:24px;font-weight:500;
+  color:var(--fg1);font-variant-numeric:tabular-nums;line-height:1.2}
+.fact span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--fg3);margin-top:5px}
+
+/* &#9472;&#9472; sections &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+section{padding:56px 0 0}
+.shead{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.snum{font-family:var(--display);font-size:15px;color:var(--fg4);letter-spacing:.06em}
+h2{font-family:var(--sans);font-weight:300;font-size:32px;letter-spacing:-.01em;line-height:1.2}
+.lede{margin:14px 0 0;color:var(--fg2)}
+p{margin:16px 0 0}
+p a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-line)}
+
+/* equations &#8212; symbols once, words once */
+.eq{margin:26px 0 0;padding:18px 20px;background:var(--elev1);
+  border-left:2px solid var(--accent-line);border-radius:0 var(--r-sm) var(--r-sm) 0;
+  overflow-x:auto}
+.eq .sym{font-family:var(--mono);font-size:15px;color:var(--fg1);white-space:nowrap}
+.eq .words{font-family:var(--mono);font-size:12.5px;color:var(--fg3);
+  margin-top:9px;white-space:nowrap;letter-spacing:.01em}
+
+/* &#9472;&#9472; the instrument &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+.rig{margin-top:32px;border:1px solid var(--border);background:var(--elev1);border-radius:var(--r-md)}
+.rig-panes{display:grid;grid-template-columns:1.15fr 1fr;gap:1px;background:var(--border-soft)}
+.pane{background:var(--elev1);padding:18px}
+.pane-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.pane-head .eyebrow{color:var(--fg3)}
+.readout{font-family:var(--mono);font-size:12px;color:var(--accent);font-variant-numeric:tabular-nums}
+canvas{display:block;width:100%;height:auto;border-radius:var(--r-sm)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3)}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:999px;margin-right:6px;vertical-align:1px}
+
+.rail{border-top:1px solid var(--border-soft);padding:16px 18px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px 26px;align-items:start}
+.ctl label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--fg3);margin-bottom:9px}
+.ctl label b{color:var(--fg1);font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;
+  background:var(--border);border-radius:999px;outline:none;margin:9px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;
+  border-radius:999px;background:var(--accent);cursor:pointer;border:0}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:999px;
+  background:var(--accent);cursor:pointer;border:0}
+input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
+.seg{display:flex;border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden}
+.seg button{flex:1;background:transparent;border:0;border-right:1px solid var(--border);
+  color:var(--fg3);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 6px;cursor:pointer;transition:background .18s var(--ease),color .18s var(--ease)}
+.seg button:last-child{border-right:0}
+.seg button:hover{color:var(--fg1);background:rgba(255,255,255,.03)}
+.seg button[aria-pressed=true]{background:var(--accent-soft);color:var(--accent)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.play{background:var(--accent);color:#0a0a0f;border:0;border-radius:var(--r-sm);
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 16px;cursor:pointer;box-shadow:0 0 24px rgba(232,184,74,.22);
+  transition:transform .18s var(--ease)}
+.play:hover{transform:translateY(-1px)}
+.play:focus-visible{outline:2px solid var(--fg1);outline-offset:2px}
+.verdict{border-top:1px solid var(--border-soft);padding:14px 18px;
+  font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--fg3)}
+.verdict b{color:var(--fg1);font-weight:500}
+.verdict .hot{color:var(--repel)}
+.verdict .cool{color:var(--attract)}
+
+/* &#9472;&#9472; tables &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+.scroll{overflow-x:auto;margin-top:26px;border:1px solid var(--border-soft);border-radius:var(--r-sm)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:12.5px}
+th{text-align:left;font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg3);padding:11px 14px;background:var(--elev2);border-bottom:1px solid var(--border-soft);
+  white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border-soft);color:var(--fg2);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:rgba(255,255,255,.02)}
+td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--fg3)}
+td.pair{color:var(--fg1)}
+td.pair span{color:var(--fg4);padding:0 6px}
+.tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);
+  border:1px solid var(--border);border-radius:999px;padding:2px 8px;white-space:nowrap}
+.bar{display:block;height:3px;background:var(--accent);border-radius:999px;min-width:2px}
+.bar.base{background:var(--fg4)}
+
+.note{margin-top:26px;padding:16px 20px;background:var(--elev1);
+  border:1px solid var(--border-soft);border-radius:var(--r-sm);font-size:16px;color:var(--fg3)}
+.note b{color:var(--fg2);font-weight:500}
+
+footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--border-soft);
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.mark{font-family:var(--display);font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:var(--fg2)}
+.mark em{font-style:italic;font-weight:300;color:var(--fg3)}
+footer .eyebrow{color:var(--fg4)}
+
+@media (max-width:860px){
+  .rig-panes{grid-template-columns:1fr}
+  .facts{gap:0}
+  .fact{border-right:0;padding-right:0;margin-right:0;min-width:44%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.001s!important;animation-duration:.001s!important}
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Sketch &#183; palace graph &#183; 2026-08-26</div>
+  <h1>Message Passing<br>on the <em>Palace</em></h1>
+  <p class="standfirst">A graph neural network run on the palace's own typed links &#8212; <strong>310 entries, 2,402 edges, nothing trained.</strong> Every weight is a number chosen by hand, so each run is an argument about how a relation behaves rather than a fit to a loss.</p>
+  <div class="facts" id="facts"></div>
+</header>
+
+<div class="rule"></div>
+
+<section>
+  <div class="shead"><span class="snum">01</span><h2>One loop, repeated</h2></div>
+  <div class="col">
+    <p class="lede">A GNN is a single rule applied over and over: every node updates itself from its neighbours, then everyone does it again. A Weave is one layer of exactly this.</p>
+    <div class="eq">
+      <div class="sym">H<sub>l+1</sub> = s &#183; H<sub>l</sub> + K &#183; &#931;<sub>r</sub> a<sub>r</sub> &#183; D<sub>r</sub><sup>&#8722;1</sup> A<sub>r</sub> H<sub>l</sub></div>
+      <div class="words">(entries, next round) = (self-weight) &#215; (entries, now) + (gain) &#215; &#931; over link types (coupling of that type) &#215; (average over that type's neighbours)</div>
+    </div>
+    <p>A full relational GNN gives every link type its own learned matrix. Here each type gets a single number instead &#8212; ten couplings, readable at a glance &#8212; which is what lets <b style="color:var(--repel);font-weight:500">contradicts</b> be <em>negative</em>. That is the whole experiment.</p>
+  </div>
+  <div class="scroll" style="max-width:none"><table id="coup"><thead><tr>
+    <th>Link type</th><th>Edges</th><th>Coupling a<sub>r</sub></th><th style="width:38%">Pull</th><th>Reading</th>
+  </tr></thead><tbody></tbody></table></div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">02</span><h2>Watch it oversmooth</h2></div>
+  <div class="col">
+    <p class="lede">Repeated averaging is diffusion, and diffusion's fixed point is uniformity. Stack enough layers and every entry becomes the same entry &#8212; the graph forgets which node is which.</p>
+    <p>Left: all 310 entries projected onto a basis fixed at depth 0, so the collapse is real motion in one frame. Right: how far the average entry still sits from the centroid. Drag <b style="color:var(--fg1)">depth</b>, or press run.</p>
+  </div>
+
+  <div class="rig">
+    <div class="rig-panes">
+      <div class="pane">
+        <div class="pane-head"><span class="eyebrow">Entry space &#183; fixed basis</span><span class="readout" id="ro-depth">depth 0</span></div>
+        <canvas id="scatter" width="1120" height="760"></canvas>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span class="eyebrow">Spread from centroid</span><span class="readout" id="ro-spread">&#8212;</span></div>
+        <canvas id="curve" width="900" height="470"></canvas>
+        <div class="pane-head" style="margin:18px 0 12px"><span class="eyebrow">Distance across edges</span><span class="readout" id="ro-gap">&#8212;</span></div>
+        <canvas id="gap" width="900" height="330"></canvas>
+        <div class="legend">
+          <span><i style="background:var(--repel)"></i>contradicts</span>
+          <span><i style="background:var(--attract)"></i>mirrors</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rail">
+      <div class="ctl">
+        <label for="s-depth">Depth <b id="l-depth">0</b> layers</label>
+        <input type="range" id="s-depth" min="0" max="10" step="1" value="0">
+      </div>
+      <div class="ctl">
+        <label for="s-k">Coupling gain K <b id="l-k">1.0</b></label>
+        <input type="range" id="s-k" min="0" max="5" step="1" value="3">
+      </div>
+      <div class="ctl">
+        <label>Contradicts</label>
+        <div class="seg" id="seg-con" role="group" aria-label="Contradicts coupling">
+          <button data-v="repulsive" aria-pressed="true">&#8722;1 repel</button>
+          <button data-v="off" aria-pressed="false">0 off</button>
+          <button data-v="disarmed" aria-pressed="false">+1 attract</button>
+        </div>
+      </div>
+      <div class="ctl">
+        <label>Residual &#8212; the entry remembers</label>
+        <div class="seg" id="seg-res" role="group" aria-label="Residual connection">
+          <button data-v="0.0" aria-pressed="true">none</button>
+          <button data-v="0.3" aria-pressed="false">0.3</button>
+        </div>
+      </div>
+      <div class="ctl" style="align-self:end">
+        <button class="play" id="play">Run the sweep</button>
+      </div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+  </div>
+
+  <div class="note col">
+    <b>What to try.</b> Set contradicts to <span style="color:var(--attract)">+1 attract</span> and run to depth 10: contraries and mirrors both collapse to a point &#8212; every distinction gone. Put it back to <span style="color:var(--repel)">&#8722;1 repel</span> and the graph sorts itself, holding contraries apart while mirrors fuse. Residual is the field's usual patch; it slows the collapse without ever sorting anything.
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">03</span><h2>Ghost nodes the geometry proposes</h2></div>
+  <div class="col">
+    <p class="lede">Every pair of entries that <em>isn't</em> linked gets a score. Rank them and you get connections the graph's shape implies but no Weave has drawn yet.</p>
+    <p id="valid-copy">&#8212;</p>
+  </div>
+  <div class="scroll"><table id="ghosts"><thead><tr>
+    <th style="width:56px">Rank</th><th>Candidate pair</th><th>Types</th><th class="num">Mutual rank</th><th>Held under both models</th>
+  </tr></thead><tbody></tbody></table></div>
+  <div class="note col">
+    <b>Read these as invitations, not verdicts.</b> Scored on mutual rank &#8212; is each entry near the top of the other's list &#8212; because at useful depths raw similarity saturates and stops discriminating. Pairs of Shop specialists are excluded: they share so much template boilerplate they match each other trivially.
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">04</span><h2>Where the analogy breaks</h2></div>
+  <div class="col">
+    <p class="lede">Two gaps worth keeping open rather than closing.</p>
+    <p><b style="color:var(--fg1);font-weight:500">The palace has a node that can refuse a message.</b> Message passing is synchronous and uniform &#8212; every node updates every round, same function, no gate. Ceremonies fire on trigger words, entries sit dormant for months, and TRICKSTER can decline. No GNN has that node.</p>
+    <p><b style="color:var(--fg1);font-weight:500">A GNN learns; the palace is authored.</b> These couplings were fit by nothing. There is no loss function here &#8212; the training signal is whether an entry got better, which is a felt question, not a differentiable one.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="shead"><span class="snum">05</span><h2>What the controls took back</h2></div>
+  <div class="col">
+    <p class="lede">The first run of this page reported a worse number and a wrong reason. Three follow-up controls moved it. They are here because the corrections are the most useful thing the experiment produced.</p>
+    <p><b style="color:var(--fg1);font-weight:500">The hand-chosen couplings were the problem, not the types.</b> An untyped model &mdash; every edge identical, one channel &mdash; beat the typed one by a wide margin, which looked like a verdict on the link ontology. It was not. Splitting the gap three ways: over half of it is R-GCN&rsquo;s per-relation normalisation, which quietly lets one <b>mirrors</b> neighbour outweigh twenty <b>connects-to</b> neighbours; most of the rest is that my ten numbers are simply worse than setting them all to one. Typing itself is worth roughly nothing here either way.</p>
+  </div>
+  <div class="scroll"><table><thead><tr><th>Configuration</th><th class="num">recall@1000</th><th class="num">Change</th><th>What it isolates</th></tr></thead><tbody>
+    <tr><td class="pair">text only, no message passing</td><td class="num">0.084</td><td class="num">&mdash;</td><td style="color:var(--fg3)">the floor</td></tr>
+    <tr><td class="pair">typed &middot; per-relation norm &middot; my couplings</td><td class="num">0.235</td><td class="num">&mdash;</td><td style="color:var(--fg3)">what this page shipped first</td></tr>
+    <tr><td class="pair">&nbsp;&nbsp;&#8627; global normalisation instead</td><td class="num">0.304</td><td class="num" style="color:var(--ok)">+0.069</td><td style="color:var(--fg3)">rare types were over-weighted</td></tr>
+    <tr><td class="pair">&nbsp;&nbsp;&#8627; all couplings set to +1</td><td class="num">0.358</td><td class="num" style="color:var(--ok)">+0.054</td><td style="color:var(--fg3)">my numbers were worse than none</td></tr>
+    <tr><td class="pair">&nbsp;&nbsp;&#8627; drop the types entirely</td><td class="num">0.366</td><td class="num" style="color:var(--fg4)">+0.008</td><td style="color:var(--fg3)">typing itself &mdash; within noise</td></tr>
+  </tbody></table></div>
+  <div class="col">
+    <p><b style="color:var(--repel);font-weight:500">Contradiction is topically close, not far.</b> The repulsive coupling survives as the thing that prevents collapse &mdash; setting <b>contradicts</b> to zero collapses the graph just as completely as setting it to +1, so removing attraction is not enough; the negative sign is doing the work. But measuring the raw text distance across each link type, before any message passing, contradicted entries turn out to be the <em>second most similar</em> pair type in the palace, well above a random pair. Of course they are: you have to be arguing about the same thing to contradict at all.</p>
+    <p>So the negative sign is right for one job and wrong for the other. It maintains distinction, and it wrecks retrieval &mdash; because it shoves apart entries that genuinely belong in the same neighbourhood. <b style="color:var(--fg1);font-weight:500">One scalar cannot say &ldquo;close, but keep them distinct.&rdquo;</b> That sentence needs a rotation, not a distance, and a rotation is exactly what the full relational model&rsquo;s learned matrix can express and this page&rsquo;s readable simplification cannot.</p>
+    <p>The types that actually bridge textual distance are the taxonomic ones. <b>exemplifies</b> links entries no more similar than two entries picked at random &mdash; an instance and the class it instances share almost no vocabulary &mdash; with <b>member-of</b> just behind it. If cross-domain reach is the prize, those are the links doing it.</p>
+  </div>
+  <div class="scroll"><table><thead><tr><th>Link type</th><th class="num">Text similarity of its two ends</th><th style="width:34%">Versus a random pair</th></tr></thead><tbody id="homo"></tbody></table></div>
+  <div class="note col">
+    <b>Held-out sets here are small</b> &mdash; about 360 links across 310 entries. The three effects above survive seven seeds and are stated; the per-relation ablation ordering does not, and is not.
+  </div>
+</section>
+
+<footer>
+  <span class="mark">Loud<em>&#8217;n</em> Live</span>
+  <span class="eyebrow" id="foot">&#8212;</span>
+</footer>
+
+</div>
+
+<script type="application/json" id="data">/*__DATA__*/</script>
+<script>
+(function(){
+"use strict";
+var D = JSON.parse(document.getElementById('data').textContent);
+var css = getComputedStyle(document.documentElement);
+var C = function(n){ return css.getPropertyValue(n).trim(); };
+var ACCENT=C('--accent'), FG3=C('--fg3'), FG4=C('--fg4'), FG1=C('--fg1'),
+    REPEL=C('--repel'), ATTRACT=C('--attract'), BORDER=C('--border-soft'), OK=C('--ok');
+
+var TYPE_COLOR = {
+  concept:'#e8b84a', project:'#6bd45a', person:'#b07cff', practice:'#4a8fff',
+  meta:'#ff6fae', specialist:'#ff6b5a', hub:'#ffffff', source:'#8a8aa0',
+  maker:'#ff9b4a', question:'#8a8aa0', spore:'#8a8aa0'
+};
+var COUP_READING = {
+  'mirrors':'deep structural identity &#8212; pulls hardest',
+  'couples-with':'always active together, Kuramoto-style',
+  'deepens':'elaborates its ground',
+  'exemplifies':'an instance of its class',
+  'enables':'a precondition, not a likeness',
+  'connects-to':'real proximity, not yet named',
+  'member-of':'catalogued into a set',
+  'spawned':'lineage &#8212; produced it, need not resemble it',
+  'emerged-from':'diffuse origin',
+  'contradicts':'both true, and they must stay apart'
+};
+
+/* &#9472;&#9472; state &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+var st = { depth:0, ki:3, con:'repulsive', res:'0.0', playing:false };
+var Ks = D.meta.Ks, MAXD = D.meta.depth;
+/* keys were written by Python's float repr: 1 -> "1.0". Match it exactly. */
+function pf(x){ return Number.isInteger(x) ? x.toFixed(1) : String(x); }
+function run(){ return D.runs[st.con + '|' + pf(Ks[st.ki]) + '|' + st.res]; }
+
+/* &#9472;&#9472; masthead facts &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+var nEdges = D.meta.n_edges;
+document.getElementById('facts').innerHTML = [
+  [D.meta.n_nodes,'entries'],
+  [nEdges.toLocaleString(),'typed links'],
+  [Object.keys(D.meta.edge_types).length,'relation types'],
+  [D.meta.edge_types['contradicts'],'contradictions'],
+  ['0','trained parameters']
+].map(function(f){ return '<div class="fact"><b>'+f[0]+'</b><span>'+f[1]+'</span></div>'; }).join('');
+document.getElementById('foot').textContent = D.meta.map;
+
+/* &#9472;&#9472; couplings table &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+(function(){
+  var rows = Object.keys(D.meta.edge_types).map(function(t){
+    return { t:t, n:D.meta.edge_types[t], a:D.meta.couplings[t] };
+  }).sort(function(x,y){ return y.a - x.a; });
+  var maxA = 1.0;
+  document.querySelector('#coup tbody').innerHTML = rows.map(function(r){
+    var neg = r.a < 0;
+    var w = Math.abs(r.a)/maxA*100;
+    return '<tr><td class="pair">'+r.t+'</td>'
+      + '<td class="num">'+r.n+'</td>'
+      + '<td class="num" style="color:'+(neg?REPEL:FG1)+'">'+r.a.toFixed(1)+'</td>'
+      + '<td><span class="bar" style="width:'+w+'%;background:'+(neg?REPEL:ACCENT)+'"></span></td>'
+      + '<td style="color:var(--fg3)">'+COUP_READING[r.t]+'</td></tr>';
+  }).join('');
+})();
+
+/* &#9472;&#9472; legend &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+(function(){
+  var counts = {};
+  D.nodes.forEach(function(n){ counts[n.type] = (counts[n.type]||0)+1; });
+  document.getElementById('legend').innerHTML = Object.keys(counts)
+    .sort(function(a,b){ return counts[b]-counts[a]; }).slice(0,7)
+    .map(function(t){ return '<span><i style="background:'+(TYPE_COLOR[t]||FG3)+'"></i>'+t+'</span>'; }).join('');
+})();
+
+/* &#9472;&#9472; canvas helpers &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+function fit(cv){
+  var dpr = Math.min(window.devicePixelRatio||1, 2);
+  var w = cv.clientWidth, h = Math.round(w * (cv.height/cv.width));
+  if (cv._w === w) return cv._ctx;
+  cv._w = w;
+  cv.style.height = h + 'px';
+  cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+  var ctx = cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
+  cv._ctx = ctx; cv._cw = w; cv._ch = h;
+  return ctx;
+}
+
+function drawScatter(){
+  var cv = document.getElementById('scatter'), ctx = fit(cv);
+  var W = cv._cw, H = cv._ch;
+  ctx.clearRect(0,0,W,H);
+  var pad = 18, R = Math.min(W,H)/2 - pad;
+  var cx = W/2, cy = H/2;
+  /* crosshair */
+  ctx.strokeStyle = BORDER; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pad,cy); ctx.lineTo(W-pad,cy);
+  ctx.moveTo(cx,pad); ctx.lineTo(cx,H-pad); ctx.stroke();
+  var P = run().proj[st.depth];
+  ctx.globalCompositeOperation = 'lighter';
+  for (var i=0;i<P.length;i++){
+    var n = D.nodes[i];
+    var x = cx + P[i][0]*R, y = cy - P[i][1]*R;
+    var r = 1.9 + Math.min(n.deg,40)/40*3.4;
+    ctx.fillStyle = TYPE_COLOR[n.type] || FG3;
+    ctx.globalAlpha = 0.34;
+    ctx.beginPath(); ctx.arc(x,y,r*2.1,0,6.2832); ctx.fill();
+    ctx.globalAlpha = 0.92;
+    ctx.beginPath(); ctx.arc(x,y,r,0,6.2832); ctx.fill();
+  }
+  ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+}
+
+function drawCurve(id, series, opts){
+  var cv = document.getElementById(id), ctx = fit(cv);
+  var W = cv._cw, H = cv._ch;
+  ctx.clearRect(0,0,W,H);
+  var L=42, Rp=12, T=12, B=26;
+  var max = 0;
+  series.forEach(function(s){ s.v.forEach(function(v){ if(v>max) max=v; }); });
+  if (opts && opts.max != null) max = opts.max;
+  max = max || 1;
+  var X = function(i){ return L + i/MAXD*(W-L-Rp); };
+  var Y = function(v){ return H-B - (v/max)*(H-T-B); };
+  /* grid */
+  ctx.strokeStyle = BORDER; ctx.lineWidth = 1;
+  ctx.fillStyle = FG4; ctx.font = '10px "JetBrains Mono", monospace';
+  for (var g=0; g<=2; g++){
+    var v = max*g/2, y = Y(v);
+    ctx.beginPath(); ctx.moveTo(L,y); ctx.lineTo(W-Rp,y); ctx.stroke();
+    ctx.textAlign='right'; ctx.fillText(v.toFixed(2), L-7, y+3);
+  }
+  ctx.textAlign='center';
+  for (var d=0; d<=MAXD; d+=2) ctx.fillText(d, X(d), H-9);
+  /* marker */
+  ctx.strokeStyle = 'rgba(232,184,74,.35)';
+  ctx.beginPath(); ctx.moveTo(X(st.depth),T); ctx.lineTo(X(st.depth),H-B); ctx.stroke();
+  /* lines */
+  series.forEach(function(s){
+    ctx.strokeStyle = s.c; ctx.lineWidth = 1.75; ctx.beginPath();
+    s.v.forEach(function(v,i){ i ? ctx.lineTo(X(i),Y(v)) : ctx.moveTo(X(i),Y(v)); });
+    ctx.stroke();
+    var cvv = s.v[st.depth];
+    ctx.fillStyle = s.c; ctx.beginPath(); ctx.arc(X(st.depth),Y(cvv),3.4,0,6.2832); ctx.fill();
+  });
+}
+
+/* &#9472;&#9472; verdict copy &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+function verdict(){
+  var r = run(), d = st.depth;
+  var s0 = r.spread[0], s = r.spread[d];
+  var pct = Math.round((1 - s/s0)*100);
+  var con = r.contra[d], mir = r.mirror[d];
+  var ratio = mir > 1e-6 ? (con/mir) : Infinity;
+  var txt;
+  if (d === 0){
+    txt = 'Depth <b>0</b> &#8212; the raw entries, before anyone talks to anyone. Spread <b>'+s0.toFixed(3)+'</b>.';
+  } else if (Ks[st.ki] === 0){
+    txt = 'Gain <b>K = 0</b>. No messages cross any edge, so nothing moves at any depth. The graph is 310 unrelated documents.';
+  } else {
+    txt = 'After <b>'+d+'</b> round'+(d>1?'s':'')+', distinction is down <b>'+pct+'%</b>. '
+      + 'Contraries sit <span class="'+(ratio>2?'hot':'cool')+'">'+ (isFinite(ratio) ? ratio.toFixed(1)+'&#215;' : '&#8734; ') +'</span> further apart than mirrors &#8212; '
+      + (ratio > 2 ? 'the graph is sorting itself.'
+                   : ratio > 1.15 ? 'the sorting is weak.'
+                   : 'every distinction is dissolving together.');
+  }
+  document.getElementById('verdict').innerHTML = txt;
+}
+
+function render(){
+  var r = run();
+  document.getElementById('l-depth').textContent = st.depth;
+  document.getElementById('l-k').textContent = Ks[st.ki].toFixed(2).replace(/0$/,'');
+  document.getElementById('ro-depth').textContent = 'depth ' + st.depth;
+  document.getElementById('ro-spread').textContent = r.spread[st.depth].toFixed(4);
+  document.getElementById('ro-gap').textContent =
+    'contra ' + r.contra[st.depth].toFixed(3) + ' &#183; mirror ' + r.mirror[st.depth].toFixed(3);
+  drawScatter();
+  drawCurve('curve', [{v:r.spread, c:ACCENT}], {max:0.28});
+  drawCurve('gap', [{v:r.contra, c:REPEL},{v:r.mirror, c:ATTRACT}], {max:1.45});
+  verdict();
+}
+
+/* &#9472;&#9472; controls &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+var sDepth = document.getElementById('s-depth');
+sDepth.addEventListener('input', function(){ st.depth = +this.value; stop(); render(); });
+document.getElementById('s-k').addEventListener('input', function(){ st.ki = +this.value; render(); });
+function segment(id, key){
+  document.getElementById(id).addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    st[key] = b.dataset.v;
+    [].forEach.call(this.querySelectorAll('button'), function(x){
+      x.setAttribute('aria-pressed', String(x === b));
+    });
+    render();
+  });
+}
+segment('seg-con','con'); segment('seg-res','res');
+
+var timer = null;
+function stop(){ if(timer){ clearInterval(timer); timer=null; }
+  document.getElementById('play').textContent = 'Run the sweep'; }
+document.getElementById('play').addEventListener('click', function(){
+  if (timer){ stop(); return; }
+  st.depth = 0; sDepth.value = 0; render();
+  this.textContent = 'Stop';
+  timer = setInterval(function(){
+    if (st.depth >= MAXD){ stop(); return; }
+    st.depth++; sDepth.value = st.depth; render();
+  }, 420);
+});
+
+/* &#9472;&#9472; ghosts &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+(function(){
+  document.querySelector('#ghosts tbody').innerHTML = D.ghosts.slice(0,24).map(function(g,i){
+    return '<tr><td class="num" style="color:var(--fg4)">'+(i+1)+'</td>'
+      + '<td class="pair">'+g.a+'<span>~</span>'+g.b+'</td>'
+      + '<td><span class="tag">'+g.a_type+' &#183; '+g.b_type+'</span></td>'
+      + '<td class="num">'+g.mutual_rank+'</td>'
+      + '<td>'+(g.both ? '<span class="tag" style="color:'+OK+';border-color:'+OK+'">survives</span>' : '<span style="color:var(--fg4)">&mdash;</span>')+'</td></tr>';
+  }).join('');
+  document.getElementById('valid-copy').innerHTML =
+    'Checked before it is trusted. Hiding <b style="color:var(--fg1)">15%</b> of the real links from message passing and asking the model to rank them back among every candidate pair &mdash; seven seeds, ~360 held-out links each &mdash; message passing recovers <b style="color:'+OK+'">35.5%</b> of them in the top 1,000 guesses, against <b>8.4%</b> for the same text features with no message passing at all. '
+  + 'Reading the links is worth <b style="color:var(--fg1)">4.2&times;</b>. It also means nearly two thirds of the palace\'s links are not recoverable from shape and text together, which is the honest half of the result.';
+})();
+
+
+/* &#9472;&#9472; raw homophily table &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+(function(){
+  var rows = [["couples-with",0.8208],["contradicts",0.7924],["emerged-from",0.7823],
+    ["enables",0.7782],["mirrors",0.7747],["connects-to",0.7723],["spawned",0.7677],
+    ["deepens",0.7611],["member-of",0.7469],["exemplifies",0.7350]];
+  var base = 0.7351, span = 0.09;
+  document.getElementById('homo').innerHTML = rows.map(function(r){
+    var d = r[1]-base, w = Math.max(Math.abs(d)/span*100, 1.5);
+    var c = d > 0.03 ? REPEL : d > 0.012 ? ACCENT : FG4;
+    return '<tr><td class="pair">'+r[0]+'</td><td class="num">'+r[1].toFixed(4)+'</td>'
+      + '<td><span class="bar" style="width:'+w+'%;background:'+c+'"></span>'
+      + '<span style="font-size:10.5px;color:var(--fg3)">'+(d>=0?'+':'')+d.toFixed(4)+'</span></td></tr>';
+  }).join('');
+})();
+
+window.addEventListener('resize', function(){
+  ['scatter','curve','gap'].forEach(function(id){ document.getElementById(id)._w = null; });
+  render();
+});
+render();
+})();
+</script>
