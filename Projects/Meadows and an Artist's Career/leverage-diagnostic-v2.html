@@ -1,0 +1,275 @@
+<!-- Loudon Live Design System · Drafting skin (schematic / build-instructions register) -->
+<!-- Meadows and an Artist's Career — Self-diagnostic v2 (HARDEN-WORKSHEET) -->
+<!-- v1 was a read-only sheet pre-filled with Loudon. v2 is the artist-facing instrument:
+     a worked example at every level so the rung is recognisable, a place-your-last-10 counter,
+     and a save-your-distribution export that works with no network. -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root{
+    --bg:#f0eee5; --paper:#f7f5ee; --fg-1:#1a1814; --fg-2:#3d3a32; --fg-3:#8a857a;
+    --rule:#cbc6b8; --accent:#c8261a; --accent-soft:#e8d3cd; --grid:#ddd8ca;
+  }
+  *{box-sizing:border-box}
+  .lv2{background:var(--bg); color:var(--fg-1); font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:17px; line-height:1.5; padding:32px 26px 40px; max-width:1020px; margin:0 auto;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:24px 24px; background-position:-1px -1px;}
+  .lv2 .eyebrow{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 6px}
+  .lv2 h1{font-family:'Anton',sans-serif; font-weight:400; font-size:40px; line-height:.98; margin:0 0 8px}
+  .lv2 .sub{font-family:'Manrope',sans-serif; font-size:14px; color:var(--fg-2); max-width:64ch; margin:0 0 4px}
+  .lv2 .meta{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-3); margin:10px 0 22px; letter-spacing:.04em}
+
+  .lv2 .howto{font-family:'Manrope',sans-serif; font-size:13px; color:var(--fg-2); background:var(--paper);
+    border-left:2px solid var(--accent); padding:12px 14px; margin:0 0 20px; max-width:72ch}
+  .lv2 .howto b{color:var(--fg-1)}
+
+  /* sticky tally */
+  .tally{position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--accent);
+    padding:10px 0 12px; margin:0 0 6px; display:flex; gap:18px; align-items:center; flex-wrap:wrap}
+  .tally .count{font-family:'Anton',sans-serif; font-size:26px; color:var(--accent); line-height:1}
+  .tally .count small{font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:var(--fg-3); display:block; text-transform:uppercase; margin-top:3px}
+  .tally .bars{flex:1; min-width:280px; display:flex; flex-direction:column; gap:5px}
+  .barrow{display:grid; grid-template-columns:86px 1fr 46px; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--fg-3)}
+  .barrow .track{height:10px; background:#fffdf7; border:1px solid var(--rule); position:relative}
+  .barrow .fill{position:absolute; left:0; top:0; bottom:0; background:var(--accent); opacity:.85; width:0}
+  .barrow .fill.ref{background:repeating-linear-gradient(45deg,var(--fg-3),var(--fg-3) 2px,transparent 2px,transparent 4px); opacity:.9}
+  .barrow .pct{text-align:right; color:var(--fg-2)}
+
+  .lv2 .rows{border:1px solid var(--rule); background:var(--paper)}
+  .band{font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--accent); padding:6px 12px; background:var(--bg); border-top:1px solid var(--accent); border-bottom:1px solid var(--accent)}
+  .row{display:grid; grid-template-columns:44px 1fr 132px; border-bottom:1px solid var(--rule)}
+  .row:last-child{border-bottom:none}
+  .row.hot{background:rgba(200,38,26,.05)}
+  .row .lvl{font-family:'Anton',sans-serif; font-size:23px; color:var(--accent); display:flex; flex-direction:column;
+    align-items:center; justify-content:flex-start; padding-top:10px; border-right:1px solid var(--rule); background:rgba(200,38,26,.04)}
+  .row .lvl small{font-family:'JetBrains Mono',monospace; font-size:7.5px; letter-spacing:.06em; color:var(--fg-3); margin-top:4px}
+  .row .body{padding:10px 12px; font-family:'Manrope',sans-serif}
+  .row .name{font-weight:700; font-size:13.5px; margin:0 0 3px}
+  .row .q{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--fg-2); margin:0 0 8px}
+  .row .ex{font-size:12.5px; color:var(--fg-1); background:#fffdf7; border-left:2px solid var(--accent-soft); padding:7px 9px; line-height:1.45}
+  .row .ex b{font-family:'JetBrains Mono',monospace; font-size:8.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:3px; font-weight:500}
+  .row .pick{border-left:1px solid var(--rule); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:8px}
+  .pick .n{font-family:'Anton',sans-serif; font-size:24px; color:var(--fg-1); line-height:1; min-width:28px; text-align:center}
+  .pick .n.zero{color:var(--fg-3)}
+  .pick .btns{display:flex; gap:6px}
+  .pick button{font-family:'JetBrains Mono',monospace; font-size:13px; width:28px; height:26px; cursor:pointer;
+    background:var(--paper); color:var(--fg-1); border:1px solid var(--fg-2); border-radius:2px; line-height:1}
+  .pick button:hover{background:var(--accent-soft); border-color:var(--accent)}
+  .pick .cap{font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-3)}
+
+  .readout{margin:22px 0 0; background:var(--paper); border-left:2px solid var(--accent); padding:14px 16px; max-width:76ch;
+    font-family:'Manrope',sans-serif; font-size:13.5px; color:var(--fg-2); line-height:1.6}
+  .readout b{color:var(--fg-1)}
+  .actions{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 0}
+  .actions button{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    padding:10px 14px; cursor:pointer; background:var(--accent); color:#fff; border:1px solid var(--accent); border-radius:2px}
+  .actions button.ghost{background:transparent; color:var(--fg-1); border-color:var(--fg-2)}
+  .actions button:hover{opacity:.88}
+  #export{display:none; margin:14px 0 0}
+  #export textarea{width:100%; min-height:190px; font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.55;
+    background:#fffdf7; color:var(--fg-1); border:1px solid var(--rule); padding:12px; border-radius:2px}
+  #export .hint{font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-3); margin:6px 0 0}
+  .lv2 .footer{font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:var(--fg-3); text-transform:uppercase; margin-top:28px; padding-top:12px; border-top:1px solid var(--rule)}
+</style>
+
+<div class="lv2">
+  <p class="eyebrow">● Self-diagnostic · v2 · worked examples + export</p>
+  <h1>Place your last ten career decisions</h1>
+  <p class="sub">Donella Meadows ranked twelve places to push on a system — weakest (tweak a number) to strongest (let go of what the whole thing is for). Think back over your last ten real career decisions. Put each one on the rung it actually belongs to. The shape you end up with is the diagnostic.</p>
+  <p class="meta">v2 · hardened per the 2026-08-26 steer · every level carries a worked example · nothing leaves your machine</p>
+
+  <div class="howto">
+    <b>How to use it.</b> A decision counts if you acted on it — money moved, a calendar changed, a thing shipped, a no got said. Read the example on each rung until one of your ten recognises itself, then click <b>+</b>. Ten total. The bar at the top compares your shape to the one most working artists produce.
+  </div>
+
+  <div class="tally">
+    <div class="count"><span id="placed">0</span>/10<small>decisions placed</small></div>
+    <div class="bars">
+      <div class="barrow"><span>you · 12–9</span><span class="track"><span class="fill" id="f-low"></span></span><span class="pct" id="p-low">0%</span></div>
+      <div class="barrow"><span>you · 8–5</span><span class="track"><span class="fill" id="f-mid"></span></span><span class="pct" id="p-mid">0%</span></div>
+      <div class="barrow"><span>you · 4–1</span><span class="track"><span class="fill" id="f-high"></span></span><span class="pct" id="p-high">0%</span></div>
+      <div class="barrow"><span>typical · 12–9</span><span class="track"><span class="fill ref" style="width:80%"></span></span><span class="pct">80%</span></div>
+      <div class="barrow"><span>typical · 8–5</span><span class="track"><span class="fill ref" style="width:19%"></span></span><span class="pct">19%</span></div>
+      <div class="barrow"><span>typical · 4–1</span><span class="track"><span class="fill ref" style="width:1%"></span></span><span class="pct">1%</span></div>
+    </div>
+  </div>
+
+  <div class="rows" id="rows"></div>
+
+  <div class="readout" id="readout">
+    <b>Nothing placed yet.</b> The reading appears once you have put all ten somewhere. There is no wrong shape — an artist rebuilding a income base <i>should</i> be spending decisions at 11 and 10. The question the shape answers is whether the level you are working at is the one you meant to be working at.
+  </div>
+
+  <div class="actions">
+    <button id="save">Save my distribution</button>
+    <button id="reset" class="ghost">Clear all ten</button>
+  </div>
+
+  <div id="export">
+    <textarea id="out" readonly></textarea>
+    <p class="hint" id="exhint">copied to your clipboard · a .txt download was also attempted</p>
+  </div>
+
+  <p class="footer">Loud'n Live</p>
+</div>
+
+<script>
+(function(){
+  var L = [
+    {n:12,tag:"param",band:"low",name:"Constants & parameters",
+     q:"What gear, what price, what posting time?",
+     ex:"Swapped the vocal mic, A/B'd three limiters for an afternoon, moved the release from Friday to Tuesday. A week gone, the trajectory unchanged."},
+    {n:11,tag:"buffer",band:"low",name:"Buffer sizes",
+     q:"How much runway? How many gigs booked ahead?",
+     ex:"Put six months of expenses aside before dropping the Tuesday teaching slot — so that losing one client stops being a crisis and becomes a Tuesday."},
+    {n:10,tag:"stock",band:"low",name:"Structure of stocks & flows",
+     q:"What ratio of paid work to making? Teaching to recording?",
+     ex:"Inverted the plumbing: stopped teaching to fund the records, started releasing records that fund the teaching. Same two activities, opposite system."},
+    {n:9,tag:"delay",band:"low",name:"Delays",
+     q:"How long from idea to shipped? From deciding to starting?",
+     ex:"Cut the album cycle from eighteen months to a six-week EP cadence — four chances a year to learn something, instead of one."},
+    {n:8,tag:"balance",band:"mid",name:"Balancing feedback loops",
+     q:"What stops me before burnout? What pulls me back from extremes?",
+     ex:"A standing Saturday with no screens, and one person who is allowed to say 'you haven't slept in four days' and be listened to."},
+    {n:7,tag:"reinforce",band:"mid",name:"Reinforcing feedback loops",
+     q:"What compounds? What makes the next step easier than the last?",
+     ex:"Noticed every new student arrived via a former student — then protected that loop by refusing ads that would have diluted who showed up."},
+    {n:6,tag:"info",band:"mid",name:"Information flows",
+     q:"Who tells me the truth? Which number do I actually trust?",
+     ex:"Closed the streaming dashboard for a quarter and instead asked three people, each release, 'did it move you?' — and wrote the answers down."},
+    {n:5,tag:"rules",band:"mid",name:"Rules of the system",
+     q:"What do I refuse? What work won't I take?",
+     ex:"Wrote a no-list and kept it: no work that requires lying about what I make, no collaborator whose values I could not defend out loud."},
+    {n:4,tag:"self-org",band:"high",name:"Self-organisation",
+     q:"How am I redesigning my own structure?",
+     ex:"Let a side habit change the work taken, until 'producer' stopped being the right word and 'instrument designer' started — and the calendar followed."},
+    {n:3,tag:"goal",band:"high",name:"Goals of the system",
+     q:"What is this career actually FOR?",
+     ex:"Retired the inherited goal ('make a living from music') and named the real one ('make work that matters to a hundred people') — then re-cut everything downstream."},
+    {n:2,tag:"paradigm",band:"high",name:"Paradigm",
+     q:"What does it even mean, for me, to be an artist?",
+     ex:"Stopped treating music as content to be fed into a feed, and started treating it as a way of paying attention. Nothing on the calendar changed that week; everything after it did."},
+    {n:1,tag:"transcend",band:"high",name:"Power to transcend paradigms",
+     q:"Can I hold any answer to 'what's it for' — and put it down when it stops being true?",
+     ex:"Having entered and left three answers already, held the fourth loosely from the first day — and built the practice so it survives the fifth."}
+  ];
+  var counts = {}; L.forEach(function(r){counts[r.n]=0;});
+
+  var bands = [
+    {key:"low",  label:"↓ Lower leverage · feels productive · changes least ↓", from:12},
+    {key:"mid",  label:"↓ The operating layer · rules, loops, signals ↓", from:8},
+    {key:"high", label:"↓ Highest leverage · feels hardest · pays back most ↓", from:4}
+  ];
+
+  var host = document.getElementById('rows'), html = "";
+  bands.forEach(function(b){
+    html += '<div class="band">'+b.label+'</div>';
+    L.filter(function(r){return r.band===b.key;}).forEach(function(r){
+      html += '<div class="row'+(b.key==='high'?' hot':'')+'">'+
+        '<div class="lvl">'+r.n+'<small>'+r.tag+'</small></div>'+
+        '<div class="body"><p class="name">'+r.name+'</p><p class="q">"'+r.q+'"</p>'+
+        '<div class="ex"><b>a move that lives here</b>'+r.ex+'</div></div>'+
+        '<div class="pick"><span class="n zero" id="n-'+r.n+'">0</span>'+
+        '<span class="btns"><button data-lvl="'+r.n+'" data-d="-1" aria-label="remove one from level '+r.n+'">−</button>'+
+        '<button data-lvl="'+r.n+'" data-d="1" aria-label="add one to level '+r.n+'">+</button></span>'+
+        '<span class="cap">of my ten</span></div></div>';
+    });
+  });
+  host.innerHTML = html;
+
+  function total(){ var t=0; for(var k in counts) t+=counts[k]; return t; }
+  function bandSum(key){ return L.filter(function(r){return r.band===key;}).reduce(function(a,r){return a+counts[r.n];},0); }
+
+  function reading(){
+    var t=total();
+    if(t===0) return "<b>Nothing placed yet.</b> The reading appears once all ten are somewhere.";
+    if(t<10) return "<b>"+t+" of ten placed.</b> Keep going — the shape only means something when the whole set is on the ladder.";
+    var lo=bandSum('low'), mid=bandSum('mid'), hi=bandSum('high');
+    var centroid = L.reduce(function(a,r){return a+r.n*counts[r.n];},0)/10;
+    var s = "<b>Your ten sit at an average height of level "+centroid.toFixed(1)+".</b> ";
+    if(lo>=7) s += "Seven or more of your last ten were parameter-and-plumbing decisions. That is the ordinary shape, and it is not a failure — it is what a system does when nobody is asking it what it is for. The cheapest experiment: take one of those decisions and ask what level-5 rule would have made it unnecessary.";
+    else if(hi>=3) s += "Three or more at the top of the ladder is rare and costly. Worth checking you have the buffer (level 11) to survive a paradigm move — self-organising without runway is how good careers stall mid-transformation.";
+    else if(mid>=5) s += "You are working the operating layer — rules, loops, and which signals you let in. This is the most durable band to live in, and the usual next move is upward: name the goal those rules are protecting, and check it is still yours.";
+    else s += "A spread shape — no single band dominates. Either you are mid-transition, or the ten were not really chosen. Re-read the top four rungs and see whether any of your ten was actually higher than you first filed it.";
+    if(hi===0) s += " <b>Nothing in levels 4–1.</b> That blank is the finding, not an omission — the highest-leverage moves are the ones no calendar ever asks you for.";
+    return s;
+  }
+
+  function render(){
+    var t=total();
+    document.getElementById('placed').textContent=t;
+    L.forEach(function(r){
+      var el=document.getElementById('n-'+r.n);
+      el.textContent=counts[r.n];
+      el.className = counts[r.n]? 'n':'n zero';
+    });
+    var d=t||1;
+    [['low','f-low','p-low'],['mid','f-mid','p-mid'],['high','f-high','p-high']].forEach(function(p){
+      var v=bandSum(p[0]), pct=Math.round(100*v/d);
+      document.getElementById(p[1]).style.width=(t?pct:0)+'%';
+      document.getElementById(p[2]).textContent=(t?pct:0)+'%';
+    });
+    document.getElementById('readout').innerHTML=reading();
+  }
+
+  host.addEventListener('click', function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    var lvl=+b.dataset.lvl, d=+b.dataset.d;
+    if(d>0 && total()>=10) return;
+    counts[lvl]=Math.max(0, counts[lvl]+d);
+    render();
+  });
+
+  document.getElementById('reset').addEventListener('click', function(){
+    L.forEach(function(r){counts[r.n]=0;});
+    document.getElementById('export').style.display='none';
+    render();
+  });
+
+  function stamp(){ var d=new Date(); return d.toISOString().slice(0,10); }
+
+  document.getElementById('save').addEventListener('click', function(){
+    var lines=[];
+    lines.push("MEADOWS LEVERAGE DIAGNOSTIC — my last ten career decisions");
+    lines.push("saved "+stamp()+"  ·  Loud'n Live");
+    lines.push("");
+    L.forEach(function(r){
+      var c=counts[r.n];
+      var bar = c? new Array(c+1).join("#") : ".";
+      lines.push(("  "+r.n).slice(-3)+"  "+bar+new Array(Math.max(1,11-(c||1))).join(" ")+"  "+r.name+(c?"  ("+c+")":""));
+    });
+    lines.push("");
+    lines.push("placed: "+total()+"/10");
+    lines.push("levels 12-9 (parameters & plumbing): "+bandSum('low'));
+    lines.push("levels  8-5 (rules, loops, signals): "+bandSum('mid'));
+    lines.push("levels  4-1 (self-org, goals, paradigm): "+bandSum('high'));
+    lines.push("typical artist, for comparison:        8 / 2 / 0");
+    lines.push("");
+    lines.push(document.getElementById('readout').textContent.trim());
+    lines.push("");
+    lines.push("Next: pick the single lowest-leverage decision in your ten and ask what higher rung would have made it unnecessary.");
+    var txt=lines.join("\n");
+    var out=document.getElementById('out'); out.value=txt;
+    document.getElementById('export').style.display='block';
+    var notes=[];
+    try{ out.select(); document.execCommand('copy'); notes.push("copied to clipboard"); }catch(e){}
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){},function(){});
+    }
+    try{
+      var blob=new Blob([txt],{type:'text/plain'});
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download='leverage-distribution-'+stamp()+'.txt';
+      document.body.appendChild(a); a.click(); a.remove();
+      notes.push("a .txt download was attempted");
+    }catch(e){}
+    notes.push("nothing left your machine");
+    document.getElementById('exhint').textContent=notes.join(" · ");
+  });
+
+  render();
+})();
+</script>
