@@ -1,0 +1,1916 @@
+{
+ "source": "/Applications/Ableton Live 12 Suite.app/Contents/App-Resources/Core Library/Devices/Instruments/Wavetable",
+ "presets_scanned": 270,
+ "categories": [
+  "Ambient & Evolving",
+  "Bass",
+  "Brass",
+  "Effects",
+  "Guitar & Plucked",
+  "Mallets",
+  "Percussive",
+  "Piano & Keys",
+  "Synth Keys",
+  "Synth Lead",
+  "Synth Pad",
+  "Synth Rhythmic"
+ ],
+ "ear_confirmed": false,
+ "note": "usage bands mined from factory presets; NOT perceptual bands confirmed by ear",
+ "parameters": {
+  "Voice_Filter1_CircuitBpNoMo": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    0.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 257,
+    "1.0": 13
+   }
+  },
+  "Voice_Filter1_CircuitLpHp": {
+   "n": 270,
+   "distinct": 5,
+   "min": 0.0,
+   "max": 4.0,
+   "median": 1.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    2.0,
+    3.0
+   ],
+   "deciles": [
+    0.0,
+    4.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 116,
+    "1.0": 21,
+    "2.0": 59,
+    "3.0": 34,
+    "4.0": 40
+   }
+  },
+  "Voice_Filter1_Drive": {
+   "n": 270,
+   "distinct": 73,
+   "min": 0.0,
+   "max": 24.0,
+   "median": 4.59375,
+   "quintiles": [
+    0.0,
+    2.0625,
+    6.375,
+    8.625
+   ],
+   "deciles": [
+    0.0,
+    14.081249999999999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Filter1_Frequency": {
+   "n": 270,
+   "distinct": 211,
+   "min": 20.0000706,
+   "max": 20479.998,
+   "median": 953.6118165,
+   "quintiles": [
+    151.47267460000003,
+    549.4317142000006,
+    1476.3322480000002,
+    3522.295314
+   ],
+   "deciles": [
+    70.8814011,
+    4927.269187999998
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Filter1_Morph": {
+   "n": 270,
+   "distinct": 5,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    0.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 265,
+    "0.0078125": 1,
+    "0.1640625": 1,
+    "0.5859375": 1,
+    "1.0": 2
+   }
+  },
+  "Voice_Filter1_On": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    1.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 4,
+    "1.0": 266
+   }
+  },
+  "Voice_Filter1_Resonance": {
+   "n": 270,
+   "distinct": 115,
+   "min": 0.0,
+   "max": 1.25,
+   "median": 0.43798053265000003,
+   "quintiles": [
+    0.1190476194,
+    0.3764258623,
+    0.50811686512,
+    0.6150793433
+   ],
+   "deciles": [
+    0.0,
+    0.72265625
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Filter1_Slope": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 205,
+    "1.0": 65
+   }
+  },
+  "Voice_Filter1_Type": {
+   "n": 270,
+   "distinct": 6,
+   "min": 0.0,
+   "max": 5.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 231,
+    "1.0": 26,
+    "2.0": 1,
+    "3.0": 7,
+    "4.0": 4,
+    "5.0": 1
+   }
+  },
+  "Voice_Filter2_CircuitBpNoMo": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    0.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 244,
+    "1.0": 26
+   }
+  },
+  "Voice_Filter2_CircuitLpHp": {
+   "n": 270,
+   "distinct": 5,
+   "min": 0.0,
+   "max": 4.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    2.0
+   ],
+   "deciles": [
+    0.0,
+    4.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 179,
+    "1.0": 6,
+    "2.0": 37,
+    "3.0": 13,
+    "4.0": 35
+   }
+  },
+  "Voice_Filter2_Drive": {
+   "n": 270,
+   "distinct": 56,
+   "min": 0.0,
+   "max": 24.0,
+   "median": 0.65625,
+   "quintiles": [
+    0.0,
+    0.0,
+    3.262500000000001,
+    6.75
+   ],
+   "deciles": [
+    0.0,
+    12.224999999999998
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Filter2_Frequency": {
+   "n": 270,
+   "distinct": 178,
+   "min": 20.0000706,
+   "max": 20479.998,
+   "median": 1676.646665,
+   "quintiles": [
+    129.2339144,
+    800.742944,
+    3226.615036000001,
+    11765.360960000045
+   ],
+   "deciles": [
+    74.889801,
+    20000.1035
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Filter2_Morph": {
+   "n": 270,
+   "distinct": 7,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    0.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 257,
+    "0.0234375": 1,
+    "0.4140625": 2,
+    "0.65625": 5,
+    "0.7421875": 1,
+    "0.7578125": 1,
+    "1.0": 3
+   }
+  },
+  "Voice_Filter2_On": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    0.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 59,
+    "1.0": 211
+   }
+  },
+  "Voice_Filter2_Resonance": {
+   "n": 270,
+   "distinct": 90,
+   "min": 0.0,
+   "max": 1.25,
+   "median": 0.4166666865,
+   "quintiles": [
+    0.0,
+    0.3333333492200001,
+    0.48015872836000006,
+    0.6845238209
+   ],
+   "deciles": [
+    0.0,
+    0.75215464234
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Filter2_Slope": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 224,
+    "1.0": 46
+   }
+  },
+  "Voice_Filter2_Type": {
+   "n": 270,
+   "distinct": 5,
+   "min": 0.0,
+   "max": 4.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    2.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 167,
+    "1.0": 68,
+    "2.0": 11,
+    "3.0": 15,
+    "4.0": 9
+   }
+  },
+  "Voice_Global_FilterRouting": {
+   "n": 270,
+   "distinct": 3,
+   "min": 0.0,
+   "max": 2.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    2.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 215,
+    "1.0": 23,
+    "2.0": 32
+   }
+  },
+  "Voice_Global_Glide": {
+   "n": 270,
+   "distinct": 42,
+   "min": 0.0,
+   "max": 4.07552814,
+   "median": 7.450580597e-08,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.012948542836000014,
+    0.078125
+   ],
+   "deciles": [
+    0.0,
+    0.19166137577999995
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Global_Transpose": {
+   "n": 270,
+   "distinct": 12,
+   "min": -32.0,
+   "max": 35.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    -12.0,
+    12.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Amount": {
+   "n": 270,
+   "distinct": 50,
+   "min": 0.046875,
+   "max": 2.0,
+   "median": 1.0,
+   "quintiles": [
+    0.953125,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.49687500000000007,
+    1.1109375
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_AmpEnvelope_LoopMode": {
+   "n": 270,
+   "distinct": 3,
+   "min": 0.0,
+   "max": 2.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    0.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 247,
+    "1.0": 8,
+    "2.0": 15
+   }
+  },
+  "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+   "n": 270,
+   "distinct": 40,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.59375
+   ],
+   "deciles": [
+    0.0,
+    0.71875
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+   "n": 270,
+   "distinct": 32,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.5,
+   "quintiles": [
+    0.4761904478,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "deciles": [
+    0.0,
+    0.8125
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+   "n": 270,
+   "distinct": 41,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.5,
+   "quintiles": [
+    0.4375,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "deciles": [
+    0.1458881616590002,
+    0.7199519276599999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_AmpEnvelope_Sustain": {
+   "n": 270,
+   "distinct": 79,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.64621195195,
+   "quintiles": [
+    0.35149874686000004,
+    0.5011875629,
+    0.8139178157,
+    0.9384765625
+   ],
+   "deciles": [
+    0.006103515625,
+    1.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_AmpEnvelope_Times_Attack": {
+   "n": 270,
+   "distinct": 96,
+   "min": 0.0,
+   "max": 10.1364326,
+   "median": 0.001090839505,
+   "quintiles": [
+    9.655952454e-05,
+    0.001000000164,
+    0.001544952393,
+    0.04025358706800006
+   ],
+   "deciles": [
+    6.705522537300017e-08,
+    0.4724228769499998
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_AmpEnvelope_Times_Decay": {
+   "n": 270,
+   "distinct": 93,
+   "min": 0.001861785538,
+   "max": 20.0,
+   "median": 1.14142418,
+   "quintiles": [
+    0.5835770369,
+    0.5999999642,
+    4.701930330000006,
+    7.45152235
+   ],
+   "deciles": [
+    0.19354420004,
+    15.9127045
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_AmpEnvelope_Times_Release": {
+   "n": 270,
+   "distinct": 113,
+   "min": 0.001500000013,
+   "max": 20.0,
+   "median": 0.2770560384,
+   "quintiles": [
+    0.03060164861,
+    0.1132968962,
+    0.5999999642,
+    1.70198393
+   ],
+   "deciles": [
+    0.006145766936,
+    2.5340983849999996
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_LoopMode": {
+   "n": 270,
+   "distinct": 3,
+   "min": 0.0,
+   "max": 2.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 235,
+    "1.0": 19,
+    "2.0": 16
+   }
+  },
+  "Voice_Modulators_Envelope2_Slopes_Attack": {
+   "n": 270,
+   "distinct": 43,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    -0.28125,
+    0.6581925630599998
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Slopes_Decay": {
+   "n": 270,
+   "distinct": 46,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.5,
+   "quintiles": [
+    0.328125,
+    0.5,
+    0.5,
+    0.9630768776000008
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Slopes_Release": {
+   "n": 270,
+   "distinct": 29,
+   "min": -0.828125,
+   "max": 1.0,
+   "median": 0.5,
+   "quintiles": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "deciles": [
+    -0.0015624999999999667,
+    0.5
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Times_Attack": {
+   "n": 270,
+   "distinct": 105,
+   "min": 0.0,
+   "max": 17.9504948,
+   "median": 0.004147199448,
+   "quintiles": [
+    5.2069076222000175e-06,
+    0.001000000164,
+    0.062227627636000024,
+    0.8830135345600024
+   ],
+   "deciles": [
+    0.0,
+    4.094817299999999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Times_Decay": {
+   "n": 270,
+   "distinct": 118,
+   "min": 0.001500000013,
+   "max": 20.0,
+   "median": 1.212549565,
+   "quintiles": [
+    0.4557266831600002,
+    0.63158403638,
+    3.20849013,
+    8.47572899
+   ],
+   "deciles": [
+    0.14778209774000003,
+    11.961159189999993
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Times_Release": {
+   "n": 270,
+   "distinct": 89,
+   "min": 0.001500000013,
+   "max": 20.0,
+   "median": 0.5999999642,
+   "quintiles": [
+    0.2562014461,
+    0.5999999642,
+    0.5999999642,
+    2.1171751
+   ],
+   "deciles": [
+    0.07000000775,
+    3.728633117999999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Values_Final": {
+   "n": 270,
+   "distinct": 14,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    0.09375
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Values_Initial": {
+   "n": 270,
+   "distinct": 38,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.3046875
+   ],
+   "deciles": [
+    0.0,
+    0.6812499999999999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Values_Peak": {
+   "n": 270,
+   "distinct": 54,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    0.7384615541,
+    0.9856418967,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.35078125000000004,
+    1.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope2_Values_Sustain": {
+   "n": 270,
+   "distinct": 94,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.5,
+   "quintiles": [
+    0.0,
+    0.36995192764000007,
+    0.5218750000000001,
+    0.8157142877600002
+   ],
+   "deciles": [
+    0.0,
+    0.953125
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_LoopMode": {
+   "n": 270,
+   "distinct": 3,
+   "min": 0.0,
+   "max": 2.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 223,
+    "1.0": 21,
+    "2.0": 26
+   }
+  },
+  "Voice_Modulators_Envelope3_Slopes_Attack": {
+   "n": 270,
+   "distinct": 33,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    -0.171875,
+    0.37384613749999973
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Slopes_Decay": {
+   "n": 270,
+   "distinct": 29,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.5,
+   "quintiles": [
+    0.390625,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "deciles": [
+    -0.34375,
+    0.5882352591
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Slopes_Release": {
+   "n": 270,
+   "distinct": 10,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.5,
+   "quintiles": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "deciles": [
+    0.4953125000000001,
+    0.5
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Times_Attack": {
+   "n": 270,
+   "distinct": 91,
+   "min": 0.0,
+   "max": 20.0,
+   "median": 0.0057352639265,
+   "quintiles": [
+    0.001000000164,
+    0.001000000164,
+    0.055815998464000045,
+    1.3204045300000002
+   ],
+   "deciles": [
+    0.00017065554854400018,
+    2.48567581
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Times_Decay": {
+   "n": 270,
+   "distinct": 84,
+   "min": 0.001932187122,
+   "max": 20.0,
+   "median": 1.414425015,
+   "quintiles": [
+    0.5999999642,
+    0.5999999642,
+    2.43976021,
+    5.00707531
+   ],
+   "deciles": [
+    0.25542081002,
+    9.085434247999999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Times_Release": {
+   "n": 270,
+   "distinct": 63,
+   "min": 0.001500000013,
+   "max": 9.76695919,
+   "median": 0.5999999642,
+   "quintiles": [
+    0.2562014461,
+    0.5999999642,
+    0.5999999642,
+    0.5999999642
+   ],
+   "deciles": [
+    0.08985137939,
+    2.1413309319999985
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Values_Final": {
+   "n": 270,
+   "distinct": 15,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    0.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Values_Initial": {
+   "n": 270,
+   "distinct": 15,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    0.4765625
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Values_Peak": {
+   "n": 270,
+   "distinct": 30,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    0.98953028914,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.8690264224800001,
+    1.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Envelope3_Values_Sustain": {
+   "n": 270,
+   "distinct": 62,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.5,
+   "quintiles": [
+    0.054012475160000004,
+    0.46875,
+    0.5,
+    0.6953125
+   ],
+   "deciles": [
+    0.0,
+    0.796875
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo1_Retrigger": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    1.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 13,
+    "1.0": 257
+   }
+  },
+  "Voice_Modulators_Lfo1_Shape_Amount": {
+   "n": 270,
+   "distinct": 67,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    0.3984375,
+    0.8062500000000001,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.23984375000000005,
+    1.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+   "n": 270,
+   "distinct": 25,
+   "min": 0.0,
+   "max": 360.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    182.81249999999983
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo1_Shape_Shaping": {
+   "n": 270,
+   "distinct": 51,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    -0.046875,
+    0.0,
+    0.0,
+    0.25
+   ],
+   "deciles": [
+    -0.42499999999999993,
+    0.4375
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo1_Shape_Type": {
+   "n": 270,
+   "distinct": 5,
+   "min": 0.0,
+   "max": 4.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    1.0,
+    2.0
+   ],
+   "deciles": [
+    0.0,
+    3.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 151,
+    "1.0": 58,
+    "2.0": 27,
+    "3.0": 17,
+    "4.0": 17
+   }
+  },
+  "Voice_Modulators_Lfo1_Time_AttackTime": {
+   "n": 270,
+   "distinct": 47,
+   "min": 0.0,
+   "max": 20.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.333596468
+   ],
+   "deciles": [
+    0.0,
+    0.7327270508
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo1_Time_Rate": {
+   "n": 270,
+   "distinct": 72,
+   "min": 0.009999999776,
+   "max": 30.0,
+   "median": 0.9999998808,
+   "quintiles": [
+    0.2076878995,
+    0.6771969199,
+    0.9999999404,
+    3.9740445100000032
+   ],
+   "deciles": [
+    0.06857421994,
+    14.632165909999982
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo1_Time_Sync": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 113,
+    "1.0": 157
+   }
+  },
+  "Voice_Modulators_Lfo1_Time_SyncedRate": {
+   "n": 270,
+   "distinct": 19,
+   "min": 0.0,
+   "max": 21.0,
+   "median": 15.0,
+   "quintiles": [
+    8.0,
+    12.0,
+    15.0,
+    15.0
+   ],
+   "deciles": [
+    2.900000000000002,
+    15.099999999999994
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo2_Retrigger": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    1.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 9,
+    "1.0": 261
+   }
+  },
+  "Voice_Modulators_Lfo2_Shape_Amount": {
+   "n": 270,
+   "distinct": 63,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    0.4796875000000001,
+    0.953125,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.234375,
+    1.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+   "n": 270,
+   "distinct": 21,
+   "min": 0.0,
+   "max": 360.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    0.0,
+    61.875
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo2_Shape_Shaping": {
+   "n": 270,
+   "distinct": 51,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.375
+   ],
+   "deciles": [
+    -0.5,
+    0.546875
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo2_Shape_Type": {
+   "n": 270,
+   "distinct": 5,
+   "min": 0.0,
+   "max": 4.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    1.0,
+    2.0
+   ],
+   "deciles": [
+    0.0,
+    3.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 160,
+    "1.0": 55,
+    "2.0": 16,
+    "3.0": 18,
+    "4.0": 21
+   }
+  },
+  "Voice_Modulators_Lfo2_Time_AttackTime": {
+   "n": 270,
+   "distinct": 38,
+   "min": 0.0,
+   "max": 4.07552814,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.03404736519
+   ],
+   "deciles": [
+    0.0,
+    0.08835799992
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo2_Time_Rate": {
+   "n": 270,
+   "distinct": 82,
+   "min": 0.009999999776,
+   "max": 30.0,
+   "median": 0.9999998808,
+   "quintiles": [
+    0.1881347895,
+    0.9999998808,
+    0.9999998808,
+    3.25590682
+   ],
+   "deciles": [
+    0.036011263731000005,
+    6.53858042
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_Lfo2_Time_Sync": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 148,
+    "1.0": 122
+   }
+  },
+  "Voice_Modulators_Lfo2_Time_SyncedRate": {
+   "n": 270,
+   "distinct": 20,
+   "min": 0.0,
+   "max": 21.0,
+   "median": 15.0,
+   "quintiles": [
+    11.0,
+    15.0,
+    15.0,
+    15.0
+   ],
+   "deciles": [
+    6.900000000000002,
+    17.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Modulators_TimeScale": {
+   "n": 270,
+   "distinct": 51,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    -0.078125,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    -0.22187499999999993,
+    0.28125
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator1_Effects_Effect1": {
+   "n": 270,
+   "distinct": 51,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.0,
+    0.06562500000000027
+   ],
+   "deciles": [
+    -0.15625,
+    0.42299458980999993
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator1_Effects_Effect2": {
+   "n": 270,
+   "distinct": 51,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.009687500076000027,
+    0.2578125
+   ],
+   "deciles": [
+    0.0,
+    0.5703125
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator1_Effects_EffectMode": {
+   "n": 270,
+   "distinct": 4,
+   "min": 0.0,
+   "max": 3.0,
+   "median": 2.0,
+   "quintiles": [
+    0.0,
+    1.0,
+    2.0,
+    2.0
+   ],
+   "deciles": [
+    0.0,
+    3.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 79,
+    "1.0": 50,
+    "2.0": 92,
+    "3.0": 49
+   }
+  },
+  "Voice_Oscillator1_Gain": {
+   "n": 270,
+   "distinct": 60,
+   "min": 0.1609195471,
+   "max": 1.0,
+   "median": 0.9789915979,
+   "quintiles": [
+    0.73472423556,
+    0.8739495873,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.69252963658,
+    1.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator1_On": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    1.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 2,
+    "1.0": 268
+   }
+  },
+  "Voice_Oscillator1_Pan": {
+   "n": 270,
+   "distinct": 55,
+   "min": -1.0,
+   "max": 0.4375,
+   "median": -0.125,
+   "quintiles": [
+    -0.47187499999999993,
+    -0.24062499999999987,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    -0.59375,
+    0.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator1_Pitch_Detune": {
+   "n": 270,
+   "distinct": 38,
+   "min": -0.25,
+   "max": 0.3046875,
+   "median": 0.0,
+   "quintiles": [
+    -0.0234375,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    -0.0390625,
+    0.078125
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator1_Pitch_Transpose": {
+   "n": 270,
+   "distinct": 9,
+   "min": -24.0,
+   "max": 24.0,
+   "median": 0.0,
+   "quintiles": [
+    -7.999999999999979,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    -12.0,
+    0.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator1_Wavetables_WavePosition": {
+   "n": 270,
+   "distinct": 137,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.45402298865,
+   "quintiles": [
+    0.162621364,
+    0.3697479069,
+    0.4957983196,
+    0.6134454012
+   ],
+   "deciles": [
+    0.0,
+    0.73125053644
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator2_Effects_Effect1": {
+   "n": 270,
+   "distinct": 49,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    -0.09687499999999993,
+    0.0,
+    0.0,
+    0.015625
+   ],
+   "deciles": [
+    -1.0,
+    0.25
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator2_Effects_Effect2": {
+   "n": 270,
+   "distinct": 53,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.0,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.034375000000000044,
+    0.2265625
+   ],
+   "deciles": [
+    0.0,
+    0.5093749999999999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator2_Effects_EffectMode": {
+   "n": 270,
+   "distinct": 4,
+   "min": 0.0,
+   "max": 3.0,
+   "median": 1.0,
+   "quintiles": [
+    0.0,
+    1.0,
+    1.0,
+    2.0
+   ],
+   "deciles": [
+    0.0,
+    3.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 98,
+    "1.0": 70,
+    "2.0": 66,
+    "3.0": 36
+   }
+  },
+  "Voice_Oscillator2_Gain": {
+   "n": 270,
+   "distinct": 75,
+   "min": 0.1512605101,
+   "max": 1.0,
+   "median": 0.8739495873,
+   "quintiles": [
+    0.6285714507200001,
+    0.8235294223,
+    0.95294117926,
+    1.0
+   ],
+   "deciles": [
+    0.45917125342000004,
+    1.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator2_On": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 44,
+    "1.0": 226
+   }
+  },
+  "Voice_Oscillator2_Pan": {
+   "n": 270,
+   "distinct": 48,
+   "min": -1.0,
+   "max": 1.0,
+   "median": 0.0703125,
+   "quintiles": [
+    0.0,
+    0.0,
+    0.234375,
+    0.45625000000000027
+   ],
+   "deciles": [
+    0.0,
+    0.5953124999999999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator2_Pitch_Detune": {
+   "n": 270,
+   "distinct": 39,
+   "min": -0.3046875,
+   "max": 0.40625,
+   "median": 0.0,
+   "quintiles": [
+    -0.015625,
+    0.0,
+    0.0,
+    0.015625
+   ],
+   "deciles": [
+    -0.0234375,
+    0.046875
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator2_Pitch_Transpose": {
+   "n": 270,
+   "distinct": 15,
+   "min": -24.0,
+   "max": 24.0,
+   "median": 0.0,
+   "quintiles": [
+    -7.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "deciles": [
+    -12.0,
+    7.0
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Oscillator2_Wavetables_WavePosition": {
+   "n": 270,
+   "distinct": 127,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.4537815154,
+   "quintiles": [
+    0.1609195471,
+    0.3650452971800001,
+    0.50132451056,
+    0.6486815572000001
+   ],
+   "deciles": [
+    0.0,
+    0.67978597879
+   ],
+   "kind": "continuous"
+  },
+  "Voice_SubOscillator_Gain": {
+   "n": 270,
+   "distinct": 111,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.5011875033,
+   "quintiles": [
+    0.265625,
+    0.4609375,
+    0.5011875033,
+    0.6239854336
+   ],
+   "deciles": [
+    0.17750424297,
+    0.7781250118999999
+   ],
+   "kind": "continuous"
+  },
+  "Voice_SubOscillator_On": {
+   "n": 270,
+   "distinct": 2,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 1.0,
+   "quintiles": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 46,
+    "1.0": 224
+   }
+  },
+  "Voice_SubOscillator_Tone": {
+   "n": 270,
+   "distinct": 81,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.4765625,
+   "quintiles": [
+    0.0,
+    0.3000000119400002,
+    0.659375,
+    0.8125
+   ],
+   "deciles": [
+    0.0,
+    0.84375
+   ],
+   "kind": "continuous"
+  },
+  "Voice_SubOscillator_Transpose": {
+   "n": 270,
+   "distinct": 3,
+   "min": 0.0,
+   "max": 2.0,
+   "median": 1.0,
+   "quintiles": [
+    0.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "deciles": [
+    0.0,
+    1.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 85,
+    "1.0": 176,
+    "2.0": 9
+   }
+  },
+  "Voice_Unison_Amount": {
+   "n": 270,
+   "distinct": 94,
+   "min": 0.0,
+   "max": 1.0,
+   "median": 0.29843750594999996,
+   "quintiles": [
+    0.109375,
+    0.21250000000000013,
+    0.3515625,
+    0.59375
+   ],
+   "deciles": [
+    0.04609375000000002,
+    0.75
+   ],
+   "kind": "continuous"
+  },
+  "Voice_Unison_Mode": {
+   "n": 270,
+   "distinct": 7,
+   "min": 0.0,
+   "max": 6.0,
+   "median": 3.0,
+   "quintiles": [
+    1.0,
+    2.0,
+    3.0,
+    5.0
+   ],
+   "deciles": [
+    1.0,
+    6.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "0.0": 11,
+    "1.0": 73,
+    "2.0": 36,
+    "3.0": 52,
+    "4.0": 32,
+    "5.0": 31,
+    "6.0": 35
+   }
+  },
+  "Voice_Unison_VoiceCount": {
+   "n": 270,
+   "distinct": 7,
+   "min": 2.0,
+   "max": 8.0,
+   "median": 3.0,
+   "quintiles": [
+    2.0,
+    3.0,
+    3.0,
+    5.0
+   ],
+   "deciles": [
+    2.0,
+    6.0
+   ],
+   "kind": "discrete",
+   "value_histogram": {
+    "2.0": 94,
+    "3.0": 80,
+    "4.0": 39,
+    "5.0": 18,
+    "6.0": 18,
+    "7.0": 8,
+    "8.0": 13
+   }
+  }
+ }
+}
