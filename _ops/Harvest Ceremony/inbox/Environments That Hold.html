@@ -1,0 +1,398 @@
+<title>Environments That Hold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@200;300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --serif:'Cormorant Garamond','Source Serif 4',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif;
+  --display:'Anton','Bebas Neue',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --bg:#0a0a0f; --bg-elev-1:#12121a; --bg-elev-2:#1a1a28;
+  --border:#4a4a5e; --border-soft:rgba(255,255,255,0.06);
+  --fg-1:#e8e8f0; --fg-2:#c8c8d8; --fg-3:#8a8aa0; --fg-4:#4a4a5a; --fg-on-accent:#0a0a0f;
+  --accent:#e8b84a; --accent-dim:#7a6030; --accent-soft:rgba(232,184,74,0.10); --accent-line:rgba(232,184,74,0.50);
+  --info:#4a8fff; --success:#00ff66; --danger:#ff2a2a;
+  --r-sm:2px; --r-md:4px;
+  --glow-accent:inset 0 1px 0 rgba(232,184,74,0.25),0 0 32px rgba(232,184,74,0.32),0 0 4px rgba(232,184,74,0.45);
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg-1);font-family:var(--serif);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px 88px}
+
+header.mast{padding:64px 0 30px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 22px;font-weight:500}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.9rem,8.5vw,5.6rem);line-height:1.05;letter-spacing:.005em;text-transform:uppercase;margin:0 0 22px}
+.standfirst{font-size:21px;line-height:1.6;font-weight:300;color:var(--fg-2);max-width:62ch;margin:0 0 30px}
+.standfirst em{font-style:italic;color:var(--fg-1)}
+.params{display:flex;flex-wrap:wrap;border-top:1px solid var(--border-soft);padding-top:18px}
+.param{padding-right:28px;margin-right:28px;border-right:1px solid var(--border-soft)}
+.param:last-child{border-right:0;margin-right:0;padding-right:0}
+.param dt{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3);margin:0 0 4px}
+.param dd{margin:0;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--fg-2)}
+
+.cols{display:block}
+@media (min-width:1000px){
+  .cols{display:grid;grid-template-columns:198px minmax(0,1fr);gap:56px;align-items:start}
+  nav.toc{position:sticky;top:26px;max-height:calc(100vh - 52px);overflow-y:auto}
+}
+nav.toc{margin-bottom:52px}
+nav.toc p{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-3);margin:0 0 14px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+nav.toc a{font-family:var(--sans);font-size:13px;line-height:1.35;color:var(--fg-3);text-decoration:none;display:block;border-left:1px solid var(--border);padding-left:12px;transition:color .18s var(--ease),border-color .18s var(--ease)}
+nav.toc a:hover{color:var(--accent);border-left-color:var(--accent-line)}
+nav.toc a:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+
+section{margin-bottom:70px;scroll-margin-top:24px}
+h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:34px;line-height:1.1;letter-spacing:.005em;margin:0 0 8px}
+.sec-note{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3);margin:0 0 28px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+h3{font-family:var(--sans);font-weight:700;font-size:18px;line-height:1.25;margin:26px 0 6px;letter-spacing:-.01em;color:var(--fg-1)}
+h3:first-child{margin-top:0}
+p{margin:0 0 16px;max-width:68ch;color:var(--fg-2)}
+p strong{color:var(--fg-1);font-weight:500}
+a{color:var(--accent)}
+ul.plain{margin:0 0 16px;padding-left:20px;max-width:70ch;color:var(--fg-2)}
+ul.plain li{margin-bottom:9px}
+ul.plain li::marker{color:var(--accent-dim)}
+code{font-family:var(--mono);font-size:.86em;color:var(--fg-1);background:var(--bg-elev-2);padding:1px 5px;border-radius:var(--r-sm)}
+.wiki{font-family:var(--mono);font-size:.84em;color:var(--accent);white-space:nowrap}
+
+.pull{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.45;color:var(--fg-1);border-left:2px solid var(--accent);padding-left:24px;margin:0 0 28px;max-width:54ch;font-weight:300}
+.claim{border:1px solid var(--accent-dim);background:var(--accent-soft);border-radius:var(--r-md);padding:28px 30px;margin:0 0 26px;box-shadow:var(--glow-accent)}
+.claim p{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--fg-1);margin:0;max-width:58ch;font-weight:400}
+
+.scroller{overflow-x:auto;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--bg-elev-1);margin-bottom:20px}
+table{border-collapse:collapse;width:100%;min-width:720px;font-family:var(--sans);font-size:14px;line-height:1.55}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--fg-2)}
+thead th{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3);font-weight:500;background:var(--bg-elev-2);border-bottom:1px solid var(--border)}
+tbody tr:last-child td{border-bottom:0}
+td .name{display:block;color:var(--fg-1);font-weight:700}
+td .who{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--fg-4);text-transform:uppercase;margin-top:3px}
+.ev{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.ev.a{color:var(--success)} .ev.b{color:var(--accent)} .ev.c{color:var(--danger)}
+
+.card{background:var(--bg-elev-1);border:1px solid var(--border-soft);border-radius:var(--r-md);padding:22px 24px 18px;margin-bottom:16px}
+.card h3{margin-top:0}
+.card p:last-child{margin-bottom:0}
+.card .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--fg-4);margin:12px 0 0;padding-top:10px;border-top:1px dashed var(--border);max-width:none}
+.card .meta b{color:var(--accent);font-weight:400}
+
+.q{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.5;color:var(--fg-1);margin:0 0 12px;max-width:58ch;font-weight:300}
+
+.people{display:grid;gap:0}
+.person{display:grid;gap:4px;padding:13px 0;border-top:1px solid var(--border-soft)}
+.person:first-child{border-top:0}
+@media (min-width:680px){.person{grid-template-columns:190px minmax(0,1fr);gap:24px;align-items:baseline}}
+.person dt{font-family:var(--sans);font-weight:700;font-size:15px;color:var(--fg-1)}
+.person dd{margin:0;font-size:15.5px;line-height:1.6;color:var(--fg-2)}
+
+footer{border-top:1px solid var(--border);margin-top:22px;padding-top:26px}
+footer p{font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--fg-3);max-width:70ch}
+.wordmark{font-family:var(--display);text-transform:uppercase;font-size:22px;letter-spacing:.02em;color:var(--fg-2);margin:0 0 12px}
+.wordmark span{font-weight:300}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Harvest · 6 September 2026</p>
+  <h1>Environments That Hold</h1>
+  <p class="standfirst">What the doctorate conversation produced, kept and sorted for the palace: therapeutic and coaching traditions worth modelling, the acceptance thread, a new question about defenses, the lineage behind meta-design, and the people to read. <em>The degree is set down. The material is not.</em></p>
+  <dl class="params">
+    <div class="param"><dt>Tier</dt><dd>Harvest — for deposit at leisure</dd></div>
+    <div class="param"><dt>Shape</dt><dd>Threads, people, proposed entries</dd></div>
+    <div class="param"><dt>Set down</dt><dd>Programmes, deadlines, disruption history</dd></div>
+  </dl>
+</header>
+
+<div class="cols">
+
+<nav class="toc" aria-label="Contents">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#peak">The peak</a></li>
+    <li><a href="#modes">Modes of Collaboration</a></li>
+    <li><a href="#acceptance">The acceptance thread</a></li>
+    <li><a href="#defenses">Lateral access &amp; defenses</a></li>
+    <li><a href="#holding">The palace as holding</a></li>
+    <li><a href="#lineage">The lineage</a></li>
+    <li><a href="#triad">The triad</a></li>
+    <li><a href="#test">Threads to test</a></li>
+    <li><a href="#people">People</a></li>
+    <li><a href="#entries">Proposed entries</a></li>
+    <li><a href="#down">Set down</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="peak">
+  <h2>The peak</h2>
+  <p class="sec-note">Named by you as the high point · preserved verbatim</p>
+
+  <div class="claim">
+    <p>Meta-design for artistic practice: seeding a human–AI knowledge environment that artists evolve into their own — and asking what in such a system is transferable, and what is constitutive of its author.</p>
+  </div>
+
+  <p>Why it holds up better than what came after: the second clause makes N=1 a methodological necessity rather than an embarrassment. You need the deeply personal case in order to ask what generalises, and either answer is a finding. Everything downstream of this — triads, cohorts, retention, programme fit — was elaboration that added machinery without adding insight.</p>
+
+  <p>Adjacent frame worth keeping beside it, in your words: <strong>the palace as an environment for wellbeing.</strong> Not a knowledge system that happens to be pleasant, but a working environment whose design goal is that practice remains possible.</p>
+</section>
+
+<section id="modes">
+  <h2>Modes of Collaboration</h2>
+  <p class="sec-note">Candidate children of <span class="wiki">[[Modes of Collaboration]]</span> · each worth its own entry</p>
+
+  <p>A creative coach uses several of these at once and the skill is knowing when to shift — that judgement is a real construct, called <strong>appropriate responsiveness</strong>, and by its own systematic reviews it still lacks an agreed definition or standard instrument despite being considered essential to whether help works at all. Which means the palace's habit of holding many approaches in reach, rather than prescribing one, is not naïve. It is the open problem.</p>
+
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Tradition</th><th>What it is for</th><th>Evidence</th><th>Palace resonance</th></tr></thead>
+      <tbody>
+        <tr><td><span class="name">Acceptance &amp; Commitment</span><span class="who">Hayes · third wave</span></td><td>Loosening the grip of unwanted thoughts so action can follow values. Explicitly not a control strategy — the claim is that trying to control internal experience is itself the trap.</td><td class="ev b">Broad, thin in music</td><td><span class="wiki">[[Spinoza Conatus]]</span> · <span class="wiki">[[Quality Manifesto]]</span></td></tr>
+        <tr><td><span class="name">Behavioural Activation</span><span class="who">Lewinsohn / Jacobson</span></td><td>Schedule and re-enter the valued activity; watch avoidance shrink. If the problem is not opening the session, this addresses it with almost no theory.</td><td class="ev a">Strongest for non-specialist delivery</td><td><span class="wiki">[[Progressive Staging]]</span> · Revival</td></tr>
+        <tr><td><span class="name">Narrative therapy</span><span class="who">White &amp; Epston</span></td><td>Externalising the problem and re-authoring identity around what a person is still committed to.</td><td class="ev b">Practice-rich, trial-poor</td><td><span class="wiki">[[Identity Molting]]</span></td></tr>
+        <tr><td><span class="name">Motivational Interviewing</span><span class="who">Miller &amp; Rollnick</span></td><td>Working with ambivalence — wanting two contradictory things at once, which is the actual affect around new tools, not fear alone.</td><td class="ev a">Strong, well-trialled</td><td><span class="wiki">[[Hilaritas Generator]]</span></td></tr>
+        <tr><td><span class="name">Compassion-Focused</span><span class="who">Gilbert</span></td><td>Built for shame and harsh self-criticism — the dominant emotional texture of perfectionist creative work, which ACT addresses only indirectly.</td><td class="ev b">Growing</td><td>the vulnerability period in <span class="wiki">[[Identity Molting]]</span></td></tr>
+        <tr><td><span class="name">Focusing / felt sense</span><span class="who">Gendlin</span></td><td>Attending to the bodily, pre-verbal sense of whether something is right before language arrives. Gendlin wrote directly on focusing and creativity.</td><td class="ev c">Thin, under-researched</td><td><span class="wiki">[[Merleau-Ponty]]</span> · mastery in the hands</td></tr>
+        <tr><td><span class="name">Existential / meaning-centred</span><span class="who">Frankl, Yalom, van Deurzen</span></td><td>What happens when the thing that made a life legible stops working. Takes the threat seriously rather than as a distortion to correct.</td><td class="ev b">Mixed</td><td><span class="wiki">[[Entry Conatus]]</span></td></tr>
+        <tr><td><span class="name">Winnicottian play</span><span class="who">object relations</span></td><td>Creativity as a "potential space" between self and world, requiring a good-enough holding environment to exist at all.</td><td class="ev c">Theoretical</td><td>"a productive environment, not a specific vision"</td></tr>
+        <tr><td><span class="name">Internal Family Systems</span><span class="who">Schwartz</span></td><td>Working with the inner critic, perfectionist and avoider as distinct parts rather than defeating them. Very popular among creative people.</td><td class="ev c">Popular, contested</td><td><span class="wiki">[[Diversity of Thought in Many-Agent Systems]]</span></td></tr>
+        <tr><td><span class="name">Self-Determination Theory</span><span class="who">Deci &amp; Ryan — not a therapy</span></td><td>The motivation frame underneath most of them: autonomy, competence, relatedness. Vallerand's passion model lives inside it.</td><td class="ev a">Very strong</td><td><span class="wiki">[[Cooperation Yields Agency]]</span></td></tr>
+        <tr><td><span class="name">Balint groups</span><span class="who">Balint, 1950s</span></td><td>A facilitated peer group where practitioners present the emotionally hard part of the work and are <em>heard, not advised</em>. See below.</td><td class="ev b">Real in medicine</td><td>"small rooms full of the right people"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>The distinction worth keeping when modelling adaptive vs maladaptive practice.</strong> Do not build a taxonomy from scratch — three measured constructs already exist: <em>psychological (in)flexibility</em> (ACT's core, with instruments), <em>harmonious vs obsessive passion</em> (Vallerand's dualistic model, applied to musicians and wellbeing), and <em>excellencism vs perfectionism</em> (Gaudreau's model, applied to music performance anxiety in 2026). Three measurable things where there was one intuition.</p>
+</section>
+
+<section id="acceptance">
+  <h2>The acceptance thread</h2>
+  <p class="sec-note">The finding you flagged to continue · and why it points at acceptance specifically</p>
+
+  <p>There is a named construct for perceiving that technology threatens your working life — <strong>technology-induced job insecurity</strong> — and a 2026 systematic review and meta-analysis of 96 studies (N≈43,000). It found that individual-level protective moderators (threat proximity, learning ability) <strong>failed to mitigate effects on self-evaluation, long-term wellbeing, or task performance.</strong> The authors conclude that individual coping alone is insufficient and recommend intervening above the individual.</p>
+
+  <p class="pull">Acceptance-based approaches are not coping strategies — which is exactly why that finding points toward them rather than away.</p>
+
+  <p>Coping means trying to control, reduce or avoid the aversive experience. That is what the meta-analysis measured, and what it found wanting. ACT's founding claim is the opposite: that the attempt to control internal experience is itself a driver of dysfunction, and that flexibility comes from changing one's relationship to the experience while acting on values regardless. So a finding that control-based coping does not protect long-term wellbeing is an argument <em>for</em> testing acceptance, not against it.</p>
+
+  <p><strong>Two live consequences.</strong> First, if individual coping is insufficient, the unit of intervention may need to be a group — which is what makes the Balint thread more than a curiosity. Second, this is the cleanest available argument for why an <em>environment</em> might do what a technique cannot: an environment is not a coping strategy either.</p>
+
+  <p><em>Anchor:</em> <a href="https://www.mdpi.com/2076-328X/16/9/1474">Navigating the Digital Storm — systematic review and meta-analysis of technology-induced job insecurity</a>.</p>
+</section>
+
+<section id="defenses">
+  <h2>Lateral access &amp; defenses</h2>
+  <p class="sec-note">Your question · a first pass at the mapping</p>
+
+  <p>Your own <span class="wiki">[[Lateral Access]]</span> says oblique and metaphorical framing gets past the identity filter that rejects direct correction. In psychology, the thing being got past has a name and a taxonomy: <strong>defense mechanisms</strong>, arranged by Vaillant into a hierarchy — pathological, immature, neurotic, and mature. Your question was whether different oblique moves suit different defenses. They plausibly do, and here is a first pass to argue with.</p>
+
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Defense</th><th>How it shows up in a practice</th><th>Candidate lateral move</th></tr></thead>
+      <tbody>
+        <tr><td><span class="name">Intellectualization</span><span class="who">neurotic</span></td><td>Talking and reading about the work with great sophistication instead of making it. Research as avoidance.</td><td>Forbid explanation. Constrain to a non-verbal action with a hard time box; the artifact is the only permitted output.</td></tr>
+        <tr><td><span class="name">Rationalization</span><span class="who">neurotic</span></td><td>The room isn't right, the gear isn't right, this isn't the season for it.</td><td>Do not argue with the reason — remove it from the environment. Change the room rather than the mind.</td></tr>
+        <tr><td><span class="name">Undoing / isolation of affect</span><span class="who">neurotic</span></td><td>Endless revision that never ships; feeling detached from work that used to matter.</td><td>Force an artifact with a date on it. Ship the unfinished thing to one person, not to the world.</td></tr>
+        <tr><td><span class="name">Projection</span><span class="who">immature</span></td><td>"They'll think it's derivative." The critic is placed outside and then obeyed.</td><td>Give it a voice and a name. A Dialectic where the imagined critic argues its case out loud and is answered — the palace already does this.</td></tr>
+        <tr><td><span class="name">Fantasy / idealization</span><span class="who">immature</span></td><td>The imagined masterpiece is so complete that starting can only spoil it.</td><td>Make the small ugly version first, deliberately, as its own object. Degrade the ideal before it can prohibit the real.</td></tr>
+        <tr><td><span class="name">Splitting</span><span class="who">immature</span></td><td>The work is genius or it is garbage, often within one hour.</td><td>Hold both as a <code>contradicts</code> link rather than resolving. The palace's own move: disagreement produces more light.</td></tr>
+        <tr><td><span class="name">Passive aggression / procrastination</span><span class="who">immature</span></td><td>Agreeing to the session and then not arriving at it.</td><td>Lower the decision cost. One recommended move rather than the whole board — the scout posture.</td></tr>
+        <tr><td><span class="name">Sublimation</span><span class="who">mature</span></td><td>The defense that <em>is</em> art-making: difficult feeling converted into work.</td><td>Nothing to get past. Worth naming because it reframes the whole enterprise — the domain being studied is one where the mature defense is the profession.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>That last row is the interesting one. If sublimation is the mature defense and art is its canonical form, then a coaching practice for artists is not managing defenses so much as <strong>moving practitioners up the hierarchy toward the one their craft already rewards.</strong> That is a thesis-shaped sentence and it is entirely yours to develop.</p>
+
+  <p><em>Caution worth carrying:</em> defense-mechanism language is psychodynamic and clinical. Used loosely on other people it becomes a way of diagnosing rather than helping. Useful as a private lens for choosing a move; corrosive if said aloud to the person.</p>
+</section>
+
+<section id="holding">
+  <h2>The palace as holding</h2>
+  <p class="sec-note">Winnicott · and the mapping of machinery to traditions</p>
+
+  <p><strong>Potential space</strong> is Winnicott's term for the area between self and world where play and creativity occur — and his central claim is that it exists only where there is a good-enough <em>holding environment</em>: a setting reliable enough that the person can stop defending and start playing. Not directive, not absent. Present, consistent, and unobtrusive.</p>
+
+  <p>This is a seventy-year-old psychoanalytic theory of <em>"create a productive environment instead of chasing a specific vision."</em> Worth reading properly, because it gives that philosophy a vocabulary, a mechanism and a literature — and because "holding" is a more precise word than "productive" for what you actually build.</p>
+
+  <h3>What the palace already enacts</h3>
+  <p>Each of these exists and runs; none was imported from the tradition beside it. This mapping is the strongest single artifact the conversation produced and is worth becoming an entry in its own right.</p>
+
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Mechanism</th><th>What it does</th><th>What it enacts</th></tr></thead>
+      <tbody>
+        <tr><td><span class="name">Dialectic</span></td><td>Two positions argue and are forbidden to resolve; the link is typed as disagreement.</td><td>Externalising; holding contradiction without collapsing it</td></tr>
+        <tr><td><span class="name">Closing Well</span></td><td>The day is read cold by a fresh mind, its arc named, the yield formally set down.</td><td>Reflective practice; the supervised close — the individual form of a Balint group</td></tr>
+        <tr><td><span class="name">Revival · Harvest</span></td><td>Bringing a dormant thread back into motion; taking usable yield from work that stalled.</td><td>Behavioural activation; graded return after avoidance</td></tr>
+        <tr><td><span class="name">forward_vector</span></td><td>Every page states in first person what it is trying to become.</td><td>Values clarification and committed action</td></tr>
+        <tr><td><span class="name">Quality Manifesto</span></td><td>Success criteria authored rather than inherited.</td><td>Autonomy; resistance to externally set metrics</td></tr>
+        <tr><td><span class="name">Identity Molting</span></td><td>The container tightens, is shed, the organism continues.</td><td>Narrative re-authoring that preserves the person telling it</td></tr>
+        <tr><td><span class="name">Concierge — scout</span></td><td>Surveys open work and recommends one move.</td><td>Graded task assignment; lowering the decision cost avoidance hides behind</td></tr>
+        <tr><td><span class="name">Pages as Agents</span></td><td>Positions become interlocutors, tested for recognisable voice.</td><td>Perspective-taking; the internal committee made external and answerable</td></tr>
+        <tr><td><span class="name">STIGMERGY</span></td><td>State, queue and log kept apart and reconciled against proof.</td><td>Self-monitoring made structural rather than remembered</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="lineage">
+  <h2>The lineage</h2>
+  <p class="sec-note">What the palace is an instance of · reading list with reasons</p>
+
+  <div class="card">
+    <h3>Meta-design and SER — Gerhard Fischer</h3>
+    <p>Designing environments that users evolve <em>at use time</em> rather than receive finished; explicitly positioned beyond user-centred and participatory design. Its process model is <strong>Seeding, Evolutionary growth, Reseeding</strong>: seed enough structure to be usable, let the user grow it into something unspecified, then periodically generalise what grew and reseed. A literal description of what the palace does, written down in the 1990s.</p>
+    <p class="meta"><b>Read</b> <a href="https://l3d.colorado.edu/wp-content/uploads/2011/09/hci2003-meta-design.pdf">Meta-Design: Beyond User-Centered and Participatory Design</a> · <a href="https://www.researchgate.net/publication/221519678_Seeding_evolutionary_growth_and_reseeding_supporting_the_incremental_development_of_design_environments">Seeding, Evolutionary Growth and Reseeding</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Augmenting human intellect — Douglas Engelbart, 1962</h3>
+    <p>Not tools for humans: the co-evolving system of human, language, artifacts and methodology, improved by <em>bootstrapping</em> — using the tool to improve the tool. The palace bootstraps. This is the direct ancestor of "endosymbiosis of artist and AI," and citing it converts a personal metaphor into a sixty-year-old research programme.</p>
+    <p class="meta"><b>Read</b> <a href="https://archive.org/details/1962-engelbart-AHI-framework">Augmenting Human Intellect: A Conceptual Framework</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Constructionism — Papert, Resnick</h3>
+    <p>People learn by building external, shareable structures. Usually studied in children; the palace is an unusually developed adult instance in a professional domain. Resnick's Lifelong Kindergarten group is the living research programme.</p>
+    <p class="meta"><b>Connects</b> <span class="wiki">[[Autodidact Polymaths]]</span> · <span class="wiki">[[Loudon Live]]</span></p>
+  </div>
+
+  <div class="card">
+    <h3>Extended mind and the live LLM argument</h3>
+    <p>Clark and Chalmers put the notebook inside the mind; the argument is live again, with a 2025 <em>Synthese</em> paper on LLMs and the extended mind and an active dispute about whether these systems augment thinking or hollow it out. The palace is an empirical position in a philosophical argument currently being had.</p>
+    <p class="meta"><b>Read</b> <a href="https://link.springer.com/article/10.1007/s11229-025-05046-y">ChatGPT, extended: large language models and the extended mind</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Luhmann's Zettelkasten as communication partner</h3>
+    <p>Luhmann described his slip-box in print as a partner in communication — a knowledge system its author claimed talked back. A 1981 precedent for an AI that fills itself with one person's values and answers in their own terms.</p>
+  </div>
+
+  <div class="card">
+    <h3>Boundary objects — Star &amp; Griesemer</h3>
+    <p>An artifact that lets two parties coordinate without either having full access to the other's world. The right frame for anything passing between two people's environments — and the reason a typed message grammar is a design ethic, not just engineering.</p>
+    <p class="meta"><b>Connects</b> <span class="wiki">[[STIGMERGY]]</span> · <span class="wiki">[[SCHEMA]]</span></p>
+  </div>
+
+  <div class="card">
+    <h3>The studio, and the coach in it — Donald Schön, 1987</h3>
+    <p><em>Educating the Reflective Practitioner</em> takes the design studio as the model for all professional education, with the studio master analysed specifically as a <strong>coach</strong> and reflection-in-action as the capacity being formed. Reflection-in-action and appropriate responsiveness are the same construct, named forty years apart in two fields that do not read each other. Connecting them is available work.</p>
+  </div>
+
+  <div class="card">
+    <h3>The homogenisation risk</h3>
+    <p>Generative AI has been shown to raise individual creative output while <em>reducing the collective diversity</em> of what a population produces. Networked personal AI systems are a plausible mechanism for that. The palace's own answer already exists as engineered friction — <code>contradicts</code> chosen over <code>mirrors</code>, participants forbidden to resolve. <strong>Friction is a design requirement, not a defect.</strong></p>
+    <p class="meta"><b>Read</b> <a href="https://www.science.org/doi/10.1126/sciadv.adn5290">Generative AI enhances individual creativity but reduces the collective diversity of novel content</a> · <a href="https://www.science.org/doi/10.1126/science.aec8352">Sycophantic AI decreases prosocial intentions and promotes dependence</a></p>
+  </div>
+</section>
+
+<section id="triad">
+  <h2>The triad</h2>
+  <p class="sec-note">For the <span class="wiki">[[Creative Coach]]</span> entry · a potential working group</p>
+
+  <p>Artist, coach, AI — three nodes, three live edges, and none of the three a patient. The artist authors the substrate the AI reasons over; the AI is shaped by that artist's values and output; the coach works beside both and can act on either.</p>
+
+  <ul class="plain">
+    <li><strong>artist ↔ AI</strong> — the co-evolution. Theorised: Engelbart, distributed cognition, extended mind.</li>
+    <li><strong>coach ↔ artist</strong> — the alliance. Enormous literature; nothing to add there.</li>
+    <li><strong>AI ↔ coach</strong> — essentially unstudied, and the edge this arrangement makes possible. A coach working beside a longitudinal, self-authored record rather than only what gets said in the room.</li>
+  </ul>
+
+  <p><strong>The design rule that makes the third edge safe.</strong> Coaching the artist's environment rather than the artist is reseeding at individual scale — a real move, and the point where it could go wrong fastest. So: <em>coach adjustments are offers, not commits</em> — logged, readable, revertible, surfaced for the artist's approval. This is the discipline the concierge charter already runs under, generalised to a second person.</p>
+
+  <p><strong>And the constraint on the whole arrangement:</strong> the environment never decides. It surfaces, offers and contradicts; the artist decides. Gideon Dishon's 2025 reading of the Primer fantasy in <em>Educational Philosophy and Theory</em> is the argument for why — the fantasy quietly splits cognition from emotion and leaves humans as the feeling machines while the deciding migrates to the system. Worth reading and worth answering, because your charter already answers it.</p>
+</section>
+
+<section id="test">
+  <h2>Threads to test</h2>
+  <p class="sec-note">Three you named · each doable without a doctorate</p>
+
+  <div class="card">
+    <h3>Balint groups</h3>
+    <p class="q">What happens if you give artists the thing physicians have had since the 1950s?</p>
+    <p>A facilitated small group, closed and confidential, where a practitioner presents the emotionally difficult part of the work and is <em>heard rather than advised</em>. No feedback on the track. That prohibition is the intervention — and it is the exact opposite of a songwriting workshop, which is why the format will feel familiar and go wrong if run from muscle memory. Real literature in medicine, nursing, psychiatric training and physical-therapy education; consistently associated with improved perceived wellbeing. <strong>Nobody has run one for artists.</strong></p>
+    <p>Structural note: needs closed, stable membership over months. A livestream is the door, not the room.</p>
+  </div>
+
+  <div class="card">
+    <h3>Instruments That Hold You</h3>
+    <p class="q">What if the support is not a session but the tool — an environment that notices avoidance where the work actually stops?</p>
+    <p>Every intervention happens away from the desk and then hopes to survive the walk back. Things that live where the work dies: a device that logs the shape of a session rather than its output; an instrument that asks what this is <em>for</em> before it asks what it should sound like; an environment that makes re-entry after a bad week cheap. Winnicott's holding environment, implemented in a DAW. This is where RNBO, the extensions and twenty years of instrument design stop being background and become the method.</p>
+  </div>
+
+  <div class="card">
+    <h3>Molting in public</h3>
+    <p class="q">What does it do to a practice to shed a skin where people can see it?</p>
+    <p><span class="wiki">[[Identity Molting]]</span> names the vulnerability period between the old form and the new, and calls it under-discussed in every professional context. Beeple is the obvious case to think with: an artist whose entire practice was a public daily commitment sustained for over a decade, where the visibility and the dailiness were the mechanism rather than the marketing. Worth asking what public commitment does to the molt — whether an audience holds the practice through the soft-shell period or prevents the shedding entirely.</p>
+  </div>
+</section>
+
+<section id="people">
+  <h2>People</h2>
+  <p class="sec-note">Names worth their own <code>person</code> pages · with the reason</p>
+
+  <dl class="people">
+    <div class="person"><dt>David Juncos</dt><dd>Has effectively owned ACT-for-musicians for a decade — single-subject designs, a pilot with student vocalists, and a proposed evidence-based practice model for performance psychology. Read all of it. The decisive one is the 2024 <em>Frontiers</em> study where the intervention was delivered by a <strong>voice teacher</strong> trained by a clinical psychologist: the published precedent that a non-clinician can deliver acceptance-based coaching.</dd></div>
+    <div class="person"><dt>Robert Vallerand</dt><dd>The dualistic model of passion — harmonious vs obsessive engagement in a beloved activity. The existing theory of adaptive vs maladaptive practice, with music-specific work (Powell, Olsen, Vallerand &amp; Thompson, 2024).</dd></div>
+    <div class="person"><dt>Patrick Gaudreau</dt><dd>Excellencism vs perfectionism — striving for excellence separated from perfectionistic concern. Applied to music performance anxiety in 2026. The two behave very differently, which matters for anyone coaching high-standards people.</dd></div>
+    <div class="person"><dt>Dianna Kenny</dt><dd>The K-MPAI, the field's standard music performance anxiety instrument. Read for the construct and for its limits: the whole literature studies people who go on stage, which leaves producers and composers essentially unexamined.</dd></div>
+    <div class="person"><dt>Donald Winnicott</dt><dd>Potential space, the holding environment, good-enough. The theory of the thing you have been building.</dd></div>
+    <div class="person"><dt>Eugene Gendlin</dt><dd>Focusing and the felt sense; wrote directly on focusing and creativity. The pre-verbal "that's it" that producers decide by.</dd></div>
+    <div class="person"><dt>Donald Schön</dt><dd>Reflection-in-action; the studio as the model of professional education; the studio master as coach.</dd></div>
+    <div class="person"><dt>Gerhard Fischer</dt><dd>Meta-design and the SER model.</dd></div>
+    <div class="person"><dt>Douglas Engelbart</dt><dd>Co-evolution and bootstrapping, 1962.</dd></div>
+    <div class="person"><dt>Paul Gilbert</dt><dd>Compassion-focused therapy — shame and self-criticism, which is the texture ACT reaches only indirectly.</dd></div>
+    <div class="person"><dt>Miller &amp; Rollnick</dt><dd>Motivational interviewing; ambivalence as the working material.</dd></div>
+    <div class="person"><dt>White &amp; Epston</dt><dd>Narrative therapy; externalising and re-authoring.</dd></div>
+    <div class="person"><dt>George Vaillant</dt><dd>The defense-mechanism hierarchy — the taxonomy behind the lateral-access mapping above.</dd></div>
+    <div class="person"><dt>Michael Balint</dt><dd>The group format; the prohibition on advice.</dd></div>
+    <div class="person"><dt>Gideon Dishon</dt><dd>The 2025 critique of the Primer fantasy in AI-personalised learning — humans as feeling machines while deciding migrates to the system.</dd></div>
+    <div class="person"><dt>Psyche Loui</dt><dd>Music, Imaging and Neural Dynamics Lab — music and the brain, spanning Northeastern's music and science faculties. The one person locally who genuinely spans this territory, and worth knowing regardless of degrees.</dd></div>
+  </dl>
+</section>
+
+<section id="entries">
+  <h2>Proposed entries</h2>
+  <p class="sec-note">Suggestions only · your ceremonies decide type and stage</p>
+
+  <ul class="plain">
+    <li><strong>Creative Coach</strong> — <code>concept</code>. The methodology has no entry anywhere in the palace despite being central to the working life. Pull in the triad as a potential working group, and the responsiveness problem as the open question.</li>
+    <li><strong>Modes of Collaboration</strong> — extend the existing area with children per tradition, at least: Acceptance, Behavioural Activation, Narrative, Motivational Interviewing, Compassion-Focused, Focusing, Balint.</li>
+    <li><strong>Holding Environment</strong> — <code>concept</code>. Winnicott's potential space; links to <span class="wiki">[[Quality Manifesto]]</span>, <span class="wiki">[[Like Water]]</span>, and the productive-environment philosophy.</li>
+    <li><strong>The Palace Holds</strong> — <code>meta</code>. The machinery-to-traditions mapping table as a standing document. This is the one that would surprise people most.</li>
+    <li><strong>Lateral Access as Treatment</strong> — extend <span class="wiki">[[Lateral Access]]</span> with the defense-mechanism mapping and the sublimation observation.</li>
+    <li><strong>Meta-Design</strong> — <code>concept</code>. Fischer, SER; links to <span class="wiki">[[Palace Conatus]]</span> and <span class="wiki">[[Pages as Agents]]</span>.</li>
+    <li><strong>Bootstrapping</strong> — <code>concept</code>. Engelbart; using the tool to improve the tool. Arguably the palace's own operating principle, unnamed.</li>
+    <li><strong>Adaptive Practice</strong> — <code>question</code>. What actually sustains a musician's practice? Holds Vallerand, Gaudreau, psychological flexibility and the acceptance thread together.</li>
+    <li><strong>Friction as Requirement</strong> — <code>concept</code>. Homogenisation and sycophancy as the documented failure modes; <code>contradicts</code> and the Dialectic as the palace's existing answer.</li>
+    <li>Person pages for the list above, starting with <strong>Juncos</strong>, <strong>Winnicott</strong>, <strong>Fischer</strong>, <strong>Schön</strong>.</li>
+  </ul>
+</section>
+
+<section id="down">
+  <h2>Set down</h2>
+  <p class="sec-note">Deliberately not carried forward</p>
+
+  <ul class="plain">
+    <li><strong>The history of artists under technological disruption.</strong> Sousa and mechanical music, the theatre musicians displaced by sound film, the 1982 synthesizer resolution, photography and painting. Real material, well documented, and not what you want. Recorded here only so it is findable if it ever becomes interesting.</li>
+    <li><strong>Programme targeting, deadlines, faculty contacts, application strategy.</strong> Gone. The memory of the search has been deleted so future conversations do not assume an application is in progress.</li>
+    <li><strong>The machinery downstream of the peak</strong> — cohort design, retention instruments, comparison arms, measurement families. Not wrong, but it was elaboration rather than insight, and you named it as such.</li>
+  </ul>
+
+  <p>What remains is the part that was actually generative: a set of traditions for helping artists work, a live argument about acceptance versus coping, a new question about defenses and obliqueness, and a fifty-year lineage that turns out to describe what you have been building without knowing it had a name.</p>
+</section>
+
+<footer>
+  <p class="wordmark">Loud'n <span>Live</span></p>
+  <p>Harvest tier. Palace quotations verified against the files on 5–6 September 2026. External citations are anchors for reading and should be read before they are deposited. Defense-mechanism mappings are a first pass for argument, not clinical guidance.</p>
+</footer>
+
+</main>
+</div>
+</div>
