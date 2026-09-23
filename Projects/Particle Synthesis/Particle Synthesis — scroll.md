@@ -15,19 +15,19 @@ forward_vector: "I am Particle Synthesis's scroll — the one page that always o
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:58:40.000Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-23T05:12:34.000Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** dormant · **Steward:** cycle 4 · last ran 2026-09-23 (today)
+- **Status:** active · **Stage:** dormant · **Steward:** cycle 5 · last ran 2026-09-23 (today)
 - **Waiting on you:** 1 open ask
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-09-23 (today) — The fountain on ice makes its sound from physics, not knobs. Revive Particle Synthesis from dormant to sprout? (`particle-synthesis-007`)
-- **Last commit touching this project:** 2026-09-23 `49fe241` — ops(scrolls): standing orders for the four pilot projects, written on Loudon's instruction
+- **Last shipped:** 2026-09-23 (today) — Grains that meet: two fountains aimed at each other, so ice grains clack in mid-air and land somewhere new. A/B renders, figure, live bench. (`particle-synthesis-009`)
+- **Last commit touching this project:** 2026-09-23 `0d435e3` — steward(Particle Synthesis): pilot cycle 4 — the fountain on ice (revival probe)
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
 
-Particle Synthesis treats each grain of a granular synth as a real particle, with position, speed and mass, so the sound comes from physics rather than knobs. The test it set itself is to sound like physics, not like parameter modulation. Where it stood: May's browser grain clouds (particles steering parameters), June's visual prism, and June's single click pushed through a dispersion law, which produced a real chirp but with no particle behind it. In June you picked POLYPHONIC-CLOUD and asked for an interactive lesson on the project's arc. This cycle does both. A fountain throws particles onto a stiff, ice-like plate. Each strike travels through the plate to two pickups and arrives highs f…
+Particle Synthesis treats each grain of a granular synth as a real particle, with position, speed and mass, so the sound comes from physics rather than knobs. Its test is to sound like physics, not like parameter modulation. Earlier today the fountain on ice shipped: particles fall onto a stiff plate, and each strike reaches two pickups as a falling chirp, with an interactive lesson to play it. This cycle takes the page's other open question: what happens when grains hit each other instead of just adding up? Two fountains throw small ice grains at each other. When two meet in the air you hear a dry clack, worked out from how two ice balls touch and push the air. When they land you hear the…
 
 ### Open asks
 
@@ -56,6 +56,45 @@ This container has no Shop (no ComfyUI, Kokoro, Max, or GPU) — Python with num
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="particle-synthesis-009" -->
+### 2026-09-23 — cycle 5 — Grains that meet: two fountains aimed at each other, so ice grains clack in mid-air and land somewhere new. A/B renders, figure, live bench.
+> shipped · run ends · revive ask 007 still open · steward leans REVIVE-TO-SPROUT
+
+Start with [the lesson, now in seven moves](open:Projects/Particle Synthesis/proofs/2026-09-23-particle-synthesis-lesson.html), section 06. It has a live bench with two nozzles, an aim slider, and a switch between 'grains meet' and 'pass through'. Then play [05, grains meet](open:Projects/Particle Synthesis/proofs/2026-09-23-grains-05-crossing-collide.wav) against [04, pass through](open:Projects/Particle Synthesis/proofs/2026-09-23-grains-04-crossing-pass-through.wav). They use the same launches and the same gain, with the aim tightening from 6° of scatter to 0.15° over seven seconds. In [the figure](open:Projects/Particle Synthesis/proofs/2026-09-23-grains-that-meet.png) every meeting is marked on the crossing arch. The ticks above the spectrogram line up with thin bright verticals, which are the clacks among the slanted chirps.
+
+How a clack is made: two ice balls touch for 75 to 160 millionths of a second (Hertz's law with ice's real stiffness, nothing tuned). A ball that gets shoved pushes on the air like a tiny loudspeaker. The two balls are shoved in opposite directions, so their sounds add along the line of impact and cancel off to the side. On one head-on clack at 5 m: 0 dB on the line, −1.9 dB at 45°, −15 dB at 75°, −49 dB side-on. I didn't write that pattern in. It is just the two balls added together.
+
+What meeting changed: 13 meetings in render 05, 2 in the loose-aim half and 11 in the tight half. 24 of 72 grains met at least once, and there were 2 cascades. In one, a grain bouncing back from the crossing knocked a freshly thrown grain straight up over its nozzle. 119 of the 360 landings came from a grain that had been deflected. The average landing distance barely moved (8.00 against 8.05 m), because the fountains are mirror images and a head-on meeting swaps which side each grain lands on. Sideways drift at landing grew fourfold (0.15 to 0.60 m), which widens the stereo picture. Aim is the knob. In the browser bench, over 12 seconds at 8 shots a second, 6° of scatter gives 12 meetings, 1.5° gives 51, 0.5° gives 78 and 0.15° gives 93 of 96 shots, with cascades rising to 11. Grains a centimetre or two across need aim inside about half a degree to meet reliably. That is a property of the instrument I didn't plan.
+
+Checks: at every collision, momentum is conserved to 2e-15, and the energy lost matches the textbook (1−e²)/2·m·v² to 6e-15. The browser clack matches the exact Python render at a correlation of 0.987 to 0.999 on six real meetings ([the test vector](open:Projects/Particle Synthesis/proofs/2026-09-23-grains-clack-testvector.json)). The bench's physics and audio ran headless at four aim settings with no bad samples. Two bugs were caught on the way: a first clack about 85 dB too quiet, and a variable-name clash in the lesson code that stopped its script from parsing. [The render script](open:Projects/Particle Synthesis/proofs/2026-09-23-grains-that-meet.py) reuses cycle 4's plate model unchanged.
+
+My plain read for the revive question, as your standing order asks: this feels alive. The fountain met the page's core test on this CPU. This cycle answered its collision question with something you can play, and it turned up a real property of the instrument that I didn't plan. An idea that keeps producing surprises is still growing. The call is yours, on the open ask particle-synthesis-007.
+
+**Artifacts:**
+- [the lesson, now seven moves. Section 06 is the live grains-that-meet bench: aim, crossing distance, shots per second, meet or pass through.](Projects/Particle Synthesis/proofs/2026-09-23-particle-synthesis-lesson.html)
+- [05: grains meet. Clacks in the air, deflected chirps on the ice, thickening as the aim tightens. 7 s.](Projects/Particle Synthesis/proofs/2026-09-23-grains-05-crossing-collide.wav)
+- [04: the same launches passing through each other. Rain, no meetings. Same gain as 05.](Projects/Particle Synthesis/proofs/2026-09-23-grains-04-crossing-pass-through.wav)
+- [top: every flight in 05 around the crossing, meetings marked. ticks: clack arrivals. bottom: spectrogram of 05.](Projects/Particle Synthesis/proofs/2026-09-23-grains-that-meet.png)
+- [the render script: two fountains, grain-on-grain collisions, the two-ball clack in air, and every check quoted here.](Projects/Particle Synthesis/proofs/2026-09-23-grains-that-meet.py)
+- [six real clacks rendered exactly, the check the browser bench (and a later Gen~ port) is measured against.](Projects/Particle Synthesis/proofs/2026-09-23-grains-clack-testvector.json)
+
+_04 vs 05 · the same 72 grains, one shared gain · aim tightening 6° → 0.15°_
+| measured | 04 pass through | 05 grains meet |
+| --- | --- | --- |
+| strikes on the ice | 360 | 360 |
+| meetings in the air | 0 | 13 (2 loose aim · 11 tight) |
+| grains that met at least once | — | 24 of 72 |
+| cascades (a grain already hit, hit again) | — | 2 |
+| landings by a deflected grain | — | 119 of 360 |
+| average sideways drift at landing | 0.15 m | 0.60 m |
+| average landing distance | 8.00 m | 8.05 m |
+
+_Left rough:_ I haven't heard any of it. Each clack lasts about a tenth of a millisecond, so it may come across as a small tick more than a clack. The model treats each ball as small next to the sound's wavelength, which a 1.4 cm ball isn't at 10 kHz and above, so the side-on silence would partly fill in for real. The balance between air mics and plate pickups is my taste, and so is firing each shot as two stones of the same size, which I did because drag keeps unequal partners from ever meeting. I don't know how the live bench runs on your machine's audio.
+
+_Next moves named:_ Grains that ring: hollow shells, each carrying its own small resonator, so a meeting has a pitch set by the grain's size. That is the page's first forward direction, a particle with its own differential equation, and it can be built here. · Write the Gen~ voice spec: the chirp oscillator plus the clack as a two-tap difference of the contact force, checked against the events JSON and the clack test vector. Needs the Mac.
+<sub>`particle-synthesis-009` · BROADCAST on GENERAL</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="particle-synthesis-007" -->
 ### 2026-09-23 — cycle 4 — The fountain on ice makes its sound from physics, not knobs. Revive Particle Synthesis from dormant to sprout?
 > still working · fountain renders and lesson shipped · steward leans REVIVE-TO-SPROUT
