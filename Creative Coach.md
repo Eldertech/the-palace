@@ -167,7 +167,8 @@ enough. What a therapist has besides the goal is a **clock**, because the sessio
 and the question has to land before it. The therapist also has a **second channel**: the body in the
 chair, where stress and relief show before they are said. For a therapist, *the situation talks back*
 through all of that. In a chat window it can only talk back in words, and nothing in the exchange knows
-how long it has been going.
+how long it has been going. This is the page's open problem, appropriate responsiveness, met from the
+practical side.
 
 The palace's own reflecting surface asks *"How do you feel?"*, the question you have to ask when you
 cannot see the face, and [[Hilaritas Generator]] calls it the minimum. Asked plainly, it tends to get a
