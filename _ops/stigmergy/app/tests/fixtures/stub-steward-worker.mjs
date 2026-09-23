@@ -17,7 +17,8 @@
 //   --sleep <ms>     stay alive before emitting + exiting (default 0)
 //   --from <name>    the emitted message's `from` / page title (default "Stub Steward")
 //   --msg-id <id>    the emitted message id (default stub-msg-<ts>-<rand>)
-//   --emit <mode>    message | none | blocking | session   (default message)
+//   --emit <mode>    message | none | blocking | session | silent   (default message)
+//                    silent = exit with an EMPTY transcript (a spawn failure: the model never ran)
 //                    blocking/session emit a RESOURCE_REQUEST that ends a run
 //   --count-file <p> when set, append one line per invocation (run-loop tests)
 
@@ -35,7 +36,13 @@ const countFile = flag('--count-file', null);
 if (countFile) { try { (await import('node:fs')).appendFileSync(countFile, `${Date.now()}\n`); } catch { /* ignore */ } }
 
 function emitTranscript() {
-  if (emit === 'none') return;
+  if (emit === 'silent') return; // nothing at all — not even an assistant turn
+  if (emit === 'none') {
+    // The steward RAN and said nothing useful: one assistant turn, no fenced
+    // message. This is a genuine barren cycle (distinct from `silent`).
+    process.stdout.write(JSON.stringify({ type: 'assistant', message: { content: [{ type: 'text', text: 'I looked around and did nothing this cycle.' }], usage: { input_tokens: 5, output_tokens: 8 } } }) + '\n');
+    return;
+  }
   // One valid §2.2 BROADCAST to GENERAL. No `health` -- processCycle stamps the
   // Path-2 stub. ISO-8601-with-tz ts (toISOString -> "...Z").
   const message = {

@@ -142,3 +142,10 @@ describe('the run controller (multi-cycle activation, 2026-09-23)', () => {
     expect(stopReason({ cap: 10, position: 10 }, 'shipped')).toBe('run_cap');
   });
 });
+
+describe('spawn failure ends a run at once, without a retry or a stall', () => {
+  test('nextRunStep / stopReason on spawn_failed', () => {
+    expect(nextRunStep({ cap: 10, position: 1, retried: false }, 'spawn_failed')).toBeNull();
+    expect(stopReason({ cap: 10, position: 1, retried: false }, 'spawn_failed')).toBe('spawn_failed');
+  });
+});
