@@ -426,3 +426,30 @@ describe('processCycle (integration)', () => {
     expect(summary.scroll.reason).toBe('entry-file-not-found');
   });
 });
+
+describe('spawn failure is not a barren cycle (2026-09-23)', () => {
+  let root;
+  afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
+  test('an empty transcript leaves iteration untouched, records CYCLE_SPAWN_FAILED, never stalls', () => {
+    root = mkdtempSync(path.join(tmpdir(), 'palace-pc-'));
+    const agentDir = path.join(root, '_ops/agents/permanent/test-steward');
+    mkdirSync(agentDir, { recursive: true });
+    mkdirSync(path.join(root, '_ops/swarm/persistent'), { recursive: true });
+    writeFileSync(path.join(agentDir, 'manifest.json'), JSON.stringify({ agent_id: 'Test Steward', home: 'Test Steward', mode: 'long_duration_background', session_id: 'sess-1', model: { name: 'm' } }));
+    writeFileSync(path.join(agentDir, 'state.json'), JSON.stringify({ iteration: 7, last_active: '2026-09-21T00:00:00Z', last_read_cursor: 'x', health: { score: 'green', stalled: false } }));
+    writeFileSync(path.join(agentDir, 'history.jsonl'), JSON.stringify({ event: 'CYCLE_COMPLETE', ts: '2026-09-21T00:00:00Z', iteration: 7, posted_messages: [] }) + '\n');
+    writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), '');
+    const transcriptPath = path.join(root, 'empty.jsonl');
+    writeFileSync(transcriptPath, '');
+    const summary = processCycle({ palaceRoot: root, transcriptPath, agentDir: '_ops/agents/permanent/test-steward', cycleN: 8, iteration: 8, tsNow: '2026-09-23T04:42:03Z' });
+    expect(summary.stop_hint).toBe('spawn_failed');
+    expect(summary.spawn_failed).toBe(true);
+    expect(summary.stalled).toBe(false);
+    const state = JSON.parse(readFileSync(path.join(agentDir, 'state.json'), 'utf8'));
+    expect(state.iteration).toBe(7);                       // not advanced
+    expect(state.last_active).toBe('2026-09-21T00:00:00Z'); // not touched
+    const hist = readFileSync(path.join(agentDir, 'history.jsonl'), 'utf8');
+    expect(hist).toContain('"event":"CYCLE_SPAWN_FAILED"');
+    expect(hist).not.toContain('"iteration":8');
+  });
+});

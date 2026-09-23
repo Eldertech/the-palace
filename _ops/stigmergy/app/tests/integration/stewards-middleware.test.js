@@ -313,3 +313,31 @@ describe('the run: max_cycles keeps one steward cycling; barren retries once; a 
     expect(last.run.stopped_because).toBe('paused_on_loudon');
   }, 20000);
 });
+
+describe('a worker that never speaks (spawn failure) is not counted as a cycle', () => {
+  let root, server, stewardLane, countFile;
+  afterEach(async () => {
+    try { await waitFor(() => !existsSync(stewardLane.paths.pidFile) && !stewardLane.status().running, { timeout: 8000 }); } catch (_) { /* ignore */ }
+    rmSync(root, { recursive: true, force: true });
+  });
+
+  test('empty transcript → iteration unchanged, no stall, run ends spawn_failed, last cycle reads FAILED', async () => {
+    root = makeTempPalace();
+    countFile = join(root, 'fires.txt');
+    ({ server, stewardLane } = makeServer(root, { extra: ['--emit', 'silent', '--sleep', '30', '--count-file', countFile] }));
+    const { agentDir } = seedSteward(root, { name: 'Mute Steward', slug: 'mute-steward', requestId: 'mute-001' });
+
+    await request(server).post('/api/steward/advance').send({ name: 'Mute Steward', max_cycles: 5 });
+    await waitFor(() => existsSync(stewardLane.paths.lastCycleFile) && !stewardLane.status().running, { timeout: 12000 });
+    await new Promise((r) => setTimeout(r, 200));
+    expect(readFileSync(countFile, 'utf8').trim().split('\n').length).toBe(1); // no retry
+    const st = readState(agentDir);
+    expect(st.iteration).toBe(1);                 // untouched (seed value)
+    expect(st.health.stalled).toBeUndefined();     // never written
+    const last = JSON.parse(readFileSync(stewardLane.paths.lastCycleFile, 'utf8'));
+    expect(last.ok).toBe(false);
+    expect(last.stop_hint).toBe('spawn_failed');
+    expect(last.run.stopped_because).toBe('spawn_failed');
+    expect(readFileSync(join(agentDir, 'history.jsonl'), 'utf8')).toContain('CYCLE_SPAWN_FAILED');
+  }, 20000);
+});

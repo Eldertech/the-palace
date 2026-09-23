@@ -15,7 +15,8 @@
 //      The scroll replaced the older plan.md read-model on 2026-09-23.
 //   7. returns a `stop_hint` so a multi-cycle run (steward-lane.js) knows
 //      whether to keep going: 'shipped' | 'barren' | 'blocking_ask' |
-//      'interactive_session'.
+//      'interactive_session' | 'spawn_failed' (the worker never spoke — the
+//      cycle is not counted at all).
 //
 // Promoted from /tmp/process-cycle-v2.mjs (the 2026-05-27 batch finalizer).
 // Two changes from that throwaway: the palace root is configurable (no
@@ -216,6 +217,29 @@ export function processCycle(opts) {
   const manifest = JSON.parse(readFileSync(join(agentDirAbs, 'manifest.json'), 'utf8'));
   const home = manifest.home;
   const model = modelOverride || manifest.model?.name || 'claude-opus-5-5';
+
+  // ── A worker that never spoke is a SPAWN FAILURE, not a barren cycle ─────
+  // (found 2026-09-23: `claude -p --permission-mode bypassPermissions` refuses
+  // to run as root, exits in 400 ms with an empty transcript, and the lane
+  // counted it as a barren cycle, retried once, and marked four stewards
+  // STALLED in six seconds). A transcript with zero assistant turns means the
+  // model was never reached: the steward did not fail to ship — nothing ran.
+  // So: no iteration advance, no CYCLE_COMPLETE, no barren accounting, no
+  // stall. Record the failure in history so it is greppable, refresh nothing
+  // else, and hand the lane a `spawn_failed` stop hint.
+  if ((usage.n_assistant_turns || 0) === 0) {
+    const histPath = join(agentDirAbs, 'history.jsonl');
+    appendFileSync(histPath, JSON.stringify({
+      event: 'CYCLE_SPAWN_FAILED', ts: tsNow, attempted_cycle: cycleN, dispatched_by: dispatchedBy, model,
+      note: 'the worker produced no assistant turns — the model was never reached (auth, permission mode, missing binary); not a barren cycle, iteration not advanced',
+    }) + '\n');
+    return {
+      posted_ids: [], valid_count: 0, invalid_ids: [], errors: [{ spawn_failed: true, transcriptPath }],
+      pending_after: null, resolved_count_after: null, backstop: [], artifact_lint_warnings: [],
+      stop_hint: 'spawn_failed', barren: false, stalled: false, spawn_failed: true,
+      scroll: { written: false, reason: 'spawn-failed' },
+    };
+  }
 
   const health = buildHealthBlock({ model, note: buildCycleNote(usage, basename(agentDirAbs), cycleN) });
 
