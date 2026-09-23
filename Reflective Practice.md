@@ -70,15 +70,18 @@ ceremony is which mode it adds.
 ## The reflecting surface is the palace's own term
 
 The palace already names the artifact of reflection, the **reflecting surface**, across about nine files,
-and no entry owns it. It is used in two senses:
+and no entry owns it. It is used in three senses:
 
+- **The mirror.** A person's own words given back in the language built up together, and aligned with
+  the process already shared. This is the plainest sense, and the one Loudon finds AI already does well
+  (see [[Creative Coach]] § If the room held three).
 - **The felt reading.** [[Hilaritas Generator]]'s fourth design primitive: a surface that asks *"How do
   you feel?"* It reads wellbeing; capability is what the reading measures.
 - **The reframing question.** [[Creative Coach]] and every Loudon Live staging file: a question the
   viewer takes home, gated in the checklist, with Loudon holding authority over it. Retrospective Delay
   says what it is for: *"the question changes how they play in the next session."*
 
-Both are reflection-on-action, but the second one points forward. **A good reflecting surface is looking
+All three are reflection-on-action, but the last one points forward. **A good reflecting surface is looking
 back aimed at the next time the hands are moving.** That is how the two modes connect. Reflection after
 the fact can only teach reflection in the moment by leaving a question the next session will run into.
 
