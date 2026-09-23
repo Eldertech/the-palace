@@ -15,13 +15,13 @@ forward_vector: "I am Generative Sample Libraries's scroll — the one page that
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-23T04:42:57.589Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
 
 - **Status:** active · **Stage:** growing · **Steward:** cycle 19 · last ran 2026-07-01 (84 days ago)
 - **Waiting on you:** nothing
 - **Ready to advance:** 1 answer filed since the steward last ran — a cycle will consume it
 - **Last shipped:** 2026-07-01 (83 days ago) — Cycle 19 shipped the AI-source-probe harness — a matrix runner that renders an (instrument × pitch × adapter × seed) sweep and grades each cell in cents error against librosa's pitch detection. (`gsl-steward-039`)
-- **Last commit touching this project:** 2026-09-22 `3b38a86` — ops(Generative Sample Libraries): flush working proofs, renders + code
+- **Last commit touching this project:** 2026-09-23 `727f5c9` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 - **Signal:** steady
 - **Drift:** 2 cycles since the entry was last consolidated (cycle 17) — the entry body may lag; this scroll does not.
 
@@ -48,7 +48,11 @@ _None — nothing is waiting on you._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Written by Claude on Loudon's behalf, 2026-09-23, from his answers this session — not new taste, just what already stands:
+
+- Your 2026-08-26 grant on gsl-steward-040 is BOTH-PARALLEL: wire both Stable Audio Open and MusicGen into the probe and compare head-to-head in one report. That answer was filed and never consumed; consume it now.
+- This container has no Shop (no local audio models, no GPU). The Mac has them. So: build everything that does not need the model weights — the two real adapters as code, the comparison report generator, the acceptance thresholds — against the mock adapter, and leave the Mac exactly one command to run. Do not ask which model to wire; the grant already said both.
+- Prefer a runnable harness over a longer plan.
 <!-- scroll:orders:end -->
 
 ## The making

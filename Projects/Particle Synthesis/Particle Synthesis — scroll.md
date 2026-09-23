@@ -15,13 +15,13 @@ forward_vector: "I am Particle Synthesis's scroll — the one page that always o
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-23T04:42:58.081Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
 
 - **Status:** active · **Stage:** dormant · **Steward:** cycle 3 · last ran 2026-06-25 (90 days ago)
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-23 (91 days ago) — Dispersion core works as audio. Which direction should the next cycle take it? (`particle-synthesis-004`)
-- **Last commit touching this project:** 2026-09-03 `1b67a68` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
+- **Last commit touching this project:** 2026-09-23 `727f5c9` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 - **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
@@ -46,7 +46,11 @@ _None._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Written by Claude on Loudon's explicit instruction, 2026-09-23: "Quantum Synthesizer and Particle Synthesis, give them cycles."
+
+This page is marked `stage: dormant`, and the usual posture says don't touch. Loudon has overridden that for this project. Treat every run as a **revival probe**: ignore the dormant posture, ship the smallest real thing that moves the forward vector (a render, a sim, a probe — something audible or visible, not prose), and set it down honestly. End the run by saying plainly, in your last message, whether the work felt alive enough to revive the stage to `sprout` — that call is Loudon's, so make it a non-blocking RESOURCE_REQUEST with options REVIVE-TO-SPROUT · STAY-DORMANT · NOT-SURE-YET, never a stage edit.
+
+This container has no Shop (no ComfyUI, Kokoro, Max, or GPU) — Python with numpy/scipy is what you have. Make what can be made here; name what needs the Mac.
 <!-- scroll:orders:end -->
 
 ## The making

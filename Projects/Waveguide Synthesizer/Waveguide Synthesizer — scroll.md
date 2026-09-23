@@ -15,13 +15,13 @@ forward_vector: "I am Waveguide Synthesizer's scroll — the one page that alway
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-23T04:42:57.758Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
 
 - **Status:** active · **Stage:** seed · **Steward:** cycle 7 · last ran 2026-09-21 (2 days ago)
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-23 (91 days ago) — Three-line decomposition (r-going, displacement, l-going) — pedagogy or clutter? (`waveguide-synthesizer-steward-014`)
-- **Last commit touching this project:** 2026-09-22 `1a0c1fe` — ops(Waveguide Synthesizer): flush working proofs, renders + code
+- **Last commit touching this project:** 2026-09-23 `727f5c9` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 - **Signal:** ⚠ **STALLED** — the last 2 cycles posted nothing. The loop is broken until a cycle ships; the lane retries once, then flags here.
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
@@ -46,7 +46,7 @@ _None._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Written by Claude on Loudon's behalf, 2026-09-23: your last two cycles posted nothing and the deck now reads STALLED. This run is the retry that matters. Ship the smallest audible thing toward the forward vector with numpy (this container has no Max, no GPU), post it as a shipped_artifact with the WAV attached, and if a real fork remains after that, ask it as one non-blocking card — never a silent cycle.
 <!-- scroll:orders:end -->
 
 ## The making
