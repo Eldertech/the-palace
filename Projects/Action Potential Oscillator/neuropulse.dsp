@@ -29,6 +29,18 @@ declare copyright   "Loudon Stearns / The Palace, 2026";
 import("stdfaust.lib");
 
 // -----------------------------------------------------------------------------
+// select4 — 4-way phase selector (Faust ships select2/select3 only)
+// -----------------------------------------------------------------------------
+// The phase machine is a 4-state switch (charge / rise / fall / recover), so the
+// natural primitive would be select4. Faust does not have one; this is the
+// canonical nested-select2 form. All four branches are evaluated (Faust selects
+// are not short-circuit) — fine here, every branch is a couple of arithmetic ops.
+select4(i, a, b, c, d) = select2(i >= 2,
+                                 select2(i == 1, a, b),
+                                 select2(i == 3, c, d));
+
+
+// -----------------------------------------------------------------------------
 // Compile-time constants
 // -----------------------------------------------------------------------------
 
