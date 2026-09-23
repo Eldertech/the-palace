@@ -79,3 +79,30 @@
 [endpoint] workersMax=0 (holders after my release)
 
 --- worker exit pid 62021 at 2026-07-05T03:15:21.035Z ---
+
+--- worker fire 2026-07-09T00:55:50.913Z ---
+[endpoint] workersMax=1 (holders after my acquire)
+[regen] render hero (1280x544, seed 872253)
+[runpod] submitted job 9a169c72-349b-4fee-ac5a-1e67b1d36e39-u2 (status IN_QUEUE)
+[runpod] job 9a169c72-349b-4fee-ac5a-1e67b1d36e39-u2 still IN_QUEUE after 242s — cold worker boot / model load is normal on a scaled-to-zero endpoint; continuing to poll.
+[runpod] job 9a169c72-349b-4fee-ac5a-1e67b1d36e39-u2 timed out; cancelling
+[regen] render FAILED: job 9a169c72-349b-4fee-ac5a-1e67b1d36e39-u2 exceeded 900s (last state IN_QUEUE)
+[endpoint] workersMax=0 (holders after my release)
+
+--- worker exit pid 75627 at 2026-07-09T01:10:57.732Z ---
+
+--- worker fire 2026-07-09T01:22:48.480Z ---
+[endpoint] workersMax=1 (holders after my acquire)
+[regen] render hero (1280x544, seed 730423)
+[runpod] submitted job 1cf8769e-c6a5-4665-8ba0-336bcf886a1e-u1 (status IN_QUEUE)
+[runpod] job 1cf8769e-c6a5-4665-8ba0-336bcf886a1e-u1 COMPLETED
+[runpod] wrote /var/folders/00/cptnslpd44z_1bq0w53rdx2h0000gn/T/regen-m3qrmq0n/hero-tmp/p_00001_.png
+[regen] render hero -> palace-orchestrator-hero.png
+[regen] render icon (1024x1024, seed 496595)
+[runpod] submitted job 2c416bdd-8fdc-4ce9-8d59-ff00aca27bdc-u1 (status IN_QUEUE)
+[runpod] job 2c416bdd-8fdc-4ce9-8d59-ff00aca27bdc-u1 COMPLETED
+[runpod] wrote /var/folders/00/cptnslpd44z_1bq0w53rdx2h0000gn/T/regen-m3qrmq0n/icon-tmp/p_00002_.png
+[regen] render icon -> palace-orchestrator-icon.png
+[endpoint] workersMax=0 (holders after my release)
+
+--- worker exit pid 76743 at 2026-07-09T01:28:02.607Z ---
