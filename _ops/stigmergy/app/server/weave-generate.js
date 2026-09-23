@@ -25,7 +25,7 @@ import { findEntryFile } from '../../orchestrator/src/entry-paths.js';
 // capable current Opus. The *exact* id, not the `opus` alias — on Claude Code
 // v2.1.x that alias resolves to opus-4.7-low-effort (the launch.js calibration);
 // the exact id gets the intended model. Override via the CLI --model flag.
-export const DEFAULT_MODEL = 'claude-opus-4-8';
+export const DEFAULT_MODEL = 'claude-opus-5-5';
 
 // Keep the body the model reads bounded so token cost is predictable on a long
 // entry; truncation is announced in the prompt so the model knows it saw a head.

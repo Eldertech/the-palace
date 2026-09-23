@@ -149,5 +149,5 @@ their folders:
   (find it with `which claude`).
 - **Nothing happened at 06:00** — the Mac was asleep and not set to wake (see pmset
   above), or the 2-day guard skipped (check the newest `logs/*.log`).
-- **Model string** — wrappers use the `opus` / `sonnet` aliases. Pin to an exact
-  build (e.g. `claude-opus-4-7`) by editing `MODEL=` if you prefer.
+- **Model string** — the steward batch pins the exact id `claude-opus-5-5` (the `opus`
+  alias has lagged the latest Opus). Bump `MODEL=` when a newer Opus ships.

@@ -28,8 +28,10 @@ describe('AgentLaunchModal — construction chrome', () => {
     expect(html).toContain('constructing…');
   });
 
-  it('offers Opus 4.8 + Sonnet for the model and the effort levels', () => {
+  it('offers Opus 5.5 + Opus 4.8 + Sonnet for the model and the effort levels', () => {
     const html = render();
+    expect(html).toContain('claude-opus-5-5');
+    expect(html).toContain('Opus 5.5');
     expect(html).toContain('claude-opus-4-8');
     expect(html).toContain('Opus 4.8');
     expect(html).toContain('claude-sonnet-4-6');

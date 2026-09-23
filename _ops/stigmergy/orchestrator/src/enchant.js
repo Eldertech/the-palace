@@ -98,7 +98,7 @@ export function buildManifest({ title, fm, slug, today }) {
     neighborhood,
     model: {
       provider: 'anthropic',
-      name: 'claude-opus-4-7',
+      name: 'claude-opus-5-5',
       endpoint: 'https://api.anthropic.com/v1',
     },
     tool_registry: ['read_palace', 'read_manifest', 'read_blackboard_session', 'read_blackboard_persistent', 'write_blackboard'],

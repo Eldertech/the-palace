@@ -212,7 +212,7 @@ export function processCycle(opts) {
   const state = JSON.parse(readFileSync(join(agentDirAbs, 'state.json'), 'utf8'));
   const manifest = JSON.parse(readFileSync(join(agentDirAbs, 'manifest.json'), 'utf8'));
   const home = manifest.home;
-  const model = modelOverride || manifest.model?.name || 'claude-opus-4-7';
+  const model = modelOverride || manifest.model?.name || 'claude-opus-5-5';
 
   const health = buildHealthBlock({ model, note: buildCycleNote(usage, basename(agentDirAbs), cycleN) });
 

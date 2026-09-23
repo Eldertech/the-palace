@@ -41,7 +41,7 @@ import { readJsonl } from '@stigmergy/core/blackboard';
 const DEFAULT_REGISTRY_REL = '_ops/agents/permanent/REGISTRY.json';
 const DEFAULT_STATE_DIR_REL = '_ops/stigmergy/.actuator-steward';
 const PERSISTENT_REL = '_ops/swarm/persistent/blackboard.jsonl';
-const FALLBACK_MODEL = 'claude-opus-4-7';
+const FALLBACK_MODEL = 'claude-opus-5-5';
 
 // The steward-cycle prompt templates are part of the CODEBASE, not the palace
 // data dir. Resolve them from this module's location (palace/_ops/stigmergy/

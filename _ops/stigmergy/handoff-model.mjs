@@ -155,7 +155,7 @@ export function stamp() {
 export function stubHealth(model, note) {
   return {
     score: 'green',
-    model: model || 'claude-opus-4-8',
+    model: model || 'claude-opus-5-5',
     _orchestrator_metadata: { dispatch_mode: 'hand-authored', note },
   };
 }
