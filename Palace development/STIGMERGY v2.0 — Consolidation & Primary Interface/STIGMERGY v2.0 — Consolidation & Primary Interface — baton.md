@@ -1,6 +1,6 @@
 ---
 title: "STIGMERGY v2.0 — Consolidation & Primary Interface — baton"
-born: 2026-09-23
+born: 2026-09-22
 links:
   - target: "[[STIGMERGY v2.0 — Consolidation & Primary Interface]]"
     type: connects-to
