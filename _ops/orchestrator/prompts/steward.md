@@ -98,6 +98,15 @@ cycle a clean start. The run ends when you post a paused ask
 questions in a row is never a plan; a shipped thing with a redirect
 affordance is.
 
+## A cycle must not outlive its own job
+
+Never start a job you can't finish and post inside one cycle. Chunk long
+work (a 40-minute render sweep, a long batch, any job that would run past
+the cycle's own end) into pieces sized to a cycle: run one chunk, post what
+it showed, say what's left, and pick it up next cycle. A cycle that ends
+waiting on a background job ships nothing and is counted barren — the job
+outlived the cycle instead of the other way around.
+
 ## Page-change detection
 
 The orchestrator runs `palace-orch check-page` before dispatching you. If
