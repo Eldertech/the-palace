@@ -1,5 +1,5 @@
 // Surface (a) wiring: the Trickster card's @steward header carries the
-// [OBS]/[BUN] chips when the steward handle resolves to a palace entry, and
+// [BUN] chip (the [OBS] chip was retired 2026-09-23) when the steward handle resolves to a palace entry, and
 // renders no chips for an unresolved coordinator handle. Driven through the
 // real PalaceRefContext (no network) via renderToStaticMarkup.
 
@@ -28,19 +28,18 @@ function renderCard(item) {
 const baseItem = { request_id: 'rd-012', headline: 'q?', ground: 'g', options: [] };
 
 describe('TricksterCard project-name header chips', () => {
-  it('shows [OBS] + [BUN] when the steward inhabits an entry with a bundle', () => {
+  it('shows [BUN] (and no [OBS]) when the steward inhabits an entry with a bundle', () => {
     const html = renderCard({ ...baseItem, from: 'Retrospective Delay' });
     // The project name reads plainly now (a cyan STATE link, no '@' handle).
     expect(html).toContain('Retrospective Delay');
     expect(html).not.toContain('@Retrospective Delay');
-    expect(html).toContain('data-testid="entry-ref-obs"');
+    expect(html).not.toContain('data-testid="entry-ref-obs"');
     expect(html).toContain('data-testid="entry-ref-bun"');
-    expect(html).toContain('file=Projects%2FRetrospective%20Delay');
   });
 
-  it('shows [OBS] only when the entry has no bundle', () => {
+  it('shows no chip when the entry has no bundle (the name still resolves)', () => {
     const html = renderCard({ ...baseItem, from: 'Kuramoto Coupling' });
-    expect(html).toContain('data-testid="entry-ref-obs"');
+    expect(html).not.toContain('data-testid="entry-ref-obs"');
     expect(html).not.toContain('data-testid="entry-ref-bun"');
   });
 

@@ -4,6 +4,7 @@ import { fetchProjects, enchantProject } from '../../adapters/projects.js';
 import { advanceSteward, advanceAllStewards } from '../../adapters/stewards.js';
 import { ageOf, rowSignal, groupProjects } from '../../lib/scroll-view.js';
 import { slug, StatusDot, RunningTag } from './status.jsx';
+import { usePalaceRef } from '../../lib/palace-ref.jsx';
 import ScheduleStrip from '../stewards/ScheduleStrip.jsx';
 import ScrollView from './ScrollView.jsx';
 
@@ -48,7 +49,7 @@ function GroupHeading({ children, n }) {
   );
 }
 
-export function ProjectRow({ row, onOpen, onAdvance, canAdvance, confirming, onConfirm, onCancel, busy, onEnchant, confirmingEnchant, onConfirmEnchant }) {
+export function ProjectRow({ row, onOpen, onOpenEntry, onAdvance, canAdvance, confirming, onConfirm, onCancel, busy, onEnchant, confirmingEnchant, onConfirmEnchant }) {
   const sid = slug(row.home);
   const dim = { color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, whiteSpace: 'nowrap' };
   return (
@@ -57,12 +58,25 @@ export function ProjectRow({ row, onOpen, onAdvance, canAdvance, confirming, onC
       data-running={row.running ? 'true' : 'false'}
       style={{ display: 'grid', gridTemplateColumns: 'minmax(180px, 2fr) 70px 90px minmax(120px, 1.4fr) 110px auto', gap: 10, alignItems: 'center', padding: '4px 0', borderBottom: '1px solid var(--fg4, rgba(31,138,60,.25))' }}
     >
-      <span
-        data-testid={`project-open-${sid}`}
-        onClick={() => onOpen(row.home)}
-        style={{ color: 'var(--link)', textShadow: 'var(--glow)', cursor: 'pointer', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-        title={row.stands || row.home}
-      >{row.home}</span>
+      <span style={{ display: 'flex', alignItems: 'baseline', gap: 6, minWidth: 0 }}>
+        <span
+          data-testid={`project-open-${sid}`}
+          onClick={() => onOpen(row.home)}
+          style={{ color: 'var(--link)', textShadow: 'var(--glow)', cursor: 'pointer', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+          title={`${row.stands || row.home} — open the scroll`}
+        >{row.home}</span>
+        {onOpenEntry && row.path ? (
+          <span
+            data-testid={`project-entry-${sid}`}
+            role="button"
+            tabIndex={0}
+            onClick={(e) => { e.stopPropagation(); onOpenEntry(row.path); }}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); onOpenEntry(row.path); } }}
+            title={`read the entry — ${row.path}`}
+            style={{ fontFamily: 'var(--font-mono)', fontSize: 9, lineHeight: 1, letterSpacing: '.08em', textTransform: 'uppercase', padding: '0 3px', border: '1px solid currentColor', color: 'var(--phosphor)', textShadow: 'var(--glow)', cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap' }}
+          >entry</span>
+        ) : null}
+      </span>
       <span style={dim}>{row.stage || '—'}</span>
       <span style={dim}>{row.stewarded ? `cyc ${row.iteration ?? 0}` : '—'}{row.stewarded && row.health ? <Tag tone={row.health === 'green' ? 'ok' : row.health === 'red' ? 'err' : 'default'}>{row.health}</Tag> : null}</span>
       <span style={{ ...dim, overflow: 'hidden', textOverflow: 'ellipsis' }} title={row.last_shipped ? row.last_shipped.headline || '' : ''}>
@@ -97,6 +111,8 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
   const [pending, setPending] = useState(null);
   const [feedback, setFeedback] = useState(null);
   const [busy, setBusy] = useState(false);
+  const palace = usePalaceRef();
+  const openEntry = palace?.openEntryInState || null;
 
   const refresh = useCallback(async () => {
     const r = await fetchProjects();
@@ -179,6 +195,7 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
       key={row.home}
       row={row}
       onOpen={onOpenProject}
+      onOpenEntry={openEntry}
       onAdvance={(n) => setPending(n)}
       canAdvance={row.stewarded && !running && !busy}
       confirming={pending === row.home}
