@@ -86,7 +86,7 @@ if want stable_audio; then
 fi
 
 if want musicgen_melody || want musicgen_text; then
-  ensure_venv "$VENVS/musicgen" torch "transformers>=4.40" numpy scipy sentencepiece protobuf
+  ensure_venv "$VENVS/musicgen" torch torchaudio "transformers>=4.45,<5" numpy scipy sentencepiece protobuf
   want musicgen_melody && render_arm musicgen_melody "$MG_PY"
   want musicgen_text   && render_arm musicgen_text   "$MG_PY"
 fi

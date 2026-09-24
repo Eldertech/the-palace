@@ -1,0 +1,336 @@
+{
+ "arm": "mgm_pool",
+ "instrument": "violin",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 0,
+  "retunable": 25,
+  "texture": 15,
+  "error": 0,
+  "n": 40
+ },
+ "notes_kept": 4,
+ "built": true,
+ "sfz": "mgm_pool_violin.sfz",
+ "keys": [
+  "A2",
+  "G5"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [],
+ "regions": [
+  {
+   "sample": "violin_A2_s2.wav",
+   "lokey": 45,
+   "hikey": 58,
+   "pitch_keycenter": 57,
+   "tune": 0,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1199.83,
+   "measured_hz": 219.978
+  },
+  {
+   "sample": "violin_C4_s2.wav",
+   "lokey": 59,
+   "hikey": 62,
+   "pitch_keycenter": 60,
+   "tune": 30,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "measured_hz": 257.135
+  },
+  {
+   "sample": "violin_E3_s1.wav",
+   "lokey": 63,
+   "hikey": 65,
+   "pitch_keycenter": 64,
+   "tune": 1,
+   "offset": 0,
+   "asked_for": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1198.71,
+   "measured_hz": 329.374
+  },
+  {
+   "sample": "violin_G5_s1.wav",
+   "lokey": 66,
+   "hikey": 79,
+   "pitch_keycenter": 67,
+   "tune": 7,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1207.47,
+   "measured_hz": 390.306
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1200.0,
+   "why": "texture: spread 1200c > 30c; only 56% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1200.0,
+   "why": "texture: spread 500c > 30c; only 68% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1200.34,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1200.37,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1200.49,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1201.32,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1198.42,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1188.14,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1201.32,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1210.0,
+   "why": "texture: spread 1190c > 30c; only 62% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1210.0,
+   "why": "texture: spread 1910c > 30c; only 57% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1201.85,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1188.08,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1196.32,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1193.97,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1183.75,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1203.01,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1202.14,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: spread 70c > 30c; only 63% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1200.0,
+   "why": "texture: spread 1170c > 30c; only 56% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1219.96,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1214.87,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1213.58,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1213.07,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1200.0,
+   "why": "texture: spread 1200c > 30c; only 53% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1200.0,
+   "why": "texture: spread 1200c > 30c; only 57% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 35,
+  "on_target": 35,
+  "worst_abs_cents_on_target": 10.0,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

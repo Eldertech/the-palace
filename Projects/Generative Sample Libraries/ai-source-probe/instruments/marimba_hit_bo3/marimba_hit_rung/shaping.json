@@ -1,0 +1,130 @@
+{
+ "mode": "ring",
+ "source": "instruments/marimba_hit_bo3/marimba_hit/marimba_hit_bo3_marimba_hit.sfz",
+ "samples": {
+  "marimba_hit_F#3_s2.wav": {
+   "strikes_found": 13,
+   "kept_strike": {
+    "at_sec": 1.984,
+    "ring_sec": 0.64,
+    "peak_db": -3.4,
+    "decays_db": 9.3,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.63,
+   "ring": {
+    "partials_hz": [
+     190.3,
+     373.3,
+     745.1,
+     1487.1,
+     1871.5,
+     2240.0
+    ],
+    "peaks_left_to_die": 8,
+    "tau_sec": [
+     1.4,
+     0.82,
+     0.47,
+     0.27,
+     0.22,
+     0.19
+    ],
+    "fit_residual": 0.176,
+    "struck_sec": 0.623,
+    "rung_sec": 3.56
+   },
+   "retuned": {
+    "from": -19,
+    "to": -46,
+    "hz": 189.95
+   }
+  },
+  "marimba_hit_A3_s3.wav": {
+   "strikes_found": 2,
+   "kept_strike": {
+    "at_sec": 1.04,
+    "ring_sec": 2.432,
+    "peak_db": -23.1,
+    "decays_db": 24.4,
+    "opens_clip": false
+   },
+   "clean_pick": false,
+   "kept_sec": 2.13,
+   "ring": {
+    "ring": "left alone: the model's own strike rang 2.13 s"
+   },
+   "retuned": {
+    "from": -16,
+    "to": -16,
+    "hz": 222.04
+   }
+  },
+  "marimba_hit_C4_s3.wav": {
+   "strikes_found": 5,
+   "kept_strike": {
+    "at_sec": 2.768,
+    "ring_sec": 2.172,
+    "peak_db": -0.2,
+    "decays_db": 9.7,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 1.81,
+   "from_take": 3,
+   "ring": {
+    "ring": "left alone: the model's own strike rang 1.81 s"
+   },
+   "retuned": {
+    "from": -15,
+    "to": -15,
+    "hz": 263.96
+   }
+  },
+  "marimba_hit_D#4_s1.wav": {
+   "strikes_found": 7,
+   "kept_strike": {
+    "at_sec": 3.392,
+    "ring_sec": 0.8,
+    "peak_db": -7.6,
+    "decays_db": 5.5,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.79,
+   "ring": {
+    "partials_hz": [
+     313.4,
+     623.5,
+     1247.5,
+     1881.7,
+     2513.7,
+     3121.0
+    ],
+    "peaks_left_to_die": 16,
+    "tau_sec": [
+     1.1,
+     0.63,
+     0.36,
+     0.26,
+     0.21,
+     0.17
+    ],
+    "fit_residual": 0.207,
+    "struck_sec": 0.783,
+    "rung_sec": 3.72
+   },
+   "retuned": {
+    "from": -10,
+    "to": -12,
+    "hz": 313.37
+   }
+  }
+ },
+ "keycheck": {
+  "on_target": 34,
+  "keys_played": 34,
+  "worst_abs_cents_on_target": 8.65
+ }
+}

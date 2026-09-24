@@ -1,0 +1,69 @@
+// range+violin_bo5+violin_names56_bo3+violin_names57_bo3 · violin — built from the AI-source probe's graded run
+// source: ai-source-probe/results.range + violin_bo5 + violin_names56_bo3 + violin_names57_bo3.jsonl  ·  builder: build_sfz.py
+// filed by the key each take played, not the note it was asked for
+// probe verdict for this instrument: RETUNABLE  (on target 35, retunable 96, texture 32, of 163 cells)
+// 36 of 41 notes asked for had a steady take (best of 7 takes)
+// kept 25 of 41 notes asked for; no steady render of G1, A#1, E2, A#2, E7; E1, C#2, G2, C#3, E3, G4, A#5, C#6, E6, G6, A#6, C#7, D4, G#4, C4, D#5, F#5 sounded on keys already taken
+// keys E2–C7; outer samples stretch at most 12 semitones; no silent gaps
+// pitch = the grader's measured pitch (keycenter + tune), not the note asked for.
+// onset trim -30 dBFS, 2 ms cushion; 3 ms fade-in.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.003 ampeg_release=0.4
+
+<group>
+// asked E5, seed 2, retunable, -2402.1c from asked
+<region> sample=range__violin_E5_s2.wav lokey=40 hikey=53 pitch_keycenter=52 tune=2 offset=0
+// asked G5, seed 4, retunable, -2399.9c from asked
+<region> sample=violin_bo5__violin_G5_s4.wav lokey=54 hikey=56 pitch_keycenter=55 tune=0 offset=0
+// asked A4, seed 2, retunable, -1199.1c from asked
+<region> sample=violin_names57_bo3__violin_A4_s2.wav lokey=57 hikey=57 pitch_keycenter=57 tune=-1 offset=0
+// asked A#4, seed 2, retunable, -1206.4c from asked
+<region> sample=range__violin_A#4_s2.wav lokey=58 hikey=58 pitch_keycenter=58 tune=6 offset=0
+// asked B4, seed 2, retunable, -1229.3c from asked
+<region> sample=violin_names56_bo3__violin_B4_s2.wav lokey=59 hikey=59 pitch_keycenter=59 tune=29 offset=0
+// asked C5, seed 3, retunable, -1204.8c from asked
+<region> sample=violin_names57_bo3__violin_C5_s3.wav lokey=60 hikey=60 pitch_keycenter=60 tune=5 offset=0
+// asked C#5, seed 1, retunable, -1191.2c from asked
+<region> sample=range__violin_C#5_s1.wav lokey=61 hikey=61 pitch_keycenter=61 tune=-9 offset=0
+// asked D5, seed 3, retunable, -1221.3c from asked
+<region> sample=violin_names56_bo3__violin_D5_s3.wav lokey=62 hikey=62 pitch_keycenter=62 tune=21 offset=0
+// asked D#4, seed 3, on target, -2.2c from asked
+<region> sample=violin_names57_bo3__violin_D#4_s3.wav lokey=63 hikey=63 pitch_keycenter=63 tune=2 offset=0
+// asked E4, seed 4, on target, +0.7c from asked
+<region> sample=violin_bo5__violin_E4_s4.wav lokey=64 hikey=64 pitch_keycenter=64 tune=-1 offset=0
+// asked F5, seed 1, retunable, -1199.0c from asked
+<region> sample=violin_names56_bo3__violin_F5_s1.wav lokey=65 hikey=65 pitch_keycenter=65 tune=-1 offset=0
+// asked F#4, seed 1, on target, +0.7c from asked
+<region> sample=violin_names57_bo3__violin_F#4_s1.wav lokey=66 hikey=66 pitch_keycenter=66 tune=-1 offset=0
+// asked G3, seed 5, retunable, +1198.3c from asked
+<region> sample=violin_bo5__violin_G3_s5.wav lokey=67 hikey=67 pitch_keycenter=67 tune=2 offset=0
+// asked G#3, seed 1, retunable, +1202.6c from asked
+<region> sample=violin_names56_bo3__violin_G#3_s1.wav lokey=68 hikey=68 pitch_keycenter=68 tune=-3 offset=0
+// asked A3, seed 1, retunable, +1189.1c from asked
+<region> sample=violin_names57_bo3__violin_A3_s1.wav lokey=69 hikey=69 pitch_keycenter=69 tune=11 offset=0
+// asked A#3, seed 4, retunable, +1200.7c from asked
+<region> sample=violin_bo5__violin_A#3_s4.wav lokey=70 hikey=70 pitch_keycenter=70 tune=-1 offset=0
+// asked B3, seed 1, retunable, +1199.4c from asked
+<region> sample=violin_names56_bo3__violin_B3_s1.wav lokey=71 hikey=71 pitch_keycenter=71 tune=1 offset=0
+// asked C5, seed 1, on target, -5.1c from asked
+<region> sample=violin_names57_bo3__violin_C5_s1.wav lokey=72 hikey=72 pitch_keycenter=72 tune=5 offset=10580
+// asked C#4, seed 5, retunable, +1200.6c from asked
+<region> sample=violin_bo5__violin_C#4_s5.wav lokey=73 hikey=74 pitch_keycenter=73 tune=-1 offset=0
+// asked E4, seed 5, retunable, +1200.0c from asked
+<region> sample=violin_bo5__violin_E4_s5.wav lokey=75 hikey=76 pitch_keycenter=76 tune=0 offset=0
+// asked F4, seed 3, retunable, +1201.6c from asked
+<region> sample=violin_names56_bo3__violin_F4_s3.wav lokey=77 hikey=77 pitch_keycenter=77 tune=-2 offset=0
+// asked F#4, seed 2, retunable, +1198.9c from asked
+<region> sample=violin_names57_bo3__violin_F#4_s2.wav lokey=78 hikey=78 pitch_keycenter=78 tune=1 offset=0
+// asked G5, seed 5, on target, +6.7c from asked
+<region> sample=violin_bo5__violin_G5_s5.wav lokey=79 hikey=80 pitch_keycenter=79 tune=-7 offset=0
+// asked A#4, seed 3, retunable, +1207.4c from asked
+<region> sample=violin_bo5__violin_A#4_s3.wav lokey=81 hikey=83 pitch_keycenter=82 tune=-7 offset=0
+// asked C5, seed 2, retunable, +1214.1c from asked
+<region> sample=violin_names57_bo3__violin_C5_s2.wav lokey=84 hikey=96 pitch_keycenter=84 tune=-14 offset=0

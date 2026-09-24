@@ -18,7 +18,7 @@ cleanly with `pitch_keycenter` + `tune`. So there are three grades:
 
 Tracker: librosa.pyin when librosa is installed (the Mac probe venv has
 it); otherwise a numpy YIN, so the grader runs anywhere numpy does.
-Both search two octaves either side of the target.
+Both search three octaves below the target and two above.
 """
 from __future__ import annotations
 import json
@@ -30,6 +30,12 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 HOP = 512
+EDGE_CENTS = 15.0            # a median this close to the band edge is the tracker pinned there
+# Search floor: three octaves under the target. It was two until cycle 25,
+# which put the floor exactly where MusicGen's high violin takes land (two
+# octaves down, steady, 100% voiced) — so the edge rule threw real notes out
+# as "pinned". One more octave of room tells a note from a tracker at its floor.
+FLOOR_DIV = 8.0
 
 
 # ── loading ──────────────────────────────────────────────────────────────
@@ -121,7 +127,7 @@ def yin_track(y: np.ndarray, sr: int, fmin: float, fmax: float,
 
 
 def track(y: np.ndarray, sr: int, target_hz: float) -> tuple[np.ndarray, str]:
-    fmin = max(27.5, target_hz / 4.0)
+    fmin = max(27.5, target_hz / FLOOR_DIV)
     fmax = min(sr / 2.0 - 100.0, target_hz * 4.0)
     try:
         import librosa
@@ -183,6 +189,13 @@ def grade(f0: np.ndarray, target_hz: float, acc: dict, refine=None) -> dict:
         reasons.append(f"spread {spread:.0f}c > {acc['max_spread_cents']}c")
     if dominance < acc["min_dominance"]:
         reasons.append(f"only {dominance:.0%} of frames near one pitch")
+    # A median sitting on the edge of the search band is the tracker pinned
+    # at its floor or ceiling, not a note: the first Mac run graded a
+    # Stable Audio bass "exactly 2400c flat, 0c spread" and every key built
+    # from it failed the keycheck. Same edges as track().
+    edge_lo = 1200.0 * math.log2(max(27.5, target_hz / FLOOR_DIV) / target_hz)
+    if med <= edge_lo + EDGE_CENTS or med >= 2400.0 - EDGE_CENTS:
+        reasons.append("pinned at the edge of the pitch search, not a note")
     stable = not reasons
     refined = False
     if stable and refine is not None:

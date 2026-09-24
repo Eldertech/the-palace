@@ -1,0 +1,346 @@
+{
+ "arm": "mgm_pool",
+ "instrument": "flute",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 5,
+  "retunable": 17,
+  "texture": 18,
+  "error": 0,
+  "n": 40
+ },
+ "notes_kept": 4,
+ "built": true,
+ "sfz": "mgm_pool_flute.sfz",
+ "keys": [
+  "E2",
+  "G6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [],
+ "regions": [
+  {
+   "sample": "flute_E3_s1.wav",
+   "lokey": 40,
+   "hikey": 54,
+   "pitch_keycenter": 52,
+   "tune": -3,
+   "offset": 0,
+   "asked_for": "E3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 3.26,
+   "measured_hz": 165.121
+  },
+  {
+   "sample": "flute_A2_s2.wav",
+   "lokey": 55,
+   "hikey": 58,
+   "pitch_keycenter": 57,
+   "tune": -12,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1211.9,
+   "measured_hz": 221.518
+  },
+  {
+   "sample": "flute_C4_s1.wav",
+   "lokey": 59,
+   "hikey": 69,
+   "pitch_keycenter": 60,
+   "tune": -15,
+   "offset": 2133,
+   "asked_for": "C4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 14.71,
+   "measured_hz": 263.863
+  },
+  {
+   "sample": "flute_G5_s2.wav",
+   "lokey": 70,
+   "hikey": 91,
+   "pitch_keycenter": 79,
+   "tune": 1,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": -0.68,
+   "measured_hz": 783.682
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1710.0,
+   "why": "texture: spread 1190c > 30c; only 11% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1210.0,
+   "why": "texture: spread 1200c > 30c; only 74% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1220.0,
+   "why": "texture: spread 1190c > 30c; only 65% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1210.0,
+   "why": "texture: spread 1180c > 30c; only 67% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: only 78% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: only 78% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1200.64,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1201.68,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1202.05,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1212.09,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1214.93,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1201.09,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1202.14,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 20.0,
+   "why": "texture: spread 1200c > 30c; only 55% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1200.0,
+   "why": "texture: spread 1200c > 30c; only 59% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1207.11,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1190.51,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1194.75,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1187.81,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1219.04,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1198.11,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1199.01,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1230.0,
+   "why": "texture: spread 1172c > 30c; only 55% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: only 76% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 1.1,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": -3.05,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1210.66,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1173.29,
+   "why": "seed 2 ranked higher"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 52,
+  "on_target": 43,
+  "worst_abs_cents_on_target": 3.62,
+  "misses": [
+   "E2 texture 20.0",
+   "F2 texture 10.0",
+   "F#2 texture 10.0",
+   "G2 texture 10.0",
+   "C3 texture 10.0",
+   "G3 retunable 1202.16",
+   "G#3 retunable 1202.23",
+   "A3 retunable 1202.05",
+   "A#3 retunable 1202.04"
+  ]
+ },
+ "audition": "audition.wav"
+}

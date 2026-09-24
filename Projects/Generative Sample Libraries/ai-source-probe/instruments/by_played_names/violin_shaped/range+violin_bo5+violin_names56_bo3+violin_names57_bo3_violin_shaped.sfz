@@ -1,0 +1,63 @@
+// range+violin_bo5+violin_names56_bo3+violin_names57_bo3_violin_shaped — attacks reshaped from range+violin_bo5+violin_names56_bo3+violin_names57_bo3_violin.sfz by shape_attacks.py --mode bow
+// model's first stroke cut away; the sampler bows the note on (140 ms soft, 40 ms full velocity)
+// zones and keycenters are the source's; tune is re-measured on each reshaped sample.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.14 ampeg_vel2attack=-0.1 ampeg_release=0.35
+
+<group>
+// cut in at 0.151 s (model opened at -5.8 dB, sustain -5.1 dB)
+<region> sample=range__violin_E5_s2.wav lokey=40 hikey=53 pitch_keycenter=52 tune=2 offset=0
+// cut in at 0.15 s (model opened at -9.5 dB, sustain -6.8 dB)
+<region> sample=violin_bo5__violin_G5_s4.wav lokey=54 hikey=56 pitch_keycenter=55 tune=0 offset=0
+// cut in at 0.15 s (model opened at -5.0 dB, sustain -2.5 dB)
+<region> sample=violin_names57_bo3__violin_A4_s2.wav lokey=57 hikey=57 pitch_keycenter=57 tune=-1 offset=0
+// cut in at 0.15 s (model opened at -4.8 dB, sustain -4.9 dB)
+<region> sample=range__violin_A#4_s2.wav lokey=58 hikey=58 pitch_keycenter=58 tune=6 offset=0
+// cut in at 0.21 s (model opened at -9.8 dB, sustain -5.6 dB)
+<region> sample=violin_names56_bo3__violin_B4_s2.wav lokey=59 hikey=59 pitch_keycenter=59 tune=30 offset=0
+// cut in at 0.151 s (model opened at -7.3 dB, sustain -21.8 dB)
+<region> sample=violin_names57_bo3__violin_C5_s3.wav lokey=60 hikey=60 pitch_keycenter=60 tune=4 offset=0
+// cut in at 0.15 s (model opened at -2.9 dB, sustain -3.5 dB)
+<region> sample=range__violin_C#5_s1.wav lokey=61 hikey=61 pitch_keycenter=61 tune=-9 offset=0
+// cut in at 0.15 s (model opened at -8.3 dB, sustain -6.0 dB)
+<region> sample=violin_names56_bo3__violin_D5_s3.wav lokey=62 hikey=62 pitch_keycenter=62 tune=21 offset=0
+// cut in at 0.151 s (model opened at -2.5 dB, sustain -4.8 dB)
+<region> sample=violin_names57_bo3__violin_D#4_s3.wav lokey=63 hikey=63 pitch_keycenter=63 tune=2 offset=0
+// cut in at 0.231 s (model opened at -15.1 dB, sustain -8.2 dB)
+<region> sample=violin_bo5__violin_E4_s4.wav lokey=64 hikey=64 pitch_keycenter=64 tune=-1 offset=0
+// cut in at 0.15 s (model opened at -9.1 dB, sustain -5.6 dB)
+<region> sample=violin_names56_bo3__violin_F5_s1.wav lokey=65 hikey=65 pitch_keycenter=65 tune=-1 offset=0
+// cut in at 1.801 s (model opened at -12.0 dB, sustain -5.7 dB)
+<region> sample=violin_names57_bo3__violin_F#4_s1.wav lokey=66 hikey=66 pitch_keycenter=66 tune=-2 offset=0
+// cut in at 0.15 s (model opened at -8.0 dB, sustain -5.4 dB)
+<region> sample=violin_bo5__violin_G3_s5.wav lokey=67 hikey=67 pitch_keycenter=67 tune=2 offset=0
+// cut in at 0.151 s (model opened at -0.8 dB, sustain -2.2 dB)
+<region> sample=violin_names56_bo3__violin_G#3_s1.wav lokey=68 hikey=68 pitch_keycenter=68 tune=-3 offset=0
+// cut in at 0.93 s (model opened at -18.3 dB, sustain -7.1 dB)
+<region> sample=violin_names57_bo3__violin_A3_s1.wav lokey=69 hikey=69 pitch_keycenter=69 tune=11 offset=0
+// cut in at 0.151 s (model opened at -5.9 dB, sustain -2.9 dB)
+<region> sample=violin_bo5__violin_A#3_s4.wav lokey=70 hikey=70 pitch_keycenter=70 tune=-1 offset=0
+// cut in at 0.15 s (model opened at -4.4 dB, sustain -2.9 dB)
+<region> sample=violin_names56_bo3__violin_B3_s1.wav lokey=71 hikey=71 pitch_keycenter=71 tune=0 offset=0
+// cut in at 0.78 s (model opened at -38.7 dB, sustain -13.3 dB)
+<region> sample=violin_names57_bo3__violin_C5_s1.wav lokey=72 hikey=72 pitch_keycenter=72 tune=4 offset=0
+// cut in at 0.3 s (model opened at -10.9 dB, sustain -3.3 dB)
+<region> sample=violin_bo5__violin_C#4_s5.wav lokey=73 hikey=74 pitch_keycenter=73 tune=-1 offset=0
+// cut in at 0.151 s (model opened at -6.3 dB, sustain -4.2 dB)
+<region> sample=violin_bo5__violin_E4_s5.wav lokey=75 hikey=76 pitch_keycenter=76 tune=0 offset=0
+// cut in at 0.151 s (model opened at -8.4 dB, sustain -5.7 dB)
+<region> sample=violin_names56_bo3__violin_F4_s3.wav lokey=77 hikey=77 pitch_keycenter=77 tune=-2 offset=0
+// cut in at 0.18 s (model opened at -10.0 dB, sustain -3.5 dB)
+<region> sample=violin_names57_bo3__violin_F#4_s2.wav lokey=78 hikey=78 pitch_keycenter=78 tune=1 offset=0
+// cut in at 0.21 s (model opened at -10.0 dB, sustain -3.0 dB)
+<region> sample=violin_bo5__violin_G5_s5.wav lokey=79 hikey=80 pitch_keycenter=79 tune=-7 offset=0
+// cut in at 0.15 s (model opened at -7.8 dB, sustain -6.3 dB)
+<region> sample=violin_bo5__violin_A#4_s3.wav lokey=81 hikey=83 pitch_keycenter=82 tune=-7 offset=0
+// cut in at 1.64 s (model opened at -23.5 dB, sustain -9.2 dB)
+<region> sample=violin_names57_bo3__violin_C5_s2.wav lokey=84 hikey=96 pitch_keycenter=84 tune=-20 offset=0

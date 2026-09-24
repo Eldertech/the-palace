@@ -1,0 +1,29 @@
+// violin_bo5_violin_cap5_shaped — attacks reshaped from violin_bo5_violin_cap5.sfz by shape_attacks.py --mode bow
+// model's first stroke cut away; the sampler bows the note on (140 ms soft, 40 ms full velocity)
+// zones and keycenters are the source's; tune is re-measured on each reshaped sample.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.14 ampeg_vel2attack=-0.1 ampeg_release=0.35
+
+<group>
+// cut in at 0.15 s (model opened at -8.4 dB, sustain -1.9 dB)
+<region> sample=violin_G3_s4.wav lokey=50 hikey=58 pitch_keycenter=55 tune=2 offset=0
+// cut in at 0.151 s (model opened at -17.9 dB, sustain -13.8 dB)
+<region> sample=violin_C#4_s4.wav lokey=59 hikey=62 pitch_keycenter=61 tune=10 offset=0
+// cut in at 0.231 s (model opened at -15.1 dB, sustain -8.2 dB)
+<region> sample=violin_E4_s4.wav lokey=63 hikey=65 pitch_keycenter=64 tune=-1 offset=0
+// cut in at 0.15 s (model opened at -8.1 dB, sustain -7.3 dB)
+<region> sample=violin_G4_s3.wav lokey=66 hikey=68 pitch_keycenter=67 tune=14 offset=0
+// cut in at 0.171 s (model opened at -8.1 dB, sustain -3.7 dB)
+<region> sample=violin_A#4_s5.wav lokey=69 hikey=71 pitch_keycenter=70 tune=1 offset=0
+// cut in at 0.15 s (model opened at -9.3 dB, sustain -3.8 dB)
+<region> sample=violin_C#5_s5.wav lokey=72 hikey=74 pitch_keycenter=73 tune=5 offset=0
+// cut in at 0.15 s (model opened at -5.4 dB, sustain -2.4 dB)
+<region> sample=violin_E5_s3.wav lokey=75 hikey=77 pitch_keycenter=76 tune=-4 offset=0
+// cut in at 0.21 s (model opened at -10.0 dB, sustain -3.0 dB)
+<region> sample=violin_G5_s5.wav lokey=78 hikey=84 pitch_keycenter=79 tune=-7 offset=0

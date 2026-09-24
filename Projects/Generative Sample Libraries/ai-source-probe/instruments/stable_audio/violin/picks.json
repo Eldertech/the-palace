@@ -1,0 +1,121 @@
+{
+ "arm": "stable_audio",
+ "instrument": "violin",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 1,
+  "retunable": 2,
+  "texture": 5,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 2,
+ "built": true,
+ "sfz": "stable_audio_violin.sfz",
+ "keys": [
+  "A1",
+  "C6"
+ ],
+ "silent_gaps": [
+  "A#3\u2013B3"
+ ],
+ "notes_missing": [
+  "E3",
+  "G5"
+ ],
+ "regions": [
+  {
+   "sample": "violin_A2_s1.wav",
+   "lokey": 33,
+   "hikey": 57,
+   "pitch_keycenter": 45,
+   "tune": -10,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 9.61,
+   "measured_hz": 110.613
+  },
+  {
+   "sample": "violin_C4_s1.wav",
+   "lokey": 60,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": -10,
+   "offset": 2014,
+   "asked_for": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1210.36,
+   "measured_hz": 526.4
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 230.0,
+   "why": "texture: spread 1190c > 30c; only 3% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: only 74% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1880.0,
+   "why": "texture: voiced 25% < 60%; only 79% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1210.72,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1610.0,
+   "why": "texture: voiced 5% < 60%"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: voiced 52% < 60%; only 80% of frames near one pitch"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 50,
+  "on_target": 35,
+  "worst_abs_cents_on_target": 5.68,
+  "misses": [
+   "E4 texture 0.0",
+   "F4 texture 0.0",
+   "F#4 texture 0.0",
+   "G4 texture -10.0",
+   "G#4 texture -10.0",
+   "A4 texture 0.0",
+   "A#4 texture 0.0",
+   "B4 texture 0.0",
+   "C5 texture 0.0",
+   "C#5 texture 0.0",
+   "D5 texture 0.0",
+   "D#5 texture 0.0",
+   "E5 texture 0.0",
+   "F5 texture 0.0",
+   "F#5 texture 0.0"
+  ]
+ },
+ "audition": "audition.wav"
+}

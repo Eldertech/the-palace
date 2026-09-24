@@ -1,0 +1,47 @@
+[
+ {
+  "arm": "marimba_hit_bo3",
+  "instrument": "marimba_hit",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 6,
+   "retunable": 21,
+   "texture": 12,
+   "error": 0,
+   "n": 39
+  },
+  "notes_kept": 4,
+  "notes_steady": 13,
+  "built": true,
+  "sfz": "marimba_hit_bo3_marimba_hit.sfz",
+  "keys": [
+   "F#2",
+   "D#5"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [],
+  "notes_folded": [
+   "A2",
+   "C3",
+   "D#3",
+   "F#4",
+   "A4",
+   "C5",
+   "D#5",
+   "F#5",
+   "A5"
+  ],
+  "trimmed": {
+   "before_on_target": 34,
+   "before_keys": 34,
+   "dropped": []
+  },
+  "keycheck": {
+   "keys_played": 34,
+   "on_target": 34,
+   "worst_abs_cents_on_target": 5.96,
+   "misses": []
+  },
+  "audition": "audition.wav"
+ }
+]

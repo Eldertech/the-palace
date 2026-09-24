@@ -1,0 +1,118 @@
+{
+ "arm": "musicgen_melody",
+ "instrument": "bass",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 0,
+  "retunable": 3,
+  "texture": 5,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 2,
+ "built": true,
+ "sfz": "musicgen_melody_bass.sfz",
+ "keys": [
+  "C3",
+  "G5"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "A2",
+  "E3"
+ ],
+ "regions": [
+  {
+   "sample": "bass_C4_s1.wav",
+   "lokey": 48,
+   "hikey": 63,
+   "pitch_keycenter": 60,
+   "tune": 30,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "measured_hz": 257.135
+  },
+  {
+   "sample": "bass_G5_s2.wav",
+   "lokey": 64,
+   "hikey": 79,
+   "pitch_keycenter": 67,
+   "tune": -10,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1189.56,
+   "measured_hz": 394.367
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: spread 700c > 30c; only 60% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1190.0,
+   "why": "texture: spread 1210c > 30c; only 67% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1200.0,
+   "why": "texture: spread 1200c > 30c; only 56% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2390.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 32,
+  "on_target": 18,
+  "worst_abs_cents_on_target": 10.0,
+  "misses": [
+   "C3 texture 10.0",
+   "C#3 texture 10.0",
+   "D3 texture 10.0",
+   "D#3 texture 10.0",
+   "E3 texture 10.0",
+   "F3 texture 10.0",
+   "F#3 texture 10.0",
+   "G3 texture 10.0",
+   "G#3 texture 10.0",
+   "A3 texture 10.0",
+   "E4 texture 0.0",
+   "F4 texture 0.0",
+   "F#4 texture 0.0",
+   "G4 texture 0.0"
+  ]
+ },
+ "audition": "audition.wav"
+}

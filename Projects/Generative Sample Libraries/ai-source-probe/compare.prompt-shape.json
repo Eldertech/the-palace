@@ -1,0 +1,379 @@
+{
+  "generated": "2026-09-23T20:45:29",
+  "acceptance": {
+    "max_cents_err": 20,
+    "min_voiced_pct": 0.6,
+    "max_spread_cents": 30,
+    "min_dominance": 0.8,
+    "dominance_band_cents": 50,
+    "min_cells_pct": 0.75
+  },
+  "arms": [
+    {
+      "arm": "musicgen_melody",
+      "note": "MusicGen-melody \u00b7 prompt + sine guide at the target",
+      "simulated": false,
+      "verdict": "TEXTURE ONLY",
+      "on_target": 5,
+      "retunable": 23,
+      "texture": 20,
+      "error": 0,
+      "n": 48,
+      "median_abs_cents_stable": 1198.8,
+      "median_abs_pitch_class_err_stable": 9.9,
+      "octave_slips": 20,
+      "median_spread_cents": 10.0,
+      "median_render_sec": 9.1,
+      "tracker": "pyin-librosa-1.0.0",
+      "per_instrument": {
+        "piano": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 2,
+          "texture": 5,
+          "error": 0,
+          "n": 8
+        },
+        "violin": {
+          "verdict": "RETUNABLE",
+          "on_target": 0,
+          "retunable": 6,
+          "texture": 2,
+          "error": 0,
+          "n": 8
+        },
+        "marimba": {
+          "verdict": "RETUNABLE",
+          "on_target": 3,
+          "retunable": 3,
+          "texture": 2,
+          "error": 0,
+          "n": 8
+        },
+        "flute": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 5,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        },
+        "bass": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 3,
+          "texture": 5,
+          "error": 0,
+          "n": 8
+        },
+        "choir": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 4,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        }
+      },
+      "per_pitch_median_cents": {
+        "A2": 1199.8,
+        "E3": 1191.8,
+        "C4": 1190.5,
+        "G5": -1210.7
+      }
+    },
+    {
+      "arm": "mgm_name",
+      "note": "MusicGen-melody + guide \u00b7 pitch as a note name (C4)",
+      "simulated": false,
+      "verdict": "TEXTURE ONLY",
+      "on_target": 6,
+      "retunable": 17,
+      "texture": 25,
+      "error": 0,
+      "n": 48,
+      "median_abs_cents_stable": 1194.8,
+      "median_abs_pitch_class_err_stable": 4.3,
+      "octave_slips": 14,
+      "median_spread_cents": 10.0,
+      "median_render_sec": 8.9,
+      "tracker": "pyin-librosa-1.0.0",
+      "per_instrument": {
+        "piano": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 2,
+          "texture": 6,
+          "error": 0,
+          "n": 8
+        },
+        "violin": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 4,
+          "texture": 4,
+          "error": 0,
+          "n": 8
+        },
+        "marimba": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 2,
+          "retunable": 3,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        },
+        "flute": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 4,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        },
+        "bass": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 2,
+          "texture": 6,
+          "error": 0,
+          "n": 8
+        },
+        "choir": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 3,
+          "retunable": 2,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        }
+      },
+      "per_pitch_median_cents": {
+        "A2": 1200.5,
+        "E3": 1199.0,
+        "C4": 15.1,
+        "G5": -598.6
+      }
+    },
+    {
+      "arm": "mgm_hz",
+      "note": "MusicGen-melody + guide \u00b7 pitch as a frequency (261.63 Hz)",
+      "simulated": false,
+      "verdict": "TEXTURE ONLY",
+      "on_target": 6,
+      "retunable": 14,
+      "texture": 28,
+      "error": 0,
+      "n": 48,
+      "median_abs_cents_stable": 1195.9,
+      "median_abs_pitch_class_err_stable": 7.3,
+      "octave_slips": 13,
+      "median_spread_cents": 10.0,
+      "median_render_sec": 9.4,
+      "tracker": "pyin-librosa-1.0.0",
+      "per_instrument": {
+        "piano": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 0,
+          "texture": 8,
+          "error": 0,
+          "n": 8
+        },
+        "violin": {
+          "verdict": "RETUNABLE",
+          "on_target": 0,
+          "retunable": 6,
+          "texture": 2,
+          "error": 0,
+          "n": 8
+        },
+        "marimba": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 3,
+          "texture": 4,
+          "error": 0,
+          "n": 8
+        },
+        "flute": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 3,
+          "texture": 5,
+          "error": 0,
+          "n": 8
+        },
+        "bass": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 1,
+          "texture": 6,
+          "error": 0,
+          "n": 8
+        },
+        "choir": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 4,
+          "retunable": 1,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        }
+      },
+      "per_pitch_median_cents": {
+        "A2": 1200.8,
+        "E3": 593.9,
+        "C4": 26.9,
+        "G5": -1207.5
+      }
+    },
+    {
+      "arm": "mgm_word",
+      "note": "MusicGen-melody + guide \u00b7 pitch in plain words (middle C)",
+      "simulated": false,
+      "verdict": "TEXTURE ONLY",
+      "on_target": 8,
+      "retunable": 15,
+      "texture": 25,
+      "error": 0,
+      "n": 48,
+      "median_abs_cents_stable": 1195.1,
+      "median_abs_pitch_class_err_stable": 6.5,
+      "octave_slips": 14,
+      "median_spread_cents": 10.0,
+      "median_render_sec": 8.9,
+      "tracker": "pyin-librosa-1.0.0",
+      "per_instrument": {
+        "piano": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 1,
+          "texture": 7,
+          "error": 0,
+          "n": 8
+        },
+        "violin": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 4,
+          "texture": 4,
+          "error": 0,
+          "n": 8
+        },
+        "marimba": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 3,
+          "retunable": 2,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        },
+        "flute": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 2,
+          "retunable": 2,
+          "texture": 4,
+          "error": 0,
+          "n": 8
+        },
+        "bass": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 2,
+          "retunable": 2,
+          "texture": 4,
+          "error": 0,
+          "n": 8
+        },
+        "choir": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 4,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        }
+      },
+      "per_pitch_median_cents": {
+        "A2": 1199.8,
+        "E3": 6.0,
+        "C4": 1192.5,
+        "G5": -1197.4
+      }
+    },
+    {
+      "arm": "mgm_bare",
+      "note": "MusicGen-melody + guide \u00b7 no pitch words, the guide alone",
+      "simulated": false,
+      "verdict": "TEXTURE ONLY",
+      "on_target": 5,
+      "retunable": 22,
+      "texture": 21,
+      "error": 0,
+      "n": 48,
+      "median_abs_cents_stable": 1199.0,
+      "median_abs_pitch_class_err_stable": 4.8,
+      "octave_slips": 18,
+      "median_spread_cents": 10.0,
+      "median_render_sec": 9.0,
+      "tracker": "pyin-librosa-1.0.0",
+      "per_instrument": {
+        "piano": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 2,
+          "texture": 5,
+          "error": 0,
+          "n": 8
+        },
+        "violin": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 0,
+          "retunable": 5,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        },
+        "marimba": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 3,
+          "texture": 4,
+          "error": 0,
+          "n": 8
+        },
+        "flute": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 2,
+          "retunable": 3,
+          "texture": 3,
+          "error": 0,
+          "n": 8
+        },
+        "bass": {
+          "verdict": "RETUNABLE",
+          "on_target": 0,
+          "retunable": 6,
+          "texture": 2,
+          "error": 0,
+          "n": 8
+        },
+        "choir": {
+          "verdict": "TEXTURE ONLY",
+          "on_target": 1,
+          "retunable": 3,
+          "texture": 4,
+          "error": 0,
+          "n": 8
+        }
+      },
+      "per_pitch_median_cents": {
+        "A2": 1202.3,
+        "E3": 1200.3,
+        "C4": 17.1,
+        "G5": -1201.3
+      }
+    }
+  ],
+  "missing_arms": []
+}

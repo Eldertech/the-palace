@@ -1,0 +1,134 @@
+{
+ "piano": {
+  "asked": [
+   "E1",
+   "E7"
+  ],
+  "playable_band": [
+   "G3",
+   "A#3"
+  ],
+  "playable_midi": [
+   55,
+   58
+  ],
+  "right_octave_notes": 5,
+  "notes": 25,
+  "home": [
+   "G2",
+   "E4"
+  ],
+  "steady_takes": 24,
+  "takes": 50
+ },
+ "violin": {
+  "asked": [
+   "E1",
+   "E7"
+  ],
+  "playable_band": [
+   "A#4",
+   "C#5"
+  ],
+  "playable_midi": [
+   70,
+   73
+  ],
+  "right_octave_notes": 4,
+  "notes": 25,
+  "home": [
+   "A2",
+   "C#5"
+  ],
+  "steady_takes": 32,
+  "takes": 50
+ },
+ "marimba": {
+  "asked": [
+   "E1",
+   "E7"
+  ],
+  "playable_band": [
+   "E3",
+   "C#4"
+  ],
+  "playable_midi": [
+   52,
+   61
+  ],
+  "right_octave_notes": 4,
+  "notes": 25,
+  "home": [
+   "A2",
+   "G4"
+  ],
+  "steady_takes": 30,
+  "takes": 50
+ },
+ "flute": {
+  "asked": [
+   "E1",
+   "E7"
+  ],
+  "playable_band": [
+   "G3",
+   "E4"
+  ],
+  "playable_midi": [
+   55,
+   64
+  ],
+  "right_octave_notes": 7,
+  "notes": 25,
+  "home": [
+   "A2",
+   "C#6"
+  ],
+  "steady_takes": 32,
+  "takes": 50
+ },
+ "bass": {
+  "asked": [
+   "E1",
+   "E7"
+  ],
+  "playable_band": [
+   "G3",
+   "E4"
+  ],
+  "playable_midi": [
+   55,
+   64
+  ],
+  "right_octave_notes": 5,
+  "notes": 25,
+  "home": [
+   "G2",
+   "G4"
+  ],
+  "steady_takes": 28,
+  "takes": 50
+ },
+ "choir": {
+  "asked": [
+   "E1",
+   "E7"
+  ],
+  "playable_band": [
+   "E3",
+   "C#4"
+  ],
+  "playable_midi": [
+   52,
+   61
+  ],
+  "right_octave_notes": 5,
+  "notes": 25,
+  "home": [
+   "E2",
+   "E4"
+  ],
+  "steady_takes": 29,
+  "takes": 50
+ }
+}

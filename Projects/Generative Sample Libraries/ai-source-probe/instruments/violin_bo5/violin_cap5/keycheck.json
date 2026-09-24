@@ -1,0 +1,289 @@
+{
+ "sfz": "violin_bo5_violin_cap5.sfz",
+ "keys_played": 35,
+ "on_target": 35,
+ "worst_abs_cents_on_target": 4.05,
+ "misses": [],
+ "keys": [
+  {
+   "key": 50,
+   "note": "D3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": -5,
+   "grade": "on_target",
+   "cents_err": -0.62
+  },
+  {
+   "key": 51,
+   "note": "D#3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": -4,
+   "grade": "on_target",
+   "cents_err": -0.67
+  },
+  {
+   "key": 52,
+   "note": "E3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": -3,
+   "grade": "on_target",
+   "cents_err": -0.61
+  },
+  {
+   "key": 53,
+   "note": "F3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": -2,
+   "grade": "on_target",
+   "cents_err": -0.72
+  },
+  {
+   "key": 54,
+   "note": "F#3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": -0.75
+  },
+  {
+   "key": 55,
+   "note": "G3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": -0.67
+  },
+  {
+   "key": 56,
+   "note": "G#3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": -0.64
+  },
+  {
+   "key": 57,
+   "note": "A3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": 2,
+   "grade": "on_target",
+   "cents_err": -0.62
+  },
+  {
+   "key": 58,
+   "note": "A#3",
+   "from": "violin_G3_s4.wav",
+   "shift_semitones": 3,
+   "grade": "on_target",
+   "cents_err": -0.61
+  },
+  {
+   "key": 59,
+   "note": "B3",
+   "from": "violin_C#4_s4.wav",
+   "shift_semitones": -2,
+   "grade": "on_target",
+   "cents_err": 3.99
+  },
+  {
+   "key": 60,
+   "note": "C4",
+   "from": "violin_C#4_s4.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": 4.05
+  },
+  {
+   "key": 61,
+   "note": "C#4",
+   "from": "violin_C#4_s4.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": 4.01
+  },
+  {
+   "key": 62,
+   "note": "D4",
+   "from": "violin_C#4_s4.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": 3.53
+  },
+  {
+   "key": 63,
+   "note": "D#4",
+   "from": "violin_E4_s4.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": -0.89
+  },
+  {
+   "key": 64,
+   "note": "E4",
+   "from": "violin_E4_s4.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": -0.67
+  },
+  {
+   "key": 65,
+   "note": "F4",
+   "from": "violin_E4_s4.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": -0.6
+  },
+  {
+   "key": 66,
+   "note": "F#4",
+   "from": "violin_G4_s3.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": 2.52
+  },
+  {
+   "key": 67,
+   "note": "G4",
+   "from": "violin_G4_s3.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": 2.18
+  },
+  {
+   "key": 68,
+   "note": "G#4",
+   "from": "violin_G4_s3.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": 1.51
+  },
+  {
+   "key": 69,
+   "note": "A4",
+   "from": "violin_A#4_s5.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": -1.42
+  },
+  {
+   "key": 70,
+   "note": "A#4",
+   "from": "violin_A#4_s5.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": -1.06
+  },
+  {
+   "key": 71,
+   "note": "B4",
+   "from": "violin_A#4_s5.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": -0.97
+  },
+  {
+   "key": 72,
+   "note": "C5",
+   "from": "violin_C#5_s5.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": 1.46
+  },
+  {
+   "key": 73,
+   "note": "C#5",
+   "from": "violin_C#5_s5.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": 0.73
+  },
+  {
+   "key": 74,
+   "note": "D5",
+   "from": "violin_C#5_s5.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": 0.23
+  },
+  {
+   "key": 75,
+   "note": "D#5",
+   "from": "violin_E5_s3.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": 0.57
+  },
+  {
+   "key": 76,
+   "note": "E5",
+   "from": "violin_E5_s3.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": 0.34
+  },
+  {
+   "key": 77,
+   "note": "F5",
+   "from": "violin_E5_s3.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": 0.42
+  },
+  {
+   "key": 78,
+   "note": "F#5",
+   "from": "violin_G5_s5.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": -0.25
+  },
+  {
+   "key": 79,
+   "note": "G5",
+   "from": "violin_G5_s5.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": -0.18
+  },
+  {
+   "key": 80,
+   "note": "G#5",
+   "from": "violin_G5_s5.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": -0.54
+  },
+  {
+   "key": 81,
+   "note": "A5",
+   "from": "violin_G5_s5.wav",
+   "shift_semitones": 2,
+   "grade": "on_target",
+   "cents_err": 0.32
+  },
+  {
+   "key": 82,
+   "note": "A#5",
+   "from": "violin_G5_s5.wav",
+   "shift_semitones": 3,
+   "grade": "on_target",
+   "cents_err": 0.02
+  },
+  {
+   "key": 83,
+   "note": "B5",
+   "from": "violin_G5_s5.wav",
+   "shift_semitones": 4,
+   "grade": "on_target",
+   "cents_err": 0.55
+  },
+  {
+   "key": 84,
+   "note": "C6",
+   "from": "violin_G5_s5.wav",
+   "shift_semitones": 5,
+   "grade": "on_target",
+   "cents_err": -0.45
+  }
+ ]
+}

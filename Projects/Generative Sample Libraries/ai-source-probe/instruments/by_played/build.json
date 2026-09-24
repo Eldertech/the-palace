@@ -1,0 +1,57 @@
+[
+ {
+  "arm": "range+violin_bo5",
+  "instrument": "violin",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 21,
+   "retunable": 65,
+   "texture": 29,
+   "error": 0,
+   "n": 115
+  },
+  "notes_kept": 11,
+  "filed_by": "played",
+  "notes_steady": 20,
+  "built": true,
+  "sfz": "range+violin_bo5_violin.sfz",
+  "keys": [
+   "E2",
+   "A#6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "G1",
+   "A#1",
+   "E2",
+   "A#2",
+   "E7"
+  ],
+  "notes_folded": [
+   "E1",
+   "C#2",
+   "G2",
+   "C#3",
+   "E3",
+   "G4",
+   "A#5",
+   "C#6",
+   "E6",
+   "G6",
+   "A#6",
+   "C#7"
+  ],
+  "trimmed": {
+   "before_on_target": 55,
+   "before_keys": 55,
+   "dropped": []
+  },
+  "keycheck": {
+   "keys_played": 55,
+   "on_target": 55,
+   "worst_abs_cents_on_target": 7.79,
+   "misses": []
+  },
+  "audition": "audition.wav"
+ }
+]

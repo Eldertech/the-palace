@@ -1,0 +1,71 @@
+// range+flute_names56_bo3+flute_names57_bo3 · flute — built from the AI-source probe's graded run
+// source: ai-source-probe/results.range + flute_names56_bo3 + flute_names57_bo3.jsonl  ·  builder: build_sfz.py
+// filed by the key each take played, not the note it was asked for
+// probe verdict for this instrument: TEXTURE ONLY  (on target 23, retunable 47, texture 28, of 98 cells)
+// 40 of 41 notes asked for had a steady take (best of 3 takes)
+// kept 26 of 41 notes asked for; no steady render of G1; E1, A#1, C#2, G2, C#3, E3, A#3, C#4, G4, A#4, E5, A#5, E6, F4, A4, F#5 sounded on keys already taken
+// keys D#2–C#7; outer samples stretch at most 12 semitones; no silent gaps
+// pitch = the grader's measured pitch (keycenter + tune), not the note asked for.
+// onset trim -30 dBFS, 2 ms cushion; 3 ms fade-in.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.003 ampeg_release=0.4
+
+<group>
+// asked D#5, seed 3, retunable, -2398.0c from asked
+<region> sample=flute_names57_bo3__flute_D#5_s3.wav lokey=39 hikey=51 pitch_keycenter=51 tune=-2 offset=0
+// asked E2, seed 1, retunable, +1183.8c from asked
+<region> sample=range__flute_E2_s1.wav lokey=52 hikey=53 pitch_keycenter=52 tune=16 offset=0
+// asked G3, seed 1, on target, -7.8c from asked
+<region> sample=range__flute_G3_s1.wav lokey=54 hikey=56 pitch_keycenter=55 tune=8 offset=0
+// asked A#2, seed 2, retunable, +1202.5c from asked
+<region> sample=range__flute_A#2_s2.wav lokey=57 hikey=58 pitch_keycenter=58 tune=-2 offset=0
+// asked B3, seed 1, on target, -7.5c from asked
+<region> sample=flute_names56_bo3__flute_B3_s1.wav lokey=59 hikey=59 pitch_keycenter=59 tune=7 offset=0
+// asked C4, seed 3, on target, +8.4c from asked
+<region> sample=flute_names57_bo3__flute_C4_s3.wav lokey=60 hikey=60 pitch_keycenter=60 tune=-8 offset=0
+// asked C#5, seed 2, retunable, -1189.7c from asked
+<region> sample=range__flute_C#5_s2.wav lokey=61 hikey=61 pitch_keycenter=61 tune=-10 offset=0
+// asked D5, seed 2, retunable, -1214.0c from asked
+<region> sample=flute_names56_bo3__flute_D5_s2.wav lokey=62 hikey=62 pitch_keycenter=62 tune=14 offset=0
+// asked D#4, seed 2, on target, +12.6c from asked
+<region> sample=flute_names57_bo3__flute_D#4_s2.wav lokey=63 hikey=63 pitch_keycenter=63 tune=-13 offset=0
+// asked E4, seed 1, on target, -0.2c from asked
+<region> sample=range__flute_E4_s1.wav lokey=64 hikey=64 pitch_keycenter=64 tune=0 offset=0
+// asked F5, seed 3, retunable, -1200.9c from asked
+<region> sample=flute_names56_bo3__flute_F5_s3.wav lokey=65 hikey=66 pitch_keycenter=65 tune=1 offset=0
+// asked G5, seed 2, retunable, -1210.7c from asked
+<region> sample=range__flute_G5_s2.wav lokey=67 hikey=67 pitch_keycenter=67 tune=11 offset=0
+// asked G#3, seed 1, retunable, +1201.5c from asked
+<region> sample=flute_names56_bo3__flute_G#3_s1.wav lokey=68 hikey=68 pitch_keycenter=68 tune=-2 offset=0
+// asked A3, seed 2, retunable, +1200.2c from asked
+<region> sample=flute_names57_bo3__flute_A3_s2.wav lokey=69 hikey=70 pitch_keycenter=69 tune=0 offset=0
+// asked B4, seed 3, retunable, -23.4c from asked
+<region> sample=flute_names56_bo3__flute_B4_s3.wav lokey=71 hikey=71 pitch_keycenter=71 tune=23 offset=0
+// asked C4, seed 1, retunable, +1190.5c from asked
+<region> sample=flute_names57_bo3__flute_C4_s1.wav lokey=72 hikey=72 pitch_keycenter=72 tune=9 offset=0
+// asked C#6, seed 1, retunable, -1191.7c from asked
+<region> sample=range__flute_C#6_s1.wav lokey=73 hikey=73 pitch_keycenter=73 tune=-8 offset=0
+// asked D4, seed 3, retunable, +1198.8c from asked
+<region> sample=flute_names56_bo3__flute_D4_s3.wav lokey=74 hikey=75 pitch_keycenter=74 tune=1 offset=0
+// asked E7, seed 2, retunable, -2398.9c from asked
+<region> sample=range__flute_E7_s2.wav lokey=76 hikey=76 pitch_keycenter=76 tune=-1 offset=0
+// asked F5, seed 1, on target, +1.6c from asked
+<region> sample=flute_names56_bo3__flute_F5_s1.wav lokey=77 hikey=77 pitch_keycenter=77 tune=-2 offset=0
+// asked F#4, seed 1, retunable, +1219.0c from asked
+<region> sample=flute_names57_bo3__flute_F#4_s1.wav lokey=78 hikey=78 pitch_keycenter=78 tune=-19 offset=0
+// asked G6, seed 2, retunable, -1193.7c from asked
+<region> sample=range__flute_G6_s2.wav lokey=79 hikey=79 pitch_keycenter=79 tune=-6 offset=0
+// asked G#4, seed 3, retunable, +1198.6c from asked
+<region> sample=flute_names56_bo3__flute_G#4_s3.wav lokey=80 hikey=81 pitch_keycenter=80 tune=1 offset=0
+// asked A#6, seed 1, retunable, -1204.4c from asked
+<region> sample=range__flute_A#6_s1.wav lokey=82 hikey=83 pitch_keycenter=82 tune=4 offset=0
+// asked C5, seed 2, retunable, +1210.7c from asked
+<region> sample=flute_names57_bo3__flute_C5_s2.wav lokey=84 hikey=84 pitch_keycenter=84 tune=-11 offset=0
+// asked C#7, seed 1, retunable, -1196.9c from asked
+<region> sample=range__flute_C#7_s1.wav lokey=85 hikey=97 pitch_keycenter=85 tune=-3 offset=0

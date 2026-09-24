@@ -1,0 +1,21 @@
+// marimba_hit_bo3_marimba_hit_shaped — attacks reshaped from marimba_hit_bo3_marimba_hit.sfz by shape_attacks.py --mode strike
+// one strike kept per sample: the one that rang longest before the model struck again
+// zones and keycenters are the source's; tune is re-measured on each reshaped sample.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=one_shot
+pitch_keytrack=100
+ampeg_attack=0.001 ampeg_release=0.3
+
+<group>
+// 13 strikes found; kept the one at 1.984 s, rang 0.64 s, kept 0.63 s
+<region> sample=marimba_hit_F#3_s2.wav lokey=42 hikey=55 pitch_keycenter=54 tune=-23 offset=0
+// 2 strikes found; kept the one at 1.04 s, rang 2.432 s, kept 2.13 s
+<region> sample=marimba_hit_A3_s3.wav lokey=56 hikey=58 pitch_keycenter=57 tune=-16 offset=0
+// 5 strikes found; kept the one at 2.768 s, rang 2.172 s, kept 1.81 s (re-picked: take 3)
+<region> sample=marimba_hit_C4_s3.wav lokey=59 hikey=61 pitch_keycenter=60 tune=-15 offset=0
+// 7 strikes found; kept the one at 3.392 s, rang 0.8 s, kept 0.79 s
+<region> sample=marimba_hit_D#4_s1.wav lokey=62 hikey=75 pitch_keycenter=63 tune=-10 offset=0

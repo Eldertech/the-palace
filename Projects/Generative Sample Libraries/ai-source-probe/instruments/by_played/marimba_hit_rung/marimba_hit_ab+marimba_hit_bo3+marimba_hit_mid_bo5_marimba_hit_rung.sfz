@@ -1,0 +1,44 @@
+// marimba_hit_ab+marimba_hit_bo3+marimba_hit_mid_bo5_marimba_hit_rung — attacks reshaped from marimba_hit_ab+marimba_hit_bo3+marimba_hit_mid_bo5_marimba_hit.sfz by shape_attacks.py --mode ring
+// one strike kept per sample: the one that rang longest before the model struck again
+// then rung out: the strike's own partials fitted just before the model's next hit, each left to decay (lowest slowest)
+// zones and keycenters are the source's; tune is re-measured on each reshaped sample.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=one_shot
+pitch_keytrack=100
+ampeg_attack=0.001 ampeg_release=0.3
+
+<group>
+// 3 strikes found; kept the one at 0.64 s, rang 2.16 s, kept 2.15 s (re-picked: take F#5 s3); left alone: the model's own strike rang 2.15 s
+<region> sample=marimba_hit_bo3__marimba_hit_F#5_s3.wav lokey=42 hikey=54 pitch_keycenter=54 tune=-23 offset=0
+// 3 strikes found; kept the one at 1.808 s, rang 1.824 s, kept 1.81 s; left alone: the model's own strike rang 1.81 s
+<region> sample=marimba_hit_mid_bo5__marimba_hit_G3_s5.wav lokey=55 hikey=55 pitch_keycenter=55 tune=-5 offset=0
+// 11 strikes found; kept the one at 3.616 s, rang 1.324 s, kept 1.19 s (re-picked: take G#3 s5); rung out 4.12 s on 6 fitted partials, fit residual 0.157
+<region> sample=marimba_hit_mid_bo5__marimba_hit_G#3_s5.wav lokey=56 hikey=56 pitch_keycenter=56 tune=-15 offset=0
+// 14 strikes found; kept the one at 1.728 s, rang 1.072 s, kept 1.06 s (re-picked: take A5 s1); rung out 4.0 s on 4 fitted partials, fit residual 0.1
+<region> sample=marimba_hit_bo3__marimba_hit_A5_s1.wav lokey=57 hikey=57 pitch_keycenter=57 tune=-7 offset=0
+// 8 strikes found; kept the one at 3.856 s, rang 1.084 s, kept 1.07 s (re-picked: take A#3 s5); fit too loose; kept the plain cut
+<region> sample=marimba_hit_mid_bo5__marimba_hit_A#3_s5.wav lokey=58 hikey=58 pitch_keycenter=58 tune=-11 offset=0
+// 23 strikes found; kept the one at 1.488 s, rang 0.528 s, kept 0.52 s (re-picked: take B3 s3); rung out 3.45 s on 5 fitted partials, fit residual 0.097
+<region> sample=marimba_hit_mid_bo5__marimba_hit_B3_s3.wav lokey=59 hikey=59 pitch_keycenter=59 tune=-7 offset=0
+// 5 strikes found; kept the one at 2.768 s, rang 2.172 s, kept 1.81 s (re-picked: take C4 s3); left alone: the model's own strike rang 1.81 s
+<region> sample=marimba_hit_ab__marimba_hit_C4_s3.wav lokey=60 hikey=60 pitch_keycenter=60 tune=-15 offset=0
+// 18 strikes found; kept the one at 0.0 s, rang 1.296 s, kept 1.28 s (re-picked: take C#4 s3); left alone: the model's own strike rang 1.28 s
+<region> sample=marimba_hit_mid_bo5__marimba_hit_C#4_s3.wav lokey=61 hikey=61 pitch_keycenter=61 tune=2 offset=0
+// 2 strikes found; kept the one at 2.432 s, rang 2.508 s, kept 2.5 s; left alone: the model's own strike rang 2.5 s
+<region> sample=marimba_hit_mid_bo5__marimba_hit_D4_s4.wav lokey=62 hikey=62 pitch_keycenter=62 tune=-3 offset=0
+// 7 strikes found; kept the one at 3.392 s, rang 0.8 s, kept 0.79 s; rung out 3.72 s on 6 fitted partials, fit residual 0.207
+<region> sample=marimba_hit_bo3__marimba_hit_D#4_s1.wav lokey=63 hikey=63 pitch_keycenter=63 tune=-12 offset=0
+// 16 strikes found; kept the one at 4.336 s, rang 0.604 s, kept 0.59 s (re-picked: take E3 s3); fit too loose; kept the plain cut
+<region> sample=marimba_hit_ab__marimba_hit_E3_s3.wav lokey=64 hikey=65 pitch_keycenter=64 tune=-23 offset=0
+// 12 strikes found; kept the one at 2.672 s, rang 0.336 s, kept 0.32 s; rung out 3.26 s on 4 fitted partials, fit residual 0.195
+<region> sample=marimba_hit_mid_bo5__marimba_hit_F#3_s5.wav lokey=66 hikey=66 pitch_keycenter=66 tune=-22 offset=0
+// 26 strikes found; kept the one at 4.448 s, rang 0.492 s, kept 0.27 s (re-picked: take G5 s2); fit too loose; kept the plain cut
+<region> sample=marimba_hit_ab__marimba_hit_G5_s2.wav lokey=67 hikey=67 pitch_keycenter=67 tune=-15 offset=0
+// 10 strikes found; kept the one at 1.488 s, rang 0.832 s, kept 0.42 s; rung out 3.35 s on 6 fitted partials, fit residual 0.285
+<region> sample=marimba_hit_mid_bo5__marimba_hit_G#3_s1.wav lokey=68 hikey=68 pitch_keycenter=68 tune=-11 offset=0
+// 15 strikes found; kept the one at 1.104 s, rang 0.416 s, kept 0.4 s; rung out 3.34 s on 4 fitted partials, fit residual 0.095
+<region> sample=marimba_hit_bo3__marimba_hit_A3_s2.wav lokey=69 hikey=81 pitch_keycenter=69 tune=-7 offset=0

@@ -9,17 +9,32 @@ import wave
 import numpy as np
 
 # One prompt shape for every text-conditioned arm, so the comparison is
-# between models, not between prompts. Prompt shape is its own later
-# experiment (note name vs Hz vs descriptor) — see DESIGN.md.
-PROMPT_TMPL = ("{hint}, playing note {note_name} (pitch {hz:.2f} Hz), "
-               "solo, dry, no reverb, single sustained tone")
+# between models, not between prompts. The prompt-shape A/B (cycle 23) varies
+# only how the pitch is worded; the instrument hint and the tail stay fixed.
+TAIL = "solo, dry, no reverb, single sustained tone"
+SHAPES = {
+    "both": "{hint}, playing note {note_name} (pitch {hz:.2f} Hz), " + TAIL,  # the head-to-head
+    "name": "{hint}, playing note {note_name}, " + TAIL,
+    "hz":   "{hint}, playing a {hz:.2f} Hz tone, " + TAIL,
+    "word": "{hint}, playing {word}, " + TAIL,
+    "bare": "{hint}, " + TAIL,                       # the guide carries the pitch alone
+    # ceiling test (cycle 25): say the register out loud, since the guide can't
+    "high": "{hint}, in its very highest register, playing note {note_name} (pitch {hz:.2f} Hz), " + TAIL,
+    # struck (cycle 26): TAIL says "sustained", and a marimbist sustains by
+    # rolling — so the marimba came back as tremolo. Ask for one hit instead.
+    "struck": "{hint}, playing note {note_name} (pitch {hz:.2f} Hz), solo, dry, no reverb, "
+              "one single hit left to ring out, no roll, no tremolo, no repeated notes",
+}
+PROMPT_TMPL = SHAPES["both"]
+# How a musician would say it. Only the probe's four notes need one.
+WORDS = {"A2": "a low A", "E3": "a low E", "C4": "middle C", "G5": "a high G"}
 
 
 def build_prompt(instrument: str, target_hz: float, note_name: str = "",
-                 prompt_hint: str = "") -> str:
-    return PROMPT_TMPL.format(hint=prompt_hint or instrument,
-                              note_name=note_name or f"{target_hz:.2f} Hz",
-                              hz=target_hz)
+                 prompt_hint: str = "", shape: str = "both") -> str:
+    note = note_name or f"{target_hz:.2f} Hz"
+    return SHAPES[shape].format(hint=prompt_hint or instrument, note_name=note,
+                                hz=target_hz, word=WORDS.get(note, f"the note {note}"))
 
 
 def to_mono(y) -> np.ndarray:

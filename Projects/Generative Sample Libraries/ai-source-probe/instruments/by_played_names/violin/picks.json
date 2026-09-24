@@ -1,0 +1,1387 @@
+{
+ "arm": "range+violin_bo5+violin_names56_bo3+violin_names57_bo3",
+ "instrument": "violin",
+ "probe_verdict": "RETUNABLE",
+ "cells": {
+  "on_target": 35,
+  "retunable": 96,
+  "texture": 32,
+  "error": 0,
+  "n": 163
+ },
+ "notes_kept": 25,
+ "filed_by": "played",
+ "notes_steady": 36,
+ "built": true,
+ "sfz": "range+violin_bo5+violin_names56_bo3+violin_names57_bo3_violin.sfz",
+ "keys": [
+  "E2",
+  "C7"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "G1",
+  "A#1",
+  "E2",
+  "A#2",
+  "E7"
+ ],
+ "notes_folded": [
+  "E1",
+  "C#2",
+  "G2",
+  "C#3",
+  "E3",
+  "G4",
+  "A#5",
+  "C#6",
+  "E6",
+  "G6",
+  "A#6",
+  "C#7",
+  "D4",
+  "G#4",
+  "C4",
+  "D#5",
+  "F#5"
+ ],
+ "regions": [
+  {
+   "sample": "range__violin_E5_s2.wav",
+   "lokey": 40,
+   "hikey": 53,
+   "pitch_keycenter": 52,
+   "tune": 2,
+   "offset": 0,
+   "asked_for": "E5",
+   "run": "range",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2402.05,
+   "measured_hz": 164.62
+  },
+  {
+   "sample": "violin_bo5__violin_G5_s4.wav",
+   "lokey": 54,
+   "hikey": 56,
+   "pitch_keycenter": 55,
+   "tune": 0,
+   "offset": 0,
+   "asked_for": "G5",
+   "run": "violin_bo5",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -2399.86,
+   "measured_hz": 196.013
+  },
+  {
+   "sample": "violin_names57_bo3__violin_A4_s2.wav",
+   "lokey": 57,
+   "hikey": 57,
+   "pitch_keycenter": 57,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "A4",
+   "run": "violin_names57_bo3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1199.09,
+   "measured_hz": 220.115
+  },
+  {
+   "sample": "range__violin_A#4_s2.wav",
+   "lokey": 58,
+   "hikey": 58,
+   "pitch_keycenter": 58,
+   "tune": 6,
+   "offset": 0,
+   "asked_for": "A#4",
+   "run": "range",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1206.39,
+   "measured_hz": 232.222
+  },
+  {
+   "sample": "violin_names56_bo3__violin_B4_s2.wav",
+   "lokey": 59,
+   "hikey": 59,
+   "pitch_keycenter": 59,
+   "tune": 29,
+   "offset": 0,
+   "asked_for": "B4",
+   "run": "violin_names56_bo3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1229.26,
+   "measured_hz": 242.801
+  },
+  {
+   "sample": "violin_names57_bo3__violin_C5_s3.wav",
+   "lokey": 60,
+   "hikey": 60,
+   "pitch_keycenter": 60,
+   "tune": 5,
+   "offset": 0,
+   "asked_for": "C5",
+   "run": "violin_names57_bo3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1204.85,
+   "measured_hz": 260.893
+  },
+  {
+   "sample": "range__violin_C#5_s1.wav",
+   "lokey": 61,
+   "hikey": 61,
+   "pitch_keycenter": 61,
+   "tune": -9,
+   "offset": 0,
+   "asked_for": "C#5",
+   "run": "range",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1191.16,
+   "measured_hz": 278.604
+  },
+  {
+   "sample": "violin_names56_bo3__violin_D5_s3.wav",
+   "lokey": 62,
+   "hikey": 62,
+   "pitch_keycenter": 62,
+   "tune": 21,
+   "offset": 0,
+   "asked_for": "D5",
+   "run": "violin_names56_bo3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1221.3,
+   "measured_hz": 290.074
+  },
+  {
+   "sample": "violin_names57_bo3__violin_D#4_s3.wav",
+   "lokey": 63,
+   "hikey": 63,
+   "pitch_keycenter": 63,
+   "tune": 2,
+   "offset": 0,
+   "asked_for": "D#4",
+   "run": "violin_names57_bo3",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": -2.23,
+   "measured_hz": 310.73
+  },
+  {
+   "sample": "violin_bo5__violin_E4_s4.wav",
+   "lokey": 64,
+   "hikey": 64,
+   "pitch_keycenter": 64,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "E4",
+   "run": "violin_bo5",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": 0.69,
+   "measured_hz": 329.761
+  },
+  {
+   "sample": "violin_names56_bo3__violin_F5_s1.wav",
+   "lokey": 65,
+   "hikey": 65,
+   "pitch_keycenter": 65,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "F5",
+   "run": "violin_names56_bo3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1198.98,
+   "measured_hz": 349.436
+  },
+  {
+   "sample": "violin_names57_bo3__violin_F#4_s1.wav",
+   "lokey": 66,
+   "hikey": 66,
+   "pitch_keycenter": 66,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "F#4",
+   "run": "violin_names57_bo3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 0.72,
+   "measured_hz": 370.145
+  },
+  {
+   "sample": "violin_bo5__violin_G3_s5.wav",
+   "lokey": 67,
+   "hikey": 67,
+   "pitch_keycenter": 67,
+   "tune": 2,
+   "offset": 0,
+   "asked_for": "G3",
+   "run": "violin_bo5",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": 1198.32,
+   "measured_hz": 391.62
+  },
+  {
+   "sample": "violin_names56_bo3__violin_G#3_s1.wav",
+   "lokey": 68,
+   "hikey": 68,
+   "pitch_keycenter": 68,
+   "tune": -3,
+   "offset": 0,
+   "asked_for": "G#3",
+   "run": "violin_names56_bo3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1202.58,
+   "measured_hz": 415.92
+  },
+  {
+   "sample": "violin_names57_bo3__violin_A3_s1.wav",
+   "lokey": 69,
+   "hikey": 69,
+   "pitch_keycenter": 69,
+   "tune": 11,
+   "offset": 0,
+   "asked_for": "A3",
+   "run": "violin_names57_bo3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1189.07,
+   "measured_hz": 437.23
+  },
+  {
+   "sample": "violin_bo5__violin_A#3_s4.wav",
+   "lokey": 70,
+   "hikey": 70,
+   "pitch_keycenter": 70,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "A#3",
+   "run": "violin_bo5",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": 1200.69,
+   "measured_hz": 466.346
+  },
+  {
+   "sample": "violin_names56_bo3__violin_B3_s1.wav",
+   "lokey": 71,
+   "hikey": 71,
+   "pitch_keycenter": 71,
+   "tune": 1,
+   "offset": 0,
+   "asked_for": "B3",
+   "run": "violin_names56_bo3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1199.41,
+   "measured_hz": 493.713
+  },
+  {
+   "sample": "violin_names57_bo3__violin_C5_s1.wav",
+   "lokey": 72,
+   "hikey": 72,
+   "pitch_keycenter": 72,
+   "tune": 5,
+   "offset": 10580,
+   "asked_for": "C5",
+   "run": "violin_names57_bo3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -5.14,
+   "measured_hz": 521.697
+  },
+  {
+   "sample": "violin_bo5__violin_C#4_s5.wav",
+   "lokey": 73,
+   "hikey": 74,
+   "pitch_keycenter": 73,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "C#4",
+   "run": "violin_bo5",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": 1200.63,
+   "measured_hz": 554.561
+  },
+  {
+   "sample": "violin_bo5__violin_E4_s5.wav",
+   "lokey": 75,
+   "hikey": 76,
+   "pitch_keycenter": 76,
+   "tune": 0,
+   "offset": 0,
+   "asked_for": "E4",
+   "run": "violin_bo5",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": 1199.99,
+   "measured_hz": 659.257
+  },
+  {
+   "sample": "violin_names56_bo3__violin_F4_s3.wav",
+   "lokey": 77,
+   "hikey": 77,
+   "pitch_keycenter": 77,
+   "tune": -2,
+   "offset": 0,
+   "asked_for": "F4",
+   "run": "violin_names56_bo3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1201.56,
+   "measured_hz": 699.09
+  },
+  {
+   "sample": "violin_names57_bo3__violin_F#4_s2.wav",
+   "lokey": 78,
+   "hikey": 78,
+   "pitch_keycenter": 78,
+   "tune": 1,
+   "offset": 0,
+   "asked_for": "F#4",
+   "run": "violin_names57_bo3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1198.87,
+   "measured_hz": 739.498
+  },
+  {
+   "sample": "violin_bo5__violin_G5_s5.wav",
+   "lokey": 79,
+   "hikey": 80,
+   "pitch_keycenter": 79,
+   "tune": -7,
+   "offset": 0,
+   "asked_for": "G5",
+   "run": "violin_bo5",
+   "seed": 5,
+   "grade": "on_target",
+   "cents_err": 6.73,
+   "measured_hz": 787.044
+  },
+  {
+   "sample": "violin_bo5__violin_A#4_s3.wav",
+   "lokey": 81,
+   "hikey": 83,
+   "pitch_keycenter": 82,
+   "tune": -7,
+   "offset": 0,
+   "asked_for": "A#4",
+   "run": "violin_bo5",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1207.36,
+   "measured_hz": 936.292
+  },
+  {
+   "sample": "violin_names57_bo3__violin_C5_s2.wav",
+   "lokey": 84,
+   "hikey": 96,
+   "pitch_keycenter": 84,
+   "tune": -14,
+   "offset": 0,
+   "asked_for": "C5",
+   "run": "violin_names57_bo3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1214.13,
+   "measured_hz": 1055.076
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "G1",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2399.98,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G1",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2399.98,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A#1",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1740.01,
+   "why": "texture: spread 310c > 30c; only 69% of frames near one pitch"
+  },
+  {
+   "pitch": "A#1",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1740.01,
+   "why": "texture: spread 310c > 30c; only 61% of frames near one pitch"
+  },
+  {
+   "pitch": "E2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2399.93,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "E2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1189.93,
+   "why": "texture: spread 1200c > 30c; only 51% of frames near one pitch"
+  },
+  {
+   "pitch": "A#2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2390.01,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A#2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2390.01,
+   "why": "texture: spread 1200c > 30c; only 68% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -20.02,
+   "why": "texture: spread 1190c > 30c; only 62% of frames near one pitch"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1190.0,
+   "why": "texture: only 78% of frames near one pitch"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: spread 1200c > 30c; only 71% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1210.0,
+   "why": "texture: spread 1200c > 30c; only 73% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1220.0,
+   "why": "texture: only 77% of frames near one pitch"
+  },
+  {
+   "pitch": "E5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1210.0,
+   "why": "texture: spread 1900c > 30c; only 53% of frames near one pitch"
+  },
+  {
+   "pitch": "G6",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -3600.0,
+   "why": "texture: spread 1180c > 30c; only 62% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "C#7",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -3590.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "E7",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -3600.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "E7",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -3600.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -20.02,
+   "why": "texture: spread 1190c > 30c; only 62% of frames near one pitch"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1190.0,
+   "why": "texture: only 78% of frames near one pitch"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: spread 1200c > 30c; only 71% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1210.0,
+   "why": "texture: spread 1200c > 30c; only 73% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1220.0,
+   "why": "texture: only 77% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 4,
+   "grade": "texture",
+   "cents_err": -1220.0,
+   "why": "texture: spread 2410c > 30c; only 65% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 5,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: spread 1200c > 30c; only 64% of frames near one pitch"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 3,
+   "grade": "texture",
+   "cents_err": -1190.0,
+   "why": "texture: spread 1200c > 30c; only 64% of frames near one pitch"
+  },
+  {
+   "pitch": "E5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1210.0,
+   "why": "texture: spread 1900c > 30c; only 53% of frames near one pitch"
+  },
+  {
+   "pitch": "G6",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -3600.0,
+   "why": "texture: spread 1180c > 30c; only 62% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G6",
+   "seed": 4,
+   "grade": "texture",
+   "cents_err": -3600.0,
+   "why": "texture: only 77% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "D#4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: spread 30c > 30c; only 77% of frames near one pitch"
+  },
+  {
+   "pitch": "D#5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1220.0,
+   "why": "texture: spread 1190c > 30c; only 67% of frames near one pitch"
+  },
+  {
+   "pitch": "F#5",
+   "seed": 3,
+   "grade": "texture",
+   "cents_err": -3600.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "E1",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1698.67,
+   "why": "sounds at A2; a steadier take (asked E1) holds the key"
+  },
+  {
+   "pitch": "E5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2402.05,
+   "why": "sounds at E3; a steadier take (asked E5) holds the key"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2401.56,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "G3",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": -2.51,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2401.56,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "G3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -4.33,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "G3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -4.33,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "G2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1188.92,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "G2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1202.71,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2408.74,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2408.74,
+   "why": "sounds at G3; a steadier take (asked G5) holds the key"
+  },
+  {
+   "pitch": "A4",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1200.61,
+   "why": "sounds at A3; a steadier take (asked A4) holds the key"
+  },
+  {
+   "pitch": "A3",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": -2.44,
+   "why": "sounds at A3; a steadier take (asked A4) holds the key"
+  },
+  {
+   "pitch": "A3",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": -4.15,
+   "why": "sounds at A3; a steadier take (asked A4) holds the key"
+  },
+  {
+   "pitch": "A4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1203.71,
+   "why": "sounds at A3; a steadier take (asked A4) holds the key"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1206.39,
+   "why": "sounds at A#3; a steadier take (asked A#4) holds the key"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "why": "sounds at C4; a steadier take (asked C5) holds the key"
+  },
+  {
+   "pitch": "C4",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": -8.56,
+   "why": "sounds at C4; a steadier take (asked C5) holds the key"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1191.16,
+   "why": "sounds at C#4; a steadier take (asked C#3) holds the key"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1191.16,
+   "why": "sounds at C#4; a steadier take (asked C#3) holds the key"
+  },
+  {
+   "pitch": "C#3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1211.38,
+   "why": "sounds at C#4; a steadier take (asked C#3) holds the key"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -2400.41,
+   "why": "sounds at C#4; a steadier take (asked C#3) holds the key"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": -9.54,
+   "why": "sounds at C#4; a steadier take (asked C#3) holds the key"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": 3.57,
+   "why": "sounds at C#4; a steadier take (asked C#3) holds the key"
+  },
+  {
+   "pitch": "D4",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": 4.49,
+   "why": "sounds at D4; a steadier take (asked D5) holds the key"
+  },
+  {
+   "pitch": "D4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": -2.24,
+   "why": "sounds at D4; a steadier take (asked D5) holds the key"
+  },
+  {
+   "pitch": "D5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1205.78,
+   "why": "sounds at D4; a steadier take (asked D5) holds the key"
+  },
+  {
+   "pitch": "D5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1206.54,
+   "why": "sounds at D4; a steadier take (asked D5) holds the key"
+  },
+  {
+   "pitch": "D#5",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1228.91,
+   "why": "sounds at D#4; a steadier take (asked D#4) holds the key"
+  },
+  {
+   "pitch": "D#5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1226.37,
+   "why": "sounds at D#4; a steadier take (asked D#4) holds the key"
+  },
+  {
+   "pitch": "D#4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 5.98,
+   "why": "sounds at D#4; a steadier take (asked D#4) holds the key"
+  },
+  {
+   "pitch": "E5",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -1198.63,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E6",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -2399.37,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2402.48,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2402.48,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E6",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -2401.63,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -2.97,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -2.97,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E5",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -1204.73,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E6",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2396.85,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E6",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2396.85,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": -8.56,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": -8.56,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1183.75,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1202.14,
+   "why": "sounds at E4; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "F4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 7.13,
+   "why": "sounds at F4; a steadier take (asked F5) holds the key"
+  },
+  {
+   "pitch": "F4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -20.93,
+   "why": "sounds at F4; a steadier take (asked F5) holds the key"
+  },
+  {
+   "pitch": "F5",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1215.7,
+   "why": "sounds at F4; a steadier take (asked F5) holds the key"
+  },
+  {
+   "pitch": "F5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1227.73,
+   "why": "sounds at F4; a steadier take (asked F5) holds the key"
+  },
+  {
+   "pitch": "F#4",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": -3.55,
+   "why": "sounds at F#4; a steadier take (asked F#4) holds the key"
+  },
+  {
+   "pitch": "F#5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1199.12,
+   "why": "sounds at F#4; a steadier take (asked F#4) holds the key"
+  },
+  {
+   "pitch": "F#5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1204.48,
+   "why": "sounds at F#4; a steadier take (asked F#4) holds the key"
+  },
+  {
+   "pitch": "G6",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -2403.77,
+   "why": "sounds at G4; a steadier take (asked G3) holds the key"
+  },
+  {
+   "pitch": "G6",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -2399.43,
+   "why": "sounds at G4; a steadier take (asked G3) holds the key"
+  },
+  {
+   "pitch": "G5",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1203.54,
+   "why": "sounds at G4; a steadier take (asked G3) holds the key"
+  },
+  {
+   "pitch": "G3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1204.97,
+   "why": "sounds at G4; a steadier take (asked G3) holds the key"
+  },
+  {
+   "pitch": "G4",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": -13.69,
+   "why": "sounds at G4; a steadier take (asked G3) holds the key"
+  },
+  {
+   "pitch": "G6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2417.65,
+   "why": "sounds at G4; a steadier take (asked G3) holds the key"
+  },
+  {
+   "pitch": "G6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2417.65,
+   "why": "sounds at G4; a steadier take (asked G3) holds the key"
+  },
+  {
+   "pitch": "G#4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": -4.56,
+   "why": "sounds at G#4; a steadier take (asked G#3) holds the key"
+  },
+  {
+   "pitch": "G#4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -10.62,
+   "why": "sounds at G#4; a steadier take (asked G#3) holds the key"
+  },
+  {
+   "pitch": "G#3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1201.95,
+   "why": "sounds at G#4; a steadier take (asked G#3) holds the key"
+  },
+  {
+   "pitch": "G#3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1194.79,
+   "why": "sounds at G#4; a steadier take (asked G#3) holds the key"
+  },
+  {
+   "pitch": "G#4",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": -7.31,
+   "why": "sounds at G#4; a steadier take (asked G#3) holds the key"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -1.91,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -1.91,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 5,
+   "grade": "on_target",
+   "cents_err": -1.56,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1196.76,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1191.52,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1191.52,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": 1198.26,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": 0.9,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2402.36,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -1202.28,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1195.77,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1195.77,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1192.68,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1212.46,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1212.46,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -1217.13,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "A#6",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2385.99,
+   "why": "sounds at A#4; a steadier take (asked A#3) holds the key"
+  },
+  {
+   "pitch": "B3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1187.78,
+   "why": "sounds at B4; a steadier take (asked B3) holds the key"
+  },
+  {
+   "pitch": "B4",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -20.15,
+   "why": "sounds at B4; a steadier take (asked B3) holds the key"
+  },
+  {
+   "pitch": "B3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1199.79,
+   "why": "sounds at B4; a steadier take (asked B3) holds the key"
+  },
+  {
+   "pitch": "B4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -24.35,
+   "why": "sounds at B4; a steadier take (asked B3) holds the key"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1213.58,
+   "why": "sounds at C5; a steadier take (asked C5) holds the key"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1197.82,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1197.82,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 5,
+   "grade": "on_target",
+   "cents_err": -4.77,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#7",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2393.97,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1189.18,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1189.18,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": 3.63,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -1196.43,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 5.31,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 5.31,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -1185.98,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1204.74,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1204.74,
+   "why": "sounds at C#5; a steadier take (asked C#4) holds the key"
+  },
+  {
+   "pitch": "E4",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1198.72,
+   "why": "sounds at E5; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E6",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -1193.48,
+   "why": "sounds at E5; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E5",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": 3.78,
+   "why": "sounds at E5; a steadier take (asked E4) holds the key"
+  },
+  {
+   "pitch": "E1",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1698.16,
+   "why": "no take held A2 played back"
+  },
+  {
+   "pitch": "C#2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1215.89,
+   "why": "no take held C#3 played back"
+  },
+  {
+   "pitch": "C#2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1702.79,
+   "why": "no take held F#3 played back"
+  },
+  {
+   "pitch": "C#3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1207.47,
+   "why": "failed at its own key; C#5 s1 took C#4"
+  },
+  {
+   "pitch": "D4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1203.57,
+   "why": "no take held D5 played back"
+  }
+ ],
+ "trimmed": {
+  "before_on_target": 57,
+  "before_keys": 57,
+  "dropped": []
+ },
+ "keycheck": {
+  "keys_played": 57,
+  "on_target": 57,
+  "worst_abs_cents_on_target": 7.79,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

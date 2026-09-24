@@ -1,0 +1,124 @@
+{
+ "arm": "stable_audio",
+ "instrument": "bass",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 0,
+  "retunable": 1,
+  "texture": 7,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 1,
+ "built": true,
+ "sfz": "stable_audio_bass.sfz",
+ "keys": [
+  "G2",
+  "G4"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "A2",
+  "E3",
+  "C4"
+ ],
+ "regions": [
+  {
+   "sample": "bass_G5_s1.wav",
+   "lokey": 43,
+   "hikey": 67,
+   "pitch_keycenter": 55,
+   "tune": 0,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2400.0,
+   "measured_hz": 195.998
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1210.0,
+   "why": "texture: voiced 28% < 60%; spread 1202c > 30c; only 63% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 30.0,
+   "why": "texture: voiced 55% < 60%; spread 40c > 30c"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1920.0,
+   "why": "texture: voiced 12% < 60%; spread 255c > 30c; only 57% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1240.0,
+   "why": "texture: voiced 13% < 60%; spread 690c > 30c; only 10% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: voiced 40% < 60%"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2310.0,
+   "why": "texture: voiced 24% < 60%; spread 80c > 30c; only 67% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1260.0,
+   "why": "texture: voiced 36% < 60%; spread 130c > 30c; only 39% of frames near one pitch"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 25,
+  "on_target": 0,
+  "worst_abs_cents_on_target": null,
+  "misses": [
+   "G2 texture -1160.0",
+   "G#2 texture -1160.0",
+   "A2 texture -1170.0",
+   "A#2 texture -1160.0",
+   "B2 texture -1170.0",
+   "C3 texture -1170.0",
+   "C#3 texture -1170.0",
+   "D3 texture -1180.0",
+   "D#3 texture -2100.0",
+   "E3 texture -1180.0",
+   "F3 texture -1160.0",
+   "F#3 texture -1160.0",
+   "G3 texture -1160.0",
+   "G#3 texture -1170.0",
+   "A3 texture -1170.0",
+   "A#3 texture -1170.0",
+   "B3 texture -1180.0",
+   "C4 texture -2220.0",
+   "C#4 texture -2190.0",
+   "D4 texture -2220.0",
+   "D#4 texture -2230.0",
+   "E4 texture -2220.0",
+   "F4 texture -2250.0",
+   "F#4 texture -2220.0",
+   "G4 texture -2220.0"
+  ]
+ },
+ "audition": "audition.wav"
+}

@@ -1,0 +1,35 @@
+// range_flute_shaped — attacks reshaped from range_flute.sfz by shape_attacks.py --mode bow
+// model's first stroke cut away; the sampler bows the note on (140 ms soft, 40 ms full velocity)
+// zones and keycenters are the source's; tune is re-measured on each reshaped sample.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.14 ampeg_vel2attack=-0.1 ampeg_release=0.35
+
+<group>
+// cut in at 0.151 s (model opened at -4.5 dB, sustain -4.4 dB)
+<region> sample=flute_E2_s1.wav lokey=40 hikey=53 pitch_keycenter=52 tune=16 offset=0
+// cut in at 0.421 s (model opened at -2.4 dB, sustain -3.8 dB)
+<region> sample=flute_G3_s1.wav lokey=54 hikey=56 pitch_keycenter=55 tune=8 offset=0
+// cut in at 0.151 s (model opened at -5.5 dB, sustain -5.9 dB)
+<region> sample=flute_A#2_s2.wav lokey=57 hikey=59 pitch_keycenter=58 tune=-3 offset=0
+// cut in at 0.151 s (model opened at -10.7 dB, sustain -5.6 dB)
+<region> sample=flute_C#5_s2.wav lokey=60 hikey=62 pitch_keycenter=61 tune=-10 offset=0
+// cut in at 0.151 s (model opened at -0.8 dB, sustain -5.5 dB)
+<region> sample=flute_E4_s1.wav lokey=63 hikey=65 pitch_keycenter=64 tune=0 offset=0
+// cut in at 0.161 s (model opened at -7.0 dB, sustain -7.1 dB)
+<region> sample=flute_G5_s2.wav lokey=66 hikey=70 pitch_keycenter=67 tune=11 offset=0
+// cut in at 0.15 s (model opened at -4.4 dB, sustain -1.9 dB)
+<region> sample=flute_C#6_s1.wav lokey=71 hikey=74 pitch_keycenter=73 tune=-8 offset=0
+// cut in at 0.18 s (model opened at -8.2 dB, sustain -4.2 dB)
+<region> sample=flute_E7_s2.wav lokey=75 hikey=77 pitch_keycenter=76 tune=-1 offset=0
+// cut in at 0.15 s (model opened at -6.2 dB, sustain -2.7 dB)
+<region> sample=flute_G6_s2.wav lokey=78 hikey=80 pitch_keycenter=79 tune=-6 offset=0
+// cut in at 0.15 s (model opened at -1.6 dB, sustain -3.1 dB)
+<region> sample=flute_A#6_s1.wav lokey=81 hikey=83 pitch_keycenter=82 tune=4 offset=0
+// cut in at 0.15 s (model opened at -5.0 dB, sustain -5.2 dB)
+<region> sample=flute_C#7_s1.wav lokey=84 hikey=97 pitch_keycenter=85 tune=-3 offset=0

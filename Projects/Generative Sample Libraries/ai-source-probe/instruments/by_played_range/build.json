@@ -1,0 +1,54 @@
+[
+ {
+  "arm": "range",
+  "instrument": "flute",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 7,
+   "retunable": 25,
+   "texture": 18,
+   "error": 0,
+   "n": 50
+  },
+  "notes_kept": 11,
+  "filed_by": "played",
+  "notes_steady": 24,
+  "built": true,
+  "sfz": "range_flute.sfz",
+  "keys": [
+   "E2",
+   "C#7"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "G1"
+  ],
+  "notes_folded": [
+   "E1",
+   "A#1",
+   "C#2",
+   "G2",
+   "C#3",
+   "E3",
+   "A#3",
+   "C#4",
+   "G4",
+   "A#4",
+   "E5",
+   "A#5",
+   "E6"
+  ],
+  "trimmed": {
+   "before_on_target": 58,
+   "before_keys": 58,
+   "dropped": []
+  },
+  "keycheck": {
+   "keys_played": 58,
+   "on_target": 58,
+   "worst_abs_cents_on_target": 5.91,
+   "misses": []
+  },
+  "audition": "audition.wav"
+ }
+]

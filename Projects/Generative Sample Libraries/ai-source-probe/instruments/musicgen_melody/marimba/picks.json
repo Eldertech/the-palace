@@ -1,0 +1,123 @@
+{
+ "arm": "musicgen_melody",
+ "instrument": "marimba",
+ "probe_verdict": "RETUNABLE",
+ "cells": {
+  "on_target": 3,
+  "retunable": 3,
+  "texture": 2,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 4,
+ "built": true,
+ "sfz": "musicgen_melody_marimba.sfz",
+ "keys": [
+  "E2",
+  "C5"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [],
+ "regions": [
+  {
+   "sample": "marimba_E3_s2.wav",
+   "lokey": 40,
+   "hikey": 53,
+   "pitch_keycenter": 52,
+   "tune": -13,
+   "offset": 0,
+   "asked_for": "E3",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 12.59,
+   "measured_hz": 166.012
+  },
+  {
+   "sample": "marimba_G5_s1.wav",
+   "lokey": 54,
+   "hikey": 56,
+   "pitch_keycenter": 55,
+   "tune": -16,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2383.8,
+   "measured_hz": 197.84
+  },
+  {
+   "sample": "marimba_A2_s1.wav",
+   "lokey": 57,
+   "hikey": 58,
+   "pitch_keycenter": 57,
+   "tune": -8,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1208.4,
+   "measured_hz": 221.071
+  },
+  {
+   "sample": "marimba_C4_s2.wav",
+   "lokey": 59,
+   "hikey": 72,
+   "pitch_keycenter": 60,
+   "tune": -20,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 19.67,
+   "measured_hz": 264.62
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1208.66,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 11.94,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1130.0,
+   "why": "texture: spread 1190c > 30c; only 17% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2390.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 33,
+  "on_target": 23,
+  "worst_abs_cents_on_target": 1.16,
+  "misses": [
+   "E2 texture 1200.0",
+   "F2 texture 1200.0",
+   "F#2 texture 0.0",
+   "G2 texture -0.0",
+   "G#2 texture 0.0",
+   "A2 texture 0.0",
+   "A#2 texture 0.0",
+   "B2 texture 0.0",
+   "C3 texture 0.0",
+   "C#3 texture 0.0"
+  ]
+ },
+ "audition": "audition.wav"
+}
