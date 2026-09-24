@@ -114,6 +114,18 @@
       "home": "Particle Synthesis",
       "dir": "_ops/agents/permanent/particle-synthesis",
       "registered_at": "2026-06-05T03:56:53.955Z"
+    },
+    {
+      "agent_id": "Murmuration",
+      "home": "Murmuration",
+      "dir": "_ops/agents/permanent/murmuration",
+      "registered_at": "2026-09-24T00:51:35.585Z"
+    },
+    {
+      "agent_id": "Bayesian Granular Synthesizer",
+      "home": "Bayesian Granular Synthesizer",
+      "dir": "_ops/agents/permanent/bayesian-granular-synthesizer",
+      "registered_at": "2026-09-24T01:03:04.937Z"
     }
   ]
 }

@@ -24,6 +24,7 @@ import {
 } from '../../orchestrator/src/scroll-file.js';
 import { resolveBundleDir } from '../../orchestrator/src/entry-paths.js';
 import { parseFrontmatter } from '../../orchestrator/src/entry-frontmatter.js';
+import { enchantSteward } from '../../orchestrator/src/enchant.js';
 
 const PERSISTENT_REL = '_ops/swarm/persistent/blackboard.jsonl';
 
@@ -214,4 +215,21 @@ export function writeStandingOrders({ palaceRoot, home, orders, now = new Date()
   // Refresh the Now zone on disk too (a save is a look).
   materializeScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, tsNow: now });
   return readScroll({ palaceRoot, home, now });
+}
+
+/**
+ * Give a project a steward from the deck — the one-at-a-time enchantment that
+ * batch.md § "Enchant a new steward" describes, reached from the "no steward"
+ * rows instead of a terminal. Wraps enchantSteward (manifest + state + history
+ * + registry) and maps its status to an HTTP shape. Idempotent: a project that
+ * already has a steward comes back `already_enchanted`, not an error. The files
+ * it writes are steward machinery, left uncommitted like a cycle's output; the
+ * heartbeat wrapper's scoped commit picks them up.
+ */
+export function enchantProject({ palaceRoot, home, today = new Date().toISOString().slice(0, 10) }) {
+  const { status: result, ...r } = enchantSteward({ palaceRoot, title: home, today });
+  const http = result === 'enchanted' || result === 'already_enchanted' ? 200
+    : result === 'not_found' ? 404
+    : 422;
+  return { http, ok: http === 200, result, ...r, home };
 }
