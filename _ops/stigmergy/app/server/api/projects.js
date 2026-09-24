@@ -3,9 +3,10 @@
 //   GET /api/projects/scroll?home=     — one project's scroll, Now zone regenerated live
 //                                        (&write=1 also persists the regeneration)
 //   PUT /api/projects/orders           — { home, orders } → write Standing Orders
+//   POST /api/projects/enchant         — { home } → give the project a steward (idempotent)
 
 import { jsonResponse, readBody } from '../http.js';
-import { buildProjectRows, readScroll, writeStandingOrders } from '../projects.js';
+import { buildProjectRows, readScroll, writeStandingOrders, enchantProject } from '../projects.js';
 
 export async function projectsRoutes(ctx) {
   const { req, res, palaceRoot, urlPath, query, method, stewardLane } = ctx;
@@ -53,6 +54,26 @@ export async function projectsRoutes(ctx) {
       jsonResponse(res, 200, r);
     } catch (err) {
       jsonResponse(res, 500, { error: `write orders failed: ${err.message}` });
+    }
+    return true;
+  }
+
+  if (urlPath === '/api/projects/enchant' && method === 'POST') {
+    const bodyText = await readBody(req, res);
+    if (bodyText === null) return true;
+    let body;
+    try { body = JSON.parse(bodyText); } catch (e) {
+      jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+      return true;
+    }
+    const home = body && typeof body.home === 'string' ? body.home.trim() : '';
+    if (!home) { jsonResponse(res, 400, { error: 'missing home' }); return true; }
+    try {
+      const r = enchantProject({ palaceRoot, home });
+      const { http, ...rest } = r;
+      jsonResponse(res, http, http === 404 ? { ...rest, error: 'project not found' } : rest);
+    } catch (err) {
+      jsonResponse(res, 500, { error: `enchant failed: ${err.message}` });
     }
     return true;
   }

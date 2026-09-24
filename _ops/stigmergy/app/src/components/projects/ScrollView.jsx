@@ -36,7 +36,8 @@ function ZoneTitle({ children, right }) {
   );
 }
 
-export default function ScrollView({ home, row, worker, messages = [], onConfirmed, onBack, onAdvance, canAdvance, feedback }) {
+export default function ScrollView({ home, row, worker, messages = [], onConfirmed, onBack, onAdvance, canAdvance, feedback, onEnchant, canEnchant }) {
+  const [confirmEnchant, setConfirmEnchant] = useState(false);
   const [scroll, setScroll] = useState(null);
   const [error, setError] = useState(null);
   const [orders, setOrders] = useState('');
@@ -92,7 +93,15 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
             <span data-testid={`steward-launch-${String(home).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}><Button tone="default" disabled={running} onClick={() => setLaunch(true)}>launch interactive</Button></span>
             <span data-testid="scroll-advance"><Button tone="primary" disabled={!canAdvance} onClick={onAdvance}>advance (run up to {row.run_cap || 1})</Button></span>
           </>
-        ) : null}
+        ) : row && onEnchant ? (confirmEnchant ? (
+          <>
+            <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11 }}>give {home} a steward?</span>
+            <span data-testid="scroll-enchant-confirm"><Button tone="primary" disabled={!canEnchant} onClick={() => { setConfirmEnchant(false); onEnchant(); }}>confirm</Button></span>
+            <Button tone="default" onClick={() => setConfirmEnchant(false)}>cancel</Button>
+          </>
+        ) : (
+          <span data-testid="scroll-enchant"><Button tone="primary" disabled={!canEnchant} onClick={() => setConfirmEnchant(true)}>enchant a steward</Button></span>
+        )) : null}
         {scroll ? <a href={`/api/open?path=${encodeURIComponent(scroll.path)}`} style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, textDecoration: 'none', borderBottom: '1px dashed currentColor' }} title={scroll.path}>{scroll.exists ? 'open the file' : 'not on disk yet — first cycle or save creates it'}</a> : null}
       </div>
       {feedback ? <div style={{ color: fbColor[feedback.tone], textShadow: feedback.tone === 'dim' ? 'none' : 'var(--glow)', fontSize: 12, marginBottom: 8 }}>{feedback.text}</div> : null}

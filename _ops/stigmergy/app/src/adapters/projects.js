@@ -36,3 +36,17 @@ export async function saveStandingOrders(home, orders) {
     return { ok: false, error: err?.message ?? String(err) };
   }
 }
+
+export async function enchantProject(home) {
+  try {
+    const res = await fetch('/api/projects/enchant', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ home }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok, status: res.status, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}

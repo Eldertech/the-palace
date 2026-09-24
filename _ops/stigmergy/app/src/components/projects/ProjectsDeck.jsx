@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Box, Button, Tag } from '../primitives.jsx';
-import { fetchProjects } from '../../adapters/projects.js';
+import { fetchProjects, enchantProject } from '../../adapters/projects.js';
 import { advanceSteward, advanceAllStewards } from '../../adapters/stewards.js';
 import { ageOf, rowSignal, groupProjects } from '../../lib/scroll-view.js';
 import { slug, StatusDot, RunningTag } from './status.jsx';
@@ -21,6 +21,10 @@ import ScrollView from './ScrollView.jsx';
 //
 // Advancing fires a RUN (up to the manifest's max_iterations cycles) through
 // the same lane as before; the row shows "running k/N" while it is live.
+//
+// A "no steward" row offers ENCHANT instead: one confirm, then the project gets
+// its steward directory + registry line (POST /api/projects/enchant, the same
+// act as `node enchant.js "<Title>"`), and the row moves up to tended.
 
 const SIGNAL_COLOR = { ok: 'var(--phosphor)', warn: 'var(--warn)', err: 'var(--error)', dim: 'var(--phosphor-dim)' };
 
@@ -44,7 +48,7 @@ function GroupHeading({ children, n }) {
   );
 }
 
-export function ProjectRow({ row, onOpen, onAdvance, canAdvance, confirming, onConfirm, onCancel, busy }) {
+export function ProjectRow({ row, onOpen, onAdvance, canAdvance, confirming, onConfirm, onCancel, busy, onEnchant, confirmingEnchant, onConfirmEnchant }) {
   const sid = slug(row.home);
   const dim = { color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, whiteSpace: 'nowrap' };
   return (
@@ -74,7 +78,15 @@ export function ProjectRow({ row, onOpen, onAdvance, canAdvance, confirming, onC
           </>
         ) : (
           <span data-testid={`steward-advance-${sid}`}><Button tone="default" disabled={!canAdvance} onClick={() => onAdvance(row.home)}>advance</Button></span>
-        )) : null}
+        )) : (confirmingEnchant ? (
+          <>
+            <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11 }}>give {row.home} a steward?</span>
+            <span data-testid={`project-enchant-confirm-${sid}`}><Button tone="primary" disabled={busy} onClick={() => onConfirmEnchant(row.home)}>confirm</Button></span>
+            <Button tone="default" disabled={busy} onClick={onCancel}>cancel</Button>
+          </>
+        ) : (
+          <span data-testid={`project-enchant-${sid}`}><Button tone="default" disabled={busy || !onEnchant} onClick={() => onEnchant && onEnchant(row.home)}>enchant</Button></span>
+        ))}
       </span>
     </div>
   );
@@ -98,6 +110,11 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
     return () => clearInterval(t);
   }, [refresh]);
 
+  // A feedback line belongs to the screen it was earned on: clear it when the
+  // view changes (deck <-> a project's scroll), so "Murmuration has a steward
+  // now" never sits over another project's scroll.
+  useEffect(() => { setFeedback(null); setPending(null); }, [project]);
+
   const rows = data?.projects ?? [];
   const worker = data?.worker ?? {};
   const running = !!worker.running;
@@ -110,6 +127,16 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
     else if (r.status === 409 || r.busy) setFeedback({ tone: 'warn', text: 'a steward cycle is already running' });
     else if (r.status === 404) setFeedback({ tone: 'err', text: `no steward registered for "${name}"` });
     else setFeedback({ tone: 'err', text: r.error || r.msg || `advance failed (${r.status ?? '?'})` });
+    setBusy(false); refresh();
+  }
+
+  async function doEnchant(name) {
+    setBusy(true); setFeedback(null); setPending(null);
+    const r = await enchantProject(name);
+    if (r.ok && r.result === 'enchanted') setFeedback({ tone: 'ok', text: `${name} has a steward now (${r.slug}) — advance it when you're ready` });
+    else if (r.ok && r.result === 'already_enchanted') setFeedback({ tone: 'dim', text: `${name} already has a steward (${r.slug})` });
+    else if (r.status === 404) setFeedback({ tone: 'err', text: `no project entry found for "${name}"` });
+    else setFeedback({ tone: 'err', text: r.error || (r.errors ? r.errors.join('; ') : `enchant failed (${r.status ?? '?'})`) });
     setBusy(false); refresh();
   }
 
@@ -138,6 +165,8 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
           onBack={onCloseProject}
           onAdvance={() => doAdvance(project)}
           canAdvance={!!row && row.stewarded && !running && !busy}
+          onEnchant={() => doEnchant(project)}
+          canEnchant={!!row && !row.stewarded && !busy}
           feedback={feedback}
         />
       </div>
@@ -156,6 +185,9 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
       onConfirm={doAdvance}
       onCancel={() => setPending(null)}
       busy={busy}
+      onEnchant={(n) => setPending(`enchant:${n}`)}
+      confirmingEnchant={pending === `enchant:${row.home}`}
+      onConfirmEnchant={doEnchant}
     />
   ));
 
