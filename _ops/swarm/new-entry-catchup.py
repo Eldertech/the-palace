@@ -5,27 +5,32 @@ New-Entry Catch-Up — the deterministic math behind Weave Ceremony Step 0b.
 A newborn entry is the least-alive node in the palace: a deposit writes its OUTBOUND links,
 but the inbound links that make it reachable live in other entries' files, and only a Weave
 can place them. This helper computes the catch-up the Weave owes each newcomer, so the
-coordinator pastes real numbers into `{{NEW_ENTRIES}}` rather than eyeballing median degree.
+coordinator pastes real numbers into `{{NEW_ENTRIES}}` rather than eyeballing the median.
 
 It is the deterministic half (values-primary: the math is a script; the reach-toward-them
-judgment is the worker's). Reads the latest palace map for degrees; reads `born` from the
+judgment is the worker's). Reads the latest palace map for inbound counts; reads `born` from the
 files for newcomer detection.
 
-Newcomer (in precedence order) =
-  --since-last-weave   -> entries git-added since the most recent 'Weave ' commit (PRECISE;
-                          the card's exact reading — use this for a real Weave), OR
-  --since-commit <ref> -> entries git-added since <ref> (same, explicit ref), OR
-  --since YYYY-MM      -> entries with `born` >= that month (COARSE; born is often
-                          month-granular, so this over-counts a mid-month last Weave), OR
-  (none)               -> entries with activation_count == 1 (the card's Step 0b proxy).
+Newcomer (in precedence order) = young AND under the INBOUND target, where young =
+  --since-last-weave   -> git-added since the most recent 'Weave ' commit, OR born in/after
+                          that commit's month (born is often month-granular; the OR catches
+                          entries a git rename hid from --diff-filter=A) — use for a real Weave
+  --since-commit <ref> -> same, from an explicit ref
+  --since YYYY-MM      -> born >= that month
+  (none)               -> activation_count == 1 (the card's Step 0b proxy)
 
-For each newcomer: degree (inbound+outbound), a catch-up TARGET of ~0.8 x M (M = median
-degree of established entries), and the deficit to reach it. Targets are guidelines, not
-gates. The coordinator lifts the established workers' MAX_INTRODUCTIONS ~20% to fund the
-catch-up; a newcomer's own worker gets a generous allotment.
+Measured on INBOUND links only (2026-09-23): Step 0b exists for the links only a Weave can
+place — the ones in other entries' files. Total degree hid the gap (OBS read as degree 7 with
+0 inbound). Target = ~0.8 x the median inbound of established entries. Ceremony cards are map
+nodes since build-map-2026-09-24.py, so ceremony links count; links from bundle files do not
+(bundle files are not graph nodes).
 
-Output (default: human report; --block: the {{NEW_ENTRIES}} paste block; --json: machine):
-feeds extract-neighborhood.py --new-entries-file / --max-introductions.
+Also lists the UNREACHABLE: inbound 0, any age (composting ones marked). Unreachable
+`_ops/` files with canon frontmatter are listed apart as a bundle-hygiene question.
+
+The worker paste block (--block) states only "currently N inbound" — never the deficit. A
+number handed to a worker becomes a quota, and a quota invents links. The deficit is for the
+coordinator's table. Targets are guidelines, not gates.
 
 Usage:
   python3 _ops/swarm/new-entry-catchup.py --since-last-weave [--block|--json]   # precise, typical
@@ -37,7 +42,6 @@ import glob, json, math, os, re, statistics, subprocess, sys
 PALACE_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 BORN_RE = re.compile(r'^born:\s*["\']?(\d{4}-\d{2}(?:-\d{2})?)', re.M)
 ACT_RE = re.compile(r'^activation_count:\s*["\']?(\d+)', re.M)
-BASE_MAX_INTROS = 5  # the established-worker guideline; lifted ~20% in a catch-up Weave
 
 
 def _git(args):
@@ -92,53 +96,67 @@ def read_born_and_act(path):
     return (b.group(1) if b else None), (int(a.group(1)) if a else None)
 
 
-def compute(map_path, since, added_set=None, rule="activation_count == 1 (proxy)"):
+def ref_month(ref):
+    """YYYY-MM of a commit — the born-month floor paired with the git-added rule."""
+    out = _git(["log", "-1", "--format=%cs", ref])
+    return out.strip()[:7] if out else None
+
+
+def compute(map_path, since, added_set=None, rule="activation_count == 1 (proxy)", born_floor=None):
+    """Inbound, not total degree: Step 0b exists for the links only a Weave can place —
+    the ones in OTHER entries' files. Total degree hid the gap (OBS read as degree 7 with
+    0 inbound). A newcomer is born since the last Weave OR git-added since it, AND under
+    the inbound target — so an entry a deposit already wired well is not dragged in."""
     with open(map_path, encoding="utf-8") as f:
         data = json.load(f)
     nodes = []
     for n in data["nodes"]:
-        degree = int(n.get("outbound_count", 0)) + int(n.get("inbound_count", 0))
+        inbound = int(n.get("inbound_count", 0))
         born, act = read_born_and_act(n["path"])
         if act is None:  # fall back to the activation_count carried in the map
             act_raw = n.get("activation_count")
             act = int(act_raw) if str(act_raw).isdigit() else None
-        if added_set is not None:          # precise: git-added since the last Weave
-            newcomer = n["path"] in added_set
+        if added_set is not None:          # git-added since the last Weave, or born since its month
+            young = n["path"] in added_set or (born_floor is not None and born is not None and born >= born_floor)
         elif since:                        # born >= month (coarse; born is month-granular)
-            newcomer = born is not None and born >= since
+            young = born is not None and born >= since
         else:                              # proxy: never-reactivated entries
-            newcomer = act == 1
-        nodes.append({"id": n["id"], "path": n["path"], "degree": degree,
-                      "born": born, "newcomer": newcomer})
-    established = [n["degree"] for n in nodes if not n["newcomer"]]
+            young = act == 1
+        nodes.append({"id": n["id"], "path": n["path"], "inbound": inbound,
+                      "stage": n.get("stage"), "born": born, "young": young,
+                      "ops_card": bool(n.get("ops_card"))})
+    established = [n["inbound"] for n in nodes if not n["young"]]
     M = statistics.median(established) if established else 0
     target = round(0.8 * M)
-    newcomers = []
-    for n in nodes:
-        if not n["newcomer"]:
-            continue
-        deficit = max(0, target - n["degree"])
-        newcomers.append({**n, "target": target,
-                          "deficit": deficit,
-                          "suggested_max_introductions": max(deficit, BASE_MAX_INTROS)})
-    newcomers.sort(key=lambda x: (-x["deficit"], x["id"]))
+    newcomers = [{**n, "target": target, "deficit": target - n["inbound"]}
+                 for n in nodes if n["young"] and n["inbound"] < target]
+    newcomers.sort(key=lambda x: (x["inbound"], x["id"]))
+    unreachable = sorted(({"id": n["id"], "path": n["path"], "stage": n["stage"]}
+                          for n in nodes if n["inbound"] == 0 and not n["ops_card"]), key=lambda x: x["id"])
+    # An _ops/ file with canon frontmatter that nothing points to is usually working
+    # substrate (a handoff, a log, a proposal) wearing entry clothes — a bundle-hygiene
+    # question (demote?), not a walk target. Listed apart; never pasted to workers.
+    unreachable_ops = sorted(({"id": n["id"], "path": n["path"], "stage": n["stage"]}
+                              for n in nodes if n["inbound"] == 0 and n["ops_card"]), key=lambda x: x["id"])
     return {
-        "rule": rule, "since": since, "median_degree": M, "catch_up_target": target,
-        "base_max_introductions": BASE_MAX_INTROS,
-        "established_max_introductions": math.ceil(BASE_MAX_INTROS * 1.2),  # ~20% lift
-        "newcomers": newcomers,
+        "rule": rule, "since": since, "median_inbound": M, "catch_up_target": target,
+        "young_at_or_over_target": sum(1 for n in nodes if n["young"] and n["inbound"] >= target),
+        "newcomers": newcomers, "unreachable": unreachable, "unreachable_ops": unreachable_ops,
     }
 
 
 def block(result):
-    """The {{NEW_ENTRIES}} paste block for worker prompts."""
-    if not result["newcomers"]:
-        return "(none born since the last Weave)"
+    """The {{NEW_ENTRIES}} paste block for worker prompts. States the present count only —
+    never the deficit: a number handed to a worker becomes a quota, and a quota invents links."""
     lines = []
-    for n in result["newcomers"]:
-        want = f"wants ~{n['deficit']} more inbound links" if n["deficit"] else "at target"
-        lines.append(f"- [[{n['id']}]] (degree {n['degree']}, {want})")
-    return "\n".join(lines)
+    if result["newcomers"]:
+        lines.append("Born since the last Weave, still under-reached:")
+        lines += [f"- [[{n['id']}]] (currently {n['inbound']} inbound)" for n in result["newcomers"]]
+    live = [u for u in result["unreachable"] if u["stage"] != "composting"]
+    if live:
+        lines.append("No entry points to these yet (any age):")
+        lines += [f"- [[{u['id']}]]" for u in live]
+    return "\n".join(lines) or "(none)"
 
 
 def main():
@@ -166,7 +184,7 @@ def main():
             sys.exit(f"unknown arg: {args[i]}")
 
     # Precise git-added scoping wins over coarse born-month; both over the activation proxy.
-    added_set, rule = None, "activation_count == 1 (proxy)"
+    added_set, rule, born_floor = None, "activation_count == 1 (proxy)", None
     ref = since_commit or (last_weave_ref() if since_last_weave else None)
     if since_last_weave and not ref:
         sys.exit("could not find a prior 'Weave ' commit; pass --since-commit <ref> or --since <YYYY-MM>")
@@ -174,11 +192,12 @@ def main():
         added_set = git_added_md_since(ref)
         if added_set is None:
             sys.exit(f"git failed resolving files added since {ref}")
-        rule = f"git-added since {ref[:12]}"
+        born_floor = ref_month(ref)
+        rule = f"git-added since {ref[:12]} or born >= {born_floor}, and under target"
     elif since:
         rule = f"born >= {since}"
 
-    result = compute(map_path, since, added_set, rule)
+    result = compute(map_path, since, added_set, rule, born_floor)
     if mode == "json":
         print(json.dumps(result, ensure_ascii=False, indent=2))
     elif mode == "block":
@@ -186,16 +205,19 @@ def main():
     else:
         print(f"new-entry catch-up — map: {os.path.basename(map_path)}")
         print(f"newcomer rule: {result['rule']}")
-        print(f"median degree (established): {result['median_degree']}  ->  "
+        print(f"median INBOUND (established): {result['median_inbound']}  ->  "
               f"catch-up target ~0.8×M = {result['catch_up_target']}")
-        print(f"MAX_INTRODUCTIONS: established {result['established_max_introductions']} "
-              f"(~20% lift over base {result['base_max_introductions']}); "
-              f"a newcomer's own worker: its suggested value below\n")
-        print(f"newcomers ({len(result['newcomers'])}):")
+        print(f"young entries already at/over target (not listed): {result['young_at_or_over_target']}\n")
+        print(f"newcomers under target ({len(result['newcomers'])}) — deficit is for the coordinator, never the worker:")
         for n in result["newcomers"]:
-            print(f"  [[{n['id']}]]  degree {n['degree']} → target {n['target']}, "
-                  f"deficit {n['deficit']}  (its worker MAX_INTRODUCTIONS "
-                  f"{n['suggested_max_introductions']})")
+            print(f"  [[{n['id']}]]  inbound {n['inbound']} → target {n['target']} (deficit {n['deficit']})")
+        print(f"\nunreachable — inbound 0, any age ({len(result['unreachable'])}):")
+        for u in result["unreachable"]:
+            print(f"  [[{u['id']}]]" + ("  (composting)" if u["stage"] == "composting" else ""))
+        if result["unreachable_ops"]:
+            print(f"\nunreachable _ops/ files with canon frontmatter — bundle-hygiene review, not the walk ({len(result['unreachable_ops'])}):")
+            for u in result["unreachable_ops"]:
+                print(f"  [[{u['id']}]]  {u['path']}")
         print(f"\n{{{{NEW_ENTRIES}}}} paste block:\n{block(result)}")
     sys.exit(0)
 
