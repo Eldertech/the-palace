@@ -3,7 +3,7 @@ title: "The Palace Hardens Around Values"
 type: concept
 pillars: [philosophy, practice, tools]
 born: 2026-07
-stage: growing
+stage: mature
 last_activated: 2026-07
 activation_count: 1
 links:
@@ -22,6 +22,8 @@ links:
   - target: "[[SCHEMA]]"
     type: connects-to
     label: canon-is-plain-text
+  - target: "[[Weave Ceremony — Context]]"
+    type: connects-to
 forward_vector: "I am the palace's center of gravity made explicit: I want every script weighed against a value and every choice weighed against the whole, so the palace outlasts its tools — and outlasts even its maker's drift."
 ---
 

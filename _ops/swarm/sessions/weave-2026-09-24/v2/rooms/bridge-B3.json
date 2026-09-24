@@ -1,0 +1,267 @@
+{
+ "lens": "bridge",
+ "id": "B3",
+ "tool_side": [
+  {
+   "id": "Bayesian Granular Synthesizer",
+   "path": "Projects/Bayesian Granular Synthesizer.md",
+   "type": "project",
+   "stage": "sprout",
+   "reached_by": 5,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Murmuration  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Phase Reduction  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Frequency-Time Duality",
+    "\u2192 connects-to \u2192 Loudon Live",
+    "\u2192 connects-to \u2192 Neural Granular Synthesis",
+    "\u2192 couples-with \u2192 Phase Reduction"
+   ]
+  },
+  {
+   "id": "Blender",
+   "path": "Shop/Blender.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 12,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Adopt the Craft, Author the Seam  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 BLUELINE  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Block It in Blender, Ink It in genAI  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Blocked, Not Prompted  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Figure Rig  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Hand-Drawn 3D Look  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Image-to-3D Smith  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Remnants in Depth  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 BLUELINE",
+    "\u2192 connects-to \u2192 Blocked, Not Prompted",
+    "\u2192 connects-to \u2192 ComfyUI",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 Three.js"
+   ]
+  },
+  {
+   "id": "Lettering",
+   "path": "Shop/Lettering.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 3,
+   "existing_links": [
+    "\u2190 spawned \u2190 Typography as Meaning",
+    "\u2192 connects-to \u2192 Frame Designer",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 emerged-from \u2192 BLUELINE",
+    "\u2192 enables \u2192 Graphic Storytelling",
+    "\u2192 exemplifies \u2192 Blocked, Not Prompted",
+    "\u2192 exemplifies \u2192 Steer the Generator",
+    "\u2192 exemplifies \u2192 Typography as Meaning",
+    "\u2192 member-of \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Rank-N Lattice Analysis",
+   "path": "Rank-N Lattice Analysis.md",
+   "type": "concept",
+   "stage": "sprout",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Dissolutions  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Phase Reduction  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Wavetable Scanner  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Dispersion Table  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 Infeasible DSP Now Shippable",
+    "\u2192 connects-to \u2192 Categorizing Inharmonicity",
+    "\u2192 connects-to \u2192 Chebyshev is Fourier",
+    "\u2192 connects-to \u2192 Dispersion Table",
+    "\u2192 connects-to \u2192 Infeasible DSP Now Shippable",
+    "\u2192 connects-to \u2192 Volterra Kernels and the Torus",
+    "\u2192 contradicts \u2192 Wavetable Scanner",
+    "\u2192 deepens \u2192 DSP in Looping Dimensions",
+    "\u2192 member-of \u2192 Dissolutions",
+    "\u2192 mirrors \u2192 2D Torus Wavetable Synthesizer"
+   ]
+  },
+  {
+   "id": "Search Before You Build",
+   "path": "Search Before You Build.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 3,
+   "existing_links": [
+    "\u2190 exemplifies \u2190 Return Ceremony",
+    "\u2192 connects-to \u2192 Concierge",
+    "\u2192 couples-with \u2192 Adopt the Craft, Author the Seam",
+    "\u2192 emerged-from \u2192 GenAI Camera"
+   ]
+  },
+  {
+   "id": "VCV Patch Generator",
+   "path": "Shop/VCV Patch Generator.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 enables \u2190 PDL Generation Prompt",
+    "\u2192 connects-to \u2192 Generative Audio Devices",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 PDL Generation Prompt",
+    "\u2192 connects-to \u2192 PDL Renderer",
+    "\u2192 connects-to \u2192 Registry Pattern",
+    "\u2192 member-of \u2192 The Shop",
+    "\u2192 mirrors \u2192 Lossy Compression with Intent Alignment"
+   ]
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Comic and Cinema \u2014 Two Ways of Seeing",
+   "path": "Comic and Cinema \u2014 Two Ways of Seeing.md",
+   "type": "concept",
+   "stage": "sprout",
+   "reached_by": 10,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Adopt the Craft, Author the Seam  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Andrei Tarkovsky  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Graphic Storytelling  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The 2.5D Paper Stack  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Typography as Meaning  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Yasujir\u014d Ozu  (symmetric: holds both ways)",
+    "\u2190 exemplifies \u2190 Frame Designer",
+    "\u2192 connects-to \u2192 Adopt the Craft, Author the Seam",
+    "\u2192 connects-to \u2192 BLUELINE",
+    "\u2192 connects-to \u2192 Frame Designer",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 couples-with \u2192 The Reader's Context Window",
+    "\u2192 deepens \u2192 Graphic Storytelling"
+   ]
+  },
+  {
+   "id": "Compression \u2194 Intimacy",
+   "path": "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+   "type": "concept",
+   "stage": "mature",
+   "reached_by": 5,
+   "existing_links": [
+    "\u2190 spawned \u2190 Cross-Domain Resonances",
+    "\u2192 connects-to \u2192 Kick Drum \u2194 Foundation",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 connects-to \u2192 Rick Rubin",
+    "\u2192 couples-with \u2192 Sidechain \u2194 Conversation",
+    "\u2192 exemplifies \u2192 FOUR PILLARS",
+    "\u2192 member-of \u2192 Cross-Domain Resonances"
+   ]
+  },
+  {
+   "id": "Confucianism",
+   "path": "Confucianism.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 21,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Dialectic  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Excellent Adventure  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Like Water  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Merleau-Ponty  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Palace Philosophies  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Philosopher Visits the Entry  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 STIGMERGY Philosophical Lenses  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Four Virtues  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 zhuangzi-epictetus-confucius-on-the-self  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Lao Tzu  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Stoicism  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 The Drift  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 The Fortress and the Threshold  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Deleuze  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Creative Coach",
+    "\u2190 deepens \u2190 Loudon Live",
+    "\u2190 mirrors \u2190 Lateral Access  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Cooperation Yields Agency",
+    "\u2192 connects-to \u2192 Excellent Adventure",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Palace Philosophies",
+    "\u2192 connects-to \u2192 Spinoza Conatus",
+    "\u2192 connects-to \u2192 Symbiotic Skills",
+    "\u2192 contradicts \u2192 Stoicism",
+    "\u2192 couples-with \u2192 Deleuze",
+    "\u2192 spawned \u2192 The Fortress and the Threshold"
+   ]
+  },
+  {
+   "id": "Creative Coach",
+   "path": "Creative Coach.md",
+   "type": "practice",
+   "stage": "growing",
+   "reached_by": 13,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Identity Molting  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Meadows and an Artist's Career  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Modes of Collaboration  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Objects to Think With  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Reflective Practice  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Sidechain \u2194 Conversation  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Multilinear Self  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Hilaritas Generator  (symmetric: holds both ways)",
+    "\u2190 exemplifies \u2190 Loudon Live",
+    "\u2192 connects-to \u2192 Concierge",
+    "\u2192 connects-to \u2192 Dialectic",
+    "\u2192 connects-to \u2192 Identity Molting",
+    "\u2192 connects-to \u2192 Loudon Live",
+    "\u2192 connects-to \u2192 Meadows and an Artist's Career",
+    "\u2192 connects-to \u2192 Modes of Collaboration",
+    "\u2192 connects-to \u2192 Progressive Staging",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 connects-to \u2192 Reflective Practice",
+    "\u2192 connects-to \u2192 Sidechain \u2194 Conversation",
+    "\u2192 connects-to \u2192 The Multilinear Self",
+    "\u2192 contradicts \u2192 Hilaritas Generator",
+    "\u2192 deepens \u2192 Confucianism",
+    "\u2192 emerged-from \u2192 FOUR PILLARS"
+   ]
+  },
+  {
+   "id": "Leverage Points Framework",
+   "path": "Leverage Points Framework.md",
+   "type": "concept",
+   "stage": "mature",
+   "reached_by": 13,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Buckminster Fuller  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Dovetail Joint \u2194 Counterpoint  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Found \u2194 Made  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Kick Drum \u2194 Foundation  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Palace AI Partnership Philosophy  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Quality Manifesto",
+    "\u2190 emerged-from \u2190 Meadows and Music \u2014 Leverage Points",
+    "\u2190 enables \u2190 Donella Meadows",
+    "\u2190 exemplifies \u2190 Loudon Live Post-producer",
+    "\u2190 spawned \u2190 4 Pillars Framework - The Founding Conversation",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Loudon Live",
+    "\u2192 deepens \u2192 Donella Meadows",
+    "\u2192 emerged-from \u2192 4 Pillars Framework - The Founding Conversation",
+    "\u2192 enables \u2192 Quality Manifesto",
+    "\u2192 mirrors \u2192 Spinoza Conatus",
+    "\u2192 spawned \u2192 Meadows and Music \u2014 Leverage Points"
+   ]
+  },
+  {
+   "id": "Seneca",
+   "path": "People/Seneca.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 8,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Stoicism  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 James Turrell  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Marcus Aurelius",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 connects-to \u2192 The Dichotomy of Control",
+    "\u2192 connects-to \u2192 The View From Above",
+    "\u2192 contradicts \u2192 Epictetus",
+    "\u2192 exemplifies \u2192 Stoicism",
+    "\u2192 member-of \u2192 Source Library"
+   ]
+  }
+ ]
+}

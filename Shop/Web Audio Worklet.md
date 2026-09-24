@@ -28,6 +28,7 @@ links:
   - target: "[[Diversity of Thought in Many-Agent Systems]]"
     type: connects-to
     label: same-medium-second-mind
+  - { target: "[[Zoom Out to the Structure]]", type: exemplifies, label: "gotcha-becomes-concept" }
 tags: [specialist, shop, interactive, audio, web, dsp, worklet]
 ---
 

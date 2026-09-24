@@ -1,0 +1,83 @@
+{
+ "arm": "Z",
+ "room": "L4",
+ "total_proposals": 14,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Closing Well Ceremony",
+   "type": "mirrors",
+   "target": "Return Ceremony",
+   "label": "the-other-bookend",
+   "rationale": "Return Ceremony's central architectural claim is that it and Closing Well Ceremony are the two bookends of one organ; Closing Well Ceremony's own frontmatter has no link acknowledging this from its side.",
+   "evidence": "\"The Return and the Close are one organ, pointed at opposite boundaries... The two ceremonies are bookends on one organ: summoned at the return, takes the wheel at the close.\" (Return Ceremony.md:57,63)",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "unsung",
+   "source": "Substrate Skill",
+   "type": "instruction",
+   "target": "ELDER",
+   "label": null,
+   "rationale": "Grow before you draft: read [[ELDER]], then [[SCHEMA]]",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "relation",
+   "source": "The Blindspot Is the Surprise Fuel",
+   "type": "mirrors",
+   "target": "No Mind Checks Itself",
+   "label": "the-unnamed-wall",
+   "rationale": "No Mind Checks Itself already mirrors this entry one-way ('the-unnamed-wall'); the relation is genuinely symmetric \u2014 both entries argue that a voice/mind which cannot name its own limit cannot be caught, checked, or argued with, at different altitudes (embodied voice vs. self-checking model).",
+   "evidence": null,
+   "item_id": "Z3"
+  },
+  {
+   "kind": "relation",
+   "source": "SCHEMA",
+   "type": "connects-to",
+   "target": "ELDER",
+   "label": "read-before",
+   "rationale": "SCHEMA's own body already names ELDER as the reason it exists ('This card is... the first thing an agent reads when it grows up ([[ELDER]])') but carries no frontmatter link back to it \u2014 the ELDER walk surfaces its own most-cited-in-prose neighbor missing the wire.",
+   "evidence": "\"This card is the what exists \u2014 the first thing an agent reads when it grows up ([[ELDER]]).\" (SCHEMA.md:48-50)",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "stage",
+   "source": "Return Ceremony",
+   "type": "seed->growing",
+   "rationale": "none \u2014 vector is specific and verb-driven",
+   "item_id": "Z5"
+  },
+  {
+   "kind": "relation",
+   "source": "Deposit Ceremony",
+   "type": "connects-to",
+   "target": "SCHEMA \u2014 Reference",
+   "label": "writing-rules",
+   "rationale": "Deposit Ceremony's own body sends its reader to SCHEMA \u2014 Reference by disk path \u2014 the exact 'writing rules read at the pen' the file's own forward_vector describes \u2014 but only SCHEMA is registered in frontmatter, not SCHEMA \u2014 Reference.",
+   "evidence": "\"If you need the vocabulary yourself, read `SCHEMA.md` and `SCHEMA \u2014 Reference.md` on disk.\" (_ops/Deposit Ceremony.md:50)",
+   "item_id": "Z6"
+  },
+  {
+   "kind": "relation",
+   "source": "No Mind Checks Itself",
+   "type": "enables",
+   "target": "Bring In a Bigger Mind",
+   "label": null,
+   "rationale": "SCHEMA \u00a74's directionality invariant: exemplifies runs concrete-instance \u2192 general-class. Here No Mind Checks Itself is the general structural claim and Bring In a Bigger Mind is the concrete practice built on it \u2014 the arrow is backward. The link's own label ('the-practice-this-grounds') already says No Mind Checks Itself is the ground the practice stands on, which is what `enables` (precondition \u2192 enabled) means, not what `exemplifies` means.",
+   "evidence": "link object: target: \"[[Bring In a Bigger Mind]]\" type: exemplifies label: the-practice-this-grounds (No Mind Checks Itself.md:11-13)",
+   "item_id": "Z7"
+  },
+  {
+   "kind": "relation",
+   "source": "Substrate Skill",
+   "type": "connects-to",
+   "target": "ELDER",
+   "label": "prerequisite",
+   "rationale": "Substrate Skill's own 'Adding to the Palace' section instructs the reader to read ELDER first, in body prose, with no matching frontmatter link \u2014 a direct case of a known entry named at a structurally significant spot (an instruction, not a passing mention) going unregistered.",
+   "evidence": "\"Grow before you draft: read [[ELDER]], then [[SCHEMA]], if you have not this session \u2014 a child offers the idea; an elder gives it frontmatter.\" (Substrate Skill.md:37)",
+   "item_id": "Z8"
+  }
+ ]
+}

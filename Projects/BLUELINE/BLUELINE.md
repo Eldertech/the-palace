@@ -83,6 +83,15 @@ links:
   - target: "[[ControlNet as Topology]]"
     type: connects-to
     label: why-geometry-beats-prompting
+  - target: "[[Search Before You Build]]"
+    type: connects-to
+    label: the-comfy-lib-miss
+  - target: "[[Block It in Blender, Ink It in genAI]]"
+    type: spawned
+    label: the-runbook
+  - target: "[[Christopher Alexander]]"
+    type: contradicts
+    label: fabrication-vs-unfolding
 tags: [project, blueline, music-video, generative, pipeline, sprout]
 ---
 

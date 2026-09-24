@@ -17,9 +17,6 @@ links:
   - target: "[[Objects to Think With]]"
     type: exemplifies
     label: object-to-think-with
-  - target: "[[Biomechanical Synthesis]]"
-    type: connects-to
-    label: instrument-04
   - target: "[[Compressor Design]]"
     type: deepens
     label: pedagogical-mythology

@@ -6,7 +6,7 @@ pillars:
   - tools
   - philosophy
 born: 2026-06
-stage: seed
+stage: growing
 status: active
 summary: "A monophonic LPC voice-synthesizer VST whose 3D interface renders the Kelly-Lochbaum cylindrical tube segments that ARE the lattice filter — the LPC/waveguide mirror made playable inside a DAW."
 forward_vector: "I want to be the first palace instrument that leaves the browser and stands inside Ableton — a vocal tract you can see, where every cylinder on screen is a scattering junction you can hear, proving the mirrors link between LPC and waveguide synthesis as a playable fact rather than a prose claim. I want to sing vowels before I learn to speak, and then to learn to speak by listening (the v2 analysis engine)."

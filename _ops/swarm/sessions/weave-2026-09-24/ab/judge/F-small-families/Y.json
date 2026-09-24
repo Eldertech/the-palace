@@ -1,0 +1,49 @@
+{
+ "arm": "Y",
+ "room": "F-small-families",
+ "total_proposals": 5,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Dialectic",
+   "type": "connects-to",
+   "target": "Making a Palace Citizen",
+   "label": "research-becomes-dossier",
+   "rationale": "Dialectic's own body already states the bridge in plain language but never turns it into a frontmatter link. The two entries describe the same research discipline (biographical/intellectual/stylistic material sufficient for faithful embodiment) aimed at two different outputs \u2014 a staged conversation vs. a permanent citizen.",
+   "evidence": "\"The council's voices often become candidates for `person` entries in the palace. A voice well-researched enough to embody is well-researched enough to deposit.\" \u2014 Dialectic.md, Cross-Domain Resonance section",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "demote",
+   "source": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+   "target": null,
+   "rationale": "Same reasoning: 4 inbound, spawned The Drift as a new entry, actively cited by the sibling Dialectic. Keep as a first-class entry; fix the filename/title mismatch rather than fold it into bundle substrate.",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "demote",
+   "source": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "target": null,
+   "rationale": "Lives in a bundle folder and could formally become a SCHEMA \u00a78 `dialectic` bundle file, but it carries 4 inbound links and produced the conatus 'second axis' that Spinoza Conatus and Hilaritas Generator are asked to absorb \u2014 genuinely load-bearing, active content. Demoting to a minimal-frontmatter bundle file would hide it from Weave topology, which would be a real loss. Fix the filename/title mismatch (see coherence_findings) instead of demoting.",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "bridge",
+   "source": "",
+   "type": "connects-to",
+   "target": "Weaker echo of the same bridge from Philosopher Visits the Entry, which also demands pre-embodiment research ('Research enough to be surprised by them') but doesn't explicitly promise deposit the way Dialectic does.",
+   "rationale": "Same research discipline, narrower payoff (one philosopher visiting one entry, not a council becoming citizens).",
+   "evidence": "None || \"Research enough to be surprised by them. Their vocabulary, one move they reach for, one thing they got wrong.\" \u2014 Philosopher Visits the Entry.md \u00a7 The Method",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "bridge",
+   "source": "",
+   "type": "connects-to",
+   "target": "Dialectic's own Cross-Domain Resonance section names exactly this bridge but never turns it into a frontmatter link: the council's researched voices are the raw material for person-entry citizenship.",
+   "rationale": "Both require the same act \u2014 research a voice deeply enough (vocabulary, characteristic moves, blindspots) that it can be embodied faithfully. Dialectic does this to stage a conversation; Making a Palace Citizen does it to give the voice a permanent home with a dossier.",
+   "evidence": "None || \"The council's voices often become candidates for `person` entries in the palace. A voice well-researched enough to embody is well-researched enough to deposit.\" \u2014 Dialectic.md, Cross-Domain Resonance section",
+   "item_id": "Y5"
+  }
+ ]
+}

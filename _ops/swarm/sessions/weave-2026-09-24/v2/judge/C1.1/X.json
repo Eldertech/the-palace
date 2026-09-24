@@ -1,0 +1,46 @@
+{
+ "arm": "X",
+ "room": "C1.1",
+ "total_proposals": 4,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Latent Error",
+   "type": "contradicts",
+   "target": "Trickster",
+   "label": "expose-vs-conceal",
+   "rationale": "Latent Error's whole discipline is making structural failure visible (\"redesign so failure requires more than one simultaneous mistake\"). Compressor Design's own link names Trickster's soft-knee move as hiding the discontinuity it's smoothing over. Same design surface, opposite instinct \u2014 worth sharpening from a flat connects-to into a named tension rather than replacing it outright; offered for Concierge judgment, not a forced overwrite.",
+   "evidence": "Latent Error.md:37 \"don't design for idealized attention, redesign so failure requires more than one simultaneous mistake\" \u2014 Compressor Design.md:25-27 target Trickster label \"soft-knee-hides-discontinuity\"",
+   "item_id": "X1"
+  },
+  {
+   "kind": "relation",
+   "source": "Bayesian Granular Synthesizer",
+   "type": "connects-to",
+   "target": "Audition Gate",
+   "label": "iterated-by-ear",
+   "rationale": "The entry's own account of its build is a worked instance of the audition-gate practice \u2014 evaluated and revised by listening, not by spec review.",
+   "evidence": "\"the instrument was then iterated by ear across eight audio renders\" (Bayesian Granular Synthesizer.md:39); \"Wire the optional grain-entrainment coupling and audition whether population-locking adds to the condensation or muddies it.\" (:75)",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "Audition Gate",
+   "type": "exemplifies",
+   "target": "Reflective Practice",
+   "label": "reflection-in-sound",
+   "rationale": "Both newcomers, both under-reached (Audition Gate 0 inbound, Reflective Practice 1 inbound). Audition Gate is a sound-domain instance of exactly the Sch\u00f6n reflection pattern Reflective Practice names: the spec is suspended and perception takes over. Neither entry currently knows the other exists.",
+   "evidence": "Audition Gate: \"The audition is non-negotiable. It is not a review of the spec; it is a check that the spec's intent landed in the audio.\" (Audition Gate.md:34) \u2014 Reflective Practice: \"The situation talks back, the practitioner listens, and as he appreciates what he hears, he reframes the situation once again.\" (Reflective Practice.md:47-49)",
+   "item_id": "X3"
+  },
+  {
+   "kind": "unsung",
+   "source": "Loudon Live",
+   "type": "pointer (unlinked body mention)",
+   "target": "LDN RTM",
+   "label": "rtm-series",
+   "rationale": "a planned content series sits alongside the project staging: ***Read The Manual*** \u2014 deep-dive sessions exposing unusual, underused, or beautiful capabilities of specific synthesizers and plugins",
+   "item_id": "X4"
+  }
+ ]
+}

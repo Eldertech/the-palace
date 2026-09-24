@@ -1,0 +1,80 @@
+{
+ "cluster": "C4.2",
+ "lens": "community",
+ "members_read": [
+  "People/Andrei Tarkovsky.md",
+  "People/Andy Goldsworthy.md",
+  "People/Annie Dillard.md",
+  "People/James Turrell.md",
+  "People/Natalie Goldberg.md",
+  "People/Terrence Malick.md",
+  "Shop/VCV Patch Generator.md",
+  "People/Yasujir\u014d Ozu.md",
+  "People/Martin Heidegger.md",
+  "People/Martin Buber.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Andrei Tarkovsky",
+   "target": "Terrence Malick",
+   "type": "mirrors",
+   "kind": "new",
+   "label": "duration-as-meaning",
+   "rationale": "Neither page links to the other, which is surprising given how closely they overlap: both are slow-cinema auteurs whose FOUR PILLARS links, Quality Manifesto links, and forward vectors all name patience-over-speed as the same discovery, but from different studios. The specific shared claim (not just 'both are slow directors') is that held duration is itself the meaning, not a delivery vehicle for it.",
+   "evidence": "Tarkovsky: 'Cut fast and you deliver information. Hold the shot and you deliver an experience of duration itself.' Malick: 'images that hold longer than a story needs... texture and mood doing the work that narrative usually claims.'",
+   "spark": 3,
+   "classify": "link"
+  },
+  {
+   "source": "Annie Dillard",
+   "target": "James Turrell",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "receptive-vs-analytic-seeing",
+   "rationale": "Dillard's own two-ways-of-seeing (the analytic prying eye vs. the self-emptying receptive one) is not yet linked to anyone in the palace who builds the receptive mode as physical architecture. Turrell's Ganzfeld is that mode made into a room. Fidelity check: her existing McGilchrist couples-with already covers the neuroscience frame; this link is specifically about someone who *builds the condition* for the second way of seeing rather than describing it.",
+   "evidence": "Dillard: 'the difference between the two ways of seeing is the difference between walking with and without a camera.' Turrell: 'the eye, built to find edges, loosens, and light starts reading as substance you're inside of... you are looking at you looking.'",
+   "spark": 3,
+   "classify": "link"
+  },
+  {
+   "source": "Andy Goldsworthy",
+   "target": "Martin Heidegger",
+   "type": "mirrors",
+   "kind": "newcomer",
+   "label": "rootedness-hides-its-violence",
+   "rationale": "Both pages build an ethic of staying in one place long enough to earn the right to work it (Heidegger's dwelling/rootedness, Goldsworthy's 'you have to live somewhere a long time'), and both entries independently indict that same rootedness rhetoric for laundering a specific historical violence over the land or people it claims to honor. Neither page currently links the other; Heidegger is an under-reached newcomer (reached by 6).",
+   "evidence": "Heidegger: 'his conviction that thinking belongs close to the ground... inseparable from the soil-and-destiny rhetoric that made 1933 possible.' Goldsworthy: 'his weather and erosion do the work that landlords and property law actually did... it was not the sheep who put people off the land, but the landlords.'",
+   "spark": 4,
+   "classify": "link"
+  },
+  {
+   "source": "Andy Goldsworthy",
+   "target": "Martin Buber",
+   "type": "connects-to",
+   "kind": "newcomer",
+   "label": "relapses-into-it-at-the-shutter",
+   "rationale": "Buber's central claim \u2014 every Thou relapses into an It the instant it is named, analyzed, or used \u2014 is almost a literal gloss on Goldsworthy's own documented tell: the ephemeral, encountered material becomes a fixed, sellable object at the exact moment the camera closes. Neither page links the other; Buber is an under-reached newcomer (reached by 6).",
+   "evidence": "Buber: 'every Thou must become an It the instant it is named, analyzed, or used.' Goldsworthy: 'the photograph is the actual permanent, sellable, gallery-priced object... manufactures the durable commodity at the exact instant of the shutter.'",
+   "spark": 4,
+   "classify": "link"
+  }
+ ],
+ "unsung_paths": [],
+ "bridge_findings": [],
+ "coherence_findings": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "open_question_resolutions": [],
+ "flag_responses": [],
+ "synthesis_spawn_flag": [],
+ "walk_results": [
+  {
+   "target": "VCV Patch Generator",
+   "disposition": "nothing-genuine",
+   "note": "Sits in this room by topology alone \u2014 no thread connects a modular-synthesis specialist's registry-pattern charter to the cinema/land-art/writing figures around it. Checked its body against all seven others; nothing beyond the trivial (both 'make things') would survive the fidelity swap test. Leaving it unlinked is the honest call, not an oversight."
+  }
+ ],
+ "summary": "This room is mostly a knot of patient-witness artists (Tarkovsky, Turrell, Goldsworthy, Dillard, Malick, Ozu, Goldberg) already well-stitched to each other and to Quality Manifesto / FOUR PILLARS, plus one clear outlier (VCV Patch Generator) that has no genuine business here. The existing web was denser than expected, but two real gaps stood out: Tarkovsky and Malick \u2014 the palace's two clearest slow-cinema patience-philosophers \u2014 had never been linked to each other, and Dillard's own two-ways-of-seeing had never met Turrell, who builds the receptive mode as architecture instead of describing it. The most productive work, though, was reaching past the room into this weave's newcomer list: Andy Goldsworthy's dossier already carries its own indictment of 'collaboration with nature' as authorial control that launders a specific historical violence (the Highland Clearances) \u2014 and that is almost exactly the shape of Heidegger's rootedness-that-enabled-1933 and Buber's every-Thou-relapses-into-an-It. Both links are load-bearing, specific, and quote-matched, not generic 'philosopher meets artist' pairings. VCV Patch Generator got a real look and a genuine null result \u2014 nothing forced there."
+}

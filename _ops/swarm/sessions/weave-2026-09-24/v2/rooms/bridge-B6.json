@@ -1,0 +1,263 @@
+{
+ "lens": "bridge",
+ "id": "B6",
+ "tool_side": [
+  {
+   "id": "D3.js",
+   "path": "Shop/D3.js.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Observable Plot  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Flocking",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Matplotlib",
+    "\u2192 connects-to \u2192 Observable Plot",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 p5.js"
+   ]
+  },
+  {
+   "id": "Depth Anything",
+   "path": "Shop/Depth Anything.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 5,
+   "existing_links": [
+    "\u2190 connects-to \u2190 SAM  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 LaMa",
+    "\u2192 connects-to \u2192 Line-Art Layer Decomposition",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 SAM",
+    "\u2192 connects-to \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Frequency-Time Explorer",
+   "path": "Projects/Frequency-Time Explorer.md",
+   "type": "project",
+   "stage": "growing",
+   "reached_by": 5,
+   "existing_links": [
+    "\u2190 spawned \u2190 Frequency-Time Duality",
+    "\u2192 connects-to \u2192 BBS Design System",
+    "\u2192 connects-to \u2192 DSP in Looping Dimensions",
+    "\u2192 connects-to \u2192 Frequency Domain \u2194 Perspective Shift",
+    "\u2192 emerged-from \u2192 Frequency-Time Duality",
+    "\u2192 enables \u2192 Boundary-Crossing Instruments",
+    "\u2192 enables \u2192 Loudon Live",
+    "\u2192 mirrors \u2192 Piano String Inharmonicity"
+   ]
+  },
+  {
+   "id": "Midjourney",
+   "path": "Shop/Midjourney.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 4,
+   "existing_links": [
+    "\u2190 connects-to \u2190 ComfyUI  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 FLUX (Hugging Face)  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 ComfyUI",
+    "\u2192 connects-to \u2192 FLUX (Hugging Face)",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Tract Mirror",
+   "path": "Projects/Tract Mirror.md",
+   "type": "project",
+   "stage": "seed",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2192 connects-to \u2192 Boundary-Crossing Instruments",
+    "\u2192 couples-with \u2192 Three.js",
+    "\u2192 emerged-from \u2192 Linear Predictive Coding",
+    "\u2192 mirrors \u2192 Linear Predictive Coding",
+    "\u2192 mirrors \u2192 Waveguide Synthesizer"
+   ]
+  },
+  {
+   "id": "Web Audio Worklet",
+   "path": "Shop/Web Audio Worklet.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 12,
+   "existing_links": [
+    "\u2190 connects-to \u2190 1D Wavetable Scanning  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Murmuration  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Wavetable Scanner  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Three.js  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 2D Torus Wavetable Synthesizer",
+    "\u2192 connects-to \u2192 Diversity of Thought in Many-Agent Systems",
+    "\u2192 connects-to \u2192 Flocking",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 RNBO codebox~ smith",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 Tone.js",
+    "\u2192 connects-to \u2192 p5.js",
+    "\u2192 exemplifies \u2192 The Shop"
+   ]
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Found \u2194 Made",
+   "path": "Found \u2194 Made.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Andy Goldsworthy  (symmetric: holds both ways)",
+    "\u2190 exemplifies \u2190 Donella Meadows",
+    "\u2190 exemplifies \u2190 George Nakashima",
+    "\u2190 exemplifies \u2190 Rick Rubin",
+    "\u2190 exemplifies \u2190 Songlines",
+    "\u2190 spawned \u2190 Cross-Domain Resonances",
+    "\u2192 connects-to \u2192 Leverage Points Framework",
+    "\u2192 connects-to \u2192 Simondon",
+    "\u2192 connects-to \u2192 The Curve Is the Material",
+    "\u2192 member-of \u2192 Cross-Domain Resonances"
+   ]
+  },
+  {
+   "id": "Lateral Access",
+   "path": "Lateral Access.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 27,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Douglas Hofstadter  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Identity Molting  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Maker  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Metaphor as Coupling Medium  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Pages as Agents  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Palace Enchantment  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Palace Map  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 SUBSTRATE  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Songlines  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Swarm Weave  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Curve Is the Material  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Three Kinds of Warp  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Threshold Conatus  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Registry Pattern  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Like Water",
+    "\u2190 emerged-from \u2190 Enchanted Conversation Archive",
+    "\u2190 mirrors \u2190 Frequency Domain \u2194 Perspective Shift  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Iain McGilchrist  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Kuramoto Coupling  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Pheromone Trail  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Trickster  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Walk That Weaves  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Oblique Portrait",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Songlines",
+    "\u2192 couples-with \u2192 Excellent Adventure",
+    "\u2192 deepens \u2192 Hilaritas Generator",
+    "\u2192 emerged-from \u2192 Oblique Portrait",
+    "\u2192 enables \u2192 Identity Molting",
+    "\u2192 mirrors \u2192 Confucianism",
+    "\u2192 mirrors \u2192 Embeddings as Relational Meaning",
+    "\u2192 mirrors \u2192 Kuramoto Coupling"
+   ]
+  },
+  {
+   "id": "Leibniz",
+   "path": "Leibniz.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Whitehead  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Blood Compressor  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 The Drift  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Palace Philosophies",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Hyperdimensional Prism",
+    "\u2192 connects-to \u2192 Meaning and the Link",
+    "\u2192 connects-to \u2192 Palace Philosophies",
+    "\u2192 connects-to \u2192 Spinoza",
+    "\u2192 connects-to \u2192 Spinoza Conatus",
+    "\u2192 contradicts \u2192 Blood Compressor",
+    "\u2192 contradicts \u2192 The Drift",
+    "\u2192 contradicts \u2192 Whitehead"
+   ]
+  },
+  {
+   "id": "Rick Rubin",
+   "path": "People/Rick Rubin.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 10,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Brian Eno  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Compression \u2194 Intimacy  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Cooking \u2194 Mixing  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Frequency Domain \u2194 Perspective Shift  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Iain McGilchrist  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Quantization \u2194 Precision vs Flow  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Donella Meadows  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Julia Cameron  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Brian Eno",
+    "\u2192 connects-to \u2192 Cooking \u2194 Mixing",
+    "\u2192 connects-to \u2192 Lao Tzu",
+    "\u2192 connects-to \u2192 Simondon",
+    "\u2192 contradicts \u2192 Donella Meadows",
+    "\u2192 deepens \u2192 FOUR PILLARS",
+    "\u2192 deepens \u2192 Quality Manifesto",
+    "\u2192 exemplifies \u2192 Found \u2194 Made",
+    "\u2192 member-of \u2192 Cross-Domain Resonances",
+    "\u2192 member-of \u2192 Source Library"
+   ]
+  },
+  {
+   "id": "The Drift",
+   "path": "The Drift.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 16,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Deleuze  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Floquet Theory  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Mathieu Equation  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Palace Philosophies  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Philosopher Visits the Entry  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 STIGMERGY Philosophical Lenses  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 spinoza-zhuangzi-on-striving  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Leibniz  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Merleau-Ponty  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Stoicism  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Lao Tzu  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Deleuze",
+    "\u2192 connects-to \u2192 Entry Conatus",
+    "\u2192 connects-to \u2192 Granular Synthesis",
+    "\u2192 connects-to \u2192 Parametric Resonance",
+    "\u2192 connects-to \u2192 spinoza-zhuangzi-on-striving",
+    "\u2192 contradicts \u2192 Confucianism",
+    "\u2192 contradicts \u2192 Leibniz",
+    "\u2192 contradicts \u2192 Merleau-Ponty",
+    "\u2192 contradicts \u2192 Spinoza Conatus",
+    "\u2192 contradicts \u2192 Stoicism",
+    "\u2192 deepens \u2192 Like Water",
+    "\u2192 emerged-from \u2192 The Fortress and the Threshold",
+    "\u2192 emerged-from \u2192 zhuangzi-epictetus-confucius-on-the-self"
+   ]
+  },
+  {
+   "id": "Zoom Out to the Structure",
+   "path": "Zoom Out to the Structure.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2190 couples-with \u2190 The Palace Practices on Itself  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Cooperation Yields Agency",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 The Commons",
+    "\u2192 couples-with \u2192 The Palace Practices on Itself"
+   ]
+  }
+ ]
+}

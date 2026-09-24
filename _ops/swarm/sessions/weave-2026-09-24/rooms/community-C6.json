@@ -1,0 +1,197 @@
+{
+ "lens": "community",
+ "id": "C6",
+ "members": [
+  {
+   "id": "Bring In a Bigger Mind",
+   "path": "Bring In a Bigger Mind.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Confucianism",
+   "path": "Confucianism.md",
+   "stage": "growing",
+   "inbound": 17
+  },
+  {
+   "id": "Deleuze",
+   "path": "Deleuze.md",
+   "stage": "growing",
+   "inbound": 14
+  },
+  {
+   "id": "Dialectic",
+   "path": "Modes of Collaboration/Dialectic.md",
+   "stage": "growing",
+   "inbound": 18
+  },
+  {
+   "id": "Epictetus",
+   "path": "People/Epictetus.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Excellent Adventure",
+   "path": "Modes of Collaboration/Excellent Adventure.md",
+   "stage": "growing",
+   "inbound": 18
+  },
+  {
+   "id": "Leibniz",
+   "path": "Leibniz.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Like Water",
+   "path": "Like Water.md",
+   "stage": "growing",
+   "inbound": 12
+  },
+  {
+   "id": "Making a Palace Citizen",
+   "path": "Making a Palace Citizen.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Marcus Aurelius",
+   "path": "People/Marcus Aurelius.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "Martin Buber",
+   "path": "People/Martin Buber.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Martin Heidegger",
+   "path": "People/Martin Heidegger.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Merleau-Ponty",
+   "path": "Merleau-Ponty.md",
+   "stage": "sprout",
+   "inbound": 10
+  },
+  {
+   "id": "Mixture of Experts",
+   "path": "Mixture of Experts.md",
+   "stage": "mature",
+   "inbound": 15
+  },
+  {
+   "id": "Palace Philosophies",
+   "path": "Palace Philosophies.md",
+   "stage": "mature",
+   "inbound": 18
+  },
+  {
+   "id": "Philosopher Visits the Entry",
+   "path": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "stage": "sprout",
+   "inbound": 12
+  },
+  {
+   "id": "STIGMERGY Philosophical Lenses",
+   "path": "Palace development/STIGMERGY Philosophical Lenses.md",
+   "stage": "seed",
+   "inbound": 7
+  },
+  {
+   "id": "Seneca",
+   "path": "People/Seneca.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Spinoza",
+   "path": "Spinoza.md",
+   "stage": "seed",
+   "inbound": 7
+  },
+  {
+   "id": "Stoicism",
+   "path": "Stoicism.md",
+   "stage": "mature",
+   "inbound": 20
+  },
+  {
+   "id": "The Adjacent Affordance",
+   "path": "The Adjacent Affordance.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "The Blindspot Is the Surprise Fuel",
+   "path": "The Blindspot Is the Surprise Fuel.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "The Dichotomy of Control",
+   "path": "The Dichotomy of Control.md",
+   "stage": "growing",
+   "inbound": 13
+  },
+  {
+   "id": "The Drift",
+   "path": "The Drift.md",
+   "stage": "growing",
+   "inbound": 11
+  },
+  {
+   "id": "The Fortress and the Threshold",
+   "path": "The Fortress and the Threshold.md",
+   "stage": "growing",
+   "inbound": 14
+  },
+  {
+   "id": "The Four Virtues",
+   "path": "The Four Virtues.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "The Lens",
+   "path": "The Lens.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "The View From Above",
+   "path": "The View From Above.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Whitehead",
+   "path": "Whitehead.md",
+   "stage": "growing",
+   "inbound": 8
+  },
+  {
+   "id": "spinoza-zhuangzi-on-striving",
+   "path": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "stage": "mature",
+   "inbound": 4
+  },
+  {
+   "id": "zhuangzi-epictetus-confucius-on-the-self",
+   "path": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+   "stage": "mature",
+   "inbound": 4
+  }
+ ],
+ "directed_flags": {
+  "Dialectic": [
+   "Dialectic \u2192 Creative Coach reciprocal link; Creative Coach already points at Dialectic (flag commons-the-palace-1790128916710)."
+  ]
+ }
+}

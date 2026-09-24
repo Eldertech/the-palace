@@ -23,6 +23,9 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
     label: rate-of-change-function
+  - target: "[[The Aftermath Frame]]"
+    type: connects-to
+    label: armature-for-the-swing
 ---
 
 # ControlNet as Topology

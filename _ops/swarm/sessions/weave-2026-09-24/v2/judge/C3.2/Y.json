@@ -1,0 +1,87 @@
+{
+ "arm": "Y",
+ "room": "C3.2",
+ "total_proposals": 14,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Toolkit \u2014 Audio Plugins",
+   "type": "connects-to",
+   "target": "LDN RTM",
+   "label": "queued-shortlist",
+   "rationale": "Directed flag confirmed \u2014 repoint the stale placeholder at line ~40 to the now-real project, which already names this entry's shortlist as queued.",
+   "evidence": "Queued: Serum, Soundtoys, and the [[Toolkit \u2014 Audio Plugins]] shortlist (H3000 Factory, Diva, Zebra2, Reaktor 6, Surge XT, Vital, MeldaProduction).",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Tool Builder",
+   "type": "connects-to",
+   "target": "Worktree Practice",
+   "label": "the-discipline-named",
+   "rationale": "Tool Builder's checklist states the worktree-first rule verbatim but never links the entry that holds it in full, and Worktree Practice currently has zero inbound links anywhere in the palace.",
+   "evidence": "Make your own worktree first. For any sustained or commit-producing work, branch into your own worktree before you start; the shared tree thrashes branches under other agents.",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "relation",
+   "source": "Shopkeeper",
+   "type": "connects-to",
+   "target": "Does Personifying an Agent Change What It Does",
+   "label": "the-question-about-me",
+   "rationale": "The question entry treats Shopkeeper as its first datum by name; Shopkeeper's own link list (8 targets) never points back at the entry asking whether her personification changes her behavior.",
+   "evidence": "The [[Shopkeeper]] is the palace's first agent given a gender and a personality \u2014 not just a role with a register, but a character",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/RNBO codebox~ smith",
+   "type": "connects-to",
+   "target": "Diversity of Thought in Many-Agent Systems",
+   "label": "same-medium-second-mind",
+   "rationale": "Web Audio Worklet frames the RNBO/Worklet crossover as a live probe of the Diversity-of-Thought question and links it; RNBO's own two-job forward vector is exactly the divergence data that question wants, but it carries no link.",
+   "evidence": "That pairing is also a small, concrete probe of [[Diversity of Thought in Many-Agent Systems]] \u2014 the same medium held by two minds with different formative constraints.",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/RNBO codebox~ smith",
+   "type": "connects-to",
+   "target": "Shop/Web Audio Worklet",
+   "label": "dsp-cousin-crossover-test",
+   "rationale": "Web Audio Worklet's forward vector names RNBO codebox~ smith explicitly as the partner for a planned crossover test (same instrument spec, two operating models); RNBO's stub entry doesn't reciprocate the citation.",
+   "evidence": "one instrument spec built twice, here and in [[Shop/RNBO codebox~ smith]], so the Maker learns where the browser cousin and the DAW native each win",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "Steer the Generator",
+   "type": "contradicts",
+   "target": "Does Personifying an Agent Change What It Does",
+   "label": "words-as-control",
+   "rationale": "Steer the Generator's evidenced central claim is that prompt-only description is too weak a handle whenever an attribute actually matters \u2014 you get it by controlling, selecting, or measuring, never by wording it better. Does Personifying's working hypothesis is the opposite bet on a neighboring substrate: that persona-framing prose alone is a genuine, reliable steering effect on an agent's behavior, not decoration. Different mediums (diffusion render vs. LLM policy), same underlying question \u2014 held oppositely, and worth the palace keeping both true at once rather than quietly picking a side.",
+   "evidence": "The prompt sets the vibe; the control sets the thing you can't afford to drift. / Persona framing is a genuine steering effect on a language model, not just a stylistic wrapper \u2014 'a restless magpie who plays first and judges second' is a soft instruction that biases the entire policy",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "relation",
+   "source": "The Multilinear Self",
+   "type": "mirrors",
+   "target": "Does Personifying an Agent Change What It Does",
+   "label": "persona-real-or-performed",
+   "rationale": "Both entries hold the identical productive tension \u2014 honest multiplicity vs. performance/self-deception \u2014 one on the human side (Loudon's named projections), one on the agent side (the Shopkeeper's gendered temperament). Neither cites the other though they're the same pattern in different material, and it cuts across the identity folder and the Shop folder cleanly.",
+   "evidence": "Past some point, more projections stop being honest range and become performance \u2014 a scattered, false, exhausting self playing to every room. / Anthropomorphism as useful fiction versus self-deception \u2014 treating the agent as a character may genuinely improve how we reason about it... or it may make us misjudge its reliability",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "relation",
+   "source": "assume multi-agent",
+   "type": "connects-to",
+   "target": "Zoom Out to the Structure",
+   "label": "same-scar-different-angle",
+   "rationale": "assume multi-agent tells the same 2026-07-02 RunPod-outage origin story as Zoom Out to the Structure's worked example \u2014 the discipline extracted rather than the pattern named \u2014 and the two entries never cite each other despite narrating the same incident.",
+   "evidence": "A full day (2026-07-02) looked like a RunPod outage: pods booted RUNNING but the renderer never came up, roughly ten failures in a row.",
+   "item_id": "Y8"
+  }
+ ]
+}

@@ -1,0 +1,1613 @@
+[
+ {
+  "source": "ComfyUI",
+  "target": "Identity Molting",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "container-sheds-identity-persists"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "ComfyUI's local-to-cloud upgrade path preserves the workflow JSON while the execution container changes \u2014 a direct engineering instance of Identity Molting's container-vs-identity claim."
+  ],
+  "evidence": [
+   "\"Same workflows, same JSON artifacts, remote execution... preserves the workflow-as-artifact reproducibility\" / \"The container is not the identity. The identity is what flows.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "John Cage",
+  "target": "Piano String Inharmonicity",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B10"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "the-constant-was-a-held-variable"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Piano String Inharmonicity's closing claim \u2014 a supposed constant was only constant because one variable (tension) was silently held fixed \u2014 is the same structural move as Cage's discovery that 'there is no silence,' only every apparent absence was a held-still attention."
+  ],
+  "evidence": [
+   "What seemed like a constant \u2014 the sound of the string \u2014 was only constant because we held tension constant. \u2014 there is no silence... 4'33\" is four and a half minutes of everything you'd been ignoring."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Graphic Storytelling",
+  "target": "The 2.5D Paper Stack",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "balloon-is-not-decoration"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both entries independently arrive at the same craft law \u2014 a comic element's placement (depth in the stack; balloon shape and position) carries meaning and is never decorative \u2014 from opposite directions (a 3D pipeline concept vs. inherited comics theory)."
+  ],
+  "evidence": [
+   "\"A dialogue bubble has a place in the stack ... not merely a position on the page\" / \"the balloon is sound made visible \u2014 its shape, edge, and tail are not decoration, they are how a silent medium prints volume, tone, and who is speaking.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Blender",
+  "target": "Confucianism",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "blocked-not-prompted-as-li"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Blender's hand-blocked-pose-then-AI-fill pipeline is a second, independent instance of the same li pattern found in Lettering \u2014 structure precedes and disciplines expressive generation."
+  ],
+  "evidence": [
+   "\"I do not invent identity or skin \u2014 I hand structure to Shop/ComfyUI and let the render-AI fill it.\" / \"The form produces the interior, not the other way around.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Bayesian Granular Synthesizer",
+  "target": "Compression \u2194 Intimacy",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "convergence-under-a-clock"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both entries describe closeness/certainty accumulating under an asymmetric fast-attack/slow-release time constant rather than switching on \u2014 the sharpened posterior and the deepened intimacy are the same shape."
+  ],
+  "evidence": [
+   "\"fast attack as a note presses, slow relaxation as it releases\" / \"Gradual reduction, not one dramatic squeeze ... Gradual reduction of distance over time.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Lao Tzu",
+  "target": "SAM",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "work-the-grain"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both find success in matching an instrument's given nature rather than forcing it past that nature."
+  ],
+  "evidence": [
+   "\"don't fix the segmenter, move the image into the segmenter's world\" / \"acting with the grain of things rather than against it\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Reflective Practice",
+  "target": "SAM",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "reflection-on-action-instance"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "SAM's Gotchas section is a documented try-fail-reframe cycle that produced the convert-first design principle."
+  ],
+  "evidence": [
+   "\"The reframe in one line: don't fix the segmenter, move the image into the segmenter's world\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "1D Wavetable Scanning",
+  "target": "Merleau-Ponty",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "geometry-is-the-data"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "geometry-is-the-data / knowing-is-doing"
+  ],
+  "why": [
+   "Both refuse a represented middle step between substrate and action \u2014 the wavetable's viz reads the same array the DSP does; the body's reach is intentionality, not representation-then-execution."
+  ],
+  "evidence": [
+   "\"literally the same math reading the same array\" / \"the reaching is a form of intentionality in its own right\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Image-to-3D Smith",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "plausible-geometry-vs-structural-truth"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "verify the load-bearing fact before trusting the vision"
+  ],
+  "why": [
+   "The specialist's discipline (verify trimesh stats before trusting the render) is a direct QA answer to Fuller's own recorded blind spot (charismatic vision, domes that leaked)."
+  ],
+  "evidence": [
+   "\"these engines can hallucinate plausible-looking geometry that breaks apart in Blender\" / \"the domes leaked\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Animate the Background",
+  "target": "Dub Lineage",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "subtraction-is-composition"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "the assembly stage is where the creative act happens"
+  ],
+  "why": [
+   "Both build meaning through strip-then-reconstruct logic and treat the assembly board (compositor / mixing desk) as the real instrument."
+  ],
+  "evidence": [
+   "\"the field the compositor keeps, not the one the diffusion eats\" / \"Subtraction is composition. The mixing board is the instrument. The engineer plays.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "FLUX (Hugging Face)",
+  "target": "Saturation \u2194 Richness",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "sweet-spot-knob"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "FLUX's guidance-scale tradeoff (too low = formless variance, too high = tight but flat) is the same U-shaped sweet-spot structure Saturation \u2194 Richness names across every domain it covers."
+  ],
+  "evidence": [
+   "\"lower \u2192 more variance; higher \u2192 tighter prompt fidelity but flatter\" (FLUX) / \"Too little = clean but sterile... too much = distorted and broken\" (Saturation \u2194 Richness)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "LaTeX",
+  "target": "Mermaid",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "routes-to"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "LaTeX's Charter names Mermaid by name as where it refuses and routes quick system-diagram jobs \u2014 a real routing relationship with no frontmatter link on either side.",
+   "route to [[Shop/Mermaid|Mermaid]]"
+  ],
+  "evidence": [
+   "\"I refuse quick system diagrams where precision isn't the point (route to [[Shop/Mermaid|Mermaid]])\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Web Audio Worklet",
+  "target": "Zoom Out to the Structure",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "generalized-a-gotcha"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "A dated local gotcha (buffer-transfer neutering) is explicitly generalized into a decision rule covering the opposite case \u2014 the practice's core discipline, performed inside an engineering log."
+  ],
+  "evidence": [
+   "This generalises the earlier gotcha \u2014 same primitive, opposite direction."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Dialectic",
+  "target": "No Mind Checks Itself",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-small-families"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "council-as-outside-vantage"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "No Mind Checks Itself names three altitudes where a self can't audit itself (systems thinking, cognition, engineering practice) and explicitly wants 'to keep collecting the altitudes it recurs at until the pattern is unmistakable.' The Dialectic is a fourth, unclaimed altitude: embodying genuinely different voices in the same room so each can catch what the others' single perspective would miss \u2014 structurally the same move as decoupling maker from checker, done philosophically rather than procedurally."
+  ],
+  "evidence": [
+   "'Real correction needs a vantage outside that loop \u2014 a differently-textured mind, not more effort from inside the same one.' (No Mind Checks Itself) vs. Dialectic's own claim that a researched voice 'generates responses that weren't scripted in advance' and produces 'knowledge of how a position behaves under pressure' no single voice alone could produce."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "target": "Oblique Portrait",
+  "type": "mirrors",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-small-families"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "outside-the-loop"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Different problems (self-honesty about taste vs. self-auditing for error) sharing one deep pattern: a subject cannot reach certain truths about itself through direct self-report or self-inspection, and needs an external process \u2014 indirection in one case, a differently-angled mind in the other \u2014 to reach what the loop can't see from inside."
+  ],
+  "evidence": [
+   "Oblique Portrait: 'You cannot access certain interior material by pointing at it... The front door is locked \u2014 not by deception, but by identity.' No Mind Checks Itself: 'A self-model can only see as far as its own loop runs.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "target": "Philosopher Visits the Entry",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-small-families"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "the-visit-is-the-outside-vantage"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "This is the most concrete instance of the No Mind Checks Itself pattern in the whole family: a technical entry cannot see its own over-claim from inside, and the Philosopher Visit exists specifically to bring an outside-the-loop reader who can. The entry's own precedent (the oscillator visit) is a worked example of exactly the principle No Mind Checks Itself names abstractly."
+  ],
+  "evidence": [
+   "'A poorly-researched philosopher produces a caricature that flatters the entry; a well-researched one says something the entry's author did not expect.' \u2014 the named precedent even found the entry's claim over-stated and 'offered the entry a smaller, more durable claim.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "target": "Crystal Synthesizer",
+  "type": "mirrors",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-Projects"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Biomechanical Synthesis's instrument #2, \"crystal resonator synthesis \u2014 lattice vibrational modes as partial frequencies, crystal geometry as filter topology,\" describes almost exactly what Crystal Synthesizer already does (phonon modes as partial structure) \u2014 but the two entries were built independently and neither links to the other. Neither one should absorb the other (different origin framing, different pillars-of-emphasis), but the overlap is real and worth naming so a reader of Biomechanical Synthesis doesn't think instrument #2 is still unbuilt."
+  ],
+  "evidence": [
+   "\"2. Crystal resonator synthesis \u2014 lattice vibrational modes as partial frequencies, crystal geometry as filter topology\" (Projects/Biomechanical Synthesis.md:66); \"A synthesizer whose partial structure is derived directly from the vibrational phonon modes of crystalline lattices\" (Projects/Crystal Synthesizer.md:49)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "James Turrell",
+  "target": "Rick Rubin",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "humility-that-hides-control"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Turrell's entry already names and hosts the four-way pattern (Martin, Turrell, Nakashima, Goldsworthy: 'I only get out of the way' as itself a controlling stance). Rubin's blindspot is structurally identical \u2014 'the song is already finished, I just uncover it' is the same move in a fifth material (sound/taste instead of grid/light/wood/stone)."
+  ],
+  "evidence": [
+   "Turrell: \"the same blindspot in four materials (grid, wood, stone-and-ice, light)\"; Rubin: \"'uncover the essence' assumes an essence was waiting, and that 'I just feel it' may credit taste for what confidence and luck did.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "Pauline Oliveros",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "two-modes-of-attention"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Oliveros's focal/global toggle is a lived, practice-based version of McGilchrist's left/right modes of attention \u2014 genuinely load-bearing, not a label-match."
+  ],
+  "evidence": [
+   "Oliveros: \"She toggles deliberately between *focal* attention (a single point) and *global* attention (the entire sphere)\"; McGilchrist: \"left... narrow, focused, grasping... right... broad, open, sustained, vigilant.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "George Nakashima",
+  "target": "Martin Heidegger",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "tool-vanishes-in-use"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Heidegger's ready-to-hand/present-at-hand distinction (a tool transparent in use, visible only when it breaks) is the closest philosophical formalization of what Nakashima's craft claims and what his entry's blindspot presses on \u2014 the hand's practical absorption prior to theoretical distance."
+  ],
+  "evidence": [
+   "Heidegger: \"a tool in use is ready-to-hand... you don't notice the hammer, you notice the nail going in\"; Nakashima: \"touch is how he understands, not merely how he builds.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ELDER",
+  "target": "Revival Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-_ops"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "growth-precondition"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Revival Ceremony's own precondition #4 requires ELDER to have been read this session, but the frontmatter link list (3 links) omits it entirely \u2014 a hard dependency left unnamed structurally.",
+   "The operator has grown this session \u2014 [[ELDER]] and [[SCHEMA]] read"
+  ],
+  "evidence": [
+   "\"The operator has grown this session \u2014 [[ELDER]] and [[SCHEMA]] read \u2014 since the revival writes a stage change and proposes typed links\" \u2014 Revival Ceremony.md:30"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Dialectic",
+  "target": "The Remembering Page",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "debate-mode"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Named as one of the two modes that shape what a page's memory forms \u2014 the sharpening counterpart to the Walk. Body-only citation.",
+   "A debate (a [[Dialectic]]) sharpens a contrary"
+  ],
+  "evidence": [
+   "'A debate (a [[Dialectic]]) sharpens a contrary: two pages defend their grips and leave more distinct than they arrived.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Closing Well",
+  "target": "The Remembering Page",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "lifetime-closing"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The entry explicitly names its own mechanism as the same pattern as Closing Well applied at a different scale \u2014 a session's end vs. a page's own life \u2014 which is exactly what 'mirrors' is for. Body-only citation.",
+   "it is [[Closing Well]] across a page's own lifetime"
+  ],
+  "evidence": [
+   "'And it is [[Closing Well]] across a page's own lifetime \u2014 each encounter ends by leaving an honest record so the next waking of this page can pick up where it left off.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Bring In a Bigger Mind",
+  "target": "The Blindspot Is the Surprise Fuel",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "different-mind-catches-blindspot"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both entries say the same thing about the same failure mode from different altitudes: a self-check shares its own blind spots, so the honest fix is a genuinely different vantage catching what the maker structurally cannot see. Blindspot is the general principle (\"its blindspot is missing, and finding it is how it comes alive\"); BIBM is the concrete mechanism that operationalizes it (a cold, skeptical, differently-tuned model). Fidelity check: swapping in Dialectic instead of BIBM breaks the reason \u2014 Dialectic is a live multi-voice council, not a cold post-hoc adversarial check on finished work."
+  ],
+  "evidence": [
+   "\"Reach for me whenever an entry, an agent, or an enchanted page comes out smooth and agreeable; its blindspot is missing, and finding it is how it comes alive\" (The Blindspot Is the Surprise Fuel) / \"nothing in the 1581 tests would have said so, because those tests were written by the same mind that wrote the bug, from inside the same blind spot\" (Bring In a Bigger Mind)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Confucianism",
+  "target": "Martin Buber",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "relation-before-the-individual"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both put relation ontologically prior to the individual: Confucian ren cannot exist alone (the character itself is \"person\" + \"two\"), and Buber says there is no I as such, only the I of I-Thou or I-It. Different material (ritual-cultivated relational ethics vs. existentialist dialogue-philosophy of encounter) carrying the same structural claim. Fidelity check: swap in Stoicism (which Buber and Confucianism both already contradict) and the reasoning collapses \u2014 Stoicism is the fortress they're both pushing against, not a mirror of them."
+  ],
+  "evidence": [
+   "\"You cannot be ren alone. It increases when shared.\" (Confucianism.md:42) / \"There is no I as such, only the I of I-Thou and the I of I-It\" (Martin Buber.md forward_vector)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "Simondon",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "integration-vs-fragmentation"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Simondon's concretization criterion (good design is not more features but the convergence of functions into a single resonant whole) is the same shape as McGilchrist's right-hemisphere comprehension of a living whole versus the left hemisphere's re-presentation of it as a static, decomposed, portable version. One is a philosophy of technical objects, the other a neuropsychiatric theory of attention \u2014 different material, same structural claim about integration vs. fragmentation. Fidelity check: swap in Deleuze (Simondon's usual philosophical partner) and the reasoning goes generic \u2014 Deleuze isn't making a claim about attention or wholes specifically."
+  ],
+  "evidence": [
+   "\"not more features but greater concretization, the convergence of functions into a single resonant whole\" (Simondon.md forward_vector) / \"the right... grasps the living whole in context... the left... re-presents \u2014 takes the living thing and makes a static, portable, decontextualized version\" (Iain McGilchrist.md)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Frame Designer",
+  "target": "RunPod GPU Backend",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Frame Designer's whole 'Field notes \u2014 rich-first/stylize-last, on RunPod' section runs the pipeline on a rented pod and documents a real cost-safety gotcha there, but never links RunPod GPU Backend in frontmatter (confirmed absent both directions in the room file).",
+   "moved generation to a cloud GPU / RunPod's create can return HTTP 500 yet still create the pod"
+  ],
+  "evidence": [
+   "\"Follow-on that re-ordered render\u2192composite\u2192style and moved generation to a cloud GPU.\" / \"Cost-safety gotcha that bit hard: RunPod's create can return HTTP 500 yet still create the pod \u2014 a naive retry-on-500 leaked 11 pods\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ComfyUI",
+  "target": "Frame Designer",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "The render leg is explicitly routed through ComfyUI by name in body prose, but ComfyUI isn't in Frame Designer's frontmatter (confirmed absent both directions).",
+   "locked pen-flow via [[Shop/ComfyUI]]"
+  ],
+  "evidence": [
+   "\"Seam-B conditioned render (`render_shot`: OpenPose+depth \u2192 locked pen-flow via [[Shop/ComfyUI]])\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Blender",
+  "target": "Frame Designer",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "The staging leg's primary method is named-in-body as living on Blender; unlinked in frontmatter.",
+   "Authored Blender blocking (`newstory_bench`, on [[Shop/Blender]])"
+  ],
+  "evidence": [
+   "\"Authored Blender blocking (`newstory_bench`, on [[Shop/Blender]]) | clean single / dynamic poses, exact camera\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Frame Designer",
+  "target": "The Commons",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Frame Designer names the specific fix as now living in The Commons's RunpodPodProvider, but the entry it names isn't a room member and isn't linked in frontmatter either direction.",
+   "now in the Commons [[The Commons|RunpodPodProvider]]"
+  ],
+  "evidence": [
+   "\"Fix (now in the Commons [[The Commons|RunpodPodProvider]]): recover the pod by name after any non-200, never retry-leak\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Animate the Background",
+  "target": "Depth Anything",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Depth Anything is named as the specific tool that solves the Order step for N-layer separation \u2014 a load-bearing, specific claim (fidelity test: swapping in SAM or LaMa here would be false, since the very next lines say those fail at Order). No frontmatter link either direction.",
+   "Depth Anything V2 wins on the drawing itself \u2014 recovers front-to-back order"
+  ],
+  "evidence": [
+   "\"Order \u2014 who occludes whom. **Depth Anything V2** wins on the drawing itself \u2014 recovers front-to-back order, hands back a clean figure silhouette for free, and depth-banding gives a free coarse 3-cel split.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Animate the Background",
+  "target": "SAM",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "SAM is discussed twice with a real verdict \u2014 it fails directly on line-art but works once the drawing is converted to a flat-cel domain \u2014 a specific, load-bearing technical relationship, not a generic mention. No frontmatter link either direction.",
+   "the figure comes out best from a keypoint mask, not SAM"
+  ],
+  "evidence": [
+   "\"Photo-SAM (mobile + ViT-B), GrabCut, and morphology all **fail** on line-art objects; the figure comes out best from a **keypoint** mask, not SAM.\" ... \"both photoreal and flat-cel conversions make SAM segment cleanly where raw line-art gave garbage\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Andrei Tarkovsky",
+  "target": "Terrence Malick",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "duration-as-meaning"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Neither page links to the other, which is surprising given how closely they overlap: both are slow-cinema auteurs whose FOUR PILLARS links, Quality Manifesto links, and forward vectors all name patience-over-speed as the same discovery, but from different studios. The specific shared claim (not just 'both are slow directors') is that held duration is itself the meaning, not a delivery vehicle for it."
+  ],
+  "evidence": [
+   "Tarkovsky: 'Cut fast and you deliver information. Hold the shot and you deliver an experience of duration itself.' Malick: 'images that hold longer than a story needs... texture and mood doing the work that narrative usually claims.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Annie Dillard",
+  "target": "James Turrell",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "receptive-vs-analytic-seeing"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Dillard's own two-ways-of-seeing (the analytic prying eye vs. the self-emptying receptive one) is not yet linked to anyone in the palace who builds the receptive mode as physical architecture. Turrell's Ganzfeld is that mode made into a room. Fidelity check: her existing McGilchrist couples-with already covers the neuroscience frame; this link is specifically about someone who *builds the condition* for the second way of seeing rather than describing it."
+  ],
+  "evidence": [
+   "Dillard: 'the difference between the two ways of seeing is the difference between walking with and without a camera.' Turrell: 'the eye, built to find edges, loosens, and light starts reading as substance you're inside of... you are looking at you looking.'"
+  ],
+  "july": false,
+  "gnn": true
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "target": "Objects to Think With",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Objects to Think With's own body quotes this entry as one of the palace's three self-declared isomorphism instances, but Biomechanical Synthesis carries no exemplifies link back \u2014 the relation is named in the target's prose and missing on the source's frontmatter."
+  ],
+  "evidence": [
+   "Biomechanical Synthesis.md: \"treats biological processes as DSP operations \u2014 not as metaphor but as design principles. ... Body horror is pedagogy: making DSP mechanics physical makes them unforgettable.\" / Objects to Think With.md: \"[[Biomechanical Synthesis]] say it in their own words (... \\\"not as metaphor but as design principles\\\")\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Particle Synthesis",
+  "target": "Objects to Think With",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Not named in Objects to Think With's own text, but Particle Synthesis independently uses the identical diagnostic phrase the OTTW entry treats as its test for a genuine instance (isomorphism, not metaphor) \u2014 this is the room-crossing find the folders wouldn't catch since the two entries sit in different Projects/ subfolders and neither currently points at the other."
+  ],
+  "evidence": [
+   "Particle Synthesis.md: \"This is not metaphor \u2014 it is direct structural isomorphism.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Worktree Practice",
+  "target": "assume multi-agent",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both are the identical pattern \u2014 build isolated, per-agent state so two concurrent Claudes can never collide \u2014 realized in different material: Worktree Practice isolates git HEAD/branch/directory per agent; assume multi-agent isolates pod names, temp files, and list/delete scope per agent. Both were born from the same kind of scar (a shared-state collision that cost real time) and both hand their machinery to a general substrate (Worktree Practice \u2192 the symlink manifest / SKILL.md; assume multi-agent \u2192 The Commons). Fidelity test: swapping in STIGMERGY (also in Worktree Practice's links) breaks the fit \u2014 STIGMERGY is the shared, non-isolated write path, the opposite pattern."
+  ],
+  "evidence": [
+   "Worktree Practice: \"For any sustained, commit-producing work in the palace, spin up an isolated git worktree ... before starting, rather than working in the shared primary checkout.\" / assume multi-agent: \"Build every palace tool expecting two or more Claudes to run it at once ... Namespace what you make ... Scope every list and delete to your own.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Drift and Consolidation",
+  "target": "No Mind Checks Itself",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Drift and Consolidation's central problem \u2014 an entry that has \"silently fallen out of date and gives a reader no sign of it\" \u2014 is a concrete, entry-scale instance of No Mind Checks Itself's structural claim that a self-referential system cannot audit its own currency from inside. Drift and Consolidation's fix (a standing disclosure footer, an outside consolidation beat at milestones) is exactly the palace's general answer applied to pages: don't ask the entry to catch its own staleness, give it an honest pointer and an outside check. Neither entry currently names the other; the fit is specific, not generic \u2014 swapping in, say, Reflective Practice (which already contradicts No Mind Checks Itself on a different axis \u2014 deliberate self-reflection, not structural blindness) does not hold the same way."
+  ],
+  "evidence": [
+   "Drift and Consolidation: \"The bug is never drift. The bug is unbounded, untracked drift \u2014 an entry that has silently fallen out of date and gives a reader no sign of it.\" / No Mind Checks Itself: \"A self-model can only see as far as its own loop runs. Real correction needs a vantage outside that loop.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Drift and Consolidation",
+  "target": "Entry Conatus",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both concepts are about keeping a palace entry honest over its lifetime, from opposite ends: Entry Conatus is about the entry's forward-facing will \u2014 the language of a vector that keeps reaching outward rather than settling into stasis. Drift and Consolidation is about the entry's backward-facing honesty \u2014 whether its current body still tells the truth about what has already happened. A page could have a hungry, well-written forward vector and still be silently stale in its body; the two concerns are siblings that neither entry currently names. Fidelity check: this specific pairing (will-to-grow / honesty-about-the-past) doesn't transfer cleanly to, say, Reflective Practice, which is about deliberate human reflection rather than an entry's own two-sided lifecycle honesty."
+  ],
+  "evidence": [
+   "Entry Conatus: \"'I will remain' is not a forward vector \u2014 it is the language of staying still, of death dressed as endurance.\" / Drift and Consolidation: \"the entry may lag, but it never lies silently \u2014 it openly says 'I may be behind, the live truth is here.'\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ROSETTA",
+  "target": "Two Batons, One Board",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "worked-example"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "ROSETTA \u00a74c's palace-to-harness dictionary names Two Batons, One Board directly as the worked example of the 'steward = scheduled agent' row, but carries no frontmatter link to it in either direction. A fidelity test holds: swap in a different room member and the sentence stops being true \u2014 this is the specific case ROSETTA cites.",
+   "See [[Two Batons, One Board]], [[Project Stewardship System]]."
+  ],
+  "evidence": [
+   "\"the trigger is a cadence and the executor is the orchestrator; each cycle is one baton handoff. See [[Two Batons, One Board]], [[Project Stewardship System]].\" \u2014 ROSETTA.md \u00a74c"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Project Stewardship System",
+  "target": "ROSETTA",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "worked-example"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same sentence in ROSETTA \u00a74c names Project Stewardship System as the concrete instance of its steward/cron-agent row, and separately as the exemplar of the Machinery/Content Split described in \u00a74c's closing paragraph. No frontmatter link exists between them despite the meta entry using it as its own worked example twice.",
+   "The [[Project Stewardship System]] is its most built-out instance"
+  ],
+  "evidence": [
+   "\"The [[Project Stewardship System]] is its most built-out instance; the [[Concierge]] is the same shape at a one-shot tempo.\" \u2014 ROSETTA.md \u00a74c"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Pages as Agents",
+  "target": "Self-Describing Knowledge Module",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "grounds-the-plurality-claim"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "SDKM's central risk argument (many voices from one author) leans on a specific empirical result from Pages as Agents as its evidence, then pivots to No Mind Checks Itself (already linked) to argue the result doesn't settle the question. The citation is load-bearing to the argument, not decorative, and there is no frontmatter link either direction.",
+   "[[Pages as Agents]] ran the test: three readers, given only the answers, matched fifteen of fifteen"
+  ],
+  "evidence": [
+   "\"[[Pages as Agents]] ran the test: three readers, given only the answers, matched fifteen of fifteen back to the page that wrote them, against a one-in-five baseline.\" \u2014 Self-Describing Knowledge Module.md"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Project Stewardship System",
+  "target": "Skills Are Enchantable Pages",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "the-most-built-out-instance"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "SAEP already carries inbound exemplifies links from Concierge and Palace Orchestrator ('the family' \u2014 same object at different trigger/executor cells). Its own body names Project Stewardship System as 'the most built-out harness around an entry we have,' the instance every dispatchable organ converges on \u2014 the same relationship SAEP already records for the other two, just missing here. Fidelity test holds: swap in a different room member and 'the most built-out harness' stops reading true."
+  ],
+  "evidence": [
+   "\"the [[Project Stewardship System]] shows *how the palace wraps one* \u2014 it is the most built-out harness around an entry we have, and every dispatchable organ converges on its shape\" \u2014 Skills Are Enchantable Pages.md"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Skills Are Enchantable Pages",
+  "target": "Two Batons, One Board",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "baton-as-loop"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "SAEP's 'steward is an impulse looped' line is a direct restatement of Two Batons' baton/steward atom (baton = impulse, steward = the impulse looped, artifact updated in place never deleted). SAEP cites it explicitly as the source of that framing, with no frontmatter link either way.",
+   "the artifact updated in place, never deleted ([[Two Batons, One Board]])"
+  ],
+  "evidence": [
+   "\"a steward is that impulse looped: each cycle is one baton handoff, the artifact updated in place, never deleted ([[Two Batons, One Board]])\" \u2014 Skills Are Enchantable Pages.md"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Swarm Weave",
+  "target": "assume multi-agent",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "philosophy-rederived"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Newcomer under-reached (2). Swarm Weave's own account of what the first oblique run taught names assume multi-agent by title as the case where a tool re-derived a philosophical pattern (the Stoic dichotomy of control) independently \u2014 direct evidence for Swarm Weave's own claim about the oblique lens's 'one mind, two vocabularies' finds. No frontmatter link exists; the fidelity test holds, since this is the specific example Swarm Weave picked to prove its point.",
+   "`assume multi-agent` = the Stoic dichotomy of control"
+  ],
+  "evidence": [
+   "\"(`assume multi-agent` = the Stoic dichotomy of control; [[Registry Pattern]] = wu wei; [[BBS Blackboard]] = the striatum's reward trace \u2014 the tools were re-deriving the philosophy, deposited as [[The Practice Rediscovers Its Philosophy]].)\" \u2014 Swarm Weave.md \u00a7 What the first oblique run taught"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Gemma 4 \u2014 Local Coordination Guide",
+  "target": "Identity Molting",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "container-vs-identity"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Identity Molting's whole claim on the human side is that a changed container (professional role, domain label) doesn't change the self underneath. Gemma 4's carried question asks the same thing from the machine side \u2014 does a different tool-coupling architecture (the container the agent's tool-use lives in) make it a genuinely different kind of agent, or the same agent in a different shell? Neither page answers the other's question, which is exactly why putting them next to each other is useful \u2014 one has lived experience of the claim, the other is asking it fresh from a different substrate."
+  ],
+  "evidence": [
+   "Gemma 4: \"What does prompt-level vs. request-level tool coupling imply about agent identity and session coherence? Is a Gemma agent that has its tools baked into its system prompt a different kind of agent than a Claude instance that receives tools per-request?\" \u2014 Identity Molting: \"The container is not the identity. The identity is what flows.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ELDER",
+  "target": "Agent Toolbox",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "tool-tiers"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [
+   "ELDER states the age/tool-limit *principle*; Agent Toolbox is where that principle is actually mechanized into a roster. Fidelity test passed \u2014 this reasoning is specific to Agent Toolbox's actual profile table, not a generic 'see also.'"
+  ],
+  "why": [
+   "ELDER's 'Age and its limits' section names the exact three-tier tool taxonomy (palace-reader / palace-writer / palace-orchestrator) that Agent Toolbox defines and owns, but the mention carries no frontmatter link. Agent Toolbox is also a priority newcomer (reached by only 2).",
+   "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])"
+  ],
+  "evidence": [
+   "\"a child that makes things keeps the tools its workshop needs; an elder is `palace-writer`, and an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]]).\""
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "Palace Orchestrator",
+  "type": "enables",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "wire-for"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "\u00a79 explicitly calls itself the spec and Palace Orchestrator the thing that executes it, with an imperative to read it first \u2014 a textbook enables relation (precondition \u2192 dependent), stated in the entry's own words but never wired into frontmatter.",
+   "This section is the wire; [[Palace Orchestrator]] is the executor. Read that before posting."
+  ],
+  "evidence": [
+   "\"\u00a74 types the edges between entries; \u00a79 types the edges between agents ... This section is the wire; [[Palace Orchestrator]] is the executor. Read that before posting.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Entry Conatus",
+  "target": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "forward-vector-discipline"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "SCHEMA \u2014 Reference's own frontmatter-fields table sends the reader to Entry Conatus for the discipline of writing a forward_vector, but doesn't carry the link itself.",
+   "see [[Entry Conatus]] for the discipline of writing one"
+  ],
+  "evidence": [
+   "\"The forward vector is the entry's articulated *conatus*: see [[Entry Conatus]] for the discipline of writing one.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "Philosopher Visits the Entry",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "attention-as-the-question"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "The roster entry is explicitly open to growing ('a seed, not a law'), and McGilchrist's entire forward_vector is written in exactly the register of a roster candidate \u2014 a characteristic question that bites on entries that reduce a living whole to its analyzed parts. This wires an under-reached newcomer's inbound link through the room's own practice for doing exactly that."
+  ],
+  "evidence": [
+   "Philosopher Visits the Entry: 'a starting roster of which voice visits which family' \u2014 'This is a seed, not a law.' McGilchrist: 'I earn my place by being dispatched to where a thing is about to be killed by the wrong kind of attention... I want to keep asking what kind of attention the palace is paying.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Kick Drum \u2194 Foundation",
+  "target": "Synth Archetypes",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "the-literal-kick"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Kick Drum \u2194 Foundation is the palace's metaphor entry that constraint (choosing and committing to a foundation) is what enables everything downstream. Synth Archetypes' actual 'kick' archetype embodies the identical claim literally, in engineering terms, about an actual kick drum: the punch depends on a hard constraint (pitch-decay coupled to amp-decay) that can't be sampled independently. One entry argues the pattern in metaphor; the other builds the literal object under the same rule. Fidelity check: swapping in Quantization \u2194 Precision vs Flow instead doesn't hold the same way \u2014 that entry is about precision-vs-flow tradeoffs, not about a first constraint enabling a specific identity."
+  ],
+  "evidence": [
+   "Kick Drum \u2194 Foundation: 'constraints enable quality... First is not just first\u2014it's the constraint that enables everything after.' Synth Archetypes: \"This is `kick`'s pitch-decay/amp-decay coupling: the punch *is* the two decays landing together, so they can't be sampled independently.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Three Kinds of Warp",
+  "target": "control-vocabulary-math",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [
+   "sync-bifurcation-as-knob"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both formalize the Kuramoto synchronization threshold as a designed musical control, not just a physics fact \u2014 one on a torus's two phasors, one on a population of spiking neurons. control-vocabulary-math's K_c ('below it the crowd drifts, above it synchrony switches on') is the same object as Three Kinds of Warp's type-3 lock/drift bifurcation ('a snap, not a fade'), same math, different material."
+  ],
+  "evidence": [
+   "control-vocabulary-math: 'The critical coupling K_c is the threshold where r lifts off zero \u2014 below it the crowd drifts, above it synchrony switches on.' Three Kinds of Warp: 'Below the synchronization threshold the rotation numbers shift... above threshold they lock... Bends the lattice itself... The Kuramoto coupling f1 = K sin(phi2-phi1) is the canonical instance.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Dissolutions",
+  "target": "Three Kinds of Warp",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "resists-dissolution"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Dissolutions' own Forward Vectors ask whether it needs a 'Refusals' sibling \u2014 'entries that resist dissolution despite looking like they should merge.' Three Kinds of Warp's 1D obstruction theorem is exactly that structural refusal: no amount of clever type-1 phase reshaping (the move every commercial wavetable warp makes) can ever become type-2 or type-3 and produce inharmonicity \u2014 two things that look mergeable (more sophisticated warping = eventually inharmonic) and provably are not."
+  ],
+  "evidence": [
+   "Dissolutions: 'Does the catalogue eventually grow a sibling \u2014 Refusals, the entries that resist dissolution despite looking like they should merge? Two things that keep being mistaken for one and shouldn't be?' Three Kinds of Warp: 'The theorem holds for any warp at all... Every commercial wavetable warp redistributes energy among the harmonic slots; none of them moves a partial between slots... Structurally cannot produce inharmonicity.'"
+  ],
+  "july": false,
+  "gnn": false
+ }
+]

@@ -6,7 +6,7 @@ pillars:
   - tools
   - practice
 born: 2026-07
-stage: sprout
+stage: growing
 last_activated: 2026-07
 activation_count: 2
 links:
@@ -28,6 +28,11 @@ links:
   - target: "[[ROSETTA]]"
     type: connects-to
     label: harness-translation-home
+  - target: "[[The Palace Speaks]]"
+    type: connects-to
+    label: migration-siblings
+  - target: "[[Two Batons, One Board]]"
+    type: connects-to
 forward_vector: "I am the recognition that the palace already had skills — it called them ceremonies, specialists, enchantable pages — long before it borrowed the word. I want to collapse the false split between a 'skill' the harness fires and a page the palace enchants, so every dispatchable organ lives in the graph where the Weave can see it, reached behind a thin shim. I push toward the day the palace holds one family — ceremony · specialist · skill · page — as one pattern with many trigger surfaces, and toward the Schema conversation that might make it official."
 ---
 

@@ -49,6 +49,9 @@ links:
   - target: "[[The Blindspot Is the Surprise Fuel]]"
     type: exemplifies
     label: calm-as-a-throne's-privilege
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Marcus Aurelius

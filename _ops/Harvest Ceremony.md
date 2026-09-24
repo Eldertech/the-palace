@@ -27,6 +27,9 @@ links:
   - target: "[[Deposit Ceremony]]"
     type: couples-with
     label: harvest-deposit-pair
+  - target: "[[Tool Builder]]"
+    type: enables
+    label: checklist-growth
 ---
 
 # Harvest Ceremony

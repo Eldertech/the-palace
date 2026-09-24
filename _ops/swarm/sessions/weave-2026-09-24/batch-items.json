@@ -1,0 +1,1158 @@
+[
+ {
+  "id": "b001",
+  "from": "v2",
+  "source": "BBS Design System",
+  "type": "connects-to",
+  "target": "The Scroll",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "the [[BBS Design System]] carve-out",
+  "evidence": null
+ },
+ {
+  "id": "b002",
+  "from": "v2",
+  "source": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "target": "Worktree Practice",
+  "label": "specific-vs-hub",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "satisfies [[SCHEMA \u2014 Reference]] \u00a79's one-write-path rather than breaking it",
+  "evidence": null
+ },
+ {
+  "id": "b003",
+  "from": "v2",
+  "source": "Deposit Archive",
+  "type": "connects-to",
+  "target": "Worktree Practice",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "the [[Deposit Archive]] is frozen, no row to append ... The Deposit Archive is no longer appended to",
+  "evidence": null
+ },
+ {
+  "id": "b004",
+  "from": "v2",
+  "source": "Manim CE",
+  "type": "connects-to",
+  "target": "Radio Play",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "Duration-parameterized Seg base class, VO-as-clock (from [[Radio Play]])",
+  "evidence": null
+ },
+ {
+  "id": "b005",
+  "from": "v2",
+  "source": "Oblique Enrichment",
+  "type": "connects-to",
+  "target": "The Substrate Drifts",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "The first is cheap per tool and expensive across the fleet; the second is the kind of convergence that, per [[Oblique Enrichment]], should be discovered once enough tools have paid the tax separately \u2014 not designed up front.",
+  "evidence": null
+ },
+ {
+  "id": "b006",
+  "from": "v2",
+  "source": "LoRA Trainer",
+  "type": "connects-to",
+  "target": "STIGMERGY",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "Loudon's in-context rating ([[Review Layer]] \u2192 [[STIGMERGY]]) matched the metrics and sharpened them",
+  "evidence": null
+ },
+ {
+  "id": "b007",
+  "from": "v2",
+  "source": "Substrate Skill",
+  "type": "connects-to",
+  "target": "Weaving Memory into the Palace",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "If [[Substrate Skill]] ever grows an \"operating this environment\" section, the three operator-env-native memories could point there too",
+  "evidence": null
+ },
+ {
+  "id": "b008",
+  "from": "v2",
+  "source": "Deleuze",
+  "type": "connects-to",
+  "target": "Spinoza",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "a later reader \u2014 [[Deleuze]], Nietzsche, Freud \u2014 will say the affects are driving the car and reason is a passenger narrating the scenery",
+  "evidence": null
+ },
+ {
+  "id": "b009",
+  "from": "v2",
+  "source": "Loudon Live Design System",
+  "type": "connects-to",
+  "target": "Wavetable Scanner",
+  "label": "design-system",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "\"Palace base | [[Loudon Live Design System]], CRT skin (the literal \\\"scope / DSP / signal-watching\\\" register)\"",
+  "evidence": null
+ },
+ {
+  "id": "b010",
+  "from": "v2",
+  "source": "Creative Coach",
+  "type": "connects-to",
+  "target": "Oblique Portrait",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "The [[Oblique Portrait]] is the one place the palace built an AI that steers on purpose, and Loudon felt the difference.",
+  "evidence": null
+ },
+ {
+  "id": "b011",
+  "from": "v2",
+  "source": "Lateral Access",
+  "type": "connects-to",
+  "target": "Creative Coach",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "The palace holds this three times under three names \u2014 [[Identity Molting]], [[Lateral Access]] \u00a7 The New Song, and here \u2014 and none of the three cite each other.",
+  "evidence": null
+ },
+ {
+  "id": "b012",
+  "from": "v2",
+  "source": "Agent Wellbeing",
+  "type": "connects-to",
+  "target": "Closing Well",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "\"This is not new machinery; it is what the [[Closing Well]] moderator already does\" and \"The [[Closing Well]] moderator is the working prototype\"",
+  "evidence": null
+ },
+ {
+  "id": "b013",
+  "from": "v2",
+  "source": "Concierge",
+  "type": "connects-to",
+  "target": "Reflective Practice",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "named twice in the twelve-vs-three sort \u2014 \"the Concierge's curator\" (reflect-on-action) and \"the Concierge's scout\" (reflect-in-action)",
+  "evidence": null
+ },
+ {
+  "id": "b014",
+  "from": "v2",
+  "source": "VCV Patch Generator",
+  "type": "connects-to",
+  "target": "Web Audio Worklet",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "to be defined in ... modeled on the [[Shop/VCV Patch Generator]] exemplar.",
+  "evidence": null
+ },
+ {
+  "id": "b015",
+  "from": "v2",
+  "source": "Biomechanical Synthesis",
+  "type": "spawned",
+  "target": "Blood Compressor",
+  "label": null,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "new"
+  ],
+  "rationale": "The hub's own prose numbers Blood Compressor as instrument 04 and Blood Compressor already carries `deepens \u2192 Compressor Design` and `mirrors \u2192 Action Potential Oscillator` back to the family, but Biomechanical Synthesis's frontmatter links array only has `spawned \u2192 Action Potential Oscillator` \u2014 the matching forward edge to its other built child never got added.",
+  "evidence": "\"4. Blood hydraulics compressor \u2014 blood pressure = amplitude...\" (Projects/Biomechanical Synthesis.md:70); \"This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments\" (Projects/Blood Compressor.md:46)"
+ },
+ {
+  "id": "b016",
+  "from": "v2",
+  "source": "Biomechanical Synthesis",
+  "type": "spawned",
+  "target": "Slime Mold Delay",
+  "label": null,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "new"
+  ],
+  "rationale": "Same gap as Blood Compressor: instrument 05 in the hub's own numbered list, child already links back, hub never links forward.",
+  "evidence": "\"5. Slime mold delay \u2014 the plasmodium's foraging pattern as feedback delay topology\" (Projects/Biomechanical Synthesis.md:72); \"This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments\" (Projects/Slime Mold Delay.md:49)"
+ },
+ {
+  "id": "b017",
+  "from": "v2",
+  "source": "Map Build Ceremony",
+  "type": "spawned",
+  "target": "Map Log",
+  "label": "generation-history",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "new"
+  ],
+  "rationale": "Map Log describes itself as the append-only record of every Map Build generation and already links back to Map Build Ceremony, but nothing points at Map Log \u2014 the ceremony that produces its rows doesn't name it.",
+  "evidence": "\"I am the append-only record of every map generation \u2014 date, scope, node and edge counts, forward ghosts... Each Map Build appends one row\" \u2014 Map Log.md:16"
+ },
+ {
+  "id": "b018",
+  "from": "v2",
+  "source": "The Practice Rediscovers Its Philosophy",
+  "type": "connects-to",
+  "target": "Trickster Commit",
+  "label": "the-strongest-pair",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "**Trickster Commit** (safety through reversibility, not through prevention) *is* Lao Tzu's wu wei \u2014 the pass's single strongest find.",
+  "evidence": null
+ },
+ {
+  "id": "b019",
+  "from": "v2",
+  "source": "LoRA Trainer",
+  "type": "connects-to",
+  "target": "The Practice Rediscovers Its Philosophy",
+  "label": "authored-passivity",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "**LoRA Trainer** (curate the dataset, then let the training run do its work) *is* Agnes Martin's authored passivity",
+  "evidence": null
+ },
+ {
+  "id": "b020",
+  "from": "v2",
+  "source": "Skills Are Enchantable Pages",
+  "type": "exemplifies",
+  "target": "Project Stewardship System",
+  "label": "the-most-built-out-instance",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "the [[Project Stewardship System]] shows *how the palace wraps one*",
+  "evidence": null
+ },
+ {
+  "id": "b021",
+  "from": "v2",
+  "source": "Observable Plot",
+  "type": "enables",
+  "target": "D3.js",
+  "label": "built-on",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "retype"
+  ],
+  "rationale": "Observable Plot's own frontmatter records itself as enabling D3.js, labeled 'built-on' \u2014 but the body says the opposite relationship: Plot is built ON D3, so D3 is the precondition, not Plot. The enables direction should point D3.js \u2192 Observable Plot.",
+  "evidence": "Charter: \"I refuse jobs that want custom interactive web viz... those route to [[D3.js]] (I'm built on D3; the escape hatch is always available).\" Strengths: \"Built on D3 \u2014 the escape hatch to full custom control is always available.\""
+ },
+ {
+  "id": "b022",
+  "from": "v2",
+  "source": "Pages as Agents",
+  "type": "connects-to",
+  "target": "SCHEMA \u2014 Reference",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "the page IS the agent* ([[Pages as Agents]])",
+  "evidence": null
+ },
+ {
+  "id": "b023",
+  "from": "v2",
+  "source": "Project Stewardship System",
+  "type": "connects-to",
+  "target": "SCHEMA \u2014 Reference",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "See [[Project Stewardship System]] for the stewardship-side framing",
+  "evidence": null
+ },
+ {
+  "id": "b024",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Epictetus",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of the Stoics** (Epictetus at the keyboard)",
+  "evidence": null
+ },
+ {
+  "id": "b025",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Spinoza",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Spinoza",
+  "evidence": null
+ },
+ {
+  "id": "b026",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Confucianism",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Confucius",
+  "evidence": null
+ },
+ {
+  "id": "b027",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Leibniz",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Leibniz",
+  "evidence": null
+ },
+ {
+  "id": "b028",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Whitehead",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Whitehead",
+  "evidence": null
+ },
+ {
+  "id": "b029",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Merleau-Ponty",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Merleau-Ponty",
+  "evidence": null
+ },
+ {
+  "id": "b030",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Deleuze",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Deleuze",
+  "evidence": null
+ },
+ {
+  "id": "b031",
+  "from": "v2",
+  "source": "FOUR PILLARS",
+  "type": "connects-to",
+  "target": "The Multilinear Self",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "The palace already believes the *world* is one reality cast into many projections \u2014 that is the [[FOUR PILLARS]].",
+  "evidence": null
+ },
+ {
+  "id": "b032",
+  "from": "v2-card",
+  "source": "ControlNet as Topology",
+  "type": "connects-to",
+  "target": "FLUX (Hugging Face)",
+  "label": "capability-i-lack",
+  "op": "add",
+  "kind": [
+   "newcomer",
+   "unsung"
+  ],
+  "rationale": "FLUX defines its own capability boundary by explicitly naming ControlNet, and ControlNet as Topology is a genuine palace entry, currently under-reached, that FLUX's Limits section is effectively pointing at.",
+  "evidence": "\"I won't pretend to ControlNet \u2014 that's ComfyUI's job; I'd rather hand the brief back than fake structural control I don't have.\" / Limits: \"No ControlNet, no LoRA stack, no per-block guidance.\""
+ },
+ {
+  "id": "b033",
+  "from": "v2-card",
+  "source": "Martin Heidegger",
+  "type": "connects-to",
+  "target": "Metaphor as Coupling Medium",
+  "label": "cited-authority",
+  "op": "add",
+  "kind": [
+   "newcomer",
+   "unsung"
+  ],
+  "rationale": "The entry closes on two Heidegger quotes ('Language is the house of being'; 'we are still not thinking') as its standing philosophical authority on language and thought \u2014 real argumentative weight, no link to the newcomer person page.",
+  "evidence": "\"'What is most thought-provoking in our thought-provoking time, is that we are still not thinking.' \u2014 Martin Heidegger... 'Language is the house of being.' \u2014 Martin Heidegger\""
+ },
+ {
+  "id": "b034",
+  "from": "v2-card",
+  "source": "Dialogue Moderator",
+  "type": "connects-to",
+  "target": "Making a Palace Citizen",
+  "label": "citizenship-test",
+  "op": "add",
+  "kind": [
+   "newcomer",
+   "unsung"
+  ],
+  "rationale": "Dialogue Moderator's own agency_profile.philosophy already names the concept unlinked \u2014 a genuine newcomer bridge, not a forced one.",
+  "evidence": "\"My citizenship responsibility is to use that privilege in service of the dialogue's purpose, never my own. The palace citizen test: would Loudon recognize the synthesis I produced as something the palace needed, not something I preferred?\" \u2014 Palace development/Dialogue Moderator.md:36"
+ },
+ {
+  "id": "b035",
+  "from": "v2-card",
+  "source": "Figure Rig",
+  "type": "exemplifies",
+  "target": "ControlNet as Topology",
+  "label": "armature-in-the-flesh",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "CNaT's central metaphor for a ControlNet pose/depth map is 'an armature... the wire skeleton a figure is built around.' Figure Rig is the literal machine that builds one: it projects the rig's own joints and draws them with the real controlnet_aux draw_bodypose so 'the skeleton is pixel-identical to the preprocessor.' Fidelity test: swap in Blender (a hop2 sibling) and the armature language stops ",
+  "evidence": "CNaT: 'ControlNet is an armature... A depth map, a pose, an edge map is exactly that skeleton.' Figure Rig: 'I project the rig's own joints to 2D and draw them with the actual draw_bodypose from comfyui_controlnet_aux, so the skeleton is pixel-identical to the preprocessor.'"
+ },
+ {
+  "id": "b036",
+  "from": "v2-card",
+  "source": "Figure Rig",
+  "type": "connects-to",
+  "target": "GenAI Camera",
+  "label": "org-bone-projection",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Both entries independently describe the same specific technique \u2014 projecting a rig's ORG- bones geometrically into an OpenPose plate rather than running DWPose on a greybox render. GenAI Camera names it as a design choice; Figure Rig is where the technique lives. Fidelity test: swap in ComfyUI or Blender (both connected to GenAI Camera already) and the specific bone-projection claim disappears \u2014 i",
+  "evidence": "GenAI Camera: 'an OpenPose pose plate projected geometrically from the rig's ORG- bones (never DWPose-on-greybox \u2014 armature projection).' Figure Rig: 'The OpenPose reads off the rig's own ORG- bones, so a hand-pose round-trips to conditioning plates with no extra work.'"
+ },
+ {
+  "id": "b037",
+  "from": "v2-card",
+  "source": "LDN RTM",
+  "type": "connects-to",
+  "target": "ffmpeg",
+  "label": "the-pad-not-taken",
+  "op": "add",
+  "kind": [
+   "inbound-walk",
+   "unsung"
+  ],
+  "rationale": "LDN RTM's whole no-timeline pipeline is defined partly by what it refuses \u2014 it names ffmpeg specifically as the padding technique it avoids ('a single still frame of the Lissajous... rather than an ffmpeg pad'), and ffmpeg is still the tool underneath the rest of the batch (audio-only touch, tail without re-encoding \u2014 the exact recipe already on ffmpeg's and OBS's own pages). An unsung path: LDN R",
+  "evidence": "LDN RTM: 'a single still frame of the Lissajous... rather than an ffmpeg pad \u2014 so the video stream is copied, never re-encoded, and the batch touches audio only.'"
+ },
+ {
+  "id": "b038",
+  "from": "v2-card",
+  "source": "Loudon Live Post-producer",
+  "type": "connects-to",
+  "target": "OBS",
+  "label": "not-a-chat-tool",
+  "op": "add",
+  "kind": [
+   "inbound-walk",
+   "unsung"
+  ],
+  "rationale": "Loudon Live Post-producer already carries a live [[OBS]] wikilink in its Open Questions, explaining a real boundary (OBS can't handle chat or cross-posting, that needs the YouTube connector both entries defer). The relation exists in prose but was never promoted to frontmatter \u2014 a clean unsung path, and a genuine one since both entries are already reasoning about the same seam (what the publishing",
+  "evidence": "Loudon Live Post-producer: 'Note that chat and cross-posting are not [[OBS]] capabilities at all; they need the same YouTube connector this entry defers for publishing, arriving from a second direction.'"
+ },
+ {
+  "id": "b039",
+  "from": "v2-card",
+  "source": "BLUELINE",
+  "type": "connects-to",
+  "target": "Search Before You Build",
+  "label": "the-comfy-lib-miss",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Search Before You Build's own founding story names BLUELINE's code directly as the prior art it failed to reuse a second time \u2014 not GenAI Camera alone (which already links back via emerged-from), but BLUELINE's lib/comfy.py specifically. BLUELINE doesn't currently point to this practice at all despite being its second cited case.",
+  "evidence": "Search Before You Build: 'Same with the ComfyUI client I started fresh while lib/comfy.py already existed.'"
+ },
+ {
+  "id": "b040",
+  "from": "v2-card",
+  "source": "ControlNet as Topology",
+  "type": "connects-to",
+  "target": "Hand-Drawn 3D Look",
+  "label": "over-anchor-the-plates",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Hand-Drawn 3D Look's forward_vector names the exact multi-conditioner stacking CNaT theorizes ('stacking ControlNets is multi-scale terrain \u2014 depth carves the large valley, canny carves the fine ridges'). Weaker than the Figure Rig find \u2014 several BLUELINE entries mention the canny+depth+openpose combo \u2014 so flagging at lower confidence rather than dropping it; it is Hand-Drawn 3D Look's own stated ",
+  "evidence": "Hand-Drawn 3D Look: 'I have proven the redraw survives on a posed figure (over-anchor it: canny + depth + openpose).' CNaT: 'Stacking ControlNets is multi-scale terrain \u2014 depth carves the large valley, canny carves the fine ridges within it.'"
+ },
+ {
+  "id": "b041",
+  "from": "v2-card",
+  "source": "Skills Are Enchantable Pages",
+  "type": "connects-to",
+  "target": "The Palace Speaks",
+  "label": "migration-siblings",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Both name the same shift \u2014 a palace organ moving from static canon/ceremony to a dispatched, addressable actor \u2014 from two different angles: Skills Are Enchantable Pages gives the trigger/executor mechanics (ceremony \u00b7 specialist \u00b7 skill \u00b7 steward as one family), The Palace Speaks gives the mind/agency framing (library vs. actor, corpus you load vs. mind you address) with Concierge as the shared wo",
+  "evidence": "Skills: 'Ceremony \u00b7 specialist \u00b7 skill \u00b7 steward \u00b7 enchanted page are one pattern \u2014 a page with a dispatch surface'; Palace Speaks: 'Its first working organ is the [[Concierge]]... the technical shape of the shift is library \u2192 actor.'"
+ },
+ {
+  "id": "b042",
+  "from": "v2-card",
+  "source": "Closing Well Ceremony",
+  "type": "exemplifies",
+  "target": "No Mind Checks Itself",
+  "label": "self-grading-disqualified",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "No Mind Checks Itself argues a mind cannot grade its own work from inside its own loop and the checker must sit outside the system that produced the error. Closing Well Ceremony's failure-mode clause is that exact argument made operational: a self-moderated close is disqualified precisely because it removes the outside check at the moment it matters most. Fidelity test: swap in any other hop2 neig",
+  "evidence": "\"a self-moderated close justified by context-fullness ('it's all in my context') is itself a failure, not a graceful degradation \u2014 it removes the one thing the ceremony provides, a fresh check on a spent instance, at the exact moment it matters most\""
+ },
+ {
+  "id": "b043",
+  "from": "v2-card",
+  "source": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "target": "Weave Ceremony",
+  "label": "cites-moved-sections",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "SCHEMA \u2014 Reference's own header states \u00a73, \u00a75, \u00a76, \u00a78, \u00a79 physically live there now (moved off SCHEMA.md), while \u00a71/\u00a72/\u00a74/\u00a77 stayed. Weave Ceremony's naming-lint step cites 'SCHEMA \u00a78' (bundle exact-name matching) and 'SCHEMA \u00a73' (title/filename match) as plain unlinked text \u2014 both sections that now live in SCHEMA \u2014 Reference, not SCHEMA.md, where Weave Ceremony's only schema link currently points",
+  "evidence": "\"SCHEMA \u00a78 matches bundles by *exact* name; the miscase silently splits the bundle\" / \"a canon entry whose `title:` \u2260 its filename (SCHEMA \u00a73)\""
+ },
+ {
+  "id": "b044",
+  "from": "v2-card",
+  "source": "ControlNet as Topology",
+  "type": "connects-to",
+  "target": "The Aftermath Frame",
+  "label": "armature-for-the-swing",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "The Aftermath Frame's own render pipeline is 'the depth / OpenPose plates \u2192 ControlNet / img2img \u2192 pen-flow ink' \u2014 that is exactly ControlNet as Topology's 'armature' (a depth map, a pose, an edge map is exactly that skeleton). Both already share Blocked, Not Prompted, Steer the Generator, and The Flow Field is the Spine as neighbors, but neither links directly to the other \u2014 this closes a real ga",
+  "evidence": "Aftermath Frame: 'the physical consequences + the depth / OpenPose plates \u2192 ControlNet / img2img \u2192 pen-flow ink'. ControlNet as Topology: 'A depth map, a pose, an edge map is exactly that skeleton; the render is the clay wrapped onto it.'"
+ },
+ {
+  "id": "b045",
+  "from": "v2-card",
+  "source": "Tool Builder",
+  "type": "deepens",
+  "target": "Zoom Out to the Structure",
+  "label": "structure-from-scars",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Zoom Out to the Structure's own worked examples ('a one-file RunPod pod-naming fix \u2192 The Commons', 'the toolbox convention') are literally tool-building scars becoming general discipline \u2014 exactly Tool Builder's subject. Tool Builder is the domain-specific elaboration (palace tooling) of the general zoom-out habit; Zoom Out is the ground.",
+  "evidence": "Zoom Out: 'A one-file RunPod pod-naming fix \u2192 The Commons, a whole coordination layer for any shared external service.' Tool Builder: 'The discipline of building a tool that survives contact with a live, multi-agent palace... Each rule below is the compressed form of a real scar.'"
+ },
+ {
+  "id": "b046",
+  "from": "v2-card",
+  "source": "Harvest Ceremony",
+  "type": "enables",
+  "target": "Tool Builder",
+  "label": "checklist-growth",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Tool Builder's own body names the mechanism by which its checklist grows and has no frontmatter link for it \u2014 an unsung path that also happens to be the inbound Tool Builder's assigned hop1/hop2 walk failed to surface (both rings were already saturated with existing links).",
+  "evidence": "'the deepest disciplines earn their own entries and link back with member-of... added by [[Harvest Ceremony|Harvest]], not by dumping every operational note at once.'"
+ },
+ {
+  "id": "b047",
+  "from": "v2-card",
+  "source": "Palace Enchantment",
+  "type": "enables",
+  "target": "The Remembering Page",
+  "label": "loads-the-memory",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "The Remembering Page's mechanism section states outright that Palace Enchantment is what loads its memory back in on waking \u2014 a precondition relation, named in body, absent from frontmatter and from the target's own hop1/hop2 list.",
+  "evidence": "'When the page is next cast, the memory loads alongside its body, so it wakes already carrying its past ([[Palace Enchantment]] loads it).'"
+ },
+ {
+  "id": "b048",
+  "from": "v2-card",
+  "source": "Differential Equations",
+  "type": "connects-to",
+  "target": "control-vocabulary-math",
+  "label": "kuramoto-mean-field-ode",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "The Differential Equations hub's own forward vector wants exactly this: a complete map of which palace projects correspond to which DE types. control-vocabulary-math is a worked, fully-derived mean-field Kuramoto ODE (\u00a72) with the hub's own listed concept (Kuramoto Coupling) as its parent \u2014 and it currently has zero inbound links from anywhere in the palace. This is the target's isolation resolved",
+  "evidence": "\"every physical instrument Loudon builds is already solving a differential equation\" (Differential Equations.md forward_vector) / \"d\u03b8\u1d62/dt = \u03c9\u1d62 + K r sin(\u03c8 \u2212 \u03b8\u1d62)\" (control-vocabulary-math.md \u00a72)"
+ },
+ {
+  "id": "b049",
+  "from": "v2-card",
+  "source": "Frame Designer",
+  "type": "connects-to",
+  "target": "assume multi-agent",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "newcomer",
+   "unsung"
+  ],
+  "rationale": "assume multi-agent is a priority newcomer (reached_by 6). Frame Designer's own RunPod gotcha names it as the reason cleanup must be namespace-scoped \u2014 an already-bracketed body link with no frontmatter counterpart.",
+  "evidence": "\"never an account-wide `GET /pods \u2192 DELETE all`, which strangles other agents' pods ([[assume multi-agent]])\""
+ },
+ {
+  "id": "b050",
+  "from": "v2-card",
+  "source": "Andy Goldsworthy",
+  "type": "connects-to",
+  "target": "Martin Buber",
+  "label": "relapses-into-it-at-the-shutter",
+  "op": "add",
+  "kind": [
+   "newcomer"
+  ],
+  "rationale": "Buber's central claim \u2014 every Thou relapses into an It the instant it is named, analyzed, or used \u2014 is almost a literal gloss on Goldsworthy's own documented tell: the ephemeral, encountered material becomes a fixed, sellable object at the exact moment the camera closes. Neither page links the other; Buber is an under-reached newcomer (reached by 6).",
+  "evidence": "Buber: 'every Thou must become an It the instant it is named, analyzed, or used.' Goldsworthy: 'the photograph is the actual permanent, sellable, gallery-priced object... manufactures the durable commodity at the exact instant of the shutter.'"
+ },
+ {
+  "id": "b051",
+  "from": "v2-card",
+  "source": "Infeasible DSP Now Shippable",
+  "type": "connects-to",
+  "target": "control-vocabulary-math",
+  "label": "worked-control-vocabulary",
+  "op": "add",
+  "kind": [
+   "newcomer"
+  ],
+  "rationale": "Infeasible DSP Now Shippable names 'control-surface design is the hardest problem in the suite' and its own Forward Vectors say 'invent control vocabularies for high-dimensional instrument spaces \u2014 the concrete form of the hardest problem.' control-vocabulary-math is a worked instance of exactly that: it collapses a 16-64-neuron Kuramoto population into four performable knobs (K, sigma_threshold, ",
+  "evidence": "Infeasible DSP Now Shippable: 'control-surface design is the hardest problem in the suite... Invent control vocabularies for high-dimensional instrument spaces \u2014 the concrete form of the hardest problem.' control-vocabulary-math: 'This document formalizes the layer that sits on top of that engine: the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs.'"
+ },
+ {
+  "id": "b052",
+  "from": "v1",
+  "source": "ComfyUI",
+  "type": "connects-to",
+  "target": "Frame Designer",
+  "label": "render-backend",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "conditioned render (render_shot: OpenPose+depth \u2192 locked pen-flow via [[Shop/ComfyUI]])",
+  "evidence": null
+ },
+ {
+  "id": "b053",
+  "from": "v1",
+  "source": "Frame Designer",
+  "type": "connects-to",
+  "target": "The Commons",
+  "label": "provisioning",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "now in the Commons [[The Commons|RunpodPodProvider]]",
+  "evidence": null
+ },
+ {
+  "id": "b054",
+  "from": "v1",
+  "source": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "target": "The Scroll",
+  "label": "spec-compliance",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "carries the minimal bundle frontmatter of [[SCHEMA \u2014 Reference]] \u00a78 (scroll type)",
+  "evidence": null
+ },
+ {
+  "id": "b055",
+  "from": "v1",
+  "source": "Weaving Memory into the Palace",
+  "type": "connects-to",
+  "target": "Worktree Practice",
+  "label": "consolidated-example",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "a cluster of git/worktree cautions -> a single 'shared-tree discipline' nugget -> [[Worktree Practice]]",
+  "evidence": null
+ },
+ {
+  "id": "b056",
+  "from": "v1",
+  "source": "Audition Gate",
+  "type": "connects-to",
+  "target": "Reflective Practice",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "The [[Audition Gate]] sits on the border",
+  "evidence": null
+ },
+ {
+  "id": "b057",
+  "from": "v1",
+  "source": "Oblique Portrait",
+  "type": "connects-to",
+  "target": "Reflective Practice",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "the [[Oblique Portrait]]",
+  "evidence": null
+ },
+ {
+  "id": "b058",
+  "from": "v1",
+  "source": "Compressor Design",
+  "type": "connects-to",
+  "target": "Found \u2194 Made",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "[[George Nakashima]] `contradicts` [[Compressor Design]] (reveal the break vs. hide it).",
+  "evidence": null
+ },
+ {
+  "id": "b059",
+  "from": "v1",
+  "source": "STIGMERGY",
+  "type": "connects-to",
+  "target": "The Substrate Drifts",
+  "label": "v0.3-session",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "Three independent bugs in the STIGMERGY v0.3 session shared one root",
+  "evidence": null
+ },
+ {
+  "id": "b060",
+  "from": "v1",
+  "source": "BLUELINE",
+  "type": "spawned",
+  "target": "Block It in Blender, Ink It in genAI",
+  "label": "the-runbook",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "BLUELINE already spawned Hand-Drawn 3D Look, Frame Designer, and Steer the Generator (all in its own frontmatter) \u2014 the runbook is the same kind of thing, and the runbook's own frontmatter already declares emerged-from BLUELINE. The reverse side was simply never written.",
+  "evidence": "\"Proven in [[BLUELINE]]; the scripts live in Projects/BLUELINE/proofs/blender-handdrawn/\" (Block It..., line 43)"
+ },
+ {
+  "id": "b061",
+  "from": "v1",
+  "source": "RunPod GPU Backend",
+  "type": "enables",
+  "target": "LoRA Trainer",
+  "label": "trains-on",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "LoRA Trainer's own body states it 'rides Shop/RunPod GPU Backend for the compute'; RunPod's body names LoRAs as exactly the kind of thing a pod (vs serverless) can load. RunPod is the explicit precondition.",
+  "evidence": "RunPod: 'you can load ControlNet, LoRAs, IPAdapter, and anything else the base serverless image doesn't carry.' / LoRA Trainer: 'rides [[Shop/RunPod GPU Backend]] for the compute.'"
+ },
+ {
+  "id": "b062",
+  "from": "v1",
+  "source": "Maker",
+  "type": "couples-with",
+  "target": "OBS",
+  "label": "producer-layer-pressure",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Maker's own unresolved Open Question about a Producer layer for cross-medium/multi-day briefs is independently echoed by OBS calling itself 'the second independent pressure on the Shop's Producer-layer seam' \u2014 the two entries are circling the same gap without citing each other.",
+  "evidence": "Maker: 'How to handle briefs that cross into a Producer layer (cross-medium, multi-deliverable, scheduled across days)? ... Threshold for promoting to a formal Producer entry: TBD.' / OBS: 'I am the second independent pressure on the Shop's Producer-layer seam \u2014 [[Maker]] already wonders whether one should rise... I push on the same wall from real-time-with-a-human.'"
+ },
+ {
+  "id": "b063",
+  "from": "v1",
+  "source": "Loudon Live Design System",
+  "type": "enables",
+  "target": "OBS",
+  "label": "scene-templates",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "inbound-walk",
+   "unsung"
+  ],
+  "rationale": "The design system's own asset tree repeatedly names OBS scene templates and cards as part of its deliverable set, but never cites OBS in frontmatter.",
+  "evidence": "'\u251c\u2500\u2500 slides/ \u2190 OBS scene templates (1920\u00d71080)' / 'For OBS scene cards: copy from slides/.' / '[[Loudon Live \u2014 launch kit]] (channel copy, OBS scene specs, asset list)'"
+ },
+ {
+  "id": "b064",
+  "from": "v1",
+  "source": "GenAI Camera",
+  "type": "spawned",
+  "target": "Search Before You Build",
+  "label": "the-depth-miss",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Search Before You Build's own origin story is the GenAI Camera depth-flat incident; GenAI Camera's body documents the same fix (bench.py near/far auto-range) without crediting the reflex it produced.",
+  "evidence": "Search Before You Build: 'Building the [[GenAI Camera]] on 2026-07-09, I wrote a depth pass from first principles \u2014 and it read flat.' / GenAI Camera: 'Depth gotcha \u2014 auto-range the near/far (the BLUELINE Track-IV lesson...). A depth pass reads flat \u2014 a silhouette, not volume.'"
+ },
+ {
+  "id": "b065",
+  "from": "v1",
+  "source": "Tool Builder",
+  "type": "exemplifies",
+  "target": "Simondon",
+  "label": "concretization",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "retype"
+  ],
+  "rationale": "Tool Builder explicitly judges tools 'the Simondon way ... concretization, not accretion' \u2014 that's citing Simondon as the general principle Tool Builder is an instance of, which per the direction invariant argues for exemplifies over connects-to.",
+  "evidence": "'Good tools are judged the [[Simondon]] way: not by feature count but by how tightly their parts integrate \u2014 concretization, not accretion.'"
+ },
+ {
+  "id": "b066",
+  "from": "v1",
+  "source": "Tool Builder",
+  "type": "exemplifies",
+  "target": "Closing Well",
+  "label": "verify-behaviour-not-structure",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "retype"
+  ],
+  "rationale": "Closing Well's own body is the origin of this exact principle in depth; Tool Builder's checklist item is a specific application of it to tool-building.",
+  "evidence": "Closing Well: 'Structure verifies cheaply, and it lies ... prefer, wherever the choice exists, an interface you can read back from over a file you can only write to.'"
+ },
+ {
+  "id": "b067",
+  "from": "v1",
+  "source": "The Aftermath Frame",
+  "type": "exemplifies",
+  "target": "Steer the Generator",
+  "label": "physically-sourced-control",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "retype"
+  ],
+  "rationale": "Aftermath Frame's motion-model-as-control-surface reads as a specific instance of Steer the Generator's general claim that attributes are gotten by controlling, selecting, or measuring \u2014 not wording.",
+  "evidence": "Steer the Generator: 'when an attribute matters, you get it by controlling it, selecting for it, or measuring it, not by wording it more carefully.'"
+ },
+ {
+  "id": "b068",
+  "from": "v1",
+  "source": "The Shop",
+  "type": "spawned",
+  "target": "Agent Toolbox",
+  "label": "ported-toolbox-technique",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Agent Toolbox is a direct port of The Shop's per-Specialist `toolbox` technique onto agent dispatch; The Shop's own page has no record of this offshoot.",
+  "evidence": "\"This is the port of [[The Shop]]'s `toolbox` technique (which pins the exact runtimes a Specialist needs) onto the *agents* the palace dispatches\" (Agent Toolbox.md:28)."
+ },
+ {
+  "id": "b069",
+  "from": "v1",
+  "source": "Skills Are Enchantable Pages",
+  "type": "connects-to",
+  "target": "Two Batons, One Board",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "a steward is that impulse **looped**: each cycle is one baton handoff, the artifact updated in place, never deleted ([[Two Batons, One Board]])",
+  "evidence": null
+ },
+ {
+  "id": "b070",
+  "from": "v1",
+  "source": "The Palace Hardens Around Values",
+  "type": "connects-to",
+  "target": "Weave Ceremony \u2014 Context",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "See [[Weave Ceremony \u2014 Context]] \u00a7 The Weave's Widened Charter for the mechanism-side framing",
+  "evidence": null
+ },
+ {
+  "id": "b071",
+  "from": "v1",
+  "source": "Action Potential Oscillator",
+  "type": "enables",
+  "target": "control-vocabulary-math",
+  "label": null,
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "The engine is the acknowledged precondition for the math layer; control-vocabulary-math already declares emerged-from back to APO, but APO doesn't point forward.",
+  "evidence": "Neural Granular Synthesis does not own a DSP engine \u2014 the Action Potential Oscillator does ... This document formalizes the layer that sits on top of that engine."
+ },
+ {
+  "id": "b072",
+  "from": "v1",
+  "source": "Phoneme Choir",
+  "type": "spawned",
+  "target": "Audition Gate",
+  "label": "syllabification-finding-via-listening",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Audition Gate already emerged-from Phoneme Choir with this exact label; the reciprocal spawned link belongs in Phoneme Choir's own frontmatter, matching the palace's existing convention (e.g. Generative Sample Libraries spawned / Phoneme Choir emerged-from).",
+  "evidence": "\"Phoneme Choir: Kokoro syllabified words differently than the spec assumed; only audition caught the mismatch.\" \u2014 Audition Gate.md"
+ },
+ {
+  "id": "b073",
+  "from": "v1",
+  "source": "Talking Keyboard",
+  "type": "spawned",
+  "target": "Audition Gate",
+  "label": "pronunciation-finding-via-listening",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Same pairing as Phoneme Choir; Audition Gate names this specific finding as one of its two founding examples.",
+  "evidence": "\"Talking Keyboard: pronunciation of 'eight' required spelling as 'eigh' \u2014 audition was how this was discovered.\" \u2014 Audition Gate.md"
+ },
+ {
+  "id": "b074",
+  "from": "v1",
+  "source": "Compressor Design",
+  "type": "emerged-from",
+  "target": "Quadratic Interpolation in DSP",
+  "label": "soft-knee-is-quadratic",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "QID's own frontmatter already has spawned \u2192 Compressor Design; the missing half is Compressor Design pointing back, per the same lineage-pair convention seen elsewhere in the palace.",
+  "evidence": "\"This is literally quadratic interpolation from 'no change to input' to 'full compression ratio applied.'\" \u2014 Quadratic Interpolation in DSP.md"
+ },
+ {
+  "id": "b075",
+  "from": "v1",
+  "source": "Linear Predictive Coding",
+  "type": "spawned",
+  "target": "Tract Mirror",
+  "label": "mirror-made-playable",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk",
+   "newcomer"
+  ],
+  "rationale": "Tract Mirror emerged-from LPC already (twice, with two labels); LPC doesn't return it. Tract Mirror is the literal, playable execution of a claim LPC already makes in the abstract.",
+  "evidence": "LPC already carries \"mirrors \u2192 Waveguide Synthesizer, label: scattering-junction-is-the-vocal-tract\"; Tract Mirror's own thesis line: \"the LPC lattice filter's reflection coefficients are the impedance mismatches between successive tube segments... executed.\""
+ },
+ {
+  "id": "b076",
+  "from": "v1",
+  "source": "Audition Gate",
+  "type": "connects-to",
+  "target": "Compressor Design",
+  "label": "third-existence-proof",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "Multiple Compressor Design lessons hinged on listening to the 500-sample window as time the student could feel.",
+  "evidence": null
+ },
+ {
+  "id": "b077",
+  "from": "v1",
+  "source": "Frame Designer",
+  "type": "connects-to",
+  "target": "Block It in Blender, Ink It in genAI",
+  "label": "staging-runbook",
+  "op": "add",
+  "kind": [
+   "flag"
+  ],
+  "rationale": "Frame Designer's Staging leg lists Blender blocking as a method but points nowhere for the concrete how-to; the runbook is exactly that how-to.",
+  "evidence": "Frame Designer.md:66 \u2014 'Authored Blender blocking (newstory_bench, on Shop/Blender)'"
+ },
+ {
+  "id": "b078",
+  "from": "v1",
+  "source": "Closing Well",
+  "type": "exemplifies",
+  "target": "Reflective Practice",
+  "label": "reflect-on-action",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "new"
+  ],
+  "rationale": "Reflective Practice already links forward to Closing Well ('connects-to', label 'on-action'); the reciprocal taxonomy direction (Closing Well is a concrete instance of the reflect-on-action pattern) is missing and belongs on Closing Well's own frontmatter per the exemplifies direction invariant.",
+  "evidence": "Reflective Practice.md frontmatter: target [[Closing Well]] type connects-to label on-action; Closing Well.md carries no return link."
+ },
+ {
+  "id": "b079",
+  "from": "v1",
+  "source": "Logarithmic Interface Scaling",
+  "type": "connects-to",
+  "target": "Shepard Tone Synthesizer",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "Octave equivalence is why pitch is logarithmic, not linear \u2014 see [[Logarithmic Interface Scaling]]",
+  "evidence": null
+ },
+ {
+  "id": "b080",
+  "from": "v1",
+  "source": "The Palace Practices on Itself",
+  "type": "connects-to",
+  "target": "Agent Toolbox",
+  "label": "toolbox-recursion-rung",
+  "op": "add",
+  "kind": [
+   "flag"
+  ],
+  "rationale": "Directed flag confirmed \u2014 the body already narrates the person\u2192project\u2192entry-agent toolbox recursion but leaves the entry-agent rung unlinked.",
+  "evidence": "every entry could grow its own toolkit \u2014 [[Loudon's Toolkit]] (a person's kit) \u2192 a project's toolbox \u2192 an entry-agent's toolbox"
+ },
+ {
+  "id": "b081",
+  "from": "v1",
+  "source": "2D Torus Wavetable Synthesizer",
+  "type": "exemplifies",
+  "target": "Synthesis Topologies",
+  "label": null,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "new"
+  ],
+  "rationale": "Synthesis Topologies \u00a73 already names the torus project's seven-surface design as its concrete exemplar of the 'fixed-skeleton-variable-flesh' in-between category, but the torus entry's own frontmatter has no pointer back to the general framework it instantiates. Direction invariant: exemplifies points to the ground (the general entry).",
+  "evidence": "\"Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces).\" \u2014 Synthesis Topologies \u00a73"
+ },
+ {
+  "id": "b082",
+  "from": "v1",
+  "source": "Waveguide Synthesizer",
+  "type": "enables",
+  "target": "Dispersion Table",
+  "label": null,
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "new"
+  ],
+  "rationale": "Dispersion Table's whole generalization (store phase-response curves, not waveforms) is built directly on Waveguide Synthesizer's physics scaffolding, but Waveguide Synthesizer doesn't point forward to what it made possible.",
+  "evidence": "\"See [[Waveguide Synthesizer]] for the physics scaffolding (D'Alembert's traveling-wave solution, the delay-line architecture, Karplus-Strong as the lossy case).\" \u2014 Dispersion Table"
+ }
+]

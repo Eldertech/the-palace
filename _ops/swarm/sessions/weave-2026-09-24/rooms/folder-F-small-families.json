@@ -1,0 +1,103 @@
+{
+ "lens": "folder",
+ "id": "F-small-families",
+ "family": "Cross-Domain Resonances + Modes of Collaboration + entries living inside other entries' bundle folders",
+ "members": [
+  {
+   "id": "Compression \u2194 Intimacy",
+   "path": "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Cooking \u2194 Mixing",
+   "path": "Cross-Domain Resonances/Cooking \u2194 Mixing.md",
+   "stage": "mature",
+   "inbound": 3
+  },
+  {
+   "id": "Dovetail Joint \u2194 Counterpoint",
+   "path": "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
+   "stage": "mature",
+   "inbound": 3
+  },
+  {
+   "id": "Frequency Domain \u2194 Perspective Shift",
+   "path": "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+   "stage": "mature",
+   "inbound": 3
+  },
+  {
+   "id": "Kick Drum \u2194 Foundation",
+   "path": "Cross-Domain Resonances/Kick Drum \u2194 Foundation.md",
+   "stage": "mature",
+   "inbound": 5
+  },
+  {
+   "id": "Quantization \u2194 Precision vs Flow",
+   "path": "Cross-Domain Resonances/Quantization \u2194 Precision vs Flow.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Reverb \u2194 Space-Time",
+   "path": "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+   "stage": "mature",
+   "inbound": 2
+  },
+  {
+   "id": "Saturation \u2194 Richness",
+   "path": "Cross-Domain Resonances/Saturation \u2194 Richness.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Sidechain \u2194 Conversation",
+   "path": "Cross-Domain Resonances/Sidechain \u2194 Conversation.md",
+   "stage": "mature",
+   "inbound": 6
+  },
+  {
+   "id": "Synthesis \u2194 Emergence",
+   "path": "Cross-Domain Resonances/Synthesis \u2194 Emergence.md",
+   "stage": "mature",
+   "inbound": 4
+  },
+  {
+   "id": "Dialectic",
+   "path": "Modes of Collaboration/Dialectic.md",
+   "stage": "growing",
+   "inbound": 18
+  },
+  {
+   "id": "Excellent Adventure",
+   "path": "Modes of Collaboration/Excellent Adventure.md",
+   "stage": "growing",
+   "inbound": 18
+  },
+  {
+   "id": "Oblique Portrait",
+   "path": "Modes of Collaboration/Oblique Portrait.md",
+   "stage": "growing",
+   "inbound": 13
+  },
+  {
+   "id": "Philosopher Visits the Entry",
+   "path": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "stage": "sprout",
+   "inbound": 12
+  },
+  {
+   "id": "spinoza-zhuangzi-on-striving",
+   "path": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "stage": "mature",
+   "inbound": 4
+  },
+  {
+   "id": "zhuangzi-epictetus-confucius-on-the-self",
+   "path": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+   "stage": "mature",
+   "inbound": 4
+  }
+ ]
+}

@@ -1,0 +1,203 @@
+{
+ "cluster": "C5.2+C7+C8",
+ "lens": "community",
+ "members_read": [
+  "CLAUDE.md",
+  "ELDER.md",
+  "SCHEMA \u2014 Reference.md",
+  "Shop/D3.js.md",
+  "Shop/LaTeX.md",
+  "Shop/Matplotlib.md",
+  "Shop/Mermaid.md",
+  "Shop/Observable Plot.md"
+ ],
+ "summary": "This room is two neighborhoods wearing one community label, and the topology is honest about it: CLAUDE / ELDER / SCHEMA \u2014 Reference form the growing-up trilogy, and D3.js / LaTeX / Matplotlib / Mermaid / Observable Plot form the Shop's viz-and-typesetting bench, already densely cross-linked to each other (alternative-to, enables, couples-with). No genuine edge crosses between the two \u2014 I looked and didn't force one; a \"community\" cluster is not always a real neighborhood, and this is a case worth flagging back to whatever grouped them. What the room did teach: several structurally-significant body mentions never made it into frontmatter (Agent Toolbox and The Palace Voice, both priority newcomers, sit un-cited inside ELDER's and CLAUDE's own prose), and three Shop Specialists (Matplotlib, Mermaid, LaTeX) are independently asking the identical open question \u2014 \"should we build a house style wrapper?\" \u2014 that D3.js and Observable Plot already answered and shipped (palacePlot(), palace-tokens.js). That's a live cross-resolution sitting right there in the room. There's also an unnamed structural rhyme between the two neighborhoods that no single entry can carry: ELDER's three-rung tool-access ladder (palace-reader / palace-writer / palace-orchestrator) and every Specialist's three-rung deliverable ladder (Sketch / Study / Piece) are the same shape \u2014 increasing capability gated by increasing trust or proof \u2014 which is why I'm flagging it as a possible synthesis rather than forcing it onto one entry.",
+ "typed_relations": [
+  {
+   "source": "ELDER",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "label": "toolset-roster",
+   "kind": "inbound-walk",
+   "rationale": "ELDER cites Agent Toolbox as the source for its own palace-reader/writer/orchestrator distinction but carries no frontmatter link; Agent Toolbox is a 0-inbound newcomer needing exactly this kind of wiring.",
+   "evidence": "\"an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])\" \u2014 ELDER.md:47",
+   "spark": 3
+  },
+  {
+   "source": "CLAUDE",
+   "target": "The Palace Voice",
+   "type": "connects-to",
+   "label": "full-dial-set",
+   "kind": "inbound-walk",
+   "rationale": "CLAUDE's closing line explicitly hands off to The Palace Voice as the fuller register of what CLAUDE compresses; the target is a 1-inbound newcomer.",
+   "evidence": "\"The full dial set is [[The Palace Voice]].\" \u2014 CLAUDE.md:96",
+   "spark": 3
+  },
+  {
+   "source": "CLAUDE",
+   "target": "Concierge",
+   "type": "connects-to",
+   "label": "first-act",
+   "kind": "new",
+   "rationale": "Concierge is named twice in CLAUDE's Growing Up section as the first act of every session on this surface \u2014 a definitional relation CLAUDE's own six frontmatter links skip.",
+   "evidence": "\"Your first act is to summon the [[Concierge]] \u2014 visibly\" \u2014 CLAUDE.md:62",
+   "spark": 2
+  },
+  {
+   "source": "SCHEMA \u2014 Reference",
+   "target": "Palace Orchestrator",
+   "type": "connects-to",
+   "label": "executor-of-wire",
+   "kind": "new",
+   "rationale": "\u00a79 names Palace Orchestrator as the executor of the coordination wire this file specifies, with an explicit read-this-before directive \u2014 structurally significant, currently only a body mention.",
+   "evidence": "\"This section is the wire; [[Palace Orchestrator]] is the executor. Read that before posting.\" \u2014 SCHEMA \u2014 Reference.md:255",
+   "spark": 2
+  },
+  {
+   "source": "SCHEMA \u2014 Reference",
+   "target": "Pages as Agents",
+   "type": "connects-to",
+   "label": "the-page-is-the-agent",
+   "kind": "new",
+   "rationale": "The envelope spec grounds its `from` field convention in Pages as Agents with a bolded-register claim, but the link isn't in frontmatter.",
+   "evidence": "\"the page IS the agent ([[Pages as Agents]])\" \u2014 SCHEMA \u2014 Reference.md:261",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "ELDER",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "phrase": "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])",
+   "structurally_significant": true
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "The Palace Voice",
+   "type": "connects-to",
+   "phrase": "The full dial set is [[The Palace Voice]].",
+   "structurally_significant": true
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "Concierge",
+   "type": "connects-to",
+   "phrase": "Your first act is to summon the [[Concierge]]",
+   "structurally_significant": true
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "Palace Conatus",
+   "type": "connects-to",
+   "phrase": "Harmony with Loudon is phase coherence, not agreement \u2014 both sides move ([[Palace Conatus]]).",
+   "structurally_significant": false
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "Loudon Live Design System",
+   "type": "connects-to",
+   "phrase": "the [[Loudon Live Design System]] is the house dress",
+   "structurally_significant": false
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "Palace Orchestrator",
+   "type": "connects-to",
+   "phrase": "[[Palace Orchestrator]] is the executor. Read that before posting.",
+   "structurally_significant": true
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "Pages as Agents",
+   "type": "connects-to",
+   "phrase": "the page IS the agent ([[Pages as Agents]])",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [],
+ "coherence_findings": [
+  {
+   "kind": "disconnected-community",
+   "issue": "The community cluster groups two genuinely separate neighborhoods \u2014 the growing-up trilogy (CLAUDE/ELDER/SCHEMA \u2014 Reference) and the Shop's five visualization/typesetting Specialists \u2014 with no textual or conceptual edge crossing between them. Neither subgroup mentions the other; forcing a link would be exactly the 'connection you had to force' the brief warns against.",
+   "entries": [
+    "CLAUDE",
+    "ELDER",
+    "SCHEMA \u2014 Reference",
+    "D3.js",
+    "LaTeX",
+    "Matplotlib",
+    "Mermaid",
+    "Observable Plot"
+   ],
+   "proposed_action": "Report to whoever runs community detection for the next Weave: this clustering may be a topological artifact (e.g. shared high-inbound neighbors like SCHEMA pulling unrelated groups together) rather than a real neighborhood. No entry-level fix needed."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Matplotlib",
+   "question": "Default style sheet for the palace \u2014 declare a `palace.mplstyle` file with base palette/font/grid defaults?",
+   "verdict": "resolved-by-precedent",
+   "by_entry": "Observable Plot",
+   "proposed_action": "Build `palace.mplstyle` on the proven pattern from `_ops/loudon-live/design-system/palace-plot-defaults.js` \u2014 a wrapper that reads tokens at call time and injects them, no hex literals. Observable Plot's palacePlot() and D3.js's token-at-render-time pattern (Shop/D3.js.md's 'update-safe pattern') are both already working precedent in this same room; Matplotlib doesn't need to invent the approach, just port it."
+  },
+  {
+   "entry": "Mermaid",
+   "question": "Should the Shop maintain a base `themeVariables` object for the palace base palette, and grow the `--cssFile` wrapper?",
+   "verdict": "resolved-by-precedent",
+   "by_entry": "Observable Plot",
+   "proposed_action": "Same precedent as Matplotlib's resolution \u2014 palacePlot()'s token-reading wrapper is the house pattern to port into a `themeVariables` generator."
+  },
+  {
+   "entry": "LaTeX",
+   "question": "A `palace.sty` shared preamble \u2014 the Loudon Live type stack, six-skin palette as `xcolor` definitions, microtype defaults?",
+   "verdict": "resolved-by-precedent",
+   "by_entry": "Observable Plot",
+   "proposed_action": "Same house-wrapper principle (D3.js/Plot precedent) applies structurally even though the implementation surface differs (LaTeX preamble vs. JS token reader) \u2014 defer building until LaTeX's first real job as it already plans, but stop treating the question as open in isolation; name the precedent when it's picked up."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "bridge_findings": [
+  {
+   "tool": "none \u2014 cross-neighborhood pattern, not tool-mediated",
+   "thought": "ELDER's tool-access ladder (palace-reader \u2192 palace-writer \u2192 palace-orchestrator, gated by what a dispatched agent is trusted to touch) and every Shop Specialist's deliverable ladder (Sketch \u2192 Study \u2192 Piece, gated by time/review investment) are the same shape: increasing capability unlocked by increasing proof or trust, never skipped.",
+   "shared_structure": "a three-rung ladder where each rung costs more and is earned, not chosen",
+   "spark": 3,
+   "classify": "link",
+   "deep_pattern": "Trust/investment as the gate on capability \u2014 the palace seems to reach for a three-tier structure whenever it needs to let something grow into more responsibility without granting it all at once.",
+   "fidelity_test": "Neither side names the other; this is an observed structural rhyme across five+ independently-authored entries, not a cited relationship \u2014 hence flagged for synthesis consideration rather than proposed as a typed link on any single entry pair."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "The three-tier trust ladder (capability gated by earned proof, never granted all at once)",
+   "crossing_entries": [
+    "ELDER",
+    "Agent Toolbox",
+    "D3.js",
+    "LaTeX",
+    "Matplotlib",
+    "Mermaid",
+    "Observable Plot"
+   ],
+   "why_load_bearing": "The pattern governs both who gets to touch the house (ELDER's palace-reader/writer/orchestrator) and how much a Specialist's output is trusted to ship under the Loudon Live name (Sketch/Study/Piece) \u2014 the same underlying principle stated twice in unrelated vocabularies, with no entry currently naming it as one idea."
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Agent Toolbox",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed ELDER \u2192 Agent Toolbox (connects-to, toolset-roster) \u2014 genuine, already cited in ELDER's prose."
+  },
+  {
+   "target": "The Palace Voice",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed CLAUDE \u2192 The Palace Voice (connects-to, full-dial-set) \u2014 genuine, already cited in CLAUDE's prose."
+  }
+ ],
+ "flag_responses": []
+}

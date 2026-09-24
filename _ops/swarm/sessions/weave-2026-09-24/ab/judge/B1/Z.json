@@ -1,0 +1,80 @@
+{
+ "arm": "Z",
+ "room": "B1",
+ "total_proposals": 13,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Animate the Background",
+   "type": "contradicts",
+   "target": "Julia Cameron",
+   "label": "select-immediately-vs-suspend-judgment",
+   "rationale": "Both name a discipline for handling an unruly, only-partly-controllable generative output \u2014 Cameron forbids any judgment or re-reading for weeks; the compositing practice's rule is to select the best take immediately out of many plausible generations. Productive tension on how to treat generative overflow, not a resolved question.",
+   "evidence": "\"take what it gives and select, rather than fight it\" / \"you don't edit and you don't perform... no re-reading for at least eight weeks.\"",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "relation",
+   "source": "Animate the Background",
+   "type": "mirrors",
+   "target": "Dub Lineage",
+   "label": "preserve-the-substrate-transform-the-field",
+   "rationale": "Both name a production discipline where a stable authored core is kept fixed while a technical medium transforms only the surrounding field \u2014 dub keeps the riddim and echoes the space; the compositing practice keeps the drawn hero and animates the sky/smoke around him.",
+   "evidence": "\"What you authored... stays crisp... What should breathe... gets real motion.\" / \"Subtraction is composition. The mixing board is the instrument. The engineer plays.\"",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "relation",
+   "source": "Projects/Portamento and Physical Pitch Modeling",
+   "type": "mirrors",
+   "target": "Striatum",
+   "label": "coupled-oscillators-across-material",
+   "rationale": "Both entries independently reach for phase-locking / coupled-oscillator vocabulary (and both cite Kuramoto Coupling) to explain their own domain \u2014 vibrating-mode coupling in strings/voice on one side, basal-ganglia beat-timing on the other.",
+   "evidence": "\"The modes do not settle independently; they are coupled via the acoustic boundary.\" / \"the striatum may be part of the biological implementation of the phase-locking dynamics that Kuramoto describes mathematically.\"",
+   "item_id": "Z3"
+  },
+  {
+   "kind": "bridge",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "Merleau-Ponty.md",
+   "rationale": "Both refuse a discrete-state-plus-interpolation model of process in favor of continuous, embodied trajectory as the primary reality \u2014 motion isn't computed toward a target, it IS the target-seeking.",
+   "evidence": "\"The glide does not happen to the pitch. The pitch IS the glide. Every moment of the trajectory is a moment of physical settling. Listen to where the voice overshoots; that is where the body is alive.\" || \"The hand reaching for the cup does not first form a mental representation and then execute it; the reaching IS a form of intentionality in its own right... There is a knowing-how that is not a watered-down knowing-that.\"",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "bridge",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "Striatum.md",
+   "rationale": "Both entries, independently, reach for the same coupled-oscillator/phase-locking vocabulary to explain a domain that has no obvious a priori reason to be described that way \u2014 vibrating string/vocal-fold modes on one side, basal ganglia timing circuits on the other.",
+   "evidence": "\"If each mode is viewed as an oscillator with its own natural frequency and damping, and they are weakly coupled... then the system is a coupled oscillator network. The modes do not settle independently; they are coupled via the acoustic boundary... This connects to Kuramoto Coupling.\" || \"The basal ganglia, including the striatum, are essential for beat-based timing \u2014 detecting and predicting rhythmic patterns... This connects to Kuramoto Coupling: the striatum may be part of the biological implementation of the phase-locking dynamics that Kuramoto describes mathematically.\"",
+   "item_id": "Z5"
+  },
+  {
+   "kind": "bridge",
+   "source": "Animate the Background.md",
+   "type": "mirrors",
+   "target": "Dub Lineage.md",
+   "rationale": "Both name a production discipline of keeping a stable authored substrate fixed while a technical medium (mixing board / diffusion model) transforms only the space around it \u2014 the riddim stays, the echo moves; the drawn hero stays, the sky moves.",
+   "evidence": "\"What you authored \u2014 the hero, the camera, the staging \u2014 stays crisp and exactly where you drew it. What should breathe \u2014 sky, smoke, fire, water, a crowd \u2014 gets real motion... author what matters, let the model animate what merely lives.\" || \"From King Tubby's stripping of the riddim to Lee 'Scratch' Perry's cosmic deconstructions, dub established that removing and transforming is as creative as adding... Subtraction is composition. The mixing board is the instrument. The engineer plays.\"",
+   "item_id": "Z6"
+  },
+  {
+   "kind": "unsung",
+   "source": "Animate the Background",
+   "type": "emerged-from",
+   "target": "Line-Art Layer Decomposition",
+   "label": "folded-in-source",
+   "rationale": "\"Folded in 2026-07-06 from [[Line-Art Layer Decomposition]] \u2014 the same four steps... generalized from two layers to N\"",
+   "item_id": "Z7"
+  },
+  {
+   "kind": "stage",
+   "source": "Entry Conatus",
+   "type": "sprout->growing or mature",
+   "rationale": "none \u2014 forward_vector is exemplary conatus-bearing prose (the entry's own subject matter)",
+   "item_id": "Z8"
+  }
+ ]
+}

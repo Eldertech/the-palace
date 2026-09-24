@@ -54,6 +54,8 @@ links:
   - target: "[[Radio Play]]"
     type: exemplifies
     label: first-deck
+  - target: "[[The Substrate Drifts]]"
+    type: connects-to
 ---
 
 # Oblique Enrichment

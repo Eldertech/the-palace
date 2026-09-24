@@ -1,0 +1,383 @@
+{
+ "cluster": "C5.1",
+ "lens": "community",
+ "summary": "This room is the palace's own ceremony-and-meta-infrastructure neighborhood \u2014 nearly every operational card (Deposit, Harvest, Weave, Walk, Return, Revival, Spore Check, Baton, Closing Well, Self-Model Update, Schema) plus their Context companions and a scatter of standards and worklists. The strongest cross-cutting find is that Reflective Practice \u2014 a 2026-09 newcomer starving for inbound links \u2014 already names five of this room's own ceremonies (Weave, Return, Spore Check, Revival, Walk) plus Closing Well in its own body as instances of \"reflect-on-action,\" but none of those ceremonies link back to it; the room was blind to a taxonomy it had already written down. A second, smaller pattern: SCHEMA \u2014 Reference (also under-linked) is cited by name in three of this room's operational cards (the README, Substrate Skill, Technical Diagram Standard) with none of those citations formalized in frontmatter. On the de-sprawl side, three \"Graffiti Pass \u2014 Handoff\" files and one already-self-declared-composted migration handoff are spent batons sitting in canon past their disposability window \u2014 their real content has already been folded into the entries they touched, and the palace's own Baton Ceremony says git is their archive. No directed flags were posted to this room.",
+ "members_read": [
+  "_ops/Artifacts to Projects Migration \u2014 handoff.md",
+  "_ops/Baton Ceremony.md",
+  "_ops/Baton Ceremony/Baton Ceremony \u2014 Context.md",
+  "Closing Well.md",
+  "_ops/Closing Well Ceremony.md",
+  "_ops/Deposit Archive.md",
+  "_ops/Deposit Ceremony.md",
+  "_ops/Deposit Ceremony/Deposit Ceremony \u2014 Context.md",
+  "Drift and Consolidation.md",
+  "Enrichment.md",
+  "Entry Conatus.md",
+  "_ops/Graffiti Pass \u2014 Handoff 2026-04-30.md",
+  "_ops/Graffiti Pass \u2014 Handoff 2026-05-02.md",
+  "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md",
+  "_ops/Harvest Ceremony.md",
+  "_ops/Harvest Ceremony \u2014 Context.md",
+  "_ops/Image Embedding Standard.md",
+  "Learning Materials and Canon.md",
+  "_ops/Mermaid Diagram Standard.md",
+  "No Mind Checks Itself.md",
+  "_ops/Palace Audit \u2014 2026-05-28.md",
+  "_ops/Palace Ceremonies.md",
+  "_ops/Palace Quotes.md",
+  "_ops/Palace To-Do.md",
+  "README - The Palace Guide.md",
+  "Reflective Practice.md",
+  "_ops/Return Ceremony.md",
+  "_ops/Revival Ceremony.md",
+  "SCHEMA.md (partial, \u00a71)",
+  "_ops/Schema Ceremony Proposal \u2014 exemplifies + member-of.md",
+  "_ops/Self-Model Update Ceremony.md",
+  "_ops/Spore Check Ceremony.md",
+  "_ops/Substrate Skill.md (partial)",
+  "_ops/Technical Diagram Standard.md",
+  "_ops/Walk Ceremony.md",
+  "_ops/Weave Ceremony.md",
+  "_ops/Weave Ceremony \u2014 Context.md",
+  "Weaving Memory into the Palace.md",
+  "Worktree Practice.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Weave Ceremony",
+   "target": "Reflective Practice",
+   "type": "exemplifies",
+   "rationale": "Reflective Practice.md:58-59 names 'the Weave' explicitly as one of twelve mechanisms that 'reflect on action.' The taxonomy link should point back to its ground per SCHEMA's exemplifies invariant. Weave Ceremony's own frontmatter carries no link to Reflective Practice.",
+   "evidence": "\"Twelve mechanisms reflect on action: [[Closing Well]], the [[Weave Ceremony|Weave]], [[Return Ceremony|Return]]...\"",
+   "kind": "new",
+   "label": "reflect-on-action",
+   "spark": 3
+  },
+  {
+   "source": "Return Ceremony",
+   "target": "Reflective Practice",
+   "type": "exemplifies",
+   "rationale": "Same list in Reflective Practice names Return as reflect-on-action; Return Ceremony is a 2026-08 newcomer with only 1 inbound and no link to this framework that already classifies it.",
+   "evidence": "\"[[Return Ceremony|Return]], [[Spore Check Ceremony|Spore Check]], [[Revival Ceremony|Revival]]...\"",
+   "kind": "new",
+   "label": "reflect-on-action",
+   "spark": 3
+  },
+  {
+   "source": "Spore Check Ceremony",
+   "target": "Reflective Practice",
+   "type": "exemplifies",
+   "rationale": "Named in the same list; Spore Check Ceremony carries no frontmatter link back.",
+   "evidence": "Reflective Practice.md \u00a7 The palace reflects afterwards",
+   "kind": "new",
+   "label": "reflect-on-action",
+   "spark": 2
+  },
+  {
+   "source": "Revival Ceremony",
+   "target": "Reflective Practice",
+   "type": "exemplifies",
+   "rationale": "Same list; Revival Ceremony carries no frontmatter link back.",
+   "evidence": "Reflective Practice.md \u00a7 The palace reflects afterwards",
+   "kind": "new",
+   "label": "reflect-on-action",
+   "spark": 2
+  },
+  {
+   "source": "Walk Ceremony",
+   "target": "Reflective Practice",
+   "type": "exemplifies",
+   "rationale": "Same list; the Walk is named as reflect-on-action but its frontmatter has no link back to the entry that classifies it.",
+   "evidence": "Reflective Practice.md \u00a7 The palace reflects afterwards",
+   "kind": "new",
+   "label": "reflect-on-action",
+   "spark": 2
+  },
+  {
+   "source": "Closing Well",
+   "target": "Reflective Practice",
+   "type": "exemplifies",
+   "rationale": "Reflective Practice already links forward to Closing Well ('connects-to', label 'on-action'); the reciprocal taxonomy direction (Closing Well is a concrete instance of the reflect-on-action pattern) is missing and belongs on Closing Well's own frontmatter per the exemplifies direction invariant.",
+   "evidence": "Reflective Practice.md frontmatter: target [[Closing Well]] type connects-to label on-action; Closing Well.md carries no return link.",
+   "kind": "new",
+   "label": "reflect-on-action",
+   "spark": 2
+  },
+  {
+   "source": "README - The Palace Guide",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "rationale": "The README cites SCHEMA \u2014 Reference by name for the bundle spec, but the citation never made it into frontmatter. SCHEMA \u2014 Reference is a newcomer at 2 inbound.",
+   "evidence": "\"Full spec: [[SCHEMA \u2014 Reference]] \u00a78.\"",
+   "kind": "new",
+   "label": "bundle-spec",
+   "spark": 1
+  },
+  {
+   "source": "Substrate Skill",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "rationale": "Substrate Skill cites SCHEMA \u2014 Reference twice in body (link-object fields, bundle vocabulary) with no frontmatter link.",
+   "evidence": "\"the fields a link object takes are [[SCHEMA \u2014 Reference]] \u00a73\"; \"The current vocabulary of bundle types lives in [[SCHEMA \u2014 Reference]] \u00a78.\"",
+   "kind": "new",
+   "label": "operational-rules",
+   "spark": 1
+  },
+  {
+   "source": "Technical Diagram Standard",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "rationale": "Technical Diagram Standard cites SCHEMA \u2014 Reference \u00a78 twice for the filing/bundle rule, unlinked in frontmatter.",
+   "evidence": "\"per [[SCHEMA \u2014 Reference]] \u00a78 \u2014 and this standard's own teaching examples live in its bundle\"",
+   "kind": "new",
+   "label": "bundle-filing",
+   "spark": 1
+  },
+  {
+   "source": "Weave Ceremony",
+   "target": "The Palace Voice",
+   "type": "connects-to",
+   "rationale": "Step 2g of the Weave adds a voice-drift linter explicitly built to catch 'the one [[The Palace Voice]] dial that has no other check' \u2014 a genuine structural dependency, not a passing mention, and The Palace Voice is a newcomer at 1 inbound.",
+   "evidence": "\"catching the one [[The Palace Voice]] dial that has no other check\"",
+   "kind": "new",
+   "label": "voice-drift-check",
+   "spark": 2
+  },
+  {
+   "source": "Palace To-Do",
+   "target": "The Palace Voice",
+   "type": "connects-to",
+   "rationale": "Palace To-Do's 'Entry voice diversity' item is explicitly coupled to The Palace Voice's markup-density work, unlinked in frontmatter.",
+   "evidence": "\"Now coupled to the markup-density work in [[The Palace Voice]]\"",
+   "kind": "new",
+   "label": "voice-diversity",
+   "spark": 1
+  },
+  {
+   "source": "Palace To-Do",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "rationale": "The Donella Meadows to-do item names Making a Palace Citizen as the design method to use, unlinked in frontmatter. Making a Palace Citizen is a newcomer at 2 inbound.",
+   "evidence": "\"Build her as an embodiable citizen per [[Making a Palace Citizen]], not a description\"",
+   "kind": "new",
+   "label": "person-page-method",
+   "spark": 1
+  },
+  {
+   "source": "Weave Ceremony",
+   "target": "The Palace Hardens Around Values",
+   "type": "connects-to",
+   "rationale": "Weave Ceremony's 2b postcondition cites this entry as the rationale for why a check earns a hard gate; unlinked in frontmatter. The Palace Hardens Around Values is a newcomer at 3 inbound.",
+   "evidence": "\"[[The Palace Hardens Around Values]]: a rule earns a gate once its check proves mechanical.\"",
+   "kind": "new",
+   "label": "gate-rationale",
+   "spark": 1
+  },
+  {
+   "source": "Deposit Ceremony \u2014 Context",
+   "target": "Return Ceremony",
+   "type": "connects-to",
+   "rationale": "The Context file's closing paragraph explicitly says the deposit's fresh-reader discipline is 'the Return Ceremony's move applied one scale down' \u2014 a direct structural debt, unlinked in frontmatter.",
+   "evidence": "\"which is the [[Return Ceremony]]'s move applied one scale down\"",
+   "kind": "new",
+   "label": "reader-pattern",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Weave Ceremony",
+   "target": "Reflective Practice",
+   "type": "body-mention-no-frontmatter",
+   "phrase": "the Weave listed among twelve reflect-on-action mechanisms",
+   "label": "reflect-on-action",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Return Ceremony",
+   "target": "Reflective Practice",
+   "type": "body-mention-no-frontmatter",
+   "phrase": "Return listed among twelve reflect-on-action mechanisms",
+   "label": "reflect-on-action",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Spore Check Ceremony",
+   "target": "Reflective Practice",
+   "type": "body-mention-no-frontmatter",
+   "phrase": "Spore Check listed among twelve reflect-on-action mechanisms",
+   "label": "reflect-on-action",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Revival Ceremony",
+   "target": "Reflective Practice",
+   "type": "body-mention-no-frontmatter",
+   "phrase": "Revival listed among twelve reflect-on-action mechanisms",
+   "label": "reflect-on-action",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Walk Ceremony",
+   "target": "Reflective Practice",
+   "type": "body-mention-no-frontmatter",
+   "phrase": "Walk listed among twelve reflect-on-action mechanisms",
+   "label": "reflect-on-action",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Closing Well",
+   "target": "Reflective Practice",
+   "type": "body-mention-no-frontmatter",
+   "phrase": "Closing Well listed among twelve reflect-on-action mechanisms (reciprocal of the existing forward link)",
+   "label": "reflect-on-action",
+   "structurally_significant": true
+  },
+  {
+   "entry": "README - The Palace Guide",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "wikilink-no-frontmatter",
+   "phrase": "Full spec: [[SCHEMA \u2014 Reference]] \u00a78",
+   "label": "bundle-spec",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Substrate Skill",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "wikilink-no-frontmatter",
+   "phrase": "the fields a link object takes are [[SCHEMA \u2014 Reference]] \u00a73",
+   "label": "operational-rules",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Technical Diagram Standard",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "wikilink-no-frontmatter",
+   "phrase": "per [[SCHEMA \u2014 Reference]] \u00a78",
+   "label": "bundle-filing",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Weave Ceremony",
+   "target": "The Palace Voice",
+   "type": "wikilink-no-frontmatter",
+   "phrase": "catching the one [[The Palace Voice]] dial that has no other check",
+   "label": "voice-drift-check",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Palace To-Do",
+   "target": "The Palace Voice",
+   "type": "wikilink-no-frontmatter",
+   "phrase": "coupled to the markup-density work in [[The Palace Voice]]",
+   "label": "voice-diversity",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Palace To-Do",
+   "target": "Making a Palace Citizen",
+   "type": "wikilink-no-frontmatter",
+   "phrase": "Build her as an embodiable citizen per [[Making a Palace Citizen]]",
+   "label": "person-page-method",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Weave Ceremony",
+   "target": "The Palace Hardens Around Values",
+   "type": "wikilink-no-frontmatter",
+   "phrase": "[[The Palace Hardens Around Values]]: a rule earns a gate once its check proves mechanical",
+   "label": "gate-rationale",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Deposit Ceremony \u2014 Context",
+   "target": "Return Ceremony",
+   "type": "wikilink-no-frontmatter",
+   "phrase": "which is the [[Return Ceremony]]'s move applied one scale down",
+   "label": "reader-pattern",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Palace Quotes",
+   "stage_current": "seed",
+   "stage_proposed": "seed (unchanged \u2014 content is genuinely thin)",
+   "vector_issue": "No forward_vector field exists at all in frontmatter \u2014 nearly every other entry in this room has one. A quote-collection entry can plausibly go without one, but it stands out against the room's norm and is worth a one-line conatus (e.g. 'I keep growing as real moments in this collaboration mint a line worth keeping').",
+   "graffiti_note": "",
+   "face": "none"
+  },
+  {
+   "entry": "Palace Audit \u2014 2026-05-28",
+   "stage_current": "seed",
+   "stage_proposed": "unchanged, but candidate for a spore-check",
+   "vector_issue": "Its own forward_vector says it composts when the triage list empties. Several of its named triage items (exemplifies/member-of ratification, the Artifacts\u2192Projects migration) are independently confirmed done elsewhere in this room. The entry has not been revisited since 2026-05-28 despite status: active.",
+   "graffiti_note": "",
+   "face": "none"
+  }
+ ],
+ "compost_candidates": [
+  {
+   "entry": "_ops/Graffiti Pass \u2014 Handoff 2026-04-30.md",
+   "rationale": "A fully-consumed session-queue baton (per Baton Ceremony's own taxonomy) for a cleanup pass that has since completed. Its 'architectural findings worth preserving' were explicitly folded into README - The Palace Guide, Symbiotic Skills, Substrate Skill, Pages as Agents, Palace Map and Palace as Context Injection System that same session. Nothing here is load-bearing that isn't already in canon; the palace's own batons are meant to be deleted once the move lands, with git as the archive.",
+   "nutrients_to": [
+    "README - The Palace Guide",
+    "Substrate Skill"
+   ]
+  },
+  {
+   "entry": "_ops/Graffiti Pass \u2014 Handoff 2026-05-02.md",
+   "rationale": "Successor session log; same shape as the 04-30 handoff. Its findings (README philosophy framing, Substrate Skill relocation cleanup, Symbiotic Skills archaeology) were applied in-session and are recorded permanently in those entries and in git history.",
+   "nutrients_to": [
+    "README - The Palace Guide",
+    "Substrate Skill"
+   ]
+  },
+  {
+   "entry": "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md",
+   "rationale": "Third and final session log in the same chain; the Loudon\u2192Claude sub-section it tracked is fully resolved per its own text. The remaining open Claude\u2192Loudon items live on in Palace To-Do / Palace To-Do \u2014 Archive, so this file's tracking function is superseded.",
+   "nutrients_to": [
+    "Palace To-Do"
+   ]
+  },
+  {
+   "entry": "_ops/Artifacts to Projects Migration \u2014 handoff.md",
+   "rationale": "Already stage: composting, status: done, and its own body states 'This handoff is composted.' It is a self-declared spent baton awaiting the mechanical compost step (deletion at the next Weave, per Spore Check Ceremony protocol).",
+   "nutrients_to": []
+  }
+ ],
+ "flag_responses": [],
+ "coherence_findings": [
+  {
+   "issue": "Three sequential Graffiti Pass handoff files sit in canon past their useful life as disposable batons, adding clutter that matches Loudon's 'good but cluttered' read this morning.",
+   "kind": "spent-baton-clutter",
+   "entries": [
+    "_ops/Graffiti Pass \u2014 Handoff 2026-04-30.md",
+    "_ops/Graffiti Pass \u2014 Handoff 2026-05-02.md",
+    "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md"
+   ],
+   "proposed_action": "Compost per the list above; a Spore Check or Weave can confirm and remove."
+  },
+  {
+   "issue": "Reflective Practice, a load-bearing new framework, silently classifies six of this room's ceremonies without any of them linking back \u2014 the room's own taxonomy is invisible from the ceremony side.",
+   "kind": "missing-reciprocal-taxonomy",
+   "entries": [
+    "Reflective Practice",
+    "Weave Ceremony",
+    "Return Ceremony",
+    "Spore Check Ceremony",
+    "Revival Ceremony",
+    "Walk Ceremony",
+    "Closing Well"
+   ],
+   "proposed_action": "Wire the six exemplifies links proposed above."
+  }
+ ],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": [],
+ "merge_candidates": [],
+ "demote_candidates": [],
+ "walk_results": [],
+ "bridge_findings": []
+}

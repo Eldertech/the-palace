@@ -1,0 +1,175 @@
+{
+ "cluster": "F-Palace_development",
+ "lens": "folder",
+ "summary": "This family is the palace's own machine room \u2014 it is unusually self-aware, and several members talk about each other's open questions without knowing it. Read together, the room shows genuine progress hiding as scatter: Two Batons, One Board has quietly resolved most of what it set out to answer (the scheduled poller is Palace Orchestrator, the digest is built) and its own forward vector already asks to dissolve into Project Stewardship System \u2014 that's the clearest de-sprawl move here, not a forced one. A cluster of load-bearing organs (Concierge, Pheromone Trail, BBS Design System) sit at stage \"sprout\" despite carrying nine-to-eleven inbound links and recent activation \u2014 the stage label looks stale next to the weight these entries actually carry. Two live open questions resolve against siblings already in the room: Enchanted Worker's question about page-agents comparing context windows directly is exactly what Dialogue Moderator does, and Project Stewardship System's question about whether it needs a four-pillar agency_profile is already answered by example in Dialogue Moderator's frontmatter. And one clean unsung path: Dialogue Moderator names \"the palace citizen test\" and \"citizenship responsibility\" in its own prose with no link to the newcomer [[Making a Palace Citizen]] \u2014 a genuine miss, not a stretch.",
+ "members_read": [
+  "Palace development/Agent Wellbeing.md",
+  "Palace development/BBS Blackboard.md",
+  "Palace development/BBS Design System.md",
+  "Palace development/Concierge.md",
+  "Palace development/Dialogue Moderator.md",
+  "Palace development/Enchanted Conversation Archive.md",
+  "Palace development/Enchanted Worker.md",
+  "Palace development/Four Pillars of Enchanted Agency.md",
+  "Palace development/Generative Compression.md",
+  "Palace development/Lossy Compression with Intent Alignment.md",
+  "Palace development/Loudon Live Design System.md",
+  "Palace development/Palace AI Partnership Philosophy.md",
+  "Palace development/Palace Enchantment.md",
+  "Palace development/Palace Orchestrator.md",
+  "Palace development/Palace as Context Injection System.md",
+  "Palace development/Pheromone Trail.md",
+  "Palace development/Project Stewardship System.md",
+  "Palace development/Resonant Link Labels.md",
+  "Palace development/STIGMERGY Philosophical Lenses.md",
+  "Palace development/Self-Describing Knowledge Module.md",
+  "Palace development/Skills Are Enchantable Pages.md",
+  "Palace development/Swarm Weave.md",
+  "Palace development/Symbiotic Skills.md",
+  "Palace development/The Palace Speaks.md",
+  "Palace development/Tree of Thoughts.md",
+  "Palace development/Two Batons, One Board.md",
+  "Palace development/Walk That Weaves.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Dialogue Moderator",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "label": "citizenship-test",
+   "rationale": "Dialogue Moderator's own agency_profile.philosophy already names the concept unlinked \u2014 a genuine newcomer bridge, not a forced one.",
+   "evidence": "\"My citizenship responsibility is to use that privilege in service of the dialogue's purpose, never my own. The palace citizen test: would Loudon recognize the synthesis I produced as something the palace needed, not something I preferred?\" \u2014 Palace development/Dialogue Moderator.md:36",
+   "kind": "newcomer",
+   "spark": 3
+  },
+  {
+   "source": "Enchanted Worker",
+   "target": "Dialogue Moderator",
+   "type": "connects-to",
+   "label": "answers-the-precursor-question",
+   "rationale": "Enchanted Worker's own Open Questions ask whether page-agents could compare context windows directly rather than only through a coordinator \u2014 Dialogue Moderator is exactly that coordinator, already built in the same family, and the two entries do not currently link to each other.",
+   "evidence": "\"Is the Enchanted Worker a precursor to multi-agent page collaboration, where page-agents compare their context windows directly rather than only through a coordinator? What would that endosymbiosis look like?\" \u2014 Palace development/Enchanted Worker.md:91",
+   "kind": "bridge",
+   "spark": 3
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Dialogue Moderator",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "phrase": "the palace citizen test",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Concierge",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward_vector is sharp and specific",
+   "graffiti_note": "9 inbound, last_activated 2026-09-03, a resident organ described as summoned at the top of every session \u2014 stage reads low against that weight."
+  },
+  {
+   "entry": "Pheromone Trail",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none",
+   "graffiti_note": "9 inbound, well-developed body with its own Open Questions and Forward Vectors \u2014 same stage-vs-weight mismatch as Concierge."
+  },
+  {
+   "entry": "BBS Design System",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none",
+   "graffiti_note": "11 inbound, spawned by BBS Blackboard, enables STIGMERGY and Swarm Weave \u2014 heavily cited for a 'sprout'."
+  },
+  {
+   "entry": "Two Batons, One Board",
+   "stage_current": "seed",
+   "stage_proposed": "n/a \u2014 recommend merge before restaging (see merge_candidates)",
+   "vector_issue": "none",
+   "graffiti_note": "Its own body already answers two of its three 'What's Open' items (scheduled poller = Palace Orchestrator; digest built 2026-05-29) \u2014 the entry has mostly finished becoming what it set out to become."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "kind": "stage-drift",
+   "issue": "A cluster of organs central to daily operation (Concierge, Pheromone Trail, BBS Design System) sit at stage 'sprout' while carrying 9-11 inbound links and recent activation \u2014 sprout reads as 'early idea' but these are load-bearing. Worth an elder pass on whether the stage rubric should weight inbound/recency more, or whether these three specifically should be bumped.",
+   "entries": [
+    "Concierge",
+    "Pheromone Trail",
+    "BBS Design System"
+   ],
+   "proposed_action": "Elder review: bump stage on these three, or clarify in SCHEMA that stage tracks the entry's own content maturity, not its citation weight (in which case no action needed and this note can be dropped)."
+  },
+  {
+   "kind": "naming",
+   "issue": "BBS Design System's own body states the product name in all UI copy is STIGMERGY and 'BBS Blackboard' is internal-only architecture language \u2014 yet the design-system entry itself is still titled 'BBS Design System' rather than something under the STIGMERGY name. BBS Blackboard has already made the internal/historical-root distinction explicit in its own frontmatter (status: historical-root); BBS Design System has not.",
+   "entries": [
+    "BBS Design System",
+    "BBS Blackboard",
+    "STIGMERGY"
+   ],
+   "proposed_action": "Consider a status:historical-root-style marker on BBS Design System too, or a rename, so the naming discipline the family already states is applied consistently."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Enchanted Worker",
+   "question": "Is the Enchanted Worker a precursor to multi-agent page collaboration, where page-agents compare their context windows directly rather than only through a coordinator?",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Dialogue Moderator",
+   "proposed_action": "Link the two (see typed_relations) and note the answer in Enchanted Worker's Open Questions: yes, via a coordinator that sees both inner layers, not direct comparison."
+  },
+  {
+   "entry": "Enchanted Worker",
+   "question": "At what point does a worker's enchantment become a liability \u2014 a bias strong enough to miss connections orthogonal to its loaded neighborhood?",
+   "verdict": "progressed",
+   "by_entry": "Swarm Weave",
+   "proposed_action": "Swarm Weave's Multi-Lens Weave answer (partition the palace by several lenses at once, so a nexus entry is read in each family it belongs to) is the palace's actual mitigation for this bias \u2014 worth a cross-reference note in Enchanted Worker rather than leaving the question open in isolation."
+  },
+  {
+   "entry": "BBS Blackboard",
+   "question": "Agents following their own forward vectors will often need to ask the Trickster something and wait for a response before proceeding \u2014 the BBS gives a centralized place for this.",
+   "verdict": "progressed",
+   "by_entry": "Project Stewardship System + Two Batons, One Board",
+   "proposed_action": "Project Stewardship System's Trickster-triage design and Two Batons's built digest (Stage E, shipped 2026-05-29) are the working answer to this. Worth a forward-pointer from BBS Blackboard's Open Questions."
+  },
+  {
+   "entry": "Project Stewardship System",
+   "question": "Does this entry benefit from an agency_profile per SCHEMA \u00a73.1? The four-pillar expansion is plausible...",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Dialogue Moderator",
+   "proposed_action": "Dialogue Moderator already carries a worked four-pillar agency_profile in its frontmatter \u2014 Project Stewardship System could adopt the same structure directly rather than waiting for 'first enchantment' to reveal whether it's needed."
+  },
+  {
+   "entry": "Walk That Weaves",
+   "question": "revival_conditions: Swarm Weave is ceremony-ified and running cleanly for two cycles.",
+   "verdict": "should-act",
+   "proposed_action": "This very task is a multi-lens Swarm Weave session \u2014 Swarm Weave's own Forward Vectors section already describes the lens-partitioned swarm as running. Worth Loudon's judgment call on whether the revival condition is now met and Walk That Weaves should move off 'sprout, revival-pending'."
+  }
+ ],
+ "merge_candidates": [
+  {
+   "absorb": "Two Batons, One Board",
+   "into": "Project Stewardship System",
+   "rationale": "Two Batons's own forward_vector states it directly: 'I should dissolve into the Baton Ceremony, the Stewardship system, and a scheduler spec as each absorbs the part of me it needs.' Project Stewardship System already `deepens` it with label 'names-the-bandwidth-frontier'. Most of its open questions are resolved in its own body (scheduled poller = Palace Orchestrator; digest built). The one live thread left \u2014 how a human-originated handoff enters the same digest as a steward request \u2014 is a natural subsection of Project Stewardship System's Open Questions, not a reason to keep a separate seed-stage entry alive.",
+   "survives_as_subsection": "'Two batons, one board' \u2014 the human-handoff vs. steward-request distinction, plus the one open thread (human-originated handoffs entering the digest), folded into Project Stewardship System's body and Open Questions."
+  }
+ ],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "A dispatch-surface / agency-profile formalization is being independently reinvented across this family \u2014 Skills Are Enchantable Pages wants ceremony/specialist/skill/page unified in SCHEMA; Dialogue Moderator already carries a working four-pillar agency_profile; Project Stewardship System asks whether it should have one too; STIGMERGY Philosophical Lenses' phasing plan assumes a similar card/lens formalization. No single entry owns 'what a well-formed enchantable page's dispatch contract looks like.'",
+   "why_load_bearing": "Three separate entries are each independently asking a version of the same structural question (what does SCHEMA need to formalize about how a page becomes dispatchable and self-describing) without citing each other's version of it.",
+   "crossing_entries": [
+    "Skills Are Enchantable Pages",
+    "Dialogue Moderator",
+    "Project Stewardship System",
+    "STIGMERGY Philosophical Lenses"
+   ]
+  }
+ ]
+}

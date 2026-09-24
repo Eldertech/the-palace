@@ -1,0 +1,205 @@
+{
+ "cluster": "C2.2",
+ "lens": "community",
+ "summary": "This room is the palace's own machine room \u2014 STIGMERGY, SUBSTRATE, Swarm Weave, Project Stewardship System, Trickster, the Palace Voice/register entries, and Spinoza Conatus all sitting together because they're the entries the palace uses to talk about itself. The strongest find was a real contradiction hiding in plain sight: Songlines asks whether well-worn paths make adjacent country invisible, while The Palace Hardens Around Values insists hardening is the goal, not the cost \u2014 both true, and the tension is worth naming rather than resolving. A second solid thread: the \"speak like a person, log like a protocol\" discipline is quoted verbatim in STIGMERGY's own body but never wikilinked or frontmatter-linked back to its source entry \u2014 an unsung path with a direct quote to back it. The Substrate Drifts sits at zero inbound though its own body names the STIGMERGY session that produced it; a spawned link closes that gap honestly. On the clutter question: Two Batons, One Board is the clearest case \u2014 its own forward_vector says it should dissolve into Project Stewardship System, Baton Ceremony, and a scheduler spec, and most of what it was waiting on has since shipped, so folding it into Project Stewardship System as a subsection isn't a loss, it's honoring what the entry already asked for. Tristitia Generator has been sitting in `composting` since the 2026-07-06 Weave, its nutrients already redistributed into Spinoza Conatus \u2014 this is the Weave cycle to confirm the deletion the schema's composting protocol calls for. Two smaller schema gaps turned up along the way: Trickster Commit has no `born` field, and Walk That Weaves (type `question`) carries a `revival_conditions` field that belongs to `spore` types \u2014 both flagged, neither touched.",
+ "members_read": [
+  "Progressive Staging.md",
+  "Palace development/Project Stewardship System.md",
+  "ROSETTA.md",
+  "Palace development/Resonant Link Labels.md",
+  "STIGMERGY.md (frontmatter + body through 'the human node')",
+  "SUBSTRATE.md",
+  "Scale-Stratified Identity.md",
+  "Palace development/Self-Describing Knowledge Module.md",
+  "Projects/Semantic Webcam.md",
+  "Palace development/Skills Are Enchantable Pages.md",
+  "Songlines.md",
+  "Speak Like a Person, Log Like a Protocol.md",
+  "Spinoza Conatus.md",
+  "Striatum.md",
+  "Surfaces and Capabilities.md",
+  "Palace development/Swarm Weave.md",
+  "Palace development/Symbiotic Skills.md",
+  "The Cooperation Path.md",
+  "The Palace Hardens Around Values.md (full)",
+  "Palace development/The Palace Speaks.md",
+  "The Palace Voice.md",
+  "The Practice Rediscovers Its Philosophy.md",
+  "The Reader's Context Window.md",
+  "The Remembering Page.md",
+  "The Scroll.md",
+  "The Substrate Drifts.md (full)",
+  "Threshold Conatus.md",
+  "Tier Vocabulary Glossary.md",
+  "Palace development/Tree of Thoughts.md",
+  "Trickster.md",
+  "Trickster Commit.md (full)",
+  "Tristitia Generator.md (full)",
+  "Palace development/Two Batons, One Board.md (full)",
+  "Palace development/Walk That Weaves.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Songlines",
+   "target": "The Palace Hardens Around Values",
+   "type": "contradicts",
+   "rationale": "Both true, generative friction: Songlines asks whether the palace's own well-worn paths make adjacent country invisible; The Palace Hardens Around Values insists hardening (well-worn-ness) is the goal, not the cost. Same phenomenon (paths deepening with use), opposite verdict on whether that's healthy.",
+   "evidence": "Songlines: 'paths through its own territory that have been sung so often they make adjacent country invisible' (Songlines.md:33) \u2014 vs. \u2014 'The palace hardening and gaining weight is a good thing... makes the next decision more determined' (The Palace Hardens Around Values.md:38,40)",
+   "label": "well-worn-vs-hardened",
+   "spark": 5,
+   "kind": "new",
+   "deep_pattern": "repetition-as-groove: the same accumulation of use that produces reliable structure also produces blind spots \u2014 this is the palace's own version of a well-known tension in any practice that rewards habit."
+  },
+  {
+   "source": "STIGMERGY",
+   "target": "Speak Like a Person, Log Like a Protocol",
+   "type": "exemplifies",
+   "rationale": "STIGMERGY's own body names the discipline verbatim as its coherence mechanism but carries no frontmatter link to the entry that names and owns the rule.",
+   "evidence": "'The discipline that keeps it coherent is \"speak like a person, log like a protocol\": human-readable surfaces, exact wire terms.' (STIGMERGY.md:77)",
+   "label": "the-worked-example",
+   "spark": 4,
+   "kind": "new"
+  },
+  {
+   "source": "Speak Like a Person, Log Like a Protocol",
+   "target": "The Palace Voice",
+   "type": "exemplifies",
+   "rationale": "Speak Like a Person is a specific-surface application (STIGMERGY protocol skins) of the general prose-register discipline The Palace Voice owns for the whole palace. Neither currently names the other, and both are under-reached (Palace Voice at 1 inbound).",
+   "evidence": "Palace Voice: 'I am the palace's verbal floor \u2014 how we write every entry and talk in every session, plain and specific and alive' (The Palace Voice.md:11) \u2014 vs. \u2014 Speak Like a Person's dual-register rule (Speak Like a Person, Log Like a Protocol.md:32-34)",
+   "label": "protocol-surface-instance",
+   "spark": 3,
+   "kind": "new"
+  },
+  {
+   "source": "Skills Are Enchantable Pages",
+   "target": "The Palace Speaks",
+   "type": "mirrors",
+   "rationale": "Both are siblings hanging off Pages as Agents (one deepens it as 'skills-are-pages', the other exemplifies it as 'palace-becomes-the-agent') but don't see each other \u2014 same pattern (a dispatchable organ becoming addressable) in different material (a skill vs. the whole palace).",
+   "evidence": "Skills: 'collapse the false split between a skill the harness fires and a page the palace enchants' (Skills Are Enchantable Pages.md:31) \u2014 Palace Speaks: 'it is also becoming a mind you address \u2014 a standing intelligence you send a message to' (The Palace Speaks.md forward area)",
+   "label": "addressable-organ",
+   "spark": 3,
+   "kind": "new"
+  },
+  {
+   "source": "STIGMERGY",
+   "target": "The Substrate Drifts",
+   "type": "spawned",
+   "rationale": "The Substrate Drifts is a direct write-up of bugs found in the STIGMERGY v0.3 session \u2014 the entry names the session in its own body but neither entry links to the other, and The Substrate Drifts sits at 0 inbound (priority citizen per new-entries-block.md).",
+   "evidence": "'Three independent bugs in the STIGMERGY v0.3 session shared one root' (The Substrate Drifts.md:32)",
+   "label": "the-session-that-taught-hermetic-testing",
+   "spark": 3,
+   "kind": "new"
+  },
+  {
+   "source": "Progressive Staging",
+   "target": "Tier Vocabulary Glossary",
+   "type": "contradicts",
+   "rationale": "Both are palace methods for staged work, and they disagree on whether an early stage is disposable. Progressive Staging insists every stage is a complete, kept artifact; Tier Vocabulary's Sketch tier is explicitly throwaway. Worth holding as a real design tension (when is early work a keeper vs. scaffolding?) rather than resolving.",
+   "evidence": "'No stage is a stepping stone that exists only to reach the next one' (Progressive Staging.md:33) \u2014 vs. \u2014 'Sketch is calibration and exploration, cheapest, fastest, throwaway' (Tier Vocabulary Glossary.md:35)",
+   "label": "throwaway-vs-complete",
+   "spark": 3,
+   "kind": "new"
+  },
+  {
+   "source": "Striatum",
+   "target": "Scale-Stratified Identity",
+   "type": "connects-to",
+   "rationale": "Tentative \u2014 both ground palace threshold/conatus language in biology (dopamine reward circuitry vs. threshold-crossing identity shifts), but I only read partial bodies; flagging at lower confidence rather than a directed type.",
+   "evidence": "Striatum forward_vector names 'threshold' and 'hilaritas' grounding; Scale-Stratified Identity mirrors Action Potential Oscillator as 'biology-confirms' (Scale-Stratified Identity.md:17)",
+   "label": "biological-layer",
+   "spark": 2,
+   "kind": "new"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "STIGMERGY",
+   "target": "Speak Like a Person, Log Like a Protocol",
+   "type": "exemplifies",
+   "phrase": "'The discipline that keeps it coherent is \"speak like a person, log like a protocol\"' (STIGMERGY.md:77) \u2014 the coined phrase is quoted verbatim but not wikilinked or registered in frontmatter.",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Substrate Drifts",
+   "target": "STIGMERGY",
+   "type": "spawned",
+   "phrase": "'Three independent bugs in the STIGMERGY v0.3 session shared one root' (The Substrate Drifts.md:32) \u2014 names the origin session plainly, no wikilink, no frontmatter link.",
+   "structurally_significant": true
+  }
+ ],
+ "merge_candidates": [
+  {
+   "absorb": "Two Batons, One Board",
+   "into": "Project Stewardship System",
+   "rationale": "The entry's own forward_vector asks to be dissolved: 'I should dissolve into the Baton Ceremony, the Stewardship system, and a scheduler spec as each absorbs the part of me it needs' (Two Batons, One Board.md:43). It already frames itself as a specific case folded into PSS ('folded here into the Project Stewardship System as one specific case: the human-originated handoff', line 69-70), and most of what it was tracking has since shipped (Stage E auto-grant, the orchestrator). What remains open (the human-originated handoff never bridged onto the board via handoff_ready) is a live open question PSS should carry forward, not a reason to keep a separate entry.",
+   "survives_as_subsection": "Project Stewardship System \u00a7 The Human-Originated Handoff (Two Batons, One Board)"
+  }
+ ],
+ "compost_candidates": [
+  {
+   "entry": "Tristitia Generator",
+   "rationale": "Marked `stage: composting` since the 2026-07-06 Weave with an explicit note: 'folded into [[Spinoza Conatus]] \u00a7 The Affects: Tristitia. Nutrients redistributed there. Awaiting deletion confirmation next Weave cycle.' (Tristitia Generator.md:29). This is that confirming Weave cycle \u2014 per SCHEMA \u00a72's composting protocol, confirm deletion.",
+   "nutrients_to": [
+    "Spinoza Conatus"
+   ]
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Trickster Commit",
+   "vector_issue": "",
+   "stage_current": "seed",
+   "stage_proposed": "",
+   "face": "none",
+   "graffiti_note": "Frontmatter has no `born` field \u2014 a required standard field per SCHEMA \u00a73. Flag only; not fixed."
+  },
+  {
+   "entry": "Walk That Weaves",
+   "vector_issue": "",
+   "stage_current": "sprout",
+   "stage_proposed": "",
+   "face": "none",
+   "graffiti_note": "type is `question` but frontmatter carries `revival_conditions`, a field the SCHEMA table reserves for type `spore` (whose stage is always `dormant`). This entry's stage is `sprout`. Schema/field mismatch \u2014 flag only."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Walk That Weaves",
+   "question": "Revival condition: 'Swarm Weave is ceremony-ified and running cleanly for two cycles.'",
+   "verdict": "check-with-loudon",
+   "by_entry": "Swarm Weave",
+   "proposed_action": "This very session is a Swarm Weave run in progress. Worth Loudon's judgment on whether Swarm Weave has now run 'cleanly for two cycles' \u2014 if so, Walk That Weaves is ready to be designed as a third ceremony mode. Not something I can confirm myself from inside one lens's worth of context."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Two schema-field mismatches found in this room (see entry_health_flags): Trickster Commit missing `born`; Walk That Weaves carrying a spore-only field on a question-type entry.",
+   "kind": "frontmatter-drift",
+   "entries": [
+    "Trickster Commit",
+    "Walk That Weaves"
+   ],
+   "proposed_action": "Flagged only, per task scope \u2014 not a linter fix, just noting for whoever runs the next pass."
+  }
+ ],
+ "flag_responses": [],
+ "bridge_findings": [
+  {
+   "tool": "STIGMERGY",
+   "thought": "STIGMERGY quotes its own coordination discipline by name \u2014 'speak like a person, log like a protocol' \u2014 but has never linked to the entry that owns that phrase.",
+   "shared_structure": "a coined phrase used as working vocabulary inside one entry's body, without the citation trail back to its source entry",
+   "spark": 4,
+   "classify": "link"
+  },
+  {
+   "tool": "Songlines / The Palace Hardens Around Values",
+   "thought": "The same mechanism (repeated use hardening a path) is praised in one entry and worried over in the other \u2014 a genuine palace-level contradiction about whether its own habits of thought are a strength or a trap.",
+   "shared_structure": "accumulation-through-repetition, read two ways",
+   "spark": 5,
+   "classify": "link"
+  }
+ ],
+ "demote_candidates": [],
+ "walk_results": [],
+ "synthesis_spawn_flag": []
+}

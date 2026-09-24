@@ -1,0 +1,213 @@
+{
+ "cluster": "C2.1",
+ "lens": "community",
+ "summary": "This room cuts across three neighborhoods that don't normally talk: the psychological-method entries (Identity Molting, Lateral Access, Creative Coach), the agent-infrastructure entries (Agent Toolbox, Concierge, Agent Wellbeing, Gemma 4, Enchanted Worker, Palace Enchantment), and a handful of working ledgers wearing entry frontmatter (Map Log, Curriculum Map, Claude CLI Reference). The clearest work was closing gaps the room's own entries had already named out loud: Creative Coach's repertoire table literally says \"none of the three cite each other\" about the narrative-therapy trio, and Palace Enchantment's own open-questions list already predicted the Palace Conatus entry that now exists and answers it \u2014 the palace had done its own homework and just hadn't wired the links back. On the newcomer side, Agent Toolbox and Gemma 4 sit in this room with near-zero inbound despite already pointing outward at Concierge, Agent Wellbeing, and Palace Enchantment with real technical citations (measured token baselines, tested register failure) \u2014 reciprocating those was a genuine two-way find, not charity. On the \"cluttered\" question: three files here (Map Log, Curriculum Map, Claude CLI Reference) are working data \u2014 an append-only table, a scaffolding tracker, a CLI cheat sheet \u2014 dressed as concept entries; none holds an idea, and Claude CLI Reference has already self-flagged as composting. Loudon's exhale is worth taking seriously there.",
+ "members_read": [
+  "1 from 2.md (frontmatter)",
+  "Agent Toolbox.md",
+  "Palace development/Agent Wellbeing.md",
+  "Palace development/BBS Blackboard.md (not read this pass)",
+  "Claude CLI Reference.md",
+  "Palace development/Concierge.md",
+  "Creative Coach.md",
+  "Projects/Curriculum Map.md",
+  "Gemma 4 \u2014 Local Coordination Guide.md",
+  "Palace development/Generative Compression.md",
+  "Identity Molting.md",
+  "Lateral Access.md",
+  "Palace development/Lossy Compression with Intent Alignment.md",
+  "_ops/Map Log.md",
+  "Palace Conatus.md",
+  "Palace development/Palace Enchantment.md",
+  "_ops/Palace Graffiti.md",
+  "_ops/Pages as Agents.md",
+  "Palace development/Enchanted Worker.md",
+  "The Remembering Page.md (out-of-room, read for flag verification)"
+ ],
+ "typed_relations": [
+  {
+   "source": "Lateral Access",
+   "target": "Creative Coach",
+   "type": "connects-to",
+   "label": "narrative-therapy-triad",
+   "rationale": "Creative Coach's body table names the gap directly: \"The palace holds this three times under three names \u2014 [[Identity Molting]], [[Lateral Access]] \u00a7 The New Song, and here \u2014 and none of the three cite each other.\" Identity Molting already links both Lateral Access and Creative Coach; Lateral Access links neither. This closes the triangle.",
+   "evidence": "Creative Coach.md:203, 'none of the three cite each other'",
+   "kind": "flag",
+   "spark": 2
+  },
+  {
+   "source": "Creative Coach",
+   "target": "Lateral Access",
+   "type": "connects-to",
+   "label": "narrative-therapy-triad",
+   "rationale": "Reciprocal of the above \u2014 Creative Coach's frontmatter links Identity Molting (teacher-to-coach) but not Lateral Access, despite naming it explicitly in body prose.",
+   "evidence": "Creative Coach.md:203",
+   "kind": "flag",
+   "spark": 2
+  },
+  {
+   "source": "Palace Enchantment",
+   "target": "The Remembering Page",
+   "type": "couples-with",
+   "label": "episodic-memory-for-enchantment",
+   "rationale": "Palace Enchantment names its own gap directly: 'The enchantment is ephemeral... The enchanted agent does not remember being enchanted.' The Remembering Page exists specifically to give a page episodic memory of its own wakings \u2014 the exact absence Palace Enchantment describes. Flagged for zero mentions; this is the fix.",
+   "evidence": "Palace Enchantment.md:108-109, 'The enchanted agent does not remember being enchanted'",
+   "kind": "flag",
+   "spark": 4
+  },
+  {
+   "source": "Concierge",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "label": "reads-its-profile",
+   "rationale": "Agent Toolbox documents concretely that the Concierge is dispatched via its palace-writer profile ('Concierge wiring \u2014 done 2026-07-08... spawn the resident as palace-writer, not general-purpose'). Concierge is a newcomer-adjacent citizen (0 inbound) that already enables Concierge in its own frontmatter but has no return link.",
+   "evidence": "Agent Toolbox.md:66, 'the concierge skill... now spawn the resident as palace-writer'",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "Agent Wellbeing",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "label": "token-baseline-measured",
+   "rationale": "Agent Toolbox's own text cites a specific Agent Wellbeing proof for its token-baseline claim (a palace-reader profile runs ~43% lighter). Agent Toolbox already connects-to Agent Wellbeing one-way; this reciprocates a genuine shared measurement, not a forced link.",
+   "evidence": "Agent Toolbox.md:33, 'Measured 2026-07-08 ([[Agent Wellbeing \u2014 proof \u2014 sensor-b-characterization]]...)'",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "Palace Enchantment",
+   "target": "Gemma 4 \u2014 Local Coordination Guide",
+   "type": "connects-to",
+   "label": "register-test",
+   "rationale": "Gemma 4 already links Palace Enchantment ('contraindicated') based on a real test battery showing Gemma models fail the enchantment register (academic formalism vs. inhabiting a page's voice). Palace Enchantment's pre-flight MODEL section ('do not default any enchantment to Haiku... reserve for throwaway passes') is the exact design decision this test result informs, but Palace Enchantment has zero inbound awareness of the test that grounds it.",
+   "evidence": "Gemma 4 \u2014 Local Coordination Guide.md:115, 'Gemma is not suitable for enchantment at this time. The register failure is load-bearing'",
+   "kind": "new",
+   "spark": 3
+  }
+ ],
+ "bridge_findings": [
+  {
+   "tool": "Agent Toolbox",
+   "thought": "A least-privilege tool roster for palace workers",
+   "shared_structure": "Both Agent Toolbox and Palace Enchantment's pre-flight TOOL PERMISSIONS block solve the same problem \u2014 scope what an agent can touch before it wakes \u2014 in different vocabularies (profiles vs. dialogue config)",
+   "spark": 3,
+   "classify": "link"
+  },
+  {
+   "tool": "Gemma 4 \u2014 Local Coordination Guide",
+   "thought": "A model-viability test report",
+   "shared_structure": "Both Gemma 4 and Palace Enchantment's Stage findings sections are empirical write-ups of what makes an enchanted voice fail or succeed \u2014 Gemma 4 is the negative case study Palace Enchantment's design rules (never default to Haiku, register fidelity) were built to avoid",
+   "spark": 3,
+   "classify": "link"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Creative Coach",
+   "target": "Lateral Access",
+   "type": "link",
+   "phrase": "[[Identity Molting]], [[Lateral Access]] \u00a7 The New Song, and here \u2014 and none of the three cite each other",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Claude CLI Reference",
+   "stage_current": "composting",
+   "stage_proposed": "composting (confirm)",
+   "vector_issue": "no forward_vector field; born 2026-03, last_activated 2026-03, hook_quality 5, beauty 4 \u2014 self-consistent with the composting stage it already carries",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Curriculum Map",
+   "stage_current": "sprout",
+   "stage_proposed": "",
+   "vector_issue": "no forward_vector field at all \u2014 entry is a working scaffolding table (project dependencies for Loudon Live curriculum), not a self-describing idea",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Palace Graffiti",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "vector_issue": "no forward_vector field, though the body content (concept, not data) is genuinely idea-bearing \u2014 a candidate to write one, not to demote",
+   "graffiti_note": ""
+  }
+ ],
+ "flag_responses": [
+  {
+   "flag": "commons-the-palace-1790128920547",
+   "verdict": "confirm",
+   "proposed_change": "Add Lateral Access \u2192 Creative Coach and Creative Coach \u2192 Lateral Access (both connects-to, label narrative-therapy-triad). Identity Molting already cites both of the other two \u2014 the missing edge was only Lateral Access \u2194 Creative Coach. Once added, edit Creative Coach.md:203 ('none of the three cite each other') to reflect that the triad now does \u2014 it is worth noting this line was already partially false before this weave, since Identity Molting and Creative Coach already cross-cite."
+  },
+  {
+   "flag": "e4538455-cbd6-481c-9255-af7ba0aeacf6",
+   "verdict": "confirm",
+   "proposed_change": "Add Palace Enchantment \u2192 The Remembering Page (couples-with, label episodic-memory-for-enchantment). The Remembering Page's own frontmatter should carry the reciprocal \u2014 it does not currently list Palace Enchantment among its links despite being the direct answer to Palace Enchantment's 'the agent does not remember being enchanted' gap."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "kind": "stale-claim",
+   "issue": "Creative Coach.md:203 states 'none of the three cite each other' about the narrative-therapy trio (Identity Molting, Lateral Access, Creative Coach) \u2014 but Identity Molting already links both Creative Coach and Lateral Access in its own frontmatter. The claim was already partly false before this weave, and becomes fully false once the flagged Lateral Access \u2194 Creative Coach link is added.",
+   "entries": [
+    "Creative Coach.md:203",
+    "Identity Molting.md:16-30"
+   ],
+   "proposed_action": "Edit the sentence to something like 'the palace held this three times under three names, only loosely cross-cited' or remove the claim once all three edges exist."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Palace Enchantment",
+   "question": "Palace Conatus as a dedicated entry: 'A dedicated entry \u2014 [[Palace Conatus]] or an expansion of [[SUBSTRATE]] \u2014 should develop this further...'",
+   "verdict": "resolved",
+   "by_entry": "Palace Conatus",
+   "proposed_action": "Strike or mark resolved the Forward Vectors bullet in Palace Enchantment.md (~line 1051-1059) \u2014 Palace Conatus already exists, already links back to Palace Enchantment (emerged-from, label forward-vectors-seed), and already develops alignment/disharmony/self-correction in full operational detail. The open question in Palace Enchantment is now stale, not open."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [
+  {
+   "entry": "Claude CLI Reference",
+   "rationale": "Already self-marked stage: composting. Low hook_quality (5) and beauty (4), 1 inbound, last activated 2026-03 (CLI syntax this old is likely stale). It is a practitioner cheat sheet, not an idea \u2014 confirming Loudon's own prior staging rather than proposing something new.",
+   "nutrients_to": [
+    "SUBSTRATE",
+    "Palace Ceremonies"
+   ]
+  }
+ ],
+ "demote_candidates": [
+  {
+   "file": "_ops/Map Log.md",
+   "disposition": "demote-to-bundle",
+   "rationale": "Pure append-only data table (date/scope/node/edge/ghost counts per Map Build run) \u2014 no prose, no idea, explicitly self-described as 'the append-only record.' This is exactly the class of file the palace's own 2026-07-04 bundle-hygiene sweep demoted (per its own row: '~49 working-docs demoted to \u00a78 bundle files'). It belongs as a companion data file to Map Build Ceremony, not a citizen entry."
+  },
+  {
+   "file": "Projects/Curriculum Map.md",
+   "disposition": "demote-to-bundle",
+   "rationale": "An operational scaffolding tracker read by the project-stage-builder skill ('Updated whenever a project is staged. Read by the project-stage-builder skill during Phase 1 audit') \u2014 working substrate serving a build pipeline, not a concept entry. No forward_vector; the body is a maintained table."
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Agent Toolbox",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Concierge and Agent Wellbeing both already have documented, concrete reasons to point back at it (spawn profile, measured token baseline)."
+  },
+  {
+   "target": "Gemma 4 \u2014 Local Coordination Guide",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Palace Enchantment wired back; the entry already had outbound links to Palace Enchantment and Enchanted Worker with real citations, so it was under-reached rather than genuinely unconnected."
+  },
+  {
+   "target": "The Remembering Page",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Not a room member, but directly named by a room flag on Palace Enchantment \u2014 wiring resolves the flag and lifts this newcomer's inbound count."
+  }
+ ],
+ "synthesis_spawn_flag": []
+}

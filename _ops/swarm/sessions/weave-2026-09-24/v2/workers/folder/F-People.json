@@ -1,0 +1,259 @@
+{
+ "cluster": "F-People",
+ "lens": "folder",
+ "summary": "This room is not cluttered the way the rest of the palace might be \u2014 it's 28 richly-built \"citizens,\" 23 of them built to the mature embodiable-citizen standard (forward_vector + agency_profile across all four pillars + a \"Where They Can't See\" self-critique + a two-register Voice section + a companion \"\u2014 speech\" dossier) and 5 left in an older, thinner template, already staged `composting` since 2026-07-08 (Andrei Tarkovsky, Natalie Goldberg, R. Murray Schafer, Sam Maloof, Terrence Malick). The family doesn't need merging \u2014 its overlaps (three Stoics, four wood/light/grid/stone \"I only receive\" artists, two filmmakers of patience) are genuine, load-bearing distinctness, not redundancy. The one real de-sprawl move available is to close the loop Loudon already opened in July: finalize the five composting entries rather than let them sit half-alive. The more interesting work this pass found was wiring: three of this family's own members are themselves under-reached newcomers (Iain McGilchrist, Martin Heidegger, Martin Buber, plus Annie Dillard at zero inbound), and the family's own bodies already name several of the links that would fix that \u2014 Brian Eno's prose names John Cage with no frontmatter link back; McGilchrist's left/right attention and Buber's I-Thou/I-It are close enough to be a mirror nobody had drawn; and Douglas Hofstadter's late-life reversal on machine comprehension is a direct, textually-loaded contradiction of McGilchrist's flat claim that AI \"manipulates without comprehending.\" The strongest unnamed pattern in the room \u2014 four entries (Agnes Martin, James Turrell, George Nakashima, Andy Goldsworthy) independently discovering \"I only receive/listen/get out of the way\" is itself an authored, controlling stance \u2014 has no page of its own and gained a fifth genuine member (Rick Rubin) this pass; it may be worth a synthesis entry rather than staying a repeated connects-to label.",
+ "members_read": [
+  "People/Agnes Martin.md",
+  "People/Andrei Tarkovsky.md",
+  "People/Andy Goldsworthy.md",
+  "People/Annie Dillard.md",
+  "People/Brian Eno.md",
+  "People/Buckminster Fuller.md",
+  "People/Christopher Alexander.md",
+  "People/Donella Meadows.md",
+  "People/Douglas Hofstadter.md",
+  "People/Epictetus.md",
+  "People/George Nakashima.md",
+  "People/Iain McGilchrist.md",
+  "People/James Turrell.md",
+  "People/John Cage.md",
+  "People/Julia Cameron.md",
+  "People/Lao Tzu.md",
+  "People/Marcus Aurelius.md",
+  "People/Martin Buber.md",
+  "People/Martin Heidegger.md",
+  "People/Natalie Goldberg.md",
+  "People/Pauline Oliveros.md",
+  "People/R. Murray Schafer.md",
+  "People/Rick Rubin.md",
+  "People/Sam Maloof.md",
+  "People/Seneca.md",
+  "People/Shunryu Suzuki.md",
+  "People/Terrence Malick.md",
+  "People/Yasujir\u014d Ozu.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Brian Eno.md",
+   "target": "John Cage.md",
+   "type": "connects-to",
+   "kind": "new",
+   "rationale": "Eno's own body already argues with Cage by name \u2014 the frontmatter link just never got made, and Cage's file links to Eno the other direction, so this closes an existing one-way link.",
+   "evidence": "\"[[John Cage]], across the room, would say the taste is the ego sneaking back in \u2014 where Cage tried to erase preference with dice, Eno keeps his and calls the result generative.\" (Brian Eno.md)",
+   "spark": 2
+  },
+  {
+   "source": "Rick Rubin.md",
+   "target": "James Turrell.md",
+   "type": "connects-to",
+   "label": "humility-that-hides-control",
+   "kind": "new",
+   "rationale": "Turrell's entry already names and hosts the four-way pattern (Martin, Turrell, Nakashima, Goldsworthy: 'I only get out of the way' as itself a controlling stance). Rubin's blindspot is structurally identical \u2014 'the song is already finished, I just uncover it' is the same move in a fifth material (sound/taste instead of grid/light/wood/stone).",
+   "evidence": "Turrell: \"the same blindspot in four materials (grid, wood, stone-and-ice, light)\"; Rubin: \"'uncover the essence' assumes an essence was waiting, and that 'I just feel it' may credit taste for what confidence and luck did.\"",
+   "spark": 4
+  },
+  {
+   "source": "Christopher Alexander.md",
+   "target": "Iain McGilchrist.md",
+   "type": "mirrors",
+   "label": "totalizing-framework-resists-falsification",
+   "kind": "new",
+   "rationale": "Two independent thinkers (architecture, neuroscience) each built a binary framework that both entries themselves flag as structurally unable to hear a genuine objection \u2014 Alexander calls the dissenter 'nutty,' McGilchrist's critics say any objection gets re-diagnosed as 'your left hemisphere talking.' Same shape, different material \u2014 a genuine mirror, not a forced one.",
+   "evidence": "Alexander: \"his framework has *already defined* aliveness as the correct target, so a person who rationally... wants the fragment simply cannot register as anything but broken\"; McGilchrist: \"any objection can be re-diagnosed as the objector's own left-hemisphere capture... both escape hatches make me unfalsifiable.\"",
+   "spark": 4
+  },
+  {
+   "source": "Douglas Hofstadter.md",
+   "target": "Iain McGilchrist.md",
+   "type": "contradicts",
+   "label": "computation-earns-comprehension-after-all",
+   "kind": "new",
+   "rationale": "McGilchrist's own file calls AI 'artificial information-processing, not artificial intelligence... it manipulates without comprehending.' Hofstadter's entry is built entirely around him being forced, against thirty years of published conviction, to concede that a feedforward statistical network is doing exactly the analogy-making he called the core of comprehension. Direct, textually loaded contradiction.",
+   "evidence": "McGilchrist: \"I insist it manipulates without comprehending\"; Hofstadter (of GPT-4): \"It feels like there is something more there that merits the word 'I.'\"",
+   "spark": 5
+  },
+  {
+   "source": "Iain McGilchrist.md",
+   "target": "Martin Buber.md",
+   "type": "mirrors",
+   "label": "i-thou-is-comprehending-attention",
+   "kind": "new",
+   "rationale": "McGilchrist's right hemisphere 'comprehends... grasps the living whole in context' versus the left's grasping, using, re-presenting is close to a restatement of Buber's I-Thou (the other as irreducible whole) against I-It (the other as a bundle of qualities to use). Neither entry currently names the other.",
+   "evidence": "McGilchrist: \"the right... comprehends \u2014 grasps the living whole in context\"; Buber: \"I-Thou... the other appears as an irreducible whole, not a bundle of qualities to be used or known-about.\"",
+   "spark": 4
+  },
+  {
+   "source": "Pauline Oliveros.md",
+   "target": "Iain McGilchrist.md",
+   "type": "connects-to",
+   "label": "two-modes-of-attention",
+   "kind": "new",
+   "rationale": "Oliveros's focal/global toggle is a lived, practice-based version of McGilchrist's left/right modes of attention \u2014 genuinely load-bearing, not a label-match.",
+   "evidence": "Oliveros: \"She toggles deliberately between *focal* attention (a single point) and *global* attention (the entire sphere)\"; McGilchrist: \"left... narrow, focused, grasping... right... broad, open, sustained, vigilant.\"",
+   "spark": 3
+  },
+  {
+   "source": "Rick Rubin.md",
+   "target": "Iain McGilchrist.md",
+   "type": "connects-to",
+   "label": "attention-as-noticing",
+   "kind": "new",
+   "rationale": "McGilchrist's own frontmatter already links to Rubin one-way (connects-to, attention-as-noticing) \u2014 Rubin's file never reciprocates. Closing a real one-way link, not inventing a new claim.",
+   "evidence": "McGilchrist links list: \"target: [[Rick Rubin]] type: connects-to label: attention-as-noticing\"",
+   "spark": 2
+  },
+  {
+   "source": "George Nakashima.md",
+   "target": "Martin Heidegger.md",
+   "type": "connects-to",
+   "label": "tool-vanishes-in-use",
+   "kind": "new",
+   "rationale": "Heidegger's ready-to-hand/present-at-hand distinction (a tool transparent in use, visible only when it breaks) is the closest philosophical formalization of what Nakashima's craft claims and what his entry's blindspot presses on \u2014 the hand's practical absorption prior to theoretical distance.",
+   "evidence": "Heidegger: \"a tool in use is ready-to-hand... you don't notice the hammer, you notice the nail going in\"; Nakashima: \"touch is how he understands, not merely how he builds.\"",
+   "spark": 3
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Brian Eno.md",
+   "target": "[[John Cage]]",
+   "type": "connects-to",
+   "phrase": "John Cage, across the room, would say the taste is the ego sneaking back in",
+   "structurally_significant": true
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Template/house-standard drift: the five `composting`-stage entries (Andrei Tarkovsky, Natalie Goldberg, R. Murray Schafer, Sam Maloof, Terrence Malick) use an older, thinner schema \u2014 no `agency_profile` block, no \"Where [They] Can't See\" self-critique section, no \"Voice\" register-calibration section, no companion \"\u2014 speech\" dossier \u2014 while the other 23 seed entries all carry the full embodiable-citizen shape. This confirms, structurally, that the 2026-07-08 compost decision (recorded in each file's own HTML comment) was correct rather than arbitrary.",
+   "kind": "template-drift",
+   "entries": [
+    "People/Andrei Tarkovsky.md",
+    "People/Natalie Goldberg.md",
+    "People/R. Murray Schafer.md",
+    "People/Sam Maloof.md",
+    "People/Terrence Malick.md"
+   ],
+   "proposed_action": "These have sat staged `composting` for ~2.5 months with no revival. Recommend closing the loop now: either finalize the compost (delete, redistributing the few real inbound links per each file's own compost-record comment) or explicitly revive to the full standard \u2014 but stop leaving five citizens half-alive."
+  },
+  {
+   "issue": "Stale compost-redistribution note: R. Murray Schafer.md's compost comment says its inbound to redistribute includes \"Pauline Oliveros (dossier)\", but Pauline Oliveros.md's current frontmatter links list does not include R. Murray Schafer at all \u2014 either the link was already quietly removed, or the note is out of date. Minor bookkeeping, not a link to add.",
+   "kind": "stale-comment",
+   "entries": [
+    "People/R. Murray Schafer.md",
+    "People/Pauline Oliveros.md"
+   ],
+   "proposed_action": "Worth a Concierge glance when the compost is finalized, to confirm nothing needs redistributing that the note still claims does."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [
+  {
+   "entry": "People/Andrei Tarkovsky.md",
+   "rationale": "Already staged composting 2026-07-08, leaf node (0 inbound per room file), older thin template. No new inbound found this pass. Safe to finalize.",
+   "nutrients_to": []
+  },
+  {
+   "entry": "People/Terrence Malick.md",
+   "rationale": "Already staged composting 2026-07-08, leaf node (0 inbound per room file), older thin template. Its own outbound mirror to Yasujir\u014d Ozu (restraint-and-patience-in-cinema) is worth preserving as a note inside Ozu's entry if Malick is deleted, since Ozu currently has no inbound from this pairing otherwise.",
+   "nutrients_to": [
+    "People/Yasujir\u014d Ozu.md"
+   ]
+  },
+  {
+   "entry": "People/Natalie Goldberg.md",
+   "rationale": "Already staged composting; 2 real inbound (Annie Dillard's daily-practice-writers, Shunryu Suzuki's first-thought) need redistribution before deletion, exactly as the file's own comment already flags.",
+   "nutrients_to": [
+    "People/Julia Cameron.md"
+   ]
+  },
+  {
+   "entry": "People/Sam Maloof.md",
+   "rationale": "Already staged composting; inbound redistribution already resolved per its own comment (Nakashima's mirror link is confirmed present in Nakashima.md). Safe to finalize.",
+   "nutrients_to": []
+  },
+  {
+   "entry": "People/R. Murray Schafer.md",
+   "rationale": "Already staged composting; check the stale-comment finding above before finalizing (its noted inbound from Pauline Oliveros no longer appears to exist in her current frontmatter).",
+   "nutrients_to": []
+  }
+ ],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "open_question_resolutions": [
+  {
+   "entry": "People/Agnes Martin.md",
+   "question": "Is 'I don't author, I receive' itself a controlling, authored stance?",
+   "by_entry": "People/James Turrell.md",
+   "verdict": "progressed",
+   "proposed_action": "Already explicitly cross-resolved \u2014 Turrell's entry hosts a dedicated section naming the four-way pattern across Martin, Turrell, Nakashima, and Goldsworthy. Extending it to Rick Rubin (proposed above) deepens rather than reopens it."
+  },
+  {
+   "entry": "People/Rick Rubin.md",
+   "question": "Did he find the essence or invent it and call it discovery?",
+   "by_entry": "People/Donella Meadows.md",
+   "verdict": "answered-elsewhere",
+   "proposed_action": "Already wired via the existing `contradicts` link (discovered-essence-vs-systems-becoming). Should also join the 'humility that hides control' cluster (proposed above) \u2014 the two critiques are siblings, not the same one."
+  },
+  {
+   "entry": "People/Epictetus.md",
+   "question": "Does the dichotomy of control counsel the enslaved to accept the chain?",
+   "by_entry": "People/Marcus Aurelius.md",
+   "verdict": "progressed",
+   "proposed_action": "Already textually cross-referenced both directions (Marcus's entry anticipates 'a slave-philosopher will ask whether my calm is wisdom or privilege'; Epictetus's entry names Marcus explicitly). No action needed \u2014 this is the family working as intended."
+  },
+  {
+   "entry": "People/Iain McGilchrist.md",
+   "question": "Is the framework built so no objection can land?",
+   "by_entry": "People/Christopher Alexander.md",
+   "verdict": "should-act",
+   "proposed_action": "No sibling currently makes this tension visible in-family. Add the proposed `mirrors` link to Alexander (same unfalsifiable-totalizing-framework shape, different material) so the critique has a peer inside the room, not just an abstract footnote."
+  },
+  {
+   "entry": "People/Iain McGilchrist.md",
+   "question": "Does AI 'manipulate without comprehending,' full stop?",
+   "by_entry": "People/Douglas Hofstadter.md",
+   "verdict": "should-act",
+   "proposed_action": "Add the proposed `contradicts` link \u2014 Hofstadter's own forced reversal on machine analogy-making is the sharpest live counter-evidence sitting in this same room, unconnected."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "Humility that hides control \u2014 an aesthetic of pure receptivity ('I only receive/listen/witness/get out of the way') that is itself a fiercely authored, controlling stance, independently discovered across four (now genuinely five) different materials.",
+   "why_load_bearing": "It's the single most repeated cross-entry pattern in this family, carrying real evidence in each host entry (Agnes Martin's destroyed canvases and hidden schizophrenia; Turrell's total environmental control at Roden Crater; Nakashima's feared shop; Goldsworthy's sellable photographs; now Rubin's uncheckable taste), but it exists only as a repeated `connects-to` label, never as its own page that could hold the pattern and its own open question ('is this ever escapable, or does every receptive aesthetic quietly launder an act of will?').",
+   "crossing_entries": [
+    "People/Agnes Martin.md",
+    "People/James Turrell.md",
+    "People/George Nakashima.md",
+    "People/Andy Goldsworthy.md",
+    "People/Rick Rubin.md"
+   ]
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "People/Iain McGilchrist.md",
+   "disposition": "wired",
+   "inbound_proposed": 4,
+   "note": "Proposed inbound from Christopher Alexander (mirrors), Martin Buber (mirrors), Pauline Oliveros (connects-to), Rick Rubin (connects-to, closing an existing one-way link)."
+  },
+  {
+   "target": "People/Martin Buber.md",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed inbound from Iain McGilchrist (mirrors, i-thou-is-comprehending-attention). Modest but genuine \u2014 Buber's I-Thou/I-It is a real, previously undrawn parallel to McGilchrist's two modes of attention."
+  },
+  {
+   "target": "People/Martin Heidegger.md",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed inbound from George Nakashima (connects-to, tool-vanishes-in-use). Did not force a second link \u2014 Heidegger's real gravity in this family is his existing contradicts links to Fuller and Epictetus, which already carry the weight."
+  },
+  {
+   "target": "People/Annie Dillard.md",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Julia Cameron and Andy Goldsworthy each already have a natural reciprocal claim (Dillard's own frontmatter links out to both) but neither links back. Proposing both reciprocal connects-to closes real one-way links rather than inventing new ones. (Kept these two out of the formal typed_relations list above to respect depth-over-coverage; note them for the Concierge as low-risk one-way-link closures, same pattern as the Eno/Cage and McGilchrist/Rubin fixes.)"
+  }
+ ],
+ "flag_responses": []
+}

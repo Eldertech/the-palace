@@ -1,0 +1,659 @@
+[
+ {
+  "source": "Douglas Hofstadter",
+  "type_v2": "mirrors",
+  "target": "Exponential Decay Curvature",
+  "type_v1": "mirrors",
+  "rooms_v1": "B5",
+  "rooms_v2": "B5",
+  "spark": 5
+ },
+ {
+  "source": "Quadratic Interpolation in DSP",
+  "type_v2": "mirrors",
+  "target": "Reflective Practice",
+  "type_v1": "mirrors",
+  "rooms_v1": "B2",
+  "rooms_v2": "B2",
+  "spark": 5
+ },
+ {
+  "source": "Iain McGilchrist",
+  "type_v2": "mirrors",
+  "target": "OBS",
+  "type_v1": "exemplifies",
+  "rooms_v1": "B8",
+  "rooms_v2": "B8",
+  "spark": 5
+ },
+ {
+  "source": "Donella Meadows",
+  "type_v2": "mirrors",
+  "target": "LoRA Trainer",
+  "type_v1": "exemplifies",
+  "rooms_v1": "B4",
+  "rooms_v2": "B4",
+  "spark": 5
+ },
+ {
+  "source": "Dispersion Table",
+  "type_v2": "mirrors",
+  "target": "Spinoza",
+  "type_v1": "mirrors",
+  "rooms_v1": "B4",
+  "rooms_v2": "B4",
+  "spark": 5
+ },
+ {
+  "source": "Agnes Martin",
+  "type_v2": "mirrors",
+  "target": "Move the Ink, Don't Redraw It",
+  "type_v1": "mirrors",
+  "rooms_v1": "B7",
+  "rooms_v2": "B7",
+  "spark": 5
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "type_v2": "contradicts",
+  "target": "Iain McGilchrist",
+  "type_v1": "contradicts",
+  "rooms_v1": "F-People",
+  "rooms_v2": "F-People",
+  "spark": 5
+ },
+ {
+  "source": "Agent Wellbeing",
+  "type_v2": "mirrors",
+  "target": "LaMa",
+  "type_v1": "mirrors",
+  "rooms_v1": "B2",
+  "rooms_v2": "B2",
+  "spark": 5
+ },
+ {
+  "source": "Iain McGilchrist",
+  "type_v2": "mirrors",
+  "target": "Martin Buber",
+  "type_v1": "mirrors",
+  "rooms_v1": "F-People",
+  "rooms_v2": "F-People",
+  "spark": 4
+ },
+ {
+  "source": "Web Audio Worklet",
+  "type_v2": "connects-to",
+  "target": "Zoom Out to the Structure",
+  "type_v1": "exemplifies",
+  "rooms_v1": "B6",
+  "rooms_v2": "B6",
+  "spark": 4
+ },
+ {
+  "source": "Martin Heidegger",
+  "type_v2": "mirrors",
+  "target": "The Substrate Drifts",
+  "type_v1": "mirrors",
+  "rooms_v1": "B10",
+  "rooms_v2": "B10",
+  "spark": 4
+ },
+ {
+  "source": "Palace Philosophies",
+  "type_v2": "connects-to",
+  "target": "Synth Archetypes",
+  "type_v1": "exemplifies",
+  "rooms_v1": "B2",
+  "rooms_v2": "B2",
+  "spark": 4
+ },
+ {
+  "source": "James Turrell",
+  "type_v2": "connects-to",
+  "target": "Rick Rubin",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-People",
+  "rooms_v2": "F-People",
+  "spark": 4
+ },
+ {
+  "source": "Does Personifying an Agent Change What It Does",
+  "type_v2": "mirrors",
+  "target": "The Multilinear Self",
+  "type_v1": "mirrors",
+  "rooms_v1": "C3.2",
+  "rooms_v2": "C3.2",
+  "spark": 4
+ },
+ {
+  "source": "Christopher Alexander",
+  "type_v2": "mirrors",
+  "target": "Registry Pattern",
+  "type_v1": "connects-to",
+  "rooms_v1": "C4.1",
+  "rooms_v2": "C4.1",
+  "spark": 4
+ },
+ {
+  "source": "Buckminster Fuller",
+  "type_v2": "connects-to",
+  "target": "Image-to-3D Smith",
+  "type_v1": "mirrors",
+  "rooms_v1": "B1",
+  "rooms_v2": "B1",
+  "spark": 4
+ },
+ {
+  "source": "Merleau-Ponty",
+  "type_v2": "mirrors",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type_v1": "mirrors",
+  "rooms_v1": "B1",
+  "rooms_v2": "B1",
+  "spark": 4
+ },
+ {
+  "source": "Animate the Background",
+  "type_v2": "mirrors",
+  "target": "Dub Lineage",
+  "type_v1": "mirrors",
+  "rooms_v1": "B1",
+  "rooms_v2": "B1",
+  "spark": 4
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "type_v2": "mirrors",
+  "target": "Manim CE",
+  "type_v1": "mirrors",
+  "rooms_v1": "B5",
+  "rooms_v2": "B5",
+  "spark": 4
+ },
+ {
+  "source": "Christopher Alexander",
+  "type_v2": "mirrors",
+  "target": "Synth Archetypes",
+  "type_v1": "mirrors",
+  "rooms_v1": "B2",
+  "rooms_v2": "B2",
+  "spark": 4
+ },
+ {
+  "source": "Frequency-Time Explorer",
+  "type_v2": "mirrors",
+  "target": "Leibniz",
+  "type_v1": "mirrors",
+  "rooms_v1": "B6",
+  "rooms_v2": "B6",
+  "spark": 4
+ },
+ {
+  "source": "Infeasible DSP Now Shippable",
+  "type_v2": "connects-to",
+  "target": "control-vocabulary-math",
+  "type_v1": "connects-to",
+  "rooms_v1": "C1.3",
+  "rooms_v2": "C1.3",
+  "spark": 4
+ },
+ {
+  "source": "Christopher Alexander",
+  "type_v2": "mirrors",
+  "target": "Iain McGilchrist",
+  "type_v1": "mirrors",
+  "rooms_v1": "F-People",
+  "rooms_v2": "C4.1/F-People",
+  "spark": 4
+ },
+ {
+  "source": "Annie Dillard",
+  "type_v2": "connects-to",
+  "target": "James Turrell",
+  "type_v1": "connects-to",
+  "rooms_v1": "C4.2/L8",
+  "rooms_v2": "C4.2",
+  "spark": 4
+ },
+ {
+  "source": "Depth Anything",
+  "type_v2": "exemplifies",
+  "target": "Found \u2194 Made",
+  "type_v1": "exemplifies",
+  "rooms_v1": "B6",
+  "rooms_v2": "B6",
+  "spark": 4
+ },
+ {
+  "source": "Palace Enchantment",
+  "type_v2": "enables",
+  "target": "The Remembering Page",
+  "type_v1": "couples-with",
+  "rooms_v1": "C2.1",
+  "rooms_v2": "L4",
+  "spark": 4
+ },
+ {
+  "source": "The Remembering Page",
+  "type_v2": "enables",
+  "target": "Palace Enchantment",
+  "type_v1": "couples-with",
+  "rooms_v1": "C2.1",
+  "rooms_v2": "L4",
+  "spark": 4
+ },
+ {
+  "source": "FLUX (Hugging Face)",
+  "type_v2": "mirrors",
+  "target": "Saturation \u2194 Richness",
+  "type_v1": "mirrors",
+  "rooms_v1": "B7",
+  "rooms_v2": "B7",
+  "spark": 4
+ },
+ {
+  "source": "Buckminster Fuller",
+  "type_v2": "mirrors",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type_v1": "mirrors",
+  "rooms_v1": "B1",
+  "rooms_v2": "B1",
+  "spark": 4
+ },
+ {
+  "source": "Dialogue Moderator",
+  "type_v2": "connects-to",
+  "target": "Making a Palace Citizen",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-Palace_development",
+  "rooms_v2": "F-Palace_development",
+  "spark": 3
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "type_v2": "mirrors",
+  "target": "Crystal Synthesizer",
+  "type_v1": "mirrors",
+  "rooms_v1": "F-Projects",
+  "rooms_v2": "F-Projects",
+  "spark": 3
+ },
+ {
+  "source": "CLAUDE",
+  "type_v2": "enables",
+  "target": "Return Ceremony",
+  "type_v1": "connects-to",
+  "rooms_v1": "C5.2+C7+C8",
+  "rooms_v2": "L3",
+  "spark": 3
+ },
+ {
+  "source": "Andrei Tarkovsky",
+  "type_v2": "mirrors",
+  "target": "Terrence Malick",
+  "type_v1": "mirrors",
+  "rooms_v1": "C4.2",
+  "rooms_v2": "C4.2",
+  "spark": 3
+ },
+ {
+  "source": "Dialectic",
+  "type_v2": "connects-to",
+  "target": "No Mind Checks Itself",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-small-families/L4",
+  "rooms_v2": "F-small-families",
+  "spark": 3
+ },
+ {
+  "source": "Lao Tzu",
+  "type_v2": "mirrors",
+  "target": "SAM",
+  "type_v1": "mirrors",
+  "rooms_v1": "B2",
+  "rooms_v2": "B2",
+  "spark": 3
+ },
+ {
+  "source": "Iain McGilchrist",
+  "type_v2": "connects-to",
+  "target": "Pauline Oliveros",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-People",
+  "rooms_v2": "F-People",
+  "spark": 3
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "type_v2": "connects-to",
+  "target": "Philosopher Visits the Entry",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-small-families",
+  "rooms_v2": "F-small-families",
+  "spark": 3
+ },
+ {
+  "source": "Differential Equations",
+  "type_v2": "connects-to",
+  "target": "control-vocabulary-math",
+  "type_v1": "connects-to",
+  "rooms_v1": "L8",
+  "rooms_v2": "L5",
+  "spark": 3
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "type_v2": "mirrors",
+  "target": "Oblique Portrait",
+  "type_v1": "mirrors",
+  "rooms_v1": "F-small-families",
+  "rooms_v2": "F-small-families",
+  "spark": 3
+ },
+ {
+  "source": "George Nakashima",
+  "type_v2": "connects-to",
+  "target": "Martin Heidegger",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-People",
+  "rooms_v2": "F-People",
+  "spark": 3
+ },
+ {
+  "source": "ELDER",
+  "type_v2": "connects-to",
+  "target": "Revival Ceremony",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-_ops",
+  "rooms_v2": "F-_ops",
+  "spark": 3
+ },
+ {
+  "source": "Reflective Practice",
+  "type_v2": "connects-to",
+  "target": "Weave Ceremony",
+  "type_v1": "exemplifies",
+  "rooms_v1": "C5.1",
+  "rooms_v2": "B2",
+  "spark": 3
+ },
+ {
+  "source": "Loudon Live Post-producer",
+  "type_v2": "connects-to",
+  "target": "OBS",
+  "type_v1": "connects-to",
+  "rooms_v1": "L2",
+  "rooms_v2": "L1",
+  "spark": 3
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "type_v2": "spawned",
+  "target": "Slime Mold Delay",
+  "type_v1": "spawned",
+  "rooms_v1": "F-Projects/L5",
+  "rooms_v2": "F-Projects",
+  "spark": 3
+ },
+ {
+  "source": "Project Stewardship System",
+  "type_v2": "exemplifies",
+  "target": "Skills Are Enchantable Pages",
+  "type_v1": "connects-to",
+  "rooms_v1": "L3",
+  "rooms_v2": "C2.2",
+  "spark": 2
+ },
+ {
+  "source": "Weaving Memory into the Palace",
+  "type_v2": "connects-to",
+  "target": "Worktree Practice",
+  "type_v1": "connects-to",
+  "rooms_v1": "B4/L7",
+  "rooms_v2": "B4/C5.1/L3",
+  "spark": 2
+ },
+ {
+  "source": "The Adjacent Affordance",
+  "type_v2": "connects-to",
+  "target": "Whitehead",
+  "type_v1": "connects-to",
+  "rooms_v1": "C6",
+  "rooms_v2": "C6",
+  "spark": 2
+ },
+ {
+  "source": "Image Embedding Standard",
+  "type_v2": "connects-to",
+  "target": "Technical Diagram Standard",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-_ops",
+  "rooms_v2": "F-_ops",
+  "spark": 2
+ },
+ {
+  "source": "Merleau-Ponty",
+  "type_v2": "connects-to",
+  "target": "The Adjacent Affordance",
+  "type_v1": "connects-to",
+  "rooms_v1": "C6",
+  "rooms_v2": "C6",
+  "spark": 2
+ },
+ {
+  "source": "Deleuze",
+  "type_v2": "connects-to",
+  "target": "The Adjacent Affordance",
+  "type_v1": "connects-to",
+  "rooms_v1": "C6",
+  "rooms_v2": "C6",
+  "spark": 2
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "type_v2": "connects-to",
+  "target": "Worktree Practice",
+  "type_v1": "connects-to",
+  "rooms_v1": "L8",
+  "rooms_v2": "B5",
+  "spark": 2
+ },
+ {
+  "source": "Dialectic",
+  "type_v2": "connects-to",
+  "target": "The Remembering Page",
+  "type_v1": "connects-to",
+  "rooms_v1": "C2.2",
+  "rooms_v2": "L4",
+  "spark": 2
+ },
+ {
+  "source": "Skills Are Enchantable Pages",
+  "type_v2": "connects-to",
+  "target": "Two Batons, One Board",
+  "type_v1": "connects-to",
+  "rooms_v1": "L3",
+  "rooms_v2": "C2.2",
+  "spark": 2
+ },
+ {
+  "source": "Deposit Ceremony",
+  "type_v2": "connects-to",
+  "target": "Technical Diagram Standard",
+  "type_v1": "connects-to",
+  "rooms_v1": "F-_ops",
+  "rooms_v2": "F-_ops",
+  "spark": 2
+ },
+ {
+  "source": "Pages as Agents",
+  "type_v2": "connects-to",
+  "target": "Self-Describing Knowledge Module",
+  "type_v1": "connects-to",
+  "rooms_v1": "C2.2",
+  "rooms_v2": "C2.2",
+  "spark": 2
+ },
+ {
+  "source": "Leibniz",
+  "type_v2": "connects-to",
+  "target": "The Adjacent Affordance",
+  "type_v1": "connects-to",
+  "rooms_v1": "C6",
+  "rooms_v2": "C6",
+  "spark": 2
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "type_v2": "spawned",
+  "target": "Blood Compressor",
+  "type_v1": "spawned",
+  "rooms_v1": "F-Projects",
+  "rooms_v2": "F-Projects",
+  "spark": 2
+ },
+ {
+  "source": "Frame Designer",
+  "type_v2": "connects-to",
+  "target": "assume multi-agent",
+  "type_v1": "connects-to",
+  "rooms_v1": "B9",
+  "rooms_v2": "C3.1",
+  "spark": 2
+ },
+ {
+  "source": "Agent Toolbox",
+  "type_v2": "connects-to",
+  "target": "ELDER",
+  "type_v1": "connects-to",
+  "rooms_v1": "C5.2+C7+C8",
+  "rooms_v2": "C5.2+C7+C8",
+  "spark": 2
+ },
+ {
+  "source": "Creative Coach",
+  "type_v2": "connects-to",
+  "target": "Lateral Access",
+  "type_v1": "connects-to",
+  "rooms_v1": "B3/C2.1",
+  "rooms_v2": "B3",
+  "spark": 2
+ },
+ {
+  "source": "Frame Designer",
+  "type_v2": "connects-to",
+  "target": "The Commons",
+  "type_v1": "connects-to",
+  "rooms_v1": "B9",
+  "rooms_v2": "C3.1",
+  "spark": 1
+ },
+ {
+  "source": "ComfyUI",
+  "type_v2": "connects-to",
+  "target": "Frame Designer",
+  "type_v1": "connects-to",
+  "rooms_v1": "B9",
+  "rooms_v2": "C3.1",
+  "spark": 1
+ },
+ {
+  "source": "Map Build Ceremony",
+  "type_v2": "spawned",
+  "target": "Map Log",
+  "type_v1": "spawned",
+  "rooms_v1": "F-_ops",
+  "rooms_v2": "F-_ops",
+  "spark": 1
+ },
+ {
+  "source": "Skills Are Enchantable Pages",
+  "type_v2": "exemplifies",
+  "target": "Project Stewardship System",
+  "type_v1": "connects-to",
+  "rooms_v1": "L3",
+  "rooms_v2": "C2.2",
+  "spark": 0
+ },
+ {
+  "source": "VCV Patch Generator",
+  "type_v2": "connects-to",
+  "target": "Web Audio Worklet",
+  "type_v1": "connects-to",
+  "rooms_v1": "B6",
+  "rooms_v2": "B6",
+  "spark": 0
+ },
+ {
+  "source": "LoRA Trainer",
+  "type_v2": "connects-to",
+  "target": "STIGMERGY",
+  "type_v1": "connects-to",
+  "rooms_v1": "B4",
+  "rooms_v2": "B4",
+  "spark": 0
+ },
+ {
+  "source": "Deleuze",
+  "type_v2": "connects-to",
+  "target": "Spinoza",
+  "type_v1": "connects-to",
+  "rooms_v1": "B4",
+  "rooms_v2": "B4",
+  "spark": 0
+ },
+ {
+  "source": "Agent Wellbeing",
+  "type_v2": "connects-to",
+  "target": "Closing Well",
+  "type_v1": "connects-to",
+  "rooms_v1": "B2",
+  "rooms_v2": "B2",
+  "spark": 0
+ },
+ {
+  "source": "Substrate Skill",
+  "type_v2": "connects-to",
+  "target": "Weaving Memory into the Palace",
+  "type_v1": "connects-to",
+  "rooms_v1": "B4",
+  "rooms_v2": "B4",
+  "spark": 0
+ },
+ {
+  "source": "Creative Coach",
+  "type_v2": "connects-to",
+  "target": "Oblique Portrait",
+  "type_v1": "connects-to",
+  "rooms_v1": "B3",
+  "rooms_v2": "B3",
+  "spark": 0
+ },
+ {
+  "source": "The Practice Rediscovers Its Philosophy",
+  "type_v2": "connects-to",
+  "target": "Trickster Commit",
+  "type_v1": "connects-to",
+  "rooms_v1": "L7",
+  "rooms_v2": "L2",
+  "spark": 0
+ },
+ {
+  "source": "Concierge",
+  "type_v2": "connects-to",
+  "target": "Reflective Practice",
+  "type_v1": "connects-to",
+  "rooms_v1": "B2",
+  "rooms_v2": "B2",
+  "spark": 0
+ },
+ {
+  "source": "Martin Heidegger",
+  "type_v2": "connects-to",
+  "target": "Metaphor as Coupling Medium",
+  "type_v1": "connects-to",
+  "rooms_v1": "B7",
+  "rooms_v2": "B7/C2.1",
+  "spark": 0
+ }
+]

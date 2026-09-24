@@ -1,0 +1,55 @@
+{
+ "arm": "Z",
+ "room": "C5.2+C7+C8",
+ "total_proposals": 5,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "ELDER",
+   "type": "connects-to",
+   "target": "Agent Toolbox",
+   "label": "tool-tiers",
+   "rationale": "ELDER's \u00a7 Age and its limits explains the palace-reader / palace-writer / palace-orchestrator tool tiers and cites Agent Toolbox as where they live, but ELDER carries no frontmatter link to it \u2014 and Agent Toolbox is the most under-reached entry in the new-entries block (0 inbound).",
+   "evidence": "\"an elder is `palace-writer`, and an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]]).\"",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "unsung",
+   "source": "ELDER",
+   "type": "connects-to",
+   "target": "Agent Toolbox",
+   "label": "tool-tiers",
+   "rationale": "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "relation",
+   "source": "Matplotlib",
+   "type": "connects-to",
+   "target": "Observable Plot",
+   "label": "wants-its-wrapper",
+   "rationale": "Matplotlib's forward_vector explicitly names Observable Plot's already-built house wrapper as the pattern it wants to copy, but the two entries share no link \u2014 Matplotlib links only to Plotly and Manim CE. This is the clearest case in the room of a relationship already stated in words and simply never wired.",
+   "evidence": "\"I want a palace.mplstyle house wrapper so my dated Layer-0 typography bridges to Loudon Live tokens the way Plot's wrapper already does.\"",
+   "item_id": "Z3"
+  },
+  {
+   "kind": "relation",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "Loudon Live Design System",
+   "label": "house-dress",
+   "rationale": "CLAUDE.md names the design manifest directly as a required read before any visual work, using its own phrase for it (\"house dress\"), but carries no frontmatter link \u2014 and every visual Specialist in this room threads back to that same manifest in its own body (\"Working within the Loudon Live design system\").",
+   "evidence": "\"before anything visual, read the design manifest, `_ops/loudon-live/design-system/SKILL.md` \u2014 the [[Loudon Live Design System]] is the house dress.\"",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "unsung",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "Loudon Live Design System",
+   "label": "house-dress",
+   "rationale": "the [[Loudon Live Design System]] is the house dress",
+   "item_id": "Z5"
+  }
+ ]
+}

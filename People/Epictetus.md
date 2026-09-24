@@ -48,6 +48,9 @@ links:
   - target: "[[Martin Buber]]"
     type: contradicts
     label: the-self-needs-the-Thou
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Epictetus

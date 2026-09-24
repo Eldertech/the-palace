@@ -1,0 +1,83 @@
+{
+ "arm": "Y",
+ "room": "C5.2+C7+C8",
+ "total_proposals": 9,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "target": "Making a Palace Citizen",
+   "label": "dossier-source",
+   "rationale": "SCHEMA \u2014 Reference cites Making a Palace Citizen twice (for the `dossier` and `speech` bundle-file types and for agency_profile's practice sub-field) but frontmatter carries neither link. Making a Palace Citizen is at 2 inbound.",
+   "evidence": "\"loaded when an agent must embody the person faithfully... One per made citizen. See [[Making a Palace Citizen]].\" \u2014 SCHEMA \u2014 Reference.md:230",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "unsung",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "The Palace Voice",
+   "label": null,
+   "rationale": "The full dial set is [[The Palace Voice]].",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "unsung",
+   "source": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "target": "Making a Palace Citizen",
+   "label": null,
+   "rationale": "One per made citizen. See [[Making a Palace Citizen]].",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "unsung",
+   "source": "ELDER",
+   "type": "connects-to",
+   "target": "Agent Toolbox",
+   "label": null,
+   "rationale": "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "ELDER",
+   "type": "connects-to",
+   "target": "Agent Toolbox",
+   "label": "tool-tiering",
+   "rationale": "ELDER.md already names Agent Toolbox in running prose when it explains the reader/writer/orchestrator tool tiers, but the link never made it to frontmatter. Agent Toolbox sits at 0 inbound \u2014 this is the cleanest possible fix.",
+   "evidence": "\"a child that makes things keeps the tools its workshop needs; an elder is `palace-writer`, and an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]]).\" \u2014 ELDER.md:47",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "Return Ceremony",
+   "label": "ceremony-trigger",
+   "rationale": "The ceremony trigger table names Return Ceremony directly, but the table's wikilinks never sync to frontmatter (true of the whole table, but Return Ceremony is the one on this Weave's priority list at 1 inbound).",
+   "evidence": "\"\\\"I'm back\\\", \\\"returning\\\", \\\"what did I miss\\\"... | [[Return Ceremony]] |\" \u2014 CLAUDE.md ceremony table",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "unsung",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "Return Ceremony",
+   "label": null,
+   "rationale": "ceremony trigger table row",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "relation",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "The Palace Voice",
+   "label": "dial-set",
+   "rationale": "CLAUDE.md's closing Palace Voice section explicitly hands off to the full entry, unlinked in frontmatter. The Palace Voice sits at 1 inbound.",
+   "evidence": "\"The full dial set is [[The Palace Voice]].\" \u2014 CLAUDE.md \u00a7 The Palace Voice",
+   "item_id": "Y8"
+  }
+ ]
+}

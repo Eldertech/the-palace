@@ -1,0 +1,303 @@
+{
+ "cluster": "L8",
+ "lens": "lifecycle",
+ "summary": "This room's five targets share one shape: each already reaches outward (every hop1 neighbour is a page the target itself links TO), but almost nothing reaches back. That's a structural, not random, gap \u2014 these are newcomers whose outbound links were written carefully at birth, but the older pages they point at were never revisited to reciprocate. The walk surfaced two flavors of fix. First, two of Worktree Practice's neighbours (Baton Ceremony, Deposit Ceremony) and two of its hop2 pages (Closing Well Ceremony, SCHEMA \u2014 Reference) already name \"the worktree practice\" or \"_ops/worktree/SKILL.md\" in their own prose but never link the entry \u2014 a clean unsung-path case, not a stretch. Second, for the three People entries (Annie Dillard, Buckminster Fuller, Iain McGilchrist), the richest finds were reciprocating the `contradicts` and `mirrors` links each page already declares outward but that never got mirrored back \u2014 Donella Meadows and Martin Heidegger both deserve to contradict Fuller by name, Kuramoto Coupling deserves to mirror him (synergetics genuinely is coupling, worded almost identically on both pages), and Cooperation Yields Agency deserves to contradict McGilchrist (the AI-comprehension tension is exactly the kind of productive fight CYA's hub position should host). One genuine hop2 gem: James Turrell and Annie Dillard share both an image (light as the medium of attention) and a blindspot (performed self-effacement that quietly hides authored control) already recognized for Turrell/Agnes Martin/Nakashima \u2014 Dillard belongs in that family. control-vocabulary-math, the one non-person target, was the cleanest case: it's a precise, evidenced worked-math document with no reader path in from any of the general hubs (Kuramoto Coupling, Differential Equations) or sibling concepts (Granular Synthesis, Action Potential Oscillator) it deepens. One proposal (Christopher Alexander \u2192 Fuller) is flagged contestable \u2014 a real resonance but not one either page names outright.",
+ "members_read": [
+  "Worktree Practice.md",
+  "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+  "People/Annie Dillard.md",
+  "People/Buckminster Fuller.md",
+  "People/Iain McGilchrist.md",
+  "_ops/Baton Ceremony.md",
+  "Closing Well.md",
+  "_ops/Deposit Ceremony.md",
+  "SCHEMA.md",
+  "STIGMERGY.md",
+  "The Dichotomy of Control.md",
+  "SCHEMA \u2014 Reference.md",
+  "_ops/Closing Well Ceremony.md",
+  "_ops/Palace Ceremonies.md (grep only)",
+  "_ops/Substrate Skill.md (grep only)",
+  "_ops/Harvest Ceremony.md (grep only)",
+  "Drift and Consolidation.md (grep only)",
+  "Kuramoto Coupling.md",
+  "Projects/Action Potential Oscillator.md",
+  "Projects/Neural Granular Synthesis.md",
+  "Differential Equations.md",
+  "DSP Frameworks.md",
+  "Granular Synthesis.md",
+  "People/Andy Goldsworthy.md",
+  "People/Julia Cameron.md",
+  "Merleau-Ponty.md",
+  "People/Natalie Goldberg.md",
+  "Quality Manifesto.md",
+  "People/James Turrell.md",
+  "People/Rick Rubin.md",
+  "People/Shunryu Suzuki.md",
+  "People/Donella Meadows.md",
+  "Leverage Points Framework.md",
+  "People/Martin Heidegger.md",
+  "FOUR PILLARS.md",
+  "Cooperation Yields Agency.md",
+  "People/Christopher Alexander.md",
+  "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+  "Lateral Access.md",
+  "People/Yasujir\u014d Ozu.md",
+  "_ops/swarm/sessions/weave-2026-09-24/rooms/lifecycle-L8.json",
+  "_ops/swarm/sessions/weave-2026-09-24/new-entries-block.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Baton Ceremony",
+   "target": "Worktree Practice",
+   "type": "connects-to",
+   "label": "carries-worktree-coordinate",
+   "kind": "inbound-walk",
+   "spark": 3,
+   "evidence": "For a cross-worktree baton, the payload also carries a worktree object naming where the move lives: \"worktree\": { \"branch\": \"feature/blueline\", ... }",
+   "rationale": "Baton Ceremony's own \u00a7Announcing the Baton documents the worktree coordinate convention that Worktree Practice defines; it currently only cites the SKILL.md path, not the palace entry."
+  },
+  {
+   "source": "Deposit Ceremony",
+   "target": "Worktree Practice",
+   "type": "connects-to",
+   "label": "canon-always-to-owner",
+   "kind": "inbound-walk",
+   "spark": 3,
+   "evidence": "The worktree practice (`_ops/worktree/SKILL.md`) does not change this; it makes it explicit.",
+   "rationale": "Deposit Ceremony names \"the worktree practice\" directly in prose (\u00a7 Where the Deposit Lands) with no frontmatter link to the entry it's naming."
+  },
+  {
+   "source": "Closing Well Ceremony",
+   "target": "Worktree Practice",
+   "type": "connects-to",
+   "label": "teardown-is-a-close",
+   "kind": "inbound-walk",
+   "spark": 2,
+   "evidence": "honoring the worktree rules (`_ops/worktree/SKILL.md`: canon to the owner/`main`; batons per worktree, announced on the owner board).",
+   "rationale": "Same unsung-path pattern one hop out: the ceremony's checklist cites the worktree rules without linking the entry that states them."
+  },
+  {
+   "source": "SCHEMA \u2014 Reference",
+   "target": "Worktree Practice",
+   "type": "connects-to",
+   "label": "one-write-path-per-worktree",
+   "kind": "inbound-walk",
+   "spark": 2,
+   "evidence": "every worktree appends there, never to a per-branch copy (`_ops/worktree/SKILL.md` \u00a7 Ceremonies in a worktree).",
+   "rationale": "\u00a79's coordination-schema note depends on the same worktree convention; a weaker, hop2-tier link but still a genuine one, not forced."
+  },
+  {
+   "source": "Kuramoto Coupling",
+   "target": "control-vocabulary-math",
+   "type": "connects-to",
+   "label": "order-parameter-worked-example",
+   "kind": "inbound-walk",
+   "spark": 3,
+   "evidence": "r is simultaneously a read-out ... and a term inside the dynamics (\u00a72) \u2014 the instrument's coherence is literally self-referential.",
+   "rationale": "Kuramoto Coupling is the hub for the order parameter r; this entry is the fullest worked instance of r as a control surface in the whole palace, and the hub doesn't point down to it yet (only to the parent project, via a spawned link)."
+  },
+  {
+   "source": "Action Potential Oscillator",
+   "target": "control-vocabulary-math",
+   "type": "enables",
+   "kind": "inbound-walk",
+   "spark": 2,
+   "evidence": "Neural Granular Synthesis does not own a DSP engine \u2014 the Action Potential Oscillator does ... This document formalizes the layer that sits on top of that engine.",
+   "rationale": "The engine is the acknowledged precondition for the math layer; control-vocabulary-math already declares emerged-from back to APO, but APO doesn't point forward."
+  },
+  {
+   "source": "Differential Equations",
+   "target": "control-vocabulary-math",
+   "type": "connects-to",
+   "label": "worked-ode-instance",
+   "kind": "inbound-walk",
+   "spark": 3,
+   "evidence": "d\u03b8\u1d62/dt = \u03c9\u1d62 + K r sin(\u03c8 \u2212 \u03b8\u1d62) \u2014 the feedback that makes synchrony self-reinforcing.",
+   "rationale": "This is exactly the kind of worked coupled-ODE instance the Differential Equations hub's forward_vector says it wants (\"a complete map showing which palace projects correspond to which DE types\") and doesn't have yet."
+  },
+  {
+   "source": "Granular Synthesis",
+   "target": "control-vocabulary-math",
+   "type": "connects-to",
+   "label": "population-control-math",
+   "kind": "inbound-walk",
+   "spark": 2,
+   "evidence": "Granular synthesis stacks grains until a timbre emerges from density. Neural Granular Synthesis stacks spiking neurons until a timbre emerges from agreement \u2014 and agreement ... has a number: r.",
+   "rationale": "Granular Synthesis already points to the parent project and to Kuramoto Coupling; this is the specific math document that makes its own forward_vector (\"population dynamics ... become primary synthesis paradigms\") concrete."
+  },
+  {
+   "source": "Iain McGilchrist",
+   "target": "Annie Dillard",
+   "type": "couples-with",
+   "label": "two-ways-of-seeing",
+   "kind": "inbound-walk",
+   "spark": 2,
+   "evidence": "Her two-ways-of-seeing map uncannily onto Iain McGilchrist's two modes of attention.",
+   "rationale": "Dillard's own page states this coupling outright; McGilchrist doesn't reciprocate it yet even though the two entries are essentially arguing the same distinction from different disciplines."
+  },
+  {
+   "source": "Andy Goldsworthy",
+   "target": "Annie Dillard",
+   "type": "connects-to",
+   "label": "disciplined-looking-at-nature",
+   "kind": "inbound-walk",
+   "spark": 1,
+   "evidence": "her patient looking at the non-human world is kin to Andy Goldsworthy's",
+   "rationale": "Reciprocal of Dillard's existing outbound link; both pages independently describe attention-to-material as a trained discipline."
+  },
+  {
+   "source": "Julia Cameron",
+   "target": "Annie Dillard",
+   "type": "connects-to",
+   "label": "daily-practice-writers",
+   "kind": "inbound-walk",
+   "spark": 1,
+   "evidence": "how we spend our days is, of course, how we spend our lives",
+   "rationale": "Reciprocal of Dillard's existing link; both are named daily-practice-writers already, just one-directional."
+  },
+  {
+   "source": "James Turrell",
+   "target": "Annie Dillard",
+   "type": "connects-to",
+   "label": "path-of-the-beam",
+   "kind": "inbound-walk",
+   "spark": 4,
+   "evidence": "Dillard: \"I cannot cause light; the most I can do is try to put myself in the path of its beam.\" Turrell: \"art is not a statement transmitted but a condition created for someone else's looking.\"",
+   "rationale": "Not just a shared image (light/beam as the medium of attention) but a shared blindspot structure: both perform a humble, hands-off posture (\"I only get out of the way\" / \"positioning, not causing\") while actually authoring every degree of what the beholder sees \u2014 the exact pattern already named for the Turrell/Agnes Martin/Nakashima cluster. Dillard is a fourth citizen of that family, in a different medium."
+  },
+  {
+   "source": "Donella Meadows",
+   "target": "Buckminster Fuller",
+   "type": "contradicts",
+   "label": "ephemeralization-vs-limits",
+   "kind": "inbound-walk",
+   "spark": 3,
+   "evidence": "he says the leverage point is the tool; she says it's the paradigm and the goal, and ranks the mindset above any technical parameter \u2014 a direct rebuke.",
+   "rationale": "Fuller already declares this contradicts Meadows; the reciprocal is missing and this is precisely the kind of productive contradiction the rules ask to hunt for."
+  },
+  {
+   "source": "Martin Heidegger",
+   "target": "Buckminster Fuller",
+   "type": "contradicts",
+   "label": "design-optimism-vs-enframing",
+   "kind": "inbound-walk",
+   "spark": 4,
+   "evidence": "Heidegger: \"Gestell (Enframing) is the sharpest lens the palace has for what it means to reduce people and things to standing-reserve on call.\" Fuller: \"Scarcity is a design failure. War is an engineering problem.\"",
+   "rationale": "Fuller's page already declares contradicts toward Heidegger; the reverse is the sharper of the two directions \u2014 Heidegger's whole critique of technology-as-revealing is aimed exactly at design-optimist thinking like Fuller's."
+  },
+  {
+   "source": "Kuramoto Coupling",
+   "target": "Buckminster Fuller",
+   "type": "mirrors",
+   "label": "synergetics-is-coupling",
+   "kind": "inbound-walk",
+   "spark": 3,
+   "evidence": "synergy (whole-system behavior unpredicted by the parts \u2014 the dome holds loads no single strut could, because the behavior lives in the coupling, not the components)",
+   "rationale": "Fuller's own definition of synergy is close to a plain-English restatement of Kuramoto coupling's central claim; the hub doesn't reciprocate Fuller's mirrors link yet."
+  },
+  {
+   "source": "Christopher Alexander",
+   "target": "Buckminster Fuller",
+   "type": "connects-to",
+   "label": "design-can-save-us",
+   "kind": "inbound-walk",
+   "spark": 2,
+   "evidence": "Alexander: \"the quality that makes a place alive can be written down\" / Fuller: \"scarcity is a design failure, not a law of nature.\"",
+   "rationale": "Contestable \u2014 neither page names the other, this is an inference from two total-design philosophies (both believe structure is not just taste but can be gotten objectively right) that land in opposite material registers (hand-made/traditional vs. industrial/geometric). Offered as connects-to per the schema's contestable-link guidance, not a stronger type."
+  },
+  {
+   "source": "Lateral Access",
+   "target": "Iain McGilchrist",
+   "type": "mirrors",
+   "label": "reframe-reveals",
+   "kind": "inbound-walk",
+   "spark": 2,
+   "evidence": "McGilchrist's own link declares mirrors \u2192 Lateral Access, label reframe-reveals",
+   "rationale": "Simple unreciprocated mirrors; Lateral Access's own forward_vector (\"oblique methods\") and McGilchrist's right-hemisphere \"presencing\" are describing close cousins of the same move."
+  },
+  {
+   "source": "Rick Rubin",
+   "target": "Iain McGilchrist",
+   "type": "connects-to",
+   "label": "attention-as-noticing",
+   "kind": "inbound-walk",
+   "spark": 2,
+   "evidence": "Rubin: \"get the ego and the trying out of the way, trust the feeling over the cleverness.\"",
+   "rationale": "Reciprocal of McGilchrist's existing outbound link; Rubin's stance on non-grasping attention is a direct lay analogue of McGilchrist's right-hemisphere mode."
+  },
+  {
+   "source": "Cooperation Yields Agency",
+   "target": "Iain McGilchrist",
+   "type": "contradicts",
+   "label": "computation-isnt-comprehension",
+   "kind": "inbound-walk",
+   "spark": 3,
+   "evidence": "I call AI 'artificial information-processing, not artificial intelligence,' and I insist it manipulates without comprehending.",
+   "rationale": "McGilchrist's page already declares this contradicts CYA; CYA is the palace's single most load-bearing hub and should host the reciprocal, since the tension (does human-AI cooperation produce real comprehension or just coupled manipulation) is exactly the kind of contrary the hub should surface, not bury one-directionally."
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Baton Ceremony",
+   "target": "Worktree Practice",
+   "type": "mention-no-link",
+   "phrase": "the payload also carries a worktree object naming where the move lives",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Deposit Ceremony",
+   "target": "Worktree Practice",
+   "type": "mention-no-link",
+   "phrase": "The worktree practice (`_ops/worktree/SKILL.md`) does not change this; it makes it explicit.",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Closing Well Ceremony",
+   "target": "Worktree Practice",
+   "type": "mention-no-link",
+   "phrase": "honoring the worktree rules (`_ops/worktree/SKILL.md`: canon to the owner/`main`; batons per worktree, announced on the owner board)",
+   "structurally_significant": false
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "Worktree Practice",
+   "type": "mention-no-link",
+   "phrase": "every worktree appends there, never to a per-branch copy (`_ops/worktree/SKILL.md` \u00a7 Ceremonies in a worktree)",
+   "structurally_significant": false
+  }
+ ],
+ "entry_health_flags": [],
+ "walk_results": [
+  {
+   "target": "Worktree Practice",
+   "disposition": "wired",
+   "inbound_proposed": 4,
+   "note": "Every hop1 neighbour is a page Worktree Practice already points TO (Baton, Deposit, STIGMERGY, SCHEMA, Dichotomy of Control, Closing Well) but none reciprocated. Baton Ceremony and Deposit Ceremony already name the worktree practice/SKILL.md in body prose \u2014 clean unsung paths, not forced. STIGMERGY, SCHEMA, and Dichotomy of Control had nothing genuine to add beyond the entry's existing mirrors link. Stage (growing), forward_vector, and face all still fit; no drift."
+  },
+  {
+   "target": "control-vocabulary-math",
+   "disposition": "wired",
+   "inbound_proposed": 4,
+   "note": "All three hop1 neighbours already pointed to FROM the entry, none reciprocating; Neural Granular Synthesis correctly doesn't (member-of direction is right as-is). Kuramoto Coupling and Action Potential Oscillator both had genuine, quotable reasons to point down. Two hop2 catches (Differential Equations, Granular Synthesis) were real, not padding. Stage/vector fit; the entry has no hero image, which is normal for a math sub-page under a project \u2014 not flagged as drift."
+  },
+  {
+   "target": "Annie Dillard",
+   "disposition": "wired",
+   "inbound_proposed": 4,
+   "note": "Hop1 is entirely pages Dillard already points to; McGilchrist, Goldsworthy, and Cameron reciprocate genuinely. Natalie Goldberg is composting \u2014 declined to add a new outbound link from a page on its way out. Merleau-Ponty and Quality Manifesto felt like forcing (concept/manifesto pages with saturated, differently-themed link lists) and were left alone. One hop2 gem: James Turrell, on both image (light/attention) and blindspot structure (performed humility hiding authored control, already a named cluster with Agnes Martin/Nakashima)."
+  },
+  {
+   "target": "Buckminster Fuller",
+   "disposition": "wired",
+   "inbound_proposed": 4,
+   "note": "Fuller's two declared contradicts (Meadows, Heidegger) are the textbook case the rules ask to hunt \u2014 neither reciprocated, both genuinely productive. Kuramoto Coupling's mirrors is a strong, quote-supported catch. FOUR PILLARS and Cooperation Yields Agency (both hop1) were skipped \u2014 too generic/saturated to add a specific-enough reason. Christopher Alexander (hop2) included but flagged contestable \u2014 real resonance, no textual cross-reference on either page."
+  },
+  {
+   "target": "Iain McGilchrist",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Already at 3 inbound going in (Annie Dillard and Frequency Domain \u2194 Perspective Shift already reciprocate \u2014 confirmed by reading both). This walk adds Lateral Access and Rick Rubin, both simple unreciprocated links from McGilchrist's own frontmatter, and Cooperation Yields Agency's contradicts, which deserves surfacing from the hub side given how load-bearing CYA is. Yasujir\u014d Ozu (hop1) considered and declined \u2014 the stillness/attention resonance was there but too inferential to quote cleanly."
+  }
+ ]
+}

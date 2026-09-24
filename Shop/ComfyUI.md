@@ -31,6 +31,7 @@ links:
   - target: "[[Loudon Live Design System]]"
     type: enables
     label: renders-the-lesson-art
+  - { target: "[[Frame Designer]]", type: connects-to, label: "render-backend" }
 tags: [specialist, shop, image, generative, local]
 ---
 

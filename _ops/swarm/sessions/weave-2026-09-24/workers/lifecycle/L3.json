@@ -1,0 +1,308 @@
+{
+ "cluster": "L3",
+ "lens": "lifecycle",
+ "summary": "This room held five entries the graph barely reaches \u2014 two with zero inbound (Agent Toolbox, Gemma 4 \u2014 Local Coordination Guide) and three sitting on thin counts (Skills Are Enchantable Pages at 2, The Palace Hardens Around Values at 3, The Palace Voice at 1 despite riding in CLAUDE.md itself). The walk found genuine reasons for all five: Agent Toolbox is the concrete \"least-privilege\" instance The Practice Rediscovers Its Philosophy is explicitly hungry for more of; Gemma 4's enchantment-viability verdict (\"contraindicated\" for enchantment, viable for Swarm Weave auditing) is exactly the kind of finding Palace Enchantment, Swarm Weave, and Enchanted Worker should point back to rather than only be pointed at; Skills Are Enchantable Pages' own family table names Closing Well Ceremony and belongs on ROSETTA's translation surface; The Palace Hardens Around Values turns out to be the load-bearing rationale behind two mechanisms that don't yet cite it back (Weave Ceremony's values-primary rule, Palace Voice's own linter gate); and The Palace Voice \u2014 the palace's verbal floor, quoted at the top of CLAUDE.md \u2014 is structurally under-linked relative to how much of the palace actually depends on it. No target needed compost or merging; the thinness was a walking gap, not a health problem. Along the way three body-prose mentions turned up with no frontmatter link (Project Stewardship System, Two Batons One Board, and Kuramoto Coupling, all named inside Skills Are Enchantable Pages) plus one in The Palace Hardens Around Values (Weave Ceremony \u2014 Context).",
+ "typed_relations": [
+  {
+   "source": "Palace development/Agent Wellbeing.md",
+   "target": "Agent Toolbox.md",
+   "type": "connects-to",
+   "label": "lean-tool-surface",
+   "kind": "inbound-walk",
+   "rationale": "Agent Wellbeing already reads before any new worker prompt or context injection is designed; Agent Toolbox is exactly that design decision, made concrete with measured token deltas.",
+   "evidence": "\"a `palace-reader` profile...runs at ~26.5K \u2014 a 43% lighter baseline\" (Agent Toolbox.md:33) vs Agent Wellbeing's charge to be read \"before any new ceremony is designed, any new worker prompt is written\" (Agent Wellbeing.md:42)."
+  },
+  {
+   "source": "Palace development/Concierge.md",
+   "target": "Agent Toolbox.md",
+   "type": "connects-to",
+   "label": "profile-defined-here",
+   "kind": "inbound-walk",
+   "rationale": "Agent Toolbox's own text records the exact wiring decision (Concierge spawns as palace-writer) that Concierge's forward_vector lives inside; Concierge doesn't yet point at where that profile is defined.",
+   "evidence": "\"Concierge wiring \u2014 done 2026-07-08...now spawn the resident as `palace-writer`, not `general-purpose`\" (Agent Toolbox.md:66)."
+  },
+  {
+   "source": "The Shop.md",
+   "target": "Agent Toolbox.md",
+   "type": "spawned",
+   "label": "ported-toolbox-technique",
+   "kind": "inbound-walk",
+   "rationale": "Agent Toolbox is a direct port of The Shop's per-Specialist `toolbox` technique onto agent dispatch; The Shop's own page has no record of this offshoot.",
+   "evidence": "\"This is the port of [[The Shop]]'s `toolbox` technique (which pins the exact runtimes a Specialist needs) onto the *agents* the palace dispatches\" (Agent Toolbox.md:28)."
+  },
+  {
+   "source": "Palace development/Palace Orchestrator.md",
+   "target": "Agent Toolbox.md",
+   "type": "connects-to",
+   "label": "profile-source",
+   "kind": "inbound-walk",
+   "rationale": "The Orchestrator is the engine that wakes a page as a subagent; it needs a tool profile to dispatch with, and Agent Toolbox is the roster it should draw from \u2014 currently unlinked.",
+   "evidence": "\"the engine that wakes a page as a Claude Code subagent and lets it act\" (Palace Orchestrator.md:9) has no pointer to the roster it would assign."
+  },
+  {
+   "source": "The Practice Rediscovers Its Philosophy.md",
+   "target": "Agent Toolbox.md",
+   "type": "connects-to",
+   "label": "new-pair-least-privilege",
+   "kind": "inbound-walk",
+   "spark": 4,
+   "rationale": "This entry collects dry-infra-pages-that-are-secretly-philosophers pairs and explicitly wants more; Agent Toolbox's \"capability is blast radius\" / least-privilege roster is the same Stoic dichotomy-of-control move as its existing assume-multi-agent pair, one level up (session-scoped tool grants rather than pod namespacing).",
+   "evidence": "\"I want to collect more pairs\" (The Practice Rediscovers Its Philosophy.md:31) against Agent Toolbox's \"Capability is blast radius...Fewer tools, less damage possible\" (Agent Toolbox.md:32)."
+  },
+  {
+   "source": "Palace development/Palace Enchantment.md",
+   "target": "Gemma 4 \u2014 Local Coordination Guide.md",
+   "type": "connects-to",
+   "label": "model-viability-tested",
+   "kind": "inbound-walk",
+   "rationale": "Palace Enchantment is the ceremony that dispatches enchanted workers; Gemma 4 was tested against exactly that ceremony's needs and found unsuitable for register but viable for auditing \u2014 a finding Palace Enchantment's own page should carry.",
+   "evidence": "\"Gemma is not suitable for enchantment at this time. The register failure is load-bearing\" (Gemma 4 \u2014 Local Coordination Guide.md:115)."
+  },
+  {
+   "source": "Palace development/Swarm Weave.md",
+   "target": "Gemma 4 \u2014 Local Coordination Guide.md",
+   "type": "connects-to",
+   "label": "candidate-local-auditor",
+   "kind": "inbound-walk",
+   "rationale": "The guide names Swarm Weave by name as a use Gemma 26B is fit for; Swarm Weave's own page has no pointer to this candidate.",
+   "evidence": "\"Gemma 26B is viable for Swarm Weave structural auditing (schema holds, hallucination controlled)\" (Gemma 4 \u2014 Local Coordination Guide.md:117)."
+  },
+  {
+   "source": "Palace development/Enchanted Worker.md",
+   "target": "Gemma 4 \u2014 Local Coordination Guide.md",
+   "type": "connects-to",
+   "label": "register-failure-case-study",
+   "kind": "inbound-walk",
+   "rationale": "Enchanted Worker defines what it feels like to operate with hilaritas vs. tristitia in a worker's voice; the guide's Gemma-vs-Haiku register test is a concrete negative case study of exactly that difference.",
+   "evidence": "Guide quotes Haiku's \"attention flows. Connections arrive unbidden\" against Gemma's \"academic formalism\" (Gemma 4 \u2014 Local Coordination Guide.md:99) \u2014 the palace-voice/vitality distinction Enchanted Worker names abstractly."
+  },
+  {
+   "source": "_ops/Closing Well Ceremony.md",
+   "target": "Palace development/Skills Are Enchantable Pages.md",
+   "type": "connects-to",
+   "label": "named-in-the-family",
+   "kind": "inbound-walk",
+   "rationale": "Skills Are Enchantable Pages' family table names Closing Well Ceremony by row as the canonical \"ceremony\" cell; the ceremony's own page doesn't point back to where it's positioned in that family.",
+   "evidence": "\"**ceremony** | a human word in CLAUDE.md's trigger table (`close well`, `weave`) | a reading Claude, inline\" (Skills Are Enchantable Pages.md:90)."
+  },
+  {
+   "source": "ROSETTA.md",
+   "target": "Palace development/Skills Are Enchantable Pages.md",
+   "type": "connects-to",
+   "label": "skill-vocabulary",
+   "kind": "inbound-walk",
+   "rationale": "Skills Are Enchantable Pages labels its own link to ROSETTA \"harness-translation-home\" \u2014 ROSETTA is exactly the glossary that should carry a cross-tradition row for what a \"skill\" is in palace vocabulary, and currently doesn't.",
+   "evidence": "Skills Are Enchantable Pages.md:28-30 (\"harness-translation-home\"); ROSETTA's own translation table (ROSETTA.md:34-45) has no \"skill\" row yet."
+  },
+  {
+   "source": "Palace development/Palace as Context Injection System.md",
+   "target": "Palace development/Skills Are Enchantable Pages.md",
+   "type": "connects-to",
+   "label": "enchant-is-invoke",
+   "kind": "inbound-walk",
+   "rationale": "Skills Are Enchantable Pages collapses \"enchanting a page IS invoking it IS running it as a skill\" \u2014 a direct claim about how context injection works, which PCIS's own page doesn't yet reference.",
+   "evidence": "\"Enchanting a page *is* invoking it *is* running it as a skill\" (Skills Are Enchantable Pages.md:49)."
+  },
+  {
+   "source": "Cooperation Yields Agency.md",
+   "target": "The Palace Hardens Around Values.md",
+   "type": "connects-to",
+   "label": "cooperation-turned-inward",
+   "kind": "inbound-walk",
+   "rationale": "Hardens Around Values names itself explicitly as \"cooperation turned inward\"; Cooperation Yields Agency, its stated source, has no pointer to this extension of its own formula.",
+   "evidence": "\"It is [[Cooperation Yields Agency|cooperation]] turned inward \u2014 asking the real question, trusting the other to hear a pointer\" (The Palace Hardens Around Values.md:36)."
+  },
+  {
+   "source": "SCHEMA.md",
+   "target": "The Palace Hardens Around Values.md",
+   "type": "connects-to",
+   "label": "why-plain-text",
+   "kind": "inbound-walk",
+   "rationale": "Hardens Around Values is the stated philosophical ground for why SCHEMA keeps canon as plain text over code; SCHEMA doesn't cite it back.",
+   "evidence": "\"canon-is-plain-text\" label on The Palace Hardens Around Values' own outbound link to SCHEMA (The Palace Hardens Around Values.md:22-24)."
+  },
+  {
+   "source": "_ops/Weave Ceremony.md",
+   "target": "The Palace Hardens Around Values.md",
+   "type": "connects-to",
+   "label": "values-primary-rationale",
+   "kind": "inbound-walk",
+   "rationale": "Hardens Around Values names itself the \"deep why\" under the Weave's values-primary rule by name; Weave Ceremony's own page has no link back to that rationale.",
+   "evidence": "\"This is the deep *why* under [[Weave Ceremony|the Weave's]] values-primary rule (scans detect and flag; the mind of the moment decides...)\" (The Palace Hardens Around Values.md:32)."
+  },
+  {
+   "source": "_ops/Weave Ceremony.md",
+   "target": "The Palace Voice.md",
+   "type": "connects-to",
+   "label": "voice-drift-linter",
+   "kind": "inbound-walk",
+   "rationale": "The Palace Voice's own forward vector says its linter \"should join the Step 6.5 closing-linter block\" of the Weave \u2014 an explicit open task naming Weave Ceremony by function, unlinked from that side.",
+   "evidence": "\"Wire the check into the Weave. `lint-voice-drift.py` exists and runs; it should join the Step 6.5 closing-linter block\" (The Palace Voice.md:120)."
+  },
+  {
+   "source": "Palace development/Loudon Live Design System.md",
+   "target": "The Palace Voice.md",
+   "type": "mirrors",
+   "label": "verbal-floor",
+   "kind": "inbound-walk",
+   "rationale": "The Palace Voice already mirrors Loudon Live Design System (visual floor / verbal floor) but the design system's own page doesn't reciprocate a symmetric type that should be recorded on both sides.",
+   "evidence": "\"The [[Loudon Live Design System]] is the palace's visual floor...This is the verbal floor\" (The Palace Voice.md:45); LLDS's own frontmatter has no matching link (Loudon Live Design System.md:25-45)."
+  }
+ ],
+ "bridge_findings": [
+  {
+   "tool": "The Practice Rediscovers Its Philosophy",
+   "thought": "Agent Toolbox reads as pure infra (a YAML profile roster) but it's the same move as the entry's existing assume-multi-agent/Dichotomy-of-Control pair, one layer up: least-privilege as prohairesis applied to tool grants instead of pod namespacing.",
+   "shared_structure": "control what's yours to namespace/grant, request what isn't \u2014 the Stoic dichotomy expressed as a security default in two different infra layers.",
+   "spark": 4,
+   "classify": "link",
+   "quote_tool": "\"Capability is blast radius. A read-only gatherer *cannot* mutate the palace or the machine \u2014 the safety is structural, not a matter of trusting the agent's restraint.\" (Agent Toolbox.md:32)",
+   "quote_thought": "\"The tool's four habits are prohairesis for a Claude that shares an account: control what's yours to namespace, request what isn't.\" (The Practice Rediscovers Its Philosophy.md:44)"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Palace development/Skills Are Enchantable Pages.md",
+   "target": "Project Stewardship System",
+   "type": "connects-to",
+   "phrase": "the [[Project Stewardship System]] shows *how the palace wraps one* \u2014 it is the most built-out harness around an entry we have",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Palace development/Skills Are Enchantable Pages.md",
+   "target": "Two Batons, One Board",
+   "type": "connects-to",
+   "phrase": "a steward is that impulse **looped**: each cycle is one baton handoff, the artifact updated in place, never deleted ([[Two Batons, One Board]])",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Palace development/Skills Are Enchantable Pages.md",
+   "target": "Kuramoto Coupling",
+   "type": "connects-to",
+   "phrase": "Every page is *enchantable* \u2014 woken as a voice ([[Pages as Agents]]), [[Kuramoto Coupling]] included",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Palace Hardens Around Values.md",
+   "target": "Weave Ceremony \u2014 Context",
+   "type": "connects-to",
+   "phrase": "See [[Weave Ceremony \u2014 Context]] \u00a7 The Weave's Widened Charter for the mechanism-side framing",
+   "structurally_significant": false
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Agent Toolbox",
+   "disposition": "wired",
+   "inbound_proposed": 5,
+   "note": "Zero inbound before this walk; five genuine pointers found, the sharpest being the philosophy-family bridge from The Practice Rediscovers Its Philosophy. Stage/vector both fit; the one soft flag is no hero image despite canonical status."
+  },
+  {
+   "target": "Gemma 4 \u2014 Local Coordination Guide",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Zero inbound before this walk. Its own enchantment-viability verdict is the strongest material \u2014 the three entries it tested against (Palace Enchantment, Swarm Weave, Enchanted Worker) should all carry the finding back."
+  },
+  {
+   "target": "Skills Are Enchantable Pages",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Its own family table and forward-vector already name two of these neighbours (Closing Well Ceremony, ROSETTA) without the neighbours pointing back. Stage reads understated (sprout) given how resolved the content is."
+  },
+  {
+   "target": "The Palace Hardens Around Values",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Reads as more load-bearing than its 3-inbound count suggests \u2014 it's the named rationale behind two live mechanisms (Weave's values-primary rule, Palace Voice's linter gate) that don't cite it."
+  },
+  {
+   "target": "The Palace Voice",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Only 1 inbound despite riding in CLAUDE.md itself \u2014 the palace's most-read entry structurally, least-linked in canon. Two genuine finds (Weave Ceremony's own to-do naming it, the unreciprocated mirror with Loudon Live Design System) don't close that gap; worth a second look outside this room."
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Agent Toolbox",
+   "face": "merits-face",
+   "vector_issue": "",
+   "graffiti_note": "Canonical, cited by cc4e91dc's recent commit; no hero image despite the visual convention nearly every other meta/hub entry in this room carries."
+  },
+  {
+   "entry": "The Palace Voice",
+   "face": "none",
+   "vector_issue": "Rides in CLAUDE.md as the palace's verbal floor, read by every agent at birth, yet carries only 1 canon inbound link before this walk \u2014 its graph weight doesn't match its structural weight.",
+   "stage_current": "growing",
+   "stage_proposed": "growing"
+  },
+  {
+   "entry": "Skills Are Enchantable Pages",
+   "face": "none",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "Content is a resolved, structured argument (family table, provenance, a dated 'resolved for now' decision) \u2014 reads more settled than sprout usually signals."
+  },
+  {
+   "entry": "The Palace Hardens Around Values",
+   "face": "none",
+   "stage_current": "growing",
+   "stage_proposed": "mature",
+   "vector_issue": "Now the named rationale under two live mechanisms (Weave Ceremony's values-primary rule, The Palace Voice's linter gate) \u2014 worth reconsidering whether it has crossed from growing into a settled, load-bearing principle."
+  }
+ ],
+ "members_read": [
+  "Agent Toolbox.md",
+  "Gemma 4 \u2014 Local Coordination Guide.md",
+  "Palace development/Skills Are Enchantable Pages.md",
+  "The Palace Hardens Around Values.md",
+  "The Palace Voice.md",
+  "Palace development/Agent Wellbeing.md",
+  "Palace development/Concierge.md",
+  "The Shop.md",
+  "assume multi-agent.md",
+  "STIGMERGY.md",
+  "Palace development/Palace Orchestrator.md",
+  "Palace development/The Palace Speaks.md",
+  "Creative Coach.md",
+  "Palace development/Enchanted Worker.md",
+  "Palace development/Four Pillars of Enchanted Agency.md",
+  "Identity Molting.md",
+  "Palace Conatus.md",
+  "Palace development/Palace as Context Injection System.md",
+  "The Practice Rediscovers Its Philosophy.md",
+  "The Remembering Page.md",
+  "Palace development/BBS Blackboard.md",
+  "Palace development/Palace Enchantment.md",
+  "Palace development/Swarm Weave.md",
+  "_ops/Palace Map.md",
+  "Palace development/Pheromone Trail.md",
+  "Palace development/Dialogue Moderator.md",
+  "Palace development/Enchanted Conversation Archive.md",
+  "Palace development/Generative Compression.md",
+  "_ops/Map Build Ceremony.md",
+  "Palace development/Tree of Thoughts.md",
+  "Trickster.md",
+  "Palace development/BBS Design System.md",
+  "Endosymbiosis.md",
+  "Lateral Access.md",
+  "_ops/Closing Well Ceremony.md",
+  "_ops/Pages as Agents.md",
+  "ROSETTA.md",
+  "JEWEL.md",
+  "Meaning and the Link.md",
+  "Metaphor as Coupling Medium.md",
+  "Modes of Collaboration.md",
+  "Cooperation Yields Agency.md",
+  "SCHEMA.md",
+  "_ops/Weave Ceremony.md",
+  "FOUR PILLARS.md",
+  "Hilaritas Generator.md",
+  "Loudon Live.md",
+  "Palace development/Loudon Live Design System.md",
+  "Progressive Staging.md",
+  "Palace development/Project Stewardship System.md",
+  "Palace development/Symbiotic Skills.md",
+  "The Scroll.md"
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "arm": "Y",
+ "room": "C1.1",
+ "total_proposals": 2,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Particle Synthesis",
+   "type": "exemplifies",
+   "target": "Objects to Think With",
+   "label": null,
+   "rationale": "Not named in Objects to Think With's own text, but Particle Synthesis independently uses the identical diagnostic phrase the OTTW entry treats as its test for a genuine instance (isomorphism, not metaphor) \u2014 this is the room-crossing find the folders wouldn't catch since the two entries sit in different Projects/ subfolders and neither currently points at the other.",
+   "evidence": "Particle Synthesis.md: \"This is not metaphor \u2014 it is direct structural isomorphism.\"",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Biomechanical Synthesis",
+   "type": "exemplifies",
+   "target": "Objects to Think With",
+   "label": null,
+   "rationale": "Objects to Think With's own body quotes this entry as one of the palace's three self-declared isomorphism instances, but Biomechanical Synthesis carries no exemplifies link back \u2014 the relation is named in the target's prose and missing on the source's frontmatter.",
+   "evidence": "Biomechanical Synthesis.md: \"treats biological processes as DSP operations \u2014 not as metaphor but as design principles. ... Body horror is pedagogy: making DSP mechanics physical makes them unforgettable.\" / Objects to Think With.md: \"[[Biomechanical Synthesis]] say it in their own words (... \\\"not as metaphor but as design principles\\\")\"",
+   "item_id": "Y2"
+  }
+ ]
+}

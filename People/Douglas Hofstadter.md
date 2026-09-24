@@ -50,6 +50,12 @@ links:
   - target: "[[Christopher Alexander]]"
     type: mirrors
     label: pattern-vs-analogy-as-cross-domain-engine
+  - target: "[[Iain McGilchrist]]"
+    type: contradicts
+    label: computation-earns-comprehension-after-all
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Douglas Hofstadter

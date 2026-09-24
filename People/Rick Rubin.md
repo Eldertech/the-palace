@@ -53,6 +53,9 @@ links:
   - target: "[[Found ↔ Made]]"
     type: exemplifies
     label: found-pole
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Rick Rubin

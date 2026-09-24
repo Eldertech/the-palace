@@ -1,0 +1,1418 @@
+[
+ {
+  "source": "ComfyUI",
+  "target": "Frame Designer",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "render-backend"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "conditioned render (render_shot: OpenPose+depth \u2192 locked pen-flow via [[Shop/ComfyUI]])"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Frame Designer",
+  "target": "The Commons",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "provisioning"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "now in the Commons [[The Commons|RunpodPodProvider]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Frame Designer",
+  "target": "assume multi-agent",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "convention-cited"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "never an account-wide GET /pods \u2192 DELETE all, which strangles other agents' pods ([[assume multi-agent]])"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "The Scroll",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "spec-compliance"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "carries the minimal bundle frontmatter of [[SCHEMA \u2014 Reference]] \u00a78 (scroll type)"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "LoRA Trainer",
+  "target": "STIGMERGY",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Loudon's in-context rating ([[Review Layer]] -> [[STIGMERGY]]) matched the metrics"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Substrate Skill",
+  "target": "Weaving Memory into the Palace",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "If [[Substrate Skill]] ever grows an 'operating this environment' section"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Weaving Memory into the Palace",
+  "target": "Worktree Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge",
+   "lifecycle"
+  ],
+  "rooms": [
+   "B4",
+   "L7"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 2
+  },
+  "labels": [
+   "consolidated-example"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "a cluster of git/worktree cautions -> a single 'shared-tree discipline' nugget -> [[Worktree Practice]]",
+   "a cluster of git/worktree cautions \u2192 a single \"shared-tree discipline\" nugget \u2192 [[Worktree Practice]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Deleuze",
+  "target": "Spinoza",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "a later reader \u2014 [[Deleuze]], Nietzsche, Freud \u2014 will say the affects are driving the car"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Creative Coach",
+  "target": "Oblique Portrait",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "steers-on-purpose"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "The Oblique Portrait is the one place the palace built an AI that steers on purpose, and Loudon felt the difference. ... Gendlin's felt sense, already lineage under [[Oblique Portrait]], points the same way"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Lateral Access",
+  "target": "Creative Coach",
+  "type": "connects-to",
+  "lenses": [
+   "bridge",
+   "community"
+  ],
+  "rooms": [
+   "B3",
+   "C2.1"
+  ],
+  "n": 4,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 2,
+   "flag": 2
+  },
+  "labels": [
+   "narrative-therapy-triad",
+   "narrative-therapy-triple"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The palace holds this three times under three names \u2014 [[Identity Molting]], [[Lateral Access]] \u00a7 The New Song, and here \u2014 and none of the three cite each other",
+   "Creative Coach's body table names the gap directly: \"The palace holds this three times under three names \u2014 [[Identity Molting]], [[Lateral Access]] \u00a7 The New Song, and here \u2014 and none of the three cite each other.\" Identity Molting already links both Lateral Access and Creative Coach; Lateral Access links neither. This closes the triangle.",
+   "Reciprocal of the above \u2014 Creative Coach's frontmatter links Identity Molting (teacher-to-coach) but not Lateral Access, despite naming it explicitly in body prose."
+  ],
+  "evidence": [
+   "Creative Coach.md:203, 'none of the three cite each other'",
+   "Creative Coach.md:203"
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "Agent Wellbeing",
+  "target": "Closing Well",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the [[Closing Well]] moderator is the working prototype"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Concierge",
+  "target": "Reflective Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the Concierge's scout"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Audition Gate",
+  "target": "Reflective Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "The [[Audition Gate]] sits on the border"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Oblique Portrait",
+  "target": "Reflective Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the [[Oblique Portrait]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Martin Heidegger",
+  "target": "Metaphor as Coupling Medium",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "language-opens"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "\"Language is the house of being. \u2014 Martin Heidegger\" (epigraph); the whole entry argues metaphor opens associative space the way Heidegger argues language discloses being rather than merely labels it"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "VCV Patch Generator",
+  "target": "Web Audio Worklet",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "modeled on the [[Shop/VCV Patch Generator]] exemplar."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Compressor Design",
+  "target": "Found \u2194 Made",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "[[George Nakashima]] `contradicts` [[Compressor Design]] (reveal the break vs. hide it)."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "target": "Blood Compressor",
+  "type": "spawned",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-Projects"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The hub's own prose numbers Blood Compressor as instrument 04 and Blood Compressor already carries `deepens \u2192 Compressor Design` and `mirrors \u2192 Action Potential Oscillator` back to the family, but Biomechanical Synthesis's frontmatter links array only has `spawned \u2192 Action Potential Oscillator` \u2014 the matching forward edge to its other built child never got added."
+  ],
+  "evidence": [
+   "\"4. Blood hydraulics compressor \u2014 blood pressure = amplitude...\" (Projects/Biomechanical Synthesis.md:70); \"This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments\" (Projects/Blood Compressor.md:46)"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "target": "Slime Mold Delay",
+  "type": "spawned",
+  "lenses": [
+   "folder",
+   "lifecycle"
+  ],
+  "rooms": [
+   "F-Projects",
+   "L5"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1,
+   "inbound-walk": 1
+  },
+  "labels": [
+   "instrument-05"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Same gap as Blood Compressor: instrument 05 in the hub's own numbered list, child already links back, hub never links forward.",
+   "Biomechanical Synthesis already spawned \u2192 Action Potential Oscillator (instrument-01, presumably) with this type; Slime Mold Delay states its own parentage explicitly but the hub hasn't caught up."
+  ],
+  "evidence": [
+   "\"5. Slime mold delay \u2014 the plasmodium's foraging pattern as feedback delay topology\" (Projects/Biomechanical Synthesis.md:72); \"This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments\" (Projects/Slime Mold Delay.md:49)",
+   "\"This entry is the first concrete development of one of the eight Biomechanical Synthesis instruments. The hub diagram lists it; this entry is its body.\" \u2014 Slime Mold Delay.md"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Map Build Ceremony",
+  "target": "Map Log",
+  "type": "spawned",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-_ops"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "generation-history"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Map Log describes itself as the append-only record of every Map Build generation and already links back to Map Build Ceremony, but nothing points at Map Log \u2014 the ceremony that produces its rows doesn't name it."
+  ],
+  "evidence": [
+   "\"I am the append-only record of every map generation \u2014 date, scope, node and edge counts, forward ghosts... Each Map Build appends one row\" \u2014 Map Log.md:16"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "The Practice Rediscovers Its Philosophy",
+  "target": "Trickster Commit",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "the-strongest-pair"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Trickster Commit (safety through reversibility, not through prevention) *is* Lao Tzu's wu wei \u2014 the pass's single strongest find."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "STIGMERGY",
+  "target": "The Substrate Drifts",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "v0.3-session"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Three independent bugs in the STIGMERGY v0.3 session shared one root"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "BLUELINE",
+  "target": "Block It in Blender, Ink It in genAI",
+  "type": "spawned",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "emerged-from"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "the-runbook"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "BLUELINE already spawned Hand-Drawn 3D Look, Frame Designer, and Steer the Generator (all in its own frontmatter) \u2014 the runbook is the same kind of thing, and the runbook's own frontmatter already declares emerged-from BLUELINE. The reverse side was simply never written."
+  ],
+  "evidence": [
+   "\"Proven in [[BLUELINE]]; the scripts live in Projects/BLUELINE/proofs/blender-handdrawn/\" (Block It..., line 43)"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ },
+ {
+  "source": "RunPod GPU Backend",
+  "target": "LoRA Trainer",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "trains-on"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "LoRA Trainer's own body states it 'rides Shop/RunPod GPU Backend for the compute'; RunPod's body names LoRAs as exactly the kind of thing a pod (vs serverless) can load. RunPod is the explicit precondition."
+  ],
+  "evidence": [
+   "RunPod: 'you can load ControlNet, LoRAs, IPAdapter, and anything else the base serverless image doesn't carry.' / LoRA Trainer: 'rides [[Shop/RunPod GPU Backend]] for the compute.'"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Maker",
+  "target": "OBS",
+  "type": "couples-with",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "producer-layer-pressure"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Maker's own unresolved Open Question about a Producer layer for cross-medium/multi-day briefs is independently echoed by OBS calling itself 'the second independent pressure on the Shop's Producer-layer seam' \u2014 the two entries are circling the same gap without citing each other."
+  ],
+  "evidence": [
+   "Maker: 'How to handle briefs that cross into a Producer layer (cross-medium, multi-deliverable, scheduled across days)? ... Threshold for promoting to a formal Producer entry: TBD.' / OBS: 'I am the second independent pressure on the Shop's Producer-layer seam \u2014 [[Maker]] already wonders whether one should rise... I push on the same wall from real-time-with-a-human.'"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Loudon Live Design System",
+  "target": "OBS",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "scene-templates"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The design system's own asset tree repeatedly names OBS scene templates and cards as part of its deliverable set, but never cites OBS in frontmatter.",
+   "OBS scene templates (1920\u00d71080)"
+  ],
+  "evidence": [
+   "'\u251c\u2500\u2500 slides/ \u2190 OBS scene templates (1920\u00d71080)' / 'For OBS scene cards: copy from slides/.' / '[[Loudon Live \u2014 launch kit]] (channel copy, OBS scene specs, asset list)'"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "GenAI Camera",
+  "target": "Search Before You Build",
+  "type": "spawned",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "emerged-from"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "the-depth-miss"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Search Before You Build's own origin story is the GenAI Camera depth-flat incident; GenAI Camera's body documents the same fix (bench.py near/far auto-range) without crediting the reflex it produced."
+  ],
+  "evidence": [
+   "Search Before You Build: 'Building the [[GenAI Camera]] on 2026-07-09, I wrote a depth pass from first principles \u2014 and it read flat.' / GenAI Camera: 'Depth gotcha \u2014 auto-range the near/far (the BLUELINE Track-IV lesson...). A depth pass reads flat \u2014 a silhouette, not volume.'"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ },
+ {
+  "source": "Tool Builder",
+  "target": "Simondon",
+  "type": "exemplifies",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "retype": 1
+  },
+  "labels": [
+   "concretization"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Tool Builder explicitly judges tools 'the Simondon way ... concretization, not accretion' \u2014 that's citing Simondon as the general principle Tool Builder is an instance of, which per the direction invariant argues for exemplifies over connects-to."
+  ],
+  "evidence": [
+   "'Good tools are judged the [[Simondon]] way: not by feature count but by how tightly their parts integrate \u2014 concretization, not accretion.'"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Tool Builder",
+  "target": "Closing Well",
+  "type": "exemplifies",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "retype": 1
+  },
+  "labels": [
+   "verify-behaviour-not-structure"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Closing Well's own body is the origin of this exact principle in depth; Tool Builder's checklist item is a specific application of it to tool-building."
+  ],
+  "evidence": [
+   "Closing Well: 'Structure verifies cheaply, and it lies ... prefer, wherever the choice exists, an interface you can read back from over a file you can only write to.'"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "The Aftermath Frame",
+  "target": "Steer the Generator",
+  "type": "exemplifies",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "retype": 1
+  },
+  "labels": [
+   "physically-sourced-control"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Aftermath Frame's motion-model-as-control-surface reads as a specific instance of Steer the Generator's general claim that attributes are gotten by controlling, selecting, or measuring \u2014 not wording."
+  ],
+  "evidence": [
+   "Steer the Generator: 'when an attribute matters, you get it by controlling it, selecting for it, or measuring it, not by wording it more carefully.'"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "The Shop",
+  "target": "Agent Toolbox",
+  "type": "spawned",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "emerged-from"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "ported-toolbox-technique"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Agent Toolbox is a direct port of The Shop's per-Specialist `toolbox` technique onto agent dispatch; The Shop's own page has no record of this offshoot."
+  ],
+  "evidence": [
+   "\"This is the port of [[The Shop]]'s `toolbox` technique (which pins the exact runtimes a Specialist needs) onto the *agents* the palace dispatches\" (Agent Toolbox.md:28)."
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ },
+ {
+  "source": "Project Stewardship System",
+  "target": "Skills Are Enchantable Pages",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the [[Project Stewardship System]] shows *how the palace wraps one* \u2014 it is the most built-out harness around an entry we have"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Skills Are Enchantable Pages",
+  "target": "Two Batons, One Board",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "a steward is that impulse **looped**: each cycle is one baton handoff, the artifact updated in place, never deleted ([[Two Batons, One Board]])"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Palace Hardens Around Values",
+  "target": "Weave Ceremony \u2014 Context",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "See [[Weave Ceremony \u2014 Context]] \u00a7 The Weave's Widened Charter for the mechanism-side framing"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Action Potential Oscillator",
+  "target": "control-vocabulary-math",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L8"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "emerged-from"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The engine is the acknowledged precondition for the math layer; control-vocabulary-math already declares emerged-from back to APO, but APO doesn't point forward."
+  ],
+  "evidence": [
+   "Neural Granular Synthesis does not own a DSP engine \u2014 the Action Potential Oscillator does ... This document formalizes the layer that sits on top of that engine."
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ },
+ {
+  "source": "Phoneme Choir",
+  "target": "Audition Gate",
+  "type": "spawned",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "emerged-from"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "syllabification-finding-via-listening"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Audition Gate already emerged-from Phoneme Choir with this exact label; the reciprocal spawned link belongs in Phoneme Choir's own frontmatter, matching the palace's existing convention (e.g. Generative Sample Libraries spawned / Phoneme Choir emerged-from)."
+  ],
+  "evidence": [
+   "\"Phoneme Choir: Kokoro syllabified words differently than the spec assumed; only audition caught the mismatch.\" \u2014 Audition Gate.md"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ },
+ {
+  "source": "Talking Keyboard",
+  "target": "Audition Gate",
+  "type": "spawned",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "emerged-from"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "pronunciation-finding-via-listening"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Same pairing as Phoneme Choir; Audition Gate names this specific finding as one of its two founding examples."
+  ],
+  "evidence": [
+   "\"Talking Keyboard: pronunciation of 'eight' required spelling as 'eigh' \u2014 audition was how this was discovered.\" \u2014 Audition Gate.md"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ },
+ {
+  "source": "Compressor Design",
+  "target": "Quadratic Interpolation in DSP",
+  "type": "emerged-from",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "spawned"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "soft-knee-is-quadratic"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "QID's own frontmatter already has spawned \u2192 Compressor Design; the missing half is Compressor Design pointing back, per the same lineage-pair convention seen elsewhere in the palace."
+  ],
+  "evidence": [
+   "\"This is literally quadratic interpolation from 'no change to input' to 'full compression ratio applied.'\" \u2014 Quadratic Interpolation in DSP.md"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ },
+ {
+  "source": "Linear Predictive Coding",
+  "target": "Tract Mirror",
+  "type": "spawned",
+  "lenses": [
+   "community",
+   "lifecycle"
+  ],
+  "rooms": [
+   "C1.3",
+   "L5"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "emerged-from",
+   "mirrors"
+  ],
+  "kinds": {
+   "inbound-walk": 1,
+   "newcomer": 1
+  },
+  "labels": [
+   "mirror-made-playable"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Tract Mirror emerged-from LPC already (twice, with two labels); LPC doesn't return it. Tract Mirror is the literal, playable execution of a claim LPC already makes in the abstract.",
+   "Tract Mirror is literally LPC's central thesis built into a shipped VST \u2014 the strongest spawned relation in the room, and it answers LPC's own open question about whether the source-filter identity is only a prose claim. Currently only Tract Mirror points back (emerged-from); LPC has no forward pointer to what it produced."
+  ],
+  "evidence": [
+   "LPC already carries \"mirrors \u2192 Waveguide Synthesizer, label: scattering-junction-is-the-vocal-tract\"; Tract Mirror's own thesis line: \"the LPC lattice filter's reflection coefficients are the impedance mismatches between successive tube segments... executed.\"",
+   "\"The thesis is the mirrors link from [[Linear Predictive Coding]] to [[Waveguide Synthesizer]], executed: the LPC lattice filter's reflection coefficients are the impedance mismatches between successive tube segments.\" \u2014 Tract Mirror"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ },
+ {
+  "source": "Audition Gate",
+  "target": "Compressor Design",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "third-existence-proof"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Multiple Compressor Design lessons hinged on listening to the 500-sample window as time the student could feel."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Frame Designer",
+  "target": "Block It in Blender, Ink It in genAI",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "flag": 1
+  },
+  "labels": [
+   "staging-runbook"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Frame Designer's Staging leg lists Blender blocking as a method but points nowhere for the concrete how-to; the runbook is exactly that how-to."
+  ],
+  "evidence": [
+   "Frame Designer.md:66 \u2014 'Authored Blender blocking (newstory_bench, on Shop/Blender)'"
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "Closing Well",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Reflective Practice already links forward to Closing Well ('connects-to', label 'on-action'); the reciprocal taxonomy direction (Closing Well is a concrete instance of the reflect-on-action pattern) is missing and belongs on Closing Well's own frontmatter per the exemplifies direction invariant."
+  ],
+  "evidence": [
+   "Reflective Practice.md frontmatter: target [[Closing Well]] type connects-to label on-action; Closing Well.md carries no return link."
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Palace Enchantment",
+  "target": "The Remembering Page",
+  "type": "couples-with",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "flag": 1
+  },
+  "labels": [
+   "episodic-memory-for-enchantment"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Palace Enchantment names its own gap directly: 'The enchantment is ephemeral... The enchanted agent does not remember being enchanted.' The Remembering Page exists specifically to give a page episodic memory of its own wakings \u2014 the exact absence Palace Enchantment describes. Flagged for zero mentions; this is the fix."
+  ],
+  "evidence": [
+   "Palace Enchantment.md:108-109, 'The enchanted agent does not remember being enchanted'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Logarithmic Interface Scaling",
+  "target": "Shepard Tone Synthesizer",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Octave equivalence is why pitch is logarithmic, not linear \u2014 see [[Logarithmic Interface Scaling]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Palace Practices on Itself",
+  "target": "Agent Toolbox",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "flag": 1
+  },
+  "labels": [
+   "toolbox-recursion-rung"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Directed flag confirmed \u2014 the body already narrates the person\u2192project\u2192entry-agent toolbox recursion but leaves the entry-agent rung unlinked."
+  ],
+  "evidence": [
+   "every entry could grow its own toolkit \u2014 [[Loudon's Toolkit]] (a person's kit) \u2192 a project's toolbox \u2192 an entry-agent's toolbox"
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "2D Torus Wavetable Synthesizer",
+  "target": "Synthesis Topologies",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Synthesis Topologies \u00a73 already names the torus project's seven-surface design as its concrete exemplar of the 'fixed-skeleton-variable-flesh' in-between category, but the torus entry's own frontmatter has no pointer back to the general framework it instantiates. Direction invariant: exemplifies points to the ground (the general entry)."
+  ],
+  "evidence": [
+   "\"Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces).\" \u2014 Synthesis Topologies \u00a73"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Waveguide Synthesizer",
+  "target": "Dispersion Table",
+  "type": "enables",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "emerged-from"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Dispersion Table's whole generalization (store phase-response curves, not waveforms) is built directly on Waveguide Synthesizer's physics scaffolding, but Waveguide Synthesizer doesn't point forward to what it made possible."
+  ],
+  "evidence": [
+   "\"See [[Waveguide Synthesizer]] for the physics scaffolding (D'Alembert's traveling-wave solution, the delay-line architecture, Karplus-Strong as the lossy case).\" \u2014 Dispersion Table"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "add-lineage-reciprocal"
+ }
+]

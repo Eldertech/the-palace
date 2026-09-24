@@ -29,6 +29,9 @@ links:
   - target: "[[The Scroll]]"
     type: connects-to
     label: proofs-accumulate-here
+  - target: "[[Search Before You Build]]"
+    type: spawned
+    label: the-depth-miss
 ---
 
 # GenAI Camera

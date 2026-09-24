@@ -44,6 +44,15 @@ links:
   - target: "[[Stoicism]]"
     type: contradicts
     label: the-self-needs-the-Thou
+  - target: "[[Martin Heidegger]]"
+    type: contradicts
+    label: they-vs-thou
+  - target: "[[The Blindspot Is the Surprise Fuel]]"
+    type: exemplifies
+    label: the-refusal-is-the-proof
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Martin Buber

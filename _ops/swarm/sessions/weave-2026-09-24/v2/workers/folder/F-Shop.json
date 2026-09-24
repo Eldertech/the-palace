@@ -1,0 +1,164 @@
+{
+ "cluster": "F-Shop",
+ "lens": "folder",
+ "members_read": [
+  "Shop/Blender.md",
+  "Shop/ComfyUI.md",
+  "Shop/D3.js.md",
+  "Shop/Depth Anything.md",
+  "Shop/FLUX (Hugging Face).md",
+  "Shop/Figure Rig.md",
+  "Shop/Hero and Avatar Maker.md",
+  "Shop/Image-to-3D Smith.md",
+  "Shop/Kokoro.md",
+  "Shop/LaMa.md",
+  "Shop/LaTeX.md",
+  "Shop/Lettering.md",
+  "Shop/LoRA Trainer.md",
+  "Shop/Maker.md",
+  "Shop/Manim CE.md",
+  "Shop/Matplotlib.md",
+  "Shop/Mermaid.md",
+  "Shop/Midjourney.md",
+  "Shop/OBS.md",
+  "Shop/Observable Plot.md",
+  "Shop/RNBO codebox~ smith.md",
+  "Shop/Remotion.md",
+  "Shop/RunPod GPU Backend.md",
+  "Shop/SAM.md",
+  "Shop/Shopkeeper.md",
+  "Shop/Stable Audio Open.md",
+  "Shop/Three.js.md",
+  "Shop/Tone.js.md",
+  "Shop/VCV Patch Generator.md",
+  "Shop/Web Audio Worklet.md",
+  "Shop/Whisper.md",
+  "Shop/ffmpeg.md",
+  "Shop/p5.js.md"
+ ],
+ "summary": "This is the Shop family \u2014 33 members: Maker (the foreman/hub, 44 inbound), Shopkeeper (the scout), and 31 Specialists across sound/image/motion/interactive/perception, plus two infrastructure entries (RunPod GPU Backend as substrate, OBS as an operated-not-dispatched tool that openly breaks the Specialist model). The anatomy is remarkably uniform \u2014 every Specialist repeats Charter/Voice/Capabilities/Tiers/Job Contract/Self-Check/Resource-Footprint/Gotchas/Recipes \u2014 and that uniformity is deliberate house style, not sprawl; Loudon's \"cluttered\" feeling, if it lives here, is in the drift between the Maker's hand-written prose (Selection Heuristics, Host Capability Check, \"Still stub\" list) and the roster's actual growth, not in redundant entries. Two real gaps stood out: (1) five newer perception/decomposition/rig Specialists (Depth Anything, LaMa, SAM, Figure Rig, Lettering) \u2014 all born from BLUELINE's line-art work and wired tightly to each other \u2014 have no Selection Heuristic entry in Maker at all, so the front door doesn't know they exist; (2) three Specialists that generate their own visual surface (Matplotlib, Mermaid, LaTeX) each carry the identical unresolved open question \u2014 \"we need a house-defaults wrapper like palace-plot-defaults.js\" \u2014 while their siblings (D3, Plot, p5, Three.js) already solved it; this is the same problem solved three times over and still open three times. The Maker's own hand-maintained \"Still stub\" list is already stale (missing Image-to-3D Smith), which is the exact rot pattern the roster table was restructured to prevent \u2014 the prose annotations are a second, undefended copy. Two entries have live stale content: Three.js's Forward Vector still narrates itself as pre-alive despite being promoted by the Wavetable Scanner job, and Shopkeeper's \"Pending Commission\" for an Image-to-3D deposit is already fulfilled (the entry exists) but not marked closed. No genuine merge or compost candidates surfaced \u2014 Midjourney's deprecated-but-kept status is deliberate lineage, not clutter, and the stub Specialists (LaTeX, RNBO codebox~ smith, Image-to-3D Smith) are real anatomy awaiting a first job, not misfiled working substrate.",
+ "coherence_findings": [
+  {
+   "issue": "Five Specialists born from BLUELINE's line-art work (Depth Anything, LaMa, SAM, Figure Rig, Lettering) are tightly wired to each other and to BLUELINE but have no entry in Maker's Selection Heuristics section \u2014 the front-door dispatcher's 'house taste, codified' list has zero mention of when to route a brief to layer decomposition, inpainting, segmentation, figure rigging, or emotional lettering.",
+   "kind": "roster gap",
+   "entries": [
+    "Shop/Maker.md",
+    "Shop/Depth Anything.md",
+    "Shop/LaMa.md",
+    "Shop/SAM.md",
+    "Shop/Figure Rig.md",
+    "Shop/Lettering.md"
+   ],
+   "proposed_action": "Add a Selection Heuristic block to Maker naming the perception/decomposition family (Depth Anything \u2192 order/silhouette, SAM \u2192 object cut given a converted domain, LaMa \u2192 hole-fill, Figure Rig \u2192 pose+body\u2192ControlNet plates, Lettering \u2192 emotional letterform) so the roster growth since 2026-06 is legible from the front door."
+  },
+  {
+   "issue": "Matplotlib, Mermaid, and LaTeX each independently carry the same unresolved open question \u2014 a house-defaults wrapper analogous to palace-tokens.js / palace-plot-defaults.js so the Loudon Live design-system tokens reach the tool's own generated typography/palette. D3.js and p5.js solved this as an additive pattern; Observable Plot solved it as a subtractive wrapper (palacePlot()). Three siblings are each waiting on the same unbuilt piece of plumbing.",
+   "kind": "house-standard drift",
+   "entries": [
+    "Shop/Matplotlib.md",
+    "Shop/Mermaid.md",
+    "Shop/LaTeX.md",
+    "Shop/Observable Plot.md",
+    "Shop/D3.js.md"
+   ],
+   "proposed_action": "Build one shared wrapper pattern once (following palace-plot-defaults.js as the template for 'tool generates its own surface'), then point Matplotlib/Mermaid/LaTeX at it, closing three duplicated open questions with one piece of work."
+  },
+  {
+   "issue": "Maker's Host Capability Check (Shop/Maker/host-capability.json) and its Fallback table were last dated 2026-05-30; nine Specialists born since (Blender, Depth Anything, LaMa, SAM, Figure Rig, Lettering, Hero and Avatar Maker, Image-to-3D Smith, OBS) are absent from the fallback table, so the dispatch-time reachability check Maker's own Charter promises ('I check reachability before I waste the intake') silently can't cover roughly a third of the current roster.",
+   "kind": "house-standard drift",
+   "entries": [
+    "Shop/Maker.md"
+   ],
+   "proposed_action": "Refresh host-capability.json and the Fallback table alongside the next roster-touching Weave; flag any of the nine as GPU/host-bound-only (no fallback) explicitly rather than leaving them unlisted."
+  },
+  {
+   "issue": "Maker's 'Still stub' hand-written sentence in the Promotion Log ('RNBO codebox~ smith; LaTeX') omits Image-to-3D Smith, which is also status: stub. This is the exact three-place-drift pattern the roster table was restructured (2026-06-16) to eliminate structurally \u2014 but the prose annotation beside the generated table is a second, still-hand-maintained copy that has already drifted once.",
+   "kind": "roster gap / naming drift",
+   "entries": [
+    "Shop/Maker.md",
+    "Shop/Image-to-3D Smith.md"
+   ],
+   "proposed_action": "Either fold the stub/deprecated call-outs fully into the generated table (derived from frontmatter status, same as the roster itself) or accept the prose is decorative-only and stop treating it as authoritative."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Shop/ComfyUI.md",
+   "question": "Training a Loudon Live LoRA on a small reference set \u2014 when does this become worth the effort?",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Shop/LoRA Trainer.md",
+   "proposed_action": "Note in ComfyUI's Open Questions that LoRA Trainer answered this operationally: the lever is dataset quality (visible faces, varied light/angle), not step count \u2014 and the DreamBooth-control move is the honest way to separate a bad pipeline from a bad dataset."
+  },
+  {
+   "entry": "Shop/Manim CE.md",
+   "question": "House defaults for color palette in Manim \u2014 declare project-level constants or inject per-scene?",
+   "verdict": "progressed",
+   "by_entry": "Shop/Manim CE.md (own Recipes)",
+   "proposed_action": "Manim CE's own Study/Piece recipes already resolve palette through Loudon Live Design System tokens (Graphite skin, hex pairs named inline) \u2014 not a dedicated wrapper script like Plot's, but a working convention. Mark progressed, not fully closed until a token-reading helper exists."
+  },
+  {
+   "entry": "Shop/Three.js.md",
+   "question": "The AudioWorklet\u2194render-loop handoff shape \u2014 SharedArrayBuffer vs postMessage snapshots \u2014 'first answered by the Waveguide job.'",
+   "verdict": "progressed",
+   "by_entry": "Shop/Web Audio Worklet.md (Wavetable Scanner recipe, 2026-05-31)",
+   "proposed_action": "The Wavetable Scanner recipe already exercises this exact seam (worklet owns process(), visualizer reads the same Float32Array) ahead of the still-unbuilt Waveguide Synthesizer job. Three.js's own forward_vector hasn't been updated to reflect this \u2014 see entry_health_flags."
+  },
+  {
+   "entry": "Shop/Shopkeeper.md",
+   "question": "Do I have authority to deposit a new Specialist stub myself once trusted, or does every Roster addition stay a Loudon decision forever?",
+   "verdict": "progressed",
+   "by_entry": "Shop/Image-to-3D Smith.md",
+   "proposed_action": "Image-to-3D Smith's own header records the de facto answer already in practice: 'entry written by Shopkeeper from calibration probe; not yet dispatched \u2014 Loudon's approval needed before promoting to alive.' So Shopkeeper can draft a stub; promotion to alive still needs Loudon. Worth writing that precedent back into Shopkeeper's Open Questions explicitly rather than leaving it open."
+  },
+  {
+   "entry": "Shop/Kokoro.md",
+   "question": "Does Kokoro pronounce 'RNBO' as 'rin-bo' or letter-by-letter?",
+   "verdict": "still-open",
+   "proposed_action": "Genuinely blocked on RNBO codebox~ smith remaining a stub with no first job \u2014 nothing in the family answers this yet."
+  },
+  {
+   "entry": "Shop/Matplotlib.md / Shop/Mermaid.md / Shop/LaTeX.md",
+   "question": "House-defaults wrapper for the tool's own generated typography/palette.",
+   "verdict": "still-open",
+   "proposed_action": "See coherence_findings \u2014 same unresolved question in three entries, none answered by a sibling despite the pattern existing (Observable Plot's palacePlot())."
+  },
+  {
+   "entry": "Shop/VCV Patch Generator.md",
+   "question": "Audition automation \u2014 a headless Rack render path to close the loop on Piece-tier audio capture.",
+   "verdict": "still-open",
+   "proposed_action": "No sibling addresses Rack automation; stays a genuine gap, noted as the entry's own standing seam."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [
+  {
+   "entry": "Shop/Three.js.md",
+   "stage_current": "alive",
+   "stage_proposed": "alive (no change)",
+   "vector_issue": "Forward Vector section still narrates the Waveguide Synthesizer Sketch as the job that 'moves this entry stub \u2192 alive' \u2014 but the entry was already promoted to alive by the Wavetable Scanner recipe (2026-05-31), which is documented two sections earlier in the same file. The Forward Vector wasn't updated after the promotion it describes.",
+   "graffiti_note": "Flag only \u2014 do not rewrite. The Forward Vector reads as if written before the promotion it's adjacent to."
+  },
+  {
+   "entry": "Shop/Shopkeeper.md",
+   "stage_current": "stub",
+   "stage_proposed": "stub (no change)",
+   "vector_issue": "The 'Pending Commission' section ('Approved 2026-06-08 \u2014 execute next scheduled run... Deposit an Image-to-3D smith Specialist') is stale: Image-to-3D Smith now exists as a stub entry. The commission was executed but the section still reads as an open directive.",
+   "graffiti_note": "Should be marked fulfilled/closed rather than left as a standing instruction that already happened."
+  },
+  {
+   "entry": "Shop/Maker.md",
+   "stage_current": "alive",
+   "stage_proposed": "alive (no change)",
+   "vector_issue": "The 'Still stub' prose list is incomplete (see coherence_findings) \u2014 this is a content-accuracy flag on a hand-maintained annotation, not a stage mismatch.",
+   "graffiti_note": "Worth a light touch-up next time the entry is opened for any reason."
+  }
+ ],
+ "typed_relations": [],
+ "unsung_paths": [],
+ "walk_results": [],
+ "bridge_findings": [],
+ "synthesis_spawn_flag": [],
+ "flag_responses": []
+}

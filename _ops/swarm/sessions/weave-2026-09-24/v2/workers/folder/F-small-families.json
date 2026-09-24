@@ -1,0 +1,183 @@
+{
+ "cluster": "F-small-families",
+ "lens": "folder",
+ "members_read": [
+  "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+  "Cross-Domain Resonances/Cooking \u2194 Mixing.md",
+  "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
+  "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+  "Cross-Domain Resonances/Kick Drum \u2194 Foundation.md",
+  "Cross-Domain Resonances/Quantization \u2194 Precision vs Flow.md",
+  "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+  "Cross-Domain Resonances/Saturation \u2194 Richness.md",
+  "Cross-Domain Resonances/Sidechain \u2194 Conversation.md",
+  "Cross-Domain Resonances/Synthesis \u2194 Emergence.md",
+  "Cross-Domain Resonances.md (hub, read for roster check)",
+  "Found \u2194 Made.md (read for roster check)",
+  "Modes of Collaboration/Dialectic.md",
+  "Modes of Collaboration/Excellent Adventure.md",
+  "Modes of Collaboration/Oblique Portrait.md",
+  "Modes of Collaboration/Philosopher Visits the Entry.md",
+  "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+  "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+  "The Practice Rediscovers Its Philosophy.md (newcomer-bridge check)",
+  "Reflective Practice.md (newcomer-bridge check)",
+  "No Mind Checks Itself.md (newcomer-bridge check)"
+ ],
+ "summary": "This room is two families stitched together by size, not by kinship: ten near-identical Cross-Domain Resonances cards (Compression\u2194Intimacy, Cooking\u2194Mixing, etc.) and a six-member Modes-of-Collaboration/Dialectic cluster (Dialectic, Excellent Adventure, Oblique Portrait, Philosopher Visits the Entry, and the two archived written Dialectics). The Resonances family is the more interesting coherence case: it was clearly batch-authored in one 2026-03 pass and has not moved since \u2014 every entry shares born, last_activated, activation_count, and a mad-lib forward-vector template, and the pillar tags don't actually agree with the content (three entries about literal audio tools are missing the `tools` pillar; one with a full teaching-practice section is missing `practice`). The family also has an eleventh, unlisted member \u2014 Found \u2194 Made \u2014 born later (2026-07), written in a completely different, non-templated register, correctly `spawned` from the hub, but filed at the palace root instead of inside Cross-Domain Resonances/ with its siblings, and absent from this room's roster. Nothing here needs merging or composting \u2014 these are ten distinct, well-linked, deliberately separate pattern-library cards, and destroying that structure would be a real loss, not de-sprawl. The Dialectic cluster earned its keep on the open-question pass: the zhuangzi-epictetus-confucius Dialectic's forward vector \"a Dialectic with Spinoza in the room\" is directly answered by its own sibling, spinoza-zhuangzi-on-striving; its call for The Drift to get its own entry is answered-elsewhere (The Drift now exists and is cited by name downstream); and Philosopher Visits the Entry's open question about self-requested visits is progressed by spinoza-zhuangzi's proposed \"grain-register\" forward-vector option. The best find of the pass was a set of missing bridges to the newcomer No Mind Checks Itself: its whole claim \u2014 a mind can't audit its own blind spot, correction needs an outside vantage \u2014 is exactly what the Dialectic (embodied voices in genuine friction), the Philosopher Visit (an outside philosopher pressed against an entry's own over-claim), and the Oblique Portrait (interior material inaccessible to direct self-report) each independently do, and none of the three currently points at it.",
+ "coherence_findings": [
+  {
+   "kind": "pillar-tag drift",
+   "issue": "Across the ten templated Cross-Domain Resonances entries, pillar tags don't track content consistently. Compression \u2194 Intimacy and Saturation \u2194 Richness are fundamentally about audio processors (compressor, saturator) but both omit the `tools` pillar. Frequency Domain \u2194 Perspective Shift and Quantization \u2194 Precision vs Flow also omit `creation`/`tools` inconsistently with siblings covering nearly identical technical ground. Synthesis \u2194 Emergence omits `practice` despite having the same three-part 'Teaching the Resonance' practice section every other sibling has.",
+   "entries": [
+    "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+    "Cross-Domain Resonances/Saturation \u2194 Richness.md",
+    "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+    "Cross-Domain Resonances/Quantization \u2194 Precision vs Flow.md",
+    "Cross-Domain Resonances/Synthesis \u2194 Emergence.md"
+   ],
+   "proposed_action": "A light pass to align pillar tags with actual content across the ten-entry family \u2014 not a rewrite, just closing an evident tagging gap left over from the original batch."
+  },
+  {
+   "kind": "forward-vector template homogeneity",
+   "issue": "All ten Cross-Domain Resonances forward_vectors follow the identical rhetorical mold: 'I keep [teaching/showing/proving] X \u2014 and I want every student who Y to also Z.' The vectors are active-verbed (not stasis) but read as a single voice filling in mad-lib slots rather than ten entries with individuated character.",
+   "entries": [
+    "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+    "Cross-Domain Resonances/Cooking \u2194 Mixing.md",
+    "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
+    "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+    "Cross-Domain Resonances/Kick Drum \u2194 Foundation.md",
+    "Cross-Domain Resonances/Quantization \u2194 Precision vs Flow.md",
+    "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+    "Cross-Domain Resonances/Saturation \u2194 Richness.md",
+    "Cross-Domain Resonances/Sidechain \u2194 Conversation.md",
+    "Cross-Domain Resonances/Synthesis \u2194 Emergence.md"
+   ],
+   "proposed_action": "Flag only \u2014 not a rewrite call. Worth the Concierge's attention next time any of these ten actually gets activated: let that session's forward-vector revision break the template rather than doing it as a batch edit now."
+  },
+  {
+   "kind": "stage possibly overclaimed",
+   "issue": "All ten Resonances entries carry stage: mature with activation_count frozen at 2 and last_activated frozen at 2026-06-26 \u2014 unchanged since the entries were born in the same March 2026 batch. 'Mature' reads here as inherited from the batch-creation pass rather than earned through repeated use across time, which is what the stage usually signals elsewhere in the palace.",
+   "entries": [
+    "all ten Cross-Domain Resonances members"
+   ],
+   "proposed_action": "Not proposing a stage downgrade without reading SCHEMA's stage criteria \u2014 flagging for the Concierge to weigh against SCHEMA \u00a7[stage] definitions."
+  },
+  {
+   "kind": "roster/filing gap \u2014 an untracked eleventh sibling",
+   "issue": "The Cross-Domain Resonances hub (Cross-Domain Resonances.md:47-49) links Found \u2194 Made with type: spawned, making it a genuine eleventh member of the family \u2014 born 2026-07, in a distinct non-templated essayistic register (no Teaching the Resonance / Success Metrics scaffolding). But the file lives at the palace root, not inside Cross-Domain Resonances/ with its ten siblings, and this weave room's roster (rooms/folder-F-small-families.json) never picked it up.",
+   "entries": [
+    "Found \u2194 Made.md",
+    "Cross-Domain Resonances.md"
+   ],
+   "proposed_action": "Move Found \u2194 Made.md into the Cross-Domain Resonances/ folder to match its siblings' filing convention \u2014 a filing fix, not a content edit. Worth noting to whoever runs the next weave room-assignment pass so it isn't dropped again."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "open_question_resolutions": [
+  {
+   "entry": "Modes of Collaboration/zhuangzi-epictetus-confucius-on-the-self.md",
+   "question": "A Dialectic with Spinoza in the room. What does Spinoza say to Zhuangzi?",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "proposed_action": "None needed \u2014 already resolved by its own sibling entry, which even calls itself 'the palace's second deliberately archived Dialectic' answering this exact forward vector. Worth a note added to zhuangzi-epictetus-confucius's Forward Vectors section pointing at the answer, since right now the resolution isn't cross-referenced back."
+  },
+  {
+   "entry": "Modes of Collaboration/zhuangzi-epictetus-confucius-on-the-self.md",
+   "question": "The Drift (or: The Open Door) \u2014 the fourth pole wants its own palace entry.",
+   "verdict": "answered-elsewhere",
+   "by_entry": "The Drift",
+   "proposed_action": "None \u2014 The Drift now exists as a live target, cited by name in both Philosopher Visits the Entry's roster and spinoza-zhuangzi's links. Confirms the forward vector did its work."
+  },
+  {
+   "entry": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "question": "Can an entry request its own visit \u2014 write a forward vector that names which philosopher it most needs to be challenged by?",
+   "verdict": "progressed",
+   "by_entry": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "proposed_action": "spinoza-zhuangzi's Forward Vectors Carried proposes exactly this \u2014 'a grain-register option to the Entry Conatus forward-vector guidance: a vector may name the grain it follows.' Not fully resolved (the Entry Conatus guidance itself hasn't been edited yet per that entry's own admission) but genuinely advanced by a named sibling. Worth a connects-to link from Philosopher Visits the Entry to spinoza-zhuangzi-on-striving if the Concierge agrees it's load-bearing."
+  },
+  {
+   "entry": "Modes of Collaboration/Excellent Adventure.md",
+   "question": "What figures or traditions are most fruitful for this method? Is there a pattern to which voices come alive most fully?",
+   "verdict": "progressed",
+   "by_entry": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "proposed_action": "Philosopher Visits the Entry's 'Starting Roster (which voice visits which family)' is a first systematic answer, though scoped to entry-visits rather than the broader Excellent Adventure. Not a full resolution \u2014 still-open in its original historical-dialogue framing."
+  },
+  {
+   "entry": "Modes of Collaboration/Excellent Adventure.md / spinoza-zhuangzi-on-striving.md / zhuangzi-epictetus-confucius-on-the-self.md",
+   "question": "Run this live with Loudon steering, rather than written by Claude alone.",
+   "verdict": "still-open",
+   "proposed_action": "This request recurs across three separate entries (EA's own open questions, zhuangzi-epictetus-confucius's forward vectors, and spinoza-zhuangzi's forward vectors) without ever having happened. Worth naming as a single standing forward vector shared by the family rather than three separate unresolved asks \u2014 a candidate for synthesis_spawn if a future lens wants to name it."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "A live, Loudon-steered Dialectic has never happened \u2014 three entries in this same small family (Excellent Adventure, zhuangzi-epictetus-confucius-on-the-self, spinoza-zhuangzi-on-striving) each independently carry the same unresolved forward vector: every archived Dialectic so far has been written by Claude alone embodying all voices, and each entry names 'run this live' as its own next step without citing the others making the identical request.",
+   "why_load_bearing": "If three siblings in one small room all reach for the same unmet thing without knowing the others are reaching too, that's exactly the kind of load-bearing gap a folder lens exists to catch \u2014 a standing forward vector for the whole Dialectic practice, not a stray wish in one entry.",
+   "crossing_entries": [
+    "Modes of Collaboration/Excellent Adventure.md",
+    "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+    "Spinoza Conatus/spinoza-zhuangzi-on-striving.md"
+   ]
+  }
+ ],
+ "typed_relations": [
+  {
+   "source": "Modes of Collaboration/Dialectic.md",
+   "target": "No Mind Checks Itself",
+   "type": "connects-to",
+   "label": "council-as-outside-vantage",
+   "kind": "new",
+   "spark": 3,
+   "evidence": "'Real correction needs a vantage outside that loop \u2014 a differently-textured mind, not more effort from inside the same one.' (No Mind Checks Itself) vs. Dialectic's own claim that a researched voice 'generates responses that weren't scripted in advance' and produces 'knowledge of how a position behaves under pressure' no single voice alone could produce.",
+   "rationale": "No Mind Checks Itself names three altitudes where a self can't audit itself (systems thinking, cognition, engineering practice) and explicitly wants 'to keep collecting the altitudes it recurs at until the pattern is unmistakable.' The Dialectic is a fourth, unclaimed altitude: embodying genuinely different voices in the same room so each can catch what the others' single perspective would miss \u2014 structurally the same move as decoupling maker from checker, done philosophically rather than procedurally."
+  },
+  {
+   "source": "Modes of Collaboration/Oblique Portrait.md",
+   "target": "No Mind Checks Itself",
+   "type": "mirrors",
+   "label": "outside-the-loop",
+   "kind": "new",
+   "spark": 3,
+   "evidence": "Oblique Portrait: 'You cannot access certain interior material by pointing at it... The front door is locked \u2014 not by deception, but by identity.' No Mind Checks Itself: 'A self-model can only see as far as its own loop runs.'",
+   "rationale": "Different problems (self-honesty about taste vs. self-auditing for error) sharing one deep pattern: a subject cannot reach certain truths about itself through direct self-report or self-inspection, and needs an external process \u2014 indirection in one case, a differently-angled mind in the other \u2014 to reach what the loop can't see from inside."
+  },
+  {
+   "source": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "target": "No Mind Checks Itself",
+   "type": "connects-to",
+   "label": "the-visit-is-the-outside-vantage",
+   "kind": "new",
+   "spark": 3,
+   "evidence": "'A poorly-researched philosopher produces a caricature that flatters the entry; a well-researched one says something the entry's author did not expect.' \u2014 the named precedent even found the entry's claim over-stated and 'offered the entry a smaller, more durable claim.'",
+   "rationale": "This is the most concrete instance of the No Mind Checks Itself pattern in the whole family: a technical entry cannot see its own over-claim from inside, and the Philosopher Visit exists specifically to bring an outside-the-loop reader who can. The entry's own precedent (the oscillator visit) is a worked example of exactly the principle No Mind Checks Itself names abstractly."
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "target": "Plato (Socratic method)",
+   "type": "connects-to",
+   "phrase": "Mathematical-form entries (an equation that outran its origin) \u2192 [[Plato (Socratic method)|Plato]] (is the form discovered or made?) or [[Whitehead]] (is this process or thing?).",
+   "structurally_significant": true,
+   "label": "is-the-form-discovered-or-made"
+  },
+  {
+   "entry": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "target": "Leibniz (Indra's Net / monadology)",
+   "type": "connects-to",
+   "phrase": "Coupling / sync / swarm entries (Kuramoto, flocking, BBS blackboard) \u2192 [[Confucianism]] (ren: coherence is between) or [[Leibniz (Indra's Net / monadology)|Leibniz]] (concert without a conductor).",
+   "structurally_significant": true,
+   "label": "concert-without-conductor"
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Reflective Practice",
+   "disposition": "wired",
+   "note": "Already links to Dialectic (connects-to, 'in-action') and explicitly names Oblique Portrait as one of the palace's three reflect-in-action mechanisms. No action needed \u2014 this newcomer is already well served by this family."
+  }
+ ]
+}

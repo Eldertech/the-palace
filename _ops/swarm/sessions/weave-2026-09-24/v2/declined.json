@@ -1,0 +1,258 @@
+[
+ {
+  "source": "Dispersion Table",
+  "target": "Spinoza",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "loop-returns-to-itself-is-conatus"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "Dispersion Table's own epigraph states the loop's self-return in exactly the terms Spinoza uses for essence-as-striving, without invoking him."
+  ],
+  "evidence": [
+   "\"The string knows nothing of harmonics; it only knows how to come back to itself.\" / \"the endeavor to persist in its own being is the actual essence of the thing itself.\""
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "fails the fidelity test \u2014 any feedback loop would read the same"
+ },
+ {
+  "source": "Quadratic Interpolation in DSP",
+  "target": "Reflective Practice",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "listening-plan"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "A control loop that senses error mid-process and corrects vs. one fully specified in advance \u2014 the same fork, named independently in DSP and in professional-practice theory."
+  ],
+  "evidence": [
+   "\"mimics a system reacting to error, finding equilibrium\" / \"the situation talks back, the practitioner listens... reframes\""
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "rationale describes PID, not this entry \u2014 worker error"
+ },
+ {
+  "source": "Reflective Practice",
+  "target": "Weave Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "listed among the twelve reflect-on-action mechanisms"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "covered by the ceremony's own exemplifies \u2192 Reflective Practice (one link per pair)"
+ },
+ {
+  "source": "Image Embedding Standard",
+  "target": "Technical Diagram Standard",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-_ops"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "deepens"
+  ],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "sibling-standard"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Image Embedding Standard's Filing Protocol names TDS as governing generated technical diagrams' filing, but only in body prose.",
+   "per [[Technical Diagram Standard]]"
+  ],
+  "evidence": [
+   "\"Generated technical diagrams keep their source beside the render... per [[Technical Diagram Standard]].\" \u2014 Image Embedding Standard.md:54"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['deepens'] \u2014 one link per pair"
+ },
+ {
+  "source": "Deposit Ceremony",
+  "target": "Technical Diagram Standard",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-_ops"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "enables"
+  ],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "filing-path"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Deposit Ceremony's filing structure names TDS as the third branch of image/diagram handling at deposit time, but the frontmatter link list has no entry for it.",
+   "per [[Technical Diagram Standard]]"
+  ],
+  "evidence": [
+   "\"Technical diagrams... file the .tex source beside the rendered .svg, per [[Technical Diagram Standard]]\" \u2014 Deposit Ceremony.md:188"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['enables'] \u2014 one link per pair"
+ },
+ {
+  "source": "CLAUDE",
+  "target": "Return Ceremony",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "trigger-table"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Same trigger-table gap: CLAUDE names [[Return Ceremony]] as the dispatch target for 'I'm back' / 'returning' but never links it in frontmatter.",
+   "the Ceremony Triggers table row for \"I'm back\" / \"returning\""
+  ],
+  "evidence": [
+   "| \"I'm back\", \"returning\", \"what did I miss\", \"let's pick this back up\", \"return\" | [[Return Ceremony]] |"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "the birth file stays minimal; its links are its @imports"
+ },
+ {
+  "source": "ROSETTA",
+  "target": "Self-Describing Knowledge Module",
+  "type": "contradicts",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "enables"
+  ],
+  "kinds": {
+   "contradiction": 1
+  },
+  "labels": [
+   "disagreeing-translation-tables"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "The pair is already linked (SDKM enables ROSETTA) and that link is not wrong \u2014 SDKM's self-description work does feed ROSETTA's translation layer. But SDKM's own Open Questions section names a separate, specific, unresolved tension worth its own edge: the two pages' cross-tradition translation tables actively disagree on four points (module vs. system-of-modules as the transferable unit; the missing Ceremony Contract row; read-only vs. read+write ceremony; Entry Type/SCHEMA collapsed vs. split) \u2014 and SDKM says explicitly that resolving the disagreement is 'prior to Proof 1, not parallel to it.' That is a productive tension distinct from the enables relationship already on record, and per SCHEMA \u00a74 two entries can carry more than one typed edge for different facets of the relationship. Proposing to add contradicts alongside the existing enables, not to replace it."
+  ],
+  "evidence": [
+   "\"The convergence table above and [[ROSETTA]]'s disagree, and the disagreements land where transfer is decided... Which table is authoritative is unsettled, and the differences are not litter: each one is a claim about what the pattern *is*.\" \u2014 Self-Describing Knowledge Module.md \u00a7 Open Questions"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['enables'] \u2014 one link per pair"
+ },
+ {
+  "source": "Curriculum Map",
+  "target": "Loudon Live",
+  "type": "deepens",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "couples-with"
+  ],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "scaffolds-the-curriculum"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "\"Cross-project scaffolding intelligence for the [[Loudon Live]] curriculum\" \u2014 and every project table names its \"Prerequisite [[Loudon Live]]\" stage"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['couples-with'] \u2014 one link per pair"
+ }
+]

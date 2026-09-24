@@ -55,6 +55,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: how-do-you-feel
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Julia Cameron

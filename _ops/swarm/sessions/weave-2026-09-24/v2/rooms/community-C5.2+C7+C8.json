@@ -1,0 +1,135 @@
+{
+ "lens": "community",
+ "id": "C5.2+C7+C8",
+ "members": [
+  {
+   "id": "CLAUDE",
+   "path": "CLAUDE.md",
+   "type": "meta",
+   "stage": "foundational",
+   "reached_by": 5,
+   "existing_links": [
+    "\u2190 enables \u2190 JEWEL",
+    "\u2190 enables \u2190 SCHEMA",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 JEWEL",
+    "\u2192 connects-to \u2192 Palace Ceremonies",
+    "\u2192 connects-to \u2192 SCHEMA",
+    "\u2192 connects-to \u2192 SUBSTRATE",
+    "\u2192 spawned \u2192 ELDER"
+   ]
+  },
+  {
+   "id": "D3.js",
+   "path": "Shop/D3.js.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Observable Plot  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Flocking",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Matplotlib",
+    "\u2192 connects-to \u2192 Observable Plot",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 p5.js"
+   ]
+  },
+  {
+   "id": "ELDER",
+   "path": "ELDER.md",
+   "type": "meta",
+   "stage": "foundational",
+   "reached_by": 8,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Palace as Context Injection System  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 JEWEL",
+    "\u2190 spawned \u2190 CLAUDE",
+    "\u2192 connects-to \u2192 Concierge",
+    "\u2192 connects-to \u2192 JEWEL",
+    "\u2192 connects-to \u2192 Palace Ceremonies",
+    "\u2192 connects-to \u2192 Palace as Context Injection System",
+    "\u2192 connects-to \u2192 SCHEMA",
+    "\u2192 connects-to \u2192 SCHEMA \u2014 Reference",
+    "\u2192 connects-to \u2192 Substrate Skill"
+   ]
+  },
+  {
+   "id": "LaTeX",
+   "path": "Shop/LaTeX.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 2,
+   "existing_links": [
+    "\u2190 couples-with \u2190 Manim CE  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 couples-with \u2192 Manim CE",
+    "\u2192 enables \u2192 Matplotlib",
+    "\u2192 member-of \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Matplotlib",
+   "path": "Shop/Matplotlib.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 D3.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Manim CE  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Observable Plot  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 ffmpeg  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 LaTeX",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Manim CE",
+    "\u2192 connects-to \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Mermaid",
+   "path": "Shop/Mermaid.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 3,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Kuramoto Coupling  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Observable Plot",
+   "path": "Shop/Observable Plot.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 D3.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 p5.js  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 D3.js",
+    "\u2192 connects-to \u2192 Flocking",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Matplotlib",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 p5.js"
+   ]
+  },
+  {
+   "id": "SCHEMA \u2014 Reference",
+   "path": "SCHEMA \u2014 Reference.md",
+   "type": "meta",
+   "stage": "foundational",
+   "reached_by": 3,
+   "existing_links": [
+    "\u2190 connects-to \u2190 ELDER  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 SCHEMA",
+    "\u2192 connects-to \u2192 Resonant Link Labels",
+    "\u2192 deepens \u2192 SCHEMA",
+    "\u2192 enables \u2192 Deposit Ceremony",
+    "\u2192 enables \u2192 STIGMERGY"
+   ]
+  }
+ ],
+ "directed_flags": {}
+}

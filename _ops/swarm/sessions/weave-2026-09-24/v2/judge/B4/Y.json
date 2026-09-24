@@ -1,0 +1,82 @@
+{
+ "arm": "Y",
+ "room": "B4",
+ "total_proposals": 18,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Dispersion Table",
+   "type": "mirrors",
+   "target": "Spinoza",
+   "label": null,
+   "rationale": "A self-returning resonant loop is conatus rendered as DSP \u2014 persistence-in-being as the generative mechanism.",
+   "evidence": "The string knows nothing of harmonics; it only knows how to come back to itself.",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "bridge",
+   "source": "Weaving Memory into the Palace",
+   "type": "mirrors \u2014 recommend writing from Donella Meadows' side (she already links out to concrete applied instances like Kick Drum <-> Foundation and Sidechain <-> Conversation via connects-to); Weaving Memory into the Palace is a priority newcomer at 1 inbound and this direction gives it a needed second link.",
+   "target": "Donella Meadows",
+   "rationale": "The ceremony IS a negative-feedback loop correcting a stock (operator memory) that drifts from its target state (the palace) if left unchecked \u2014 Meadows' stock-and-flow machinery, independently reinvented as a maintenance ritual with no systems vocabulary at all.",
+   "evidence": "Left alone, that memory silently drifts from the palace... a stale, rival source of truth. || feedback loops (the parts that notice a stock and push back), and delays (the lag that makes everyone overcorrect).",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "unsung",
+   "source": "Spinoza.md",
+   "type": "body-mention",
+   "target": "Deleuze",
+   "label": null,
+   "rationale": "a later reader \u2014 [[Deleuze]], Nietzsche, Freud \u2014 will say the affects are driving the car",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "Graphic Storytelling",
+   "type": "mirrors",
+   "target": "Pauline Oliveros",
+   "label": null,
+   "rationale": "Closure and deep listening both locate the real work in the audience's active completion of a withheld field.",
+   "evidence": "the reader supplies the missing motion and time there... the viewer is completing it. / Hearing is passive; listening is a practice.",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "unsung",
+   "source": "Weaving Memory into the Palace.md",
+   "type": "body-mention",
+   "target": "Substrate Skill",
+   "label": null,
+   "rationale": "If [[Substrate Skill]] ever grows an 'operating this environment' section",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "The 2.5D Paper Stack",
+   "type": "mirrors",
+   "target": "Dialectic",
+   "label": null,
+   "rationale": "Holding two contraries as generative, rather than resolving them, is the shared method.",
+   "evidence": "Two generative moves live in tension here, and the tension is the point (Blake's contraries \u2014 both true).",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "unsung",
+   "source": "Weaving Memory into the Palace.md",
+   "type": "body-mention",
+   "target": "Worktree Practice",
+   "label": null,
+   "rationale": "a cluster of git/worktree cautions -> a single 'shared-tree discipline' nugget -> [[Worktree Practice]]",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "bridge",
+   "source": "Graphic Storytelling",
+   "type": "mirrors",
+   "target": "Pauline Oliveros",
+   "rationale": "Both theories locate the real work in the audience's active completion of what the medium withholds \u2014 closure across the comics gutter, deep listening across the whole sonic field \u2014 rather than in passive reception of what's delivered.",
+   "evidence": "the reader supplies the missing motion and time there \u2014 McCloud calls this closure... the viewer is completing it. || Hearing is passive; listening is a practice.",
+   "item_id": "Y8"
+  }
+ ]
+}

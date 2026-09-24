@@ -1,0 +1,28 @@
+{
+ "arm": "Z",
+ "room": "F-Shop",
+ "total_proposals": 3,
+ "sample": [
+  {
+   "kind": "stage",
+   "source": "Shop/Maker.md",
+   "type": "alive->alive (no change)",
+   "rationale": "The 'Still stub' prose list is incomplete (see coherence_findings) \u2014 this is a content-accuracy flag on a hand-maintained annotation, not a stage mismatch.",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "stage",
+   "source": "Shop/Shopkeeper.md",
+   "type": "stub->stub (no change)",
+   "rationale": "The 'Pending Commission' section ('Approved 2026-06-08 \u2014 execute next scheduled run... Deposit an Image-to-3D smith Specialist') is stale: Image-to-3D Smith now exists as a stub entry. The commission was executed but the section still reads as an open directive.",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "stage",
+   "source": "Shop/Three.js.md",
+   "type": "alive->alive (no change)",
+   "rationale": "Forward Vector section still narrates the Waveguide Synthesizer Sketch as the job that 'moves this entry stub \u2192 alive' \u2014 but the entry was already promoted to alive by the Wavetable Scanner recipe (2026-05-31), which is documented two sections earlier in the same file. The Forward Vector wasn't updated after the promotion it describes.",
+   "item_id": "Z3"
+  }
+ ]
+}

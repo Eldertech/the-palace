@@ -1,0 +1,648 @@
+[
+ {
+  "source": "ControlNet as Topology",
+  "target": "FLUX (Hugging Face)",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "capability-i-lack"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "FLUX defines its own capability boundary by explicitly naming ControlNet, and ControlNet as Topology is a genuine palace entry, currently under-reached, that FLUX's Limits section is effectively pointing at.",
+   "I won't pretend to ControlNet \u2014 that's ComfyUI's job"
+  ],
+  "evidence": [
+   "\"I won't pretend to ControlNet \u2014 that's ComfyUI's job; I'd rather hand the brief back than fake structural control I don't have.\" / Limits: \"No ControlNet, no LoRA stack, no per-block guidance.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Martin Heidegger",
+  "target": "Metaphor as Coupling Medium",
+  "type": "connects-to",
+  "lenses": [
+   "bridge",
+   "community"
+  ],
+  "rooms": [
+   "B7",
+   "C2.1"
+  ],
+  "n": 3,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 2
+  },
+  "labels": [
+   "cited-authority",
+   "quoted-unlinked"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "The entry closes on two Heidegger quotes ('Language is the house of being'; 'we are still not thinking') as its standing philosophical authority on language and thought \u2014 real argumentative weight, no link to the newcomer person page.",
+   "'Language is the house of being.' \u2014 Martin Heidegger",
+   "\"Language is the house of being.\" \u2014 Martin Heidegger / \"What is most thought-provoking in our thought-provoking time, is that we are still not thinking.\" \u2014 Martin Heidegger, What Is Called Thinking?"
+  ],
+  "evidence": [
+   "\"'What is most thought-provoking in our thought-provoking time, is that we are still not thinking.' \u2014 Martin Heidegger... 'Language is the house of being.' \u2014 Martin Heidegger\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Dialogue Moderator",
+  "target": "Making a Palace Citizen",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-Palace_development"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "citizenship-test"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Dialogue Moderator's own agency_profile.philosophy already names the concept unlinked \u2014 a genuine newcomer bridge, not a forced one.",
+   "the palace citizen test"
+  ],
+  "evidence": [
+   "\"My citizenship responsibility is to use that privilege in service of the dialogue's purpose, never my own. The palace citizen test: would Loudon recognize the synthesis I produced as something the palace needed, not something I preferred?\" \u2014 Palace development/Dialogue Moderator.md:36"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Figure Rig",
+  "target": "ControlNet as Topology",
+  "type": "exemplifies",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "armature-in-the-flesh"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "CNaT's central metaphor for a ControlNet pose/depth map is 'an armature... the wire skeleton a figure is built around.' Figure Rig is the literal machine that builds one: it projects the rig's own joints and draws them with the real controlnet_aux draw_bodypose so 'the skeleton is pixel-identical to the preprocessor.' Fidelity test: swap in Blender (a hop2 sibling) and the armature language stops fitting \u2014 Blender is the substrate, Figure Rig is the armature-maker."
+  ],
+  "evidence": [
+   "CNaT: 'ControlNet is an armature... A depth map, a pose, an edge map is exactly that skeleton.' Figure Rig: 'I project the rig's own joints to 2D and draw them with the actual draw_bodypose from comfyui_controlnet_aux, so the skeleton is pixel-identical to the preprocessor.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Figure Rig",
+  "target": "GenAI Camera",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "org-bone-projection"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both entries independently describe the same specific technique \u2014 projecting a rig's ORG- bones geometrically into an OpenPose plate rather than running DWPose on a greybox render. GenAI Camera names it as a design choice; Figure Rig is where the technique lives. Fidelity test: swap in ComfyUI or Blender (both connected to GenAI Camera already) and the specific bone-projection claim disappears \u2014 it only holds for Figure Rig."
+  ],
+  "evidence": [
+   "GenAI Camera: 'an OpenPose pose plate projected geometrically from the rig's ORG- bones (never DWPose-on-greybox \u2014 armature projection).' Figure Rig: 'The OpenPose reads off the rig's own ORG- bones, so a hand-pose round-trips to conditioning plates with no extra work.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "LDN RTM",
+  "target": "ffmpeg",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-pad-not-taken"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "LDN RTM's whole no-timeline pipeline is defined partly by what it refuses \u2014 it names ffmpeg specifically as the padding technique it avoids ('a single still frame of the Lissajous... rather than an ffmpeg pad'), and ffmpeg is still the tool underneath the rest of the batch (audio-only touch, tail without re-encoding \u2014 the exact recipe already on ffmpeg's and OBS's own pages). An unsung path: LDN RTM names ffmpeg in prose with no frontmatter link.",
+   "rather than an ffmpeg pad"
+  ],
+  "evidence": [
+   "LDN RTM: 'a single still frame of the Lissajous... rather than an ffmpeg pad \u2014 so the video stream is copied, never re-encoded, and the batch touches audio only.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Loudon Live Post-producer",
+  "target": "OBS",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "not-a-chat-tool"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Loudon Live Post-producer already carries a live [[OBS]] wikilink in its Open Questions, explaining a real boundary (OBS can't handle chat or cross-posting, that needs the YouTube connector both entries defer). The relation exists in prose but was never promoted to frontmatter \u2014 a clean unsung path, and a genuine one since both entries are already reasoning about the same seam (what the publishing connector will eventually own).",
+   "chat and cross-posting are not [[OBS]] capabilities at all"
+  ],
+  "evidence": [
+   "Loudon Live Post-producer: 'Note that chat and cross-posting are not [[OBS]] capabilities at all; they need the same YouTube connector this entry defers for publishing, arriving from a second direction.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "BLUELINE",
+  "target": "Search Before You Build",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "the-comfy-lib-miss"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Search Before You Build's own founding story names BLUELINE's code directly as the prior art it failed to reuse a second time \u2014 not GenAI Camera alone (which already links back via emerged-from), but BLUELINE's lib/comfy.py specifically. BLUELINE doesn't currently point to this practice at all despite being its second cited case."
+  ],
+  "evidence": [
+   "Search Before You Build: 'Same with the ComfyUI client I started fresh while lib/comfy.py already existed.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ControlNet as Topology",
+  "target": "Hand-Drawn 3D Look",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "over-anchor-the-plates"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Hand-Drawn 3D Look's forward_vector names the exact multi-conditioner stacking CNaT theorizes ('stacking ControlNets is multi-scale terrain \u2014 depth carves the large valley, canny carves the fine ridges'). Weaker than the Figure Rig find \u2014 several BLUELINE entries mention the canny+depth+openpose combo \u2014 so flagging at lower confidence rather than dropping it; it is Hand-Drawn 3D Look's own stated proof result, not a borrowed detail."
+  ],
+  "evidence": [
+   "Hand-Drawn 3D Look: 'I have proven the redraw survives on a posed figure (over-anchor it: canny + depth + openpose).' CNaT: 'Stacking ControlNets is multi-scale terrain \u2014 depth carves the large valley, canny carves the fine ridges within it.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Skills Are Enchantable Pages",
+  "target": "The Palace Speaks",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "migration-siblings"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both name the same shift \u2014 a palace organ moving from static canon/ceremony to a dispatched, addressable actor \u2014 from two different angles: Skills Are Enchantable Pages gives the trigger/executor mechanics (ceremony \u00b7 specialist \u00b7 skill \u00b7 steward as one family), The Palace Speaks gives the mind/agency framing (library vs. actor, corpus you load vs. mind you address) with Concierge as the shared worked example in both. Neither's frontmatter points at the other."
+  ],
+  "evidence": [
+   "Skills: 'Ceremony \u00b7 specialist \u00b7 skill \u00b7 steward \u00b7 enchanted page are one pattern \u2014 a page with a dispatch surface'; Palace Speaks: 'Its first working organ is the [[Concierge]]... the technical shape of the shift is library \u2192 actor.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "CLAUDE",
+  "target": "Closing Well Ceremony",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "trigger-table"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "CLAUDE.md's Ceremony Triggers table names [[Closing Well Ceremony]] by wikilink as the dispatch target for the 'close well' trigger, but CLAUDE's frontmatter links list has no entry pointing there \u2014 the highest-traffic page in the palace is missing a link to a ceremony it recognizes and fires.",
+   "the Ceremony Triggers table row for \"close well\""
+  ],
+  "evidence": [
+   "| \"close well\", \"let's close well\", \"close this session well\" | [[Closing Well Ceremony]] |"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Closing Well Ceremony",
+  "target": "No Mind Checks Itself",
+  "type": "exemplifies",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "self-grading-disqualified"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "No Mind Checks Itself argues a mind cannot grade its own work from inside its own loop and the checker must sit outside the system that produced the error. Closing Well Ceremony's failure-mode clause is that exact argument made operational: a self-moderated close is disqualified precisely because it removes the outside check at the moment it matters most. Fidelity test: swap in any other hop2 neighbor of NMCI (Deposit Ceremony, Baton Ceremony, Worktree Practice) \u2014 none of them turn on this specific self-grading trap, so the link isn't generic."
+  ],
+  "evidence": [
+   "\"a self-moderated close justified by context-fullness ('it's all in my context') is itself a failure, not a graceful degradation \u2014 it removes the one thing the ceremony provides, a fresh check on a spent instance, at the exact moment it matters most\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "Weave Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "cites-moved-sections"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "SCHEMA \u2014 Reference's own header states \u00a73, \u00a75, \u00a76, \u00a78, \u00a79 physically live there now (moved off SCHEMA.md), while \u00a71/\u00a72/\u00a74/\u00a77 stayed. Weave Ceremony's naming-lint step cites 'SCHEMA \u00a78' (bundle exact-name matching) and 'SCHEMA \u00a73' (title/filename match) as plain unlinked text \u2014 both sections that now live in SCHEMA \u2014 Reference, not SCHEMA.md, where Weave Ceremony's only schema link currently points. Direction is contestable (is Weave Ceremony citing or is SCHEMA \u2014 Reference grounding it?) so connects-to + label, per SCHEMA \u00a74 guidance."
+  ],
+  "evidence": [
+   "\"SCHEMA \u00a78 matches bundles by *exact* name; the miscase silently splits the bundle\" / \"a canon entry whose `title:` \u2260 its filename (SCHEMA \u00a73)\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ControlNet as Topology",
+  "target": "The Aftermath Frame",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "armature-for-the-swing"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "The Aftermath Frame's own render pipeline is 'the depth / OpenPose plates \u2192 ControlNet / img2img \u2192 pen-flow ink' \u2014 that is exactly ControlNet as Topology's 'armature' (a depth map, a pose, an edge map is exactly that skeleton). Both already share Blocked, Not Prompted, Steer the Generator, and The Flow Field is the Spine as neighbors, but neither links directly to the other \u2014 this closes a real gap, not a proximity coincidence."
+  ],
+  "evidence": [
+   "Aftermath Frame: 'the physical consequences + the depth / OpenPose plates \u2192 ControlNet / img2img \u2192 pen-flow ink'. ControlNet as Topology: 'A depth map, a pose, an edge map is exactly that skeleton; the render is the clay wrapped onto it.'"
+  ],
+  "july": false,
+  "gnn": true
+ },
+ {
+  "source": "Tool Builder",
+  "target": "Zoom Out to the Structure",
+  "type": "deepens",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "structure-from-scars"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Zoom Out to the Structure's own worked examples ('a one-file RunPod pod-naming fix \u2192 The Commons', 'the toolbox convention') are literally tool-building scars becoming general discipline \u2014 exactly Tool Builder's subject. Tool Builder is the domain-specific elaboration (palace tooling) of the general zoom-out habit; Zoom Out is the ground."
+  ],
+  "evidence": [
+   "Zoom Out: 'A one-file RunPod pod-naming fix \u2192 The Commons, a whole coordination layer for any shared external service.' Tool Builder: 'The discipline of building a tool that survives contact with a live, multi-agent palace... Each rule below is the compressed form of a real scar.'"
+  ],
+  "july": false,
+  "gnn": true
+ },
+ {
+  "source": "Harvest Ceremony",
+  "target": "Tool Builder",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "checklist-growth"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Tool Builder's own body names the mechanism by which its checklist grows and has no frontmatter link for it \u2014 an unsung path that also happens to be the inbound Tool Builder's assigned hop1/hop2 walk failed to surface (both rings were already saturated with existing links)."
+  ],
+  "evidence": [
+   "'the deepest disciplines earn their own entries and link back with member-of... added by [[Harvest Ceremony|Harvest]], not by dumping every operational note at once.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Palace Enchantment",
+  "target": "The Remembering Page",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "loads-the-memory"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The Remembering Page's mechanism section states outright that Palace Enchantment is what loads its memory back in on waking \u2014 a precondition relation, named in body, absent from frontmatter and from the target's own hop1/hop2 list."
+  ],
+  "evidence": [
+   "'When the page is next cast, the memory loads alongside its body, so it wakes already carrying its past ([[Palace Enchantment]] loads it).'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Differential Equations",
+  "target": "control-vocabulary-math",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "kuramoto-mean-field-ode"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "The Differential Equations hub's own forward vector wants exactly this: a complete map of which palace projects correspond to which DE types. control-vocabulary-math is a worked, fully-derived mean-field Kuramoto ODE (\u00a72) with the hub's own listed concept (Kuramoto Coupling) as its parent \u2014 and it currently has zero inbound links from anywhere in the palace. This is the target's isolation resolved at its root cause, not a forced topical match."
+  ],
+  "evidence": [
+   "\"every physical instrument Loudon builds is already solving a differential equation\" (Differential Equations.md forward_vector) / \"d\u03b8\u1d62/dt = \u03c9\u1d62 + K r sin(\u03c8 \u2212 \u03b8\u1d62)\" (control-vocabulary-math.md \u00a72)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Frame Designer",
+  "target": "assume multi-agent",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "assume multi-agent is a priority newcomer (reached_by 6). Frame Designer's own RunPod gotcha names it as the reason cleanup must be namespace-scoped \u2014 an already-bracketed body link with no frontmatter counterpart.",
+   "strangles other agents' pods ([[assume multi-agent]])"
+  ],
+  "evidence": [
+   "\"never an account-wide `GET /pods \u2192 DELETE all`, which strangles other agents' pods ([[assume multi-agent]])\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Andy Goldsworthy",
+  "target": "Martin Buber",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [
+   "relapses-into-it-at-the-shutter"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Buber's central claim \u2014 every Thou relapses into an It the instant it is named, analyzed, or used \u2014 is almost a literal gloss on Goldsworthy's own documented tell: the ephemeral, encountered material becomes a fixed, sellable object at the exact moment the camera closes. Neither page links the other; Buber is an under-reached newcomer (reached by 6)."
+  ],
+  "evidence": [
+   "Buber: 'every Thou must become an It the instant it is named, analyzed, or used.' Goldsworthy: 'the photograph is the actual permanent, sellable, gallery-priced object... manufactures the durable commodity at the exact instant of the shutter.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Infeasible DSP Now Shippable",
+  "target": "control-vocabulary-math",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [
+   "worked-control-vocabulary"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Infeasible DSP Now Shippable names 'control-surface design is the hardest problem in the suite' and its own Forward Vectors say 'invent control vocabularies for high-dimensional instrument spaces \u2014 the concrete form of the hardest problem.' control-vocabulary-math is a worked instance of exactly that: it collapses a 16-64-neuron Kuramoto population into four performable knobs (K, sigma_threshold, frequency spread, drive) with r as the single closing-the-loop readout."
+  ],
+  "evidence": [
+   "Infeasible DSP Now Shippable: 'control-surface design is the hardest problem in the suite... Invent control vocabularies for high-dimensional instrument spaces \u2014 the concrete form of the hardest problem.' control-vocabulary-math: 'This document formalizes the layer that sits on top of that engine: the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs.'"
+  ],
+  "july": false,
+  "gnn": false
+ }
+]

@@ -31,9 +31,6 @@ links:
   - target: "[[Dialectic]]"
     type: connects-to
     label: in-action
-  - target: "[[Closing Well]]"
-    type: connects-to
-    label: on-action
 forward_vector: "I teach the difference between thinking while the work can still change and thinking after it can't, so that the palace builds more of the first, and so that a coach can hand an artist the skill instead of the habit of looking back."
 ---
 

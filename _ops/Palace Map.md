@@ -8,7 +8,7 @@ pillars:
 born: 2026-03
 last_activated: 2026-07-04
 activation_count: 10
-stage: sprout
+stage: growing
 energy: very high
 beauty: 8
 confidence: working

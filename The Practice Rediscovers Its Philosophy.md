@@ -28,6 +28,9 @@ links:
   - target: "[[Striatum]]"
     type: connects-to
     label: the-pheromone-and-the-synapse
+  - target: "[[Trickster Commit]]"
+    type: connects-to
+    label: the-strongest-pair
 forward_vector: "I want to become the entry a Weave reaches for whenever a dry infra page turns out to be a philosopher in code — naming the pattern once so it stops being a surprise and starts being a search. I want to collect more pairs, and I want to test whether the derivation ever runs backward: a philosopher who, read carefully, turns out to already be describing a tool."
 ---
 

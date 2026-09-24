@@ -1,0 +1,152 @@
+{
+ "cluster": "C5.2+C7+C8",
+ "lens": "community",
+ "summary": "This room turned out to be two worlds sharing a folder-blind topology slot: the palace's three foundational meta docs (CLAUDE.md, ELDER.md, SCHEMA \u2014 Reference.md) and five Shop visualization/typesetting Specialists (D3.js, LaTeX, Matplotlib, Mermaid, Observable Plot). The Shop entries are internally tight \u2014 already cross-linked via alternative-to/enables/fallback-for and all member-of The Shop \u2014 so the real work here was the meta side, which is thick with wikilinks written in body prose that never made it into frontmatter `links:`. Four of those unlinked mentions happen to point straight at this Weave's priority newcomers (Agent Toolbox, Making a Palace Citizen, Return Ceremony, The Palace Voice), so promoting them is close to free inbound-wiring. The more interesting cross-domain thread is a genuine but unglamorous pattern: three Specialists (LaTeX, Matplotlib, Mermaid) carry an open question about building a house design-system wrapper and defer it \"to first job,\" while two siblings (D3.js, Observable Plot) already built and shipped that exact wrapper (`palace-tokens.js` additive pattern; `palace-plot-defaults.js` subtractive pattern) \u2014 the answer to the open question already exists two entries over, it just isn't named or pointed at. No merge/compost/demote candidates surfaced; every entry in the room earns its keep and destroying any of them would lose a distinct charter, so on the \"cluttered\" concern this room reports clean.",
+ "members_read": [
+  "CLAUDE.md",
+  "ELDER.md",
+  "SCHEMA \u2014 Reference.md",
+  "Shop/D3.js.md",
+  "Shop/LaTeX.md",
+  "Shop/Matplotlib.md",
+  "Shop/Mermaid.md",
+  "Shop/Observable Plot.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "ELDER",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "label": "tool-tiering",
+   "kind": "newcomer",
+   "rationale": "ELDER.md already names Agent Toolbox in running prose when it explains the reader/writer/orchestrator tool tiers, but the link never made it to frontmatter. Agent Toolbox sits at 0 inbound \u2014 this is the cleanest possible fix.",
+   "evidence": "\"a child that makes things keeps the tools its workshop needs; an elder is `palace-writer`, and an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]]).\" \u2014 ELDER.md:47",
+   "spark": 2
+  },
+  {
+   "source": "SCHEMA \u2014 Reference",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "label": "dossier-source",
+   "kind": "newcomer",
+   "rationale": "SCHEMA \u2014 Reference cites Making a Palace Citizen twice (for the `dossier` and `speech` bundle-file types and for agency_profile's practice sub-field) but frontmatter carries neither link. Making a Palace Citizen is at 2 inbound.",
+   "evidence": "\"loaded when an agent must embody the person faithfully... One per made citizen. See [[Making a Palace Citizen]].\" \u2014 SCHEMA \u2014 Reference.md:230",
+   "spark": 2
+  },
+  {
+   "source": "CLAUDE",
+   "target": "Return Ceremony",
+   "type": "connects-to",
+   "label": "ceremony-trigger",
+   "kind": "newcomer",
+   "rationale": "The ceremony trigger table names Return Ceremony directly, but the table's wikilinks never sync to frontmatter (true of the whole table, but Return Ceremony is the one on this Weave's priority list at 1 inbound).",
+   "evidence": "\"\\\"I'm back\\\", \\\"returning\\\", \\\"what did I miss\\\"... | [[Return Ceremony]] |\" \u2014 CLAUDE.md ceremony table",
+   "spark": 1
+  },
+  {
+   "source": "CLAUDE",
+   "target": "The Palace Voice",
+   "type": "connects-to",
+   "label": "dial-set",
+   "kind": "newcomer",
+   "rationale": "CLAUDE.md's closing Palace Voice section explicitly hands off to the full entry, unlinked in frontmatter. The Palace Voice sits at 1 inbound.",
+   "evidence": "\"The full dial set is [[The Palace Voice]].\" \u2014 CLAUDE.md \u00a7 The Palace Voice",
+   "spark": 1
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "ELDER",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "phrase": "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])",
+   "structurally_significant": true
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "phrase": "One per made citizen. See [[Making a Palace Citizen]].",
+   "structurally_significant": true
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "Return Ceremony",
+   "type": "connects-to",
+   "phrase": "ceremony trigger table row",
+   "structurally_significant": false
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "The Palace Voice",
+   "type": "connects-to",
+   "phrase": "The full dial set is [[The Palace Voice]].",
+   "structurally_significant": true
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "The Shop",
+   "type": "connects-to",
+   "phrase": "typically routed through [[The Shop]] / a Maker (the `spec` bundle-file type)",
+   "structurally_significant": false
+  }
+ ],
+ "entry_health_flags": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "coherence_findings": [
+  {
+   "issue": "Structural echo, not a genuine link to force: every Shop Specialist's Job Contract Output section says out_path is \"an absolute path under the target entry's bundle\" \u2014 that is SCHEMA \u2014 Reference \u00a78's Entry Bundles rule, applied verbatim five times, but no Specialist actually links to SCHEMA \u2014 Reference and none should be made to (the relationship is generic infrastructure, true of nearly every palace entry, not a distinguishing finding for this room).",
+   "kind": "structural-echo",
+   "entries": [
+    "D3.js",
+    "LaTeX",
+    "Matplotlib",
+    "Mermaid",
+    "Observable Plot",
+    "SCHEMA \u2014 Reference"
+   ],
+   "proposed_action": "none \u2014 noting only so a future pass doesn't rediscover it as a false surprise"
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "LaTeX",
+   "question": "A palace.sty shared preamble (fontspec stack, six-skin xcolor, microtype defaults) \u2014 deferred to first real job.",
+   "by_entry": "Observable Plot",
+   "verdict": "informed-by-precedent, not yet resolved",
+   "proposed_action": "The design pattern to copy already exists and is documented: Observable Plot's palace-plot-defaults.js (subtractive wrapper, overrides strong tool defaults once) and D3.js's palace-tokens.js (additive, read-at-call-time). LaTeX's palace.sty is the same shape of problem \u2014 point the eventual author at those two files as the precedent before it's designed from scratch. Still genuinely gated on LaTeX's first real job landing, so leave the open question open but add the pointer."
+  },
+  {
+   "entry": "Matplotlib",
+   "question": "Default palace.mplstyle style sheet \u2014 deferred to first real job.",
+   "by_entry": "Observable Plot",
+   "verdict": "informed-by-precedent, not yet resolved",
+   "proposed_action": "Same precedent as LaTeX above \u2014 palace-plot-defaults.js / palace-tokens.js are the worked examples of additive-vs-subtractive house wrappers; Matplotlib's own Forward Vector already names wanting \"a palace.mplstyle house wrapper... the way Plot's wrapper already does,\" so the entry itself half-sees this \u2014 just missing the explicit pointer."
+  },
+  {
+   "entry": "Mermaid",
+   "question": "Should the Shop maintain a base themeVariables object for the palace palette \u2014 deferred to first real job.",
+   "by_entry": "Observable Plot",
+   "verdict": "informed-by-precedent, not yet resolved",
+   "proposed_action": "Same precedent again. Mermaid's forward_vector already names hungering for \"the missing --cssFile house wrapper\" \u2014 add the explicit pointer to the two solved cases so the pattern isn't reinvented."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "The house-defaults wrapper pattern \u2014 an additive vs. subtractive design for bridging a tool's own defaults to the Loudon Live design-system tokens (colors_and_type.css / palace-tokens.js), read at call time so a live skin swap propagates. Currently instantiated twice (D3.js's additive palette read, Observable Plot's palacePlot() subtractive override) and named as an open, deferred want in three siblings (LaTeX's palace.sty, Matplotlib's palace.mplstyle, Mermaid's --cssFile).",
+   "why_load_bearing": "It recurs identically across every Specialist in this room's Shop half, in two solved and three unsolved instances, yet has no entry of its own to hold the general shape (additive vs. subtractive, load-order rules, token-at-call-time discipline). Right now the pattern only exists duplicated across five bodies of prose, so the next Specialist to face this problem is likely to reinvent it instead of reading it.",
+   "crossing_entries": [
+    "D3.js",
+    "LaTeX",
+    "Matplotlib",
+    "Mermaid",
+    "Observable Plot"
+   ]
+  }
+ ],
+ "walk_results": [],
+ "flag_responses": [],
+ "bridge_findings": []
+}

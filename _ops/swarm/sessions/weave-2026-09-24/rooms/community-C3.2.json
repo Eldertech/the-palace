@@ -1,0 +1,170 @@
+{
+ "lens": "community",
+ "id": "C3.2",
+ "members": [
+  {
+   "id": "Diversity of Thought in Many-Agent Systems",
+   "path": "Diversity of Thought in Many-Agent Systems.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "Does Personifying an Agent Change What It Does",
+   "path": "Does Personifying an Agent Change What It Does.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "RNBO codebox~ smith",
+   "path": "Shop/RNBO codebox~ smith.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Search Before You Build",
+   "path": "Search Before You Build.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Shopkeeper",
+   "path": "Shop/Shopkeeper.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Stable Audio Open",
+   "path": "Shop/Stable Audio Open.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Steer the Generator",
+   "path": "Steer the Generator.md",
+   "stage": "sprout",
+   "inbound": 10
+  },
+  {
+   "id": "The 2.5D Paper Stack",
+   "path": "The 2.5D Paper Stack.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "The Aftermath Frame",
+   "path": "The Aftermath Frame.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "The Commons",
+   "path": "The Commons.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "The Flow Field is the Spine",
+   "path": "The Flow Field is the Spine.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "The Multilinear Self",
+   "path": "The Multilinear Self.md",
+   "stage": "sprout",
+   "inbound": 5
+  },
+  {
+   "id": "The Palace Practices on Itself",
+   "path": "The Palace Practices on Itself.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "The Shop",
+   "path": "The Shop.md",
+   "stage": "growing",
+   "inbound": 51
+  },
+  {
+   "id": "Tone.js",
+   "path": "Shop/Tone.js.md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Tool Builder",
+   "path": "Tool Builder.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Toolkit Assessment \u2014 Working Doc",
+   "path": "_ops/Toolkit Assessment \u2014 Working Doc.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Toolkit \u2014 Audio Plugins",
+   "path": "Toolkit \u2014 Audio Plugins.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Toolkit \u2014 Synthesizers",
+   "path": "Toolkit \u2014 Synthesizers.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "Typography as Meaning",
+   "path": "Typography as Meaning.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Web Audio Worklet",
+   "path": "Shop/Web Audio Worklet.md",
+   "stage": null,
+   "inbound": 4
+  },
+  {
+   "id": "Whisper",
+   "path": "Shop/Whisper.md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Zoom Out to the Structure",
+   "path": "Zoom Out to the Structure.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "assume multi-agent",
+   "path": "assume multi-agent.md",
+   "stage": "sprout",
+   "inbound": 4
+  },
+  {
+   "id": "ffmpeg",
+   "path": "Shop/ffmpeg.md",
+   "stage": null,
+   "inbound": 7
+  },
+  {
+   "id": "p5.js",
+   "path": "Shop/p5.js.md",
+   "stage": null,
+   "inbound": 6
+  }
+ ],
+ "directed_flags": {
+  "The Palace Practices on Itself": [
+   "Link [[Agent Toolbox]] as a rung of the toolbox recursion (person \u2192 project \u2192 entry-agent); the idea itself stays open at :115 (flag 634a2386-ab5e-4947-abad-76b2b153db58)."
+  ],
+  "Toolkit \u2014 Audio Plugins": [
+   "Repoint :40 from the old 'RTM Series concept' to LDN RTM's queue (flag weaveflag-toolkit-plugins-rtm-queue-2026-09-02-r2)."
+  ]
+ }
+}

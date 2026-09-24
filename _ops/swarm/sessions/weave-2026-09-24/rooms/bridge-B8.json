@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B8",
+ "tool_side": [
+  {
+   "id": "Figure Rig",
+   "path": "Shop/Figure Rig.md",
+   "stage": null,
+   "inbound": 4
+  },
+  {
+   "id": "Matplotlib",
+   "path": "Shop/Matplotlib.md",
+   "stage": null,
+   "inbound": 7
+  },
+  {
+   "id": "Murmuration",
+   "path": "Projects/Murmuration.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "OBS",
+   "path": "Shop/OBS.md",
+   "stage": null,
+   "inbound": 0
+  },
+  {
+   "id": "Wavetable Scanner",
+   "path": "Wavetable Scanner.md",
+   "stage": "sprout",
+   "inbound": 3
+  },
+  {
+   "id": "assume multi-agent",
+   "path": "assume multi-agent.md",
+   "stage": "sprout",
+   "inbound": 4
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Andy Goldsworthy",
+   "path": "People/Andy Goldsworthy.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Iain McGilchrist",
+   "path": "People/Iain McGilchrist.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Marcus Aurelius",
+   "path": "People/Marcus Aurelius.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "Progressive Staging",
+   "path": "Progressive Staging.md",
+   "stage": "sprout",
+   "inbound": 18
+  },
+  {
+   "id": "Shunryu Suzuki",
+   "path": "People/Shunryu Suzuki.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "spinoza-zhuangzi-on-striving",
+   "path": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "stage": "mature",
+   "inbound": 4
+  }
+ ]
+}

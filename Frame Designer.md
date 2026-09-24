@@ -48,6 +48,14 @@ links:
   - target: "[[The 2.5D Paper Stack]]"
     type: emerged-from
     label: born-from-the-stack
+  - target: "[[assume multi-agent]]"
+    type: connects-to
+  - target: "[[The Commons]]"
+    type: connects-to
+    label: provisioning
+  - target: "[[Block It in Blender, Ink It in genAI]]"
+    type: connects-to
+    label: staging-runbook
 ---
 
 # Frame Designer

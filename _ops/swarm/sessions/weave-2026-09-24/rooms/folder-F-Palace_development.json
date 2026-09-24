@@ -1,0 +1,169 @@
+{
+ "lens": "folder",
+ "id": "F-Palace_development",
+ "family": "Palace development",
+ "members": [
+  {
+   "id": "Agent Wellbeing",
+   "path": "Palace development/Agent Wellbeing.md",
+   "stage": "growing",
+   "inbound": 10
+  },
+  {
+   "id": "BBS Blackboard",
+   "path": "Palace development/BBS Blackboard.md",
+   "stage": "mature",
+   "inbound": 22
+  },
+  {
+   "id": "BBS Design System",
+   "path": "Palace development/BBS Design System.md",
+   "stage": "sprout",
+   "inbound": 11
+  },
+  {
+   "id": "Concierge",
+   "path": "Palace development/Concierge.md",
+   "stage": "sprout",
+   "inbound": 9
+  },
+  {
+   "id": "Dialogue Moderator",
+   "path": "Palace development/Dialogue Moderator.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Enchanted Conversation Archive",
+   "path": "Palace development/Enchanted Conversation Archive.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Enchanted Worker",
+   "path": "Palace development/Enchanted Worker.md",
+   "stage": "growing",
+   "inbound": 14
+  },
+  {
+   "id": "Four Pillars of Enchanted Agency",
+   "path": "Palace development/Four Pillars of Enchanted Agency.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Generative Compression",
+   "path": "Palace development/Generative Compression.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Lossy Compression with Intent Alignment",
+   "path": "Palace development/Lossy Compression with Intent Alignment.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Loudon Live Design System",
+   "path": "Palace development/Loudon Live Design System.md",
+   "stage": "growing",
+   "inbound": 20
+  },
+  {
+   "id": "Palace AI Partnership Philosophy",
+   "path": "Palace development/Palace AI Partnership Philosophy.md",
+   "stage": "mature",
+   "inbound": 2
+  },
+  {
+   "id": "Palace Enchantment",
+   "path": "Palace development/Palace Enchantment.md",
+   "stage": "mature",
+   "inbound": 26
+  },
+  {
+   "id": "Palace Orchestrator",
+   "path": "Palace development/Palace Orchestrator.md",
+   "stage": "growing",
+   "inbound": 13
+  },
+  {
+   "id": "Palace as Context Injection System",
+   "path": "Palace development/Palace as Context Injection System.md",
+   "stage": "growing",
+   "inbound": 14
+  },
+  {
+   "id": "Pheromone Trail",
+   "path": "Palace development/Pheromone Trail.md",
+   "stage": "sprout",
+   "inbound": 9
+  },
+  {
+   "id": "Project Stewardship System",
+   "path": "Palace development/Project Stewardship System.md",
+   "stage": "growing",
+   "inbound": 19
+  },
+  {
+   "id": "Resonant Link Labels",
+   "path": "Palace development/Resonant Link Labels.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "STIGMERGY Philosophical Lenses",
+   "path": "Palace development/STIGMERGY Philosophical Lenses.md",
+   "stage": "seed",
+   "inbound": 7
+  },
+  {
+   "id": "Self-Describing Knowledge Module",
+   "path": "Palace development/Self-Describing Knowledge Module.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Skills Are Enchantable Pages",
+   "path": "Palace development/Skills Are Enchantable Pages.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Swarm Weave",
+   "path": "Palace development/Swarm Weave.md",
+   "stage": "growing",
+   "inbound": 21
+  },
+  {
+   "id": "Symbiotic Skills",
+   "path": "Palace development/Symbiotic Skills.md",
+   "stage": "growing",
+   "inbound": 17
+  },
+  {
+   "id": "The Palace Speaks",
+   "path": "Palace development/The Palace Speaks.md",
+   "stage": "sprout",
+   "inbound": 4
+  },
+  {
+   "id": "Tree of Thoughts",
+   "path": "Palace development/Tree of Thoughts.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Two Batons, One Board",
+   "path": "Palace development/Two Batons, One Board.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Walk That Weaves",
+   "path": "Palace development/Walk That Weaves.md",
+   "stage": "sprout",
+   "inbound": 1
+  }
+ ]
+}

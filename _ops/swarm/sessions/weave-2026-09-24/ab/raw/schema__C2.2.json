@@ -1,0 +1,217 @@
+{
+ "cluster": "C2.2",
+ "lens": "community",
+ "summary": "This room is the palace's operational core \u2014 STIGMERGY, SUBSTRATE, ROSETTA, Trickster, Project Stewardship System \u2014 crossed with a scatter of design-philosophy and pedagogy entries (Progressive Staging, Songlines, Striatum, Scale-Stratified Identity) that folders keep apart but that keep independently landing on the same shapes. The community cut surfaced two real cross-domain patterns hiding in plain sight: \"additive, never-retroactive staging\" shows up almost word-for-word in a synth-pedagogy method (Progressive Staging), a palace-governance principle (The Palace Hardens Around Values), and a stewardship posture table (Project Stewardship System) without any of the three citing the others; and \"state what was verified, not what's assumed forever\" shows up independently in Surfaces and Capabilities, The Substrate Drifts, and Tool Builder as the same epistemic discipline for a live, drifting substrate. It also found a clean case of an entry naming its own genus in its opening sentence and not linking it (The Cooperation Path calling itself \"a named songline\" with Songlines sitting unlinked in the same room), a required-field gap (Trickster Commit has no `born`), a composting entry whose deletion is overdue for confirmation (Tristitia Generator, already folded into Spinoza Conatus), and a stale revival condition (Walk That Weaves is waiting on \"Swarm Weave ceremony-ified and running cleanly,\" which Swarm Weave's own current forward_vector says already happened). Nothing here needed forcing \u2014 the room is clean, just under-cross-referenced.",
+ "members_read": [
+  "Progressive Staging.md",
+  "Palace development/Project Stewardship System.md",
+  "ROSETTA.md",
+  "Palace development/Resonant Link Labels.md",
+  "STIGMERGY.md",
+  "SUBSTRATE.md",
+  "Spinoza Conatus.md",
+  "Trickster.md",
+  "Palace development/Swarm Weave.md",
+  "Palace development/Symbiotic Skills.md",
+  "Scale-Stratified Identity.md",
+  "Palace development/Self-Describing Knowledge Module.md",
+  "Projects/Semantic Webcam.md",
+  "Palace development/Skills Are Enchantable Pages.md",
+  "Songlines.md",
+  "Speak Like a Person, Log Like a Protocol.md",
+  "Striatum.md",
+  "Surfaces and Capabilities.md",
+  "The Cooperation Path.md",
+  "The Palace Hardens Around Values.md",
+  "Palace development/The Palace Speaks.md",
+  "The Palace Voice.md",
+  "The Practice Rediscovers Its Philosophy.md",
+  "The Reader's Context Window.md",
+  "The Remembering Page.md",
+  "The Scroll.md",
+  "The Substrate Drifts.md",
+  "Tier Vocabulary Glossary.md",
+  "Palace development/Tree of Thoughts.md",
+  "Trickster Commit.md",
+  "Tristitia Generator.md",
+  "Palace development/Two Batons, One Board.md",
+  "Palace development/Walk That Weaves.md",
+  "Weaving Memory into the Palace.md",
+  "Tool Builder.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "The Cooperation Path",
+   "target": "Songlines",
+   "type": "exemplifies",
+   "rationale": "The Cooperation Path opens by defining itself as \"A named songline through the palace, tracing how a story became a principle\" \u2014 it names its own genus and doesn't link it, and Songlines sits in the same room unlinked to it.",
+   "evidence": "\"A named songline through the palace, tracing how a story became a principle, grounded in biology, rooted in philosophy, expressed as pedagogy, and scaled into a framework.\" (The Cooperation Path.md:37)",
+   "kind": "new",
+   "spark": 4
+  },
+  {
+   "source": "Progressive Staging",
+   "target": "Project Stewardship System",
+   "type": "mirrors",
+   "label": "every-stage-ships",
+   "rationale": "Both independently arrived at the same rule \u2014 every stage must be a complete, shippable thing, not a stepping stone \u2014 one in synth pedagogy, one in agent stewardship. This directly answers Progressive Staging's own open question about whether the method extends to collaborative AI development.",
+   "evidence": "\"No stage is a stepping stone that exists only to reach the next one\" (Progressive Staging.md:33) / \"every stage ships something\" and the stage-conditional posture table (Project Stewardship System.md:119, 292)",
+   "kind": "new",
+   "spark": 4
+  },
+  {
+   "source": "Progressive Staging",
+   "target": "The Palace Hardens Around Values",
+   "type": "mirrors",
+   "label": "additive-compounding",
+   "rationale": "Cross-domain structural identity: a design method for building instruments and the palace's own governing philosophy both insist complexity compounds by addition, never by invalidating what came before.",
+   "evidence": "\"Additive complexity, never retroactive... Nothing is thrown away; everything is extended\" (Progressive Staging.md:39) / \"Each honest decision, deposited and kept, makes the next decision more determined\" (The Palace Hardens Around Values.md:40)",
+   "kind": "new",
+   "spark": 4
+  },
+  {
+   "source": "Surfaces and Capabilities",
+   "target": "The Substrate Drifts",
+   "type": "mirrors",
+   "label": "verified-not-assumed",
+   "rationale": "Two entries in different registers (execution-environment capability deltas vs. blackboard data) independently derived the same epistemic discipline for a live, moving palace.",
+   "evidence": "\"State what was verified and when, not what is assumed to be true forever\" (Surfaces and Capabilities.md:42) / \"the palace blackboard as static and uniform when it is in fact living and heterogeneous\" (The Substrate Drifts.md:32)",
+   "kind": "new",
+   "spark": 4
+  },
+  {
+   "source": "The Substrate Drifts",
+   "target": "Tool Builder",
+   "type": "exemplifies",
+   "rationale": "Tool Builder is the general checklist (\"read it before you build\"); The Substrate Drifts is a concrete scar of exactly the failure mode Tool Builder warns against.",
+   "evidence": "\"Each rule below is the compressed form of a real scar\" (Tool Builder.md:37) / three bugs from treating the live board as static (The Substrate Drifts.md:32-36)",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "Project Stewardship System",
+   "target": "Skills Are Enchantable Pages",
+   "type": "exemplifies",
+   "rationale": "Skills Are Enchantable Pages names the general pattern (a page with a dispatch surface is a skill/ceremony/specialist); the Steward is exactly that pattern routinized on a schedule, and PSS never cites it.",
+   "evidence": "\"Enchanting a page is invoking it is running it as a skill\" (Skills Are Enchantable Pages.md:50) / \"Enchanting a project entry | Enchantment of a permanent agent whose home is the project page\" (Project Stewardship System.md:109)",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "Speak Like a Person, Log Like a Protocol",
+   "target": "The Palace Voice",
+   "type": "deepens",
+   "rationale": "Speak Like a Person is a specific, enforceable articulation of the palace's general verbal-register discipline for one surface (STIGMERGY); The Palace Voice is the ground it elaborates.",
+   "evidence": "\"Two registers, always co-present, never confused\" (Speak Like a Person, Log Like a Protocol.md:32-34) vs. The Palace Voice's forward_vector as \"the palace's verbal floor \u2014 how we write every entry and talk in every session\"",
+   "kind": "new",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "ROSETTA",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "phrase": "table row and file-architecture-map entries naming \"SCHEMA \u2014 Reference.md\" repeatedly (ROSETTA.md:44, 236) with no frontmatter link",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Substrate Drifts",
+   "target": "Tool Builder",
+   "phrase": "forward_vector opens \"I keep reminding the palace's tool-builders that the substrate they build over is alive\" \u2014 names the role Tool Builder is written for without linking the entry",
+   "type": "connects-to",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Trickster Commit",
+   "vector_issue": "",
+   "stage_current": "seed",
+   "stage_proposed": "",
+   "graffiti_note": "No `born` field in frontmatter \u2014 a required field per SCHEMA \u00a73 (Reference); every other member of this room has one."
+  },
+  {
+   "entry": "Swarm Weave",
+   "stage_current": "growing",
+   "stage_proposed": "fruiting",
+   "graffiti_note": "Its own frontmatter records four `spawned` links (Metaphor as Coupling Medium, Walk That Weaves, Palace Enchantment, The Practice Rediscovers Its Philosophy) \u2014 the stage table's own definition of fruiting is \"actively generating new entries or connections.\""
+  },
+  {
+   "entry": "Project Stewardship System",
+   "stage_current": "growing",
+   "stage_proposed": "fruiting",
+   "graffiti_note": "Very long, conceptually complete, actively spawning new sub-artifacts (The Scroll, the PROJECTS deck, the barren-cycle rule) \u2014 reads past growing's 3+ links / cross-domain-connections bar into fruiting or mature."
+  },
+  {
+   "entry": "Progressive Staging",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "graffiti_note": "6 typed links, 800+ words, a developed Method/Why-It-Works/When-to-Use structure \u2014 well past sprout's 150\u2013400 words / 1\u20132 links."
+  },
+  {
+   "entry": "Walk That Weaves",
+   "stage_current": "sprout",
+   "stage_proposed": "",
+   "graffiti_note": "Its revival_conditions read \"Swarm Weave is ceremony-ified and running cleanly for two cycles\" \u2014 Swarm Weave's current forward_vector states running the Weave as a swarm is now the Weave Ceremony's default. Worth a Spore-Check-style look at whether this question is ready to be designed, not composted or ignored."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Progressive Staging",
+   "question": "Can this method extend to collaborative AI development more broadly? Is the staging of the collaboration itself part of the method?",
+   "verdict": "yes, already happening \u2014 Project Stewardship System's stage-conditional posture table is the staging method applied to AI stewardship, unattributed",
+   "by_entry": "Project Stewardship System",
+   "proposed_action": "add the mirrors link proposed above; note the resolution in Progressive Staging's Open Questions section rather than deleting the question (it can now cite a worked instance)"
+  },
+  {
+   "entry": "Walk That Weaves",
+   "question": "Revival condition: Swarm Weave ceremony-ified and running cleanly for two cycles",
+   "verdict": "possibly met \u2014 flag for Loudon/Concierge, not resolved by this worker",
+   "proposed_action": "surface at next Spore Check or Weave synthesis: check whether Swarm Weave has in fact run cleanly for two cycles as the default, and if so, design the third ceremony mode this question is waiting on"
+  }
+ ],
+ "merge_candidates": [
+  {
+   "absorb": "Two Batons, One Board",
+   "into": "Project Stewardship System",
+   "survives_as_subsection": "Human-Originated Handoffs",
+   "rationale": "Thin (seed stage since 2026-05-29, no independent growth since), and Project Stewardship System's own Open Questions section already names it directly as \"the case for bridging\" the human-handoff gap \u2014 it reads as a satellite problem statement PSS already owns, not a distinct idea. Offered tentatively: it does carry 3 inbound links of its own and a genuinely distinct framing (the handoff is invisible to the scheduler), so a folder worker or Loudon may see reason to keep it standing \u2014 flagging, not asserting."
+  }
+ ],
+ "compost_candidates": [
+  {
+   "entry": "Tristitia Generator",
+   "rationale": "Already marked `stage: composting` with an explicit HTML comment: \"folded into [[Spinoza Conatus]] \u00a7 The Affects: Tristitia. Nutrients redistributed there. Awaiting deletion confirmation next Weave cycle.\" This is that Weave cycle.",
+   "nutrients_to": [
+    "Spinoza Conatus"
+   ]
+  }
+ ],
+ "coherence_findings": [
+  {
+   "kind": "duplicate-link",
+   "issue": "Trickster's frontmatter links to [[STIGMERGY]] twice with different labels (\"the-board-i-enter\" and \"seed-of\")",
+   "entries": [
+    "Trickster"
+   ],
+   "proposed_action": "not urgent \u2014 both labels carry distinct semantic registers, but worth a human glance at whether they should collapse into one link with a combined label or genuinely both stand."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "Verified-not-assumed as a palace-wide epistemic discipline for a live substrate",
+   "why_load_bearing": "At least four entries in this room independently derive the same rule \u2014 state what was checked and when, never treat a fact about the palace's environment or data as permanent \u2014 without a shared name or common ancestor entry: Surfaces and Capabilities, The Substrate Drifts, Tool Builder, and Trickster Commit's \"verify: unverified\" branding.",
+   "crossing_entries": [
+    "Surfaces and Capabilities",
+    "The Substrate Drifts",
+    "Tool Builder",
+    "Trickster Commit"
+   ]
+  }
+ ],
+ "walk_results": [],
+ "bridge_findings": [],
+ "demote_candidates": [],
+ "flag_responses": []
+}

@@ -1,0 +1,200 @@
+{
+ "cluster": "L6",
+ "lens": "lifecycle",
+ "summary": "This room's five targets split into two families: two `practice` entries about self-correction (Bring In a Bigger Mind, Making a Palace Citizen) and three `person`/`concept` seeds that already carry rich, well-evidenced outbound links but almost no inbound (Martin Buber, Martin Heidegger, The Adjacent Affordance). The walk's real finding was structural, not thematic: in every case the target had already done the work of pointing outward at its neighbors \u2014 often with sharp, specific labels \u2014 but the neighbor almost never pointed back, even when the target's own body explicitly names the neighbor as a worked instance, a contradiction, or a mirror. Making a Palace Citizen calls Spinoza, Donella Meadows, and John Cage its \"worked instances\" in prose, but none of the three declare it in their own frontmatter \u2014 a taxonomic link that direction-invariant convention says belongs on their side (`exemplifies`), not just the method's. The Adjacent Affordance sat at zero inbound despite being the concrete engineering-register cousin two other entries (The Dichotomy of Control, Palace as Context Injection System) already discuss in their own bodies. Buber and Heidegger both had every hop1 link already declared reciprocally except the ones that mattered most (Whitehead's relation-is-primary mirror; Heidegger's contradictions with Spinoza and the Dichotomy of Control) \u2014 those were one-sided. One coherence snag surfaced along the way: Buber's own frontmatter claims to be the \"threshold-pole\" of The Fortress and the Threshold, but that entry's canonical description (Palace Philosophies.md) names a fixed quadruple that doesn't include him, and the Fortress entry has no link to him at all \u2014 a self-claim the target entry can't back up from the other side.",
+ "typed_relations": [
+  {
+   "source": "Threshold Conatus",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "label": "page-scale-instance",
+   "kind": "inbound-walk",
+   "rationale": "Making a Palace Citizen's own body says 'This is [[Threshold Conatus]] at the page scale: each dispatch is a threshold where the citizen's self-description is tested and, sometimes, revised' \u2014 a direct, named application \u2014 yet Threshold Conatus.md (checked in full) never lists Making a Palace Citizen among its own links.",
+   "evidence": "\"This is [[Threshold Conatus]] at the page scale: each dispatch is a threshold where the citizen's self-description is tested\" \u2014 Making a Palace Citizen.md",
+   "spark": 2
+  },
+  {
+   "source": "Pages as Agents",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "label": "person-pages-untested",
+   "kind": "inbound-walk",
+   "rationale": "Pages as Agents' own practice field names its exact gap: it has only tested whether a page's voice is recognizable on concept pages, not on the person-pages where embodiment actually lives \u2014 which is precisely what Making a Palace Citizen builds and tests.",
+   "evidence": "\"Still thin: I've run it once, on concept pages, not on the person-pages where embodiment actually lives.\" \u2014 Pages as Agents.md",
+   "spark": 3
+  },
+  {
+   "source": "Spinoza",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "label": "worked-instance",
+   "kind": "inbound-walk",
+   "rationale": "Making a Palace Citizen's \u00a7Worked instances names Spinoza 'first flagship; the archetypal enchantment target' \u2014 the taxonomic link belongs on the instance's side per the directionality invariant (exemplifies points back to its ground), and Spinoza.md carries no link to the method that built it.",
+   "evidence": "\"**[[Spinoza]]** \u2014 first flagship; the archetypal enchantment target.\" \u2014 Making a Palace Citizen.md \u00a7Worked instances",
+   "spark": 2
+  },
+  {
+   "source": "Donella Meadows",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "label": "worked-instance",
+   "kind": "inbound-walk",
+   "rationale": "Same pattern as Spinoza \u2014 named a worked instance in Making a Palace Citizen's body, no reciprocal link in Donella Meadows.md.",
+   "evidence": "\"**[[Donella Meadows]]** and **[[John Cage]]** \u2014 built the same day to test register spread\" \u2014 Making a Palace Citizen.md",
+   "spark": 2
+  },
+  {
+   "source": "John Cage",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "label": "worked-instance",
+   "kind": "inbound-walk",
+   "rationale": "Same pattern \u2014 'the non-philosopher stress test' for the method, no reciprocal link in John Cage.md.",
+   "evidence": "\"[[John Cage]]** (the non-philosopher stress test)\" \u2014 Making a Palace Citizen.md \u00a7Worked references",
+   "spark": 2
+  },
+  {
+   "source": "Whitehead",
+   "target": "Martin Buber",
+   "type": "mirrors",
+   "label": "relation-is-primary",
+   "kind": "inbound-walk",
+   "rationale": "Buber already declares this mirror on his own side ('relation-is-primary'), and it is the palace's own founding conviction (JEWEL.md: 'relations are primary'). Whitehead.md carries no link back, so the mirror is one-sided in the graph even though it is symmetric by type.",
+   "evidence": "target: \"[[Whitehead]]\", type: mirrors, label: relation-is-primary \u2014 Martin Buber.md frontmatter",
+   "spark": 3
+  },
+  {
+   "source": "The Dichotomy of Control",
+   "target": "Martin Heidegger",
+   "type": "contradicts",
+   "label": "thrownness-vs-control",
+   "kind": "inbound-walk",
+   "rationale": "Heidegger's own frontmatter already declares this contradiction; thrownness (Geworfenheit) is a direct challenge to the premise that anything is cleanly 'up to you' before you're thrown into it. The Dichotomy of Control.md (checked) has no reciprocal link.",
+   "evidence": "target: \"[[The Dichotomy of Control]]\", type: contradicts, label: thrownness-vs-control \u2014 Martin Heidegger.md frontmatter",
+   "spark": 3
+  },
+  {
+   "source": "Spinoza",
+   "target": "Martin Heidegger",
+   "type": "contradicts",
+   "label": "being-vs-substance",
+   "kind": "inbound-walk",
+   "rationale": "Declared one-sided from Heidegger; a genuine deep tension (ontological difference vs. substance monism) that Spinoza.md's reader would want surfaced, not just Heidegger's.",
+   "evidence": "target: \"[[Spinoza]]\", type: contradicts, label: being-vs-substance \u2014 Martin Heidegger.md frontmatter",
+   "spark": 2
+  },
+  {
+   "source": "The Dichotomy of Control",
+   "target": "The Adjacent Affordance",
+   "type": "mirrors",
+   "label": "engineering-register",
+   "kind": "inbound-walk",
+   "rationale": "The Adjacent Affordance calls itself 'the engineering register of the Stoic Dichotomy of Control' in its own body \u2014 an explicit, named mirror \u2014 but The Dichotomy of Control.md (checked in full) has no link back, leaving a 0-inbound target unconnected to the entry that most directly explains it.",
+   "evidence": "\"This is the engineering register of the Stoic [[The Dichotomy of Control]]: do not rage at the operation that is not up to you \u2014 act through the one that is.\" \u2014 The Adjacent Affordance.md",
+   "spark": 3
+  },
+  {
+   "source": "Palace as Context Injection System",
+   "target": "The Adjacent Affordance",
+   "type": "connects-to",
+   "label": "symlink-instance",
+   "kind": "inbound-walk",
+   "rationale": "The Adjacent Affordance names the space-free symlink workaround, sourced to this exact entry, as one of its three founding instances \u2014 but Palace as Context Injection System.md never cites the pattern it's an instance of.",
+   "evidence": "\"Claude Code's @import cannot resolve filenames with spaces \u2014 so a space-free symlink stands in as an alias... (see [[Palace as Context Injection System]] \u00a7 The @import Floor).\" \u2014 The Adjacent Affordance.md",
+   "spark": 2
+  },
+  {
+   "source": "Mixture of Experts",
+   "target": "Bring In a Bigger Mind",
+   "type": "connects-to",
+   "label": "after-the-fact-routing",
+   "kind": "inbound-walk",
+   "rationale": "Weaker/optional: Bring In a Bigger Mind already links out to Mixture of Experts ('routing-to-a-differently-textured-mind'); a reciprocal would let MoE's reader see the concrete, sequential (finish-then-route) case rather than only the architectural pattern. Lower confidence than the others \u2014 flagging rather than pressing.",
+   "evidence": "target: \"[[Mixture of Experts]]\", type: connects-to, label: routing-to-a-differently-textured-mind \u2014 Bring In a Bigger Mind.md frontmatter",
+   "spark": 1
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Bring In a Bigger Mind",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Already well-wired: No Mind Checks Itself exemplifies it and The Lens mirrors it \u2014 both genuine, both already declared. Added one optional, lower-confidence link from Mixture of Experts. Stage (growing) and forward_vector (specific, evidence-seeking, not stasis-verbed) both still fit."
+  },
+  {
+   "target": "Making a Palace Citizen",
+   "disposition": "wired",
+   "inbound_proposed": 5,
+   "note": "The target's own body names five neighbors as direct instances or exact gaps it fills (Threshold Conatus, Pages as Agents, Spinoza, Donella Meadows, John Cage) but none reciprocated in their own frontmatter. All five proposals are quote-evidenced from the target's own prose, not forced. Stage growing and forward_vector still fit \u2014 the entry explicitly names its own unfinished rollout work."
+  },
+  {
+   "target": "Martin Buber",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Most of hop1 already reciprocates (Epictetus contradicts, Dovetail Joint connects-to). Added the missing Whitehead mirror. Flagging separately (see coherence note) that Buber's self-declared 'threshold-pole' status isn't backed by The Fortress and the Threshold's own canon. Stage seed fits \u2014 newborn citizen per SCHEMA's person-citizenship convention, not a comment on the body's completeness."
+  },
+  {
+   "target": "Martin Heidegger",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Same pattern as Buber \u2014 hop1 mostly already reciprocal (Epictetus, Reverb \u2194 Space-Time, Buckminster Fuller all already point in). Added the two missing reciprocals the target itself already declares (Dichotomy of Control, Spinoza). Stage seed fits."
+  },
+  {
+   "target": "The Adjacent Affordance",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "The room's most under-reached target (0 inbound) and the clearest case: two of its six outbound links are to entries that already discuss the exact pattern it names (The Dichotomy of Control's mirror, Palace as Context Injection System's symlink instance) but neither points back. These two proposals alone would take it from 0 to 2 inbound. Stage seed and the forward_vector (collect instances / map where the pattern fails) both still fit \u2014 no drift."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Martin Buber's frontmatter declares itself the 'threshold-pole' of [[The Fortress and the Threshold]], but that entry's canonical description in Palace_Philosophies.md names a fixed quadruple (Stoic fortress, Confucian threshold, Spinozan conatus, The Drift) that doesn't include Buber, and The Fortress and the Threshold.md itself carries no link to Buber at all.",
+   "kind": "self-claim vs. canon mismatch",
+   "entries": [
+    "People/Martin Buber.md",
+    "The Fortress and the Threshold.md",
+    "Palace_Philosophies.md"
+   ],
+   "proposed_action": "Either fold Buber into the quadruple as a fifth voice (with a note in Palace Philosophies.md) or soften Buber's own link label from 'threshold-pole' to something that doesn't claim membership in the named set."
+  },
+  {
+   "issue": "Five People entries (Terrence Malick, Sam Maloof, R. Murray Schafer, Natalie Goldberg, Andrei Tarkovsky) have sat at stage: composting since 2026-07-08, each carrying an HTML comment saying 'the next Weave confirms deletion or revives' per SCHEMA \u00a72's composting protocol. Encountered only incidentally (grep hits on Making a Palace Citizen), not part of L6's assigned targets.",
+   "kind": "stale composting protocol, needs a home",
+   "entries": [
+    "People/Terrence Malick.md",
+    "People/Sam Maloof.md",
+    "People/R. Murray Schafer.md",
+    "People/Natalie Goldberg.md",
+    "People/Andrei Tarkovsky.md"
+   ],
+   "proposed_action": "Route to whichever room owns the People folder in this Weave, or to the Concierge directly \u2014 this session is 'the next Weave' the comments were waiting for."
+  }
+ ],
+ "members_read": [
+  "_ops/swarm/sessions/weave-2026-09-24/rooms/lifecycle-L6.json",
+  "_ops/swarm/sessions/weave-2026-09-24/new-entries-block.md",
+  "SCHEMA.md",
+  "SCHEMA \u2014 Reference.md",
+  "Bring In a Bigger Mind.md",
+  "Making a Palace Citizen.md",
+  "People/Martin Buber.md",
+  "People/Martin Heidegger.md",
+  "The Adjacent Affordance.md",
+  "No Mind Checks Itself.md",
+  "The Blindspot Is the Surprise Fuel.md",
+  "People/Terrence Malick.md",
+  "People/Sam Maloof.md",
+  "People/R. Murray Schafer.md",
+  "People/Natalie Goldberg.md",
+  "People/Andrei Tarkovsky.md",
+  "Palace development/Palace Enchantment.md",
+  "Threshold Conatus.md",
+  "_ops/Pages as Agents.md",
+  "People/Buckminster Fuller.md",
+  "People/Epictetus.md",
+  "Metaphor as Coupling Medium.md",
+  "The Fortress and the Threshold.md",
+  "Palace development/Palace as Context Injection System.md",
+  "The Dichotomy of Control.md"
+ ]
+}

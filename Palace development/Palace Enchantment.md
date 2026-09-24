@@ -58,6 +58,9 @@ links:
     type: connects-to
   - target: "[[Project Stewardship System]]"
     type: connects-to
+  - target: "[[The Remembering Page]]"
+    type: enables
+    label: loads-the-memory
 ---
 
 # Palace Enchantment

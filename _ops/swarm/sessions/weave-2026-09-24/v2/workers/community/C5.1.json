@@ -1,0 +1,73 @@
+{
+ "cluster": "C5.1",
+ "lens": "community",
+ "summary": "This room is the palace's own machine room \u2014 ceremonies (Deposit, Harvest, Baton, Closing Well, Weave, Walk, Return, Revival, Spore Check, Self-Model Update), the standards that govern writing them (SCHEMA, Image/Mermaid/Technical Diagram Standards), and the housekeeping trail behind them (Palace To-Do, the Graffiti Pass handoffs, Palace Audit, Deposit Archive). Most of the newcomer-block entries this pass was supposed to prioritize (SCHEMA \u2014 Reference, Search Before You Build, Closing Well Ceremony, Return Ceremony, No Mind Checks Itself, Tool Builder, Skills Are Enchantable Pages, OBS, The Palace Speaks, The Palace Hardens Around Values) turned out to already have inbound links from this room's members \u2014 the room is well-wired to them, so there wasn't much starvation to fix there. The genuine finds were smaller and more specific: a cross-domain mirror between a git-branch discipline and a tool-namespacing discipline that share the identical isolate-per-agent pattern in different material; a concept (Drift and Consolidation) that turns out to be a concrete instance of a more general cognitive-limits principle (No Mind Checks Itself) neither entry currently names in the other's direction; a missing but load-bearing pairing between two entry-lifecycle concepts (Entry Conatus, Drift and Consolidation) that approach \"keeping a page honest over time\" from opposite ends (will-to-grow vs. disclosed-lag); and two unsung body mentions where a page names a sibling entry in a structurally real spot (a to-do bullet, a worked example) without the frontmatter link to match.",
+ "typed_relations": [
+  {
+   "source": "Worktree Practice",
+   "target": "assume multi-agent",
+   "type": "mirrors",
+   "kind": "new",
+   "rationale": "Both are the identical pattern \u2014 build isolated, per-agent state so two concurrent Claudes can never collide \u2014 realized in different material: Worktree Practice isolates git HEAD/branch/directory per agent; assume multi-agent isolates pod names, temp files, and list/delete scope per agent. Both were born from the same kind of scar (a shared-state collision that cost real time) and both hand their machinery to a general substrate (Worktree Practice \u2192 the symlink manifest / SKILL.md; assume multi-agent \u2192 The Commons). Fidelity test: swapping in STIGMERGY (also in Worktree Practice's links) breaks the fit \u2014 STIGMERGY is the shared, non-isolated write path, the opposite pattern.",
+   "evidence": "Worktree Practice: \"For any sustained, commit-producing work in the palace, spin up an isolated git worktree ... before starting, rather than working in the shared primary checkout.\" / assume multi-agent: \"Build every palace tool expecting two or more Claudes to run it at once ... Namespace what you make ... Scope every list and delete to your own.\"",
+   "spark": 3
+  },
+  {
+   "source": "Drift and Consolidation",
+   "target": "No Mind Checks Itself",
+   "type": "exemplifies",
+   "kind": "new",
+   "rationale": "Drift and Consolidation's central problem \u2014 an entry that has \"silently fallen out of date and gives a reader no sign of it\" \u2014 is a concrete, entry-scale instance of No Mind Checks Itself's structural claim that a self-referential system cannot audit its own currency from inside. Drift and Consolidation's fix (a standing disclosure footer, an outside consolidation beat at milestones) is exactly the palace's general answer applied to pages: don't ask the entry to catch its own staleness, give it an honest pointer and an outside check. Neither entry currently names the other; the fit is specific, not generic \u2014 swapping in, say, Reflective Practice (which already contradicts No Mind Checks Itself on a different axis \u2014 deliberate self-reflection, not structural blindness) does not hold the same way.",
+   "evidence": "Drift and Consolidation: \"The bug is never drift. The bug is unbounded, untracked drift \u2014 an entry that has silently fallen out of date and gives a reader no sign of it.\" / No Mind Checks Itself: \"A self-model can only see as far as its own loop runs. Real correction needs a vantage outside that loop.\"",
+   "spark": 4
+  },
+  {
+   "source": "Entry Conatus",
+   "target": "Drift and Consolidation",
+   "type": "connects-to",
+   "kind": "new",
+   "rationale": "Both concepts are about keeping a palace entry honest over its lifetime, from opposite ends: Entry Conatus is about the entry's forward-facing will \u2014 the language of a vector that keeps reaching outward rather than settling into stasis. Drift and Consolidation is about the entry's backward-facing honesty \u2014 whether its current body still tells the truth about what has already happened. A page could have a hungry, well-written forward vector and still be silently stale in its body; the two concerns are siblings that neither entry currently names. Fidelity check: this specific pairing (will-to-grow / honesty-about-the-past) doesn't transfer cleanly to, say, Reflective Practice, which is about deliberate human reflection rather than an entry's own two-sided lifecycle honesty.",
+   "evidence": "Entry Conatus: \"'I will remain' is not a forward vector \u2014 it is the language of staying still, of death dressed as endurance.\" / Drift and Consolidation: \"the entry may lag, but it never lies silently \u2014 it openly says 'I may be behind, the live truth is here.'\"",
+   "spark": 3
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Weaving Memory into the Palace",
+   "target": "Worktree Practice",
+   "type": "connects-to",
+   "phrase": "a cluster of git/worktree cautions \u2192 a single \"shared-tree discipline\" nugget \u2192 [[Worktree Practice]]",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Palace To-Do",
+   "target": "Weaving Memory into the Palace",
+   "type": "connects-to",
+   "phrase": "Fold the memory-into-palace weave into the [[Weave Ceremony]] as a standing sub-step \u2014 procedure is already documented at [[Weaving Memory into the Palace]]",
+   "structurally_significant": true
+  }
+ ],
+ "members_read": [
+  "_ops/swarm/sessions/weave-2026-09-24/v2/rooms/community-C5.1.json",
+  "_ops/swarm/sessions/weave-2026-09-24/v2/new-entries-block.md",
+  "SCHEMA.md (partial, \u00a71-4)",
+  "Worktree Practice.md",
+  "assume multi-agent.md",
+  "Weaving Memory into the Palace.md",
+  "Drift and Consolidation.md",
+  "Entry Conatus.md",
+  "No Mind Checks Itself.md",
+  "_ops/Palace To-Do.md (grep context)",
+  "_ops/Weave Ceremony.md (grep context)"
+ ],
+ "coherence_findings": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": [],
+ "bridge_findings": [],
+ "flag_responses": [],
+ "walk_results": []
+}

@@ -1,0 +1,262 @@
+{
+ "cluster": "C1.2",
+ "lens": "community",
+ "summary": "This room is Loudon's DSP/synthesis-physics belt \u2014 Piano String Inharmonicity through Wavetable Space as Torus \u2014 spread across Projects/, top-level files, and Cross-Domain Resonances/, so the cross-folder blindness the community lens is built to catch was real: Quantum Synthesizer (Projects/) and Photonic Time Crystals (top-level) each independently claim \"this physics is not a metaphor, it IS the synthesis equation\" and each independently reaches for Spinoza's monism to say so, with zero link between them. Wallpaper Groups and Photonic Time Crystals are the same discovery twice \u2014 one classifies periodic symmetry in space, the other in time (Bloch vs. Floquet) \u2014 also unlinked. The room also has a small cluster of genuinely orphaned entries (Quadratic Interpolation in DSP, SMPTE LTC, Slime Mold Delay, control-vocabulary-math, all at 0 inbound per the room file and confirmed on the new-entries list) whose isolation is mostly a bookkeeping gap, not thinness \u2014 each already names its missing neighbor in body prose or in the neighbor's own frontmatter, just not both ways. One real fallout from a prior Weave surfaced: Piano String Inharmonicity still `mirrors` a target ([[Octave Equivalence]]) that Shepard Tone Synthesizer's body says was absorbed into it in the 2026-07-06 Weave \u2014 a merge that left a stale pointer behind. Reading SCHEMA + SCHEMA \u2014 Reference in full before this pass (per this run's instruction) is what caught the non-canonical `parent:` field on control-vocabulary-math, the directionality of the `exemplifies`/`deepens` proposals below, and the Octave-Equivalence ghost fallout \u2014 the kind of catch a child instructed only to \"propose relations\" without the field vocabulary in hand would plausibly miss or get backwards.",
+ "members_read": [
+  "SCHEMA.md",
+  "SCHEMA \u2014 Reference.md",
+  "rooms/community-C1.2.json",
+  "new-entries-block.md",
+  "Projects/Phoneme Choir.md",
+  "Photonic Time Crystals.md",
+  "Projects/Piano String Inharmonicity.md",
+  "Playful Interface Design.md",
+  "Projects/Portamento and Physical Pitch Modeling.md",
+  "Projects/Preset Oracle.md",
+  "Quadratic Interpolation in DSP.md",
+  "Projects/Quantum Synthesizer.md",
+  "Projects/Retrospective Delay.md",
+  "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+  "SMPTE LTC.md",
+  "Projects/Semantic Delay.md",
+  "Projects/Shepard Tone Synthesizer.md",
+  "Projects/Shimmer Cloud.md",
+  "Signal-Rate CV Architecture.md",
+  "Projects/Slime Mold Delay.md",
+  "State Machine.md",
+  "Projects/Talking Keyboard.md",
+  "The Curve Is the Material.md",
+  "The Metaphor Stretch.md",
+  "Projects/Wallpaper Groups.md",
+  "Wavetable Space as Torus.md",
+  "Wavetable Synthesis -- Research & Higher-Dimensional Design.md",
+  "What Claim Does Scientific Sonification Make?.md",
+  "Projects/Neural Granular Synthesis/control-vocabulary-math.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Quantum Synthesizer",
+   "target": "Photonic Time Crystals",
+   "type": "mirrors",
+   "label": "physics-is-the-instrument",
+   "kind": "new",
+   "spark": 4,
+   "rationale": "Both entries make the identical structural claim \u2014 that a frontier-physics equation is not analogized to audio synthesis but IS the same operator viewed from a different attribute \u2014 and both ground that claim explicitly in Spinoza's monism. Neither links to the other despite living the same argument in different physics.",
+   "evidence": "Quantum Synthesizer: 'The mathematical substrate of quantum mechanics and the mathematical substrate of resonant synthesis are the same equations viewed from different observational frames... This is Spinoza's monism applied to physics.' Photonic Time Crystals: 'they are the most direct physical realization of the claim that crystals are Bloch in space; time-modulated systems are Floquet in time.'"
+  },
+  {
+   "source": "Wallpaper Groups",
+   "target": "Photonic Time Crystals",
+   "type": "mirrors",
+   "label": "space-periodicity-vs-time-periodicity",
+   "kind": "new",
+   "spark": 4,
+   "rationale": "Wallpaper Groups is the complete enumeration of periodic symmetry in space (Bloch/crystallographic restriction, 17 groups). Photonic Time Crystals is exactly the temporal analog \u2014 Floquet's theorem playing the role Bloch's plays in space. The two entries name the same theorem-pair from opposite sides and never meet.",
+   "evidence": "Photonic Time Crystals: 'crystals are Bloch in space; time-modulated systems are Floquet in time.' Wallpaper Groups: 'The crystallographic restriction theorem forbids 5-fold... rotational symmetries in 2D tilings... a periodic lattice can only close through integer lattice translations.'"
+  },
+  {
+   "source": "Piano String Inharmonicity",
+   "target": "The Curve Is the Material",
+   "type": "exemplifies",
+   "label": "canonical-b-coefficient",
+   "kind": "new",
+   "spark": 3,
+   "rationale": "The Curve Is the Material's own frontmatter already names Piano String Inharmonicity 'canonical-instance,' and its function-library table lists the exact B-coefficient formula Piano String Inharmonicity derives, verbatim. The link only runs one direction; Piano String Inharmonicity doesn't point back to the more general principle it instantiates.",
+   "evidence": "The Curve Is the Material: 'String stiffness (B coefficient): f(n) = n\u00b7f0\u00b7\u221a(1+B\u00b7n\u00b2). Parameter: B... Physical range: B \u2248 0.0002 (light guitar string) through B \u2248 0.004 (heavy piano bass string).'"
+  },
+  {
+   "source": "The Curve Is the Material",
+   "target": "The Metaphor Stretch",
+   "type": "deepens",
+   "label": "the-half-physics-does-determine",
+   "kind": "new",
+   "spark": 3,
+   "rationale": "The Metaphor Stretch names the general gap between physics and playability \u2014 'the physics gives you the ratios but not absolute pitch, voice count, decay rate.' The Curve Is the Material is the fully worked-out account of exactly the half physics DOES determine (the curve/ratio family) \u2014 it deepens Metaphor Stretch's 'stretch' framework rather than standing apart from it.",
+   "evidence": "The Metaphor Stretch: 'the source physics gives you ratios and tendencies \u2014 but not a playable instrument.' The Curve Is the Material: 'Every physically meaningful inharmonic spectrum is described by a mathematical function of partial number... The function shape and its parameters uniquely identify a physical system.'"
+  },
+  {
+   "source": "Portamento and Physical Pitch Modeling",
+   "target": "Piano String Inharmonicity",
+   "type": "connects-to",
+   "label": "bend-compresses-inharmonicity",
+   "kind": "new",
+   "spark": 3,
+   "rationale": "Portamento's own Multi-Modal Portamento section works through exactly Piano String Inharmonicity's B-coefficient mechanism (string tension rising during a bend/glide compresses partials toward harmonic) without naming the entry, and it directly answers one of Piano String Inharmonicity's open questions.",
+   "evidence": "Portamento: 'The inharmonicity coefficient B couples the modes... A slider that begins with a bell-like inharmonic character can end with a nearly harmonic character as the modes compress together.'"
+  },
+  {
+   "source": "Quadratic Interpolation in DSP",
+   "target": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "type": "connects-to",
+   "label": "interpolation-quality",
+   "kind": "new",
+   "spark": 3,
+   "rationale": "Quadratic Interpolation's own \u00a72 is titled 'Wavetable Synthesis' and argues quadratic is 'the sweet spot' there; Wavetable Synthesis Research's Engineering Essentials independently ranks linear/cubic/windowed-sinc for the same job. Same design question, argued from both sides, unlinked.",
+   "evidence": "Quadratic Interpolation \u00a72: 'The manifesto: Quadratic is the sweet spot for wavetable synthesis.' Wavetable Synthesis Research: 'Interpolation between frames: linear is minimum viable, cubic (Hermite or 4-point) is better, windowed-sinc (Kaiser window) is highest quality.'"
+  },
+  {
+   "source": "Signal-Rate CV Architecture",
+   "target": "SMPTE LTC",
+   "type": "connects-to",
+   "kind": "new",
+   "spark": 2,
+   "rationale": "Reciprocal fix \u2014 SMPTE LTC already links forward to Signal-Rate CV Architecture (connects-to); the reverse is missing on Signal-Rate CV Architecture's side. Both entries argue for treating every timing/control quantity as continuous signal rather than discrete event.",
+   "evidence": "SMPTE LTC: target '[[Signal-Rate CV Architecture]]' type connects-to (already present, one direction only)."
+  },
+  {
+   "source": "Retrospective Delay",
+   "target": "Slime Mold Delay",
+   "type": "connects-to",
+   "label": "thinking-vs-remembering",
+   "kind": "new",
+   "spark": 2,
+   "rationale": "Reciprocal fix \u2014 Slime Mold Delay's Palace Connections already names this pairing explicitly by title; Retrospective Delay has no return link and is one of the entries feeding Slime Mold Delay's 0-inbound count on the priority-citizen list.",
+   "evidence": "Slime Mold Delay: 'Retrospective Delay \u2014 The contrasting delay project. Retrospective Delay remembers; Slime Mold Delay thinks.'"
+  },
+  {
+   "source": "Semantic Delay",
+   "target": "Slime Mold Delay",
+   "type": "connects-to",
+   "label": "routing-by-meaning",
+   "kind": "new",
+   "spark": 2,
+   "rationale": "Reciprocal fix \u2014 same pattern as above; Slime Mold Delay names Semantic Delay by title and contrasts routing-by-meaning vs. routing-by-use, but Semantic Delay's own frontmatter doesn't point back.",
+   "evidence": "Slime Mold Delay: 'Semantic Delay \u2014 semantic delay routes by meaning; slime mold routes by use. Different optimization criteria, similar architectural shape.'"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Wavetable Space as Torus",
+   "target": "Tonnetz",
+   "type": "connects-to",
+   "label": "harmony-and-timbre-same-geometry",
+   "phrase": "### The [[Tonnetz]] \u2014 Harmony and Timbre Are the Same Geometry",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "target": "Orbital Resonance",
+   "type": "connects-to",
+   "phrase": "### [[Orbital Resonance]] and the KAM Theorem",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "target": "Quasicrystals",
+   "type": "connects-to",
+   "phrase": "### [[Quasicrystals]] and the Cut-and-Project Method",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "target": "Berry Phase",
+   "type": "connects-to",
+   "phrase": "### [[Berry Phase]] and Holonomy",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Curve Is the Material",
+   "target": "Spectroscopy",
+   "type": "connects-to",
+   "phrase": "### [[Spectroscopy]] and Molecular Mode Families",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Curve Is the Material",
+   "target": "Phonon Dispersion",
+   "type": "connects-to",
+   "phrase": "### [[Phonon Dispersion]] in Crystal Lattices",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Quadratic Interpolation in DSP",
+   "target": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "type": "connects-to",
+   "phrase": "### 2. Wavetable Synthesis \u2014 'the sweet spot for wavetable synthesis'",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Quantum Synthesizer",
+   "stage_current": "dormant",
+   "stage_proposed": "",
+   "vector_issue": "stage: dormant sits against status: active, last_activated 2026-01, activation_count: 0 \u2014 the two fields tell opposite stories. Not proposing a specific new stage (that's Loudon's call, e.g. dormant+status:archived vs. reactivate), just flagging the contradiction for a human decision.",
+   "face": "none"
+  },
+  {
+   "entry": "Quadratic Interpolation in DSP",
+   "stage_current": "growing",
+   "vector_issue": "No forward_vector field at all \u2014 every other member of this room has one; SCHEMA \u00a73 lists it as strongly recommended.",
+   "face": "none"
+  },
+  {
+   "entry": "Slime Mold Delay",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "Body already exceeds sprout's 400-word ceiling and carries 8 typed cross-domain links (sprout wants 1\u20132, growing wants 3+) \u2014 the entry's frontmatter says sprout, its content already argues growing.",
+   "face": "none"
+  },
+  {
+   "entry": "What Claim Does Scientific Sonification Make?",
+   "stage_current": "seed",
+   "stage_proposed": "sprout",
+   "vector_issue": "Seed range is 50\u2013150 words with a minimal body; this entry runs a full three-path argument with named sections well past that, and already carries 2 typed links (sprout's own threshold).",
+   "face": "none"
+  },
+  {
+   "entry": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+   "stage_current": "growing",
+   "vector_issue": "Carries a `parent:` frontmatter field not in SCHEMA \u00a73's field vocabulary \u2014 not blocking, but worth naming since it's the kind of thing that accretes silently.",
+   "graffiti_note": "Field discipline note (\u00a73): 'If a field is only going to be used on one entry, it belongs in the body prose, not the frontmatter.' `parent` reads that way here."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Piano String Inharmonicity's frontmatter link `mirrors [[Octave Equivalence]]` (label: stretched-octave) points at an entry that, per Shepard Tone Synthesizer's own body, was absorbed into Shepard in the 2026-07-06 Weave ('This section absorbed the former [[Octave Equivalence]] entry... because it had no independent life outside explaining this instrument'). Piano String Inharmonicity's link was apparently never updated to follow the merge.",
+   "kind": "merge-fallout / possible stale link",
+   "entries": [
+    "Piano String Inharmonicity",
+    "Shepard Tone Synthesizer"
+   ],
+   "proposed_action": "Retarget Piano String Inharmonicity's link to Shepard Tone Synthesizer (the \u00a7 Theory \u2014 Octave Equivalence section, which already cites Piano String Inharmonicity back explicitly under 'Where the Theory Still Has an Edge') \u2014 or confirm whether an [[Octave Equivalence]] redirect stub still exists before touching it, per this task's instruction not to act on ghost-link matters directly."
+  },
+  {
+   "issue": "Wavetable Synthesis -- Research & Higher-Dimensional Design's body (Connections to the Palace) cites '[[Genetic Code as Lookup Table]] (if entry exists)' while its own frontmatter links a differently-titled entry, '[[The Genetic Code as Wavetable]]' (mirrors), for what reads like the same ribosome-as-wavetable idea developed in Part III.",
+   "kind": "possible naming drift / duplicate concept under two titles",
+   "entries": [
+    "Wavetable Synthesis -- Research & Higher-Dimensional Design"
+   ],
+   "proposed_action": "Reconcile which title is canonical; if both exist as separate files, they're likely candidates for a merge (a folder worker or Loudon would need to check if [[Genetic Code as Lookup Table]] actually exists)."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Piano String Inharmonicity",
+   "question": "Do other boundary-crossing instruments (prepared piano, bowed strings with variable bow pressure) show similar pitch-timbre coupling?",
+   "by_entry": "Portamento and Physical Pitch Modeling",
+   "verdict": "substantially answered",
+   "proposed_action": "Portamento's Multi-Modal Portamento section works the case directly (tension-driven B compression during a bend/glide); pair with the new connects-to link proposed above so a reader lands on the answer."
+  },
+  {
+   "entry": "Piano String Inharmonicity",
+   "question": "Could inharmonicity be used as a compositional parameter? Varying B over time to morph between piano-like and pure tones?",
+   "by_entry": "The Curve Is the Material",
+   "verdict": "substantially answered",
+   "proposed_action": "Curve Is the Material's Morphing Quality Distinction section answers this precisely ('Morphing B from 0.001 to 0.003 traverses the space of real stiff-string materials continuously'); Wavetable Space as Torus formalizes the same move as B being a holonomy parameter. The new exemplifies link proposed above is the connective tissue."
+  }
+ ],
+ "demote_candidates": [
+  {
+   "file": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+   "disposition": "demote-to-bundle",
+   "rationale": "Full entry frontmatter (type: concept, stage, links, forward_vector) but the content and the non-canonical `parent:` field both read as reference documentation for one project's control surface rather than a freestanding idea the palace reasons with elsewhere. It matches SCHEMA \u00a78's `spec` bundle-file type more than a top-level `concept` \u2014 would become e.g. `Neural Granular Synthesis/Neural Granular Synthesis \u2014 spec \u2014 control-vocabulary-math.md`. Offered as a candidate for Loudon/the folder worker to weigh, not a directive \u2014 the content itself is careful and worth keeping somewhere."
+  }
+ ],
+ "flag_responses": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "walk_results": [],
+ "bridge_findings": [],
+ "synthesis_spawn_flag": []
+}

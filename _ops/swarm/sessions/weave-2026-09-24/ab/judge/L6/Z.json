@@ -1,0 +1,87 @@
+{
+ "arm": "Z",
+ "room": "L6",
+ "total_proposals": 18,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "No Mind Checks Itself",
+   "type": "exemplifies",
+   "target": "Bring In a Bigger Mind",
+   "label": null,
+   "rationale": "Direction looks inverted. No Mind Checks Itself is the general structural claim (\"a self-model can only see as far as its own loop runs\"); Bring In a Bigger Mind is one specific practice built on it. \u00a74's invariant puts exemplifies pointing from the instance back to its more general ground, so the link should read Bring In a Bigger Mind \u2192 exemplifies \u2192 No Mind Checks Itself, not the reverse. Flagging only \u2014 not rewriting.",
+   "evidence": "No Mind Checks Itself.md:11-13 (\"target: Bring In a Bigger Mind, type: exemplifies, label: the-practice-this-grounds\") vs. No Mind Checks Itself.md:37 (\"structural limit ... recurs at every altitude the palace has looked\")",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "relation",
+   "source": "John Cage",
+   "type": "emerged-from",
+   "target": "Making a Palace Citizen",
+   "label": "made-by-this-method",
+   "rationale": "John Cage is a named worked instance of the citizen-making method (\"the non-philosopher stress test\") but has no lineage link back to the method that produced him \u2014 every other citizen page in this room has the same gap.",
+   "evidence": "\"[[John Cage]] \u2014 the non-philosopher stress test \u2014 built the same day to test register spread\" (Making a Palace Citizen.md:157)",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "relation",
+   "source": "Spinoza",
+   "type": "emerged-from",
+   "target": "Making a Palace Citizen",
+   "label": "flagship-instance-of-the-method",
+   "rationale": "Spinoza is explicitly the flagship worked instance of the citizen method; his own frontmatter has no link back, matching the pattern found across all three citizen pages in this room.",
+   "evidence": "\"[[Spinoza]] \u2014 first flagship; the archetypal enchantment target\" (Making a Palace Citizen.md:156)",
+   "item_id": "Z3"
+  },
+  {
+   "kind": "relation",
+   "source": "Palace Philosophies",
+   "type": "connects-to",
+   "target": "The Adjacent Affordance",
+   "label": "the-symposium-instance",
+   "rationale": "The Adjacent Affordance's Symposium section is a working miniature of the whole philosophical register (twelve voices, one topic) \u2014 exactly the kind of cross-register move Palace Philosophies exists to hub. The Adjacent Affordance had zero inbound before this walk; this is a genuine, low-forced connection given the Symposium's explicit provenance note.",
+   "evidence": "\"A fictional symposium in which every philosopher the palace keeps submitted a line on the Adjacent Affordance\" (The Adjacent Affordance.md:54)",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "relation",
+   "source": "Whitehead",
+   "type": "mirrors",
+   "target": "Martin Buber",
+   "label": "relation-is-primary",
+   "rationale": "Buber already mirrors Whitehead with this exact label; Whitehead's page (which itself claims to hold \"the strongest available statement\" of relations-are-primary) has no reciprocal link.",
+   "evidence": "\"a thing IS its relations, gathered\" (Whitehead.md:36) vs. \"In the beginning is the relation\" (People/Martin Buber.md:63)",
+   "item_id": "Z5"
+  },
+  {
+   "kind": "relation",
+   "source": "Stoicism",
+   "type": "contradicts",
+   "target": "Martin Buber",
+   "label": "the-self-needs-the-Thou",
+   "rationale": "Buber already contradicts Stoicism (a real, symmetric tension \u2014 interior sovereignty vs. a self that only becomes an I through the Thou); Stoicism's own frontmatter carries two other contradicts (Confucianism, The Drift) but not this one back.",
+   "evidence": "Martin Buber.md:44-46 (\"target: Stoicism, type: contradicts, label: the-self-needs-the-Thou\")",
+   "item_id": "Z6"
+  },
+  {
+   "kind": "relation",
+   "source": "Mixture of Experts",
+   "type": "connects-to",
+   "target": "Bring In a Bigger Mind",
+   "label": "post-hoc-adversarial-audit",
+   "rationale": "MoE is routing to differently-textured experts; Bring In a Bigger Mind is the same move made sequential \u2014 finish, then route the whole result to a bigger/different mind to try to break it. MoE already links out to Dialectic, Excellent Adventure and Philosopher Visits the Entry as embodied-routing mirrors but skips this one, which is the same pattern under a different name.",
+   "evidence": "\"hand the result \u2014 cold, no shared context, explicitly briefed to be skeptical \u2014 to a larger or differently-tuned model\" (Bring In a Bigger Mind.md:33)",
+   "item_id": "Z7"
+  },
+  {
+   "kind": "relation",
+   "source": "Donella Meadows",
+   "type": "emerged-from",
+   "target": "Making a Palace Citizen",
+   "label": "made-by-this-method",
+   "rationale": "Same missing lineage link as John Cage \u2014 Meadows is a worked instance (\"systems-scientist register\") with no link back to her maker method.",
+   "evidence": "\"[[Donella Meadows]] ... built the same day to test register spread (scientist, composer)\" (Making a Palace Citizen.md:157)",
+   "item_id": "Z8"
+  }
+ ]
+}

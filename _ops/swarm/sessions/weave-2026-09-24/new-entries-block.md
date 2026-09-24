@@ -1,0 +1,44 @@
+Born since the last Weave, still under-reached:
+- [[Agent Toolbox]] (currently 0 inbound)
+- [[OBS]] (currently 0 inbound)
+- [[GenAI Camera]] (currently 1 inbound)
+- [[LDN RTM]] (currently 1 inbound)
+- [[Reflective Practice]] (currently 1 inbound)
+- [[Return Ceremony]] (currently 1 inbound)
+- [[Search Before You Build]] (currently 1 inbound)
+- [[The Palace Voice]] (currently 1 inbound)
+- [[The Practice Rediscovers Its Philosophy]] (currently 1 inbound)
+- [[Tool Builder]] (currently 1 inbound)
+- [[Weaving Memory into the Palace]] (currently 1 inbound)
+- [[Zoom Out to the Structure]] (currently 1 inbound)
+- [[Bring In a Bigger Mind]] (currently 2 inbound)
+- [[ControlNet as Topology]] (currently 2 inbound)
+- [[Making a Palace Citizen]] (currently 2 inbound)
+- [[Martin Buber]] (currently 2 inbound)
+- [[No Mind Checks Itself]] (currently 2 inbound)
+- [[SCHEMA — Reference]] (currently 2 inbound)
+- [[Skills Are Enchantable Pages]] (currently 2 inbound)
+- [[The Remembering Page]] (currently 2 inbound)
+- [[ELDER]] (currently 3 inbound)
+- [[Iain McGilchrist]] (currently 3 inbound)
+- [[Martin Heidegger]] (currently 3 inbound)
+- [[The Aftermath Frame]] (currently 3 inbound)
+- [[The Palace Hardens Around Values]] (currently 3 inbound)
+No entry points to these yet (any age):
+- [[Agent Toolbox]]
+- [[Annie Dillard]]
+- [[Audition Gate]]
+- [[Block It in Blender, Ink It in genAI]]
+- [[Buckminster Fuller]]
+- [[Does Personifying an Agent Change What It Does]]
+- [[Gemma 4 — Local Coordination Guide]]
+- [[LoRA Trainer]]
+- [[OBS]]
+- [[Quadratic Interpolation in DSP]]
+- [[SMPTE LTC]]
+- [[Slime Mold Delay]]
+- [[The Adjacent Affordance]]
+- [[The Substrate Drifts]]
+- [[Tract Mirror]]
+- [[Worktree Practice]]
+- [[control-vocabulary-math]]

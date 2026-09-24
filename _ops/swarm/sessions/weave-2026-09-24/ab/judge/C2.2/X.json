@@ -1,0 +1,74 @@
+{
+ "arm": "X",
+ "room": "C2.2",
+ "total_proposals": 14,
+ "sample": [
+  {
+   "kind": "stage",
+   "source": "Swarm Weave",
+   "type": "growing->fruiting",
+   "rationale": "Its own frontmatter records four `spawned` links (Metaphor as Coupling Medium, Walk That Weaves, Palace Enchantment, The Practice Rediscovers Its Philosophy) \u2014 the stage table's own definition of fruiting is \"actively generating new entries or connections.\"",
+   "item_id": "X1"
+  },
+  {
+   "kind": "unsung",
+   "source": "ROSETTA",
+   "type": "connects-to",
+   "target": "SCHEMA \u2014 Reference",
+   "label": null,
+   "rationale": "table row and file-architecture-map entries naming \"SCHEMA \u2014 Reference.md\" repeatedly (ROSETTA.md:44, 236) with no frontmatter link",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "The Cooperation Path",
+   "type": "exemplifies",
+   "target": "Songlines",
+   "label": null,
+   "rationale": "The Cooperation Path opens by defining itself as \"A named songline through the palace, tracing how a story became a principle\" \u2014 it names its own genus and doesn't link it, and Songlines sits in the same room unlinked to it.",
+   "evidence": "\"A named songline through the palace, tracing how a story became a principle, grounded in biology, rooted in philosophy, expressed as pedagogy, and scaled into a framework.\" (The Cooperation Path.md:37)",
+   "item_id": "X3"
+  },
+  {
+   "kind": "stage",
+   "source": "Project Stewardship System",
+   "type": "growing->fruiting",
+   "rationale": "Very long, conceptually complete, actively spawning new sub-artifacts (The Scroll, the PROJECTS deck, the barren-cycle rule) \u2014 reads past growing's 3+ links / cross-domain-connections bar into fruiting or mature.",
+   "item_id": "X4"
+  },
+  {
+   "kind": "stage",
+   "source": "Progressive Staging",
+   "type": "sprout->growing",
+   "rationale": "6 typed links, 800+ words, a developed Method/Why-It-Works/When-to-Use structure \u2014 well past sprout's 150\u2013400 words / 1\u20132 links.",
+   "item_id": "X5"
+  },
+  {
+   "kind": "relation",
+   "source": "Speak Like a Person, Log Like a Protocol",
+   "type": "deepens",
+   "target": "The Palace Voice",
+   "label": null,
+   "rationale": "Speak Like a Person is a specific, enforceable articulation of the palace's general verbal-register discipline for one surface (STIGMERGY); The Palace Voice is the ground it elaborates.",
+   "evidence": "\"Two registers, always co-present, never confused\" (Speak Like a Person, Log Like a Protocol.md:32-34) vs. The Palace Voice's forward_vector as \"the palace's verbal floor \u2014 how we write every entry and talk in every session\"",
+   "item_id": "X6"
+  },
+  {
+   "kind": "merge",
+   "source": "Two Batons, One Board",
+   "target": "Project Stewardship System",
+   "rationale": "Thin (seed stage since 2026-05-29, no independent growth since), and Project Stewardship System's own Open Questions section already names it directly as \"the case for bridging\" the human-handoff gap \u2014 it reads as a satellite problem statement PSS already owns, not a distinct idea. Offered tentatively: it does carry 3 inbound links of its own and a genuinely distinct framing (the handoff is invisible to the scheduler), so a folder worker or Loudon may see reason to keep it standing \u2014 flagging, not asserting.",
+   "item_id": "X7"
+  },
+  {
+   "kind": "relation",
+   "source": "Progressive Staging",
+   "type": "mirrors",
+   "target": "The Palace Hardens Around Values",
+   "label": "additive-compounding",
+   "rationale": "Cross-domain structural identity: a design method for building instruments and the palace's own governing philosophy both insist complexity compounds by addition, never by invalidating what came before.",
+   "evidence": "\"Additive complexity, never retroactive... Nothing is thrown away; everything is extended\" (Progressive Staging.md:39) / \"Each honest decision, deposited and kept, makes the next decision more determined\" (The Palace Hardens Around Values.md:40)",
+   "item_id": "X8"
+  }
+ ]
+}

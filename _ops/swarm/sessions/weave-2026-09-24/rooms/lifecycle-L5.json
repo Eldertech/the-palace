@@ -1,0 +1,589 @@
+{
+ "lens": "lifecycle",
+ "id": "L5",
+ "targets": [
+  {
+   "id": "Audition Gate",
+   "path": "Audition Gate.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Quadratic Interpolation in DSP",
+   "path": "Quadratic Interpolation in DSP.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "SMPTE LTC",
+   "path": "SMPTE LTC.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Slime Mold Delay",
+   "path": "Projects/Slime Mold Delay.md",
+   "stage": "sprout",
+   "inbound": 0
+  },
+  {
+   "id": "Tract Mirror",
+   "path": "Projects/Tract Mirror.md",
+   "stage": "seed",
+   "inbound": 0
+  }
+ ],
+ "walk": {
+  "Audition Gate": {
+   "hop1": [
+    {
+     "id": "Generative Sample Libraries",
+     "path": "Projects/Generative Sample Libraries.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Phoneme Choir",
+     "path": "Projects/Phoneme Choir.md",
+     "stage": "fruiting",
+     "inbound": 4
+    },
+    {
+     "id": "Quality Manifesto",
+     "path": "Quality Manifesto.md",
+     "stage": "mature",
+     "inbound": 45
+    },
+    {
+     "id": "Substrate Skill",
+     "path": "_ops/Substrate Skill.md",
+     "stage": "mature",
+     "inbound": 16
+    },
+    {
+     "id": "Talking Keyboard",
+     "path": "Projects/Talking Keyboard.md",
+     "stage": "fruiting",
+     "inbound": 4
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Blood Compressor",
+     "path": "Projects/Blood Compressor.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Crystal Synthesizer",
+     "path": "Projects/Crystal Synthesizer.md",
+     "stage": "fruiting",
+     "inbound": 16
+    },
+    {
+     "id": "Generative Preset Development",
+     "path": "Projects/Generative Preset Development.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Generative Wavetable Libraries",
+     "path": "Projects/Generative Wavetable Libraries.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Neural Granular Synthesis",
+     "path": "Projects/Neural Granular Synthesis.md",
+     "stage": "growing",
+     "inbound": 12
+    },
+    {
+     "id": "Retrospective Delay",
+     "path": "Projects/Retrospective Delay.md",
+     "stage": "growing",
+     "inbound": 11
+    },
+    {
+     "id": "Shepard Tone Synthesizer",
+     "path": "Projects/Shepard Tone Synthesizer.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Slime Mold Delay",
+     "path": "Projects/Slime Mold Delay.md",
+     "stage": "sprout",
+     "inbound": 0
+    },
+    {
+     "id": "The Metaphor Stretch",
+     "path": "The Metaphor Stretch.md",
+     "stage": "sprout",
+     "inbound": 3
+    },
+    {
+     "id": "Modes of Collaboration",
+     "path": "Modes of Collaboration.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Project Stewardship System",
+     "path": "Palace development/Project Stewardship System.md",
+     "stage": "growing",
+     "inbound": 19
+    },
+    {
+     "id": "Deposit Ceremony",
+     "path": "_ops/Deposit Ceremony.md",
+     "stage": "growing",
+     "inbound": 26
+    }
+   ],
+   "note": null
+  },
+  "Quadratic Interpolation in DSP": {
+   "hop1": [
+    {
+     "id": "Compressor Design",
+     "path": "Projects/Compressor Design.md",
+     "stage": "mature",
+     "inbound": 13
+    },
+    {
+     "id": "DSP Frameworks",
+     "path": "DSP Frameworks.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Differential Equations",
+     "path": "Differential Equations.md",
+     "stage": "mature",
+     "inbound": 7
+    },
+    {
+     "id": "Latent Error",
+     "path": "Latent Error.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Portamento and Physical Pitch Modeling",
+     "path": "Projects/Portamento and Physical Pitch Modeling.md",
+     "stage": "mature",
+     "inbound": 5
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Action Potential Oscillator",
+     "path": "Projects/Action Potential Oscillator.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Biomechanical Synthesis",
+     "path": "Projects/Biomechanical Synthesis.md",
+     "stage": "mature",
+     "inbound": 7
+    },
+    {
+     "id": "Bessel Functions in Synthesis",
+     "path": "Projects/Bessel Functions in Synthesis.md",
+     "stage": "growing",
+     "inbound": 13
+    },
+    {
+     "id": "Dispersion",
+     "path": "Dispersion.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "Granular Synthesis",
+     "path": "Granular Synthesis.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Media Library",
+     "path": "Media Library.md",
+     "stage": "composting",
+     "inbound": 0
+    },
+    {
+     "id": "Blood Compressor",
+     "path": "Projects/Blood Compressor.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Categorizing Inharmonicity",
+     "path": "Projects/Categorizing Inharmonicity.md",
+     "stage": "mature",
+     "inbound": 12
+    },
+    {
+     "id": "Crystal Synthesizer",
+     "path": "Projects/Crystal Synthesizer.md",
+     "stage": "fruiting",
+     "inbound": 16
+    },
+    {
+     "id": "Exponential Decay Curvature",
+     "path": "Exponential Decay Curvature.md",
+     "stage": "sprout",
+     "inbound": 3
+    },
+    {
+     "id": "Floquet Theory",
+     "path": "Floquet Theory.md",
+     "stage": "growing",
+     "inbound": 8
+    },
+    {
+     "id": "Floquet Time-Modulated Loops",
+     "path": "Projects/Floquet Time-Modulated Loops/Floquet Time-Modulated Loops.md",
+     "stage": "growing",
+     "inbound": 5
+    }
+   ],
+   "note": null
+  },
+  "SMPTE LTC": {
+   "hop1": [
+    {
+     "id": "Boundary-Crossing Instruments",
+     "path": "Boundary-Crossing Instruments.md",
+     "stage": "mature",
+     "inbound": 37
+    },
+    {
+     "id": "Frequency-Time Duality",
+     "path": "Projects/Frequency-Time Duality.md",
+     "stage": "growing",
+     "inbound": 30
+    },
+    {
+     "id": "Modes of Collaboration",
+     "path": "Modes of Collaboration.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Signal-Rate CV Architecture",
+     "path": "Signal-Rate CV Architecture.md",
+     "stage": "growing",
+     "inbound": 6
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Action Potential Oscillator",
+     "path": "Projects/Action Potential Oscillator.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Biomechanical Synthesis",
+     "path": "Projects/Biomechanical Synthesis.md",
+     "stage": "mature",
+     "inbound": 7
+    },
+    {
+     "id": "Piano String Inharmonicity",
+     "path": "Projects/Piano String Inharmonicity.md",
+     "stage": "growing",
+     "inbound": 12
+    },
+    {
+     "id": "Shepard Tone Synthesizer",
+     "path": "Projects/Shepard Tone Synthesizer.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "2D Torus Wavetable Synthesizer",
+     "path": "Projects/2D Torus Wavetable Synthesizer.md",
+     "stage": "fruiting",
+     "inbound": 25
+    },
+    {
+     "id": "Bayesian Granular Synthesizer",
+     "path": "Projects/Bayesian Granular Synthesizer.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "Crystal Synthesizer",
+     "path": "Projects/Crystal Synthesizer.md",
+     "stage": "fruiting",
+     "inbound": 16
+    },
+    {
+     "id": "DSP Frameworks",
+     "path": "DSP Frameworks.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "DSP in Looping Dimensions",
+     "path": "DSP in Looping Dimensions.md",
+     "stage": "sprout",
+     "inbound": 15
+    },
+    {
+     "id": "Dissolutions",
+     "path": "Dissolutions.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "Exponential Decay Curvature",
+     "path": "Exponential Decay Curvature.md",
+     "stage": "sprout",
+     "inbound": 3
+    },
+    {
+     "id": "Floquet Theory",
+     "path": "Floquet Theory.md",
+     "stage": "growing",
+     "inbound": 8
+    }
+   ],
+   "note": null
+  },
+  "Slime Mold Delay": {
+   "hop1": [
+    {
+     "id": "Biomechanical Synthesis",
+     "path": "Projects/Biomechanical Synthesis.md",
+     "stage": "mature",
+     "inbound": 7
+    },
+    {
+     "id": "Hyperdimensional Prism",
+     "path": "Hyperdimensional Prism.md",
+     "stage": "mature",
+     "inbound": 40
+    },
+    {
+     "id": "Kuramoto Coupling",
+     "path": "Kuramoto Coupling.md",
+     "stage": "mature",
+     "inbound": 72
+    },
+    {
+     "id": "Particle Synthesis",
+     "path": "Projects/Particle Synthesis.md",
+     "stage": "dormant",
+     "inbound": 10
+    },
+    {
+     "id": "Retrospective Delay",
+     "path": "Projects/Retrospective Delay.md",
+     "stage": "growing",
+     "inbound": 11
+    },
+    {
+     "id": "Semantic Delay",
+     "path": "Projects/Semantic Delay.md",
+     "stage": "growing",
+     "inbound": 8
+    },
+    {
+     "id": "Spinoza Conatus",
+     "path": "Spinoza Conatus.md",
+     "stage": "mature",
+     "inbound": 65
+    },
+    {
+     "id": "Substrate Skill",
+     "path": "_ops/Substrate Skill.md",
+     "stage": "mature",
+     "inbound": 16
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Frequency-Time Duality",
+     "path": "Projects/Frequency-Time Duality.md",
+     "stage": "growing",
+     "inbound": 30
+    },
+    {
+     "id": "Compressor Design",
+     "path": "Projects/Compressor Design.md",
+     "stage": "mature",
+     "inbound": 13
+    },
+    {
+     "id": "Dispersion",
+     "path": "Dispersion.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "Granular Synthesis",
+     "path": "Granular Synthesis.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Playful Interface Design",
+     "path": "Playful Interface Design.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Action Potential Oscillator",
+     "path": "Projects/Action Potential Oscillator.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Blood Compressor",
+     "path": "Projects/Blood Compressor.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Dub Lineage",
+     "path": "Dub Lineage.md",
+     "stage": "sprout",
+     "inbound": 6
+    },
+    {
+     "id": "Generative Sample Libraries",
+     "path": "Projects/Generative Sample Libraries.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Neural Granular Synthesis",
+     "path": "Projects/Neural Granular Synthesis.md",
+     "stage": "growing",
+     "inbound": 12
+    },
+    {
+     "id": "Shepard Tone Synthesizer",
+     "path": "Projects/Shepard Tone Synthesizer.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Shimmer Cloud",
+     "path": "Projects/Shimmer Cloud.md",
+     "stage": "dormant",
+     "inbound": 4
+    }
+   ],
+   "note": null
+  },
+  "Tract Mirror": {
+   "hop1": [
+    {
+     "id": "Boundary-Crossing Instruments",
+     "path": "Boundary-Crossing Instruments.md",
+     "stage": "mature",
+     "inbound": 37
+    },
+    {
+     "id": "Linear Predictive Coding",
+     "path": "Linear Predictive Coding.md",
+     "stage": "sprout",
+     "inbound": 6
+    },
+    {
+     "id": "Three.js",
+     "path": "Shop/Three.js.md",
+     "stage": null,
+     "inbound": 5
+    },
+    {
+     "id": "Waveguide Synthesizer",
+     "path": "Projects/Waveguide Synthesizer.md",
+     "stage": "seed",
+     "inbound": 8
+    }
+   ],
+   "hop2": [
+    {
+     "id": "1D Wavetable Scanning",
+     "path": "1D Wavetable Scanning.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "Dispersion Table",
+     "path": "Dispersion Table.md",
+     "stage": "sprout",
+     "inbound": 4
+    },
+    {
+     "id": "Particle Synthesis",
+     "path": "Projects/Particle Synthesis.md",
+     "stage": "dormant",
+     "inbound": 10
+    },
+    {
+     "id": "Wavetable Scanner",
+     "path": "Wavetable Scanner.md",
+     "stage": "sprout",
+     "inbound": 3
+    },
+    {
+     "id": "2D Torus Wavetable Synthesizer",
+     "path": "Projects/2D Torus Wavetable Synthesizer.md",
+     "stage": "fruiting",
+     "inbound": 25
+    },
+    {
+     "id": "Categorizing Inharmonicity",
+     "path": "Projects/Categorizing Inharmonicity.md",
+     "stage": "mature",
+     "inbound": 12
+    },
+    {
+     "id": "DSP in Looping Dimensions",
+     "path": "DSP in Looping Dimensions.md",
+     "stage": "sprout",
+     "inbound": 15
+    },
+    {
+     "id": "Dissolutions",
+     "path": "Dissolutions.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "Frequency-Time Duality",
+     "path": "Projects/Frequency-Time Duality.md",
+     "stage": "growing",
+     "inbound": 30
+    },
+    {
+     "id": "Phase Reduction",
+     "path": "Phase Reduction.md",
+     "stage": "sprout",
+     "inbound": 6
+    },
+    {
+     "id": "Shimmer Cloud",
+     "path": "Projects/Shimmer Cloud.md",
+     "stage": "dormant",
+     "inbound": 4
+    },
+    {
+     "id": "Tone.js",
+     "path": "Shop/Tone.js.md",
+     "stage": null,
+     "inbound": 5
+    }
+   ],
+   "note": null
+  }
+ }
+}

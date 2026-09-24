@@ -1,0 +1,81 @@
+{
+ "arm": "Z",
+ "room": "C2.2",
+ "total_proposals": 13,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "STIGMERGY",
+   "type": "spawned",
+   "target": "The Substrate Drifts",
+   "label": "the-session-that-taught-hermetic-testing",
+   "rationale": "The Substrate Drifts is a direct write-up of bugs found in the STIGMERGY v0.3 session \u2014 the entry names the session in its own body but neither entry links to the other, and The Substrate Drifts sits at 0 inbound (priority citizen per new-entries-block.md).",
+   "evidence": "'Three independent bugs in the STIGMERGY v0.3 session shared one root' (The Substrate Drifts.md:32)",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "bridge",
+   "source": "STIGMERGY",
+   "type": null,
+   "target": "STIGMERGY quotes its own coordination discipline by name \u2014 'speak like a person, log like a protocol' \u2014 but has never linked to the entry that owns that phrase.",
+   "rationale": "a coined phrase used as working vocabulary inside one entry's body, without the citation trail back to its source entry",
+   "evidence": "None || None",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "merge",
+   "source": "Two Batons, One Board",
+   "target": "Project Stewardship System",
+   "rationale": "The entry's own forward_vector asks to be dissolved: 'I should dissolve into the Baton Ceremony, the Stewardship system, and a scheduler spec as each absorbs the part of me it needs' (Two Batons, One Board.md:43). It already frames itself as a specific case folded into PSS ('folded here into the Project Stewardship System as one specific case: the human-originated handoff', line 69-70), and most of what it was tracking has since shipped (Stage E auto-grant, the orchestrator). What remains open (the human-originated handoff never bridged onto the board via handoff_ready) is a live open question PSS should carry forward, not a reason to keep a separate entry.",
+   "item_id": "Z3"
+  },
+  {
+   "kind": "relation",
+   "source": "Songlines",
+   "type": "contradicts",
+   "target": "The Palace Hardens Around Values",
+   "label": "well-worn-vs-hardened",
+   "rationale": "Both true, generative friction: Songlines asks whether the palace's own well-worn paths make adjacent country invisible; The Palace Hardens Around Values insists hardening (well-worn-ness) is the goal, not the cost. Same phenomenon (paths deepening with use), opposite verdict on whether that's healthy.",
+   "evidence": "Songlines: 'paths through its own territory that have been sung so often they make adjacent country invisible' (Songlines.md:33) \u2014 vs. \u2014 'The palace hardening and gaining weight is a good thing... makes the next decision more determined' (The Palace Hardens Around Values.md:38,40)",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "unsung",
+   "source": "The Substrate Drifts",
+   "type": "spawned",
+   "target": "STIGMERGY",
+   "label": null,
+   "rationale": "'Three independent bugs in the STIGMERGY v0.3 session shared one root' (The Substrate Drifts.md:32) \u2014 names the origin session plainly, no wikilink, no frontmatter link.",
+   "item_id": "Z5"
+  },
+  {
+   "kind": "relation",
+   "source": "Speak Like a Person, Log Like a Protocol",
+   "type": "exemplifies",
+   "target": "The Palace Voice",
+   "label": "protocol-surface-instance",
+   "rationale": "Speak Like a Person is a specific-surface application (STIGMERGY protocol skins) of the general prose-register discipline The Palace Voice owns for the whole palace. Neither currently names the other, and both are under-reached (Palace Voice at 1 inbound).",
+   "evidence": "Palace Voice: 'I am the palace's verbal floor \u2014 how we write every entry and talk in every session, plain and specific and alive' (The Palace Voice.md:11) \u2014 vs. \u2014 Speak Like a Person's dual-register rule (Speak Like a Person, Log Like a Protocol.md:32-34)",
+   "item_id": "Z6"
+  },
+  {
+   "kind": "bridge",
+   "source": "Songlines / The Palace Hardens Around Values",
+   "type": null,
+   "target": "The same mechanism (repeated use hardening a path) is praised in one entry and worried over in the other \u2014 a genuine palace-level contradiction about whether its own habits of thought are a strength or a trap.",
+   "rationale": "accumulation-through-repetition, read two ways",
+   "evidence": "None || None",
+   "item_id": "Z7"
+  },
+  {
+   "kind": "relation",
+   "source": "Progressive Staging",
+   "type": "contradicts",
+   "target": "Tier Vocabulary Glossary",
+   "label": "throwaway-vs-complete",
+   "rationale": "Both are palace methods for staged work, and they disagree on whether an early stage is disposable. Progressive Staging insists every stage is a complete, kept artifact; Tier Vocabulary's Sketch tier is explicitly throwaway. Worth holding as a real design tension (when is early work a keeper vs. scaffolding?) rather than resolving.",
+   "evidence": "'No stage is a stepping stone that exists only to reach the next one' (Progressive Staging.md:33) \u2014 vs. \u2014 'Sketch is calibration and exploration, cheapest, fastest, throwaway' (Tier Vocabulary Glossary.md:35)",
+   "item_id": "Z8"
+  }
+ ]
+}

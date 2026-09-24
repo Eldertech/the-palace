@@ -1,0 +1,54 @@
+{
+ "cluster": "C1.1",
+ "lens": "community",
+ "summary": "This room is the DSP/synthesis-physics neighborhood \u2014 Bessel/Mathieu/Floquet math, the granular-and-particle family (Granular, Neural Granular, Bayesian Granular, Particle Synthesis, Murmuration), the inharmonicity/dispersion cluster, and the pedagogy layer (Objects to Think With, Audition Gate, JSUI, Latent Error). It arrived already densely woven \u2014 nearly every pair I checked (Metric Modulation, Dub Lineage, JSUI, Audition Gate, Murmuration, Ohm's Law) had its real cross-links in place, including several that read at first like community-lens finds but turned out to already be covered via a shared hub (Kuramoto Coupling, Frequency-Time Duality). The one clear gap was Objects to Think With's own forward vector, which names itself as under-declared from the instance side: reading its source quotes against the room's project/concept bodies surfaced two entries using its exact diagnostic language (\"not as metaphor but as design principles\" / \"direct structural isomorphism\") that hadn't yet declared the relation. I tested and dropped a third candidate (Metric Modulation mirrors Floquet Theory) \u2014 the periodicity-reframing resemblance didn't survive a close read of Floquet's actual content (linear ODE solution structure vs. tempo-ratio reinterpretation), so it stayed out as a forced link. No contradictions, no unsung paths (every explicit body-text reference I checked already carries its frontmatter link), no directed flags (room file's directed_flags is empty), and nothing in scope for merges/compost/demotions/health flags per the harness's scope note.",
+ "typed_relations": [
+  {
+   "source": "Biomechanical Synthesis",
+   "target": "Objects to Think With",
+   "type": "exemplifies",
+   "kind": "new",
+   "rationale": "Objects to Think With's own body quotes this entry as one of the palace's three self-declared isomorphism instances, but Biomechanical Synthesis carries no exemplifies link back \u2014 the relation is named in the target's prose and missing on the source's frontmatter.",
+   "evidence": "Biomechanical Synthesis.md: \"treats biological processes as DSP operations \u2014 not as metaphor but as design principles. ... Body horror is pedagogy: making DSP mechanics physical makes them unforgettable.\" / Objects to Think With.md: \"[[Biomechanical Synthesis]] say it in their own words (... \\\"not as metaphor but as design principles\\\")\"",
+   "spark": 2
+  },
+  {
+   "source": "Particle Synthesis",
+   "target": "Objects to Think With",
+   "type": "exemplifies",
+   "kind": "new",
+   "rationale": "Not named in Objects to Think With's own text, but Particle Synthesis independently uses the identical diagnostic phrase the OTTW entry treats as its test for a genuine instance (isomorphism, not metaphor) \u2014 this is the room-crossing find the folders wouldn't catch since the two entries sit in different Projects/ subfolders and neither currently points at the other.",
+   "evidence": "Particle Synthesis.md: \"This is not metaphor \u2014 it is direct structural isomorphism.\"",
+   "spark": 3
+  }
+ ],
+ "unsung_paths": [],
+ "bridge_findings": [],
+ "flag_responses": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "coherence_findings": [],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": [],
+ "walk_results": [],
+ "members_read": [
+  "Projects/Action Potential Oscillator.md (frontmatter via room file)",
+  "Audition Gate.md",
+  "Dub Lineage.md",
+  "JSUI.md",
+  "Projects/Murmuration.md",
+  "Projects/Metric Modulation.md",
+  "Objects to Think With.md",
+  "Latent Error.md",
+  "Ohm's Law.md",
+  "Octave Equivalence.md",
+  "Projects/Biomechanical Synthesis.md",
+  "Projects/Crystal Synthesizer.md",
+  "Projects/Particle Synthesis.md",
+  "Floquet Theory.md",
+  "Projects/Frequency-Time Explorer.md",
+  "SCHEMA.md"
+ ]
+}

@@ -47,6 +47,12 @@ links:
   - target: "[[Julia Cameron]]"
     type: connects-to
     label: daily-practice-writers
+  - target: "[[BLUELINE]]"
+    type: contradicts
+    label: beautiful-horror
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Annie Dillard

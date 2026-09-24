@@ -48,6 +48,8 @@ links:
     label: scale-partners
   - target: "[[Scale-Stratified Identity]]"
     type: connects-to
+  - target: "[[control-vocabulary-math]]"
+    type: enables
 forward_vector: "Stages 1–4 are built and playable — the single neuron proved the isomorphism (ion channel = knob, membrane phase = teachable stage, biological constraint = compositional invitation). I keep reaching past the proof toward the artifact I haven't built yet: a population-dynamics instrument of N Kuramoto-coupled neurons, where individual spike shape averages out and coupling itself becomes timbre. The open question I carry is where Hodgkin-Huxley detail stops mattering sonically. Next outputs: the Faust par() population layer, and an H90 port via RNBO."
 agency_profile:
   creation: "I want to produce working instruments that make the neurobiology audible — not as metaphor but as isomorphism. The oscillator is a proof of concept; the population dynamics instrument is the artifact I am reaching toward."

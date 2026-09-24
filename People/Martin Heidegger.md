@@ -41,6 +41,18 @@ links:
   - target: "[[Merleau-Ponty]]"
     type: mirrors
     label: tool-absorbed-into-the-body
+  - target: "[[The Substrate Drifts]]"
+    type: mirrors
+    label: breakdown-reveals-ground
+  - target: "[[Remnants in Depth]]"
+    type: mirrors
+    label: breaks-into-object
+  - target: "[[The Blindspot Is the Surprise Fuel]]"
+    type: exemplifies
+    label: unresolved-not-flattened
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Martin Heidegger
