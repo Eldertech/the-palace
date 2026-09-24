@@ -38,6 +38,16 @@ function ZoneTitle({ children, right }) {
 
 export default function ScrollView({ home, row, worker, messages = [], onConfirmed, onBack, onAdvance, canAdvance, feedback, onEnchant, canEnchant }) {
   const [confirmEnchant, setConfirmEnchant] = useState(false);
+  // Option selection on a TricksterCard is CONTROLLED by its parent (the
+  // TRICKSTER deck keeps a per-request_id map so keys and clicks share one
+  // truth). The scroll renders the same card, so it must own the same map —
+  // without it an option click is a no-op and "file" sends a notes-only grant
+  // (2026-09-23: Loudon picked MUSICGEN-MELODY here and the board recorded
+  // option_id null). One pick per ask; clicking the pick again clears it.
+  const [selections, setSelections] = useState({});
+  const toggleOption = useCallback((requestId, optionId) => {
+    setSelections((prev) => ({ ...prev, [requestId]: prev[requestId] === optionId ? null : optionId }));
+  }, []);
   const [scroll, setScroll] = useState(null);
   const [error, setError] = useState(null);
   const [orders, setOrders] = useState('');
@@ -120,7 +130,15 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
           <div data-testid="scroll-asks">
             {myAsks.length === 0 ? <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>none.</div> : null}
             {myAsks.map((p) => (
-              <TricksterCard key={p.request_id || p.from + p.ts} item={p} onConfirmed={onConfirmed} onRun={() => {}} onLaunch={() => setLaunch(true)} />
+              <TricksterCard
+                key={p.request_id || p.from + p.ts}
+                item={p}
+                onConfirmed={onConfirmed}
+                onRun={() => {}}
+                onLaunch={() => setLaunch(true)}
+                selectedId={selections[p.request_id] ?? null}
+                onSelectOption={(optionId) => toggleOption(p.request_id, optionId)}
+              />
             ))}
           </div>
 
