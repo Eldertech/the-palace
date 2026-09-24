@@ -7,6 +7,9 @@ import AgentLaunchModal from '../queue/AgentLaunchModal.jsx';
 import { fetchEntry } from '../../adapters/entries.js';
 import { fetchLensSuggestions } from '../../adapters/launch.js';
 import { checkPathSafety } from '../../lib/entry-edit.js';
+import { usePalaceRef } from '../../lib/palace-ref.jsx';
+import { fetchProjects } from '../../adapters/projects.js';
+import { rowSignal } from '../../lib/scroll-view.js';
 
 // One entry's full read shape, rendered:
 //   - FrontmatterHeader (title, type, stage, pillars, forward_vector,
@@ -92,6 +95,25 @@ export default function EntryReader({
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [picking !== null, state.kind === 'ok' ? state.entry.title : null]);
+
+  // A project entry is one face of the project; its scroll is the other. When
+  // the open entry is `type: project`, the header carries a "> scroll" jump and
+  // the row's live signal (needs you / ready / stalled), fetched once per entry.
+  // Hooks live up here, above the early returns.
+  const palace = usePalaceRef();
+  const [projectRow, setProjectRow] = useState(null);
+  const isProject = state.kind === 'ok' && (state.entry.frontmatter?.type === 'project');
+  const projectTitle = state.kind === 'ok' ? state.entry.title : null;
+  useEffect(() => {
+    if (!isProject || !projectTitle) { setProjectRow(null); return undefined; }
+    let live = true;
+    fetchProjects().then((r) => {
+      if (!live || !r.ok) return;
+      setProjectRow((r.projects || []).find((p) => p.home === projectTitle) || null);
+    });
+    return () => { live = false; };
+  }, [isProject, projectTitle]);
+  const projectSignal = projectRow ? rowSignal(projectRow) : null;
 
   if (state.kind === 'loading') {
     return (
@@ -215,6 +237,23 @@ export default function EntryReader({
             }}
           >
             [<b style={{ color: 'var(--phosphor-white)' }}>E</b>]&nbsp;edit
+          </span>
+        ) : null}
+        {projectRow && palace?.openProjectScroll ? (
+          <span
+            data-testid="entry-to-scroll"
+            onClick={() => palace.openProjectScroll(entry.title)}
+            title={`this is a project — open its scroll (where it stands now, standing orders, the making trail)`}
+            style={{
+              marginLeft: 8,
+              cursor: 'pointer',
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+              border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+              textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
+            }}
+          >
+            [<b style={{ color: 'var(--phosphor-white)' }}>&gt;</b>]&nbsp;scroll
+            {projectSignal ? <span data-testid="entry-to-scroll-signal" style={{ marginLeft: 6, color: projectSignal.tone === 'err' ? 'var(--error)' : projectSignal.tone === 'warn' ? 'var(--warn)' : 'var(--phosphor-dim)', textShadow: projectSignal.tone === 'dim' ? 'none' : 'var(--glow)', fontSize: 10 }}>· {projectSignal.text}</span> : null}
           </span>
         ) : null}
         <span

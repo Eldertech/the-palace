@@ -314,7 +314,7 @@ export default function App() {
   return (
     <Shell commands={cmds} onCommand={handleCommand}
       activeBoard={commandBarActive} liveState={liveState}>
-      <PalaceRefProvider vault="The Palace" openEntryInState={openEntryInState}>
+      <PalaceRefProvider vault="The Palace" openEntryInState={openEntryInState} openProjectScroll={openProjectScroll}>
       {/* Lift the deck nav above an entry's fixed hero backdrop (EntryReader
           z-index:1) so the buttons stay bright; the hero sits behind them. */}
       <div style={{ position: 'relative', zIndex: 2 }}>

@@ -94,10 +94,18 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
     <div data-testid="scroll-view" data-home={home}>
       <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap', marginBottom: 6 }}>
         <span data-testid="scroll-back" onClick={onBack} style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', cursor: 'pointer', border: '1px solid var(--phosphor-dim)', padding: '1px 8px', fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em' }}>← projects</span>
-        <span style={{ fontFamily: 'var(--font-display)', color: 'var(--phosphor-white)', textShadow: 'var(--glow-strong)', fontSize: 24, textTransform: 'uppercase' }}>{home}</span>
+        <span
+          data-testid="scroll-title"
+          onClick={row && row.path && onNavigate ? () => onNavigate(row.path) : undefined}
+          title={row && row.path ? `read the entry — ${row.path}` : undefined}
+          style={{ fontFamily: 'var(--font-display)', color: 'var(--phosphor-white)', textShadow: 'var(--glow-strong)', fontSize: 24, textTransform: 'uppercase', cursor: row && row.path && onNavigate ? 'pointer' : 'default' }}
+        >{home}</span>
         {row ? <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{row.status || '—'} · {row.stage || '—'}{row.stewarded ? ` · cycle ${row.iteration ?? 0}` : ' · no steward'}</span> : null}
         {running ? <RunningTag name={home} /> : null}
         <span style={{ flex: 1 }} />
+        {row && row.path && onNavigate ? (
+          <span data-testid="scroll-read-entry"><Button tone="default" onClick={() => onNavigate(row.path)}>read the entry</Button></span>
+        ) : null}
         {row && row.stewarded ? (
           <>
             <span data-testid={`steward-launch-${String(home).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}><Button tone="default" disabled={running} onClick={() => setLaunch(true)}>launch interactive</Button></span>
