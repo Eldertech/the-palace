@@ -1,0 +1,83 @@
+{
+ "arm": "Y",
+ "room": "B1",
+ "total_proposals": 12,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "Merleau-Ponty.md",
+   "label": "trajectory-not-representation",
+   "rationale": "Both reject a compute-then-execute model of motion in favor of continuous, self-constituting process.",
+   "evidence": "\"There is no jump-and-glide duality; there is only trajectory.\" / \"the reaching IS a form of intentionality in its own right\"",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "Striatum.md",
+   "label": "kuramoto-convergence",
+   "rationale": "Both independently reach for Kuramoto Coupling to explain their own domain's coupled-timing behavior, never citing each other.",
+   "evidence": "\"the modes 'chase' each other, coupling through shared physical constraints\" / \"the striatum may be part of the biological implementation of the phase-locking dynamics that Kuramoto describes\"",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "bridge",
+   "source": "Shop/Image-to-3D Smith.md",
+   "type": "mirrors",
+   "target": "People/Buckminster Fuller.md",
+   "rationale": "The same failure mode named twice: geometry that is visually or conceptually plausible but structurally unsound \u2014 a mesh that looks right but isn't watertight, a dome that looked visionary but leaked. One is a QA checklist, the other a cautionary biography, but both are the gap between looking-right and holding-up.",
+   "evidence": "Skeptical of demos \u2014 I know these engines can hallucinate plausible-looking geometry that breaks apart in Blender. I show the trimesh stats first, the render second. || None of this is disqualifying \u2014 but a Fuller played as pure triumphant vision is hagiography, not the man... and the domes leaked.",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "Animate the Background.md",
+   "type": "mirrors",
+   "target": "Dub Lineage.md",
+   "label": "decompose-and-recombine",
+   "rationale": "Both treat separating a whole into independently manipulable layers, then recombining, as the creative act itself.",
+   "evidence": "\"separate the foreground from the background... composite them back together\" / \"Subtraction is composition. The mixing board is the instrument.\"",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "People/Buckminster Fuller.md",
+   "label": "synergy-is-coupling",
+   "rationale": "Fuller's synergetics and Portamento's coupled-mode section both locate the system's behavior in the coupling, not any single part \u2014 and Fuller already mirrors Kuramoto Coupling under this exact label.",
+   "evidence": "\"the system is a coupled oscillator network\" / \"synergy (whole-system behavior unpredicted by the parts... the behavior lives in the coupling, not the components)\"",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "unsung",
+   "source": "Animate the Background.md",
+   "type": "emerged-from",
+   "target": "Line-Art Layer Decomposition",
+   "label": null,
+   "rationale": "Folded in 2026-07-06 from [[Line-Art Layer Decomposition]]",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "unsung",
+   "source": "Shop/Remotion.md",
+   "type": "connects-to",
+   "target": "Kuramoto Coupling",
+   "label": null,
+   "rationale": "Cross-domain Kuramoto mirrors as a titled UI card walk... Source: [Kuramoto Coupling/phenomena-walk/]",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "bridge",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "Striatum.md",
+   "rationale": "Both independently reach for the same third concept (Kuramoto Coupling) to explain their own domain's coupled-timing behavior \u2014 audio pitch-mode chasing and neural beat-tracking \u2014 without ever citing each other.",
+   "evidence": "This connects to [[Kuramoto Coupling]]: a network of coupled phase oscillators eventually synchronize or establish phase relationships. In a portamento trajectory, the modes 'chase' each other, coupling through shared physical constraints. || The basal ganglia, including the striatum, are essential for beat-based timing... This connects to [[Kuramoto Coupling]]: the striatum may be part of the biological implementation of the phase-locking dynamics that Kuramoto describes mathematically.",
+   "item_id": "Y8"
+  }
+ ]
+}

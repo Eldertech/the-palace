@@ -1,0 +1,284 @@
+{
+ "cluster": "L2",
+ "lens": "lifecycle",
+ "summary": "This room's five targets (LoRA Trainer, OBS, Search Before You Build, The Aftermath Frame, Tool Builder) turned out to be under-linked for an ordinary reason, not a bad one: each is genuinely new and its neighbors simply haven't caught up. Every walk surfaced real inbound candidates \u2014 nothing here was forced. Two things stood out. First, a small cluster of Shop specialists already name each other in body prose (ComfyUI's own open question is answered, word for word, by LoRA Trainer's existence; Loudon Live Design System's asset tree is full of \"OBS scene templates\" it never cites in frontmatter) \u2014 the knowledge is already written, just not wired. Second, three independent entries \u2014 Maker, OBS, and Loudon Live Post-producer \u2014 are each separately pressing on the same unnamed architectural gap (a \"Producer layer\" above Maker's dispatch model), from three different angles, without citing each other. That convergence is worth an elder's eye before it gets patched three separate ways. \"Block It in Blender, Ink It in genAI,\" itself an unreached newcomer, turned out to be the literal runbook for The Aftermath Frame's own stated forward vector (pen-flow ink), so wiring it serves both entries at once.",
+ "members_read": [
+  "Shop/LoRA Trainer.md",
+  "Shop/OBS.md",
+  "Search Before You Build.md",
+  "The Aftermath Frame.md",
+  "Tool Builder.md",
+  "Review Layer.md",
+  "Shop/RunPod GPU Backend.md",
+  "The Shop.md",
+  "Closing Well.md",
+  "Projects/LDN RTM.md",
+  "Loudon Live.md",
+  "Palace development/Loudon Live Design System.md",
+  "Shop/Maker.md",
+  "Shop/ffmpeg.md",
+  "Adopt the Craft, Author the Seam.md",
+  "Palace development/Concierge.md",
+  "GenAI Camera.md",
+  "_ops/Return Ceremony.md",
+  "People/Andy Goldsworthy.md",
+  "Projects/BLUELINE/BLUELINE.md",
+  "Blocked, Not Prompted.md",
+  "Shop/Figure Rig.md",
+  "Graphic Storytelling.md",
+  "Steer the Generator.md",
+  "The Flow Field is the Spine.md",
+  "FOUR PILLARS.md",
+  "STIGMERGY.md",
+  "Simondon.md",
+  "The Commons.md",
+  "The Palace Practices on Itself.md",
+  "assume multi-agent.md",
+  "Shop/ComfyUI.md",
+  "Shop/FLUX (Hugging Face).md",
+  "Loudon Live Post-producer.md",
+  "Block It in Blender, Ink It in genAI.md",
+  "ControlNet as Topology.md",
+  "Reflective Practice.md",
+  "Palace development/Project Stewardship System.md"
+ ],
+ "walk_results": [
+  {
+   "target": "Shop/LoRA Trainer.md",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "RunPod GPU Backend is the GPU substrate LoRA Trainer's own body already names ('rides Shop/RunPod GPU Backend for the compute'), so the reverse enables-link is a plain gap, not a stretch. ComfyUI (Shop/ComfyUI.md:212) carries its own dated open question \u2014 'Training a Loudon Live LoRA on a small reference set \u2014 when does this become worth the effort?' \u2014 that LoRA Trainer, born after it, now answers with a hardened recipe and an honest grading method. The Shop's roster table already lists LoRA Trainer in-body (line 121) but that's expected hub behavior, not a gap worth wiring."
+  },
+  {
+   "target": "Shop/OBS.md",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "LDN RTM and Closing Well already name OBS in body prose but are covered \u2014 OBS's own frontmatter already points at both (first-job, screenshot-is-the-verify), so no new link needed there. Three genuine misses: Maker's Open Questions (line 318) about a Producer layer is directly echoed by OBS's own forward_vector ('the second independent pressure on the Shop's Producer-layer seam'); Loudon Live Design System's body is full of OBS scene-template references it never cites in frontmatter; Loudon Live Post-producer names OBS explicitly to mark a capability boundary (chat/cross-posting) in its own open questions."
+  },
+  {
+   "target": "Search Before You Build.md",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Return Ceremony's existing exemplifies-link is correct and already accounts for the 1 inbound. Two genuine misses: Adopt the Craft, Author the Seam is explicitly called its 'internal twin' in Search Before You Build's own body, but doesn't link back; GenAI Camera's own gotcha section (the depth-flat fix, bench.py) is the exact incident Search Before You Build cites as its origin story, so a spawned-link closes the loop."
+  },
+  {
+   "target": "The Aftermath Frame.md",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Andy Goldsworthy already links here (mirrors-adjacent connects-to, resistance-is-information) \u2014 confirmed correct, not a new find. The one genuine miss: 'Block It in Blender, Ink It in genAI,' itself an unreached newcomer (0 inbound), is the literal runbook for the pen-flow-ink pipeline The Aftermath Frame names as its own forward vector's whole point \u2014 wiring it serves both entries."
+  },
+  {
+   "target": "Tool Builder.md",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "assume multi-agent's existing member-of link is correct and accounts for the 1 inbound. Two genuine misses, both structural rather than incidental: The Palace Practices on Itself names exactly the loop ('build a capability, then turn it back on the palace') that Tool Builder's own 'How it grows' section describes for itself; The Commons is named in Tool Builder's body as 'the most complete worked example' but doesn't point back. Simondon and Closing Well are already linked from Tool Builder's side but read more like exemplifies than connects-to \u2014 flagged as retypes, not new inbound."
+  }
+ ],
+ "typed_relations": [
+  {
+   "source": "Shop/RunPod GPU Backend.md",
+   "target": "Shop/LoRA Trainer.md",
+   "type": "enables",
+   "label": "trains-on",
+   "rationale": "LoRA Trainer's own body states it 'rides Shop/RunPod GPU Backend for the compute'; RunPod's body names LoRAs as exactly the kind of thing a pod (vs serverless) can load. RunPod is the explicit precondition.",
+   "evidence": "RunPod: 'you can load ControlNet, LoRAs, IPAdapter, and anything else the base serverless image doesn't carry.' / LoRA Trainer: 'rides [[Shop/RunPod GPU Backend]] for the compute.'",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Shop/ComfyUI.md",
+   "target": "Shop/LoRA Trainer.md",
+   "type": "connects-to",
+   "label": "answers-my-open-question",
+   "rationale": "ComfyUI's own Open Questions asks exactly what LoRA Trainer, born later, now answers with a full recipe and grading method.",
+   "evidence": "ComfyUI: 'Training a Loudon Live LoRA on a small reference set \u2014 when does this become worth the effort? Open question for the first Piece-tier ComfyUI job.'",
+   "kind": "inbound-walk",
+   "spark": 4,
+   "classify": "bridge"
+  },
+  {
+   "source": "Shop/Maker.md",
+   "target": "Shop/OBS.md",
+   "type": "couples-with",
+   "label": "producer-layer-pressure",
+   "rationale": "Maker's own unresolved Open Question about a Producer layer for cross-medium/multi-day briefs is independently echoed by OBS calling itself 'the second independent pressure on the Shop's Producer-layer seam' \u2014 the two entries are circling the same gap without citing each other.",
+   "evidence": "Maker: 'How to handle briefs that cross into a Producer layer (cross-medium, multi-deliverable, scheduled across days)? ... Threshold for promoting to a formal Producer entry: TBD.' / OBS: 'I am the second independent pressure on the Shop's Producer-layer seam \u2014 [[Maker]] already wonders whether one should rise... I push on the same wall from real-time-with-a-human.'",
+   "kind": "inbound-walk",
+   "spark": 4,
+   "classify": "bridge"
+  },
+  {
+   "source": "Palace development/Loudon Live Design System.md",
+   "target": "Shop/OBS.md",
+   "type": "enables",
+   "label": "scene-templates",
+   "rationale": "The design system's own asset tree repeatedly names OBS scene templates and cards as part of its deliverable set, but never cites OBS in frontmatter.",
+   "evidence": "'\u251c\u2500\u2500 slides/ \u2190 OBS scene templates (1920\u00d71080)' / 'For OBS scene cards: copy from slides/.' / '[[Loudon Live \u2014 launch kit]] (channel copy, OBS scene specs, asset list)'",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Loudon Live Post-producer.md",
+   "target": "Shop/OBS.md",
+   "type": "connects-to",
+   "label": "capability-boundary",
+   "rationale": "Post-producer's own open-questions section uses OBS by name to mark the edge of what it can do (chat, cross-posting), a load-bearing distinction for its unresolved 'what does the operator become live' question.",
+   "evidence": "'Note that chat and cross-posting are not [[OBS]] capabilities at all; they need the same YouTube connector this entry defers for publishing, arriving from a second direction.'",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "Adopt the Craft, Author the Seam.md",
+   "target": "Search Before You Build.md",
+   "type": "couples-with",
+   "label": "internal-twin",
+   "rationale": "Search Before You Build names itself the internal twin of this entry outright \u2014 a direct, stated sibling relationship missing its other half.",
+   "evidence": "'This is the internal twin of [[Adopt the Craft, Author the Seam]]: that one adopts the industry's established craft; this one adopts our own accumulated proofs.'",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "GenAI Camera.md",
+   "target": "Search Before You Build.md",
+   "type": "spawned",
+   "label": "the-depth-miss",
+   "rationale": "Search Before You Build's own origin story is the GenAI Camera depth-flat incident; GenAI Camera's body documents the same fix (bench.py near/far auto-range) without crediting the reflex it produced.",
+   "evidence": "Search Before You Build: 'Building the [[GenAI Camera]] on 2026-07-09, I wrote a depth pass from first principles \u2014 and it read flat.' / GenAI Camera: 'Depth gotcha \u2014 auto-range the near/far (the BLUELINE Track-IV lesson...). A depth pass reads flat \u2014 a silhouette, not volume.'",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "Block It in Blender, Ink It in genAI.md",
+   "target": "The Aftermath Frame.md",
+   "type": "enables",
+   "label": "the-ink-pipeline",
+   "rationale": "The Aftermath Frame's stated forward vector ('stylize to pen-flow ink \u2014 the beauty/consistency target; the whole point') is exactly the runbook this practice entry documents end to end; the practice entry is itself unreached (0 inbound).",
+   "evidence": "Aftermath Frame: 'physical consequences + the depth / OpenPose plates \u2192 ControlNet / img2img \u2192 pen-flow ink ([[Steer the Generator]])' / Block It in Blender: 'build a scene in Blender, emit registered ControlNet conditioning ... and drive a gen-AI redraw.'",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "The Palace Practices on Itself.md",
+   "target": "Tool Builder.md",
+   "type": "connects-to",
+   "label": "the-checklist-as-practice",
+   "rationale": "Tool Builder's own growth model (scars accrete, graduate via Harvest, never dumped all at once) is a named instance of the exact loop this entry describes.",
+   "evidence": "Tool Builder: 'the deepest disciplines earn their own entries ... added by Harvest, not by dumping every operational note at once.' / Palace Practices: 'Build a capability, then turn it back on the palace and grow from what that teaches.'",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "The Commons.md",
+   "target": "Tool Builder.md",
+   "type": "connects-to",
+   "label": "checklist-proven-here",
+   "rationale": "Tool Builder names The Commons as its most complete worked example; the claim has no return link.",
+   "evidence": "Tool Builder: 'the most complete worked example is [[The Commons]].'",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Tool Builder.md",
+   "target": "Simondon.md",
+   "current_type": "connects-to",
+   "type": "exemplifies",
+   "label": "concretization",
+   "rationale": "Tool Builder explicitly judges tools 'the Simondon way ... concretization, not accretion' \u2014 that's citing Simondon as the general principle Tool Builder is an instance of, which per the direction invariant argues for exemplifies over connects-to.",
+   "evidence": "'Good tools are judged the [[Simondon]] way: not by feature count but by how tightly their parts integrate \u2014 concretization, not accretion.'",
+   "kind": "retype",
+   "spark": 1
+  },
+  {
+   "source": "Tool Builder.md",
+   "target": "Closing Well.md",
+   "current_type": "connects-to",
+   "type": "exemplifies",
+   "label": "verify-behaviour-not-structure",
+   "rationale": "Closing Well's own body is the origin of this exact principle in depth; Tool Builder's checklist item is a specific application of it to tool-building.",
+   "evidence": "Closing Well: 'Structure verifies cheaply, and it lies ... prefer, wherever the choice exists, an interface you can read back from over a file you can only write to.'",
+   "kind": "retype",
+   "spark": 1
+  },
+  {
+   "source": "The Aftermath Frame.md",
+   "target": "Steer the Generator.md",
+   "current_type": "connects-to",
+   "type": "exemplifies",
+   "label": "physically-sourced-control",
+   "rationale": "Aftermath Frame's motion-model-as-control-surface reads as a specific instance of Steer the Generator's general claim that attributes are gotten by controlling, selecting, or measuring \u2014 not wording.",
+   "evidence": "Steer the Generator: 'when an attribute matters, you get it by controlling it, selecting for it, or measuring it, not by wording it more carefully.'",
+   "kind": "retype",
+   "spark": 1
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Loudon Live Post-producer.md",
+   "target": "Shop/OBS.md",
+   "type": "connects-to",
+   "phrase": "chat and cross-posting are not [[OBS]] capabilities at all",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Palace development/Loudon Live Design System.md",
+   "target": "Shop/OBS.md",
+   "type": "enables",
+   "phrase": "OBS scene templates (1920\u00d71080)",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Shop/ComfyUI.md",
+   "target": "Shop/LoRA Trainer.md",
+   "type": "connects-to",
+   "phrase": "Training a Loudon Live LoRA on a small reference set \u2014 when does this become worth the effort?",
+   "structurally_significant": true
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Shop/ComfyUI.md",
+   "question": "Training a Loudon Live LoRA on a small reference set \u2014 when does this become worth the effort? (Open question for the first Piece-tier ComfyUI job.)",
+   "by_entry": "Shop/LoRA Trainer.md",
+   "verdict": "answered \u2014 LoRA Trainer, born after this question, is exactly that build: a hardened recipe, six named gotchas, and an honest DreamBooth-control grading method that separates a bad pipeline from a bad dataset.",
+   "proposed_action": "An elder could close this open question in ComfyUI.md and point it at Shop/LoRA Trainer.md rather than leave it dangling."
+  },
+  {
+   "entry": "Shop/Maker.md",
+   "question": "How to handle briefs that cross into a Producer layer (cross-medium, multi-deliverable, scheduled across days)? Threshold for promoting to a formal Producer entry: TBD.",
+   "by_entry": "Shop/OBS.md",
+   "verdict": "not resolved, but corroborated \u2014 OBS names itself a second, independent pressure on the same seam (real-time-with-a-human rather than multi-day), and Loudon Live Post-producer already exists as a stub circling the same gap from a third angle.",
+   "proposed_action": "Worth an elder's attention as a convergence, not a single-entry fix \u2014 see synthesis_spawn_flag."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "The Producer layer \u2014 a role above Maker's dispatch model that three separate entries are independently pressing on from three different angles: Maker's own cross-medium/multi-day open question, OBS's 'operated, not dispatched' real-time mode, and Loudon Live Post-producer's stub (already labeled 'producer-layer' in its own link to The Shop) that stalled on exactly this question.",
+   "crossing_entries": [
+    "Shop/Maker.md",
+    "Shop/OBS.md",
+    "Loudon Live Post-producer.md"
+   ],
+   "why_load_bearing": "Three entries naming the same missing piece without citing each other is the shape of a real architectural gap, not a coincidence \u2014 worth naming and cross-linking before a fourth pressure arrives and gets patched a fourth, uncoordinated way."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "The Shop's roster table does not list OBS at all, despite OBS being member-of The Shop since 2026-09 and alive.",
+   "kind": "roster-gap",
+   "entries": [
+    "The Shop.md",
+    "Shop/OBS.md"
+   ],
+   "proposed_action": "Mechanical fix (add OBS's row to the roster table) \u2014 noted per instructions, not touched."
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Search Before You Build.md",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward_vector is concrete and active ('the reflex that makes prior art surface before a keystroke')",
+   "graffiti_note": "Content and connections found this walk (a named origin story, a named twin practice, an escalation path to Concierge) read more developed than 'sprout' with activation_count 1 suggests \u2014 a light flag for an elder, not a rewrite."
+  }
+ ]
+}

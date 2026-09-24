@@ -45,6 +45,9 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: exemplifies
     label: listening-as-bridge
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Pauline Oliveros

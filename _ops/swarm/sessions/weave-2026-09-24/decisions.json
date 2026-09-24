@@ -1,0 +1,16 @@
+{
+ "signed_at": "2026-09-24",
+ "feeling_before": "Good but cluttered",
+ "batch": {
+  "decision": "yes",
+  "file": "batch-final.json",
+  "count": 49,
+  "sample": "batch-sample.json"
+ },
+ "pile_b": {
+  "decision": "accept all recommendations",
+  "file": "pile-b-final.md"
+ },
+ "composting_three": "delete (Malick\u2192Ozu line kept in Ozu; Goldberg inbound \u2192 Julia Cameron)",
+ "agnes_martin": "both links: mirrors [fixed-substrate-reveals-drift] + contradicts [redraws-by-hand]"
+}

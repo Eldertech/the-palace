@@ -1,0 +1,83 @@
+{
+ "arm": "Z",
+ "room": "B5",
+ "total_proposals": 11,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Worktree Practice",
+   "type": "mirrors",
+   "target": "Epictetus",
+   "label": "own-head-as-prohairesis",
+   "rationale": "Worktree Practice.md already names prohairesis, Epictetus's own term, without a frontmatter link to the philosopher who coined it \u2014 the room's only person-side citizen who uses that exact word.",
+   "evidence": "The practice draws the Stoic line \u2014 act within your worktree (*prohairesis*), converge on the trunk (the shared *fortuna* of canon) only deliberately.",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "relation",
+   "source": "Manim CE",
+   "type": "mirrors",
+   "target": "Douglas Hofstadter",
+   "label": "transform-reveals-structure",
+   "rationale": "The specialist's stated reason for existing (make a transform reveal hidden structure) is, mechanically, Hofstadter's levels-of-description claim performed as a rendering job, independently arrived at in a tools-pillar voice.",
+   "evidence": "Loves the moment when a transform reveals the structure that was hidden. / DSP math and musical feeling are both true descriptions of the same sound.",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "relation",
+   "source": "Exponential Decay Curvature",
+   "type": "exemplifies",
+   "target": "Douglas Hofstadter",
+   "label": "coordinate-change-analogy",
+   "rationale": "The entry's own analogical move (compressor knee and envelope curvature are one structural family) is a worked instance of the general theory of analogy-as-cognition Hofstadter's entry carries; exemplifies points the concrete instance back at the general claim.",
+   "evidence": "a singularity is usually a sign you are looking at a family from the wrong coordinate \u2014 the entry's own cross-domain move (compressor knee = envelope curvature) performed live.",
+   "item_id": "Z3"
+  },
+  {
+   "kind": "bridge",
+   "source": "Worktree Practice",
+   "type": "mirrors",
+   "target": "Epictetus",
+   "rationale": "Both entries locate agency in exactly one small, fully-controlled domain (own HEAD / own will), and both name the rest of the system \u2014 the shared trunk / external circumstance \u2014 as something you meet deliberately rather than command; the tool entry uses the philosopher's own coined word.",
+   "evidence": "A worktree is [[The Dichotomy of Control]] in git: your own HEAD is the one thing fully yours, immune to what other agents do to the shared trunk. The practice draws the Stoic line \u2014 act within your worktree (*prohairesis*), converge on the trunk (the shared *fortuna* of canon) only deliberately. || prohairesis \u2014 the faculty of choice, the one thing unconditionally yours... you are not flesh or hair, but choice. Everything else can be requisitioned.",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "relation",
+   "source": "Exponential Decay Curvature",
+   "type": "mirrors",
+   "target": "The Multilinear Self",
+   "label": "same-form-different-rate",
+   "rationale": "Both entries independently describe one underlying form whose identity is entirely a function of the rate/context at which it is read \u2014 envelope-vs-oscillator and projection-vs-projection are the same structural move in different material.",
+   "evidence": "The same curve, slowed down, is a sound's loudness contour; sped up, it is the sound itself. / a person who exists in many states at once... can only be met as one of them at a time.",
+   "item_id": "Z5"
+  },
+  {
+   "kind": "bridge",
+   "source": "Three.js",
+   "type": "mirrors",
+   "target": "Quality Manifesto",
+   "rationale": "Both entries separate a load-bearing substance (geometry actually bound to real state / an authentically lived practice) from a seductive-but-secondary surface polish (camera, lighting / production value, optimized thumbnails), and both name the same failure mode: pursuing the surface before the substance produces something dishonest about what it actually is.",
+   "evidence": "Knows that the seductive part of 3D \u2014 orbiting cameras, dramatic lighting \u2014 is rarely where the meaning is, and that the meaning usually lives in *what the geometry is bound to*... The seductive steps (4) come late on purpose \u2014 a scene that's beautiful before its geometry is bound to the right state is a scene that's lying about what it shows. || Their quality markers: High production value (expensive camera, perfect lighting, polished edit)... Outcome: Burnout, emptiness even if it works. You arrive depleted, not peaceful. / Your quality markers: Authentic integration... Outcome: Sustainable, meaningful, feels good.",
+   "item_id": "Z6"
+  },
+  {
+   "kind": "bridge",
+   "source": "Manim CE",
+   "type": "mirrors",
+   "target": "Douglas Hofstadter",
+   "rationale": "A rendering specialist whose entire charter is animating the instant a transform makes hidden mathematical structure visible is, mechanically, doing Hofstadter's 'levels of description' and 'strange loop of understanding' \u2014 the tool's job description and the philosopher's cognitive theory are the same event, named twice.",
+   "evidence": "Loves the moment when a transform reveals the structure that was hidden... Zoom into an ant colony and you find only individual ants following local rules; zoom out and an intelligent colony-level behavior is plainly there [applies via the entry's own DSP-math/musical-feeling framing]. || Zoom into an ant colony and you find only individual ants following local rules; zoom out and an intelligent colony-level behavior is plainly there. Neither level is the 'real' one. The palace leans on this constantly: DSP math and musical feeling are both true descriptions of the same sound.",
+   "item_id": "Z7"
+  },
+  {
+   "kind": "unsung",
+   "source": "Worktree Practice",
+   "type": "connects-to",
+   "target": "Stoicism",
+   "label": "the-resonance-section-header",
+   "rationale": "The practice draws the Stoic line \u2014 act within your worktree (*prohairesis*), converge on the trunk (the shared *fortuna* of canon) only deliberately.",
+   "item_id": "Z8"
+  }
+ ]
+}

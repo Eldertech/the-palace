@@ -5,7 +5,7 @@ pillars: [tools, creation, philosophy]
 born: 2026-06-13
 last_activated: 2026-06-13
 activation_count: 1
-stage: seed
+stage: growing
 confidence: working
 energy: high
 links:

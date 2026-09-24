@@ -1,0 +1,77 @@
+{
+ "arm": "X",
+ "room": "L4",
+ "total_proposals": 25,
+ "sample": [
+  {
+   "kind": "stage",
+   "source": "Return Ceremony",
+   "type": "seed->growing",
+   "rationale": "none",
+   "item_id": "X1"
+  },
+  {
+   "kind": "relation",
+   "source": "Spore Check Ceremony",
+   "type": "mirrors",
+   "target": "Return Ceremony",
+   "label": "pointed-at-the-human",
+   "rationale": "Reciprocal of Return Ceremony's own one-directional mirrors declaration; weaker \u2014 no additional body quote found beyond the existing label.",
+   "evidence": "Return Ceremony frontmatter already carries target: Spore Check Ceremony, type: mirrors, label: pointed-at-the-human",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "Deposit Ceremony",
+   "type": "connects-to",
+   "target": "SCHEMA \u2014 Reference",
+   "label": "writes-by-these-rules",
+   "rationale": "Deposit Ceremony's existing 'governed-by' link points to the parent SCHEMA card, but the actual frontmatter rules a deposit must follow (\u00a73) live in the Reference file per the v1.18 split.",
+   "evidence": "\"Read this before creating an entry, writing or editing frontmatter...\" (SCHEMA \u2014 Reference.md:35)",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "Palace as Context Injection System",
+   "type": "deepens",
+   "target": "ELDER",
+   "label": "why-born-then-grown",
+   "rationale": "ELDER's own \u00a7 How loading works states the born-then-grown table compressed and explicitly points to this entry as the deeper why; the reciprocal link is missing on the deeper entry's side.",
+   "evidence": "\"Why it runs this way \u2014 meaning first, rules on top \u2014 is [[Palace as Context Injection System]] \u00a7 Born a Child.\" (ELDER.md:69)",
+   "item_id": "X4"
+  },
+  {
+   "kind": "unsung",
+   "source": "Substrate Skill",
+   "type": "instructional-reference",
+   "target": "ELDER",
+   "label": null,
+   "rationale": "Grow before you draft: read [[ELDER]], then [[SCHEMA]]",
+   "item_id": "X5"
+  },
+  {
+   "kind": "stage",
+   "source": "No Mind Checks Itself",
+   "type": "seed->growing",
+   "rationale": "none \u2014 forward_vector is specific and striving, not stasis-verbed",
+   "item_id": "X6"
+  },
+  {
+   "kind": "stage",
+   "source": "Reflective Practice",
+   "type": "growing->mature",
+   "rationale": "none",
+   "item_id": "X7"
+  },
+  {
+   "kind": "relation",
+   "source": "Closing Well",
+   "type": "exemplifies",
+   "target": "Reflective Practice",
+   "label": "on-action-instance",
+   "rationale": "Reflective Practice's own body lists Closing Well by name as one of twelve reflect-on-action mechanisms; Closing Well doesn't yet point back to the entry that names the general pattern it's an instance of.",
+   "evidence": "\"Twelve mechanisms reflect on action: [[Closing Well]]...\" (Reflective Practice.md:58)",
+   "item_id": "X8"
+  }
+ ]
+}

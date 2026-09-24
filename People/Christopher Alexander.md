@@ -48,6 +48,18 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: build-conditions-then-step-back
+  - target: "[[Found ↔ Made]]"
+    type: exemplifies
+    label: found-pole
+  - target: "[[Synth Archetypes]]"
+    type: mirrors
+    label: pattern-language
+  - target: "[[Iain McGilchrist]]"
+    type: mirrors
+    label: totalizing-framework
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Christopher Alexander

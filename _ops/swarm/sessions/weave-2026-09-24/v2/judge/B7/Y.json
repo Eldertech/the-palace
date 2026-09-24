@@ -1,0 +1,81 @@
+{
+ "arm": "Y",
+ "room": "B7",
+ "total_proposals": 11,
+ "sample": [
+  {
+   "kind": "bridge",
+   "source": "Move the Ink, Don't Redraw It",
+   "type": "mirrors",
+   "target": "Agnes Martin",
+   "rationale": "Fixing a substrate/structure once is not sterility \u2014 it is the precondition for subtle, real variation to register as signal instead of dissolving into noise.",
+   "evidence": "the procedural paper tooth is generated once and reused on every frame. A static substrate cannot boil... at every layer where stability matters, fix the thing once, don't remake it each step || A hand-ruled line is never perfectly straight... a human hand making a repeated gesture always drifts by a hair \u2014 and that hair is where the life is. The grid holds still so the drift can be seen; take it away and the difference vanishes into noise.",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "unsung",
+   "source": "FLUX (Hugging Face)",
+   "type": "connects-to",
+   "target": "ControlNet as Topology",
+   "label": "capability-i-lack",
+   "rationale": "I won't pretend to ControlNet \u2014 that's ComfyUI's job",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "unsung",
+   "source": "Metaphor as Coupling Medium",
+   "type": "connects-to",
+   "target": "Martin Heidegger",
+   "label": "cited-authority",
+   "rationale": "'Language is the house of being.' \u2014 Martin Heidegger",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "bridge",
+   "source": "Waveguide Synthesizer",
+   "type": null,
+   "target": "Metaphor as Coupling Medium",
+   "rationale": "Both stake out a position on how a cross-domain interface should couple two things \u2014 Waveguide bets on exact isomorphism (what you see IS the audio state), Metaphor as Coupling Medium bets on associative looseness as the generative mechanism. Same question, opposite bets.",
+   "evidence": "the waveguide's spatial state is exact, not a metaphor || A precise technical framing closes the space... A metaphor opens the space... it opens associative space rather than closing it.",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "unsung",
+   "source": "LaTeX",
+   "type": "connects-to",
+   "target": "Shop/Mermaid",
+   "label": "routes-to",
+   "rationale": "route to [[Shop/Mermaid|Mermaid]]",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "bridge",
+   "source": "FLUX (Hugging Face)",
+   "type": "mirrors",
+   "target": "Saturation \u2194 Richness",
+   "rationale": "A single continuous control has an interior sweet spot: push it too little and the output is thin/flat one way, push it too far and it collapses into flatness the other way; richness lives in the narrow band between.",
+   "evidence": "guidance-scale control (FLUX preferred range 3.0\u20135.0; default 4.5)... lower \u2192 more variance; higher \u2192 tighter prompt fidelity but flatter || Too little = clean but sterile; just right = warm and full; too much = distorted and broken. Start clean, add gradually, stop just before it sounds wrong.",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "relation",
+   "source": "FLUX (Hugging Face)",
+   "type": "mirrors",
+   "target": "Saturation \u2194 Richness",
+   "label": "sweet-spot-knob",
+   "rationale": "FLUX's guidance-scale tradeoff (too low = formless variance, too high = tight but flat) is the same U-shaped sweet-spot structure Saturation \u2194 Richness names across every domain it covers.",
+   "evidence": "\"lower \u2192 more variance; higher \u2192 tighter prompt fidelity but flatter\" (FLUX) / \"Too little = clean but sterile... too much = distorted and broken\" (Saturation \u2194 Richness)",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "relation",
+   "source": "FLUX (Hugging Face)",
+   "type": "connects-to",
+   "target": "ControlNet as Topology",
+   "label": "capability-i-lack",
+   "rationale": "FLUX defines its own capability boundary by explicitly naming ControlNet, and ControlNet as Topology is a genuine palace entry, currently under-reached, that FLUX's Limits section is effectively pointing at.",
+   "evidence": "\"I won't pretend to ControlNet \u2014 that's ComfyUI's job; I'd rather hand the brief back than fake structural control I don't have.\" / Limits: \"No ControlNet, no LoRA stack, no per-block guidance.\"",
+   "item_id": "Y8"
+  }
+ ]
+}

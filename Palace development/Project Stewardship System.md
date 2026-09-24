@@ -56,6 +56,8 @@ links:
   - target: "[[The Scroll]]"
     type: couples-with
     label: front-door
+  - target: "[[SCHEMA — Reference]]"
+    type: connects-to
 forward_vector: "I will become the working specification for routine, stage-aware project stewardship — a permanent agent that advances each palace project at the rhythm appropriate to its stage, posts status, blocks, and questions to the BBS, with the Trickster (Loudon directly, or an automated proxy with escalation rules) handling triage one decision at a time."
 ---
 

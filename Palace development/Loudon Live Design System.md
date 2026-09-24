@@ -77,6 +77,9 @@ links:
   - target: "[[Loudon Live Post-producer]]"
     type: emerged-from
     label: channel-spec-source
+  - target: "[[Wavetable Scanner]]"
+    type: connects-to
+    label: design-system
 ---
 
 # Loudon Live Design System

@@ -1,0 +1,112 @@
+{
+ "cluster": "C6",
+ "lens": "community",
+ "summary": "C6 is the palace's philosophy-register neighborhood \u2014 Stoicism and Confucianism as the load-bearing hubs, Deleuze/Whitehead/Merleau-Ponty/Spinoza/Leibniz as the concept-philosophers, Dialectic/Excellent Adventure/Philosopher Visits the Entry/STIGMERGY Philosophical Lenses/The Lens as the practices that circulate them, and a small roster of Stoic and dialogic-philosophy persons (Epictetus, Marcus Aurelius, Seneca, Martin Buber, Martin Heidegger). It is already extremely densely cross-linked internally (Palace Philosophies alone is reached by 28) \u2014 the folders were not, in fact, blind to most of the cross-domain links here; the room had already found them. Two genuine things this pass turned up: first, Martin Heidegger and Martin Buber sit in the same room, share a named critic (Levinas, cited on both pages for opposite reasons), and stake out exactly opposed positions on the other person \u2014 Heidegger's Dasein \"treats other people mostly as 'the they'\" while Buber's whole philosophy is \"there is no I as such, only the I of I-Thou and the I of I-It\" \u2014 yet the two pages have never been linked to each other. Second, and the best find of the room: The Adjacent Affordance's \"Symposium\" section voices seven of this room's philosophers by name in body prose (Epictetus, Spinoza, Confucius, Leibniz, Whitehead, Merleau-Ponty, Deleuze) as a genuine fictional-but-honest device (\"the attribution names the lens, not the mouth\"), and none of those seven names carry a frontmatter link on that page \u2014 a clean, unforced unsung-paths harvest. Outside the room, the newcomer Iain McGilchrist (reached by only 6) is a strong, non-generic match for this neighborhood on two fronts: his right-hemisphere \"comprehends the living whole... lets the world presence before it is broken into parts\" is close kin to Merleau-Ponty's pre-reflective body-schema grasp of a living whole (not computed, not represented), and his whole forward vector \u2014 \"what kind of attention are you paying to this\" \u2014 is literally the shape of a roster candidate for Philosopher Visits the Entry, which already runs a \"starting roster\" of which voice visits which family of entry.",
+ "typed_relations": [
+  {
+   "source": "Martin Heidegger",
+   "target": "Martin Buber",
+   "type": "contradicts",
+   "kind": "new",
+   "label": "they-vs-thou",
+   "evidence": "Heidegger: 'I have almost no ethics and almost no account of other people as anything but \"the they\"' / Buber: 'there is no I as such, only the I of I-Thou and the I of I-It... Through the Thou a person becomes I.'",
+   "rationale": "Both pages are in the room and both explicitly stage the same critic (Levinas) against them for opposite reasons \u2014 Levinas breaks with Heidegger for having no ethics-first account of the other, and breaks with Buber for making the meeting too symmetrical to carry Levinas's asymmetric obligation. The two pages name exactly opposed treatments of das Man/the impersonal mass versus the I-Thou meeting, but have never been linked to each other. Fidelity check: swapping in, say, Epictetus for Buber doesn't produce the same specific opposition \u2014 Epictetus's quarrel with Heidegger (already linked, contradicts The Dichotomy of Control) is about control/thrownness, a different axis entirely.",
+   "spark": 4
+  },
+  {
+   "source": "Merleau-Ponty",
+   "target": "Iain McGilchrist",
+   "type": "mirrors",
+   "kind": "new",
+   "label": "comprehending-not-representing",
+   "evidence": "Merleau-Ponty: 'You do not navigate the world by computing the position of your limbs; your body has a pre-reflective, operative grasp of itself' / McGilchrist: 'The right pays broad, open, sustained, vigilant attention; it comprehends \u2014 grasps the living whole in context... lets the world presence before it is broken into parts,' against the left hemisphere which 'abstracts, categorizes, and re-presents.'",
+   "rationale": "Both name the same structure from different disciplines: skilled/comprehending cognition is a direct, pre-reflective grasp of a living whole, and the reductive move (computing/representing, or the left hemisphere's re-presentation) is what destroys it. McGilchrist is a priority newcomer (reached by only 6) and this is not generic \u2014 swap in Deleuze for McGilchrist and the specific embodied-attention register doesn't hold the same way (Deleuze's difference-in-itself is metaphysical, not about attention as a felt, bodily act).",
+   "spark": 4
+  },
+  {
+   "source": "Philosopher Visits the Entry",
+   "target": "Iain McGilchrist",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "attention-as-the-question",
+   "evidence": "Philosopher Visits the Entry: 'a starting roster of which voice visits which family' \u2014 'This is a seed, not a law.' McGilchrist: 'I earn my place by being dispatched to where a thing is about to be killed by the wrong kind of attention... I want to keep asking what kind of attention the palace is paying.'",
+   "rationale": "The roster entry is explicitly open to growing ('a seed, not a law'), and McGilchrist's entire forward_vector is written in exactly the register of a roster candidate \u2014 a characteristic question that bites on entries that reduce a living whole to its analyzed parts. This wires an under-reached newcomer's inbound link through the room's own practice for doing exactly that.",
+   "spark": 3
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Epictetus",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of the Stoics** (Epictetus at the keyboard)",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Spinoza",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Spinoza",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Confucianism",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Confucius",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Leibniz",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Leibniz",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Whitehead",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Whitehead",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Merleau-Ponty",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Merleau-Ponty",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Deleuze",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Deleuze",
+   "structurally_significant": false
+  }
+ ],
+ "members_read": [
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/Bring In a Bigger Mind.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/People/Iain McGilchrist.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/People/Martin Buber.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/People/Martin Heidegger.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/Merleau-Ponty.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/Deleuze.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/Palace development/STIGMERGY Philosophical Lenses.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/Making a Palace Citizen.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/The Blindspot Is the Surprise Fuel.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/The Lens.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/Modes of Collaboration/Philosopher Visits the Entry.md",
+  "/Users/loudonstearns/Documents/palace-weave-2026-09-24/The Adjacent Affordance.md"
+ ],
+ "flag_responses": [],
+ "bridge_findings": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "coherence_findings": [],
+ "entry_health_flags": [],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": [],
+ "walk_results": []
+}

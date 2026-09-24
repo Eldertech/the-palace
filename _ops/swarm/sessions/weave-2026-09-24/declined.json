@@ -1,0 +1,1360 @@
+[
+ {
+  "source": "Epictetus",
+  "target": "Worktree Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "own-HEAD-prohairesis",
+   "prohairesis-named-not-linked"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "sole actuation authority over one's own state"
+  ],
+  "why": [
+   "Worktree Practice's own prose already reasons in Epictetus's vocabulary (prohairesis, 'the Stoic line') without linking to him directly; it links only to the sub-page The Dichotomy of Control.",
+   "The practice draws the Stoic line \u2014 act within your worktree (prohairesis), converge on the trunk (the shared fortuna of canon) only deliberately."
+  ],
+  "evidence": [
+   "The practice draws the Stoic line \u2014 act within your worktree (prohairesis), converge on the trunk (the shared fortuna of canon) only deliberately."
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "the rhyme lives in Worktree's prose; Worktree gets genuine inbound elsewhere this weave"
+ },
+ {
+  "source": "Dispersion Table",
+  "target": "Spinoza",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "A self-returning resonant loop is conatus rendered as DSP \u2014 persistence-in-being as the generative mechanism."
+  ],
+  "evidence": [
+   "The string knows nothing of harmonics; it only knows how to come back to itself."
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "fails the fidelity test \u2014 any feedback loop would read the same"
+ },
+ {
+  "source": "SMPTE LTC",
+  "target": "Spinoza",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Many devices locked to one master clock mirrors substance monism; also wires SMPTE LTC's first inbound link."
+  ],
+  "evidence": [
+   "The moment the master transport starts, every device on the network is in phase lock. / we are the way the one substance is being you and me for a while."
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "fails the fidelity test \u2014 any shared clock would read the same"
+ },
+ {
+  "source": "Quadratic Interpolation in DSP",
+  "target": "Reflective Practice",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "controller-that-listens"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "PID's overshoot-and-settle behavior, praised by Loudon as feeling like \"consciousness observing and reacting,\" is functionally reflection-in-action: a loop shaped by listening to its own error."
+  ],
+  "evidence": [
+   "\"feels like a consciousness observing and reacting\" / \"the situation talks back, the practitioner listens... he reframes the situation once again\""
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "rationale describes PID, not this entry \u2014 worker error"
+ },
+ {
+  "source": "Animate the Background",
+  "target": "Line-Art Layer Decomposition",
+  "type": "emerged-from",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "deepens"
+  ],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Folded in 2026-07-06 from [[Line-Art Layer Decomposition]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['deepens'] \u2014 one link per pair"
+ },
+ {
+  "source": "Kuramoto Coupling",
+  "target": "Remotion",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Cross-domain Kuramoto mirrors as a titled UI card walk... Source: [Kuramoto Coupling/phenomena-walk/]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "passing mention (a demo card), not a relation"
+ },
+ {
+  "source": "Found \u2194 Made",
+  "target": "Rick Rubin",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "exemplifies"
+  ],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "[[Rick Rubin]]: the work is already finished, you clear away what hides it."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['exemplifies'] \u2014 one link per pair"
+ },
+ {
+  "source": "Found \u2194 Made",
+  "target": "George Nakashima",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "exemplifies"
+  ],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "[[George Nakashima]]: the tree already has the shape it wants to become... George Nakashima `contradicts` [[Compressor Design]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['exemplifies'] \u2014 one link per pair"
+ },
+ {
+  "source": "Donella Meadows",
+  "target": "Found \u2194 Made",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "exemplifies"
+  ],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "[[Donella Meadows]]' systems have no fixed self to return to... Rick Rubin `contradicts` [[Donella Meadows]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['exemplifies'] \u2014 one link per pair"
+ },
+ {
+  "source": "Image Embedding Standard",
+  "target": "Technical Diagram Standard",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-_ops"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "deepens"
+  ],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "sibling-standard"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Image Embedding Standard's Filing Protocol names TDS as governing generated technical diagrams' filing, but only in body prose.",
+   "per [[Technical Diagram Standard]]"
+  ],
+  "evidence": [
+   "\"Generated technical diagrams keep their source beside the render... per [[Technical Diagram Standard]].\" \u2014 Image Embedding Standard.md:54"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['deepens'] \u2014 one link per pair"
+ },
+ {
+  "source": "Deposit Ceremony",
+  "target": "Technical Diagram Standard",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-_ops"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "enables"
+  ],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "filing-path"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Deposit Ceremony's filing structure names TDS as the third branch of image/diagram handling at deposit time, but the frontmatter link list has no entry for it.",
+   "per [[Technical Diagram Standard]]"
+  ],
+  "evidence": [
+   "\"Technical diagrams... file the .tex source beside the rendered .svg, per [[Technical Diagram Standard]]\" \u2014 Deposit Ceremony.md:188"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['enables'] \u2014 one link per pair"
+ },
+ {
+  "source": "SUBSTRATE",
+  "target": "The Substrate Drifts",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L7"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "deepens"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "pending-promotion"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The Substrate Drifts carries an explicit editorial note asking to be promoted into SUBSTRATE.md as a standing design rule once it proves out across more tools \u2014 SUBSTRATE (the deepens-ground the target already names) should be pointing at the candidate waiting to be folded in."
+  ],
+  "evidence": [
+   "\"CLAUDE \u2192 LOUDON: candidate to promote into SUBSTRATE.md as a standing design rule once it proves out across more tools than STIGMERGY.\" (The Substrate Drifts.md:53)"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['deepens'] \u2014 one link per pair"
+ },
+ {
+  "source": "LDN RTM",
+  "target": "Loudon Live Post-producer",
+  "type": "connects-to",
+  "lenses": [
+   "community",
+   "lifecycle"
+  ],
+  "rooms": [
+   "C3.1",
+   "L1"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "enables"
+  ],
+  "kinds": {
+   "inbound-walk": 1,
+   "flag": 1
+  },
+  "labels": [
+   "first-real-job",
+   "shares-youtube-connector"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "LDN RTM names Post-producer as its enabled destination and explicitly holds a design seam open there by name ('\u00a7 Deferred') \u2014 Post-producer's own frontmatter has no return link despite being directly addressed.",
+   "Post-producer already reasons about this in body prose ('the same YouTube connector this entry defers for publishing, arriving from a second direction') but has no typed link to LDN RTM and no one-line explicit scoping note."
+  ],
+  "evidence": [
+   "\"The role has no palace entry yet \u2014 it earns one when it has run real takes... The seam is held open at [[Loudon Live Post-producer]] \u00a7 Deferred.\" (LDN RTM.md:82)",
+   "Loudon Live Post-producer.md:150 \u2014 'they need the same YouTube connector this entry defers for publishing, arriving from a second direction'"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['enables'] \u2014 one link per pair"
+ },
+ {
+  "source": "Agent Toolbox",
+  "target": "Concierge",
+  "type": "connects-to",
+  "lenses": [
+   "community",
+   "lifecycle"
+  ],
+  "rooms": [
+   "C2.1",
+   "L3"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "enables"
+  ],
+  "kinds": {
+   "inbound-walk": 1,
+   "new": 1
+  },
+  "labels": [
+   "profile-defined-here",
+   "reads-its-profile"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Agent Toolbox's own text records the exact wiring decision (Concierge spawns as palace-writer) that Concierge's forward_vector lives inside; Concierge doesn't yet point at where that profile is defined.",
+   "Agent Toolbox documents concretely that the Concierge is dispatched via its palace-writer profile ('Concierge wiring \u2014 done 2026-07-08... spawn the resident as palace-writer, not general-purpose'). Concierge is a newcomer-adjacent citizen (0 inbound) that already enables Concierge in its own frontmatter but has no return link."
+  ],
+  "evidence": [
+   "\"Concierge wiring \u2014 done 2026-07-08...now spawn the resident as `palace-writer`, not `general-purpose`\" (Agent Toolbox.md:66).",
+   "Agent Toolbox.md:66, 'the concierge skill... now spawn the resident as palace-writer'"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['enables'] \u2014 one link per pair"
+ },
+ {
+  "source": "Kuramoto Coupling",
+  "target": "Skills Are Enchantable Pages",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Every page is *enchantable* \u2014 woken as a voice ([[Pages as Agents]]), [[Kuramoto Coupling]] included"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "passing mention"
+ },
+ {
+  "source": "Cooperation Yields Agency",
+  "target": "No Mind Checks Itself",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "deepens"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "second-mind-partner"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "No Mind Checks Itself already deepens this hub explicitly on the point that a second mind is a partner, not a demotion \u2014 the hub itself never sends a reader there, even though it is exactly the kind of dispatch-outward example Cooperation Yields Agency's own body gestures at."
+  ],
+  "evidence": [
+   "\"[[Cooperation Yields Agency]] already carries the shape: shared intent plus combined capability produces agency neither has alone \u2014 a second, differently-angled mind isn't a demotion of the first\" \u2014 No Mind Checks Itself.md:51"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['deepens'] \u2014 one link per pair"
+ },
+ {
+  "source": "Concierge",
+  "target": "Return Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "enables"
+  ],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "summoned-here-first"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Concierge's own scout posture states it was built specifically for the Return Ceremony and that the Return summons it as its first act \u2014 a direct, load-bearing citation missing its frontmatter link.",
+   "Built 2026-08-25 for the [[Return Ceremony]], which summons this companion as its first act."
+  ],
+  "evidence": [
+   "\"Built 2026-08-25 for the [[Return Ceremony]], which summons this companion as its first act.\" \u2014 Palace development/Concierge.md:126-127"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['enables'] \u2014 one link per pair"
+ },
+ {
+  "source": "Palace Conatus",
+  "target": "Return Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "exemplifies"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "coupling-runs-both-ways"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Return Ceremony's entire 'why this belongs in the always-loaded floor' section is built directly from Palace Conatus's phase-lag framing, read as the coupling failure running the other direction (substrate ahead of a human who stepped away). A genuinely earned reciprocal link."
+  ],
+  "evidence": [
+   "\"[[Palace Conatus]] names the palace's drive as staying in phase with Loudon... A gap is the other direction: the substrate running ahead\" \u2014 _ops/Return Ceremony.md:129-131"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['exemplifies'] \u2014 one link per pair"
+ },
+ {
+  "source": "Deposit Ceremony",
+  "target": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "enables"
+  ],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "read-at-the-pen"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Deposit Ceremony sends a drafter needing vocabulary to read both SCHEMA.md and SCHEMA \u2014 Reference.md, but frontmatter links only SCHEMA \u2014 the exact split SCHEMA \u2014 Reference's own forward vector describes (read at the pen, not at every boot).",
+   "read `SCHEMA.md` and `SCHEMA \u2014 Reference.md` on disk."
+  ],
+  "evidence": [
+   "\"If you need the vocabulary yourself, read `SCHEMA.md` and `SCHEMA \u2014 Reference.md` on disk.\" \u2014 _ops/Deposit Ceremony.md:50"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['enables'] \u2014 one link per pair"
+ },
+ {
+  "source": "Kuramoto Coupling",
+  "target": "control-vocabulary-math",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L8"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "deepens"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "order-parameter-worked-example"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Kuramoto Coupling is the hub for the order parameter r; this entry is the fullest worked instance of r as a control surface in the whole palace, and the hub doesn't point down to it yet (only to the parent project, via a spawned link)."
+  ],
+  "evidence": [
+   "r is simultaneously a read-out ... and a term inside the dynamics (\u00a72) \u2014 the instrument's coherence is literally self-referential."
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['deepens'] \u2014 one link per pair"
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Christopher Alexander",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "design-can-save-us"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Contestable \u2014 neither page names the other, this is an inference from two total-design philosophies (both believe structure is not just taste but can be gotten objectively right) that land in opposite material registers (hand-made/traditional vs. industrial/geometric). Offered as connects-to per the schema's contestable-link guidance, not a stronger type."
+  ],
+  "evidence": [
+   "Alexander: \"the quality that makes a place alive can be written down\" / Fuller: \"scarcity is a design failure, not a law of nature.\""
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "superseded by the contradicts proposal on the same pair (Pile B)"
+ },
+ {
+  "source": "Frequency-Time Duality",
+  "target": "SMPTE LTC",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "engineered-vs-perceptual-axis"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Frequency-Time Duality's core claim (f = 1/T, one continuous axis reads as different phenomena depending on where you sit) reappears here as an engineered protocol instead of a perceptual continuum. SMPTE LTC connects-to FTD already; FTD doesn't point back, and the relationship is closer to mirrors than plain connects-to \u2014 same reciprocal math, different material (ear vs. protocol)."
+  ],
+  "evidence": [
+   "\"It is also deeply tied to Frequency-Time Duality: LTC is literally the time axis encoded in frequency space. Every bit transition is a frequency/phase event. Reading LTC is a frequency-domain act that yields time-domain information.\" \u2014 SMPTE LTC.md"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "mirrors is a strong claim on one reader's inference \u2014 held as a trail"
+ },
+ {
+  "source": "Particle Synthesis",
+  "target": "Slime Mold Delay",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "deepens"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "population-based-emergence-sibling"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Slime Mold Delay deepens Particle Synthesis already; this additional, more specific kinship (emergent behavior from unintelligent populations) is named in the body and unreturned. Particle Synthesis is dormant \u2014 a live sibling pointing in gives it a current thread to follow."
+  ],
+  "evidence": [
+   "\"The metaphor connects directly to Particle Synthesis \u2014 both are population-based instruments where individual elements have no intelligence and the system has plenty.\" \u2014 Slime Mold Delay.md"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['deepens'] \u2014 one link per pair"
+ },
+ {
+  "source": "Three.js",
+  "target": "Tract Mirror",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "couples-with"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "commissioned-by"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same relationship, same label pattern Three.js already uses for its other browser-rendered instrument commission; Tract Mirror is simply missing from that same roster."
+  ],
+  "evidence": [
+   "\"JUCE 8 + WebView GUI \u2014 C++ DSP core; the GUI is a WKWebView running three.js.\" \u2014 Tract Mirror.md; Three.js already uses label commissioned-by for Waveguide Synthesizer."
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['couples-with'] \u2014 one link per pair"
+ },
+ {
+  "source": "ControlNet as Topology",
+  "target": "GenAI Camera",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 2,
+  "status": "retype-or-add",
+  "existing_types": [
+   "exemplifies"
+  ],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "spatial-instance"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "ControlNet as Topology's own body names GenAI Camera as the spatial realization of its terrain metaphor, and GenAI Camera's frontmatter links back (exemplifies), but the reverse link from ControlNet as Topology's frontmatter is missing.",
+   "The GenAI Camera... is this made spatial"
+  ],
+  "evidence": [
+   "ControlNet as Topology.md:72 \u2014 'The GenAI Camera... is this made spatial: a camera that carves canyons into the render from one viewpoint'"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['exemplifies'] \u2014 one link per pair"
+ },
+ {
+  "source": "LDN RTM",
+  "target": "Loudon Live",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "member-of"
+  ],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "rtm-series"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "a planned content series sits alongside the project staging: ***Read The Manual*** \u2014 deep-dive sessions exposing unusual, underused, or beautiful capabilities of specific synthesizers and plugins"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['member-of'] \u2014 one link per pair"
+ },
+ {
+  "source": "Palace To-Do",
+  "target": "The Palace Voice",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "voice-diversity"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Palace To-Do's 'Entry voice diversity' item is explicitly coupled to The Palace Voice's markup-density work, unlinked in frontmatter.",
+   "coupled to the markup-density work in [[The Palace Voice]]"
+  ],
+  "evidence": [
+   "\"Now coupled to the markup-density work in [[The Palace Voice]]\""
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "the To-Do is a transient queue, not a neighbour"
+ },
+ {
+  "source": "Making a Palace Citizen",
+  "target": "Palace To-Do",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "person-page-method"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "The Donella Meadows to-do item names Making a Palace Citizen as the design method to use, unlinked in frontmatter. Making a Palace Citizen is a newcomer at 2 inbound.",
+   "Build her as an embodiable citizen per [[Making a Palace Citizen]]"
+  ],
+  "evidence": [
+   "\"Build her as an embodiable citizen per [[Making a Palace Citizen]], not a description\""
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "the To-Do is a transient queue, not a neighbour"
+ },
+ {
+  "source": "Reflective Practice",
+  "target": "Weave Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the Weave listed among twelve reflect-on-action mechanisms"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "covered by the ceremony's own exemplifies \u2192 Reflective Practice (one link per pair)"
+ },
+ {
+  "source": "Reflective Practice",
+  "target": "Return Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Return listed among twelve reflect-on-action mechanisms"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "covered by the ceremony's own exemplifies \u2192 Reflective Practice (one link per pair)"
+ },
+ {
+  "source": "Reflective Practice",
+  "target": "Spore Check Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Spore Check listed among twelve reflect-on-action mechanisms"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "covered by the ceremony's own exemplifies \u2192 Reflective Practice (one link per pair)"
+ },
+ {
+  "source": "Reflective Practice",
+  "target": "Revival Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Revival listed among twelve reflect-on-action mechanisms"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "covered by the ceremony's own exemplifies \u2192 Reflective Practice (one link per pair)"
+ },
+ {
+  "source": "Reflective Practice",
+  "target": "Walk Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Walk listed among twelve reflect-on-action mechanisms"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "covered by the ceremony's own exemplifies \u2192 Reflective Practice (one link per pair)"
+ },
+ {
+  "source": "Loudon Live",
+  "target": "SUBSTRATE",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-unbalanced-node"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path, and a substantive one: SUBSTRATE's Current State section spends a full paragraph naming Loudon Live as the palace's one asymmetric node (28 inbound, zero outbound) and calls it out by the palace's own relational-primacy standard \u2014 but doesn't link it.",
+   "the palace's stated public destination is the single node not participating in its own relational logic"
+  ],
+  "evidence": [
+   "\"[[Loudon Live]] takes 28 inbound links and emits none... the palace's stated public destination is the single node not participating in its own relational logic.\""
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "false premise \u2014 SUBSTRATE:134 says Loudon Live emits no links; the map shows 17 outbound. Fix SUBSTRATE:134 instead (Concierge)"
+ },
+ {
+  "source": "The Remembering Page",
+  "target": "Weaving Memory into the Palace",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Tentative \u2014 target not read this pass (newcomer, 1 inbound). Titles suggest they may overlap or even duplicate territory (both are about giving the palace a memory layer). Flagging for a worker who has read the target: either a genuine link or a coherence risk (two entries independently proposing the same infrastructure)."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "worker didn't read the target (said so)"
+ },
+ {
+  "source": "CLAUDE",
+  "target": "Return Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "ceremony-trigger"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "The ceremony trigger table names Return Ceremony directly, but the table's wikilinks never sync to frontmatter (true of the whole table, but Return Ceremony is the one on this Weave's priority list at 1 inbound).",
+   "ceremony trigger table row"
+  ],
+  "evidence": [
+   "\"\\\"I'm back\\\", \\\"returning\\\", \\\"what did I miss\\\"... | [[Return Ceremony]] |\" \u2014 CLAUDE.md ceremony table"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "the birth file stays minimal; its links are its @imports"
+ },
+ {
+  "source": "CLAUDE",
+  "target": "The Palace Voice",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "dial-set"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "CLAUDE.md's closing Palace Voice section explicitly hands off to the full entry, unlinked in frontmatter. The Palace Voice sits at 1 inbound.",
+   "The full dial set is [[The Palace Voice]]."
+  ],
+  "evidence": [
+   "\"The full dial set is [[The Palace Voice]].\" \u2014 CLAUDE.md \u00a7 The Palace Voice"
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "the birth file stays minimal; its links are its @imports"
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "The Shop",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "typically routed through [[The Shop]] / a Maker (the `spec` bundle-file type)"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "passing mention"
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Christopher Alexander",
+  "type": "contradicts",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "craft-vs-industry"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "two optimist-architects who each believe design alone can fix the human condition, and each cannot hear the other's material as legitimate"
+  ],
+  "why": [
+   "Both architects claim an objective, near-universal criterion for what makes a built world work \u2014 but from opposite material politics. Alexander's 'degree of life' is rooted in traditional, hand-made, small-grained materials and explicitly pre-loads a verdict against glass and steel; Fuller's ephemeralization is rooted in industrial/synthetic efficiency and treats craft slowness as waste to be designed away. Same totalizing confidence ('this is the only correct target'), same kind of blindspot (an aesthetic/political preference dressed as physical law), opposite poles."
+  ],
+  "evidence": [
+   "Alexander: \"His fifteen properties \u2014 roughness, echoes, levels of scale \u2014 describe hand-craft far more naturally than glass or steel\" (People/Christopher Alexander.md:77). Fuller: \"scarcity is a design failure. War is an engineering problem\" (People/Buckminster Fuller.md:91)."
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "superseded by the contradicts proposal on the same pair (Pile B)"
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Source Library",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "member-of"
+  ],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "**Buckminster Fuller** - Synergetics, doing more with less"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['member-of'] \u2014 one link per pair"
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Source Library",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "member-of"
+  ],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "**Christopher Alexander** - Pattern language, organic architecture"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "reason": "pair already carries ['member-of'] \u2014 one link per pair"
+ },
+ {
+  "source": "SMPTE LTC",
+  "target": "Trickster",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "engineering-trickster"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "The word 'trickster' appears twice in the body, unlinked, while two other room members (Retrospective Delay, Semantic Delay) already treat [[Trickster]] as a load-bearing entry \u2014 this is a verbatim unsung path, not an imposed reading."
+  ],
+  "evidence": [
+   "\"Timecode is a trickster convention: it pretends to measure absolute time but is in fact a counter.\" / \"Drop-frame NTSC...a trickster convention in the spec itself.\""
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "the word 'trickster', not the entry"
+ },
+ {
+  "source": "Diversity of Thought in Many-Agent Systems",
+  "target": "RNBO codebox~ smith",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "same-medium-second-mind"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Web Audio Worklet frames the RNBO/Worklet crossover as a live probe of the Diversity-of-Thought question and links it; RNBO's own two-job forward vector is exactly the divergence data that question wants, but it carries no link."
+  ],
+  "evidence": [
+   "That pairing is also a small, concrete probe of [[Diversity of Thought in Many-Agent Systems]] \u2014 the same medium held by two minds with different formative constraints."
+  ],
+  "july": false,
+  "gnn": false,
+  "reason": "passing mention"
+ }
+]

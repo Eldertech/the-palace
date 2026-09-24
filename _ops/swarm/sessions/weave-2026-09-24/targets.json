@@ -1,0 +1,413 @@
+{
+  "rule": "git-added since 0cf827603a17 or born >= 2026-07, and under target",
+  "since": null,
+  "median_inbound": 5,
+  "catch_up_target": 4,
+  "young_at_or_over_target": 13,
+  "newcomers": [
+    {
+      "id": "Agent Toolbox",
+      "path": "Agent Toolbox.md",
+      "inbound": 0,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 4
+    },
+    {
+      "id": "OBS",
+      "path": "Shop/OBS.md",
+      "inbound": 0,
+      "stage": null,
+      "born": "2026-09",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 4
+    },
+    {
+      "id": "GenAI Camera",
+      "path": "GenAI Camera.md",
+      "inbound": 1,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "LDN RTM",
+      "path": "Projects/LDN RTM.md",
+      "inbound": 1,
+      "stage": "sprout",
+      "born": "2026-09",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "Reflective Practice",
+      "path": "Reflective Practice.md",
+      "inbound": 1,
+      "stage": "growing",
+      "born": "2026-09",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "Return Ceremony",
+      "path": "_ops/Return Ceremony.md",
+      "inbound": 1,
+      "stage": "seed",
+      "born": "2026-08",
+      "young": true,
+      "ops_card": true,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "Search Before You Build",
+      "path": "Search Before You Build.md",
+      "inbound": 1,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "The Palace Voice",
+      "path": "The Palace Voice.md",
+      "inbound": 1,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "The Practice Rediscovers Its Philosophy",
+      "path": "The Practice Rediscovers Its Philosophy.md",
+      "inbound": 1,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "Tool Builder",
+      "path": "Tool Builder.md",
+      "inbound": 1,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "Weaving Memory into the Palace",
+      "path": "Weaving Memory into the Palace.md",
+      "inbound": 1,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "Zoom Out to the Structure",
+      "path": "Zoom Out to the Structure.md",
+      "inbound": 1,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 3
+    },
+    {
+      "id": "Bring In a Bigger Mind",
+      "path": "Bring In a Bigger Mind.md",
+      "inbound": 2,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 2
+    },
+    {
+      "id": "ControlNet as Topology",
+      "path": "ControlNet as Topology.md",
+      "inbound": 2,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 2
+    },
+    {
+      "id": "Making a Palace Citizen",
+      "path": "Making a Palace Citizen.md",
+      "inbound": 2,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 2
+    },
+    {
+      "id": "Martin Buber",
+      "path": "People/Martin Buber.md",
+      "inbound": 2,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 2
+    },
+    {
+      "id": "No Mind Checks Itself",
+      "path": "No Mind Checks Itself.md",
+      "inbound": 2,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 2
+    },
+    {
+      "id": "SCHEMA — Reference",
+      "path": "SCHEMA — Reference.md",
+      "inbound": 2,
+      "stage": "foundational",
+      "born": "2026-09",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 2
+    },
+    {
+      "id": "Skills Are Enchantable Pages",
+      "path": "Palace development/Skills Are Enchantable Pages.md",
+      "inbound": 2,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 2
+    },
+    {
+      "id": "The Remembering Page",
+      "path": "The Remembering Page.md",
+      "inbound": 2,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 2
+    },
+    {
+      "id": "ELDER",
+      "path": "ELDER.md",
+      "inbound": 3,
+      "stage": "foundational",
+      "born": "2026-09-22",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 1
+    },
+    {
+      "id": "Iain McGilchrist",
+      "path": "People/Iain McGilchrist.md",
+      "inbound": 3,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 1
+    },
+    {
+      "id": "Martin Heidegger",
+      "path": "People/Martin Heidegger.md",
+      "inbound": 3,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 1
+    },
+    {
+      "id": "The Aftermath Frame",
+      "path": "The Aftermath Frame.md",
+      "inbound": 3,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 1
+    },
+    {
+      "id": "The Palace Hardens Around Values",
+      "path": "The Palace Hardens Around Values.md",
+      "inbound": 3,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 4,
+      "deficit": 1
+    }
+  ],
+  "unreachable": [
+    {
+      "id": "Agent Toolbox",
+      "path": "Agent Toolbox.md",
+      "stage": "growing"
+    },
+    {
+      "id": "Andrei Tarkovsky",
+      "path": "People/Andrei Tarkovsky.md",
+      "stage": "composting"
+    },
+    {
+      "id": "Annie Dillard",
+      "path": "People/Annie Dillard.md",
+      "stage": "seed"
+    },
+    {
+      "id": "Audition Gate",
+      "path": "Audition Gate.md",
+      "stage": "seed"
+    },
+    {
+      "id": "Block It in Blender, Ink It in genAI",
+      "path": "Block It in Blender, Ink It in genAI.md",
+      "stage": "growing"
+    },
+    {
+      "id": "Buckminster Fuller",
+      "path": "People/Buckminster Fuller.md",
+      "stage": "seed"
+    },
+    {
+      "id": "Does Personifying an Agent Change What It Does",
+      "path": "Does Personifying an Agent Change What It Does.md",
+      "stage": "seed"
+    },
+    {
+      "id": "Gemma 4 — Local Coordination Guide",
+      "path": "Gemma 4 — Local Coordination Guide.md",
+      "stage": "growing"
+    },
+    {
+      "id": "LoRA Trainer",
+      "path": "Shop/LoRA Trainer.md",
+      "stage": null
+    },
+    {
+      "id": "Media Library",
+      "path": "Media Library.md",
+      "stage": "composting"
+    },
+    {
+      "id": "OBS",
+      "path": "Shop/OBS.md",
+      "stage": null
+    },
+    {
+      "id": "Quadratic Interpolation in DSP",
+      "path": "Quadratic Interpolation in DSP.md",
+      "stage": "growing"
+    },
+    {
+      "id": "SMPTE LTC",
+      "path": "SMPTE LTC.md",
+      "stage": "growing"
+    },
+    {
+      "id": "Slime Mold Delay",
+      "path": "Projects/Slime Mold Delay.md",
+      "stage": "sprout"
+    },
+    {
+      "id": "Terrence Malick",
+      "path": "People/Terrence Malick.md",
+      "stage": "composting"
+    },
+    {
+      "id": "The Adjacent Affordance",
+      "path": "The Adjacent Affordance.md",
+      "stage": "seed"
+    },
+    {
+      "id": "The Substrate Drifts",
+      "path": "The Substrate Drifts.md",
+      "stage": "seed"
+    },
+    {
+      "id": "Tract Mirror",
+      "path": "Projects/Tract Mirror.md",
+      "stage": "seed"
+    },
+    {
+      "id": "Worktree Practice",
+      "path": "Worktree Practice.md",
+      "stage": "growing"
+    },
+    {
+      "id": "control-vocabulary-math",
+      "path": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+      "stage": "growing"
+    }
+  ],
+  "unreachable_ops": [
+    {
+      "id": "Artifacts to Projects Migration — handoff",
+      "path": "_ops/Artifacts to Projects Migration — handoff.md",
+      "stage": "composting"
+    },
+    {
+      "id": "Graffiti Pass — Handoff 2026-05-02 — Session 2",
+      "path": "_ops/Graffiti Pass — Handoff 2026-05-02 — Session 2.md",
+      "stage": "sprout"
+    },
+    {
+      "id": "Map Log",
+      "path": "_ops/Map Log.md",
+      "stage": "growing"
+    },
+    {
+      "id": "Schema Ceremony Proposal — exemplifies + member-of",
+      "path": "_ops/Schema Ceremony Proposal — exemplifies + member-of.md",
+      "stage": "seed"
+    },
+    {
+      "id": "Technical Diagram Standard",
+      "path": "_ops/Technical Diagram Standard.md",
+      "stage": "sprout"
+    }
+  ]
+}

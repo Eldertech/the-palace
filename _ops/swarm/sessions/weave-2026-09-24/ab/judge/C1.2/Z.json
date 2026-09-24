@@ -1,0 +1,83 @@
+{
+ "arm": "Z",
+ "room": "C1.2",
+ "total_proposals": 15,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Retrospective Delay",
+   "type": "connects-to",
+   "target": "Slime Mold Delay",
+   "label": "thinking-vs-remembering",
+   "rationale": "Slime Mold Delay names this contrast explicitly and links to Retrospective Delay, but Retrospective Delay's frontmatter never reciprocates \u2014 a symmetric type left one-sided, and part of why Slime Mold Delay sits at 0 inbound despite being a named contrast for an 11-inbound entry.",
+   "evidence": "Slime Mold Delay's own body: \"**[[Retrospective Delay]]** \u2014 the contrasting delay project. Retrospective Delay *remembers*; Slime Mold Delay *thinks*.\"",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "relation",
+   "source": "Semantic Delay",
+   "type": "connects-to",
+   "target": "Slime Mold Delay",
+   "label": "routing-by-meaning",
+   "rationale": "Same asymmetry as the Retrospective Delay case \u2014 the newcomer names the sibling and the sibling doesn't name it back. Genuine, textually stated, not forced.",
+   "evidence": "Slime Mold Delay's body: \"**[[Semantic Delay]]** \u2014 semantic delay routes by meaning; slime mold routes by use. Different optimization criteria, similar architectural shape.\"",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Orbital Resonance",
+   "label": null,
+   "rationale": "### [[Orbital Resonance]] and the KAM Theorem",
+   "item_id": "Z3"
+  },
+  {
+   "kind": "relation",
+   "source": "Quantum Synthesizer",
+   "type": "mirrors",
+   "target": "Photonic Time Crystals",
+   "label": "isomorphism-not-metaphor",
+   "rationale": "Both entries make the identical rhetorical move \u2014 insisting a physics operator and an audio operator are the same object viewed from a different observational frame, not an analogy \u2014 and both anchor on Hyperdimensional Prism and FOUR PILLARS without ever citing each other. Neither folder (concept vs. concept, different physics) would surface this; the community cut does.",
+   "evidence": "\"The Schr\u00f6dinger equation is an audio synthesis system. Not as metaphor, not as loose analogy, but as direct structural isomorphism\" / \"The audio analog is not a metaphor; it is the same operator in a different domain.\"",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Tonnetz",
+   "label": null,
+   "rationale": "### The [[Tonnetz]] \u2014 Harmony and Timbre Are the Same Geometry",
+   "item_id": "Z5"
+  },
+  {
+   "kind": "unsung",
+   "source": "The Curve Is the Material",
+   "type": "connects-to",
+   "target": "Spectroscopy",
+   "label": null,
+   "rationale": "### [[Spectroscopy]] and Molecular Mode Families",
+   "item_id": "Z6"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Quasicrystals",
+   "label": null,
+   "rationale": "### [[Quasicrystals]] and the Cut-and-Project Method",
+   "item_id": "Z7"
+  },
+  {
+   "kind": "relation",
+   "source": "What Claim Does Scientific Sonification Make?",
+   "type": "contradicts",
+   "target": "Quantum Synthesizer",
+   "label": "claims-what-the-question-refuses-to-collapse",
+   "rationale": "What Claim... was spawned from Crystal Synthesizer and The Metaphor Stretch, but its target \u2014 the unqualified identity claim \u2014 is stated most starkly by Quantum Synthesizer, which never hedges. This is genuine productive tension: one entry asserts monism as settled; the sibling question entry insists the assertion needs a named epistemic mode. Symmetric contradicts, not a correction of either.",
+   "evidence": "Quantum Synthesizer: \"There is no gap between 'real' quantum systems and sonified quantum mathematics. The mathematics is the physics. The physics is the sound.\" / What Claim...: three paths named, none chosen, because collapsing 'derived from physics' into 'is the physics' is exactly the epistemic move the question refuses to make without naming which claim is being made.",
+   "item_id": "Z8"
+  }
+ ]
+}

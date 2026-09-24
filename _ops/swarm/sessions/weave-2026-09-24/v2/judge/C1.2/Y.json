@@ -1,0 +1,85 @@
+{
+ "arm": "Y",
+ "room": "C1.2",
+ "total_proposals": 17,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Quadratic Interpolation in DSP",
+   "type": "connects-to",
+   "target": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "label": "interpolation-methods",
+   "rationale": "Wavetable Synthesis Research has effectively settled the open question Quadratic Interpolation in DSP is still asking, and this is also the room's one genuine opportunity to wire an inbound link to a 0-inbound newcomer.",
+   "evidence": "Quadratic Interpolation's open question: \"Cubic vs. quadratic in oscillators... is the extra cost justified?\" vs. Wavetable Synthesis Research's design requirement: \"at least cubic interpolation\" and \"linear is minimum viable, cubic...is better, windowed-sinc...is highest quality.\"",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Quasicrystals",
+   "label": null,
+   "rationale": "### [[Quasicrystals]] and the Cut-and-Project Method",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "relation",
+   "source": "Signal-Rate CV Architecture",
+   "type": "contradicts",
+   "target": "Slime Mold Delay",
+   "label": "signal-rate-vs-control-rate-tradeoff",
+   "rationale": "Slime Mold Delay is a Biomechanical Synthesis instrument \u2014 exactly the family Signal-Rate CV Architecture's own open question asks whether its principle should govern \u2014 and it deliberately answers with a hybrid low-rate/signal-rate split for CPU reasons. A real, evidenced counterexample, not a forced opposition.",
+   "evidence": "Signal-Rate CV Architecture: \"No control-rate parameters. Every input is a CV jack.\" Slime Mold Delay: \"Topology engine (CPU, low-rate): runs at ~30 Hz... Audio engine (DSP rate): renders the graph.\"",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "SMPTE LTC",
+   "type": "connects-to",
+   "target": "Trickster",
+   "label": "engineering-trickster",
+   "rationale": "The word 'trickster' appears twice in the body, unlinked, while two other room members (Retrospective Delay, Semantic Delay) already treat [[Trickster]] as a load-bearing entry \u2014 this is a verbatim unsung path, not an imposed reading.",
+   "evidence": "\"Timecode is a trickster convention: it pretends to measure absolute time but is in fact a counter.\" / \"Drop-frame NTSC...a trickster convention in the spec itself.\"",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "The Curve Is the Material",
+   "type": "connects-to",
+   "target": "Photonic Time Crystals",
+   "label": "physics-grounding-for-photonic-function-family",
+   "rationale": "Photonic Time Crystals is the deep-physics grounding this function-family entry gestures at without naming \u2014 a direct, addressable gap.",
+   "evidence": "The Curve Is the Material lists \"Photonic / crystal modes: Dispersion relation from crystal band structure... Already derived for the crystal synthesis project\" as one of its named function families, but only names 'the crystal synthesis project' generically.",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "Photonic Time Crystals",
+   "type": "mirrors",
+   "target": "Quantum Synthesizer",
+   "label": "vacuum-fluctuation-as-audio-source",
+   "rationale": "Two entries in different folders both ground an audio claim in vacuum fluctuations as a physically real phenomenon, neither aware of the other. Genuine cross-domain pattern the folder structure hides.",
+   "evidence": "Photonic Time Crystals: \"Amplification from vacuum noise. Bandgap-frequency light grows exponentially from any seed, including the quantum vacuum... turns vacuum fluctuations into measurable signals.\" Quantum Synthesizer: \"the vacuum is not empty; it is full of zero-point fluctuations.\"",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "relation",
+   "source": "Piano String Inharmonicity",
+   "type": "connects-to",
+   "target": "The Curve Is the Material",
+   "label": "answers-compositional-question",
+   "rationale": "The Curve Is the Material already links here labeled 'canonical-instance', but the reverse link is missing, and it would resolve a standing open question rather than merely gesture at it.",
+   "evidence": "Piano String's open question: \"Could inharmonicity be used as a compositional parameter? Varying B over time...\" \u2014 The Curve Is the Material already answers this: \"B is modulated at audio or LFO rate with one scalar... Real-time B modulation is maximally efficient.\"",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Tonnetz",
+   "label": null,
+   "rationale": "### The [[Tonnetz]] \u2014 Harmony and Timbre Are the Same Geometry",
+   "item_id": "Y8"
+  }
+ ]
+}

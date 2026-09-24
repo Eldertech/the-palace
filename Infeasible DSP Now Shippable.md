@@ -24,6 +24,9 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: connects-to
     label: mathematical-taste-as-the-moat
+  - target: "[[control-vocabulary-math]]"
+    type: connects-to
+    label: worked-control-vocabulary
 forward_vector: "I want to name the strategic window plainly: DSP that was theoretically known but practically infeasible is now ready to ship, and the moat is mathematical literacy and design taste, not engineering optimization. I want to keep insisting that control-surface design is the hardest and most valuable problem in the suite."
 ---
 # Infeasible DSP Now Shippable

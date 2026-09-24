@@ -22,6 +22,9 @@ links:
     type: connects-to
   - target: "[[DSP Frameworks]]"
     type: connects-to
+  - target: "[[Reflective Practice]]"
+    type: mirrors
+    label: controller-that-listens
 ---
 
 # Quadratic Interpolation in DSP

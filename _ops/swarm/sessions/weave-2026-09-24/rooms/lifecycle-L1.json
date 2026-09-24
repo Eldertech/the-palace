@@ -1,0 +1,637 @@
+{
+ "lens": "lifecycle",
+ "id": "L1",
+ "targets": [
+  {
+   "id": "Block It in Blender, Ink It in genAI",
+   "path": "Block It in Blender, Ink It in genAI.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "ControlNet as Topology",
+   "path": "ControlNet as Topology.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Does Personifying an Agent Change What It Does",
+   "path": "Does Personifying an Agent Change What It Does.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "GenAI Camera",
+   "path": "GenAI Camera.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "LDN RTM",
+   "path": "Projects/LDN RTM.md",
+   "stage": "sprout",
+   "inbound": 1
+  }
+ ],
+ "walk": {
+  "Block It in Blender, Ink It in genAI": {
+   "hop1": [
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Blender",
+     "path": "Shop/Blender.md",
+     "stage": null,
+     "inbound": 8
+    },
+    {
+     "id": "Blocked, Not Prompted",
+     "path": "Blocked, Not Prompted.md",
+     "stage": "seed",
+     "inbound": 14
+    },
+    {
+     "id": "ComfyUI",
+     "path": "Shop/ComfyUI.md",
+     "stage": null,
+     "inbound": 10
+    },
+    {
+     "id": "Figure Rig",
+     "path": "Shop/Figure Rig.md",
+     "stage": null,
+     "inbound": 4
+    },
+    {
+     "id": "Hand-Drawn 3D Look",
+     "path": "Hand-Drawn 3D Look.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Remnants in Depth",
+     "path": "Remnants in Depth.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Steer the Generator",
+     "path": "Steer the Generator.md",
+     "stage": "sprout",
+     "inbound": 10
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Frame Designer",
+     "path": "Frame Designer.md",
+     "stage": null,
+     "inbound": 11
+    },
+    {
+     "id": "Adopt the Craft, Author the Seam",
+     "path": "Adopt the Craft, Author the Seam.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "The Aftermath Frame",
+     "path": "The Aftermath Frame.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "The Flow Field is the Spine",
+     "path": "The Flow Field is the Spine.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Animate the Background",
+     "path": "Animate the Background.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "ControlNet as Topology",
+     "path": "ControlNet as Topology.md",
+     "stage": "growing",
+     "inbound": 2
+    },
+    {
+     "id": "GenAI Camera",
+     "path": "GenAI Camera.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Lettering",
+     "path": "Shop/Lettering.md",
+     "stage": null,
+     "inbound": 1
+    },
+    {
+     "id": "The 2.5D Paper Stack",
+     "path": "The 2.5D Paper Stack.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Line-Art Layer Decomposition",
+     "path": "Line-Art Layer Decomposition.md",
+     "stage": "composting",
+     "inbound": 3
+    },
+    {
+     "id": "Loudon Live Design System",
+     "path": "Palace development/Loudon Live Design System.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Move the Ink, Don't Redraw It",
+     "path": "Move the Ink, Don't Redraw It.md",
+     "stage": "growing",
+     "inbound": 4
+    }
+   ],
+   "note": null
+  },
+  "ControlNet as Topology": {
+   "hop1": [
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Blocked, Not Prompted",
+     "path": "Blocked, Not Prompted.md",
+     "stage": "seed",
+     "inbound": 14
+    },
+    {
+     "id": "GenAI Camera",
+     "path": "GenAI Camera.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Kuramoto Coupling",
+     "path": "Kuramoto Coupling.md",
+     "stage": "mature",
+     "inbound": 72
+    },
+    {
+     "id": "Steer the Generator",
+     "path": "Steer the Generator.md",
+     "stage": "sprout",
+     "inbound": 10
+    },
+    {
+     "id": "The Flow Field is the Spine",
+     "path": "The Flow Field is the Spine.md",
+     "stage": "growing",
+     "inbound": 7
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Animate the Background",
+     "path": "Animate the Background.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "The Aftermath Frame",
+     "path": "The Aftermath Frame.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Block It in Blender, Ink It in genAI",
+     "path": "Block It in Blender, Ink It in genAI.md",
+     "stage": "growing",
+     "inbound": 0
+    },
+    {
+     "id": "Frame Designer",
+     "path": "Frame Designer.md",
+     "stage": null,
+     "inbound": 11
+    },
+    {
+     "id": "Hand-Drawn 3D Look",
+     "path": "Hand-Drawn 3D Look.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Lettering",
+     "path": "Shop/Lettering.md",
+     "stage": null,
+     "inbound": 1
+    },
+    {
+     "id": "Adopt the Craft, Author the Seam",
+     "path": "Adopt the Craft, Author the Seam.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Blender",
+     "path": "Shop/Blender.md",
+     "stage": null,
+     "inbound": 8
+    },
+    {
+     "id": "Figure Rig",
+     "path": "Shop/Figure Rig.md",
+     "stage": null,
+     "inbound": 4
+    },
+    {
+     "id": "Flocking",
+     "path": "Flocking.md",
+     "stage": "sprout",
+     "inbound": 13
+    },
+    {
+     "id": "Line-Art Layer Decomposition",
+     "path": "Line-Art Layer Decomposition.md",
+     "stage": "composting",
+     "inbound": 3
+    },
+    {
+     "id": "Move the Ink, Don't Redraw It",
+     "path": "Move the Ink, Don't Redraw It.md",
+     "stage": "growing",
+     "inbound": 4
+    }
+   ],
+   "note": null
+  },
+  "Does Personifying an Agent Change What It Does": {
+   "hop1": [
+    {
+     "id": "Diversity of Thought in Many-Agent Systems",
+     "path": "Diversity of Thought in Many-Agent Systems.md",
+     "stage": "seed",
+     "inbound": 8
+    },
+    {
+     "id": "Four Pillars of Enchanted Agency",
+     "path": "Palace development/Four Pillars of Enchanted Agency.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Maker",
+     "path": "Shop/Maker.md",
+     "stage": null,
+     "inbound": 44
+    },
+    {
+     "id": "Pages as Agents",
+     "path": "_ops/Pages as Agents.md",
+     "stage": "growing",
+     "inbound": 42
+    },
+    {
+     "id": "Palace Enchantment",
+     "path": "Palace development/Palace Enchantment.md",
+     "stage": "mature",
+     "inbound": 26
+    },
+    {
+     "id": "Shopkeeper",
+     "path": "Shop/Shopkeeper.md",
+     "stage": null,
+     "inbound": 2
+    }
+   ],
+   "hop2": [
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Loudon Live Post-producer",
+     "path": "Loudon Live Post-producer.md",
+     "stage": null,
+     "inbound": 3
+    },
+    {
+     "id": "Loudon's Toolkit",
+     "path": "Loudon's Toolkit.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Web Audio Worklet",
+     "path": "Shop/Web Audio Worklet.md",
+     "stage": null,
+     "inbound": 4
+    },
+    {
+     "id": "BBS Blackboard",
+     "path": "Palace development/BBS Blackboard.md",
+     "stage": "mature",
+     "inbound": 22
+    },
+    {
+     "id": "Dialogue Moderator",
+     "path": "Palace development/Dialogue Moderator.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Enchanted Worker",
+     "path": "Palace development/Enchanted Worker.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Palace Conatus",
+     "path": "Palace Conatus.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Swarm Weave",
+     "path": "Palace development/Swarm Weave.md",
+     "stage": "growing",
+     "inbound": 21
+    },
+    {
+     "id": "4 Pillars Framework - The Founding Conversation",
+     "path": "4 Pillars Framework - The Founding Conversation.md",
+     "stage": "mature",
+     "inbound": 5
+    },
+    {
+     "id": "Action Potential Oscillator",
+     "path": "Projects/Action Potential Oscillator.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Agent Wellbeing",
+     "path": "Palace development/Agent Wellbeing.md",
+     "stage": "growing",
+     "inbound": 10
+    }
+   ],
+   "note": null
+  },
+  "GenAI Camera": {
+   "hop1": [
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Blocked, Not Prompted",
+     "path": "Blocked, Not Prompted.md",
+     "stage": "seed",
+     "inbound": 14
+    },
+    {
+     "id": "ControlNet as Topology",
+     "path": "ControlNet as Topology.md",
+     "stage": "growing",
+     "inbound": 2
+    },
+    {
+     "id": "Search Before You Build",
+     "path": "Search Before You Build.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Steer the Generator",
+     "path": "Steer the Generator.md",
+     "stage": "sprout",
+     "inbound": 10
+    },
+    {
+     "id": "The Scroll",
+     "path": "The Scroll.md",
+     "stage": "sprout",
+     "inbound": 5
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Adopt the Craft, Author the Seam",
+     "path": "Adopt the Craft, Author the Seam.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Animate the Background",
+     "path": "Animate the Background.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "Block It in Blender, Ink It in genAI",
+     "path": "Block It in Blender, Ink It in genAI.md",
+     "stage": "growing",
+     "inbound": 0
+    },
+    {
+     "id": "Frame Designer",
+     "path": "Frame Designer.md",
+     "stage": null,
+     "inbound": 11
+    },
+    {
+     "id": "Lettering",
+     "path": "Shop/Lettering.md",
+     "stage": null,
+     "inbound": 1
+    },
+    {
+     "id": "The Aftermath Frame",
+     "path": "The Aftermath Frame.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "The Flow Field is the Spine",
+     "path": "The Flow Field is the Spine.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Blender",
+     "path": "Shop/Blender.md",
+     "stage": null,
+     "inbound": 8
+    },
+    {
+     "id": "Figure Rig",
+     "path": "Shop/Figure Rig.md",
+     "stage": null,
+     "inbound": 4
+    },
+    {
+     "id": "Hand-Drawn 3D Look",
+     "path": "Hand-Drawn 3D Look.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Line-Art Layer Decomposition",
+     "path": "Line-Art Layer Decomposition.md",
+     "stage": "composting",
+     "inbound": 3
+    },
+    {
+     "id": "Loudon Live Design System",
+     "path": "Palace development/Loudon Live Design System.md",
+     "stage": "growing",
+     "inbound": 20
+    }
+   ],
+   "note": null
+  },
+  "LDN RTM": {
+   "hop1": [
+    {
+     "id": "Autodidact Polymaths",
+     "path": "Autodidact Polymaths.md",
+     "stage": "sprout",
+     "inbound": 7
+    },
+    {
+     "id": "Loudon Live",
+     "path": "Loudon Live.md",
+     "stage": "sprout",
+     "inbound": 32
+    },
+    {
+     "id": "Loudon Live Design System",
+     "path": "Palace development/Loudon Live Design System.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Loudon Live Post-producer",
+     "path": "Loudon Live Post-producer.md",
+     "stage": null,
+     "inbound": 3
+    },
+    {
+     "id": "OBS",
+     "path": "Shop/OBS.md",
+     "stage": null,
+     "inbound": 0
+    },
+    {
+     "id": "Progressive Staging",
+     "path": "Progressive Staging.md",
+     "stage": "sprout",
+     "inbound": 18
+    },
+    {
+     "id": "Quality Manifesto",
+     "path": "Quality Manifesto.md",
+     "stage": "mature",
+     "inbound": 45
+    },
+    {
+     "id": "Toolkit \u2014 Audio Plugins",
+     "path": "Toolkit \u2014 Audio Plugins.md",
+     "stage": "growing",
+     "inbound": 3
+    }
+   ],
+   "hop2": [
+    {
+     "id": "ffmpeg",
+     "path": "Shop/ffmpeg.md",
+     "stage": null,
+     "inbound": 7
+    },
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Loudon's Toolkit",
+     "path": "Loudon's Toolkit.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "The Multilinear Self",
+     "path": "The Multilinear Self.md",
+     "stage": "sprout",
+     "inbound": 5
+    },
+    {
+     "id": "ComfyUI",
+     "path": "Shop/ComfyUI.md",
+     "stage": null,
+     "inbound": 10
+    },
+    {
+     "id": "FLUX (Hugging Face)",
+     "path": "Shop/FLUX (Hugging Face).md",
+     "stage": null,
+     "inbound": 5
+    },
+    {
+     "id": "Flocking",
+     "path": "Flocking.md",
+     "stage": "sprout",
+     "inbound": 13
+    },
+    {
+     "id": "Hero and Avatar Maker",
+     "path": "Shop/Hero and Avatar Maker.md",
+     "stage": null,
+     "inbound": 2
+    },
+    {
+     "id": "Kokoro",
+     "path": "Shop/Kokoro.md",
+     "stage": null,
+     "inbound": 8
+    },
+    {
+     "id": "Manim CE",
+     "path": "Shop/Manim CE.md",
+     "stage": null,
+     "inbound": 7
+    },
+    {
+     "id": "Radio Play",
+     "path": "Radio Play.md",
+     "stage": "sprout",
+     "inbound": 4
+    },
+    {
+     "id": "Review Layer",
+     "path": "Review Layer.md",
+     "stage": "growing",
+     "inbound": 3
+    }
+   ],
+   "note": null
+  }
+ }
+}

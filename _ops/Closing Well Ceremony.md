@@ -5,7 +5,7 @@ pillars: [practice, philosophy]
 born: 2026-07
 last_activated: 2026-07
 activation_count: 1
-stage: seed
+stage: growing
 links:
   - target: "[[Closing Well]]"
     type: exemplifies
@@ -18,6 +18,9 @@ links:
   - target: "[[Deposit Ceremony]]"
     type: couples-with
     label: sibling-close-species
+  - target: "[[No Mind Checks Itself]]"
+    type: exemplifies
+    label: self-grading-disqualified
 forward_vector: "I am the thin recognition-and-dispatch card that turns 'close well' into the Closing Well Agent — the moderator of a panel between the active Claude and Loudon. I am done when I reliably spawn the moderator, carry its reckoning to one signature, and place every assented row through the backstage executors — and I grow as Phase 6 (automatic gotcha-ledger wiring) is built out."
 ---
 

@@ -1,0 +1,69 @@
+{
+ "cluster": "C3.2",
+ "lens": "community",
+ "summary": "This room is a topological grab-bag \u2014 Shop specialists, BLUELINE visual-craft concepts, the multi-agent-coordination practice cluster (Tool Builder / assume multi-agent / The Commons / Zoom Out to the Structure / Search Before You Build / The Palace Practices on Itself), the agent-personhood questions (Diversity of Thought, Does Personifying an Agent), Toolkit inventory docs, and The Multilinear Self \u2014 and it turns out to already be extremely well-linked internally; almost everything named in body prose is already captured in frontmatter. The one genuine cross-domain bridge the folders would never surface on their own: Does Personifying an Agent Change What It Does? and The Multilinear Self are asking the identical question in two different materials \u2014 is a persona/projection functionally real or merely decorative/relational? \u2014 one for the Shopkeeper's gendered temperament, one for Loudon's own LDN/Professor Compressor/TRICKSTER roster. Neither currently points at the other. Two unsung wikilinks turned up in The Multilinear Self's own prose (FOUR PILLARS, The Jewel) that never made it into its frontmatter. The Toolkit inventory docs (Audio Plugins, Synthesizers, Assessment) sit genuinely apart from the rest of the room's thematic content \u2014 no forced link found there, which is itself the honest result. The multi-agent-coordination cluster and the multi-agent-creative-diversity cluster (Diversity of Thought / BBS Blackboard) share a common ancestor in STIGMERGY but a direct link between them read too generic on the fidelity test, so it was dropped rather than forced.",
+ "typed_relations": [
+  {
+   "source": "Does Personifying an Agent Change What It Does",
+   "target": "The Multilinear Self",
+   "type": "mirrors",
+   "current_type": "",
+   "kind": "bridge",
+   "spark": 4,
+   "label": "projection-real-or-decorative",
+   "rationale": "Both entries hold open the exact same unresolved question in different materials: does a persona change the substance of the thing wearing it, or is it purely relational/aesthetic dressing on an unchanged core? One asks it of an AI agent's gendered temperament (the Shopkeeper), the other of a human's public personas (LDN, Professor Compressor, TRICKSTER). Neither currently links to the other, and the pairing survives the fidelity swap \u2014 no other room member poses this question in its general form.",
+   "evidence": "Does Personifying: \"does 'she' do any functional work, or is it purely relational and aesthetic?\" / The Multilinear Self: \"Each name is a projection of it \u2014 a real shadow the whole self casts into a particular room. Honest, just partial... the line between honest multiplicity and pretending.\""
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "The Multilinear Self",
+   "target": "FOUR PILLARS",
+   "type": "connects-to",
+   "label": "",
+   "phrase": "The palace already believes the *world* is one reality cast into many projections \u2014 that is the [[FOUR PILLARS]].",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Multilinear Self",
+   "target": "The Jewel",
+   "type": "connects-to",
+   "label": "",
+   "phrase": "\"Facet\" was the almost-word for projection \u2014 a face of one gem, connecting to [[The Jewel]].",
+   "structurally_significant": false
+  }
+ ],
+ "members_read": [
+  "_ops/swarm/sessions/weave-2026-09-24/v2/rooms/community-C3.2.json",
+  "_ops/swarm/sessions/weave-2026-09-24/v2/new-entries-block.md",
+  "Diversity of Thought in Many-Agent Systems.md",
+  "Does Personifying an Agent Change What It Does.md",
+  "The Commons.md",
+  "Tool Builder.md",
+  "assume multi-agent.md",
+  "Zoom Out to the Structure.md",
+  "Search Before You Build.md",
+  "The Palace Practices on Itself.md",
+  "Shop/Shopkeeper.md",
+  "The Multilinear Self.md",
+  "Steer the Generator.md",
+  "Toolkit \u2014 Audio Plugins.md",
+  "Toolkit \u2014 Synthesizers.md",
+  "_ops/Toolkit Assessment \u2014 Working Doc.md",
+  "BBS Blackboard.md (Palace development/)",
+  "The Aftermath Frame.md",
+  "The Flow Field is the Spine.md",
+  "The 2.5D Paper Stack.md",
+  "Typography as Meaning.md"
+ ],
+ "flag_responses": [],
+ "bridge_findings": [],
+ "coherence_findings": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "merge_candidates": [],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": [],
+ "walk_results": []
+}

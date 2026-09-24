@@ -13,21 +13,21 @@ links:
   - target: "[[The Commons]]"
     type: connects-to
     label: exemplar-tool
-  - target: "[[Closing Well]]"
-    type: connects-to
-    label: verify-behaviour-not-structure
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
     label: tools-pillar
-  - target: "[[Simondon]]"
-    type: connects-to
-    label: concretization
   - target: "[[STIGMERGY]]"
     type: connects-to
     label: coordinate-on
   - target: "[[The Palace Practices on Itself]]"
     type: connects-to
     label: worked-instance
+  - target: "[[Simondon]]"
+    type: exemplifies
+    label: concretization
+  - target: "[[Closing Well]]"
+    type: exemplifies
+    label: verify-behaviour-not-structure
 ---
 
 # Tool Builder

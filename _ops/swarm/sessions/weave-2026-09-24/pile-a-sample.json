@@ -1,0 +1,311 @@
+[
+ {
+  "source": "Frame Designer",
+  "target": "The Commons",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "provisioning"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "now in the Commons [[The Commons|RunpodPodProvider]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "2D Torus Wavetable Synthesizer",
+  "target": "Synthesis Topologies",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Synthesis Topologies \u00a73 already names the torus project's seven-surface design as its concrete exemplar of the 'fixed-skeleton-variable-flesh' in-between category, but the torus entry's own frontmatter has no pointer back to the general framework it instantiates. Direction invariant: exemplifies points to the ground (the general entry)."
+  ],
+  "evidence": [
+   "\"Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces).\" \u2014 Synthesis Topologies \u00a73"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "upgrade-connects-to"
+ },
+ {
+  "source": "Dialectic",
+  "target": "The Remembering Page",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "sharpens-vs-dissolves"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: the entry's own distinction between debate-that-sharpens and walk-that-dissolves is built explicitly on Dialectic, cited by name, but Dialectic carries no frontmatter link.",
+   "A debate (a [[Dialectic]]) sharpens a contrary"
+  ],
+  "evidence": [
+   "\"A debate (a [[Dialectic]]) sharpens a contrary: two pages defend their grips and leave more distinct than they arrived.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Spore Check Ceremony",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Named in the same list; Spore Check Ceremony carries no frontmatter link back."
+  ],
+  "evidence": [
+   "Reflective Practice.md \u00a7 The palace reflects afterwards"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Loudon Live",
+  "target": "SUBSTRATE",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-unbalanced-node"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path, and a substantive one: SUBSTRATE's Current State section spends a full paragraph naming Loudon Live as the palace's one asymmetric node (28 inbound, zero outbound) and calls it out by the palace's own relational-primacy standard \u2014 but doesn't link it.",
+   "the palace's stated public destination is the single node not participating in its own relational logic"
+  ],
+  "evidence": [
+   "\"[[Loudon Live]] takes 28 inbound links and emits none... the palace's stated public destination is the single node not participating in its own relational logic.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Making a Palace Citizen",
+  "target": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "dossier-source"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "SCHEMA \u2014 Reference cites Making a Palace Citizen twice (for the `dossier` and `speech` bundle-file types and for agency_profile's practice sub-field) but frontmatter carries neither link. Making a Palace Citizen is at 2 inbound.",
+   "One per made citizen. See [[Making a Palace Citizen]]."
+  ],
+  "evidence": [
+   "\"loaded when an agent must embody the person faithfully... One per made citizen. See [[Making a Palace Citizen]].\" \u2014 SCHEMA \u2014 Reference.md:230"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "target": "Philosopher Visits the Entry",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-small-families"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "the-visit-is-the-outside-vantage"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "This is the most concrete instance of the No Mind Checks Itself pattern in the whole family: a technical entry cannot see its own over-claim from inside, and the Philosopher Visit exists specifically to bring an outside-the-loop reader who can. The entry's own precedent (the oscillator visit) is a worked example of exactly the principle No Mind Checks Itself names abstractly."
+  ],
+  "evidence": [
+   "'A poorly-researched philosopher produces a caricature that flatters the entry; a well-researched one says something the entry's author did not expect.' \u2014 the named precedent even found the entry's claim over-stated and 'offered the entry a smaller, more durable claim.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Walk Ceremony",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same list; the Walk is named as reflect-on-action but its frontmatter has no link back to the entry that classifies it."
+  ],
+  "evidence": [
+   "Reflective Practice.md \u00a7 The palace reflects afterwards"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Closing Well",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Reflective Practice already links forward to Closing Well ('connects-to', label 'on-action'); the reciprocal taxonomy direction (Closing Well is a concrete instance of the reflect-on-action pattern) is missing and belongs on Closing Well's own frontmatter per the exemplifies direction invariant."
+  ],
+  "evidence": [
+   "Reflective Practice.md frontmatter: target [[Closing Well]] type connects-to label on-action; Closing Well.md carries no return link."
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "upgrade-connects-to"
+ },
+ {
+  "source": "The Palace Practices on Itself",
+  "target": "Agent Toolbox",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "flag": 1
+  },
+  "labels": [
+   "toolbox-recursion-rung"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Directed flag confirmed \u2014 the body already narrates the person\u2192project\u2192entry-agent toolbox recursion but leaves the entry-agent rung unlinked."
+  ],
+  "evidence": [
+   "every entry could grow its own toolkit \u2014 [[Loudon's Toolkit]] (a person's kit) \u2192 a project's toolbox \u2192 an entry-agent's toolbox"
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ }
+]

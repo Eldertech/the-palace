@@ -52,6 +52,8 @@ links:
   - target: "[[Reflective Practice]]"
     type: connects-to
     label: on-and-in
+  - target: "[[Oblique Portrait]]"
+    type: connects-to
 forward_vector: "I am the practice behind the channel: what a creative coach actually does, and what changes when the person is in the room rather than in the chat. I hold a repertoire I have not adopted and a boundary I can name precisely — Loudon Live models, and modelling is not coaching. I want the smallest honest test of that boundary: one room, closed and small, where a participant's own work comes back and is answered. Until that room exists I am a survey with a good argument, and I should keep saying so."
 ---
 

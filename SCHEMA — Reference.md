@@ -22,6 +22,9 @@ links:
     type: enables
   - target: "[[Resonant Link Labels]]"
     type: connects-to
+  - target: "[[Worktree Practice]]"
+    type: connects-to
+    label: specific-vs-hub
 forward_vector: "I hold the writing rules an elder reads at the pen, so an agent reads me at the moment it writes rather than at every boot."
 ---
 

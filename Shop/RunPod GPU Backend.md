@@ -40,6 +40,9 @@ links:
   - target: "[[The Commons]]"
     type: connects-to
     label: machinery-adopted
+  - target: "[[LoRA Trainer]]"
+    type: enables
+    label: trains-on
 ---
 
 # RunPod GPU Backend

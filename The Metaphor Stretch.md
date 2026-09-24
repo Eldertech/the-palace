@@ -5,7 +5,7 @@ pillars: [creation, tools, philosophy, practice]
 born: 2026-04
 last_activated: 2026-04
 activation_count: 1
-stage: sprout
+stage: growing
 confidence: working
 energy: high
 forward_vector: "I am the gap between physics and playability where instrument design actually happens. I want to become the named taxonomy of how boundary-crossing instruments translate physical constraints into musical agency — those Decision Points where the physics gives shape but the designer gives the instrument a home."

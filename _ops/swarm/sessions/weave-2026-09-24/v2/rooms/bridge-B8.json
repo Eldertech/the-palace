@@ -1,0 +1,254 @@
+{
+ "lens": "bridge",
+ "id": "B8",
+ "tool_side": [
+  {
+   "id": "Figure Rig",
+   "path": "Shop/Figure Rig.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 10,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Block It in Blender, Ink It in genAI  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Frame Designer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Aftermath Frame  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 Hand-Drawn 3D Look",
+    "\u2192 connects-to \u2192 BLUELINE",
+    "\u2192 connects-to \u2192 Blender",
+    "\u2192 connects-to \u2192 Blocked, Not Prompted",
+    "\u2192 connects-to \u2192 ComfyUI",
+    "\u2192 connects-to \u2192 Frame Designer",
+    "\u2192 connects-to \u2192 Hand-Drawn 3D Look",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Matplotlib",
+   "path": "Shop/Matplotlib.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 D3.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Manim CE  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Observable Plot  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 ffmpeg  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 LaTeX",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Manim CE",
+    "\u2192 connects-to \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Murmuration",
+   "path": "Projects/Murmuration.md",
+   "type": "project",
+   "stage": "growing",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Maker  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 2D Torus Wavetable Synthesizer",
+    "\u2192 connects-to \u2192 Bayesian Granular Synthesizer",
+    "\u2192 connects-to \u2192 Diversity of Thought in Many-Agent Systems",
+    "\u2192 connects-to \u2192 Granular Synthesis",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Neural Granular Synthesis",
+    "\u2192 connects-to \u2192 Web Audio Worklet",
+    "\u2192 emerged-from \u2192 Flocking",
+    "\u2192 exemplifies \u2192 Review Layer",
+    "\u2192 mirrors \u2192 Particle Synthesis"
+   ]
+  },
+  {
+   "id": "OBS",
+   "path": "Shop/OBS.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 6,
+   "existing_links": [
+    "\u2192 connects-to \u2192 Closing Well",
+    "\u2192 connects-to \u2192 LDN RTM",
+    "\u2192 connects-to \u2192 Loudon Live",
+    "\u2192 connects-to \u2192 Loudon Live Design System",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 couples-with \u2192 ffmpeg",
+    "\u2192 member-of \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Wavetable Scanner",
+   "path": "Wavetable Scanner.md",
+   "type": "project",
+   "stage": "sprout",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Three.js  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Rank-N Lattice Analysis  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 1D Wavetable Scanning",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Three.js",
+    "\u2192 connects-to \u2192 Web Audio Worklet",
+    "\u2192 contradicts \u2192 Rank-N Lattice Analysis",
+    "\u2192 exemplifies \u2192 1D Wavetable Scanning",
+    "\u2192 mirrors \u2192 2D Torus Wavetable Synthesizer",
+    "\u2192 mirrors \u2192 Waveguide Synthesizer"
+   ]
+  },
+  {
+   "id": "assume multi-agent",
+   "path": "assume multi-agent.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Agent Toolbox  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Practice Rediscovers Its Philosophy  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 RunPod GPU Backend",
+    "\u2190 exemplifies \u2190 The Commons",
+    "\u2192 connects-to \u2192 RunPod GPU Backend",
+    "\u2192 connects-to \u2192 STIGMERGY",
+    "\u2192 connects-to \u2192 The Commons",
+    "\u2192 connects-to \u2192 The Palace Practices on Itself",
+    "\u2192 member-of \u2192 Tool Builder"
+   ]
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Andy Goldsworthy",
+   "path": "People/Andy Goldsworthy.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Annie Dillard  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 George Nakashima  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 James Turrell  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Found \u2194 Made",
+    "\u2192 connects-to \u2192 The Aftermath Frame",
+    "\u2192 member-of \u2192 Source Library",
+    "\u2192 mirrors \u2192 Like Water"
+   ]
+  },
+  {
+   "id": "Iain McGilchrist",
+   "path": "People/Iain McGilchrist.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Frequency Domain \u2194 Perspective Shift  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Yasujir\u014d Ozu  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Annie Dillard  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Frequency Domain \u2194 Perspective Shift",
+    "\u2192 connects-to \u2192 Rick Rubin",
+    "\u2192 contradicts \u2192 Cooperation Yields Agency",
+    "\u2192 member-of \u2192 Source Library",
+    "\u2192 mirrors \u2192 Lateral Access"
+   ]
+  },
+  {
+   "id": "Marcus Aurelius",
+   "path": "People/Marcus Aurelius.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Julia Cameron  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Kick Drum \u2194 Foundation  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Seneca  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Stoicism  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Epictetus  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Source Library",
+    "\u2192 connects-to \u2192 Julia Cameron",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 connects-to \u2192 The Dichotomy of Control",
+    "\u2192 connects-to \u2192 The View From Above",
+    "\u2192 deepens \u2192 FOUR PILLARS",
+    "\u2192 deepens \u2192 Kick Drum \u2194 Foundation",
+    "\u2192 exemplifies \u2192 Stoicism",
+    "\u2192 exemplifies \u2192 The Blindspot Is the Surprise Fuel",
+    "\u2192 member-of \u2192 Source Library"
+   ]
+  },
+  {
+   "id": "Progressive Staging",
+   "path": "Progressive Staging.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 22,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Creative Coach  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Floquet Time-Modulated Loops  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Objects to Think With  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Threshold Conatus  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 LDN RTM  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Curriculum Map  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Loudon Live  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Retrospective Delay  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Signal-Rate CV Architecture  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 Action Potential Oscillator",
+    "\u2190 enables \u2190 Loudon's Toolkit",
+    "\u2190 enables \u2190 Scale-Stratified Identity",
+    "\u2190 mirrors \u2190 BBS Design System  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Identity Molting  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Lossy Compression with Intent Alignment  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Loudon Live Design System  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 State Machine  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Self-Describing Knowledge Module",
+    "\u2192 connects-to \u2192 Crystal Synthesizer",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Modes of Collaboration",
+    "\u2192 enables \u2192 Action Potential Oscillator",
+    "\u2192 enables \u2192 State Machine",
+    "\u2192 mirrors \u2192 FOUR PILLARS"
+   ]
+  },
+  {
+   "id": "Shunryu Suzuki",
+   "path": "People/Shunryu Suzuki.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Agnes Martin  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Cross-Domain Resonances  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Natalie Goldberg  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Pauline Oliveros  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Sidechain \u2194 Conversation  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Source Library",
+    "\u2192 connects-to \u2192 Natalie Goldberg",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 connects-to \u2192 Sidechain \u2194 Conversation",
+    "\u2192 deepens \u2192 FOUR PILLARS",
+    "\u2192 member-of \u2192 Cross-Domain Resonances",
+    "\u2192 member-of \u2192 Source Library"
+   ]
+  },
+  {
+   "id": "spinoza-zhuangzi-on-striving",
+   "path": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "type": "concept",
+   "stage": "mature",
+   "reached_by": 12,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Mathieu Equation  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Palace Philosophies  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 STIGMERGY Philosophical Lenses  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Drift  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Deleuze",
+    "\u2192 connects-to \u2192 Dialectic",
+    "\u2192 connects-to \u2192 Entry Conatus",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Like Water",
+    "\u2192 connects-to \u2192 Parametric Resonance",
+    "\u2192 connects-to \u2192 The Drift",
+    "\u2192 connects-to \u2192 The Fortress and the Threshold",
+    "\u2192 emerged-from \u2192 Spinoza Conatus",
+    "\u2192 mirrors \u2192 zhuangzi-epictetus-confucius-on-the-self"
+   ]
+  }
+ ]
+}

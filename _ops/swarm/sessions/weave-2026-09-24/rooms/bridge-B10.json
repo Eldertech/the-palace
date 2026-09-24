@@ -1,0 +1,74 @@
+{
+ "lens": "bridge",
+ "id": "B10",
+ "tool_side": [
+  {
+   "id": "Hand-Drawn 3D Look",
+   "path": "Hand-Drawn 3D Look.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Mermaid",
+   "path": "Shop/Mermaid.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "PDL Generation Prompt",
+   "path": "PDL Generation Prompt.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Piano String Inharmonicity",
+   "path": "Projects/Piano String Inharmonicity.md",
+   "stage": "growing",
+   "inbound": 12
+  },
+  {
+   "id": "Remnants in Depth",
+   "path": "Remnants in Depth.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "The Substrate Drifts",
+   "path": "The Substrate Drifts.md",
+   "stage": "seed",
+   "inbound": 0
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Brian Eno",
+   "path": "People/Brian Eno.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "John Cage",
+   "path": "People/John Cage.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Martin Heidegger",
+   "path": "People/Martin Heidegger.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Spinoza Conatus",
+   "path": "Spinoza Conatus.md",
+   "stage": "mature",
+   "inbound": 65
+  },
+  {
+   "id": "Yasujir\u014d Ozu",
+   "path": "People/Yasujir\u014d Ozu.md",
+   "stage": "seed",
+   "inbound": 1
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "arm": "Y",
+ "room": "B5",
+ "total_proposals": 11,
+ "sample": [
+  {
+   "kind": "bridge",
+   "source": "Shop/ComfyUI.md",
+   "type": "mirrors (label: self-check-as-dichotomy)",
+   "target": "People/Epictetus.md",
+   "rationale": "The Specialist's self-check contract sorts its own output into what it can verify and is answerable for (seed, dimensions, workflow hash \u2014 up to it) versus what it explicitly hands off as outside its authority (aesthetic judgment \u2014 not up to it): the dichotomy of control encoded as an operational spec.",
+   "evidence": "Before declaring done, I verify: ... I cannot self-verify aesthetic quality or palette match. Those are the Maker's call. || of things, some are in our power, and others are not... you are not flesh or hair, but choice.",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Manim CE",
+   "type": "mirrors",
+   "target": "Douglas Hofstadter",
+   "label": "form-is-the-content",
+   "rationale": "Both claim the representation's shape is constitutive of its meaning, not decorative packaging around it.",
+   "evidence": "'the typesetting is the teaching' / 'the book's own form is a strange loop enacting what it explains.'",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "bridge",
+   "source": "Shop/Three.js.md",
+   "type": "mirrors (label: decoration-vs-binding)",
+   "target": "Quality Manifesto.md",
+   "rationale": "Surface polish that isn't answerable to a real underlying thing is worthless no matter how seductive; value exists only where the visible form is actually bound to ground truth.",
+   "evidence": "the seductive part of 3D \u2014 orbiting cameras, dramatic lighting \u2014 is rarely where the meaning is, and that the meaning usually lives in what the geometry is bound to... the displacement shown must be read from the real state buffer, not a cosmetic sine stand-in. || High production value (expensive camera, perfect lighting, polished edit)... Outcome: Burnout, emptiness even if it works. You arrive depleted, not peaceful. / Authentic integration... Outcome: Sustainable, meaningful, feels good.",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "Exponential Decay Curvature",
+   "type": "mirrors",
+   "target": "The Multilinear Self",
+   "label": "context-fixes-identity",
+   "rationale": "Both claim a single underlying thing has no fixed essence \u2014 its identity is settled only by the rate/context at which it's read or observed, and the multiplicity precedes the asking.",
+   "evidence": "'There was never two of them.' / 'the many-at-once is the true one.'",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "Manim CE",
+   "type": "mirrors",
+   "target": "Identity Molting",
+   "label": "regenerate-not-mutate",
+   "rationale": "The renderer gotcha's fix (regenerate fresh from persistent state each frame, never mutate the old object in place) is a literal enactment of 'the self is continuous, only the container changes; holding the old form past its time is the danger.'",
+   "evidence": "'always_redraw(factory) \u2014 return a fresh Arrow each frame' / 'The key word is shed, not replaced.'",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "Three.js",
+   "type": "mirrors",
+   "target": "Quality Manifesto",
+   "label": "decoration-vs-binding",
+   "rationale": "Both name the same trap \u2014 polish decoupled from the real underlying thing is worthless however seductive; value only exists where the visible form is actually bound to ground truth.",
+   "evidence": "'the meaning usually lives in what the geometry is bound to' / 'High production value... Outcome: Burnout, emptiness even if it works.'",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "stage",
+   "source": "Exponential Decay Curvature.md",
+   "type": "sprout->growing (worth a look)",
+   "rationale": "6 typed links (growing's own '3+' threshold) plus a Cross-Domain Resonance section and multiple forward vectors \u2014 body and connectivity already read as growing, not sprout. Flagging the mismatch only; not proposing a rewrite.",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "bridge",
+   "source": "Shop/Manim CE.md",
+   "type": "mirrors (label: form-is-the-content)",
+   "target": "People/Douglas Hofstadter.md",
+   "rationale": "The representation's shape is not a neutral wrapper around the content \u2014 the form itself is where the meaning happens, self-demonstrating rather than merely conveying.",
+   "evidence": "Will spend time on a single equation's typesetting because the typesetting is the teaching. || the book's own form is a strange loop enacting what it explains.",
+   "item_id": "Y8"
+  }
+ ]
+}

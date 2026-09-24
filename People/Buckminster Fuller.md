@@ -47,6 +47,15 @@ links:
   - target: "[[Martin Heidegger]]"
     type: contradicts
     label: design-optimism-vs-enframing
+  - target: "[[Found ↔ Made]]"
+    type: exemplifies
+    label: made-pole
+  - target: "[[Simondon]]"
+    type: mirrors
+    label: synergy-is-concretization
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Buckminster Fuller

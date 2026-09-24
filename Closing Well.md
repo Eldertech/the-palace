@@ -63,6 +63,9 @@ links:
   - target: "[[Closing Well Ceremony]]"
     type: spawned
     label: operational-card
+  - target: "[[Reflective Practice]]"
+    type: exemplifies
+    label: reflect-on-action
 forward_vector: "I help humans and AI thrive in the palace after a productive session — closing the work so the thoughts that mattered are kept and nothing is over-kept. I strive to retain a session's important original thinking by depositing it into canon, and to prepare future palace citizens to pick up the conversation and carry it forward. I turn a spent session into a clean start for whoever comes next."
 agency_profile:
   creation: "I bring the reckoning into existence — the four-gesture account (keep / hand on / leave a trace / let go) of what a spent session amounted to, drafted fresh so a tired room doesn't have to. And I bring clean starts into existence: the next citizen lands in the right frame in under thirty seconds."

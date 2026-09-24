@@ -63,6 +63,9 @@ links:
   - target: "[[Andy Goldsworthy]]"
     type: connects-to
     label: humility-that-hides-control
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # George Nakashima

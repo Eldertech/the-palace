@@ -1,0 +1,157 @@
+{
+ "lens": "community",
+ "id": "C1.2",
+ "members": [
+  {
+   "id": "Phoneme Choir",
+   "path": "Projects/Phoneme Choir.md",
+   "stage": "fruiting",
+   "inbound": 4
+  },
+  {
+   "id": "Photonic Time Crystals",
+   "path": "Photonic Time Crystals.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Piano String Inharmonicity",
+   "path": "Projects/Piano String Inharmonicity.md",
+   "stage": "growing",
+   "inbound": 12
+  },
+  {
+   "id": "Playful Interface Design",
+   "path": "Playful Interface Design.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Portamento and Physical Pitch Modeling",
+   "path": "Projects/Portamento and Physical Pitch Modeling.md",
+   "stage": "mature",
+   "inbound": 5
+  },
+  {
+   "id": "Preset Oracle",
+   "path": "Projects/Preset Oracle.md",
+   "stage": "mature",
+   "inbound": 5
+  },
+  {
+   "id": "Quadratic Interpolation in DSP",
+   "path": "Quadratic Interpolation in DSP.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Quantum Synthesizer",
+   "path": "Projects/Quantum Synthesizer.md",
+   "stage": "dormant",
+   "inbound": 6
+  },
+  {
+   "id": "Retrospective Delay",
+   "path": "Projects/Retrospective Delay.md",
+   "stage": "growing",
+   "inbound": 11
+  },
+  {
+   "id": "Reverb \u2194 Space-Time",
+   "path": "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+   "stage": "mature",
+   "inbound": 2
+  },
+  {
+   "id": "SMPTE LTC",
+   "path": "SMPTE LTC.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Semantic Delay",
+   "path": "Projects/Semantic Delay.md",
+   "stage": "growing",
+   "inbound": 8
+  },
+  {
+   "id": "Shepard Tone Synthesizer",
+   "path": "Projects/Shepard Tone Synthesizer.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Shimmer Cloud",
+   "path": "Projects/Shimmer Cloud.md",
+   "stage": "dormant",
+   "inbound": 4
+  },
+  {
+   "id": "Signal-Rate CV Architecture",
+   "path": "Signal-Rate CV Architecture.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Slime Mold Delay",
+   "path": "Projects/Slime Mold Delay.md",
+   "stage": "sprout",
+   "inbound": 0
+  },
+  {
+   "id": "State Machine",
+   "path": "State Machine.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Talking Keyboard",
+   "path": "Projects/Talking Keyboard.md",
+   "stage": "fruiting",
+   "inbound": 4
+  },
+  {
+   "id": "The Curve Is the Material",
+   "path": "The Curve Is the Material.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "The Metaphor Stretch",
+   "path": "The Metaphor Stretch.md",
+   "stage": "sprout",
+   "inbound": 3
+  },
+  {
+   "id": "Wallpaper Groups",
+   "path": "Projects/Wallpaper Groups.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Wavetable Space as Torus",
+   "path": "Wavetable Space as Torus.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "path": "Wavetable Synthesis -- Research & Higher-Dimensional Design.md",
+   "stage": "mature",
+   "inbound": 3
+  },
+  {
+   "id": "What Claim Does Scientific Sonification Make?",
+   "path": "What Claim Does Scientific Sonification Make?.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "control-vocabulary-math",
+   "path": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+   "stage": "growing",
+   "inbound": 0
+  }
+ ],
+ "directed_flags": {}
+}

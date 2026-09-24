@@ -40,6 +40,15 @@ links:
   - target: "[[Rick Rubin]]"
     type: connects-to
     label: attention-as-noticing
+  - target: "[[Martin Buber]]"
+    type: mirrors
+    label: i-thou-is-comprehending-attention
+  - target: "[[Merleau-Ponty]]"
+    type: mirrors
+    label: comprehending-not-representing
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Iain McGilchrist

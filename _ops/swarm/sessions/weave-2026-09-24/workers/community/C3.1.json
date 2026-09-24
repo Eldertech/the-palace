@@ -1,0 +1,238 @@
+{
+ "cluster": "C3.1",
+ "lens": "community",
+ "summary": "This room is the BLUELINE hand-drawn-3D pipeline made visible as a topology, not a folder tree: root concepts (Blocked, Not Prompted; ControlNet as Topology; Hand-Drawn 3D Look), Shop specialists (Blender, ComfyUI, Figure Rig, SAM, Depth Anything, LaMa), and Projects (BLUELINE, LDN RTM) are already densely cross-linked to each other \u2014 this community is coherent, not cluttered, once you see it as one graph. The real gaps were at the edges: a handful of genuinely new entries (OBS, LoRA Trainer, Block It in Blender \u2014 Ink It in genAI) sit almost unlinked next to a cluster that would obviously want them, and one entry \u2014 Blocked, Not Prompted \u2014 is the unmarked keystone of the whole cluster (14 inbound, cited as \"core mechanism\" by nearly everything here) yet carries neither a forward_vector nor a hero image and is staged as \"seed.\" One merge is already decided and just needs finishing (Line-Art Layer Decomposition \u2192 Animate the Background). The five directed flags were all genuine and confirmable \u2014 real duplicate-recipe pointers and one under-served roster table, not busywork.",
+ "members_read": [
+  "Adopt the Craft, Author the Seam.md",
+  "Animate the Background.md",
+  "Autodidact Polymaths.md",
+  "Projects/BLUELINE/BLUELINE.md",
+  "Shop/Blender.md",
+  "Block It in Blender, Ink It in genAI.md",
+  "Blocked, Not Prompted.md",
+  "Shop/ComfyUI.md",
+  "Comic and Cinema \u2014 Two Ways of Seeing.md",
+  "ControlNet as Topology.md",
+  "Shop/Depth Anything.md",
+  "Shop/FLUX (Hugging Face).md",
+  "Shop/Figure Rig.md",
+  "Flocking.md",
+  "Frame Designer.md",
+  "GenAI Camera.md",
+  "Graphic Storytelling.md",
+  "Hand-Drawn 3D Look.md",
+  "Shop/Hero and Avatar Maker.md",
+  "Shop/Image-to-3D Smith.md",
+  "Shop/Kokoro.md",
+  "Projects/LDN RTM.md",
+  "Shop/LaMa.md",
+  "Shop/Lettering.md",
+  "Line-Art Layer Decomposition.md",
+  "Shop/LoRA Trainer.md",
+  "Palace development/Loudon Live Design System.md",
+  "Loudon Live Post-producer.md",
+  "Loudon's Toolkit.md",
+  "Shop/Maker.md",
+  "Shop/Manim CE.md",
+  "Shop/Midjourney.md",
+  "Move the Ink, Don't Redraw It.md",
+  "Shop/OBS.md",
+  "Radio Play.md",
+  "Remnants in Depth.md",
+  "Shop/Remotion.md",
+  "Review Layer.md",
+  "Shop/RunPod GPU Backend.md",
+  "Shop/SAM.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Shop/Blender",
+   "target": "Remnants in Depth",
+   "type": "connects-to",
+   "label": "billboard-remnants-recipe",
+   "rationale": "Blender's own gotchas section doesn't yet carry the Blender-5.1-specific fixes (two view layers + DITHERED clip material for billboard-over-lineart) that Remnants in Depth already worked out and dated.",
+   "evidence": "Remnants in Depth.md:58-62 \u2014 'Two view layers... `DITHERED` clip material... Blender 5.x specifics that cost iterations'",
+   "kind": "flag",
+   "spark": 2
+  },
+  {
+   "source": "Shop/Blender/toyxyz-conditioning-recipe",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "connects-to",
+   "label": "same-conditioning-move",
+   "rationale": "Both name the identical D2 stack (canny 0.30 + depth 0.60 + openpose 0.70, denoise ~0.92-0.95) as the tuned per-channel recipe \u2014 currently described twice with no pointer between them.",
+   "evidence": "Block It in Blender.md:54 \u2014 'D2 stack: canny 0.30 + depth 0.60 + openpose 0.70'; Blender.md:123 \u2014 'See the toyxyz-conditioning-recipe for the tuned per-channel parameters'",
+   "kind": "flag",
+   "spark": 2
+  },
+  {
+   "source": "Frame Designer",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "connects-to",
+   "label": "staging-runbook",
+   "rationale": "Frame Designer's Staging leg lists Blender blocking as a method but points nowhere for the concrete how-to; the runbook is exactly that how-to.",
+   "evidence": "Frame Designer.md:66 \u2014 'Authored Blender blocking (newstory_bench, on Shop/Blender)'",
+   "kind": "flag",
+   "spark": 2
+  },
+  {
+   "source": "Loudon Live Post-producer",
+   "target": "LDN RTM",
+   "type": "connects-to",
+   "label": "shares-youtube-connector",
+   "rationale": "Post-producer already reasons about this in body prose ('the same YouTube connector this entry defers for publishing, arriving from a second direction') but has no typed link to LDN RTM and no one-line explicit scoping note.",
+   "evidence": "Loudon Live Post-producer.md:150 \u2014 'they need the same YouTube connector this entry defers for publishing, arriving from a second direction'",
+   "kind": "flag",
+   "spark": 2
+  },
+  {
+   "source": "OBS",
+   "target": "Loudon Live Post-producer",
+   "type": "mirrors",
+   "label": "producer-layer-seam",
+   "rationale": "Both entries independently name the same open architectural question \u2014 whether a Producer layer should rise above the Maker \u2014 from opposite materials: Post-producer from multi-day cross-medium editorial work, OBS from real-time-with-a-human capture. OBS's own Open Questions names this explicitly but never links to Post-producer or Maker's version of the same wonder.",
+   "evidence": "Shop/OBS.md:127 \u2014 'I am the second independent pressure on the Shop's Producer-layer seam... I push on the same wall from real-time-with-a-human. Two pushes on one wall is the kind of thing that should move the architecture.'",
+   "kind": "new",
+   "spark": 4
+  },
+  {
+   "source": "RunPod GPU Backend",
+   "target": "Shop/LoRA Trainer",
+   "type": "connects-to",
+   "label": "trains-on",
+   "rationale": "LoRA Trainer's own entry states it 'rides Shop/RunPod GPU Backend for the compute' but RunPod GPU Backend's link list (as read) doesn't point back \u2014 LoRA Trainer is a genuine newcomer (0 inbound, on the no-entry-points list) that this cluster's substrate entry should acknowledge.",
+   "evidence": "Shop/LoRA Trainer.md:31 \u2014 'rides Shop/RunPod GPU Backend for the compute'",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "Move the Ink, Don't Redraw It",
+   "target": "Hand-Drawn 3D Look",
+   "type": "couples-with",
+   "label": "still-vs-motion-split",
+   "rationale": "Hand-Drawn 3D Look's own forward vector names the exact seam Move the Ink occupies ('the day my motion atmosphere and ink remnants ride one flow field') and its body has a 'Motion is atmosphere' section describing the same displacement-not-redraw discipline, but the two entries don't link to each other.",
+   "evidence": "Hand-Drawn 3D Look.md:71 \u2014 'Motion is atmosphere... procedural (no Mantaflow bake) so they re-render identically'; Move the Ink.md:32 \u2014 'AI makes the still; geometry makes the motion'",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "ControlNet as Topology",
+   "target": "GenAI Camera",
+   "type": "connects-to",
+   "label": "spatial-instance",
+   "rationale": "ControlNet as Topology's own body names GenAI Camera as the spatial realization of its terrain metaphor, and GenAI Camera's frontmatter links back (exemplifies), but the reverse link from ControlNet as Topology's frontmatter is missing.",
+   "evidence": "ControlNet as Topology.md:72 \u2014 'The GenAI Camera... is this made spatial: a camera that carves canyons into the render from one viewpoint'",
+   "kind": "new",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Projects/LDN RTM",
+   "target": "Shop/OBS",
+   "type": "connects-to",
+   "phrase": "the rig is *driven*, not clicked: `Projects/LDN RTM/obs/rtm.py` operates [[OBS]] over its WebSocket",
+   "label": "drives-via-websocket",
+   "structurally_significant": true
+  },
+  {
+   "entry": "ControlNet as Topology",
+   "target": "GenAI Camera",
+   "type": "connects-to",
+   "phrase": "The GenAI Camera... is this made spatial",
+   "label": "spatial-instance",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Blocked, Not Prompted",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "Entry has no forward_vector field at all (frontmatter jumps from confidence/energy/links straight to tags) \u2014 unusual for an entry this central. It is named 'core mechanism' or 'exemplifies' by BLUELINE, Adopt the Craft, Block It in Blender, ControlNet as Topology, Hand-Drawn 3D Look, Lettering, Figure Rig, and GenAI Camera. 14 inbound (per room file) against a 'seed' stage and one activation is a mismatch worth a look, not a rewrite I'll make.",
+   "face": "merits-face",
+   "graffiti_note": "No hero image visible in the file (unlike its siblings, which all open with `![[Entry \u2014 hero.png]]`). Given Hero and Avatar Maker's stated priority order (projects, then philosophies, then most-connected hubs), a 14-inbound concept this load-bearing is squarely in that tier."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Frame Designer's Staging roster table (~lines 59-74) doesn't list 'draft-ink' as a treatment option, doesn't reference Remnants in Depth, and doesn't cite the APPROACHES.md decision matrix that Hand-Drawn 3D Look already points to for the same when-to-use-what question.",
+   "kind": "content-gap",
+   "entries": [
+    "Frame Designer",
+    "Remnants in Depth",
+    "Hand-Drawn 3D Look"
+   ],
+   "proposed_action": "Add a row/reference in Frame Designer's roster table pointing at Remnants in Depth and the APPROACHES.md matrix (flag handdrawn3d-deposit-weave-0-8eeb4a09 \u2014 confirmed genuine, the content really is missing)."
+  },
+  {
+   "issue": "Line-Art Layer Decomposition carries a standing HTML comment ('COMPOSTING (Weave 2026-07-06): folded into Animate the Background \u00a7 The N-Layer Case. Awaiting deletion confirmation next Weave cycle.') from an earlier weave cycle that appears not to have been actioned.",
+   "kind": "stale-merge",
+   "entries": [
+    "Line-Art Layer Decomposition",
+    "Animate the Background"
+   ],
+   "proposed_action": "Confirm the fold is genuinely complete in Animate the Background, then delete Line-Art Layer Decomposition \u2014 this weave cycle is the confirmation the comment was waiting for."
+  }
+ ],
+ "compost_candidates": [
+  {
+   "entry": "Line-Art Layer Decomposition",
+   "rationale": "Already self-marked composting with content folded into Animate the Background \u00a7 The N-Layer Case; this is not a new proposal, it's confirming a decision the entry itself has been carrying since 2026-07-06 and executing the deletion it's been waiting on.",
+   "nutrients_to": [
+    "Animate the Background"
+   ]
+  }
+ ],
+ "merge_candidates": [],
+ "demote_candidates": [],
+ "open_question_resolutions": [
+  {
+   "entry": "Projects/LDN RTM",
+   "question": "whether the Post-producer's promotion ladder counts RTM chunks the way it counts sessions",
+   "by_entry": "Loudon Live Post-producer",
+   "verdict": "resolved-elsewhere",
+   "proposed_action": "Loudon Live Post-producer's own Deferred section already answers this ('count chunks on RTM, sessions on Loudon Live... three consecutive clean editorial passes on a unit Loudon genuinely reviews'). LDN RTM's forward vector still poses it as open \u2014 update LDN RTM to point at the answer instead of re-asking it."
+  }
+ ],
+ "synthesis_spawn_flag": [],
+ "walk_results": [],
+ "bridge_findings": [
+  {
+   "tool": "",
+   "thought": "OBS (screen/stream capture, operated not dispatched) and Loudon Live Post-producer (editorial judgment over finished recordings) sit in entirely different registers \u2014 one is real-time-with-a-human, the other is asynchronous editorial craft \u2014 yet both independently arrived at the same open architectural question: does a Producer layer need to rise above the Maker for work that doesn't fit the Sketch/Study/Piece tier model?",
+   "shared_structure": "Two Shop citizens, built months apart by different sessions, converging on the same missing layer from opposite directions \u2014 a genuine structural signal, not a coincidence to force.",
+   "spark": 4,
+   "classify": "link",
+   "quote_tool": "I am the second independent pressure on the Shop's Producer-layer seam",
+   "quote_thought": "Two pushes on one wall is the kind of thing that should move the architecture."
+  }
+ ],
+ "flag_responses": [
+  {
+   "flag": "handdrawn3d-deposit-weave-1-8a9d4b71",
+   "verdict": "confirm",
+   "proposed_change": "Add a connects-to link from Shop/Blender to Remnants in Depth (label: billboard-remnants-recipe) and fold the two-view-layer + DITHERED-clip-material fix (Remnants in Depth.md:49-60) into Blender's own gotchas list."
+  },
+  {
+   "flag": "blender-control-deposit-weave-0-f92df148",
+   "verdict": "confirm",
+   "proposed_change": "Link Shop/Blender/toyxyz-conditioning-recipe to Block It in Blender, Ink It in genAI \u2014 both independently describe the identical D2 conditioning stack (canny 0.30 + depth 0.60 + openpose 0.70)."
+  },
+  {
+   "flag": "handdrawn3d-deposit-weave-0-8eeb4a09",
+   "verdict": "confirm",
+   "proposed_change": "Add 'draft-ink' and a Remnants-in-Depth reference to Frame Designer's Staging roster table, and cite the APPROACHES.md decision matrix already used by Hand-Drawn 3D Look."
+  },
+  {
+   "flag": "blender-control-deposit-weave-1-4e98b1eb",
+   "verdict": "confirm",
+   "proposed_change": "Add a connects-to link from Frame Designer's Staging leg to Block It in Blender, Ink It in genAI as the concrete runbook behind its 'Authored Blender blocking' method."
+  },
+  {
+   "flag": "commons-the-palace-1788405613013",
+   "verdict": "confirm",
+   "proposed_change": "Add a connects-to link from Loudon Live Post-producer to LDN RTM (label: shares-youtube-connector) and tighten the existing body sentence about the connector into an explicit one-liner scoping it for both."
+  }
+ ]
+}

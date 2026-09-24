@@ -1,0 +1,251 @@
+{
+ "lens": "community",
+ "id": "C1.1",
+ "members": [
+  {
+   "id": "Action Potential Oscillator",
+   "path": "Projects/Action Potential Oscillator.md",
+   "stage": "growing",
+   "inbound": 27
+  },
+  {
+   "id": "Audition Gate",
+   "path": "Audition Gate.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Bayesian Granular Synthesizer",
+   "path": "Projects/Bayesian Granular Synthesizer.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Bessel Functions in Synthesis",
+   "path": "Projects/Bessel Functions in Synthesis.md",
+   "stage": "growing",
+   "inbound": 13
+  },
+  {
+   "id": "Biomechanical Synthesis",
+   "path": "Projects/Biomechanical Synthesis.md",
+   "stage": "mature",
+   "inbound": 7
+  },
+  {
+   "id": "Blood Compressor",
+   "path": "Projects/Blood Compressor.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Boundary-Crossing Instruments",
+   "path": "Boundary-Crossing Instruments.md",
+   "stage": "mature",
+   "inbound": 37
+  },
+  {
+   "id": "Categorizing Inharmonicity",
+   "path": "Projects/Categorizing Inharmonicity.md",
+   "stage": "mature",
+   "inbound": 12
+  },
+  {
+   "id": "Compressor Design",
+   "path": "Projects/Compressor Design.md",
+   "stage": "mature",
+   "inbound": 13
+  },
+  {
+   "id": "Crystal Synthesizer",
+   "path": "Projects/Crystal Synthesizer.md",
+   "stage": "fruiting",
+   "inbound": 16
+  },
+  {
+   "id": "DSP Frameworks",
+   "path": "DSP Frameworks.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Differential Equations",
+   "path": "Differential Equations.md",
+   "stage": "mature",
+   "inbound": 7
+  },
+  {
+   "id": "Dispersion",
+   "path": "Dispersion.md",
+   "stage": "mature",
+   "inbound": 10
+  },
+  {
+   "id": "Dub Lineage",
+   "path": "Dub Lineage.md",
+   "stage": "sprout",
+   "inbound": 6
+  },
+  {
+   "id": "Floquet Theory",
+   "path": "Floquet Theory.md",
+   "stage": "growing",
+   "inbound": 8
+  },
+  {
+   "id": "Floquet Time-Modulated Loops",
+   "path": "Projects/Floquet Time-Modulated Loops/Floquet Time-Modulated Loops.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Frequency-Time Duality",
+   "path": "Projects/Frequency-Time Duality.md",
+   "stage": "growing",
+   "inbound": 30
+  },
+  {
+   "id": "Frequency-Time Explorer",
+   "path": "Projects/Frequency-Time Explorer.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Generative Preset Development",
+   "path": "Projects/Generative Preset Development.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Generative Sample Libraries",
+   "path": "Projects/Generative Sample Libraries.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Generative Wavetable Libraries",
+   "path": "Projects/Generative Wavetable Libraries.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Granular Synthesis",
+   "path": "Granular Synthesis.md",
+   "stage": "growing",
+   "inbound": 20
+  },
+  {
+   "id": "Harmonicity and Inharmonicity",
+   "path": "Harmonicity and Inharmonicity.md",
+   "stage": "growing",
+   "inbound": 15
+  },
+  {
+   "id": "Hyperdimensional Prism",
+   "path": "Hyperdimensional Prism.md",
+   "stage": "mature",
+   "inbound": 40
+  },
+  {
+   "id": "Inharmonic Wavetable Synthesis",
+   "path": "Projects/Inharmonic Wavetable Synthesis.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "JSUI",
+   "path": "JSUI.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Kuramoto Coupling",
+   "path": "Kuramoto Coupling.md",
+   "stage": "mature",
+   "inbound": 72
+  },
+  {
+   "id": "Latent Error",
+   "path": "Latent Error.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Logarithmic Interface Scaling",
+   "path": "Logarithmic Interface Scaling.md",
+   "stage": "mature",
+   "inbound": 4
+  },
+  {
+   "id": "Loudon Live",
+   "path": "Loudon Live.md",
+   "stage": "sprout",
+   "inbound": 32
+  },
+  {
+   "id": "Mathieu Equation",
+   "path": "Mathieu Equation.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Media Library",
+   "path": "Media Library.md",
+   "stage": "composting",
+   "inbound": 0
+  },
+  {
+   "id": "Metric Modulation",
+   "path": "Projects/Metric Modulation.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Murmuration",
+   "path": "Projects/Murmuration.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Neural Granular Synthesis",
+   "path": "Projects/Neural Granular Synthesis.md",
+   "stage": "growing",
+   "inbound": 12
+  },
+  {
+   "id": "Objects to Think With",
+   "path": "Objects to Think With.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Octave Equivalence",
+   "path": "Octave Equivalence.md",
+   "stage": "composting",
+   "inbound": 2
+  },
+  {
+   "id": "Ohm's Law",
+   "path": "Ohm's Law.md",
+   "stage": "mature",
+   "inbound": 4
+  },
+  {
+   "id": "Parametric Resonance",
+   "path": "Parametric Resonance.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Particle Synthesis",
+   "path": "Projects/Particle Synthesis.md",
+   "stage": "dormant",
+   "inbound": 10
+  }
+ ],
+ "directed_flags": {
+  "Loudon Live": [
+   "Turn \u00a7 The RTM series (Loudon Live.md ~:95-97) into a pointer to [[LDN RTM]] (flag weaveflag-loudon-live-rtm-pointer-2026-09-02-r2). Also: SUBSTRATE's 2026-08-25 self-model found Loudon Live took 28 inbound links and emitted none \u2014 check whether its outbound links now reflect what feeds it."
+  ]
+ }
+}

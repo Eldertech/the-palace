@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B3",
+ "tool_side": [
+  {
+   "id": "Bayesian Granular Synthesizer",
+   "path": "Projects/Bayesian Granular Synthesizer.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Blender",
+   "path": "Shop/Blender.md",
+   "stage": null,
+   "inbound": 8
+  },
+  {
+   "id": "Lettering",
+   "path": "Shop/Lettering.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Rank-N Lattice Analysis",
+   "path": "Rank-N Lattice Analysis.md",
+   "stage": "sprout",
+   "inbound": 5
+  },
+  {
+   "id": "Search Before You Build",
+   "path": "Search Before You Build.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "VCV Patch Generator",
+   "path": "Shop/VCV Patch Generator.md",
+   "stage": null,
+   "inbound": 1
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Comic and Cinema \u2014 Two Ways of Seeing",
+   "path": "Comic and Cinema \u2014 Two Ways of Seeing.md",
+   "stage": "sprout",
+   "inbound": 7
+  },
+  {
+   "id": "Compression \u2194 Intimacy",
+   "path": "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Confucianism",
+   "path": "Confucianism.md",
+   "stage": "growing",
+   "inbound": 17
+  },
+  {
+   "id": "Creative Coach",
+   "path": "Creative Coach.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Leverage Points Framework",
+   "path": "Leverage Points Framework.md",
+   "stage": "mature",
+   "inbound": 10
+  },
+  {
+   "id": "Seneca",
+   "path": "People/Seneca.md",
+   "stage": "seed",
+   "inbound": 2
+  }
+ ]
+}

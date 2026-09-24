@@ -1,0 +1,265 @@
+{
+ "lens": "folder",
+ "id": "F-Projects",
+ "family": "Projects",
+ "members": [
+  {
+   "id": "2D Torus Wavetable Synthesizer",
+   "path": "Projects/2D Torus Wavetable Synthesizer.md",
+   "stage": "fruiting",
+   "inbound": 25
+  },
+  {
+   "id": "2D Wavetable Catalog",
+   "path": "Projects/2D Torus Wavetable Synthesizer/2D Wavetable Catalog.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "Action Potential Oscillator",
+   "path": "Projects/Action Potential Oscillator.md",
+   "stage": "growing",
+   "inbound": 27
+  },
+  {
+   "id": "BLUELINE",
+   "path": "Projects/BLUELINE/BLUELINE.md",
+   "stage": "growing",
+   "inbound": 20
+  },
+  {
+   "id": "Bayesian Granular Synthesizer",
+   "path": "Projects/Bayesian Granular Synthesizer.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Bessel Functions in Synthesis",
+   "path": "Projects/Bessel Functions in Synthesis.md",
+   "stage": "growing",
+   "inbound": 13
+  },
+  {
+   "id": "Biomechanical Synthesis",
+   "path": "Projects/Biomechanical Synthesis.md",
+   "stage": "mature",
+   "inbound": 7
+  },
+  {
+   "id": "Blood Compressor",
+   "path": "Projects/Blood Compressor.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Categorizing Inharmonicity",
+   "path": "Projects/Categorizing Inharmonicity.md",
+   "stage": "mature",
+   "inbound": 12
+  },
+  {
+   "id": "Compressor Design",
+   "path": "Projects/Compressor Design.md",
+   "stage": "mature",
+   "inbound": 13
+  },
+  {
+   "id": "Crystal Synthesizer",
+   "path": "Projects/Crystal Synthesizer.md",
+   "stage": "fruiting",
+   "inbound": 16
+  },
+  {
+   "id": "Curriculum Map",
+   "path": "Projects/Curriculum Map.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Floquet Time-Modulated Loops",
+   "path": "Projects/Floquet Time-Modulated Loops/Floquet Time-Modulated Loops.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Frequency-Time Duality",
+   "path": "Projects/Frequency-Time Duality.md",
+   "stage": "growing",
+   "inbound": 30
+  },
+  {
+   "id": "Frequency-Time Explorer",
+   "path": "Projects/Frequency-Time Explorer.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Generative Preset Development",
+   "path": "Projects/Generative Preset Development.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Generative Sample Libraries",
+   "path": "Projects/Generative Sample Libraries.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Generative Wavetable Libraries",
+   "path": "Projects/Generative Wavetable Libraries.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Inharmonic Wavetable Synthesis",
+   "path": "Projects/Inharmonic Wavetable Synthesis.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "LDN RTM",
+   "path": "Projects/LDN RTM.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Meadows and Music \u2014 Leverage Points",
+   "path": "Projects/Meadows and Music \u2014 Leverage Points.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "Meadows and an Artist's Career",
+   "path": "Projects/Meadows and an Artist's Career.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Metric Modulation",
+   "path": "Projects/Metric Modulation.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Murmuration",
+   "path": "Projects/Murmuration.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Neural Granular Synthesis",
+   "path": "Projects/Neural Granular Synthesis.md",
+   "stage": "growing",
+   "inbound": 12
+  },
+  {
+   "id": "Particle Synthesis",
+   "path": "Projects/Particle Synthesis.md",
+   "stage": "dormant",
+   "inbound": 10
+  },
+  {
+   "id": "Phoneme Choir",
+   "path": "Projects/Phoneme Choir.md",
+   "stage": "fruiting",
+   "inbound": 4
+  },
+  {
+   "id": "Piano String Inharmonicity",
+   "path": "Projects/Piano String Inharmonicity.md",
+   "stage": "growing",
+   "inbound": 12
+  },
+  {
+   "id": "Portamento and Physical Pitch Modeling",
+   "path": "Projects/Portamento and Physical Pitch Modeling.md",
+   "stage": "mature",
+   "inbound": 5
+  },
+  {
+   "id": "Preset Oracle",
+   "path": "Projects/Preset Oracle.md",
+   "stage": "mature",
+   "inbound": 5
+  },
+  {
+   "id": "Quantum Synthesizer",
+   "path": "Projects/Quantum Synthesizer.md",
+   "stage": "dormant",
+   "inbound": 6
+  },
+  {
+   "id": "Retrospective Delay",
+   "path": "Projects/Retrospective Delay.md",
+   "stage": "growing",
+   "inbound": 11
+  },
+  {
+   "id": "Semantic Delay",
+   "path": "Projects/Semantic Delay.md",
+   "stage": "growing",
+   "inbound": 8
+  },
+  {
+   "id": "Semantic Webcam",
+   "path": "Projects/Semantic Webcam.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Shepard Tone Synthesizer",
+   "path": "Projects/Shepard Tone Synthesizer.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Shimmer Cloud",
+   "path": "Projects/Shimmer Cloud.md",
+   "stage": "dormant",
+   "inbound": 4
+  },
+  {
+   "id": "Slime Mold Delay",
+   "path": "Projects/Slime Mold Delay.md",
+   "stage": "sprout",
+   "inbound": 0
+  },
+  {
+   "id": "Talking Keyboard",
+   "path": "Projects/Talking Keyboard.md",
+   "stage": "fruiting",
+   "inbound": 4
+  },
+  {
+   "id": "Torus Warping Catalog",
+   "path": "Projects/2D Torus Wavetable Synthesizer/Torus Warping Catalog.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Tract Mirror",
+   "path": "Projects/Tract Mirror.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Wallpaper Groups",
+   "path": "Projects/Wallpaper Groups.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Waveguide Synthesizer",
+   "path": "Projects/Waveguide Synthesizer.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "control-vocabulary-math",
+   "path": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+   "stage": "growing",
+   "inbound": 0
+  }
+ ]
+}

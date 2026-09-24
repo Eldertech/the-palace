@@ -1,0 +1,85 @@
+{
+ "arm": "Y",
+ "room": "L4",
+ "total_proposals": 21,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Closing Well Ceremony",
+   "type": "mirrors",
+   "target": "Return Ceremony",
+   "label": "the-other-bookend",
+   "rationale": "Return Ceremony names Closing Well Ceremony as the other bookend on one organ (summoned at the return, takes the wheel at the close); the mirror only runs one direction in the frontmatter.",
+   "evidence": "\"The two ceremonies are bookends on one organ: summoned at the return, takes the wheel at the close.\" \u2014 _ops/Return Ceremony.md:63",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "unsung",
+   "source": "Deposit Ceremony",
+   "type": "connects-to",
+   "target": "SCHEMA \u2014 Reference",
+   "label": null,
+   "rationale": "read `SCHEMA.md` and `SCHEMA \u2014 Reference.md` on disk.",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "relation",
+   "source": "Concierge",
+   "type": "connects-to",
+   "target": "Return Ceremony",
+   "label": "summoned-here-first",
+   "rationale": "Concierge's own scout posture states it was built specifically for the Return Ceremony and that the Return summons it as its first act \u2014 a direct, load-bearing citation missing its frontmatter link.",
+   "evidence": "\"Built 2026-08-25 for the [[Return Ceremony]], which summons this companion as its first act.\" \u2014 Palace development/Concierge.md:126-127",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "unsung",
+   "source": "Concierge",
+   "type": "connects-to",
+   "target": "Return Ceremony",
+   "label": null,
+   "rationale": "Built 2026-08-25 for the [[Return Ceremony]], which summons this companion as its first act.",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "The Palace Practices on Itself",
+   "type": "connects-to",
+   "target": "Reflective Practice",
+   "label": "over-reflection-named",
+   "rationale": "Reflective Practice explicitly borrows this entry's 'insularity' diagnosis to name over-reflection's one dated instance in the palace's own history \u2014 a direct citation with no return link.",
+   "evidence": "\"[[The Palace Practices on Itself]] \u00a7 The counter-discipline calls it insularity: 'a chain of good ones, each answering the previous rather than the work.'\" \u2014 Reflective Practice.md:100-102",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "Palace Conatus",
+   "type": "connects-to",
+   "target": "Return Ceremony",
+   "label": "coupling-runs-both-ways",
+   "rationale": "Return Ceremony's entire 'why this belongs in the always-loaded floor' section is built directly from Palace Conatus's phase-lag framing, read as the coupling failure running the other direction (substrate ahead of a human who stepped away). A genuinely earned reciprocal link.",
+   "evidence": "\"[[Palace Conatus]] names the palace's drive as staying in phase with Loudon... A gap is the other direction: the substrate running ahead\" \u2014 _ops/Return Ceremony.md:129-131",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "relation",
+   "source": "Drift and Consolidation",
+   "type": "mirrors",
+   "target": "Reflective Practice",
+   "label": "healthy-to-a-point",
+   "rationale": "Reflective Practice states the mirror itself in its own body \u2014 same shape, structural and healthy up to a point, then it turns \u2014 but the link only runs from Reflective Practice's side.",
+   "evidence": "\"It is the same shape as [[Drift and Consolidation]]: structural and healthy up to a point.\" \u2014 Reflective Practice.md:98-99",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "relation",
+   "source": "Dialectic",
+   "type": "connects-to",
+   "target": "No Mind Checks Itself",
+   "label": "differently-textured-voice",
+   "rationale": "Dialectic is the palace's own mechanism for bringing a differently-textured mind into contact with a claim \u2014 the exact structural move No Mind Checks Itself argues is load-bearing everywhere. Neither currently names the other.",
+   "evidence": null,
+   "item_id": "Y8"
+  }
+ ]
+}

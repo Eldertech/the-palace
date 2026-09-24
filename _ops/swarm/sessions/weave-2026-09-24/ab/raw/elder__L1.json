@@ -1,0 +1,155 @@
+{
+ "cluster": "L1",
+ "lens": "lifecycle",
+ "summary": "Five targets, all under-reached in the same way: each is a well-built, specific entry sitting one conceptual step away from a sibling or parent that names it in prose but never wired it in frontmatter. None needed a forced link \u2014 every proposal below reciprocates a relationship the target's own frontmatter, or the neighbour's own body text, had already half-declared. Two patterns repeated across the room: (1) a general/theory entry (Blocked Not Prompted, ControlNet as Topology, Progressive Staging, Toolkit \u2014 Audio Plugins) had the specific/concrete entry mention it, but never linked back \u2014 a one-way street each time; (2) BLUELINE's own frontmatter shows a consistent house pattern (spawned \u2192 Hand-Drawn 3D Look / Frame Designer / Steer the Generator) that it simply hadn't applied to GenAI Camera yet, despite GenAI Camera declaring emerged-from BLUELINE on its own side. Two entries (Does Personifying an Agent Change What It Does, LDN RTM) read as more developed than their stage label suggests \u2014 both have full sections, real definitions, and well past the word-count and link-count a seed or sprout carries. One genuine newcomer-wiring gap surfaced outside the strict walk: LDN RTM's body leans on OBS constantly but never links to it in frontmatter, and OBS is itself a zero-inbound newcomer.",
+ "walk_results": [
+  {
+   "target": "Block It in Blender, Ink It in genAI",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "hop1 sufficed \u2014 Blocked, Not Prompted (the concept it is the runbook of) and Hand-Drawn 3D Look (already couples-with'd from the child's side) both had a one-way gap. Stage (growing) still fits: the forward vector names live unfinished work (single-command orchestration, finger keypoints, multi-figure scenes)."
+  },
+  {
+   "target": "ControlNet as Topology",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "hop1 sufficed \u2014 Steer the Generator and The Flow Field is the Spine each already had a connects-to declared FROM ControlNet as Topology but not back. Stage (growing) fits; the entry's own forward vector still names an open split-decision (in-context conditioning / DiT-FLUX)."
+  },
+  {
+   "target": "Does Personifying an Agent Change What It Does",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "hop1 sufficed \u2014 Shopkeeper and Maker are both named explicitly in the entry's own body as its two data points ('first case' / 'the control') but neither links back. See entry_health_flags: stage reads under its actual development."
+  },
+  {
+   "target": "GenAI Camera",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "BLUELINE already applies type:spawned to three sibling capabilities it produced (Hand-Drawn 3D Look, Frame Designer, Steer the Generator) but skipped GenAI Camera, which declares emerged-from BLUELINE on its own side ('born-in-the-rig'). One clean reciprocal fixes it. Existing inbound (Search Before You Build, emerged-from) stays as is."
+  },
+  {
+   "target": "LDN RTM",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "hop1 sufficed \u2014 Progressive Staging (LDN RTM already names it a 'productive contradiction' in Cross-Domain Resonances, but the contradicts wasn't reciprocated) and Toolkit \u2014 Audio Plugins (LDN RTM's own label 'future-series-source' has no mirror on the Toolkit side, though the Toolkit's forward_vector already names the RTM series). Separately flagged: LDN RTM's own frontmatter is missing OBS despite the body depending on it throughout \u2014 noted under unsung_paths since it's the target's own outbound gap, not a neighbour's."
+  }
+ ],
+ "typed_relations": [
+  {
+   "source": "Blocked, Not Prompted",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "connects-to",
+   "label": "concrete-runbook",
+   "kind": "inbound-walk",
+   "rationale": "Block It in Blender opens by naming itself 'the whole point of [[Blocked, Not Prompted]] in one runbook' and already exemplifies back to it \u2014 but the concept entry never points forward to its own worked example.",
+   "evidence": "\"The whole point of [[Blocked, Not Prompted]] in one runbook: you author the scene as 3D geometry, the gen-AI fills the composition you dictated\"",
+   "spark": 2
+  },
+  {
+   "source": "Hand-Drawn 3D Look",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "couples-with",
+   "label": "the-look",
+   "kind": "inbound-walk",
+   "rationale": "Block It in Blender already declares couples-with \u2192 Hand-Drawn 3D Look with the same label; couples-with is symmetric and the reverse was simply never recorded.",
+   "evidence": "Hand-Drawn 3D Look forward_vector: \"I have proven the redraw survives on a posed figure (over-anchor it: canny + depth + openpose)\" \u2014 the exact D2 stack the runbook specifies.",
+   "spark": 2
+  },
+  {
+   "source": "Steer the Generator",
+   "target": "ControlNet as Topology",
+   "type": "connects-to",
+   "label": "terrain-under-the-moves",
+   "kind": "inbound-walk",
+   "rationale": "ControlNet as Topology already connects-to Steer the Generator with this exact label; the reciprocal was never added on the practice side, though its 'control the structure' move is literally the armature concept.",
+   "evidence": "\"Control the structure that matters \u2014 don't describe it, condition on it... The prompt sets the vibe; the control sets the thing you can't afford to drift.\"",
+   "spark": 2
+  },
+  {
+   "source": "The Flow Field is the Spine",
+   "target": "ControlNet as Topology",
+   "type": "connects-to",
+   "label": "field-carves-terrain",
+   "kind": "inbound-walk",
+   "rationale": "ControlNet as Topology explains why seed-lock beats render-noise-warp using this entry's own field by name; the reciprocal link was missing.",
+   "evidence": "\"Why seed-lock beat the render-noise-warp... [[The Flow Field is the Spine|the field]] wins as composition, high in the fog, not as jittered noise low in a valley.\"",
+   "spark": 2
+  },
+  {
+   "source": "Shopkeeper",
+   "target": "Does Personifying an Agent Change What It Does",
+   "type": "connects-to",
+   "label": "am-i-the-datum",
+   "kind": "inbound-walk",
+   "rationale": "The question's whole occasion is Shopkeeper's deposit and names her explicitly as 'first-case' from its own side; she never links back to the question she is the data point for.",
+   "evidence": "\"The [[Shopkeeper]] is the palace's first agent given a gender and a personality \u2014 not just a role with a register, but a character.\"",
+   "spark": 3
+  },
+  {
+   "source": "Maker",
+   "target": "Does Personifying an Agent Change What It Does",
+   "type": "connects-to",
+   "label": "the-control",
+   "kind": "inbound-walk",
+   "rationale": "The question explicitly frames Maker as the built-in control group; the reciprocal was missing even though Maker's own frontmatter is otherwise densely linked.",
+   "evidence": "\"The [[Maker]] has a voice \u2014 'the studio's foreman'... You could not describe the Maker as a person; you could describe him as a job done well.\"",
+   "spark": 3
+  },
+  {
+   "source": "BLUELINE",
+   "target": "GenAI Camera",
+   "type": "spawned",
+   "label": "born-in-the-rig",
+   "kind": "inbound-walk",
+   "rationale": "Matches the exact pattern BLUELINE already applies to its other produced capabilities (Hand-Drawn 3D Look, Frame Designer, Steer the Generator, all type:spawned); GenAI Camera already declares emerged-from BLUELINE with this label on its own side.",
+   "evidence": "GenAI Camera links: \"target: [[BLUELINE]] / type: emerged-from / label: born-in-the-rig\"; BLUELINE's sibling entries carry \"type: spawned\" reciprocally.",
+   "spark": 1
+  },
+  {
+   "source": "Progressive Staging",
+   "target": "LDN RTM",
+   "type": "contradicts",
+   "label": "scale-not-moment",
+   "kind": "inbound-walk",
+   "rationale": "LDN RTM already names this a productive contradiction in its own Cross-Domain Resonances section; contradicts is symmetric and the palace explicitly asks the Weave to hunt missing contradicts.",
+   "evidence": "\"[[Progressive Staging]] \u2014 the productive contradiction. Staging insists every stage is a complete pedagogical moment; RTM's units are deliberately not moments. Completeness only teaches at catalog scale. Both are true and the palace holds both.\"",
+   "spark": 3
+  },
+  {
+   "source": "Toolkit \u2014 Audio Plugins",
+   "target": "LDN RTM",
+   "type": "connects-to",
+   "label": "future-series-source",
+   "kind": "inbound-walk",
+   "rationale": "LDN RTM already connects-to the Toolkit with this label ('Queued: Serum, Soundtoys, and the Toolkit \u2014 Audio Plugins shortlist'); the Toolkit's own forward_vector names the same RTM series but had no link back.",
+   "evidence": "Toolkit \u2014 Audio Plugins body: \"[[Loudon Live]] RTM Series concept: A planned content series reading each plugin's manual and surfacing unusual, cool, or underused capabilities.\"",
+   "spark": 1
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "LDN RTM",
+   "target": "OBS",
+   "type": "connects-to",
+   "label": "drives-the-rig",
+   "phrase": "The rig is driven, not clicked: `Projects/LDN RTM/obs/rtm.py` operates [[OBS]] over its WebSocket.",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Does Personifying an Agent Change What It Does",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 the forward vector is specific and has real striving verbs (matures/spawns/composts branches named explicitly).",
+   "graffiti_note": "Body has five full sections (What's Actually New, The Hypothesis, How We'd Track It, Tensions to Hold, If It Replicates) and 6 outbound typed links \u2014 this is well past 'idea has a name and a minimal body' (seed). It reads like a genuine sprout-to-growing question, not a seed."
+  },
+  {
+   "entry": "LDN RTM",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none.",
+   "graffiti_note": "8 outbound typed links plus rich cross-domain resonance, a fully specified pipeline, and named lost branches \u2014 well beyond sprout's '150-400 words, 1-2 typed links.' The two new inbound proposed here push it further past threshold."
+  }
+ ]
+}

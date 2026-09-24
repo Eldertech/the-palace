@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B5",
+ "tool_side": [
+  {
+   "id": "ComfyUI",
+   "path": "Shop/ComfyUI.md",
+   "stage": null,
+   "inbound": 10
+  },
+  {
+   "id": "Exponential Decay Curvature",
+   "path": "Exponential Decay Curvature.md",
+   "stage": "sprout",
+   "inbound": 3
+  },
+  {
+   "id": "Manim CE",
+   "path": "Shop/Manim CE.md",
+   "stage": null,
+   "inbound": 7
+  },
+  {
+   "id": "Three.js",
+   "path": "Shop/Three.js.md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Tone.js",
+   "path": "Shop/Tone.js.md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Worktree Practice",
+   "path": "Worktree Practice.md",
+   "stage": "growing",
+   "inbound": 0
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Douglas Hofstadter",
+   "path": "People/Douglas Hofstadter.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Epictetus",
+   "path": "People/Epictetus.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Identity Molting",
+   "path": "Identity Molting.md",
+   "stage": "mature",
+   "inbound": 9
+  },
+  {
+   "id": "Quality Manifesto",
+   "path": "Quality Manifesto.md",
+   "stage": "mature",
+   "inbound": 45
+  },
+  {
+   "id": "Stoicism",
+   "path": "Stoicism.md",
+   "stage": "mature",
+   "inbound": 20
+  },
+  {
+   "id": "The Multilinear Self",
+   "path": "The Multilinear Self.md",
+   "stage": "sprout",
+   "inbound": 5
+  }
+ ]
+}

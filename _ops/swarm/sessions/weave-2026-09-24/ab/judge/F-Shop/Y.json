@@ -1,0 +1,66 @@
+{
+ "arm": "Y",
+ "room": "F-Shop",
+ "total_proposals": 6,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Shop/ffmpeg.md",
+   "type": "couples-with",
+   "target": "Shop/OBS.md",
+   "label": "capture-to-batch",
+   "rationale": "OBS already declares couples-with ffmpeg ('capture-to-batch'), and its own Recipes section ('Tail without re-encoding... the batch touches audio only') describes exactly the handoff ffmpeg's Charter promises ('the meeting place where any two Specialists' outputs need to meet'). ffmpeg's own link list is missing OBS despite listing seven other couples-with partners.",
+   "evidence": "OBS: \"Hold an end-card scene for a beat before stopping the recording, rather than padding in [[ffmpeg]]\" \u2014 ffmpeg: no OBS in its links array",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/Maker.md",
+   "type": "connects-to",
+   "target": "Shop/OBS.md",
+   "label": "operated-not-dispatched",
+   "rationale": "OBS is a priority newcomer (0 inbound) whose entire Charter is built around breaking the Maker's dispatch model, and it already links to Maker one-directionally ('operated-not-dispatched'). The reciprocal declaration both raises OBS's inbound count and gives Maker's frontmatter an honest pointer to its one structural exception.",
+   "evidence": "OBS: \"I am the Shop's first Specialist that is operated rather than dispatched\" \u2014 Maker: connects-to Trickster, answers-to, but no link to OBS at all",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/RunPod GPU Backend.md",
+   "type": "connects-to",
+   "target": "Shop/LoRA Trainer.md",
+   "label": "trains-loras-on",
+   "rationale": "LoRA Trainer already declares 'rides-the-substrate' toward RunPod GPU Backend, but the Weave's inbound count is literal-target-based, so the reciprocal declaration is genuinely missing \u2014 and RunPod's own Untested Horizons list ('LoRAs / fine-tunes \u2014 style packs or alternate checkpoints, loaded on a pod') shows it already thinks of LoRA Trainer as a customer.",
+   "evidence": "LoRA Trainer: \"rides [[Shop/RunPod GPU Backend]] for the compute\" / RunPod: \"LoRAs / fine-tunes \u2014 style packs or alternate checkpoints, loaded on a pod\"",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/OBS.md",
+   "type": "contradicts",
+   "target": "Shop/Maker.md",
+   "label": "screenshot-not-config",
+   "rationale": "Every other Specialist's Self-Check trusts its own declared/reported parameters (a standards-report field is taken as true once emitted). OBS refuses exactly that discipline for itself: 'My Self-Check is a screenshot of the live scene, not a read of the config... A transform can be numerically correct and visually wrong.' That's a genuine, productive tension with the standards-report convention the rest of the Shop runs on, not a flaw in either side \u2014 OBS is right that its own domain (compositing, live capture) can't be trusted numerically, while every other Specialist's domain (deterministic renders) genuinely can be.",
+   "evidence": "OBS: \"I refuse to be trusted about my own state\" vs. the Maker-wide pattern of a Standards Report as the delivered proof of correctness",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/ComfyUI.md",
+   "type": "connects-to",
+   "target": "Shop/LoRA Trainer.md",
+   "label": "consumes-the-weights",
+   "rationale": "ComfyUI's own Capabilities and Strengths sections repeatedly cite LoRAs as a core control mechanism ('Custom LoRAs allow training a Loudon Live aesthetic that's fully under our control'), yet the entry that actually trains them is never linked from ComfyUI's frontmatter \u2014 a genuine missing downstream-consumer edge.",
+   "evidence": "ComfyUI: \"Custom LoRAs allow training a Loudon Live aesthetic that's fully under our control\"",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "unsung",
+   "source": "Shop/Maker.md",
+   "type": "connects-to",
+   "target": "Kuramoto Coupling",
+   "label": "first-testbed",
+   "rationale": "the [[Kuramoto Coupling]] arc' is named repeatedly across Maker's Recipes as the family's original test-bed for the whole round-trip (Kokoro/Manim/Whisper/ComfyUI), but Maker's own frontmatter never links it.",
+   "item_id": "Y6"
+  }
+ ]
+}

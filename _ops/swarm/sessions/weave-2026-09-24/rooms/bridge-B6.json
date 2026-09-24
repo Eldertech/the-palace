@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B6",
+ "tool_side": [
+  {
+   "id": "D3.js",
+   "path": "Shop/D3.js.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Depth Anything",
+   "path": "Shop/Depth Anything.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Frequency-Time Explorer",
+   "path": "Projects/Frequency-Time Explorer.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Midjourney",
+   "path": "Shop/Midjourney.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Tract Mirror",
+   "path": "Projects/Tract Mirror.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Web Audio Worklet",
+   "path": "Shop/Web Audio Worklet.md",
+   "stage": null,
+   "inbound": 4
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Found \u2194 Made",
+   "path": "Found \u2194 Made.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Lateral Access",
+   "path": "Lateral Access.md",
+   "stage": "growing",
+   "inbound": 24
+  },
+  {
+   "id": "Leibniz",
+   "path": "Leibniz.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Rick Rubin",
+   "path": "People/Rick Rubin.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "The Drift",
+   "path": "The Drift.md",
+   "stage": "growing",
+   "inbound": 11
+  },
+  {
+   "id": "Zoom Out to the Structure",
+   "path": "Zoom Out to the Structure.md",
+   "stage": "sprout",
+   "inbound": 1
+  }
+ ]
+}

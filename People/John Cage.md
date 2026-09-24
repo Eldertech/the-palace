@@ -46,6 +46,9 @@ links:
   - target: "[[The Blindspot Is the Surprise Fuel]]"
     type: exemplifies
     label: no-intention-is-policed
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # John Cage

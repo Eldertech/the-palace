@@ -46,6 +46,9 @@ links:
   - target: "[[Blood Compressor]]"
     type: contradicts
     label: causal-loop-vs-windowless-monad
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Leibniz

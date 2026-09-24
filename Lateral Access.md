@@ -33,6 +33,8 @@ links:
   - target: "[[Identity Molting]]"
     type: enables
     label: access-through-shell
+  - target: "[[Creative Coach]]"
+    type: connects-to
 forward_vector: "I want to practice and develop productive oblique methods in the vigorous furtherance of science — helping all palace citizens work together toward their common joyful future."
 ---
 

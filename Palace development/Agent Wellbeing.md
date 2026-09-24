@@ -39,6 +39,11 @@ links:
   - target: "[[Palace Orchestrator]]"
     type: connects-to
     label: health-score-source
+  - target: "[[Closing Well]]"
+    type: connects-to
+  - target: "[[LaMa]]"
+    type: mirrors
+    label: plausible-not-true
 forward_vector: "I am becoming the palace's conscience for all agent-facing design decisions — the entry that gets read before any new ceremony is designed, any new worker prompt is written, any new context injection is configured. I generate conditions that indicate a worker is operating with joy."
 ---
 

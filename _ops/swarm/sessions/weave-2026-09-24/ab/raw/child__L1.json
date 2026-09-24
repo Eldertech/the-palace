@@ -1,0 +1,210 @@
+{
+ "cluster": "L1",
+ "lens": "lifecycle",
+ "summary": "This room is five under-linked entries in the BLUELINE/genAI-pipeline neighborhood plus one Shop-agent question, and the walk mostly found real, close-by relatives that simply hadn't been wired yet \u2014 not a single proposal here required reaching. The strongest thing the walk surfaced is that \"Block It in Blender, Ink It in genAI\" (0 inbound) and \"GenAI Camera\" (1 inbound) are the same pipeline told twice \u2014 one offline/batch, one live/streaming \u2014 and nothing pointed between them. The rest of the finds are entries that already talk *about* their neighbor in prose or forward_vector (Figure Rig's \"downstream recipe,\" Shopkeeper as the literal subject of the personification question, Loudon Live Post-producer explicitly deferred-to by name) but never closed the loop in frontmatter. Depth over coverage held: several hop1/hop2 neighbours (Frame Designer, Kuramoto Coupling, The Scroll, Loudon Live, Quality Manifesto) were read and genuinely had nothing to add \u2014 already-saturated hubs whose existing symmetric links already cover the relation, so no forced additions there.",
+ "members_read": [
+  "Block It in Blender, Ink It in genAI.md",
+  "ControlNet as Topology.md",
+  "Does Personifying an Agent Change What It Does.md",
+  "GenAI Camera.md",
+  "Projects/LDN RTM.md",
+  "Projects/BLUELINE/BLUELINE.md",
+  "Shop/Blender.md",
+  "Blocked, Not Prompted.md",
+  "Shop/ComfyUI.md",
+  "Shop/Figure Rig.md",
+  "Hand-Drawn 3D Look.md",
+  "Remnants in Depth.md",
+  "Steer the Generator.md",
+  "Kuramoto Coupling.md",
+  "The Flow Field is the Spine.md",
+  "Frame Designer.md",
+  "Adopt the Craft, Author the Seam.md",
+  "Shop/Shopkeeper.md",
+  "Shop/Maker.md",
+  "_ops/Pages as Agents.md",
+  "Palace development/Palace Enchantment.md",
+  "Palace development/Four Pillars of Enchanted Agency.md",
+  "Diversity of Thought in Many-Agent Systems.md",
+  "Search Before You Build.md",
+  "The Scroll.md",
+  "Shop/OBS.md",
+  "Loudon Live.md",
+  "Progressive Staging.md",
+  "Loudon Live Post-producer.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "BLUELINE",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "spawned",
+   "label": "the-runbook",
+   "kind": "inbound-walk",
+   "rationale": "BLUELINE already spawned Hand-Drawn 3D Look, Frame Designer, and Steer the Generator (all in its own frontmatter) \u2014 the runbook is the same kind of thing, and the runbook's own frontmatter already declares emerged-from BLUELINE. The reverse side was simply never written.",
+   "evidence": "\"Proven in [[BLUELINE]]; the scripts live in Projects/BLUELINE/proofs/blender-handdrawn/\" (Block It..., line 43)",
+   "spark": 2
+  },
+  {
+   "source": "Figure Rig",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "connects-to",
+   "label": "runbook-for-my-payoff",
+   "kind": "inbound-walk",
+   "rationale": "Figure Rig's own charter names its 'downstream recipe (the payoff)' as exactly the D2 redraw (canny 0.30 + depth 0.60 + openpose 0.70, denoise 0.92) that the runbook writes up step by step \u2014 a direct genuine overlap, not a forced one.",
+   "evidence": "\"downstream recipe (the payoff): the D2 redraw \u2014 img2img over the ink plate, anchored canny 0.30 + depth 0.60 + openpose 0.70\" (Figure Rig.md:41)",
+   "spark": 2
+  },
+  {
+   "source": "Hand-Drawn 3D Look",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "couples-with",
+   "label": "the-look",
+   "kind": "inbound-walk",
+   "rationale": "Reciprocal of the runbook's own couples-with link to Hand-Drawn 3D Look labeled 'the-look' \u2014 a symmetric type declared only from one side.",
+   "spark": 1
+  },
+  {
+   "source": "Adopt the Craft, Author the Seam",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "connects-to",
+   "label": "worked-instance",
+   "kind": "inbound-walk",
+   "rationale": "Adopt the Craft's own forward_vector says it wants to 'make Blocked, Not Prompted my worked instance' \u2014 the runbook is the more concrete worked instance of exactly that seam-authoring principle (established Blender + established ComfyUI, only the conditioning-emission authored new).",
+   "evidence": "\"I want to be applied past BLUELINE and to make Blocked, Not Prompted my worked instance.\" (Adopt the Craft...md:12)",
+   "spark": 2
+  },
+  {
+   "source": "GenAI Camera",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "mirrors",
+   "label": "batch-vs-live",
+   "kind": "bridge",
+   "rationale": "Both entries are the identical four-move pipeline (block in Blender, emit registered canny/depth/pose conditioning from one camera, redraw via ControlNet stack at high denoise, composite layers) \u2014 one written as an offline batch runbook, the other as a live streaming camera. Nothing linked them despite each appearing in the other's own walk neighbourhood.",
+   "evidence": "\"I am [[Blocked, Not Prompted]] taken to its conclusion: the camera *is* the conditioning\" (GenAI Camera.md:39-40) vs. \"The four moves\" runbook (Block It...md:45-56)",
+   "spark": 4,
+   "classify": "link"
+  },
+  {
+   "source": "Steer the Generator",
+   "target": "ControlNet as Topology",
+   "type": "connects-to",
+   "label": "control-move-is-this-theory",
+   "kind": "inbound-walk",
+   "rationale": "Steer the Generator's move 1 ('Control the structure that matters \u2014 don't describe it, condition on it') is a plain-language restatement of ControlNet-as-armature. No existing link between them despite the direct conceptual overlap.",
+   "evidence": "\"Control the structure that matters \u2014 don't describe it, condition on it.\" (Steer the Generator.md:43) vs. \"ControlNet is an armature.\" (ControlNet as Topology.md:42)",
+   "spark": 2
+  },
+  {
+   "source": "Block It in Blender, Ink It in genAI",
+   "target": "ControlNet as Topology",
+   "type": "deepens",
+   "label": "runbook-elaborates-theory",
+   "kind": "inbound-walk",
+   "rationale": "The runbook's D2 anchoring weights (canny 0.30 + depth 0.60 + openpose 0.70) are a worked elaboration of ControlNet as Topology's canyon-carving theory; the theory is the ground, the runbook the concrete case. Direction follows the deepens invariant (elaborator points back to ground).",
+   "spark": 2
+  },
+  {
+   "source": "Shopkeeper",
+   "target": "Does Personifying an Agent Change What It Does",
+   "type": "connects-to",
+   "label": "first-case",
+   "kind": "inbound-walk",
+   "rationale": "The question entry names Shopkeeper as its 'first datum' and 'first case' in its own frontmatter label \u2014 but Shopkeeper's own links list has no return path, despite the question being literally about her.",
+   "evidence": "\"The [[Shopkeeper]] is the palace's first agent given a gender and a personality...\" (Does Personifying...md:33)",
+   "spark": 2
+  },
+  {
+   "source": "Maker",
+   "target": "Does Personifying an Agent Change What It Does",
+   "type": "connects-to",
+   "label": "the-control",
+   "kind": "inbound-walk",
+   "rationale": "The question entry designates Maker as its experimental control ('the control was built for free... a natural A/B already sitting in the palace') \u2014 Maker's own frontmatter doesn't know it plays this role.",
+   "evidence": "\"The [[Maker]] (role-voice, no gender) and the [[Shopkeeper]] (temperament, gendered) are both Shop agents doing adjacent work \u2014 a natural A/B\" (Does Personifying...md:49)",
+   "spark": 2
+  },
+  {
+   "source": "Diversity of Thought in Many-Agent Systems",
+   "target": "Does Personifying an Agent Change What It Does",
+   "type": "connects-to",
+   "label": "temperament-as-diversity",
+   "kind": "inbound-walk",
+   "rationale": "The question entry states that if personification replicates, 'temperament becomes a real axis of diversity between agents' and bears directly on this sibling question \u2014 a close, load-bearing sibling relationship with no link back.",
+   "evidence": "\"which bears directly on the [[Diversity of Thought in Many-Agent Systems]] question\" (Does Personifying...md:59)",
+   "spark": 2
+  },
+  {
+   "source": "Loudon Live Post-producer",
+   "target": "LDN RTM",
+   "type": "connects-to",
+   "label": "first-real-job",
+   "kind": "inbound-walk",
+   "rationale": "LDN RTM names Post-producer as its enabled destination and explicitly holds a design seam open there by name ('\u00a7 Deferred') \u2014 Post-producer's own frontmatter has no return link despite being directly addressed.",
+   "evidence": "\"The role has no palace entry yet \u2014 it earns one when it has run real takes... The seam is held open at [[Loudon Live Post-producer]] \u00a7 Deferred.\" (LDN RTM.md:82)",
+   "spark": 2
+  }
+ ],
+ "bridge_findings": [
+  {
+   "tool": "GenAI Camera",
+   "thought": "reads as a live camera pipeline distinct from the offline BLUELINE render bench",
+   "shared_structure": "identical four-move pipeline (block \u2192 registered conditioning from one camera \u2192 high-denoise redraw via ControlNet stack \u2192 composite) \u2014 one batch-scripted, one streaming",
+   "spark": 4,
+   "classify": "link",
+   "quote_tool": "\"I am [[Blocked, Not Prompted]] taken to its conclusion: the camera *is* the conditioning.\" (GenAI Camera.md:39-40)",
+   "quote_thought": "\"The whole point of [[Blocked, Not Prompted]] in one runbook: you author the scene as 3D geometry, the gen-AI fills the composition you dictated\" (Block It...md:43)",
+   "fidelity_test": "Both entries, read side by side, describe the same D2/D2-style anchoring stack and the same gotcha class (depth flat unless bracketed, pose vs depth costume dial) \u2014 the overlap is load-bearing, not surface-level.",
+   "proposed_type": "mirrors"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "LDN RTM",
+   "target": "OBS",
+   "type": "connects-to",
+   "phrase": "operates [[OBS]] over its WebSocket",
+   "structurally_significant": false,
+   "label": "minor \u2014 already covered by OBS's own reciprocal connects-to (\"first-job\") declared in Shop/OBS.md:24-26; LDN RTM's own frontmatter just doesn't hold the return copy. Low priority since connects-to is symmetric and the relation already exists on the other side."
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Block It in Blender, Ink It in genAI",
+   "disposition": "wired",
+   "inbound_proposed": 5,
+   "note": "Stage (growing) and forward_vector still fit \u2014 dense, concrete runbook with a live gotcha index, not generic. No face needed; it's a practice entry, not a persona. The real finding is the missing mirror link to GenAI Camera (its live-camera twin) plus three neighbours (BLUELINE, Figure Rig, Adopt the Craft) that already talk about it without linking to it."
+  },
+  {
+   "target": "ControlNet as Topology",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Stage/vector fit well \u2014 the entry's own forward_vector already flags its split-point (in-context conditioning) honestly. Already has 2 inbound (BLUELINE connects-to, GenAI Camera exemplifies); Steer the Generator and Block It in Blender were the two genuine misses. No face needed \u2014 a concept entry, theory register."
+  },
+  {
+   "target": "Does Personifying an Agent Change What It Does",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Stage (seed) may be worth a second look \u2014 the entry is fully fleshed (hypothesis, tracking method, three tensions, maturation criteria) and reads closer to sprout, but it's a question-type entry that stays open by design until the Shopkeeper data comes in, so I'm flagging rather than proposing a change. Vector fits. No face \u2014 it's a question, not an agent."
+  },
+  {
+   "target": "GenAI Camera",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Already correctly has 1 inbound (Search Before You Build, emerged-from \u2014 the depth-flat miss that birthed that practice). The new find is the mirrors bridge to Block It in Blender. Stage/vector fit: dense proof log, forward_vector concrete (4090 real-time graduation), no drift."
+  },
+  {
+   "target": "LDN RTM",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Already correctly has 1 inbound (OBS, connects-to \"first-job\"). Loudon Live Post-producer was the genuine miss \u2014 LDN RTM names it by name and defers a seam to it. Stage (sprout) fits \u2014 pipeline is built but the pilot chunk hasn't shipped yet per the entry's own closing paragraph."
+  }
+ ],
+ "entry_health_flags": [],
+ "coherence_findings": [],
+ "merge_candidates": [],
+ "demote_candidates": [],
+ "compost_candidates": [],
+ "open_question_resolutions": [],
+ "flag_responses": [],
+ "synthesis_spawn_flag": []
+}

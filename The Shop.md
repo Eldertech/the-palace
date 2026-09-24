@@ -59,6 +59,12 @@ links:
   - target: "[[Tier Vocabulary Glossary]]"
     type: spawned
     label: tier-vocabulary
+  - target: "[[Agent Toolbox]]"
+    type: spawned
+    label: ported-toolbox-technique
+  - target: "[[The Dichotomy of Control]]"
+    type: exemplifies
+    label: refuse-and-route
 ---
 
 # The Shop

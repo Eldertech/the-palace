@@ -1,0 +1,175 @@
+{
+ "lens": "folder",
+ "id": "F-People",
+ "family": "People",
+ "members": [
+  {
+   "id": "Agnes Martin",
+   "path": "People/Agnes Martin.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Andrei Tarkovsky",
+   "path": "People/Andrei Tarkovsky.md",
+   "stage": "composting",
+   "inbound": 0
+  },
+  {
+   "id": "Andy Goldsworthy",
+   "path": "People/Andy Goldsworthy.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Annie Dillard",
+   "path": "People/Annie Dillard.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Brian Eno",
+   "path": "People/Brian Eno.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "Buckminster Fuller",
+   "path": "People/Buckminster Fuller.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Christopher Alexander",
+   "path": "People/Christopher Alexander.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Donella Meadows",
+   "path": "People/Donella Meadows.md",
+   "stage": "seed",
+   "inbound": 12
+  },
+  {
+   "id": "Douglas Hofstadter",
+   "path": "People/Douglas Hofstadter.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Epictetus",
+   "path": "People/Epictetus.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "George Nakashima",
+   "path": "People/George Nakashima.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Iain McGilchrist",
+   "path": "People/Iain McGilchrist.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "James Turrell",
+   "path": "People/James Turrell.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "John Cage",
+   "path": "People/John Cage.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Julia Cameron",
+   "path": "People/Julia Cameron.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Lao Tzu",
+   "path": "People/Lao Tzu.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "Marcus Aurelius",
+   "path": "People/Marcus Aurelius.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "Martin Buber",
+   "path": "People/Martin Buber.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Martin Heidegger",
+   "path": "People/Martin Heidegger.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Natalie Goldberg",
+   "path": "People/Natalie Goldberg.md",
+   "stage": "composting",
+   "inbound": 2
+  },
+  {
+   "id": "Pauline Oliveros",
+   "path": "People/Pauline Oliveros.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "R. Murray Schafer",
+   "path": "People/R. Murray Schafer.md",
+   "stage": "composting",
+   "inbound": 1
+  },
+  {
+   "id": "Rick Rubin",
+   "path": "People/Rick Rubin.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "Sam Maloof",
+   "path": "People/Sam Maloof.md",
+   "stage": "composting",
+   "inbound": 2
+  },
+  {
+   "id": "Seneca",
+   "path": "People/Seneca.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Shunryu Suzuki",
+   "path": "People/Shunryu Suzuki.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "Terrence Malick",
+   "path": "People/Terrence Malick.md",
+   "stage": "composting",
+   "inbound": 0
+  },
+  {
+   "id": "Yasujir\u014d Ozu",
+   "path": "People/Yasujir\u014d Ozu.md",
+   "stage": "seed",
+   "inbound": 1
+  }
+ ]
+}

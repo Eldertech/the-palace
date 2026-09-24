@@ -52,6 +52,8 @@ links:
     label: asset-library
   - target: "[[Loudon Live]]"
     type: connects-to
+  - target: "[[Synthesis Topologies]]"
+    type: exemplifies
 ---
 # 2D Torus Wavetable Synthesizer
 

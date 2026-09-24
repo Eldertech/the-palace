@@ -1,0 +1,168 @@
+{
+ "cluster": "C3.1",
+ "lens": "community",
+ "summary": "This room is BLUELINE's own dense neighborhood \u2014 the genAI comic-authoring pipeline (Adopt the Craft, GenAI Camera, ControlNet as Topology, Frame Designer, Animate the Background, Blocked Not Prompted) plus the Shop specialists it leans on (Blender, ComfyUI, Depth Anything, SAM, LaMa, RunPod GPU Backend) and a couple of adjacent Loudon Live threads (LDN RTM, OBS, Loudon's Toolkit). It has clearly been through a careful weave pass before: nearly every plausible cross-domain link I tried to force (Flocking\u2194ControlNet as Topology via \"both mirror Kuramoto,\" Review Layer\u2194GenAI Camera's internal shootouts, LDN RTM\u2194Loudon's Toolkit) failed the swap-in fidelity test \u2014 generic, not specific \u2014 so I'm reporting those as null. The real yield here wasn't cross-domain synthesis; it was **unsung paths inside Frame Designer and Animate the Background**, two long, tool-heavy entries whose prose names specific Shop specialists that never made it into frontmatter \u2014 a wiring gap left over from when the detailed field notes and the N-layer generalization were written/folded in. Frame Designer's \"Field notes \u2014 rich-first/stylize-last, on RunPod\" section is literally about RunPod GPU Backend and never links it; it also names Shop/ComfyUI, Shop/Blender, assume multi-agent, and The Commons in body prose with no frontmatter link. Animate the Background's \"What N-layer separation actually needs\" section names Depth Anything and SAM as the specific tools that do/don't work for its Order and Segment steps, again unlinked. All five/seven of these are genuine, quote-anchored, and one (assume multi-agent) is a priority newcomer this weave wants inbound links for. The four true newcomers seated in this room (GenAI Camera, ControlNet as Topology, LDN RTM, OBS) turned out to already be well threaded to their roommates \u2014 no further wiring needed there.",
+ "members_read": [
+  "Frame Designer.md",
+  "Animate the Background.md (grep + context)",
+  "GenAI Camera.md",
+  "ControlNet as Topology.md",
+  "Projects/LDN RTM.md",
+  "Shop/OBS.md",
+  "Tool Builder.md",
+  "Shop/Maker.md (partial)",
+  "Review Layer.md",
+  "Loudon's Toolkit.md",
+  "Shop/Depth Anything.md",
+  "Line-Art Layer Decomposition.md",
+  "room file rooms/community-C3.1.json",
+  "new-entries-block.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Frame Designer",
+   "target": "Shop/RunPod GPU Backend",
+   "type": "connects-to",
+   "rationale": "Frame Designer's whole 'Field notes \u2014 rich-first/stylize-last, on RunPod' section runs the pipeline on a rented pod and documents a real cost-safety gotcha there, but never links RunPod GPU Backend in frontmatter (confirmed absent both directions in the room file).",
+   "kind": "new",
+   "evidence": "\"Follow-on that re-ordered render\u2192composite\u2192style and moved generation to a cloud GPU.\" / \"Cost-safety gotcha that bit hard: RunPod's create can return HTTP 500 yet still create the pod \u2014 a naive retry-on-500 leaked 11 pods\"",
+   "spark": 2
+  },
+  {
+   "source": "Frame Designer",
+   "target": "Shop/ComfyUI",
+   "type": "connects-to",
+   "rationale": "The render leg is explicitly routed through ComfyUI by name in body prose, but ComfyUI isn't in Frame Designer's frontmatter (confirmed absent both directions).",
+   "kind": "new",
+   "evidence": "\"Seam-B conditioned render (`render_shot`: OpenPose+depth \u2192 locked pen-flow via [[Shop/ComfyUI]])\"",
+   "spark": 1
+  },
+  {
+   "source": "Frame Designer",
+   "target": "Shop/Blender",
+   "type": "connects-to",
+   "rationale": "The staging leg's primary method is named-in-body as living on Blender; unlinked in frontmatter.",
+   "kind": "new",
+   "evidence": "\"Authored Blender blocking (`newstory_bench`, on [[Shop/Blender]]) | clean single / dynamic poses, exact camera\"",
+   "spark": 1
+  },
+  {
+   "source": "Frame Designer",
+   "target": "assume multi-agent",
+   "type": "connects-to",
+   "rationale": "assume multi-agent is a priority newcomer (reached_by 6). Frame Designer's own RunPod gotcha names it as the reason cleanup must be namespace-scoped \u2014 an already-bracketed body link with no frontmatter counterpart.",
+   "kind": "newcomer",
+   "evidence": "\"never an account-wide `GET /pods \u2192 DELETE all`, which strangles other agents' pods ([[assume multi-agent]])\"",
+   "spark": 2
+  },
+  {
+   "source": "Frame Designer",
+   "target": "The Commons",
+   "type": "connects-to",
+   "rationale": "Frame Designer names the specific fix as now living in The Commons's RunpodPodProvider, but the entry it names isn't a room member and isn't linked in frontmatter either direction.",
+   "kind": "new",
+   "evidence": "\"Fix (now in the Commons [[The Commons|RunpodPodProvider]]): recover the pod by name after any non-200, never retry-leak\"",
+   "spark": 1
+  },
+  {
+   "source": "Animate the Background",
+   "target": "Shop/Depth Anything",
+   "type": "connects-to",
+   "rationale": "Depth Anything is named as the specific tool that solves the Order step for N-layer separation \u2014 a load-bearing, specific claim (fidelity test: swapping in SAM or LaMa here would be false, since the very next lines say those fail at Order). No frontmatter link either direction.",
+   "kind": "new",
+   "evidence": "\"Order \u2014 who occludes whom. **Depth Anything V2** wins on the drawing itself \u2014 recovers front-to-back order, hands back a clean figure silhouette for free, and depth-banding gives a free coarse 3-cel split.\"",
+   "spark": 2
+  },
+  {
+   "source": "Animate the Background",
+   "target": "Shop/SAM",
+   "type": "connects-to",
+   "rationale": "SAM is discussed twice with a real verdict \u2014 it fails directly on line-art but works once the drawing is converted to a flat-cel domain \u2014 a specific, load-bearing technical relationship, not a generic mention. No frontmatter link either direction.",
+   "kind": "new",
+   "evidence": "\"Photo-SAM (mobile + ViT-B), GrabCut, and morphology all **fail** on line-art objects; the figure comes out best from a **keypoint** mask, not SAM.\" ... \"both photoreal and flat-cel conversions make SAM segment cleanly where raw line-art gave garbage\"",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Frame Designer",
+   "target": "Shop/RunPod GPU Backend",
+   "type": "connects-to",
+   "phrase": "moved generation to a cloud GPU / RunPod's create can return HTTP 500 yet still create the pod",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Frame Designer",
+   "target": "Shop/ComfyUI",
+   "type": "connects-to",
+   "phrase": "locked pen-flow via [[Shop/ComfyUI]]",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Frame Designer",
+   "target": "Shop/Blender",
+   "type": "connects-to",
+   "phrase": "Authored Blender blocking (`newstory_bench`, on [[Shop/Blender]])",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Frame Designer",
+   "target": "assume multi-agent",
+   "type": "connects-to",
+   "phrase": "strangles other agents' pods ([[assume multi-agent]])",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Frame Designer",
+   "target": "The Commons",
+   "type": "connects-to",
+   "phrase": "now in the Commons [[The Commons|RunpodPodProvider]]",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Animate the Background",
+   "target": "Shop/Depth Anything",
+   "type": "connects-to",
+   "phrase": "Depth Anything V2 wins on the drawing itself \u2014 recovers front-to-back order",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Animate the Background",
+   "target": "Shop/SAM",
+   "type": "connects-to",
+   "phrase": "the figure comes out best from a keypoint mask, not SAM",
+   "structurally_significant": false
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "GenAI Camera",
+   "disposition": "nothing-genuine",
+   "note": "Newcomer, reached_by 3, but already reciprocally linked to ControlNet as Topology, Blocked Not Prompted, BLUELINE, Steer the Generator. No new genuine partner found in this room."
+  },
+  {
+   "target": "ControlNet as Topology",
+   "disposition": "nothing-genuine",
+   "note": "Newcomer, reached_by 5, already deepens Blocked Not Prompted and mirrors Kuramoto Coupling; tried Flocking as a shared-Kuramoto-mirror partner but it fails the fidelity test (too generic \u2014 many entries mirror Kuramoto)."
+  },
+  {
+   "target": "LDN RTM",
+   "disposition": "nothing-genuine",
+   "note": "Newcomer, reached_by 5, already well-linked (Loudon Live, Autodidact Polymaths, Progressive Staging, Loudon Live Post-producer, OBS via reciprocal connects-to). Tried Loudon's Toolkit as a partner via shared Toolkit \u2014 Audio Plugins target; too generic, dropped."
+  },
+  {
+   "target": "OBS",
+   "disposition": "nothing-genuine",
+   "note": "Newcomer, reached_by 6, already connects to LDN RTM, Loudon Live, Maker, ffmpeg, Loudon Live Design System, Closing Well. Its 'breaks the Shop's model' point is already carried by the OBS\u2192Maker connects-to link labeled operated-not-dispatched."
+  }
+ ],
+ "flag_responses": [],
+ "bridge_findings": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "coherence_findings": [],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": []
+}

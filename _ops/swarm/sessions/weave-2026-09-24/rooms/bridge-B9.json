@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B9",
+ "tool_side": [
+  {
+   "id": "Frame Designer",
+   "path": "Frame Designer.md",
+   "stage": null,
+   "inbound": 11
+  },
+  {
+   "id": "Neural Granular Synthesis",
+   "path": "Projects/Neural Granular Synthesis.md",
+   "stage": "growing",
+   "inbound": 12
+  },
+  {
+   "id": "Observable Plot",
+   "path": "Shop/Observable Plot.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "RNBO codebox~ smith",
+   "path": "Shop/RNBO codebox~ smith.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "The Scroll",
+   "path": "The Scroll.md",
+   "stage": "sprout",
+   "inbound": 5
+  },
+  {
+   "id": "p5.js",
+   "path": "Shop/p5.js.md",
+   "stage": null,
+   "inbound": 6
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Annie Dillard",
+   "path": "People/Annie Dillard.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "James Turrell",
+   "path": "People/James Turrell.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Martin Buber",
+   "path": "People/Martin Buber.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Songlines",
+   "path": "Songlines.md",
+   "stage": "fruiting",
+   "inbound": 4
+  },
+  {
+   "id": "Source Library",
+   "path": "Source Library.md",
+   "stage": "growing",
+   "inbound": 29
+  },
+  {
+   "id": "zhuangzi-epictetus-confucius-on-the-self",
+   "path": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+   "stage": "mature",
+   "inbound": 4
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "arm": "Y",
+ "room": "C2.2",
+ "total_proposals": 29,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Self-Describing Knowledge Module",
+   "type": "connects-to",
+   "target": "SCHEMA",
+   "label": "the-tbox",
+   "rationale": "Unsung path: SCHEMA is named repeatedly as the module's own TBox/seed (\"CLAUDE.md and SCHEMA are the seed\") and anchors the entire 'What Must Travel' table, yet never appears in frontmatter.",
+   "evidence": "\"CLAUDE.md and [[SCHEMA]] are the seed; the entries are the growth.\"",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "unsung",
+   "source": "SUBSTRATE",
+   "type": "connects-to",
+   "target": "Loudon Live",
+   "label": null,
+   "rationale": "the palace's stated public destination is the single node not participating in its own relational logic",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "unsung",
+   "source": "ROSETTA",
+   "type": "connects-to",
+   "target": "Skills Are Enchantable Pages",
+   "label": null,
+   "rationale": "where the realization that a palace page and a harness skill are the same object is recorded",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "The Reader's Context Window",
+   "type": "couples-with",
+   "target": "The Palace Voice",
+   "label": "order-and-word",
+   "rationale": "Reader's Context Window already names itself \"the structural sibling of Speak Like a Person, Log Like a Protocol\" \u2014 words vs. order. The Palace Voice is the words-discipline for the whole palace; Reader's Context Window is the missing order-discipline. Neither points at the other.",
+   "evidence": "\"That principle governs the register of the words on a surface; this one governs their sequence and their count. Together they are the two laws of a palace front-end.\"",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "Tier Vocabulary Glossary",
+   "type": "mirrors",
+   "target": "Progressive Staging",
+   "label": "staged-complexity",
+   "rationale": "Both name the same pattern \u2014 commit to a tier/stage only after it proves itself, each stage/tier complete and usable on its own, never retroactive \u2014 from opposite folders (Shop dispatch vocabulary vs. instrument-design method) and never cite each other.",
+   "evidence": "\"Sketch is calibration... Study is the working draft... Piece is the deliverable\" (Tier Vocabulary Glossary) vs \"every stage is a complete, playable, useful artifact... Additive complexity, never retroactive\" (Progressive Staging)",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "Swarm Weave",
+   "type": "connects-to",
+   "target": "Oblique Portrait",
+   "label": "the-anti-lens",
+   "rationale": "Unsung path, minor: Swarm Weave names Oblique Portrait as the Cage/Eno precedent for the oblique lens but doesn't link it.",
+   "evidence": "\"a chance cover with no axis at all \u2014 a Cage/Eno move ([[Oblique Portrait]], the go oblique Enrichment trigger).\"",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "unsung",
+   "source": "Project Stewardship System",
+   "type": "connects-to",
+   "target": "Talking Keyboard",
+   "label": null,
+   "rationale": "The pronunciation bug in [[Talking Keyboard]]... showed this clearly",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "relation",
+   "source": "Progressive Staging",
+   "type": "contradicts",
+   "target": "Symbiotic Skills",
+   "label": "staged-design-vs-organic-growth",
+   "rationale": "Progressive Staging is the palace's confident method for staged design (works when 'the domain has natural layers of complexity'). Symbiotic Skills' own six-week archaeology found the palace's actual growth did the opposite of staged: commit 1 was already 27 dense files, the predicted Node\u2192Edge\u2192Typed Edge sequence never happened observably, and growth was six *overlapping* stages, not additive ones. Productive tension: does progressive staging generalize past engineered artifacts to knowledge-organism growth, or is organic growth structurally exempt from it?",
+   "evidence": "Progressive Staging: \"It doesn't work when the domain is irreducibly complex.\" Symbiotic Skills: \"The palace did not start as a node... The Node \u2192 Edge \u2192 Typed Edge \u2192 Network developmental stages happened, but they happened off-camera.\"",
+   "item_id": "Y8"
+  }
+ ]
+}

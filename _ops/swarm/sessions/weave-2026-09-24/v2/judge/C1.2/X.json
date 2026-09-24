@@ -1,0 +1,26 @@
+{
+ "arm": "X",
+ "room": "C1.2",
+ "total_proposals": 2,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Neural Granular Synthesis \u2014 Control-Vocabulary Math (control-vocabulary-math)",
+   "type": "connects-to",
+   "target": "Signal-Rate CV Architecture",
+   "label": "control-layer-siblings",
+   "rationale": "Both entries formalize the exact same instrument's control layer (the Action Potential Oscillator / neural synthesis suite) from complementary angles: Signal-Rate CV Architecture is the architectural discipline (every input a per-sample CV jack, no control-rate parameters); control-vocabulary-math is the statistical math that turns the resulting continuous population into '4-5 smooth, performable knobs' (r, K, sigma_threshold, mean firing rate). Neither currently points at the other, though both point at Action Potential Oscillator/Kuramoto Coupling independently. control-vocabulary-math is currently reached_by 0 in this room \u2014 this is a genuine, needed inbound link, not a courtesy one.",
+   "evidence": "'This document formalizes the layer that sits *on top* of that engine: the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs.' (control-vocabulary-math) / 'The design principle that every input in the neural synthesis suite... operates at signal rate. No control-rate parameters. Every input is a CV jack.' (Signal-Rate CV Architecture)",
+   "item_id": "X1"
+  },
+  {
+   "kind": "bridge",
+   "source": "ControlNet as Topology",
+   "type": "mirrors \u2014 same pattern (underdetermined-substrate + named decision-point), different material (crystal-physics audio vs. diffusion-model image).",
+   "target": "A September newcomer (reached_by 5) about diffusion-model steering, framed as sculpting: a physical/geometric armature (ControlNet) carves a canyon the base probability terrain never held, and the designer chooses how tight a canyon to carve (depth pins the surface, pose frees it \u2014 'choose your conditioner by how tight a canyon you want').",
+   "rationale": "The Metaphor Stretch names the identical pattern in a totally different domain: boundary-crossing instrument design, where the source physics (phonon dispersion, neural firing) gives 'ratios and tendencies but not a playable instrument,' and the designer makes explicit, named Decision Points (Frequency Anchor, Rendering Resolution, Decay Scaling, Fidelity Claim) about how much of the physics to honor. Both entries insist this is not a failure of fidelity but the actual act of design \u2014 a substrate underdetermines the render, and the gap is where craft lives.",
+   "evidence": "'CFG reweights valleys that already exist; ControlNet carves a new canyon the base terrain never held... choose your conditioner by how tight a canyon you want.' || 'The physics is never silent at this point. It still constrains. But what it constrains is shape and tendency, not absolute pitch, not number of voices, not decay time... Those choices are not failures of fidelity \u2014 they are the act of instrument building.'",
+   "item_id": "X2"
+  }
+ ]
+}

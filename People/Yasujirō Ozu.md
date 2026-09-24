@@ -49,6 +49,9 @@ links:
   - target: "[[Iain McGilchrist]]"
     type: connects-to
     label: attention-without-seizure
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Yasujirō Ozu

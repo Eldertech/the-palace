@@ -1,0 +1,81 @@
+{
+ "arm": "X",
+ "room": "B5",
+ "total_proposals": 15,
+ "sample": [
+  {
+   "kind": "bridge",
+   "source": "Worktree Practice",
+   "type": "mirrors",
+   "target": "The Multilinear Self",
+   "rationale": "Both are architectures for genuine simultaneous multiplicity \u2014 many live branches, many live projections \u2014 held together by one small conserved anchor (the trunk / the floor) that every branch or projection answers back to, without collapsing the multiplicity into one.",
+   "evidence": "a swarm of isolated hands, one convergent trunk... canon and coordination always write to the trunk (the primary, on main); in-progress work lives where it lives. (Worktree Practice.md, forward_vector and \u00a7 How the ceremonies live here) || a person who exists in many states at once, and \u2014 because we all move through time one moment at a time \u2014 can only be met as one of them at a time... What makes every projection recognizably the same person is a small conserved nature \u2014 the floor. (The Multilinear Self.md, opening and \u00a7 The floor that keeps it one)",
+   "item_id": "X1"
+  },
+  {
+   "kind": "bridge",
+   "source": "ComfyUI",
+   "type": "exemplifies",
+   "target": "Stoicism",
+   "rationale": "Both sort a task into what the actor can actuate and certify (up to it) and what belongs to someone else's judgment (not up to it), and name that boundary honestly instead of overclaiming.",
+   "evidence": "I cannot self-verify aesthetic quality or palette match. Those are the Maker's call. (Shop/ComfyUI.md \u00a7 Self-Check) || A palace steward that 'names what it could not verify' is practicing Stoic honesty \u2014 owning its chosen responses (the verification it did) and refusing to claim authority over outcomes it cannot control. (Stoicism.md \u00a7 Lens on the Technical Work)",
+   "item_id": "X2"
+  },
+  {
+   "kind": "bridge",
+   "source": "Exponential Decay Curvature",
+   "type": "mirrors",
+   "target": "Douglas Hofstadter",
+   "rationale": "Both insist a real cross-domain claim is a structural isomorphism, not a surface resemblance. Exponential Decay Curvature earns its own entry precisely because the envelope and the audio-rate waveform are the *same equation* read at different rates, not two things that merely feel alike \u2014 exactly Hofstadter's test for what separates a real analogy from a metaphor.",
+   "evidence": "This is the structural mirror worth preserving: the soft-knee compressor dissolves its hard-knee singularity by the same trick... Two unrelated audio problems, one move: a singularity is usually a sign you are looking at a family from the wrong coordinate. (Exponential Decay Curvature.md \u00a7 The straight line is the hard case) || 'Electron orbitals are like planetary orbits' is a structural mapping, imperfect but real. Hofstadter's analogies are the second kind... not 'mixing is like cooking' because both feel similar, but the claim that mixing and cooking share the same constraint. Same skeleton, different flesh. (Douglas Hofstadter.md, opening)",
+   "item_id": "X3"
+  },
+  {
+   "kind": "unsung",
+   "source": "Worktree Practice",
+   "type": "connects-to",
+   "target": "Epictetus",
+   "label": "prohairesis-named-not-linked",
+   "rationale": "The practice draws the Stoic line \u2014 act within your worktree (prohairesis), converge on the trunk (the shared fortuna of canon) only deliberately.",
+   "item_id": "X4"
+  },
+  {
+   "kind": "bridge",
+   "source": "ComfyUI",
+   "type": "mirrors",
+   "target": "Douglas Hofstadter",
+   "rationale": "Both entries stage the identical trade: choose the legible, locally-owned, byte-reproducible system (workflow JSON + seed + checkpoint you can read and diff) over the higher-ceiling but opaque one (Midjourney's weights; the statistical models Hofstadter distrusted) \u2014 and both name the cost of that choice explicitly rather than pretending it away.",
+   "evidence": "Aesthetic ceiling is lower than Midjourney for editorial / atmospheric mood... Workflow as code: graphs commit to git, diffs are readable, history is preserved. (Shop/ComfyUI.md \u00a7 Limits, \u00a7 Strengths) || His whole aesthetic \u2014 elegance, transparency, you can see how the trick is done \u2014 is exactly what GEB celebrates. And it may be precisely what blinded him: intelligence arrived inelegantly, illegibly, in a form where no one... can fully see how it works. (Douglas Hofstadter.md \u00a7 Where he can't see)",
+   "item_id": "X5"
+  },
+  {
+   "kind": "relation",
+   "source": "Stoicism.md",
+   "type": "contradicts",
+   "target": "Zoom Out to the Structure.md",
+   "label": "zoom-direction-inverted",
+   "rationale": "Both are literally the same 'zoom out' move, run in opposite directions: Stoic altitude shrinks a local concern to dissolve false urgency, while Zoom Out to the Structure inflates a local fix into a structure worth building. A productive inversion, not a simple mirror \u2014 flagged for whoever owns the philosophy/practice neighborhood, since it wasn't this room's assigned pairing but surfaced while checking a newcomer.",
+   "evidence": "the cosmic zoom-out resizes every concern... altitude from which a stuck local concern is resized by seeing the whole. / a small fix, looked at squarely, is often a missing structure asking to be built \u2014 the bug isn't the bug, it's the visible edge of an absence.",
+   "item_id": "X6"
+  },
+  {
+   "kind": "bridge",
+   "source": "Manim CE",
+   "type": "mirrors",
+   "target": "Douglas Hofstadter",
+   "rationale": "Manim occupies the positive pole of the exact aesthetic Hofstadter names as both his life's commitment and his blind spot: small, hand-authored Python, fully legible, byte-deterministic, nothing hidden.",
+   "evidence": "Code is the source of truth \u2014 version-controllable, diffable, reviewable... Renders are deterministic given the same .py and Manim version. (Shop/Manim CE.md \u00a7 Strengths) || small, hand-crafted programs \u2014 Copycat, Metacat, Tabletop... Elegant, legible, comprehensible: you can watch exactly how they work. Remember that word, legible \u2014 it is the hinge of the whole story. (Douglas Hofstadter.md \u00a7 The life that shaped the thought)",
+   "item_id": "X7"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/ComfyUI.md",
+   "type": "exemplifies",
+   "target": "Stoicism.md",
+   "label": "self-check-as-dichotomy",
+   "rationale": "ComfyUI's Self-Check explicitly declines authority over what it can't verify ('those are the Maker's call'), a live instance of the agent-ethic Stoicism's own body already generalizes but never points at.",
+   "evidence": "I cannot self-verify aesthetic quality or palette match. / A palace steward that 'names what it could not verify' is practicing Stoic honesty.",
+   "item_id": "X8"
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+{
+ "arm": "X",
+ "room": "B9",
+ "total_proposals": 10,
+ "sample": [
+  {
+   "kind": "bridge",
+   "source": "Projects/Neural Granular Synthesis.md",
+   "type": "mirrors",
+   "target": "People/James Turrell.md",
+   "rationale": "Strip away the discrete, individually-meaningless signal (a spike, an edge) and what remains \u2014 an aggregate field property \u2014 becomes the actual object of perception/synthesis.",
+   "evidence": "These are not parameters of individual neurons. They are parameters of the population as a statistical field. || The Ganzfeld \u2014 'complete field' \u2014 is the other move: uniform colored light with no edges, nothing for the eye to grab. The eye, built to find edges, loosens, and light starts reading as substance you're inside of.",
+   "item_id": "X1"
+  },
+  {
+   "kind": "unsung",
+   "source": "Shop/Observable Plot.md",
+   "type": "connects-to",
+   "target": "Flocking \u2014 Maker's Comparison Recommendation",
+   "label": null,
+   "rationale": "See [[Flocking \u2014 Maker's Comparison Recommendation]] addendum.",
+   "item_id": "X2"
+  },
+  {
+   "kind": "bridge",
+   "source": "Shop/Observable Plot.md",
+   "type": "connects-to",
+   "target": "Source Library.md",
+   "rationale": "A curated roster where every member has an explicit test for belonging and an explicit boundary \u2014 deferring outward by name when a job/influence belongs to a neighbor instead of trying to be everything.",
+   "evidence": "I refuse jobs that want custom interactive web viz with bespoke interactions and force layouts \u2014 those route to D3... I refuse static publication-only output \u2014 that's Matplotlib's lane... I am for fast-to-finished analytical charts with sensible defaults. || Not included: Every influence ever encountered. Included: Sources that recur across themes, inform teaching, or enable cross-domain thinking... Every source earns its place by enabling pattern recognition across domains.",
+   "item_id": "X3"
+  },
+  {
+   "kind": "bridge",
+   "source": "The Scroll.md",
+   "type": "connects-to",
+   "target": "People/Martin Buber.md",
+   "rationale": "Both refuse to let a living, ongoing relation or process calcify into a fixed, dead description \u2014 the truth is preserved only through continual re-encounter or regeneration, never by capturing it once and treating the capture as current.",
+   "evidence": "computed from the board, the steward's runtime, the entry's frontmatter and git, so it cannot lie when the steward sleeps; that was the failure of the plan.md read-model it replaced... regenerated on every look, never hand-edited. || every Thou must relapse into an It the instant it is named, analyzed, or used... [the meeting] cannot be held, taught, or made into a method.",
+   "item_id": "X4"
+  },
+  {
+   "kind": "bridge",
+   "source": "Projects/Neural Granular Synthesis.md",
+   "type": "mirrors",
+   "target": "Songlines.md",
+   "rationale": "Neither entry locates meaning/timbre/place in any single constituent unit \u2014 both claim it is constituted relationally, only legible as an aggregate pattern or a traversal, never at a point.",
+   "evidence": "A single neuron's spike is an event, a dice roll. It tells you almost nothing. But a population's aggregate statistics... are stable, predictable, and generative... The magic is in the population, not the grain. || You cannot locate 'the meaning' of a concept at a point any more than you can locate 'the country' at a coordinate. Both are constituted through traversal... A songline is not a map. A map represents terrain. A songline enacts terrain.",
+   "item_id": "X5"
+  },
+  {
+   "kind": "bridge",
+   "source": "Frame Designer.md",
+   "type": "connects-to",
+   "target": "People/Annie Dillard.md",
+   "rationale": "Two modes of attention/staging held in permanent tension rather than resolved \u2014 one deliberately composed with an instrument (analytic, exact, narrow), one received from what the generator/world offers (rich, natural, harder to control).",
+   "evidence": "Authored Blender blocking... clean single / dynamic poses, exact camera... fails at multi-figure, extreme foreshortening | Generate\u2192extract... invented multi-character & dynamics... fails at lying/occluded figures. || the difference between the two ways of seeing is the difference between walking with and without a camera.",
+   "item_id": "X6"
+  },
+  {
+   "kind": "unsung",
+   "source": "The Scroll.md",
+   "type": "connects-to",
+   "target": "BBS Design System",
+   "label": null,
+   "rationale": "the [[BBS Design System]] carve-out",
+   "item_id": "X7"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/Observable Plot.md",
+   "type": "connects-to",
+   "target": "Source Library.md",
+   "label": "curated-roster",
+   "rationale": "Both are curated rosters governed by an explicit membership test and explicit deferral to a better-suited neighbor rather than trying to cover everything.",
+   "evidence": "'I refuse jobs that want custom interactive web viz... those route to D3' / 'Every source earns its place by enabling pattern recognition across domains'",
+   "item_id": "X8"
+  }
+ ]
+}

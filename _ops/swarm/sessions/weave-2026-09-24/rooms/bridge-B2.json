@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B2",
+ "tool_side": [
+  {
+   "id": "2D Wavetable Catalog",
+   "path": "Projects/2D Torus Wavetable Synthesizer/2D Wavetable Catalog.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "BLUELINE",
+   "path": "Projects/BLUELINE/BLUELINE.md",
+   "stage": "growing",
+   "inbound": 20
+  },
+  {
+   "id": "LaMa",
+   "path": "Shop/LaMa.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Quadratic Interpolation in DSP",
+   "path": "Quadratic Interpolation in DSP.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "SAM",
+   "path": "Shop/SAM.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Synth Archetypes",
+   "path": "Synth Archetypes.md",
+   "stage": "seed",
+   "inbound": 2
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Agent Wellbeing",
+   "path": "Palace development/Agent Wellbeing.md",
+   "stage": "growing",
+   "inbound": 10
+  },
+  {
+   "id": "Christopher Alexander",
+   "path": "People/Christopher Alexander.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Lao Tzu",
+   "path": "People/Lao Tzu.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "Palace Philosophies",
+   "path": "Palace Philosophies.md",
+   "stage": "mature",
+   "inbound": 18
+  },
+  {
+   "id": "Reflective Practice",
+   "path": "Reflective Practice.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "The Palace Voice",
+   "path": "The Palace Voice.md",
+   "stage": "growing",
+   "inbound": 1
+  }
+ ]
+}

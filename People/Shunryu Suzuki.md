@@ -43,6 +43,9 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of
     label: bridge-builder
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Shunryu Suzuki

@@ -1,0 +1,154 @@
+{
+ "cluster": "C2.2",
+ "lens": "community",
+ "members_read": [
+  "Progressive Staging.md",
+  "Palace development/Project Stewardship System.md",
+  "ROSETTA.md",
+  "Palace development/Resonant Link Labels.md",
+  "STIGMERGY.md",
+  "SUBSTRATE.md",
+  "Palace development/Self-Describing Knowledge Module.md",
+  "Palace development/Skills Are Enchantable Pages.md",
+  "Palace development/The Palace Speaks.md",
+  "Palace development/Swarm Weave.md",
+  "Palace development/Two Batons, One Board.md",
+  "The Substrate Drifts.md",
+  "Trickster.md",
+  "Palace development/Symbiotic Skills.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "ROSETTA",
+   "target": "Two Batons, One Board",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "worked-example",
+   "rationale": "ROSETTA \u00a74c's palace-to-harness dictionary names Two Batons, One Board directly as the worked example of the 'steward = scheduled agent' row, but carries no frontmatter link to it in either direction. A fidelity test holds: swap in a different room member and the sentence stops being true \u2014 this is the specific case ROSETTA cites.",
+   "evidence": "\"the trigger is a cadence and the executor is the orchestrator; each cycle is one baton handoff. See [[Two Batons, One Board]], [[Project Stewardship System]].\" \u2014 ROSETTA.md \u00a74c",
+   "spark": 2
+  },
+  {
+   "source": "ROSETTA",
+   "target": "Project Stewardship System",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "worked-example",
+   "rationale": "Same sentence in ROSETTA \u00a74c names Project Stewardship System as the concrete instance of its steward/cron-agent row, and separately as the exemplar of the Machinery/Content Split described in \u00a74c's closing paragraph. No frontmatter link exists between them despite the meta entry using it as its own worked example twice.",
+   "evidence": "\"The [[Project Stewardship System]] is its most built-out instance; the [[Concierge]] is the same shape at a one-shot tempo.\" \u2014 ROSETTA.md \u00a74c",
+   "spark": 2
+  },
+  {
+   "source": "Self-Describing Knowledge Module",
+   "target": "Pages as Agents",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "grounds-the-plurality-claim",
+   "rationale": "SDKM's central risk argument (many voices from one author) leans on a specific empirical result from Pages as Agents as its evidence, then pivots to No Mind Checks Itself (already linked) to argue the result doesn't settle the question. The citation is load-bearing to the argument, not decorative, and there is no frontmatter link either direction.",
+   "evidence": "\"[[Pages as Agents]] ran the test: three readers, given only the answers, matched fifteen of fifteen back to the page that wrote them, against a one-in-five baseline.\" \u2014 Self-Describing Knowledge Module.md",
+   "spark": 2
+  },
+  {
+   "source": "Project Stewardship System",
+   "target": "Skills Are Enchantable Pages",
+   "type": "exemplifies",
+   "kind": "new",
+   "label": "the-most-built-out-instance",
+   "rationale": "SAEP already carries inbound exemplifies links from Concierge and Palace Orchestrator ('the family' \u2014 same object at different trigger/executor cells). Its own body names Project Stewardship System as 'the most built-out harness around an entry we have,' the instance every dispatchable organ converges on \u2014 the same relationship SAEP already records for the other two, just missing here. Fidelity test holds: swap in a different room member and 'the most built-out harness' stops reading true.",
+   "evidence": "\"the [[Project Stewardship System]] shows *how the palace wraps one* \u2014 it is the most built-out harness around an entry we have, and every dispatchable organ converges on its shape\" \u2014 Skills Are Enchantable Pages.md",
+   "spark": 2
+  },
+  {
+   "source": "Skills Are Enchantable Pages",
+   "target": "Two Batons, One Board",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "baton-as-loop",
+   "rationale": "SAEP's 'steward is an impulse looped' line is a direct restatement of Two Batons' baton/steward atom (baton = impulse, steward = the impulse looped, artifact updated in place never deleted). SAEP cites it explicitly as the source of that framing, with no frontmatter link either way.",
+   "evidence": "\"a steward is that impulse looped: each cycle is one baton handoff, the artifact updated in place, never deleted ([[Two Batons, One Board]])\" \u2014 Skills Are Enchantable Pages.md",
+   "spark": 2
+  },
+  {
+   "source": "Swarm Weave",
+   "target": "assume multi-agent",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "philosophy-rederived",
+   "rationale": "Newcomer under-reached (2). Swarm Weave's own account of what the first oblique run taught names assume multi-agent by title as the case where a tool re-derived a philosophical pattern (the Stoic dichotomy of control) independently \u2014 direct evidence for Swarm Weave's own claim about the oblique lens's 'one mind, two vocabularies' finds. No frontmatter link exists; the fidelity test holds, since this is the specific example Swarm Weave picked to prove its point.",
+   "evidence": "\"(`assume multi-agent` = the Stoic dichotomy of control; [[Registry Pattern]] = wu wei; [[BBS Blackboard]] = the striatum's reward trace \u2014 the tools were re-deriving the philosophy, deposited as [[The Practice Rediscovers Its Philosophy]].)\" \u2014 Swarm Weave.md \u00a7 What the first oblique run taught",
+   "spark": 3
+  },
+  {
+   "source": "Self-Describing Knowledge Module",
+   "target": "ROSETTA",
+   "type": "contradicts",
+   "kind": "contradiction",
+   "current_type": "enables (SDKM \u2192 ROSETTA, existing)",
+   "label": "disagreeing-translation-tables",
+   "rationale": "The pair is already linked (SDKM enables ROSETTA) and that link is not wrong \u2014 SDKM's self-description work does feed ROSETTA's translation layer. But SDKM's own Open Questions section names a separate, specific, unresolved tension worth its own edge: the two pages' cross-tradition translation tables actively disagree on four points (module vs. system-of-modules as the transferable unit; the missing Ceremony Contract row; read-only vs. read+write ceremony; Entry Type/SCHEMA collapsed vs. split) \u2014 and SDKM says explicitly that resolving the disagreement is 'prior to Proof 1, not parallel to it.' That is a productive tension distinct from the enables relationship already on record, and per SCHEMA \u00a74 two entries can carry more than one typed edge for different facets of the relationship. Proposing to add contradicts alongside the existing enables, not to replace it.",
+   "evidence": "\"The convergence table above and [[ROSETTA]]'s disagree, and the disagreements land where transfer is decided... Which table is authoritative is unsettled, and the differences are not litter: each one is a claim about what the pattern *is*.\" \u2014 Self-Describing Knowledge Module.md \u00a7 Open Questions",
+   "spark": 3
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "ROSETTA",
+   "target": "Two Batons, One Board",
+   "type": "connects-to",
+   "label": "worked-example",
+   "phrase": "See [[Two Batons, One Board]], [[Project Stewardship System]].",
+   "structurally_significant": false
+  },
+  {
+   "entry": "ROSETTA",
+   "target": "Project Stewardship System",
+   "type": "connects-to",
+   "label": "worked-example",
+   "phrase": "The [[Project Stewardship System]] is its most built-out instance",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Self-Describing Knowledge Module",
+   "target": "Pages as Agents",
+   "type": "connects-to",
+   "label": "grounds-the-plurality-claim",
+   "phrase": "[[Pages as Agents]] ran the test: three readers, given only the answers, matched fifteen of fifteen",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Skills Are Enchantable Pages",
+   "target": "Project Stewardship System",
+   "type": "exemplifies",
+   "label": "the-most-built-out-instance",
+   "phrase": "the [[Project Stewardship System]] shows *how the palace wraps one*",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Skills Are Enchantable Pages",
+   "target": "Two Batons, One Board",
+   "type": "connects-to",
+   "label": "baton-as-loop",
+   "phrase": "the artifact updated in place, never deleted ([[Two Batons, One Board]])",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Swarm Weave",
+   "target": "assume multi-agent",
+   "type": "connects-to",
+   "label": "philosophy-rederived",
+   "phrase": "`assume multi-agent` = the Stoic dichotomy of control",
+   "structurally_significant": false
+  }
+ ],
+ "bridge_findings": [],
+ "coherence_findings": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": [],
+ "walk_results": [],
+ "flag_responses": [],
+ "summary": "This room is the palace's own operating-infrastructure neighborhood \u2014 STIGMERGY, SUBSTRATE, ROSETTA, Project Stewardship System, Swarm Weave, Trickster, and the SDKM/Skills-Are-Enchantable-Pages self-description family \u2014 and it is already densely and mostly-correctly cross-linked; several of the biggest entries (STIGMERGY, SUBSTRATE, Trickster, Symbiotic Skills) had nothing missing on a close read. The real yield was in the meta/translation layer, where pages that describe the palace to itself (ROSETTA, Self-Describing Knowledge Module, Skills Are Enchantable Pages) cite each other's worked examples by name in prose without ever wiring the link \u2014 a pattern worth noting for future weaves: self-description entries are exactly the ones most likely to name a sibling as evidence and then forget to link it, because the citation feels like it's \"just an example\" rather than a relationship. The most interesting single find is that SDKM's own Open Questions section already flags an unresolved disagreement with ROSETTA's translation table and calls it \"prior to\" the page's whole reason for existing \u2014 that's a contradiction sitting in plain sight, unwired, on a pair that already carries a different (correct) link type. One newcomer link landed: Swarm Weave names `assume multi-agent` by title as its own evidence for the oblique-lens finding, giving that under-reached entry a genuine, specific inbound path rather than a generous one."
+}

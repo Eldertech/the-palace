@@ -1,0 +1,125 @@
+{
+ "cluster": "C1.3",
+ "lens": "community",
+ "summary": "C1.3 is the torus/waveguide DSP-theory cluster \u2014 already one of the most densely self-linked neighborhoods in the palace (Dissolutions holds seven members by member-of alone, and 2D Torus Wavetable Synthesizer has 28 inbound). The folders are not blind to much inside the room; almost every plausible internal pairing is already typed, often correctly as mirrors/couples-with rather than the lazier connects-to. What the community cut actually surfaced was outside the room: two newcomers this cluster should be reaching for. control-vocabulary-math (zero inbound, Neural Granular Synthesis project) formalizes the Kuramoto order parameter r and critical coupling K_c as a performable control surface for a spiking-neuron population \u2014 which is a literal, worked answer to the \"invent control vocabularies for high-dimensional instrument spaces\" problem that Infeasible DSP Now Shippable and Rank-N Lattice Analysis both name and leave open, and it shares its synchronization-bifurcation math with the Kuramoto type-3 warp Three Kinds of Warp formalizes for the torus. And Synthesis Topologies \u2014 thin, seed-stage, easy to overlook \u2014 turns out to share its exact \"fixed-skeleton-variable-flesh\" framing with the newcomer ControlNet as Topology's \"armature\" language, one audio, one image-diffusion, same underlying move. Inside the room, the one genuine new find was structural rather than cross-domain: Dissolutions' own forward vector wonders whether it needs a \"Refusals\" sibling \u2014 entries that look mergeable but structurally aren't \u2014 and Three Kinds of Warp's 1D obstruction theorem (no amount of clever type-1 warping ever produces inharmonicity) is exactly that case, sitting right next to Dissolutions with no link between them.",
+ "members_read": [
+  "1D Wavetable Scanning.md (frontmatter only)",
+  "Projects/2D Torus Wavetable Synthesizer.md",
+  "Projects/2D Torus Wavetable Synthesizer/2D Wavetable Catalog.md (frontmatter only)",
+  "Chebyshev is Fourier.md",
+  "DSP in Looping Dimensions.md",
+  "Dispersion Table.md",
+  "Dissolutions.md",
+  "Exponential Decay Curvature.md (frontmatter only)",
+  "Infeasible DSP Now Shippable.md",
+  "Linear Predictive Coding.md",
+  "Phase Reduction.md",
+  "Rank-N Lattice Analysis.md",
+  "Synthesis Topologies.md",
+  "Three Kinds of Warp.md",
+  "Shop/Three.js.md (frontmatter only)",
+  "Projects/2D Torus Wavetable Synthesizer/Torus Warping Catalog.md (frontmatter only)",
+  "Projects/Tract Mirror.md",
+  "Volterra Kernels and the Torus.md",
+  "Projects/Waveguide Synthesizer.md",
+  "Wavetable Scanner.md (frontmatter only)",
+  "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+  "ControlNet as Topology.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "control-vocabulary-math",
+   "target": "Infeasible DSP Now Shippable",
+   "type": "connects-to",
+   "label": "worked-control-vocabulary",
+   "kind": "newcomer",
+   "direction_note": "symmetric",
+   "rationale": "Infeasible DSP Now Shippable names 'control-surface design is the hardest problem in the suite' and its own Forward Vectors say 'invent control vocabularies for high-dimensional instrument spaces \u2014 the concrete form of the hardest problem.' control-vocabulary-math is a worked instance of exactly that: it collapses a 16-64-neuron Kuramoto population into four performable knobs (K, sigma_threshold, frequency spread, drive) with r as the single closing-the-loop readout.",
+   "evidence": "Infeasible DSP Now Shippable: 'control-surface design is the hardest problem in the suite... Invent control vocabularies for high-dimensional instrument spaces \u2014 the concrete form of the hardest problem.' control-vocabulary-math: 'This document formalizes the layer that sits on top of that engine: the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs.'",
+   "spark": 4
+  },
+  {
+   "source": "control-vocabulary-math",
+   "target": "Three Kinds of Warp",
+   "type": "mirrors",
+   "label": "sync-bifurcation-as-knob",
+   "kind": "newcomer",
+   "rationale": "Both formalize the Kuramoto synchronization threshold as a designed musical control, not just a physics fact \u2014 one on a torus's two phasors, one on a population of spiking neurons. control-vocabulary-math's K_c ('below it the crowd drifts, above it synchrony switches on') is the same object as Three Kinds of Warp's type-3 lock/drift bifurcation ('a snap, not a fade'), same math, different material.",
+   "evidence": "control-vocabulary-math: 'The critical coupling K_c is the threshold where r lifts off zero \u2014 below it the crowd drifts, above it synchrony switches on.' Three Kinds of Warp: 'Below the synchronization threshold the rotation numbers shift... above threshold they lock... Bends the lattice itself... The Kuramoto coupling f1 = K sin(phi2-phi1) is the canonical instance.'",
+   "spark": 3,
+   "fidelity_test": "Swapped against DSP in Looping Dimensions (also names a Kuramoto bifurcation) \u2014 the reason still reads true there too, but Three Kinds of Warp is the room member that formalizes the type-3 typology with the explicit lock/drift language control-vocabulary-math's K_c matches most precisely, so it is the sharper target; kept both as candidates but chose the tighter one to avoid link-spreading a single newcomer across the whole cluster."
+  },
+  {
+   "source": "Synthesis Topologies",
+   "target": "ControlNet as Topology",
+   "type": "mirrors",
+   "label": "fixed-skeleton-free-surface",
+   "kind": "bridge",
+   "rationale": "Synthesis Topologies names 'fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces)' as one of its topology in-betweens. ControlNet as Topology names ControlNet itself as 'an armature... the wire skeleton a figure is built around \u2014 it fixes the pose before a single detail exists.' Same organizing move \u2014 a fixed structural skeleton constrains a free surface of variation \u2014 in two completely different domains (audio synth architecture, diffusion-model conditioning).",
+   "evidence": "Synthesis Topologies: 'Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces).' ControlNet as Topology: 'ControlNet is an armature. In clay modeling the armature is the wire skeleton a figure is built around \u2014 it fixes the pose before a single detail exists.'",
+   "spark": 4,
+   "fidelity_test": "Swapped against Torus Warping Catalog or DSP in Looping Dimensions \u2014 neither carries the fixed-skeleton/free-surface language; the rhyme is specific to these two entries' own vocabulary, not generic."
+  },
+  {
+   "source": "Three Kinds of Warp",
+   "target": "Dissolutions",
+   "type": "connects-to",
+   "label": "resists-dissolution",
+   "kind": "new",
+   "rationale": "Dissolutions' own Forward Vectors ask whether it needs a 'Refusals' sibling \u2014 'entries that resist dissolution despite looking like they should merge.' Three Kinds of Warp's 1D obstruction theorem is exactly that structural refusal: no amount of clever type-1 phase reshaping (the move every commercial wavetable warp makes) can ever become type-2 or type-3 and produce inharmonicity \u2014 two things that look mergeable (more sophisticated warping = eventually inharmonic) and provably are not.",
+   "evidence": "Dissolutions: 'Does the catalogue eventually grow a sibling \u2014 Refusals, the entries that resist dissolution despite looking like they should merge? Two things that keep being mistaken for one and shouldn't be?' Three Kinds of Warp: 'The theorem holds for any warp at all... Every commercial wavetable warp redistributes energy among the harmonic slots; none of them moves a partial between slots... Structurally cannot produce inharmonicity.'",
+   "spark": 3
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "2D Torus Wavetable Synthesizer",
+   "target": "README \u2014 RNBO Prototype",
+   "type": "connects-to",
+   "phrase": "Awaiting Loudon to assemble the parent Max patch and run the five-step verification protocol in [[README \u2014 RNBO Prototype]]",
+   "structurally_significant": true,
+   "label": "Named twice in the Status and Open Decisions sections as the actual acceptance-test protocol for the RNBO prototype (a load-bearing next step for the whole project), but carries no frontmatter link back."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Dissolutions",
+   "question": "Does the catalogue eventually grow a sibling \u2014 Refusals, the entries that resist dissolution despite looking like they should merge?",
+   "verdict": "candidate, not full resolution",
+   "by_entry": "Three Kinds of Warp",
+   "proposed_action": "Write the connects-to link proposed above (Three Kinds of Warp -> Dissolutions, label resists-dissolution) now; whether a full Refusals hub is worth spawning is a call for Loudon, not this pass \u2014 one instance doesn't make a catalogue."
+  }
+ ],
+ "bridge_findings": [
+  {
+   "tool": "control-vocabulary-math",
+   "thought": "Infeasible DSP Now Shippable",
+   "shared_structure": "Both are answers to the same named problem: reducing a high-dimensional, mathematically-tractable-but-previously-unplayable DSP object to a small, performable control vocabulary.",
+   "spark": 4,
+   "classify": "link",
+   "quote_tool": "the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs",
+   "quote_thought": "control-surface design is the hardest problem in the suite... Invent control vocabularies for high-dimensional instrument spaces",
+   "fidelity_test": "Specific to the two entries that explicitly name the control-vocabulary problem as unsolved; does not read true against other room members.",
+   "proposed_type": "connects-to"
+  },
+  {
+   "tool": "Synthesis Topologies",
+   "thought": "ControlNet as Topology",
+   "shared_structure": "A fixed structural skeleton (torus surface architecture / ControlNet armature) constrains a free surface of variation (surface content / rendered detail) \u2014 same design pattern, audio synthesis vs. diffusion conditioning.",
+   "spark": 4,
+   "classify": "link",
+   "quote_tool": "Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces)",
+   "quote_thought": "ControlNet is an armature... it fixes the pose before a single detail exists",
+   "fidelity_test": "Passes \u2014 the fixed-skeleton/free-surface vocabulary is specific to these two entries, not generic to the room.",
+   "proposed_type": "mirrors"
+  }
+ ],
+ "coherence_findings": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "flag_responses": [],
+ "walk_results": [],
+ "synthesis_spawn_flag": []
+}

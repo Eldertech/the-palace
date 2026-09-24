@@ -7,7 +7,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-05
-stage: seed
+stage: growing
 status: active
 forward_vector: "I want to become a playable browser instrument whose interface IS the physics — a string you can see vibrate, pluck, and damp, with the traveling wave on screen being the same delay-line state you hear. I want to prove that a digital waveguide rendered in 3D teaches the synthesis better than any knob panel could, and to demand the question every Loudon Live instrument eventually demands: does this earn a stage, or is it a test bed?"
 links:
@@ -40,6 +40,8 @@ links:
     label: delay-is-spectrum
   - target: "[[Particle Synthesis]]"
     type: connects-to
+  - target: "[[Dispersion Table]]"
+    type: enables
 ---
 
 # Waveguide Synthesizer

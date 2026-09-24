@@ -1,0 +1,309 @@
+{
+ "cluster": "C1.2",
+ "lens": "community",
+ "summary": "This room is mostly synthesis-and-physics projects (delays, wavetables, string physics, quantum/photonic analogs) plus a few standalone concepts (State Machine, Wallpaper Groups). The connections already in place are dense within sub-families (Phoneme Choir/Talking Keyboard, Retrospective/Semantic/Slime Mold Delay, the wavetable-torus cluster) but there are real gaps crossing those sub-families: Piano String Inharmonicity never links to Portamento's guitar-bend tool even though they describe the identical tension-reduces-inharmonicity phenomenon, and never links to The Curve Is the Material even though that entry already calls Piano String Inharmonicity its \"canonical instance\" and directly answers Piano String's own open question about B as a real-time compositional parameter. Photonic Time Crystals and Quantum Synthesizer independently invoke vacuum-fluctuation amplification without ever meeting each other, and Photonic Time Crystals never meets Quantum Synthesizer's geometry-cousin Wallpaper Groups either, despite both hinging on \"boundary conditions constrain a discrete mode spectrum.\" SMPTE LTC's own body calls timecode a \"trickster convention\" twice without linking the palace's Trickster entry that Retrospective Delay and Semantic Delay already treat as load-bearing \u2014 an easy, genuine, unforced link. Wavetable Space as Torus and The Curve Is the Material each carry several named sub-sections (Tonnetz, Berry Phase, Orbital Resonance, Quasicrystals, Spectroscopy, Phonon Dispersion) that never made it into frontmatter \u2014 not passing mentions but full headers, so they're real unsung paths, not clutter. On the \"cluttered\" question: the one clean subtraction is What Claim Does Scientific Sonification Make?, which is thin because it is, almost word for word, an elaboration of a Decision Point The Metaphor Stretch already names (Fidelity Claim) \u2014 it reads better as that entry's fourth case study than as its own seed. Nothing else in the room is thin enough or neighborless enough to compost or demote; the room is well-tended, just under-linked across its sub-families.",
+ "members_read": [
+  "Projects/Phoneme Choir.md",
+  "Photonic Time Crystals.md",
+  "Projects/Piano String Inharmonicity.md",
+  "Playful Interface Design.md",
+  "Projects/Portamento and Physical Pitch Modeling.md",
+  "Projects/Preset Oracle.md",
+  "Quadratic Interpolation in DSP.md",
+  "Projects/Quantum Synthesizer.md",
+  "Projects/Retrospective Delay.md",
+  "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+  "SMPTE LTC.md",
+  "Projects/Semantic Delay.md",
+  "Projects/Shepard Tone Synthesizer.md",
+  "Projects/Shimmer Cloud.md",
+  "Signal-Rate CV Architecture.md",
+  "Projects/Slime Mold Delay.md",
+  "State Machine.md",
+  "Projects/Talking Keyboard.md",
+  "The Curve Is the Material.md",
+  "The Metaphor Stretch.md",
+  "Projects/Wallpaper Groups.md",
+  "Wavetable Space as Torus.md",
+  "Wavetable Synthesis -- Research & Higher-Dimensional Design.md",
+  "What Claim Does Scientific Sonification Make?.md",
+  "Projects/Neural Granular Synthesis/control-vocabulary-math.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Piano String Inharmonicity",
+   "target": "Portamento and Physical Pitch Modeling",
+   "type": "connects-to",
+   "label": "guitar-bend-shared-artifact",
+   "kind": "new",
+   "spark": 4,
+   "evidence": "\"When you bend a piano string...tension increases...Inharmonicity decreases\" (Piano String Inharmonicity) vs. Portamento's tool 6: \"Guitar String Bend Physics \u2014 Finger bends a string; tension increases, inharmonicity decreases. See partials compress toward ideal harmonic positions.\"",
+   "rationale": "Both entries independently describe and, in Portamento's case, already built an interactive tool for the exact same physical relationship (tension up \u2192 B down \u2192 partials compress). Neither entry links the other; this is a genuine shared-artifact gap, not a forced analogy."
+  },
+  {
+   "source": "Piano String Inharmonicity",
+   "target": "The Curve Is the Material",
+   "type": "connects-to",
+   "label": "answers-compositional-question",
+   "kind": "new",
+   "spark": 3,
+   "evidence": "Piano String's open question: \"Could inharmonicity be used as a compositional parameter? Varying B over time...\" \u2014 The Curve Is the Material already answers this: \"B is modulated at audio or LFO rate with one scalar... Real-time B modulation is maximally efficient.\"",
+   "rationale": "The Curve Is the Material already links here labeled 'canonical-instance', but the reverse link is missing, and it would resolve a standing open question rather than merely gesture at it."
+  },
+  {
+   "source": "Photonic Time Crystals",
+   "target": "Quantum Synthesizer",
+   "type": "mirrors",
+   "label": "vacuum-fluctuation-as-audio-source",
+   "kind": "new",
+   "spark": 4,
+   "evidence": "Photonic Time Crystals: \"Amplification from vacuum noise. Bandgap-frequency light grows exponentially from any seed, including the quantum vacuum... turns vacuum fluctuations into measurable signals.\" Quantum Synthesizer: \"the vacuum is not empty; it is full of zero-point fluctuations.\"",
+   "rationale": "Two entries in different folders both ground an audio claim in vacuum fluctuations as a physically real phenomenon, neither aware of the other. Genuine cross-domain pattern the folder structure hides."
+  },
+  {
+   "source": "Photonic Time Crystals",
+   "target": "Wallpaper Groups",
+   "type": "connects-to",
+   "label": "geometry-constrains-spectrum",
+   "kind": "new",
+   "spark": 3,
+   "evidence": "Photonic Time Crystals: \"ranges of frequencies that propagate freely...interspersed with ranges that don't\" (band structure from periodicity) vs. Wallpaper Groups' crystallographic restriction theorem and 230 space groups governing crystal mode structure.",
+   "rationale": "Both are cases of the same underlying claim \u2014 periodic boundary conditions produce a discrete, finite, enumerable mode/band spectrum \u2014 approached from optics and from tiling respectively. Both already point to Hyperdimensional Prism as the shared parent but never to each other."
+  },
+  {
+   "source": "The Curve Is the Material",
+   "target": "Photonic Time Crystals",
+   "type": "connects-to",
+   "label": "physics-grounding-for-photonic-function-family",
+   "kind": "new",
+   "spark": 3,
+   "evidence": "The Curve Is the Material lists \"Photonic / crystal modes: Dispersion relation from crystal band structure... Already derived for the crystal synthesis project\" as one of its named function families, but only names 'the crystal synthesis project' generically.",
+   "rationale": "Photonic Time Crystals is the deep-physics grounding this function-family entry gestures at without naming \u2014 a direct, addressable gap."
+  },
+  {
+   "source": "SMPTE LTC",
+   "target": "Trickster",
+   "type": "connects-to",
+   "label": "engineering-trickster",
+   "kind": "new",
+   "spark": 3,
+   "evidence": "\"Timecode is a trickster convention: it pretends to measure absolute time but is in fact a counter.\" / \"Drop-frame NTSC...a trickster convention in the spec itself.\"",
+   "rationale": "The word 'trickster' appears twice in the body, unlinked, while two other room members (Retrospective Delay, Semantic Delay) already treat [[Trickster]] as a load-bearing entry \u2014 this is a verbatim unsung path, not an imposed reading."
+  },
+  {
+   "source": "Quadratic Interpolation in DSP",
+   "target": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "type": "connects-to",
+   "label": "interpolation-methods",
+   "kind": "new",
+   "spark": 2,
+   "evidence": "Quadratic Interpolation's open question: \"Cubic vs. quadratic in oscillators... is the extra cost justified?\" vs. Wavetable Synthesis Research's design requirement: \"at least cubic interpolation\" and \"linear is minimum viable, cubic...is better, windowed-sinc...is highest quality.\"",
+   "rationale": "Wavetable Synthesis Research has effectively settled the open question Quadratic Interpolation in DSP is still asking, and this is also the room's one genuine opportunity to wire an inbound link to a 0-inbound newcomer."
+  },
+  {
+   "source": "Signal-Rate CV Architecture",
+   "target": "Slime Mold Delay",
+   "type": "contradicts",
+   "label": "signal-rate-vs-control-rate-tradeoff",
+   "kind": "contradiction",
+   "spark": 4,
+   "evidence": "Signal-Rate CV Architecture: \"No control-rate parameters. Every input is a CV jack.\" Slime Mold Delay: \"Topology engine (CPU, low-rate): runs at ~30 Hz... Audio engine (DSP rate): renders the graph.\"",
+   "rationale": "Slime Mold Delay is a Biomechanical Synthesis instrument \u2014 exactly the family Signal-Rate CV Architecture's own open question asks whether its principle should govern \u2014 and it deliberately answers with a hybrid low-rate/signal-rate split for CPU reasons. A real, evidenced counterexample, not a forced opposition."
+  },
+  {
+   "source": "Retrospective Delay",
+   "target": "Slime Mold Delay",
+   "type": "connects-to",
+   "label": "thinking-vs-remembering",
+   "kind": "newcomer",
+   "spark": 2,
+   "evidence": "Slime Mold Delay already declares this relation one-directionally: \"Retrospective Delay: thinking-vs-remembering.\"",
+   "rationale": "Reciprocal link \u2014 Slime Mold Delay is a 0-inbound newcomer; Retrospective Delay already names the relationship but doesn't record it."
+  },
+  {
+   "source": "Semantic Delay",
+   "target": "Slime Mold Delay",
+   "type": "connects-to",
+   "label": "routing-by-meaning",
+   "kind": "newcomer",
+   "spark": 2,
+   "evidence": "Slime Mold Delay already declares this one-directionally: \"Semantic Delay: routing-by-meaning.\"",
+   "rationale": "Same reciprocal-link case as above \u2014 closes a second inbound gap for the newcomer Slime Mold Delay."
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Shepard Tone Synthesizer",
+   "target": "Logarithmic Interface Scaling",
+   "type": "connects-to",
+   "phrase": "Octave equivalence is why pitch is logarithmic, not linear \u2014 see [[Logarithmic Interface Scaling]]",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "target": "Tonnetz",
+   "type": "connects-to",
+   "phrase": "### The [[Tonnetz]] \u2014 Harmony and Timbre Are the Same Geometry",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "target": "Berry Phase",
+   "type": "connects-to",
+   "phrase": "### [[Berry Phase]] and Holonomy",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "target": "Orbital Resonance",
+   "type": "connects-to",
+   "phrase": "### [[Orbital Resonance]] and the KAM Theorem",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "target": "Quasicrystals",
+   "type": "connects-to",
+   "phrase": "### [[Quasicrystals]] and the Cut-and-Project Method",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Curve Is the Material",
+   "target": "Spectroscopy",
+   "type": "connects-to",
+   "phrase": "### [[Spectroscopy]] and Molecular Mode Families",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Curve Is the Material",
+   "target": "Phonon Dispersion",
+   "type": "connects-to",
+   "phrase": "### [[Phonon Dispersion]] in Crystal Lattices",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Quadratic Interpolation in DSP",
+   "vector_issue": "No forward_vector field at all in frontmatter \u2014 the only member of the room missing one entirely, despite substantial, well-developed body content.",
+   "face": "merits-face",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "State Machine",
+   "face": "merits-face",
+   "vector_issue": "",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "graffiti_note": "No hero image, unlike every other concept-type entry in the room; body is substantial (cross-paradigm reference) enough to merit one."
+  },
+  {
+   "entry": "The Metaphor Stretch",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "",
+   "face": "none",
+   "graffiti_note": "Has a named, confirmed taxonomy (four Decision Points, worked through in Crystal Synthesizer's code) plus a spawned child entry (What Claim Does Scientific Sonification Make?) \u2014 more developed than 'sprout' implies."
+  },
+  {
+   "entry": "Wallpaper Groups",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "vector_issue": "",
+   "face": "none",
+   "graffiti_note": "Carries two forward vectors that don't agree: a rich, specific frontmatter statement (become the palace's entry to discovered symmetry ceilings) and a thin, generic body-level '## Forward Vector' stub at the very end ('I am driven to create a library of code...') that reads like an earlier draft never reconciled."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Piano String Inharmonicity",
+   "question": "Could inharmonicity be used as a compositional parameter? Varying B over time to morph between piano-like and pure tones?",
+   "by_entry": "Wavetable Space as Torus / The Curve Is the Material",
+   "verdict": "answered-elsewhere",
+   "proposed_action": "Link Piano String Inharmonicity \u2192 The Curve Is the Material (connects-to). Both entries already treat B as a real-time-modulatable scalar with a coherent morph path through physical space; the question is settled in those entries, just not cross-referenced from the question's origin."
+  },
+  {
+   "entry": "Quadratic Interpolation in DSP",
+   "question": "Cubic vs. quadratic in oscillators: Most oscillator implementations use cubic (Hermite spline) for wavetable lookup. Is the extra cost justified for audio, or is quadratic sufficient?",
+   "by_entry": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "verdict": "answered \u2014 palace convention settled on cubic minimum",
+   "proposed_action": "Link Quadratic Interpolation in DSP \u2192 Wavetable Synthesis -- Research & Higher-Dimensional Design (connects-to, label interpolation-methods); note in Quadratic Interpolation's Open Questions that the wavetable design-requirements section already answers this (\"at least cubic interpolation\")."
+  },
+  {
+   "entry": "Signal-Rate CV Architecture",
+   "question": "Does this principle extend beyond the neural suite? Could it govern other Boundary-Crossing Instruments projects \u2014 the Crystal Synthesizer, the Biomechanical Synthesis series?",
+   "by_entry": "Slime Mold Delay",
+   "verdict": "partial counterexample",
+   "proposed_action": "Add the contradicts link proposed above; note in Signal-Rate CV Architecture's Open Questions that at least one Biomechanical Synthesis instrument (Slime Mold Delay) deliberately splits into a low-rate control layer and a signal-rate audio layer for CPU/architecture reasons, so the principle does not extend universally as-is."
+  }
+ ],
+ "merge_candidates": [
+  {
+   "absorb": "What Claim Does Scientific Sonification Make?",
+   "into": "The Metaphor Stretch",
+   "rationale": "This entry's whole content (the Three Paths \u2014 lean into discrete / approach continuous / separate the claims) is an elaboration of a Decision Point The Metaphor Stretch already names verbatim: \"Fidelity Claim \u2014 Pure sines, shaped decay, or band-limited noise per partial... This is the deepest stretch: the explicit statement of what the instrument is.\" The seed-stage entry adds real texture (the Honest Artifact complication, the three-path taxonomy) but has no independent life outside that one Decision Point, and both entries share the same emerged-from parent (Crystal Synthesizer / The Metaphor Stretch itself).",
+   "survives_as_subsection": "Under Decision Point 4 (Fidelity Claim), as a worked case study: 'What Claim Does the Rendering Make?' \u2014 keep the Three Paths framework and the Honest Artifact complication intact; the open question about performance forcing the choice can stay as a live thread inside that subsection rather than its own page."
+  }
+ ],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "coherence_findings": [
+  {
+   "issue": "State Machine carries an inline authoring comment flagging its own future bundle-demote: \"<!-- FLAG: The 4 code blocks above are kept in full per task instructions...could move to a bundle sketch (State Machine/) if they grow -->\".",
+   "kind": "self-flagged-future-demote",
+   "entries": [
+    "State Machine"
+   ],
+   "proposed_action": "No action now \u2014 the comment itself says 'if they grow'; they haven't. Note for a future pass, not this one."
+  },
+  {
+   "issue": "Wallpaper Groups has two non-matching forward vectors (see entry_health_flags) \u2014 frontmatter is specific and rich, the trailing body '## Forward Vector' is a generic one-liner that reads like an unreconciled earlier draft.",
+   "kind": "duplicate-forward-vector",
+   "entries": [
+    "Wallpaper Groups"
+   ],
+   "proposed_action": "Fold the body stub's intent (a code library with visual/audio demonstrations) into the frontmatter forward_vector as a concrete next step, or delete the body stub as superseded \u2014 flagging only, not rewriting."
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Quadratic Interpolation in DSP",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed connects-to from Wavetable Synthesis -- Research & Higher-Dimensional Design, which independently settles its own open question about cubic-vs-quadratic interpolation."
+  },
+  {
+   "target": "Slime Mold Delay",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Proposed reciprocal connects-to links from Retrospective Delay and Semantic Delay \u2014 both already name the relationship one-directionally from Slime Mold Delay's side."
+  },
+  {
+   "target": "SMPTE LTC",
+   "disposition": "nothing-genuine",
+   "inbound_proposed": 0,
+   "note": "No genuine in-room source for an inbound link was found. Its own body offers a strong outbound candidate (Trickster) but nothing in this room's topic set (delays, wavetables, string physics, symmetry groups) genuinely maps onto timecode/synchrony. Honest null result for inbound within this room."
+  },
+  {
+   "target": "control-vocabulary-math",
+   "disposition": "nothing-genuine",
+   "inbound_proposed": 0,
+   "note": "Already correctly structured as a member-of bundle page under Neural Granular Synthesis (outside this room); its inbound naturally comes from that parent hub, not from this room's other members. No forced link proposed."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "The 'this is not a metaphor, it's the same operator/structure' claim \u2014 a recurring rhetorical move made explicitly and confidently across several entries (Reverb \u2194 Space-Time: 'This isn't metaphor\u2014it's physics'; Wavetable Space as Torus: 'This is not a metaphor. The topology...is exactly T\u00b2'; Photonic Time Crystals: 'The audio analog is not a metaphor; it is the same operator in a different domain') \u2014 without a shared named treatment of when such a claim is earned versus when it collapses into loose analogy.",
+   "why_load_bearing": "What Claim Does Scientific Sonification Make? already interrogates exactly this question but only from the Crystal Synthesizer's angle (discrete-partial rendering of a continuous DOS). The same epistemic question \u2014 what work is 'not a metaphor' actually doing \u2014 is being asserted, unexamined, by at least three other entries in this room alone. It's load-bearing because several entries' central claims rest on it holding.",
+   "crossing_entries": [
+    "Reverb \u2194 Space-Time",
+    "Wavetable Space as Torus",
+    "Photonic Time Crystals",
+    "What Claim Does Scientific Sonification Make?"
+   ]
+  }
+ ],
+ "flag_responses": []
+}
