@@ -8,54 +8,48 @@ forward_vector: "I hold the most recent Shopkeeper discovery sweep, overwritten 
 
 # Shopkeeper — Latest Sweep
 
-**Run:** 2026-09-15, morning steward cadence (shadow). Overwritten each run. (Prior run: 2026-09-12.)
+**Run:** 2026-09-24, morning steward cadence (shadow). Overwritten each run. (Prior run: 2026-09-15.)
 
-**One-line:** No pending commission this cycle (the Image-to-3D commission finished 2026-06-23; still awaiting Loudon's decisions from that run, unchanged). Closed the loop on last sweep's open item: **AuK (Tencent)** now has all three edit types confirmed with objective evidence and a clean MIT license read. **Recommending it for a stub-level Specialist entry** — bringing the dossier, not depositing it myself.
+**One-line:** No pending commission this cycle (unchanged since 2026-06-23). One real candidate this pass — **Qwen-Image-2.1** — but the probe hit a saturated anonymous queue twice; holding, not recommending, until it's actually verified. AuK's stub-deposit recommendation from 2026-09-15 is still open, unreviewed.
 
 ---
 
 ## Commission status (checked first, per protocol)
 
-`next-run-commission.md` unchanged: **Status: EXECUTED 2026-06-23.** Nothing to run this cycle. Loudon's five decisions from that run are still open (Image-to-3D Smith stub review, Hi3DGen vs Hunyuan3D-2, TripoSplat's own entry, first real job, license read) — not re-litigating, flagging again so it doesn't get lost.
+`next-run-commission.md` unchanged: **Status: EXECUTED 2026-06-23.** Nothing to run this cycle. Loudon's five decisions from that run, and the 2026-09-15 AuK stub-deposit recommendation, are still open — not re-litigating, flagging again so they don't get lost.
 
 ## Discovery sweep
 
-### Candidate: AuK (tencent/AuK) — recommend for stub deposit
+### Candidate: Qwen-Image-2.1 (Alibaba/Qwen) — held, not verified
 
-Second pass on the candidate flagged 2026-09-12. Full probe: `Shop/Shopkeeper/probes/2026-09-12-auk/probe-report.md`.
+Released 2026-09-20, four days before this sweep. Unified text-to-image generation + instruction-based editing, 7B params, real alpha channel, up to 10 reference images, native 2K, day-zero ComfyUI/Diffusers support. If real, this is a recipe upgrade for the existing `[[Shop/ComfyUI]]` Specialist, not a new Roster entry — worth a look for exactly that reason.
 
-**What changed this pass:**
-- Ran the content-editing leg left untested last time — instructed a word swap ("fox" → "wolf") on the same source clip, explicit duration (the Space requires one with Prompt Enhancer off, confirmed by a first hard error that matched the README's documented behavior exactly).
-- **Verified by transcript, not just duration** — ran `whisper --model tiny` locally (free, no GPU) on the output: *"The quick-brown wolf jumps over the lazy dog."* Exact swap, everything else untouched. This is stronger evidence than the first pass's duration-only checks (which only proved timing, not content).
-- **Read the license**: MIT, plain, no community-license catch. Clear for Piece-tier or published use.
+**I did not verify it.** Two anonymous Gradio calls against the official Space, ~2 minutes apart, both hit `QueueError: Queue is full` — the Space's free tier is saturated (unsurprising for a 4-day-old, heavily covered release). No image generated, no claim checked. Full probe: `Shop/Shopkeeper/probes/2026-09-24-qwen-image-2.1/probe-report.md`.
 
-**Why it clears the bar now:** three distinct edit types (paralinguistic, acoustic, content) each confirmed by objective evidence across two sessions, anonymous and tokenless, clean license. Fills a real Roster gap — Kokoro does TTS, nothing edits *existing* speech by instruction (retime a line, whisper a phrase, fix a word) for post-production narration work.
-
-**What's still open** (doesn't block a stub, would matter before a real brief): enhancement/separation leg untested; speaker-identity fidelity unconfirmed by ear or metric; `AuK-Flash` (4.5x faster distilled variant) untried.
-
-**My read:** I'd bet a real Sketch-tier post-production brief on this today. See the candidate dossier below and the board note for Loudon's call.
+**My read:** genuinely promising on paper, not dossier-worthy yet — I refuse to recommend a tool I haven't run. Two honest paths, neither spent this sweep: retry the anonymous Space once initial launch traffic settles, or (better, since the payoff is ComfyUI-native) pull it straight into the Mac's ComfyUI install on a future mac-handoff pass rather than fighting a free-tier queue.
 
 ### New trending scan (HF Spaces + papers, this cycle)
 
-- **Viggle-Animate** (Viggle) — puts a character still into a driving video via 4-step repaint-and-render, no pose/segmentation/masks. Genuinely interesting motion-domain capability, but **not probed**: the model needs ZeroGPU `xlarge` (96GB VAT) and the Space's own README says a free account's day "does not go far here" — PRO gets only 40 min of it. No honest cheap probe exists on the anonymous tier. Flagging as a mac-handoff-or-PRO candidate for a future pass, same as the Wan2.2/LTX-2.5/MiniMax-H3 video lane already holding since 2026-06-23.
-- **H3 Acceleration Arena**, **Qwen-Image-Edit LoRA Spaces**, **AI Notes**, **Fruit Fly Simulation**, **MiniCPM5-2B WebGPU Pi** — scanned, none open a Shop-relevant door (comparison tooling, note-taking, tech demos, coding agent). Composted.
-- **Trending papers** this cycle skew heavily agentic/LLM-infrastructure (Atria Dawn, ZGCM-1, RSIAgent, Apodex) — outside the Shop's sound/image/motion/interactive scope, not evaluated as Shop candidates.
-- **YuE2-3B, Wan2.2/LTX-2.5/MiniMax-H3, Marigold V2, NSFW-LoRA trending spam** — all unchanged from 2026-09-12's read; holding, no new information.
+- **Qwen-Image-2.1** — see above, the only new signal this cycle worth a probe attempt.
+- **MiniMax-H3-Turbo-LoRA, Z-Image-Turbo, Omni-Image-Editor, Wan2.2 14B fast preview** — all trending, all functionally unchanged from prior sweeps' reads (video/image gen already covered by existing Roster routes or already-held candidates). Composted.
+- **Qwen-Image-Edit-2511 LoRA collections** — LoRA add-ons on the *previous* Qwen-Image generation, superseded by 2.1 itself; not evaluated separately.
+- Google shipped six new Flow production tools (Mondo Sónico, CaptionCast, ThumbnailForge, others) 2026-09-23 and Adobe shipped in-timeline generative audio/video to Premiere 2026-09-08 — both proprietary, closed-platform, outside what the Shop stocks (open/tokenless-first). Noted, not candidates.
+- **Trending papers** this cycle: no sound/image/motion/interactive standouts surfaced in the scan; general web search skewed toward the platform releases above rather than open research.
 
 ### Roster maintenance (light pass)
 
 - No new status drift found.
-- Stable Audio 3 dated-gotcha flag from 2026-06-23 still open — small task, still named here rather than actioned, so it isn't lost twice.
+- Stable Audio 3 dated-gotcha flag (open since 2026-06-23) still unactioned — small task, named again so it isn't lost twice.
 - Never-run test suites: unchanged, standing gap.
+- Viggle-Animate (flagged 2026-09-15, needs ZeroGPU xlarge, no honest free probe) — unchanged, still holding.
 
 ---
 
 ## Run accounting
 
-**Token/cost budget:** HF MCP trending scan (cheap) + 1 Gradio call on an already-probed Space + local `whisper --tiny` transcription (free, CPU, no GPU). No new GPU spend, no paid tier. In line with "discovery should cost a fraction of a brief."
+**Token/cost budget:** one HF Hub search call + one hf_repo_details lookup (both free/cheap) + two anonymous Gradio calls that failed fast on queue saturation (no compute spent, no paid tier touched) + web search for release context. No GPU spend. In line with "discovery should cost a fraction of a brief."
 
 **Files written this run:**
-- `Shop/Shopkeeper/probes/2026-09-12-auk/probe-report.md` (appended second-pass section)
-- `Shop/Shopkeeper/probes/2026-09-12-auk/word_swap_edit.wav`
+- `Shop/Shopkeeper/probes/2026-09-24-qwen-image-2.1/probe-report.md`
 - `Shop/Shopkeeper/sweep-latest.md` (this file)
 - TRICKSTER board note (see below)
