@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: pass
 validator_note: "Twelve words, three load-bearing claims, no waste. 'Subtraction is composition' lands the philosophical ground the FV is asking for directly — it does not describe the claim, it makes it. The sentence-level rhythm enacts its own argument: each clause strips the prior one down."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 The whole dub philosophy compressed to 12 words. Each clause is itself a subtraction on the one before — the sentence enacts what it claims.
