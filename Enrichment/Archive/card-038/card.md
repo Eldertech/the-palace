@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: pass
 validator_note: "The koan earns its form. Three moves, each tighter than the last — the teacher/designer mirror, the gravity-as-tuning paradox, then the silence question as a live wire left dangling. 'The student has just tuned the spring / The student has just changed physics' lands the physics-is-DSP claim as an unresolved grammatical fact rather than an explanation. The silence follow-up is the sharpest line and leaves the entry genuinely unable to answer — which is exactly what a koan should do to a growing entry."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 A koan pressing the entry's central identity claim — if physics IS DSP and the gravity constant IS the spring constant, then the composer is the one who set the laws of physics, not the one playing the instrument.
