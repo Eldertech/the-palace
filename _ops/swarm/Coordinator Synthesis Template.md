@@ -44,12 +44,12 @@ Scan all reports for:
 ### 3b. Health scans + catch-up + face batch
 Run the deterministic scans against the fresh tree/map and fold their findings into the presentation — they *detect*; you and Loudon rule each finding (values-primary):
 ```bash
-python3 _ops/swarm/new-entry-catchup.py --since <last-weave-YYYY-MM> --block   # {{NEW_ENTRIES}} + per-worker MAX_INTRODUCTIONS
+python3 _ops/swarm/new-entry-catchup.py --since-last-weave --block   # {{NEW_ENTRIES}}: under-reached newcomers + the unreachable
 python3 _ops/swarm/lint-ghost-links.py      # dead body wikilinks — invitation / fix / cut
 python3 _ops/swarm/lint-bundle-hygiene.py   # frontmatter demotion candidates (invalid type gates)
 python3 _ops/swarm/face-audit.py            # faces to add (definite / grey) and retire
 ```
-`new-entry-catchup.py` computes M, each newcomer's 0.8×M target + deficit, and the lifted MAX_INTRODUCTIONS — paste its `--block` output into every worker's `{{NEW_ENTRIES}}` (Step 2b). Aggregate the workers' `new_entry_links` (did the newcomers reach target?) and `hero_avatar_request` proposals. The **face batch**: definite adds → prompts in [[Hero and Avatar Maker]]'s art direction → `Shop/Hero and Avatar Maker/make_faces.py` (the gated render Loudon approves); retires → remove the face files. Bundle-hygiene and ghost findings are demotion / link judgments Loudon rules per finding.
+`new-entry-catchup.py` computes M (median *inbound*), each newcomer's 0.8×M target + deficit, and the unreachable list (inbound 0, any age) — the deficit stays in your table; paste its `--block` output (which states only "currently N inbound", never a quota) into every worker's `{{NEW_ENTRIES}}` (Step 2b). Aggregate the workers' `new_entry_links` (did the newcomers reach target?) and `hero_avatar_request` proposals. The **face batch**: definite adds → prompts in [[Hero and Avatar Maker]]'s art direction → `Shop/Hero and Avatar Maker/make_faces.py` (the gated render Loudon approves); retires → remove the face files. Bundle-hygiene and ghost findings are demotion / link judgments Loudon rules per finding.
 
 ### 4b. Label Enrichment Aggregation
 Collect all `proposed_label` values from worker reports — from unsung paths, new introductions, and link type upgrade proposals. Additionally scan all existing `connects-to`, `mirrors`, and `contradicts` links in worker reports that currently lack labels; where the worker's body analysis already names the relationship more specifically, propose that word as the label. Compile into a single label proposals list, de-duplicated. Keep it curated — a handful per swarm run, scaled to palace size; a guideline for pace, not a quota. Present as a discrete batch to Loudon after unsung paths and graffiti, before new introductions. A label is a permanent commitment to a specific register — Loudon approves each one.
@@ -77,7 +77,7 @@ Rank findings by:
 - [entry]: [[Ghost Node]] — does not exist. Action: [create/remove/redirect]
 
 ### New-Entry Induction
-- [[Newcomer]] — degree N → catch-up target ~0.8×M; inbound links wired this cycle: [list]
+- [[Newcomer]] — inbound N → catch-up target ~0.8×M; inbound links wired this cycle: [list]
 
 ### Faces — Add / Retire
 - add (definite): [[Entry]] → render batch · add (grey): [[Entry]] (judgment) · retire: [[Entry]] (spore / composting)
@@ -123,7 +123,7 @@ python3 _ops/swarm/extract-neighborhood.py "Entry Name" --template
 ### Step 2b: New-entry induction — set the catch-up (Weave Ceremony Step 0b)
 Before dispatching, compute two things from the fresh map:
 - **The new-entry list** — entries whose `born` is after the last Weave date (or files git-added since the last Weave commit). These are the cycle's priority citizens.
-- **M** — the median link-degree across established entries. Each new entry gets a **catch-up target** of ~0.8 × M (a guideline, not a gate); its allotment is the deficit to reach it, and it is *not* rate-limited.
+- **M** — the median *inbound* link count across established entries (inbound, because only a Weave can place those links; total degree hid the gap). Each new entry gets a **catch-up target** of ~0.8 × M (a guideline, not a gate); its allotment is the deficit to reach it, and it is *not* rate-limited.
 
 Then prime the whole swarm toward them: fill `{{NEW_ENTRIES}}` in **every** worker prompt with the new-entry list, so each worker considers linking its own entry to the newcomers — inbound links live in the established entries, which is the only place they can be placed. Set per-worker `MAX_INTRODUCTIONS` as a soft guideline: a newcomer's own worker gets a generous handful; established workers a modest one, widened ~20% this cycle to fund the catch-up. These are pacing guidelines, not quotas (Weave Ceremony's values-primary note). Because a newcomer's target is met *by* established entries reaching for it, the catch-up enriches the old graph in the same motion.
 

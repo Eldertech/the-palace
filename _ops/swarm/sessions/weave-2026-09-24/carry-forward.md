@@ -60,6 +60,6 @@ Tarkovsky · Goldberg · Schafer · Maloof · Malick (from 9d0403a7, whose body 
 ## Tooling notes
 
 - `build-map-2026-08-26.py`'s docstring still says 2026-07-04, and its commit is marked `Palace-Verify: unverified`.
-- The map builder treats `_ops/` ceremony cards as link targets, not nodes (`OPS_EXCLUDE`, lines ~31-34, 97-101). Their outbound links never count toward anyone's inbound total. That's why the first scratch count showed 22 unreachable entries when the true number is 14.
+- **Resolved 2026-09-23:** the map builder used to treat `_ops/` ceremony cards as link targets, not nodes, so their links never counted as inbound. Loudon decided ceremonies should be woven, and `build-map-2026-09-24.py` makes them nodes.
 - `_ops/swarm/experiments/palace-gnn-2026-08-26/ghosts-clean.json`: 40 GNN-predicted missing links, cited nowhere. It's a confidence cross-check only (see PLAN Phase 3).
 - `_ops/swarm/experiments/stigmergy-weave-ab-2026-05-29/findings.md:146` claims "the coordinator already writes `worker_trace` blocks". No entry has one. Correct it.

@@ -23,7 +23,7 @@ Written 2026-09-23 by the elder session and reviewed the same night by an indepe
 
 It's been 79 days since the last weave (2026-07-06) on a monthly cadence, with 219 commits in between.
 
-- **24 of the 36 entries born since July are under the inbound target**, and **14 entries have no inbound link from anywhere**.
+- **25 entries born since July are under the inbound target**, and **20 entries have no inbound link in the graph** (17 for the walk, 3 already composting), plus 5 `_ops/` files wearing entry frontmatter that nothing points to. Measured by the fixed script on a map with ceremonies woven in; see `newcomers.md`.
 - **The flag inbox is larger than the linter reports.** It says 8 open. It misses real asks, and it counts a flag done when a file is merely touched.
 - **Ten entries have been composting since July.** Their one cycle is up.
 - **July's held list is waiting**, including about 20 missing contradictions.
@@ -46,8 +46,8 @@ The June run parked on usage limits. Its write-back landed in pieces by 06-30, b
 
 | | Workers (Sonnet) | Rough tokens |
 |---|---|---|
-| **Core**: lifecycle walk · folder · community · bridge | ~29 | ~2.5M |
-| **Full**: + mirror · stratified oblique | ~41 | ~3.5M+ |
+| **Core**: lifecycle walk (8) · folder (~7, now including `_ops/`) · community (~8) · bridge (10) | ~33 | ~2.8M |
+| **Full**: + mirror (~6) · stratified oblique (12) | ~51 | ~4M+ |
 
 These are extrapolated from July and June (June measured 58–62k tokens per single-entry worker), not measured. Check `/usage` before Phase 2.
 
@@ -65,37 +65,29 @@ Everything here is tooling or reading. Nothing writes canon.
 
 **0.2 Foundation.** Read [[ELDER]], then [[SCHEMA]], then [[SCHEMA — Reference]] (§3, §4, §8, §9, read at the pen), then the whole Step 0 set: [[ROSETTA]], [[SUBSTRATE]], [[README - The Palace Guide]]. Then the ceremony doc. Summon the Concierge at the open, visibly.
 
-**0.3 Map.** Add a `--date` argument to the newest builder (retiring the copy-a-dated-file habit) and run it for 2026-09-24. While in there:
-- drop the retired `breakthrough` from `CANON_TYPES`
-- fix the stale docstring
-- **make ceremony cards nodes.** Loudon decided on 2026-09-23 that ceremonies should be woven. Any `_ops/` card carrying a canon `type:` (directly in `_ops/` or one level into a non-machinery folder, the same set the builder already recognises) becomes a full node. Its links count both ways, and it lands in partitions like any entry. Without this, entries only ceremonies point to look unreachable, and the ceremonies themselves never get read by a worker.
+**0.3–0.4 Tools: BUILT 2026-09-23** (branch `weave-prep/2026-09-24-tools`, merged to main; tested on a scratch map). In the morning, just run them:
 
-Tonight's scratch map was for measuring only.
+```bash
+python3 _ops/swarm/build-map-2026-09-24.py                                   # today's map, into _ops/maps/
+python3 _ops/swarm/new-entry-catchup.py --since-last-weave                   # report: newcomers, unreachable, _ops hygiene list
+python3 _ops/swarm/new-entry-catchup.py --since-last-weave --json > targets.json
+python3 _ops/swarm/new-entry-catchup.py --since-last-weave --block > new-entries-block.md   # the {{NEW_ENTRIES}} paste
+python3 _ops/swarm/partition-palace.py --lens lifecycle --targets targets.json --out partitions/lifecycle.json
+python3 _ops/swarm/partition-palace.py --lens folder --out partitions/folder.json
+python3 _ops/swarm/partition-palace.py --lens community --demote-hubs 12 --out partitions/community.json
+python3 _ops/swarm/partition-palace.py --lens bridge --out partitions/bridge.json
+# Full only: --lens mirror / --lens stratified
+python3 _ops/swarm/lint-weave-flags.py --board "<main>/_ops/swarm/persistent/blackboard.jsonl"   # from the worktree: read main's live board
+```
 
-**0.4 Tool builds** (in `_ops/swarm/`; test each on the fresh map):
-- **`new-entry-catchup.py`.**
-  - Measure **inbound**, counting `ops_edges`.
-  - The cohort is anything born since the last weave *or* git-added since then, *and* under target.
-  - Add an `--unreachable` list (inbound 0, any age).
-  - The worker paste block says only *"currently N inbound"*, with no deficit. A number in a worker prompt is a quota.
-  - Diff the output against `newcomers.md` and explain any disagreement before a worker sees it.
-- **`lint-weave-flags.py`, fixed to match the contract:**
-  - Read the older `target` / `note` payload shape.
-  - Count a touch only on *source* entries (adding `target_entry` is the false-positive path gotcha 19 names).
-  - Add a **"touched, unverified"** column that the coordinator checks by hand in 0.6.
-  - Do **not** switch to trailer-only yet. The ceremony (`_ops/Weave Ceremony.md:154`), the board (`_ops/stigmergy/app/src/lib/queue-model.js` `reconcileQueue`) and gotcha 19 all accept a source-entry touch today. That changes only if Loudon signs the Step 1c edit in Pile B, and then the linter and `reconcileQueue` change together, so the board and the linter keep agreeing.
-- **`partition-palace.py --lens lifecycle`.**
-  - Rooms of about 6 targets (under-target newcomers plus the unreachable that aren't composting), grouped by community.
-  - Each target carries its 1-hop neighbours plus a **capped** 2-hop set: about 25 candidates, demoted hubs excluded, ranked by shared community.
-  - That puts roughly 40 files per worker at most, not 100 or more.
-- **`partition-palace.py --lens bridge`.**
-  - Side T: `project` · `specialist` · `maker`.
-  - Side P: `person`.
-  - Topped up from `concept` / `practice` / `hub` by pillar (tools-without-philosophy → T; philosophy-without-tools → P). Four-pillar entries sit out.
-  - Rooms of 6 T + 6 P, stratified by community, with priority to pairs that have **never been in a room together** (no edge, distance ≥3).
-  - `--cover 1`, seeded.
-  - **Print the side sizes, the room count and the excluded count before dispatch.** Partial coverage is a choice, not an accident.
-- **`partition-palace.py --lens stratified`.** Full run only. At most one entry per community per room, `--cover 2`, seeded.
+What each change does, and why:
+- **`build-map-2026-09-24.py`.** Takes `--date` (default today) and `--out-dir`. The retired `breakthrough` type is gone. **Ceremony cards are nodes** (Loudon, 2026-09-23: ceremonies should be woven), carrying `ops_card: true`. Result: 351 nodes, 34 of them ceremony cards, 0 error ghosts, 0 new link-direction errors.
+- **`new-entry-catchup.py`.** Measures inbound only. The cohort is git-added *or* born since the last weave, *and* under target. It lists the unreachable, and lists unreachable `_ops/` files separately for **bundle-hygiene review**, since they're handoffs and logs wearing entry frontmatter. The `--block` paste says only "currently N inbound". `Coordinator Synthesis Template.md` is updated to match.
+- **`lint-weave-flags.py`.** Uses the board's own rule: exact file name, source entries only. A trailer, decline or id mention resolves a flag. A touch is shown as **TOUCHED-UNVERIFIED** for a hand check. The older payload shape is readable. `--strict` previews a trailer-only rule; `--board PATH`. Tonight's count: 65 flags, 34 explicit, **22 touched-unverified, 9 open** (31 under `--strict`). The hidden Palace Enchantment flag is correctly open again.
+- **`partition-palace.py`**, three new lenses:
+  - **`lifecycle`**: rooms of 5 targets, community-coherent (the DSP family in one room, the philosophers in another). Each target carries 1-hop plus up to 12 2-hop candidates, and hubs are never walked through. That's 47–70 files in reach per room. **Workers read candidates' frontmatter only, and bodies only for targets.**
+  - **`bridge`**: excludes resting entries and ceremony cards. By default it seats the whole smaller side: 10 rooms of 6+6, all 59 thought-side entries, 60 of 103 tool-side (the least-paired first). **No room contains an already-linked pair.**
+  - **`stratified`**: ceilings proportional to community size; 0 relaxations.
 
 **0.5 Baselines.** Run every Step 6.5 linter once and save the output to `baseline-linters.txt`. The closing run shows what this weave introduced.
 
@@ -103,7 +95,7 @@ Tonight's scratch map was for measuring only.
 - `substrate-sweep.md`: the five git commands, one row per finding, with a proposed recover / discard / leave.
 - `flag-inbox.md`: every open flag, read **from the board payload** and checked against its file, including the "touched, unverified" ones and everything in `carry-forward.md`. For each: act / route to the worker holding its source entry (Step 1c) / decline with reason.
 - `composting.md`: the ten, each with its current inbound links and a proposed delete or revive.
-- `newcomers.md`, regenerated by the fixed script.
+- `newcomers.md`, regenerated by the fixed script, plus the 5 unreachable `_ops/` files for the bundle-hygiene decision (demote or link).
 - `july-held.md`: July's held and unlanded items as a flat list. **Never shown to workers.**
 - `partitions/*.json`.
 
@@ -122,11 +114,11 @@ Use `_ops/swarm/Multi-Lens Worker Prompt Template.md`, filled per lens, with the
 
 - **Every prompt gets:** the newcomer and unreachable block ("currently N inbound"); **"a null is a valid answer; no quotas"**; and the flags routed to that worker's entries, as *"a deposit asked you to do X: confirm, refuse, or refine."*
 - **An optional `deep_pattern` field** on relations and gems. It names which of the eight recurring patterns a find instances (*scope-what-is-yours · the-boundary-is-the-finding · constraint-enables · fill-vs-honor-the-gap · decouple-maker-from-critic · receptivity-is-authored · category-crosses-at-a-rate · show-vs-hide-the-seam*), or none, or a new one. This gathers the Deep-Structure lens's tags as a byproduct.
-- **Lifecycle, the walk.** *"For each target, walk its neighbours outward along typed links. At each stop ask: would this entry's reader want to be sent to the target? If yes, propose an INBOUND link, placed in the neighbour's frontmatter, with type and direction per SCHEMA §4. For a target no one points to, propose link, merge, or compost. Also report whether each target's stage, vector and face still fit. Follow edges; don't survey."*
+- **Lifecycle, the walk.** Read each target's full body, but only the frontmatter of the walk candidates (`--limit` about 40 lines). *"For each target, walk its neighbours outward along typed links. At each stop ask: would this entry's reader want to be sent to the target? If yes, propose an INBOUND link, placed in the neighbour's frontmatter, with type and direction per SCHEMA §4. For a target no one points to, propose link, merge, or compost. Also report whether each target's stage, vector and face still fit. Follow edges; don't survey."*
 - **Bridge**, adopting [[The Lens]]'s contract (`The Lens.md:83-99`, `:146`). *"You hold tool-side and thought-side entries built in separate sessions, in separate vocabularies, by one mind. Look for a tool that re-derives a philosophy, or a philosophy that names what a tool does. For each find: quote the line from BOTH pages that carries it; name the shared structure in one sentence; run the fidelity test (swap in a different partner; if your reading doesn't change, the find is fake); score the spark 1–5; classify it as link, deposit, or none. Null is valid and expected in most pairings. Never propose merges."* The coordinator drops sparks of 3 or below unless another lens saw the same thing.
 - **Folder.** Subdivide `(root)`. It's a pile, not a family.
 
-**Order:** lifecycle (about 7 workers) → folder (about 6) → community (about 8) → bridge (about 8), then mirror and stratified if running Full. Output goes to `workers/<lens>/<cluster>.json`.
+**Order:** lifecycle (8 rooms) → folder (~7) → community (~8) → bridge (10), then mirror and stratified if running Full. Output goes to `workers/<lens>/<cluster>.json`.
 
 **Checkpoint 2.** Record the workflow run ID and which clusters came back.
 
