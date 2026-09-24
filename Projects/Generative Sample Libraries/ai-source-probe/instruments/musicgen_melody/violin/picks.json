@@ -1,0 +1,121 @@
+{
+ "arm": "musicgen_melody",
+ "instrument": "violin",
+ "probe_verdict": "RETUNABLE",
+ "cells": {
+  "on_target": 0,
+  "retunable": 6,
+  "texture": 2,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 3,
+ "built": true,
+ "sfz": "musicgen_melody_violin.sfz",
+ "keys": [
+  "A2",
+  "E5"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "G5"
+ ],
+ "regions": [
+  {
+   "sample": "violin_A2_s1.wav",
+   "lokey": 45,
+   "hikey": 58,
+   "pitch_keycenter": 57,
+   "tune": 2,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1198.42,
+   "measured_hz": 219.799
+  },
+  {
+   "sample": "violin_C4_s2.wav",
+   "lokey": 59,
+   "hikey": 62,
+   "pitch_keycenter": 60,
+   "tune": 30,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "measured_hz": 257.135
+  },
+  {
+   "sample": "violin_E3_s2.wav",
+   "lokey": 63,
+   "hikey": 76,
+   "pitch_keycenter": 64,
+   "tune": 16,
+   "offset": 0,
+   "asked_for": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1183.75,
+   "measured_hz": 326.54
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1188.14,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1202.14,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1213.58,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 32,
+  "on_target": 20,
+  "worst_abs_cents_on_target": 10.0,
+  "misses": [
+   "A2 texture 0.0",
+   "A#2 texture 0.0",
+   "B2 texture 0.0",
+   "C3 texture 0.0",
+   "C#3 texture 0.0",
+   "D3 texture 0.0",
+   "D#3 texture 0.0",
+   "E3 texture 0.0",
+   "F3 texture 0.0",
+   "F#3 texture 0.0",
+   "G3 texture 0.0",
+   "A#4 texture 0.0"
+  ]
+ },
+ "audition": "audition.wav"
+}

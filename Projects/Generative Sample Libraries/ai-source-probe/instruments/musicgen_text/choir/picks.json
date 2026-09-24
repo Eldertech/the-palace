@@ -1,0 +1,103 @@
+{
+ "arm": "musicgen_text",
+ "instrument": "choir",
+ "probe_verdict": "RETUNABLE",
+ "cells": {
+  "on_target": 0,
+  "retunable": 6,
+  "texture": 2,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 2,
+ "built": true,
+ "sfz": "musicgen_text_choir.sfz",
+ "keys": [
+  "C3",
+  "C6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "E3",
+  "C4"
+ ],
+ "regions": [
+  {
+   "sample": "choir_A2_s1.wav",
+   "lokey": 48,
+   "hikey": 66,
+   "pitch_keycenter": 60,
+   "tune": -5,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1505.06,
+   "measured_hz": 262.392
+  },
+  {
+   "sample": "choir_G5_s2.wav",
+   "lokey": 67,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": -5,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -694.7,
+   "measured_hz": 524.854
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1508.98,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 2005.9,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1190.0,
+   "why": "texture: spread 50c > 30c"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1890.0,
+   "why": "texture: spread 1200c > 30c; only 68% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1199.56,
+   "why": "sounds at C5, same key as the G5 pick"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 818.36,
+   "why": "sounds at C4, same key as the A2 pick"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 37,
+  "on_target": 37,
+  "worst_abs_cents_on_target": 3.18,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

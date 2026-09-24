@@ -1,0 +1,21 @@
+// stable_audio · violin — built from the AI-source probe's graded run
+// source: ai-source-probe/results.stable_audio.jsonl  ·  builder: build_sfz.py
+// probe verdict for this instrument: TEXTURE ONLY  (on target 1, retunable 2, texture 5, of 8 cells)
+// kept 2 of 4 notes asked for; no steady render of E3, G5
+// keys A1–C6; outer samples stretch at most 12 semitones; silent gaps: A#3–B3
+// pitch = the grader's measured pitch (keycenter + tune), not the note asked for.
+// onset trim -30 dBFS, 2 ms cushion; 3 ms fade-in.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.003 ampeg_release=0.4
+
+<group>
+// asked A2, seed 1, on target, +9.6c from asked
+<region> sample=violin_A2_s1.wav lokey=33 hikey=57 pitch_keycenter=45 tune=-10 offset=0
+// asked C4, seed 1, retunable, +1210.4c from asked
+<region> sample=violin_C4_s1.wav lokey=60 hikey=84 pitch_keycenter=72 tune=-10 offset=2014

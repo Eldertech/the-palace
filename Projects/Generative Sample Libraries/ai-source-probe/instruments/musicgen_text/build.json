@@ -1,0 +1,217 @@
+[
+ {
+  "arm": "musicgen_text",
+  "instrument": "piano",
+  "probe_verdict": "RETUNABLE",
+  "cells": {
+   "on_target": 0,
+   "retunable": 6,
+   "texture": 2,
+   "error": 0,
+   "n": 8
+  },
+  "notes_kept": 3,
+  "built": true,
+  "sfz": "musicgen_text_piano.sfz",
+  "keys": [
+   "F1",
+   "C6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "E3"
+  ],
+  "keycheck": {
+   "keys_played": 56,
+   "on_target": 51,
+   "worst_abs_cents_on_target": 1.32,
+   "misses": [
+    "A1 texture 0.0",
+    "C#2 texture 0.0",
+    "D2 texture 0.0",
+    "D#2 texture 0.0",
+    "F#2 texture 1870.0"
+   ]
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "musicgen_text",
+  "instrument": "violin",
+  "probe_verdict": "RETUNABLE",
+  "cells": {
+   "on_target": 0,
+   "retunable": 7,
+   "texture": 1,
+   "error": 0,
+   "n": 8
+  },
+  "notes_kept": 2,
+  "built": true,
+  "sfz": "musicgen_text_violin.sfz",
+  "keys": [
+   "C3",
+   "C6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "A2",
+   "E3"
+  ],
+  "keycheck": {
+   "keys_played": 37,
+   "on_target": 26,
+   "worst_abs_cents_on_target": 10.0,
+   "misses": [
+    "C3 texture 20.0",
+    "C#3 texture 10.0",
+    "D3 texture 10.0",
+    "D#3 texture 10.0",
+    "E3 texture 10.0",
+    "F3 texture 10.0",
+    "F#3 texture 10.0",
+    "G3 texture 10.0",
+    "G#3 texture 10.0",
+    "A3 texture 10.0",
+    "A#3 texture 10.0"
+   ]
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "musicgen_text",
+  "instrument": "marimba",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 1,
+   "retunable": 3,
+   "texture": 4,
+   "error": 0,
+   "n": 8
+  },
+  "notes_kept": 1,
+  "built": true,
+  "sfz": "musicgen_text_marimba.sfz",
+  "keys": [
+   "C3",
+   "C5"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "A2",
+   "E3",
+   "G5"
+  ],
+  "keycheck": {
+   "keys_played": 25,
+   "on_target": 25,
+   "worst_abs_cents_on_target": 4.84,
+   "misses": []
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "musicgen_text",
+  "instrument": "flute",
+  "probe_verdict": "RETUNABLE",
+  "cells": {
+   "on_target": 0,
+   "retunable": 6,
+   "texture": 2,
+   "error": 0,
+   "n": 8
+  },
+  "notes_kept": 2,
+  "built": true,
+  "sfz": "musicgen_text_flute.sfz",
+  "keys": [
+   "C3",
+   "C6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "A2",
+   "G5"
+  ],
+  "keycheck": {
+   "keys_played": 37,
+   "on_target": 37,
+   "worst_abs_cents_on_target": 2.52,
+   "misses": []
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "musicgen_text",
+  "instrument": "bass",
+  "probe_verdict": "RETUNABLE",
+  "cells": {
+   "on_target": 0,
+   "retunable": 7,
+   "texture": 1,
+   "error": 0,
+   "n": 8
+  },
+  "notes_kept": 2,
+  "built": true,
+  "sfz": "musicgen_text_bass.sfz",
+  "keys": [
+   "C3",
+   "C7"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "A2",
+   "E3"
+  ],
+  "keycheck": {
+   "keys_played": 49,
+   "on_target": 39,
+   "worst_abs_cents_on_target": 10.0,
+   "misses": [
+    "C3 texture 10.0",
+    "C#3 texture 10.0",
+    "D3 texture 10.0",
+    "D#3 texture 10.0",
+    "E3 texture 10.0",
+    "F3 texture 10.0",
+    "F#3 texture 10.0",
+    "G3 texture 10.0",
+    "G#3 texture 10.0",
+    "A3 texture 10.0"
+   ]
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "musicgen_text",
+  "instrument": "choir",
+  "probe_verdict": "RETUNABLE",
+  "cells": {
+   "on_target": 0,
+   "retunable": 6,
+   "texture": 2,
+   "error": 0,
+   "n": 8
+  },
+  "notes_kept": 2,
+  "built": true,
+  "sfz": "musicgen_text_choir.sfz",
+  "keys": [
+   "C3",
+   "C6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "E3",
+   "C4"
+  ],
+  "keycheck": {
+   "keys_played": 37,
+   "on_target": 37,
+   "worst_abs_cents_on_target": 3.18,
+   "misses": []
+  },
+  "audition": "audition.wav"
+ }
+]

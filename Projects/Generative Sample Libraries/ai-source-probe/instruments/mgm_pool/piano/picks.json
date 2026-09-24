@@ -1,0 +1,359 @@
+{
+ "arm": "mgm_pool",
+ "instrument": "piano",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 2,
+  "retunable": 7,
+  "texture": 31,
+  "error": 0,
+  "n": 40
+ },
+ "notes_kept": 4,
+ "built": true,
+ "sfz": "mgm_pool_piano.sfz",
+ "keys": [
+  "E2",
+  "C6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [],
+ "regions": [
+  {
+   "sample": "piano_E3_s2.wav",
+   "lokey": 40,
+   "hikey": 54,
+   "pitch_keycenter": 52,
+   "tune": 0,
+   "offset": 0,
+   "asked_for": "E3",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 0.29,
+   "measured_hz": 164.837
+  },
+  {
+   "sample": "piano_A2_s1.wav",
+   "lokey": 55,
+   "hikey": 62,
+   "pitch_keycenter": 57,
+   "tune": -2,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1202.31,
+   "measured_hz": 220.293
+  },
+  {
+   "sample": "piano_G5_s2.wav",
+   "lokey": 63,
+   "hikey": 69,
+   "pitch_keycenter": 67,
+   "tune": 7,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1207.41,
+   "measured_hz": 390.32
+  },
+  {
+   "sample": "piano_C4_s2.wav",
+   "lokey": 70,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": 2,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1197.92,
+   "measured_hz": 522.63
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: spread 1200c > 30c; only 59% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: spread 1200c > 30c; only 72% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: spread 1190c > 30c; only 71% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: spread 3800c > 30c; only 66% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1200.0,
+   "why": "texture: spread 1200c > 30c; only 74% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: spread 1200c > 30c; only 72% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1200.0,
+   "why": "texture: spread 2410c > 30c; only 58% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1190.0,
+   "why": "texture: spread 2400c > 30c; only 51% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1220.0,
+   "why": "texture: spread 2400c > 30c; only 52% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1190.0,
+   "why": "texture: spread 1190c > 30c; only 74% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: spread 2390c > 30c; only 42% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1210.0,
+   "why": "texture: spread 1200c > 30c; only 74% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": 1.76,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1210.64,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -20.0,
+   "why": "texture: spread 1890c > 30c; only 56% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1200.0,
+   "why": "texture: spread 1200c > 30c; only 53% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1150.0,
+   "why": "texture: spread 1160c > 30c; only 44% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1200.0,
+   "why": "texture: spread 1200c > 30c; only 73% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: spread 1900c > 30c; only 57% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1890.0,
+   "why": "texture: spread 700c > 30c; only 41% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1198.1,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1201.52,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1186.03,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2390.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1200.0,
+   "why": "texture: spread 1190c > 30c; only 54% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: pinned at the edge of the pitch search, not a note"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 45,
+  "on_target": 23,
+  "worst_abs_cents_on_target": 1.52,
+  "misses": [
+   "E2 texture -1200.0",
+   "F2 texture -1200.0",
+   "F#2 texture -1200.0",
+   "G2 texture -1200.0",
+   "G#2 texture -1200.0",
+   "A2 texture -2390.0",
+   "A#2 texture -2395.0",
+   "B2 texture -2390.0",
+   "C3 texture 0.0",
+   "C#3 texture 0.0",
+   "D3 texture 0.0",
+   "D#3 texture 0.0",
+   "E3 texture 0.0",
+   "F3 texture 0.0",
+   "F#3 texture 0.0",
+   "D#4 texture 0.0",
+   "E4 texture -2390.0",
+   "F4 texture -2390.0",
+   "F#4 texture -2390.0",
+   "G4 texture -2390.0",
+   "G#4 texture -2390.0",
+   "A4 texture -2390.0"
+  ]
+ },
+ "audition": "audition.wav"
+}

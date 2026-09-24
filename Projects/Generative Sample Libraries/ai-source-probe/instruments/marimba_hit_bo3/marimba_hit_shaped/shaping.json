@@ -1,0 +1,80 @@
+{
+ "mode": "strike",
+ "source": "instruments/marimba_hit_bo3/marimba_hit/marimba_hit_bo3_marimba_hit.sfz",
+ "samples": {
+  "marimba_hit_F#3_s2.wav": {
+   "strikes_found": 13,
+   "kept_strike": {
+    "at_sec": 1.984,
+    "ring_sec": 0.64,
+    "peak_db": -3.4,
+    "decays_db": 9.3,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.63,
+   "retuned": {
+    "from": -19,
+    "to": -23,
+    "hz": 187.42
+   }
+  },
+  "marimba_hit_A3_s3.wav": {
+   "strikes_found": 2,
+   "kept_strike": {
+    "at_sec": 1.04,
+    "ring_sec": 2.432,
+    "peak_db": -23.1,
+    "decays_db": 24.4,
+    "opens_clip": false
+   },
+   "clean_pick": false,
+   "kept_sec": 2.13,
+   "retuned": {
+    "from": -16,
+    "to": -16,
+    "hz": 222.04
+   }
+  },
+  "marimba_hit_C4_s3.wav": {
+   "strikes_found": 5,
+   "kept_strike": {
+    "at_sec": 2.768,
+    "ring_sec": 2.172,
+    "peak_db": -0.2,
+    "decays_db": 9.7,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 1.81,
+   "from_take": 3,
+   "retuned": {
+    "from": -15,
+    "to": -15,
+    "hz": 263.96
+   }
+  },
+  "marimba_hit_D#4_s1.wav": {
+   "strikes_found": 7,
+   "kept_strike": {
+    "at_sec": 3.392,
+    "ring_sec": 0.8,
+    "peak_db": -7.6,
+    "decays_db": 5.5,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.79,
+   "retuned": {
+    "from": -10,
+    "to": -10,
+    "hz": 312.86
+   }
+  }
+ },
+ "keycheck": {
+  "on_target": 34,
+  "keys_played": 34,
+  "worst_abs_cents_on_target": 2.56
+ }
+}

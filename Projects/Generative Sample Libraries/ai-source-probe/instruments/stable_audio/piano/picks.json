@@ -1,0 +1,98 @@
+{
+ "arm": "stable_audio",
+ "instrument": "piano",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 0,
+  "retunable": 1,
+  "texture": 7,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 1,
+ "built": true,
+ "sfz": "stable_audio_piano.sfz",
+ "keys": [
+  "C4",
+  "C6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "A2",
+  "E3",
+  "G5"
+ ],
+ "regions": [
+  {
+   "sample": "piano_C4_s1.wav",
+   "lokey": 60,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": -5,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1205.43,
+   "measured_hz": 524.903
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2200.0,
+   "why": "texture: voiced 8% < 60%"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1180.0,
+   "why": "texture: voiced 26% < 60%; spread 240c > 30c; only 50% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1900.0,
+   "why": "texture: voiced 55% < 60%; spread 1880c > 30c; only 60% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1910.0,
+   "why": "texture: voiced 33% < 60%; spread 220c > 30c; only 38% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: voiced 43% < 60%"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: spread 2440c > 30c; only 64% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -2110.0,
+   "why": "texture: voiced 54% < 60%; only 64% of frames near one pitch"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 25,
+  "on_target": 25,
+  "worst_abs_cents_on_target": 1.67,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

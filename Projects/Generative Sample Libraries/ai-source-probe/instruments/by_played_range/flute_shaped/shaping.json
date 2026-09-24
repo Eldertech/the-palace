@@ -1,0 +1,133 @@
+{
+ "mode": "bow",
+ "source": "instruments/by_played_range/flute/range_flute.sfz",
+ "samples": {
+  "flute_E2_s1.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -4.5,
+   "sustain_db": -4.4,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 16,
+    "to": 16,
+    "hz": 163.27
+   }
+  },
+  "flute_G3_s1.wav": {
+   "cut_start_sec": 0.421,
+   "first_100ms_db": -2.4,
+   "sustain_db": -3.8,
+   "kept_sec": 4.52,
+   "retuned": {
+    "from": 8,
+    "to": 8,
+    "hz": 195.11
+   }
+  },
+  "flute_A#2_s2.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -5.5,
+   "sustain_db": -5.9,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -2,
+    "to": -3,
+    "hz": 233.45
+   }
+  },
+  "flute_C#5_s2.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -10.7,
+   "sustain_db": -5.6,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -10,
+    "to": -10,
+    "hz": 278.83
+   }
+  },
+  "flute_E4_s1.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -0.8,
+   "sustain_db": -5.5,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 0,
+    "to": 0,
+    "hz": 329.56
+   }
+  },
+  "flute_G5_s2.wav": {
+   "cut_start_sec": 0.161,
+   "first_100ms_db": -7.0,
+   "sustain_db": -7.1,
+   "kept_sec": 4.78,
+   "retuned": {
+    "from": 11,
+    "to": 11,
+    "hz": 389.57
+   }
+  },
+  "flute_C#6_s1.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -4.4,
+   "sustain_db": -1.9,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -8,
+    "to": -8,
+    "hz": 557.04
+   }
+  },
+  "flute_E7_s2.wav": {
+   "cut_start_sec": 0.18,
+   "first_100ms_db": -8.2,
+   "sustain_db": -4.2,
+   "kept_sec": 4.76,
+   "retuned": {
+    "from": -1,
+    "to": -1,
+    "hz": 659.71
+   }
+  },
+  "flute_G6_s2.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -6.2,
+   "sustain_db": -2.7,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -6,
+    "to": -6,
+    "hz": 786.81
+   }
+  },
+  "flute_A#6_s1.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -1.6,
+   "sustain_db": -3.1,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 4,
+    "to": 4,
+    "hz": 930.0
+   }
+  },
+  "flute_C#7_s1.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -5.0,
+   "sustain_db": -5.2,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -3,
+    "to": -3,
+    "hz": 1110.73
+   }
+  }
+ },
+ "dropped": {},
+ "keycheck": {
+  "on_target": 58,
+  "keys_played": 58,
+  "worst_abs_cents_on_target": 6.04
+ }
+}

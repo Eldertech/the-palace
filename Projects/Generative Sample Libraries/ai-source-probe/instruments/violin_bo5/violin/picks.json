@@ -1,0 +1,548 @@
+{
+ "arm": "violin_bo5",
+ "instrument": "violin",
+ "probe_verdict": "RETUNABLE",
+ "cells": {
+  "on_target": 16,
+  "retunable": 38,
+  "texture": 11,
+  "error": 0,
+  "n": 65
+ },
+ "notes_kept": 8,
+ "notes_steady": 13,
+ "built": true,
+ "sfz": "violin_bo5_violin.sfz",
+ "keys": [
+  "G2",
+  "G6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [],
+ "notes_folded": [
+  "A#3",
+  "A#5",
+  "C#6",
+  "E6",
+  "G6"
+ ],
+ "regions": [
+  {
+   "sample": "violin_G3_s4.wav",
+   "lokey": 43,
+   "hikey": 58,
+   "pitch_keycenter": 55,
+   "tune": 2,
+   "offset": 0,
+   "asked_for": "G3",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": -2.51,
+   "measured_hz": 195.716
+  },
+  {
+   "sample": "violin_C#4_s4.wav",
+   "lokey": 59,
+   "hikey": 62,
+   "pitch_keycenter": 61,
+   "tune": 10,
+   "offset": 0,
+   "asked_for": "C#4",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": -9.54,
+   "measured_hz": 275.657
+  },
+  {
+   "sample": "violin_E4_s4.wav",
+   "lokey": 63,
+   "hikey": 65,
+   "pitch_keycenter": 64,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "E4",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": 0.69,
+   "measured_hz": 329.761
+  },
+  {
+   "sample": "violin_G4_s3.wav",
+   "lokey": 66,
+   "hikey": 68,
+   "pitch_keycenter": 67,
+   "tune": 14,
+   "offset": 0,
+   "asked_for": "G4",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": -13.69,
+   "measured_hz": 388.912
+  },
+  {
+   "sample": "violin_A#4_s5.wav",
+   "lokey": 69,
+   "hikey": 71,
+   "pitch_keycenter": 70,
+   "tune": 2,
+   "offset": 0,
+   "asked_for": "A#4",
+   "seed": 5,
+   "grade": "on_target",
+   "cents_err": -1.56,
+   "measured_hz": 465.741
+  },
+  {
+   "sample": "violin_C#5_s5.wav",
+   "lokey": 72,
+   "hikey": 74,
+   "pitch_keycenter": 73,
+   "tune": 5,
+   "offset": 0,
+   "asked_for": "C#5",
+   "seed": 5,
+   "grade": "on_target",
+   "cents_err": -4.77,
+   "measured_hz": 552.845
+  },
+  {
+   "sample": "violin_E5_s3.wav",
+   "lokey": 75,
+   "hikey": 77,
+   "pitch_keycenter": 76,
+   "tune": -4,
+   "offset": 0,
+   "asked_for": "E5",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": 3.78,
+   "measured_hz": 660.701
+  },
+  {
+   "sample": "violin_G5_s5.wav",
+   "lokey": 78,
+   "hikey": 91,
+   "pitch_keycenter": 79,
+   "tune": -7,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 5,
+   "grade": "on_target",
+   "cents_err": 6.73,
+   "measured_hz": 787.044
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "G3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -20.02,
+   "why": "texture: spread 1190c > 30c; only 62% of frames near one pitch"
+  },
+  {
+   "pitch": "G3",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -4.33,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "G3",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": 1198.32,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "G3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1204.97,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1190.0,
+   "why": "texture: only 78% of frames near one pitch"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1196.76,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1191.52,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": 1198.26,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: spread 1200c > 30c; only 71% of frames near one pitch"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 3,
+   "grade": "on_target",
+   "cents_err": 3.57,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": 1200.63,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "C#4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1204.74,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "E4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -2.97,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "E4",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": -8.56,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "E4",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": 1199.99,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "E4",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1198.72,
+   "why": "seed 4 ranked higher"
+  },
+  {
+   "pitch": "G4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1210.0,
+   "why": "texture: spread 1200c > 30c; only 73% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -1220.0,
+   "why": "texture: only 77% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 4,
+   "grade": "texture",
+   "cents_err": -1220.0,
+   "why": "texture: spread 2410c > 30c; only 65% of frames near one pitch"
+  },
+  {
+   "pitch": "G4",
+   "seed": 5,
+   "grade": "texture",
+   "cents_err": 0.0,
+   "why": "texture: spread 1200c > 30c; only 64% of frames near one pitch"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 1,
+   "grade": "on_target",
+   "cents_err": -1.91,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": 0.9,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1206.39,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "A#4",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": 1207.36,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 3,
+   "grade": "texture",
+   "cents_err": -1190.0,
+   "why": "texture: spread 1200c > 30c; only 64% of frames near one pitch"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 4,
+   "grade": "on_target",
+   "cents_err": 3.63,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 5.31,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "C#5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1191.16,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "E5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1210.0,
+   "why": "texture: spread 1900c > 30c; only 53% of frames near one pitch"
+  },
+  {
+   "pitch": "E5",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -1198.63,
+   "why": "seed 3 ranked higher"
+  },
+  {
+   "pitch": "E5",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -1204.73,
+   "why": "seed 3 ranked higher"
+  },
+  {
+   "pitch": "E5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2402.05,
+   "why": "seed 3 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1203.54,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -2399.86,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2401.56,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2408.74,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1195.77,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -1192.68,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1212.46,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -1217.13,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1189.18,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -1196.43,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -1185.98,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -2400.41,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E6",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": -2399.37,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "E6",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -2401.63,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "E6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2402.48,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "E6",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -2396.85,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "G6",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -3600.0,
+   "why": "texture: spread 1180c > 30c; only 62% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G6",
+   "seed": 4,
+   "grade": "texture",
+   "cents_err": -3600.0,
+   "why": "texture: only 77% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G6",
+   "seed": 3,
+   "grade": "retunable",
+   "cents_err": -2399.43,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "G6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -2417.65,
+   "why": "seed 5 ranked higher"
+  },
+  {
+   "pitch": "A#3",
+   "seed": 4,
+   "grade": "retunable",
+   "cents_err": 1200.69,
+   "why": "sounds at A#4, same key as the A#4 pick"
+  },
+  {
+   "pitch": "E6",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -1193.48,
+   "why": "sounds at E5, same key as the E5 pick"
+  },
+  {
+   "pitch": "C#6",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1197.82,
+   "why": "sounds at C#5, same key as the C#5 pick"
+  },
+  {
+   "pitch": "A#5",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -1202.28,
+   "why": "sounds at A#4, same key as the A#4 pick"
+  },
+  {
+   "pitch": "G6",
+   "seed": 5,
+   "grade": "retunable",
+   "cents_err": -2403.77,
+   "why": "sounds at G4, same key as the G4 pick"
+  }
+ ],
+ "trimmed": {
+  "before_on_target": 49,
+  "before_keys": 49,
+  "dropped": []
+ },
+ "keycheck": {
+  "keys_played": 49,
+  "on_target": 49,
+  "worst_abs_cents_on_target": 4.05,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

@@ -1,0 +1,114 @@
+{
+ "arm": "musicgen_text",
+ "instrument": "piano",
+ "probe_verdict": "RETUNABLE",
+ "cells": {
+  "on_target": 0,
+  "retunable": 6,
+  "texture": 2,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 3,
+ "built": true,
+ "sfz": "musicgen_text_piano.sfz",
+ "keys": [
+  "F1",
+  "C6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "E3"
+ ],
+ "regions": [
+  {
+   "sample": "piano_A2_s1.wav",
+   "lokey": 29,
+   "hikey": 50,
+   "pitch_keycenter": 41,
+   "tune": -2,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -397.57,
+   "measured_hz": 87.43
+  },
+  {
+   "sample": "piano_G5_s2.wav",
+   "lokey": 51,
+   "hikey": 66,
+   "pitch_keycenter": 60,
+   "tune": -1,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1899.41,
+   "measured_hz": 261.714
+  },
+  {
+   "sample": "piano_C4_s2.wav",
+   "lokey": 67,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": -2,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1201.52,
+   "measured_hz": 523.72
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 302.47,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -400.0,
+   "why": "texture: only 70% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -20.0,
+   "why": "texture: spread 1890c > 30c; only 56% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -1905.43,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 2002.67,
+   "why": "sounds at C5, same key as the C4 pick"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 56,
+  "on_target": 51,
+  "worst_abs_cents_on_target": 1.32,
+  "misses": [
+   "A1 texture 0.0",
+   "C#2 texture 0.0",
+   "D2 texture 0.0",
+   "D#2 texture 0.0",
+   "F#2 texture 1870.0"
+  ]
+ },
+ "audition": "audition.wav"
+}

@@ -1,0 +1,492 @@
+{
+ "mode": "ring",
+ "source": "instruments/by_played/marimba_hit/marimba_hit_ab+marimba_hit_bo3+marimba_hit_mid_bo5_marimba_hit.sfz",
+ "samples": {
+  "marimba_hit_bo3__marimba_hit_F#5_s3.wav": {
+   "strikes_found": 3,
+   "kept_strike": {
+    "at_sec": 0.64,
+    "ring_sec": 2.16,
+    "peak_db": -3.6,
+    "decays_db": 16.6,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 2.15,
+   "from_take": "F#5 s3",
+   "ring": {
+    "ring": "left alone: the model's own strike rang 2.15 s"
+   },
+   "retuned": {
+    "from": -22,
+    "to": -23,
+    "hz": 187.47
+   }
+  },
+  "marimba_hit_mid_bo5__marimba_hit_G3_s5.wav": {
+   "strikes_found": 3,
+   "kept_strike": {
+    "at_sec": 1.808,
+    "ring_sec": 1.824,
+    "peak_db": -2.4,
+    "decays_db": 4.1,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 1.81,
+   "ring": {
+    "ring": "left alone: the model's own strike rang 1.81 s"
+   },
+   "retuned": {
+    "from": -6,
+    "to": -5,
+    "hz": 196.61
+   }
+  },
+  "marimba_hit_mid_bo5__marimba_hit_G#3_s5.wav": {
+   "strikes_found": 11,
+   "kept_strike": {
+    "at_sec": 3.616,
+    "ring_sec": 1.324,
+    "peak_db": -0.4,
+    "decays_db": 6.3,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 1.19,
+   "from_take": "G#3 s5",
+   "ring": {
+    "partials_hz": [
+     209.8,
+     417.9,
+     622.6,
+     835.8,
+     1253.3,
+     2494.7
+    ],
+    "peaks_left_to_die": 17,
+    "tau_sec": [
+     1.34,
+     0.77,
+     0.56,
+     0.44,
+     0.32,
+     0.18
+    ],
+    "fit_residual": 0.157,
+    "struck_sec": 1.18,
+    "rung_sec": 4.12
+   },
+   "retuned": {
+    "from": -10,
+    "to": -15,
+    "hz": 209.42
+   }
+  },
+  "marimba_hit_bo3__marimba_hit_A5_s1.wav": {
+   "strikes_found": 14,
+   "kept_strike": {
+    "at_sec": 1.728,
+    "ring_sec": 1.072,
+    "peak_db": -0.0,
+    "decays_db": 5.0,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 1.06,
+   "from_take": "A5 s1",
+   "ring": {
+    "partials_hz": [
+     221.2,
+     441.4,
+     885.0,
+     1767.5
+    ],
+    "peaks_left_to_die": 11,
+    "tau_sec": [
+     1.31,
+     0.75,
+     0.43,
+     0.25
+    ],
+    "fit_residual": 0.1,
+    "struck_sec": 1.055,
+    "rung_sec": 4.0
+   },
+   "retuned": {
+    "from": -9,
+    "to": -7,
+    "hz": 220.9
+   }
+  },
+  "marimba_hit_mid_bo5__marimba_hit_A#3_s5.wav": {
+   "strikes_found": 8,
+   "kept_strike": {
+    "at_sec": 3.856,
+    "ring_sec": 1.084,
+    "peak_db": -3.1,
+    "decays_db": 4.9,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 1.07,
+   "from_take": "A#3 s5",
+   "ring": {
+    "partials_hz": [
+     233.6,
+     468.1,
+     702.2,
+     938.1
+    ],
+    "peaks_left_to_die": 15,
+    "tau_sec": [
+     1.27,
+     0.73,
+     0.53,
+     0.42
+    ],
+    "fit_residual": 0.339,
+    "struck_sec": 1.067,
+    "rung_sec": 4.01,
+    "ring": "fit too loose; kept the plain cut"
+   },
+   "retuned": {
+    "from": -10,
+    "to": -11,
+    "hz": 234.57
+   }
+  },
+  "marimba_hit_mid_bo5__marimba_hit_B3_s3.wav": {
+   "strikes_found": 23,
+   "kept_strike": {
+    "at_sec": 1.488,
+    "ring_sec": 0.528,
+    "peak_db": -6.2,
+    "decays_db": 4.4,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.52,
+   "from_take": "B3 s3",
+   "ring": {
+    "partials_hz": [
+     247.4,
+     496.1,
+     744.2,
+     994.7,
+     1985.4
+    ],
+    "peaks_left_to_die": 7,
+    "tau_sec": [
+     1.23,
+     0.71,
+     0.51,
+     0.41,
+     0.23
+    ],
+    "fit_residual": 0.097,
+    "struck_sec": 0.511,
+    "rung_sec": 3.45
+   },
+   "retuned": {
+    "from": -5,
+    "to": -7,
+    "hz": 247.91
+   }
+  },
+  "marimba_hit_ab__marimba_hit_C4_s3.wav": {
+   "strikes_found": 5,
+   "kept_strike": {
+    "at_sec": 2.768,
+    "ring_sec": 2.172,
+    "peak_db": -0.2,
+    "decays_db": 9.7,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 1.81,
+   "from_take": "C4 s3",
+   "ring": {
+    "ring": "left alone: the model's own strike rang 1.81 s"
+   },
+   "retuned": {
+    "from": -15,
+    "to": -15,
+    "hz": 263.96
+   }
+  },
+  "marimba_hit_mid_bo5__marimba_hit_C#4_s3.wav": {
+   "strikes_found": 18,
+   "kept_strike": {
+    "at_sec": 0.0,
+    "ring_sec": 1.296,
+    "peak_db": 0.0,
+    "decays_db": 6.7,
+    "opens_clip": true
+   },
+   "clean_pick": true,
+   "kept_sec": 1.28,
+   "from_take": "C#4 s3",
+   "ring": {
+    "ring": "left alone: the model's own strike rang 1.28 s"
+   },
+   "retuned": {
+    "from": -4,
+    "to": 2,
+    "hz": 276.83
+   }
+  },
+  "marimba_hit_mid_bo5__marimba_hit_D4_s4.wav": {
+   "strikes_found": 2,
+   "kept_strike": {
+    "at_sec": 2.432,
+    "ring_sec": 2.508,
+    "peak_db": -2.8,
+    "decays_db": 11.0,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 2.5,
+   "ring": {
+    "ring": "left alone: the model's own strike rang 2.5 s"
+   },
+   "retuned": {
+    "from": -3,
+    "to": -3,
+    "hz": 294.18
+   }
+  },
+  "marimba_hit_bo3__marimba_hit_D#4_s1.wav": {
+   "strikes_found": 7,
+   "kept_strike": {
+    "at_sec": 3.392,
+    "ring_sec": 0.8,
+    "peak_db": -7.6,
+    "decays_db": 5.5,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.79,
+   "ring": {
+    "partials_hz": [
+     313.4,
+     623.5,
+     1247.5,
+     1881.7,
+     2513.7,
+     3121.0
+    ],
+    "peaks_left_to_die": 16,
+    "tau_sec": [
+     1.1,
+     0.63,
+     0.36,
+     0.26,
+     0.21,
+     0.17
+    ],
+    "fit_residual": 0.207,
+    "struck_sec": 0.783,
+    "rung_sec": 3.72
+   },
+   "retuned": {
+    "from": -10,
+    "to": -12,
+    "hz": 313.37
+   }
+  },
+  "marimba_hit_ab__marimba_hit_E3_s3.wav": {
+   "strikes_found": 16,
+   "kept_strike": {
+    "at_sec": 4.336,
+    "ring_sec": 0.604,
+    "peak_db": 0.0,
+    "decays_db": 6.0,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.59,
+   "from_take": "E3 s3",
+   "ring": {
+    "partials_hz": [
+     329.1,
+     661.9,
+     990.8,
+     1331.0,
+     1666.1,
+     2642.4
+    ],
+    "peaks_left_to_die": 12,
+    "tau_sec": [
+     1.06,
+     0.61,
+     0.44,
+     0.35,
+     0.29,
+     0.2
+    ],
+    "fit_residual": 0.4,
+    "struck_sec": 0.587,
+    "rung_sec": 3.53,
+    "ring": "fit too loose; kept the plain cut"
+   },
+   "retuned": {
+    "from": -17,
+    "to": -23,
+    "hz": 333.96
+   }
+  },
+  "marimba_hit_mid_bo5__marimba_hit_F#3_s5.wav": {
+   "strikes_found": 12,
+   "kept_strike": {
+    "at_sec": 2.672,
+    "ring_sec": 0.336,
+    "peak_db": -6.1,
+    "decays_db": 5.7,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.32,
+   "ring": {
+    "partials_hz": [
+     374.6,
+     731.2,
+     1115.5,
+     1493.7
+    ],
+    "peaks_left_to_die": 10,
+    "tau_sec": [
+     1.0,
+     0.59,
+     0.42,
+     0.33
+    ],
+    "fit_residual": 0.195,
+    "struck_sec": 0.319,
+    "rung_sec": 3.26
+   },
+   "retuned": {
+    "from": -18,
+    "to": -22,
+    "hz": 374.64
+   }
+  },
+  "marimba_hit_ab__marimba_hit_G5_s2.wav": {
+   "strikes_found": 26,
+   "kept_strike": {
+    "at_sec": 4.448,
+    "ring_sec": 0.492,
+    "peak_db": -3.4,
+    "decays_db": 7.1,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.27,
+   "from_take": "G5 s2",
+   "ring": {
+    "partials_hz": [
+     391.0,
+     785.3,
+     1179.0,
+     1582.0
+    ],
+    "peaks_left_to_die": 13,
+    "tau_sec": [
+     0.98,
+     0.56,
+     0.41,
+     0.32
+    ],
+    "fit_residual": 0.427,
+    "struck_sec": 0.268,
+    "rung_sec": 3.21,
+    "ring": "fit too loose; kept the plain cut"
+   },
+   "retuned": {
+    "from": -9,
+    "to": -15,
+    "hz": 395.34
+   }
+  },
+  "marimba_hit_mid_bo5__marimba_hit_G#3_s1.wav": {
+   "strikes_found": 10,
+   "kept_strike": {
+    "at_sec": 1.488,
+    "ring_sec": 0.832,
+    "peak_db": -3.2,
+    "decays_db": 17.4,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.42,
+   "ring": {
+    "partials_hz": [
+     417.8,
+     835.4,
+     1251.7,
+     1676.9,
+     3345.6,
+     3740.2
+    ],
+    "peaks_left_to_die": 15,
+    "tau_sec": [
+     0.95,
+     0.55,
+     0.4,
+     0.31,
+     0.18,
+     0.16
+    ],
+    "fit_residual": 0.285,
+    "struck_sec": 0.412,
+    "rung_sec": 3.35
+   },
+   "retuned": {
+    "from": -12,
+    "to": -11,
+    "hz": 417.86
+   }
+  },
+  "marimba_hit_bo3__marimba_hit_A3_s2.wav": {
+   "strikes_found": 15,
+   "kept_strike": {
+    "at_sec": 1.104,
+    "ring_sec": 0.416,
+    "peak_db": -4.8,
+    "decays_db": 5.8,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.4,
+   "ring": {
+    "partials_hz": [
+     441.7,
+     879.6,
+     1771.1,
+     3952.5
+    ],
+    "peaks_left_to_die": 6,
+    "tau_sec": [
+     0.92,
+     0.53,
+     0.3,
+     0.16
+    ],
+    "fit_residual": 0.095,
+    "struck_sec": 0.399,
+    "rung_sec": 3.34
+   },
+   "retuned": {
+    "from": -7,
+    "to": -7,
+    "hz": 441.74
+   }
+  }
+ },
+ "dropped": {},
+ "keycheck": {
+  "on_target": 40,
+  "keys_played": 40,
+  "worst_abs_cents_on_target": 1.47
+ }
+}

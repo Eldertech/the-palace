@@ -1,0 +1,26 @@
+// marimba_hit_bo3 · marimba_hit — built from the AI-source probe's graded run
+// source: ai-source-probe/results.marimba_hit_bo3.jsonl  ·  builder: build_sfz.py
+// probe verdict for this instrument: TEXTURE ONLY  (on target 6, retunable 21, texture 12, of 39 cells)
+// 13 of 13 notes asked for had a steady take (best of 3 takes)
+// kept 4 of 13 notes asked for; A2, C3, D#3, F#4, A4, C5, D#5, F#5, A5 sounded on keys already taken
+// keys F#2–D#5; outer samples stretch at most 12 semitones; no silent gaps
+// pitch = the grader's measured pitch (keycenter + tune), not the note asked for.
+// onset trim -30 dBFS, 2 ms cushion; 3 ms fade-in.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.003 ampeg_release=0.4
+
+<group>
+// asked F#3, seed 2, on target, +19.0c from asked
+<region> sample=marimba_hit_F#3_s2.wav lokey=42 hikey=55 pitch_keycenter=54 tune=-19 offset=0
+// asked A3, seed 3, on target, +15.6c from asked
+<region> sample=marimba_hit_A3_s3.wav lokey=56 hikey=58 pitch_keycenter=57 tune=-16 offset=0
+// asked C4, seed 2, on target, +3.5c from asked
+<region> sample=marimba_hit_C4_s2.wav lokey=59 hikey=61 pitch_keycenter=60 tune=-4 offset=0
+// asked D#4, seed 1, on target, +10.1c from asked
+<region> sample=marimba_hit_D#4_s1.wav lokey=62 hikey=75 pitch_keycenter=63 tune=-10 offset=0

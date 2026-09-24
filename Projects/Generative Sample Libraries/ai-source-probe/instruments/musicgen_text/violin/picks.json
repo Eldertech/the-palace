@@ -1,0 +1,115 @@
+{
+ "arm": "musicgen_text",
+ "instrument": "violin",
+ "probe_verdict": "RETUNABLE",
+ "cells": {
+  "on_target": 0,
+  "retunable": 7,
+  "texture": 1,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 2,
+ "built": true,
+ "sfz": "musicgen_text_violin.sfz",
+ "keys": [
+  "C3",
+  "C6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "A2",
+  "E3"
+ ],
+ "regions": [
+  {
+   "sample": "violin_C4_s2.wav",
+   "lokey": 48,
+   "hikey": 66,
+   "pitch_keycenter": 60,
+   "tune": 30,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -30.0,
+   "measured_hz": 257.135
+  },
+  {
+   "sample": "violin_G5_s1.wav",
+   "lokey": 67,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": 20,
+   "offset": 23258,
+   "asked_for": "G5",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": -719.68,
+   "measured_hz": 517.336
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 2008.65,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1990.28,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1213.58,
+   "why": "seed 2 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 510.0,
+   "why": "texture: spread 1210c > 30c; only 52% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1502.09,
+   "why": "sounds at C4, same key as the C4 pick"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 2007.29,
+   "why": "sounds at C5, same key as the G5 pick"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 37,
+  "on_target": 26,
+  "worst_abs_cents_on_target": 10.0,
+  "misses": [
+   "C3 texture 20.0",
+   "C#3 texture 10.0",
+   "D3 texture 10.0",
+   "D#3 texture 10.0",
+   "E3 texture 10.0",
+   "F3 texture 10.0",
+   "F#3 texture 10.0",
+   "G3 texture 10.0",
+   "G#3 texture 10.0",
+   "A3 texture 10.0",
+   "A#3 texture 10.0"
+  ]
+ },
+ "audition": "audition.wav"
+}

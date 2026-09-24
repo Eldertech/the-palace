@@ -1,0 +1,103 @@
+{
+ "arm": "musicgen_text",
+ "instrument": "flute",
+ "probe_verdict": "RETUNABLE",
+ "cells": {
+  "on_target": 0,
+  "retunable": 6,
+  "texture": 2,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 2,
+ "built": true,
+ "sfz": "musicgen_text_flute.sfz",
+ "keys": [
+  "C3",
+  "C6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "A2",
+  "G5"
+ ],
+ "regions": [
+  {
+   "sample": "flute_E3_s1.wav",
+   "lokey": 48,
+   "hikey": 66,
+   "pitch_keycenter": 60,
+   "tune": 0,
+   "offset": 0,
+   "asked_for": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 799.78,
+   "measured_hz": 261.586
+  },
+  {
+   "sample": "flute_C4_s1.wav",
+   "lokey": 67,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": 9,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1190.51,
+   "measured_hz": 520.398
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1525.19,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 2010.0,
+   "why": "texture: spread 40c > 30c"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1198.11,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1420.0,
+   "why": "texture: spread 1090c > 30c; only 21% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1510.52,
+   "why": "sounds at C4, same key as the E3 pick"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1884.85,
+   "why": "sounds at C4, same key as the E3 pick"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 37,
+  "on_target": 37,
+  "worst_abs_cents_on_target": 2.52,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

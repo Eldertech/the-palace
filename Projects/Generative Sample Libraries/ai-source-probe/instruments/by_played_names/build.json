@@ -1,0 +1,57 @@
+[
+ {
+  "arm": "range+flute_names56_bo3+flute_names57_bo3",
+  "instrument": "flute",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 23,
+   "retunable": 47,
+   "texture": 28,
+   "error": 0,
+   "n": 98
+  },
+  "notes_kept": 26,
+  "filed_by": "played",
+  "notes_steady": 40,
+  "built": true,
+  "sfz": "range+flute_names56_bo3+flute_names57_bo3_flute.sfz",
+  "keys": [
+   "D#2",
+   "C#7"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "G1"
+  ],
+  "notes_folded": [
+   "E1",
+   "A#1",
+   "C#2",
+   "G2",
+   "C#3",
+   "E3",
+   "A#3",
+   "C#4",
+   "G4",
+   "A#4",
+   "E5",
+   "A#5",
+   "E6",
+   "F4",
+   "A4",
+   "F#5"
+  ],
+  "trimmed": {
+   "before_on_target": 59,
+   "before_keys": 59,
+   "dropped": []
+  },
+  "keycheck": {
+   "keys_played": 59,
+   "on_target": 59,
+   "worst_abs_cents_on_target": 4.66,
+   "misses": []
+  },
+  "audition": "audition.wav"
+ }
+]

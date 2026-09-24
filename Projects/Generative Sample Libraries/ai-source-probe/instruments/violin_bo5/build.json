@@ -1,0 +1,44 @@
+[
+ {
+  "arm": "violin_bo5",
+  "instrument": "violin_cap5",
+  "probe_verdict": "RETUNABLE",
+  "cells": {
+   "on_target": 16,
+   "retunable": 38,
+   "texture": 11,
+   "error": 0,
+   "n": 65
+  },
+  "notes_kept": 8,
+  "notes_steady": 13,
+  "built": true,
+  "sfz": "violin_bo5_violin_cap5.sfz",
+  "keys": [
+   "D3",
+   "C6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [],
+  "notes_folded": [
+   "A#3",
+   "A#5",
+   "C#6",
+   "E6",
+   "G6"
+  ],
+  "trimmed": {
+   "before_on_target": 35,
+   "before_keys": 35,
+   "dropped": []
+  },
+  "keycheck": {
+   "keys_played": 35,
+   "on_target": 35,
+   "worst_abs_cents_on_target": 4.05,
+   "misses": []
+  },
+  "audition": "audition.wav",
+  "built_from_row": "violin"
+ }
+]

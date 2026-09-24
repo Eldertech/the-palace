@@ -1,0 +1,298 @@
+{
+ "mode": "bow",
+ "source": "instruments/by_played_names/flute/range+flute_names56_bo3+flute_names57_bo3_flute.sfz",
+ "samples": {
+  "flute_names57_bo3__flute_D#5_s3.wav": {
+   "cut_start_sec": 0.311,
+   "first_100ms_db": -5.0,
+   "sustain_db": -5.3,
+   "kept_sec": 4.63,
+   "retuned": {
+    "from": -2,
+    "to": -2,
+    "hz": 155.7
+   }
+  },
+  "range__flute_E2_s1.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -4.5,
+   "sustain_db": -4.4,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 16,
+    "to": 16,
+    "hz": 163.27
+   }
+  },
+  "range__flute_G3_s1.wav": {
+   "cut_start_sec": 0.421,
+   "first_100ms_db": -2.4,
+   "sustain_db": -3.8,
+   "kept_sec": 4.52,
+   "retuned": {
+    "from": 8,
+    "to": 8,
+    "hz": 195.11
+   }
+  },
+  "range__flute_A#2_s2.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -5.5,
+   "sustain_db": -5.9,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -2,
+    "to": -3,
+    "hz": 233.45
+   }
+  },
+  "flute_names56_bo3__flute_B3_s1.wav": {
+   "cut_start_sec": 0.19,
+   "first_100ms_db": -6.7,
+   "sustain_db": -9.4,
+   "kept_sec": 4.75,
+   "retuned": {
+    "from": 7,
+    "to": 7,
+    "hz": 245.92
+   }
+  },
+  "flute_names57_bo3__flute_C4_s3.wav": {
+   "cut_start_sec": 0.292,
+   "first_100ms_db": -10.1,
+   "sustain_db": -6.8,
+   "kept_sec": 4.65,
+   "retuned": {
+    "from": -8,
+    "to": -9,
+    "hz": 262.99
+   }
+  },
+  "range__flute_C#5_s2.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -10.7,
+   "sustain_db": -5.6,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -10,
+    "to": -10,
+    "hz": 278.83
+   }
+  },
+  "flute_names56_bo3__flute_D5_s2.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -12.2,
+   "sustain_db": -5.0,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 14,
+    "to": 14,
+    "hz": 291.3
+   }
+  },
+  "flute_names57_bo3__flute_D#4_s2.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -7.1,
+   "sustain_db": -5.0,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -13,
+    "to": -13,
+    "hz": 313.43
+   }
+  },
+  "range__flute_E4_s1.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -0.8,
+   "sustain_db": -5.5,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 0,
+    "to": 0,
+    "hz": 329.56
+   }
+  },
+  "flute_names56_bo3__flute_F5_s3.wav": {
+   "cut_start_sec": 0.161,
+   "first_100ms_db": -3.7,
+   "sustain_db": -4.1,
+   "kept_sec": 4.78,
+   "retuned": {
+    "from": 1,
+    "to": 1,
+    "hz": 349.02
+   }
+  },
+  "range__flute_G5_s2.wav": {
+   "cut_start_sec": 0.161,
+   "first_100ms_db": -7.0,
+   "sustain_db": -7.1,
+   "kept_sec": 4.78,
+   "retuned": {
+    "from": 11,
+    "to": 11,
+    "hz": 389.57
+   }
+  },
+  "flute_names56_bo3__flute_G#3_s1.wav": {
+   "cut_start_sec": 0.21,
+   "first_100ms_db": -6.3,
+   "sustain_db": -2.7,
+   "kept_sec": 4.73,
+   "retuned": {
+    "from": -2,
+    "to": -1,
+    "hz": 415.66
+   }
+  },
+  "flute_names57_bo3__flute_A3_s2.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -4.3,
+   "sustain_db": -4.1,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 0,
+    "to": 0,
+    "hz": 440.05
+   }
+  },
+  "flute_names56_bo3__flute_B4_s3.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -5.7,
+   "sustain_db": -4.2,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 23,
+    "to": 23,
+    "hz": 487.27
+   }
+  },
+  "flute_names57_bo3__flute_C4_s1.wav": {
+   "cut_start_sec": 0.411,
+   "first_100ms_db": -16.5,
+   "sustain_db": -8.1,
+   "kept_sec": 4.53,
+   "retuned": {
+    "from": 9,
+    "to": 9,
+    "hz": 520.51
+   }
+  },
+  "range__flute_C#6_s1.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -4.4,
+   "sustain_db": -1.9,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -8,
+    "to": -8,
+    "hz": 557.04
+   }
+  },
+  "flute_names56_bo3__flute_D4_s3.wav": {
+   "cut_start_sec": 0.29,
+   "first_100ms_db": -13.0,
+   "sustain_db": -2.4,
+   "kept_sec": 4.65,
+   "retuned": {
+    "from": 1,
+    "to": 2,
+    "hz": 586.73
+   }
+  },
+  "range__flute_E7_s2.wav": {
+   "cut_start_sec": 0.18,
+   "first_100ms_db": -8.2,
+   "sustain_db": -4.2,
+   "kept_sec": 4.76,
+   "retuned": {
+    "from": -1,
+    "to": -1,
+    "hz": 659.71
+   }
+  },
+  "flute_names56_bo3__flute_F5_s1.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -4.2,
+   "sustain_db": -2.8,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -2,
+    "to": -2,
+    "hz": 699.1
+   }
+  },
+  "flute_names57_bo3__flute_F#4_s1.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -3.9,
+   "sustain_db": -3.7,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -19,
+    "to": -19,
+    "hz": 747.97
+   }
+  },
+  "range__flute_G6_s2.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -6.2,
+   "sustain_db": -2.7,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -6,
+    "to": -6,
+    "hz": 786.81
+   }
+  },
+  "flute_names56_bo3__flute_G#4_s3.wav": {
+   "cut_start_sec": 0.161,
+   "first_100ms_db": -8.6,
+   "sustain_db": -5.3,
+   "kept_sec": 4.78,
+   "retuned": {
+    "from": 1,
+    "to": 1,
+    "hz": 829.91
+   }
+  },
+  "range__flute_A#6_s1.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -1.6,
+   "sustain_db": -3.1,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 4,
+    "to": 4,
+    "hz": 930.0
+   }
+  },
+  "flute_names57_bo3__flute_C5_s2.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -12.8,
+   "sustain_db": -9.2,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -11,
+    "to": -10,
+    "hz": 1052.83
+   }
+  },
+  "range__flute_C#7_s1.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -5.0,
+   "sustain_db": -5.2,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -3,
+    "to": -3,
+    "hz": 1110.73
+   }
+  }
+ },
+ "dropped": {},
+ "keycheck": {
+  "on_target": 59,
+  "keys_played": 59,
+  "worst_abs_cents_on_target": 4.72
+ }
+}

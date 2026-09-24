@@ -1,0 +1,41 @@
+// range · flute — built from the AI-source probe's graded run
+// source: ai-source-probe/results.range.jsonl  ·  builder: build_sfz.py
+// filed by the key each take played, not the note it was asked for
+// probe verdict for this instrument: TEXTURE ONLY  (on target 7, retunable 25, texture 18, of 50 cells)
+// 24 of 25 notes asked for had a steady take (best of 2 takes)
+// kept 11 of 25 notes asked for; no steady render of G1; E1, A#1, C#2, G2, C#3, E3, A#3, C#4, G4, A#4, E5, A#5, E6 sounded on keys already taken
+// keys E2–C#7; outer samples stretch at most 12 semitones; no silent gaps
+// pitch = the grader's measured pitch (keycenter + tune), not the note asked for.
+// onset trim -30 dBFS, 2 ms cushion; 3 ms fade-in.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.003 ampeg_release=0.4
+
+<group>
+// asked E2, seed 1, retunable, +1183.8c from asked
+<region> sample=flute_E2_s1.wav lokey=40 hikey=53 pitch_keycenter=52 tune=16 offset=0
+// asked G3, seed 1, on target, -7.8c from asked
+<region> sample=flute_G3_s1.wav lokey=54 hikey=56 pitch_keycenter=55 tune=8 offset=0
+// asked A#2, seed 2, retunable, +1202.5c from asked
+<region> sample=flute_A#2_s2.wav lokey=57 hikey=59 pitch_keycenter=58 tune=-2 offset=0
+// asked C#5, seed 2, retunable, -1189.7c from asked
+<region> sample=flute_C#5_s2.wav lokey=60 hikey=62 pitch_keycenter=61 tune=-10 offset=0
+// asked E4, seed 1, on target, -0.2c from asked
+<region> sample=flute_E4_s1.wav lokey=63 hikey=65 pitch_keycenter=64 tune=0 offset=0
+// asked G5, seed 2, retunable, -1210.7c from asked
+<region> sample=flute_G5_s2.wav lokey=66 hikey=70 pitch_keycenter=67 tune=11 offset=0
+// asked C#6, seed 1, retunable, -1191.7c from asked
+<region> sample=flute_C#6_s1.wav lokey=71 hikey=74 pitch_keycenter=73 tune=-8 offset=0
+// asked E7, seed 2, retunable, -2398.9c from asked
+<region> sample=flute_E7_s2.wav lokey=75 hikey=77 pitch_keycenter=76 tune=-1 offset=0
+// asked G6, seed 2, retunable, -1193.7c from asked
+<region> sample=flute_G6_s2.wav lokey=78 hikey=80 pitch_keycenter=79 tune=-6 offset=0
+// asked A#6, seed 1, retunable, -1204.4c from asked
+<region> sample=flute_A#6_s1.wav lokey=81 hikey=83 pitch_keycenter=82 tune=4 offset=0
+// asked C#7, seed 1, retunable, -1196.9c from asked
+<region> sample=flute_C#7_s1.wav lokey=84 hikey=97 pitch_keycenter=85 tune=-3 offset=0

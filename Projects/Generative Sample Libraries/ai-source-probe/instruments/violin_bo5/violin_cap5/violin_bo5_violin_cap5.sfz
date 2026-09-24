@@ -1,0 +1,34 @@
+// violin_bo5 · violin_cap5 — built from the AI-source probe's graded run
+// source: ai-source-probe/results.violin_bo5.jsonl  ·  builder: build_sfz.py
+// probe verdict for this instrument: RETUNABLE  (on target 16, retunable 38, texture 11, of 65 cells)
+// 13 of 13 notes asked for had a steady take (best of 5 takes)
+// kept 8 of 13 notes asked for; A#3, A#5, C#6, E6, G6 sounded on keys already taken
+// keys D3–C6; outer samples stretch at most 5 semitones; no silent gaps
+// pitch = the grader's measured pitch (keycenter + tune), not the note asked for.
+// onset trim -30 dBFS, 2 ms cushion; 3 ms fade-in.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=no_loop
+pitch_keytrack=100
+ampeg_attack=0.003 ampeg_release=0.4
+
+<group>
+// asked G3, seed 4, on target, -2.5c from asked
+<region> sample=violin_G3_s4.wav lokey=50 hikey=58 pitch_keycenter=55 tune=2 offset=0
+// asked C#4, seed 4, on target, -9.5c from asked
+<region> sample=violin_C#4_s4.wav lokey=59 hikey=62 pitch_keycenter=61 tune=10 offset=0
+// asked E4, seed 4, on target, +0.7c from asked
+<region> sample=violin_E4_s4.wav lokey=63 hikey=65 pitch_keycenter=64 tune=-1 offset=0
+// asked G4, seed 3, on target, -13.7c from asked
+<region> sample=violin_G4_s3.wav lokey=66 hikey=68 pitch_keycenter=67 tune=14 offset=0
+// asked A#4, seed 5, on target, -1.6c from asked
+<region> sample=violin_A#4_s5.wav lokey=69 hikey=71 pitch_keycenter=70 tune=2 offset=0
+// asked C#5, seed 5, on target, -4.8c from asked
+<region> sample=violin_C#5_s5.wav lokey=72 hikey=74 pitch_keycenter=73 tune=5 offset=0
+// asked E5, seed 3, on target, +3.8c from asked
+<region> sample=violin_E5_s3.wav lokey=75 hikey=77 pitch_keycenter=76 tune=-4 offset=0
+// asked G5, seed 5, on target, +6.7c from asked
+<region> sample=violin_G5_s5.wav lokey=78 hikey=84 pitch_keycenter=79 tune=-7 offset=0

@@ -1,0 +1,281 @@
+{
+ "sfz": "marimba_hit_bo3_marimba_hit_shaped.sfz",
+ "keys_played": 34,
+ "on_target": 34,
+ "worst_abs_cents_on_target": 2.56,
+ "misses": [],
+ "keys": [
+  {
+   "key": 42,
+   "note": "F#2",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -12,
+   "grade": "on_target",
+   "cents_err": -2.56
+  },
+  {
+   "key": 43,
+   "note": "G2",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -11,
+   "grade": "on_target",
+   "cents_err": -1.86
+  },
+  {
+   "key": 44,
+   "note": "G#2",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -10,
+   "grade": "on_target",
+   "cents_err": -2.3
+  },
+  {
+   "key": 45,
+   "note": "A2",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -9,
+   "grade": "on_target",
+   "cents_err": -2.2
+  },
+  {
+   "key": 46,
+   "note": "A#2",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -8,
+   "grade": "on_target",
+   "cents_err": -1.71
+  },
+  {
+   "key": 47,
+   "note": "B2",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -7,
+   "grade": "on_target",
+   "cents_err": -1.58
+  },
+  {
+   "key": 48,
+   "note": "C3",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -6,
+   "grade": "on_target",
+   "cents_err": -1.58
+  },
+  {
+   "key": 49,
+   "note": "C#3",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -5,
+   "grade": "on_target",
+   "cents_err": -0.76
+  },
+  {
+   "key": 50,
+   "note": "D3",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -4,
+   "grade": "on_target",
+   "cents_err": -2.05
+  },
+  {
+   "key": 51,
+   "note": "D#3",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -3,
+   "grade": "on_target",
+   "cents_err": -1.24
+  },
+  {
+   "key": 52,
+   "note": "E3",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -2,
+   "grade": "on_target",
+   "cents_err": -0.44
+  },
+  {
+   "key": 53,
+   "note": "F3",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": -0.31
+  },
+  {
+   "key": 54,
+   "note": "F#3",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": -0.5
+  },
+  {
+   "key": 55,
+   "note": "G3",
+   "from": "marimba_hit_F#3_s2.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": -0.37
+  },
+  {
+   "key": 56,
+   "note": "G#3",
+   "from": "marimba_hit_A3_s3.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": -0.09
+  },
+  {
+   "key": 57,
+   "note": "A3",
+   "from": "marimba_hit_A3_s3.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": -0.02
+  },
+  {
+   "key": 58,
+   "note": "A#3",
+   "from": "marimba_hit_A3_s3.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": -0.26
+  },
+  {
+   "key": 59,
+   "note": "B3",
+   "from": "marimba_hit_C4_s3.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": 0.16
+  },
+  {
+   "key": 60,
+   "note": "C4",
+   "from": "marimba_hit_C4_s3.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": 0.24
+  },
+  {
+   "key": 61,
+   "note": "C#4",
+   "from": "marimba_hit_C4_s3.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": 0.95
+  },
+  {
+   "key": 62,
+   "note": "D4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": -1,
+   "grade": "on_target",
+   "cents_err": -0.41
+  },
+  {
+   "key": 63,
+   "note": "D#4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 0,
+   "grade": "on_target",
+   "cents_err": 0.2
+  },
+  {
+   "key": 64,
+   "note": "E4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 1,
+   "grade": "on_target",
+   "cents_err": -0.39
+  },
+  {
+   "key": 65,
+   "note": "F4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 2,
+   "grade": "on_target",
+   "cents_err": -0.08
+  },
+  {
+   "key": 66,
+   "note": "F#4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 3,
+   "grade": "on_target",
+   "cents_err": 0.15
+  },
+  {
+   "key": 67,
+   "note": "G4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 4,
+   "grade": "on_target",
+   "cents_err": -0.08
+  },
+  {
+   "key": 68,
+   "note": "G#4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 5,
+   "grade": "on_target",
+   "cents_err": 0.21
+  },
+  {
+   "key": 69,
+   "note": "A4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 6,
+   "grade": "on_target",
+   "cents_err": 0.08
+  },
+  {
+   "key": 70,
+   "note": "A#4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 7,
+   "grade": "on_target",
+   "cents_err": -0.4
+  },
+  {
+   "key": 71,
+   "note": "B4",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 8,
+   "grade": "on_target",
+   "cents_err": -0.21
+  },
+  {
+   "key": 72,
+   "note": "C5",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 9,
+   "grade": "on_target",
+   "cents_err": 0.05
+  },
+  {
+   "key": 73,
+   "note": "C#5",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 10,
+   "grade": "on_target",
+   "cents_err": 0.47
+  },
+  {
+   "key": 74,
+   "note": "D5",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 11,
+   "grade": "on_target",
+   "cents_err": 0.08
+  },
+  {
+   "key": 75,
+   "note": "D#5",
+   "from": "marimba_hit_D#4_s1.wav",
+   "shift_semitones": 12,
+   "grade": "on_target",
+   "cents_err": 0.02
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "arm": "stable_audio",
+ "instrument": "marimba",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 1,
+  "retunable": 1,
+  "texture": 6,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 2,
+ "built": true,
+ "sfz": "stable_audio_marimba.sfz",
+ "keys": [
+  "A1",
+  "C6"
+ ],
+ "silent_gaps": [
+  "A#3\u2013B3"
+ ],
+ "notes_missing": [
+  "E3",
+  "G5"
+ ],
+ "regions": [
+  {
+   "sample": "marimba_A2_s2.wav",
+   "lokey": 33,
+   "hikey": 57,
+   "pitch_keycenter": 45,
+   "tune": -11,
+   "offset": 0,
+   "asked_for": "A2",
+   "seed": 2,
+   "grade": "on_target",
+   "cents_err": 10.78,
+   "measured_hz": 110.687
+  },
+  {
+   "sample": "marimba_C4_s1.wav",
+   "lokey": 60,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": -13,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1212.89,
+   "measured_hz": 527.169
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": null,
+   "why": "texture: almost no steady pitch found"
+  },
+  {
+   "pitch": "E3",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -620.0,
+   "why": "texture: voiced 7% < 60%; spread 40c > 30c"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 10.0,
+   "why": "texture: spread 1400c > 30c; only 27% of frames near one pitch"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": -720.0,
+   "why": "texture: voiced 23% < 60%; spread 3100c > 30c; only 37% of frames near one pitch"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -2400.0,
+   "why": "texture: spread 70c > 30c; only 72% of frames near one pitch; pinned at the edge of the pitch search, not a note"
+  },
+  {
+   "pitch": "G5",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 730.0,
+   "why": "texture: voiced 24% < 60%; spread 310c > 30c; only 49% of frames near one pitch"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 50,
+  "on_target": 50,
+  "worst_abs_cents_on_target": 2.31,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

@@ -1,0 +1,59 @@
+{
+ "mode": "strike",
+ "source": "instruments/mgm_pool/marimba/mgm_pool_marimba.sfz",
+ "samples": {
+  "marimba_E3_s2.wav": {
+   "strikes_found": 20,
+   "kept_strike": {
+    "at_sec": 0.72,
+    "ring_sec": 0.336,
+    "peak_db": -1.4,
+    "decays_db": 5.4,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.32
+  },
+  "marimba_A2_s1.wav": {
+   "strikes_found": 31,
+   "kept_strike": {
+    "at_sec": 4.528,
+    "ring_sec": 0.304,
+    "peak_db": -4.0,
+    "decays_db": 2.4,
+    "opens_clip": false
+   },
+   "clean_pick": false,
+   "kept_sec": 0.29
+  },
+  "marimba_C4_s1.wav": {
+   "strikes_found": 6,
+   "kept_strike": {
+    "at_sec": 3.968,
+    "ring_sec": 0.972,
+    "peak_db": -7.9,
+    "decays_db": 6.0,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 0.96
+  },
+  "marimba_G5_s2.wav": {
+   "strikes_found": 2,
+   "kept_strike": {
+    "at_sec": 2.528,
+    "ring_sec": 2.412,
+    "peak_db": -1.1,
+    "decays_db": 18.4,
+    "opens_clip": false
+   },
+   "clean_pick": true,
+   "kept_sec": 1.95
+  }
+ },
+ "keycheck": {
+  "on_target": 40,
+  "keys_played": 40,
+  "worst_abs_cents_on_target": 6.29
+ }
+}

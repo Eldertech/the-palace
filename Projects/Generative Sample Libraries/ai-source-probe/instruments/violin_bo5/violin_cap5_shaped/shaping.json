@@ -1,0 +1,99 @@
+{
+ "mode": "bow",
+ "source": "instruments/violin_bo5/violin_cap5/violin_bo5_violin_cap5.sfz",
+ "samples": {
+  "violin_G3_s4.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -8.4,
+   "sustain_db": -1.9,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 2,
+    "to": 2,
+    "hz": 195.72
+   }
+  },
+  "violin_C#4_s4.wav": {
+   "cut_start_sec": 0.151,
+   "first_100ms_db": -17.9,
+   "sustain_db": -13.8,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 10,
+    "to": 10,
+    "hz": 275.64
+   }
+  },
+  "violin_E4_s4.wav": {
+   "cut_start_sec": 0.231,
+   "first_100ms_db": -15.1,
+   "sustain_db": -8.2,
+   "kept_sec": 4.71,
+   "retuned": {
+    "from": -1,
+    "to": -1,
+    "hz": 329.79
+   }
+  },
+  "violin_G4_s3.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -8.1,
+   "sustain_db": -7.3,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 14,
+    "to": 14,
+    "hz": 388.94
+   }
+  },
+  "violin_A#4_s5.wav": {
+   "cut_start_sec": 0.171,
+   "first_100ms_db": -8.1,
+   "sustain_db": -3.7,
+   "kept_sec": 4.77,
+   "retuned": {
+    "from": 2,
+    "to": 1,
+    "hz": 465.77
+   }
+  },
+  "violin_C#5_s5.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -9.3,
+   "sustain_db": -3.8,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": 5,
+    "to": 5,
+    "hz": 552.72
+   }
+  },
+  "violin_E5_s3.wav": {
+   "cut_start_sec": 0.15,
+   "first_100ms_db": -5.4,
+   "sustain_db": -2.4,
+   "kept_sec": 4.79,
+   "retuned": {
+    "from": -4,
+    "to": -4,
+    "hz": 660.67
+   }
+  },
+  "violin_G5_s5.wav": {
+   "cut_start_sec": 0.21,
+   "first_100ms_db": -10.0,
+   "sustain_db": -3.0,
+   "kept_sec": 4.73,
+   "retuned": {
+    "from": -7,
+    "to": -7,
+    "hz": 787.12
+   }
+  }
+ },
+ "keycheck": {
+  "on_target": 35,
+  "keys_played": 35,
+  "worst_abs_cents_on_target": 3.97
+ }
+}

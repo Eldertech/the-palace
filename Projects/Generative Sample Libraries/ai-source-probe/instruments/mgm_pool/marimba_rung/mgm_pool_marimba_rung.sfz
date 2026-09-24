@@ -1,0 +1,22 @@
+// mgm_pool_marimba_rung — attacks reshaped from mgm_pool_marimba.sfz by shape_attacks.py --mode ring
+// one strike kept per sample: the one that rang longest before the model struck again
+// then rung out: the strike's own partials fitted just before the model's next hit, each left to decay (lowest slowest)
+// zones, keycenters and tuning are unchanged from the source.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=one_shot
+pitch_keytrack=100
+ampeg_attack=0.001 ampeg_release=0.3
+
+<group>
+// 20 strikes found; kept the one at 0.72 s, rang 0.336 s, kept 0.32 s; rung out 3.26 s on 4 fitted partials, fit residual 0.056
+<region> sample=marimba_E3_s2.wav lokey=40 hikey=54 pitch_keycenter=52 tune=-12 offset=0
+// 31 strikes found; kept the one at 4.528 s, rang 0.304 s, kept 0.29 s; rung out 3.23 s on 4 fitted partials, fit residual 0.097
+<region> sample=marimba_A2_s1.wav lokey=55 hikey=58 pitch_keycenter=57 tune=-8 offset=0
+// 6 strikes found; kept the one at 3.968 s, rang 0.972 s, kept 0.96 s; rung out 3.9 s on 3 fitted partials, fit residual 0.139
+<region> sample=marimba_C4_s1.wav lokey=59 hikey=63 pitch_keycenter=60 tune=-13 offset=0
+// 2 strikes found; kept the one at 2.528 s, rang 2.412 s, kept 1.95 s; left alone: the model's own strike rang 1.95 s
+<region> sample=marimba_G5_s2.wav lokey=64 hikey=79 pitch_keycenter=67 tune=-2 offset=0

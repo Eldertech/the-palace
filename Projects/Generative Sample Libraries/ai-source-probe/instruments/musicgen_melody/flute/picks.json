@@ -1,0 +1,108 @@
+{
+ "arm": "musicgen_melody",
+ "instrument": "flute",
+ "probe_verdict": "TEXTURE ONLY",
+ "cells": {
+  "on_target": 0,
+  "retunable": 5,
+  "texture": 3,
+  "error": 0,
+  "n": 8
+ },
+ "notes_kept": 3,
+ "built": true,
+ "sfz": "musicgen_melody_flute.sfz",
+ "keys": [
+  "E3",
+  "C6"
+ ],
+ "silent_gaps": [],
+ "notes_missing": [
+  "A2"
+ ],
+ "regions": [
+  {
+   "sample": "flute_E3_s1.wav",
+   "lokey": 52,
+   "hikey": 65,
+   "pitch_keycenter": 64,
+   "tune": -2,
+   "offset": 0,
+   "asked_for": "E3",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1202.05,
+   "measured_hz": 330.01
+  },
+  {
+   "sample": "flute_G5_s2.wav",
+   "lokey": 66,
+   "hikey": 69,
+   "pitch_keycenter": 67,
+   "tune": 11,
+   "offset": 0,
+   "asked_for": "G5",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": -1210.66,
+   "measured_hz": 389.589
+  },
+  {
+   "sample": "flute_C4_s1.wav",
+   "lokey": 70,
+   "hikey": 84,
+   "pitch_keycenter": 72,
+   "tune": 9,
+   "offset": 0,
+   "asked_for": "C4",
+   "seed": 1,
+   "grade": "retunable",
+   "cents_err": 1190.51,
+   "measured_hz": 520.398
+  }
+ ],
+ "passed_over": [
+  {
+   "pitch": "A2",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": 1710.0,
+   "why": "texture: spread 1190c > 30c; only 11% of frames near one pitch"
+  },
+  {
+   "pitch": "A2",
+   "seed": 2,
+   "grade": "texture",
+   "cents_err": 1210.0,
+   "why": "texture: spread 1200c > 30c; only 74% of frames near one pitch"
+  },
+  {
+   "pitch": "E3",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1202.14,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "C4",
+   "seed": 2,
+   "grade": "retunable",
+   "cents_err": 1198.11,
+   "why": "seed 1 ranked higher"
+  },
+  {
+   "pitch": "G5",
+   "seed": 1,
+   "grade": "texture",
+   "cents_err": -1230.0,
+   "why": "texture: spread 1172c > 30c; only 55% of frames near one pitch"
+  }
+ ],
+ "keycheck": {
+  "keys_played": 33,
+  "on_target": 33,
+  "worst_abs_cents_on_target": 1.48,
+  "misses": []
+ },
+ "audition": "audition.wav"
+}

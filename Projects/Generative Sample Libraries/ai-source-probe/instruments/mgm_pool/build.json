@@ -1,0 +1,230 @@
+[
+ {
+  "arm": "mgm_pool",
+  "instrument": "piano",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 2,
+   "retunable": 7,
+   "texture": 31,
+   "error": 0,
+   "n": 40
+  },
+  "notes_kept": 4,
+  "built": true,
+  "sfz": "mgm_pool_piano.sfz",
+  "keys": [
+   "E2",
+   "C6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [],
+  "keycheck": {
+   "keys_played": 45,
+   "on_target": 23,
+   "worst_abs_cents_on_target": 1.52,
+   "misses": [
+    "E2 texture -1200.0",
+    "F2 texture -1200.0",
+    "F#2 texture -1200.0",
+    "G2 texture -1200.0",
+    "G#2 texture -1200.0",
+    "A2 texture -2390.0",
+    "A#2 texture -2395.0",
+    "B2 texture -2390.0",
+    "C3 texture 0.0",
+    "C#3 texture 0.0",
+    "D3 texture 0.0",
+    "D#3 texture 0.0",
+    "E3 texture 0.0",
+    "F3 texture 0.0",
+    "F#3 texture 0.0",
+    "D#4 texture 0.0",
+    "E4 texture -2390.0",
+    "F4 texture -2390.0",
+    "F#4 texture -2390.0",
+    "G4 texture -2390.0",
+    "G#4 texture -2390.0",
+    "A4 texture -2390.0"
+   ]
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "mgm_pool",
+  "instrument": "violin",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 0,
+   "retunable": 25,
+   "texture": 15,
+   "error": 0,
+   "n": 40
+  },
+  "notes_kept": 4,
+  "built": true,
+  "sfz": "mgm_pool_violin.sfz",
+  "keys": [
+   "A2",
+   "G5"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [],
+  "keycheck": {
+   "keys_played": 35,
+   "on_target": 35,
+   "worst_abs_cents_on_target": 10.0,
+   "misses": []
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "mgm_pool",
+  "instrument": "marimba",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 10,
+   "retunable": 14,
+   "texture": 16,
+   "error": 0,
+   "n": 40
+  },
+  "notes_kept": 4,
+  "built": true,
+  "sfz": "mgm_pool_marimba.sfz",
+  "keys": [
+   "E2",
+   "G5"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [],
+  "keycheck": {
+   "keys_played": 40,
+   "on_target": 35,
+   "worst_abs_cents_on_target": 2.39,
+   "misses": [
+    "E2 texture -0.0",
+    "F2 texture 0.0",
+    "F#2 texture 0.0",
+    "G2 texture -0.0",
+    "G#2 texture 0.0"
+   ]
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "mgm_pool",
+  "instrument": "flute",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 5,
+   "retunable": 17,
+   "texture": 18,
+   "error": 0,
+   "n": 40
+  },
+  "notes_kept": 4,
+  "built": true,
+  "sfz": "mgm_pool_flute.sfz",
+  "keys": [
+   "E2",
+   "G6"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [],
+  "keycheck": {
+   "keys_played": 52,
+   "on_target": 43,
+   "worst_abs_cents_on_target": 3.62,
+   "misses": [
+    "E2 texture 20.0",
+    "F2 texture 10.0",
+    "F#2 texture 10.0",
+    "G2 texture 10.0",
+    "C3 texture 10.0",
+    "G3 retunable 1202.16",
+    "G#3 retunable 1202.23",
+    "A3 retunable 1202.05",
+    "A#3 retunable 1202.04"
+   ]
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "mgm_pool",
+  "instrument": "bass",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 3,
+   "retunable": 14,
+   "texture": 23,
+   "error": 0,
+   "n": 40
+  },
+  "notes_kept": 4,
+  "built": true,
+  "sfz": "mgm_pool_bass.sfz",
+  "keys": [
+   "E2",
+   "G5"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [],
+  "keycheck": {
+   "keys_played": 40,
+   "on_target": 36,
+   "worst_abs_cents_on_target": 1.18,
+   "misses": [
+    "G3 texture 0.0",
+    "G#3 texture 0.0",
+    "A3 texture 0.0",
+    "A#3 texture 0.0"
+   ]
+  },
+  "audition": "audition.wav"
+ },
+ {
+  "arm": "mgm_pool",
+  "instrument": "choir",
+  "probe_verdict": "TEXTURE ONLY",
+  "cells": {
+   "on_target": 10,
+   "retunable": 14,
+   "texture": 16,
+   "error": 0,
+   "n": 40
+  },
+  "notes_kept": 3,
+  "built": true,
+  "sfz": "mgm_pool_choir.sfz",
+  "keys": [
+   "A1",
+   "C5"
+  ],
+  "silent_gaps": [],
+  "notes_missing": [
+   "G5"
+  ],
+  "keycheck": {
+   "keys_played": 40,
+   "on_target": 27,
+   "worst_abs_cents_on_target": 1.88,
+   "misses": [
+    "A1 texture 10.0",
+    "A#1 texture 0.0",
+    "B1 texture 0.0",
+    "C2 texture 0.0",
+    "C#2 texture 0.0",
+    "D2 texture 0.0",
+    "D#2 texture 0.0",
+    "E2 texture 10.0",
+    "F2 texture 10.0",
+    "F#2 texture 1190.0",
+    "G2 texture 1190.0",
+    "G#2 texture 1200.0",
+    "A2 texture 0.0"
+   ]
+  },
+  "audition": "audition.wav"
+ }
+]
