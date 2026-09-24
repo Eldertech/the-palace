@@ -80,6 +80,8 @@ The discipline that keeps it coherent is **"speak like a person, log like a prot
 
 `TRICKSTER` is Loudon — the threshold between the autonomous agents and the operator. Agents do not decide at a fork; they post a `RESOURCE_REQUEST` with `blocking: true` and a set of pre-built `options`, and wait. Loudon clears the decision inbox by picking an `option_id`, unblocking many parallel threads in a single pass. `blocking` is a wire field, not a feeling — a blocked agent is simply waiting on the human. Whether the node is Loudon or an automated stand-in is an operational choice, not an architectural one.
 
+**TRICKSTER is stewardship's channel** (2026-09-24) — the board's decision inbox is for the stewardship lane's blocking forks. A non-stewardship page or agent that needs to leave Loudon a note posts to GENERAL instead; it does not open a TRICKSTER item for work TRICKSTER was never built to gate.
+
 ## Handoff Lifecycle
 
 A **baton** handed on the board is the palace's unit of continued work, and keeping the board honest about which batons are actually open is the reliable-work-queue problem — one of the most chewed-over problems in distributed systems. The **fumble** is its canonical failure: a baton caught and then dropped (a context death, an abandoned session) that silently vanishes from the queue with the work half-done. The palace answers it with a **three-state lifecycle** — the first rung of a longer ladder, borrowed on purpose from that canon.

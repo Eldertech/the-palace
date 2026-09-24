@@ -123,6 +123,10 @@ a follow-up. The `RESOURCE_GRANT` records `option_id` / `option_label`. Stewards
 shape; the inbox tolerates lenient strings but that is a fallback, not the contract. (The inbox's own
 render — pending-request view, choice cards — is [[STIGMERGY]]'s concern, not the orchestrator's.)
 
+**The channel** (2026-09-24). TRICKSTER is stewardship's channel — its decision inbox is scoped to
+the stewardship lane's blocking forks. Non-stewardship pages and agents post their notes to GENERAL
+instead, per [[STIGMERGY]] § The human node.
+
 ## Machinery
 
 The canon organ is this entry. The engine lives at `_ops/stigmergy/orchestrator/` (CLI helpers,
