@@ -37,6 +37,8 @@ links:
     type: connects-to
   - target: "[[Closing Well Ceremony]]"
     type: enables
+  - target: "[[Sentry]]"
+    type: enables
 ---
 # Palace Ceremonies
 
@@ -54,6 +56,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 | The Spore Check | "Spore check" | Quarterly | Read all `stage: dormant` entries. Assign disposition: revive / hold / compost. | [[Spore Check Ceremony]] |
 | The Self-Model Update | "Self-model update" | As needed | Revise [[SUBSTRATE]] — update the palace's self-description to reflect current state | [[Self-Model Update Ceremony]] |
 | The Enrichment | "Enrich [page]" / "Enrich this page" / "Let's enrich [page]" | When a page wants to be played, not only read | The whole Shop on one page: its **rich face** — the entry's words read live as the spine, with sound, image and interactives beside the headings they serve (a manifest in the bundle, fingerprinted so a piece that lags the text says so). Pieces that test the text beat pieces that decorate it; what making teaches goes home shown first, or through the [[Deposit Ceremony]] when it changes what the page says. | [[Enrichment]] |
+| The Sentry | "Sentry sweep" / "Security sweep" / "Sentry, check [X]" | On demand, and before anything widens the public surface | Sweep for what must not leave a public repository — secrets, personal data, text written to steer the agents who read here, loose permissions, and (with `--deep`) every blob in history, npm advisories and GitHub's own settings. Raise what it finds to Loudon, masked; hold open findings locally, never in a tracked file. Its one tooth is the pre-push gate, which refuses a credential. | [[Sentry]] |
 
 ## Harvest and Deposit Ceremonies
 
@@ -94,7 +97,7 @@ Not full ceremonies, but palace-aware interactions that can happen in any conver
 
 ## What Makes a Ceremony, and How It Changes
 
-A ceremony is named in the ceremony tables above and keeps a **tuning ledger** in its bundle, `[Ceremony] — tuning.md`. Today both are true of the same twelve. The tables are how a person finds a ceremony; the ledger is how the machinery finds one.
+A ceremony is named in the ceremony tables above and keeps a **tuning ledger** in its bundle, `[Ceremony] — tuning.md`. Today both are true of the same thirteen. The tables are how a person finds a ceremony; the ledger is how the machinery finds one.
 
 - **It carries a version**, in its frontmatter. The version moves when the spec changes — a step, a gate, a postcondition — and never on a run.
 - **Every run opens with the tail read** of its ledger: the last 40 lines once the run lines are set aside, and every item still owed.
