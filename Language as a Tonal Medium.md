@@ -72,3 +72,7 @@ Meaning here arrives the way it does in the [[Oblique Portrait]] method: not by 
 ---
 
 *Lifted from [[Semantic Webcam]]'s carried question on 2026-06-06, after five iterations supplied enough evidence to name it. Title chosen by Loudon (TITLE-TONAL-MEDIUM).*
+
+## Active Baton
+
+[[Language as a Tonal Medium — baton]] — drafted 2026-09-25
