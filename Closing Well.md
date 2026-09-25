@@ -9,6 +9,7 @@ born: 2026-05-26
 last_activated: 2026-09-03
 activation_count: 5
 stage: growing
+version: "1.0"
 links:
   - target: "[[Maker]]"
     type: enables
@@ -136,7 +137,7 @@ The work is only cooperative if the next person can pick it up. A piece of work 
 
 ## Closing Well, Enchanted
 
-> **Status — 2026-08-25: built end to end; only Phase 6 (iterate) is open.** Phases 0–5 of [[Closing Well — production plan]] have all passed their verify gates: the `close well` trigger + thin [[Closing Well Ceremony]] card (v1.15 Schema Ceremony), the cold transcript reader, the moderated-panel design with its two-layer split, and the **executors** — a fresh backstage pass that places every assented row through its real ceremony. Phase 5's live gate passed 2026-07-04 on this design's own maker session. **Phase 6 — turn on the ledger, run closes, let each teach one trap — is the open phase**, and it is working: 21 traps from ~10 real closes, several of which hardened the ceremony card. The one unbuilt piece is wiring the gotcha ledger to append automatically. Build status: [[Closing Well — Context]] § Session log.
+> **Status — 2026-08-25: built end to end; only Phase 6 (iterate) is open.** Phases 0–5 of [[Closing Well — production plan]] have all passed their verify gates: the `close well` trigger + thin [[Closing Well Ceremony]] card (v1.15 Schema Ceremony), the cold transcript reader, the moderated-panel design with its two-layer split, and the **executors** — a fresh backstage pass that places every assented row through its real ceremony. Phase 5's live gate passed 2026-07-04 on this design's own maker session. **Phase 6 — turn on the ledger, run closes, let each teach one trap — is the open phase**, and it is working: 21 traps from ~10 real closes, several of which hardened the ceremony card. Since v1.0 (2026-09-24) the executor's `tuning` row appends each close's lesson to [[Closing Well — tuning]], which was the one unbuilt piece. Build status: [[Closing Well — Context]] § Session log.
 
 For its first year, Closing Well was a *discipline* — rules a Claude internalizes. It can also be *enchanted*: the page run as an agent at session close ([[Pages as Agents]]). Enchanted, the page becomes the **Closing Well Agent** — and the design that now governs it is a **moderated panel**, not a subagent that closes the session in the working Claude's place.
 
@@ -148,9 +149,9 @@ The session is over; two experts are in the room, both a little spent. The moder
 
 **Who that agent actually is: the resident [[Concierge]], shifting posture.** The moderator is not a fresh subagent minted at the gate — it is the companion that has been following the session all along, taking the wheel at the close. This matters mechanically, not just tidily: the moderator has to *drive across resumed turns*, and only a persistent, resumable mind can hold the wheel that long. A fresh-per-request moderator would lose the thread between passes. Through the session the companion is subservient — it drafts, it offers, it waits for the yes; at the close that inverts and it **advocates for the palace**, naming what it would fight for that a spent working Claude might let slide. The companion side of this is [[Concierge]] § At a close.
 
-**Summon it early, or it will not be there.** The resident-moderator model only pays off if the companion was actually summoned *during* the session. Arriving at `close well` with no resident leaves two bad options — stand the whole panel machinery up cold at the most fragile moment, or let the spent instance grade its own arc. Neither is a thing to fix at the close; it is a thing to prevent hours earlier (gotcha 20). If no resident exists, the [[Closing Well Ceremony]] is unambiguous: **dispatch the cold-transcript moderator anyway.** Do not self-read.
+**Summon it early, or it will not be there.** The resident-moderator model only pays off if the companion was actually summoned *during* the session. Arriving at `close well` with no resident leaves two bad options — stand the whole panel machinery up cold at the most fragile moment, or let the spent instance grade its own arc. Neither is a thing to fix at the close; it is a thing to prevent hours earlier (gotcha 20). If no resident exists, the [[Closing Well Ceremony]] is unambiguous: **dispatch the cold-transcript moderator anyway.** Do not self-read. And a summoned resident can die without saying so — a rate limit or a process restart ends it — so check with ListAgents that it still resolves before claiming Path A; if it is gone, re-summon it after the restart or take Path B and say which (tuning item 27). Whichever path, the transcript reader is always given `--session <id>` (item 28).
 
-**The relay discipline.** A subagent has no direct channel to Loudon, so the moderator's words reach him *through* the active Claude. The path of least resistance is for the active Claude to read the homework and then narrate the reckoning as itself — quietly re-taking control it held all day. It must not. The active Claude **relays the moderator's voice as the moderator's, answers as a panelist, and resumes the moderator to drive**; decision-authority stays with the moderator. The relay is unavoidable; the discipline is what keeps the panel honest (gotcha 12).
+**The relay discipline.** A subagent has no direct channel to Loudon, so the moderator's words reach him *through* the active Claude. The path of least resistance is for the active Claude to read the homework and then narrate the reckoning as itself — quietly re-taking control it held all day. It must not. The active Claude **relays the moderator's voice as the moderator's, answers as a panelist, and resumes the moderator to drive**; decision-authority stays with the moderator. The relay is unavoidable; the discipline is what keeps the panel honest (gotcha 12a).
 
 **The panelists** are the active Claude and Loudon. The active Claude is the expert on what happened in the room — what was built, what was tried and set down, what the transcript can't show. Loudon is the expert on what it *meant* and what is worth keeping. This is already how the palace moderates a [[Dialectic]]: a moderator holds the tension and draws the best from each voice, doing neither of their jobs. The Closing Well Agent is that same role, pointed at the close.
 
@@ -226,7 +227,7 @@ What is constant is the point. **The punchlist and the verification are what "cl
 
 **And the guard, because this is the dangerous misreading:** a movement close is *not* a licence to skip the session close's dispatch. That rule is hardened in [[Closing Well Ceremony]] for reasons the ledger earned three separate times, and nothing here softens it. If you find yourself reasoning "this is really just a movement close" at the end of a long day, you are running the rationalization gotcha 21 names.
 
-Both scales feed the same [[Closing Well — gotchas|gotcha ledger]]. A movement close that teaches a trap is as professional as a session close that does.
+Both scales feed the same [[Closing Well — tuning|tuning ledger]]. A movement close that teaches a trap is as professional as a session close that does.
 
 ### Register
 
@@ -250,7 +251,7 @@ The rule: a lost branch belongs in the entry whose forward vector it serves. Rou
 ## Artifacts
 
 - **Close-sequence diagram** — `Closing Well/Closing Well — diagram — close-sequence.html` (the three-lane scribe-assisted close; amber marks the load-bearing moments). Built 2026-07-03.
-- **Gotcha ledger** — [[Closing Well — gotchas]] — one trap per close; makes "professional" literal.
+- **Tuning ledger** — [[Closing Well — tuning]] — what each close taught the ceremony, tied to the spec change it forced; makes "professional" literal.
 - The baton⇄steward relationship diagrams (atom · impulse · oscillator) live in the [[Two Batons, One Board]] bundle.
 
 ## Forward Vectors

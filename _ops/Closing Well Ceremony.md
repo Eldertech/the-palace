@@ -81,7 +81,7 @@ Use context to tell an invocation from a passing mention of the practice.
    > "the whole session is already in my context, a fresh agent would only confirm it" is the
    > **disqualifying rationalization**, not a shortcut (gotchas 11, 20, 21). The *only* legitimate
    > in-context closes are two named exceptions: a **rewound/garbled transcript** the cold reader can't
-   > parse (gotcha 13), or a **tool/model outage that blocks the dispatch *after* Pass-1's cold read
+   > parse (gotcha 13b), or a **tool/model outage that blocks the dispatch *after* Pass-1's cold read
    > already ran** (gotchas 16–17). Absent those, dispatch the cold-transcript moderator **even if no
    > resident [[Concierge]] was summoned** — do not grade your own arc. If you catch yourself reasoning
    > "it would just confirm what I have," that is the moment to dispatch, not to skip.
@@ -106,7 +106,7 @@ Use context to tell an invocation from a passing mention of the practice.
    indexed in its bundle — honoring the worktree rules (`_ops/worktree/SKILL.md`:
    canon to the owner/`main`; batons per worktree, announced on the owner board).
    The commit is the record.
-7. Append one trap to [[Closing Well — gotchas]] — the ledger that makes
+7. Append one trap to [[Closing Well — tuning]] — the ledger that makes
    "professional" literal.
 
 **Postconditions:**

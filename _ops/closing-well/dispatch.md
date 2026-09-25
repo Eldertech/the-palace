@@ -52,6 +52,19 @@ Read the pair:
   early next session, never to skip the moderator. **Reaching `close well` with no resident is
   not a licence to self-read.**
 
+**Check the resident is still there before you claim Path A.** A rate limit or a process
+restart kills it without a word, and holding its `agentId` proves nothing. Run ListAgents; if
+the ID no longer resolves, re-summon the companion after the restart (it costs the boot, not the
+relationship) or take Path B — and say which (tuning item 27).
+
+**Always pass `--session <id>` to the transcript reader.** Its default — the newest `.jsonl`
+across all project dirs — can pick a subagent's transcript over the main session's (tuning item
+28). Both paths below resolve with `--session`.
+
+**A second close in one session has no arc boundary.** The reader distills the whole transcript,
+so it cannot tell where the first close ended. Put the start line of the second close in the
+brief as prose. A lesson with no tool change yet (tuning item 29).
+
 > **Neither path is ever "the working Claude closes its own session."** That is the one
 > disqualified option ([[Closing Well Ceremony]] § Failure mode), licensed only by the two named
 > exceptions: a rewound/garbled transcript the cold reader can't parse, or an outage that blocks
@@ -76,8 +89,8 @@ Resolve + distill the transcript first, exactly as in Path B (the main loop reso
 subagent — see README § Why the main loop resolves):
 
 ```bash
-node _ops/closing-well/transcript-reader.mjs --resolve
-node _ops/closing-well/transcript-reader.mjs --distill --out <scratch>/session-arc.md
+node _ops/closing-well/transcript-reader.mjs --resolve --session <main-session-id>
+node _ops/closing-well/transcript-reader.mjs --distill --session <main-session-id> --out <scratch>/session-arc.md
 ```
 
 Then `SendMessage` to the held `agentId`:
@@ -120,7 +133,7 @@ Return the reckoning (front of house) then the backstage checklist; nothing else
 `{{CLOSING_WELL_PATH}}` and `{{HOMEWORK}}` are omitted deliberately — it has both.
 
 **Relay the reckoning in the moderator's voice, as the moderator's** — not narrated as your own
-([[Closing Well]] § The relay discipline, gotcha 12). You answer as a panelist; the decisions stay
+([[Closing Well]] § The relay discipline, gotcha 12a). You answer as a panelist; the decisions stay
 with the moderator. Show it to Loudon: the single gate. He assents or names revisions — and a
 revision goes *back to the moderator*, not into your own rewrite.
 
@@ -148,8 +161,8 @@ Resolve + distill this session's transcript first (the main loop resolves, never
 subagent — see README § Why the main loop resolves):
 
 ```bash
-node _ops/closing-well/transcript-reader.mjs --resolve
-node _ops/closing-well/transcript-reader.mjs --distill --out <scratch>/session-arc.md
+node _ops/closing-well/transcript-reader.mjs --resolve --session <main-session-id>
+node _ops/closing-well/transcript-reader.mjs --distill --session <main-session-id> --out <scratch>/session-arc.md
 ```
 
 Then dispatch (Agent tool, **Sonnet**, one call). The whole task:

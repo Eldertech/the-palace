@@ -55,7 +55,7 @@ function die(code, msg) { process.stderr.write(`baton-executor: ${msg}\n`); proc
 // Excludes .git/.claude/.obsidian. Loud failure on miss or ambiguity — the old silent
 // tree-root guess is exactly what misfiled a nested-entry baton on 2026-07-04 (the file
 // went to a bogus top-level folder, the parent pointer was skipped, and the announce
-// carried a wrong handoff_path — with no error). See Closing Well — gotchas #12.
+// carried a wrong handoff_path — with no error). See Closing Well — tuning #12b.
 const IGNORE_DIRS = new Set(['.git', '.claude', '.obsidian', 'node_modules']);
 function resolveEntryFile(root, name) {
   const filename = `${name}.md`;
@@ -73,7 +73,7 @@ function resolveEntryFile(root, name) {
     die(1, `entry "${name}" not found: searched ${root} recursively for "${filename}" ` +
       `(excluding .git/.claude/.obsidian). This executor places a baton for a REAL entry — ` +
       `pass an --entry whose <name>.md exists. Refusing the old silent tree-root fallback ` +
-      `(gotchas #12). A genuinely entry-less baton (e.g. a cross-surface paste-prompt) is not ` +
+      `(Closing Well — tuning #12b). A genuinely entry-less baton (e.g. a cross-surface paste-prompt) is not ` +
       `supported here yet — that would need an explicit flag, not a silent guess.`);
   }
   if (hits.length > 1) {

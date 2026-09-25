@@ -64,6 +64,8 @@ the tristitia failure the whole practice guards.
 ```markdown
 ## Close map — <session id / short name>   ·   drafted <date>
 
+**Ceremony version:** <read from Closing Well.md frontmatter>
+
 **One-line arc:** <what the session set out to do → what it became>
 
 **Human reading:** answered   ·OR·   UNFILLED — provisional draft, not signable
@@ -80,6 +82,8 @@ the tristitia failure the whole practice guards.
 **Next move:** <the one thing the next session picks up, one line>
 
 **Sign:** Loudon ⟶ ☐ approve   ☐ revise (say which rows)
+
+**What this run taught the ceremony:** <"nothing", or the lesson — and the spec change it forces, which becomes the next item in `Closing Well — tuning.md`>
 ```
 
 **When the human reading is `UNFILLED`**, the map is provisional: canon-dependent rows

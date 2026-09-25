@@ -60,7 +60,7 @@ Most of the machinery already exists. The Agent is mostly *wiring*, not inventio
 4. **Close-map format** — the schema for the typed map (deposit/baton/artifact rows) and how it renders as the single show-before-write gate.
 5. **Interview protocol** — the "gaps a cold reader can't fill" list back to the main loop; main asks Loudon; distilled answers return (Agent + SendMessage). No fallback channels yet (deferred by decision).
 6. **Executors** — on approval: deposit edits, baton file, artifacts + index, `handoff_ready` post, commit — each delegating to the existing ceremony, with worktree/canon-to-owner rules honored.
-7. **Gotcha ledger** — `Closing Well — gotchas.md` in this bundle; the Agent appends one trap per close.
+7. **Gotcha ledger** — `Closing Well — tuning.md` in this bundle (renamed from `— gotchas` at v1.0); the Agent appends one trap per close.
 
 ## Phases
 

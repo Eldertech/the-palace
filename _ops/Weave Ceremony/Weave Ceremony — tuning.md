@@ -58,7 +58,7 @@ What each weave taught the ceremony, appended after the run. Each entry names th
 ## From the Multi-Lens Weave — 2026-07-06
 
 20. **A baton-launched weave skipped the flag inbox**, because 2b was the one postcondition with no check behind it. Forced: `lint-weave-flags.py` gates 2b however the weave is launched (`7a82be6a`).
-21. **Fixing the graph doesn't tell the board.** Without a `Palace-Resolves:` trailer per flag, 35 resolved flags stayed open; PROOF posts are narration the queue never reads (`multi-lens-weave-2026-07-06/weave-flags-resolved.md:1-9`; [[Closing Well — gotchas]] 19). **Spec change still owed:** Step 1c still says a touch retires a flag (`Weave Ceremony.md:156`).
+21. **Fixing the graph doesn't tell the board.** Without a `Palace-Resolves:` trailer per flag, 35 resolved flags stayed open; PROOF posts are narration the queue never reads (`multi-lens-weave-2026-07-06/weave-flags-resolved.md:1-9`; [[Closing Well — tuning]] 19). **Spec change still owed:** Step 1c still says a touch retires a flag (`Weave Ceremony.md:156`).
 22. **One cut of the map only sees what that cut can see.** The oblique pass found pairs no folder, community or mirror lens could assemble. Forced: Multi-Lens as the canonical execution, and the HTML report as postcondition 5b (`7a82be6a`; `synthesis-report.md` § IV-b).
 
 ## From the voice measurement — 2026-08-25
