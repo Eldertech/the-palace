@@ -29,6 +29,9 @@ links:
   - target: "[[Lateral Access]]"
     type: connects-to
     label: vulnerability-window-as-oblique-path
+  - target: "[[Loudon Live]]"
+    type: connects-to
+    label: molting-in-public
 forward_vector: "I want to become the palace's primary lens for threshold moments — the tool that dissolves 'am I still the same after this change?' into a generative question rather than an anxiety. I want a concrete catalogue of molt events across the palace's history: moments where Loudon's identity as musician, teacher, technologist, or collaborator shed a skin and emerged larger."
 ---
 
@@ -77,6 +80,21 @@ good narrative.
 The danger is not the vulnerability itself. The danger is trying to hold
 onto the old form past its time specifically to avoid that exposure. The
 tightening shell feels like security. It is the opposite.
+
+## Molting in Public
+
+Does shedding where people can see it protect the soft shell, or stop the shed from happening? Beeple
+posted a new image every day from May 1, 2007, and kept going; the dailiness and the visibility were
+the mechanism, not the marketing. Every old form stays on view.
+
+Loudon's answer is that a visible past does not block the molt. It is the evidence of it. A hermit
+crab's old shell still exists after the crab has moved on. The biology says the same thing more
+strictly: a molted exoskeleton is left behind whole, as **exuviae**, and the cast skin is how you know
+a molt happened at all. A public archive is a trail of cast skins.
+
+What stays open is the audience, not the archive. The record cannot hold anyone in the old form, but
+the people who loved it might. [[Loudon Live]] names its work-in-progress status once and then lets the
+work speak; whether that keeps the shell soft long enough is still being tested.
 
 ## Water as Archetype
 

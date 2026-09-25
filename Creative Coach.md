@@ -189,6 +189,22 @@ agreed to it, and whether the one holding it can feel the clock and ask after th
 Dishon, *Educational Philosophy and Theory* 57(10):907–919 (2025), doi:10.1080/00131857.2025.2494589 ·
 Eijkenboom et al., *Coaching* 19(1):154–172 (2026) · Miller & Rollnick, *Motivational Interviewing*.
 
+**The group, unsteered.** Everything above is about a coach who steers. A Balint group is its contrary
+at the next size up. Six to ten peers meet over months with a trained leader. One brings a case from
+memory in a few minutes, then pushes their chair back and stays silent for fifteen or twenty minutes
+while the group works on it aloud, from imagination and from their own reactions; nobody may question
+or answer the presenter until they rejoin. It comes from medicine (Michael and Enid Balint, with
+general practitioners at the Tavistock, from 1950), where the case is a relationship with a patient.
+Carried into creative work, the push-back is the part that matters. Most critique makes the maker
+defend (explain the intent, clarify, justify), which is the defenses table below, firing in public.
+Silence closes that channel. The intent drops out, the work is what gets discussed, and the maker keeps
+or ignores any idea without owing a reply, while practising not answering. Artists already have the
+closed, recurring room: Loudon's songwriting circles meet all the time, and what comes back is *"great
+job,"* which everyone knows means very little, the same placeholder as the "fine" that answers "How do
+you feel?" What is missing is the rule. Loudon wants to try it with a group of artists, and it is the
+smallest honest test this page has asked for: a closed room where a participant's own work comes back
+and is answered.
+
 ## The repertoire — surveyed, not adopted
 
 *A row enters either table only when it changes a move the coach would make.*
@@ -210,7 +226,7 @@ were unverified.
 | **Winnicottian play** | Creativity as a potential space, which requires a good-enough holding environment to exist at all | Deferred — argued where Winnicott actually appears, not here |
 | **Internal Family Systems** (Schwartz) | The inner critic, perfectionist and avoider as parts to work with rather than defeat | Answers a question [[Dialectic]] has carried open since May: what is a solo dialectic — one figure in genuine self-contradiction? A council of parts rather than a council of thinkers |
 | **Self-Determination Theory** (Deci, Ryan) | Autonomy, competence, relatedness — the motivation frame underneath most of the others | Not a therapy. The frame, not a method |
-| **Balint groups** (Balint, 1950s) | A facilitated peer group where a practitioner presents the hard part and is *heard, not advised* | The palace has the stance fully written — the Suzuki Exercise in [[Sidechain ↔ Conversation]] — and has never once turned it on the collaboration itself |
+| **Balint groups** (Balint, 1950s) | A facilitated peer group: a practitioner presents a case briefly, then sits back in silence while the group works on it aloud | The presenter's enforced silence is the intervention: it closes the channel for defending. See § If the room held three, *The group, unsteered* |
 
 Three measured constructs exist in the literature, not here, and are worth reading before anyone
 builds a taxonomy from scratch: psychological flexibility (Hayes), harmonious versus obsessive passion
