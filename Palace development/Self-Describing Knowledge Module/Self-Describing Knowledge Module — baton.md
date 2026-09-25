@@ -71,6 +71,8 @@ Sit with Loudon on Part 3 first, before any code: his answers shape the scenario
 
 Re-run D1 through it for a certified memory-free result, and compare it with run 1.
 
+Owed from the 2026-09-25 close: correct the worktree memory claim — `_ops/worktree/SKILL.md:90–92`, `_ops/worktree/new-worktree.mjs:225`, `_ops/worktree/symlinks.json:63` say a new worktree path starts with empty memory; on Claude Code 2.1.280 auto-memory binds to the git repository (run 1). And decide with Part 3 where the popup lesson lives — a dismissed question is not an answer; restate the ask in plain text (Loudon: "sometimes I click through them or try to minimise them and loose track of them").
+
 ## Receiving environment
 
 Claude Code on the Mac, on main. The headless child:
