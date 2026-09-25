@@ -41,6 +41,13 @@ him reading every word, the checks. **Land a keep row only if Loudon approved it
 its words.** A keep row without both is `provisional`, not `candidate`: execute nothing, and
 name it in the punchlist so the room can offer it back to him as a *hand on*.
 
+**One path between the two.** When the room has assented to a keep row but Loudon has not yet
+read its words — a ceremony's rule text, say — the executor may *prepare* it: make the edit in its
+own worktree (`new-worktree.mjs --profile docs`), commit it on that branch, **never merge it**, and
+return the full diff in the placement report. The working instance shows him the words; on his
+yes it rebases and lands the branch on the owner's `main` and tears the worktree down. Nothing
+reaches `main` unread, and the words he reads already exist as a commit (tuning item 30).
+
 When the words are approved, the Deposit Ceremony's own rule holds: **the commit is the record**;
 use the committer, never a hand-rolled `git commit`. Run the **owner's** copy of the committer,
 from the owner tree — canon lands there (rule 1), and only the owner tree reliably has the
