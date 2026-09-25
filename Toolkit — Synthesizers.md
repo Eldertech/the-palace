@@ -24,7 +24,7 @@ forward_vector: Grow toward a complete, annotated hardware synth inventory with 
 
 # Toolkit — Synthesizers
 
-Hardware synthesizers in Loudon's toolkit — inventory, relationships, teaching roles, and ecosystem connections. Software synthesizers are tracked separately (see the [[Loudon Live]] RTM series concept in the Toolkit — Audio Plugins entry when created).
+Hardware synthesizers in Loudon's toolkit — inventory, relationships, teaching roles, and ecosystem connections. Software synthesizers are tracked separately in [[Toolkit — Audio Plugins]].
 
 ## Hardware Inventory
 
@@ -135,9 +135,9 @@ The hardware synthesizers sit at the **sound generation** layer of the signal ch
 
 ---
 
-## [[Loudon Live]] RTM Series *(concept — software synths)*
+## [[Loudon Live]] RTM Series
 
-A planned content series for the [[Loudon Live]] channel: *Read The Manual* — deep-dive sessions exposing unusual and cool aspects of synthesizers, approached with Loudon's always-positive, always-supportive-of-makers philosophy. Primarily targeting software synthesizers. When the software synth inventory entry is created, this series concept should be linked there.
+*Read The Manual* — whole manuals read, tested, and covered section by section, in Loudon's always-positive, always-supportive-of-makers voice. It is its own project now: [[LDN RTM]] holds the format and the queue.
 
 ---
 

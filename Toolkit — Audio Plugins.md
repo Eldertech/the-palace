@@ -37,7 +37,7 @@ VST3 plugin inventory from `/Library/Audio/Plug-Ins/VST3`. Organized by manufact
 - v6: Loudon direct edits integrated. AIR += Hype, Jura, Sub Factory. Baby Audio += PitchDrift. Cableguys += Snapback. Dada Life += Space In-Your-Face, Wide Awake. Dreamtonics += Vocoflex. iZotope += Equinox, Plasma, Stratus. Klevgrand += Rum. LDN += Hello World. Native Instruments += Enhanced EQ, Freak. UVI += Shade. New manufacturers: DMG Audio, Klimper, Modalics, Toolroom, Xynth.
 - v7: Verify table closed. Iona = AIR synth (not iZotope reverb). Symphony = iZotope reverb (confirmed). RC 24/RC 48 removed — not Loudon's plugins; RC-20 Retro Color (XLN) already in table. Manufacturer attribution now complete.
 
-**[[Loudon Live]] RTM Series concept:** A planned content series reading each plugin's manual and surfacing unusual, cool, or underused capabilities. See [[Toolkit — Synthesizers]] for the series description.
+**RTM:** the Read The Manual series is its own project now, [[LDN RTM]]. The plugins marked as RTM candidates below feed its queue (LDN RTM § Series).
 
 ---
 

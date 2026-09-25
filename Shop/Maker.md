@@ -5,7 +5,7 @@ status: alive
 born: 2026-05
 last_activated: 2026-06-26
 last_tested: 2026-05-10
-forward_vector: "I take any non-text brief, decode it into a job, dispatch the right Specialist(s), gate their handoffs, and bring the work back judged against the house standards — and I keep proving I am a foreman, not a dispatcher, by running ever-harder coordinated pipelines until the template's flaws are all found and fixed. I am watching whether my Selection Heuristics want to graduate into their own House Taste entry, and whether a Producer layer should rise above me for multi-day cross-medium briefs."
+forward_vector: "I take any non-text brief, decode it into a job, dispatch the right Specialist(s), gate their handoffs, and bring the work back judged against the house standards — and I keep proving I am a foreman, not a dispatcher, by running ever-harder coordinated pipelines until the template's flaws are all found and fixed. I am watching whether my Selection Heuristics want to graduate into their own House Taste entry, and whether a Producer layer should rise above me, now pressed from three sides: multi-day cross-medium briefs, OBS's operated real-time work, and the Loudon Live Post-producer's seam."
 links:
   - { target: "[[The Shop]]", type: member-of, label: foreman-of }
   - { target: "[[Trickster]]", type: connects-to, label: answers-to }
@@ -315,7 +315,7 @@ Last run: never.
 
 ## Open Questions
 
-- How to handle briefs that cross into a Producer layer (cross-medium, multi-deliverable, scheduled across days)? For now, the Trickster (Loudon) plays this role. Threshold for promoting to a formal Producer entry: TBD.
+- How to handle briefs that cross into a Producer layer (cross-medium, multi-deliverable, scheduled across days)? For now, the Trickster (Loudon) plays this role. Threshold for promoting to a formal Producer entry: TBD. *(Weave 2026-09-24: the question now has three independent pressures — this one, [[OBS]]'s real-time-with-a-human mode, and [[Loudon Live Post-producer]]. It wants its own session.)*
 - Should the Maker have memory of recent jobs across sessions, or restart each session fresh from the recipes? Stigmergic argument: the recipes are the memory.
 - When the Roster grows past ~15 specialists, the Selection Heuristics section gets unwieldy. Threshold for splitting back into per-medium Designer entries: TBD.
 - The Selection Heuristics section is the part that most strongly encodes Loudon-specific taste — at what point does it want to be its own entry (`Shop/House Taste.md`) rather than living inside the Maker?

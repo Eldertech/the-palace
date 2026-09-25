@@ -52,9 +52,6 @@ links:
   - target: "[[Deleuze]]"
     type: couples-with
     label: monism-radicalized
-  - target: "[[Tristitia Generator]]"
-    type: spawned
-    label: shadow-concept
   - target: "[[Merleau-Ponty]]"
     type: contradicts
     label: geometric-mastery-vs-ambiguous-flesh
@@ -98,7 +95,12 @@ Tristitia is not just hilaritas's absence — it's a distinct mechanism with its
 
 **Confusion without resolution.** Productive confusion — the kind that precedes genuine insight — is not tristitia. Confusion that compounds without a pathway forward, unacknowledged, depletes power-to-act instead. The design question: is the confusion generative or deadening?
 
-*This section absorbed the former [[Tristitia Generator]] entry (composted 2026-07-06) — its full catalogue and open questions.*
+**Still open about tristitia:**
+- Is there a *tristitia architect*: someone who unconsciously designs encounters that decrease power-to-act? What does their practice look like, and what would help them see it?
+- Csikszentmihalyi names anxiety (challenge exceeds skill) and boredom (skill exceeds challenge) as the two anti-flow states. Are they a subset of tristitia, or a different ontology?
+- Is tristitia always bad? Spinoza says sadness accompanies decreased power-to-act, not that it must be avoided. Is grief a tristitia event that is nevertheless necessary and generative?
+
+*This section absorbed the former Tristitia Generator entry (composted 2026-07-06) — its full catalogue and open questions.*
 
 ## Cross-Domain Mirrors
 

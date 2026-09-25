@@ -106,6 +106,6 @@ This concept lives at the intersection of several palace threads:
 
 ## Forward Vectors
 
-- What label vocabulary do entries that are already in the palace want? The first Weave that runs Step 3c will start answering this.
+- What label vocabulary do entries that are already in the palace want? — **half answered.** *How much* is measured: [[SUBSTRATE]] § Current State reports that 59% of typed links (1,692 of 2,852) carry a resonant label, so the second register is in real use, not aspirational. *Which* labels, and whether families are converging on a vocabulary, is still open.
 - Is there a distinction between labels that name *temperature* (cold/warm register) and labels that name *mechanism* (how the relationship works)? Or is that distinction doing real work?
 - The palace currently has no way to record *why* a label was chosen. Should labels be annotated, or is the word itself sufficient?

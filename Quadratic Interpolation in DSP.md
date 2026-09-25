@@ -167,6 +167,8 @@ This connects to [[Latent Error]]: is using the "wrong" interpolation method a l
 
 1. **Cubic vs. quadratic in oscillators:** Most oscillator implementations use cubic (Hermite spline) for wavetable lookup. Is the extra cost justified for audio, or is quadratic sufficient?
 
+   **Answered in practice (Weave 2026-09-24).** Two builds took a side, and neither picked quadratic. [[1D Wavetable Scanning]] shipped a Sketch on plain linear blending and found it enough. At 8–256 frames the linear blend's artifacts sit below the tables' own authoring noise, so cubic waits until a brief names an audibly aliasing morph. [[Wavetable Synthesis -- Research & Higher-Dimensional Design]] sets cubic as the floor for the higher-dimensional designs, with windowed-sinc above it. So the house rule is linear for a simple scanner and cubic minimum once the design gets serious. Both answers are about blending *between frames*. Reading a fractional sample *inside* a frame, which is what this question first asked about, hasn't been measured here yet.
+
 2. **Real-time Bézier curves:** Can you compute Bézier curves in real-time for control signals that have moving targets? (Yes, but what's the cost?)
 
 3. **Interpolation and aliasing:** Quadratic interpolation *reduces* aliasing compared to linear, but can it introduce new artifacts? How does it interact with band-limited synthesis?
