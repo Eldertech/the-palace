@@ -75,7 +75,7 @@ The authoritative list is `symlinks.json`. In short:
   (workspace root + app + orchestrator + …, ~237 M) — discovered, not enumerated, so a new workspace
   package needs no manifest edit. See `symlinks.json` → `auto_mirror`.
 - **Never symlinked (per-worktree runtime — sharing cross-wires running processes):**
-  `_ops/stigmergy/.actuator*`, `Enrichment/.server.*`, and all regenerable caches (`__pycache__`,
+  `_ops/stigmergy/.actuator*` and all regenerable caches (`__pycache__`,
   `_manim_media`, `.vite`, `.remotion`, generated media). They rebuild per worktree.
 - **Free already:** every *tracked* file, including the `_`-import symlinks (`FOUR_PILLARS.md` →
   `FOUR PILLARS.md`) — git provides them in any worktree.

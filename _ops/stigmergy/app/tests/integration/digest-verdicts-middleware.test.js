@@ -6,18 +6,12 @@ import { mkdtempSync, rmSync, mkdirSync, writeFileSync, readFileSync, existsSync
 import { tmpdir } from 'node:os';
 import request from 'supertest';
 import { blackboardMiddleware } from '../../server/middleware.js';
-import { createActuator } from '../../server/actuator.js';
 import { VERDICTS_REL } from '../../server/digest-verdicts.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const STUB = resolve(__dirname, '../fixtures/stub-worker.mjs');
 
 function makeServer(palaceRoot) {
-  const actuator = createActuator({
-    palaceRoot, stateDir: join(palaceRoot, '.actuator'),
-    buildArgv: () => ['node', STUB, '--permission-mode', 'bypassPermissions', '--sleep', '50'],
-  });
-  const plugin = blackboardMiddleware(palaceRoot, { actuator });
+  const plugin = blackboardMiddleware(palaceRoot);
   const handlers = [];
   plugin.configureServer({ middlewares: { use: (fn) => handlers.push(fn) } });
   return http.createServer((req, res) => {

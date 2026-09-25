@@ -417,7 +417,6 @@ via `artifacts[]`:
 
 ```json
 "payload": {
-  "kind": "enrichment_card",
   "content": "the still, the bed, and the playable model.",
   "artifacts": [
     { "path": "Kuramoto Coupling/fireflies-pond.png", "caption": "the canonical image." },

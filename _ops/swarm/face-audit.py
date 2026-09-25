@@ -34,8 +34,7 @@ import os, re, sys
 SKIP_DIRS = {".git", ".obsidian", ".claude", "node_modules", ".venvs", "_tools",
              "venv", "__pycache__"}
 SKIP_PREFIXES = ("_ops/stigmergy/app/", "_ops/stigmergy/orchestrator/",
-                 "_ops/stigmergy/trickster-auto/", "_ops/swarm/",
-                 "Enrichment/card-", "Enrichment/Archive/")
+                 "_ops/stigmergy/trickster-auto/", "_ops/swarm/")
 
 CANON_TYPES = {"concept", "hub", "project", "breakthrough", "source", "meta",
                "practice", "person", "question", "spore", "specialist", "maker"}

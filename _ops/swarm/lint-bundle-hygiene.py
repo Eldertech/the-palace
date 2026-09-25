@@ -45,8 +45,7 @@ SKIP_DIRS = {".git", ".obsidian", ".claude", "node_modules", ".venvs", "_tools",
 # Machinery/work-product trees whose markdown carries non-canon `type:` by design
 # (templates, orchestrator docs). Not entries, not substrate to demote - fully exempt.
 SKIP_PREFIXES = ("_ops/stigmergy/app/", "_ops/stigmergy/orchestrator/",
-                 "_ops/stigmergy/trickster-auto/", "_ops/swarm/",
-                 "Enrichment/card-", "Enrichment/Archive/")
+                 "_ops/stigmergy/trickster-auto/", "_ops/swarm/")
 
 CANON_TYPES = {"concept", "hub", "project", "breakthrough", "source", "meta",
                "practice", "person", "question", "spore", "specialist", "maker"}

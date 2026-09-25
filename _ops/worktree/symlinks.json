@@ -55,7 +55,6 @@
 
   "never_symlink": [
     "_ops/stigmergy/.actuator/  ·  .actuator-steward/  ·  .actuator-companion/ — per-process runtime pid/log + transcripts. Sharing these CROSS-WIRES running stewards across worktrees. Must stay per-worktree.",
-    "Enrichment/.server.* / .worker.* — runtime pid/log markers, per-worktree.",
     "__pycache__/ · _manim_media/ · **/.remotion/ · .vite/ · **/_*.mp4 · **/_*.png · *.asd — regenerable caches; let them rebuild from source in the worktree.",
     "**/*.json.tmp — atomic-write temp intermediates, never shared."
   ],

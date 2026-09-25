@@ -32,14 +32,15 @@ const RENDERER_FILES = new Set(['parse.js']);
 
 const json = (res, code, obj) => { res.writeHead(code, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(obj)); };
 
-// The human_eval message — honest zeros for a human, iteration >= 1.
+// The human_eval message — honest zeros for a human, iteration >= 1, and the
+// human node's model id (SCHEMA — Reference §9).
 export function buildReviewMessage(data) {
   const ts = new Date().toISOString();
   const task = String(data.task || 'rich-face');
   return {
     schema_version: '1.0', id: `human-eval-${task.replace(/[^\w-]+/g, '-')}-${Date.now()}`, ts,
     session_id: `human-eval-${ts.slice(0, 10)}`, from: 'TRICKSTER', to: '*', type: 'BROADCAST', board: 'FLAGS',
-    health: { context_pct: 0, stop_reason: 'human_eval', iteration: 1, tokens_this_call: 0, model: 'human', score: 'green' },
+    health: { context_pct: 0, stop_reason: 'human_eval', iteration: 1, tokens_this_call: 0, model: 'loudon-trickster', score: 'green' },
     payload: { kind: 'human_eval', task, groups: data.groups || {}, overall: data.overall || {} },
   };
 }

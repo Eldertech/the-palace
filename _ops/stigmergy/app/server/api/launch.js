@@ -5,7 +5,7 @@
 //   POST /api/launch/ephemeral  { home, ... }               -> CONSTRUCT ANY page as a
 //                                                                one-off (no registration) + launch
 //
-// The human-driven counterpart to /api/worker/fire (headless `claude -p`): this
+// The human-driven counterpart to a headless `claude -p` worker: this
 // hands a prompt to a real TUI the user watches + steers. macOS-only; a
 // non-darwin host gets a 501 so the client falls back to "copy prompt".
 //

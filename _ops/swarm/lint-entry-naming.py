@@ -48,8 +48,7 @@ SKIP_DIRS = {".git", ".obsidian", ".claude", "node_modules", ".venvs", "_tools",
 # Palace-relative path prefixes that hold machinery/work-product markdown, not canon
 # entries (mirrors entries.js EXCLUDE_PREFIXES). A file under any of these is skipped.
 SKIP_PREFIXES = ("_ops/stigmergy/app/", "_ops/stigmergy/orchestrator/",
-                 "_ops/stigmergy/trickster-auto/", "_ops/swarm/",
-                 "Enrichment/card-", "Enrichment/Archive/")
+                 "_ops/stigmergy/trickster-auto/", "_ops/swarm/")
 
 # The SCHEMA §1 entry types. A file is a *canon entry* - and thus bound by §3
 # (title == filename) and §8 (exact-case bundle folder) - only when its `type:`

@@ -149,7 +149,7 @@ export function inferKind(paths = [], addedPaths = []) {
   if (lower.some((p) => /(^|\/)schema\.md$/.test(p))) return 'schema';
   if (lower.some((p) => /handoff.*\.md$/.test(p))) return 'handoff';
 
-  const isOps = (p) => p.startsWith('_ops/') || p.startsWith('enrichment/') || p.endsWith('.js') || p.endsWith('.py') || p.endsWith('.json') || p.endsWith('.css') || p.endsWith('.jsx');
+  const isOps = (p) => p.startsWith('_ops/') || p.endsWith('.js') || p.endsWith('.py') || p.endsWith('.json') || p.endsWith('.css') || p.endsWith('.jsx');
   const isKnowledge = (p) => p.endsWith('.md') && !isOps(p);
 
   const opsCount = lower.filter(isOps).length;

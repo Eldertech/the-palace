@@ -38,8 +38,7 @@ SKIP_DIRS = {".git", ".obsidian", ".claude", "node_modules", ".venvs", "_tools",
 # A body file under any of these is not SCANNED for ghosts (its example wikilinks are
 # scaffolding). These files ARE still valid resolution TARGETS - Obsidian sees them.
 SKIP_SCAN_PREFIXES = ("_ops/stigmergy/app/", "_ops/stigmergy/orchestrator/",
-                      "_ops/stigmergy/trickster-auto/", "_ops/swarm/",
-                      "Enrichment/card-", "Enrichment/Archive/")
+                      "_ops/stigmergy/trickster-auto/", "_ops/swarm/")
 
 # Only canon entries (SCHEMA §1 type) are scanned - the graph the reader traverses.
 # Bundle files / working drafts carry a title but no canon type; their stray wikilinks

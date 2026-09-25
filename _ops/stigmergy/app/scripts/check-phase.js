@@ -142,14 +142,14 @@ const PHASES = {
       'frontmatter-diff.test.js', 'log-filter.test.js', 'yaml-frontmatter.test.js',
       'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js',
     ],
-    integration: ['actuator.test.js', 'worker-middleware.test.js', 'git-middleware.test.js'],
+    integration: ['actuator.test.js', 'git-middleware.test.js'],
     playwright: [
-      'boot.spec.js', 'tokens.spec.js', 'actuator.spec.js',
+      'boot.spec.js', 'tokens.spec.js',
     ],
-    screenshots: [
-      'phase-13-v1.0/actuator-idle.png',
-      'phase-13-v1.0/actuator-fired.png',
-    ],
+    // The board actuator this phase built was retired 2026-09-24 with the
+    // Enrichment card queue; actuator.js lives on under the steward,
+    // companion and regen lanes.
+    screenshots: [],
   },
   14: {
     label: 'v1.0 Phase 3 — Commit spec (plumbing; no screenshots)',
@@ -233,7 +233,7 @@ const PHASES = {
       'steward-lane.test.js', 'worker-log.test.js',
       'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js',
     ],
-    integration: ['stewards-middleware.test.js', 'actuator.test.js', 'worker-middleware.test.js'],
+    integration: ['stewards-middleware.test.js', 'actuator.test.js'],
     playwright: ['boot.spec.js', 'tokens.spec.js', 'stewards.spec.js'],
     // No automated captures: the advance flow fires a worker (stub-gated), so the
     // surface is verified live via the preview/e2e rather than the capture spec.
