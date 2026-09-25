@@ -15,7 +15,7 @@ forward_vector: "I am Map Build Ceremony's scroll — the one page that opens on
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:15:59.388Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T14:33:15.941Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v2.0 · the spec last changed 2026-03-30 (`4fbb103f`) — Weave — 2026-03-30 — 56 links added, 4 entries promoted, 2 orphans flagged/deleted
 - **Runs since the change:** 11 records on 10 days

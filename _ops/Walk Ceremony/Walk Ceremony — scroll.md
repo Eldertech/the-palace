@@ -15,7 +15,7 @@ forward_vector: "I am Walk Ceremony's scroll — the one page that opens on whic
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:16:00.013Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T14:33:16.547Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.0 · the spec last changed 2026-09-25 (`8f3fe3f7`) — edit(ceremonies): Walk, Spore Check, Self-Model, Revival 1.0; Map Build 2.0
 - **Runs since the change:** none yet — v1.0 has not run

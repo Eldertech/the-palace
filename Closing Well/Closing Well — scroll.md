@@ -15,15 +15,15 @@ forward_vector: "I am Closing Well's scroll — the one page that opens on which
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:15:58.974Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T14:33:15.475Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.0 · the spec last changed 2026-09-24 (`0304148d`) — edit(Closing Well): v1.0 — version, tuning file, executor append, opening read
-- **Runs since the change:** none yet — v1.0 has not run
+- **Version:** v1.1 · the spec last changed 2026-09-25 (`ce4eb6ab`) — edit(Closing Well): v1.1 — the prepared row; tuning item 30
+- **Runs since the change:** none yet — v1.1 has not run
 - **Last run:** none recorded since the ceremony was first versioned
 - **Owed in the ledger:** nothing
-- **Latest lesson:** item 29, from the ceremony-evolution closes — 2026-09-24 — [[Closing Well — tuning]]
+- **Latest lesson:** item 30, from the Enrichment 2.0 close — 2026-09-25 — [[Closing Well — tuning]]
 
-### Runs since v1.0
+### Runs since v1.1
 
 _None yet._
 
@@ -42,6 +42,15 @@ _Loudon's standing direction for this ceremony — never regenerated. Nothing re
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="version-ce4eb6abc1ec969285d65b98de6b5305e8b66715" -->
+### 2026-09-25 — the spec moved to v1.1
+
+edit(Closing Well): v1.1 — the prepared row; tuning item 30
+
+Loudon's yes, 2026-09-25, at the Enrichment close. A keep row the room has assented to but whose words Loudon hasn't read was, by executor.md, `provisional` — execute nothing. This close found a path between: the executor commits the edit on its own worktree branch, never merges, and returns the full diff; the working Claude shows him the words and lands the branch on his yes. That is how Enrichment 2.1 landed (d4ac41f3).
+<sub>`ce4eb6ab` · version change</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="version-0304148dfaf2d879a32b30d88ee4d5903a300a50" -->
 ### 2026-09-24 — the spec moved to v1.0
 

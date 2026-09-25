@@ -15,7 +15,7 @@ forward_vector: "I am Deposit Ceremony's scroll — the one page that opens on w
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:15:59.067Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T14:33:15.588Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v2.0 · the spec last changed 2026-09-25 (`cb6f8ab7`) — edit(Deposit Ceremony): v2.0 — the gate for every find
 - **Runs since the change:** none yet — v2.0 has not run
