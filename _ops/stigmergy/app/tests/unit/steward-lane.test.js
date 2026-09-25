@@ -125,6 +125,11 @@ describe('the run controller (multi-cycle activation, 2026-09-23)', () => {
     expect(nextRunStep({ cap: 1, position: 1, retried: false }, 'shipped')).toBeNull();
   });
 
+  test('nextRunStep: an interrupted cycle (usage limit) stops the run, no retry', () => {
+    expect(nextRunStep({ cap: 10, position: 5, retried: false }, 'interrupted')).toBeNull();
+    expect(stopReason({ cap: 10, position: 5, retried: false }, 'interrupted')).toBe('interrupted');
+  });
+
   test('nextRunStep: a barren cycle earns exactly one retry, then the run stops (stalled)', () => {
     const retry = nextRunStep({ cap: 5, position: 2, retried: false }, 'barren');
     expect(retry).toEqual({ cap: 5, position: 2, retried: true, retryOfBarren: true });
