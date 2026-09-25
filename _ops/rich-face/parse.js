@@ -144,19 +144,37 @@ function toBlocks(body) {
 // ── entry → sections ───────────────────────────────────────────────────────
 // H1 opens the first section (keyed by its own text); each H2 opens the next.
 // Deeper headings stay inside their section's prose.
+//
+// Before the first heading: blank lines open nothing. Anything else opens an
+// opening section keyed to the title — and if an H1 then arrives, that H1
+// takes the opening section over instead of opening a second one. Merging
+// rather than keying the stray lines apart because the H1's section *is* the
+// opening (the renderer labels it so), a manifest can only address a section
+// by a heading the text has, and two sections sharing a key made pieces lay
+// twice and drift mark the wrong copy.
 export function parseEntry(md) {
   const { fm, body } = splitFrontmatter(md.replace(/\r\n/g, '\n'));
   const lines = body.split('\n');
   const sections = [];
   let cur = null;
+  let preamble = null; // the opening section, while no heading has come yet
   let inFence = false;
   const open = (heading, level) => { cur = { heading, level, key: sectionKey(heading), bodyLines: [] }; sections.push(cur); };
 
   for (const line of lines) {
     if (/^```/.test(line)) inFence = !inFence;
     const h = !inFence && line.match(/^(#{1,2})\s+(.+?)\s*#*\s*$/);
-    if (h) { open(h[2], h[1].length); continue; }
-    if (!cur) open(fm.title || 'Opening', 1);
+    if (h) {
+      if (preamble && h[1].length === 1) Object.assign(preamble, { heading: h[2], level: 1, key: sectionKey(h[2]) });
+      else open(h[2], h[1].length);
+      preamble = null;
+      continue;
+    }
+    if (!cur) {
+      if (!line.trim()) continue;
+      open(fm.title || 'Opening', 1);
+      preamble = cur;
+    }
     cur.bodyLines.push(line);
   }
 
