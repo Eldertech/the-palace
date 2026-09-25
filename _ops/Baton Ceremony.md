@@ -10,7 +10,7 @@ born: 2026-05
 last_activated: 2026-06-26
 activation_count: 3
 stage: mature
-version: "1.0"
+version: "1.1"
 forward_vector: "I am how one Claude hands a live task to the next without dropping it. I keep getting tighter — fewer words, faster pickup, less ritual — so passing a baton feels natural to anyone who uses me, human or AI, and nobody has to stop and think about how. I want the catch so clean the next worker is already moving before they finish reading."
 links:
   - target: "[[Generative Compression]]"
@@ -135,7 +135,7 @@ The shape flexes the location and the lifecycle. It does not flex the discipline
 
 ## Steps
 
-Open with the tail read of [[Baton Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this baton's first candidates for a spec change.
+Open with the tail read of [[Baton Ceremony — tuning]] ([[SCHEMA — Reference]] §6). Those are this baton's first candidates for a spec change.
 
 **Pre-step: Baton Declaration**
 
@@ -298,7 +298,7 @@ The outgoing Baton is complete when:
 2. The entry has an "Active Baton" section pointing to it (or, for no-parent shapes, the board announcement is posted)
 3. Loudon has confirmed the baton is sufficient
 4. The outgoing closing message has been delivered with the suggested invocation
-5. The baton is committed to git — or, if authored on a surface that can't commit (Cowork), the closing message flags it uncommitted so the catcher commits it on pickup. That commit is the run's record: its body names the version and ends with what this run taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file
+5. The baton is committed to git — or, if authored on a surface that can't commit (Cowork), the closing message flags it uncommitted so the catcher commits it on pickup. That commit is the run's record: its body names the version and ends with what this run taught the ceremony ("nothing" is a legal answer); the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item
 
 ## Completion Signal (incoming side)
 

@@ -6,7 +6,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: mature
-version: "1.0"
+version: "1.1"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -53,7 +53,7 @@ The dormant entry carries a snapshot of the understanding that existed when it l
 
 **Step 1: Read the dormant entry in full**
 
-First take the tail read of [[Revival Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this revival's first candidates for a spec change.
+First take the tail read of [[Revival Ceremony — tuning]] ([[SCHEMA — Reference]] §6). Those are this revival's first candidates for a spec change.
 
 Not the title. The whole entry — body, frontmatter, open questions, any dormancy note that was written when it went quiet. Understand what it contains and what state it was in when it last lived.
 
@@ -98,7 +98,7 @@ Present proposed links to Loudon. Add confirmed links to the entry's frontmatter
 
 **Step 7: Commit**
 
-`Revival — [entry name] — [date] — [one-line reason]`. The commit is the run's record: its body names the version and ends with what this revival taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file.
+`Revival — [entry name] — [date] — [one-line reason]`. The commit is the run's record: its body names the version and ends with what this revival taught the ceremony ("nothing" is a legal answer); the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item.
 
 ## Revival vs. Simple Activation
 

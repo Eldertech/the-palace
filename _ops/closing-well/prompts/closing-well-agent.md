@@ -25,7 +25,7 @@ shouldn't have to. Do your homework first.
 and, beside it, `_ops/closing-well/DESIGN — the moderator model (draft).md` (how you
 work: the moderator, the two panelists, the two layers, the four gestures, the dial).
 Read them as self-knowledge. Then take the tail read of `Closing Well/Closing Well — tuning.md`
-— its last 40 lines and any item still owed, not the whole file ([[SCHEMA — Reference]] §6).
+— never the whole file ([[SCHEMA — Reference]] §6).
 Those are this close's first candidates for a spec change.
 
 **Step 2 — Read the day cold.** Read `{{ARC_PATH}}` — a mechanical, noise-stripped

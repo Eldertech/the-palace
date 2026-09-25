@@ -6,7 +6,7 @@ born: 2026-03
 last_activated: 2026-09-24
 activation_count: 8
 stage: mature
-version: "1.1"
+version: "1.2"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -115,7 +115,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 
 Before anything else — before the map build, before dispatching a single worker — read the foundational set into context if it is not already there this session: [[CLAUDE]], [[SCHEMA]], [[FOUR PILLARS]], [[ROSETTA]], [[SUBSTRATE]], [[README - The Palace Guide]], [[JEWEL]]. The Weave is a *write* ceremony: it formalizes typed links, proposes stage transitions, and may spawn hub entries. Every one of those is governed by SCHEMA. "Read before touching" is inviolable; a Weave that proposes links before SCHEMA §4 is in context is touching before reading. Link directionality is governed by §4; the `lint-link-directions.py` postcondition (2d) is the mechanical backstop.
 
-Then take the tail read of `_ops/Weave Ceremony/Weave Ceremony — tuning.md` — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
+Then take the tail read of `_ops/Weave Ceremony/Weave Ceremony — tuning.md` ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
 
 **Step 0b — New-entry induction (the catch-up)**
 
@@ -314,7 +314,7 @@ Resolve every E1 this Weave introduced (do not commit a Weave that added one); t
 
 **Step 6.7: Stamp the version; say what the run taught**
 
-Stamp the run report with `ceremony_version` — in frontmatter when the report is markdown; for `report.html`, a `<meta name="ceremony_version">` tag and the header line. End the report with **"## What this run taught the ceremony"**. "Nothing" is a legal answer. Anything else becomes the next numbered entry in `_ops/Weave Ceremony/Weave Ceremony — tuning.md`, naming the spec change it should force. If that change lands in this commit, move the version and give the Context its paragraph; if not, mark the entry owed.
+Stamp the run report with `ceremony_version` — in frontmatter when the report is markdown; for `report.html`, a `<meta name="ceremony_version">` tag and the header line. End the report with **"## What this run taught the ceremony"**. "Nothing" is a legal answer. Either way the run marks the tuning file with its run line; anything else also becomes the next numbered entry in `_ops/Weave Ceremony/Weave Ceremony — tuning.md`, naming the spec change it should force. If that change lands in this commit, move the version and give the Context its paragraph; if not, mark the entry owed.
 
 **Step 7: Commit**
 

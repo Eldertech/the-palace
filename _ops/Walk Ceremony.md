@@ -6,7 +6,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: mature
-version: "1.0"
+version: "1.1"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -41,7 +41,7 @@ links:
 
 **Failure mode:** If the palace is partially readable (some files inaccessible), note which entries were unreachable and proceed with what is available. A partial Walk is valid. An unstarted Walk is not — if nothing is readable, halt and report.
 
-**Git commit:** Only if metadata was updated. `Walk — [date] — [starting entry] — metadata updates`. The body names the version and ends with what this walk taught the ceremony ("nothing" is a legal answer). A walk with no commit says it in conversation; a lesson that changes the spec goes in the tuning file either way.
+**Git commit:** Every walk commits at least its run line in the tuning file: `Walk — [date] — [starting entry]`, adding `— metadata updates` when there were any. The body names the version and ends with what this walk taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file as a numbered item.
 
 ---
 
@@ -55,7 +55,7 @@ The Walk is intentionally weekly. A garden walked daily becomes familiar to the 
 
 ## How to Walk
 
-Open with the tail read of [[Walk Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this walk's first candidates for a spec change.
+Open with the tail read of [[Walk Ceremony — tuning]] ([[SCHEMA — Reference]] §6). Those are this walk's first candidates for a spec change.
 
 Choose a door — any entry, or one Loudon names. If choosing freely, lean toward something not recently touched, something that has been sitting quietly at the edge of awareness. Read it in full. Not a skim. Let it settle.
 
