@@ -81,6 +81,14 @@ So the working shape, to be re-tested before it becomes a rule: workers stay chi
 
 **One link per pair.** The same weave settled a curation guideline: a pair of entries carries one typed link. Where a specific link already exists, a weaker one isn't added. Where a generic `connects-to` exists, it is retyped in place. Lineage reciprocals are the exception (`spawned` ↔ `emerged-from`, `enables`), and only where the lineage is direct: a *diffuse* origin (`emerged-from`) doesn't earn a `spawned` back.
 
+## The Version and the Tuning File (2026-09-24)
+
+Loudon decided on 2026-09-24 that ceremonies should change in plain view, and the Weave goes first because it is the one he reworks every run. The card is stamped **v1.0** as it stood after that day's weave (`b2e51e89`). This does not rank what came before. Twenty-five earlier commits shaped the card; 1.0 marks the point where changes start being counted.
+
+**What moves the number:** a change to the procedure — a step, a postcondition, a gate, a linter wired in or taken out. Prose edits, links and faces leave it alone. Each move gets a short paragraph here saying which tuning entry forced it.
+
+**Where the lessons live:** `_ops/Weave Ceremony/Weave Ceremony — tuning.md`, numbered and grouped by run, with each entry tied to the spec change it forced — or marked as owed. Every run report stamps `ceremony_version` and ends with "What this run taught the ceremony". "Nothing" is a legal answer. Anything else becomes the next tuning entry. The stamp-and-teach step itself (Protocol Step 6.7, postcondition 5c) is part of 1.0: the version was born with its own mechanism.
+
 ## Open Questions
 
 - Is median link-degree the right proxy for a new entry's catch-up target, or should it weight body-length and cross-pillar reach so a deeply-linked-but-shallow entry isn't mistaken for a healthy one?
