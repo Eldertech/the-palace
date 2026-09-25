@@ -1,0 +1,104 @@
+{
+  "title": "Kuramoto Coupling — rich",
+  "born": "2026-09-24",
+  "links": [
+    {
+      "target": "[[Kuramoto Coupling]]",
+      "type": "connects-to",
+      "label": "rich-face-of"
+    },
+    {
+      "target": "[[Enrichment]]",
+      "type": "connects-to",
+      "label": "made-by"
+    }
+  ],
+  "forward_vector": "I am the manifest of Kuramoto Coupling's rich face: what the Shop gathered and made for each section, and the fingerprint of the words each piece was made against, so the page can say when a piece may lag the text. I grow when the entry is enriched again; I never hold the entry's words.",
+  "entry": "Kuramoto Coupling",
+  "tier": "study",
+  "made": "2026-09-24",
+  "round": 1,
+  "page": {
+    "bed": {
+      "file": "opening-bed.wav",
+      "volume": 0.14
+    }
+  },
+  "sections": [
+    {
+      "heading": "Kuramoto Coupling",
+      "made_against": "2df4c71c56ee",
+      "made": "2026-09-24",
+      "pieces": [
+        {
+          "file": "intro-narration.wav",
+          "origin": "gathered",
+          "title": "intro narration · Kokoro, af_heart",
+          "caption": "The first line of the Shop's Round 1 reel, spoken: *how populations of oscillators find a shared rhythm.*",
+          "near": "The Kuramoto model describes"
+        },
+        {
+          "file": "Kuramoto Coupling — rich — equation.md",
+          "origin": "made",
+          "by": "the Maker · typeset",
+          "caption": "The model in one line, then the crowd's togetherness — each shown twice, in symbols and in words.",
+          "near": "The coupling constant"
+        },
+        {
+          "file": "uncoupled-narration.wav",
+          "origin": "gathered",
+          "title": "narration for the uncoupled phasors · Kokoro",
+          "caption": "The voice-over this clip was cut to in the Round 1 reel.",
+          "near": "two-phasors-uncoupled-manim.mp4",
+          "place": "band"
+        }
+      ],
+      "stamped": "2026-09-24"
+    },
+    {
+      "heading": "The Fine-Tuning Insight",
+      "made_against": "b99e3ec8deae",
+      "made": "2026-09-24",
+      "pieces": [
+        {
+          "file": "Kuramoto Coupling — rich — waveform-locking.html",
+          "origin": "made",
+          "by": "Web Audio Worklet",
+          "caption": "**Path B, heard.** The claim above, made audible and checked: a saw driver pulls its follower onto a true octave; a square wave, with no second harmonic, cannot — but it can lock the twelfth. The lock thresholds match K ≥ 2|Δf| ⁄ bₘ.",
+          "near": "Path B — Nonlinear waveform coupling"
+        }
+      ],
+      "stamped": "2026-09-24"
+    },
+    {
+      "heading": "In Our Instruments",
+      "made_against": "1cee8c90d5ee",
+      "made": "2026-09-24",
+      "pieces": [
+        {
+          "file": "Kuramoto Coupling — rich — ensemble.html",
+          "origin": "made",
+          "by": "Web Audio Worklet",
+          "caption": "**The performable boundary, in miniature.** A simpler cousin of the neurological synthesizer — one pitch cloud rather than an attractor spectrum — but the same move: K as the knob between scatter and coherence.",
+          "near": "The neurological synthesizer maps this directly"
+        }
+      ],
+      "stamped": "2026-09-24"
+    },
+    {
+      "heading": "Asymmetric Coupling: The Stubbornness Parameter",
+      "made_against": "f19f12592784",
+      "made": "2026-09-24",
+      "pieces": [
+        {
+          "file": "Kuramoto Coupling — rich — stubbornness.html",
+          "origin": "made",
+          "by": "Web Audio Worklet",
+          "caption": "**Bright idea #38, played.** Stubbornness (K_receive → 0) sets *where* a locked crowd would settle; whether the crowd can get there takes pull (K_send) too. The settle point is every voice's pitch weighted by K_send ÷ K_receive — the simulation lands on it to the hundredth of a hertz.",
+          "near": "The live performance insight"
+        }
+      ],
+      "stamped": "2026-09-24"
+    }
+  ]
+}

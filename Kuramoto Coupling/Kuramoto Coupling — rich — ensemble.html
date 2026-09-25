@@ -1,0 +1,289 @@
+<!doctype html>
+<!--
+  title: Kuramoto Coupling — rich — ensemble
+  born: 2026-09-24
+  links: [[Kuramoto Coupling]] (connects-to · rich-face-piece) · listed in [[Kuramoto Coupling — rich.json]]
+  forward_vector: I am the population of twenty-four coupled voices — K as the knob between scatter and coherence, heard in pitch or in pulse. I play inside the entry's rich face and stand alone opened directly; I change only when the section I serve does.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuramoto — the ensemble</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root { --bg:#0a0a0f; --e1:#12121a; --ring:#22222e; --border:#4a4a5e; --soft:rgba(255,255,255,.06); --fg1:#e8e8f0; --fg2:#c8c8d8; --fg3:#8a8aa0; --fg4:#4a4a5a;
+    --amber:#e8b84a; --amberline:rgba(232,184,74,.5); --indigo:#6366F1; --warn:#ff9b4a;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace; --sans:'Manrope',system-ui,sans-serif; --serif:'Cormorant Garamond',Georgia,serif; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg2); font-family: var(--sans); font-weight: 300; }
+  .piece { padding: 22px 22px 20px; }
+  .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--fg3); margin-bottom: 6px; }
+  .title { font-family: var(--serif); font-size: 27px; font-weight: 300; color: var(--fg1); margin: 0 0 6px; }
+  .sub { font-size: 14px; line-height: 1.6; color: var(--fg2); max-width: 74ch; margin: 0 0 18px; }
+  .stage { display: grid; grid-template-columns: minmax(220px, 330px) 1fr; gap: 22px; align-items: start; }
+  .panel { border: 1px solid var(--soft); border-radius: 2px; background: var(--e1); padding: 10px 12px; }
+  .plabel { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--fg3); margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; }
+  .side { display: flex; flex-direction: column; gap: 14px; }
+  canvas { display: block; width: 100%; }
+  .controls { display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px 26px; align-items: end; margin-top: 18px; }
+  button { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg2); background: var(--bg); border: 1px solid var(--border); border-radius: 2px; padding: 8px 13px; cursor: pointer; }
+  button:hover { border-color: rgba(232,184,74,.55); color: var(--fg1); }
+  button.on { color: var(--amber); border-color: var(--amberline); }
+  button.go { color: var(--amber); border-color: var(--amberline); box-shadow: 0 0 14px rgba(232,184,74,.18); min-width: 92px; }
+  .seg { display: inline-flex; } .seg button + button { border-left: 0; }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  label.sl { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--fg3); }
+  label.sl b { color: var(--fg1); font-weight: 500; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 3px; background: var(--fg4); margin: 12px 0 4px; outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: var(--amber); cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 13px; height: 13px; border: 0; border-radius: 50%; background: var(--amber); cursor: pointer; }
+  .read { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 16px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .05em; color: var(--fg3); }
+  .read b { color: var(--fg1); font-weight: 500; }
+  .state { color: var(--amber); }
+  .eqs { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--soft); }
+  .eq { font-family: var(--serif); font-size: 19px; color: var(--fg1); }
+  .words { font-size: 13px; line-height: 1.55; color: var(--fg2); margin: 2px 0 10px; }
+  .hint { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; color: var(--fg3); margin-top: 10px; }
+  @media (max-width: 680px) { .stage { grid-template-columns: 1fr; } .controls { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="piece">
+  <div class="kicker">made · Web Audio Worklet · study</div>
+  <h3 class="title">Twenty-four voices, one knob</h3>
+  <p class="sub">The instrument this section describes, in miniature: a population of oscillators whose coupling you perform. In <b>pitch</b> they are sine voices near 220 Hz — below the threshold a beating chorus, above it one tone, and it gets louder as it locks, because coherent voices add: the loudness you hear <i>is</i> R. In <b>pulse</b> they are fireflies ticking near once a second — scattered ticks that fall into a single clap.</p>
+
+  <div class="stage">
+    <div class="panel">
+      <div class="plabel"><span>each voice's phase</span><span>arrow = R</span></div>
+      <canvas id="circle"></canvas>
+    </div>
+    <div class="side">
+      <div class="panel">
+        <div class="plabel"><span>each voice's pitch, right now</span><span id="axis-unit">Hz</span></div>
+        <canvas id="strip"></canvas>
+      </div>
+      <div class="panel">
+        <div class="plabel"><span>|R| — how together they are</span><span>last 10 s</span></div>
+        <canvas id="trace"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="btns">
+      <button class="go" id="go">▸ start</button>
+      <span class="seg"><button id="m-pitch" class="on">pitch</button><button id="m-pulse">pulse</button></span>
+      <button id="scatter" title="throw every phase to a random place">scatter</button>
+    </div>
+    <label class="sl">coupling K = <b id="k-val"></b><input id="k" type="range"></label>
+    <label class="sl">spread of natural speeds ± <b id="g-val"></b><input id="g" type="range"></label>
+  </div>
+  <div class="read">
+    <span>K<sub>c</sub> ≈ <b id="kc"></b></span>
+    <span>K ⁄ K<sub>c</sub> = <b id="ratio"></b></span>
+    <span>|R| = <b id="r">–</b></span>
+    <span class="state" id="state">silent until you start</span>
+  </div>
+  <div class="hint">Try: start below the threshold, then drag K slowly past K<sub>c</sub>. Then scatter and listen to the lock re-form.</div>
+
+  <div class="eqs">
+    <div class="eq">dθᵢ/dt = ωᵢ + K · R · sin(ψ − θᵢ)</div>
+    <div class="words">(how fast voice i's phase turns) = (its own natural speed) + (coupling strength) × (how together the crowd is) × sin(the crowd's direction − voice i's phase)</div>
+    <div class="eq">K<sub>c</sub> = 4 · γ ⁄ π</div>
+    <div class="words">(the threshold) = 4 × (half the spread of natural speeds) ÷ π — for speeds spread evenly, in a large crowd; with 24 voices it is close, not exact</div>
+  </div>
+</div>
+
+<script>
+// ── the audio thread: the whole population, integrated per sample ──────────
+// Mean-field Kuramoto: each voice feels the crowd's average arrow, weighted by
+// how loudly each voice sends (ks) and how much it listens (kr).
+const WORKLET = `
+class Pop extends AudioWorkletProcessor {
+  constructor() { super(); this.N = 0; this.K = 0; this.mode = 'pitch'; this.gain = 0.9; this.n = 0; this.port.onmessage = (e) => this.set(e.data); }
+  set(d) {
+    if (d.omegaHz) {
+      const N = d.omegaHz.length;
+      if (N !== this.N) {
+        this.N = N; this.theta = new Float64Array(N); this.adv = new Float64Array(N); this.env = new Float64Array(N); this.cph = new Float64Array(N);
+        this.kr = new Float64Array(N).fill(1); this.ks = new Float64Array(N).fill(1); this.voice = new Float64Array(N); this.clickHz = new Float64Array(N).fill(1500);
+        this.scatter();
+      }
+      this.omega = Float64Array.from(d.omegaHz, (f) => 2 * Math.PI * f);
+    }
+    if (d.kr) this.kr = Float64Array.from(d.kr);
+    if (d.ks) this.ks = Float64Array.from(d.ks);
+    if (d.voice) this.voice = Float64Array.from(d.voice);
+    if (d.clickHz) this.clickHz = Float64Array.from(d.clickHz);
+    if (d.K !== undefined) this.K = d.K;
+    if (d.mode) this.mode = d.mode;
+    if (d.gain !== undefined) this.gain = d.gain;
+    if (d.scatter) this.scatter();
+  }
+  scatter() { for (let i = 0; i < this.N; i++) this.theta[i] = Math.random() * 2 * Math.PI; }
+  process(_in, outs) {
+    const o = outs[0], L = o[0], R = o[1] || o[0], N = this.N;
+    if (!N || !this.omega) return true;
+    const TP = 2 * Math.PI, dt = 1 / sampleRate, Krad = TP * this.K, th = this.theta, dec = Math.exp(-dt / 0.02);
+    const pitch = this.mode === 'pitch';
+    for (let n = 0; n < L.length; n++) {
+      let zr = 0, zi = 0;
+      for (let j = 0; j < N; j++) { zr += this.ks[j] * Math.cos(th[j]); zi += this.ks[j] * Math.sin(th[j]); }
+      zr /= N; zi /= N;
+      let y = 0;
+      for (let i = 0; i < N; i++) {
+        const c = Math.cos(th[i]), s = Math.sin(th[i]);
+        if (pitch) y += s + (this.voice[i] ? this.voice[i] * Math.sin(2 * th[i]) : 0);
+        else if (this.env[i] > 1e-4) { this.cph[i] += TP * this.clickHz[i] * dt; y += this.env[i] * Math.sin(this.cph[i]); this.env[i] *= dec; }
+        const d = this.omega[i] + Krad * this.kr[i] * (zi * c - zr * s);   // K·r·sin(ψ−θ) = K(zi·cosθ − zr·sinθ)
+        let t = th[i] + d * dt; this.adv[i] += d * dt;
+        if (t >= TP) { t -= TP; if (!pitch) { this.env[i] = 1; this.cph[i] = 0; } } else if (t < 0) t += TP;
+        th[i] = t;
+      }
+      y = Math.tanh(y * this.gain / N);
+      L[n] = y; R[n] = y;
+    }
+    this.n += L.length;
+    if (this.n >= 1024) {
+      const T = this.n / sampleRate, f = new Float32Array(N);
+      for (let i = 0; i < N; i++) { f[i] = this.adv[i] / (TP * T); this.adv[i] = 0; }
+      let zr = 0, zi = 0; for (let j = 0; j < N; j++) { zr += Math.cos(th[j]); zi += Math.sin(th[j]); }
+      this.port.postMessage({ theta: Float32Array.from(th), freq: f, r: Math.hypot(zr, zi) / N, psi: Math.atan2(zi, zr) });
+      this.n = 0;
+    }
+    return true;
+  }
+}
+registerProcessor('kuramoto-pop', Pop);`;
+
+// ── the population ─────────────────────────────────────────────────────────
+const N = 24;
+const MODES = {
+  pitch: { center: 220, gMin: 0.5, gMax: 5, g: 2, Kmax: 16, K: 0.6, gain: 0.9, unit: 'Hz', fmt: (x) => x.toFixed(2) + ' Hz' },
+  pulse: { center: 1.2, gMin: 0.03, gMax: 0.3, g: 0.12, Kmax: 1, K: 0.04, gain: 5, unit: 'ticks/s', fmt: (x) => x.toFixed(3) + ' Hz' },
+};
+let mode = 'pitch';
+const clickHz = Array.from({ length: N }, (_, i) => 700 + ((i * 977) % 1700));
+const omegas = () => { const m = MODES[mode]; return Array.from({ length: N }, (_, i) => m.center + m.g * (2 * (i + 0.5) / N - 1)); };
+const Kc = () => 4 * MODES[mode].g / Math.PI;
+
+let ctx, node, master, running = false, last = null;
+const history = [];
+
+async function start() {
+  if (!ctx) {
+    ctx = new AudioContext();
+    const url = URL.createObjectURL(new Blob([WORKLET], { type: 'application/javascript' }));
+    await ctx.audioWorklet.addModule(url); URL.revokeObjectURL(url);
+    node = new AudioWorkletNode(ctx, 'kuramoto-pop', { numberOfInputs: 0, numberOfOutputs: 1, outputChannelCount: [2] });
+    const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+    master = ctx.createGain(); master.gain.value = 0;
+    node.connect(comp).connect(master).connect(ctx.destination);
+    node.port.onmessage = (e) => { last = e.data; history.push(e.data.r); if (history.length > 470) history.shift(); };
+    sendAll(true);
+  }
+  await ctx.resume();
+  master.gain.setTargetAtTime(0.85, ctx.currentTime, 0.08);
+  running = true; go.textContent = '❚❚ stop';
+  try { if (parent !== window) parent.postMessage({ type: 'rich:play' }, location.origin); } catch {}
+}
+function stop() {
+  if (!running) return;
+  master.gain.setTargetAtTime(0, ctx.currentTime, 0.05);
+  setTimeout(() => ctx.suspend(), 200);
+  running = false; go.textContent = '▸ start';
+}
+window.addEventListener('message', (e) => { if (e.data && e.data.type === 'rich:hush') stop(); });
+
+function sendAll(scatter) {
+  if (!node) return;
+  const m = MODES[mode];
+  node.port.postMessage({ omegaHz: omegas(), K: m.K, mode, gain: m.gain, clickHz, scatter: !!scatter });
+}
+
+// ── controls ───────────────────────────────────────────────────────────────
+const $ = (id) => document.getElementById(id);
+const go = $('go'), kIn = $('k'), gIn = $('g');
+function syncControls() {
+  const m = MODES[mode];
+  kIn.min = 0; kIn.max = m.Kmax; kIn.step = m.Kmax / 500; kIn.value = m.K;
+  gIn.min = m.gMin; gIn.max = m.gMax; gIn.step = (m.gMax - m.gMin) / 300; gIn.value = m.g;
+  $('m-pitch').classList.toggle('on', mode === 'pitch'); $('m-pulse').classList.toggle('on', mode === 'pulse');
+  $('axis-unit').textContent = m.unit;
+  readouts();
+}
+function readouts() {
+  const m = MODES[mode];
+  $('k-val').textContent = m.fmt(m.K);
+  $('g-val').textContent = m.fmt(m.g);
+  $('kc').textContent = m.fmt(Kc());
+  $('ratio').textContent = (m.K / Kc()).toFixed(2);
+}
+kIn.oninput = () => { MODES[mode].K = +kIn.value; readouts(); node && node.port.postMessage({ K: +kIn.value }); };
+gIn.oninput = () => { MODES[mode].g = +gIn.value; readouts(); node && node.port.postMessage({ omegaHz: omegas() }); };
+go.onclick = () => (running ? stop() : start());
+$('scatter').onclick = () => node && node.port.postMessage({ scatter: true });
+for (const md of ['pitch', 'pulse']) $('m-' + md).onclick = () => { mode = md; history.length = 0; syncControls(); sendAll(true); };
+
+// ── drawing ────────────────────────────────────────────────────────────────
+function fit(c, hgt) {
+  const w = c.clientWidth, d = devicePixelRatio || 1, H = hgt || w;
+  if (c.width !== Math.round(w * d) || c.height !== Math.round(H * d)) { c.width = Math.round(w * d); c.height = Math.round(H * d); c.style.height = H + 'px'; }
+  const g = c.getContext('2d'); g.setTransform(d, 0, 0, d, 0, 0); return { g, w, h: H };
+}
+const mix = (a, b, t) => `rgb(${a.map((x, i) => Math.round(x + (b[i] - x) * t)).join(',')})`;
+const INDIGO = [99, 102, 241], AMBER = [232, 184, 74];
+const placeholder = Array.from({ length: N }, (_, i) => (i * 2.39996) % (2 * Math.PI));
+
+function draw() {
+  requestAnimationFrame(draw);
+  const theta = last ? last.theta : placeholder;
+  // circle
+  { const { g, w } = fit($('circle')); const cx = w / 2, cy = w / 2, rad = w * 0.4;
+    g.clearRect(0, 0, w, w);
+    g.strokeStyle = '#22222e'; g.lineWidth = 1.5; g.beginPath(); g.arc(cx, cy, rad, 0, 7); g.stroke();
+    for (let i = 0; i < N; i++) {
+      const a = theta[i] - Math.PI / 2;
+      g.fillStyle = mix(INDIGO, AMBER, i / (N - 1));
+      g.beginPath(); g.arc(cx + rad * Math.cos(a), cy + rad * Math.sin(a), 4.2, 0, 7); g.fill();
+    }
+    if (last) {
+      const a = last.psi - Math.PI / 2, L = rad * last.r;
+      g.strokeStyle = '#e8b84a'; g.lineWidth = 2.2; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + L * Math.cos(a), cy + L * Math.sin(a)); g.stroke();
+      g.fillStyle = '#e8b84a'; g.beginPath(); g.arc(cx + L * Math.cos(a), cy + L * Math.sin(a), 3, 0, 7); g.fill();
+    }
+    g.fillStyle = '#4a4a5a'; g.beginPath(); g.arc(cx, cy, 2, 0, 7); g.fill();
+  }
+  // pitch strip
+  { const { g, w, h } = fit($('strip'), 64); const m = MODES[mode];
+    const span = m.gMax * 1.15, x = (f) => w / 2 + ((f - m.center) / span) * (w / 2 - 8);
+    g.clearRect(0, 0, w, h);
+    g.strokeStyle = '#22222e'; g.beginPath(); g.moveTo(8, h - 16); g.lineTo(w - 8, h - 16); g.stroke();
+    g.fillStyle = '#4a4a5a'; g.font = '10px JetBrains Mono, monospace'; g.textAlign = 'center';
+    g.fillText(m.center.toFixed(mode === 'pitch' ? 0 : 1), w / 2, h - 3);
+    const om = omegas();
+    for (let i = 0; i < N; i++) { g.fillStyle = '#4a4a5a'; g.fillRect(x(om[i]) - 1, h - 19, 2, 6); }
+    if (last) for (let i = 0; i < N; i++) { g.fillStyle = mix(INDIGO, AMBER, i / (N - 1)); g.fillRect(x(last.freq[i]) - 1, 6, 2, h - 28); }
+  }
+  // |R| trace
+  { const c = $('trace'); const { g, w, h } = fit(c, 170);
+    g.clearRect(0, 0, w, h);
+    g.strokeStyle = '#22222e'; g.setLineDash([3, 4]); g.beginPath(); g.moveTo(0, 6); g.lineTo(w, 6); g.stroke(); g.setLineDash([]);
+    g.strokeStyle = '#e8b84a'; g.lineWidth = 1.6; g.beginPath();
+    history.forEach((r, i) => { const px = (i / 469) * w, py = h - 4 - r * (h - 10); i ? g.lineTo(px, py) : g.moveTo(px, py); });
+    g.stroke();
+  }
+  // readouts
+  if (last) {
+    $('r').textContent = last.r.toFixed(2);
+    const m = MODES[mode], ratio = m.K / Kc();
+    $('state').textContent = !running ? 'paused' : last.r > 0.85 ? 'lock — one voice from many' : ratio < 0.9 ? 'drift — each keeps its own time' : 'near the threshold — clusters forming';
+  }
+}
+syncControls();
+draw();
+</script>
+</body>
+</html>

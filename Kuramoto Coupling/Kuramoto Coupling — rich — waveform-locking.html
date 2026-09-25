@@ -1,0 +1,227 @@
+<!doctype html>
+<!--
+  title: Kuramoto Coupling — rich — waveform-locking
+  born: 2026-09-24
+  links: [[Kuramoto Coupling]] (connects-to · rich-face-piece) · listed in [[Kuramoto Coupling — rich.json]]
+  forward_vector: I am Path B made audible — the driver's harmonics decide which ratios can lock; a saw holds the octave, a square wave cannot. I play inside the entry's rich face and stand alone opened directly; I change only when the section I serve does.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuramoto — Path B, heard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root { --bg:#0a0a0f; --e1:#12121a; --ring:#22222e; --border:#4a4a5e; --soft:rgba(255,255,255,.06); --fg1:#e8e8f0; --fg2:#c8c8d8; --fg3:#8a8aa0; --fg4:#4a4a5a;
+    --amber:#e8b84a; --amberline:rgba(232,184,74,.5); --indigo:#6366F1; --warn:#ff9b4a;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace; --sans:'Manrope',system-ui,sans-serif; --serif:'Cormorant Garamond',Georgia,serif; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg2); font-family: var(--sans); font-weight: 300; }
+  .piece { padding: 22px 22px 20px; }
+  .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--fg3); margin-bottom: 6px; }
+  .title { font-family: var(--serif); font-size: 27px; font-weight: 300; color: var(--fg1); margin: 0 0 6px; }
+  .sub { font-size: 14px; line-height: 1.6; color: var(--fg2); max-width: 74ch; margin: 0 0 18px; }
+  .stage { display: grid; grid-template-columns: minmax(220px, 330px) 1fr; gap: 22px; align-items: start; }
+  .panel { border: 1px solid var(--soft); border-radius: 2px; background: var(--e1); padding: 10px 12px; }
+  .plabel { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--fg3); margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; }
+  .side { display: flex; flex-direction: column; gap: 14px; }
+  canvas { display: block; width: 100%; }
+  .controls { display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px 26px; align-items: end; margin-top: 18px; }
+  button { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg2); background: var(--bg); border: 1px solid var(--border); border-radius: 2px; padding: 8px 13px; cursor: pointer; }
+  button:hover { border-color: rgba(232,184,74,.55); color: var(--fg1); }
+  button.on { color: var(--amber); border-color: var(--amberline); }
+  button.go { color: var(--amber); border-color: var(--amberline); box-shadow: 0 0 14px rgba(232,184,74,.18); min-width: 92px; }
+  .seg { display: inline-flex; } .seg button + button { border-left: 0; }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  label.sl { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--fg3); }
+  label.sl b { color: var(--fg1); font-weight: 500; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 3px; background: var(--fg4); margin: 12px 0 4px; outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: var(--amber); cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 13px; height: 13px; border: 0; border-radius: 50%; background: var(--amber); cursor: pointer; }
+  .read { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 16px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .05em; color: var(--fg3); }
+  .read b { color: var(--fg1); font-weight: 500; }
+  .state { color: var(--amber); }
+  .eqs { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--soft); }
+  .eq { font-family: var(--serif); font-size: 19px; color: var(--fg1); }
+  .words { font-size: 13px; line-height: 1.55; color: var(--fg2); margin: 2px 0 10px; }
+  .hint { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; color: var(--fg3); margin-top: 10px; }
+  @media (max-width: 680px) { .stage { grid-template-columns: 1fr; } .controls { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="piece">
+  <div class="kicker">made · Web Audio Worklet · study</div>
+  <h3 class="title">Path B, heard — the waveform is the coupling</h3>
+  <p class="sub">A <b>driver</b> at 110 Hz and a <b>follower</b> tuned a little off an exact ratio above it. The follower is nudged by the driver's <i>output</i> — its waveform — not by its phase. The entry's claim: the harmonics the waveform carries decide which ratios can lock. A sawtooth has every harmonic, so it can pull the follower onto a true octave. A square wave has only odd ones, so at the octave there is nothing to grab — but at the twelfth there is. Hear whether the slow beating stops.</p>
+
+  <div class="stage">
+    <div class="panel">
+      <div class="plabel"><span>the ratio's phase</span><span>θ₂ − m·θ₁</span></div>
+      <canvas id="circle"></canvas>
+    </div>
+    <div class="side">
+      <div class="panel">
+        <div class="plabel"><span>the driver's harmonics — what there is to lock to</span><span>Hz</span></div>
+        <canvas id="spec"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="btns">
+      <button class="go" id="go">▸ start</button>
+      <span class="seg"><button data-w="sine">sine</button><button data-w="saw" class="on">saw</button><button data-w="square">square</button></span>
+      <span class="seg"><button data-m="2" class="on">2 : 1 octave</button><button data-m="3">3 : 1 twelfth</button></span>
+    </div>
+    <label class="sl">coupling K = <b id="k-val"></b><input id="k" type="range" min="0" max="24" step="0.05"></label>
+    <label class="sl">follower tuned <b id="c-val"></b> off the ratio<input id="c" type="range" min="-40" max="40" step="0.5"></label>
+  </div>
+  <div class="read">
+    <span>off by <b id="df"></b></span>
+    <span>strength of harmonic m, b<sub>m</sub> = <b id="bm"></b></span>
+    <span><b id="need"></b></span>
+    <span class="state" id="state">silent until you start</span>
+  </div>
+  <div class="hint">Try: saw, octave, raise K until the beating stops. Switch to square — the lock breaks, and no K on the slider brings it back. Now switch to the twelfth.</div>
+
+  <div class="eqs">
+    <div class="eq">dθ₂/dt = ω₂ − K · x₁(θ₁) · sin θ₂ ,   x₁(θ₁) = Σₖ bₖ · sin(k · θ₁)</div>
+    <div class="words">(how fast the follower's phase turns) = (its own natural speed) − (coupling strength) × (the driver's waveform, right now) × sin(the follower's phase), where the waveform = Σ over its harmonics k of (harmonic k's strength) × sin(k × the driver's phase)</div>
+    <div class="eq">it locks at m : 1 when |Δf| ≤ K · bₘ ⁄ 2</div>
+    <div class="words">(how far the follower is tuned off the ratio) ≤ (coupling strength) × (strength of the driver's m-th harmonic) ÷ 2 — so where bₘ = 0 there is nothing to lock to: at strong K a faint second-order pull slows the beating, but it never stops</div>
+  </div>
+  <div class="hint">A phase-reduced model: the follower responds as −sin θ₂, the textbook sinusoidal oscillator. Not a circuit simulation.</div>
+</div>
+
+<script>
+const WORKLET = `
+class WaveLock extends AudioWorkletProcessor {
+  constructor() { super(); this.t1 = 0; this.t2 = Math.random() * 2 * Math.PI; this.f1 = 110; this.m = 2; this.cents = 12; this.K = 0;
+    this.b = new Float64Array(17); this.b[1] = 1; this.adv = 0; this.n = 0; this.hist = []; this.port.onmessage = (e) => this.set(e.data); }
+  set(d) { if (d.b || d.m !== undefined || d.cents !== undefined) this.hist = []; if (d.b) this.b = Float64Array.from(d.b); for (const k of ['f1', 'm', 'cents', 'K']) if (d[k] !== undefined) this[k] = d[k]; if (d.scatter) this.t2 = Math.random() * 2 * Math.PI; }
+  process(_in, outs) {
+    const o = outs[0], L = o[0], R = o[1] || o[0];
+    const TP = 2 * Math.PI, dt = 1 / sampleRate, w1 = TP * this.f1, f2 = this.m * this.f1 * Math.pow(2, this.cents / 1200), w2 = TP * f2, Krad = TP * this.K, b = this.b;
+    for (let n = 0; n < L.length; n++) {
+      let x = 0; for (let k = 1; k <= 16; k++) if (b[k]) x += b[k] * Math.sin(k * this.t1);
+      const d2 = w2 - Krad * x * Math.sin(this.t2);
+      this.t1 += w1 * dt; if (this.t1 >= TP) this.t1 -= TP;
+      this.t2 += d2 * dt; if (this.t2 >= TP) this.t2 -= TP; else if (this.t2 < 0) this.t2 += TP;
+      this.adv += (d2 - this.m * w1) * dt;
+      const y = Math.tanh(0.2 * x + 0.24 * Math.sin(this.t2));
+      L[n] = y; R[n] = y;
+    }
+    this.n += L.length;
+    if (this.n >= 1024) {
+      const T = this.n / sampleRate;
+      let phi = (this.t2 - this.m * this.t1) % TP; if (phi < 0) phi += TP;
+      // average over ~0.5 s: the other harmonics wobble φ quickly, and a
+      // 21 ms window alone reads that wobble as drift
+      this.hist.push([this.adv, T]); if (this.hist.length > 24) this.hist.shift();
+      let a = 0, t = 0; for (const [x, y] of this.hist) { a += x; t += y; }
+      this.port.postMessage({ phi, drift: a / (TP * t) });
+      this.adv = 0; this.n = 0;
+    }
+    return true;
+  }
+}
+registerProcessor('wave-lock', WaveLock);`;
+
+const WAVES = {
+  sine: (k) => (k === 1 ? 1 : 0),
+  saw: (k) => 1 / k,
+  square: (k) => (k % 2 ? 1 / k : 0),
+};
+const S = { wave: 'saw', m: 2, K: 0, cents: 12 };
+const coeffs = () => Array.from({ length: 17 }, (_, k) => (k ? WAVES[S.wave](k) : 0));
+const f1 = 110;
+const deltaHz = () => S.m * f1 * (Math.pow(2, S.cents / 1200) - 1);
+
+let ctx, node, master, running = false, last = null, driftS = null;
+const trail = [];
+async function start() {
+  if (!ctx) {
+    ctx = new AudioContext();
+    const url = URL.createObjectURL(new Blob([WORKLET], { type: 'application/javascript' }));
+    await ctx.audioWorklet.addModule(url); URL.revokeObjectURL(url);
+    node = new AudioWorkletNode(ctx, 'wave-lock', { numberOfInputs: 0, numberOfOutputs: 1, outputChannelCount: [2] });
+    const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+    master = ctx.createGain(); master.gain.value = 0;
+    node.connect(comp).connect(master).connect(ctx.destination);
+    node.port.onmessage = (e) => { last = e.data; driftS = last.drift; trail.push(last.phi); if (trail.length > 90) trail.shift(); };
+    send();
+  }
+  await ctx.resume();
+  master.gain.setTargetAtTime(0.8, ctx.currentTime, 0.08);
+  running = true; go.textContent = '❚❚ stop';
+  try { if (parent !== window) parent.postMessage({ type: 'rich:play' }, location.origin); } catch {}
+}
+function stop() {
+  if (!running) return;
+  master.gain.setTargetAtTime(0, ctx.currentTime, 0.05);
+  setTimeout(() => ctx.suspend(), 200);
+  running = false; go.textContent = '▸ start';
+}
+window.addEventListener('message', (e) => { if (e.data && e.data.type === 'rich:hush') stop(); });
+const send = () => node && node.port.postMessage({ b: coeffs(), m: S.m, K: S.K, cents: S.cents, f1 });
+
+const $ = (id) => document.getElementById(id);
+const go = $('go');
+function readouts() {
+  const bm = WAVES[S.wave](S.m), df = deltaHz();
+  $('k-val').textContent = S.K.toFixed(2) + ' Hz';
+  $('c-val').textContent = (S.cents >= 0 ? '+' : '') + S.cents.toFixed(1) + ' cents';
+  $('df').textContent = Math.abs(df).toFixed(2) + ' Hz';
+  $('bm').textContent = bm ? bm.toFixed(3) : '0 — none';
+  $('need').textContent = bm ? `locks once K ≥ ${(2 * Math.abs(df) / bm).toFixed(2)} Hz` : 'no harmonic here — no lock anywhere on this slider';
+  document.querySelectorAll('[data-w]').forEach((b) => b.classList.toggle('on', b.dataset.w === S.wave));
+  document.querySelectorAll('[data-m]').forEach((b) => b.classList.toggle('on', +b.dataset.m === S.m));
+}
+$('k').value = S.K; $('c').value = S.cents;
+$('k').oninput = () => { S.K = +$('k').value; readouts(); send(); };
+$('c').oninput = () => { S.cents = +$('c').value; readouts(); send(); };
+document.querySelectorAll('[data-w]').forEach((b) => (b.onclick = () => { S.wave = b.dataset.w; readouts(); send(); }));
+document.querySelectorAll('[data-m]').forEach((b) => (b.onclick = () => { S.m = +b.dataset.m; readouts(); send(); }));
+go.onclick = () => (running ? stop() : start());
+
+function fit(c, hgt) {
+  const w = c.clientWidth, d = devicePixelRatio || 1, H = hgt || w;
+  if (c.width !== Math.round(w * d) || c.height !== Math.round(H * d)) { c.width = Math.round(w * d); c.height = Math.round(H * d); c.style.height = H + 'px'; }
+  const g = c.getContext('2d'); g.setTransform(d, 0, 0, d, 0, 0); return { g, w, h: H };
+}
+function draw() {
+  requestAnimationFrame(draw);
+  { const { g, w } = fit($('circle')); const cx = w / 2, cy = w / 2, rad = w * 0.4;
+    g.clearRect(0, 0, w, w);
+    g.strokeStyle = '#22222e'; g.lineWidth = 1.5; g.beginPath(); g.arc(cx, cy, rad, 0, 7); g.stroke();
+    trail.forEach((p, i) => { const a = p - Math.PI / 2; g.fillStyle = `rgba(232,184,74,${(i / trail.length) * 0.5})`; g.beginPath(); g.arc(cx + rad * Math.cos(a), cy + rad * Math.sin(a), 2.2, 0, 7); g.fill(); });
+    if (last) { const a = last.phi - Math.PI / 2; g.fillStyle = '#e8b84a'; g.beginPath(); g.arc(cx + rad * Math.cos(a), cy + rad * Math.sin(a), 6, 0, 7); g.fill(); }
+    g.fillStyle = '#8a8aa0'; g.font = '11px JetBrains Mono, monospace'; g.textAlign = 'center';
+    g.fillText(!last ? '' : Math.abs(driftS) < 0.06 ? 'still — locked' : `turning ${Math.abs(driftS).toFixed(2)} ×/s`, cx, cy + 4);
+  }
+  { const c = $('spec'); const { g, w, h } = fit(c, 240);
+    const fmax = 960, x = (f) => 12 + (f / fmax) * (w - 24), base = h - 20, top = 14;
+    g.clearRect(0, 0, w, h);
+    g.strokeStyle = '#22222e'; g.beginPath(); g.moveTo(12, base); g.lineTo(w - 12, base); g.stroke();
+    g.font = '10px JetBrains Mono, monospace'; g.textAlign = 'center';
+    for (let k = 1; k <= 8; k++) {
+      const bk = WAVES[S.wave](k), X = x(k * f1);
+      g.fillStyle = k === S.m ? '#e8b84a' : '#6366F1';
+      if (bk) g.fillRect(X - 5, base - bk * (base - top), 10, bk * (base - top));
+      else { g.fillStyle = '#4a4a5a'; g.fillRect(X - 5, base - 2, 10, 2); }
+      g.fillStyle = k === S.m ? '#e8b84a' : '#4a4a5a'; g.fillText(k * f1, X, h - 5);
+    }
+    const f2 = S.m * f1 * Math.pow(2, S.cents / 1200), X2 = x(f2);
+    g.strokeStyle = '#e8e8f0'; g.setLineDash([3, 3]); g.beginPath(); g.moveTo(X2, top - 6); g.lineTo(X2, base); g.stroke(); g.setLineDash([]);
+    g.fillStyle = '#e8e8f0'; g.textAlign = 'left'; g.fillText('follower', X2 + 6, top + 2);
+    if (!WAVES[S.wave](S.m)) { g.fillStyle = '#ff9b4a'; g.fillText('no partial here — nothing to lock to', X2 + 6, top + 16); }
+  }
+  if (last) {
+    const locked = Math.abs(driftS) < 0.06;
+    $('state').textContent = !running ? 'paused' : locked ? `locked — a true ${S.m === 2 ? 'octave' : 'twelfth'}` : `beating ${Math.abs(driftS).toFixed(2)} times a second`;
+  }
+}
+readouts(); draw();
+</script>
+</body>
+</html>

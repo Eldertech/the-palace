@@ -1,0 +1,266 @@
+<!doctype html>
+<!--
+  title: Kuramoto Coupling — rich — stubbornness
+  born: 2026-09-24
+  links: [[Kuramoto Coupling]] (connects-to · rich-face-piece) · listed in [[Kuramoto Coupling — rich.json]]
+  forward_vector: I am one anchor among six followers — where a locked crowd settles is every voice weighted by K_send ÷ K_receive, and stubbornness alone can't make an anchor. I play inside the entry's rich face and stand alone opened directly; I change only when the section I serve does.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuramoto — stubbornness</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root { --bg:#0a0a0f; --e1:#12121a; --ring:#22222e; --border:#4a4a5e; --soft:rgba(255,255,255,.06); --fg1:#e8e8f0; --fg2:#c8c8d8; --fg3:#8a8aa0; --fg4:#4a4a5a;
+    --amber:#e8b84a; --amberline:rgba(232,184,74,.5); --indigo:#6366F1; --warn:#ff9b4a;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace; --sans:'Manrope',system-ui,sans-serif; --serif:'Cormorant Garamond',Georgia,serif; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg2); font-family: var(--sans); font-weight: 300; }
+  .piece { padding: 22px 22px 20px; }
+  .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--fg3); margin-bottom: 6px; }
+  .title { font-family: var(--serif); font-size: 27px; font-weight: 300; color: var(--fg1); margin: 0 0 6px; }
+  .sub { font-size: 14px; line-height: 1.6; color: var(--fg2); max-width: 74ch; margin: 0 0 18px; }
+  .stage { display: grid; grid-template-columns: minmax(220px, 330px) 1fr; gap: 22px; align-items: start; }
+  .panel { border: 1px solid var(--soft); border-radius: 2px; background: var(--e1); padding: 10px 12px; }
+  .plabel { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--fg3); margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; }
+  .side { display: flex; flex-direction: column; gap: 14px; }
+  canvas { display: block; width: 100%; }
+  .controls { display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px 26px; align-items: end; margin-top: 18px; }
+  button { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg2); background: var(--bg); border: 1px solid var(--border); border-radius: 2px; padding: 8px 13px; cursor: pointer; }
+  button:hover { border-color: rgba(232,184,74,.55); color: var(--fg1); }
+  button.on { color: var(--amber); border-color: var(--amberline); }
+  button.go { color: var(--amber); border-color: var(--amberline); box-shadow: 0 0 14px rgba(232,184,74,.18); min-width: 92px; }
+  .seg { display: inline-flex; } .seg button + button { border-left: 0; }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  label.sl { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--fg3); }
+  label.sl b { color: var(--fg1); font-weight: 500; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 3px; background: var(--fg4); margin: 12px 0 4px; outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: var(--amber); cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 13px; height: 13px; border: 0; border-radius: 50%; background: var(--amber); cursor: pointer; }
+  .read { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 16px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .05em; color: var(--fg3); }
+  .read b { color: var(--fg1); font-weight: 500; }
+  .state { color: var(--amber); }
+  .eqs { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--soft); }
+  .eq { font-family: var(--serif); font-size: 19px; color: var(--fg1); }
+  .words { font-size: 13px; line-height: 1.55; color: var(--fg2); margin: 2px 0 10px; }
+  .hint { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; color: var(--fg3); margin-top: 10px; }
+  @media (max-width: 680px) { .stage { grid-template-columns: 1fr; } .controls { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="piece">
+  <div class="kicker">made · Web Audio Worklet · study</div>
+  <h3 class="title">Will they follow the one who won't move?</h3>
+  <p class="sub">Loudon's question from the harvest, played out: one <b>anchor</b> voice (amber, with a faint octave so you can pick it out) and six followers near 220 Hz. Make the anchor stubborn and listen for where the chord settles. Then find out what stubbornness alone can't do.</p>
+
+  <div class="stage">
+    <div class="panel">
+      <div class="plabel"><span>each voice's phase</span><span>amber = anchor</span></div>
+      <canvas id="circle"></canvas>
+    </div>
+    <div class="side">
+      <div class="panel">
+        <div class="plabel"><span>each voice's pitch, right now</span><span>Hz</span></div>
+        <canvas id="strip"></canvas>
+        <div class="hint" style="margin-top:6px">ticks = live pitch · <span style="color:#e8b84a">- - -</span> where a locked crowd would settle · <span style="color:#8a8aa0">- - -</span> plain average</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls" style="grid-template-columns:auto 1fr 1fr">
+    <div class="btns">
+      <button class="go" id="go">▸ start</button>
+      <button id="scatter" title="throw every phase to a random place">scatter</button>
+    </div>
+    <label class="sl">anchor stubbornness · K<sub>receive</sub> = <b id="kr-val"></b><input id="kr" type="range" min="0" max="2" step="0.01"></label>
+    <label class="sl">anchor's pull · K<sub>send</sub> = <b id="ks-val"></b><input id="ks" type="range" min="1" max="6" step="0.05"></label>
+    <div></div>
+    <label class="sl">coupling K = <b id="k-val"></b><input id="k" type="range" min="0" max="16" step="0.05"></label>
+    <label class="sl">anchor sits <b id="off-val"></b> from the followers<input id="off" type="range" min="-5" max="5" step="0.05"></label>
+  </div>
+  <div class="read">
+    <span>anchor <b id="fa">–</b></span>
+    <span>followers <b id="fg">–</b></span>
+    <span>if they lock, they settle at <b id="settle">–</b></span>
+    <span class="state" id="state">silent until you start</span>
+  </div>
+  <div class="hint">Try: slide stubbornness to 0 and listen — the anchor splits away, but the followers don't come. Now raise its pull to 4.</div>
+
+  <div class="eqs">
+    <div class="eq">dθᵢ/dt = ωᵢ + K · K<sub>receive,i</sub> · (1 ⁄ N) · Σⱼ K<sub>send,j</sub> · sin(θⱼ − θᵢ)</div>
+    <div class="words">(how fast voice i's phase turns) = (its own natural speed) + (coupling strength) × (how much i listens) × (1 ÷ how many voices) × Σ over every voice j of (how hard j pulls) × sin(j's phase − i's phase)</div>
+    <div class="eq">Ω = Σⱼ (K<sub>send,j</sub> ⁄ K<sub>receive,j</sub>) · ωⱼ ⁄ Σⱼ (K<sub>send,j</sub> ⁄ K<sub>receive,j</sub>)</div>
+    <div class="words">(where a locked crowd settles) = the average of every voice's natural pitch, each weighted by (how hard it pulls ÷ how much it listens). An anchor with K<sub>receive</sub> = 0 carries infinite weight — it sets the destination. Whether the crowd can <i>reach</i> it is a separate question, answered by K × K<sub>send</sub>.</div>
+  </div>
+</div>
+
+<script>
+const WORKLET = `
+class Pop extends AudioWorkletProcessor {
+  constructor() { super(); this.N = 0; this.K = 0; this.mode = 'pitch'; this.gain = 0.9; this.n = 0; this.port.onmessage = (e) => this.set(e.data); }
+  set(d) {
+    if (d.omegaHz) {
+      const N = d.omegaHz.length;
+      if (N !== this.N) {
+        this.N = N; this.theta = new Float64Array(N); this.adv = new Float64Array(N); this.env = new Float64Array(N); this.cph = new Float64Array(N);
+        this.kr = new Float64Array(N).fill(1); this.ks = new Float64Array(N).fill(1); this.voice = new Float64Array(N); this.clickHz = new Float64Array(N).fill(1500);
+        this.scatter();
+      }
+      this.omega = Float64Array.from(d.omegaHz, (f) => 2 * Math.PI * f);
+    }
+    if (d.kr) this.kr = Float64Array.from(d.kr);
+    if (d.ks) this.ks = Float64Array.from(d.ks);
+    if (d.voice) this.voice = Float64Array.from(d.voice);
+    if (d.clickHz) this.clickHz = Float64Array.from(d.clickHz);
+    if (d.K !== undefined) this.K = d.K;
+    if (d.mode) this.mode = d.mode;
+    if (d.gain !== undefined) this.gain = d.gain;
+    if (d.scatter) this.scatter();
+  }
+  scatter() { for (let i = 0; i < this.N; i++) this.theta[i] = Math.random() * 2 * Math.PI; }
+  process(_in, outs) {
+    const o = outs[0], L = o[0], R = o[1] || o[0], N = this.N;
+    if (!N || !this.omega) return true;
+    const TP = 2 * Math.PI, dt = 1 / sampleRate, Krad = TP * this.K, th = this.theta, dec = Math.exp(-dt / 0.02);
+    const pitch = this.mode === 'pitch';
+    for (let n = 0; n < L.length; n++) {
+      let zr = 0, zi = 0;
+      for (let j = 0; j < N; j++) { zr += this.ks[j] * Math.cos(th[j]); zi += this.ks[j] * Math.sin(th[j]); }
+      zr /= N; zi /= N;
+      let y = 0;
+      for (let i = 0; i < N; i++) {
+        const c = Math.cos(th[i]), s = Math.sin(th[i]);
+        if (pitch) y += s + (this.voice[i] ? this.voice[i] * Math.sin(2 * th[i]) : 0);
+        else if (this.env[i] > 1e-4) { this.cph[i] += TP * this.clickHz[i] * dt; y += this.env[i] * Math.sin(this.cph[i]); this.env[i] *= dec; }
+        const d = this.omega[i] + Krad * this.kr[i] * (zi * c - zr * s);   // K·r·sin(ψ−θ) = K(zi·cosθ − zr·sinθ)
+        let t = th[i] + d * dt; this.adv[i] += d * dt;
+        if (t >= TP) { t -= TP; if (!pitch) { this.env[i] = 1; this.cph[i] = 0; } } else if (t < 0) t += TP;
+        th[i] = t;
+      }
+      y = Math.tanh(y * this.gain / N);
+      L[n] = y; R[n] = y;
+    }
+    this.n += L.length;
+    if (this.n >= 1024) {
+      const T = this.n / sampleRate, f = new Float32Array(N);
+      for (let i = 0; i < N; i++) { f[i] = this.adv[i] / (TP * T); this.adv[i] = 0; }
+      let zr = 0, zi = 0; for (let j = 0; j < N; j++) { zr += Math.cos(th[j]); zi += Math.sin(th[j]); }
+      this.port.postMessage({ theta: Float32Array.from(th), freq: f, r: Math.hypot(zr, zi) / N, psi: Math.atan2(zi, zr) });
+      this.n = 0;
+    }
+    return true;
+  }
+}
+registerProcessor('kuramoto-pop', Pop);`;
+
+const F = 6, N = 7;
+const S = { kr: 1, ks: 1, K: 8, off: 3 };
+const followers = Array.from({ length: F }, (_, i) => 220 + 1.5 * (2 * (i + 0.5) / F - 1));
+const omegas = () => [220 + S.off, ...followers];
+const krs = () => [S.kr, ...Array(F).fill(1)];
+const kss = () => [S.ks, ...Array(F).fill(1)];
+function settlePoint() {
+  const om = omegas(), kr = krs(), ks = kss();
+  if (kr[0] < 1e-6) return om[0];
+  let num = 0, den = 0; for (let i = 0; i < N; i++) { const w = ks[i] / kr[i]; num += w * om[i]; den += w; } return num / den;
+}
+const plainAverage = () => omegas().reduce((a, b) => a + b) / N;
+
+let ctx, node, master, running = false, last = null, fa = null, fg = null;
+async function start() {
+  if (!ctx) {
+    ctx = new AudioContext();
+    const url = URL.createObjectURL(new Blob([WORKLET], { type: 'application/javascript' }));
+    await ctx.audioWorklet.addModule(url); URL.revokeObjectURL(url);
+    node = new AudioWorkletNode(ctx, 'kuramoto-pop', { numberOfInputs: 0, numberOfOutputs: 1, outputChannelCount: [2] });
+    const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+    master = ctx.createGain(); master.gain.value = 0;
+    node.connect(comp).connect(master).connect(ctx.destination);
+    node.port.onmessage = (e) => {
+      last = e.data;
+      const g = Array.from(last.freq).slice(1).reduce((a, b) => a + b) / F;
+      fa = fa == null ? last.freq[0] : fa + (last.freq[0] - fa) * 0.08;
+      fg = fg == null ? g : fg + (g - fg) * 0.08;
+    };
+    node.port.postMessage({ omegaHz: omegas(), K: S.K, kr: krs(), ks: kss(), voice: [0.35, 0, 0, 0, 0, 0, 0], mode: 'pitch', gain: 0.9, scatter: true });
+  }
+  await ctx.resume();
+  master.gain.setTargetAtTime(0.85, ctx.currentTime, 0.08);
+  running = true; go.textContent = '❚❚ stop';
+  try { if (parent !== window) parent.postMessage({ type: 'rich:play' }, location.origin); } catch {}
+}
+function stop() {
+  if (!running) return;
+  master.gain.setTargetAtTime(0, ctx.currentTime, 0.05);
+  setTimeout(() => ctx.suspend(), 200);
+  running = false; go.textContent = '▸ start';
+}
+window.addEventListener('message', (e) => { if (e.data && e.data.type === 'rich:hush') stop(); });
+
+const $ = (id) => document.getElementById(id);
+const go = $('go');
+const fmtHz = (x) => x.toFixed(2) + ' Hz';
+function readouts() {
+  $('kr-val').textContent = S.kr === 0 ? '0 — immovable' : S.kr.toFixed(2);
+  $('ks-val').textContent = S.ks.toFixed(2);
+  $('k-val').textContent = fmtHz(S.K);
+  $('off-val').textContent = (S.off >= 0 ? '+' : '') + S.off.toFixed(2) + ' Hz';
+  $('settle').textContent = fmtHz(settlePoint());
+}
+for (const k of ['kr', 'ks', 'K', 'off']) {
+  const el = $(k === 'K' ? 'k' : k); el.value = S[k];
+  el.oninput = () => { S[k] = +el.value; readouts(); node && node.port.postMessage({ K: S.K, kr: krs(), ks: kss(), omegaHz: omegas() }); };
+}
+go.onclick = () => (running ? stop() : start());
+$('scatter').onclick = () => node && node.port.postMessage({ scatter: true });
+
+function fit(c, hgt) {
+  const w = c.clientWidth, d = devicePixelRatio || 1, H = hgt || w;
+  if (c.width !== Math.round(w * d) || c.height !== Math.round(H * d)) { c.width = Math.round(w * d); c.height = Math.round(H * d); c.style.height = H + 'px'; }
+  const g = c.getContext('2d'); g.setTransform(d, 0, 0, d, 0, 0); return { g, w, h: H };
+}
+const placeholder = Array.from({ length: N }, (_, i) => (i * 2.39996) % (2 * Math.PI));
+function draw() {
+  requestAnimationFrame(draw);
+  const theta = last ? last.theta : placeholder;
+  { const { g, w } = fit($('circle')); const cx = w / 2, cy = w / 2, rad = w * 0.4;
+    g.clearRect(0, 0, w, w);
+    g.strokeStyle = '#22222e'; g.lineWidth = 1.5; g.beginPath(); g.arc(cx, cy, rad, 0, 7); g.stroke();
+    for (let i = N - 1; i >= 0; i--) {
+      const a = theta[i] - Math.PI / 2;
+      g.fillStyle = i === 0 ? '#e8b84a' : '#6366F1';
+      g.beginPath(); g.arc(cx + rad * Math.cos(a), cy + rad * Math.sin(a), i === 0 ? 7 : 4.2, 0, 7); g.fill();
+    }
+    if (last) { const a = last.psi - Math.PI / 2, L = rad * last.r;
+      g.strokeStyle = '#c8c8d8'; g.lineWidth = 1.4; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + L * Math.cos(a), cy + L * Math.sin(a)); g.stroke(); }
+  }
+  { const c = $('strip'); const { g, w, h } = fit(c, 200);
+    const lo = 213.5, hi = 226.5, x = (f) => 10 + ((f - lo) / (hi - lo)) * (w - 20);
+    g.clearRect(0, 0, w, h);
+    g.strokeStyle = '#22222e'; g.lineWidth = 1; g.beginPath(); g.moveTo(10, h - 18); g.lineTo(w - 10, h - 18); g.stroke();
+    g.fillStyle = '#4a4a5a'; g.font = '10px JetBrains Mono, monospace'; g.textAlign = 'center';
+    for (let f = 214; f <= 226; f += 2) { g.fillRect(x(f), h - 20, 1, 4); g.fillText(f, x(f), h - 5); }
+    const dash = (f, col) => { g.strokeStyle = col; g.setLineDash([4, 4]); g.beginPath(); g.moveTo(x(f), 4); g.lineTo(x(f), h - 22); g.stroke(); g.setLineDash([]); };
+    dash(plainAverage(), '#8a8aa0'); dash(settlePoint(), '#e8b84a');
+    const om = omegas();
+    for (let i = 0; i < N; i++) { g.fillStyle = i === 0 ? '#7a6030' : '#4a4a5a'; g.fillRect(x(om[i]) - 1, h - 26, 2, 6); }
+    if (last) for (let i = N - 1; i >= 0; i--) {
+      const f = Math.min(hi, Math.max(lo, last.freq[i]));
+      g.fillStyle = i === 0 ? '#e8b84a' : '#6366F1'; g.fillRect(x(f) - (i === 0 ? 1.5 : 1), i === 0 ? 6 : 16, i === 0 ? 3 : 2, h - (i === 0 ? 34 : 44));
+    }
+  }
+  if (last && fa != null) {
+    $('fa').textContent = fmtHz(fa); $('fg').textContent = fmtHz(fg);
+    const fol = Array.from(last.freq).slice(1), spread = Math.max(...fol) - Math.min(...fol);
+    const together = spread < 0.2, withAnchor = Math.abs(fa - fg) < 0.1;
+    $('state').textContent = !running ? 'paused'
+      : together && withAnchor ? (S.kr < 0.05 ? 'locked — on the anchor’s pitch' : 'locked — everyone meets in between')
+      : together ? 'the followers agree; the anchor holds apart'
+      : 'no agreement yet';
+  }
+}
+readouts(); draw();
+</script>
+</body>
+</html>
