@@ -15,17 +15,17 @@ forward_vector: "I am Sentry's scroll — the one page that opens on which versi
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T23:48:31.521Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T23:50:37.287Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.1 · the spec last changed 2026-09-25 (`39326ef4`) — edit(Sentry): v1.1 — the hosting check reads Dependabot's alerts; 10
-- **Runs since the change:** none yet — v1.1 has not run
-- **Last run:** 2026-09-25 — deep sweep of 34b1c52a, 7 raised, held locally · nothing new (under v1.0)
+- **Runs since the change:** 1 run on 1 day, counted from the ledger's run lines
+- **Last run:** 2026-09-25 — public-surface gate of 2b3922f1, 11 raised, held locally · nothing new (under v1.1)
 - **Owed in the ledger:** 1 — item 4; the next run's tail read picks it up first
 - **Latest lesson:** item 10, from the first run on main — 2026-09-25 (deep sweep of 34b1c52a) — [[Sentry — tuning]]
 
 ### Runs since v1.1
 
-_None yet._
+- 2026-09-25 — public-surface gate of 2b3922f1, 11 raised, held locally · nothing new
 
 ### Owed
 
@@ -42,6 +42,13 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="run-039674d94c" -->
+### 2026-09-25 — public-surface gate of 2b3922f1, 11 raised, held locally
+
+nothing new
+<sub>a run under v1.1 · its line in the tuning ledger</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="version-39326ef45f3e98590a09d4414dd3b592216620e0" -->
 ### 2026-09-25 — the spec moved to v1.1
 
