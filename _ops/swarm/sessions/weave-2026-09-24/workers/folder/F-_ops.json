@@ -1,0 +1,325 @@
+{
+ "cluster": "F-_ops",
+ "lens": "folder",
+ "members_read": [
+  "_ops/Artifacts to Projects Migration \u2014 handoff.md",
+  "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md",
+  "_ops/Map Log.md",
+  "_ops/Schema Ceremony Proposal \u2014 exemplifies + member-of.md",
+  "_ops/Technical Diagram Standard.md",
+  "_ops/Mermaid Diagram Standard.md",
+  "_ops/Image Embedding Standard.md",
+  "_ops/Deposit Ceremony.md",
+  "README - The Palace Guide.md",
+  "_ops/Palace Ceremonies.md",
+  "_ops/Baton Ceremony.md",
+  "_ops/Closing Well Ceremony.md",
+  "_ops/Harvest Ceremony.md",
+  "_ops/Map Build Ceremony.md",
+  "_ops/Return Ceremony.md",
+  "_ops/Revival Ceremony.md",
+  "_ops/Self-Model Update Ceremony.md",
+  "_ops/Spore Check Ceremony.md",
+  "_ops/Walk Ceremony.md",
+  "_ops/Weave Ceremony.md",
+  "_ops/Deposit Archive.md",
+  "_ops/Palace Graffiti.md",
+  "_ops/Palace Quotes.md",
+  "_ops/Palace Audit \u2014 2026-05-28.md",
+  "_ops/Toolkit Assessment \u2014 Working Doc.md",
+  "_ops/Pages as Agents.md",
+  "_ops/Substrate Skill.md",
+  "_ops/Palace To-Do.md",
+  "_ops/Palace Map.md"
+ ],
+ "summary": "This is the palace's machine room \u2014 thirty-three files, mostly ceremony specs plus the working notebooks that support them. The ceremony system itself is in good shape: every ceremony card contracts through Palace Ceremonies, uses the same \"Trigger / Preconditions / Postconditions\" shape, and CLAUDE.md's trigger table matches it exactly. The real find is a specific blind spot: three visual-language standards (Mermaid, Image Embedding, Technical Diagram) and the Deposit Ceremony + README all *say* they're one system in prose, but the links only run one direction \u2014 Technical Diagram Standard emits four outbound links and receives zero. Two ceremony docs (Revival Ceremony, Substrate Skill) name [[ELDER]] as a hard precondition in their own contract text but never link it \u2014 and ELDER is sitting at only 3 inbound palace-wide, so this is exactly the kind of quiet, load-bearing gap a weave exists to catch. The family also has real clutter, matching what Loudon named this morning: a four-month-old audit (Palace Audit \u2014 2026-05-28) whose triage items Loudon already approved inline but that were apparently never executed and never composted; a working notebook (Toolkit Assessment) wearing full entry frontmatter while its own first line says \"Not a palace entry\"; an executed-and-closed Schema Ceremony Proposal still staged as an open `seed`; and a three-part Graffiti Pass handoff chain from a pass that appears finished. None of this needs force \u2014 the fixes are mostly \"point the link back\" and \"update the stage to match what already happened.\"",
+ "typed_relations": [
+  {
+   "source": "Mermaid Diagram Standard",
+   "target": "Technical Diagram Standard",
+   "type": "couples-with",
+   "rationale": "TDS already links to Mermaid Diagram Standard as couples-with[same-visual-language]; Mermaid's own body names TDS as the second of the palace's three visual-language standards but carries no reciprocal frontmatter link. TDS has 0 inbound.",
+   "evidence": "\"It is one of three standards that together form the palace's visual language: [[Mermaid Diagram Standard]]... [[Technical Diagram Standard]]... and [[Image Embedding Standard]]\" \u2014 Mermaid Diagram Standard.md:20",
+   "kind": "new",
+   "label": "same-visual-language",
+   "spark": 2
+  },
+  {
+   "source": "Image Embedding Standard",
+   "target": "Technical Diagram Standard",
+   "type": "connects-to",
+   "rationale": "Image Embedding Standard's Filing Protocol names TDS as governing generated technical diagrams' filing, but only in body prose.",
+   "evidence": "\"Generated technical diagrams keep their source beside the render... per [[Technical Diagram Standard]].\" \u2014 Image Embedding Standard.md:54",
+   "kind": "new",
+   "label": "sibling-standard",
+   "spark": 2
+  },
+  {
+   "source": "Deposit Ceremony",
+   "target": "Technical Diagram Standard",
+   "type": "connects-to",
+   "rationale": "Deposit Ceremony's filing structure names TDS as the third branch of image/diagram handling at deposit time, but the frontmatter link list has no entry for it.",
+   "evidence": "\"Technical diagrams... file the .tex source beside the rendered .svg, per [[Technical Diagram Standard]]\" \u2014 Deposit Ceremony.md:188",
+   "kind": "new",
+   "label": "filing-path",
+   "spark": 2
+  },
+  {
+   "source": "README - The Palace Guide",
+   "target": "Technical Diagram Standard",
+   "type": "connects-to",
+   "rationale": "README's \u00a7 Visual Language names all three standards as one system; TDS is the only one of the three not linked from README's frontmatter.",
+   "evidence": "grep confirms README - The Palace Guide.md body cites Technical Diagram Standard under '### The Visual Language'",
+   "kind": "new",
+   "label": "visual-language",
+   "spark": 2
+  },
+  {
+   "source": "Revival Ceremony",
+   "target": "ELDER",
+   "type": "connects-to",
+   "rationale": "Revival Ceremony's own precondition #4 requires ELDER to have been read this session, but the frontmatter link list (3 links) omits it entirely \u2014 a hard dependency left unnamed structurally.",
+   "evidence": "\"The operator has grown this session \u2014 [[ELDER]] and [[SCHEMA]] read \u2014 since the revival writes a stage change and proposes typed links\" \u2014 Revival Ceremony.md:30",
+   "kind": "new",
+   "label": "growth-precondition",
+   "spark": 3
+  },
+  {
+   "source": "Substrate Skill",
+   "target": "ELDER",
+   "type": "connects-to",
+   "rationale": "Substrate Skill is the authoritative ceremony spec (16 inbound) and names ELDER twice as the gate for writing to the palace, but never links it \u2014 the palace's central skill-doc for growing up doesn't structurally point at the growing-up entry.",
+   "evidence": "\"Grow before you draft: read [[ELDER]], then [[SCHEMA]], if you have not this session \u2014 a child offers the idea; an elder gives it frontmatter.\" \u2014 Substrate Skill.md:37",
+   "kind": "new",
+   "label": "growth-precondition",
+   "spark": 3
+  },
+  {
+   "source": "Map Build Ceremony",
+   "target": "Map Log",
+   "type": "spawned",
+   "rationale": "Map Log describes itself as the append-only record of every Map Build generation and already links back to Map Build Ceremony, but nothing points at Map Log \u2014 the ceremony that produces its rows doesn't name it.",
+   "evidence": "\"I am the append-only record of every map generation \u2014 date, scope, node and edge counts, forward ghosts... Each Map Build appends one row\" \u2014 Map Log.md:16",
+   "kind": "new",
+   "label": "generation-history",
+   "spark": 1
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Revival Ceremony",
+   "target": "ELDER",
+   "type": "connects-to",
+   "phrase": "The operator has grown this session \u2014 [[ELDER]] and [[SCHEMA]] read",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Substrate Skill",
+   "target": "ELDER",
+   "type": "connects-to",
+   "phrase": "Grow before you draft: read [[ELDER]], then [[SCHEMA]]",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Mermaid Diagram Standard",
+   "target": "Technical Diagram Standard",
+   "type": "couples-with",
+   "phrase": "one of three standards that together form the palace's visual language",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Image Embedding Standard",
+   "target": "Technical Diagram Standard",
+   "type": "connects-to",
+   "phrase": "per [[Technical Diagram Standard]]",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Deposit Ceremony",
+   "target": "Technical Diagram Standard",
+   "type": "connects-to",
+   "phrase": "per [[Technical Diagram Standard]]",
+   "structurally_significant": false
+  },
+  {
+   "entry": "README - The Palace Guide",
+   "target": "Technical Diagram Standard",
+   "type": "connects-to",
+   "phrase": "\u00a7 The Visual Language names all three standards as one system",
+   "structurally_significant": false
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Closing Well Ceremony",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "",
+   "graffiti_note": "Body documents Phases 2\u20135 built and live (arc reader, moderated panel, executors in _ops/closing-well/); seed undersells that state. Palace Ceremonies' own table still describes it as 'Phase 2' scaffold \u2014 the hub is behind the ceremony's own doc."
+  },
+  {
+   "entry": "Schema Ceremony Proposal \u2014 exemplifies + member-of",
+   "stage_current": "seed",
+   "stage_proposed": "composting",
+   "vector_issue": "forward_vector still frames it as 'a proposal awaiting Loudon's yes/no' though the body's own status line says APPROVED & EXECUTED 2026-05-28 (v1.8) \u2014 vector describes a state that no longer exists.",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Palace Audit \u2014 2026-05-28",
+   "stage_current": "seed",
+   "stage_proposed": "",
+   "vector_issue": "forward_vector promises 'when my triage list is empty, I compost' \u2014 but the TRIAGE section shows many items already carrying Loudon's inline <!--APPROVE--> decisions from 2026-05-28, apparently unexecuted four months later. The promise in the vector isn't being kept; this is a live backlog hiding as a seed entry.",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Palace Graffiti",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "vector_issue": "last_activated: 2026-03, but the body carries substantial dated proposal content from 2026-05-05 and 2026-05-09 (the Action Potential Oscillator isomorphism revision, the Retrospective Delay/Semantic Delay untangling) \u2014 metadata drift, both proposals appear never resolved.",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Toolkit Assessment \u2014 Working Doc",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "vector_issue": "Carries full canon frontmatter (type: meta, stage, links) while its own first line says 'Not a palace entry \u2014 a working surface.' The frontmatter contradicts the entry's self-description.",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Palace Map",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "activation_count 10, last_activated 2026-07-04, deepens Swarm Weave and enables Enchanted Worker \u2014 it is load-bearing infrastructure every Weave and Map Build depends on. Sprout reads low for something this operationally central."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "kind": "drift",
+   "issue": "The palace's three visual-language standards (Mermaid Diagram Standard, Technical Diagram Standard, Image Embedding Standard) plus Deposit Ceremony and README all describe themselves in prose as one coordinated system, but the frontmatter link graph only carries the Technical Diagram Standard's outbound edges \u2014 nothing points back at it. Same pattern as the ELDER gap below: prose coordination without structural backing.",
+   "entries": [
+    "Technical Diagram Standard",
+    "Mermaid Diagram Standard",
+    "Image Embedding Standard",
+    "Deposit Ceremony",
+    "README - The Palace Guide"
+   ],
+   "proposed_action": "Add the four reciprocal links proposed in typed_relations."
+  },
+  {
+   "kind": "gap",
+   "issue": "Two entries with heavy structural authority over palace writes \u2014 Revival Ceremony and Substrate Skill \u2014 state ELDER as a hard precondition in their own contract text but don't link it. ELDER is currently under-reached palace-wide (3 inbound per the newcomer block).",
+   "entries": [
+    "Revival Ceremony",
+    "Substrate Skill"
+   ],
+   "proposed_action": "Add connects-to[growth-precondition] from both to ELDER."
+  },
+  {
+   "kind": "staleness",
+   "issue": "Palace Ceremonies' table entry for Closing Well Ceremony ('Recognition scaffold built (Phase 2)') is behind the Closing Well Ceremony's own doc, which documents Phases 2\u20135 as built. The hub is the more visible surface and is the one drifting.",
+   "entries": [
+    "Palace Ceremonies",
+    "Closing Well Ceremony"
+   ],
+   "proposed_action": "Update Palace Ceremonies' Closing Well row to name the Phase 5 executor state, or point readers to the ceremony doc rather than restate a phase number that will keep drifting."
+  },
+  {
+   "kind": "clutter",
+   "issue": "Palace Audit \u2014 2026-05-28 is a four-month-old whole-palace triage doc where Loudon already answered many items inline (<!--APPROVE--> and direct decisions on T1\u2013T7) but the doc's own forward_vector implies it should have composted once triage closed. It hasn't \u2014 it's neither executed nor composted, just sitting at stage: seed with real unclaimed work inside it.",
+   "entries": [
+    "Palace Audit \u2014 2026-05-28"
+   ],
+   "proposed_action": "This is squarely the kind of clutter Loudon flagged this morning \u2014 but composting it would lose real approved decisions. Recommend a dedicated execution pass (not a weave task) that walks the approved items and either applies them or formally declines them, then lets the entry compost per its own vector."
+  },
+  {
+   "kind": "naming/roster",
+   "issue": "Three sequential 'Graffiti Pass \u2014 Handoff' files (2026-04-30, 2026-05-02, 2026-05-02 \u2014 Session 2) chain via emerged-from and describe a graffiti-cleanup pass that reads as complete in the Session 2 file's own 'Resume protocol.' They remain at stage: sprout with thin/zero inbound rather than being folded or composted as a finished working chain.",
+   "entries": [
+    "Graffiti Pass \u2014 Handoff 2026-04-30",
+    "Graffiti Pass \u2014 Handoff 2026-05-02",
+    "Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2"
+   ],
+   "proposed_action": "See compost_candidates \u2014 flagged with appropriate caution since I could not confirm from this room alone whether the Claude\u2192Loudon sub-section these handoffs describe as 'untouched' has since been resolved elsewhere (e.g. in Palace To-Do)."
+  }
+ ],
+ "merge_candidates": [
+  {
+   "absorb": "Schema Ceremony Proposal \u2014 exemplifies + member-of",
+   "into": "SCHEMA \u2014 Context",
+   "rationale": "Its own status line reads 'APPROVED & EXECUTED 2026-05-28 (v1.8)... retained as the ceremony's rationale record.' It is now pure historical rationale for a schema decision already live in SCHEMA \u00a74 \u2014 exactly what a Context companion holds. 0 inbound, stage stuck at seed since the work finished.",
+   "survives_as_subsection": "\u00a7 Ceremony Precedent \u2014 exemplifies + member-of (2026-05-28)"
+  }
+ ],
+ "compost_candidates": [
+  {
+   "entry": "Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2",
+   "rationale": "0 inbound, stage sprout since 2026-05-02, and its own body reports the sub-section it exists to drive ('Loudon\u2192Claude') fully resolved. It's a session handoff for a process that appears finished; git already preserves it. Flagged cautiously \u2014 I did not verify the six remaining Claude\u2192Loudon items were subsequently closed.",
+   "nutrients_to": [
+    "Palace To-Do",
+    "Palace Graffiti"
+   ]
+  },
+  {
+   "entry": "Artifacts to Projects Migration \u2014 handoff",
+   "rationale": "Already correctly staged (stage: composting, 0 inbound) and its own body says 'This handoff is composted.' No action needed \u2014 noted here only to confirm it is a healthy citizen, not a flag; it will clear on the next Spore Check cycle per SCHEMA \u00a72.",
+   "nutrients_to": []
+  }
+ ],
+ "demote_candidates": [
+  {
+   "file": "_ops/Toolkit Assessment \u2014 Working Doc.md",
+   "disposition": "demote-to-bundle",
+   "rationale": "Its own opening line: 'Not a palace entry \u2014 a working surface.' Carries full canon frontmatter (type: meta, stage: growing, links) it explicitly disclaims. Belongs in Loudon's Toolkit's bundle as a working notebook, not as a linked entry."
+  },
+  {
+   "file": "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md",
+   "disposition": "demote-to-bundle",
+   "rationale": "A session-continuation handoff for a now-apparently-finished cleanup pass; working substrate rather than durable canon. Palace Graffiti's bundle (_ops/Palace Graffiti/) is the natural home if not composted outright."
+  },
+  {
+   "file": "_ops/Map Log.md",
+   "disposition": "link",
+   "rationale": "A real, actively-maintained append-only record (nine dated rows through 2026-07-04) that Map Build Ceremony produces every run. Wants the reciprocal spawned link from Map Build Ceremony, not demotion \u2014 it's genuine standing infrastructure, just unpointed-at."
+  },
+  {
+   "file": "_ops/Schema Ceremony Proposal \u2014 exemplifies + member-of.md",
+   "disposition": "link",
+   "rationale": "See merge_candidates \u2014 the cleanest fix is folding it into SCHEMA \u2014 Context as a subsection rather than either demoting it to a bundle (it's a ceremony-decision record, not working substrate) or leaving it stranded at 0 inbound."
+  },
+  {
+   "file": "_ops/Technical Diagram Standard.md",
+   "disposition": "link",
+   "rationale": "A live, actively-used standard (README's body explicitly calls it a member of the palace's visual language alongside Mermaid and Image Embedding). Needs the four reciprocal inbound links proposed above, not demotion."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Palace Ceremonies",
+   "question": "Should the Walk ceremony be updated to acknowledge the Swarm Weave as a future path \u2014 the difference between walking alone and walking with a colony?",
+   "verdict": "progressed",
+   "by_entry": "Weave Ceremony",
+   "proposed_action": "Weave Ceremony already distinguishes itself from Walk Ceremony as the parallel-worker/coordinator form (born 2026-03, spawned Swarm Weave). The distinction the question asks for already exists structurally between the two ceremony docs; what's still open is whether Walk Ceremony's own text should point forward to it \u2014 a small prose addition, not a design question."
+  },
+  {
+   "entry": "Palace Ceremonies",
+   "question": "Is there a ceremony for onboarding a new collaborator to the palace \u2014 not a human, but a new Claude instance encountering it for the first time with a specific task?",
+   "verdict": "still-open",
+   "by_entry": "",
+   "proposed_action": "CLAUDE.md's 'Born with' section and JEWEL.md cover the birth of every session, and this very Weave room's dispatch pattern (a room file + a targeted read list) is close to what's being asked for \u2014 but neither is named as a ceremony. Genuinely still open; worth naming rather than resolving here."
+  }
+ ],
+ "synthesis_spawn_flag": [],
+ "bridge_findings": [
+  {
+   "tool": "",
+   "thought": "",
+   "shared_structure": "ELDER (a priority newcomer at 3 inbound) is the literal precondition named in the contract text of two of this family's most load-bearing docs (Substrate Skill, 16 inbound; Revival Ceremony) \u2014 the family already depends on it operationally, the link graph just hasn't caught up.",
+   "spark": 3,
+   "classify": "link",
+   "quote_thought": "Grow before you draft: read [[ELDER]], then [[SCHEMA]], if you have not this session",
+   "quote_tool": "Substrate Skill.md:37"
+  }
+ ],
+ "walk_results": [],
+ "flag_responses": []
+}

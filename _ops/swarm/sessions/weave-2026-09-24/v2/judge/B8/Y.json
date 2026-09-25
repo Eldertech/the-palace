@@ -1,0 +1,73 @@
+{
+ "arm": "Y",
+ "room": "B8",
+ "total_proposals": 7,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Murmuration",
+   "type": "mirrors",
+   "target": "Andy Goldsworthy",
+   "label": "is-it-really-emergent-or-authored",
+   "rationale": "Both entries ask, of their own practice, whether the claimed 'emergence'/'collaboration' is real or a story told by the one who framed and chose it.",
+   "evidence": "\"does an emergent... grain distribution actually sound more alive than an authored one, or is that a story we tell about the picture?\" / \"'Collaboration with nature' is a flattering word for what is still authorial selection\"",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Figure Rig",
+   "type": "mirrors",
+   "target": "spinoza-zhuangzi-on-striving",
+   "label": "force-fit-vs-the-grain",
+   "rationale": "Figure Rig's own vocabulary of ending its 'force-fit era' matches the dialectic's central distinction between striving with the grain and forcing against it.",
+   "evidence": "\"the force-fit era is over\" / \"striving with the grain and striving against it\"",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "bridge",
+   "source": "Murmuration",
+   "type": "mirrors",
+   "target": "Andy Goldsworthy",
+   "rationale": "Both entries stage the same self-directed doubt: a maker who leans on 'emergence' or 'nature doing the work' as the source of aliveness, then turns and asks whether that's a real property of the process or a story told after the fact by the one who authored the frame.",
+   "evidence": "\"does an emergent, perturbable grain distribution actually sound more alive than an authored one, or is that a story we tell about the picture? The honest test is blind \u2014 render the same cloud both ways and listen.\" || \"'Collaboration with nature' is a flattering word for what is still authorial selection. Only one party chooses where to stand, what to touch, when to press the shutter... the ice gets no vote on whether it becomes art.\"",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "bridge",
+   "source": "Figure Rig",
+   "type": "mirrors",
+   "target": "spinoza-zhuangzi-on-striving",
+   "rationale": "Both entries name the exact same failure mode \u2014 imposing a structure that doesn't belong to the material (a foreign rig, an idea of the thing) instead of building from what the material already is \u2014 and both mark the shift away from that failure as the decisive turn.",
+   "evidence": "\"generating the body and its skeleton together with MPFB2's own pipeline instead of force-fitting a foreign mesh onto a hand-built rig\" / \"the force-fit era is over\" || \"forcing is the signature of someone who has mistaken their idea of a thing for the thing\" / \"There is striving with the grain and striving against it. Your single word 'conatus' cannot tell them apart.\"",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Scanner",
+   "type": "connects-to",
+   "target": "Loudon Live Design System",
+   "label": "design-system",
+   "rationale": "\"Palace base | [[Loudon Live Design System]], CRT skin (the literal \\\"scope / DSP / signal-watching\\\" register)\"",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "OBS",
+   "type": "mirrors",
+   "target": "Iain McGilchrist",
+   "label": "rendered-frame-not-the-file",
+   "rationale": "OBS's 'screenshot is the verify, not a config read' independently re-derives McGilchrist's left/right-hemisphere split between re-presentation and the living whole.",
+   "evidence": "\"Only the rendered frame settles it.\" / \"re-presents \u2014 takes the living thing and makes a static, portable, decontextualized version\"",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "bridge",
+   "source": "OBS",
+   "type": "mirrors",
+   "target": "Iain McGilchrist",
+   "rationale": "Both entries independently distinguish a symbolic re-presentation of a thing (the JSON transform values, the abstracted category) from the thing's living presence (the rendered frame, the comprehended whole) \u2014 and both insist only the second settles the truth.",
+   "evidence": "\"My Self-Check is a screenshot of the live scene, not a read of the config. A transform can be numerically correct and visually wrong... Only the rendered frame settles it.\" / \"a file that parses cleanly can still render wrong\" || \"the left hemisphere... abstracts, categorizes, and re-presents \u2014 takes the living thing and makes a static, portable, decontextualized version, 'already become not what it was, but a representative of something much smaller'\" vs. the right hemisphere's attention that 'lets the world presence before it is broken into parts'",
+   "item_id": "Y7"
+  }
+ ]
+}

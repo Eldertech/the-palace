@@ -1,0 +1,138 @@
+{
+ "cluster": "L3",
+ "lens": "lifecycle",
+ "summary": "All five targets in this room turned out to have their hop1 rings fully wired already \u2014 every direct neighbor already carries a typed link, symmetric or directed. The gap was one ring further out, and it was the same gap five times over: CLAUDE.md's Ceremony Triggers table names Closing Well Ceremony and Return Ceremony by wikilink in body prose, but neither has ever made it into CLAUDE's frontmatter links \u2014 the entry point of the whole palace is quietly under-linking the ceremonies it dispatches. A second recurring shape: operational cards cite \"SCHEMA \u00a7N\" as plain section numbers, but SCHEMA \u2014 Reference's own front matter explains that \u00a73/\u00a75/\u00a76/\u00a78/\u00a79 physically moved out of SCHEMA.md into it \u2014 so Weave Ceremony's citations of \u00a78 and \u00a73 are pointing, unlinked, at a doc that already changed address under it. And Weaving Memory into the Palace already names [[Worktree Practice]] as its worked example for memory consolidation, with no frontmatter link to match. The fifth finding \u2014 Closing Well Ceremony exemplifying No Mind Checks Itself \u2014 is the sharpest: the ceremony's own failure-mode language (\"a self-moderated close justified by context-fullness is itself a failure... it removes the one thing the ceremony provides, a fresh check on a spent instance\") is the concept's operational proof, and neither page currently says so.",
+ "typed_relations": [
+  {
+   "source": "CLAUDE",
+   "target": "Closing Well Ceremony",
+   "type": "enables",
+   "kind": "inbound-walk",
+   "rationale": "CLAUDE.md's Ceremony Triggers table names [[Closing Well Ceremony]] by wikilink as the dispatch target for the 'close well' trigger, but CLAUDE's frontmatter links list has no entry pointing there \u2014 the highest-traffic page in the palace is missing a link to a ceremony it recognizes and fires.",
+   "evidence": "| \"close well\", \"let's close well\", \"close this session well\" | [[Closing Well Ceremony]] |",
+   "spark": 3,
+   "label": "trigger-table"
+  },
+  {
+   "source": "CLAUDE",
+   "target": "Return Ceremony",
+   "type": "enables",
+   "kind": "inbound-walk",
+   "rationale": "Same trigger-table gap: CLAUDE names [[Return Ceremony]] as the dispatch target for 'I'm back' / 'returning' but never links it in frontmatter.",
+   "evidence": "| \"I'm back\", \"returning\", \"what did I miss\", \"let's pick this back up\", \"return\" | [[Return Ceremony]] |",
+   "spark": 3,
+   "label": "trigger-table"
+  },
+  {
+   "source": "Closing Well Ceremony",
+   "target": "No Mind Checks Itself",
+   "type": "exemplifies",
+   "kind": "inbound-walk",
+   "rationale": "No Mind Checks Itself argues a mind cannot grade its own work from inside its own loop and the checker must sit outside the system that produced the error. Closing Well Ceremony's failure-mode clause is that exact argument made operational: a self-moderated close is disqualified precisely because it removes the outside check at the moment it matters most. Fidelity test: swap in any other hop2 neighbor of NMCI (Deposit Ceremony, Baton Ceremony, Worktree Practice) \u2014 none of them turn on this specific self-grading trap, so the link isn't generic.",
+   "evidence": "\"a self-moderated close justified by context-fullness ('it's all in my context') is itself a failure, not a graceful degradation \u2014 it removes the one thing the ceremony provides, a fresh check on a spent instance, at the exact moment it matters most\"",
+   "spark": 4,
+   "label": "self-grading-disqualified"
+  },
+  {
+   "source": "Weave Ceremony",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "kind": "inbound-walk",
+   "rationale": "SCHEMA \u2014 Reference's own header states \u00a73, \u00a75, \u00a76, \u00a78, \u00a79 physically live there now (moved off SCHEMA.md), while \u00a71/\u00a72/\u00a74/\u00a77 stayed. Weave Ceremony's naming-lint step cites 'SCHEMA \u00a78' (bundle exact-name matching) and 'SCHEMA \u00a73' (title/filename match) as plain unlinked text \u2014 both sections that now live in SCHEMA \u2014 Reference, not SCHEMA.md, where Weave Ceremony's only schema link currently points. Direction is contestable (is Weave Ceremony citing or is SCHEMA \u2014 Reference grounding it?) so connects-to + label, per SCHEMA \u00a74 guidance.",
+   "evidence": "\"SCHEMA \u00a78 matches bundles by *exact* name; the miscase silently splits the bundle\" / \"a canon entry whose `title:` \u2260 its filename (SCHEMA \u00a73)\"",
+   "spark": 3,
+   "label": "cites-moved-sections"
+  },
+  {
+   "source": "Worktree Practice",
+   "target": "Weaving Memory into the Palace",
+   "type": "connects-to",
+   "kind": "unsung-path",
+   "rationale": "Weaving Memory into the Palace's own body names [[Worktree Practice]] as the worked example of its consolidation step, but the link only runs outward from Weaving Memory's frontmatter \u2014 there's no reciprocal pointer and, per the unsung-path check, no frontmatter entry at all captures this specific naming from either side beyond the source page's own prose mention.",
+   "evidence": "\"a cluster of git/worktree cautions \u2192 a single \\\"shared-tree discipline\\\" nugget \u2192 [[Worktree Practice]]\"",
+   "spark": 2,
+   "label": "worked-example"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "CLAUDE",
+   "target": "Closing Well Ceremony",
+   "type": "enables",
+   "phrase": "the Ceremony Triggers table row for \"close well\"",
+   "structurally_significant": true
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "Return Ceremony",
+   "type": "enables",
+   "phrase": "the Ceremony Triggers table row for \"I'm back\" / \"returning\"",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Weaving Memory into the Palace",
+   "target": "Worktree Practice",
+   "type": "connects-to",
+   "phrase": "the consolidate-near-duplicates worked example naming [[Worktree Practice]]",
+   "structurally_significant": false
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Closing Well Ceremony",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "hop1 fully linked already; genuine inbound found at hop2 \u2014 CLAUDE's trigger table."
+  },
+  {
+   "target": "No Mind Checks Itself",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "hop1 fully linked already (all 9 neighbors); genuine inbound at hop2 \u2014 Closing Well Ceremony exemplifies it."
+  },
+  {
+   "target": "Return Ceremony",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "hop1 fully linked already; genuine inbound at hop2 \u2014 CLAUDE's trigger table."
+  },
+  {
+   "target": "SCHEMA \u2014 Reference",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "hop1 fully linked already; genuine inbound at hop2 \u2014 Weave Ceremony cites sections that moved here."
+  },
+  {
+   "target": "Weaving Memory into the Palace",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "hop1 fully linked already (all 4 neighbors); genuine inbound at hop2 \u2014 Worktree Practice already named in its own body."
+  }
+ ],
+ "bridge_findings": [],
+ "coherence_findings": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "flag_responses": [],
+ "members_read": [
+  "_ops/Closing Well Ceremony.md",
+  "No Mind Checks Itself.md",
+  "_ops/Return Ceremony.md",
+  "SCHEMA \u2014 Reference.md",
+  "Weaving Memory into the Palace.md",
+  "_ops/Weave Ceremony.md (grep + excerpts)",
+  "_ops/Baton Ceremony.md (grep)",
+  "_ops/Deposit Ceremony.md (grep)",
+  "_ops/Harvest Ceremony.md (grep)",
+  "Worktree Practice.md (grep)",
+  "README - The Palace Guide.md (grep)",
+  "_ops/Image Embedding Standard.md (grep)",
+  "Learning Materials and Canon.md (grep)",
+  "_ops/Mermaid Diagram Standard.md (grep)",
+  "_ops/Technical Diagram Standard.md (grep)"
+ ],
+ "merge_candidates": [],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": []
+}

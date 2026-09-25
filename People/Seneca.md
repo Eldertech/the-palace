@@ -47,6 +47,9 @@ links:
   - target: "[[Epictetus]]"
     type: contradicts
     label: wealthy-statesman-vs-dispossessed-slave
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Seneca

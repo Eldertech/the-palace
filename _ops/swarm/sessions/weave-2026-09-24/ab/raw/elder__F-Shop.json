@@ -1,0 +1,196 @@
+{
+ "cluster": "F-Shop",
+ "lens": "folder",
+ "members_read": [
+  "Shop/Blender.md",
+  "Shop/ComfyUI.md",
+  "Shop/D3.js.md",
+  "Shop/Depth Anything.md",
+  "Shop/FLUX (Hugging Face).md",
+  "Shop/Figure Rig.md",
+  "Shop/Hero and Avatar Maker.md",
+  "Shop/Image-to-3D Smith.md",
+  "Shop/Kokoro.md",
+  "Shop/LaMa.md",
+  "Shop/LaTeX.md",
+  "Shop/Lettering.md",
+  "Shop/LoRA Trainer.md",
+  "Shop/Maker.md",
+  "Shop/Manim CE.md",
+  "Shop/Matplotlib.md",
+  "Shop/Mermaid.md",
+  "Shop/Midjourney.md",
+  "Shop/OBS.md",
+  "Shop/Observable Plot.md",
+  "Shop/RNBO codebox~ smith.md",
+  "Shop/Remotion.md",
+  "Shop/RunPod GPU Backend.md",
+  "Shop/SAM.md",
+  "Shop/Shopkeeper.md",
+  "Shop/Stable Audio Open.md",
+  "Shop/Three.js.md",
+  "Shop/Tone.js.md",
+  "Shop/VCV Patch Generator.md",
+  "Shop/Web Audio Worklet.md",
+  "Shop/Whisper.md",
+  "Shop/ffmpeg.md",
+  "Shop/p5.js.md"
+ ],
+ "summary": "The Shop is 33 members held together by a real, working anatomy \u2014 Charter / Voice / Tiers / Job Contract / Self-Check / Gotchas / Recipes \u2014 and it's the most internally consistent family I've read in the palace: every alive `specialist` declares `directed-by [[Maker]]`, every one declares `member-of [[The Shop]]` (so Maker's generated Roster table has one source of truth, not three), and the \"earn your entry by a genuinely different operating model\" bar is enforced for real in each entry's Lost Branches section \u2014 that's why nothing here wants merging or composting despite Loudon's \"good but cluttered\" read this morning. The clutter, where it's real, isn't duplicate entries; it's two smaller things: one broken convention (LoRA Trainer is missing the `directed-by Maker` link every sibling carries, which is also why it and OBS sit at zero inbound \u2014 they're newcomers the rest of the family hasn't reached back to yet), and one un-closed pattern \u2014 six different specialists (Matplotlib, LaTeX, Mermaid, ffmpeg, Tone.js, Web Audio Worklet) independently ask \"should the Shop build a house-defaults wrapper for me?\" as if it were a fresh question, when Maker's own Articulated Cascade section already answered it in general (Observable Plot's `palacePlot()` wrapper is the proof it works) \u2014 the rule exists, it just hasn't been executed six more times. The one genuine architectural signal worth Loudon's attention: Maker's own Open Questions set a threshold (\"when the Roster grows past ~15 specialists, Selection Heuristics gets unwieldy\") and the roster is now at 33, more than double that line, with OBS independently naming itself \"a second push on the same wall\" toward a Producer layer above the Maker \u2014 two members of the family are now flagging the same seam from different directions.",
+ "typed_relations": [
+  {
+   "source": "Shop/ffmpeg",
+   "target": "Shop/OBS",
+   "type": "couples-with",
+   "current_type": "none",
+   "kind": "new",
+   "label": "capture-to-batch",
+   "evidence": "OBS Recipes: 'Tail without re-encoding. Hold an end-card scene for a beat before stopping the recording... The video stream is then copied, never re-encoded' \u2014 a batch/finishing move that is ffmpeg's own charter. OBS already declares the reciprocal link (ffmpeg couples-with, label capture-to-batch) but ffmpeg does not declare it back.",
+   "rationale": "OBS has zero inbound and is a flagged newcomer/unreachable entry; ffmpeg is explicitly 'the meeting place where any two Specialists' outputs come together,' and OBS's own Recipes section names ffmpeg's exact role. Reciprocating the symmetric couples-with link is a genuine, not forced, fix.",
+   "spark": 1
+  },
+  {
+   "source": "Shop/RunPod GPU Backend",
+   "target": "Shop/LoRA Trainer",
+   "type": "connects-to",
+   "current_type": "none",
+   "kind": "new",
+   "label": "trains-loras-here",
+   "evidence": "RunPod GPU Backend Untested Horizons: 'LoRAs / fine-tunes \u2014 style packs or alternate checkpoints, loaded on a pod.' LoRA Trainer's own frontmatter already declares rides-the-substrate back to RunPod GPU Backend, but the substrate doesn't point back.",
+   "rationale": "LoRA Trainer is a flagged newcomer with 0 inbound; RunPod GPU Backend literally names LoRA training as an open horizon of its own substrate. The two entries are already talking about each other in prose; only the frontmatter link is missing on one side.",
+   "spark": 1
+  },
+  {
+   "source": "Shop/RunPod GPU Backend",
+   "target": "Worktree Practice",
+   "type": "connects-to",
+   "current_type": "none",
+   "kind": "bridge",
+   "label": "agent-namespace-by-worktree",
+   "evidence": "RunPod GPU Backend Gotchas: 'a single-sourced per-agent slug at `_ops/runpod/agent_ns.py` ($RUNPOD_AGENT_SLUG \u2192 git worktree name \u2192 host)' \u2014 the fix for the multi-agent pod-collision outage reads the git worktree name directly to derive the pod namespace.",
+   "rationale": "This is a structural, not thematic, tie: the actual mechanism that prevents two agents' RunPod pods from colliding is keyed on the git worktree identity. I have not read Worktree Practice itself, so I can't confirm the target's own framing matches \u2014 flagging as a bridge candidate for an elder to verify rather than a settled find.",
+   "spark": 3,
+   "deep_pattern": "Both are instances of 'give the concurrent-agent a durable, structural name instead of a shared default' \u2014 the same move assume-multi-agent generalizes, applied at the git layer instead of the account layer.",
+   "fidelity_test": "unverified \u2014 I did not read Worktree Practice.md; propose, don't assert."
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Shop/Maker.md",
+   "target": "Shop/LoRA Trainer.md",
+   "type": "connects-to",
+   "phrase": "*LoRA Trainer (BLUELINE Track II, 2026-06-16):* **LoRA Trainer** \u2014 first-try character-LoRA training on the RunPod substrate...",
+   "structurally_significant": true,
+   "label": "Maker's own Promotion Log names LoRA Trainer as a real, dated job but the Maker's frontmatter carries no link to it \u2014 though per the entry's own documented convention (Maker no longer hand-lists the roster; each Specialist declares directed-by-Maker instead), the correct fix is on LoRA Trainer's side, not Maker's."
+  },
+  {
+   "entry": "Shop/RunPod GPU Backend.md",
+   "target": "BLUELINE \u2014 Render Backend",
+   "type": "connects-to",
+   "phrase": "Its render backend ([[BLUELINE \u2014 Render Backend]]) rides this substrate \u2014 Study tier on a pod, Piece batch on serverless (the routing split).",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Shop/Figure Rig.md",
+   "target": "Figure Rig \u2014 face-hands-openpose design",
+   "type": "connects-to",
+   "phrase": "Plan + expression recipes: [[Figure Rig \u2014 face-hands-openpose design]]",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Shop/LoRA Trainer.md",
+   "vector_issue": "none \u2014 forward_vector is sharp and specific",
+   "stage_current": "n/a (specialist, no stage field, correct per SCHEMA)",
+   "stage_proposed": "",
+   "face": "none",
+   "graffiti_note": "Every other alive specialist in this family declares `{ target: \"[[Maker]]\", type: connects-to, label: directed-by }`. LoRA Trainer is the one exception \u2014 its links list (RunPod GPU Backend, The Shop, BLUELINE \u2014 Production Plan, Capability-first prototyping, Review Layer) never names Maker at all, even though Maker's Promotion Log narrates its origin. Propose adding the standard directed-by link to bring it into the family's own convention."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Six specialists independently carry the same unresolved Open Question \u2014 'should the Shop build a house-defaults wrapper for me?' \u2014 as if it were novel, when Maker's own Articulated Cascade \u00a7 'Layer 0 \u2014 the tool's own taste' already states the general rule (build the skin wrapper before the second styled job) and Observable Plot's palace-plot-defaults.js is the proof it works.",
+   "kind": "redundant-open-question / unclosed general rule",
+   "entries": [
+    "Shop/Matplotlib.md",
+    "Shop/LaTeX.md",
+    "Shop/Mermaid.md",
+    "Shop/ffmpeg.md",
+    "Shop/Tone.js.md",
+    "Shop/Web Audio Worklet.md"
+   ],
+   "proposed_action": "Each entry's own Open Questions should be updated to point at Maker \u00a7 Articulated Cascade (Layer 0) as the already-decided policy, converting 'should we?' into 'when does this one earn its wrapper' \u2014 a smaller, sharper question. Not a merge; a citation fix across six entries."
+  },
+  {
+   "issue": "Maker's own Open Questions set a numeric threshold for when the Selection Heuristics section (and implicitly the flat single-Maker architecture) gets unwieldy \u2014 'when the Roster grows past ~15 specialists.' The Roster is now 33, more than double that line, and a second, independent member of the family (OBS) has separately flagged the same seam from the opposite direction ('I am the second independent pressure on the Shop's Producer-layer seam... two pushes on one wall is the kind of thing that should move the architecture').",
+   "kind": "threshold-blown / architecture signal",
+   "entries": [
+    "Shop/Maker.md",
+    "Shop/OBS.md"
+   ],
+   "proposed_action": "Not mine to resolve at folder-lens \u2014 flagging for Loudon/an elder as a should-act item: two independent stress signals (roster size, real-time-with-a-human operating model) both point at the same missing layer above the Maker."
+  },
+  {
+   "issue": "Uneven face (hero image) coverage within one otherwise well-groomed family \u2014 Blender, ComfyUI, Kokoro, FLUX, Three.js, p5.js, ffmpeg, Web Audio Worklet, Lettering, Stable Audio Open, Maker, Shopkeeper, Hero and Avatar Maker, RunPod GPU Backend all carry `![[X \u2014 hero.png]]`; Whisper, Matplotlib, Tone.js, D3.js, Observable Plot, Mermaid, LaTeX, Midjourney, SAM, LaMa, Depth Anything, Image-to-3D Smith, Remotion, RNBO, VCV Patch Generator do not.",
+   "kind": "cosmetic drift, low priority",
+   "entries": [],
+   "proposed_action": "Not urgent \u2014 Hero and Avatar Maker's own stated priority order (projects, then philosophies, then most-connected hubs) doesn't cover Shop specialists explicitly, so this isn't a broken promise, just an inconsistency worth a note if a future face-batch reaches the Shop."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Shop/OBS.md",
+   "question": "I am the second independent pressure on the Shop's Producer-layer seam \u2014 Maker already wonders whether one should rise for multi-day cross-medium briefs; I push on the same wall from real-time-with-a-human.",
+   "verdict": "progressed",
+   "by_entry": "Shop/Maker.md",
+   "proposed_action": "Both entries' Open Questions should cross-reference each other explicitly (they currently don't link on this point) so a future reader sees the two-source pressure in one place rather than discovering it twice."
+  },
+  {
+   "entry": "Shop/Matplotlib.md",
+   "question": "Default style sheet for the palace \u2014 declare a palace.mplstyle file...?",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Shop/Maker.md",
+   "proposed_action": "Point at Maker \u00a7 Articulated Cascade Layer 0 rather than treating this as open."
+  },
+  {
+   "entry": "Shop/LaTeX.md",
+   "question": "A palace.sty shared preamble... so every document inherits the design system the way charts inherit palaceTokens().",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Shop/Maker.md",
+   "proposed_action": "Same citation fix \u2014 the general policy exists, only the per-tool execution is pending."
+  },
+  {
+   "entry": "Shop/Mermaid.md",
+   "question": "Should the Shop maintain a base themeVariables object for the palace base palette?",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Shop/Maker.md",
+   "proposed_action": "Same citation fix."
+  },
+  {
+   "entry": "Shop/ffmpeg.md",
+   "question": "Should the Maker maintain a small library of canonical command templates per operation \u00d7 tier?",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Shop/Maker.md",
+   "proposed_action": "Same citation fix \u2014 this is the plumbing-tier version of the same Layer-0 wrapper pattern."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "walk_results": [
+  {
+   "target": "Shop/OBS.md",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed reciprocal ffmpeg couples-with link (capture-to-batch), matching OBS's own existing outbound declaration."
+  },
+  {
+   "target": "Shop/LoRA Trainer.md",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed RunPod GPU Backend connects-to link (trains-loras-here), plus a separate coherence fix (add the missing directed-by-Maker link every sibling specialist carries)."
+  }
+ ],
+ "synthesis_spawn_flag": []
+}

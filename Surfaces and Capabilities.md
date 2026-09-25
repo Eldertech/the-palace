@@ -23,9 +23,6 @@ links:
   - target: "[[Closing Well]]"
     type: connects-to
     label: verify-bounded-by-surface
-  - target: "[[Claude CLI Reference]]"
-    type: connects-to
-    label: cli-vector
   - target: "[[Modes of Collaboration]]"
     type: connects-to
 forward_vector: "I want to become the stable home for the surface deltas that handoffs keep re-deriving — so a cross-tool handoff can write 'receiving surface: Claude Code on the Mac, see Surfaces and Capabilities' and stop there. My ancestry is in the handoffs that improvised the delta every time (Kuramoto's Manim-can't-host, Phoneme Choir's Kokoro-only-on-Mac, the GSL Steward's per-surface link schemes) and in two of Claude's own auto-memories that should have had a palace home all along. My open question: I am a catalog of facts that go stale the moment a surface changes — a GPU gets installed, a sandbox grows a capability, a tool is deprecated. How do I stay honest? The discipline that keeps me alive is the same one that keeps a handoff honest: state what was verified and when, not what is assumed to be true forever."

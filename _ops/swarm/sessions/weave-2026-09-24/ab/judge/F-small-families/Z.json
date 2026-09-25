@@ -1,0 +1,75 @@
+{
+ "arm": "Z",
+ "room": "F-small-families",
+ "total_proposals": 12,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Reverb \u2194 Space-Time",
+   "type": "mirrors",
+   "target": "Frequency Domain \u2194 Perspective Shift",
+   "label": "twin-transforms",
+   "rationale": "Both are Fourier-family transforms treated as revealing hidden structure through a coordinate change, and both already anchor independently to Frequency-Time Duality without linking to each other \u2014 a near-miss only visible pooling the whole family's third-party anchors.",
+   "evidence": "Reverb \u2194 Space-Time: 'Space (volume) equals time (decay) \u2014 not metaphorically, mathematically.' / Frequency Domain \u2194 Perspective Shift: 'Fourier Transform proves: perspective change reveals hidden structure.'",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "relation",
+   "source": "Dovetail Joint \u2194 Counterpoint",
+   "type": "connects-to",
+   "target": "Sidechain \u2194 Conversation",
+   "label": "complementary-vs-yielding",
+   "rationale": "Both anchor independently to Cooperation Yields Agency as their philosophical grounding for 'two things making room for each other' \u2014 complementary-strength vs mutual-yield \u2014 but reach it by opposite mechanisms, permanent spatial co-design vs. temporal alternation. Offered at lower confidence than the others; a real family resemblance, not an identity.",
+   "evidence": "Dovetail: 'Not cooperation\u2014co-design. Each element exists to make the other stronger.' / Sidechain: 'The pattern is: Trigger \u2192 Yield \u2192 Occupy \u2192 Release \u2192 Return \u2192 Repeat.'",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "stage",
+   "source": "Excellent Adventure",
+   "type": "growing->mature",
+   "rationale": "none",
+   "item_id": "Z3"
+  },
+  {
+   "kind": "relation",
+   "source": "zhuangzi-epictetus-confucius-on-the-self",
+   "type": "spawned",
+   "target": "The Drift",
+   "label": null,
+   "rationale": "The entry's own Forward Vectors section names The Drift as the fourth pole it surfaced, 'wants its own palace entry' \u2014 that entry now exists (see Palace Philosophies' reference to 'The Drift (architecture vs. none)') but this Dialectic's frontmatter never registered the link.",
+   "evidence": "'The Drift (or: The Open Door). The fourth pole \u2014 the Zhuangzian no-architecture position \u2014 wants its own palace entry.'",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "demote",
+   "source": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+   "target": null,
+   "rationale": "Same shape and same reasoning as its sibling above \u2014 real intellectual yield (the Extract and Name section), real inbound links, deserves to stay a first-class entry.",
+   "item_id": "Z5"
+  },
+  {
+   "kind": "stage",
+   "source": "Oblique Portrait",
+   "type": "growing->mature, or a freshness check",
+   "rationale": "13 inbound but last_activated 2026-03 and activation_count 1 \u2014 six months stale despite being one of the most-cited entries in this family. Either genuinely dormant (fine) or under-tracked (worth a touch).",
+   "item_id": "Z6"
+  },
+  {
+   "kind": "demote",
+   "source": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "target": null,
+   "rationale": "Carries full entry frontmatter and independent inbound links (4) despite living in another entry's folder \u2014 functions as a real entry, not bundle substrate. Recommend keeping type:concept and surfacing the folder-collision to the Concierge as a SCHEMA \u00a78 edge case rather than converting it to a minimal dialectic bundle file, which would strip its independent citability.",
+   "item_id": "Z7"
+  },
+  {
+   "kind": "relation",
+   "source": "zhuangzi-epictetus-confucius-on-the-self",
+   "type": "spawned",
+   "target": "spinoza-zhuangzi-on-striving",
+   "label": null,
+   "rationale": "The entry explicitly requests 'A Dialectic with Spinoza in the room' as unfinished business; spinoza-zhuangzi-on-striving (born later, 2026-05-30) is exactly that Dialectic and already links back with mirrors/same-method-second-question, but the origin entry never links forward to its own fulfillment.",
+   "evidence": "'A Dialectic with Spinoza in the room. What does Spinoza say to Zhuangzi?... This is the pairing the entry's current spine cannot hold.'",
+   "item_id": "Z8"
+  }
+ ]
+}

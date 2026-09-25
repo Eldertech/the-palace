@@ -1,0 +1,661 @@
+{
+ "lens": "lifecycle",
+ "id": "L4",
+ "targets": [
+  {
+   "id": "ELDER",
+   "path": "ELDER.md",
+   "stage": "foundational",
+   "inbound": 3
+  },
+  {
+   "id": "No Mind Checks Itself",
+   "path": "No Mind Checks Itself.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Reflective Practice",
+   "path": "Reflective Practice.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Return Ceremony",
+   "path": "_ops/Return Ceremony.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "SCHEMA \u2014 Reference",
+   "path": "SCHEMA \u2014 Reference.md",
+   "stage": "foundational",
+   "inbound": 2
+  }
+ ],
+ "walk": {
+  "ELDER": {
+   "hop1": [
+    {
+     "id": "CLAUDE",
+     "path": "CLAUDE.md",
+     "stage": "foundational",
+     "inbound": 2
+    },
+    {
+     "id": "Concierge",
+     "path": "Palace development/Concierge.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "JEWEL",
+     "path": "JEWEL.md",
+     "stage": "foundational",
+     "inbound": 6
+    },
+    {
+     "id": "Palace Ceremonies",
+     "path": "_ops/Palace Ceremonies.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Palace as Context Injection System",
+     "path": "Palace development/Palace as Context Injection System.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "SCHEMA",
+     "path": "SCHEMA.md",
+     "stage": "foundational",
+     "inbound": 28
+    },
+    {
+     "id": "SCHEMA \u2014 Reference",
+     "path": "SCHEMA \u2014 Reference.md",
+     "stage": "foundational",
+     "inbound": 2
+    },
+    {
+     "id": "Substrate Skill",
+     "path": "_ops/Substrate Skill.md",
+     "stage": "mature",
+     "inbound": 16
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Deposit Ceremony",
+     "path": "_ops/Deposit Ceremony.md",
+     "stage": "growing",
+     "inbound": 26
+    },
+    {
+     "id": "Weave Ceremony",
+     "path": "_ops/Weave Ceremony.md",
+     "stage": "mature",
+     "inbound": 17
+    },
+    {
+     "id": "Baton Ceremony",
+     "path": "_ops/Baton Ceremony.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "Harvest Ceremony",
+     "path": "_ops/Harvest Ceremony.md",
+     "stage": "mature",
+     "inbound": 11
+    },
+    {
+     "id": "README - The Palace Guide",
+     "path": "README - The Palace Guide.md",
+     "stage": "foundational",
+     "inbound": 7
+    },
+    {
+     "id": "Return Ceremony",
+     "path": "_ops/Return Ceremony.md",
+     "stage": "seed",
+     "inbound": 1
+    },
+    {
+     "id": "Self-Model Update Ceremony",
+     "path": "_ops/Self-Model Update Ceremony.md",
+     "stage": "mature",
+     "inbound": 1
+    },
+    {
+     "id": "Spore Check Ceremony",
+     "path": "_ops/Spore Check Ceremony.md",
+     "stage": "mature",
+     "inbound": 6
+    },
+    {
+     "id": "Walk Ceremony",
+     "path": "_ops/Walk Ceremony.md",
+     "stage": "mature",
+     "inbound": 4
+    },
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "Closing Well Ceremony",
+     "path": "_ops/Closing Well Ceremony.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Deposit Archive",
+     "path": "_ops/Deposit Archive.md",
+     "stage": "dormant",
+     "inbound": 5
+    }
+   ],
+   "note": null
+  },
+  "No Mind Checks Itself": {
+   "hop1": [
+    {
+     "id": "Bring In a Bigger Mind",
+     "path": "Bring In a Bigger Mind.md",
+     "stage": "growing",
+     "inbound": 2
+    },
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "Cooperation Yields Agency",
+     "path": "Cooperation Yields Agency.md",
+     "stage": "mature",
+     "inbound": 52
+    },
+    {
+     "id": "Donella Meadows",
+     "path": "People/Donella Meadows.md",
+     "stage": "seed",
+     "inbound": 12
+    },
+    {
+     "id": "Douglas Hofstadter",
+     "path": "People/Douglas Hofstadter.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "Latent Error",
+     "path": "Latent Error.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Reflective Practice",
+     "path": "Reflective Practice.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Self-Describing Knowledge Module",
+     "path": "Palace development/Self-Describing Knowledge Module.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "The Blindspot Is the Surprise Fuel",
+     "path": "The Blindspot Is the Surprise Fuel.md",
+     "stage": "growing",
+     "inbound": 4
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Drift and Consolidation",
+     "path": "Drift and Consolidation.md",
+     "stage": "sprout",
+     "inbound": 6
+    },
+    {
+     "id": "Baton Ceremony",
+     "path": "_ops/Baton Ceremony.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "Closing Well Ceremony",
+     "path": "_ops/Closing Well Ceremony.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Deposit Ceremony",
+     "path": "_ops/Deposit Ceremony.md",
+     "stage": "growing",
+     "inbound": 26
+    },
+    {
+     "id": "Harvest Ceremony",
+     "path": "_ops/Harvest Ceremony.md",
+     "stage": "mature",
+     "inbound": 11
+    },
+    {
+     "id": "Weaving Memory into the Palace",
+     "path": "Weaving Memory into the Palace.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Worktree Practice",
+     "path": "Worktree Practice.md",
+     "stage": "growing",
+     "inbound": 0
+    },
+    {
+     "id": "Dialectic",
+     "path": "Modes of Collaboration/Dialectic.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "Making a Palace Citizen",
+     "path": "Making a Palace Citizen.md",
+     "stage": "growing",
+     "inbound": 2
+    },
+    {
+     "id": "Meaning and the Link",
+     "path": "Meaning and the Link.md",
+     "stage": "foundational",
+     "inbound": 13
+    },
+    {
+     "id": "Palace Conatus",
+     "path": "Palace Conatus.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "STIGMERGY",
+     "path": "STIGMERGY.md",
+     "stage": "fruiting",
+     "inbound": 27
+    }
+   ],
+   "note": null
+  },
+  "Reflective Practice": {
+   "hop1": [
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "Creative Coach",
+     "path": "Creative Coach.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Dialectic",
+     "path": "Modes of Collaboration/Dialectic.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "Drift and Consolidation",
+     "path": "Drift and Consolidation.md",
+     "stage": "sprout",
+     "inbound": 6
+    },
+    {
+     "id": "Hilaritas Generator",
+     "path": "Hilaritas Generator.md",
+     "stage": "mature",
+     "inbound": 72
+    },
+    {
+     "id": "No Mind Checks Itself",
+     "path": "No Mind Checks Itself.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "Objects to Think With",
+     "path": "Objects to Think With.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "The Palace Practices on Itself",
+     "path": "The Palace Practices on Itself.md",
+     "stage": "growing",
+     "inbound": 6
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Baton Ceremony",
+     "path": "_ops/Baton Ceremony.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "Deposit Ceremony",
+     "path": "_ops/Deposit Ceremony.md",
+     "stage": "growing",
+     "inbound": 26
+    },
+    {
+     "id": "Harvest Ceremony",
+     "path": "_ops/Harvest Ceremony.md",
+     "stage": "mature",
+     "inbound": 11
+    },
+    {
+     "id": "Closing Well Ceremony",
+     "path": "_ops/Closing Well Ceremony.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2",
+     "path": "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md",
+     "stage": "sprout",
+     "inbound": 0
+    },
+    {
+     "id": "Weaving Memory into the Palace",
+     "path": "Weaving Memory into the Palace.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Worktree Practice",
+     "path": "Worktree Practice.md",
+     "stage": "growing",
+     "inbound": 0
+    },
+    {
+     "id": "The Blindspot Is the Surprise Fuel",
+     "path": "The Blindspot Is the Surprise Fuel.md",
+     "stage": "growing",
+     "inbound": 4
+    },
+    {
+     "id": "Concierge",
+     "path": "Palace development/Concierge.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "Confucianism",
+     "path": "Confucianism.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Modes of Collaboration",
+     "path": "Modes of Collaboration.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Palace Philosophies",
+     "path": "Palace Philosophies.md",
+     "stage": "mature",
+     "inbound": 18
+    }
+   ],
+   "note": null
+  },
+  "Return Ceremony": {
+   "hop1": [
+    {
+     "id": "Baton Ceremony",
+     "path": "_ops/Baton Ceremony.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "Closing Well Ceremony",
+     "path": "_ops/Closing Well Ceremony.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Concierge",
+     "path": "Palace development/Concierge.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "Cooperation Yields Agency",
+     "path": "Cooperation Yields Agency.md",
+     "stage": "mature",
+     "inbound": 52
+    },
+    {
+     "id": "Palace Ceremonies",
+     "path": "_ops/Palace Ceremonies.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Palace Conatus",
+     "path": "Palace Conatus.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Search Before You Build",
+     "path": "Search Before You Build.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Spore Check Ceremony",
+     "path": "_ops/Spore Check Ceremony.md",
+     "stage": "mature",
+     "inbound": 6
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "Deposit Ceremony",
+     "path": "_ops/Deposit Ceremony.md",
+     "stage": "growing",
+     "inbound": 26
+    },
+    {
+     "id": "SCHEMA",
+     "path": "SCHEMA.md",
+     "stage": "foundational",
+     "inbound": 28
+    },
+    {
+     "id": "ELDER",
+     "path": "ELDER.md",
+     "stage": "foundational",
+     "inbound": 3
+    },
+    {
+     "id": "Enrichment",
+     "path": "Enrichment.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Revival Ceremony",
+     "path": "_ops/Revival Ceremony.md",
+     "stage": "mature",
+     "inbound": 2
+    },
+    {
+     "id": "Substrate Skill",
+     "path": "_ops/Substrate Skill.md",
+     "stage": "mature",
+     "inbound": 16
+    },
+    {
+     "id": "Weave Ceremony",
+     "path": "_ops/Weave Ceremony.md",
+     "stage": "mature",
+     "inbound": 17
+    },
+    {
+     "id": "Baton Ceremony \u2014 Context",
+     "path": "_ops/Baton Ceremony/Baton Ceremony \u2014 Context.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "CLAUDE",
+     "path": "CLAUDE.md",
+     "stage": "foundational",
+     "inbound": 2
+    },
+    {
+     "id": "Deposit Archive",
+     "path": "_ops/Deposit Archive.md",
+     "stage": "dormant",
+     "inbound": 5
+    },
+    {
+     "id": "Drift and Consolidation",
+     "path": "Drift and Consolidation.md",
+     "stage": "sprout",
+     "inbound": 6
+    }
+   ],
+   "note": null
+  },
+  "SCHEMA \u2014 Reference": {
+   "hop1": [
+    {
+     "id": "Deposit Ceremony",
+     "path": "_ops/Deposit Ceremony.md",
+     "stage": "growing",
+     "inbound": 26
+    },
+    {
+     "id": "ELDER",
+     "path": "ELDER.md",
+     "stage": "foundational",
+     "inbound": 3
+    },
+    {
+     "id": "Resonant Link Labels",
+     "path": "Palace development/Resonant Link Labels.md",
+     "stage": "growing",
+     "inbound": 4
+    },
+    {
+     "id": "SCHEMA",
+     "path": "SCHEMA.md",
+     "stage": "foundational",
+     "inbound": 28
+    },
+    {
+     "id": "STIGMERGY",
+     "path": "STIGMERGY.md",
+     "stage": "fruiting",
+     "inbound": 27
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Palace Ceremonies",
+     "path": "_ops/Palace Ceremonies.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Substrate Skill",
+     "path": "_ops/Substrate Skill.md",
+     "stage": "mature",
+     "inbound": 16
+    },
+    {
+     "id": "Worktree Practice",
+     "path": "Worktree Practice.md",
+     "stage": "growing",
+     "inbound": 0
+    },
+    {
+     "id": "Baton Ceremony",
+     "path": "_ops/Baton Ceremony.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "CLAUDE",
+     "path": "CLAUDE.md",
+     "stage": "foundational",
+     "inbound": 2
+    },
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "Harvest Ceremony",
+     "path": "_ops/Harvest Ceremony.md",
+     "stage": "mature",
+     "inbound": 11
+    },
+    {
+     "id": "Image Embedding Standard",
+     "path": "_ops/Image Embedding Standard.md",
+     "stage": "mature",
+     "inbound": 2
+    },
+    {
+     "id": "Learning Materials and Canon",
+     "path": "Learning Materials and Canon.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Mermaid Diagram Standard",
+     "path": "_ops/Mermaid Diagram Standard.md",
+     "stage": "mature",
+     "inbound": 1
+    },
+    {
+     "id": "README - The Palace Guide",
+     "path": "README - The Palace Guide.md",
+     "stage": "foundational",
+     "inbound": 7
+    },
+    {
+     "id": "Technical Diagram Standard",
+     "path": "_ops/Technical Diagram Standard.md",
+     "stage": "sprout",
+     "inbound": 0
+    }
+   ],
+   "note": null
+  }
+ }
+}

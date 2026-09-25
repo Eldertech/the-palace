@@ -57,6 +57,8 @@ links:
   - target: "[[Donella Meadows]]"
     type: connects-to
     label: first-embodied-person-page
+  - target: "[[SCHEMA — Reference]]"
+    type: connects-to
 ---
 
 # Pages as Agents

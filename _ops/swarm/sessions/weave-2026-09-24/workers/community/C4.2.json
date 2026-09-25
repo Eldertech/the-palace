@@ -1,0 +1,196 @@
+{
+ "cluster": "C4.2",
+ "lens": "community",
+ "members_read": [
+  "People/Andrei Tarkovsky.md",
+  "People/Andy Goldsworthy.md",
+  "People/Annie Dillard.md",
+  "People/James Turrell.md",
+  "People/Natalie Goldberg.md",
+  "People/Terrence Malick.md",
+  "Shop/VCV Patch Generator.md",
+  "People/Yasujir\u014d Ozu.md",
+  "Audition Gate.md (priority newcomer, read for cross-check)"
+ ],
+ "summary": "This room is a patience cluster wearing two different costumes: six slow-attention artists (Tarkovsky, Goldsworthy, Dillard, Turrell, Goldberg, Ozu) and one tool (VCV Patch Generator) that at first looks like a stray. It isn't. The tool's own confessed limit \u2014 \"I prove structure, never sound... the audio audition stays the one human step I keep reaching toward closing\" \u2014 is the exact shape of the existing [[Audition Gate]] entry, an under-reached newcomer that's been asking, in its own forward_vector, for sibling gates in other media (\"the Look gate?\"). Turrell's entry already speaks audio-mixing language (\"a 0.5 dB filter move... ten of them stacked over a five-minute loop\") to describe light \u2014 so this room turns out to hold the Look-gate precedent Audition Gate was missing. Separately, three well-built entries (Tarkovsky, Goldberg, Malick) are marked composting from a 2026-07-08 move that deferred judgment to \"the next Weave\" \u2014 this is that weave, and the connective tissue found here (reciprocal links, a genuine Tarkovsky\u2013Malick mirror) argues for reviving rather than confirming deletion: these aren't thin, neighborless entries, they're rich citizens that were simply built to an older frontmatter standard (no agency_profile, no Voice section) and under-linked. The clearest de-clutter move isn't composting or merging anything here \u2014 every member earns its own page \u2014 it's wiring the missing reciprocal edges, several of which land directly on Annie Dillard, the room's one true orphan (0 inbound).",
+ "typed_relations": [
+  {
+   "source": "VCV Patch Generator",
+   "target": "Audition Gate",
+   "type": "exemplifies",
+   "rationale": "VCV Patch Generator is a live, named instance of exactly the gap Audition Gate describes in the abstract: a Specialist that can prove structure but not the felt result.",
+   "evidence": "VCV: \"I prove structure, never sound, so the audio audition stays the one human step I keep reaching toward closing.\" Audition Gate: \"the spec describes what should be true, but only the audio is the truth.\"",
+   "kind": "bridge",
+   "spark": 5
+  },
+  {
+   "source": "James Turrell",
+   "target": "Audition Gate",
+   "type": "connects-to",
+   "label": "the-look-gate",
+   "rationale": "Turrell's own entry already reaches for audio-engineering language to describe light-perception thresholds \u2014 he is, unprompted, describing the sibling gate Audition Gate's forward_vector explicitly wonders whether to spawn.",
+   "evidence": "Turrell: \"A 0.5 dB filter move, a two-millisecond delay offset \u2014 barely audible alone, and yet ten of them stacked over a five-minute loop produce a depth one dramatic sweep never will.\" Audition Gate: \"I want to spawn sibling practices in image (the Look gate?)...\"",
+   "kind": "inbound-walk",
+   "spark": 5
+  },
+  {
+   "source": "James Turrell",
+   "target": "Andrei Tarkovsky",
+   "type": "connects-to",
+   "label": "patience-triangulation",
+   "rationale": "Reciprocal of an existing one-directional link \u2014 Tarkovsky's entry names Turrell explicitly as one of three studios (image, light, sound) triangulating the same discovery about unhurried perception, but Turrell's frontmatter doesn't point back, which is exactly why Tarkovsky (composting, 0 inbound) reads as unreached.",
+   "evidence": "Tarkovsky: \"Three different materials \u2014 image, light, sound \u2014 trained on one discovery... The three of them are triangulating the same fact from different studios.\"",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "Andy Goldsworthy",
+   "target": "Annie Dillard",
+   "type": "connects-to",
+   "label": "disciplined-looking-at-nature",
+   "rationale": "Reciprocal \u2014 Dillard already links to Goldsworthy with this exact label; Goldsworthy's frontmatter has no return link, leaving Dillard (a priority newcomer, 0 inbound) unreached from this side.",
+   "evidence": "Goldsworthy: \"He learned a material with his body before he could name anything with his mind.\" Dillard: \"unless I call my attention to what passes before my eyes, I simply won't see it.\"",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "Natalie Goldberg",
+   "target": "Annie Dillard",
+   "type": "connects-to",
+   "label": "daily-practice-writers",
+   "rationale": "Reciprocal of Dillard's existing outbound link (same label already used on Dillard's side); Goldberg doesn't point back.",
+   "evidence": "Dillard's frontmatter link to Goldberg is already labeled daily-practice-writers; both entries share the timer/schedule-as-discipline theme.",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "James Turrell",
+   "target": "Annie Dillard",
+   "type": "connects-to",
+   "label": "trained-attention",
+   "rationale": "Both entries make the identical claim in different materials: perception is trained, not given, and the discipline is positioning yourself to receive it rather than causing it.",
+   "evidence": "Dillard: \"I cannot cause light; the most I can do is try to put myself in the path of its beam.\" Turrell: \"Subtle change requires sustained attention to register at all, and sustained attention is the only thing that can register it.\"",
+   "kind": "inbound-walk",
+   "spark": 4
+  },
+  {
+   "source": "Andrei Tarkovsky",
+   "target": "Terrence Malick",
+   "type": "mirrors",
+   "label": "slow-cinema-as-material",
+   "rationale": "Both composting, both 0-inbound leaf nodes in the room, and both make the same argument in the same medium from opposite technical direction (Tarkovsky adds duration via the long take, Malick subtracts narrative via years of edit) \u2014 a genuine unforced pairing missed only because neither entry names the other.",
+   "evidence": "Tarkovsky: \"a lump of time...cuts off and discards whatever he does not need.\" Malick: \"makes films the way a river carves a canyon \u2014 slowly, and mostly out of sight.\"",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "VCV Patch Generator",
+   "target": "Yasujir\u014d Ozu",
+   "type": "mirrors",
+   "label": "constraint-yields-variance",
+   "rationale": "Cross-folder pairing the folder view can't see: both systems refuse to import anything outside a self-limited vocabulary, and produce controlled variety from inside that refusal rather than treating the refusal as a limitation.",
+   "evidence": "VCV: \"I refuse to generate references to modules that don't exist in the registry... same archetype, different seed \u2192 an audibly distinct but family-consistent patch.\" Ozu: \"abandoned dissolves and fades because... they 'are no more than characteristics of the camera'... over decades he returned to the same actors and the same story... the way a painter repaints one rose.\"",
+   "kind": "bridge",
+   "spark": 4
+  }
+ ],
+ "bridge_findings": [
+  {
+   "tool": "VCV Patch Generator",
+   "thought": "Audition Gate",
+   "shared_structure": "Both name the same seam: a system that can verify its own structure exhaustively (registry parse / code review) but cannot verify whether the result is right without a human perceiving it directly.",
+   "spark": 5,
+   "classify": "link",
+   "quote_tool": "I prove structure, never sound, so the audio audition stays the one human step I keep reaching toward closing.",
+   "quote_thought": "the spec describes what should be true, but only the audio is the truth.",
+   "proposed_type": "exemplifies",
+   "deep_pattern": "proof of structure is not proof of the felt result",
+   "fidelity_test": "Would the Audition Gate entry recognize VCV Patch Generator's standing seam as its own case study? Yes \u2014 it's a near-literal restatement."
+  },
+  {
+   "tool": "VCV Patch Generator",
+   "thought": "Yasujir\u014d Ozu",
+   "shared_structure": "A disciplined refusal to reach outside a fixed vocabulary (registry-only modules; no dissolves, no camera movement) becomes the generator of controlled variety rather than a limitation on it.",
+   "spark": 4,
+   "classify": "link",
+   "proposed_type": "mirrors",
+   "deep_pattern": "constraint as the source of expressive variance, not its opposite"
+  }
+ ],
+ "unsung_paths": [],
+ "entry_health_flags": [
+  {
+   "entry": "Andrei Tarkovsky",
+   "stage_current": "composting",
+   "stage_proposed": "seed",
+   "vector_issue": "Marked composting 2026-07-08 as a leaf node (0 inbound) pending 'the next Weave confirms deletion or revives' \u2014 this is that weave. Entry is rich (hook_quality 10, dense cross-references in body prose) and this pass found two genuine, evidenced inbound links (from James Turrell, from Terrence Malick via mirrors). It reads as under-linked, not thin.",
+   "face": "merits-face",
+   "graffiti_note": "Lacks the agency_profile block and Voice section the seed-stage People entries (Goldsworthy, Dillard, Turrell, Ozu) all carry \u2014 if revived, it needs that upgrade to match the current embodiable-citizen standard, not just new links."
+  },
+  {
+   "entry": "Terrence Malick",
+   "stage_current": "composting",
+   "stage_proposed": "seed",
+   "vector_issue": "Same 2026-07-08 deferred-judgment situation as Tarkovsky. Already carries one outbound mirror (to Ozu); this pass adds a genuine reciprocal-feeling mirror to Tarkovsky. Not neighborless.",
+   "face": "merits-face",
+   "graffiti_note": "Also missing agency_profile/Voice relative to the newer standard."
+  },
+  {
+   "entry": "Natalie Goldberg",
+   "stage_current": "composting",
+   "stage_proposed": "seed",
+   "vector_issue": "Already has 2 inbound (Dillard, Suzuki per the compost note itself) \u2014 the least orphaned of the three composting entries, and this pass adds a reciprocal link back to Dillard, tightening the cluster further. Weakest case for composting of the three.",
+   "face": "merits-face",
+   "graffiti_note": "Also missing agency_profile/Voice relative to the newer standard."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "coherence_findings": [
+  {
+   "issue": "Several connects-to relations in this room are recorded on only one side (source entry lists the target; target entry doesn't list the source), which is why the room's inbound counts undercount real conceptual connectivity \u2014 e.g. Annie Dillard shows 0 inbound despite Goldsworthy, Goldberg, and (via Turrell, newly proposed) Turrell all being genuine two-way relationships.",
+   "kind": "asymmetric-symmetric-links",
+   "entries": [
+    "People/Annie Dillard.md",
+    "People/Andy Goldsworthy.md",
+    "People/Natalie Goldberg.md",
+    "People/Andrei Tarkovsky.md",
+    "People/James Turrell.md"
+   ],
+   "proposed_action": "The reciprocal links proposed in typed_relations close this for the room's members; worth flagging to future weave passes as a general pattern \u2014 symmetric-typed links (connects-to, mirrors, couples-with, contradicts) recorded one-directionally understate an entry's real inbound count."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Audition Gate",
+   "question": "\"I want to spawn sibling practices in image (the Look gate?), in motion (the Watch gate?), and in interactive (the Play gate?).\"",
+   "verdict": "partial answer found in this room",
+   "by_entry": "James Turrell",
+   "proposed_action": "James Turrell's entry already argues the Look-gate case in the exact vocabulary Audition Gate uses for sound (dB, filter moves, stacked small changes over duration) \u2014 propose the connects-to link above as the seed of that sibling practice, not a full answer (Audition Gate still needs its own worked-out Look-gate section)."
+  },
+  {
+   "entry": "Andrei Tarkovsky / Terrence Malick / Natalie Goldberg",
+   "question": "Compost record at [[Making a Palace Citizen \u2014 context]] \u00a7 2026-07-08: 'Reversible: the next Weave confirms deletion or revives.'",
+   "verdict": "revive, don't confirm deletion",
+   "by_entry": "community-C4.2 weave pass",
+   "proposed_action": "All three are dense, well-evidenced entries under-linked rather than thin; this pass alone supplies genuine new inbound for all three. Recommend stage \u2192 seed and a follow-up pass to add agency_profile/Voice to bring them to the current embodiable-citizen standard, rather than letting the compost stand."
+  }
+ ],
+ "synthesis_spawn_flag": [],
+ "walk_results": [
+  {
+   "target": "Annie Dillard",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Proposed reciprocal/new links from Andy Goldsworthy, Natalie Goldberg, and James Turrell close the 0-inbound gap flagged in the new-entries block \u2014 all three are genuine, evidenced pairings, not forced."
+  },
+  {
+   "target": "Audition Gate",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Proposed links from VCV Patch Generator (exemplifies \u2014 a direct case study of the gate) and James Turrell (connects-to \u2014 the Look-gate precedent the entry's own forward_vector asks for)."
+  }
+ ],
+ "flag_responses": []
+}

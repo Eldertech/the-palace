@@ -34,8 +34,6 @@ links:
   - target: "[[The Metaphor Stretch]]"
     type: spawned
     label: midwifed
-  - target: "[[What Claim Does Scientific Sonification Make?]]"
-    type: spawned
   - target: "[[Crystal Sonification Reference]]"
     type: spawned
     label: mineral-palette

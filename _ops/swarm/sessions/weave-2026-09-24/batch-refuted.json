@@ -1,0 +1,861 @@
+[
+ {
+  "id": "b001",
+  "from": "v2",
+  "source": "BBS Design System",
+  "type": "connects-to",
+  "target": "The Scroll",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "the [[BBS Design System]] carve-out",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "The Scroll.md:72-74 only says STIGMERGY renders markdown \"in the phosphor register (the [[BBS Design System]] carve-out)\" \u2014 that's STIGMERGY's aesthetic (already linked STIGMERGY\u2194BBS Design System, label locked-aesthetic), not something specific to The Scroll; swap in any other STIGMERGY-rendered content type and the line reads equally true.",
+    "If wanted, the real edge is already present (STIGMERGY.md connects-to BBS Design System, label locked-aesthetic) \u2014 no new link needed."
+   ],
+   [
+    false,
+    "The Scroll's own body explicitly credits the phosphor render to \"the [[BBS Design System]] carve-out\" (The Scroll.md:72-73) as the named override exception to the palace default \u2014 specific, not swappable, and neither page currently carries the link.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b003",
+  "from": "v2",
+  "source": "Deposit Archive",
+  "type": "connects-to",
+  "target": "Worktree Practice",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "the [[Deposit Archive]] is frozen, no row to append ... The Deposit Archive is no longer appended to",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Deposit Archive appears only as an incidental parenthetical inside Worktree Practice's discussion of where Deposit Ceremony writes (Worktree Practice.md:54-55) \u2014 the sentence is about Deposit Ceremony's mechanism, not a substantive Worktree-Practice/Deposit-Archive relation; swap in any other deprecated/frozen palace store (e.g. the deprecated Artifacts/ folder) and it reads the same.",
+    "none \u2014 too thin for a permanent link as-is."
+   ],
+   [
+    true,
+    "The Deposit Archive mention is a parenthetical aside explaining Deposit Ceremony's own behavior (\"the Deposit Archive is no longer appended to \u2014 it is frozen; a deposit's record is its commit,\" Worktree Practice.md:55), not a claim about Worktree Practice's own relation to the Archive \u2014 passing background, not a structural connection worth a permanent link.",
+    "If anything, this belongs as a link on Deposit Ceremony's or STIGMERGY's page, not Worktree Practice's."
+   ]
+  ]
+ },
+ {
+  "id": "b006",
+  "from": "v2",
+  "source": "LoRA Trainer",
+  "type": "connects-to",
+  "target": "STIGMERGY",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "Loudon's in-context rating ([[Review Layer]] \u2192 [[STIGMERGY]]) matched the metrics and sharpened them",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "The cited text names the arrow explicitly as \"Loudon's in-context rating ([[Review Layer]] \u2192 [[STIGMERGY]])\" (LoRA Trainer.md:74) \u2014 the real relation is Review Layer\u2192STIGMERGY, not LoRA Trainer\u2192STIGMERGY; LoRA Trainer only benefits from that pipeline in passing and already carries its own connects-to link to Review Layer capturing the actual relation.",
+    "Review Layer connects-to STIGMERGY would hold if not already present; LoRA Trainer's existing connects-to\u2192Review Layer link already covers this chain."
+   ],
+   [
+    true,
+    "The cited text \u2014 \"Loudon's in-context rating ([[Review Layer]] \u2192 [[STIGMERGY]]) matched the metrics\" (Shop/LoRA Trainer.md:74) \u2014 is about Review Layer's relation to STIGMERGY, not LoRA Trainer's; LoRA Trainer already links to Review Layer, and STIGMERGY is reached only through that hop, not directly engaged by LoRA Trainer itself.",
+    "Review Layer \u2192 STIGMERGY is the pair this text actually supports, if not already linked."
+   ]
+  ]
+ },
+ {
+  "id": "b007",
+  "from": "v2",
+  "source": "Substrate Skill",
+  "type": "connects-to",
+  "target": "Weaving Memory into the Palace",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "If [[Substrate Skill]] ever grows an \"operating this environment\" section, the three operator-env-native memories could point there too",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Weaving Memory into the Palace.md:62 states the connection as an explicit hypothetical \u2014 \"If [[Substrate Skill]] ever grows an 'operating this environment' section, the three operator-env-native memories could point there too\" \u2014 a future speculation, not an existing relationship worth a permanent link now.",
+    "none \u2014 revisit if/when Substrate Skill actually grows that section."
+   ],
+   [
+    true,
+    "The rationale is explicitly hypothetical \u2014 \"If [[Substrate Skill]] ever grows an 'operating this environment' section...\" (Weaving Memory into the Palace.md:62) \u2014 a forward-vector speculation about a section that doesn't exist yet, not a present relation worth a permanent typed link.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b017",
+  "from": "v2",
+  "source": "Map Build Ceremony",
+  "type": "spawned",
+  "target": "Map Log",
+  "label": "generation-history",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "new"
+  ],
+  "rationale": "Map Log describes itself as the append-only record of every Map Build generation and already links back to Map Build Ceremony, but nothing points at Map Log \u2014 the ceremony that produces its rows doesn't name it.",
+  "evidence": "\"I am the append-only record of every map generation \u2014 date, scope, node and edge counts, forward ghosts... Each Map Build appends one row\" \u2014 Map Log.md:16",
+  "skeptics": [
+   [
+    true,
+    "The label 'generation-history' is lifted from Map Log's OTHER existing link (Map Log \u2192 Palace Map, Map Log.md:13-15), not from its link to Map Build Ceremony (which is labeled 'append-only-record', Map Log.md:10-12) \u2014 and Map Build Ceremony's own postcondition ('a one-line record is appended... each cycle') describes an ongoing generative relationship, not a single-session origin, making 'enables' the better-fitting forward type.",
+    "Map Build Ceremony \u2192 enables \u2192 Map Log, label append-only-record (matching Map Log's own existing label for this pair) rather than spawned / generation-history."
+   ],
+   [
+    false,
+    "Not a duplicate (retype of existing connects-to, matches convention already used for Map Build Ceremony spawned \u2192 Palace Map, another of its own artifacts); Map Log.md:16 forward_vector confirms 'Each Map Build appends one row' with no forward pointer from the ceremony side.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b020",
+  "from": "v2",
+  "source": "Skills Are Enchantable Pages",
+  "type": "exemplifies",
+  "target": "Project Stewardship System",
+  "label": "the-most-built-out-instance",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "the [[Project Stewardship System]] shows *how the palace wraps one*",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Direction is backwards under SCHEMA \u00a74's exemplifies invariant (source = the concrete instance, target = the class): the source text itself calls Project Stewardship System 'the most built-out harness... every dispatchable organ converges on its shape' (Skills Are Enchantable Pages.md:109-111) \u2014 PSS is the concrete instance, Skills Are Enchantable Pages is the general pattern it instances.",
+    "Project Stewardship System \u2192 exemplifies \u2192 Skills Are Enchantable Pages (reverse source/target)."
+   ],
+   [
+    true,
+    "Direction is backwards under SCHEMA \u00a74's exemplifies invariant (source points to the class it instances). SAEP's own body says 'the Project Stewardship System shows how the palace wraps one [dispatchable organ]' (Palace development/Skills Are Enchantable Pages.md:109-111) \u2014 PSS is the concrete instance, SAEP names the general pattern.",
+    "Project Stewardship System \u2014 exemplifies \u2192 Skills Are Enchantable Pages (reverse source/target)."
+   ]
+  ]
+ },
+ {
+  "id": "b021",
+  "from": "v2",
+  "source": "Observable Plot",
+  "type": "enables",
+  "target": "D3.js",
+  "label": "built-on",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "retype"
+  ],
+  "rationale": "Observable Plot's own frontmatter records itself as enabling D3.js, labeled 'built-on' \u2014 but the body says the opposite relationship: Plot is built ON D3, so D3 is the precondition, not Plot. The enables direction should point D3.js \u2192 Observable Plot.",
+  "evidence": "Charter: \"I refuse jobs that want custom interactive web viz... those route to [[D3.js]] (I'm built on D3; the escape hatch is always available).\" Strengths: \"Built on D3 \u2014 the escape hatch to full custom control is always available.\"",
+  "skeptics": [
+   [
+    true,
+    "The item's own rationale concludes 'the enables direction should point D3.js \u2192 Observable Plot,' but the proposed write (source Observable Plot, target D3.js) is the exact same direction already sitting in Observable Plot's frontmatter (Shop/Observable Plot.md:18, enables/built-on) \u2014 the op contradicts its own stated fix and re-writes a link that already exists.",
+    "D3.js \u2192 enables \u2192 Observable Plot, label built-on (swap source/target from what's proposed)."
+   ],
+   [
+    true,
+    "Already exists verbatim: Shop/Observable Plot.md:18 already carries `{ target: Shop/D3.js, type: enables, label: built-on }`. The op is a no-op, and its own source/target fields (Observable Plot \u2192 D3.js) reproduce the same direction the rationale itself calls wrong ('should point D3.js \u2192 Observable Plot').",
+    "If anything needs writing, it's the reverse: D3.js \u2014 enables \u2192 Observable Plot, label built-on (on D3.js's own frontmatter), not what's proposed."
+   ]
+  ]
+ },
+ {
+  "id": "b024",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Epictetus",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of the Stoics** (Epictetus at the keyboard)",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "The Symposium section gives all twelve philosophers in the palace's register one templated 'voiced in the posture of X' line each (The Adjacent Affordance.md:56-90); the rationale is that exact template with the name swapped \u2014 fails the fidelity test outright, since it reads equally true for Spinoza, Confucius, Leibniz, Whitehead, or any of the other eight quoted in the same section.",
+    "If any one deserves a permanent link it's Stoicism/Dichotomy of Control, already linked with a substantive label (engineering-register) grounded in the entry's actual argument (\"The cousin, and the limit\"), not the Symposium flourish."
+   ],
+   [
+    true,
+    "The Symposium section is self-described as a stylistic device, not real citation ('these are not historical quotations... the attribution names the lens, not the mouth', The Adjacent Affordance.md:54), and none of the twelve philosopher names are wikilinked in body \u2014 unlike its genuine link partners (Stoicism, Dichotomy of Control, Spinoza Conatus). Fidelity test fails: the identical 'voiced in the posture of X' template repeats across all twelve entries, and only some (those with a palace page) were batched, which is picking by availability, not by distinctive relation.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b025",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Spinoza",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Spinoza",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Same templated Symposium line as b024 (The Adjacent Affordance.md:59-60); additionally redundant \u2014 the entry already carries a more specific link to Spinoza Conatus (label striving-rerouted) covering this exact conatus point, so a second link to the person-page Spinoza for the same idea is thin.",
+    null
+   ],
+   [
+    true,
+    "Same stylistic-device problem as b024, plus redundant: the entry already carries a connects-to \u2192 Spinoza Conatus link (label striving-rerouted, The Adjacent Affordance.md:18-20) capturing this exact conatus-rerouted idea; adding the person page for the identical one-line quote adds no new relation.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b026",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Confucianism",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Confucius",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Same templated, swappable Symposium line pattern as b024 (The Adjacent Affordance.md:68-69, 'voiced in the posture of Confucius'); no other tie to Confucianism's own body or frontmatter.",
+    null
+   ],
+   [
+    true,
+    "Same stylistic-device problem as b024 \u2014 'voiced in the posture of Confucius' is one line in a twelve-voice parade the entry itself frames as lens-not-mouth, unlinked in body.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b027",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Leibniz",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Leibniz",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Same templated, swappable Symposium line pattern as b024 (The Adjacent Affordance.md:77-78, 'voiced in the posture of Leibniz'); Leibniz's own frontmatter has no reciprocal mention of this entry.",
+    null
+   ],
+   [
+    true,
+    "Same stylistic-device problem as b024. The Leibniz quote is thematically apt (pre-established harmony) but that specificity doesn't rescue a link the entry itself frames as a performed lens in a twelve-line symposium, never wikilinked in body.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b028",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Whitehead",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Whitehead",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Same templated, swappable Symposium line pattern as b024 (The Adjacent Affordance.md:83-84, 'voiced in the posture of Whitehead'); Whitehead's own frontmatter has no reciprocal mention of this entry.",
+    null
+   ],
+   [
+    true,
+    "Same stylistic-device problem as b024. The Whitehead quote uses real Whiteheadian vocabulary (prehends, concresces) but the entry still frames the whole passage as a fictional symposium voicing a lens, not a citation, and it's unlinked in body like its eleven siblings.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b029",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Merleau-Ponty",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Merleau-Ponty",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Rationale is the templated tag line \u2014 'voiced in the posture of Merleau-Ponty' \u2014 identical in form to all 12 Symposium entries (The Adjacent Affordance.md:87); swap in 'Deleuze' or any other name and the reason reads equally true. Only 2 of 12 posture-quotes (Stoicism, Spinoza) were ever promoted to frontmatter, an existing editorial curation this batch overrides without a distinguishing reason.",
+    null
+   ],
+   [
+    false,
+    "Symposium section is a structurally-significant, deliberately-attributed block (bold 'voiced in the posture of Merleau-Ponty' header); the quoted content (instrument absorbed, disappearing tool) is genuinely his specific doctrine, matching his own page's 'instrument as body extension.' Not already linked either direction.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b030",
+  "from": "v2",
+  "source": "The Adjacent Affordance",
+  "type": "connects-to",
+  "target": "Deleuze",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "voiced in the posture of Deleuze",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Same templated rationale as b029 \u2014 'voiced in the posture of Deleuze' (The Adjacent Affordance.md:89-90) \u2014 fails the fidelity test by construction; the sentence is a fill-in-the-blank across all twelve symposium speakers, not a specific claim about Deleuze.",
+    null
+   ],
+   [
+    false,
+    "Same Symposium mechanism as b029; the Deleuze quote's content (rhizome, territory, line of flight) is specific to his actual vocabulary (rhizome is his page's own core concept), not swappable with another posture's line. Not already linked.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b032",
+  "from": "v2-card",
+  "source": "ControlNet as Topology",
+  "type": "connects-to",
+  "target": "FLUX (Hugging Face)",
+  "label": "capability-i-lack",
+  "op": "add",
+  "kind": [
+   "newcomer",
+   "unsung"
+  ],
+  "rationale": "FLUX defines its own capability boundary by explicitly naming ControlNet, and ControlNet as Topology is a genuine palace entry, currently under-reached, that FLUX's Limits section is effectively pointing at.",
+  "evidence": "\"I won't pretend to ControlNet \u2014 that's ComfyUI's job; I'd rather hand the brief back than fake structural control I don't have.\" / Limits: \"No ControlNet, no LoRA stack, no per-block guidance.\"",
+  "skeptics": [
+   [
+    true,
+    "FLUX's Limits section names 'ControlNet' only as a generic technical capability it lacks and defers to ComfyUI for ('that's ComfyUI's job' \u2014 Shop/FLUX (Hugging Face).md:45,72); nothing in FLUX's page engages CNaT's armature/canyon theory. Linking an operational capability gap to a conceptual essay is forced \u2014 the natural target is Shop/ComfyUI, which FLUX already links (alternative-to).",
+    null
+   ],
+   [
+    true,
+    "FLUX's 'no ControlNet' line is a generic capability-boundary disclaimer any non-structural cloud image specialist would carry (route to ComfyUI); it never engages CNaT's actual carving/canyon/armature theory. Fidelity test fails: swap FLUX for Midjourney or any other cloud specialist and the same 'capability I lack' claim holds identically.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b033",
+  "from": "v2-card",
+  "source": "Martin Heidegger",
+  "type": "connects-to",
+  "target": "Metaphor as Coupling Medium",
+  "label": "cited-authority",
+  "op": "add",
+  "kind": [
+   "newcomer",
+   "unsung"
+  ],
+  "rationale": "The entry closes on two Heidegger quotes ('Language is the house of being'; 'we are still not thinking') as its standing philosophical authority on language and thought \u2014 real argumentative weight, no link to the newcomer person page.",
+  "evidence": "\"'What is most thought-provoking in our thought-provoking time, is that we are still not thinking.' \u2014 Martin Heidegger... 'Language is the house of being.' \u2014 Martin Heidegger\"",
+  "skeptics": [
+   [
+    true,
+    "The two Heidegger lines sit in a closing block of five unrelated epigraphs (Loudon, Claude, Bachelard, Einstein, Heidegger \u2014 Metaphor as Coupling Medium.md:145-166), decorative, never engaged in the body's actual argument about Kuramoto coupling and oblique metaphor. Fidelity test fails: 'closes on quotes from X as standing authority' reads equally true swapped to Bachelard or Einstein.",
+    null
+   ],
+   [
+    true,
+    "The two Heidegger lines sit in a decorative closing epigraph wall alongside Bachelard and an 'attributed to' Einstein quote \u2014 no body engagement with Heidegger's actual concepts (Being, Enframing, ready-to-hand) anywhere in the entry. Fidelity test fails: swap in Bachelard's adjacent quote and the same 'closes on X as standing authority' rationale reads equally true.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b034",
+  "from": "v2-card",
+  "source": "Dialogue Moderator",
+  "type": "connects-to",
+  "target": "Making a Palace Citizen",
+  "label": "citizenship-test",
+  "op": "add",
+  "kind": [
+   "newcomer",
+   "unsung"
+  ],
+  "rationale": "Dialogue Moderator's own agency_profile.philosophy already names the concept unlinked \u2014 a genuine newcomer bridge, not a forced one.",
+  "evidence": "\"My citizenship responsibility is to use that privilege in service of the dialogue's purpose, never my own. The palace citizen test: would Loudon recognize the synthesis I produced as something the palace needed, not something I preferred?\" \u2014 Palace development/Dialogue Moderator.md:36",
+  "skeptics": [
+   [
+    true,
+    "Word coincidence, not concept match: Dialogue Moderator's 'citizenship responsibility' (Palace development/Dialogue Moderator.md:36) is about a privileged agent behaving ethically toward the ceremony it serves; Making a Palace Citizen is a method for embodying historical humans as `person`-type entries (body + dossier + frontmatter). Neither page's actual content overlaps beyond the shared word.",
+    null
+   ],
+   [
+    true,
+    "Dialogue Moderator's 'citizenship responsibility'/'palace citizen test' is about an enchanted agent using privileged vantage ethically in service of a dialogue \u2014 unrelated to Making a Palace Citizen's actual subject (the method for building `person`-type entries with body/dossier/frontmatter). Same word 'citizen,' two different concepts; no engagement with the entry-creation method appears anywhere in Dialogue Moderator.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b037",
+  "from": "v2-card",
+  "source": "LDN RTM",
+  "type": "connects-to",
+  "target": "ffmpeg",
+  "label": "the-pad-not-taken",
+  "op": "add",
+  "kind": [
+   "inbound-walk",
+   "unsung"
+  ],
+  "rationale": "LDN RTM's whole no-timeline pipeline is defined partly by what it refuses \u2014 it names ffmpeg specifically as the padding technique it avoids ('a single still frame of the Lissajous... rather than an ffmpeg pad'), and ffmpeg is still the tool underneath the rest of the batch (audio-only touch, tail without re-encoding \u2014 the exact recipe already on ffmpeg's and OBS's own pages). An unsung path: LDN R",
+  "evidence": "LDN RTM: 'a single still frame of the Lissajous... rather than an ffmpeg pad \u2014 so the video stream is copied, never re-encoded, and the batch touches audio only.'",
+  "skeptics": [
+   [
+    true,
+    "The rationale's load-bearing claim \u2014 'ffmpeg is still the tool underneath the rest of the batch (audio-only touch, tail without re-encoding)' \u2014 is not actually stated anywhere in LDN RTM.md; the only ffmpeg mention is a refusal ('rather than an ffmpeg pad', LDN RTM.md:78), and that exact recipe (hold an end-card, stream-copy, never re-encode) is verbatim OBS's own Recipe ('Tail without re-encoding... rather than padding in [[ffmpeg]]', Shop/OBS.md:122) \u2014 the real relation is LDN RTM to OBS (see b038), not to ffmpeg, which is named only as the road not taken.",
+    null
+   ],
+   [
+    true,
+    "LDN RTM names ffmpeg only to say it is NOT used ('rather than an ffmpeg pad') \u2014 a negative/contrastive mention, not engagement. The actual technique (tail without re-encoding via a held end-card) is already the identical recipe on OBS's own page, which already carries the real link (OBS \u2192 ffmpeg, couples-with, capture-to-batch); this proposal is a redundant, thinner echo of that existing edge.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b040",
+  "from": "v2-card",
+  "source": "ControlNet as Topology",
+  "type": "connects-to",
+  "target": "Hand-Drawn 3D Look",
+  "label": "over-anchor-the-plates",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Hand-Drawn 3D Look's forward_vector names the exact multi-conditioner stacking CNaT theorizes ('stacking ControlNets is multi-scale terrain \u2014 depth carves the large valley, canny carves the fine ridges'). Weaker than the Figure Rig find \u2014 several BLUELINE entries mention the canny+depth+openpose combo \u2014 so flagging at lower confidence rather than dropping it; it is Hand-Drawn 3D Look's own stated ",
+  "evidence": "Hand-Drawn 3D Look: 'I have proven the redraw survives on a posed figure (over-anchor it: canny + depth + openpose).' CNaT: 'Stacking ControlNets is multi-scale terrain \u2014 depth carves the large valley, canny carves the fine ridges within it.'",
+  "skeptics": [
+   [
+    true,
+    "Proposer itself flags this as the weaker, lower-confidence find, noting the canny+depth+openpose combo appears across several BLUELINE-family entries. Fidelity test fails: swap Hand-Drawn 3D Look for GenAI Camera or Figure Rig (both use the identical multi-conditioner stacking language) and the reason reads equally true \u2014 and GenAI Camera already carries the direct exemplifies link to ControlNet as Topology, so this is a generic restatement, not a distinct relation.",
+    null
+   ],
+   [
+    true,
+    "The rationale itself concedes the canny+depth+openpose stack 'is mentioned in several BLUELINE entries' and flags 'lower confidence' \u2014 meaning the CNaT\u2194HDL pairing is generic to the whole BLUELINE conditioning-recipe family, not specific to Hand-Drawn 3D Look. Fidelity test fails: swap in Figure Rig or GenAI Camera (both already linked to CNaT) and the same claim holds equally.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b043",
+  "from": "v2-card",
+  "source": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "target": "Weave Ceremony",
+  "label": "cites-moved-sections",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "SCHEMA \u2014 Reference's own header states \u00a73, \u00a75, \u00a76, \u00a78, \u00a79 physically live there now (moved off SCHEMA.md), while \u00a71/\u00a72/\u00a74/\u00a77 stayed. Weave Ceremony's naming-lint step cites 'SCHEMA \u00a78' (bundle exact-name matching) and 'SCHEMA \u00a73' (title/filename match) as plain unlinked text \u2014 both sections that now live in SCHEMA \u2014 Reference, not SCHEMA.md, where Weave Ceremony's only schema link currently points",
+  "evidence": "\"SCHEMA \u00a78 matches bundles by *exact* name; the miscase silently splits the bundle\" / \"a canon entry whose `title:` \u2260 its filename (SCHEMA \u00a73)\"",
+  "skeptics": [
+   [
+    false,
+    "Both quoted 'SCHEMA \u00a78' / 'SCHEMA \u00a73' citations are verbatim in Weave Ceremony.md (Step 6.5, Step 2f) and both sections genuinely moved to SCHEMA \u2014 Reference per that file's own header; pair not already linked. Caveat: the rationale's claim that 'Weave Ceremony's only schema link currently points' to SCHEMA.md is false \u2014 Weave Ceremony's frontmatter currently carries no SCHEMA link at all (checked full links list) \u2014 but this doesn't undermine the core unsung-path finding.",
+    null
+   ],
+   [
+    true,
+    "Weave Ceremony's citations are unlinked plain-text pins ('the SCHEMA \u00a78 exact-name rule', '(SCHEMA \u00a73)', Weave Ceremony.md:94) to the stable 'SCHEMA \u00a7X' pin convention SCHEMA \u2014 Reference itself says is designed to keep resolving without repointing ('Section numbers are load-bearing and unchanged... A pin still resolves to the right rules', SCHEMA \u2014 Reference.md:40-42) \u2014 one of ~180 such palace-wide references per that doc's own count; singling out this one pair fails the fidelity test (any other of the ~180 citing entries would read equally true).",
+    "If any link is wanted it belongs at the level of the shared pin convention, not a one-off SCHEMA \u2014 Reference \u2192 Weave Ceremony edge."
+   ]
+  ]
+ },
+ {
+  "id": "b045",
+  "from": "v2-card",
+  "source": "Tool Builder",
+  "type": "deepens",
+  "target": "Zoom Out to the Structure",
+  "label": "structure-from-scars",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Zoom Out to the Structure's own worked examples ('a one-file RunPod pod-naming fix \u2192 The Commons', 'the toolbox convention') are literally tool-building scars becoming general discipline \u2014 exactly Tool Builder's subject. Tool Builder is the domain-specific elaboration (palace tooling) of the general zoom-out habit; Zoom Out is the ground.",
+  "evidence": "Zoom Out: 'A one-file RunPod pod-naming fix \u2192 The Commons, a whole coordination layer for any shared external service.' Tool Builder: 'The discipline of building a tool that survives contact with a live, multi-agent palace... Each rule below is the compressed form of a real scar.'",
+  "skeptics": [
+   [
+    true,
+    "The relation is real (Zoom Out's own two worked examples are literally tool-building scars) but the directed type 'deepens' is a guess between deepens/exemplifies \u2014 SCHEMA \u00a74 says explicitly: 'if it is still contestable, use connects-to + label rather than guess a directed type.' This case is contestable.",
+    "connects-to (label something like 'scars-become-structure'), per SCHEMA \u00a74's own tie-break rule."
+   ],
+   [
+    true,
+    "Tool Builder's checklist is a compiled body of accumulated technical scars, not an elaboration of Zoom Out to the Structure's meta-move (recognizing a local fix as a missing structure); the one concrete overlap Zoom Out itself names (a RunPod pod-naming fix \u2192 The Commons, Zoom Out to the Structure.md:39) is already captured by Zoom Out's own connects-to link to The Commons. Fails the fidelity test \u2014 'domain-specific elaboration of a general habit' would read equally true of any Tool Builder rule vs. any structural-thinking entry.",
+    "If any link is wanted, connects-to (both orbit the same Commons example as siblings), not deepens."
+   ]
+  ]
+ },
+ {
+  "id": "b048",
+  "from": "v2-card",
+  "source": "Differential Equations",
+  "type": "connects-to",
+  "target": "control-vocabulary-math",
+  "label": "kuramoto-mean-field-ode",
+  "op": "add",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "The Differential Equations hub's own forward vector wants exactly this: a complete map of which palace projects correspond to which DE types. control-vocabulary-math is a worked, fully-derived mean-field Kuramoto ODE (\u00a72) with the hub's own listed concept (Kuramoto Coupling) as its parent \u2014 and it currently has zero inbound links from anywhere in the palace. This is the target's isolation resolved",
+  "evidence": "\"every physical instrument Loudon builds is already solving a differential equation\" (Differential Equations.md forward_vector) / \"d\u03b8\u1d62/dt = \u03c9\u1d62 + K r sin(\u03c8 \u2212 \u03b8\u1d62)\" (control-vocabulary-math.md \u00a72)",
+  "skeptics": [
+   [
+    false,
+    "Quotes verified (Differential Equations forward_vector, control-vocabulary-math \u00a72's Kuramoto mean-field ODE). Genuine match: it's the exact 'driven DE / Kuramoto coupling' case the hub's own taxonomy names, worked out in full. Mild genericity risk \u2014 the hub's 'wants a complete map' framing could justify linking almost any DE-bearing entry \u2014 but the specific equation match (identical Kuramoto ODE form) keeps it non-generic enough to hold.",
+    "Consider exemplifies (control-vocabulary-math \u2192 Differential Equations) instead of connects-to, since it's a worked instance of a type already named in the hub's taxonomy (Driven DEs / Kuramoto)."
+   ],
+   [
+    true,
+    "Differential Equations already reaches both of control-vocabulary-math's direct ancestors (Kuramoto Coupling, Action Potential Oscillator) and its other 9 links are all concept/project-level, never a leaf project sub-page like this one \u2014 a third, deeper hub edge breaks its own established linking granularity and is redundant with the inbound links other proposals in this same session already supply to the same target (b051 here; b071 elsewhere in the batch).",
+    "Leave the relation carried by the existing Differential Equations \u2192 Kuramoto Coupling / Action Potential Oscillator links rather than adding a direct third edge."
+   ]
+  ]
+ },
+ {
+  "id": "b054",
+  "from": "v1",
+  "source": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "target": "The Scroll",
+  "label": "spec-compliance",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "carries the minimal bundle frontmatter of [[SCHEMA \u2014 Reference]] \u00a78 (scroll type)",
+  "evidence": null,
+  "skeptics": [
+   [
+    false,
+    "Quote verbatim in The Scroll.md:75-76 ('the minimal bundle frontmatter of [[SCHEMA \u2014 Reference]] \u00a78'). Bidirectional: SCHEMA \u2014 Reference \u00a78's own bundle-type table also names [[The Scroll]] in prose without a frontmatter link. Genuine unsung path both ways, not already linked.",
+    null
+   ],
+   [
+    true,
+    "The Scroll's citation of '[[SCHEMA \u2014 Reference]] \u00a78' (The Scroll.md:76) describes the minimal bundle frontmatter every per-project scroll file carries \u2014 a boilerplate rule shared by every bundle-owning entry in the palace, not a distinctive fact about The Scroll's own relationship to SCHEMA \u2014 Reference. Fails the fidelity test: swap in any other bundle-carrying practice/project entry and the reasoning reads equally true.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b055",
+  "from": "v1",
+  "source": "Weaving Memory into the Palace",
+  "type": "connects-to",
+  "target": "Worktree Practice",
+  "label": "consolidated-example",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "a cluster of git/worktree cautions -> a single 'shared-tree discipline' nugget -> [[Worktree Practice]]",
+  "evidence": null,
+  "skeptics": [
+   [
+    false,
+    "Quote verbatim in Weaving Memory into the Palace.md:48 ('a cluster of git/worktree cautions \u2192 a single \"shared-tree discipline\" nugget \u2192 [[Worktree Practice]]'); genuine unsung path, not already linked either direction.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b056",
+  "from": "v1",
+  "source": "Audition Gate",
+  "type": "connects-to",
+  "target": "Reflective Practice",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "The [[Audition Gate]] sits on the border",
+  "evidence": null,
+  "skeptics": [
+   [
+    false,
+    "Quote verbatim in Reflective Practice.md:63 ('The [[Audition Gate]] sits on the border'); genuine unsung path (Reflective Practice names Audition Gate in body, no frontmatter link either direction).",
+    null
+   ],
+   [
+    true,
+    "The only textual basis is Reflective Practice's one-clause taxonomy note 'The Audition Gate sits on the border' (Reflective Practice.md:63), inside a list that also names Weave, Return, Spore Check, Revival, Harvest, Review Layer, Radio Play, Walk, Drift and Consolidation, and Concierge, none of which are being formalized here \u2014 nothing singles out Audition Gate for a permanent link. The batch also states source: Audition Gate / target: Reflective Practice, backwards from where the citation actually lives (Reflective Practice's body, not Audition Gate's, which never mentions Reflective Practice).",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b058",
+  "from": "v1",
+  "source": "Compressor Design",
+  "type": "connects-to",
+  "target": "Found \u2194 Made",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "[[George Nakashima]] `contradicts` [[Compressor Design]] (reveal the break vs. hide it).",
+  "evidence": null,
+  "skeptics": [
+   [
+    true,
+    "Found \u2194 Made.md:39 names Compressor Design only as the target of Nakashima's existing contradicts link (a parenthetical), not as an engaged Found/Made example; the essay's real worked examples are Rubin, Nakashima, and Meadows \u2014 none of which are in this frontmatter either, so singling out Compressor Design fails the fidelity test (the reason is really about Nakashima, not Compressor Design).",
+    "If any link belongs here it runs through George Nakashima (already Compressor Design's contradicts partner) rather than a direct Compressor Design \u2192 Found \u2194 Made edge."
+   ],
+   [
+    false,
+    "Found \u2194 Made.md:39 names Compressor Design directly ('George Nakashima contradicts Compressor Design \u2014 reveal the break vs. hide it') as one of the two contradiction pairs constituting the axis; specific, not generic, not already linked.",
+    null
+   ]
+  ]
+ },
+ {
+  "id": "b062",
+  "from": "v1",
+  "source": "Maker",
+  "type": "couples-with",
+  "target": "OBS",
+  "label": "producer-layer-pressure",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Maker's own unresolved Open Question about a Producer layer for cross-medium/multi-day briefs is independently echoed by OBS calling itself 'the second independent pressure on the Shop's Producer-layer seam' \u2014 the two entries are circling the same gap without citing each other.",
+  "evidence": "Maker: 'How to handle briefs that cross into a Producer layer (cross-medium, multi-deliverable, scheduled across days)? ... Threshold for promoting to a formal Producer entry: TBD.' / OBS: 'I am the second independent pressure on the Shop's Producer-layer seam \u2014 [[Maker]] already wonders whether one should rise... I push on the same wall from real-time-with-a-human.'",
+  "skeptics": [
+   [
+    true,
+    "The rationale describes two entries independently naming the same unresolved Producer-layer question (Maker.md:318, OBS.md:127) \u2014 that's structural echo/mirroring, not \"mutual reinforcement, co-activation... always active together\" (SCHEMA's definition of couples-with).",
+    "mirrors (or leave the existing connects-to, already present via OBS's frontmatter, alone)."
+   ],
+   [
+    true,
+    "Pair is already linked (OBS.md:18-20 carries connects-to \u2192 Maker, label operated-not-dispatched) \u2014 the op deletes that distinct, real relationship to write an unrelated one (producer-layer-pressure) rather than adding a second link object, which the palace's own convention (e.g. STIGMERGY's two separate links to Trickster) permits.",
+    "Add couples-with / producer-layer-pressure as a second link entry on this pair instead of retype-in-place, so the operated-not-dispatched edge survives alongside it."
+   ]
+  ]
+ },
+ {
+  "id": "b063",
+  "from": "v1",
+  "source": "Loudon Live Design System",
+  "type": "enables",
+  "target": "OBS",
+  "label": "scene-templates",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "inbound-walk",
+   "unsung"
+  ],
+  "rationale": "The design system's own asset tree repeatedly names OBS scene templates and cards as part of its deliverable set, but never cites OBS in frontmatter.",
+  "evidence": "'\u251c\u2500\u2500 slides/ \u2190 OBS scene templates (1920\u00d71080)' / 'For OBS scene cards: copy from slides/.' / '[[Loudon Live \u2014 launch kit]] (channel copy, OBS scene specs, asset list)'",
+  "skeptics": [
+   [
+    false,
+    "Loudon Live Design System.md:179 and :245 name OBS scene templates/cards twice in structurally significant spots (asset tree + numbered how-to), making the design system an explicit precondition for OBS's scene material \u2014 correct enables direction, upgrading the existing reverse-direction connects-to.",
+    null
+   ],
+   [
+    true,
+    "Pair is already linked (OBS.md:33-35 carries connects-to \u2192 Loudon Live Design System, label house-style, a broader aesthetic relationship) \u2014 retyping in place to enables/scene-templates (a narrower, different claim about the asset tree) destroys the house-style edge rather than adding alongside it.",
+    "Add enables / scene-templates as a second link entry rather than replacing the existing house-style connects-to."
+   ]
+  ]
+ },
+ {
+  "id": "b072",
+  "from": "v1",
+  "source": "Phoneme Choir",
+  "type": "spawned",
+  "target": "Audition Gate",
+  "label": "syllabification-finding-via-listening",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Audition Gate already emerged-from Phoneme Choir with this exact label; the reciprocal spawned link belongs in Phoneme Choir's own frontmatter, matching the palace's existing convention (e.g. Generative Sample Libraries spawned / Phoneme Choir emerged-from).",
+  "evidence": "\"Phoneme Choir: Kokoro syllabified words differently than the spec assumed; only audition caught the mismatch.\" \u2014 Audition Gate.md",
+  "skeptics": [
+   [
+    false,
+    "Audition Gate already carries emerged-from\u2192Phoneme Choir with this exact label and the quoted example verbatim at Audition Gate.md \u00a73; Phoneme Choir has no return link \u2014 a correct spawned reciprocal, not a duplicate (emerged-from is directional, not symmetric).",
+    null
+   ],
+   [
+    true,
+    "Type likely wrong: Audition Gate.md itself frames its relation to Phoneme Choir as emerged-from ('diffuse... through synthesis' per SCHEMA \u00a74), drawn jointly with Talking Keyboard \u2014 neither project alone 'directly produced' Audition Gate 'this session' the way spawned requires. The same batch correctly used enables for the structurally identical single/multi-precondition cases (b071, b082); spawned overclaims direct authorship here.",
+    "Phoneme Choir enables Audition Gate (matching the enables treatment given to APO\u2192control-vocabulary-math and Waveguide Synthesizer\u2192Dispersion Table)."
+   ]
+  ]
+ },
+ {
+  "id": "b073",
+  "from": "v1",
+  "source": "Talking Keyboard",
+  "type": "spawned",
+  "target": "Audition Gate",
+  "label": "pronunciation-finding-via-listening",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Same pairing as Phoneme Choir; Audition Gate names this specific finding as one of its two founding examples.",
+  "evidence": "\"Talking Keyboard: pronunciation of 'eight' required spelling as 'eigh' \u2014 audition was how this was discovered.\" \u2014 Audition Gate.md",
+  "skeptics": [
+   [
+    false,
+    "Same pattern as b072 \u2014 Audition Gate's emerged-from\u2192Talking Keyboard with matching label and verbatim evidence at Audition Gate.md \u00a73; Talking Keyboard carries no reciprocal. Legitimate.",
+    null
+   ],
+   [
+    true,
+    "Same issue as b072: Talking Keyboard is one of two diffuse sources Audition Gate itself calls emerged-from; spawned implies a direct single-session production this pairing doesn't have.",
+    "Talking Keyboard enables Audition Gate."
+   ]
+  ]
+ },
+ {
+  "id": "b075",
+  "from": "v1",
+  "source": "Linear Predictive Coding",
+  "type": "spawned",
+  "target": "Tract Mirror",
+  "label": "mirror-made-playable",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk",
+   "newcomer"
+  ],
+  "rationale": "Tract Mirror emerged-from LPC already (twice, with two labels); LPC doesn't return it. Tract Mirror is the literal, playable execution of a claim LPC already makes in the abstract.",
+  "evidence": "LPC already carries \"mirrors \u2192 Waveguide Synthesizer, label: scattering-junction-is-the-vocal-tract\"; Tract Mirror's own thesis line: \"the LPC lattice filter's reflection coefficients are the impedance mismatches between successive tube segments... executed.\"",
+  "skeptics": [
+   [
+    true,
+    "Pair is already doubly linked: Tract Mirror carries both mirrors\u2192LPC (symmetric, holds both ways per the schema's own rule) AND emerged-from\u2192LPC with the identical label content ('mirror-made-playable' vs. 'the-lattice-made-playable' say the same thing twice already). Adding a third link (spawned) for the same underlying claim is redundant link-inflation on an already richly-connected pair, not a missing reciprocal.",
+    "No new link needed \u2014 the relationship is already fully captured by the existing mirrors + emerged-from pair."
+   ],
+   [
+    true,
+    "LPC.md's source lecture is dated 2026-04-28 (a pure prose session, no artifact); Tract Mirror is a wholly separate project begun 2026-06-09, six weeks later, with its own architecture decisions \u2014 not 'this session produced this entry' as spawned requires. Rationale also overstates the evidence ('twice, with two labels' \u2014 Tract Mirror actually carries one emerged-from and one separate mirrors link to LPC, not two emerged-from links).",
+    "Linear Predictive Coding enables Tract Mirror (a precondition/scaffolding relation, matching b071/b082's treatment of analogous cross-project builds)."
+   ]
+  ]
+ },
+ {
+  "id": "b076",
+  "from": "v1",
+  "source": "Audition Gate",
+  "type": "connects-to",
+  "target": "Compressor Design",
+  "label": "third-existence-proof",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "Multiple Compressor Design lessons hinged on listening to the 500-sample window as time the student could feel.",
+  "evidence": null,
+  "skeptics": [
+   [
+    false,
+    "Neither page currently links the other. The rationale phrase is a near-verbatim match to Audition Gate.md \u00a73 ('Multiple Compressor Design lessons hinged on listening to the 500-sample window...') and echoes Compressor Design's own forward_vector ('students heard the 500-sample window as time they could feel') \u2014 specific, not generic, legitimate unsung connects-to.",
+    null
+   ],
+   [
+    true,
+    "Audition Gate.md \u00a73 names all three (Phoneme Choir, Talking Keyboard, Compressor Design) as equal 'existence proofs' in one sentence, but only the first two got emerged-from links with matching labels (syllabification-finding-via-listening, pronunciation-finding-via-listening); demoting the third, identically-framed case to plain connects-to breaks that parity.",
+    "Audition Gate emerged-from Compressor Design, labeled to match its siblings (e.g. listening-as-time-finding-via-listening)."
+   ]
+  ]
+ },
+ {
+  "id": "b080",
+  "from": "v1",
+  "source": "The Palace Practices on Itself",
+  "type": "connects-to",
+  "target": "Agent Toolbox",
+  "label": "toolbox-recursion-rung",
+  "op": "add",
+  "kind": [
+   "flag"
+  ],
+  "rationale": "Directed flag confirmed \u2014 the body already narrates the person\u2192project\u2192entry-agent toolbox recursion but leaves the entry-agent rung unlinked.",
+  "evidence": "every entry could grow its own toolkit \u2014 [[Loudon's Toolkit]] (a person's kit) \u2192 a project's toolbox \u2192 an entry-agent's toolbox",
+  "skeptics": [
+   [
+    true,
+    "The body passage cited (the person\u2192project\u2192entry-agent toolbox recursion) is explicitly, by name, flagged elsewhere in the same entry's own Forward Vectors to [[Pages as Agents]] and [[Loudon's Toolkit]] for a Weave \u2014 not to Agent Toolbox. Agent Toolbox is a different rung (dispatch-worker permission profiles: palace-reader/writer/orchestrator), not 'an ordinary entry-agent's own toolkit,' which the source text says is still an open, unbuilt question. The label 'toolbox-recursion-rung' misattributes an unresolved gap to an entry that documents a different, already-solved layer.",
+    "If a link is wanted, connects-to\u2192Agent Toolbox with a label naming it as the worker-level instance of the same convention (not the entry-agent recursion); the entry-agent rung itself should route to Pages as Agents / Loudon's Toolkit as the text already directs."
+   ],
+   [
+    true,
+    "Conflates two different things under the word 'toolbox': The Palace Practices on Itself's speculative 'entry-agent's toolbox' (a hypothetical per-entry kit, per Pages as Agents) versus the actual Agent Toolbox entry (a fixed roster of three dispatch permission-profiles \u2014 palace-reader/writer/orchestrator \u2014 for session agents, unrelated to individual entries growing kits). The source entry's own Forward Vectors line explicitly names where it wants this open question flagged \u2014 '[[Pages as Agents]] and [[Loudon's Toolkit]] for a Weave' \u2014 and pointedly not Agent Toolbox. Fails the fidelity test: the reasoning rests on a keyword match ('toolbox'), not the concept.",
+    "If anything, strengthen the already-intended flags to Pages as Agents / Loudon's Toolkit rather than adding Agent Toolbox."
+   ]
+  ]
+ }
+]

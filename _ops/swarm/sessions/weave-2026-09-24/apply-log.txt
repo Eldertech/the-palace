@@ -1,0 +1,163 @@
++ SCHEMA — Reference —connects-to→ Worktree Practice [specific-vs-hub]
++ Manim CE —connects-to→ Radio Play
++ Oblique Enrichment —connects-to→ The Substrate Drifts
++ Deleuze —connects-to→ Spinoza
++ Loudon Live Design System —connects-to→ Wavetable Scanner [design-system]
++ Creative Coach —connects-to→ Oblique Portrait
++ Lateral Access —connects-to→ Creative Coach
++ Agent Wellbeing —connects-to→ Closing Well
++ Concierge —connects-to→ Reflective Practice
++ VCV Patch Generator —connects-to→ Web Audio Worklet
+- Blood Compressor —connects-to→ Biomechanical Synthesis (retyped)
++ Biomechanical Synthesis —spawned→ Blood Compressor
+- Slime Mold Delay —connects-to→ Biomechanical Synthesis (retyped)
++ Biomechanical Synthesis —spawned→ Slime Mold Delay
++ The Practice Rediscovers Its Philosophy —connects-to→ Trickster Commit [the-strongest-pair]
++ LoRA Trainer —connects-to→ The Practice Rediscovers Its Philosophy [authored-passivity]
++ Pages as Agents —connects-to→ SCHEMA — Reference
++ Project Stewardship System —connects-to→ SCHEMA — Reference
++ FOUR PILLARS —connects-to→ The Multilinear Self
++ Figure Rig —exemplifies→ ControlNet as Topology [armature-in-the-flesh]
++ Figure Rig —connects-to→ GenAI Camera [org-bone-projection]
++ Loudon Live Post-producer —connects-to→ OBS [not-a-chat-tool]
++ BLUELINE —connects-to→ Search Before You Build [the-comfy-lib-miss]
++ Skills Are Enchantable Pages —connects-to→ The Palace Speaks [migration-siblings]
++ Closing Well Ceremony —exemplifies→ No Mind Checks Itself [self-grading-disqualified]
++ ControlNet as Topology —connects-to→ The Aftermath Frame [armature-for-the-swing]
++ Harvest Ceremony —enables→ Tool Builder [checklist-growth]
++ Palace Enchantment —enables→ The Remembering Page [loads-the-memory]
++ Frame Designer —connects-to→ assume multi-agent
++ Andy Goldsworthy —connects-to→ Martin Buber [relapses-into-it-at-the-shutter]
++ Infeasible DSP Now Shippable —connects-to→ control-vocabulary-math [worked-control-vocabulary]
++ ComfyUI —connects-to→ Frame Designer [render-backend]
++ Frame Designer —connects-to→ The Commons [provisioning]
++ Oblique Portrait —connects-to→ Reflective Practice
++ STIGMERGY —connects-to→ The Substrate Drifts [v0.3-session]
++ BLUELINE —spawned→ Block It in Blender, Ink It in genAI [the-runbook]
+- LoRA Trainer —connects-to→ RunPod GPU Backend (retyped)
++ RunPod GPU Backend —enables→ LoRA Trainer [trains-on]
++ GenAI Camera —spawned→ Search Before You Build [the-depth-miss]
+- Tool Builder —connects-to→ Simondon (retyped)
++ Tool Builder —exemplifies→ Simondon [concretization]
+- Tool Builder —connects-to→ Closing Well (retyped)
++ Tool Builder —exemplifies→ Closing Well [verify-behaviour-not-structure]
+- The Aftermath Frame —connects-to→ Steer the Generator (retyped)
++ The Aftermath Frame —exemplifies→ Steer the Generator [physically-sourced-control]
++ The Shop —spawned→ Agent Toolbox [ported-toolbox-technique]
++ Skills Are Enchantable Pages —connects-to→ Two Batons, One Board
++ The Palace Hardens Around Values —connects-to→ Weave Ceremony — Context
++ Action Potential Oscillator —enables→ control-vocabulary-math
++ Compressor Design —emerged-from→ Quadratic Interpolation in DSP [soft-knee-is-quadratic]
++ Frame Designer —connects-to→ Block It in Blender, Ink It in genAI [staging-runbook]
+- Reflective Practice —connects-to→ Closing Well (retyped)
++ Closing Well —exemplifies→ Reflective Practice [reflect-on-action]
++ Logarithmic Interface Scaling —connects-to→ Shepard Tone Synthesizer
+- Synthesis Topologies —connects-to→ 2D Torus Wavetable Synthesizer (retyped)
++ 2D Torus Wavetable Synthesizer —exemplifies→ Synthesis Topologies
++ Waveguide Synthesizer —enables→ Dispersion Table
++ Douglas Hofstadter —contradicts→ Iain McGilchrist [computation-earns-comprehension-after-all]
++ BLUELINE —contradicts→ Christopher Alexander [fabrication-vs-unfolding]
++ Annie Dillard —contradicts→ BLUELINE [beautiful-horror]
++ The View From Above —contradicts→ Zoom Out to the Structure [zoom-direction-inverted]
++ Progressive Staging —contradicts→ Symbiotic Skills [staged-design-vs-organic-growth]
++ Does Personifying an Agent Change What It Does —contradicts→ Steer the Generator [words-as-control]
++ Andy Goldsworthy —contradicts→ OBS [ephemeral-vs-the-record]
++ Martin Buber —contradicts→ Martin Heidegger [they-vs-thou]
++ Excellent Adventure —contradicts→ Martin Buber [meeting-cannot-be-method]
++ The Shop —exemplifies→ The Dichotomy of Control [refuse-and-route]
++ Wavetable Scanner —exemplifies→ Progressive Staging [sketch-study-piece-is-staging]
++ Buckminster Fuller —exemplifies→ Found ↔ Made [made-pole]
++ Christopher Alexander —exemplifies→ Found ↔ Made [found-pole]
++ Agent Wellbeing —mirrors→ LaMa [plausible-not-true]
++ Christopher Alexander —mirrors→ Synth Archetypes [pattern-language]
++ Iain McGilchrist —mirrors→ Martin Buber [i-thou-is-comprehending-attention]
++ Christopher Alexander —mirrors→ Iain McGilchrist [totalizing-framework]
++ Martin Heidegger —mirrors→ The Substrate Drifts [breakdown-reveals-ground]
++ Martin Heidegger —mirrors→ Remnants in Depth [breaks-into-object]
++ Iain McGilchrist —mirrors→ Merleau-Ponty [comprehending-not-representing]
++ Buckminster Fuller —mirrors→ Simondon [synergy-is-concretization]
++ Agnes Martin —mirrors→ Move the Ink, Don't Redraw It [fixed-substrate-reveals-drift]
++ Agnes Martin —contradicts→ Move the Ink, Don't Redraw It [redraws-by-hand]
++ VCV Patch Generator —exemplifies→ Audition Gate [proves-structure-not-feel]
++ Web Audio Worklet —exemplifies→ Zoom Out to the Structure [gotcha-becomes-concept]
++ Quadratic Interpolation in DSP —mirrors→ Reflective Practice [controller-that-listens]
++ Martin Buber —exemplifies→ The Blindspot Is the Surprise Fuel [the-refusal-is-the-proof]
++ Martin Heidegger —exemplifies→ The Blindspot Is the Surprise Fuel [unresolved-not-flattened]
+# citizens with a dossier: 25: Agnes Martin, Andy Goldsworthy, Annie Dillard, Brian Eno, Buckminster Fuller, Christopher Alexander, Donella Meadows, Douglas Hofstadter, Epictetus, George Nakashima, Iain McGilchrist, James Turrell, John Cage, Julia Cameron, Lao Tzu, Leibniz, Marcus Aurelius, Martin Buber, Martin Heidegger, Pauline Oliveros, Rick Rubin, Seneca, Shunryu Suzuki, Spinoza, Yasujirō Ozu
+  (no connects-to to remove on Agnes Martin|Making a Palace Citizen)
++ Agnes Martin —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Andy Goldsworthy|Making a Palace Citizen)
++ Andy Goldsworthy —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Annie Dillard|Making a Palace Citizen)
++ Annie Dillard —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Brian Eno|Making a Palace Citizen)
++ Brian Eno —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Buckminster Fuller|Making a Palace Citizen)
++ Buckminster Fuller —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Christopher Alexander|Making a Palace Citizen)
++ Christopher Alexander —exemplifies→ Making a Palace Citizen [made-by-this-method]
+- Making a Palace Citizen —connects-to→ Donella Meadows (retyped)
++ Donella Meadows —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Douglas Hofstadter|Making a Palace Citizen)
++ Douglas Hofstadter —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Epictetus|Making a Palace Citizen)
++ Epictetus —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on George Nakashima|Making a Palace Citizen)
++ George Nakashima —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Iain McGilchrist|Making a Palace Citizen)
++ Iain McGilchrist —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on James Turrell|Making a Palace Citizen)
++ James Turrell —exemplifies→ Making a Palace Citizen [made-by-this-method]
+- Making a Palace Citizen —connects-to→ John Cage (retyped)
++ John Cage —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Julia Cameron|Making a Palace Citizen)
++ Julia Cameron —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Lao Tzu|Making a Palace Citizen)
++ Lao Tzu —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Leibniz|Making a Palace Citizen)
++ Leibniz —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Marcus Aurelius|Making a Palace Citizen)
++ Marcus Aurelius —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Martin Buber|Making a Palace Citizen)
++ Martin Buber —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Martin Heidegger|Making a Palace Citizen)
++ Martin Heidegger —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Pauline Oliveros|Making a Palace Citizen)
++ Pauline Oliveros —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Rick Rubin|Making a Palace Citizen)
++ Rick Rubin —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Seneca|Making a Palace Citizen)
++ Seneca —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Shunryu Suzuki|Making a Palace Citizen)
++ Shunryu Suzuki —exemplifies→ Making a Palace Citizen [made-by-this-method]
+- Making a Palace Citizen —connects-to→ Spinoza (retyped)
++ Spinoza —exemplifies→ Making a Palace Citizen [made-by-this-method]
+  (no connects-to to remove on Yasujirō Ozu|Making a Palace Citizen)
++ Yasujirō Ozu —exemplifies→ Making a Palace Citizen [made-by-this-method]
+* Self-Describing Knowledge Module: type → hub
+* Closing Well Ceremony: stage → growing
+* Return Ceremony: stage → growing
+* No Mind Checks Itself: stage → growing
+* Tract Mirror: stage → growing
+* Waveguide Synthesizer: stage → growing
+* Trickster Commit: stage → growing
+* Blocked, Not Prompted: stage → growing
+* Palace Map: stage → growing
+* Concierge: stage → growing
+* Pheromone Trail: stage → growing
+* BBS Design System: stage → growing
+* Search Before You Build: stage → growing
+* Skills Are Enchantable Pages: stage → growing
+* The Metaphor Stretch: stage → growing
+* DSP in Looping Dimensions: stage → growing
+* Walk That Weaves: stage → growing
+* The Palace Hardens Around Values: stage → mature
+* Graffiti Pass — Handoff 2026-04-30: stage → composting
+* Graffiti Pass — Handoff 2026-05-02: stage → composting
+* Graffiti Pass — Handoff 2026-05-02 — Session 2: stage → composting
+* Schema Ceremony Proposal — exemplifies + member-of: stage → composting
+
+135 changes
+
+PROBLEMS:
+  already labelled: OBS → Maker

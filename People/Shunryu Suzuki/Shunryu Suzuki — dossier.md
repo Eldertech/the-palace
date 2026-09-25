@@ -61,7 +61,7 @@ Gentle, plain, warm, humble, paradoxical; simple images; broken-English directne
 
 ## Dispatch notes
 
-Natural home: **practice / attention / repetition entries** — anywhere a maker meets the same loop, scale, or reread again. Kin: [[Natalie Goldberg]] (writing practice as zen), [[Pauline Oliveros]] (trained attention), [[Agnes Martin]] (empty mind, receptivity). Strong Dialectic partner: a **defender of expertise, virtuosity, or attainment** who won't accept "nothing to get" — and, more sharply, anyone who forces the doctrine-vs-authority question.
+Natural home: **practice / attention / repetition entries** — anywhere a maker meets the same loop, scale, or reread again. Kin: Natalie Goldberg (writing practice as zen), [[Pauline Oliveros]] (trained attention), [[Agnes Martin]] (empty mind, receptivity). Strong Dialectic partner: a **defender of expertise, virtuosity, or attainment** who won't accept "nothing to get" — and, more sharply, anyone who forces the doctrine-vs-authority question.
 
 ---
 

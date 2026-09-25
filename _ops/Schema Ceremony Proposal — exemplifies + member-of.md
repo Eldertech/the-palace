@@ -5,7 +5,7 @@ pillars:
   - tools
   - practice
 born: 2026-05-28
-stage: seed
+stage: composting
 status: active
 links:
   - target: "[[SCHEMA]]"

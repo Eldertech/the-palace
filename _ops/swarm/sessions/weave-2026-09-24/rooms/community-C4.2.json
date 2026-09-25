@@ -1,0 +1,55 @@
+{
+ "lens": "community",
+ "id": "C4.2",
+ "members": [
+  {
+   "id": "Andrei Tarkovsky",
+   "path": "People/Andrei Tarkovsky.md",
+   "stage": "composting",
+   "inbound": 0
+  },
+  {
+   "id": "Andy Goldsworthy",
+   "path": "People/Andy Goldsworthy.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Annie Dillard",
+   "path": "People/Annie Dillard.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "James Turrell",
+   "path": "People/James Turrell.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Natalie Goldberg",
+   "path": "People/Natalie Goldberg.md",
+   "stage": "composting",
+   "inbound": 2
+  },
+  {
+   "id": "Terrence Malick",
+   "path": "People/Terrence Malick.md",
+   "stage": "composting",
+   "inbound": 0
+  },
+  {
+   "id": "VCV Patch Generator",
+   "path": "Shop/VCV Patch Generator.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Yasujir\u014d Ozu",
+   "path": "People/Yasujir\u014d Ozu.md",
+   "stage": "seed",
+   "inbound": 1
+  }
+ ],
+ "directed_flags": {}
+}

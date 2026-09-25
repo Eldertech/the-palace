@@ -1,0 +1,257 @@
+{
+ "lens": "community",
+ "id": "C2.1",
+ "members": [
+  {
+   "id": "1 from 2",
+   "path": "1 from 2.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Agent Toolbox",
+   "path": "Agent Toolbox.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Agent Wellbeing",
+   "path": "Palace development/Agent Wellbeing.md",
+   "stage": "growing",
+   "inbound": 10
+  },
+  {
+   "id": "BBS Blackboard",
+   "path": "Palace development/BBS Blackboard.md",
+   "stage": "mature",
+   "inbound": 22
+  },
+  {
+   "id": "BBS Design System",
+   "path": "Palace development/BBS Design System.md",
+   "stage": "sprout",
+   "inbound": 11
+  },
+  {
+   "id": "Claude CLI Reference",
+   "path": "Claude CLI Reference.md",
+   "stage": "composting",
+   "inbound": 1
+  },
+  {
+   "id": "Concierge",
+   "path": "Palace development/Concierge.md",
+   "stage": "sprout",
+   "inbound": 9
+  },
+  {
+   "id": "Cooperation Yields Agency",
+   "path": "Cooperation Yields Agency.md",
+   "stage": "mature",
+   "inbound": 52
+  },
+  {
+   "id": "Creative Coach",
+   "path": "Creative Coach.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Curriculum Map",
+   "path": "Projects/Curriculum Map.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Dialogue Moderator",
+   "path": "Palace development/Dialogue Moderator.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Embeddings as Relational Meaning",
+   "path": "Embeddings as Relational Meaning.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Enchanted Conversation Archive",
+   "path": "Palace development/Enchanted Conversation Archive.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Enchanted Worker",
+   "path": "Palace development/Enchanted Worker.md",
+   "stage": "growing",
+   "inbound": 14
+  },
+  {
+   "id": "Endosymbiosis",
+   "path": "Endosymbiosis.md",
+   "stage": "mature",
+   "inbound": 16
+  },
+  {
+   "id": "Four Pillars of Enchanted Agency",
+   "path": "Palace development/Four Pillars of Enchanted Agency.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Gemma 4 \u2014 Local Coordination Guide",
+   "path": "Gemma 4 \u2014 Local Coordination Guide.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Generative Compression",
+   "path": "Palace development/Generative Compression.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Hilaritas Generator",
+   "path": "Hilaritas Generator.md",
+   "stage": "mature",
+   "inbound": 72
+  },
+  {
+   "id": "Identity Molting",
+   "path": "Identity Molting.md",
+   "stage": "mature",
+   "inbound": 9
+  },
+  {
+   "id": "JEWEL",
+   "path": "JEWEL.md",
+   "stage": "foundational",
+   "inbound": 6
+  },
+  {
+   "id": "Language as a Tonal Medium",
+   "path": "Language as a Tonal Medium.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Lateral Access",
+   "path": "Lateral Access.md",
+   "stage": "growing",
+   "inbound": 24
+  },
+  {
+   "id": "Lossy Compression with Intent Alignment",
+   "path": "Palace development/Lossy Compression with Intent Alignment.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Map Build Ceremony",
+   "path": "_ops/Map Build Ceremony.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Map Log",
+   "path": "_ops/Map Log.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Meaning and the Link",
+   "path": "Meaning and the Link.md",
+   "stage": "foundational",
+   "inbound": 13
+  },
+  {
+   "id": "Metaphor as Coupling Medium",
+   "path": "Metaphor as Coupling Medium.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Modes of Collaboration",
+   "path": "Modes of Collaboration.md",
+   "stage": "growing",
+   "inbound": 27
+  },
+  {
+   "id": "Oblique Enrichment",
+   "path": "Oblique Enrichment.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Oblique Portrait",
+   "path": "Modes of Collaboration/Oblique Portrait.md",
+   "stage": "growing",
+   "inbound": 13
+  },
+  {
+   "id": "Pages as Agents",
+   "path": "_ops/Pages as Agents.md",
+   "stage": "growing",
+   "inbound": 42
+  },
+  {
+   "id": "Palace AI Partnership Philosophy",
+   "path": "Palace development/Palace AI Partnership Philosophy.md",
+   "stage": "mature",
+   "inbound": 2
+  },
+  {
+   "id": "Palace Conatus",
+   "path": "Palace Conatus.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Palace Enchantment",
+   "path": "Palace development/Palace Enchantment.md",
+   "stage": "mature",
+   "inbound": 26
+  },
+  {
+   "id": "Palace Graffiti",
+   "path": "_ops/Palace Graffiti.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Palace Map",
+   "path": "_ops/Palace Map.md",
+   "stage": "sprout",
+   "inbound": 9
+  },
+  {
+   "id": "Palace Orchestrator",
+   "path": "Palace development/Palace Orchestrator.md",
+   "stage": "growing",
+   "inbound": 13
+  },
+  {
+   "id": "Palace as Context Injection System",
+   "path": "Palace development/Palace as Context Injection System.md",
+   "stage": "growing",
+   "inbound": 14
+  },
+  {
+   "id": "Pheromone Trail",
+   "path": "Palace development/Pheromone Trail.md",
+   "stage": "sprout",
+   "inbound": 9
+  }
+ ],
+ "directed_flags": {
+  "Identity Molting": [
+   "Cross-cite the three narrative-therapy treatments (Creative Coach, Lateral Access, Identity Molting) (flag commons-the-palace-1790128920547)."
+  ],
+  "Lateral Access": [
+   "Cross-cite the three narrative-therapy treatments (Creative Coach, Lateral Access, Identity Molting); Lateral Access doesn't link Creative Coach at all. Note Creative Coach.md:203 ('none of the three cite each other') becomes false once done \u2014 flag it for edit (flag commons-the-palace-1790128920547)."
+  ],
+  "Palace Enchantment": [
+   "Palace Enchantment couples-with The Remembering Page \u2014 zero mentions today (flag e4538455-cbd6-481c-9255-af7ba0aeacf6)."
+  ]
+ }
+}

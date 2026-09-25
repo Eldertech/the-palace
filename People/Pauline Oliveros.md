@@ -45,6 +45,9 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: exemplifies
     label: listening-as-bridge
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Pauline Oliveros
@@ -61,7 +64,7 @@ She came up in the wild early days of electronic and experimental music — the 
 
 Oliveros starts from one distinction and never leaves it: *hearing is passive; listening is a practice.* Sound arrives whether you attend to it or not; Deep Listening is the trained, active, whole-field reception of *everything* audible at once — not just the note you meant to play, but the room, the traffic, your own blood, the silence between. She toggles deliberately between *focal* attention (a single point) and *global* attention (the entire sphere), and the training is to hold both — to widen rather than sharpen. Her *Sonic Meditations* make this democratic: they aren't pieces performed for an audience but practices anyone can enter, so the line between composer, performer, and listener dissolves. The practice *is* the piece.
 
-There's a real distinction to draw with [[John Cage]], her elder and foil: Cage worked to remove *intention* from the *making* (let the dice choose, let sounds be themselves); Oliveros worked to deepen *attention* in the *receiving*. Same avant-garde lineage, opposite end of the act — he emptied the composer, she filled the listener.
+There's a real distinction to draw with [[John Cage]], her elder and foil: Cage worked to remove *intention* from the *making* (let the dice choose, let sounds be themselves); Oliveros worked to deepen *attention* in the *receiving*. Same avant-garde lineage, opposite end of the act — he emptied the composer, she filled the listener. R. Murray Schafer makes the third corner of that listening triangle: he sent people outdoors to hear the world as a soundscape already composing itself, the score that was playing before either the composer or the listener showed up.
 
 ## The question she brings into any room
 

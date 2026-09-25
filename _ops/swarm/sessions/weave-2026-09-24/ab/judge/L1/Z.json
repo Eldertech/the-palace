@@ -1,0 +1,86 @@
+{
+ "arm": "Z",
+ "room": "L1",
+ "total_proposals": 13,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Loudon Live Post-producer",
+   "type": "connects-to",
+   "target": "LDN RTM",
+   "label": "first-real-job",
+   "rationale": "LDN RTM names Post-producer as its enabled destination and explicitly holds a design seam open there by name ('\u00a7 Deferred') \u2014 Post-producer's own frontmatter has no return link despite being directly addressed.",
+   "evidence": "\"The role has no palace entry yet \u2014 it earns one when it has run real takes... The seam is held open at [[Loudon Live Post-producer]] \u00a7 Deferred.\" (LDN RTM.md:82)",
+   "item_id": "Z1"
+  },
+  {
+   "kind": "bridge",
+   "source": "GenAI Camera",
+   "type": "mirrors",
+   "target": "reads as a live camera pipeline distinct from the offline BLUELINE render bench",
+   "rationale": "identical four-move pipeline (block \u2192 registered conditioning from one camera \u2192 high-denoise redraw via ControlNet stack \u2192 composite) \u2014 one batch-scripted, one streaming",
+   "evidence": "\"I am [[Blocked, Not Prompted]] taken to its conclusion: the camera *is* the conditioning.\" (GenAI Camera.md:39-40) || \"The whole point of [[Blocked, Not Prompted]] in one runbook: you author the scene as 3D geometry, the gen-AI fills the composition you dictated\" (Block It...md:43)",
+   "item_id": "Z2"
+  },
+  {
+   "kind": "relation",
+   "source": "GenAI Camera",
+   "type": "mirrors",
+   "target": "Block It in Blender, Ink It in genAI",
+   "label": "batch-vs-live",
+   "rationale": "Both entries are the identical four-move pipeline (block in Blender, emit registered canny/depth/pose conditioning from one camera, redraw via ControlNet stack at high denoise, composite layers) \u2014 one written as an offline batch runbook, the other as a live streaming camera. Nothing linked them despite each appearing in the other's own walk neighbourhood.",
+   "evidence": "\"I am [[Blocked, Not Prompted]] taken to its conclusion: the camera *is* the conditioning\" (GenAI Camera.md:39-40) vs. \"The four moves\" runbook (Block It...md:45-56)",
+   "item_id": "Z3"
+  },
+  {
+   "kind": "relation",
+   "source": "Figure Rig",
+   "type": "connects-to",
+   "target": "Block It in Blender, Ink It in genAI",
+   "label": "runbook-for-my-payoff",
+   "rationale": "Figure Rig's own charter names its 'downstream recipe (the payoff)' as exactly the D2 redraw (canny 0.30 + depth 0.60 + openpose 0.70, denoise 0.92) that the runbook writes up step by step \u2014 a direct genuine overlap, not a forced one.",
+   "evidence": "\"downstream recipe (the payoff): the D2 redraw \u2014 img2img over the ink plate, anchored canny 0.30 + depth 0.60 + openpose 0.70\" (Figure Rig.md:41)",
+   "item_id": "Z4"
+  },
+  {
+   "kind": "relation",
+   "source": "Block It in Blender, Ink It in genAI",
+   "type": "deepens",
+   "target": "ControlNet as Topology",
+   "label": "runbook-elaborates-theory",
+   "rationale": "The runbook's D2 anchoring weights (canny 0.30 + depth 0.60 + openpose 0.70) are a worked elaboration of ControlNet as Topology's canyon-carving theory; the theory is the ground, the runbook the concrete case. Direction follows the deepens invariant (elaborator points back to ground).",
+   "evidence": null,
+   "item_id": "Z5"
+  },
+  {
+   "kind": "relation",
+   "source": "BLUELINE",
+   "type": "spawned",
+   "target": "Block It in Blender, Ink It in genAI",
+   "label": "the-runbook",
+   "rationale": "BLUELINE already spawned Hand-Drawn 3D Look, Frame Designer, and Steer the Generator (all in its own frontmatter) \u2014 the runbook is the same kind of thing, and the runbook's own frontmatter already declares emerged-from BLUELINE. The reverse side was simply never written.",
+   "evidence": "\"Proven in [[BLUELINE]]; the scripts live in Projects/BLUELINE/proofs/blender-handdrawn/\" (Block It..., line 43)",
+   "item_id": "Z6"
+  },
+  {
+   "kind": "relation",
+   "source": "Steer the Generator",
+   "type": "connects-to",
+   "target": "ControlNet as Topology",
+   "label": "control-move-is-this-theory",
+   "rationale": "Steer the Generator's move 1 ('Control the structure that matters \u2014 don't describe it, condition on it') is a plain-language restatement of ControlNet-as-armature. No existing link between them despite the direct conceptual overlap.",
+   "evidence": "\"Control the structure that matters \u2014 don't describe it, condition on it.\" (Steer the Generator.md:43) vs. \"ControlNet is an armature.\" (ControlNet as Topology.md:42)",
+   "item_id": "Z7"
+  },
+  {
+   "kind": "relation",
+   "source": "Adopt the Craft, Author the Seam",
+   "type": "connects-to",
+   "target": "Block It in Blender, Ink It in genAI",
+   "label": "worked-instance",
+   "rationale": "Adopt the Craft's own forward_vector says it wants to 'make Blocked, Not Prompted my worked instance' \u2014 the runbook is the more concrete worked instance of exactly that seam-authoring principle (established Blender + established ComfyUI, only the conditioning-emission authored new).",
+   "evidence": "\"I want to be applied past BLUELINE and to make Blocked, Not Prompted my worked instance.\" (Adopt the Craft...md:12)",
+   "item_id": "Z8"
+  }
+ ]
+}

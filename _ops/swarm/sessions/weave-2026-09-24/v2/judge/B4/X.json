@@ -1,0 +1,80 @@
+{
+ "arm": "X",
+ "room": "B4",
+ "total_proposals": 14,
+ "sample": [
+  {
+   "kind": "unsung",
+   "source": "Shop/LoRA Trainer.md",
+   "type": "connects-to",
+   "target": "STIGMERGY",
+   "label": null,
+   "rationale": "Loudon's in-context rating ([[Review Layer]] \u2192 [[STIGMERGY]]) matched the metrics and sharpened them",
+   "item_id": "X1"
+  },
+  {
+   "kind": "bridge",
+   "source": "LoRA Trainer",
+   "type": "mirrors",
+   "target": "",
+   "rationale": "A diagnostic discipline: when a system underperforms, isolate which layer is actually responsible (structure/dataset) before touching the layer that only looks responsible (parameters/steps).",
+   "evidence": "\"If it scores high ... the pipeline is sound and the dataset is the problem \u2014 don't debug the recipe.\" || \"structure produces behavior ... swapping the faces at the top changes nothing until you change the structure.\"",
+   "item_id": "X2"
+  },
+  {
+   "kind": "unsung",
+   "source": "Weaving Memory into the Palace.md",
+   "type": "connects-to",
+   "target": "Worktree Practice",
+   "label": null,
+   "rationale": "a cluster of git/worktree cautions \u2192 a single \"shared-tree discipline\" nugget \u2192 [[Worktree Practice]]",
+   "item_id": "X3"
+  },
+  {
+   "kind": "unsung",
+   "source": "Weaving Memory into the Palace.md",
+   "type": "connects-to",
+   "target": "Substrate Skill",
+   "label": null,
+   "rationale": "If [[Substrate Skill]] ever grows an \"operating this environment\" section, the three operator-env-native memories could point there too",
+   "item_id": "X4"
+  },
+  {
+   "kind": "relation",
+   "source": "LoRA Trainer",
+   "type": "mirrors",
+   "target": "Spinoza",
+   "label": "identity-persists-across-modes",
+   "rationale": "The DINO/ArcFace grading protocol operationalizes conatus: it tests whether a trained identity persists as itself under changing external circumstance (context, seed) rather than dissolving into them.",
+   "evidence": "\"Render the subject across new contexts \u00d7 different seeds (where seed-locking can't help)\" / \"the endeavor to persist in its own being is the actual essence of the thing itself.\"",
+   "item_id": "X5"
+  },
+  {
+   "kind": "unsung",
+   "source": "Spinoza.md",
+   "type": "connects-to",
+   "target": "Deleuze",
+   "label": null,
+   "rationale": "a later reader \u2014 [[Deleuze]], Nietzsche, Freud \u2014 will say the affects are driving the car and reason is a passenger narrating the scenery",
+   "item_id": "X6"
+  },
+  {
+   "kind": "bridge",
+   "source": "Block It in Blender, Ink It in genAI",
+   "type": "mirrors",
+   "target": "",
+   "rationale": "Both reject pushing on the surface-level parameter (a prompt word, a dial) in favor of pushing on the underlying structure (the scene's geometry, the system's paradigm) \u2014 the same leverage-point logic stated once as craft advice and once as systems theory.",
+   "evidence": "\"Drama is geometry, not adjectives.\" || \"the obvious lever (a number, a price, a parameter) barely moves anything, and the real levers ... are exactly the ones everyone flinches away from.\"",
+   "item_id": "X7"
+  },
+  {
+   "kind": "bridge",
+   "source": "LoRA Trainer",
+   "type": "mirrors",
+   "target": "",
+   "rationale": "Both treat identity as what survives variation in circumstance \u2014 Spinoza names it philosophically (essence as striving), the grading protocol measures it empirically (cosine similarity across contexts).",
+   "evidence": "\"Render the subject across new contexts \u00d7 different seeds (where seed-locking can't help)\" and \"DINO ... subject fidelity\" || \"the endeavor to persist in its own being is the actual essence of the thing itself.\"",
+   "item_id": "X8"
+  }
+ ]
+}

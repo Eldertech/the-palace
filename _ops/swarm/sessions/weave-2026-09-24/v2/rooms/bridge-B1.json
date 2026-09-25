@@ -1,0 +1,233 @@
+{
+ "lens": "bridge",
+ "id": "B1",
+ "tool_side": [
+  {
+   "id": "1D Wavetable Scanning",
+   "path": "1D Wavetable Scanning.md",
+   "type": "concept",
+   "stage": "sprout",
+   "reached_by": 5,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Three.js  (symmetric: holds both ways)",
+    "\u2190 exemplifies \u2190 Wavetable Scanner",
+    "\u2192 connects-to \u2192 Web Audio Worklet",
+    "\u2192 emerged-from \u2192 Wavetable Scanner",
+    "\u2192 mirrors \u2192 2D Torus Wavetable Synthesizer",
+    "\u2192 mirrors \u2192 Waveguide Synthesizer"
+   ]
+  },
+  {
+   "id": "Animate the Background",
+   "path": "Animate the Background.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 LaMa  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Line-Art Layer Decomposition",
+    "\u2192 connects-to \u2192 Adopt the Craft, Author the Seam",
+    "\u2192 connects-to \u2192 Frame Designer",
+    "\u2192 connects-to \u2192 Steer the Generator",
+    "\u2192 couples-with \u2192 Blocked, Not Prompted",
+    "\u2192 emerged-from \u2192 BLUELINE",
+    "\u2192 exemplifies \u2192 The Flow Field is the Spine"
+   ]
+  },
+  {
+   "id": "Image-to-3D Smith",
+   "path": "Shop/Image-to-3D Smith.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 enables \u2190 RunPod GPU Backend",
+    "\u2192 connects-to \u2192 Blender",
+    "\u2192 connects-to \u2192 FLUX (Hugging Face)",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 Three.js"
+   ]
+  },
+  {
+   "id": "PDL Renderer",
+   "path": "PDL Renderer.md",
+   "type": "project",
+   "stage": "sprout",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2190 connects-to \u2190 VCV Patch Generator  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Generative Audio Devices",
+    "\u2192 connects-to \u2192 Registry Pattern",
+    "\u2192 connects-to \u2192 Synthesis Topologies",
+    "\u2192 emerged-from \u2192 Generative Audio Devices"
+   ]
+  },
+  {
+   "id": "Portamento and Physical Pitch Modeling",
+   "path": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "project",
+   "stage": "mature",
+   "reached_by": 8,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Biomechanical Synthesis  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Differential Equations  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Dispersion  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Quadratic Interpolation in DSP  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Shepard Tone Synthesizer",
+    "\u2192 connects-to \u2192 Action Potential Oscillator",
+    "\u2192 connects-to \u2192 Bessel Functions in Synthesis",
+    "\u2192 connects-to \u2192 Biomechanical Synthesis",
+    "\u2192 couples-with \u2192 Kuramoto Coupling",
+    "\u2192 deepens \u2192 Frequency-Time Duality"
+   ]
+  },
+  {
+   "id": "Remotion",
+   "path": "Shop/Remotion.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 4,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Manim CE  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 ffmpeg  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Manim CE",
+    "\u2192 connects-to \u2192 The Shop"
+   ]
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Buckminster Fuller",
+   "path": "People/Buckminster Fuller.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2192 connects-to \u2192 Cooperation Yields Agency",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Leverage Points Framework",
+    "\u2192 contradicts \u2192 Donella Meadows",
+    "\u2192 contradicts \u2192 Martin Heidegger",
+    "\u2192 member-of \u2192 Source Library",
+    "\u2192 mirrors \u2192 Kuramoto Coupling"
+   ]
+  },
+  {
+   "id": "Dub Lineage",
+   "path": "Dub Lineage.md",
+   "type": "concept",
+   "stage": "sprout",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Parametric Resonance  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 R. Murray Schafer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Terrence Malick  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 Retrospective Delay",
+    "\u2190 emerged-from \u2190 Semantic Delay",
+    "\u2190 mirrors \u2190 Trickster  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Playful Interface Design",
+    "\u2192 deepens \u2192 Semantic Delay",
+    "\u2192 enables \u2192 Retrospective Delay",
+    "\u2192 mirrors \u2192 Trickster"
+   ]
+  },
+  {
+   "id": "Entry Conatus",
+   "path": "Entry Conatus.md",
+   "type": "concept",
+   "stage": "sprout",
+   "reached_by": 12,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Deleuze  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Floquet Theory  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Pages as Agents  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Drift  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Remembering Page  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Weave Ceremony  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 spinoza-zhuangzi-on-striving  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Trickster",
+    "\u2192 connects-to \u2192 Enrichment",
+    "\u2192 connects-to \u2192 Spore Check Ceremony",
+    "\u2192 connects-to \u2192 Weave Ceremony",
+    "\u2192 couples-with \u2192 SCHEMA",
+    "\u2192 deepens \u2192 Pages as Agents",
+    "\u2192 deepens \u2192 Spinoza Conatus",
+    "\u2192 emerged-from \u2192 Phoneme Choir",
+    "\u2192 mirrors \u2192 Threshold Conatus"
+   ]
+  },
+  {
+   "id": "Julia Cameron",
+   "path": "People/Julia Cameron.md",
+   "type": "person",
+   "stage": "seed",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Annie Dillard  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Marcus Aurelius  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Registry Pattern  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Cross-Domain Resonances",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Marcus Aurelius",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 connects-to \u2192 Stoicism",
+    "\u2192 contradicts \u2192 Agnes Martin",
+    "\u2192 contradicts \u2192 Registry Pattern",
+    "\u2192 deepens \u2192 FOUR PILLARS",
+    "\u2192 member-of \u2192 Source Library",
+    "\u2192 mirrors \u2192 Rick Rubin"
+   ]
+  },
+  {
+   "id": "Merleau-Ponty",
+   "path": "Merleau-Ponty.md",
+   "type": "concept",
+   "stage": "sprout",
+   "reached_by": 15,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Annie Dillard  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Palace Philosophies  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Philosopher Visits the Entry  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 STIGMERGY Philosophical Lenses  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Spinoza  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Lens  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Reader's Context Window  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Spinoza Conatus  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 The Drift  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Martin Heidegger  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Confucianism",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Logarithmic Interface Scaling",
+    "\u2192 connects-to \u2192 Palace Philosophies",
+    "\u2192 connects-to \u2192 Spinoza Conatus",
+    "\u2192 connects-to \u2192 Stoicism",
+    "\u2192 contradicts \u2192 Spinoza Conatus",
+    "\u2192 contradicts \u2192 The Drift",
+    "\u2192 deepens \u2192 Boundary-Crossing Instruments",
+    "\u2192 deepens \u2192 Playful Interface Design"
+   ]
+  },
+  {
+   "id": "Striatum",
+   "path": "Striatum.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Action Potential Oscillator  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 BBS Blackboard  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Practice Rediscovers Its Philosophy  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Hilaritas Generator",
+    "\u2190 mirrors \u2190 Palace Map  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Action Potential Oscillator",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 deepens \u2192 Excellent Adventure"
+   ]
+  }
+ ]
+}

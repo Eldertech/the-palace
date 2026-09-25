@@ -1,0 +1,246 @@
+{
+ "cluster": "L5",
+ "lens": "lifecycle",
+ "summary": "All five targets share one shape: each already reaches OUT to its real neighbors \u2014 Audition Gate names Phoneme Choir and Talking Keyboard as its evidence, Quadratic Interpolation in DSP (QID) spawned Compressor Design and connects to Differential Equations/Latent Error/Portamento, SMPTE LTC deepens Boundary-Crossing Instruments and ties itself to Frequency-Time Duality, Slime Mold Delay names Biomechanical Synthesis as its parent hub and Particle Synthesis as its population-based sibling, Tract Mirror names Linear Predictive Coding and Waveguide Synthesizer as the mirrors-pair it makes literal \u2014 but none of those neighbors link back. The zero-inbound count wasn't a sign of isolation; it was one-way roads on genuinely well-chosen streets. The strongest finds were the ones where a target's own body had already done the analytical work and just hadn't been echoed: Biomechanical Synthesis' \"eight instruments\" hub not yet listing Slime Mold Delay as the fifth spawned instrument even though the entry says so explicitly; Linear Predictive Coding already carrying the exact mirrors claim (\"scattering-junction-is-the-vocal-tract\") that Tract Mirror goes on to build as hardware-in-a-DAW; Frequency-Time Duality's perceptual reciprocal-axis principle showing up again, restated as engineering, inside SMPTE LTC. One structural surprise: Quadratic Interpolation in DSP has no forward_vector field at all, unusual for a \"growing\" entry with this much developed content. Another: Tract Mirror is staged \"seed\" despite being a shipped, Ableton-verified VST3/AU plugin \u2014 worth a second look by whoever owns stage calls.",
+ "members_read": [
+  "Audition Gate.md",
+  "Quadratic Interpolation in DSP.md",
+  "SMPTE LTC.md",
+  "Projects/Slime Mold Delay.md",
+  "Projects/Tract Mirror.md",
+  "Projects/Generative Sample Libraries.md",
+  "Projects/Phoneme Choir.md",
+  "Quality Manifesto.md",
+  "_ops/Substrate Skill.md",
+  "Projects/Talking Keyboard.md",
+  "Projects/Compressor Design.md",
+  "DSP Frameworks.md",
+  "Differential Equations.md",
+  "Latent Error.md",
+  "Projects/Portamento and Physical Pitch Modeling.md",
+  "Exponential Decay Curvature.md",
+  "Projects/Blood Compressor.md",
+  "Boundary-Crossing Instruments.md",
+  "Projects/Frequency-Time Duality.md",
+  "Modes of Collaboration.md",
+  "Signal-Rate CV Architecture.md",
+  "Projects/Biomechanical Synthesis.md",
+  "Projects/Particle Synthesis.md",
+  "Projects/Retrospective Delay.md",
+  "Projects/Semantic Delay.md",
+  "Linear Predictive Coding.md",
+  "Projects/Waveguide Synthesizer.md",
+  "Shop/Three.js.md",
+  "_ops/swarm/sessions/weave-2026-09-24/new-entries-block.md"
+ ],
+ "walk_results": [
+  {
+   "target": "Audition Gate",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Its own body already names Phoneme Choir and Talking Keyboard as the two concrete failures that proved the practice; neither links back. Stage (seed, self-marked 'Section seed' throughout) and forward_vector both still fit."
+  },
+  {
+   "target": "Quadratic Interpolation in DSP",
+   "disposition": "wired",
+   "inbound_proposed": 5,
+   "note": "QID spawned Compressor Design but Compressor Design never says emerged-from back; Differential Equations, Latent Error, and Portamento are all named in QID's own 'Related Concepts' section without a reciprocal; Exponential Decay Curvature (hop2) is an unnamed structural mirror \u2014 same closed-form-curvature-control move in a different domain. Flag: QID has no forward_vector field at all, unusual for stage=growing with this much developed content."
+  },
+  {
+   "target": "SMPTE LTC",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Frequency-Time Duality's own claim (a continuous parameter reads as different perceptual experience depending on where you sit on the axis) is exactly what SMPTE LTC's body restates as engineering ('every bit transition is a frequency/phase event') \u2014 genuinely reciprocal, not yet wired. Boundary-Crossing Instruments, Modes of Collaboration, and Signal-Rate CV Architecture were checked and are too general / not textually grounded enough to force a reciprocal (BCI already carries 37 inbound of this shape)."
+  },
+  {
+   "target": "Slime Mold Delay",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Its body states outright it 'is the first concrete development of one of the eight Biomechanical Synthesis instruments' \u2014 the hub hasn't listed it as spawned yet (Action Potential Oscillator is, by the same hub, with the same type). Particle Synthesis is named as its population-based sibling but doesn't point back. Hyperdimensional Prism / Kuramoto Coupling / Spinoza Conatus / Substrate Skill are all major hubs (40\u201372 inbound) already carrying this shape of relation from many entries \u2014 reciprocal would be forced there, skipped."
+  },
+  {
+   "target": "Tract Mirror",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Linear Predictive Coding already carries the mirrors claim ('scattering-junction-is-the-vocal-tract') that Tract Mirror executes as hardware; Waveguide Synthesizer is the named mirrors-sibling (tube vs string) with no return link; Three.js already uses a 'commissioned-by' pattern for Waveguide Synthesizer and should carry the same for Tract Mirror, whose GUI literally is a WKWebView running three.js. Flag: stage=seed undersells a shipped, Ableton-verified VST3/AU plugin."
+  }
+ ],
+ "typed_relations": [
+  {
+   "source": "Phoneme Choir",
+   "target": "Audition Gate",
+   "type": "spawned",
+   "label": "syllabification-finding-via-listening",
+   "kind": "inbound-walk",
+   "evidence": "\"Phoneme Choir: Kokoro syllabified words differently than the spec assumed; only audition caught the mismatch.\" \u2014 Audition Gate.md",
+   "rationale": "Audition Gate already emerged-from Phoneme Choir with this exact label; the reciprocal spawned link belongs in Phoneme Choir's own frontmatter, matching the palace's existing convention (e.g. Generative Sample Libraries spawned / Phoneme Choir emerged-from).",
+   "spark": 3
+  },
+  {
+   "source": "Talking Keyboard",
+   "target": "Audition Gate",
+   "type": "spawned",
+   "label": "pronunciation-finding-via-listening",
+   "kind": "inbound-walk",
+   "evidence": "\"Talking Keyboard: pronunciation of 'eight' required spelling as 'eigh' \u2014 audition was how this was discovered.\" \u2014 Audition Gate.md",
+   "rationale": "Same pairing as Phoneme Choir; Audition Gate names this specific finding as one of its two founding examples.",
+   "spark": 3
+  },
+  {
+   "source": "Compressor Design",
+   "target": "Quadratic Interpolation in DSP",
+   "type": "emerged-from",
+   "label": "soft-knee-is-quadratic",
+   "kind": "inbound-walk",
+   "evidence": "\"This is literally quadratic interpolation from 'no change to input' to 'full compression ratio applied.'\" \u2014 Quadratic Interpolation in DSP.md",
+   "rationale": "QID's own frontmatter already has spawned \u2192 Compressor Design; the missing half is Compressor Design pointing back, per the same lineage-pair convention seen elsewhere in the palace.",
+   "spark": 3
+  },
+  {
+   "source": "Differential Equations",
+   "target": "Quadratic Interpolation in DSP",
+   "type": "connects-to",
+   "label": "smoothing-as-de-solution",
+   "kind": "inbound-walk",
+   "evidence": "\"Smooth interpolation functions are solutions to differential equations. A quadratic ramp is approximating an exponential approach.\" \u2014 Quadratic Interpolation in DSP.md",
+   "rationale": "QID names this connection directly in its own Related Concepts section; DE's frontmatter doesn't return it.",
+   "spark": 2
+  },
+  {
+   "source": "Latent Error",
+   "target": "Quadratic Interpolation in DSP",
+   "type": "connects-to",
+   "label": "interpolation-choice-as-error-or-character",
+   "kind": "inbound-walk",
+   "evidence": "\"This connects to Latent Error: is using the 'wrong' interpolation method a latent design error, or is it a creative choice that adds character?\" \u2014 Quadratic Interpolation in DSP.md",
+   "rationale": "QID poses this as an open, load-bearing question about Latent Error's own diagnostic frame; genuine two-way relevance.",
+   "spark": 3
+  },
+  {
+   "source": "Portamento and Physical Pitch Modeling",
+   "target": "Quadratic Interpolation in DSP",
+   "type": "connects-to",
+   "label": "glide-interpolation-choice",
+   "kind": "inbound-walk",
+   "evidence": "\"Pitch movement during a glide is a choice of interpolation function. Linear, exponential, or quadratic? Each sounds different and maps onto different physical models.\" \u2014 Quadratic Interpolation in DSP.md",
+   "rationale": "QID's Related Concepts section treats Portamento as a direct application case; Portamento doesn't reciprocate.",
+   "spark": 2
+  },
+  {
+   "source": "Exponential Decay Curvature",
+   "target": "Quadratic Interpolation in DSP",
+   "type": "mirrors",
+   "label": "closed-form-curvature-control",
+   "kind": "inbound-walk",
+   "evidence": "\"the curvature control found on synth envelopes... sweeps a decay from convex through linear to concave while holding total decay time fixed \u2014 admits a clean closed form\" \u2014 Exponential Decay Curvature.md, vs. QID's \"the control point... 'pulls' the curve toward itself, controlling the curvature.\"",
+   "rationale": "Same pattern (a closed-form parameter that bends a curve's shape while holding its endpoints fixed), different material \u2014 an envelope-decay law vs. a Bezier/quadratic interpolant. Neither entry currently names the other; a genuine hop2 find, not textually stated anywhere yet.",
+   "spark": 4
+  },
+  {
+   "source": "Frequency-Time Duality",
+   "target": "SMPTE LTC",
+   "type": "mirrors",
+   "label": "engineered-vs-perceptual-axis",
+   "kind": "inbound-walk",
+   "evidence": "\"It is also deeply tied to Frequency-Time Duality: LTC is literally the time axis encoded in frequency space. Every bit transition is a frequency/phase event. Reading LTC is a frequency-domain act that yields time-domain information.\" \u2014 SMPTE LTC.md",
+   "rationale": "Frequency-Time Duality's core claim (f = 1/T, one continuous axis reads as different phenomena depending on where you sit) reappears here as an engineered protocol instead of a perceptual continuum. SMPTE LTC connects-to FTD already; FTD doesn't point back, and the relationship is closer to mirrors than plain connects-to \u2014 same reciprocal math, different material (ear vs. protocol).",
+   "spark": 4
+  },
+  {
+   "source": "Biomechanical Synthesis",
+   "target": "Slime Mold Delay",
+   "type": "spawned",
+   "label": "instrument-05",
+   "kind": "inbound-walk",
+   "evidence": "\"This entry is the first concrete development of one of the eight Biomechanical Synthesis instruments. The hub diagram lists it; this entry is its body.\" \u2014 Slime Mold Delay.md",
+   "rationale": "Biomechanical Synthesis already spawned \u2192 Action Potential Oscillator (instrument-01, presumably) with this type; Slime Mold Delay states its own parentage explicitly but the hub hasn't caught up.",
+   "spark": 3
+  },
+  {
+   "source": "Particle Synthesis",
+   "target": "Slime Mold Delay",
+   "type": "connects-to",
+   "label": "population-based-emergence-sibling",
+   "kind": "inbound-walk",
+   "evidence": "\"The metaphor connects directly to Particle Synthesis \u2014 both are population-based instruments where individual elements have no intelligence and the system has plenty.\" \u2014 Slime Mold Delay.md",
+   "rationale": "Slime Mold Delay deepens Particle Synthesis already; this additional, more specific kinship (emergent behavior from unintelligent populations) is named in the body and unreturned. Particle Synthesis is dormant \u2014 a live sibling pointing in gives it a current thread to follow.",
+   "spark": 2
+  },
+  {
+   "source": "Linear Predictive Coding",
+   "target": "Tract Mirror",
+   "type": "spawned",
+   "label": "mirror-made-playable",
+   "kind": "inbound-walk",
+   "evidence": "LPC already carries \"mirrors \u2192 Waveguide Synthesizer, label: scattering-junction-is-the-vocal-tract\"; Tract Mirror's own thesis line: \"the LPC lattice filter's reflection coefficients are the impedance mismatches between successive tube segments... executed.\"",
+   "rationale": "Tract Mirror emerged-from LPC already (twice, with two labels); LPC doesn't return it. Tract Mirror is the literal, playable execution of a claim LPC already makes in the abstract.",
+   "spark": 3
+  },
+  {
+   "source": "Waveguide Synthesizer",
+   "target": "Tract Mirror",
+   "type": "mirrors",
+   "label": "the-string-to-its-tube",
+   "kind": "inbound-walk",
+   "evidence": "\"Where the Waveguide Synthesizer renders the string body of this mathematics in the browser, Tract Mirror renders the tube body \u2014 and steps out of the browser into Ableton Live.\" \u2014 Tract Mirror.md",
+   "rationale": "Tract Mirror mirrors \u2192 Waveguide Synthesizer already (the-tube-to-its-string); this is a genuine symmetric pair named explicitly as siblings, and Waveguide Synthesizer's own frontmatter doesn't carry it back.",
+   "spark": 4
+  },
+  {
+   "source": "Three.js",
+   "target": "Tract Mirror",
+   "type": "connects-to",
+   "label": "commissioned-by",
+   "kind": "inbound-walk",
+   "evidence": "\"JUCE 8 + WebView GUI \u2014 C++ DSP core; the GUI is a WKWebView running three.js.\" \u2014 Tract Mirror.md; Three.js already uses label commissioned-by for Waveguide Synthesizer.",
+   "rationale": "Same relationship, same label pattern Three.js already uses for its other browser-rendered instrument commission; Tract Mirror is simply missing from that same roster.",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Audition Gate",
+   "target": "Compressor Design",
+   "type": "connects-to",
+   "phrase": "Multiple Compressor Design lessons hinged on listening to the 500-sample window as time the student could feel.",
+   "structurally_significant": true,
+   "label": "third-existence-proof"
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Quadratic Interpolation in DSP",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "vector_issue": "No forward_vector field in frontmatter at all \u2014 unusual for stage=growing given how developed the body is (three worked applications, direct Loudon quotes, five open questions).",
+   "face": "none",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Tract Mirror",
+   "stage_current": "seed",
+   "stage_proposed": "sprout or growing (flag only, for the owner to judge)",
+   "vector_issue": "Body describes a shipped, working artifact ('Verified in Ableton Live 12, VST3 + AU') \u2014 seed usually names an idea not yet built; this one is built.",
+   "face": "merits-face",
+   "graffiti_note": "Already has a hero image; face is fine \u2014 it's the stage label that lags the content."
+  },
+  {
+   "entry": "Boundary-Crossing Instruments (prose in SMPTE LTC.md)",
+   "stage_current": "",
+   "stage_proposed": "",
+   "vector_issue": "SMPTE LTC's body links '[[Boundary-Crossing Instrument]]' (singular) in prose while the actual entry title is 'Boundary-Crossing Instruments' (plural) \u2014 likely resolves via alias but worth a linter pass; not touched here per scope.",
+   "face": "none",
+   "graffiti_note": ""
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "SMPTE LTC.md body uses the singular '[[Boundary-Crossing Instrument]]' where the frontmatter link correctly uses the plural title 'Boundary-Crossing Instruments' \u2014 a possible ghost/alias link.",
+   "kind": "link-title-mismatch",
+   "entries": [
+    "SMPTE LTC.md"
+   ],
+   "proposed_action": "Note only, per scope (linter matters beyond noting are out of bounds for this lens)."
+  }
+ ]
+}

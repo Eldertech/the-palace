@@ -1,0 +1,81 @@
+{
+ "arm": "X",
+ "room": "B1",
+ "total_proposals": 17,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Shop/Image-to-3D Smith.md",
+   "type": "contradicts",
+   "target": "People/Julia Cameron.md",
+   "label": "when-discernment-enters",
+   "rationale": "Cameron defers all judgment to protect flow; the Shop's self-check makes judgment mandatory before delivery \u2014 opposed, both defensible, at different pipeline stages.",
+   "evidence": "no re-reading the morning pages for weeks / if the brief specifies Blender and is_watertight=False, flag it before the Maker considers the job done.",
+   "item_id": "X1"
+  },
+  {
+   "kind": "bridge",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "Striatum.md",
+   "rationale": "Both describe a convergence-to-target process that overshoots and corrects rather than landing cleanly \u2014 a damped feedback loop, one in frequency space, one in reward-prediction space.",
+   "evidence": "Vocalists typically overshoot slightly when landing on a note from above\u2014they arrive sharp and then settle. This is underdamped behavior. It is not a mistake; it is a feature of the biomechanical system. || Processes dopamine signals encoding reward prediction errors: the difference between what was expected and what actually happened.",
+   "item_id": "X2"
+  },
+  {
+   "kind": "stage",
+   "source": "Dub Lineage.md",
+   "type": "sprout->growing",
+   "rationale": "4 typed links already exceeds sprout's 1-2, though word count (~250) sits at the low end of sprout \u2014 link count is the stronger signal here.",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "Animate the Background.md",
+   "type": "mirrors",
+   "target": "Dub Lineage.md",
+   "label": "decompose-and-version",
+   "rationale": "A finished composite (image or mix) decomposed into independent layers/channels, recombined into something new.",
+   "evidence": "depth-ordered, occlusion-completed cels, each independently movable, then recomposed / reveals hidden structure through subtraction, and treats the mixing board as a live instrument.",
+   "item_id": "X4"
+  },
+  {
+   "kind": "bridge",
+   "source": "Animate the Background.md",
+   "type": "mirrors",
+   "target": "Dub Lineage.md",
+   "rationale": "Both treat a finished composite (image or mix) as decomposable into independently manipulable layers/channels that reveal hidden structure and can be recombined into something new \u2014 the finished artifact is not the endpoint, it's raw material for a 'version.'",
+   "evidence": "a whole drawing taken apart into depth-ordered, occlusion-completed cels, each independently movable, then recomposed || Dub is the [[Trickster]] in music production \u2014 it subverts the 'finished' track, reveals hidden structure through subtraction, and treats the mixing board as a live instrument.",
+   "item_id": "X5"
+  },
+  {
+   "kind": "relation",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "Striatum.md",
+   "label": "damped-error-correction",
+   "rationale": "Underdamped overshoot-then-settle in pitch mirrors reward-prediction-error correction toward an expected value.",
+   "evidence": "they arrive sharp and then settle. This is underdamped behavior... / reward prediction errors: the difference between what was expected and what actually happened.",
+   "item_id": "X6"
+  },
+  {
+   "kind": "relation",
+   "source": "1D Wavetable Scanning.md",
+   "type": "mirrors",
+   "target": "Merleau-Ponty.md",
+   "label": "geometry-is-flesh",
+   "rationale": "Both dissolve a representer/represented dualism into one structure playing both roles.",
+   "evidence": "geometry-is-the-data, not geometry-shows-the-data. / the hand that touches is also touchable... a reversible fold.",
+   "item_id": "X7"
+  },
+  {
+   "kind": "bridge",
+   "source": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "mirrors",
+   "target": "Merleau-Ponty.md",
+   "rationale": "Both reject a two-step model (compute a discrete target, then jump/execute toward it) in favor of a single continuous embodied process where the trajectory itself carries the meaning.",
+   "evidence": "There is no instantaneous frequency shift. The larynx is a damped oscillator responding to neural input... There is no 'jump-and-glide' duality; there is only trajectory. || The hand reaching for the cup does not first form a mental representation and then execute it; the reaching *is* a form of intentionality in its own right \u2014 the body means the cup directly.",
+   "item_id": "X8"
+  }
+ ]
+}

@@ -48,6 +48,14 @@ links:
   - target: "[[The 2.5D Paper Stack]]"
     type: emerged-from
     label: born-from-the-stack
+  - target: "[[assume multi-agent]]"
+    type: connects-to
+  - target: "[[The Commons]]"
+    type: connects-to
+    label: provisioning
+  - target: "[[Block It in Blender, Ink It in genAI]]"
+    type: connects-to
+    label: staging-runbook
 ---
 
 # Frame Designer
@@ -59,15 +67,18 @@ The [[Maker]]'s first **per-medium Designer** — the realization of the split t
 ## The roster I dispatch
 Three legs, each a cascade of swappable methods, all speaking one interface — the [[BLUELINE — Board Record Schema|board record]].
 
-**1 · Staging — acquire the conditioning structure** (all output OpenPose+depth):
+**1 · Staging — acquire the conditioning structure** (all output OpenPose+depth; draft-ink also gives the redraw a line plate):
 
 | Method | Best for | Fails at |
 |---|---|---|
-| Authored Blender blocking (`newstory_bench`, on [[Shop/Blender]]) | clean single / dynamic poses, exact camera | multi-figure, extreme foreshortening |
+| Authored Blender blocking (`newstory_bench`, on [[Shop/Blender]]; runbook: [[Block It in Blender, Ink It in genAI]]) | clean single / dynamic poses, exact camera | multi-figure, extreme foreshortening |
+| Draft-ink pass (confident calligraphic Freestyle over the blocked scene — [[Hand-Drawn 3D Look]]) | a deterministic ink plate in ~2s/frame, the composition seed for the gen-AI redraw | the organic splatter and gestural mark a renderer can't invent (that's the redraw's job) |
 | Generate→extract (`gen_pose` + DWPose) | invented multi-character & dynamics | lying / occluded figures (DWPose drops them); opaque facing (front/back unknowable) |
 | OpenPose compositing (`compose_pose`) | placing a figure extraction can't get (a lying body) | manual; needs a base pose to build into |
 
-**2 · Render — structure → in-style figure(s).** Seam-B conditioned render (`render_shot`: OpenPose+depth → locked pen-flow via [[Shop/ComfyUI]]) + identity injection (**InstantID** — the Tier-1 inpaint / Tier-2 composite-regen cascade; the named next Shop Specialist). The look is locked ([[Steer the Generator]]); the controls are the dials.
+Which look a frame gets is chosen by the scene's emotion, not improvised: the when-best / when-poor matrix is `Projects/BLUELINE/proofs/blender-handdrawn/APPROACHES.md`.
+
+**2 · Render — structure → in-style figure(s).** Seam-B conditioned render (`render_shot`: OpenPose+depth → locked pen-flow via [[Shop/ComfyUI]]) + identity injection (**InstantID** — the Tier-1 inpaint / Tier-2 composite-regen cascade; the named next Shop Specialist). The look is locked ([[Steer the Generator]]); the controls are the dials. For ink that should move with the camera, **[[Remnants in Depth]]** renders splatter as camera-facing billboards at depth, kept as a comp layer over the inked plate so it parallaxes.
 
 **3 · Composition — single-pass vs. generative layering.** One render holds few figures before they dissolve in heavy ink, so the scale-out is **generative layering**: render each character in its own clean pass under *shared context* (style, light, palette, plate) + *unique context* (its pose + identity), composite as layers, then a final **integrate pass** fuses them into one drawing. Photoshop layers, but generative — shared context buys compositability, the integrate pass is the authored seam ([[Adopt the Craft, Author the Seam]]). *(Planned — the named fix for the dense-multi-figure render gap found 2026-06-22.)*
 

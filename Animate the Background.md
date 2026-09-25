@@ -60,7 +60,7 @@ Both clean proofs animated backgrounds with *no* foreground overlap — sky abov
 
 ## The N-Layer Case (Line-Art Decomposition)
 
-*Folded in 2026-07-06 from [[Line-Art Layer Decomposition]] — the same four steps (separate → infill →
+*Folded in 2026-07-06 from the former Line-Art Layer Decomposition entry — the same four steps (separate → infill →
 animate → composite), generalized from two layers to N, and pushed until they broke.*
 
 The two-layer case above cuts one foreground from one background. Push further — a whole drawing taken
@@ -89,7 +89,7 @@ to segmentation), no discontinuity (invisible to depth), no fill (invisible to c
 (invisible to morphology). It exists only as perceptually-grouped strokes — legible to a human eye, to no
 low-level signal tested.
 
-**The way past it — convert-first, stylize-last.** Don't fight the line-art representation: convert the
+**The way past it — convert-first, stylize-last (Loudon's reframe).** Don't fight the line-art representation: convert the
 drawing (SDXL/FLUX + canny ControlNet, same composition) to a domain where SAM, depth, and LaMa are
 trained and strong, segment and infill *there*, then re-apply the ink style to each clean cel last. This
 is [[Steer the Generator]]'s rich-first / stylize-last discipline, carried from *rendering* into
@@ -112,7 +112,8 @@ would be waste. Hold both: segment-first (direct, cheaper) where the elements ar
 convert-first (a domain change, then stylize back) where they aren't. Which side a given frame falls on is
 itself still an open call, not a solved rule.
 
-**Open ends carried forward:** hardening a general `split_to_layers(image)` / `compose_layers(layers,
+**Open ends carried forward:** building the full per-cel stylize-back (each flat-cel cel → ink), and
+pushing the flat style flatter (lower ControlNet strength, posterise) for cleaner masks; hardening a general `split_to_layers(image)` / `compose_layers(layers,
 ops)` pair any frame can call; the unsolved deep skill of amodal **shape** completion (continuing occluded
 contours, not just texture) and the line-art-native alternative (T-junction / Huffman-Clowes line
 labeling); and comparing this pipeline against parallel explorations once it's exercised on more than one

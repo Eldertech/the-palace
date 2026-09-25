@@ -1,0 +1,127 @@
+{
+ "lens": "community",
+ "id": "C1.3",
+ "members": [
+  {
+   "id": "1D Wavetable Scanning",
+   "path": "1D Wavetable Scanning.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "2D Torus Wavetable Synthesizer",
+   "path": "Projects/2D Torus Wavetable Synthesizer.md",
+   "stage": "fruiting",
+   "inbound": 25
+  },
+  {
+   "id": "2D Wavetable Catalog",
+   "path": "Projects/2D Torus Wavetable Synthesizer/2D Wavetable Catalog.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "Chebyshev is Fourier",
+   "path": "Chebyshev is Fourier.md",
+   "stage": "sprout",
+   "inbound": 4
+  },
+  {
+   "id": "DSP in Looping Dimensions",
+   "path": "DSP in Looping Dimensions.md",
+   "stage": "sprout",
+   "inbound": 15
+  },
+  {
+   "id": "Dispersion Table",
+   "path": "Dispersion Table.md",
+   "stage": "sprout",
+   "inbound": 4
+  },
+  {
+   "id": "Dissolutions",
+   "path": "Dissolutions.md",
+   "stage": "seed",
+   "inbound": 7
+  },
+  {
+   "id": "Exponential Decay Curvature",
+   "path": "Exponential Decay Curvature.md",
+   "stage": "sprout",
+   "inbound": 3
+  },
+  {
+   "id": "Infeasible DSP Now Shippable",
+   "path": "Infeasible DSP Now Shippable.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "Linear Predictive Coding",
+   "path": "Linear Predictive Coding.md",
+   "stage": "sprout",
+   "inbound": 6
+  },
+  {
+   "id": "Phase Reduction",
+   "path": "Phase Reduction.md",
+   "stage": "sprout",
+   "inbound": 6
+  },
+  {
+   "id": "Rank-N Lattice Analysis",
+   "path": "Rank-N Lattice Analysis.md",
+   "stage": "sprout",
+   "inbound": 5
+  },
+  {
+   "id": "Synthesis Topologies",
+   "path": "Synthesis Topologies.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Three Kinds of Warp",
+   "path": "Three Kinds of Warp.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Three.js",
+   "path": "Shop/Three.js.md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Torus Warping Catalog",
+   "path": "Projects/2D Torus Wavetable Synthesizer/Torus Warping Catalog.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Tract Mirror",
+   "path": "Projects/Tract Mirror.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Volterra Kernels and the Torus",
+   "path": "Volterra Kernels and the Torus.md",
+   "stage": "sprout",
+   "inbound": 4
+  },
+  {
+   "id": "Waveguide Synthesizer",
+   "path": "Projects/Waveguide Synthesizer.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "Wavetable Scanner",
+   "path": "Wavetable Scanner.md",
+   "stage": "sprout",
+   "inbound": 3
+  }
+ ],
+ "directed_flags": {}
+}

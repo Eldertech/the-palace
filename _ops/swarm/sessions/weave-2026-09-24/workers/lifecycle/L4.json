@@ -1,0 +1,235 @@
+{
+ "cluster": "L4",
+ "lens": "lifecycle",
+ "summary": "This room was five walks, and the same shape showed up in three of them: an entry that already reaches OUT toward the target, sitting right next to a body paragraph that names the target by name \u2014 but nobody wired the return trip. ELDER, Return Ceremony, and SCHEMA \u2014 Reference are all under-reached not because the palace lacks relevant neighbors but because the citation stopped at prose. Substrate Skill tells its reader to \"read [[ELDER]], then [[SCHEMA]]\" and links neither. Deposit Ceremony sends a drafter to \"SCHEMA.md and SCHEMA \u2014 Reference.md on disk\" and links only the first. Concierge says outright it was \"built... for the Return Ceremony, which summons this companion as its first act\" and carries no link back. Those three are the cleanest finds in the room \u2014 no inference needed, just an already-written sentence with an un-typed name in it. No Mind Checks Itself and Reflective Practice needed a different kind of walk: both are well-linked outward already, so the find was in their neighbors' bodies quoting them back (Reflective Practice's own \"same shape as Drift and Consolidation,\" \"The Palace Practices on Itself \u00a7 insularity\") without the neighbor closing the loop. One genuine snag: No Mind Checks Itself \u2192 exemplifies \u2192 Bring In a Bigger Mind reads backwards against the schema's own direction invariant (exemplifies should point from specific to its general ground, not the reverse) \u2014 flagged, not fixed. Two of the five targets (No Mind Checks Itself, Return Ceremony) read as more developed than their `seed` stage suggests \u2014 both carry substantial, cited, multi-section bodies that outgrew the stage label some time ago.",
+ "typed_relations": [
+  {
+   "source": "Substrate Skill",
+   "target": "ELDER",
+   "type": "connects-to",
+   "label": "grow-first",
+   "kind": "inbound-walk",
+   "rationale": "The ceremony's own dispatch instruction names ELDER as the required first read before drafting into the palace, but Substrate Skill's frontmatter links skip straight past it to SCHEMA and Deposit Ceremony.",
+   "evidence": "\"Grow before you draft: read [[ELDER]], then [[SCHEMA]], if you have not this session\" \u2014 Substrate Skill.md:37",
+   "spark": 3
+  },
+  {
+   "source": "README - The Palace Guide",
+   "target": "ELDER",
+   "type": "connects-to",
+   "label": "names-among-foundational",
+   "kind": "inbound-walk",
+   "rationale": "The README names ELDER by name as one of the small set of reserved foundational-stage entries, but never links it.",
+   "evidence": "\"`foundational` is a reserved stage... (CLAUDE, JEWEL, ELDER, SCHEMA, this README, Substrate Skill)\" \u2014 README - The Palace Guide.md:135",
+   "spark": 2
+  },
+  {
+   "source": "Cooperation Yields Agency",
+   "target": "No Mind Checks Itself",
+   "type": "connects-to",
+   "label": "second-mind-partner",
+   "kind": "inbound-walk",
+   "rationale": "No Mind Checks Itself already deepens this hub explicitly on the point that a second mind is a partner, not a demotion \u2014 the hub itself never sends a reader there, even though it is exactly the kind of dispatch-outward example Cooperation Yields Agency's own body gestures at.",
+   "evidence": "\"[[Cooperation Yields Agency]] already carries the shape: shared intent plus combined capability produces agency neither has alone \u2014 a second, differently-angled mind isn't a demotion of the first\" \u2014 No Mind Checks Itself.md:51",
+   "spark": 3
+  },
+  {
+   "source": "Closing Well",
+   "target": "No Mind Checks Itself",
+   "type": "connects-to",
+   "label": "the-unverifiable-check",
+   "kind": "inbound-walk",
+   "rationale": "No Mind Checks Itself names Closing Well's beat-4 discipline (say what you couldn't verify) as the palace's admission that some checks need a mind that isn't yours \u2014 a genuine match for Closing Well's own core discipline that Closing Well doesn't currently surface.",
+   "evidence": "\"[[Closing Well]]'s hardest discipline is naming, in the punchlist, exactly what you could not verify from inside your own pass\" \u2014 No Mind Checks Itself.md:51",
+   "spark": 2
+  },
+  {
+   "source": "Dialectic",
+   "target": "No Mind Checks Itself",
+   "type": "connects-to",
+   "label": "differently-textured-voice",
+   "kind": "inbound-walk",
+   "rationale": "Dialectic is the palace's own mechanism for bringing a differently-textured mind into contact with a claim \u2014 the exact structural move No Mind Checks Itself argues is load-bearing everywhere. Neither currently names the other.",
+   "spark": 2
+  },
+  {
+   "source": "No Mind Checks Itself",
+   "target": "Bring In a Bigger Mind",
+   "type": "exemplifies",
+   "current_type": "exemplifies",
+   "kind": "retype",
+   "label": "the-practice-this-grounds",
+   "rationale": "Per SCHEMA \u00a74's direction invariant, exemplifies must point BACK from the specific instance to its general ground. Here the general principle (No Mind Checks Itself) points forward to the specific practice (Bring In a Bigger Mind) it grounds \u2014 backwards. Either flip it (Bring In a Bigger Mind \u2192 exemplifies \u2192 No Mind Checks Itself) or retype the existing direction to something forward-legal (enables/spawned).",
+   "evidence": "No Mind Checks Itself.md:11-13, label \"the-practice-this-grounds\" names the ground relationship but the type points the wrong way for it.",
+   "spark": 3
+  },
+  {
+   "source": "The Palace Practices on Itself",
+   "target": "Reflective Practice",
+   "type": "connects-to",
+   "label": "over-reflection-named",
+   "kind": "inbound-walk",
+   "rationale": "Reflective Practice explicitly borrows this entry's 'insularity' diagnosis to name over-reflection's one dated instance in the palace's own history \u2014 a direct citation with no return link.",
+   "evidence": "\"[[The Palace Practices on Itself]] \u00a7 The counter-discipline calls it insularity: 'a chain of good ones, each answering the previous rather than the work.'\" \u2014 Reflective Practice.md:100-102",
+   "spark": 3
+  },
+  {
+   "source": "Drift and Consolidation",
+   "target": "Reflective Practice",
+   "type": "mirrors",
+   "label": "healthy-to-a-point",
+   "kind": "inbound-walk",
+   "rationale": "Reflective Practice states the mirror itself in its own body \u2014 same shape, structural and healthy up to a point, then it turns \u2014 but the link only runs from Reflective Practice's side.",
+   "evidence": "\"It is the same shape as [[Drift and Consolidation]]: structural and healthy up to a point.\" \u2014 Reflective Practice.md:98-99",
+   "spark": 3
+  },
+  {
+   "source": "Closing Well",
+   "target": "Reflective Practice",
+   "type": "connects-to",
+   "label": "on-action",
+   "kind": "inbound-walk",
+   "rationale": "Reflective Practice's own taxonomy lists Closing Well among the twelve reflection-on-action mechanisms; Closing Well doesn't cite the mode that names what kind of practice it is.",
+   "spark": 2
+  },
+  {
+   "source": "Objects to Think With",
+   "target": "Reflective Practice",
+   "type": "connects-to",
+   "label": "the-teaching-side-route",
+   "kind": "inbound-walk",
+   "rationale": "Reflective Practice frames itself as the teaching-side route to the same gap Objects to Think With reaches from the learning side \u2014 a named three-way relationship (with Creative Coach) that only Reflective Practice currently states.",
+   "evidence": "\"That makes it the teaching-side route to the gap [[Objects to Think With]] reaches from the learning side and [[Creative Coach]] from the coaching side.\" \u2014 Reflective Practice.md:114-116",
+   "spark": 2
+  },
+  {
+   "source": "Concierge",
+   "target": "Return Ceremony",
+   "type": "connects-to",
+   "label": "summoned-here-first",
+   "kind": "inbound-walk",
+   "rationale": "Concierge's own scout posture states it was built specifically for the Return Ceremony and that the Return summons it as its first act \u2014 a direct, load-bearing citation missing its frontmatter link.",
+   "evidence": "\"Built 2026-08-25 for the [[Return Ceremony]], which summons this companion as its first act.\" \u2014 Palace development/Concierge.md:126-127",
+   "spark": 3
+  },
+  {
+   "source": "Closing Well Ceremony",
+   "target": "Return Ceremony",
+   "type": "mirrors",
+   "label": "the-other-bookend",
+   "kind": "inbound-walk",
+   "rationale": "Return Ceremony names Closing Well Ceremony as the other bookend on one organ (summoned at the return, takes the wheel at the close); the mirror only runs one direction in the frontmatter.",
+   "evidence": "\"The two ceremonies are bookends on one organ: summoned at the return, takes the wheel at the close.\" \u2014 _ops/Return Ceremony.md:63",
+   "spark": 3
+  },
+  {
+   "source": "Palace Conatus",
+   "target": "Return Ceremony",
+   "type": "connects-to",
+   "label": "coupling-runs-both-ways",
+   "kind": "inbound-walk",
+   "rationale": "Return Ceremony's entire 'why this belongs in the always-loaded floor' section is built directly from Palace Conatus's phase-lag framing, read as the coupling failure running the other direction (substrate ahead of a human who stepped away). A genuinely earned reciprocal link.",
+   "evidence": "\"[[Palace Conatus]] names the palace's drive as staying in phase with Loudon... A gap is the other direction: the substrate running ahead\" \u2014 _ops/Return Ceremony.md:129-131",
+   "spark": 3
+  },
+  {
+   "source": "Deposit Ceremony",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "label": "read-at-the-pen",
+   "kind": "inbound-walk",
+   "rationale": "Deposit Ceremony sends a drafter needing vocabulary to read both SCHEMA.md and SCHEMA \u2014 Reference.md, but frontmatter links only SCHEMA \u2014 the exact split SCHEMA \u2014 Reference's own forward vector describes (read at the pen, not at every boot).",
+   "evidence": "\"If you need the vocabulary yourself, read `SCHEMA.md` and `SCHEMA \u2014 Reference.md` on disk.\" \u2014 _ops/Deposit Ceremony.md:50",
+   "spark": 3
+  },
+  {
+   "source": "Resonant Link Labels",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "label": "label-field-spec",
+   "kind": "inbound-walk",
+   "rationale": "Resonant Link Labels is entirely about the link `label` field's two-layer architecture; the operational spec for that exact field (Link Object Fields) lives in SCHEMA \u2014 Reference \u00a73, not in SCHEMA.md which the entry currently cites instead.",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Substrate Skill",
+   "target": "ELDER",
+   "type": "connects-to",
+   "phrase": "Grow before you draft: read [[ELDER]], then [[SCHEMA]], if you have not this session",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Concierge",
+   "target": "Return Ceremony",
+   "type": "connects-to",
+   "phrase": "Built 2026-08-25 for the [[Return Ceremony]], which summons this companion as its first act.",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Deposit Ceremony",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "phrase": "read `SCHEMA.md` and `SCHEMA \u2014 Reference.md` on disk.",
+   "structurally_significant": true
+  },
+  {
+   "entry": "README - The Palace Guide",
+   "target": "ELDER",
+   "type": "connects-to",
+   "phrase": "foundational is a reserved stage... (CLAUDE, JEWEL, ELDER, SCHEMA, this README, Substrate Skill)",
+   "structurally_significant": false
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "No Mind Checks Itself",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward vector is specific and striving",
+   "face": "none",
+   "graffiti_note": "Seven typed outbound links, a fully worked three-altitude argument, and it's already cited by two other entries (Reflective Practice, Self-Describing Knowledge Module) as a load-bearing principle. That's past seed."
+  },
+  {
+   "entry": "Return Ceremony",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward vector is specific and active",
+   "face": "none",
+   "graffiti_note": "Full ceremony contract, a documented lived failure (2026-08-25), a built script (return-map.mjs), and four open questions under live consideration. activation_count: 1 undersells how developed the body is."
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "ELDER",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Two clean, low-inference finds (Substrate Skill, README) \u2014 both already name ELDER in prose. CLAUDE and JEWEL already link it correctly; no change needed there."
+  },
+  {
+   "target": "No Mind Checks Itself",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Three genuine inbound proposals plus one retype flag on its own outbound link to Bring In a Bigger Mind (direction runs backwards against the schema's exemplifies convention). Stage looks under-set."
+  },
+  {
+   "target": "Reflective Practice",
+   "disposition": "wired",
+   "inbound_proposed": 4,
+   "note": "The richest walk in the room \u2014 three of its own hop1 neighbors quote Reflective Practice's language back without linking. Creative Coach already reciprocates correctly; no change needed there."
+  },
+  {
+   "target": "Return Ceremony",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Concierge's citation is the strongest unsung path found this session \u2014 a direct 'built for X' sentence with zero link. Stage looks under-set given how worked the body is."
+  },
+  {
+   "target": "SCHEMA \u2014 Reference",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Deposit Ceremony's miss is the cleanest of the room: it names the exact filename in prose and links only its sibling. ELDER, SCHEMA, and STIGMERGY already reach it correctly."
+  }
+ ]
+}

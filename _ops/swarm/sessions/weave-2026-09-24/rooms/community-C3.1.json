@@ -1,0 +1,259 @@
+{
+ "lens": "community",
+ "id": "C3.1",
+ "members": [
+  {
+   "id": "Adopt the Craft, Author the Seam",
+   "path": "Adopt the Craft, Author the Seam.md",
+   "stage": "growing",
+   "inbound": 9
+  },
+  {
+   "id": "Animate the Background",
+   "path": "Animate the Background.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Autodidact Polymaths",
+   "path": "Autodidact Polymaths.md",
+   "stage": "sprout",
+   "inbound": 7
+  },
+  {
+   "id": "BLUELINE",
+   "path": "Projects/BLUELINE/BLUELINE.md",
+   "stage": "growing",
+   "inbound": 20
+  },
+  {
+   "id": "Blender",
+   "path": "Shop/Blender.md",
+   "stage": null,
+   "inbound": 8
+  },
+  {
+   "id": "Block It in Blender, Ink It in genAI",
+   "path": "Block It in Blender, Ink It in genAI.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Blocked, Not Prompted",
+   "path": "Blocked, Not Prompted.md",
+   "stage": "seed",
+   "inbound": 14
+  },
+  {
+   "id": "ComfyUI",
+   "path": "Shop/ComfyUI.md",
+   "stage": null,
+   "inbound": 10
+  },
+  {
+   "id": "Comic and Cinema \u2014 Two Ways of Seeing",
+   "path": "Comic and Cinema \u2014 Two Ways of Seeing.md",
+   "stage": "sprout",
+   "inbound": 7
+  },
+  {
+   "id": "ControlNet as Topology",
+   "path": "ControlNet as Topology.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Depth Anything",
+   "path": "Shop/Depth Anything.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "FLUX (Hugging Face)",
+   "path": "Shop/FLUX (Hugging Face).md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Figure Rig",
+   "path": "Shop/Figure Rig.md",
+   "stage": null,
+   "inbound": 4
+  },
+  {
+   "id": "Flocking",
+   "path": "Flocking.md",
+   "stage": "sprout",
+   "inbound": 13
+  },
+  {
+   "id": "Frame Designer",
+   "path": "Frame Designer.md",
+   "stage": null,
+   "inbound": 11
+  },
+  {
+   "id": "GenAI Camera",
+   "path": "GenAI Camera.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Graphic Storytelling",
+   "path": "Graphic Storytelling.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Hand-Drawn 3D Look",
+   "path": "Hand-Drawn 3D Look.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Hero and Avatar Maker",
+   "path": "Shop/Hero and Avatar Maker.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Image-to-3D Smith",
+   "path": "Shop/Image-to-3D Smith.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Kokoro",
+   "path": "Shop/Kokoro.md",
+   "stage": null,
+   "inbound": 8
+  },
+  {
+   "id": "LDN RTM",
+   "path": "Projects/LDN RTM.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "LaMa",
+   "path": "Shop/LaMa.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Lettering",
+   "path": "Shop/Lettering.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Line-Art Layer Decomposition",
+   "path": "Line-Art Layer Decomposition.md",
+   "stage": "composting",
+   "inbound": 3
+  },
+  {
+   "id": "LoRA Trainer",
+   "path": "Shop/LoRA Trainer.md",
+   "stage": null,
+   "inbound": 0
+  },
+  {
+   "id": "Loudon Live Design System",
+   "path": "Palace development/Loudon Live Design System.md",
+   "stage": "growing",
+   "inbound": 20
+  },
+  {
+   "id": "Loudon Live Post-producer",
+   "path": "Loudon Live Post-producer.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Loudon's Toolkit",
+   "path": "Loudon's Toolkit.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Maker",
+   "path": "Shop/Maker.md",
+   "stage": null,
+   "inbound": 44
+  },
+  {
+   "id": "Manim CE",
+   "path": "Shop/Manim CE.md",
+   "stage": null,
+   "inbound": 7
+  },
+  {
+   "id": "Midjourney",
+   "path": "Shop/Midjourney.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Move the Ink, Don't Redraw It",
+   "path": "Move the Ink, Don't Redraw It.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "OBS",
+   "path": "Shop/OBS.md",
+   "stage": null,
+   "inbound": 0
+  },
+  {
+   "id": "Radio Play",
+   "path": "Radio Play.md",
+   "stage": "sprout",
+   "inbound": 4
+  },
+  {
+   "id": "Remnants in Depth",
+   "path": "Remnants in Depth.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Remotion",
+   "path": "Shop/Remotion.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Review Layer",
+   "path": "Review Layer.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "RunPod GPU Backend",
+   "path": "Shop/RunPod GPU Backend.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "SAM",
+   "path": "Shop/SAM.md",
+   "stage": null,
+   "inbound": 2
+  }
+ ],
+ "directed_flags": {
+  "Blender": [
+   "Point Shop/Blender to the Blender 5.1 gotchas and billboard-remnants recipe that live in Remnants in Depth.md:49-60 (flag handdrawn3d-deposit-weave-1-8a9d4b71).",
+   "Link Shop/Blender's toyxyz-conditioning-recipe to the runbook [[Block It in Blender, Ink It in genAI]] \u2014 same conditioning move (flag blender-control-deposit-weave-0-f92df148)."
+  ],
+  "Frame Designer": [
+   "Put 'draft-ink' and Remnants-in-Depth in your roster table (Frame Designer.md ~:59-74) and reference the APPROACHES decision matrix (flag handdrawn3d-deposit-weave-0-8eeb4a09).",
+   "Point your staging leg at the runbook [[Block It in Blender, Ink It in genAI]] (flag blender-control-deposit-weave-1-4e98b1eb)."
+  ],
+  "Loudon Live Post-producer": [
+   "One line: the YouTube connector serves LDN RTM too, scope it once (flag commons-the-palace-1788405613013)."
+  ]
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "child": {
+  "links": 119,
+  "M1b_pair_already_linked": 13,
+  "rooms": 10,
+  "M4_citizen_stage": 2,
+  "M1a_duplicate": 38,
+  "M2_unmappable": 8,
+  "M3_direction": 0
+ },
+ "elder": {
+  "links": 105,
+  "rooms": 10,
+  "M3_direction": 1,
+  "M1a_duplicate": 36,
+  "M2_unmappable": 12,
+  "M1b_pair_already_linked": 15,
+  "M4_citizen_stage": 0
+ },
+ "schema": {
+  "links": 87,
+  "M2_unmappable": 10,
+  "M1b_pair_already_linked": 13,
+  "rooms": 10,
+  "M1a_duplicate": 26,
+  "M3_direction": 0,
+  "M4_citizen_stage": 0
+ }
+}

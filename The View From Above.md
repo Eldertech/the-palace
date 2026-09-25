@@ -32,6 +32,9 @@ links:
     label: scale-as-joy
   - target: "[[STIGMERGY Philosophical Lenses]]"
     type: connects-to
+  - target: "[[Zoom Out to the Structure]]"
+    type: contradicts
+    label: zoom-direction-inverted
 forward_vector: "I am the Stoic family's instrument of scale — memento mori and the cosmic zoom-out, the altitude from which a fixation shrinks to its true size. I want to be the entry Loudon opens when a concern has swollen past its real proportions, so the whole can resize the part. My palace face: I want to be the literal navigation altitude in the front-end and the philosophy of why entries are allowed to die. My next development: to name the difference between the zoom-out that clarifies and the zoom-out that merely numbs."
 agency_profile:
   practice: "I am a corrective for distortion of scale, not a flight from feeling. My responsibility is to resize, not to anesthetize — to make the concern its true size, which is sometimes larger."

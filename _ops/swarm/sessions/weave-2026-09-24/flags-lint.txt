@@ -1,0 +1,78 @@
+weave-flags: 65 on WEAVE board | 34 resolved explicitly (trailer/decline/ack) | 22 TOUCHED-UNVERIFIED | 9 OPEN
+
+TOUCHED-UNVERIFIED — a commit touched a source entry after the flag; read each by hand:
+  ◐ weaveflag-memory-recon-2026-06-16  [2026-06-16 · COORDINATOR]  source: Weave Ceremony, SUBSTRATE
+      → Exercise and validate the new Weave Step 6b (Reconcile memory, added 2026-06-16): run a full reconciliation of the agent memory store agains
+  ◐ 11be93de-457c-4ad7-98db-6403f7c69a6f  [2026-06-19 · cowork-git]  source: SUBSTRATE
+      → Cowork lock-safe commits relocate stranded git *.lock files to _ops/scratch/gitlock-junk/ (rename, since the sandbox cannot unlink) and leav
+  ◐ 12400dd0-54a3-44ad-a6e4-6466d286ff26  [2026-06-22 · Frame Designer]  source: Frame Designer
+      → Add a field recording method + params + assessment per shot (the Frame Designer's dispatch record), so the board carries its own recipe.
+  ◐ weave-flag-steer-taste-breeder  [2026-06-23 · Steer the Generator]  source: Steer the Generator
+      → Promote the Taste Breeder (the 4-up → click → learns-taste → predicts-next-pick selector) to its own Shop specialist once it earns a typed J
+  ◐ 634a2386-ab5e-4947-abad-76b2b153db58  [2026-07-03 · The Palace Practices on Itself]  source: The Palace Practices on Itself
+      → Develop the toolbox recursion: [[Loudon's Toolkit]] (a person's kit) -> the `toolbox` bundle convention (a project's kit, SCHEMA §8) -> an e
+  ◐ weaveflag-companion-turn-flaky-2026-08-25  [2026-08-25 · Closing Well]  source: STIGMERGY
+      → Watch _ops/stigmergy/app/tests/integration/companion-turn.test.js's 409 single-global-worker concurrency assertion across future owner-tree 
+  ◐ weaveflag-baton-partial-path-lifecycle-2026-08-25  [2026-08-25 · Closing Well]  source: Baton Ceremony, STIGMERGY
+      → Decide which side gives, in a future ceremony-hygiene pass: either close-handoff.mjs --partial stops re-announcing a handoff_path pointing a
+  ◐ commons-the-palace-1788405612630  [2026-09-02 · OBS]  source: OBS, The Shop, Maker
+      → Decide whether the Shop's Specialist model admits an *operated* Specialist alongside dispatched ones — [[OBS]] marks Tiers as N/A and replac
+  ◐ commons-the-palace-1788405612826  [2026-09-02 · OBS]  source: OBS, Maker
+      → Revisit the forward_vector's open question — whether a Producer layer should rise above the Maker — now that a second, independent pressure 
+  ◐ commons-the-palace-1788405613013  [2026-09-02 · LDN RTM]  source: LDN RTM, Loudon Live Post-producer
+      → When the YouTube connector is set up, treat it as serving two callers rather than one: the Post-producer's publishing autonomy (its deferred
+  ◐ commons-the-palace-1788405955246  [2026-09-02 · Loudon Live Post-producer]  source: Loudon Live Post-producer, Loudon Live, LDN RTM
+      → Generalize the Post-producer's charter beyond the single-long-recorded-stream premise it was written under. Its per-session workflow (transc
+  ◐ weaveflag-loudon-live-rtm-pointer-2026-09-02  [2026-09-03 · LDN RTM]  source: LDN RTM, Loudon Live
+      → Rewrite Loudon Live § The RTM series as a pointer to [[LDN RTM]] rather than an inline description, and add a member-of-side link. The secti
+  ◐ weaveflag-post-producer-apprenticeship-2026-09-02  [2026-09-03 · LDN RTM]  source: LDN RTM, Loudon Live Post-producer
+      → Move Loudon Live Post-producer off status: stub once the RTM batch pipeline runs, and decide whether the graduated-trust ladder counts an RT
+  ◐ weaveflag-toolkit-plugins-rtm-queue-2026-09-02  [2026-09-03 · LDN RTM]  source: LDN RTM, Toolkit — Audio Plugins
+      → Reframe the RTM shortlist in Toolkit — Audio Plugins as the future-series queue for [[LDN RTM]], and note that a sponsored RTM is a slot in 
+  ◐ weaveflag-loudon-live-rtm-pointer-2026-09-02-r2  [2026-09-03 · LDN RTM]  source: LDN RTM, Loudon Live
+      → Rewrite Loudon Live § The RTM series as a pointer to [[LDN RTM]] rather than an inline description, and add a member-of-side link. The secti
+  ◐ weaveflag-post-producer-apprenticeship-2026-09-02-r2  [2026-09-03 · LDN RTM]  source: LDN RTM, Loudon Live Post-producer
+      → Move Loudon Live Post-producer off status: stub once the RTM batch pipeline runs, and decide whether the graduated-trust ladder counts an RT
+  ◐ weaveflag-toolkit-plugins-rtm-queue-2026-09-02-r2  [2026-09-03 · LDN RTM]  source: LDN RTM, Toolkit — Audio Plugins
+      → Reframe the RTM shortlist in Toolkit — Audio Plugins as the future-series queue for [[LDN RTM]], and note that a sponsored RTM is a slot in 
+  ◐ commons-the-palace-1788434782780  [2026-09-03 · Closing Well]  source: STIGMERGY
+      → Fix the weave-flag auto-close heuristic: a flag must not be closed by the same commit that posted it. Today all seven flags raised became in
+  ◐ commons-the-palace-1788434783015  [2026-09-03 · Closing Well]  source: Concierge, Closing Well
+      → Harvest the open baton concierge-remainder-20260825T225852Z against this session: it asked for real closes as tuning data for the companion-
+  ◐ commons-the-palace-1788807774819  [2026-09-07 · LDN RTM]  source: LDN RTM, Loudon Live
+      → Name the student-feedback recording workflow as a Loudon Live activity in its own right, and decide whether it earns an entry. Same rig as L
+  ◐ commons-the-palace-1790128916710  [2026-09-22 · Closing Well]  source: Creative Coach, Dialectic
+      → Add the reciprocal solo-dialectic-case link from Dialectic back to Creative Coach.
+  ◐ commons-the-palace-1790128920547  [2026-09-22 · Closing Well]  source: Identity Molting, Lateral Access, Creative Coach
+      → Cross-cite the three separate treatments of narrative therapy (Identity Molting, Lateral Access § The New Song, Creative Coach) so a reader 
+
+OPEN weave_flags — act (and carry Palace-Resolves: <id>) or decline in the Weave commit body:
+  ● handdrawn3d-deposit-weave-0-8eeb4a09  [2026-06-26 · Hand-Drawn 3D Look]  type=None
+      target: Frame Designer  (older flag shape — closes by trailer/decline only)
+      → Adopt the two new methods as named roster entries — a 'draft-ink' staging pass (confident calligraphic Freestyle) and the Remnants-in-Depth 
+  ● handdrawn3d-deposit-weave-1-8a9d4b71  [2026-06-26 · Hand-Drawn 3D Look]  type=None
+      target: Shop/Blender  (older flag shape — closes by trailer/decline only)
+      → Add the billboard-remnants recipe and the Blender 5.1 gotchas: Freestyle two-layer separation for alpha billboards over line art, scene.comp
+  ● handdrawn3d-deposit-weave-2-6274be5e  [2026-06-26 · Hand-Drawn 3D Look]  type=None
+      target: The Flow Field is the Spine  (older flag shape — closes by trailer/decline only)
+      → Flow-field-biased blob emission: drive Remnants-in-Depth billboard density and throw-direction off the flow field so splatter follows the mo
+  ● blender-control-deposit-weave-0-f92df148  [2026-06-30 · Block It in Blender, Ink It in genAI]  type=None
+      target: Shop/Blender  (older flag shape — closes by trailer/decline only)
+      → Cross-link Shop/Blender's toyxyz-conditioning-recipe to the new runbook [[Block It in Blender, Ink It in genAI]] — they are the same conditi
+  ● blender-control-deposit-weave-1-4e98b1eb  [2026-06-30 · Block It in Blender, Ink It in genAI]  type=None
+      target: Frame Designer  (older flag shape — closes by trailer/decline only)
+      → The new runbook [[Block It in Blender, Ink It in genAI]] is Frame Designer's staging leg written out for a cold reader — fold a pointer to i
+  ● e4538455-cbd6-481c-9255-af7ba0aeacf6  [2026-07-03 · The Remembering Page]  type=entry_update
+      source: The Remembering Page
+      → Cross-reference retained page-memory as the persistent complement to ephemeral enchantment. Enchantment says the agent does not remember bei
+  ● weaveflag-found-made-face-debt-2026-07-06  [2026-07-08 · Closing Well]  type=face-audit-debt
+      source: Found ↔ Made
+      → Generate the hero image + icon for Found ↔ Made.md (minted this session, 2026-07) — it has no face yet.
+  ● commons-the-palace-1790128909989  [2026-09-22 · Closing Well]  type=missing-source-list
+      source: Objects to Think With
+      → Record the list of 21 qualifying projects named in the 2026-09-06 harvest, so the 17-link exemplifies Weave has a source set to act on.
+  ● commons-the-palace-1790128913357  [2026-09-22 · Closing Well]  type=hub-threshold-reached
+      source: Self-Describing Knowledge Module
+      → Promote Self-Describing Knowledge Module from concept to hub — it now has 5 inbound typed links, the SCHEMA §1 hub threshold.
+
+summary: 9 open, 22 touched-unverified

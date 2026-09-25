@@ -1,0 +1,151 @@
+{
+ "per_room": {
+  "B1": {
+   "ranking": [
+    "schema",
+    "child",
+    "elder"
+   ],
+   "reason": "Z read the Dub mirror and the Merleau-Ponty mirror most truly and spotted a stage move that is actually earned, with fewer invented relations. Y found the same Merleau-Ponty link with the best label but padded its list with hub-transitive and passing links. X leaned hardest on forced analogies and proposed a stage promotion the page cannot support.",
+   "best_find": "Y1",
+   "best_find_arm": "child"
+  },
+  "B5": {
+   "ranking": [
+    "schema",
+    "child",
+    "elder"
+   ],
+   "reason": "Y offers two sound, distinct items: the Three.js\u2013Quality Manifesto mirror and an honest stage flag. X offers one real find, the Stoicism/Zoom Out contradiction, among loose Hofstadter mirrors. Z repeats one weak Epictetus link three times and misattributes evidence in Z7.",
+   "best_find": "X6",
+   "best_find_arm": "child"
+  },
+  "C1.2": {
+   "ranking": [
+    "schema",
+    "elder",
+    "child"
+   ],
+   "reason": "I would sign half of X's sample: two honest stage moves, a real interpolation disagreement and a careful demotion offer. Y and Z each have only one sound item among ghosts and links already in place, and Z ranks above Y because Z8 is the best find in the room while Y5 points at the wrong crystal entry.",
+   "best_find": "Z8",
+   "best_find_arm": "elder"
+  },
+  "C2.2": {
+   "ranking": [
+    "elder",
+    "schema",
+    "child"
+   ],
+   "reason": "I'd sign most of Z: its links are checked against the page and include the room's best contradiction. Its merge and its reversed spawned link keep it from ranking cleaner. X has four solid proposals but two loose mirrors and stage calls. Y has two good unsung links, two that already exist, and several that swap in an entry the page never names.",
+   "best_find": "Z4",
+   "best_find_arm": "elder"
+  },
+  "C5.2+C7+C8": {
+   "ranking": [
+    "schema",
+    "child",
+    "elder"
+   ],
+   "reason": "X found the most distinct real gaps: Concierge, Palace Orchestrator, Pages as Agents, Palace Conatus, the design system and Agent Toolbox. Its only miss was one vague bridge. Y adds a solid Making a Palace Citizen link and the Palace Voice, but also a table-row link driven by inbound count. Z's one original find claims two entries share no link when Observable Plot already links Matplotlib twice.",
+   "best_find": "X2",
+   "best_find_arm": "schema"
+  },
+  "F-Shop": {
+   "ranking": [
+    "child",
+    "schema",
+    "elder"
+   ],
+   "reason": "I would sign all three of Z's proposals: each one checks out against the page. Y has the room's best link find (Y5) and a solid second (Y6), but three of its other four proposals repeat links that already exist and one contradiction is built on an inferred pattern. None of X's proposals holds up: two point at bundle files, two duplicate existing links, one is passing, and one breaks the Maker's own convention.",
+   "best_find": "Y5",
+   "best_find_arm": "schema"
+  },
+  "F-small-families": {
+   "ranking": [
+    "child",
+    "elder",
+    "schema"
+   ],
+   "reason": "X found three real, evidenced links that are absent from the palace and tie the collaboration modes to No Mind Checks Itself, and its only misses were two roster lines that point at ghost targets. Z had one real lineage find among one link that already exists, stretched mirrors, unargued stage moves and no-op demotions. Y's only substantive link already exists, and its other items are malformed bridges and no-ops.",
+   "best_find": "X1",
+   "best_find_arm": "child"
+  },
+  "L1": {
+   "ranking": [
+    "child",
+    "schema",
+    "elder"
+   ],
+   "reason": "Z found the room's one real missing edge (GenAI Camera and the Block It runbook), though half its other items were already in place or forced. X's two sound items are routine stage moves, and the rest were already present. Every one of Y's link proposals repeats a link that already exists.",
+   "best_find": "Z3",
+   "best_find_arm": "child"
+  },
+  "L4": {
+   "ranking": [
+    "schema",
+    "elder",
+    "child"
+   ],
+   "reason": "Most proposals in all three sets re-propose links that already exist on the other side. Z still lands the room's one real schema fix plus a sound stage move. X has two sound stage moves but gives no rationale for them. Y has seven duplicates and only one unevidenced new link.",
+   "best_find": "Z7",
+   "best_find_arm": "schema"
+  },
+  "L6": {
+   "ranking": [
+    "elder",
+    "child",
+    "schema"
+   ],
+   "reason": "X and Z each found one real thing and filled the rest with reverse copies of symmetric links that already exist. X ranks first because X6 adds a new, generative contradiction the palace does not yet hold, while Z's one good find is a direction repair. Z's other items add a misused emerged-from type, and X's add a ghost target and a borrowed label. All eight of Y's items are already in frontmatter.",
+   "best_find": "X6",
+   "best_find_arm": "elder"
+  }
+ },
+ "n": {
+  "elder": 75,
+  "child": 72,
+  "schema": 74
+ },
+ "invalid": {
+  "elder": 53,
+  "child": 51,
+  "schema": 46
+ },
+ "stand": {
+  "elder": 16,
+  "child": 17,
+  "schema": 25
+ },
+ "first": {
+  "schema": 5,
+  "elder": 2,
+  "child": 3
+ },
+ "verdicts": {
+  "child": {
+   "valid": 21,
+   "forced-or-passing": 21,
+   "exists-already": 23,
+   "not-an-entry": 7
+  },
+  "schema": {
+   "forced-or-passing": 14,
+   "valid": 28,
+   "exists-already": 24,
+   "not-an-entry": 4,
+   "wrong-type": 2,
+   "schema-violation": 1,
+   "evidence-not-in-page": 1
+  },
+  "elder": {
+   "forced-or-passing": 18,
+   "schema-violation": 3,
+   "valid": 22,
+   "evidence-not-in-page": 1,
+   "exists-already": 22,
+   "not-an-entry": 7,
+   "wrong-direction": 1,
+   "wrong-type": 1
+  }
+ }
+}

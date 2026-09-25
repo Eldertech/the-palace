@@ -1,0 +1,55 @@
+{
+ "arm": "X",
+ "room": "F-small-families",
+ "total_proposals": 5,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "type": "connects-to",
+   "target": "No Mind Checks Itself",
+   "label": "the-visit-is-the-outside-vantage",
+   "rationale": "This is the most concrete instance of the No Mind Checks Itself pattern in the whole family: a technical entry cannot see its own over-claim from inside, and the Philosopher Visit exists specifically to bring an outside-the-loop reader who can. The entry's own precedent (the oscillator visit) is a worked example of exactly the principle No Mind Checks Itself names abstractly.",
+   "evidence": "'A poorly-researched philosopher produces a caricature that flatters the entry; a well-researched one says something the entry's author did not expect.' \u2014 the named precedent even found the entry's claim over-stated and 'offered the entry a smaller, more durable claim.'",
+   "item_id": "X1"
+  },
+  {
+   "kind": "unsung",
+   "source": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "type": "connects-to",
+   "target": "Leibniz (Indra's Net / monadology)",
+   "label": "concert-without-conductor",
+   "rationale": "Coupling / sync / swarm entries (Kuramoto, flocking, BBS blackboard) \u2192 [[Confucianism]] (ren: coherence is between) or [[Leibniz (Indra's Net / monadology)|Leibniz]] (concert without a conductor).",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "Modes of Collaboration/Oblique Portrait.md",
+   "type": "mirrors",
+   "target": "No Mind Checks Itself",
+   "label": "outside-the-loop",
+   "rationale": "Different problems (self-honesty about taste vs. self-auditing for error) sharing one deep pattern: a subject cannot reach certain truths about itself through direct self-report or self-inspection, and needs an external process \u2014 indirection in one case, a differently-angled mind in the other \u2014 to reach what the loop can't see from inside.",
+   "evidence": "Oblique Portrait: 'You cannot access certain interior material by pointing at it... The front door is locked \u2014 not by deception, but by identity.' No Mind Checks Itself: 'A self-model can only see as far as its own loop runs.'",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "Modes of Collaboration/Dialectic.md",
+   "type": "connects-to",
+   "target": "No Mind Checks Itself",
+   "label": "council-as-outside-vantage",
+   "rationale": "No Mind Checks Itself names three altitudes where a self can't audit itself (systems thinking, cognition, engineering practice) and explicitly wants 'to keep collecting the altitudes it recurs at until the pattern is unmistakable.' The Dialectic is a fourth, unclaimed altitude: embodying genuinely different voices in the same room so each can catch what the others' single perspective would miss \u2014 structurally the same move as decoupling maker from checker, done philosophically rather than procedurally.",
+   "evidence": "'Real correction needs a vantage outside that loop \u2014 a differently-textured mind, not more effort from inside the same one.' (No Mind Checks Itself) vs. Dialectic's own claim that a researched voice 'generates responses that weren't scripted in advance' and produces 'knowledge of how a position behaves under pressure' no single voice alone could produce.",
+   "item_id": "X4"
+  },
+  {
+   "kind": "unsung",
+   "source": "Modes of Collaboration/Philosopher Visits the Entry.md",
+   "type": "connects-to",
+   "target": "Plato (Socratic method)",
+   "label": "is-the-form-discovered-or-made",
+   "rationale": "Mathematical-form entries (an equation that outran its origin) \u2192 [[Plato (Socratic method)|Plato]] (is the form discovered or made?) or [[Whitehead]] (is this process or thing?).",
+   "item_id": "X5"
+  }
+ ]
+}

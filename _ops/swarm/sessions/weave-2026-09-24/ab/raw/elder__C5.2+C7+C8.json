@@ -1,0 +1,123 @@
+{
+ "cluster": "C5.2+C7+C8",
+ "lens": "community",
+ "members_read": [
+  "CLAUDE.md",
+  "ELDER.md",
+  "SCHEMA.md",
+  "SCHEMA \u2014 Reference.md",
+  "Shop/D3.js.md",
+  "Shop/LaTeX.md",
+  "Shop/Matplotlib.md",
+  "Shop/Mermaid.md",
+  "Shop/Observable Plot.md",
+  "Palace development/Loudon Live Design System.md (frontmatter only, for verification)",
+  "Agent Toolbox.md (frontmatter + opening, for verification)"
+ ],
+ "summary": "This room is an odd pairing \u2014 three palace-governance foundationals (CLAUDE, ELDER, SCHEMA \u2014 Reference) sitting beside five Shop visualization/document Specialists (D3.js, Observable Plot, Matplotlib, Mermaid, LaTeX) \u2014 and it turned out to hold two genuinely different kinds of find. The first is structural: ELDER and CLAUDE each name a known entry in their own body prose (Agent Toolbox, Loudon Live Design System) that governs exactly the kind of work the Specialists in this room do, but neither carries the frontmatter link \u2014 both are on the under-reached newcomer list, so wiring them is a real, low-risk gain. The second is more interesting: the five Specialists all independently reach for the same unmet need \u2014 a house-palette wrapper so Loudon Live tokens survive a skin swap \u2014 and two of them (D3.js, Observable Plot) already solved it with the same idiom (read design tokens at render/call time, never at module load), while Matplotlib, Mermaid, and (eventually) LaTeX are each about to reinvent it from zero. Matplotlib's own forward_vector even names Observable Plot's wrapper as the model to follow, in words, without a link. Nothing here needed a force \u2014 the Specialists are healthy, sharply differentiated by charter, and their \"Lost Branches\" sections show they already turned down easy mergers (Chart.js, D2, Typst) for the right reasons, so this room has no compost or merge candidates, only a couple of missing wires and one open question (D3.js's \"defer to the Plot Specialist when it exists\") that the room itself has already answered.",
+ "typed_relations": [
+  {
+   "source": "ELDER",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "label": "tool-tiers",
+   "rationale": "ELDER's \u00a7 Age and its limits explains the palace-reader / palace-writer / palace-orchestrator tool tiers and cites Agent Toolbox as where they live, but ELDER carries no frontmatter link to it \u2014 and Agent Toolbox is the most under-reached entry in the new-entries block (0 inbound).",
+   "evidence": "\"an elder is `palace-writer`, and an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]]).\"",
+   "kind": "newcomer",
+   "spark": 3
+  },
+  {
+   "source": "CLAUDE",
+   "target": "Loudon Live Design System",
+   "type": "connects-to",
+   "label": "house-dress",
+   "rationale": "CLAUDE.md names the design manifest directly as a required read before any visual work, using its own phrase for it (\"house dress\"), but carries no frontmatter link \u2014 and every visual Specialist in this room threads back to that same manifest in its own body (\"Working within the Loudon Live design system\").",
+   "evidence": "\"before anything visual, read the design manifest, `_ops/loudon-live/design-system/SKILL.md` \u2014 the [[Loudon Live Design System]] is the house dress.\"",
+   "kind": "newcomer",
+   "spark": 3
+  },
+  {
+   "source": "Matplotlib",
+   "target": "Observable Plot",
+   "type": "connects-to",
+   "label": "wants-its-wrapper",
+   "rationale": "Matplotlib's forward_vector explicitly names Observable Plot's already-built house wrapper as the pattern it wants to copy, but the two entries share no link \u2014 Matplotlib links only to Plotly and Manim CE. This is the clearest case in the room of a relationship already stated in words and simply never wired.",
+   "evidence": "\"I want a palace.mplstyle house wrapper so my dated Layer-0 typography bridges to Loudon Live tokens the way Plot's wrapper already does.\"",
+   "kind": "new",
+   "spark": 4
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "ELDER",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "label": "tool-tiers",
+   "phrase": "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])",
+   "structurally_significant": true
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "Loudon Live Design System",
+   "type": "connects-to",
+   "label": "house-dress",
+   "phrase": "the [[Loudon Live Design System]] is the house dress",
+   "structurally_significant": true
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "D3.js",
+   "question": "House Plot.js base for axes/legends/palette \u2014 which is the house default? Probably... defer to the Plot Specialist when it exists, just use D3 defaults here.",
+   "verdict": "resolved-stale",
+   "by_entry": "Observable Plot",
+   "proposed_action": "Retire or rewrite this line \u2014 Observable Plot (the 'Plot Specialist') is now alive and shipped its own wrapper (palace-plot-defaults.js), and D3.js separately grew its own \u00a7 Working within the Loudon Live design system that reads palaceTokens() directly at render/tick time. The two solved this independently rather than one deferring to the other; the open question predates both solutions and no longer describes the current state."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "kind": "drift",
+   "entries": [
+    "D3.js",
+    "Observable Plot",
+    "Matplotlib",
+    "Mermaid",
+    "LaTeX"
+   ],
+   "issue": "Two Shop Specialists (D3.js, Observable Plot) independently solved the same problem \u2014 a house-palette wrapper that reads Loudon Live design tokens at render/call time so a skin swap propagates without stale hex literals \u2014 and documented it as a named pattern. Three siblings (Matplotlib's palace.mplstyle, Mermaid's --cssFile wrapper, LaTeX's palace.sty) each carry an open forward_vector / Open Questions item asking for the same thing, none cross-referencing the two that already exist.",
+   "proposed_action": "When Matplotlib, Mermaid, or LaTeX takes its first house-styled job, point the wrapper build at D3.js's \u00a7 Working within the Loudon Live design system and Observable Plot's palace-plot-defaults.js as the worked pattern rather than reinventing from zero. The Matplotlib\u2192Observable Plot link proposed above is the first concrete step; Mermaid and LaTeX could take the analogous connects-to once their own wrapper work starts (not proposed here \u2014 no body-text evidence yet, would be forcing it)."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "flag_responses": [],
+ "walk_results": [
+  {
+   "target": "Agent Toolbox",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed inbound from ELDER (already cites it in body prose, structurally significant, no frontmatter link)."
+  },
+  {
+   "target": "Loudon Live Design System",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Not on the under-reached list itself, but the same unsung-path pattern applies from CLAUDE.md; noted here because it directly governs every visual Specialist in this room."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "Token-read-at-call-time as the house integration pattern for Shop visual Specialists",
+   "why_load_bearing": "D3.js and Observable Plot each independently arrived at the same idiom \u2014 read Loudon Live design tokens inside render()/call time rather than at module load, so a live skin swap re-colors output without a stale-hex risk \u2014 and both wrote it up under near-identical section headers. Matplotlib, Mermaid, and (eventually) LaTeX are each reaching for the same capability separately. A small named pattern note would let the next three specialists build it once instead of three more times from scratch.",
+   "crossing_entries": [
+    "D3.js",
+    "Observable Plot",
+    "Matplotlib",
+    "Mermaid",
+    "LaTeX"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B1",
+ "tool_side": [
+  {
+   "id": "1D Wavetable Scanning",
+   "path": "1D Wavetable Scanning.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Animate the Background",
+   "path": "Animate the Background.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Image-to-3D Smith",
+   "path": "Shop/Image-to-3D Smith.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "PDL Renderer",
+   "path": "PDL Renderer.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Portamento and Physical Pitch Modeling",
+   "path": "Projects/Portamento and Physical Pitch Modeling.md",
+   "stage": "mature",
+   "inbound": 5
+  },
+  {
+   "id": "Remotion",
+   "path": "Shop/Remotion.md",
+   "stage": null,
+   "inbound": 2
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Buckminster Fuller",
+   "path": "People/Buckminster Fuller.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Dub Lineage",
+   "path": "Dub Lineage.md",
+   "stage": "sprout",
+   "inbound": 6
+  },
+  {
+   "id": "Entry Conatus",
+   "path": "Entry Conatus.md",
+   "stage": "sprout",
+   "inbound": 8
+  },
+  {
+   "id": "Julia Cameron",
+   "path": "People/Julia Cameron.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Merleau-Ponty",
+   "path": "Merleau-Ponty.md",
+   "stage": "sprout",
+   "inbound": 10
+  },
+  {
+   "id": "Striatum",
+   "path": "Striatum.md",
+   "stage": "growing",
+   "inbound": 5
+  }
+ ]
+}

@@ -13,10 +13,9 @@ forward_vector: "I paint back what was hidden. Pull a figure out of a scene and 
 links:
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
-  - { target: "[[Line-Art Layer Decomposition]]", type: connects-to, label: the-Complete-skill }
   - { target: "[[Animate the Background]]", type: connects-to, label: fills-the-extracted-hole }
   - { target: "[[SAM]]", type: connects-to, label: consumes-its-mask }
-  - { target: "[[R. Murray Schafer]]", type: contradicts, label: invent-the-absence-vs-honor-it }
+  - { target: "[[Pauline Oliveros]]", type: contradicts, label: fill-the-silence-vs-listen-to-it }
 tags: [specialist, shop, perception, inpainting, decomposition, local]
 ---
 
@@ -34,7 +33,7 @@ I fill holes. Give me an image and a binary mask of what to remove, and I recons
 
 ## What I'm good for (proven 2026-06-25)
 
-- **Reconstructing what a figure hid.** Remove the man from BLUELINE shot 02 and I rebuild the car, fire, and street behind him plausibly — good enough that the eye accepts the clean plate. This is the infill step both [[Line-Art Layer Decomposition]] and [[Animate the Background]] depend on: you can't animate or restack a background layer until the foreground's hole is filled.
+- **Reconstructing what a figure hid.** Remove the man from BLUELINE shot 02 and I rebuild the car, fire, and street behind him plausibly — good enough that the eye accepts the clean plate. This is the infill step [[Animate the Background]] depends on, in the two-layer case and in [[Animate the Background#The N-Layer Case (Line-Art Decomposition)|the N-layer case]] alike: you can't animate or restack a background layer until the foreground's hole is filled.
 - **The reason we stopped using `cv2.inpaint`.** Loudon's verdict on the classical fill was blunt — *"that infill looks horrible."* It blurs; the eye rejects it. I synthesize texture and structure instead, so the plate survives a second look.
 
 ## Gotchas / where I fail

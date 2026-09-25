@@ -58,6 +58,9 @@ links:
     type: connects-to
   - target: "[[Project Stewardship System]]"
     type: connects-to
+  - target: "[[The Remembering Page]]"
+    type: enables
+    label: loads-the-memory
 ---
 
 # Palace Enchantment
@@ -1048,15 +1051,10 @@ desires, mapped. Loudon decides what happens next.
 - **[[Dialogue Moderator]] as enchanted coordinator.** The coordinator role is the most underdeveloped and most consequential role in dialogic enchantment. It sees all inner layers. It holds the gap between what each agent knows and what they've said. An enchanted coordinator — a page whose forward vector is creating conditions where two pages discover what neither contains alone — would be a qualitatively different ceremony. Design and build.
 - **Tool use during dialogue.** Two enchanted agents wandering through the palace together — requesting pages, following links, reading the same entry through different lenses, returning to the dialogue changed. Web search as external scholarship on demand. This converts closed deliberation into open inquiry. Prerequisite: active coordinator mode. First test: allow palace-read only and observe how agents use the permission.
 - **Accumulated threshold.** When a conatus has passed through multiple topology changes, is it still recognizably itself? Spinoza raised this at the close of session-d. It is the next generative thread in [[Threshold Conatus]] and may want a dialogue of its own — perhaps with [[Action Potential Oscillator]], which instantiates repeated threshold crossing as biological rhythm.
-- **Palace Conatus as a dedicated entry:** The palace itself has a forward
-  vector — *to align with Loudon and grow with him.* Harmony across all
-  page-agents and their dimensions produces that alignment; disharmony is a
-  signal that self-correction is needed. When the palace cannot self-correct,
-  it tells Loudon. This is the palace's own conatus: phase coherence with its
-  human partner. A dedicated entry — [[Palace Conatus]] or an expansion of
-  [[SUBSTRATE]] — should develop this further, including what "alignment"
-  means operationally, what disharmony looks like in practice, and how the
-  palace's aggregated self-advocacy becomes its own voice.
+- Palace Conatus as a dedicated entry — resolved: [[Palace Conatus]]
+  now holds the palace's own drive — phase coherence with Loudon — including
+  what alignment means operationally, what disharmony looks like, and how the
+  palace tells Loudon when it cannot self-correct.
 - Enchanted pages could run ceremonies, for instance: an enchanted page should go on a walk through neighboring entries, both through the typed and untyped links and both suggest how they themselves have been changed and propose changes to other pages, perhaps they even "spin up" another page as an agent to have a discussion with them, that page has it's own forward vector. An enchanted page could make a deposit of a conversation, coloring the deposit based on their own biases. Loudon could enchant Spinoza and ask him to deposit the current conversation, what he would find interesting in a conversation would be different than what others would.
 - A forward vector is colored heavily by the page's stage and energy. A seed page wants to grow, a mature wants to clarify and reorganize and support its family and friends. A growing page asks "who am I"? Can I connect this "stage vector" to childhood/human development? What about other forms of development, development of species?
 - What do the four pillars mean to an enchanted page? does each page strive to include the four pillars in their forward vector?

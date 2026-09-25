@@ -1,0 +1,235 @@
+{
+ "cluster": "F-small-families",
+ "lens": "folder",
+ "summary": "This room turned out to be three families wearing one folder: ten Cross-Domain Resonances (audio-technique-as-life-lesson entries, all mature, all born 2026-03), four Modes of Collaboration siblings (Dialectic, Excellent Adventure, Oblique Portrait, Philosopher Visits the Entry \u2014 practice entries carrying 12-18 inbound links each), and two archived Dialectic transcripts filed inside other entries' bundle folders. Nothing here is thin or neighborless \u2014 every member earns its keep, so there are no merge or compost candidates and I'm not forcing any. The real yield was pooling: two Dialectic siblings (zhuangzi-epictetus-confucius-on-the-self and spinoza-zhuangzi-on-striving) turned out to answer each other's open questions directly \u2014 one asked for exactly the Dialectic the other later became, and neither registered the link; the same origin entry named \"The Drift\" as its own unregistered offspring, which now exists as a real entry. Two structural things surfaced that are only visible at family scale: both foreign-folder Dialectics have a frontmatter title that doesn't match their filename (a concrete SCHEMA \u00a73 violation), and their full entry-grade frontmatter sitting inside another entry's bundle-folder path is the exact ambiguity this room's own name flags \u2014 worth the Concierge's attention, not a silent fix. The Cross-Domain Resonances read as a tightly matched set (same template, same near-maximal quality scores across all ten, which is itself worth a note \u2014 a uniform 9-or-10 stops meaning anything), with half the family cross-linking each other and half standing alone; I found one strong, evidence-backed bridge between two standalone members (Reverb \u2194 Space-Time and Frequency Domain \u2194 Perspective Shift both independently anchor to Frequency-Time Duality without linking to each other) and offer a softer second. On growing agents up for this run specifically: reading ELDER and both SCHEMA files before touching the room is what made the title/filename mismatch and the stage-drift flags (Philosopher Visits the Entry reads well past \"sprout\"; Dialectic and Excellent Adventure read past \"growing\" at 18 inbound each) legible as concrete, citable violations rather than vague impressions \u2014 a child's birth context has none of \u00a72's stage table or \u00a73's title-must-match-filename rule in view, so those finds specifically depended on the elder read.",
+ "members_read": [
+  "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+  "Cross-Domain Resonances/Cooking \u2194 Mixing.md",
+  "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
+  "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+  "Cross-Domain Resonances/Kick Drum \u2194 Foundation.md",
+  "Cross-Domain Resonances/Quantization \u2194 Precision vs Flow.md",
+  "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+  "Cross-Domain Resonances/Saturation \u2194 Richness.md",
+  "Cross-Domain Resonances/Sidechain \u2194 Conversation.md",
+  "Cross-Domain Resonances/Synthesis \u2194 Emergence.md",
+  "Modes of Collaboration/Dialectic.md",
+  "Modes of Collaboration/Excellent Adventure.md",
+  "Modes of Collaboration/Oblique Portrait.md",
+  "Modes of Collaboration/Philosopher Visits the Entry.md",
+  "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+  "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+  "Reflective Practice.md",
+  "The Practice Rediscovers Its Philosophy.md",
+  "No Mind Checks Itself.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Dialectic",
+   "target": "No Mind Checks Itself",
+   "type": "exemplifies",
+   "kind": "bridge",
+   "spark": 3,
+   "label": "a-mind-that-hears-another",
+   "rationale": "Dialectic's method is precisely a second (or third) differently-angled voice catching what one voice's loop can't see from inside; No Mind Checks Itself names that as a structural law and lists Bring In a Bigger Mind and the Multi-Lens Weave as its instances without ever naming Dialectic, its oldest and most worked-out palace instance.",
+   "evidence": "Dialectic: 'What emerges cannot be reached by any single voice alone.' / No Mind Checks Itself: 'Real correction needs a vantage outside that loop \u2014 a differently-textured mind, not more effort from inside the same one.'"
+  },
+  {
+   "source": "Reverb \u2194 Space-Time",
+   "target": "Frequency Domain \u2194 Perspective Shift",
+   "type": "mirrors",
+   "kind": "new",
+   "spark": 3,
+   "label": "twin-transforms",
+   "rationale": "Both are Fourier-family transforms treated as revealing hidden structure through a coordinate change, and both already anchor independently to Frequency-Time Duality without linking to each other \u2014 a near-miss only visible pooling the whole family's third-party anchors.",
+   "evidence": "Reverb \u2194 Space-Time: 'Space (volume) equals time (decay) \u2014 not metaphorically, mathematically.' / Frequency Domain \u2194 Perspective Shift: 'Fourier Transform proves: perspective change reveals hidden structure.'"
+  },
+  {
+   "source": "zhuangzi-epictetus-confucius-on-the-self",
+   "target": "The Drift",
+   "type": "spawned",
+   "kind": "new",
+   "spark": 2,
+   "rationale": "The entry's own Forward Vectors section names The Drift as the fourth pole it surfaced, 'wants its own palace entry' \u2014 that entry now exists (see Palace Philosophies' reference to 'The Drift (architecture vs. none)') but this Dialectic's frontmatter never registered the link.",
+   "evidence": "'The Drift (or: The Open Door). The fourth pole \u2014 the Zhuangzian no-architecture position \u2014 wants its own palace entry.'"
+  },
+  {
+   "source": "zhuangzi-epictetus-confucius-on-the-self",
+   "target": "spinoza-zhuangzi-on-striving",
+   "type": "spawned",
+   "kind": "new",
+   "spark": 2,
+   "rationale": "The entry explicitly requests 'A Dialectic with Spinoza in the room' as unfinished business; spinoza-zhuangzi-on-striving (born later, 2026-05-30) is exactly that Dialectic and already links back with mirrors/same-method-second-question, but the origin entry never links forward to its own fulfillment.",
+   "evidence": "'A Dialectic with Spinoza in the room. What does Spinoza say to Zhuangzi?... This is the pairing the entry's current spine cannot hold.'"
+  },
+  {
+   "source": "Dovetail Joint \u2194 Counterpoint",
+   "target": "Sidechain \u2194 Conversation",
+   "type": "connects-to",
+   "kind": "bridge",
+   "spark": 2,
+   "label": "complementary-vs-yielding",
+   "rationale": "Both anchor independently to Cooperation Yields Agency as their philosophical grounding for 'two things making room for each other' \u2014 complementary-strength vs mutual-yield \u2014 but reach it by opposite mechanisms, permanent spatial co-design vs. temporal alternation. Offered at lower confidence than the others; a real family resemblance, not an identity.",
+   "evidence": "Dovetail: 'Not cooperation\u2014co-design. Each element exists to make the other stronger.' / Sidechain: 'The pattern is: Trigger \u2192 Yield \u2192 Occupy \u2192 Release \u2192 Return \u2192 Repeat.'"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Reflective Practice",
+   "target": "Oblique Portrait",
+   "type": "connects-to",
+   "label": "in-action",
+   "phrase": "'Three reflect in action: the Dialectic at the moment \"the question itself gets reframed by the collision\", the Concierge's scout, and the Oblique Portrait.'",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Philosopher Visits the Entry",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward vector is specific and striving",
+   "graffiti_note": "Body carries 15 typed links, a working method, a named precedent instance, and a starting roster \u2014 well past sprout's '1\u20132 typed links, 150\u2013400 words' bar (SCHEMA \u00a72)."
+  },
+  {
+   "entry": "Dialectic",
+   "stage_current": "growing",
+   "stage_proposed": "mature",
+   "vector_issue": "none",
+   "graffiti_note": "18 inbound links, two named archived instances, a stable method write-up with protocol notes \u2014 reads as SCHEMA \u00a72's 'stable, well-connected, unlikely to change fundamentally.'"
+  },
+  {
+   "entry": "Excellent Adventure",
+   "stage_current": "growing",
+   "stage_proposed": "mature",
+   "vector_issue": "none",
+   "graffiti_note": "18 inbound, an origin story, five named examples, an architectural-mirror section \u2014 content-wise this is not a 'growing' entry."
+  },
+  {
+   "entry": "Oblique Portrait",
+   "stage_current": "growing",
+   "stage_proposed": "mature, or a freshness check",
+   "graffiti_note": "13 inbound but last_activated 2026-03 and activation_count 1 \u2014 six months stale despite being one of the most-cited entries in this family. Either genuinely dormant (fine) or under-tracked (worth a touch)."
+  },
+  {
+   "entry": "spinoza-zhuangzi-on-striving",
+   "vector_issue": "Filename 'spinoza-zhuangzi-on-striving.md' does not match frontmatter title '\"Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work\"' \u2014 SCHEMA \u00a73 requires title to match filename minus .md.",
+   "graffiti_note": "Also sits inside Spinoza Conatus/'s bundle-folder path while carrying full entry frontmatter (type, pillars, stage, confidence) rather than the minimal bundle-file frontmatter SCHEMA \u00a78 specifies for the dialectic bundle type \u2014 see coherence_findings."
+  },
+  {
+   "entry": "zhuangzi-epictetus-confucius-on-the-self",
+   "vector_issue": "Filename does not match frontmatter title '\"Zhuangzi, Epictetus, and Confucius on the End of the Self\"' \u2014 same SCHEMA \u00a73 gap.",
+   "graffiti_note": "Same foreign-bundle-folder pattern, inside The Fortress and the Threshold/."
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Two entries' frontmatter title does not match their filename, violating SCHEMA \u00a73's 'title must match the filename (minus .md)'.",
+   "kind": "schema-compliance",
+   "entries": [
+    "spinoza-zhuangzi-on-striving.md",
+    "zhuangzi-epictetus-confucius-on-the-self.md"
+   ],
+   "proposed_action": "Either rename the files to match their long sentence-style titles, or (more likely, given these read as archived transcripts) accept the kebab-case filename as the canonical id and shorten the frontmatter title to match \u2014 either direction restores the invariant; right now they're the only two files in the palace using kebab-case names at all, which is itself the tell."
+  },
+  {
+   "issue": "Two archived-Dialectic entries live inside other entries' bundle folders (Spinoza Conatus/, The Fortress and the Threshold/) but carry full entry-grade frontmatter rather than the minimal bundle-file frontmatter SCHEMA \u00a78 specifies for the `dialectic` bundle type \u2014 and they're tracked in Weave topology with real inbound counts (4 each), which \u00a78 says bundle files don't get.",
+   "kind": "structural-ambiguity",
+   "entries": [
+    "spinoza-zhuangzi-on-striving.md",
+    "zhuangzi-epictetus-confucius-on-the-self.md"
+   ],
+   "proposed_action": "Not a silent fix \u2014 this room's own name ('entries living inside other entries' bundle folders') suggests the drift was already noticed. Worth a deliberate call: are these entries that happen to sit in a folder-name collision (keep as-is, note the exception in SCHEMA \u2014 Context \u00a78), or bundle files that outgrew their britches and should shed pillars/stage/confidence? I'd keep them as entries \u2014 each produced real intellectual yield beyond the transcript and is independently cited (Dialectic's Named Examples, Palace Philosophies) \u2014 but the Concierge should be the one to say so on the record."
+  },
+  {
+   "issue": "All 10 Cross-Domain Resonances carry near-identical optional-field scores (hook_quality 9-10, beauty 8-10, confidence: established, energy: very high) and identical activation metadata (activation_count 2, last_activated 2026-06-26), consistent with a single batch touch rather than differentiated per-entry judgment.",
+   "kind": "house-standard drift / signal dilution",
+   "proposed_action": "Not urgent \u2014 but if these fields are meant to carry real signal, a uniform near-max across all ten flattens it to noise. Worth a genuine re-rating pass next time this family is touched, so the fields mean something again."
+  },
+  {
+   "issue": "Half the Cross-Domain Resonances family cross-links siblings (Compression\u2194Intimacy, Kick Drum\u2194Foundation, Frequency Domain\u2194Perspective Shift, Sidechain\u2194Conversation, Quantization\u2194Precision-vs-Flow, Synthesis\u2194Emergence); the other half (Cooking\u2194Mixing, Dovetail\u2194Counterpoint, Reverb\u2194Space-Time, Saturation\u2194Richness) has zero resonance-to-resonance links, anchoring only to outside philosophy/person entries.",
+   "kind": "roster gap, visible only pooling the family",
+   "proposed_action": "Two of the four now have proposed bridges above (Reverb\u2194Space-Time, Dovetail\u2194Counterpoint). Cooking\u2194Mixing and Saturation\u2194Richness may just be the family's genuine standalone members \u2014 not every entry needs a sibling link, and I didn't force one where none was genuine."
+  },
+  {
+   "issue": "The four Modes of Collaboration siblings use the optional confidence/energy/hook_quality/beauty fields inconsistently \u2014 Excellent Adventure and Oblique Portrait carry most of them, Dialectic carries none, Philosopher Visits the Entry carries only confidence/energy.",
+   "kind": "minor field-usage inconsistency",
+   "proposed_action": "Low priority; normalize only if this family gets touched for other reasons."
+  },
+  {
+   "issue": "Dialectic and Excellent Adventure both show 18 inbound typed links \u2014 well past the hub threshold (\u22655, SCHEMA \u00a71) \u2014 and Oblique Portrait (13) and Philosopher Visits the Entry (12) also clear it, yet none carry type: hub.",
+   "kind": "entry-type audit candidate",
+   "proposed_action": "Flagging for the Weave's judgment, not asserting a retype \u2014 hub as currently used (FOUR PILLARS, Kuramoto Coupling) reads like a broad organizing crossroads, and converting these four named practices to hub could cost them the practice identity that makes 'Modes of Collaboration' legible as a catalogue. Worth a deliberate discussion, not a mechanical threshold application."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [
+  {
+   "file": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "disposition": "keep",
+   "rationale": "Carries full entry frontmatter and independent inbound links (4) despite living in another entry's folder \u2014 functions as a real entry, not bundle substrate. Recommend keeping type:concept and surfacing the folder-collision to the Concierge as a SCHEMA \u00a78 edge case rather than converting it to a minimal dialectic bundle file, which would strip its independent citability."
+  },
+  {
+   "file": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+   "disposition": "keep",
+   "rationale": "Same shape and same reasoning as its sibling above \u2014 real intellectual yield (the Extract and Name section), real inbound links, deserves to stay a first-class entry."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "zhuangzi-epictetus-confucius-on-the-self",
+   "question": "A Dialectic with Spinoza in the room \u2014 what does Spinoza say to Zhuangzi? This is the pairing the entry's current spine cannot hold.",
+   "verdict": "answered-elsewhere",
+   "by_entry": "spinoza-zhuangzi-on-striving",
+   "proposed_action": "Add a spawned link from this entry to spinoza-zhuangzi-on-striving naming it as the fulfillment; the reverse mirrors link already exists but the origin side is silent about having been answered."
+  },
+  {
+   "entry": "zhuangzi-epictetus-confucius-on-the-self",
+   "question": "The Drift (or: The Open Door) \u2014 the fourth pole wants its own palace entry.",
+   "verdict": "answered-elsewhere",
+   "by_entry": "The Drift",
+   "proposed_action": "Add a spawned link from this entry to The Drift \u2014 the body names it as the thing it produced, but the frontmatter never registers it."
+  },
+  {
+   "entry": "spinoza-zhuangzi-on-striving",
+   "question": "The absorption of the second axis (striving-with-the-grain vs. against-it) into Spinoza Conatus itself.",
+   "verdict": "still-open (unverifiable in this room)",
+   "proposed_action": "Spinoza Conatus wasn't a member of this room, so this can't be confirmed here \u2014 flag for whoever next reads Spinoza Conatus to check whether the promised edit landed."
+  },
+  {
+   "entry": "spinoza-zhuangzi-on-striving",
+   "question": "A live re-run with Loudon steering one of the voices.",
+   "verdict": "still-open",
+   "proposed_action": "Both archived Dialectics in this family independently ask for the same live follow-up (see zhuangzi-epictetus-confucius-on-the-self's matching request) and neither has happened \u2014 naming it once, in case a future Excellent Adventure session picks it up."
+  },
+  {
+   "entry": "zhuangzi-epictetus-confucius-on-the-self",
+   "question": "Run this with Loudon live \u2014 the next one should be a live Excellent Adventure where Loudon steers.",
+   "verdict": "still-open",
+   "proposed_action": "Same open item as spinoza-zhuangzi-on-striving's; the two entries are carrying the same unresolved ask independently."
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "question": "When does a visit earn promotion into the entry's body, and when does it stay an enrichment card beside it?",
+   "verdict": "still-open",
+   "proposed_action": "No other member of this room addresses it."
+  },
+  {
+   "entry": "Dialectic",
+   "question": "What is the right name for a solo dialectic \u2014 one figure in genuine self-contradiction?",
+   "verdict": "still-open",
+   "proposed_action": "No other member of this room addresses it."
+  },
+  {
+   "entry": "Excellent Adventure",
+   "question": "What is the difference between an excellent adventure that produces hilaritas and one that produces only entertainment?",
+   "verdict": "still-open",
+   "proposed_action": "Hilaritas Generator's design primitives are the likely place this gets answered, but that entry wasn't a member of this room."
+  }
+ ],
+ "synthesis_spawn_flag": [],
+ "flag_responses": [],
+ "walk_results": [],
+ "bridge_findings": []
+}

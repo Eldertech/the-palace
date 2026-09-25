@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B4",
+ "tool_side": [
+  {
+   "id": "Block It in Blender, Ink It in genAI",
+   "path": "Block It in Blender, Ink It in genAI.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Dispersion Table",
+   "path": "Dispersion Table.md",
+   "stage": "sprout",
+   "inbound": 4
+  },
+  {
+   "id": "LoRA Trainer",
+   "path": "Shop/LoRA Trainer.md",
+   "stage": null,
+   "inbound": 0
+  },
+  {
+   "id": "SMPTE LTC",
+   "path": "SMPTE LTC.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "The 2.5D Paper Stack",
+   "path": "The 2.5D Paper Stack.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Weaving Memory into the Palace",
+   "path": "Weaving Memory into the Palace.md",
+   "stage": "sprout",
+   "inbound": 1
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Dialectic",
+   "path": "Modes of Collaboration/Dialectic.md",
+   "stage": "growing",
+   "inbound": 18
+  },
+  {
+   "id": "Donella Meadows",
+   "path": "People/Donella Meadows.md",
+   "stage": "seed",
+   "inbound": 12
+  },
+  {
+   "id": "Graphic Storytelling",
+   "path": "Graphic Storytelling.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "Hilaritas Generator",
+   "path": "Hilaritas Generator.md",
+   "stage": "mature",
+   "inbound": 72
+  },
+  {
+   "id": "Pauline Oliveros",
+   "path": "People/Pauline Oliveros.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Spinoza",
+   "path": "Spinoza.md",
+   "stage": "seed",
+   "inbound": 7
+  }
+ ]
+}

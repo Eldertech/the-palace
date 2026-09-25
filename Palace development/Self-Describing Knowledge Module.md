@@ -1,6 +1,6 @@
 ---
 title: Self-Describing Knowledge Module
-type: concept
+type: hub
 pillars:
   - tools
   - philosophy

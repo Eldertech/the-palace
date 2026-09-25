@@ -1,0 +1,551 @@
+{
+ "lens": "community",
+ "id": "C3.2",
+ "members": [
+  {
+   "id": "Diversity of Thought in Many-Agent Systems",
+   "path": "Diversity of Thought in Many-Agent Systems.md",
+   "type": "question",
+   "stage": "seed",
+   "reached_by": 11,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Does Personifying an Agent Change What It Does  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Maker  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Murmuration  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Self-Describing Knowledge Module  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Shopkeeper  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Web Audio Worklet  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 The Shop  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 BLUELINE  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 BBS Blackboard",
+    "\u2192 connects-to \u2192 Cooperation Yields Agency",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 emerged-from \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Does Personifying an Agent Change What It Does",
+   "path": "Does Personifying an Agent Change What It Does.md",
+   "type": "question",
+   "stage": "seed",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2192 connects-to \u2192 Diversity of Thought in Many-Agent Systems",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Pages as Agents",
+    "\u2192 connects-to \u2192 Shopkeeper",
+    "\u2192 deepens \u2192 Four Pillars of Enchanted Agency",
+    "\u2192 emerged-from \u2192 Palace Enchantment"
+   ]
+  },
+  {
+   "id": "RNBO codebox~ smith",
+   "path": "Shop/RNBO codebox~ smith.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 5,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Tone.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Waveguide Synthesizer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Web Audio Worklet  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Generative Audio Devices",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 enables \u2192 ffmpeg",
+    "\u2192 member-of \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Search Before You Build",
+   "path": "Search Before You Build.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 3,
+   "existing_links": [
+    "\u2190 exemplifies \u2190 Return Ceremony",
+    "\u2192 connects-to \u2192 Concierge",
+    "\u2192 couples-with \u2192 Adopt the Craft, Author the Seam",
+    "\u2192 emerged-from \u2192 GenAI Camera"
+   ]
+  },
+  {
+   "id": "Shopkeeper",
+   "path": "Shop/Shopkeeper.md",
+   "type": "maker",
+   "stage": null,
+   "reached_by": 8,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Does Personifying an Agent Change What It Does  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 The Shop",
+    "\u2192 connects-to \u2192 Diversity of Thought in Many-Agent Systems",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Loudon Live Post-producer",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 couples-with \u2192 Maker",
+    "\u2192 exemplifies \u2192 Hilaritas Generator",
+    "\u2192 member-of \u2192 The Shop",
+    "\u2192 mirrors \u2192 Palace Enchantment"
+   ]
+  },
+  {
+   "id": "Stable Audio Open",
+   "path": "Shop/Stable Audio Open.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Radio Play  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 The Multilinear Self  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 ffmpeg  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Kokoro",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 Whisper",
+    "\u2192 connects-to \u2192 ffmpeg",
+    "\u2192 contradicts \u2192 The Multilinear Self",
+    "\u2192 enables \u2192 Loudon Live",
+    "\u2192 enables \u2192 Loudon Live Design System",
+    "\u2192 spawned \u2192 Kuramoto Coupling"
+   ]
+  },
+  {
+   "id": "Steer the Generator",
+   "path": "Steer the Generator.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 13,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Animate the Background  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Block It in Blender, Ink It in genAI  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 ControlNet as Topology  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Frame Designer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 GenAI Camera  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Hand-Drawn 3D Look  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Line-Art Layer Decomposition  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Aftermath Frame  (symmetric: holds both ways)",
+    "\u2190 exemplifies \u2190 Lettering",
+    "\u2190 spawned \u2190 BLUELINE",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 couples-with \u2192 Cooperation Yields Agency",
+    "\u2192 emerged-from \u2192 BLUELINE",
+    "\u2192 exemplifies \u2192 FOUR PILLARS"
+   ]
+  },
+  {
+   "id": "The 2.5D Paper Stack",
+   "path": "The 2.5D Paper Stack.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Hand-Drawn 3D Look  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Flow Field is the Spine  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Move the Ink, Don't Redraw It  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Remnants in Depth  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 Frame Designer",
+    "\u2192 connects-to \u2192 Comic and Cinema \u2014 Two Ways of Seeing",
+    "\u2192 couples-with \u2192 Hand-Drawn 3D Look",
+    "\u2192 couples-with \u2192 Move the Ink, Don't Redraw It",
+    "\u2192 emerged-from \u2192 BLUELINE",
+    "\u2192 enables \u2192 Frame Designer"
+   ]
+  },
+  {
+   "id": "The Aftermath Frame",
+   "path": "The Aftermath Frame.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Andy Goldsworthy  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 BLUELINE  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 The Flow Field is the Spine",
+    "\u2192 connects-to \u2192 BLUELINE",
+    "\u2192 connects-to \u2192 Blocked, Not Prompted",
+    "\u2192 connects-to \u2192 Figure Rig",
+    "\u2192 connects-to \u2192 Steer the Generator",
+    "\u2192 emerged-from \u2192 The Flow Field is the Spine",
+    "\u2192 exemplifies \u2192 Graphic Storytelling"
+   ]
+  },
+  {
+   "id": "The Commons",
+   "path": "The Commons.md",
+   "type": "meta",
+   "stage": "growing",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 RunPod GPU Backend  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Palace Practices on Itself  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Tool Builder  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Zoom Out to the Structure  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 assume multi-agent  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Cooperation Yields Agency",
+    "\u2192 connects-to \u2192 RunPod GPU Backend",
+    "\u2192 connects-to \u2192 STIGMERGY",
+    "\u2192 connects-to \u2192 The Palace Practices on Itself",
+    "\u2192 exemplifies \u2192 assume multi-agent"
+   ]
+  },
+  {
+   "id": "The Flow Field is the Spine",
+   "path": "The Flow Field is the Spine.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 10,
+   "existing_links": [
+    "\u2190 connects-to \u2190 ControlNet as Topology  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Hand-Drawn 3D Look  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Remnants in Depth  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Blocked, Not Prompted  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 The Aftermath Frame",
+    "\u2190 exemplifies \u2190 Animate the Background",
+    "\u2190 exemplifies \u2190 BLUELINE",
+    "\u2192 connects-to \u2192 BLUELINE",
+    "\u2192 connects-to \u2192 Flocking",
+    "\u2192 connects-to \u2192 The 2.5D Paper Stack",
+    "\u2192 couples-with \u2192 Blocked, Not Prompted",
+    "\u2192 couples-with \u2192 Move the Ink, Don't Redraw It",
+    "\u2192 spawned \u2192 The Aftermath Frame"
+   ]
+  },
+  {
+   "id": "The Multilinear Self",
+   "path": "The Multilinear Self.md",
+   "type": "concept",
+   "stage": "sprout",
+   "reached_by": 10,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Creative Coach  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Stable Audio Open  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Trickster  (symmetric: holds both ways)",
+    "\u2190 exemplifies \u2190 Loudon Live Design System",
+    "\u2190 mirrors \u2190 Hyperdimensional Prism  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Creative Coach",
+    "\u2192 connects-to \u2192 Deleuze",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Loudon Live Design System",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Spinoza Conatus",
+    "\u2192 contradicts \u2192 Stable Audio Open",
+    "\u2192 contradicts \u2192 Stoicism",
+    "\u2192 couples-with \u2192 Trickster",
+    "\u2192 deepens \u2192 Autodidact Polymaths",
+    "\u2192 mirrors \u2192 Hyperdimensional Prism"
+   ]
+  },
+  {
+   "id": "The Palace Practices on Itself",
+   "path": "The Palace Practices on Itself.md",
+   "type": "meta",
+   "stage": "growing",
+   "reached_by": 10,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Christopher Alexander  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Reflective Practice  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Commons  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Tool Builder  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 assume multi-agent  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Zoom Out to the Structure  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Cooperation Yields Agency",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Pages as Agents",
+    "\u2192 connects-to \u2192 The Commons",
+    "\u2192 couples-with \u2192 Zoom Out to the Structure",
+    "\u2192 mirrors \u2192 Endosymbiosis"
+   ]
+  },
+  {
+   "id": "The Shop",
+   "path": "The Shop.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 57,
+   "existing_links": [
+    "\u2190 connects-to \u2190 BLUELINE  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Blender  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 ComfyUI  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 D3.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Depth Anything  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 FLUX (Hugging Face)  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Figure Rig  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Flocking  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Hero and Avatar Maker  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Image-to-3D Smith  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Kokoro  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 LaMa  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Loudon Live Design System  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Loudon Live Post-producer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Maker  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Manim CE  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Matplotlib  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Mermaid  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Midjourney  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Observable Plot  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Remotion  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Review Layer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 SAM  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Skills Are Enchantable Pages  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Stable Audio Open  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Steer the Generator  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Surfaces and Capabilities  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Tone.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Waveguide Synthesizer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Web Audio Worklet  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Whisper  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Tier Vocabulary Glossary",
+    "\u2190 emerged-from \u2190 Agent Toolbox",
+    "\u2190 emerged-from \u2190 Diversity of Thought in Many-Agent Systems",
+    "\u2190 emerged-from \u2190 Radio Play",
+    "\u2190 enables \u2190 Closing Well",
+    "\u2190 enables \u2190 RunPod GPU Backend",
+    "\u2190 exemplifies \u2190 Web Audio Worklet",
+    "\u2190 member-of \u2190 Frame Designer",
+    "\u2190 member-of \u2190 LaTeX",
+    "\u2190 member-of \u2190 Lettering",
+    "\u2190 member-of \u2190 LoRA Trainer",
+    "\u2190 member-of \u2190 OBS",
+    "\u2190 member-of \u2190 RNBO codebox~ smith",
+    "\u2190 member-of \u2190 Remnants in Depth",
+    "\u2190 member-of \u2190 Shopkeeper",
+    "\u2190 member-of \u2190 Three.js",
+    "\u2190 member-of \u2190 VCV Patch Generator",
+    "\u2190 member-of \u2190 ffmpeg",
+    "\u2190 member-of \u2190 p5.js",
+    "\u2190 spawned \u2190 2D Torus Wavetable Synthesizer",
+    "\u2192 connects-to \u2192 BBS Blackboard",
+    "\u2192 connects-to \u2192 Closing Well",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Pages as Agents",
+    "\u2192 connects-to \u2192 Quality Manifesto",
+    "\u2192 connects-to \u2192 Trickster",
+    "\u2192 couples-with \u2192 Diversity of Thought in Many-Agent Systems",
+    "\u2192 deepens \u2192 FOUR PILLARS",
+    "\u2192 enables \u2192 Palace Orchestrator",
+    "\u2192 exemplifies \u2192 Kokoro",
+    "\u2192 exemplifies \u2192 Manim CE",
+    "\u2192 mirrors \u2192 Lossy Compression with Intent Alignment",
+    "\u2192 mirrors \u2192 Palace Enchantment",
+    "\u2192 spawned \u2192 Maker",
+    "\u2192 spawned \u2192 Shopkeeper",
+    "\u2192 spawned \u2192 Tier Vocabulary Glossary"
+   ]
+  },
+  {
+   "id": "Tone.js",
+   "path": "Shop/Tone.js.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Three.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Waveguide Synthesizer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Web Audio Worklet  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Three.js  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 p5.js  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 RNBO codebox~ smith",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 p5.js"
+   ]
+  },
+  {
+   "id": "Tool Builder",
+   "path": "Tool Builder.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 member-of \u2190 assume multi-agent",
+    "\u2192 connects-to \u2192 Closing Well",
+    "\u2192 connects-to \u2192 STIGMERGY",
+    "\u2192 connects-to \u2192 Simondon",
+    "\u2192 connects-to \u2192 The Commons",
+    "\u2192 connects-to \u2192 The Palace Practices on Itself",
+    "\u2192 exemplifies \u2192 FOUR PILLARS"
+   ]
+  },
+  {
+   "id": "Toolkit Assessment \u2014 Working Doc",
+   "path": "_ops/Toolkit Assessment \u2014 Working Doc.md",
+   "type": "meta",
+   "stage": "growing",
+   "reached_by": 1,
+   "existing_links": [
+    "\u2190 couples-with \u2190 Loudon's Toolkit  (symmetric: holds both ways)",
+    "\u2192 enables \u2192 Loudon's Toolkit"
+   ]
+  },
+  {
+   "id": "Toolkit \u2014 Audio Plugins",
+   "path": "Toolkit \u2014 Audio Plugins.md",
+   "type": "meta",
+   "stage": "growing",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2190 connects-to \u2190 LDN RTM  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Loudon Live  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Loudon's Toolkit  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Toolkit \u2014 Synthesizers",
+    "\u2192 emerged-from \u2192 Loudon's Toolkit"
+   ]
+  },
+  {
+   "id": "Toolkit \u2014 Synthesizers",
+   "path": "Toolkit \u2014 Synthesizers.md",
+   "type": "meta",
+   "stage": "growing",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Loudon Live  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Toolkit \u2014 Audio Plugins  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Loudon's Toolkit",
+    "\u2192 emerged-from \u2192 Loudon's Toolkit"
+   ]
+  },
+  {
+   "id": "Typography as Meaning",
+   "path": "Typography as Meaning.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 BLUELINE  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Graphic Storytelling  (symmetric: holds both ways)",
+    "\u2190 exemplifies \u2190 Lettering",
+    "\u2192 connects-to \u2192 Comic and Cinema \u2014 Two Ways of Seeing",
+    "\u2192 connects-to \u2192 Loudon Live Design System",
+    "\u2192 couples-with \u2192 Language as a Tonal Medium",
+    "\u2192 emerged-from \u2192 Graphic Storytelling",
+    "\u2192 enables \u2192 Hilaritas Generator",
+    "\u2192 exemplifies \u2192 Blocked, Not Prompted",
+    "\u2192 spawned \u2192 Lettering"
+   ]
+  },
+  {
+   "id": "Web Audio Worklet",
+   "path": "Shop/Web Audio Worklet.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 12,
+   "existing_links": [
+    "\u2190 connects-to \u2190 1D Wavetable Scanning  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Murmuration  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Wavetable Scanner  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Three.js  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 2D Torus Wavetable Synthesizer",
+    "\u2192 connects-to \u2192 Diversity of Thought in Many-Agent Systems",
+    "\u2192 connects-to \u2192 Flocking",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 RNBO codebox~ smith",
+    "\u2192 connects-to \u2192 The Shop",
+    "\u2192 connects-to \u2192 Tone.js",
+    "\u2192 connects-to \u2192 p5.js",
+    "\u2192 exemplifies \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Whisper",
+   "path": "Shop/Whisper.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Kokoro  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Loudon Live Post-producer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Manim CE  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Stable Audio Open  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 ffmpeg  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Kokoro",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Manim CE",
+    "\u2192 connects-to \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "Zoom Out to the Structure",
+   "path": "Zoom Out to the Structure.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2190 couples-with \u2190 The Palace Practices on Itself  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Cooperation Yields Agency",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 The Commons",
+    "\u2192 couples-with \u2192 The Palace Practices on Itself"
+   ]
+  },
+  {
+   "id": "assume multi-agent",
+   "path": "assume multi-agent.md",
+   "type": "practice",
+   "stage": "sprout",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Agent Toolbox  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Practice Rediscovers Its Philosophy  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 RunPod GPU Backend",
+    "\u2190 exemplifies \u2190 The Commons",
+    "\u2192 connects-to \u2192 RunPod GPU Backend",
+    "\u2192 connects-to \u2192 STIGMERGY",
+    "\u2192 connects-to \u2192 The Commons",
+    "\u2192 connects-to \u2192 The Palace Practices on Itself",
+    "\u2192 member-of \u2192 Tool Builder"
+   ]
+  },
+  {
+   "id": "ffmpeg",
+   "path": "Shop/ffmpeg.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 13,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Loudon Live Post-producer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Radio Play  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Stable Audio Open  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Kokoro  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Manim CE  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 OBS  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 RNBO codebox~ smith",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 couples-with \u2192 ComfyUI",
+    "\u2192 couples-with \u2192 Kokoro",
+    "\u2192 couples-with \u2192 Manim CE",
+    "\u2192 couples-with \u2192 Matplotlib",
+    "\u2192 couples-with \u2192 Remotion",
+    "\u2192 couples-with \u2192 Stable Audio Open",
+    "\u2192 couples-with \u2192 Whisper",
+    "\u2192 enables \u2192 Endosymbiosis",
+    "\u2192 enables \u2192 Loudon Live",
+    "\u2192 enables \u2192 Loudon Live Design System",
+    "\u2192 enables \u2192 Radio Play",
+    "\u2192 member-of \u2192 The Shop"
+   ]
+  },
+  {
+   "id": "p5.js",
+   "path": "Shop/p5.js.md",
+   "type": "specialist",
+   "stage": null,
+   "reached_by": 8,
+   "existing_links": [
+    "\u2190 connects-to \u2190 D3.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Observable Plot  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Tone.js  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Web Audio Worklet  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Three.js  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Flocking",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Maker",
+    "\u2192 connects-to \u2192 Observable Plot",
+    "\u2192 couples-with \u2192 Tone.js",
+    "\u2192 enables \u2192 Playful Interface Design",
+    "\u2192 member-of \u2192 The Shop"
+   ]
+  }
+ ],
+ "directed_flags": {}
+}

@@ -45,9 +45,6 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: making-as-expansion
-  - target: "[[Sam Maloof]]"
-    type: mirrors
-    label: wood-craft-two-methods
   - target: "[[Compressor Design]]"
     type: contradicts
     label: reveal-the-break-vs-hide-it
@@ -63,6 +60,9 @@ links:
   - target: "[[Andy Goldsworthy]]"
     type: connects-to
     label: humility-that-hides-control
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # George Nakashima

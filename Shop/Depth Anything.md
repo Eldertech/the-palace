@@ -13,7 +13,7 @@ forward_vector: "I read depth out of a flat image — even a pen drawing — and
 links:
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
-  - { target: "[[Line-Art Layer Decomposition]]", type: connects-to, label: the-surprise-win }
+  - { target: "[[Animate the Background]]", type: connects-to, label: the-surprise-win }
   - { target: "[[SAM]]", type: connects-to, label: a-second-route-to-the-figure }
   - target: "[[LaMa]]"
     type: connects-to
@@ -34,7 +34,7 @@ I turn one image into a depth map — a grayscale field where `0 = far` and `255
 
 ## What I'm good for (proven 2026-06-25, BLUELINE shot 02)
 
-- **Ordering, on the drawing itself.** I run on the *line art* and still recover a correct front-to-back order (street/figure closest → cars/buildings → smoke/sky farthest). This retired the whole "Order" skill in [[Line-Art Layer Decomposition]] — no segmentation needed to know the stack.
+- **Ordering, on the drawing itself.** I run on the *line art* and still recover a correct front-to-back order (street/figure closest → cars/buildings → smoke/sky farthest). This retired the whole "Order" skill in [[Animate the Background#The N-Layer Case (Line-Art Decomposition)|the N-layer case]] — no segmentation needed to know the stack.
 - **A free figure silhouette.** A clean person-shaped mask falls out of the near band — a second, independent route to the figure when keypoints or [[SAM]] are unreliable.
 - **A free coarse decomposition.** Threshold the depth into three bands and each is a usable, correctly-ordered cel (person+street / cars+buildings / fire+sky) with *zero* segmentation. This is how far "free" auto-decomposition reaches before per-element refinement is needed.
 

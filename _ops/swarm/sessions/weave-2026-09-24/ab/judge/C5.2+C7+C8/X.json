@@ -1,0 +1,82 @@
+{
+ "arm": "X",
+ "room": "C5.2+C7+C8",
+ "total_proposals": 13,
+ "sample": [
+  {
+   "kind": "bridge",
+   "source": "none \u2014 cross-neighborhood pattern, not tool-mediated",
+   "type": null,
+   "target": "ELDER's tool-access ladder (palace-reader \u2192 palace-writer \u2192 palace-orchestrator, gated by what a dispatched agent is trusted to touch) and every Shop Specialist's deliverable ladder (Sketch \u2192 Study \u2192 Piece, gated by time/review investment) are the same shape: increasing capability unlocked by increasing proof or trust, never skipped.",
+   "rationale": "a three-rung ladder where each rung costs more and is earned, not chosen",
+   "evidence": "None || None",
+   "item_id": "X1"
+  },
+  {
+   "kind": "relation",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "Concierge",
+   "label": "first-act",
+   "rationale": "Concierge is named twice in CLAUDE's Growing Up section as the first act of every session on this surface \u2014 a definitional relation CLAUDE's own six frontmatter links skip.",
+   "evidence": "\"Your first act is to summon the [[Concierge]] \u2014 visibly\" \u2014 CLAUDE.md:62",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "target": "Palace Orchestrator",
+   "label": "executor-of-wire",
+   "rationale": "\u00a79 names Palace Orchestrator as the executor of the coordination wire this file specifies, with an explicit read-this-before directive \u2014 structurally significant, currently only a body mention.",
+   "evidence": "\"This section is the wire; [[Palace Orchestrator]] is the executor. Read that before posting.\" \u2014 SCHEMA \u2014 Reference.md:255",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "target": "Pages as Agents",
+   "label": "the-page-is-the-agent",
+   "rationale": "The envelope spec grounds its `from` field convention in Pages as Agents with a bolded-register claim, but the link isn't in frontmatter.",
+   "evidence": "\"the page IS the agent ([[Pages as Agents]])\" \u2014 SCHEMA \u2014 Reference.md:261",
+   "item_id": "X4"
+  },
+  {
+   "kind": "unsung",
+   "source": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "target": "Pages as Agents",
+   "label": null,
+   "rationale": "the page IS the agent ([[Pages as Agents]])",
+   "item_id": "X5"
+  },
+  {
+   "kind": "unsung",
+   "source": "ELDER",
+   "type": "connects-to",
+   "target": "Agent Toolbox",
+   "label": null,
+   "rationale": "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])",
+   "item_id": "X6"
+  },
+  {
+   "kind": "unsung",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "Palace Conatus",
+   "label": null,
+   "rationale": "Harmony with Loudon is phase coherence, not agreement \u2014 both sides move ([[Palace Conatus]]).",
+   "item_id": "X7"
+  },
+  {
+   "kind": "unsung",
+   "source": "CLAUDE",
+   "type": "connects-to",
+   "target": "Loudon Live Design System",
+   "label": null,
+   "rationale": "the [[Loudon Live Design System]] is the house dress",
+   "item_id": "X8"
+  }
+ ]
+}

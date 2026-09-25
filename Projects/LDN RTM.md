@@ -96,6 +96,7 @@ The stated purpose is to become genuinely comfortable making screen content and 
 
 - **[[LDN RTM — Live 12]]** — series one. In progress.
 - **Queued:** Serum, Soundtoys, and the [[Toolkit — Audio Plugins]] shortlist (H3000 Factory, Diva, Zebra2, Reaktor 6, Surge XT, Vital, MeldaProduction).
+- **Software-first:** screenable, cheaper for students, accessible. Hardware appears only in manufacturer-sponsored work.
 - **Sponsored:** a manufacturer buying an RTM is buying a slot in an established, numbered, exhaustive format — a much better thing to sell than a one-off, and the reputation path [[Loudon Live]] already names.
 
 ## The control panel — a documented aesthetic override

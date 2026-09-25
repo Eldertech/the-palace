@@ -1,0 +1,1238 @@
+{
+  "cluster_count": 8,
+  "clusters": [
+    {
+      "id": "L1",
+      "size": 5,
+      "members": [
+        "Block It in Blender, Ink It in genAI",
+        "ControlNet as Topology",
+        "Does Personifying an Agent Change What It Does",
+        "GenAI Camera",
+        "LDN RTM"
+      ],
+      "walk": {
+        "Block It in Blender, Ink It in genAI": {
+          "community": "C3",
+          "hop1": [
+            "BLUELINE",
+            "Blender",
+            "Blocked, Not Prompted",
+            "ComfyUI",
+            "Figure Rig",
+            "Hand-Drawn 3D Look",
+            "Remnants in Depth",
+            "Steer the Generator"
+          ],
+          "hop2": [
+            "Frame Designer",
+            "Adopt the Craft, Author the Seam",
+            "The Aftermath Frame",
+            "The Flow Field is the Spine",
+            "Animate the Background",
+            "ControlNet as Topology",
+            "GenAI Camera",
+            "Lettering",
+            "The 2.5D Paper Stack",
+            "Line-Art Layer Decomposition",
+            "Loudon Live Design System",
+            "Move the Ink, Don't Redraw It"
+          ],
+          "hop2_dropped": 14,
+          "note": null
+        },
+        "ControlNet as Topology": {
+          "community": "C3",
+          "hop1": [
+            "BLUELINE",
+            "Blocked, Not Prompted",
+            "GenAI Camera",
+            "Kuramoto Coupling",
+            "Steer the Generator",
+            "The Flow Field is the Spine"
+          ],
+          "hop2": [
+            "Animate the Background",
+            "The Aftermath Frame",
+            "Block It in Blender, Ink It in genAI",
+            "Frame Designer",
+            "Hand-Drawn 3D Look",
+            "Lettering",
+            "Adopt the Craft, Author the Seam",
+            "Blender",
+            "Figure Rig",
+            "Flocking",
+            "Line-Art Layer Decomposition",
+            "Move the Ink, Don't Redraw It"
+          ],
+          "hop2_dropped": 13,
+          "note": null
+        },
+        "Does Personifying an Agent Change What It Does": {
+          "community": "C3",
+          "hop1": [
+            "Diversity of Thought in Many-Agent Systems",
+            "Four Pillars of Enchanted Agency",
+            "Maker",
+            "Pages as Agents",
+            "Palace Enchantment",
+            "Shopkeeper"
+          ],
+          "hop2": [
+            "BLUELINE",
+            "Loudon Live Post-producer",
+            "Loudon's Toolkit",
+            "Web Audio Worklet",
+            "BBS Blackboard",
+            "Dialogue Moderator",
+            "Enchanted Worker",
+            "Palace Conatus",
+            "Swarm Weave",
+            "4 Pillars Framework - The Founding Conversation",
+            "Action Potential Oscillator",
+            "Agent Wellbeing"
+          ],
+          "hop2_dropped": 23,
+          "note": null
+        },
+        "GenAI Camera": {
+          "community": "C3",
+          "hop1": [
+            "BLUELINE",
+            "Blocked, Not Prompted",
+            "ControlNet as Topology",
+            "Search Before You Build",
+            "Steer the Generator",
+            "The Scroll"
+          ],
+          "hop2": [
+            "Adopt the Craft, Author the Seam",
+            "Animate the Background",
+            "Block It in Blender, Ink It in genAI",
+            "Frame Designer",
+            "Lettering",
+            "The Aftermath Frame",
+            "The Flow Field is the Spine",
+            "Blender",
+            "Figure Rig",
+            "Hand-Drawn 3D Look",
+            "Line-Art Layer Decomposition",
+            "Loudon Live Design System"
+          ],
+          "hop2_dropped": 19,
+          "note": null
+        },
+        "LDN RTM": {
+          "community": "C3",
+          "hop1": [
+            "Autodidact Polymaths",
+            "Loudon Live",
+            "Loudon Live Design System",
+            "Loudon Live Post-producer",
+            "OBS",
+            "Progressive Staging",
+            "Quality Manifesto",
+            "Toolkit \u2014 Audio Plugins"
+          ],
+          "hop2": [
+            "ffmpeg",
+            "BLUELINE",
+            "Loudon's Toolkit",
+            "The Multilinear Self",
+            "ComfyUI",
+            "FLUX (Hugging Face)",
+            "Flocking",
+            "Hero and Avatar Maker",
+            "Kokoro",
+            "Manim CE",
+            "Radio Play",
+            "Review Layer"
+          ],
+          "hop2_dropped": 29,
+          "note": null
+        }
+      },
+      "files_in_reach": 58,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "L2",
+      "size": 5,
+      "members": [
+        "LoRA Trainer",
+        "OBS",
+        "Search Before You Build",
+        "The Aftermath Frame",
+        "Tool Builder"
+      ],
+      "walk": {
+        "LoRA Trainer": {
+          "community": "C3",
+          "hop1": [
+            "Review Layer",
+            "RunPod GPU Backend",
+            "The Shop"
+          ],
+          "hop2": [
+            "BLUELINE",
+            "ComfyUI",
+            "FLUX (Hugging Face)",
+            "Hero and Avatar Maker",
+            "Image-to-3D Smith",
+            "Loudon Live Design System",
+            "The Commons",
+            "assume multi-agent",
+            "Closing Well",
+            "Enrichment",
+            "Murmuration",
+            "Palace as Context Injection System"
+          ],
+          "hop2_dropped": 1,
+          "note": null
+        },
+        "OBS": {
+          "community": "C3",
+          "hop1": [
+            "Closing Well",
+            "LDN RTM",
+            "Loudon Live",
+            "Loudon Live Design System",
+            "Maker",
+            "The Shop",
+            "ffmpeg"
+          ],
+          "hop2": [
+            "Loudon Live Post-producer",
+            "Autodidact Polymaths",
+            "ComfyUI",
+            "Kokoro",
+            "Manim CE",
+            "Radio Play",
+            "Review Layer",
+            "Stable Audio Open",
+            "BLUELINE",
+            "FLUX (Hugging Face)",
+            "Flocking",
+            "Hero and Avatar Maker"
+          ],
+          "hop2_dropped": 37,
+          "note": null
+        },
+        "Search Before You Build": {
+          "community": "C3",
+          "hop1": [
+            "Adopt the Craft, Author the Seam",
+            "Concierge",
+            "GenAI Camera",
+            "Return Ceremony"
+          ],
+          "hop2": [
+            "BLUELINE",
+            "Blocked, Not Prompted",
+            "Animate the Background",
+            "Blender",
+            "Comic and Cinema \u2014 Two Ways of Seeing",
+            "ControlNet as Topology",
+            "Frame Designer",
+            "Graphic Storytelling",
+            "Hand-Drawn 3D Look",
+            "Line-Art Layer Decomposition",
+            "Remnants in Depth",
+            "Steer the Generator"
+          ],
+          "hop2_dropped": 17,
+          "note": null
+        },
+        "The Aftermath Frame": {
+          "community": "C3",
+          "hop1": [
+            "Andy Goldsworthy",
+            "BLUELINE",
+            "Blocked, Not Prompted",
+            "Figure Rig",
+            "Graphic Storytelling",
+            "Steer the Generator",
+            "The Flow Field is the Spine"
+          ],
+          "hop2": [
+            "Frame Designer",
+            "Animate the Background",
+            "Block It in Blender, Ink It in genAI",
+            "ControlNet as Topology",
+            "Hand-Drawn 3D Look",
+            "Lettering",
+            "Adopt the Craft, Author the Seam",
+            "Blender",
+            "GenAI Camera",
+            "Typography as Meaning",
+            "ComfyUI",
+            "Comic and Cinema \u2014 Two Ways of Seeing"
+          ],
+          "hop2_dropped": 16,
+          "note": null
+        },
+        "Tool Builder": {
+          "community": "C3",
+          "hop1": [
+            "Closing Well",
+            "FOUR PILLARS",
+            "STIGMERGY",
+            "Simondon",
+            "The Commons",
+            "The Palace Practices on Itself",
+            "assume multi-agent"
+          ],
+          "hop2": [
+            "Review Layer",
+            "RunPod GPU Backend",
+            "Zoom Out to the Structure",
+            "Adopt the Craft, Author the Seam",
+            "Hero and Avatar Maker",
+            "OBS",
+            "Christopher Alexander",
+            "Concierge",
+            "Endosymbiosis",
+            "Palace Philosophies",
+            "Project Stewardship System",
+            "Reflective Practice"
+          ],
+          "hop2_dropped": 40,
+          "note": null
+        }
+      },
+      "files_in_reach": 62,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "L3",
+      "size": 5,
+      "members": [
+        "Agent Toolbox",
+        "Gemma 4 \u2014 Local Coordination Guide",
+        "Skills Are Enchantable Pages",
+        "The Palace Hardens Around Values",
+        "The Palace Voice"
+      ],
+      "walk": {
+        "Agent Toolbox": {
+          "community": "C2",
+          "hop1": [
+            "Agent Wellbeing",
+            "Concierge",
+            "The Shop",
+            "assume multi-agent"
+          ],
+          "hop2": [
+            "STIGMERGY",
+            "Palace Orchestrator",
+            "The Palace Speaks",
+            "Creative Coach",
+            "Enchanted Worker",
+            "Four Pillars of Enchanted Agency",
+            "Identity Molting",
+            "Palace Conatus",
+            "Palace as Context Injection System",
+            "Skills Are Enchantable Pages",
+            "The Practice Rediscovers Its Philosophy",
+            "The Remembering Page"
+          ],
+          "hop2_dropped": 11,
+          "note": null
+        },
+        "Gemma 4 \u2014 Local Coordination Guide": {
+          "community": "C2",
+          "hop1": [
+            "BBS Blackboard",
+            "Enchanted Worker",
+            "Palace Enchantment",
+            "Swarm Weave"
+          ],
+          "hop2": [
+            "Palace Map",
+            "Pheromone Trail",
+            "Dialogue Moderator",
+            "Enchanted Conversation Archive",
+            "Four Pillars of Enchanted Agency",
+            "Generative Compression",
+            "Map Build Ceremony",
+            "Tree of Thoughts",
+            "Trickster",
+            "BBS Design System",
+            "Endosymbiosis",
+            "Lateral Access"
+          ],
+          "hop2_dropped": 41,
+          "note": null
+        },
+        "Skills Are Enchantable Pages": {
+          "community": "C2",
+          "hop1": [
+            "Closing Well Ceremony",
+            "Concierge",
+            "Pages as Agents",
+            "Palace Orchestrator",
+            "Palace as Context Injection System",
+            "ROSETTA",
+            "The Shop"
+          ],
+          "hop2": [
+            "Agent Wellbeing",
+            "Enchanted Worker",
+            "STIGMERGY",
+            "The Palace Speaks",
+            "Agent Toolbox",
+            "BBS Blackboard",
+            "Creative Coach",
+            "Generative Compression",
+            "JEWEL",
+            "Meaning and the Link",
+            "Metaphor as Coupling Medium",
+            "Modes of Collaboration"
+          ],
+          "hop2_dropped": 27,
+          "note": null
+        },
+        "The Palace Hardens Around Values": {
+          "community": "C2",
+          "hop1": [
+            "Cooperation Yields Agency",
+            "Palace as Context Injection System",
+            "SCHEMA",
+            "Swarm Weave",
+            "The Palace Voice",
+            "Weave Ceremony"
+          ],
+          "hop2": [
+            "Agent Wellbeing",
+            "Enchanted Worker",
+            "Four Pillars of Enchanted Agency",
+            "JEWEL",
+            "Map Build Ceremony",
+            "Metaphor as Coupling Medium",
+            "Modes of Collaboration",
+            "Palace Enchantment",
+            "Palace Map",
+            "Pheromone Trail",
+            "STIGMERGY",
+            "The Practice Rediscovers Its Philosophy"
+          ],
+          "hop2_dropped": 52,
+          "note": null
+        },
+        "The Palace Voice": {
+          "community": "C2",
+          "hop1": [
+            "FOUR PILLARS",
+            "Hilaritas Generator",
+            "Loudon Live",
+            "Loudon Live Design System",
+            "Modes of Collaboration",
+            "Pages as Agents",
+            "Palace Enchantment",
+            "The Palace Hardens Around Values",
+            "Weave Ceremony"
+          ],
+          "hop2": [
+            "Swarm Weave",
+            "Endosymbiosis",
+            "Map Build Ceremony",
+            "Palace as Context Injection System",
+            "Progressive Staging",
+            "Project Stewardship System",
+            "Symbiotic Skills",
+            "The Scroll",
+            "Trickster",
+            "Agent Wellbeing",
+            "BBS Blackboard",
+            "BBS Design System"
+          ],
+          "hop2_dropped": 72,
+          "note": null
+        }
+      },
+      "files_in_reach": 52,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "L4",
+      "size": 5,
+      "members": [
+        "ELDER",
+        "No Mind Checks Itself",
+        "Reflective Practice",
+        "Return Ceremony",
+        "SCHEMA \u2014 Reference"
+      ],
+      "walk": {
+        "ELDER": {
+          "community": "C5",
+          "hop1": [
+            "CLAUDE",
+            "Concierge",
+            "JEWEL",
+            "Palace Ceremonies",
+            "Palace as Context Injection System",
+            "SCHEMA",
+            "SCHEMA \u2014 Reference",
+            "Substrate Skill"
+          ],
+          "hop2": [
+            "Deposit Ceremony",
+            "Weave Ceremony",
+            "Baton Ceremony",
+            "Harvest Ceremony",
+            "README - The Palace Guide",
+            "Return Ceremony",
+            "Self-Model Update Ceremony",
+            "Spore Check Ceremony",
+            "Walk Ceremony",
+            "Closing Well",
+            "Closing Well Ceremony",
+            "Deposit Archive"
+          ],
+          "hop2_dropped": 51,
+          "note": null
+        },
+        "No Mind Checks Itself": {
+          "community": "C5",
+          "hop1": [
+            "Bring In a Bigger Mind",
+            "Closing Well",
+            "Cooperation Yields Agency",
+            "Donella Meadows",
+            "Douglas Hofstadter",
+            "Latent Error",
+            "Reflective Practice",
+            "Self-Describing Knowledge Module",
+            "The Blindspot Is the Surprise Fuel"
+          ],
+          "hop2": [
+            "Drift and Consolidation",
+            "Baton Ceremony",
+            "Closing Well Ceremony",
+            "Deposit Ceremony",
+            "Harvest Ceremony",
+            "Weaving Memory into the Palace",
+            "Worktree Practice",
+            "Dialectic",
+            "Making a Palace Citizen",
+            "Meaning and the Link",
+            "Palace Conatus",
+            "STIGMERGY"
+          ],
+          "hop2_dropped": 53,
+          "note": null
+        },
+        "Reflective Practice": {
+          "community": "C5",
+          "hop1": [
+            "Closing Well",
+            "Creative Coach",
+            "Dialectic",
+            "Drift and Consolidation",
+            "Hilaritas Generator",
+            "No Mind Checks Itself",
+            "Objects to Think With",
+            "The Palace Practices on Itself"
+          ],
+          "hop2": [
+            "Baton Ceremony",
+            "Deposit Ceremony",
+            "Harvest Ceremony",
+            "Closing Well Ceremony",
+            "Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2",
+            "Weaving Memory into the Palace",
+            "Worktree Practice",
+            "The Blindspot Is the Surprise Fuel",
+            "Concierge",
+            "Confucianism",
+            "Modes of Collaboration",
+            "Palace Philosophies"
+          ],
+          "hop2_dropped": 50,
+          "note": null
+        },
+        "Return Ceremony": {
+          "community": "C5",
+          "hop1": [
+            "Baton Ceremony",
+            "Closing Well Ceremony",
+            "Concierge",
+            "Cooperation Yields Agency",
+            "Palace Ceremonies",
+            "Palace Conatus",
+            "Search Before You Build",
+            "Spore Check Ceremony"
+          ],
+          "hop2": [
+            "Closing Well",
+            "Deposit Ceremony",
+            "SCHEMA",
+            "ELDER",
+            "Enrichment",
+            "Revival Ceremony",
+            "Substrate Skill",
+            "Weave Ceremony",
+            "Baton Ceremony \u2014 Context",
+            "CLAUDE",
+            "Deposit Archive",
+            "Drift and Consolidation"
+          ],
+          "hop2_dropped": 27,
+          "note": null
+        },
+        "SCHEMA \u2014 Reference": {
+          "community": "C5",
+          "hop1": [
+            "Deposit Ceremony",
+            "ELDER",
+            "Resonant Link Labels",
+            "SCHEMA",
+            "STIGMERGY"
+          ],
+          "hop2": [
+            "Palace Ceremonies",
+            "Substrate Skill",
+            "Worktree Practice",
+            "Baton Ceremony",
+            "CLAUDE",
+            "Closing Well",
+            "Harvest Ceremony",
+            "Image Embedding Standard",
+            "Learning Materials and Canon",
+            "Mermaid Diagram Standard",
+            "README - The Palace Guide",
+            "Technical Diagram Standard"
+          ],
+          "hop2_dropped": 45,
+          "note": null
+        }
+      },
+      "files_in_reach": 55,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "L5",
+      "size": 5,
+      "members": [
+        "Audition Gate",
+        "Quadratic Interpolation in DSP",
+        "SMPTE LTC",
+        "Slime Mold Delay",
+        "Tract Mirror"
+      ],
+      "walk": {
+        "Audition Gate": {
+          "community": "C1",
+          "hop1": [
+            "Generative Sample Libraries",
+            "Phoneme Choir",
+            "Quality Manifesto",
+            "Substrate Skill",
+            "Talking Keyboard"
+          ],
+          "hop2": [
+            "Blood Compressor",
+            "Crystal Synthesizer",
+            "Generative Preset Development",
+            "Generative Wavetable Libraries",
+            "Neural Granular Synthesis",
+            "Retrospective Delay",
+            "Shepard Tone Synthesizer",
+            "Slime Mold Delay",
+            "The Metaphor Stretch",
+            "Modes of Collaboration",
+            "Project Stewardship System",
+            "Deposit Ceremony"
+          ],
+          "hop2_dropped": 11,
+          "note": null
+        },
+        "Quadratic Interpolation in DSP": {
+          "community": "C1",
+          "hop1": [
+            "Compressor Design",
+            "DSP Frameworks",
+            "Differential Equations",
+            "Latent Error",
+            "Portamento and Physical Pitch Modeling"
+          ],
+          "hop2": [
+            "Action Potential Oscillator",
+            "Biomechanical Synthesis",
+            "Bessel Functions in Synthesis",
+            "Dispersion",
+            "Granular Synthesis",
+            "Media Library",
+            "Blood Compressor",
+            "Categorizing Inharmonicity",
+            "Crystal Synthesizer",
+            "Exponential Decay Curvature",
+            "Floquet Theory",
+            "Floquet Time-Modulated Loops"
+          ],
+          "hop2_dropped": 17,
+          "note": null
+        },
+        "SMPTE LTC": {
+          "community": "C1",
+          "hop1": [
+            "Boundary-Crossing Instruments",
+            "Frequency-Time Duality",
+            "Modes of Collaboration",
+            "Signal-Rate CV Architecture"
+          ],
+          "hop2": [
+            "Action Potential Oscillator",
+            "Biomechanical Synthesis",
+            "Piano String Inharmonicity",
+            "Shepard Tone Synthesizer",
+            "2D Torus Wavetable Synthesizer",
+            "Bayesian Granular Synthesizer",
+            "Crystal Synthesizer",
+            "DSP Frameworks",
+            "DSP in Looping Dimensions",
+            "Dissolutions",
+            "Exponential Decay Curvature",
+            "Floquet Theory"
+          ],
+          "hop2_dropped": 44,
+          "note": null
+        },
+        "Slime Mold Delay": {
+          "community": "C1",
+          "hop1": [
+            "Biomechanical Synthesis",
+            "Hyperdimensional Prism",
+            "Kuramoto Coupling",
+            "Particle Synthesis",
+            "Retrospective Delay",
+            "Semantic Delay",
+            "Spinoza Conatus",
+            "Substrate Skill"
+          ],
+          "hop2": [
+            "Frequency-Time Duality",
+            "Compressor Design",
+            "Dispersion",
+            "Granular Synthesis",
+            "Playful Interface Design",
+            "Action Potential Oscillator",
+            "Blood Compressor",
+            "Dub Lineage",
+            "Generative Sample Libraries",
+            "Neural Granular Synthesis",
+            "Shepard Tone Synthesizer",
+            "Shimmer Cloud"
+          ],
+          "hop2_dropped": 57,
+          "note": null
+        },
+        "Tract Mirror": {
+          "community": "C1",
+          "hop1": [
+            "Boundary-Crossing Instruments",
+            "Linear Predictive Coding",
+            "Three.js",
+            "Waveguide Synthesizer"
+          ],
+          "hop2": [
+            "1D Wavetable Scanning",
+            "Dispersion Table",
+            "Particle Synthesis",
+            "Wavetable Scanner",
+            "2D Torus Wavetable Synthesizer",
+            "Categorizing Inharmonicity",
+            "DSP in Looping Dimensions",
+            "Dissolutions",
+            "Frequency-Time Duality",
+            "Phase Reduction",
+            "Shimmer Cloud",
+            "Tone.js"
+          ],
+          "hop2_dropped": 9,
+          "note": null
+        }
+      },
+      "files_in_reach": 60,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "L6",
+      "size": 5,
+      "members": [
+        "Bring In a Bigger Mind",
+        "Making a Palace Citizen",
+        "Martin Buber",
+        "Martin Heidegger",
+        "The Adjacent Affordance"
+      ],
+      "walk": {
+        "Bring In a Bigger Mind": {
+          "community": "C6",
+          "hop1": [
+            "Mixture of Experts",
+            "No Mind Checks Itself",
+            "Philosopher Visits the Entry",
+            "STIGMERGY",
+            "The Lens"
+          ],
+          "hop2": [
+            "Deleuze",
+            "Dialectic",
+            "Excellent Adventure",
+            "STIGMERGY Philosophical Lenses",
+            "Merleau-Ponty",
+            "Confucianism",
+            "Making a Palace Citizen",
+            "Palace Philosophies",
+            "Spinoza",
+            "The Blindspot Is the Surprise Fuel",
+            "The Dichotomy of Control",
+            "The Drift"
+          ],
+          "hop2_dropped": 46,
+          "note": null
+        },
+        "Making a Palace Citizen": {
+          "community": "C6",
+          "hop1": [
+            "Dialectic",
+            "Donella Meadows",
+            "Excellent Adventure",
+            "FOUR PILLARS",
+            "John Cage",
+            "Pages as Agents",
+            "Palace Enchantment",
+            "Philosopher Visits the Entry",
+            "SCHEMA",
+            "Spinoza",
+            "The Blindspot Is the Surprise Fuel",
+            "The Remembering Page",
+            "Threshold Conatus"
+          ],
+          "hop2": [
+            "The Lens",
+            "Confucianism",
+            "Deleuze",
+            "Mixture of Experts",
+            "Palace Philosophies",
+            "Merleau-Ponty",
+            "STIGMERGY Philosophical Lenses",
+            "Stoicism",
+            "The Fortress and the Threshold",
+            "Whitehead",
+            "zhuangzi-epictetus-confucius-on-the-self",
+            "Bring In a Bigger Mind"
+          ],
+          "hop2_dropped": 93,
+          "note": null
+        },
+        "Martin Buber": {
+          "community": "C6",
+          "hop1": [
+            "Cooperation Yields Agency",
+            "Dovetail Joint \u2194 Counterpoint",
+            "Epictetus",
+            "Source Library",
+            "Stoicism",
+            "The Fortress and the Threshold",
+            "Whitehead"
+          ],
+          "hop2": [
+            "Marcus Aurelius",
+            "Palace Philosophies",
+            "STIGMERGY Philosophical Lenses",
+            "Seneca",
+            "The Four Virtues",
+            "Confucianism",
+            "Dialectic",
+            "Excellent Adventure",
+            "Martin Heidegger",
+            "The Dichotomy of Control",
+            "The Drift",
+            "zhuangzi-epictetus-confucius-on-the-self"
+          ],
+          "hop2_dropped": 45,
+          "note": null
+        },
+        "Martin Heidegger": {
+          "community": "C6",
+          "hop1": [
+            "Buckminster Fuller",
+            "Epictetus",
+            "Merleau-Ponty",
+            "Reverb \u2194 Space-Time",
+            "Source Library",
+            "Spinoza",
+            "The Dichotomy of Control"
+          ],
+          "hop2": [
+            "Stoicism",
+            "Marcus Aurelius",
+            "Palace Philosophies",
+            "Seneca",
+            "Martin Buber",
+            "Philosopher Visits the Entry",
+            "STIGMERGY Philosophical Lenses",
+            "The Four Virtues",
+            "The Lens",
+            "Confucianism",
+            "Leibniz",
+            "Making a Palace Citizen"
+          ],
+          "hop2_dropped": 43,
+          "note": null
+        },
+        "The Adjacent Affordance": {
+          "community": "C6",
+          "hop1": [
+            "Palace Philosophies",
+            "Palace as Context Injection System",
+            "SUBSTRATE",
+            "Spinoza Conatus",
+            "Stoicism",
+            "The Dichotomy of Control"
+          ],
+          "hop2": [
+            "Dialectic",
+            "STIGMERGY Philosophical Lenses",
+            "The Four Virtues",
+            "The View From Above",
+            "Confucianism",
+            "Epictetus",
+            "Excellent Adventure",
+            "Marcus Aurelius",
+            "Merleau-Ponty",
+            "Seneca",
+            "The Drift",
+            "The Fortress and the Threshold"
+          ],
+          "hop2_dropped": 43,
+          "note": null
+        }
+      },
+      "files_in_reach": 47,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "L7",
+      "size": 5,
+      "members": [
+        "Zoom Out to the Structure",
+        "The Practice Rediscovers Its Philosophy",
+        "The Remembering Page",
+        "The Substrate Drifts",
+        "Weaving Memory into the Palace"
+      ],
+      "walk": {
+        "Zoom Out to the Structure": {
+          "community": "C3",
+          "hop1": [
+            "Cooperation Yields Agency",
+            "FOUR PILLARS",
+            "The Commons",
+            "The Palace Practices on Itself"
+          ],
+          "hop2": [
+            "Tool Builder",
+            "assume multi-agent",
+            "RunPod GPU Backend",
+            "Christopher Alexander",
+            "Endosymbiosis",
+            "Reflective Practice",
+            "STIGMERGY"
+          ],
+          "hop2_dropped": 0,
+          "note": null
+        },
+        "The Practice Rediscovers Its Philosophy": {
+          "community": "C2",
+          "hop1": [
+            "BBS Blackboard",
+            "FOUR PILLARS",
+            "Hyperdimensional Prism",
+            "Palace as Context Injection System",
+            "Registry Pattern",
+            "Striatum",
+            "Swarm Weave",
+            "The Dichotomy of Control",
+            "assume multi-agent"
+          ],
+          "hop2": [
+            "Trickster",
+            "Enchanted Worker",
+            "Palace Map",
+            "Pheromone Trail",
+            "STIGMERGY",
+            "BBS Design System",
+            "Four Pillars of Enchanted Agency",
+            "Gemma 4 \u2014 Local Coordination Guide",
+            "Generative Compression",
+            "JEWEL",
+            "Lateral Access",
+            "Metaphor as Coupling Medium"
+          ],
+          "hop2_dropped": 87,
+          "note": null
+        },
+        "The Remembering Page": {
+          "community": "C2",
+          "hop1": [
+            "Agent Wellbeing",
+            "Entry Conatus",
+            "Identity Molting",
+            "Making a Palace Citizen",
+            "Modes of Collaboration",
+            "Pages as Agents",
+            "Palace as Context Injection System",
+            "Pheromone Trail",
+            "Threshold Conatus"
+          ],
+          "hop2": [
+            "Palace Enchantment",
+            "Enchanted Worker",
+            "Lateral Access",
+            "Progressive Staging",
+            "Creative Coach",
+            "Palace Conatus",
+            "STIGMERGY",
+            "Scale-Stratified Identity",
+            "Swarm Weave",
+            "The Palace Speaks",
+            "Trickster",
+            "Agent Toolbox"
+          ],
+          "hop2_dropped": 56,
+          "note": null
+        },
+        "The Substrate Drifts": {
+          "community": "C2",
+          "hop1": [
+            "BBS Blackboard",
+            "Pages as Agents",
+            "Project Stewardship System",
+            "SUBSTRATE"
+          ],
+          "hop2": [
+            "Oblique Enrichment",
+            "Palace Enchantment",
+            "Palace Orchestrator",
+            "STIGMERGY",
+            "Trickster",
+            "Two Batons, One Board",
+            "BBS Design System",
+            "Dialogue Moderator",
+            "Enchanted Conversation Archive",
+            "Enchanted Worker",
+            "Gemma 4 \u2014 Local Coordination Guide",
+            "Generative Compression"
+          ],
+          "hop2_dropped": 24,
+          "note": null
+        },
+        "Weaving Memory into the Palace": {
+          "community": "C5",
+          "hop1": [
+            "Closing Well",
+            "Deposit Ceremony",
+            "Palace as Context Injection System",
+            "Weave Ceremony"
+          ],
+          "hop2": [
+            "Baton Ceremony",
+            "Closing Well Ceremony",
+            "Deposit Archive",
+            "Drift and Consolidation",
+            "Harvest Ceremony",
+            "Learning Materials and Canon",
+            "Palace Ceremonies",
+            "SCHEMA",
+            "Substrate Skill",
+            "Worktree Practice",
+            "Deposit Ceremony \u2014 Context",
+            "ELDER"
+          ],
+          "hop2_dropped": 56,
+          "note": null
+        }
+      },
+      "files_in_reach": 70,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "L8",
+      "size": 5,
+      "members": [
+        "Worktree Practice",
+        "control-vocabulary-math",
+        "Annie Dillard",
+        "Buckminster Fuller",
+        "Iain McGilchrist"
+      ],
+      "walk": {
+        "Worktree Practice": {
+          "community": "C5",
+          "hop1": [
+            "Baton Ceremony",
+            "Closing Well",
+            "Deposit Ceremony",
+            "SCHEMA",
+            "STIGMERGY",
+            "The Dichotomy of Control"
+          ],
+          "hop2": [
+            "Closing Well Ceremony",
+            "Drift and Consolidation",
+            "Harvest Ceremony",
+            "Palace Ceremonies",
+            "SCHEMA \u2014 Reference",
+            "Image Embedding Standard",
+            "Learning Materials and Canon",
+            "Mermaid Diagram Standard",
+            "README - The Palace Guide",
+            "Substrate Skill",
+            "Technical Diagram Standard",
+            "Weaving Memory into the Palace"
+          ],
+          "hop2_dropped": 65,
+          "note": null
+        },
+        "control-vocabulary-math": {
+          "community": "C1",
+          "hop1": [
+            "Action Potential Oscillator",
+            "Kuramoto Coupling",
+            "Neural Granular Synthesis"
+          ],
+          "hop2": [
+            "Biomechanical Synthesis",
+            "Granular Synthesis",
+            "Harmonicity and Inharmonicity",
+            "Bayesian Granular Synthesizer",
+            "Bessel Functions in Synthesis",
+            "Blood Compressor",
+            "Compressor Design",
+            "DSP Frameworks",
+            "Differential Equations",
+            "Floquet Time-Modulated Loops",
+            "Frequency-Time Duality",
+            "Generative Preset Development"
+          ],
+          "hop2_dropped": 21,
+          "note": null
+        },
+        "Annie Dillard": {
+          "community": "C4",
+          "hop1": [
+            "Andy Goldsworthy",
+            "Iain McGilchrist",
+            "Julia Cameron",
+            "Merleau-Ponty",
+            "Natalie Goldberg",
+            "Quality Manifesto",
+            "Source Library"
+          ],
+          "hop2": [
+            "Rick Rubin",
+            "Agnes Martin",
+            "Cross-Domain Resonances",
+            "George Nakashima",
+            "James Turrell",
+            "Shunryu Suzuki",
+            "Yasujir\u014d Ozu",
+            "Andrei Tarkovsky",
+            "Brian Eno",
+            "Buckminster Fuller",
+            "Christopher Alexander",
+            "Donella Meadows"
+          ],
+          "hop2_dropped": 29,
+          "note": null
+        },
+        "Buckminster Fuller": {
+          "community": "C4",
+          "hop1": [
+            "Cooperation Yields Agency",
+            "Donella Meadows",
+            "FOUR PILLARS",
+            "Kuramoto Coupling",
+            "Leverage Points Framework",
+            "Martin Heidegger",
+            "Source Library"
+          ],
+          "hop2": [
+            "4 Pillars Framework - The Founding Conversation",
+            "Found \u2194 Made",
+            "Kick Drum \u2194 Foundation",
+            "Meadows and Music \u2014 Leverage Points",
+            "Rick Rubin",
+            "Agnes Martin",
+            "Andrei Tarkovsky",
+            "Andy Goldsworthy",
+            "Annie Dillard",
+            "Brian Eno",
+            "Christopher Alexander",
+            "Cross-Domain Resonances"
+          ],
+          "hop2_dropped": 32,
+          "note": null
+        },
+        "Iain McGilchrist": {
+          "community": "C4",
+          "hop1": [
+            "Annie Dillard",
+            "Cooperation Yields Agency",
+            "Frequency Domain \u2194 Perspective Shift",
+            "Lateral Access",
+            "Rick Rubin",
+            "Source Library",
+            "Yasujir\u014d Ozu"
+          ],
+          "hop2": [
+            "Brian Eno",
+            "Cross-Domain Resonances",
+            "Julia Cameron",
+            "Andy Goldsworthy",
+            "Donella Meadows",
+            "Douglas Hofstadter",
+            "John Cage",
+            "Lao Tzu",
+            "Natalie Goldberg",
+            "Simondon",
+            "Terrence Malick",
+            "Agnes Martin"
+          ],
+          "hop2_dropped": 43,
+          "note": null
+        }
+      },
+      "files_in_reach": 70,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    }
+  ],
+  "params": {
+    "per_room": 5,
+    "hop2_cap": 12,
+    "targets": 40
+  },
+  "lens": "lifecycle",
+  "map": "palace-map-full-2026-09-24.json",
+  "node_count": 351
+}

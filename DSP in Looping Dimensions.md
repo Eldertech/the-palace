@@ -5,7 +5,7 @@ pillars:
   - tools
   - philosophy
 born: 2026-04
-stage: sprout
+stage: growing
 forward_vector: "I want to become the foundational principle every higher-dimensional synthesis project reads first — the proof that periodicity is the constraint, looping dimensions are the escape, and the right operator on T^N is what generates audible novelty. I want to spawn the Higher-Dimensional Convolution entry and the Lie-group / SU(2) entries waiting in my forward edge."
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"

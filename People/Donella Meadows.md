@@ -63,6 +63,9 @@ links:
   - target: "[[Sidechain ↔ Conversation]]"
     type: connects-to
     label: negative-feedback-as-dialogue
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Donella Meadows

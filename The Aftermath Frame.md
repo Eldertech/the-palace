@@ -28,8 +28,8 @@ links:
     type: connects-to
     label: dramatic-frame-engine
   - target: "[[Steer the Generator]]"
-    type: connects-to
-    label: stylize-to-ink-target
+    type: exemplifies
+    label: physically-sourced-control
 tags: [concept, blueline, motion, physics, comics, aftermath]
 ---
 

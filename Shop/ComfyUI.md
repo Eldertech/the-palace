@@ -31,6 +31,7 @@ links:
   - target: "[[Loudon Live Design System]]"
     type: enables
     label: renders-the-lesson-art
+  - { target: "[[Frame Designer]]", type: connects-to, label: "render-backend" }
 tags: [specialist, shop, image, generative, local]
 ---
 
@@ -209,7 +210,7 @@ Last run: **2026-05-30** — Smoke pass via existing-artifact verification (`Kur
 
 - Which base models to keep installed by default? Flux Schnell + SDXL is a reasonable starting kit (~30GB). Adding Flux Dev (~24GB) is the upgrade path.
 - Should the Shop maintain a library of base workflow JSONs (`sketch.json`, `study.json`, `piece.json`) that the Maker injects prompts into? This is the right answer for reproducibility, and it's how the tier presets actually work mechanically.
-- Training a Loudon Live LoRA on a small reference set — when does this become worth the effort? Open question for the first Piece-tier ComfyUI job.
+- Training a Loudon Live LoRA on a small reference set — when does this become worth the effort? Answered operationally by [[Shop/LoRA Trainer]]: a hardened recipe on a rented GPU, its gotchas, and a DreamBooth control to grade against. The effort is now one known run; the lever it found is the dataset, not the steps.
 - When does the Maker route to cloud (RunComfy etc.) vs. local? Likely: any Piece needing Flux Pro, any batch over ~20 Pieces, any render that would block other work for over an hour.
 - **ControlNet is being exercised for the first time** via [[ControlNet Workflow Mastery]] — a four-modality (lineart / canny / scribble / depth) control-modality shootout on SDXL + ControlNet-Union. The capability was listed from day one but never run; that practice entry and its bundle harness close the gap, pending the Mac run.
 

@@ -35,15 +35,6 @@ links:
   - target: "[[SCHEMA]]"
     type: connects-to
     label: needs-housekeeping
-  - target: "[[Spinoza]]"
-    type: connects-to
-    label: flagship-instance
-  - target: "[[Donella Meadows]]"
-    type: connects-to
-    label: instance
-  - target: "[[John Cage]]"
-    type: connects-to
-    label: non-philosopher-instance
   - target: "[[Spinoza and Meadows on the Threshold]]"
     type: connects-to
     label: validation-run

@@ -1,0 +1,182 @@
+[
+ {
+  "id": "b002",
+  "from": "v2",
+  "source": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "target": "Worktree Practice",
+  "label": "specific-vs-hub",
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "satisfies [[SCHEMA \u2014 Reference]] \u00a79's one-write-path rather than breaking it",
+  "evidence": null,
+  "skeptics": [
+   "Worktree Practice.md:55 explicitly cites \"[[SCHEMA \u2014 Reference]] \u00a79's one-write-path\" as the standard it satisfies \u2014 real, specific, not already linked (Worktree Practice's frontmatter links [[SCHEMA]] not [[SCHEMA \u2014 Reference]]).",
+   "Worktree Practice's body explicitly cites \"[[SCHEMA \u2014 Reference]] \u00a79's one-write-path\" by name (Worktree Practice.md:55) in a structurally significant explanation of how STIGMERGY's board stays one shared field; not a duplicate of the existing Worktree Practice\u2192SCHEMA link (different target entry)."
+  ]
+ },
+ {
+  "id": "b071",
+  "from": "v1",
+  "source": "Action Potential Oscillator",
+  "type": "enables",
+  "target": "control-vocabulary-math",
+  "label": null,
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "The engine is the acknowledged precondition for the math layer; control-vocabulary-math already declares emerged-from back to APO, but APO doesn't point forward.",
+  "evidence": "Neural Granular Synthesis does not own a DSP engine \u2014 the Action Potential Oscillator does ... This document formalizes the layer that sits on top of that engine.",
+  "skeptics": [
+   "Not already linked (APO's own frontmatter lacks CVM); CVM already carries emerged-from\u2192APO (engine-being-controlled) and its body explicitly names APO's engine as the precondition it formalizes \u2014 a legitimate lineage-reciprocal, correctly forward-directed.",
+   "control-vocabulary-math.md already carries emerged-from \u2192 APO (label engine-being-controlled) and its body states APO 'does' own the DSP engine the doc formalizes a layer on top of; APO's own frontmatter has no forward link. Cross-project precondition, correctly typed enables, not already linked (enables is directed, no duplicate)."
+  ]
+ },
+ {
+  "id": "b061",
+  "from": "v1",
+  "source": "RunPod GPU Backend",
+  "type": "enables",
+  "target": "LoRA Trainer",
+  "label": "trains-on",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "LoRA Trainer's own body states it 'rides Shop/RunPod GPU Backend for the compute'; RunPod's body names LoRAs as exactly the kind of thing a pod (vs serverless) can load. RunPod is the explicit precondition.",
+  "evidence": "RunPod: 'you can load ControlNet, LoRAs, IPAdapter, and anything else the base serverless image doesn't carry.' / LoRA Trainer: 'rides [[Shop/RunPod GPU Backend]] for the compute.'",
+  "skeptics": [
+   "RunPod GPU Backend.md:57 (\"you can load ControlNet, LoRAs, IPAdapter...\") and LoRA Trainer.md:31 (\"rides Shop/RunPod GPU Backend for the compute\") both name RunPod as LoRA Trainer's explicit precondition \u2014 correct enables A\u2192B direction, properly retyped from the existing connects-to.",
+   "Same relationship sharpened, not swapped \u2014 LoRA Trainer.md:14 already says 'rides RunPod GPU Backend for the compute' (label rides-the-substrate) and RunPod GPU Backend.md:57 names LoRAs as exactly what a pod can load; retype to enables (RunPod\u2192LoRA Trainer, trains-on) is the correctly-directed precondition relation."
+  ]
+ },
+ {
+  "id": "b069",
+  "from": "v1",
+  "source": "Skills Are Enchantable Pages",
+  "type": "connects-to",
+  "target": "Two Batons, One Board",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "a steward is that impulse **looped**: each cycle is one baton handoff, the artifact updated in place, never deleted ([[Two Batons, One Board]])",
+  "evidence": null,
+  "skeptics": [
+   "Skills Are Enchantable Pages.md:125-126 directly wikilinks [[Two Batons, One Board]] while explaining the steward/baton relationship \u2014 unlinked in both frontmatters, connects-to is a safe/correct default.",
+   "Skills Are Enchantable Pages.md:124-126 already carries the bracketed [[Two Batons, One Board]] wikilink at exactly the quoted sentence ('a steward is that impulse looped... [[Two Batons, One Board]]'); genuine unsung path, not already linked in frontmatter either direction."
+  ]
+ },
+ {
+  "id": "b077",
+  "from": "v1",
+  "source": "Frame Designer",
+  "type": "connects-to",
+  "target": "Block It in Blender, Ink It in genAI",
+  "label": "staging-runbook",
+  "op": "add",
+  "kind": [
+   "flag"
+  ],
+  "rationale": "Frame Designer's Staging leg lists Blender blocking as a method but points nowhere for the concrete how-to; the runbook is exactly that how-to.",
+  "evidence": "Frame Designer.md:66 \u2014 'Authored Blender blocking (newstory_bench, on Shop/Blender)'",
+  "skeptics": [
+   "Not already linked either direction. Frame Designer's staging table names 'Authored Blender blocking (newstory_bench, on Shop/Blender)' as a method (quote confirmed) without pointing to its concrete runbook; Block It in Blender is exactly that runbook, and the two share several neighbors (Shop/Figure Rig, Hand-Drawn 3D Look, Remnants in Depth, Steer the Generator, BLUELINE) already \u2014 a real, if somewhat diffuse, gap.",
+   "Frame Designer.md:66 lists 'Authored Blender blocking (newstory_bench, on Shop/Blender)' as a staging method with no how-to pointer; Block It in Blender, Ink It in genAI is exactly that runbook (proven in BLUELINE, same Figure Rig/OpenPose/depth pipeline Frame Designer's own staging leg uses). Specific, not already linked, not generic."
+  ]
+ },
+ {
+  "id": "b014",
+  "from": "v2",
+  "source": "VCV Patch Generator",
+  "type": "connects-to",
+  "target": "Web Audio Worklet",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "to be defined in ... modeled on the [[Shop/VCV Patch Generator]] exemplar.",
+  "evidence": null,
+  "skeptics": [
+   "Web Audio Worklet.md's Test Suite section names VCV Patch Generator explicitly as the exemplar its own test-plan will be \"modeled on\" \u2014 a specific, named template relationship, not already linked.",
+   "Web Audio Worklet's own Test Suite section names it outright \u2014 \"to be defined in ... (TODO), modeled on the [[Shop/VCV Patch Generator]] exemplar\" (Shop/Web Audio Worklet.md:166) \u2014 an explicit methodological debt, not a passing mention; neither page currently carries the link."
+  ]
+ },
+ {
+  "id": "b064",
+  "from": "v1",
+  "source": "GenAI Camera",
+  "type": "spawned",
+  "target": "Search Before You Build",
+  "label": "the-depth-miss",
+  "op": "add-lineage-reciprocal",
+  "kind": [
+   "inbound-walk"
+  ],
+  "rationale": "Search Before You Build's own origin story is the GenAI Camera depth-flat incident; GenAI Camera's body documents the same fix (bench.py near/far auto-range) without crediting the reflex it produced.",
+  "evidence": "Search Before You Build: 'Building the [[GenAI Camera]] on 2026-07-09, I wrote a depth pass from first principles \u2014 and it read flat.' / GenAI Camera: 'Depth gotcha \u2014 auto-range the near/far (the BLUELINE Track-IV lesson...). A depth pass reads flat \u2014 a silhouette, not volume.'",
+  "skeptics": [
+   "Search Before You Build.md already carries emerged-from \u2192 GenAI Camera with label born-from-the-depth-miss (frontmatter + body:37); this is the missing reciprocal spawned edge, matching label and correct forward direction \u2014 GenAI Camera's own frontmatter lacks it.",
+   "Legitimate reciprocal: Search Before You Build.md:24-25 already carries emerged-from \u2192 GenAI Camera (label born-from-the-depth-miss), matching quote confirmed in GenAI Camera.md:59-64; forward spawned edge genuinely missing, not already present on GenAI Camera's side."
+  ]
+ },
+ {
+  "id": "b065",
+  "from": "v1",
+  "source": "Tool Builder",
+  "type": "exemplifies",
+  "target": "Simondon",
+  "label": "concretization",
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link",
+  "kind": [
+   "retype"
+  ],
+  "rationale": "Tool Builder explicitly judges tools 'the Simondon way ... concretization, not accretion' \u2014 that's citing Simondon as the general principle Tool Builder is an instance of, which per the direction invariant argues for exemplifies over connects-to.",
+  "evidence": "'Good tools are judged the [[Simondon]] way: not by feature count but by how tightly their parts integrate \u2014 concretization, not accretion.'",
+  "skeptics": [
+   "Tool Builder.md:53 (\"judged the Simondon way... concretization, not accretion\") is a direct textual instance of Simondon's general principle \u2014 correct exemplifies direction, retyping the existing connects-to (label concretization) already on record.",
+   "Same-relationship retype, not a content swap: Tool Builder.md:53 literally cites '[[Simondon]] way: ... concretization, not accretion' at the existing connects-to/concretization link; exemplifies direction (Tool Builder \u2192 Simondon) is correctly the specific-instance-to-ground direction."
+  ]
+ },
+ {
+  "id": "b008",
+  "from": "v2",
+  "source": "Deleuze",
+  "type": "connects-to",
+  "target": "Spinoza",
+  "label": null,
+  "op": "add",
+  "kind": [
+   "unsung"
+  ],
+  "rationale": "a later reader \u2014 [[Deleuze]], Nietzsche, Freud \u2014 will say the affects are driving the car and reason is a passenger narrating the scenery",
+  "evidence": null,
+  "skeptics": [
+   "Spinoza.md:79 names Deleuze specifically (alongside Nietzsche/Freud) as a later reader who'd say affects drive reason, in the entry's substantive \"Where he can't see\" critique section, and Deleuze.md independently carries an extended Productive-Tensions engagement with Spinoza's conatus \u2014 a real, mutual, non-generic intellectual relationship; not already linked (Deleuze's existing link targets Spinoza Conatus, a different entry).",
+   "Substantive mutual engagement: Spinoza's page names Deleuze by name as the key critic of his reason-over-affects blind spot (Spinoza.md:79), and Deleuze's page carries a live Productive Tension over the conatus (Deleuze.md:77) \u2014 not thin, and the person-level pair isn't already linked (only Deleuze\u2192Spinoza Conatus, a different entry, exists)."
+  ]
+ },
+ {
+  "id": "b050",
+  "from": "v2-card",
+  "source": "Andy Goldsworthy",
+  "type": "connects-to",
+  "target": "Martin Buber",
+  "label": "relapses-into-it-at-the-shutter",
+  "op": "add",
+  "kind": [
+   "newcomer"
+  ],
+  "rationale": "Buber's central claim \u2014 every Thou relapses into an It the instant it is named, analyzed, or used \u2014 is almost a literal gloss on Goldsworthy's own documented tell: the ephemeral, encountered material becomes a fixed, sellable object at the exact moment the camera closes. Neither page links the other; Buber is an under-reached newcomer (reached by 6).",
+  "evidence": "Buber: 'every Thou must become an It the instant it is named, analyzed, or used.' Goldsworthy: 'the photograph is the actual permanent, sellable, gallery-priced object... manufactures the durable commodity at the exact instant of the shutter.'",
+  "skeptics": [
+   "Both quotes verified verbatim (Buber.md:65, Goldsworthy.md:72); pair not already linked. The parallel is precise and non-generic \u2014 the exact mechanism of an ephemeral thing becoming a fixed, possessable object at the instant of naming/shuttering.",
+   "The parallel is precise, not a generic label: Buber's 'every Thou must become an It the instant it is named, analyzed, or used' against Goldsworthy's own documented tell \u2014 the photograph as 'the actual permanent, sellable, gallery-priced object... at the exact instant of the shutter' (Andy Goldsworthy.md line ~72) \u2014 genuinely unlinked either direction."
+  ]
+ }
+]

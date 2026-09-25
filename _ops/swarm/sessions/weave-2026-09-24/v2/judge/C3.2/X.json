@@ -1,0 +1,35 @@
+{
+ "arm": "X",
+ "room": "C3.2",
+ "total_proposals": 3,
+ "sample": [
+  {
+   "kind": "unsung",
+   "source": "The Multilinear Self",
+   "type": "connects-to",
+   "target": "FOUR PILLARS",
+   "label": "",
+   "rationale": "The palace already believes the *world* is one reality cast into many projections \u2014 that is the [[FOUR PILLARS]].",
+   "item_id": "X1"
+  },
+  {
+   "kind": "unsung",
+   "source": "The Multilinear Self",
+   "type": "connects-to",
+   "target": "The Jewel",
+   "label": "",
+   "rationale": "\"Facet\" was the almost-word for projection \u2014 a face of one gem, connecting to [[The Jewel]].",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "Does Personifying an Agent Change What It Does",
+   "type": "mirrors",
+   "target": "The Multilinear Self",
+   "label": "projection-real-or-decorative",
+   "rationale": "Both entries hold open the exact same unresolved question in different materials: does a persona change the substance of the thing wearing it, or is it purely relational/aesthetic dressing on an unchanged core? One asks it of an AI agent's gendered temperament (the Shopkeeper), the other of a human's public personas (LDN, Professor Compressor, TRICKSTER). Neither currently links to the other, and the pairing survives the fidelity swap \u2014 no other room member poses this question in its general form.",
+   "evidence": "Does Personifying: \"does 'she' do any functional work, or is it purely relational and aesthetic?\" / The Multilinear Self: \"Each name is a projection of it \u2014 a real shadow the whole self casts into a particular room. Honest, just partial... the line between honest multiplicity and pretending.\"",
+   "item_id": "X3"
+  }
+ ]
+}

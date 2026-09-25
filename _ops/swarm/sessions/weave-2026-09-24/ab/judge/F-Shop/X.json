@@ -1,0 +1,64 @@
+{
+ "arm": "X",
+ "room": "F-Shop",
+ "total_proposals": 6,
+ "sample": [
+  {
+   "kind": "unsung",
+   "source": "Shop/RunPod GPU Backend.md",
+   "type": "connects-to",
+   "target": "BLUELINE \u2014 Render Backend",
+   "label": null,
+   "rationale": "Its render backend ([[BLUELINE \u2014 Render Backend]]) rides this substrate \u2014 Study tier on a pod, Piece batch on serverless (the routing split).",
+   "item_id": "X1"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/RunPod GPU Backend",
+   "type": "connects-to",
+   "target": "Worktree Practice",
+   "label": "agent-namespace-by-worktree",
+   "rationale": "This is a structural, not thematic, tie: the actual mechanism that prevents two agents' RunPod pods from colliding is keyed on the git worktree identity. I have not read Worktree Practice itself, so I can't confirm the target's own framing matches \u2014 flagging as a bridge candidate for an elder to verify rather than a settled find.",
+   "evidence": "RunPod GPU Backend Gotchas: 'a single-sourced per-agent slug at `_ops/runpod/agent_ns.py` ($RUNPOD_AGENT_SLUG \u2192 git worktree name \u2192 host)' \u2014 the fix for the multi-agent pod-collision outage reads the git worktree name directly to derive the pod namespace.",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/RunPod GPU Backend",
+   "type": "connects-to",
+   "target": "Shop/LoRA Trainer",
+   "label": "trains-loras-here",
+   "rationale": "LoRA Trainer is a flagged newcomer with 0 inbound; RunPod GPU Backend literally names LoRA training as an open horizon of its own substrate. The two entries are already talking about each other in prose; only the frontmatter link is missing on one side.",
+   "evidence": "RunPod GPU Backend Untested Horizons: 'LoRAs / fine-tunes \u2014 style packs or alternate checkpoints, loaded on a pod.' LoRA Trainer's own frontmatter already declares rides-the-substrate back to RunPod GPU Backend, but the substrate doesn't point back.",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/ffmpeg",
+   "type": "couples-with",
+   "target": "Shop/OBS",
+   "label": "capture-to-batch",
+   "rationale": "OBS has zero inbound and is a flagged newcomer/unreachable entry; ffmpeg is explicitly 'the meeting place where any two Specialists' outputs come together,' and OBS's own Recipes section names ffmpeg's exact role. Reciprocating the symmetric couples-with link is a genuine, not forced, fix.",
+   "evidence": "OBS Recipes: 'Tail without re-encoding. Hold an end-card scene for a beat before stopping the recording... The video stream is then copied, never re-encoded' \u2014 a batch/finishing move that is ffmpeg's own charter. OBS already declares the reciprocal link (ffmpeg couples-with, label capture-to-batch) but ffmpeg does not declare it back.",
+   "item_id": "X4"
+  },
+  {
+   "kind": "unsung",
+   "source": "Shop/Maker.md",
+   "type": "connects-to",
+   "target": "Shop/LoRA Trainer.md",
+   "label": "Maker's own Promotion Log names LoRA Trainer as a real, dated job but the Maker's frontmatter carries no link to it \u2014 though per the entry's own documented convention (Maker no longer hand-lists the roster; each Specialist declares directed-by-Maker instead), the correct fix is on LoRA Trainer's side, not Maker's.",
+   "rationale": "*LoRA Trainer (BLUELINE Track II, 2026-06-16):* **LoRA Trainer** \u2014 first-try character-LoRA training on the RunPod substrate...",
+   "item_id": "X5"
+  },
+  {
+   "kind": "unsung",
+   "source": "Shop/Figure Rig.md",
+   "type": "connects-to",
+   "target": "Figure Rig \u2014 face-hands-openpose design",
+   "label": null,
+   "rationale": "Plan + expression recipes: [[Figure Rig \u2014 face-hands-openpose design]]",
+   "item_id": "X6"
+  }
+ ]
+}

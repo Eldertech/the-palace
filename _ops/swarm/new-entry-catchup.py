@@ -19,7 +19,8 @@ Newcomer (in precedence order) = young AND under the INBOUND target, where young
   --since YYYY-MM      -> born >= that month
   (none)               -> activation_count == 1 (the card's Step 0b proxy)
 
-Measured on INBOUND links only (2026-09-23): Step 0b exists for the links only a Weave can
+Measured on REACH (2026-09-24): entries that point at it, plus partners on symmetric links,
+which hold both ways. Originally (2026-09-23) inbound only: Step 0b exists for the links only a Weave can
 place — the ones in other entries' files. Total degree hid the gap (OBS read as degree 7 with
 0 inbound). Target = ~0.8 x the median inbound of established entries. Ceremony cards are map
 nodes since build-map-2026-09-24.py, so ceremony links count; links from bundle files do not
@@ -109,9 +110,22 @@ def compute(map_path, since, added_set=None, rule="activation_count == 1 (proxy)
     the inbound target — so an entry a deposit already wired well is not dragged in."""
     with open(map_path, encoding="utf-8") as f:
         data = json.load(f)
+    # Reach, not raw inbound: a symmetric link (connects-to, mirrors, contradicts, couples-with)
+    # holds BOTH ways (SCHEMA §4), so it reaches its source as well as its target. Counting it one
+    # way told the 2026-09-24 weave that 25 newcomers were under-reached when 5 were; its walk
+    # workers dutifully re-proposed the reverse of links that already existed.
+    SYM = {"connects-to", "mirrors", "contradicts", "couples-with"}
+    ids = {n["id"] for n in data["nodes"]}
+    reach = {i: set() for i in ids}
+    for e in data.get("edges", []):
+        s, t = e.get("source"), e.get("target")
+        if s in ids and t in ids and s != t:
+            reach[t].add(s)
+            if e.get("type") in SYM:
+                reach[s].add(t)
     nodes = []
     for n in data["nodes"]:
-        inbound = int(n.get("inbound_count", 0))
+        inbound = len(reach[n["id"]])
         born, act = read_born_and_act(n["path"])
         if act is None:  # fall back to the activation_count carried in the map
             act_raw = n.get("activation_count")
@@ -151,7 +165,7 @@ def block(result):
     lines = []
     if result["newcomers"]:
         lines.append("Born since the last Weave, still under-reached:")
-        lines += [f"- [[{n['id']}]] (currently {n['inbound']} inbound)" for n in result["newcomers"]]
+        lines += [f"- [[{n['id']}]] (currently reached by {n['inbound']})" for n in result["newcomers"]]
     live = [u for u in result["unreachable"] if u["stage"] != "composting"]
     if live:
         lines.append("No entry points to these yet (any age):")

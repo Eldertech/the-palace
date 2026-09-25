@@ -1,0 +1,211 @@
+{
+ "lens": "folder",
+ "id": "F-_ops",
+ "family": "_ops",
+ "members": [
+  {
+   "id": "Artifacts to Projects Migration \u2014 handoff",
+   "path": "_ops/Artifacts to Projects Migration \u2014 handoff.md",
+   "stage": "composting",
+   "inbound": 0
+  },
+  {
+   "id": "Baton Ceremony",
+   "path": "_ops/Baton Ceremony.md",
+   "stage": "mature",
+   "inbound": 10
+  },
+  {
+   "id": "Baton Ceremony \u2014 Context",
+   "path": "_ops/Baton Ceremony/Baton Ceremony \u2014 Context.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Closing Well Ceremony",
+   "path": "_ops/Closing Well Ceremony.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Deposit Archive",
+   "path": "_ops/Deposit Archive.md",
+   "stage": "dormant",
+   "inbound": 5
+  },
+  {
+   "id": "Deposit Ceremony",
+   "path": "_ops/Deposit Ceremony.md",
+   "stage": "growing",
+   "inbound": 26
+  },
+  {
+   "id": "Deposit Ceremony \u2014 Context",
+   "path": "_ops/Deposit Ceremony/Deposit Ceremony \u2014 Context.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Graffiti Pass \u2014 Handoff 2026-04-30",
+   "path": "_ops/Graffiti Pass \u2014 Handoff 2026-04-30.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Graffiti Pass \u2014 Handoff 2026-05-02",
+   "path": "_ops/Graffiti Pass \u2014 Handoff 2026-05-02.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2",
+   "path": "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md",
+   "stage": "sprout",
+   "inbound": 0
+  },
+  {
+   "id": "Harvest Ceremony",
+   "path": "_ops/Harvest Ceremony.md",
+   "stage": "mature",
+   "inbound": 11
+  },
+  {
+   "id": "Harvest Ceremony \u2014 Context",
+   "path": "_ops/Harvest Ceremony \u2014 Context.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Image Embedding Standard",
+   "path": "_ops/Image Embedding Standard.md",
+   "stage": "mature",
+   "inbound": 2
+  },
+  {
+   "id": "Map Build Ceremony",
+   "path": "_ops/Map Build Ceremony.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Map Log",
+   "path": "_ops/Map Log.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Mermaid Diagram Standard",
+   "path": "_ops/Mermaid Diagram Standard.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Pages as Agents",
+   "path": "_ops/Pages as Agents.md",
+   "stage": "growing",
+   "inbound": 42
+  },
+  {
+   "id": "Palace Audit \u2014 2026-05-28",
+   "path": "_ops/Palace Audit \u2014 2026-05-28.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Palace Ceremonies",
+   "path": "_ops/Palace Ceremonies.md",
+   "stage": "growing",
+   "inbound": 17
+  },
+  {
+   "id": "Palace Graffiti",
+   "path": "_ops/Palace Graffiti.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Palace Map",
+   "path": "_ops/Palace Map.md",
+   "stage": "sprout",
+   "inbound": 9
+  },
+  {
+   "id": "Palace Quotes",
+   "path": "_ops/Palace Quotes.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Palace To-Do",
+   "path": "_ops/Palace To-Do.md",
+   "stage": "growing",
+   "inbound": 8
+  },
+  {
+   "id": "Return Ceremony",
+   "path": "_ops/Return Ceremony.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "Revival Ceremony",
+   "path": "_ops/Revival Ceremony.md",
+   "stage": "mature",
+   "inbound": 2
+  },
+  {
+   "id": "Schema Ceremony Proposal \u2014 exemplifies + member-of",
+   "path": "_ops/Schema Ceremony Proposal \u2014 exemplifies + member-of.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Self-Model Update Ceremony",
+   "path": "_ops/Self-Model Update Ceremony.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Spore Check Ceremony",
+   "path": "_ops/Spore Check Ceremony.md",
+   "stage": "mature",
+   "inbound": 6
+  },
+  {
+   "id": "Substrate Skill",
+   "path": "_ops/Substrate Skill.md",
+   "stage": "mature",
+   "inbound": 16
+  },
+  {
+   "id": "Technical Diagram Standard",
+   "path": "_ops/Technical Diagram Standard.md",
+   "stage": "sprout",
+   "inbound": 0
+  },
+  {
+   "id": "Toolkit Assessment \u2014 Working Doc",
+   "path": "_ops/Toolkit Assessment \u2014 Working Doc.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Walk Ceremony",
+   "path": "_ops/Walk Ceremony.md",
+   "stage": "mature",
+   "inbound": 4
+  },
+  {
+   "id": "Weave Ceremony",
+   "path": "_ops/Weave Ceremony.md",
+   "stage": "mature",
+   "inbound": 17
+  },
+  {
+   "id": "Weave Ceremony \u2014 Context",
+   "path": "_ops/Weave Ceremony \u2014 Context.md",
+   "stage": "growing",
+   "inbound": 1
+  }
+ ]
+}
