@@ -121,3 +121,8 @@ twice early on; they are 12a/12b and 13a/13b, four different traps. Newest last.
 ## From the Palace Ceremonies review — 2026-09-25
 
 32. **The prepare path has no status that reaches it.** A keep row whose words Loudon hasn't read is `provisional` (`executor.md:41`), and `provisional` executes nothing (`:30–32`; `dispatch.md:222–223`); Pass 3 places only assented `candidate` rows (`dispatch.md:205`). Yet `executor.md:44–49` lets the executor *prepare* exactly that row. Item 30's close reached the path because the room said so, not because the map did; an executor reading the spec as written never will. Spec change owed: a `prepare` status — assented, words not yet read — that Pass 3 commits on a worktree branch and never lands, named in `executor.md:30–32` and `:41` and `dispatch.md:205`. For the session that owns Closing Well, or the next Closing Well run.
+
+## From the re-check close — 2026-09-25
+
+33. **The reader's gap is wider than item 31, and the very next close caught it.** This arc rendered a dismissed popup question as "The user answered…" (arc:766) and `<task-notification>` records as 🧑 HUMAN (arc:158); three of Loudon's mid-turn messages were missing and had to be appended by hand. Loudon: "the issue came up once, was discovered and added to the tuning doc, and the very next run caught it and confirmed the issue, now we need to correct it." Spec change owed, with 31: the reader carries every human input — mid-turn messages, popup answers and dismissals — and never renders a task-notification as HUMAN. Carried by the arc-reader task; it moves Closing Well to 1.3.
+- run · 2026-09-25 · v1.2 · close-2026-09-25-recheck · taught item 33
