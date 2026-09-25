@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - tools
 born: 2026-05-26
-last_activated: 2026-09-03
-activation_count: 5
+last_activated: 2026-09-24
+activation_count: 7
 stage: growing
 version: "1.0"
 links:
@@ -137,6 +137,8 @@ The work is only cooperative if the next person can pick it up. A piece of work 
 
 ## Closing Well, Enchanted
 
+> **Status — 2026-09-24: versioned.** Closing Well is at v1.0 under Schema v1.20/v1.21; its ledger is [[Closing Well — tuning]] (29 items), every close opens by reading it and ends by answering what it taught, and the executor's `tuning` row appends the answer — the wiring the line below called unbuilt. Two closes ran today, the first on Path A, the second on Path B after a restart dropped the resident (items 27–28).
+>
 > **Status — 2026-08-25: built end to end; only Phase 6 (iterate) is open.** Phases 0–5 of [[Closing Well — production plan]] have all passed their verify gates: the `close well` trigger + thin [[Closing Well Ceremony]] card (v1.15 Schema Ceremony), the cold transcript reader, the moderated-panel design with its two-layer split, and the **executors** — a fresh backstage pass that places every assented row through its real ceremony. Phase 5's live gate passed 2026-07-04 on this design's own maker session. **Phase 6 — turn on the ledger, run closes, let each teach one trap — is the open phase**, and it is working: 21 traps from ~10 real closes, several of which hardened the ceremony card. Since v1.0 (2026-09-24) the executor's `tuning` row appends each close's lesson to [[Closing Well — tuning]], which was the one unbuilt piece. Build status: [[Closing Well — Context]] § Session log.
 
 For its first year, Closing Well was a *discipline* — rules a Claude internalizes. It can also be *enchanted*: the page run as an agent at session close ([[Pages as Agents]]). Enchanted, the page becomes the **Closing Well Agent** — and the design that now governs it is a **moderated panel**, not a subagent that closes the session in the working Claude's place.

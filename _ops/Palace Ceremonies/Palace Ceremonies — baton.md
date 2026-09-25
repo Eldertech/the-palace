@@ -9,10 +9,10 @@ forward_vector: "I carry the in-progress move on [[Palace Ceremonies]] across a 
 ---
 
 ## Move
-Carry the ceremony-evolution rollout through phases 2 to 5: version and tuning for Closing Well at the next close, then the remaining ceremonies, then scrolls for every entry with a ceremonies group on the PROJECTS deck, then the principle written into Palace Ceremonies.
+Carry the ceremony-evolution rollout through phases 3 to 5: the remaining ceremonies, then scrolls for every entry with a ceremonies group on the PROJECTS deck, then the principle written into Palace Ceremonies.
 
 ## Why this move matters
-Schema v1.20 states the rule and the Weave runs under it; nothing else does yet. Until each ceremony carries a version and a tuning file, "what changed since I last ran this" is answerable only for one ceremony, and the improvements Loudon feels every run stay in commit logs and session folders nobody reads on the way in. The order matters: Closing Well next because it has the model ledger and an executor that can append; scrolls after two ledgers exist so the renderer has something real to render; the principle last so it describes what has been done, not what was planned.
+Schema v1.20 and v1.21 state the rule; the Weave (v1.1) and Closing Well (v1.0) run under it; nothing else does yet. Until each ceremony carries a version and a tuning file, "what changed since I last ran this" is answerable only for one ceremony, and the improvements Loudon feels every run stay in commit logs and session folders nobody reads on the way in. The order matters: Closing Well next because it has the model ledger and an executor that can append; scrolls after two ledgers exist so the renderer has something real to render; the principle last so it describes what has been done, not what was planned.
 
 ## Tried and rejected
 - A ledger entry mandatory per run — too much for Closing Well, which runs often and has plateaued. The question is mandatory; the entry only when a run changed the spec.

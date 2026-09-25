@@ -53,6 +53,7 @@ with the panel between them, then the backstage execution on assent.
 #    started — often the palace root even when work happens in a worktree — not
 #    under the worktree's mangled project dir. --resolve handles that.)
 node _ops/closing-well/transcript-reader.mjs --resolve
+# then distill with --session <main-session-id> — the newest-file default can pick a subagent's transcript
 
 # 2. Distill it into a readable arc (mechanical projection, not a summary).
 node _ops/closing-well/transcript-reader.mjs --distill --out <scratchpad>/session-arc.md
@@ -170,5 +171,5 @@ Exit codes: `0` ok · `1` usage / not-found · `2` parse failure.
 
 ## Not built yet (Phase 6)
 
-- **Gotcha ledger wiring** — [[Closing Well — tuning]] exists and is hand-appended; the
-  Agent appending to it *automatically* per close is Phase 6.
+- **Tuning ledger wiring** — built 2026-09-24: the executor's `tuning` species row appends the close's
+  "What this run taught the ceremony" line to [[Closing Well — tuning]] (Closing Well v1.0).
