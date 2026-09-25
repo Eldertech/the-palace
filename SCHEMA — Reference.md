@@ -5,7 +5,7 @@ pillars:
   - tools
   - practice
 born: 2026-09
-version: "1.20"
+version: "1.21"
 stage: foundational
 status: canonical
 links:
@@ -209,6 +209,9 @@ adding or removing a ceremony still is (§5).
 
 The question is asked on every run. A tuning item is written only when the run changed the ceremony, so the
 ledger and the version move together, and a run that taught nothing leaves both alone.
+
+Every run opens by reading the ceremony's tuning file — the items still marked owed, and any recorded after the
+version it last ran under — and those are the first candidates for the run's spec change.
 
 ---
 

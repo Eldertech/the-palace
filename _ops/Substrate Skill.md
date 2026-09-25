@@ -85,7 +85,7 @@ When instructed to "add to the context" or "add to the log" for a ceremony, writ
 
 Currently split: [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]; [[Harvest Ceremony]] + [[Harvest Ceremony — Context]]; [[Weave Ceremony]] + [[Weave Ceremony — Context]]; [[Baton Ceremony]] + [[Baton Ceremony — Context]].
 
-Every ceremony carries a `version` that moves only when its spec changes, and keeps a `[Ceremony] — tuning.md` ledger in its bundle for the runs that changed it. Every run report stamps `ceremony_version` in its frontmatter and ends with **What this run taught the ceremony** — "nothing" is a legal answer.
+Every ceremony carries a `version` that moves only when its spec changes, and keeps a `[Ceremony] — tuning.md` ledger in its bundle for the runs that changed it. Every run report stamps `ceremony_version` in its frontmatter and ends with **What this run taught the ceremony** — "nothing" is a legal answer. Every run opens by reading that tuning file — owed items first, then anything recorded since the version it last ran — and those are the first candidates for the run's spec change.
 
 ### Entry Bundles
 
