@@ -278,7 +278,7 @@ merge.
 The lens catalogue — **folder · pillar · topological community · mirror/structural · lifecycle ·
 genealogy · warmth** — shares one bias: each groups by *some* principle, so it can only confirm and
 extend structure, never violate it. The genuinely new lens is **random / oblique**: a chance cover
-with *no axis at all* — a Cage/Eno move ([[Oblique Portrait]], the `go oblique` Enrichment trigger).
+with *no axis at all* — a Cage/Eno move ([[Oblique Portrait]]).
 It is the one cut that can put Spinoza next to a compressor and ask whether they rhyme — and when they
 do, that rhyme has no home in any structured search. Its mandate is its own: hunt *only* the odd,
 under a hard guard (a null is a valid answer; rate your surprise; never force a generic link), because

@@ -95,7 +95,7 @@ When a ceremony (Baton, Deposit, Enrichment) needs a file to live somewhere entr
 
 File naming inside the bundle: `[Entry] — [type] [— qualifier].md`. The entry-prefix is required because Obsidian's wikilink namespace is flat across the vault.
 
-When a bundle file is consumed (e.g., a spent enrichment card or superseded source), move it to `[Entry]/Archive/` rather than deleting. Git carries history; archive preserves locality. (Batons are the exception — deleted on pickup, with git as their archive; see [[Baton Ceremony]].)
+When a bundle file is consumed (e.g., a superseded source or a spent sketch), move it to `[Entry]/Archive/` rather than deleting. Git carries history; archive preserves locality. (Batons are the exception — deleted on pickup, with git as their archive; see [[Baton Ceremony]].)
 
 Bundle files are not first-class entries. They do not appear in Weave audits, do not need full entry frontmatter (no `type`, `pillars`, or `stage`), and do not require typed-link participation in the palace graph. But every bundle file carries minimal YAML — title, born, at least one link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing.
 

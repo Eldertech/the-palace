@@ -97,7 +97,7 @@ What followed was the palace's own origin ceremony: harvesting, depositing, buil
 
 <!-- mirror of SCHEMA §1 type list — keep in sync (11 types as of v1.17) -->
 
-- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, SCHEMA — Reference.md, JEWEL, SUBSTRATE, ROSETTA, README, FOUR PILLARS) and knowledge entries of every type *except* specialist/maker: `concept`, `hub`, `project`, `source`, `meta`, `practice`, `person`, `question`, `spore`. Mostly flat, with optional entry bundles (`[Entry]/`) and themed subfolders (`Projects/`, `People/`, `Cross-Domain Resonances/`, `Palace development/`, `Enrichment/`).
+- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, SCHEMA — Reference.md, JEWEL, SUBSTRATE, ROSETTA, README, FOUR PILLARS) and knowledge entries of every type *except* specialist/maker: `concept`, `hub`, `project`, `source`, `meta`, `practice`, `person`, `question`, `spore`. Mostly flat, with optional entry bundles (`[Entry]/`) and themed subfolders (`Projects/`, `People/`, `Cross-Domain Resonances/`, `Palace development/`).
 - **`Shop/`** — The Shop sub-system: `specialist` + `maker` entries (use `status`, not `stage`).
 - **`_ops/`** — Ceremony machinery and working queues. Contains all ceremony specs, their Context companions (session history), and active working files (Deposit Archive, Palace Graffiti, Palace Quotes, Palace To-Do) plus machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, …). Underscore prefix sorts it to the top of any file explorer. Obsidian wikilinks resolve across folders.
 

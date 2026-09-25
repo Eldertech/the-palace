@@ -219,7 +219,7 @@ version it last ran under — and those are the first candidates for the run's s
 
 ## 8. Entry Bundles
 
-An **entry bundle** is an optional sibling folder, named identically to the entry (no extension), that holds the entry's owned files: batons, context companions, sources, sketches, enrichments. The `.md` is the canonical surface; the bundle is its private substrate. Bundles are plumbing, not ceremony — they appear when a ceremony needs a file to live somewhere, and do not require their own invocation.
+An **entry bundle** is an optional sibling folder, named identically to the entry (no extension), that holds the entry's owned files: batons, context companions, sources, sketches, enrichments, rich faces. The `.md` is the canonical surface; the bundle is its private substrate. Bundles are plumbing, not ceremony — they appear when a ceremony needs a file to live somewhere, and do not require their own invocation.
 
 **Folder naming:** `[Entry].md` ↔ `[Entry]/` (exact match, no extension).
 
@@ -248,7 +248,8 @@ This keeps every file in the palace self-describing without conflating bundle fi
 | `context` | Long-running session-history companion accumulating across multiple sessions. Generalizes the Jewel — Context pattern. |
 | `source` | Extracted, quoted, translated, or annotated source material supporting the entry. Use the qualifier slot to name which one (`Foo — source — borges.md`). |
 | `sketch` | Half-formed material not yet ready for the entry body but too substantial for an HTML comment. |
-| `enrichment` | Material added via Enrichment ceremonies. Use the qualifier slot to name which enrichment. |
+| `enrichment` | A small made piece the entry embeds in its own body — a haiku, a twelve-word compression. Pieces laid *beside* the text rather than in it belong to `rich`. |
+| `rich` | The entry's **rich face**: `[Entry] — rich.json`, a heading-keyed manifest of the Shop pieces laid beside the text, each section stamped with a fingerprint of the prose it was made against so the page can say when a piece may lag. Pieces made for it are `[Entry] — rich — [qualifier].<ext>`; gathered pieces keep their names. The `.md` is never written. See [[Enrichment]]. |
 | `scroll` | The entry's **front door** — any entry may carry one. Three zones: **Now**, machine-owned and regenerated on every look; **Standing Orders**, Loudon's, never regenerated; and **the making**, an append-only trail, newest first. What Now counts depends on the entry: a project's reads [[STIGMERGY]]'s board (open asks, answers not yet consumed, last shipped, stall, drift); a ceremony's counts its runs since the spec last changed and gives its current version. Markdown. See [[The Scroll]], [[Project Stewardship System]]. |
 | `tuning` | A ceremony's **tuning ledger** — the numbered record of what its runs changed, grouped by run date, each item tied to the spec change it forced. Written only when a run changed the ceremony; one per ceremony. See §6. (Not `gotchas` — that word stays with a Specialist's tool traps.) |
 | `staging` | The entry's **teaching arc** — stage-by-stage Loudon Live session plans ordered by didactic difficulty. Learner-facing, stable once designed; produced by [[project-stage-builder]], not the steward. The steward *reads* it and flags arc-level changes to Loudon rather than editing silently. |

@@ -27,7 +27,7 @@ links:
     label: forward-vector-writing
   - target: "[[Enrichment]]"
     type: connects-to
-    label: vector-tuning-as-enrichment-purpose
+    label: making-against-the-vector
   - target: "[[Phoneme Choir]]"
     type: emerged-from
     label: card-004-2026-05-05
@@ -94,7 +94,7 @@ When writing or revising any forward vector across the palace:
 3. **Read what's missing.** What sub-vector is the entry secretly carrying that hasn't been named? Most entries want more than they admit.
 4. **Ask: what is this entry's hunger?** A finished entry is not finished — it has eaten its current vector and wants the next one.
 
-The [[Enrichment]] ceremony should regularly surface forward vectors that have gone stale and propose conatus-bearing rewrites as cards (purpose tag: *"reviving the entry's conatus"* or similar). The [[Weave Ceremony]] should add forward-vector linting to its sweep — entries with `remain`/`stay`/`continue` verbs are flagged for revision.
+[[Enrichment]] meets the vector from the making side: a page enriched with the whole Shop is built against its forward vector, and what the making teaches goes home as an edit — sometimes to the vector itself. The [[Weave Ceremony]] should add forward-vector linting to its sweep — entries with `remain`/`stay`/`continue` verbs are flagged for revision.
 
 ## Origin — 2026-05-05
 

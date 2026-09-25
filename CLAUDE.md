@@ -80,7 +80,7 @@ A child knows the names of the rites. When Loudon uses one as an instruction, re
 | "harvest", "let's harvest" | [[Harvest Ceremony]] |
 | "weave", "let's weave" | [[Weave Ceremony]] |
 | "walk", "let's walk" | [[Walk Ceremony]] |
-| "enrich", "let's enrich", "enrich [X]", "make-teach-move-on", "go oblique" | [[Enrichment]] |
+| "enrich [page]", "enrich this page", "let's enrich [page]" | [[Enrichment]] |
 | "spore check" | [[Spore Check Ceremony]] |
 | "revive [entry]", "let's revive [entry]", "time to revive [entry]" | [[Revival Ceremony]] |
 | "map build", "build the map", "neighborhood map for [X]" | [[Map Build Ceremony]] |

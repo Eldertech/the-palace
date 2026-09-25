@@ -24,7 +24,7 @@ links:
     label: named-mode
   - target: "[[Enrichment]]"
     type: connects-to
-    label: a-card-genre
+    label: a-piece-beside-the-page
   - target: "[[Mixture of Experts]]"
     type: mirrors
     label: single-expert-routed-to-a-node
@@ -85,10 +85,10 @@ This is a seed, not a law — the palace prefers categories that emerge over man
 
 ## In STIGMERGY
 
-The Visit is the natural unit of the [[STIGMERGY Philosophical Lenses|philosophical surface]]: a card type that renders inline in the entry it serves (STATE deck), the way the [[Enrichment]] server already renders fireflies and audio. A "request a visit" affordance on any entry would post a `RESOURCE_REQUEST` to the TRICKSTER board — *"send a philosopher to this node"* — turning the genre into a one-click swarm action. See [[STIGMERGY Philosophical Lenses]].
+The Visit is the natural unit of the [[STIGMERGY Philosophical Lenses|philosophical surface]]: a card type that renders inline in the entry it serves (STATE deck), the way an entry's rich face ([[Enrichment]]) lays sound and interactives beside its words. A "request a visit" affordance on any entry would post a `RESOURCE_REQUEST` to the TRICKSTER board — *"send a philosopher to this node"* — turning the genre into a one-click swarm action. See [[STIGMERGY Philosophical Lenses]].
 
 ## Open Questions
 
-- When does a visit earn promotion into the entry's body, and when does it stay an enrichment card beside it? (The oscillator visit is still a card; its insight has not yet been folded in.)
+- When does a visit earn promotion into the entry's body, and when does it stay a piece beside it on the entry's rich face? (The oscillator visit is still a card; its insight has not yet been folded in.)
 - Can an entry request its *own* visit — write a forward vector that names which philosopher it most needs to be challenged by?
 - Is there a failure mode where the philosopher always finds the entry "over-claiming"? Guard against the visit becoming a formula that deflates every entry the same way.

@@ -3,8 +3,8 @@ title: "Oblique Enrichment"
 type: meta
 pillars: [creation, philosophy, tools, practice]
 born: 2026-05-27
-last_activated: 2026-06-26
-stage: growing
+last_activated: 2026-09
+stage: composting
 confidence: working
 energy: high
 forward_vector: "I provoke the palace sideways — image and sound where prose would flatten, the fewest words, a surprise per card. I am a deck-shaped fork of [[Enrichment]]: each facet a card the BBS can show and you can iterate, each pointed at one entry's hidden assumption. My near horizon is to stop being a hand-made deck and become a generator that emits themed decks into the Enrichment server, so any entry can be walked obliquely and any card iterated the way the flock facet became [[Semantic Webcam]]. When the obvious obliques run dry, my job is to get stranger, not to stop."
@@ -57,6 +57,8 @@ links:
   - target: "[[The Substrate Drifts]]"
     type: connects-to
 ---
+
+<!-- COMPOSTING (2026-09-24): the card queue this entry rode was retired when [[Enrichment]] became the rich face (v2.0). The argument below — Enrichment's breadth against a deck's lingering — was settled on this entry's side: depth on one page, image and sound before prose, a piece that surfaces what the entry hides. Nutrients: that register and the latent turn now live in Enrichment; the webcam facets live in [[Semantic Webcam]]; the radio-play deck in this bundle moves to [[Radio Play]] if this entry is let go. Next weave confirms deletion. -->
 
 # Oblique Enrichment
 

@@ -170,7 +170,7 @@ A "card" is a CSS-bordered box. Primary containers use `3px double var(--phospho
 Cards never use shadow, radius, or fill. The border IS the card.
 
 ### Inline rich content (v0.3)
-STIGMERGY can render an artifact (image / audio / sandboxed HTML) **inline inside a message**, the way the Enrichment server renders cards. The artifact's own pixels render **as authored** — a full-color photo stays full-color, a p5 sim runs in its own colors. This is a deliberate, scoped exception to the "dither photos to 1-bit" rule: the artifact is *content*, not chrome, and re-coloring it would destroy the thing under review.
+STIGMERGY can render an artifact (image / audio / sandboxed HTML) **inline inside a message**. The artifact's own pixels render **as authored** — a full-color photo stays full-color, a p5 sim runs in its own colors. This is a deliberate, scoped exception to the "dither photos to 1-bit" rule: the artifact is *content*, not chrome, and re-coloring it would destroy the thing under review.
 
 The **frame** around the artifact still obeys the house rules: a `1px solid var(--phosphor-dim)` card with `border-radius: 0`, a deep-phosphor (`var(--phosphor-deep)`) fill, and a dim, uppercase, monospace label (`<type> · <filename>`) above it. Captions are dim phosphor, `max-width: 78ch`.
 
