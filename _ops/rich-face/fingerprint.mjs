@@ -34,6 +34,11 @@ const bySection = new Map((manifest?.sections || []).map((m) => [sectionKey(m.he
 if (flag === '--stamp') {
   if (!manifest) { console.error('no manifest to stamp'); process.exit(1); }
   const want = new Set(only.map(sectionKey));
+  // A name that matches no manifest section is almost always a typo — say so,
+  // rather than stamping nothing in silence.
+  const inManifest = new Set(manifest.sections.map((m) => sectionKey(m.heading)));
+  const unmatched = only.filter((s) => !inManifest.has(sectionKey(s)));
+  for (const s of unmatched) console.error(`  no manifest section named "${s}" — the manifest has ${manifest.sections.map((m) => `"${m.heading}"`).join(', ')}`);
   const today = new Date().toLocaleDateString('en-CA');   // local date, YYYY-MM-DD
   let n = 0;
   for (const m of manifest.sections) {
@@ -43,8 +48,12 @@ if (flag === '--stamp') {
     if (!cur) { console.log(`  skip  "${m.heading}" — the text has no such heading (lost its place)`); continue; }
     if (m.made_against !== cur.fp) { m.made_against = cur.fp; m.stamped = today; n++; console.log(`  stamp "${m.heading}" → ${cur.fp}`); }
   }
-  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
-  console.log(`${n} section(s) stamped in ${manifestPath.replace(HERE + '/', '')}`);
+  const where = manifestPath.replace(HERE + '/', '');
+  // Written only when a stamp changed: nothing matched, or everything was
+  // already in step, leaves the file exactly as it was.
+  if (n) { writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n'); console.log(`${n} section(s) stamped in ${where}`); }
+  else console.log(`nothing stamped — ${where} left as it was`);
+  if (unmatched.length) process.exitCode = 1;
 } else {
   for (const [k, { heading, fp }] of fps) {
     const m = bySection.get(k);
