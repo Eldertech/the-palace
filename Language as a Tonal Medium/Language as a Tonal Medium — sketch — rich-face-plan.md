@@ -1,5 +1,5 @@
 ---
-title: "Language as a Tonal Medium — sketch — rich-face plan"
+title: "Language as a Tonal Medium — sketch — rich-face-plan"
 born: 2026-09-24
 links:
   - target: "[[Language as a Tonal Medium]]"

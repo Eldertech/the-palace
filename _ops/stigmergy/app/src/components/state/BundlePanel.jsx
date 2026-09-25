@@ -26,7 +26,7 @@ function KindBadge({ kind }) {
 
 function MediaCard({ file }) {
   // ArtifactSlot expects payload.artifacts: [{path, caption?}]. Reuse it
-  // verbatim so the rendering matches QUEUE-side enrichment cards 1:1.
+  // verbatim so a bundle's media renders the same as a board message's.
   const synthPayload = { artifacts: [{ path: file.relPath, caption: null }] };
   return (
     <div data-testid="bundle-media" data-kind={file.kind} data-path={file.relPath}>

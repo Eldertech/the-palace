@@ -1,10 +1,9 @@
-// The Actuator -- STIGMERGY's port of Enrichment server.py:_fire_worker.
+// The Actuator -- fire a headless `claude -p` worker from the board, and keep
+// it honest. The steward, companion and regen lanes all build on it.
 //
-// This is the keystone of the v1.0 consolidation (Revision 2 §3): the board
-// becomes an actuator by inheriting the one mechanism that already works --
-// "a board action fires a headless `claude -p` worker." The Enrichment server
-// proved it in Python; this re-implements it in Node with the hard-won
-// robustness scars carried over EXACTLY in spirit:
+// It began as a Node port of the old Enrichment server's worker fire (retired
+// with the card queue, 2026-09-24); the hard-won robustness scars came along
+// EXACTLY in spirit:
 //
 //   1. bypassPermissions is load-bearing. Headless `claude -p` has no TTY to
 //      answer Write/Edit permission prompts, so without
