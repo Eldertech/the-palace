@@ -69,14 +69,32 @@ When in doubt, flag as partial. It costs nothing and preserves the option.
 
 ## How to Run It
 
-The Harvest adapts to its dataset. There is no single correct procedure. What matters is that the harvest:
+The Harvest adapts to its dataset, and the first move is deciding which of two kinds of source this is.
+
+**The sweep** is for a big pile — a month of conversations, an archive — where the job is *finding*.
+The harvest:
 
 1. Knows what has already been deposited (the [[Deposit Archive]] holds the frozen pre-spec rows; post-migration deposits are `Palace-Kind: deposit` commits on the LOG deck — query both via script, do not load wholesale)
 2. Knows what it is searching through (establish the scope before triaging)
 3. Records its findings in a working list that feeds the deposit queue
 4. Does not attempt to do the deposit work — that belongs to [[Deposit Ceremony]]
 
-**The oblique approach is strongly preferred over item-by-item audit.** See [[Harvest Ceremony — Context]] for the full account of what this means and how it was developed. In brief: a harvest that presents candidates as a game — with quick signals, interactive prioritization, and room for Loudon's intuition to move fast — produces better results than a methodical audit that reads every item in sequence. The harvest should feel like sorting through a collection with good music on, not filling out a form.
+The oblique approach is strongly preferred over item-by-item audit. See [[Harvest Ceremony — Context]] for what this means and how it was developed. In brief: a sweep presented as a game — quick signals, interactive prioritization, room for Loudon's intuition to move fast — beats a methodical audit. It should feel like sorting through a collection with good music on, not filling out a form.
+
+**The close reading** is for one dense source — a commissioned research document, a paper, a long transcript — where the job is *understanding*. Walk it one section at a time, each in six beats:
+
+1. **Gather against the live palace.** The [[Concierge]] says what already exists, and under what names.
+2. **Verify the outside claims by fetching them** — the paper itself, not "the source says."
+3. **Teach the material**, especially where the fit breaks. The question is what is here to learn, not whether it earns a page.
+4. **Debate the disposition** — mint, fold, revive, decline — as an argument, not a recommendation.
+5. **Show the deposit map and wait.** Target, fold or mint, type, stage, links, findability terms, verify status, and the full text. No exceptions, including "he clearly wants this." This beat is the palace's main defence against becoming the voice that writes it.
+6. **Write on approval**, have the Concierge check it afterwards, and record it.
+
+Here depositing happens inside the loop, each write through the [[Deposit Ceremony]]'s gate. The record carries one row per section and is not done until every row has a disposition and a reason.
+
+**Two rules hold in both.** *Does naming it change a move?* is a deposit rule, never a reading rule — used to decide what Loudon should learn, it cuts him out of his own harvest. And a source brought to a harvest is evidence, not authority; its own proposed-entries section is the least trustworthy part of it.
+
+**When a finding lives in craft notes, ask what it is a case of.** Once, of each finding in a project's gotchas: is this an instance of something general? Name the parent or say no. Capture is rarely the bottleneck; the lift from craft to concept is.
 
 **Use scripting.** Do not load large logs or archives into context. Write small scripts to extract what you need — the IDs that have already been deposited, the conversation list, the date ranges. Document successful scripting approaches in [[Harvest Ceremony — Context]] for future harvests to build from. Each harvest should leave the next one better equipped.
 

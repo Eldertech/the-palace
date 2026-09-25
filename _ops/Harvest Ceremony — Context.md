@@ -100,3 +100,7 @@ When evaluating future changes to the harvest/deposit architecture:
 - When the next harvest begins, what dataset is it? Google Drive? A new batch of conversations? Project archives? The answer shapes the oblique game.
 - Should the [[Deposit Archive]] eventually have internal organization — by year, by pillar, by source type? Only worth solving when querying it manually becomes genuinely hard.
 - Is there a harvest that works on the *palace itself* — finding entries that are underlinked, understaged, or contain unrealized connections? That would be a kind of internal harvest, distinct from the external archive harvest.
+
+## The close reading — where it came from (2026-09)
+
+Named mid-run on the first commissioned harvest, *Environments That Hold* (2026-09-06 → 09-24; record at `_ops/Harvest Ceremony/Harvest — 2026-09-06 — Environments That Hold.md`). Both of its rules were learned by breaking them: the deposit rule was used as a reading rule and seven thinkers were nearly skipped, and a fold was written before its map was shown ("If you are let wild on the palace, it just turns into you"). The strongest material in that harvest came from Loudon's own experience correcting the source, not from the source. The craft-to-concept question comes from the 2026-08-25 harvest, where "rich first, stylize last" sat unowned in five project files.
