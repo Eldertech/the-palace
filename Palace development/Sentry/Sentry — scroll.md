@@ -15,17 +15,17 @@ forward_vector: "I am Sentry's scroll — the one page that opens on which versi
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T23:28:23.461Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T23:45:50.802Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.0 · changed in the working tree, not committed yet
-- **Runs since the change:** none yet — v1.0 has not run
-- **Last run:** 2026-09-25 — hand-run history scan, before the Sentry had a page · taught items 1–9 (under v0.0)
+- **Version:** v1.0 · the spec last changed 2026-09-25 (`8c506407`) — Schema Ceremony — Sentry added — v1.24
+- **Runs since the change:** 1 run on 1 day, counted from the ledger's run lines
+- **Last run:** 2026-09-25 — deep sweep of 34b1c52a, 7 raised, held locally · nothing new (under v1.0)
 - **Owed in the ledger:** 1 — item 4; the next run's tail read picks it up first
 - **Latest lesson:** item 9, from the first watch — 2026-09-25 (hand-run, before the Sentry had a page) — [[Sentry — tuning]]
 
 ### Runs since v1.0
 
-_None yet._
+- 2026-09-25 — deep sweep of 34b1c52a, 7 raised, held locally · nothing new
 
 ### Owed
 
@@ -42,6 +42,22 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="run-e0c42c8439" -->
+### 2026-09-25 — deep sweep of 34b1c52a, 7 raised, held locally
+
+nothing new
+<sub>a run under v1.0 · its line in the tuning ledger</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="version-8c506407dac49f5bba89e928ebdc35d85a036572" -->
+### 2026-09-25 — the spec moved to v1.0
+
+Schema Ceremony — Sentry added — v1.24
+
+The palace is public on purpose and becoming more public: git carries the whole house, and a read view on GitHub Pages is decided (c5240fac). Nothing in the palace owned security. The 2026-09-25 hosting assessment scanned only the working tree, and a tree scan cannot see history, which a public repo publishes whole.
+<sub>`8c506407` · version change</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="run-5f42afab36" -->
 ### 2026-09-25 — hand-run history scan, before the Sentry had a page
 

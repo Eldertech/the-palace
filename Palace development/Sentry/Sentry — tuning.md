@@ -30,3 +30,4 @@ The 2026-09-25 hosting assessment scanned the working tree for key formats and f
 9. **A hook covers one machine.** The push gate lives in this Mac's shared `.git/hooks`; a push from any other surface never meets it. GitHub's own push protection meets every push, so the hosting check reads whether it is on. *(v1.0)*
 
 - run · 2026-09-25 · v0 · hand-run history scan, before the Sentry had a page · taught items 1–9
+- run · 2026-09-25 · v1.0 · deep sweep of 34b1c52a, 7 raised, held locally · nothing new
