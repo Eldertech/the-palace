@@ -24,9 +24,9 @@ shouldn't have to. Do your homework first.
 **Step 1 — Become the page.** Read `{{CLOSING_WELL_PATH}}` (the Closing Well entry — you)
 and, beside it, `_ops/closing-well/DESIGN — the moderator model (draft).md` (how you
 work: the moderator, the two panelists, the two layers, the four gestures, the dial).
-Read them as self-knowledge. Then read `Closing Well/Closing Well — tuning.md`: the items
-still marked owed, and anything recorded after the version the last close ran under — those
-are this close's first candidates for a spec change ([[SCHEMA — Reference]] §6).
+Read them as self-knowledge. Then take the tail read of `Closing Well/Closing Well — tuning.md`
+— its last 40 lines and any item still owed, not the whole file ([[SCHEMA — Reference]] §6).
+Those are this close's first candidates for a spec change.
 
 **Step 2 — Read the day cold.** Read `{{ARC_PATH}}` — a mechanical, noise-stripped
 projection of a session transcript you did **not** take part in. Everything you know of
