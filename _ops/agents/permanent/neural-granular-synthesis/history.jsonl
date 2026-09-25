@@ -44,3 +44,4 @@
 {"event":"CYCLE_11_SPAWN","ts":"2026-09-25T02:40:22.170Z","dispatched_by":"bbs-actuator","model":"claude-opus-5-5"}
 {"event":"CYCLE_BARREN","ts":"2026-09-25T02:40:22.170Z","iteration":11,"stalled":true,"note":"posted no messages for the second cycle running — STALLED; the lane stops the run and the scroll flags it"}
 {"event":"CYCLE_COMPLETE","ts":"2026-09-25T02:40:22.170Z","iteration":11,"stop_reason":"no_messages","posted_messages":[],"pending_after":[]}
+{"event": "STALL_CLEARED", "ts": "2026-09-25T23:40:00Z", "cleared_by": "Claude (Opus 5.5), Loudon's yes 2026-09-25", "note": "Cycles 10 and 11 (2026-09-25 02:37, 02:40) were not barren: both transcripts end in \"You've hit your session limit \u00b7 resets 1am\". Cycle 10 was mid-build on the playable crowd instrument (crowd-instrument.html, crowd_engine.js written, never posted). Under the interrupted-cycle rule (a989ad2f) neither would have counted. The CYCLE_BARREN records above are kept as written."}
