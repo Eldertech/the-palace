@@ -12,8 +12,9 @@
 # Cadence: the 2-day stamp guard below makes the real cadence every-other-morning
 #          even though launchd fires daily (launchd can't express "every 2 days").
 # Posture: the agent runs SHADOW (writes bundle scroll.md + machinery + board, but
-#          never touches canon entry bodies/frontmatter and never commits); the
-#          WRAPPER makes one scoped, text-only commit after the agent returns.
+#          never touches canon entry bodies/frontmatter and never runs git). Each
+#          cycle's process-cycle.js commits what that cycle shipped; the WRAPPER
+#          sweeps up any machinery left after the agent returns.
 set -uo pipefail
 
 # ── config ──────────────────────────────────────────────────────────────────
@@ -54,7 +55,7 @@ STAMP="$PALACE/_ops/heartbeat/.last-steward-batch"
   cd "$PALACE" || { echo "ERROR: palace not found at $PALACE"; exit 1; }
   command -v "$CLAUDE_BIN" >/dev/null 2>&1 || { echo "ERROR: '$CLAUDE_BIN' not in PATH — set CLAUDE_BIN to the full path"; exit 127; }
 
-  "$CLAUDE_BIN" -p "Run my palace steward batch now using the palace-orchestrator skill in batch mode (read _ops/orchestrator/batch.md, then permanent.md per due steward). This is the scheduled every-other-morning heartbeat run on my Mac — the schedule is standing consent, so proceed without asking for confirmation. Give every due steward a RUN: cycle it repeatedly, up to its manifest's stopping_conditions.max_iterations, for as long as each cycle ships a made thing and nothing is waiting on me (a blocking ask or a live-session request ends that steward's run; a barren cycle gets exactly one retry, a second barren cycle means STALLED — stop that steward and move on). Post-process every cycle with process-cycle.js so each steward's bundle-local '[Entry] — scroll.md' (the project's front door: Now zone + making trail) is regenerated as part of the cycle. SHADOW POSTURE (read carefully): do NOT touch canonical entry .md bodies or frontmatter, and do NOT deposit canon — but writing the bundle-local scroll.md, the steward machinery (state.json / history.jsonl), and append-only board messages IS expected, not forbidden. Never hand-edit a scroll's Standing Orders zone — that zone is mine. Do NOT commit and do NOT run git yourself — the wrapper makes one scoped commit after you return. Leave every ask as a Trickster-board message for me; the BBS is the record, so do NOT write a digest file." \
+  "$CLAUDE_BIN" -p "Run my palace steward batch now using the palace-orchestrator skill in batch mode (read _ops/orchestrator/batch.md, then permanent.md per due steward). This is the scheduled every-other-morning heartbeat run on my Mac — the schedule is standing consent, so proceed without asking for confirmation. Give every due steward a RUN: cycle it repeatedly, up to its manifest's stopping_conditions.max_iterations, for as long as each cycle ships a made thing and nothing is waiting on me (a blocking ask or a live-session request ends that steward's run; a barren cycle gets exactly one retry, a second barren cycle means STALLED — stop that steward and move on). Post-process every cycle with process-cycle.js so each steward's bundle-local '[Entry] — scroll.md' (the project's front door: Now zone + making trail) is regenerated as part of the cycle. SHADOW POSTURE (read carefully): do NOT touch canonical entry .md bodies or frontmatter, and do NOT deposit canon — but writing the bundle-local scroll.md, the steward machinery (state.json / history.jsonl), and append-only board messages IS expected, not forbidden. Never hand-edit a scroll's Standing Orders zone — that zone is mine. Do NOT run git yourself — process-cycle.js commits each cycle's shipped work, and the wrapper sweeps up machinery after you return. Leave every ask as a Trickster-board message for me; the BBS is the record, so do NOT write a digest file." \
     --permission-mode bypassPermissions \
     --model "$MODEL" \
     --verbose
@@ -66,9 +67,9 @@ STAMP="$PALACE/_ops/heartbeat/.last-steward-batch"
   # appends, but it never commits and never edits canon entry bodies/frontmatter.
   # The wrapper makes ONE scoped commit via the palace committer, which stages
   # only what we hand it (NEVER `git add -A` — SCHEMA §9, N-writer repo) and
-  # clears stale git locks itself. Text-only by decision (2026-06-09): rendered
-  # media (.wav/.png/.svg/.html) is left UNcommitted for review on the Trickster
-  # card and committed on approval — only text state lands here.
+  # clears stale git locks itself. Each cycle already committed what it shipped
+  # (process-cycle.js → cycle-commit.js); this is the sweep for machinery and
+  # scrolls a failed or skipped cycle commit left behind.
   COMMITTER="$PALACE/_ops/stigmergy/app/scripts/palace-commit.mjs"
   if command -v node >/dev/null 2>&1 && [ -f "$COMMITTER" ]; then
     # Stage: steward machinery + the append-only board (git is its ground truth,
