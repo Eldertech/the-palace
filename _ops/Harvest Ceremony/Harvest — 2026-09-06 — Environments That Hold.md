@@ -74,7 +74,7 @@ thirty citizens include no clinicians, no psychologists, no HCI researchers.
 | 6 | The lineage — Fischer, Engelbart, Papert, Clark & Chalmers, Luhmann, Star & Griesemer, Schön; the homogenisation risk | **3 folds + 2 mints** | Fischer → [[Self-Describing Knowledge Module]]. Engelbart → [[The Palace Practices on Itself]]. Constructionism → [[Objects to Think With]] (minted). Schön → [[Reflective Practice]] (minted 2026-09-22), the largest. **The homogenisation risk is declined** (2026-09-23): the finding is about populations, and the palace is one person's. The risk that bites here is the single voice, which `Self-Describing Knowledge Module.md:187` already holds, and "Friction as Requirement" was already declined as a mint. Luhmann already on the lineage list; Star & Griesemer, Clark & Chalmers, Papert-as-citation declined. |
 | 7 | The triad — artist / coach / AI; offers-not-commits; the environment never decides | **fold → [[Creative Coach]]** | Offers-not-commits is already stated four times; a principle entry would be a fifth telling. What was new is the second person and the third edge, and Loudon's own distinction: AI reflects well, but the calibrated question toward a held destination needs a clock and a body channel it does not have. |
 | 8 | Threads to test — Balint for artists; Instruments That Hold You; Molting in public | **2 folds + 1 question** | Balint → [[Creative Coach]] (push-back as the artist's rule; Loudon will run it in a live class and carry the workshop himself). Instruments → minted `question` [[Can an Instrument Notice Where the Work Stops?]], "holding" dropped per §5. Molting in public → [[Identity Molting]] fold, with Loudon's answer: the visible past is the evidence of the molt, not a block to it. |
-| 9 | People — sixteen names proposed as citizens | open | |
+| 9 | People — sixteen names proposed as citizens | **1 fold, 15 declined** | Juncos → [[Creative Coach]] ACT row: published precedent that a non-clinician (a singing teacher) can deliver acceptance-and-commitment coaching; the source's "2024" corrected to the 2020 pilot. No person pages: Schön, Fischer, Engelbart, Balint, Dishon, Vaillant, Miller & Rollnick, Gilbert, White & Epston, Gendlin, Vallerand, Gaudreau already live where their ideas do work; Winnicott declined at §5; Kenny's producers-unexamined caution unverified and changes no move; Psyche Loui is a real-world contact for Loudon, not a page. Revisit Schön if Loudon wants to wear him in a Dialectic, Balint after Loudon's live class. |
 | 11 | Set down — artists under technological disruption; programme logistics | declined (by the source) | Recorded as a refusal, not re-litigated. Findable here if it ever becomes interesting. |
 
 ### §2 — Modes of Collaboration · settled 2026-09-06
@@ -254,8 +254,8 @@ The section calls itself *"the strongest single artifact the conversation produc
 this harvest trusted least at the open, and the row-by-row check is why nothing deposits.
 
 **Two hold, three overstated, four wrong.** Holds: [[Quality Manifesto]] → autonomy (a two-column
-paradigm contrast whose loop *"serves the actual goal rather than a proxy metric"*); [[Identity
-Molting]] → narrative continuity (*"the key word is shed, not replaced. The self is continuous"*),
+paradigm contrast whose loop *"serves the actual goal rather than a proxy metric"*);
+[[Identity Molting]] → narrative continuity (*"the key word is shed, not replaced. The self is continuous"*),
 though it describes the result rather than enacting it. Wrong: **Closing Well ≠ the individual form of
 a Balint group** — Balint's constitutive rule is that the presenter is heard and *not advised*, and
 the moderator *"takes the wheel… advocates… names what you'd fight for"*; **Revival and Harvest ≠
@@ -444,6 +444,15 @@ the clock and the body channel a chat window lacks. "Holding" dropped from the n
 **Molting in public → [[Identity Molting]].** Beeple verified (daily since 2007-05-01). Loudon's
 answer, a hermit crab's old shell still exists after it moves on, went in beside **exuviae**, the cast
 skin as evidence a molt happened.
+
+### §9 — People · settled 2026-09-24
+
+**One fold, fifteen declined.** David Juncos went into the [[Creative Coach]] ACT row as published
+precedent that a non-clinician, a singing teacher, can deliver acceptance-and-commitment coaching (the
+2020 pilot, then a 2024 course for teachers of adolescent singers); the source's "2024" was corrected.
+No person pages: the other names already live where their ideas do work, Winnicott was declined at §5,
+Kenny's caution is unverified and changes no move, and Psyche Loui is a real-world contact, not a page.
+Revisit Schön if Loudon wants to wear him in a Dialectic, and Balint after his live class.
 
 ---
 

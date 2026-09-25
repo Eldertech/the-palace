@@ -216,7 +216,7 @@ were unverified.
 
 | Tradition | What it is for | The honest note |
 |---|---|---|
-| **Acceptance & Commitment** (Hayes) | Loosening the grip of unwanted thoughts so action can follow values | Explicitly *not* a control strategy — the claim is that trying to control internal experience is itself the trap |
+| **Acceptance & Commitment** (Hayes) | Loosening the grip of unwanted thoughts so action can follow values | Explicitly *not* a control strategy — the claim is that trying to control internal experience is itself the trap. And a non-clinician can deliver it: David Juncos trained a singing teacher to run acceptance-and-commitment coaching with a student (*Frontiers in Psychology*, 2020), then built a course for singing teachers to use with adolescent singers (2024) |
 | **Behavioural Activation** (Lewinsohn, Jacobson) | Schedule and re-enter the valued activity; watch avoidance shrink | Almost no theory required. If the problem is not opening the session, this is the one that addresses it |
 | **Narrative therapy** (White, Epston) | Externalising the problem; re-authoring identity around what a person is still committed to | The palace holds this three times under three names — [[Identity Molting]], [[Lateral Access]] § The New Song, and here. The three now cite one another, but only this row names the tradition they share |
 | **Motivational Interviewing** (Miller, Rollnick) | Working with ambivalence — wanting two contradictory things at once | The palace is well-built for contradiction between *ideas* and has nothing for a person being ambivalent. That gap is real and currently open |
