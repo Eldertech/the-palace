@@ -6,7 +6,7 @@ born: 2026-03
 last_activated: 2026-09-24
 activation_count: 8
 stage: mature
-version: "1.0"
+version: "1.1"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -114,6 +114,8 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 **Step 0 — Load the foundation**
 
 Before anything else — before the map build, before dispatching a single worker — read the foundational set into context if it is not already there this session: [[CLAUDE]], [[SCHEMA]], [[FOUR PILLARS]], [[ROSETTA]], [[SUBSTRATE]], [[README - The Palace Guide]], [[JEWEL]]. The Weave is a *write* ceremony: it formalizes typed links, proposes stage transitions, and may spawn hub entries. Every one of those is governed by SCHEMA. "Read before touching" is inviolable; a Weave that proposes links before SCHEMA §4 is in context is touching before reading. Link directionality is governed by §4; the `lint-link-directions.py` postcondition (2d) is the mechanical backstop.
+
+Then read `_ops/Weave Ceremony/Weave Ceremony — tuning.md`: the items still marked owed first, then anything recorded after the version the last weave ran under. Those are this run's first candidates for a spec change ([[SCHEMA — Reference]] §6).
 
 **Step 0b — New-entry induction (the catch-up)**
 

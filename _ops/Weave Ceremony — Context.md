@@ -89,6 +89,8 @@ Loudon decided on 2026-09-24 that ceremonies should change in plain view, and th
 
 **Where the lessons live:** `_ops/Weave Ceremony/Weave Ceremony — tuning.md`, numbered and grouped by run, with each entry tied to the spec change it forced — or marked as owed. Every run report stamps `ceremony_version` and ends with "What this run taught the ceremony". "Nothing" is a legal answer. Anything else becomes the next tuning entry. The stamp-and-teach step itself (Protocol Step 6.7, postcondition 5c) is part of 1.0: the version was born with its own mechanism.
 
+**v1.1 (2026-09-24) — open by reading the ledger.** Tuning item 38. 1.0 asked every run what it taught and never pointed the next run at the answer, so the four owed changes sat where no weave would meet them. Step 0 now reads the tuning file — owed items first, then anything after the version the last weave ran under — and those are the run's first candidates for a spec change. Schema v1.21 made the same rule general; the Weave took it first because its ledger was the one already holding debts.
+
 ## Open Questions
 
 - Is median link-degree the right proxy for a new entry's catch-up target, or should it weight body-length and cross-pillar reach so a deeply-linked-but-shallow entry isn't mistaken for a healthy one?
