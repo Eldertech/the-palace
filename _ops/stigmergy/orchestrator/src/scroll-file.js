@@ -44,6 +44,14 @@ export const MARK = {
 export const ORDERS_PLACEHOLDER =
   '_Loudon\'s standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._';
 
+export const CEREMONY_ORDERS_PLACEHOLDER =
+  '_Loudon\'s standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._';
+
+export const PAGE_ORDERS_PLACEHOLDER =
+  '_Loudon\'s standing direction for this page — never regenerated. A steward, if the page ever has one, reads it every cycle before anything else._';
+
+const ORDERS_PLACEHOLDERS = new Set([ORDERS_PLACEHOLDER, CEREMONY_ORDERS_PLACEHOLDER, PAGE_ORDERS_PLACEHOLDER]);
+
 // Payload kinds a steward has used to say "here is what I made". The scroll
 // keys on artifact PRESENCE as well, so an undeclared kind with media still
 // lands; the canonical kind going forward is `shipped_artifact` (steward.md).
@@ -306,6 +314,7 @@ export function computeNow({ home, board = [], state = null, history = [], meta 
   for (let i = spoken.length - 1; i >= 0 && !stands; i--) stands = firstParagraph(payloadProse(spoken[i].payload));
 
   return {
+    type: typeof meta?.data?.type === 'string' ? meta.data.type : null,
     status: typeof meta?.data?.status === 'string' ? meta.data.status : null,
     stage: meta?.stage || null,
     stewarded: !!state,
@@ -327,6 +336,7 @@ export function computeNow({ home, board = [], state = null, history = [], meta 
 
 /** Render the NOW zone (between the markers, markers excluded). */
 export function renderNow(now, { home }) {
+  const noun = now.type && now.type !== 'project' ? 'page' : 'project';
   const L = [];
   L.push('## Now');
   L.push('');
@@ -334,7 +344,7 @@ export function renderNow(now, { home }) {
   L.push('');
   const stewardBit = now.stewarded
     ? `**Steward:** cycle ${dash(now.iteration)} · last ran ${day(now.last_active)}${now.last_active ? ` (${ago(now.last_active, now.ts_now)})` : ''}`
-    : '**Steward:** none — this project has no permanent steward yet';
+    : `**Steward:** none — this ${noun} has no permanent steward yet`;
   L.push(`- **Status:** ${dash(now.status)} · **Stage:** ${dash(now.stage)} · ${stewardBit}`);
   L.push(`- **Waiting on you:** ${now.open.length ? `${now.open.length} open ask${now.open.length === 1 ? '' : 's'}${now.open.some((r) => r.blocking) ? ' — one of them has the steward paused' : ''}` : 'nothing'}`);
   if (now.stewarded) {
@@ -346,7 +356,7 @@ export function renderNow(now, { home }) {
   } else {
     L.push(`- **Last shipped:** nothing on the board yet${now.bundle_media_count ? ` — but the bundle holds ${now.bundle_media_count} media file${now.bundle_media_count === 1 ? '' : 's'} (see the making trail)` : ''}`);
   }
-  if (now.last_touch) L.push(`- **Last commit touching this project:** ${day(now.last_touch.ts)} \`${now.last_touch.hash}\` — ${now.last_touch.subject}`);
+  if (now.last_touch) L.push(`- **Last commit touching this ${noun}:** ${day(now.last_touch.ts)} \`${now.last_touch.hash}\` — ${now.last_touch.subject}`);
   if (now.stewarded) {
     if (now.stall.stalled) L.push(`- **Signal:** ⚠ **STALLED** — the last ${now.stall.barren_streak} cycle${now.stall.barren_streak === 1 ? '' : 's'} posted nothing. The loop is broken until a cycle ships; the lane retries once, then flags here.`);
     else if (now.stall.last_cycle_barren) L.push('- **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)');
@@ -357,7 +367,7 @@ export function renderNow(now, { home }) {
   L.push('');
   L.push('### Where this stands');
   L.push('');
-  L.push(now.stands || (now.stewarded ? '_The steward has not spoken yet._' : `_No steward has spoken for this project. Its direction is the \`forward_vector\` in [[${home}]]'s frontmatter; enchant a steward to start the trail._`));
+  L.push(now.stands || (now.stewarded ? '_The steward has not spoken yet._' : `_No steward has spoken for this ${noun}. Its direction is the \`forward_vector\` in [[${home}]]'s frontmatter${noun === 'project' ? '; enchant a steward to start the trail' : ''}._`));
   L.push('');
   L.push('### Open asks');
   L.push('');
@@ -383,7 +393,26 @@ export function renderNow(now, { home }) {
 }
 
 /** The skeleton for a brand-new scroll (all zones present, orders = placeholder). */
-export function renderSkeleton({ home, born, nowText, ordersText = ORDERS_PLACEHOLDER, makingText = '' }) {
+// What a scroll is for, by the kind of page it fronts. A project's opens on
+// where the work stands; a ceremony's on which version is live and whether it
+// has run since it changed; any other page's on its state and what was made.
+const SKELETON_VOICE = {
+  project: {
+    vector: (h) => `I am ${h}'s scroll — the one page that always opens on where the project stands now, then reads down through everything it has made, newest first. My top is regenerated from the board and the palace whenever anyone looks; my standing orders are Loudon's and never regenerated; my trail only ever grows.`,
+    intro: (h) => `> The project's front door. **Now** is regenerated on every look; **Standing Orders** are Loudon's; **The making** is the trail, newest first. Rendered in [[STIGMERGY]]'s PROJECTS deck; the entry [[${h}]] stays the considered truth and this is the live one. See [[The Scroll]].`,
+  },
+  ceremony: {
+    vector: (h) => `I am ${h}'s scroll — the one page that opens on which version of the ceremony is live, whether it has run since it last changed, and what its tuning ledger still owes, then reads down through its runs and version changes, newest first. My top is regenerated whenever anyone looks; my standing orders are Loudon's; my trail only ever grows.`,
+    intro: (h) => `> The ceremony's front door. **Now** is regenerated on every look — its version, its runs since the spec last changed, what its ledger owes; **Standing Orders** are Loudon's; **The making** is the trail of runs and version changes, newest first. The card [[${h}]] stays the spec, and its lessons live in [[${h} — tuning]]. Rendered in [[STIGMERGY]]'s PROJECTS deck. See [[The Scroll]].`,
+  },
+  page: {
+    vector: (h) => `I am ${h}'s scroll — the page's front door, opening on where it stands now and reading down through what was made from it, newest first. My top is regenerated whenever anyone looks; my standing orders are Loudon's; my trail only ever grows.`,
+    intro: (h) => `> The page's front door. **Now** is regenerated on every look; **Standing Orders** are Loudon's; **The making** is the trail, newest first. The entry [[${h}]] stays the considered truth and this is the live one. See [[The Scroll]].`,
+  },
+};
+
+export function renderSkeleton({ home, born, nowText, ordersText = ORDERS_PLACEHOLDER, makingText = '', kind = 'project' }) {
+  const voice = SKELETON_VOICE[kind] || SKELETON_VOICE.project;
   const fm = [
     '---',
     `title: "${home} — scroll"`,
@@ -392,7 +421,7 @@ export function renderSkeleton({ home, born, nowText, ordersText = ORDERS_PLACEH
     `  - target: "[[${home}]]"`,
     '    type: connects-to',
     '    label: scroll-for',
-    `forward_vector: "I am ${home}'s scroll — the one page that always opens on where the project stands now, then reads down through everything it has made, newest first. My top is regenerated from the board and the palace whenever anyone looks; my standing orders are Loudon's and never regenerated; my trail only ever grows."`,
+    `forward_vector: "${voice.vector(home)}"`,
     '---',
   ].join('\n');
   return [
@@ -400,7 +429,7 @@ export function renderSkeleton({ home, born, nowText, ordersText = ORDERS_PLACEH
     '',
     `# ${home} — scroll`,
     '',
-    `> The project's front door. **Now** is regenerated on every look; **Standing Orders** are Loudon's; **The making** is the trail, newest first. Rendered in [[STIGMERGY]]'s PROJECTS deck; the entry [[${home}]] stays the considered truth and this is the live one. See [[The Scroll]].`,
+    voice.intro(home),
     '',
     MARK.nowStart,
     nowText,
@@ -435,7 +464,7 @@ export function readStandingOrders(text) {
   const z = readZone(text, MARK.ordersStart, MARK.ordersEnd);
   if (z == null) return '';
   const t = z.trim();
-  return t === ORDERS_PLACEHOLDER ? '' : t;
+  return ORDERS_PLACEHOLDERS.has(t) ? '' : t;
 }
 
 /**
@@ -522,7 +551,12 @@ export function materializeScroll(opts) {
       const top = bundleMedia.slice(0, 20).map((f) => `- [${basename(f.path)}](${f.path})${f.mtime ? ` · ${day(f.mtime)}` : ''}`).join('\n');
       seed = [`<!-- scroll:entry id="backfill-${day(tsNow)}" -->`, `### ${day(tsNow)} — backfilled from the bundle`, '', `No steward has posted a made thing for this project yet, so the trail opens with what the bundle already holds (${bundleMedia.length} media file${bundleMedia.length === 1 ? '' : 's'}, newest first):`, '', top, `<sub>backfill · scroll born ${day(tsNow)}</sub>`, '<!-- /scroll:entry -->'].join('\n');
     }
-    text = renderSkeleton({ home, born: day(tsNow), nowText, makingText: seed || '_Nothing made yet — the first shipped thing will open the trail._' });
+    const kind = fm.type && fm.type !== 'project' ? 'page' : 'project';
+    text = renderSkeleton({
+      home, born: day(tsNow), nowText, kind,
+      ordersText: kind === 'page' && !state ? PAGE_ORDERS_PLACEHOLDER : ORDERS_PLACEHOLDER,
+      makingText: seed || '_Nothing made yet — the first shipped thing will open the trail._',
+    });
   } else {
     const r = updateScrollText(existing, { nowText, newSections });
     applied = r.applied;

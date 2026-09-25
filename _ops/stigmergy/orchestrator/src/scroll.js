@@ -1,9 +1,12 @@
-// scroll.js — materialize project scrolls from the command line.
+// scroll.js — materialize scrolls from the command line: a project's, a
+// ceremony's, or any page's.
 // (No shebang: the app server may import scroll-file.js through vite/esbuild.)
 //
 //   node _ops/stigmergy/orchestrator/src/scroll.js --home "Generative Sample Libraries"
 //   node _ops/stigmergy/orchestrator/src/scroll.js --all            # every active project
 //   node _ops/stigmergy/orchestrator/src/scroll.js --all --dry-run  # report, write nothing
+//   node _ops/stigmergy/orchestrator/src/scroll.js --ceremonies     # every ceremony (entries with a tuning ledger)
+//   node _ops/stigmergy/orchestrator/src/scroll.js --home "Weave Ceremony"   # any page; a ceremony gets a ceremony's scroll
 //
 // `--all` walks every `type: project` entry whose status is `active` (or has
 // no status) — stewarded or not — and joins each to its steward via
@@ -15,6 +18,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { resolve, join, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { materializeScroll } from './scroll-file.js';
+import { listCeremonies, materializeCeremonyScroll, materializeAnyScroll } from './ceremony-scroll.js';
 import { parseFrontmatter } from './entry-frontmatter.js';
 import { EXCLUDE_DIRS } from './entry-paths.js';
 import { readRegistry } from './registry.js';
@@ -76,8 +80,16 @@ function main() {
   const home = arg('--home');
   if (home) {
     const s = stewardIndex(palaceRoot).get(home);
-    const r = materializeScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, dryRun });
+    const { text, state, ...r } = materializeAnyScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, dryRun });
     process.stdout.write(JSON.stringify(r, null, 2) + '\n');
+    return;
+  }
+  if (argv.includes('--ceremonies')) {
+    const rs = listCeremonies(palaceRoot).map((c) => {
+      const { text, state, ...r } = materializeCeremonyScroll({ palaceRoot, home: c.title, dryRun });
+      return { home: c.title, ...r };
+    });
+    process.stdout.write(JSON.stringify(rs, null, 2) + '\n');
     return;
   }
   if (argv.includes('--all')) {
@@ -85,7 +97,7 @@ function main() {
     process.stdout.write(JSON.stringify(rs, null, 2) + '\n');
     return;
   }
-  process.stderr.write('usage: node scroll.js (--home "<Title>" | --all [--include-inactive]) [--dry-run] [--root <palace>]\n');
+  process.stderr.write('usage: node scroll.js (--home "<Title>" | --all [--include-inactive] | --ceremonies) [--dry-run] [--root <palace>]\n');
   process.exit(2);
 }
 

@@ -29,15 +29,21 @@ export function parseMakingSections(makingText) {
 }
 
 function freeSection(body) {
-  return { id: null, heading: null, body, artifacts: liftArtifacts(body) };
+  return { id: null, heading: null, body, footer: null, artifacts: liftArtifacts(body) };
 }
 
 function entrySection(id, inner) {
   const lines = inner.replace(/^\n+/, '').split('\n');
   let heading = null;
   if (lines.length && /^###\s+/.test(lines[0])) heading = lines.shift().replace(/^###\s+/, '').trim();
+  // The section's closing `<sub>…</sub>` line (id, board, version) is a footer,
+  // not prose — the markdown reader would show the tag raw.
+  let footer = null;
+  while (lines.length && !lines[lines.length - 1].trim()) lines.pop();
+  const fm = lines.length ? /^<sub>(.*)<\/sub>$/.exec(lines[lines.length - 1].trim()) : null;
+  if (fm) { footer = fm[1].replace(/`/g, ''); lines.pop(); }
   const body = lines.join('\n').trim();
-  return { id, heading, body, artifacts: liftArtifacts(body) };
+  return { id, heading, body, footer, artifacts: liftArtifacts(body) };
 }
 
 /** Markdown links whose target looks like a media file → [{ path, caption }]. */

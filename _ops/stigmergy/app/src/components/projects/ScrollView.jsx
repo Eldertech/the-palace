@@ -55,6 +55,7 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(null);
   const [launch, setLaunch] = useState(false);
+  const isCeremony = !!row && row.kind === 'ceremony';
   const palace = usePalaceRef();
   useEffect(() => { palace?.ensureLoaded?.(); }, [palace?.ensureLoaded]);
 
@@ -100,7 +101,8 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
           title={row && row.path ? `read the entry — ${row.path}` : undefined}
           style={{ fontFamily: 'var(--font-display)', color: 'var(--phosphor-white)', textShadow: 'var(--glow-strong)', fontSize: 24, textTransform: 'uppercase', cursor: row && row.path && onNavigate ? 'pointer' : 'default' }}
         >{home}</span>
-        {row ? <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{row.status || '—'} · {row.stage || '—'}{row.stewarded ? ` · cycle ${row.iteration ?? 0}` : ' · no steward'}</span> : null}
+        {row && row.kind === 'ceremony' ? <span data-testid="scroll-ceremony-meta" style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>ceremony · {row.version ? `v${row.version}` : 'unversioned'} · {row.runs_since ? `${row.runs_since} run${row.runs_since === 1 ? '' : 's'} since it changed` : 'not yet run since it changed'}{row.owed && row.owed.length ? ` · ${row.owed.length} owed` : ''}</span>
+          : row ? <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{row.status || '—'} · {row.stage || '—'}{row.stewarded ? ` · cycle ${row.iteration ?? 0}` : ' · no steward'}</span> : null}
         {running ? <RunningTag name={home} /> : null}
         <span style={{ flex: 1 }} />
         {row && row.path && onNavigate ? (
@@ -120,7 +122,7 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
         ) : (
           <span data-testid="scroll-enchant"><Button tone="primary" disabled={!canEnchant} onClick={() => setConfirmEnchant(true)}>enchant a steward</Button></span>
         )) : null}
-        {scroll ? <a href={`/api/open?path=${encodeURIComponent(scroll.path)}`} style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, textDecoration: 'none', borderBottom: '1px dashed currentColor' }} title={scroll.path}>{scroll.exists ? 'open the file' : 'not on disk yet — first cycle or save creates it'}</a> : null}
+        {scroll ? <a href={`/api/open?path=${encodeURIComponent(scroll.path)}`} style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, textDecoration: 'none', borderBottom: '1px dashed currentColor' }} title={scroll.path}>{scroll.exists ? 'open the file' : (isCeremony ? 'not on disk yet — a save creates it' : 'not on disk yet — first cycle or save creates it')}</a> : null}
       </div>
       {feedback ? <div style={{ color: fbColor[feedback.tone], textShadow: feedback.tone === 'dim' ? 'none' : 'var(--glow)', fontSize: 12, marginBottom: 8 }}>{feedback.text}</div> : null}
       {error ? <div data-testid="scroll-error" style={{ color: 'var(--error)', textShadow: 'var(--glow)', border: '1px solid var(--error)', padding: 8 }}>{error}</div> : null}
@@ -134,6 +136,7 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
             </div>
           </Box>
 
+          {isCeremony ? null : <>
           <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{myAsks.length ? 'answer here — same cards as the TRICKSTER deck' : 'nothing waiting on you'}</span>}>Open asks</ZoneTitle>
           <div data-testid="scroll-asks">
             {myAsks.length === 0 ? <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>none.</div> : null}
@@ -149,14 +152,15 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
               />
             ))}
           </div>
+          </>}
 
-          <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>yours — the steward reads this before anything else, every cycle</span>}>Standing Orders</ZoneTitle>
+          <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{isCeremony ? 'yours — never regenerated; nothing reads it automatically yet' : 'yours — the steward reads this before anything else, every cycle'}</span>}>Standing Orders</ZoneTitle>
           <div data-testid="scroll-orders">
             <textarea
               data-testid="scroll-orders-input"
               value={orders}
               onChange={(e) => { setOrders(e.target.value); setOrdersDirty(true); setSaved(null); }}
-              placeholder="Taste, priorities, 'stop asking me about X', 'always prefer Y'. Write it once here instead of answering it every cycle."
+              placeholder={isCeremony ? 'Your standing direction for this ceremony. A change to how it runs belongs in its tuning ledger or its card.' : "Taste, priorities, 'stop asking me about X', 'always prefer Y'. Write it once here instead of answering it every cycle."}
               rows={Math.max(4, Math.min(16, (orders.match(/\n/g) || []).length + 2))}
               style={{ width: '100%', boxSizing: 'border-box', background: 'var(--phosphor-deep)', color: 'var(--phosphor)', textShadow: 'var(--glow)', border: '1px solid var(--phosphor-dim)', borderRadius: 0, fontFamily: 'var(--font-mono)', fontSize: 13, padding: 8, outline: 'none', caretColor: 'var(--phosphor-white)', resize: 'vertical' }}
             />
@@ -167,13 +171,14 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
             </div>
           </div>
 
-          <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{sections.filter((s) => s.id).length} made thing{sections.filter((s) => s.id).length === 1 ? '' : 's'} · newest first</span>}>The making</ZoneTitle>
+          <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{sections.filter((s) => s.id).length} {isCeremony ? `run${sections.filter((s) => s.id).length === 1 ? '' : 's'} and changes` : `made thing${sections.filter((s) => s.id).length === 1 ? '' : 's'}`} · newest first</span>}>The making</ZoneTitle>
           <div data-testid="scroll-making" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {sections.map((s, i) => (
               <div key={s.id || `free-${i}`} data-testid={s.id ? `scroll-entry-${s.id}` : undefined} style={{ borderLeft: s.id ? '2px solid var(--phosphor-dim)' : 'none', paddingLeft: s.id ? 10 : 0 }}>
                 {s.heading ? <div style={{ color: 'var(--phosphor-white)', textShadow: 'var(--glow)', fontSize: 14, marginBottom: 4 }}>{s.heading}</div> : null}
                 <EntryBody body={s.body} index={index} refIndex={refIndex} onNavigate={onNavigate} />
                 {s.artifacts.length ? <ArtifactSlot payload={{ artifacts: s.artifacts }} /> : null}
+                {s.footer ? <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 10, marginTop: 4, letterSpacing: '.04em' }}>{s.footer}</div> : null}
               </div>
             ))}
           </div>

@@ -26,6 +26,12 @@ import ScrollView from './ScrollView.jsx';
 // A "no steward" row offers ENCHANT instead: one confirm, then the project gets
 // its steward directory + registry line (POST /api/projects/enchant, the same
 // act as `node enchant.js "<Title>"`), and the row moves up to tended.
+//
+// Two more boxes share the deck (2026-09-25). SERVICES: stewarded pages that
+// are not projects, rendered with the project row. CEREMONIES: every entry with
+// a tuning ledger — its version, when the spec last changed, how many runs it
+// has had since, and what its ledger still owes. A ceremony's name opens its
+// scroll the same way a project's does; it has no steward to advance.
 
 const SIGNAL_COLOR = { ok: 'var(--phosphor)', warn: 'var(--warn)', err: 'var(--error)', dim: 'var(--phosphor-dim)' };
 
@@ -37,6 +43,47 @@ function SignalCell({ row }) {
       data-signal={s.text}
       style={{ color: SIGNAL_COLOR[s.tone], textShadow: s.tone === 'dim' ? 'none' : 'var(--glow)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em', whiteSpace: 'nowrap' }}
     >{s.text}</span>
+  );
+}
+
+const CEREMONY_COLS = 'minmax(180px, 2fr) 56px 90px 90px minmax(140px, 1.6fr) 90px';
+
+export function CeremonyRow({ row, onOpen, onOpenEntry }) {
+  const sid = slug(row.home);
+  const dim = { color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, whiteSpace: 'nowrap' };
+  const unrun = row.spec_changed && row.spec_changed.hash && row.runs_since === 0;
+  return (
+    <div data-testid={`ceremony-row-${sid}`} style={{ display: 'grid', gridTemplateColumns: CEREMONY_COLS, gap: 10, alignItems: 'center', padding: '4px 0', borderBottom: '1px solid var(--fg4, rgba(31,138,60,.25))' }}>
+      <span style={{ display: 'flex', alignItems: 'baseline', gap: 6, minWidth: 0 }}>
+        <span
+          data-testid={`ceremony-open-${sid}`}
+          onClick={() => onOpen(row.home)}
+          style={{ color: 'var(--link)', textShadow: 'var(--glow)', cursor: 'pointer', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+          title={`${row.home} — open the scroll`}
+        >{row.home}</span>
+        {onOpenEntry && row.path ? (
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={(e) => { e.stopPropagation(); onOpenEntry(row.path); }}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); onOpenEntry(row.path); } }}
+            title={`read the card — ${row.path}`}
+            style={{ fontFamily: 'var(--font-mono)', fontSize: 9, lineHeight: 1, letterSpacing: '.08em', textTransform: 'uppercase', padding: '0 3px', border: '1px solid currentColor', color: 'var(--phosphor)', textShadow: 'var(--glow)', cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap' }}
+          >card</span>
+        ) : null}
+      </span>
+      <span style={{ ...dim, color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{row.version ? `v${row.version}` : '—'}</span>
+      <span style={dim} title={row.spec_changed ? row.spec_changed.subject || '' : ''}>{row.spec_changed && row.spec_changed.ts ? ageOf(row.spec_changed.ts) : '—'}</span>
+      <span data-testid={`ceremony-runs-${sid}`} style={{ ...dim, color: unrun ? 'var(--phosphor-dim)' : 'var(--phosphor)' }}>
+        {unrun ? 'not yet run' : `${row.runs_since} since`}
+      </span>
+      <span style={{ ...dim, overflow: 'hidden', textOverflow: 'ellipsis' }} title={row.last_run ? row.last_run.subject || '' : ''}>
+        {row.last_run ? `${ageOf(row.last_run.ts)} · ${row.last_run.subject}` : 'no run recorded'}
+      </span>
+      <span data-testid={`ceremony-owed-${sid}`} style={{ ...dim, color: row.owed.length ? 'var(--warn)' : 'var(--phosphor-dim)', textShadow: row.owed.length ? 'var(--glow)' : 'none' }}>
+        {row.owed.length ? `${row.owed.length} owed` : 'nothing owed'}
+      </span>
+    </div>
   );
 }
 
@@ -132,6 +179,8 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
   useEffect(() => { setFeedback(null); setPending(null); }, [project]);
 
   const rows = data?.projects ?? [];
+  const services = data?.services ?? [];
+  const ceremonies = data?.ceremonies ?? [];
   const worker = data?.worker ?? {};
   const running = !!worker.running;
   const readyRows = rows.filter((r) => r.stewarded && r.answered_unconsumed > 0);
@@ -169,7 +218,8 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
   const fbColor = { ok: 'var(--phosphor)', warn: 'var(--warn)', err: 'var(--error)', dim: 'var(--phosphor-dim)' };
 
   if (project) {
-    const row = rows.find((r) => r.home === project) || null;
+    const ceremony = ceremonies.find((r) => r.home === project) || null;
+    const row = rows.find((r) => r.home === project) || services.find((r) => r.home === project) || ceremony;
     return (
       <div data-testid="projects-screen" style={{ width: '100%' }}>
         <ScrollView
@@ -179,10 +229,10 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
           messages={messages}
           onConfirmed={onConfirmed}
           onBack={onCloseProject}
-          onAdvance={() => doAdvance(project)}
-          canAdvance={!!row && row.stewarded && !running && !busy}
-          onEnchant={() => doEnchant(project)}
-          canEnchant={!!row && !row.stewarded && !busy}
+          onAdvance={ceremony ? undefined : () => doAdvance(project)}
+          canAdvance={!ceremony && !!row && row.stewarded && !running && !busy}
+          onEnchant={ceremony ? undefined : () => doEnchant(project)}
+          canEnchant={!ceremony && !!row && !row.stewarded && !busy}
           feedback={feedback}
         />
       </div>
@@ -211,7 +261,7 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
   return (
     <div data-testid="projects-screen" style={{ width: '100%' }}>
       <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 10, fontSize: 13 }}>
-        {rows.length} projects &middot; {groups.needs_you.length} need you &middot; {readyRows.length} ready to advance &middot; {groups.stuck.length} stalled &middot; {groups.untended.length} without a steward.
+        {rows.length} projects &middot; {groups.needs_you.length} need you &middot; {readyRows.length} ready to advance &middot; {groups.stuck.length} stalled &middot; {groups.untended.length} without a steward{ceremonies.length ? <> &middot; {ceremonies.length} ceremonies</> : null}.
         {data?.stubbed ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 10 }}>&middot; stub worker (no live cycle)</span> : null}
       </div>
 
@@ -256,6 +306,44 @@ export default function ProjectsDeck({ messages = [], onConfirmed, project = nul
           </div>
         )}
       </Box>
+
+      {services.length ? (
+        <div style={{ marginTop: 10 }} data-testid="services-box">
+          <Box title="SERVICES  --  stewarded pages that are not projects" tone="single">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {services.map((row) => (
+                <ProjectRow
+                  key={row.home}
+                  row={row}
+                  onOpen={onOpenProject}
+                  onOpenEntry={openEntry}
+                  onAdvance={(n) => setPending(n)}
+                  canAdvance={row.stewarded && !running && !busy}
+                  confirming={pending === row.home}
+                  onConfirm={doAdvance}
+                  onCancel={() => setPending(null)}
+                  busy={busy}
+                />
+              ))}
+            </div>
+          </Box>
+        </div>
+      ) : null}
+
+      {ceremonies.length ? (
+        <div style={{ marginTop: 10 }} data-testid="ceremonies-box">
+          <Box title="CEREMONIES  --  the version each runs under, and whether it has run since it changed" tone="single">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: CEREMONY_COLS, gap: 10, color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 10, letterSpacing: '.1em', textTransform: 'uppercase', padding: '2px 0' }}>
+                <span>ceremony</span><span>version</span><span>changed</span><span>runs</span><span>last run</span><span>ledger</span>
+              </div>
+              {ceremonies.map((row) => (
+                <CeremonyRow key={row.home} row={row} onOpen={onOpenProject} onOpenEntry={openEntry} />
+              ))}
+            </div>
+          </Box>
+        </div>
+      ) : null}
 
       {(worker.logTail?.length || worker.last_cycle) ? (
         <div style={{ marginTop: 10 }}>
