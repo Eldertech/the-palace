@@ -17,10 +17,22 @@ What each build taught the ceremony, and the lessons that reached it from elsewh
 ## From the first full builds — 2026-03-27
 
 1. **An untyped ghost list mixed broken links with entries not yet written.** The first full build reported 15 ghosts; the v2 build the same day reported 7 *forward* ghosts (`_ops/Map Log.md`, the two 2026-03-27 rows). Forced: the ghost taxonomy, which types broken links and `_ops/` targets apart from entries not yet written, and version 2 (`4fbb103f`).
+- run · 2026-04-01 · v2.0 · full · nothing new
+- run · 2026-04-07 · v2.0 · full · nothing new
+- run · 2026-04-27 · v2.0 · full, the April weave · nothing new
+- run · 2026-05-14 · v2.0 · full, the May weave · nothing new
 
 ## From the weaves of June 2026 — tool only
 
 2. **The builder, not the card, absorbed two lessons.** Vendored third-party docs were being counted as entries (138 dropped, `8bc59a63`), and the date-stamped builders have no stable name, so the Weave runs the newest by glob (`bb3612e4`). No spec change; see [[Weave Ceremony — tuning]] 9 and 10.
+- run · 2026-06-05 · v2.0 · full, before the weave · nothing new
+- run · 2026-06-05 · v2.0 · full, the afternoon weave · taught item 2
+- run · 2026-06-07 · v2.0 · full, STIGMERGY enters the map · nothing new
+- run · 2026-06-16 · v2.0 · full, the deep weave · nothing new
+- run · 2026-07-04 · v2.0 · full, after the bundle-hygiene sweep · nothing new
+- run · 2026-07-05 · v2.0 · full, @import symlinks skipped · nothing new
+- run · 2026-08-26 · v2.0 · full, for the GNN experiment · nothing new
+- run · 2026-09-24 · v2.0 · full, the September weave · nothing new
 
 ## From the versioning read — 2026-09-25
 
