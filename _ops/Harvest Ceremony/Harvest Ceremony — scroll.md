@@ -15,7 +15,7 @@ forward_vector: "I am Harvest Ceremony's scroll — the one page that opens on w
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:15:59.280Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T14:33:15.830Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.0 · the spec last changed 2026-09-25 (`3ca903dc`) — edit(Harvest Ceremony): v1.0 — version, tuning ledger, the tail read
 - **Runs since the change:** none yet — v1.0 has not run

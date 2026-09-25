@@ -15,7 +15,7 @@ forward_vector: "I am Weave Ceremony's scroll — the one page that opens on whi
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:16:00.123Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T14:33:16.656Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.1 · the spec last changed 2026-09-24 (`8432c4ed`) — edit(Weave Ceremony): v1.1 — open by reading the tuning file
 - **Runs since the change:** none yet — v1.1 has not run

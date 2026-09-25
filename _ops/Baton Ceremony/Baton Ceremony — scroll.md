@@ -15,16 +15,19 @@ forward_vector: "I am Baton Ceremony's scroll — the one page that opens on whi
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:15:58.855Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T14:33:15.335Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.0 · the spec last changed 2026-09-25 (`40eeb7e2`) — edit(Baton Ceremony): v1.0 — version, tuning ledger, the tail read
-- **Runs since the change:** 1 record on 1 day
-- **Last run:** 2026-09-25 — baton(Palace Ceremonies): Phase 3 landed; carry phases 4–5 (`e0c9b6c6`)
+- **Runs since the change:** 4 records on 1 day
+- **Last run:** 2026-09-25 — baton(Language as a Tonal Medium): run Enrichment 2.1 from the waiting plan (`494901a1`)
 - **Owed in the ledger:** nothing
 - **Latest lesson:** item 8, from the footer drift — 2026-08-25 — [[Baton Ceremony — tuning]]
 
 ### Runs since v1.0
 
+- 2026-09-25 — baton(Language as a Tonal Medium): run Enrichment 2.1 from the waiting plan `494901a1`
+- 2026-09-25 — baton(Kuramoto Coupling): sort inline media under Enrichment's placement rule `a561e6fd`
+- 2026-09-25 — baton(Enrichment): Make rich-face review notes into work — both shapes: a QUEUE `e0eebfa9`
 - 2026-09-25 — baton(Palace Ceremonies): Phase 3 landed; carry phases 4–5 `e0c9b6c6`
 
 ### Owed
@@ -42,6 +45,21 @@ _Loudon's standing direction for this ceremony — never regenerated. Nothing re
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="commit-494901a19867a6effea576778a4fb6bc5fcc7321" -->
+### 2026-09-25 — baton(Language as a Tonal Medium): run Enrichment 2.1 from the waiting plan
+<sub>`494901a1` · a run under v1.0</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="commit-a561e6fd34f110ecf8134d3ae176a2b1d6987d13" -->
+### 2026-09-25 — baton(Kuramoto Coupling): sort inline media under Enrichment's placement rule
+<sub>`a561e6fd` · a run under v1.0</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="commit-e0eebfa92d9d068885467d8795b84dbddecc8135" -->
+### 2026-09-25 — baton(Enrichment): Make rich-face review notes into work — both shapes: a QUEUE
+<sub>`e0eebfa9` · a run under v1.0</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="commit-e0c9b6c6f4b372cac44edcf701cdce23c1f41d42" -->
 ### 2026-09-25 — baton(Palace Ceremonies): Phase 3 landed; carry phases 4–5
 

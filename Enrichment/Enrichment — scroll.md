@@ -15,17 +15,17 @@ forward_vector: "I am Enrichment's scroll — the one page that opens on which v
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:15:59.188Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T14:33:15.717Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v2.0 · the spec last changed 2026-09-24 (`70be6952`) — edit(Enrichment): 2.0 — the rich face; the card queue retired
-- **Runs since the change:** 1 record on 1 day
+- **Version:** v2.1 · the spec last changed 2026-09-25 (`d4ac41f3`) — edit(Enrichment): v2.1 — Loudon's placement rule; step 6 splits by size
+- **Runs since the change:** none yet — v2.1 has not run
 - **Last run:** 2026-09-24 — enrich(Kuramoto Coupling): the first rich face — study (`033e1774`)
 - **Owed in the ledger:** nothing
-- **Latest lesson:** item 3, from the assessment and the first rich face — Kuramoto Coupling, 2026-09-24 — [[Enrichment — tuning]]
+- **Latest lesson:** item 5, from Closing Well, 2026-09-25 — [[Enrichment — tuning]]
 
-### Runs since v2.0
+### Runs since v2.1
 
-- 2026-09-24 — enrich(Kuramoto Coupling): the first rich face — study `033e1774`
+_None yet._
 
 ### Owed
 
@@ -42,6 +42,15 @@ _Loudon's standing direction for this ceremony — never regenerated. Nothing re
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="version-d4ac41f3a059da6576086ea784b603e00b9288ee" -->
+### 2026-09-25 — the spec moved to v2.1
+
+edit(Enrichment): v2.1 — Loudon's placement rule; step 6 splits by size
+
+Loudon's tendency, quoted rather than smoothed: place enrichments in the rich face and keep the main page text, unless a diagram or image is really necessary for understanding the text (the text is talking about it, or it's a fundamental signal-flow diagram) — leave that in, along with formulas and other essential graphics. Names it in the intro and in full in step 1.
+<sub>`d4ac41f3` · version change</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="commit-033e1774cbd297b5fb745b6bab01a14135de404e" -->
 ### 2026-09-24 — enrich(Kuramoto Coupling): the first rich face — study
 
