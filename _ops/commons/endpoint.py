@@ -78,7 +78,9 @@ class EndpointWorkers:
         req = urllib.request.Request(
             f"https://rest.runpod.io/v1/endpoints/{self.ep}",
             data=json.dumps({"workersMin": 0, "workersMax": n}).encode(), method="PATCH",
-            headers={"Authorization": f"Bearer {self.key}", "Content-Type": "application/json"})
+            headers={"Authorization": f"Bearer {self.key}", "Content-Type": "application/json",
+                     # RunPod's WAF 403s Python's default user-agent (Shop/RunPod GPU Backend gotcha)
+                     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"})
         urllib.request.urlopen(req, timeout=30).read()
         return n
 
