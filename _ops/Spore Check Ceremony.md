@@ -6,6 +6,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: mature
+version: "1.0"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -52,6 +53,8 @@ The Spore Check is also the palace's composting decision point. Some ideas never
 ## Protocol
 
 **Step 1: Read all dormant entries**
+
+First take the tail read of [[Spore Check Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
 
 Read every entry with `stage: dormant`. For each, note:
 - When it was last activated
@@ -102,7 +105,7 @@ Wait for Loudon's confirmation or adjustments before writing.
 
 **Step 5: Apply and commit**
 
-Apply all confirmed dispositions. Then commit: `Spore Check — [date] — [N revived, N composted, N held]`
+Apply all confirmed dispositions. Then commit: `Spore Check — [date] — [N revived, N composted, N held]`. The commit is the run's record: its body names the version and ends with what this run taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file.
 
 ## The Composting Note
 
@@ -129,3 +132,7 @@ The Spore Check has a seasonal quality that should be honored. Doing it at the s
 
 - Should entries that have been held across 3+ consecutive Spore Checks without change be automatically flagged as composting candidates, with the human making the final call?
 - Should `revival_conditions` be a required field for all `stage: dormant` entries? (Currently optional in SCHEMA.)
+
+---
+
+*The version and what each spore check taught the ceremony: [[Spore Check Ceremony — tuning]].*

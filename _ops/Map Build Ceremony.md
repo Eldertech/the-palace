@@ -8,7 +8,7 @@ born: 2026-03
 last_activated: 2026-07-04
 activation_count: 9
 stage: growing
-version: 2
+version: "2.0"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -39,7 +39,7 @@ links:
 | | |
 |---|---|
 | **Precondition** | Palace is accessible via filesystem. At least 5 entries exist. |
-| **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename. A one-line record is appended to `_ops/Map Log.md`. `last_activated` and `activation_count` are updated on this file and on `Palace Map.md`. |
+| **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename. A one-line record is appended to `_ops/Map Log.md`; its scope cell names the version, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer). `last_activated` and `activation_count` are updated on this file and on `Palace Map.md`. |
 | **Does not do** | Read entry bodies. Propose link changes. Modify existing entries (other than self-update). |
 | **Produces** | An edge list (TSV default), bidirectional adjacency list, or JSON depending on scope and format request. |
 
@@ -58,6 +58,8 @@ Bounded surveys self-define: the ceremony does not need to be told where the bou
 ## Steps
 
 **1. Orient**
+
+Open with the tail read of [[Map Build Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this build's first candidates for a spec change.
 
 Receive scope: `full`, `neighborhood:[name]`, or a list of entry filenames. Determine output format:
 - `tsv` — default; lightest; one triple per line
@@ -219,3 +221,7 @@ The outgoing adjacency list is recommended for Tier 1 agent context loading — 
 - Ghost persistence tracking: the Map Log now records forward ghost names. A ghost appearing in three consecutive entries is a deposit candidate. Should a ceremony step or a separate Spore Check variant surface these automatically?
 - Should the ceremony produce a diff against the previous map — what edges were added, what ghost nodes appeared or resolved — making the palace's growth arc visible over time?
 - Weighted maps: activation_count and energy fields could produce edge weights, making a weighted graph where well-traveled links appear stronger. Useful for swarm dispatch prioritization?
+
+---
+
+*The version and what each build taught the ceremony: [[Map Build Ceremony — tuning]].*

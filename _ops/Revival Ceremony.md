@@ -6,6 +6,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: mature
+version: "1.0"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -52,6 +53,8 @@ The dormant entry carries a snapshot of the understanding that existed when it l
 
 **Step 1: Read the dormant entry in full**
 
+First take the tail read of [[Revival Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this revival's first candidates for a spec change.
+
 Not the title. The whole entry — body, frontmatter, open questions, any dormancy note that was written when it went quiet. Understand what it contains and what state it was in when it last lived.
 
 **Step 2: Articulate the revival rationale**
@@ -95,7 +98,7 @@ Present proposed links to Loudon. Add confirmed links to the entry's frontmatter
 
 **Step 7: Commit**
 
-`Revival — [entry name] — [date] — [one-line reason]`
+`Revival — [entry name] — [date] — [one-line reason]`. The commit is the run's record: its body names the version and ends with what this revival taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file.
 
 ## Revival vs. Simple Activation
 
@@ -127,3 +130,7 @@ The Revival Ceremony closes the loop between dormancy and active life. It can ca
 - Should a revived entry that reaches `mature` again within one Weave cycle be flagged as a particularly vital idea — something that was dormant before its time?
 - Is there a "partial revival" — where only a section of a dormant entry is revived and separated into a new entry, while the rest remains dormant?
 - Should the Revival Ceremony trigger an automatic Walk starting from the revived entry, to immediately reconnect it to the living palace?
+
+---
+
+*The version and what each revival taught the ceremony: [[Revival Ceremony — tuning]].*
