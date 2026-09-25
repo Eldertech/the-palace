@@ -5,7 +5,7 @@ pillars:
   - tools
   - practice
 born: 2026-09
-version: "1.21"
+version: "1.22"
 stage: foundational
 status: canonical
 links:
@@ -210,8 +210,12 @@ adding or removing a ceremony still is (§5).
 The question is asked on every run. A tuning item is written only when the run changed the ceremony, so the
 ledger and the version move together, and a run that taught nothing leaves both alone.
 
-Every run opens by reading the ceremony's tuning file — the items still marked owed, and any recorded after the
-version it last ran under — and those are the first candidates for the run's spec change.
+Every run opens with a **tail read** of the ceremony's tuning file, never the whole of it: its last 40 lines
+(`tail -n 40 <file>`), and every item still **owed**, wherever it sits (`grep -n -w -i owed <file>`). Those are
+the first candidates for the run's spec change. Forty lines is generous on purpose — several runs' worth in every
+ledger so far — and a window that opens partway through an older run costs nothing, because each item stands
+alone. The ledger grows; the read stays the same size. An owed item says *owed* in so many words, so the grep
+finds it.
 
 ---
 

@@ -232,3 +232,33 @@ Step 1. The remaining ceremonies take it as part of their own versioning.
 restates the run rules). [[README - The Palace Guide]], [[ROSETTA]], and SUBSTRATE state no run rules and
 are unchanged; [[Palace Ceremonies]] is unchanged — no ceremony was added or removed. **Additive:** no type,
 link type, required field, or stage changed.
+
+## The tail read — v1.22 (2026-09-25)
+
+**The opening read takes the tail of the tuning file, not the whole of it:** the last 40 lines, and any item
+still owed wherever it sits. The rest of the ledger stays on disk for a weave or a Schema Ceremony that wants
+the history. One sentence in [[SCHEMA — Reference]] §6, with the two commands that do it.
+
+**Why.** Loudon, 2026-09-25, as the remaining ceremonies were being versioned: tuning files grow with every
+run that changes a ceremony, so a read of the whole file costs more every time and tells a run less. v1.21
+named what to read — owed items, then everything after the last-run version — but not where to stop, and a
+reader that can't tell where to stop reads it all. Closing Well's ledger was already 33KB when the rule changed.
+Anything older than the tail is already in the card, because a tuning item is written only when the spec
+changed.
+
+**Why a line count.** The first draft read the last two run groups. Loudon asked for a plain number of lines,
+generously set: groups vary too much in size to bound anything (one Weave group holds nine items, some
+Closing Well groups one), and a window that opens partway through an older run loses nothing that matters,
+because each item stands alone. Forty lines held the last eight closes of Closing Well and the last six groups
+of the Weave on the day it was set. Owed items are the one exception to reading by position — debts, not
+history, and they can sit anywhere — so they are found by the word. That makes the word load-bearing: an owed
+item says *owed*, which is why Weave items 29 and 30 now do.
+
+**Scope.** The rule lives in §6. The cards carry one short line that names the tail read and cites §6 — the
+Weave's Step 0, Enrichment's step 0, the Closing Well moderator's Step 1, and the Return's Step 0. Nothing a
+ceremony does changed beyond what this record changes, so no ceremony's version moves. That is not the call v1.21 made: the Weave moved to 1.1 then because the opening read added a step to its card, while v1.22 changes the bound of a step the cards now cite.
+
+**Mirrors.** SCHEMA (version), SCHEMA — Reference (version, §6), CLAUDE.md (version, `last_schema_ceremony`),
+[[ELDER]] (version), `_ops/Substrate Skill.md` (the same sentence). [[README - The Palace Guide]], [[ROSETTA]]
+and SUBSTRATE state no run rules and are unchanged; [[Palace Ceremonies]] is unchanged. **Additive:** no type,
+link type, required field, or stage changed.

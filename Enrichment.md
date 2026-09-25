@@ -70,7 +70,7 @@ The renderer, its server and the fingerprint tool are `_ops/rich-face/` (README 
 
 ## The steps
 
-0. **Open by reading [[Enrichment — tuning]]** — the items still owed first, then anything recorded after the version the last run ran under. Those are this run's first candidates for a spec change ([[SCHEMA — Reference]] §6).
+0. **Open with the tail read of [[Enrichment — tuning]]** — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
 1. **Read the entry whole, then its bundle. Gather first.** The forward vector is the brief: the page should be made rich in the direction it already leans. Bundles hold media nothing links to — narrations, beds, renders from earlier rounds.
 2. **Walk it section by section** and ask one question: what can only be shown, heard or played here? Prefer a piece that **tests the section's claim** over one that illustrates it — or one that shows what the section takes for granted without saying ([[Latent Error]]). A piece with nothing to test and nothing to make felt doesn't ship.
 3. **Make it with the Shop**, at one tier for the whole page — a Sketch tonight, a Study, a Piece over days. The [[Maker]] picks the Specialists. Equations appear twice, symbols and words ([[Loudon Live Design System]]).
