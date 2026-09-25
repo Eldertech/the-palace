@@ -207,3 +207,28 @@ stage changed.
 **Held open.** Not every run leaves a file. A Deposit's record is its commit (`Palace-Kind: deposit`), so
 where its "What this run taught the ceremony" lives — the commit body, most likely — is for the
 versioning phase to settle, ceremony by ceremony.
+
+## The opening read — v1.21 (2026-09-24)
+
+**Every run opens by reading its ceremony's tuning file.** The items still marked owed come first, then
+anything recorded after the version the ceremony last ran under; those are the first candidates for the
+run's spec change. One sentence in [[SCHEMA — Reference]] §6, after the rule that a tuning item is written
+only when a run changed the ceremony.
+
+**Why.** v1.20 gave every ceremony a ledger and said when to write to it, but nothing said when to read it.
+The Weave's ledger was seeded with four owed changes (21, 24, 29, 30), and the card never pointed a run at
+them. Loudon, at the second close of 2026-09-24: *"Is there a point in logging growth if we don't ask to
+check it."* A ledger no run reads is a diary; reading it at the open is what lets an owed change actually
+land, and it closes the loop v1.20 left half-built — the question asked at the end of a run now has an
+answer read at the start of the next.
+
+**Scope.** The rule lives here once; each ceremony's card carries it as a line in its opening step when that
+ceremony is versioned. The Weave carries it from v1.1 (Step 0), and it became Weave tuning item 38 — the
+ledger's first forced change was "read the ledger". Closing Well carries it from v1.0 in its moderator's
+Step 1. The remaining ceremonies take it as part of their own versioning.
+
+**Mirrors.** SCHEMA (version; the §6 pointer), SCHEMA — Reference (version, §6), CLAUDE.md (version),
+[[ELDER]] (version), `_ops/Substrate Skill.md` (one sentence under Ceremony File Conventions, which already
+restates the run rules). [[README - The Palace Guide]], [[ROSETTA]], and SUBSTRATE state no run rules and
+are unchanged; [[Palace Ceremonies]] is unchanged — no ceremony was added or removed. **Additive:** no type,
+link type, required field, or stage changed.
