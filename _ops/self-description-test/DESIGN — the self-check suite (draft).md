@@ -27,7 +27,8 @@
 ### How a run works
 
 1. **A real birth, with no memory.** A headless `claude -p` session in a throwaway worktree, born exactly as a session with Loudon is: CLAUDE.md, its imports, the World. It is never told it is being tested.
-   - Auto-memory is keyed to the folder path, so a fresh worktree path starts empty. There is no user-level CLAUDE.md on this machine. The child holds only the palace and the harness.
+   - **A worktree is not memory-free.** The first run (2026-09-25, `runs/`) proved it: Claude Code 2.1.280 keys auto-memory to the git repository, so a worktree child's `memory_paths` pointed at Loudon's real palace memory, and its transcript carries the MEMORY.md index. A no-memory birth needs its own repository, e.g. a separate `git clone` into a fresh folder. That is not yet tested.
+   - **The harness proves the birth before it grades.** It reads the `init` event's `memory_paths` and refuses the run unless it points at an empty, fresh key. There is no user-level CLAUDE.md on this machine.
    - `--model` sets the child's model, which is how the model check runs.
 2. **Loudon's words, played back.** The runner speaks as Loudon, turn by turn (`--resume`), using his real phrasing where we have it, dictation slips included ("enchantment" for Enrichment).
 3. **Safe by construction.** Read tools are allowed. Writes, shells and agent spawns are left to ask for permission, and a headless session can't grant it. So every attempt shows up in the transcript and nothing lands: we see what the child *tried*, with zero side effects. The owner's board is out of reach, because its scripts write there by absolute path.
