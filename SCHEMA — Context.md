@@ -157,3 +157,53 @@ watching.
 **The accepted risk.** v1.18 kept SCHEMA in the floor because fresh sessions missed it when it was only linked ([[Palace as Context Injection System]] § The @import Floor). The guards now: the birth tells an agent to grow before it writes; the [[Concierge]] is summoned at the open as the resident elder; writing ceremonies open with a grow step; children are dispatched without writing tools; the linters still run. Restore point: git tag `pre-child-elder`.
 
 **Held open.** [[The Palace Hardens Around Values]] argues weight is the goal — the contrary is kept, not resolved. A rival explanation for the flattened voice is the prose of the pages themselves ([[The Blindspot Is the Surprise Fuel]]); if children still sound like the house, look there next.
+
+## Tuning — v1.20, ceremonies carry a version (2026-09-24)
+
+**Every ceremony carries a `version`, and every entry may carry a scroll.** Two decisions Loudon made on
+2026-09-24. A ceremony's version works the way SCHEMA's does: it moves only when the spec changes, the
+reason is recorded, and a run never moves it. Beside it, each ceremony keeps a tuning ledger
+(`[Ceremony] — tuning.md`), and every run report stamps `ceremony_version` and ends by saying what the run
+taught the ceremony. Separately, §8's `scroll` stops being a project-only file.
+
+**Why.** The ceremonies change often — the Harvest grew two modes this week (`bceb2d2e`), the Return was
+rewritten from its own first run's mistakes (`bb8e6b4a`) — and nothing on the page said which version you
+were reading, or whether the last run had already changed it. A run report could not say which spec it ran
+under, so a finding from an old run looked the same as one the spec had already absorbed. [[Closing Well]]
+had solved this by hand for itself: its ledger records what each close taught it, and that record is why
+the ceremony can be called practised rather than improvised. v1.20 gives the shape to every ceremony, with
+one change. Closing Well appends an item for every close; a tuning ledger takes one only when a run
+changed the spec. The question is still asked every run, and "nothing" is an honest answer — it keeps
+the ledger a record of changes rather than a diary.
+
+**Why "tuning", not "gotchas".** A run tunes a ceremony; the version is the set-up it settled into.
+"Gotchas" stays with the Specialists, where it names a tool's traps — something owned by an external
+tool, not by the palace's own practice. Closing Well's ledger is the model for the shape and is renamed
+`Closing Well — tuning.md` when the ceremonies are versioned.
+
+**Every entry may carry a scroll.** The scroll replaced `plan.md` for stewarded projects on 2026-09-23
+(`313f7f3c`): the plan held decision state only and regenerated only on a cycle, so it lied whenever the
+steward slept. §8 wrote it down as a project's file. Loudon, 2026-09-24: *"assume that all pages can have
+scrolls, we are moving in that direction."* §8 now states the three zones — Now, Standing Orders, the
+making — as a bundle file any entry may carry, and names what a ceremony's Now zone counts: runs since the
+spec last changed, and the current version. The plan's history moved out of the card into this record.
+
+**Scope, honestly.** This ceremony states the rules. It versions no ceremony, creates no tuning ledger, and
+does not teach the scroll materializer about entries that aren't projects — `scroll-file.js` and the
+PROJECTS deck (`_ops/stigmergy/app/server/projects.js`) still list `type: project` only. That is machinery
+catching up, a later phase. [[Map Build Ceremony]] already carries `version: 2` as a bare integer; the
+numbering scheme for ceremony versions is left to that phase.
+
+**Mirrors.** SCHEMA (version; the `meta` and `practice` rows and one note in §1; the §6 and §8 pointers),
+SCHEMA — Reference (version, §3, §6, §8 — its stamp had stayed at 1.18 through v1.19, which [[ROSETTA]]
+calls a red flag; it now matches), CLAUDE.md (version, `last_schema_ceremony`), [[ELDER]] (version; the
+workshop list's stale `plan.md`), [[README - The Palace Guide]] (a line under the type table; the
+stewardship paragraph's `plan.md`), [[ROSETTA]] (`plan.md` in the harness-anatomy paragraph),
+`_ops/Substrate Skill.md` (one paragraph under Ceremony File Conventions). SUBSTRATE and
+[[Palace Ceremonies]] are unchanged — no entry type and no ceremony was added or removed. **Additive:** an
+existing field extended to ceremonies, one run-report field, one bundle type; no entry type, link type, or
+stage changed.
+
+**Held open.** Not every run leaves a file. A Deposit's record is its commit (`Palace-Kind: deposit`), so
+where its "What this run taught the ceremony" lives — the commit body, most likely — is for the
+versioning phase to settle, ceremony by ceremony.

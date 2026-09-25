@@ -124,6 +124,8 @@ The authoritative type definitions and the decision tree live in [[SCHEMA]] §1;
 | `specialist` | A wrapper around an external creative tool with operational anatomy (Charter, Tiers, Job Contract). Uses `status` (alive \| stub), not `stage`. See [[The Shop]]. |
 | `maker` | An orchestrator/foreman for a roster of Specialists. Uses `status`, not `stage`. |
 
+Every ceremony, whatever its type, also carries a `version` — it moves only when the ceremony's spec changes, never on a run. See [[SCHEMA — Reference]] §6.
+
 ### Development Stages
 
 Every entry has a `stage` in its frontmatter reflecting its lifecycle:
@@ -157,7 +159,7 @@ Bundles are lazy: they appear only when something needs to live in them. Most en
 
 Cross-entry shared artifacts (HTML, images, audio that serve multiple entries) are rare; when one exists it lives in the bundle of its most-owning entry, or in a relevant hub's bundle, per [[SCHEMA]] §8. Bundles are for things owned by one entry.
 
-Stewarded project entries grow two further bundle types under the **Machinery/Content Split** ([[Project Stewardship System]], Bundle-Local Stewardship — Production Plan): `Foo — plan.md`, the steward's materialized **work state** (open/resolved decisions + done trail, regenerated each cycle from the [[STIGMERGY]] board — it points to the entry's `forward_vector`, never copies it), and `Foo — staging.md`, the **teaching arc** of stage-by-stage Loudon Live sessions. The steward owns `plan.md` and only reads `staging.md`. The engine's runtime files (manifest, state, history) stay in `_ops/` — content lives with the entry, machinery stays in ops.
+Any entry may carry `Foo — scroll.md`, its **front door**: a Now zone regenerated on every look, Loudon's Standing Orders, and an append-only trail of what it has made ([[The Scroll]]). A ceremony also keeps `Foo — tuning.md`, the ledger of what its runs changed. Stewarded project entries add `Foo — staging.md`, the **teaching arc** of stage-by-stage Loudon Live sessions, which the steward reads and never edits. Under the **Machinery/Content Split** ([[Project Stewardship System]], Bundle-Local Stewardship — Production Plan) the engine's runtime files (manifest, state, history) stay in `_ops/` — content lives with the entry, machinery stays in ops.
 
 Bundle files carry minimal YAML — title, born, a typed link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing. Full spec: [[SCHEMA — Reference]] §8.
 

@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.19"
+version: "1.20"
 stage: foundational
 status: canonical
 links:
@@ -76,7 +76,7 @@ Read the table top to bottom and take the first row that fits; `concept` is the 
 
 | type | use it when — the test | adds | example |
 |---|---|---|---|
-| `meta` | it is about the palace itself: architecture, ceremonies, infrastructure, self-model | `version` (schema-level entries) | [[SCHEMA]], [[SUBSTRATE]], [[CLAUDE]] |
+| `meta` | it is about the palace itself: architecture, ceremonies, infrastructure, self-model | `version` (schema-level entries and ceremonies) | [[SCHEMA]], [[SUBSTRATE]], [[CLAUDE]] |
 | `specialist` | it wraps an external creative tool with operational anatomy — Charter, Tiers, Job Contract, accumulated Gotchas | `status` · `medium` · `tool` · `tool_version` | [[Shop/Kokoro]], [[Shop/ComfyUI]] |
 | `maker` | it is a foreman for a roster of Specialists, holding house standards and dispatch logic | `status` | [[Shop/Maker]] |
 | `source` | it is an external artifact the palace draws from — paper, book, tool, recording | `author` · `year` · `medium` | [[Meaning and the Link (2014)]] |
@@ -84,7 +84,7 @@ Read the table top to bottom and take the first row that fits; `concept` is the 
 | `question` | it is an unresolved question being actively carried | — | *"When does the wiki warrant its own Project?"* |
 | `spore` | it is an idea preserved for a later revival, dormant by choice (`stage` is always `dormant`) | `revival_conditions` | [[1 from 2]] |
 | `hub` | it organizes a dense region of the graph — **not self-assigned**, earned at ≥5 inbound typed links via the Weave | — | [[FOUR PILLARS]], [[Kuramoto Coupling]] |
-| `practice` | it is a recurring method, workflow, ritual, or embodied way of working — something you *do*, not an idea you hold | — | [[Closing Well]], [[Deposit Ceremony]] |
+| `practice` | it is a recurring method, workflow, ritual, or embodied way of working — something you *do*, not an idea you hold | `version` (ceremonies) | [[Closing Well]], [[Deposit Ceremony]] |
 | `person` | a thinker or collaborator whose ideas are in live dialogue with the palace — not every cited name | `domains` | [[Spinoza]], [[Brian Eno]] |
 | `concept` | **the default.** An idea, principle, or framework the palace reasons with | — | [[Kuramoto Coupling]], [[Spinoza Conatus]] |
 
@@ -97,6 +97,8 @@ Read the table top to bottom and take the first row that fits; `concept` is the 
 **`specialist` and `maker` skip `pillars` and `stage`.** They are tool-citizens, not idea-citizens; auto-tagging every Specialist `[tools]` would dilute the pillar signal, and they use `status` (alive \| stub) rather than the seed→fruiting lifecycle. Add `pillars` only when one genuinely participates in another pillar. Why they are two types and not one: [[SCHEMA — Context]] §3.2.
 
 **`meta` should stay few and high-quality.** These entries maintain the organism; inflation here is how a type system starts describing itself instead of the work.
+
+**A ceremony carries its own `version`, whatever its type.** A ceremony is a page [[Palace Ceremonies]] names as a ceremony's full spec — most are `practice`, a few are `meta`. The version moves only when the spec changes; a run never moves it ([[SCHEMA — Reference]] §6).
 
 *(`breakthrough` was retired in v1.17 — see [[SCHEMA — Context]] §1.)*
 
@@ -172,8 +174,9 @@ propagate to, the postcondition, and the access vectors.
 
 ## 6. Ceremony File Conventions
 
-**Moved to [[SCHEMA — Reference]] §6** — the operational-card / `— Context` split at ~8KB, and which
-ceremonies are currently split.
+**Moved to [[SCHEMA — Reference]] §6** — the operational-card / `— Context` split at ~8KB, which
+ceremonies are currently split, and how a ceremony keeps its version: the `version` field, the tuning
+ledger, and what every run report carries.
 
 ---
 
@@ -191,7 +194,7 @@ Anywhere the answer is no: that is a documentation debt. Pay it before closing t
 
 **Moved to [[SCHEMA — Reference]] §8** — what a bundle is, folder and file naming, lazy creation, the
 minimal frontmatter every bundle file carries, and the open type vocabulary (`baton`, `context`,
-`dossier`, `plan`, `proof`, `spec`, …).
+`dossier`, `proof`, `scroll`, `spec`, `tuning`, …).
 
 ---
 
