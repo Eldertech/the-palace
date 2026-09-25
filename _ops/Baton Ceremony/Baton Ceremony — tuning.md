@@ -51,3 +51,4 @@ What each baton taught the ceremony. Each item names what the run showed and the
 
 9. **The executor can't point from an entry that already has a baton, or announce one that lives on main.** Placing the STIGMERGY hardening baton, `baton-executor.mjs --write` found STIGMERGY's existing `## Active Baton` section, printed "already had — left as is", and added no pointer — completion signal 2 unmet, with no error. And `--post` refused without `--wt-branch`/`--wt-dir`, though a baton on main has no worktree. Both were done by hand (the pointer line; the announce through `_ops/commons/board-post.mjs`). Spec change owed: the executor adds its pointer line inside an existing section, and asks for a worktree coordinate only when the baton lives off main.
 - run · 2026-09-25 · v1.1 · STIGMERGY, hardening · taught item 9
+- run · 2026-09-25 · v1.1 · Self-Describing Knowledge Module, the self-check suite · nothing new

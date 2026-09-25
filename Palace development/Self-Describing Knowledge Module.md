@@ -219,3 +219,7 @@ Anyone running Proof 2 should read the courses-as-seeds study first — not for 
 
 - The convergence across traditions suggests the pattern is fundamental. What other domains might have independently discovered it? Biology (the cell as self-describing module)? Architecture (the room as self-contained program)?
 - When the palace is used as a template for teaching others (via Symbiotic Skills), should the template carry its own SCHEMA.md, or inherit from a shared one?
+
+## Active Baton
+
+[[Self-Describing Knowledge Module — baton]] — drafted 2026-09-25
