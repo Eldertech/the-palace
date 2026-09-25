@@ -6,6 +6,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: mature
+version: "1.0"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -40,7 +41,7 @@ links:
 
 **Failure mode:** If the palace is partially readable (some files inaccessible), note which entries were unreachable and proceed with what is available. A partial Walk is valid. An unstarted Walk is not — if nothing is readable, halt and report.
 
-**Git commit:** Only if metadata was updated. `Walk — [date] — [starting entry] — metadata updates`
+**Git commit:** Only if metadata was updated. `Walk — [date] — [starting entry] — metadata updates`. The body names the version and ends with what this walk taught the ceremony ("nothing" is a legal answer). A walk with no commit says it in conversation; a lesson that changes the spec goes in the tuning file either way.
 
 ---
 
@@ -53,6 +54,8 @@ The Walk does not need a destination. The path IS the knowledge — an idea borr
 The Walk is intentionally weekly. A garden walked daily becomes familiar to the point of invisibility. A garden walked monthly becomes overgrown before you notice. Weekly is the rhythm of a living organism in active use.
 
 ## How to Walk
+
+Open with the tail read of [[Walk Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this walk's first candidates for a spec change.
 
 Choose a door — any entry, or one Loudon names. If choosing freely, lean toward something not recently touched, something that has been sitting quietly at the edge of awareness. Read it in full. Not a skim. Let it settle.
 
@@ -85,3 +88,7 @@ See also [[The Cooperation Path]] for the first named songline in the palace.
 - Should the Walk always start from a different entry than last time? Or is it valuable to walk the same starting point at different life stages of the palace?
 - Is there a named "deep Walk" ceremony for when the traversal produces a major unexpected connection that should immediately trigger a Deposit?
 - At what palace size does the Walk need a structured ending (a report) rather than just a named surprise?
+
+---
+
+*The version and what each walk taught the ceremony: [[Walk Ceremony — tuning]].*

@@ -9,6 +9,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: mature
+version: "1.0"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -61,6 +62,8 @@ The ceremony runs as needed, not on a fixed schedule. Triggers include:
 
 **Step 1: Read the current SUBSTRATE.md**
 
+First take the tail read of [[Self-Model Update Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
+
 Read the full entry. Note which sections are current and which are outdated. Specifically check:
 - Entry count (is the number stated still accurate?)
 - Hub nodes and most-connected entries (has this changed since the last update?)
@@ -86,7 +89,7 @@ Always update `last_activated` and `activation_count` on SUBSTRATE.md, even if t
 
 `Self-Model Update — [date] — [what changed in the self-model]`
 
-The commit message should name what changed: "Entry count updated to 34; Short Story marked dormant; three new open questions added" — not just "updated."
+The commit message should name what changed: "Entry count updated to 34; Short Story marked dormant; three new open questions added" — not just "updated." The commit is the run's record: its body names the version and ends with what this run taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file.
 
 ## The Mirror
 
@@ -99,3 +102,7 @@ The Self-Model Update is also an act of humility: the palace is always ahead of 
 - Should SUBSTRATE.md include a `## Change Log` section tracking what changed at each update? This would make the palace's growth history explicit without requiring examination of git history.
 - When the palace reaches maturity (50+ entries, stable topology), does the Self-Model Update need to change in nature — from updating facts to updating interpretation?
 - Is there a minimum meaningful difference that warrants a Self-Model Update, or should the bar remain entirely qualitative ("when it feels wrong")?
+
+---
+
+*The version and what each update taught the ceremony: [[Self-Model Update Ceremony — tuning]].*
