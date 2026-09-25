@@ -89,6 +89,7 @@ cycle's `process-cycle.js`, read its `stop_hint` and decide —
 | `barren` | retry **once**, with the mandate saying it is a retry (`retryOfBarren`). A second barren cycle is **STALLED**: `process-cycle.js` has set `state.health.stalled` and the scroll's Now zone says so — stop this steward's run and move on. Never a third try. |
 | `blocking_ask` | stop — the steward paused on Loudon. |
 | `interactive_session` | stop — the next move is a conversation, not a cycle. |
+| `interrupted` | stop — the worker was cut off before posting (a usage limit, an API error); the cycle was not counted and nothing is stalled. If the error is a usage limit, stop the whole batch: every steward after this one would hit the same wall. |
 
 STIGMERGY's steward lane (`server/steward-lane.js`) does exactly this loop in
 code; a hand-run or heartbeat batch does it in prose. Same rule, two readers.

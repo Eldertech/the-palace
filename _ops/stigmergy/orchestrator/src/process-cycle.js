@@ -71,12 +71,19 @@ export function extractMessagesFromTranscript(transcriptText) {
     cache_read_input_tokens_sum: 0,
     cache_creation_input_tokens_sum: 0,
   };
+  // The run's closing `result` record, when it reports an error (a usage
+  // limit, an API failure): the text says why the worker stopped.
+  let errorResult = null;
 
   for (const rawLine of String(transcriptText).split('\n')) {
     const line = rawLine.trim();
     if (!line) continue;
     let rec;
     try { rec = JSON.parse(line); } catch { continue; }
+    if (rec && rec.type === 'result' && rec.is_error === true) {
+      errorResult = String(rec.result || rec.subtype || 'error');
+      continue;
+    }
     if (!rec || rec.type !== 'assistant') continue;
 
     const msg = rec.message || {};
@@ -107,7 +114,7 @@ export function extractMessagesFromTranscript(transcriptText) {
     }
   }
 
-  return { messages: [...seen.values()], usage };
+  return { messages: [...seen.values()], usage, errorResult };
 }
 
 /**
@@ -216,7 +223,7 @@ export function processCycle(opts) {
     : resolve(palaceRoot, '_ops/swarm/persistent/blackboard.jsonl');
 
   const transcriptText = readFileSync(resolve(transcriptPath), 'utf8');
-  const { messages, usage } = extractMessagesFromTranscript(transcriptText);
+  const { messages, usage, errorResult } = extractMessagesFromTranscript(transcriptText);
 
   const state = JSON.parse(readFileSync(join(agentDirAbs, 'state.json'), 'utf8'));
   const manifest = JSON.parse(readFileSync(join(agentDirAbs, 'manifest.json'), 'utf8'));
@@ -243,6 +250,27 @@ export function processCycle(opts) {
       pending_after: null, resolved_count_after: null, backstop: [], artifact_lint_warnings: [],
       stop_hint: 'spawn_failed', barren: false, stalled: false, spawn_failed: true,
       scroll: { written: false, reason: 'spawn-failed' },
+    };
+  }
+
+  // ── A cycle cut off by an error is INTERRUPTED, not barren ───────────────
+  // (found 2026-09-25: two Neural Granular Synthesis cycles ended on "You've
+  // hit your session limit". The limit message counts as an assistant turn, so
+  // the guard above missed it; both were scored barren and a working steward
+  // went STALLED.) A worker that posted nothing and ended in an error was
+  // stopped, not idle: no iteration advance, no barren accounting, no stall.
+  // Record why, and hand the lane an `interrupted` stop hint that ends the run.
+  if (messages.length === 0 && errorResult) {
+    appendFileSync(join(agentDirAbs, 'history.jsonl'), JSON.stringify({
+      event: 'CYCLE_INTERRUPTED', ts: tsNow, attempted_cycle: cycleN, dispatched_by: dispatchedBy, model,
+      error: errorResult.slice(0, 300),
+      note: 'the worker ended in an error before posting anything (usage limit, API failure); not a barren cycle, iteration not advanced',
+    }) + '\n');
+    return {
+      posted_ids: [], valid_count: 0, invalid_ids: [], errors: [{ interrupted: true, error: errorResult.slice(0, 300) }],
+      pending_after: null, resolved_count_after: null, backstop: [], artifact_lint_warnings: [],
+      stop_hint: 'interrupted', barren: false, stalled: false, spawn_failed: false, interrupted: true,
+      scroll: { written: false, reason: 'interrupted' }, commit: null,
     };
   }
 
