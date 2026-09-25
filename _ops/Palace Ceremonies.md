@@ -74,7 +74,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 | Ceremony | Trigger | What Happens | Full Spec |
 |---|---|---|---|
 | The Baton | "baton" / "pass the baton" / "baton this" / "baton it to [surface]" | Compress an in-progress move into a baton (a file) the next Claude catches and runs with, without restarting. Writes to the entry's bundle (or the work's home). Disposable — deleted on pickup; git is the archive. | [[Baton Ceremony]] |
-| The Close | "close well" / "let's close well" / "close this session well" | Dispatch the enchanted [[Closing Well]] page as the Closing Well Agent: read the spent session's arc with fresh eyes, draft a **close map** (deposit · baton · artifacts, or fewer), one gate (Loudon signs), then execute each row via its own ceremony. "deposit: none" is a first-class outcome — never manufacture canon to fill the map. *Built through Phase 5: the arc reader, the moderated panel and the backstage executors are live (`_ops/closing-well/`); Phase 6, automatic gotcha-ledger wiring, is next ([[Closing Well — production plan]]).* | [[Closing Well Ceremony]] |
+| The Close | "close well" / "let's close well" / "close this session well" | Dispatch the enchanted [[Closing Well]] page as the Closing Well Agent: read the spent session's arc with fresh eyes, draft a **close map** (deposit · baton · artifacts, or fewer), one gate (Loudon signs), then execute each row via its own ceremony. "deposit: none" is a first-class outcome — never manufacture canon to fill the map. *The arc reader, the moderated panel and the backstage executors are live (`_ops/closing-well/`), and the executor's tuning row carries what a close taught into [[Closing Well — tuning]].* | [[Closing Well Ceremony]] |
 
 **"Handoff" is ambiguous — ask first.** "Baton" is the official trigger; the baton is the file that gets passed. Loudon also says "handoff," but sometimes means an informal, non-ceremony pass — so when he says "handoff" or "hand this off," ask *"Baton ceremony, or an informal handoff?"* and proceed on his answer. A deliberate, temporary training-wheel while the "baton" habit sets in.
 
@@ -89,6 +89,19 @@ Not full ceremonies, but palace-aware interactions that can happen in any conver
 | "Add this to the palace" | Not ad hoc: it runs the [[Deposit Ceremony]], the one way a find enters canon. |
 | "Connect this to the palace" | Propose typed links between the current topic and existing entries. |
 | "What does the palace say about [topic]?" | Read relevant entries and synthesize. Follow typed links. |
+
+---
+
+## What Makes a Ceremony, and How It Changes
+
+A ceremony is named in the ceremony tables above and keeps a **tuning ledger** in its bundle, `[Ceremony] — tuning.md`. Today both are true of the same twelve. The tables are how a person finds a ceremony; the ledger is how the machinery finds one.
+
+- **It carries a version**, in its frontmatter. The version moves when the spec changes — a step, a gate, a postcondition — and never on a run.
+- **Every run opens with the tail read** of its ledger: the last 40 lines once the run lines are set aside, and every item still owed.
+- **Every run closes by marking the ledger** with one line: `- run · <date> · v<version> · <what it ran on> · nothing new`, or `taught item N`. A numbered item is written only when the run changed the ceremony, so the items and the version move together.
+- **Where to see it:** the CEREMONIES box on STIGMERGY's PROJECTS deck gives each ceremony's version, its runs since the spec changed, and what its ledger owes. A ceremony's name there opens its scroll, and an order saved in the scroll's Standing Orders goes into the ledger as owed.
+
+The rules and the exact commands: [[SCHEMA — Reference]] §6.
 
 ---
 
