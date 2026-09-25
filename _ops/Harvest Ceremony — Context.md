@@ -104,3 +104,7 @@ When evaluating future changes to the harvest/deposit architecture:
 ## The close reading — where it came from (2026-09)
 
 Named mid-run on the first commissioned harvest, *Environments That Hold* (2026-09-06 → 09-24; record at `_ops/Harvest Ceremony/Harvest — 2026-09-06 — Environments That Hold.md`). Both of its rules were learned by breaking them: the deposit rule was used as a reading rule and seven thinkers were nearly skipped, and a fold was written before its map was shown ("If you are let wild on the palace, it just turns into you"). The strongest material in that harvest came from Loudon's own experience correcting the source, not from the source. The craft-to-concept question comes from the 2026-08-25 harvest, where "rich first, stylize last" sat unowned in five project files.
+
+## The Version and the Tuning File (2026-09-25)
+
+Versioned **v1.0** with the remaining ceremonies: the card as it stood after the close reading landed (`bceb2d2e`), plus the opening read. It marks where counting starts, not a ranking of the harvests before it. The number moves when the procedure does — a mode, a beat, a gate — never for prose. The lessons that shaped the card, from the March sweep to *Environments That Hold*, are numbered in [[Harvest Ceremony — tuning]]; each harvest's record stamps `ceremony_version` and ends with what the run taught.

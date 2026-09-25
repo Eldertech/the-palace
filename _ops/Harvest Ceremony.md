@@ -8,6 +8,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 5
 stage: mature
+version: "1.0"
 links:
   - target: "[[Deposit Ceremony]]"
     type: spawned
@@ -69,6 +70,8 @@ When in doubt, flag as partial. It costs nothing and preserves the option.
 
 ## How to Run It
 
+Open with the tail read of [[Harvest Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this harvest's first candidates for a spec change.
+
 The Harvest adapts to its dataset, and the first move is deciding which of two kinds of source this is.
 
 **The sweep** is for a big pile — a month of conversations, an archive — where the job is *finding*.
@@ -98,7 +101,7 @@ Here depositing happens inside the loop, each write through the [[Deposit Ceremo
 
 **Use scripting.** Do not load large logs or archives into context. Write small scripts to extract what you need — the IDs that have already been deposited, the conversation list, the date ranges. Document successful scripting approaches in [[Harvest Ceremony — Context]] for future harvests to build from. Each harvest should leave the next one better equipped.
 
-**Commit when done:** `Harvest — [scope] — [N candidates surfaced]`
+**Commit when done:** `Harvest — [scope] — [N candidates surfaced]`. The harvest's record in this bundle carries `ceremony_version` in its frontmatter and ends with **What this run taught the ceremony** ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file.
 
 ---
 
@@ -117,3 +120,7 @@ For the history of how this ceremony developed, the Oblique Harvest best practic
 - The next harvest will likely be against a new type of source material (Google Drive, project archives, or new conversation batches). When that moment comes, revisit what the oblique approach looks like for that dataset — it may be quite different.
 - Consider whether the harvest can be partially automated: scripts that pre-triage obvious skips, leaving Loudon to call only the interesting ones.
 - What would a "harvest for connections" look like — searching not for new entries to create, but for existing entries whose links should be updated based on recent conversations?
+
+---
+
+*The version and what each harvest taught the ceremony: [[Harvest Ceremony — tuning]].*
