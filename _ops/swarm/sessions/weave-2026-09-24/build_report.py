@@ -15,7 +15,7 @@ def card(t, srcs):
     return f"<div class='card'><div class='eyebrow'>now reached by</div><h4>{e(t)}</h4><ul>{items}</ul></div>"
 cards_html = "".join(card(t, s) for t, s in sorted(cards.items(), key=lambda kv: -len(kv[1])))
 after_html = f"<p class='quote'>“{e(AFTER)}”</p>" if AFTER else "<p class='quote pending'>to be asked at the close</p>"
-page = f"""<!doctype html><html lang="en" class="skin-graphite"><head><meta charset="utf-8">
+page = f"""<!doctype html><html lang="en" class="skin-graphite"><head><meta charset="utf-8"><meta name="ceremony_version" content="1.0">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>September Weave</title>
 <link rel="stylesheet" href="../../../loudon-live/design-system/colors_and_type.css">
 <style>
@@ -45,7 +45,7 @@ footer{{margin-top:64px;padding-top:16px;border-top:1px solid var(--border-soft)
 @media (max-width:560px){{.feel{{grid-template-columns:1fr}} h1{{font-size:var(--t-h2)}}}}
 </style></head><body><main>
 <img class="sigil" src="../../../loudon-live/design-system/assets/logo-lissajous.svg" alt="">
-<div class="eyebrow">Weave · 2026-09-24 · multi-lens, core</div>
+<div class="eyebrow">Weave · 2026-09-24 · multi-lens, core · ceremony v1.0</div>
 <h1>The September Weave</h1>
 <p class="lead">The palace's periodic look at its own health and joy, across entries, agents and the people who use it. This one ran 79 days after the last, on a palace that felt, going in, good but cluttered.</p>
 
@@ -100,6 +100,12 @@ footer{{margin-top:64px;padding-top:16px;border-top:1px solid var(--border-soft)
 <li>Their own sessions: the Producer layer (now pressed from three sides), whether the Shop can hold an operated Specialist, Two Batons' three homes, the board's <span class="ty">reconcileQueue</span>, and the hub bar (a Schema Ceremony).</li>
 <li>Questions for you: six sources lived only in Media Library (Plato's Timaeus, Feynman, Turing, Debussy, Particles of Attachment, and Satie, Stockhausen and Merzbow). Do any want a line in Source Library? And Source Library still names the five composted people in plain text.</li>
 <li>Three weave flags posted at today's close arrived after this weave's inbox was read. They open the next one.</li>
+</ul>
+<h2>What this run taught the ceremony</h2>
+<ul class="plain">
+<li>The six adjustments this run was planned around (the Bridge lens, the walk for newcomers, the sampled two-pile signing, the honest board, pheromone trails, cross-cycle convergence) were applied and are unverified — tuning entries 32–37.</li>
+<li>Eight more were found during the run: the flag linter wrong both ways, ceremonies as nodes, the catch-up measuring reach, the harness over the workers' age, the second reader, one link per pair, the hub bar, all lenses at once — tuning entries 24–31.</li>
+<li>The record is <span class="ty">_ops/Weave Ceremony/Weave Ceremony — tuning.md</span>.</li>
 </ul>
 <footer>Loud’n Live</footer>
 </main></body></html>"""

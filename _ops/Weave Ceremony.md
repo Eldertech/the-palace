@@ -3,9 +3,10 @@ title: "Weave Ceremony"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-07-05
-activation_count: 7
+last_activated: 2026-09-24
+activation_count: 8
 stage: mature
+version: "1.0"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -99,6 +100,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 5. Any confirmed metadata updates have been written to entry files
 5a. A **face audit** has run — merited-but-missing faces proposed for the gated [[Hero and Avatar Maker]] batch; faces on now-dormant entries (composting, spores) retired.
 5b. A **visual Weave report** (HTML, per the [[Loudon Live Design System]]) has been produced and saved to the session folder — the human-facing companion to the topology report, summarizing findings across lenses (cross-lens convergences, single-lens gems, the staged decision surface, and — after an oblique pass — what the randomness revealed and which segmentations to prioritize next). This is a standard Weave output, not a one-off. The studio floor applies (Graphite skin, the Lissajous sigil, the `Loud'n Live` footer, no cyan / emoji / hype); entry avatars may be embedded to reinforce the findings visually. Codified 2026-07-06.
+5c. The run report carries `ceremony_version` and ends with *What this run taught the ceremony*.
 6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded, N faces added/retired]`
 
 **Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
@@ -307,6 +309,10 @@ Resolve every error this Weave introduced. Any pre-existing error left standing 
 - **W1** — a canon entry whose `title:` ≠ its filename (SCHEMA §3), e.g. `Oblique Portrait.md` titled "Oblique Portrait Method". A **warning**, reviewed every Weave and corrected where it's real drift; a few are deliberate (foundational stylized names like `ROSETTA`; source entries carrying a year). Correct by editing the title to match, or — when the filename is wrong — renaming the file and repointing its `[[wikilinks]]` (canonicalize on whichever the graph already points to). Titles differing only by a filesystem-illegal character (`?`, `/`) are not flagged.
 
 Resolve every E1 this Weave introduced (do not commit a Weave that added one); triage the W1 list, fixing real mismatches and leaving intentional ones.
+
+**Step 6.7: Stamp the version; say what the run taught**
+
+Stamp the run report with `ceremony_version` — in frontmatter when the report is markdown; for `report.html`, a `<meta name="ceremony_version">` tag and the header line. End the report with **"## What this run taught the ceremony"**. "Nothing" is a legal answer. Anything else becomes the next numbered entry in `_ops/Weave Ceremony/Weave Ceremony — tuning.md`, naming the spec change it should force. If that change lands in this commit, move the version and give the Context its paragraph; if not, mark the entry owed.
 
 **Step 7: Commit**
 
