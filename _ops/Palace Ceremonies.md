@@ -130,4 +130,4 @@ The report is a gift to the ceremony's author, not a verdict. A ceremony can pro
 
 ## Active Baton
 
-[[Palace Ceremonies — baton]] — drafted 2026-09-24
+[[Palace Ceremonies — baton]] — drafted 2026-09-25
