@@ -30,6 +30,16 @@
       "rule": "email",
       "reason": "Loudon's own address inside a Google Drive mount path; already public as the commit author",
       "date": "2026-09-25"
+    },
+    {
+      "fp": "b2fc4d5763f800f5",
+      "rule": "new-deletes-script",
+      "reason": "the read view's build script; it deletes only the output folders it writes (data/, files/, rich/, and public/'s unused copy), read 2026-09-25"
+    },
+    {
+      "fp": "a89580553c8cf459",
+      "rule": "new-network-script",
+      "reason": "the read view's app shell; its one request is the snapshot's own data/meta.json on the same site, read 2026-09-25"
     }
   ],
   "values": [
