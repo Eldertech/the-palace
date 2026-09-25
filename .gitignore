@@ -31,12 +31,6 @@ _tools
 **/node_modules
 **/.remotion/
 
-# Enrichment server / worker runtime artifacts (logs, PIDs, started markers)
-Enrichment/.server.log
-Enrichment/.server.pid
-Enrichment/.worker.log
-Enrichment/.worker.started
-
 # Test-touch / scratch markers
 .claude/agents-test-touch
 

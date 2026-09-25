@@ -1,6 +1,6 @@
 // Adapter for the steward lane -- the BBS surface that advances a permanent
-// steward by one cycle (consuming its pending TRICKSTER grants). Mirrors
-// adapters/worker.js: every call returns { ok, ... } and never throws; the
+// steward by one cycle (consuming its pending TRICKSTER grants). Every call
+// returns { ok, ... } and never throws; the
 // deck renders inline errors. 404 / 409 / 400 are structured outcomes, not
 // thrown.
 

@@ -230,5 +230,5 @@ function printMemory() {
 printMemory();
 
 console.log(`\n  next:  cd "${dir}"   then start a session there.`);
-console.log(`  note:  runtime state (_ops/stigmergy/.actuator*, Enrichment/.server.*) stays per-worktree — never symlinked.`);
+console.log(`  note:  runtime state (_ops/stigmergy/.actuator*) stays per-worktree — never symlinked.`);
 console.log(`  undo:  node _ops/worktree/new-worktree.mjs --name ${name} --remove [--delete-branch]   (safe -d; add --force-delete to discard unmerged)\n`);

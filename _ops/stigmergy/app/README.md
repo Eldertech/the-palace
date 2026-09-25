@@ -57,7 +57,7 @@ status-bar indicator shows the connection state: `LIVE` (connected),
 ## v0.3 — inline rich content
 
 Messages can carry artifacts (image / audio / sandboxed HTML) that render
-inline in the message row, the way the QUEUE deck renders enrichment cards.
+inline in the message row.
 
 ### Read path — `GET /api/file`
 
@@ -78,8 +78,8 @@ Any message type may carry an artifact in its (opaque) `payload`:
 - `payload.artifact_path: "<palace-relative>"` — a single artifact, or
 - `payload.artifacts: [{ path, caption? }]` — a coherent multi-artifact set.
 
-`payload.kind: "enrichment_card"` is an optional discriminator; when present
-the row shows a small `enrichment` tag. The §2.2 validator is unchanged —
+`payload.kind: "enrichment_card"` is a legacy v0.3 discriminator — nothing
+needs it; when present the row shows a small `enrichment` tag. The §2.2 validator is unchanged —
 `payload` is opaque by spec, so the discriminator and artifact fields pass
 straight through. Artifact rendering is keyed on artifact *presence*, not on
 message type or `kind`.

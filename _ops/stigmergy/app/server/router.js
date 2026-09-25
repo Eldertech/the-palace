@@ -10,7 +10,6 @@ import { persistentRoutes } from './api/persistent.js';
 import { filesRoutes } from './api/files.js';
 import { entriesRoutes } from './api/entries.js';
 import { logRoutes } from './api/log.js';
-import { workerRoutes } from './api/worker.js';
 import { stewardsRoutes } from './api/stewards.js';
 import { projectsRoutes } from './api/projects.js';
 import { digestRoutes } from './api/digest.js';
@@ -28,7 +27,6 @@ const FAMILIES = [
   filesRoutes,
   entriesRoutes,
   logRoutes,
-  workerRoutes,
   stewardsRoutes,
   projectsRoutes,
   digestRoutes,
@@ -44,7 +42,7 @@ const FAMILIES = [
 
 /**
  * Try each endpoint family in order against the request context.
- * @param {object} ctx — { req, res, palaceRoot, urlPath, query, method, actuator, stewardLane, opts }
+ * @param {object} ctx — { req, res, palaceRoot, urlPath, query, method, stewardLane, companionLane, opts }
  * @returns {Promise<boolean>} true if a family owned the response.
  */
 export async function dispatch(ctx) {

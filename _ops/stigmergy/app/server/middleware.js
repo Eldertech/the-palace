@@ -11,14 +11,13 @@
 //   GET  /api/sessions   GET/POST /api/sessions/:id[/stream]
 //   GET  /api/open  /api/file  /api/entries  /api/unsung-paths  /api/topology  /api/entry
 //   GET  /api/log  /api/commit  /api/uncommitted   POST /api/commit/create
-//   GET  /api/worker   POST /api/worker/fire
 //   GET  /api/stewards   POST /api/steward/advance  /api/stewards/advance-all
 //   POST /api/digest/verdict   GET /api/digest/verdicts   POST /api/entry/save
 //   GET  /rich/?entry=<Entry>  — an entry's rich face (_ops/rich-face/)
 //
 // The palace root is derived from PALACE_ROOT if set, else from a default path.
 // Tests pass an explicit `palaceRoot` to avoid env-var coupling, and may inject
-// opts.actuator / opts.stewardLane so the test path never spawns a real worker.
+// opts.stewardLane / opts.companionLane so the test path never spawns a real worker.
 
 import { buildWorkers } from './workers.js';
 import { dispatch } from './router.js';
@@ -27,10 +26,10 @@ import { dispatch } from './router.js';
 export { resolveInsidePalace, contentTypeFor, readPersistent, listSessions, readSession } from './http.js';
 
 export function blackboardMiddleware(palaceRoot, opts = {}) {
-  // The long-lived worker lanes (the board actuator + the steward lane). See
+  // The long-lived worker lanes (steward, companion). See
   // workers.js for the scar #4 single-global-worker rule and the
-  // STIGMERGY_STUB_WORKER gate. Tests inject opts.actuator / opts.stewardLane.
-  const { actuator, stewardLane, companionLane } = buildWorkers(palaceRoot, opts);
+  // STIGMERGY_STUB_WORKER gate. Tests inject opts.stewardLane / opts.companionLane.
+  const { stewardLane, companionLane } = buildWorkers(palaceRoot, opts);
 
   return {
     name: 'stigmergy-blackboard-middleware',
@@ -42,7 +41,7 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
         const query = new URLSearchParams(queryString || '');
         const method = (req.method || 'GET').toUpperCase();
 
-        const ctx = { req, res, palaceRoot, urlPath, query, method, actuator, stewardLane, companionLane, opts };
+        const ctx = { req, res, palaceRoot, urlPath, query, method, stewardLane, companionLane, opts };
         if (await dispatch(ctx)) return; // a family owned the response
         next(); // not an /api route we handle — let Vite serve the app
       });
