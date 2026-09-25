@@ -7,7 +7,7 @@ born: 2026-05-27
 stage: growing
 confidence: working
 energy: high
-forward_vector: "I render you as language — your light choosing the characters, whole words typeset into your mid-tones, your highlights inverted to black-on-white. I started as one facet and refused to stay one. My next moves: compose real lines that fit each tonal blob (grammar, not just length), follow true eyes and fingers, and fold my facets back into the Enrichment server as iterable cards. The question I carry: is legibility just another band of light — is language a tonal medium?"
+forward_vector: "I render you as language — your light choosing the characters, whole words typeset into your mid-tones, your highlights inverted to black-on-white. I started as one facet and refused to stay one. My next moves: compose real lines that fit each tonal blob (grammar, not just length), and follow true eyes and fingers. The question I carry: is legibility just another band of light — is language a tonal medium?"
 links:
   - target: "[[Oblique Enrichment]]"
     type: emerged-from
@@ -75,8 +75,7 @@ blend of two character layers.
 ## Why it belongs to Oblique Enrichment
 
 It is the first *productive output* of an oblique card — the flock provocation that
-refused to stay a provocation. The natural endgame is to fold its own facets back
-into the Enrichment server as iterable cards, closing the loop.
+refused to stay a provocation.
 
 ## Cross-Domain Resonance
 
@@ -96,5 +95,5 @@ into the Enrichment server as iterable cards, closing the loop.
 ## Forward Vectors
 
 Compose real lines that fit the blobs (grammar, not length). Detect true eyes and
-fingers. Deck-ify the facets into the Enrichment server. Decide whether "language
+fingers. Decide whether "language
 as a tonal medium" wants to graduate into its own concept entry.
