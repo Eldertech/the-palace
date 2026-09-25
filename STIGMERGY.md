@@ -67,6 +67,8 @@ It is two things at once. Seen by a human, it is a **front-end** — a phosphor 
 
 > **[[STIGMERGY — baton — bundle-hygiene demote-op]]** (2026-07-05) — held work: wire bundle-hygiene's invalid-`type:` finding into the app as a **`demote-bundle`** apply-op — *not* `set-type` (retyping substrate to `concept` would promote it to canon, the opposite of the fix). Loudon held this deliberately; the baton carries the 9-file seam and the demote-op design. Delete on pickup.
 
+> **[[STIGMERGY — baton]]** (2026-09-25) — hardening: close the doors the [[No Mind Checks Itself]] re-check found open — sandbox the rich face's pieces and pin its CDN scripts, stop cross-site writes to the board, move the host check ahead of the palace's routes, settle the review wire, steady the regen-lane test.
+
 ## The honesty discipline, made structural
 
 The three decks are ordered by time, and the ordering is the point. STATE is what is known now; QUEUE is what is intended; LOG is what actually happened. Work is not real until it lands in LOG — until git proves it. This makes the palace's standing rule (*nothing is true until it is committed*) **structural rather than remembered**: you cannot fake completion when the surface itself reconciles QUEUE against LOG. Git is ground truth; the blackboard is append-only; there is one write path.
