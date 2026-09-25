@@ -22,3 +22,25 @@
 {"event":"CYCLE_COMPLETE","ts":"2026-06-23T12:58:46.000Z","iteration":4,"stop_reason":"end_turn","posted_messages":["ngs-steward-008","ngs-steward-009"],"pending_after":["ngs-steward-009"]}
 {"event":"CYCLE_5_SPAWN","ts":"2026-08-26T02:35:11.104Z","dispatched_by":"bbs-actuator","model":"claude-opus-4-7"}
 {"event":"CYCLE_COMPLETE","ts":"2026-08-26T02:35:11.104Z","iteration":5,"stop_reason":"end_turn","posted_messages":[],"pending_after":[]}
+{"event":"CYCLE_6_SPAWN","ts":"2026-09-25T02:12:00.752Z","dispatched_by":"bbs-actuator","model":"claude-opus-5-5"}
+{"event":"TOOL_CALL","ts":"2026-09-25T02:12:00.752Z","tool":"write_blackboard","args":{"message_id":"ngs-steward-010"},"result":"emitted+validated+appended"}
+{"event":"TOOL_CALL","ts":"2026-09-25T02:12:00.752Z","tool":"write_blackboard","args":{"message_id":"ngs-steward-011"},"result":"emitted+validated+appended"}
+{"event":"CYCLE_COMPLETE","ts":"2026-09-25T02:12:00.752Z","iteration":6,"stop_reason":"end_turn","posted_messages":["ngs-steward-010","ngs-steward-011"],"pending_after":[]}
+{"event":"CYCLE_7_SPAWN","ts":"2026-09-25T02:17:11.142Z","dispatched_by":"bbs-actuator","model":"claude-opus-5-5"}
+{"event":"TOOL_CALL","ts":"2026-09-25T02:17:11.142Z","tool":"write_blackboard","args":{"message_id":"ngs-steward-012"},"result":"emitted+validated+appended"}
+{"event":"TOOL_CALL","ts":"2026-09-25T02:17:11.142Z","tool":"write_blackboard","args":{"message_id":"ngs-steward-013"},"result":"emitted+validated+appended"}
+{"event":"CYCLE_COMPLETE","ts":"2026-09-25T02:17:11.142Z","iteration":7,"stop_reason":"end_turn","posted_messages":["ngs-steward-012","ngs-steward-013"],"pending_after":[]}
+{"event":"CYCLE_8_SPAWN","ts":"2026-09-25T02:21:11.282Z","dispatched_by":"bbs-actuator","model":"claude-opus-5-5"}
+{"event":"TOOL_CALL","ts":"2026-09-25T02:21:11.282Z","tool":"write_blackboard","args":{"message_id":"ngs-steward-014"},"result":"emitted+validated+appended"}
+{"event":"TOOL_CALL","ts":"2026-09-25T02:21:11.282Z","tool":"write_blackboard","args":{"message_id":"ngs-steward-015"},"result":"emitted+validated+appended"}
+{"event":"CYCLE_COMPLETE","ts":"2026-09-25T02:21:11.282Z","iteration":8,"stop_reason":"end_turn","posted_messages":["ngs-steward-014","ngs-steward-015"],"pending_after":[]}
+{"event":"CYCLE_9_SPAWN","ts":"2026-09-25T02:29:41.952Z","dispatched_by":"bbs-actuator","model":"claude-opus-5-5"}
+{"event":"TOOL_CALL","ts":"2026-09-25T02:29:41.952Z","tool":"write_blackboard","args":{"message_id":"ngs-steward-016"},"result":"emitted+validated+appended"}
+{"event":"TOOL_CALL","ts":"2026-09-25T02:29:41.952Z","tool":"write_blackboard","args":{"message_id":"ngs-steward-017"},"result":"emitted+validated+appended"}
+{"event":"CYCLE_COMPLETE","ts":"2026-09-25T02:29:41.952Z","iteration":9,"stop_reason":"end_turn","posted_messages":["ngs-steward-016","ngs-steward-017"],"pending_after":[]}
+{"event":"CYCLE_10_SPAWN","ts":"2026-09-25T02:37:00.164Z","dispatched_by":"bbs-actuator","model":"claude-opus-5-5"}
+{"event":"CYCLE_BARREN","ts":"2026-09-25T02:37:00.164Z","iteration":10,"stalled":false,"note":"posted no messages — nothing shipped, no card; the lane retries once before calling the steward stalled"}
+{"event":"CYCLE_COMPLETE","ts":"2026-09-25T02:37:00.164Z","iteration":10,"stop_reason":"no_messages","posted_messages":[],"pending_after":[]}
+{"event":"CYCLE_11_SPAWN","ts":"2026-09-25T02:40:22.170Z","dispatched_by":"bbs-actuator","model":"claude-opus-5-5"}
+{"event":"CYCLE_BARREN","ts":"2026-09-25T02:40:22.170Z","iteration":11,"stalled":true,"note":"posted no messages for the second cycle running — STALLED; the lane stops the run and the scroll flags it"}
+{"event":"CYCLE_COMPLETE","ts":"2026-09-25T02:40:22.170Z","iteration":11,"stop_reason":"no_messages","posted_messages":[],"pending_after":[]}
