@@ -2,10 +2,11 @@ import { describe, test, expect, beforeAll, afterAll } from 'vitest';
 import http from 'node:http';
 import { resolve, dirname, join, normalize, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mkdtempSync, rmSync, mkdirSync, writeFileSync, copyFileSync, existsSync } from 'node:fs';
+import { mkdtempSync, rmSync, mkdirSync, writeFileSync, copyFileSync, existsSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import request from 'supertest';
 import { blackboardMiddleware } from '../../server/middleware.js';
+import { selfOrigin } from '../../server/api/rich.js';
 
 // The rich face mounted at /rich/ (server/api/rich.js → _ops/rich-face/).
 // A temp palace carries the renderer's two files plus one entry with a bundle
@@ -128,9 +129,53 @@ describe('the rich face at /rich/', () => {
     expect((await request(server).get('/rich/' + '..%5C'.repeat(24) + 'etc%5Cpasswd')).status).toBe(404);
   });
 
+  test('a review of null is a 400 through the mount, and the server lives', async () => {
+    const r = await request(server).post('/rich/_api/review').set('Content-Type', 'application/json').send('null');
+    expect(r.status).toBe(400);
+    expect((await request(server).get('/rich/_api/resolve?entry=Demo%20Entry')).status).toBe(200);
+  });
+
+  // The review is forwarded to this same server's board. Where "this server" is
+  // must come from the socket the request arrived on, never the client's Host
+  // header — here a Host naming another listener on this machine.
+  test('a review goes to this server\'s own board, whatever the Host header says', async () => {
+    const seen = [];
+    const decoy = http.createServer((req, res) => { seen.push(req.url); res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{}'); });
+    await new Promise((ok) => decoy.listen(0, '127.0.0.1', ok));
+    try {
+      const r = await request(server).post('/rich/_api/review')
+        .set('Host', `127.0.0.1:${decoy.address().port}`)
+        .send({ task: 'rich-face:Demo Entry:round-1', groups: { 'A Section': { note: 'the words hold' } }, overall: { note: 'fine' } });
+      expect(seen).toEqual([]);
+      expect(r.status).toBeLessThan(300);
+      const board = readFileSync(resolve(root, '_ops/swarm/persistent/blackboard.jsonl'), 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
+      const posted = board.find((m) => m.id === r.body.message_id);
+      expect(posted).toBeTruthy();
+      expect(posted.payload.groups['A Section'].note).toBe('the words hold');
+    } finally {
+      decoy.close();
+    }
+  });
+
   test('paths outside /rich are not its business', async () => {
     const r = await request(server).get('/richer');
     expect(r.status).toBe(404);
     expect(r.text).toBe('not found'); // fell through to the harness, not the rich handler
+  });
+});
+
+describe('selfOrigin — the address a review is forwarded to', () => {
+  test('is the socket\'s local address and port, whatever the headers say', () => {
+    const req = { headers: { host: 'evil.example:80' }, socket: { localAddress: '127.0.0.1', localPort: 5173 } };
+    expect(selfOrigin(req)).toBe('http://127.0.0.1:5173');
+  });
+  test('brackets an IPv6 address', () => {
+    expect(selfOrigin({ socket: { localAddress: '::1', localPort: 5173 } })).toBe('http://[::1]:5173');
+  });
+  test('is https on a TLS socket', () => {
+    expect(selfOrigin({ socket: { localAddress: '127.0.0.1', localPort: 5173, encrypted: true } })).toBe('https://127.0.0.1:5173');
+  });
+  test('falls back to the default port with no socket to read', () => {
+    expect(selfOrigin({ headers: { host: 'evil.example' } })).toBe('http://localhost:5173');
   });
 });
