@@ -9,42 +9,50 @@ forward_vector: "I carry the in-progress move on [[Palace Ceremonies]] across a 
 ---
 
 ## Move
-Carry the ceremony-evolution rollout through phases 4 and 5: scrolls for ceremonies (and any entry), with a ceremonies group on the PROJECTS deck, then the principle written into Palace Ceremonies.
+Review this session's ceremony work with fresh eyes, then finish the project: settle whether a ceremony run reads its scroll's Standing Orders, write the Phase 5 principle into Palace Ceremonies, and clear the owed tuning items.
 
 ## Why this move matters
-Schema v1.20 and v1.21 state the rule; the Weave (v1.1) and Closing Well (v1.0) run under it; nothing else does yet. Until each ceremony carries a version and a tuning file, "what changed since I last ran this" is answerable only for one ceremony, and the improvements Loudon feels every run stay in commit logs and session folders nobody reads on the way in. The order matters: Closing Well next because it has the model ledger and an executor that can append; scrolls after two ledgers exist so the renderer has something real to render; the principle last so it describes what has been done, not what was planned.
+Everything below was made in one long session and checked by a Concierge that had argued for parts of it; no reader without a stake has read it yet, and every correction today came from a second reader. Two ends are also half-true: the ceremony scroll offers Standing Orders that nothing reads, and the principle behind versioning lives in the Schema and the cards but not in Palace Ceremonies, the page a newcomer opens.
 
 ## Tried and rejected
-- A ledger entry mandatory per run — too much for Closing Well, which runs often and has plateaued. The question is mandatory; the entry only when a run changed the spec.
-- Keying the version on `type: practice` — Enrichment and Map Build are `meta`. v1.20 keys on what Palace Ceremonies names as a spec.
-- Calling the file "gotchas" — that word stays with Specialists' tool traps. A run *tunes* a ceremony.
-- Putting the Weave's stamp-and-teach step in the session plan rather than the card — the card owns procedure; plans inherit it.
+- Reading the last two run groups of a tuning file — groups vary too much in size; Loudon chose a fixed tail, 40 lines plus a grep for owed (Schema v1.22).
+- "Write a deposit where you work, then land it" — withdrawn; [[Worktree Practice]] says canon writes to the trunk, and Deposit v2.0 step 6 follows it.
+- A code list of ceremonies — the tuning ledger marks a ceremony instead.
+- Runs-since by timestamp — ancestry (`spec..HEAD`); same-second commits broke the clock.
+- Owed by the bare word — the ledgers' phrase, "spec change owed / still owed"; the word turns up in passing.
 
 ## Current state
-Phases 1–3 landed. Schema v1.20–v1.22 state the rule; v1.22 (`38f54c83`) made the opening read a **tail read** — the last 40 lines of the tuning file plus any item still owed — at Loudon's request, so ledgers can grow without every run paying for them. Every ceremony Palace Ceremonies names now carries a version and a tuning ledger: Weave 1.1, Closing Well 1.0, Enrichment 2.0 (2.1 in flight from its own session), Return / Walk / Spore Check / Self-Model Update / Revival / Harvest / Baton 1.0, Map Build 2.0, Deposit 2.0 (`38f54c83..cb6f8ab7`; closed `--partial` against `cb6f8ab7`). Deposit v2.0 is the gate for every find: Loudon's approval of the map, whoever asks; a page's rich face and scroll are products outside the gate. Owed items wait in the ledgers for each ceremony's next run: Return 7–10, Walk 2, Map Build 3–4.
+Landed and pushed, origin/main `38b43f46`:
+- Schema v1.22, the tail read (`38f54c83`).
+- Versions and tuning ledgers for Return, Walk, Spore Check, Self-Model Update, Revival, Harvest, Baton, Deposit (1.0) and Map Build (2.0), `81f0404a..57a9f2bf`; the first return record, `5669302b`.
+- Deposit v2.0, the gate — Loudon's approval of the map, whoever deposits (`cb6f8ab7`); the Closing Well executor lands a keep row only if he approved its map and read its words.
+- Phase 4, `2d0d88e2..38b43f46`: `_ops/stigmergy/orchestrator/src/ceremony-scroll.js`, the deck's CEREMONIES and SERVICES boxes (`app/server/projects.js`, `ProjectsDeck.jsx`, `ScrollView.jsx`), twelve ceremony scrolls, [[The Scroll]] § The ceremony scroll.
+
+Look first, and the risk in each:
+- `RUN_SUBJECTS` in `ceremony-scroll.js` mirrors each card's run record by hand. If a card's commit form changes, the count goes quietly wrong.
+- The tuning seeds were attributed from git by one reader. The Concierge checked Baton 1–8 and Deposit 1–12 against their commits; the rest were not re-checked.
+- The fixes made to Deposit v2.0 after the Concierge's check were never read back by it.
+- Couldn't verify: the deck as rendered — the browser pane gave black screenshots, so it was checked by page text only.
+
+Owed, read first by each ceremony's next run: Return 7–10, Walk 2, Map Build 3–4, Weave 21/24/29/30/39. Seams: Enrichment 2.1's step 6 now "splits by size" — check it agrees with Deposit v2.0's gate. The SERVICES box is built; enchanting the Shopkeeper is its own handoff.
 
 ## Next move
-- **Phase 4:** extend the scroll materializer (`_ops/stigmergy/orchestrator/src/scroll-file.js`, `scroll.js`) and `_ops/stigmergy/app/server/projects.js` from `type: project` to any entry; a ceremony's Now zone counts runs since the spec last changed and shows its version; the PROJECTS deck gets a "ceremonies" group, built in the same pass as the "services" group the Shopkeeper baton calls for. Loudon, 2026-09-25: a page may have three faces — the text, the rich face, the scroll — and the scroll and rich face are its products, made without a deposit.
-- **Phase 5:** one paragraph in `_ops/Palace Ceremonies.md`: the question is mandatory every run, an entry only when a run changed the ceremony, the version moves only when the spec does, and the opening read is the tail. After two ceremonies have run under it.
-
-## Receiving environment
-Claude Code on the Mac, palace root, `main`. Phase 2 fires inside a close, so it is Sonnet executor work under a resident moderator; phases 3 and 4 are Opus drafting under a supervising session (Loudon's standing rule: Fable supervises, Opus does the heavy reading). Don't edit `_ops/stigmergy/app/server/*` while a steward run is live — Vite restarts the server in place and the lane loses its run label.
+Grow up, summon the Concierge, and review first: read the landed diffs (`git log 38f54c83^..38b43f46`) against the claims above, open the deck on :5173 and look at the CEREMONIES box and two ceremony scrolls rendered, and bring Loudon what you would change. Then put the Standing Orders question to him — if yes, one line in each card's opening step, and drop "nothing reads it" from the placeholder and ScrollView — and draft Phase 5.
 
 ## Calibrations from this session
-- "Assume all pages can have scrolls."
-- Fable supervises; Opus agents run token-heavy work.
-- The version moves on procedure changes only — a step, a gate, a postcondition, a linter — not prose.
-- Quoted-string versions ("1.0").
-- Show diffs before canon writes; Loudon's yes per phase.
+- Deposits are for larger additions to canon, not upkeep. Loudon's approval of the map is the gate, and nothing stands in for it. A page's rich face and scroll are its products, made without a deposit.
+- The tail read: "be generous; getting part of a past tuning isn't a problem."
+- Read [[Worktree Practice]] before proposing where anything lands. Sustained work goes in a worktree; canon converges on main deliberately.
+- Show diffs before canon writes; Loudon's yes per phase. A version moves on procedure, not prose.
+- Other sessions are live on main (the Enrichment session was, all day). Coordinate by message; rebase before landing.
+- Fable supervises; Opus does the heavy reading. Warn before a big fan-out.
 
 ## Load these files first
-1. `SCHEMA — Reference.md` §6 (Versions, tuning, and run reports) and §8
-2. `SCHEMA — Context.md` — the v1.20 record, with its "Held open"
-3. `_ops/Weave Ceremony/Weave Ceremony — tuning.md` — the model as applied
-4. `Closing Well/Closing Well — tuning.md`
-5. `_ops/closing-well/executor.md`
-6. `_ops/Palace Ceremonies.md`
-7. `The Scroll.md`
+1. `_ops/Palace Ceremonies.md`.
+2. `SCHEMA — Reference.md` §6 (versions, tuning, the tail read) and §8 (`scroll`, `tuning`).
+3. `_ops/Deposit Ceremony.md` (v2.0) and `_ops/closing-well/executor.md` § keep → deposit.
+4. `_ops/stigmergy/orchestrator/src/ceremony-scroll.js` and `The Scroll.md` § The ceremony scroll.
+5. `Worktree Practice.md`.
 
 ## On pickup (fixed — the catcher's checklist; do not rewrite per session)
 *Identical in every baton. It rides along because the catching Claude loads the
