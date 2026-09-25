@@ -463,11 +463,11 @@ queue so both close together. See `_ops/Harvest Ceremony/Harvest — 2026-08-25 
 
 | # | Candidate | Disposition | Reason |
 |---|---|---|---|
-| A | Impose it at generation, don't recover it after | open | |
-| B | Rich first, stylize last — homeless across five project files | open | |
-| C | The model's prior is part of the interface | open | |
-| D | The correctness knob that turned out to be an expressive dial | open | |
-| E | Keep the compromised record, labeled | open | Aug-25 recommended merge, not mint |
+| A | Impose it at generation, don't recover it after | **fold → [[Steer the Generator]]** | Its identity rule (*baked at generation*) was already half of this; § Order the steps against loss generalises it. |
+| B | Rich first, stylize last — homeless across five project files | **fold → [[Steer the Generator]]** | Three pages already credited Steer the Generator with this rule, and the text wasn't there. The fold makes the credits true. |
+| C | The model's prior is part of the interface | **declined** | Loudon's call, 2026-09-24. Stays in [[GenAI Camera]] § Gotchas. |
+| D | The correctness knob that turned out to be an expressive dial | **declined** | Single instance; the music parallels were asserted, not cases. |
+| E | Keep the compromised record, labeled | **fold → [[The Scroll]]** | One sentence, as Aug-25 recommended: the wrong result kept and labelled, a cast skin. |
 
 ---
 

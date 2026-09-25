@@ -80,7 +80,10 @@ live one ([[Drift and Consolidation]]).
 Machinery: `_ops/stigmergy/orchestrator/src/scroll-file.js` materializes it (every steward
 cycle via `process-cycle.js`, on demand via `scroll.js --home | --all`); STIGMERGY serves it
 with a live Now zone at `GET /api/projects/scroll`. Loose standards kept from the first scroll:
-one per entry, append as you go, each section points at the real media, nothing deleted.
+one per entry, append as you go, each section points at the real media, nothing deleted. A section the
+work later proves wrong stays too, labelled: the GenAI Camera scroll keeps renders the thin-pose bug
+invalidated, each with a caveat line, because the record of being wrong is worth more than a clean
+surface. It is a cast skin, in [[Identity Molting]]'s sense.
 
 ## Building a live scroll — template & gotchas (2026-07-09)
 

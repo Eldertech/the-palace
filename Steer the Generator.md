@@ -44,6 +44,29 @@ A generative model is **steered, not asked.** The natural reflex is to *describe
 2. **Generate volume, then select** — one sample is an anecdote. Generate many and pick: by **intuition** (the *Taste Breeder* — show four, click one, the model learns your taste and predicts your next pick) or by **metric** (a consistency ruler, a content-blind style descriptor). Selection is what turns a "soft," drifting prompt-style into a locked one. *Using gen-AI well means making many and tossing the outliers* — under-generating is under-using it.
 3. **Verify by measurement** — give the felt judgment a quantitative sibling. Head pose and landmarks (insightface), embedding cosine (identity/scene), spatial autocorrelation (is the noise actually white?). Measurement is how "it looks consistent" becomes "it *is*, by this number," and how a negative gets proven instead of argued. The [[Quality Manifesto]] question "how do you feel?" keeps its measured twin: *does it hold, and by how much?*
 
+## Order the steps against loss
+
+Two findings from the June–July image work are rules about *when*, not *what*, and both were learned
+the hard way.
+
+**Impose it at generation; don't recover it after.** A constraint that has to be present while a thing
+is made cannot be added to the finished thing. Identity is the case above: baked at generation, not
+pasted on. Scale is the case that took three tries. A standalone figure fills its frame whatever size
+the pose skeleton is, so every after-the-fact cutout faithfully cut out a giant, and it turned out
+*"the nude mask had secretly been doing the placement all along."* A step you thought was cosmetic was
+carrying a constraint, and you only find out when you remove it. Mixing knows this as committing the
+space at the source instead of fixing it in mastering.
+
+**Rich first, stylize last.** Render with full information, do every operation that needs structure,
+and put the lossy step at the end. The root cause, from [[GenAI Camera]]: *"we stylized too early —
+pen-flow ink has no edges for a clean cut."* Stylization throws information away, and everything
+downstream that needed it quietly degrades. Photography shoots flat and grades later; a mix is edited
+before the effects are printed. [[Frame Designer]], [[Animate the Background]] and BLUELINE's text
+layer already run this rule and credit it to this page.
+
+The two are one rule seen from both ends: the structural constraint goes first, and the irreversible
+step goes last.
+
 ## The negatives that earned it (the evidence)
 
 - **Flow-warped noise never beat seed-lock** at the render — not at a 482 px jump, not swept across deltas, not in a cumulative sequence. The fancy control added nothing the simple shared latent didn't already give.
