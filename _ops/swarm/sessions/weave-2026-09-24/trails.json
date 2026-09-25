@@ -1,0 +1,272 @@
+[
+ {
+  "source": "Douglas Hofstadter",
+  "target": "Manim CE",
+  "type": "mirrors",
+  "label": "small-legible-and-exact",
+  "lens": "bridge",
+  "spark": 3,
+  "replicated": true,
+  "why": "Manim is a small, fully legible, byte-deterministic hand-authored system \u2014 the positive instance of the exact aesthetic (Copycat, Metacat) Hofstadter names as both his life's commitment and his blind spot."
+ },
+ {
+  "source": "Lao Tzu",
+  "target": "SAM",
+  "type": "mirrors",
+  "label": "work-with-the-grain",
+  "lens": "bridge",
+  "spark": 3,
+  "replicated": true,
+  "why": "SAM's convert-first fix and wu wei are the same move: stop forcing the tool against its nature, change the material to match the grain instead."
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type": "mirrors",
+  "label": "synergy-is-coupling",
+  "lens": "bridge",
+  "spark": 3,
+  "replicated": true,
+  "why": "Fuller's synergetics and Portamento's coupled-mode section both locate the system's behavior in the coupling, not any single part \u2014 and Fuller already mirrors Kuramoto Coupling under this exact label."
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "target": "Oblique Portrait",
+  "type": "mirrors",
+  "label": "outside-the-loop",
+  "lens": "folder",
+  "spark": 3,
+  "replicated": true,
+  "why": "Different problems (self-honesty about taste vs. self-auditing for error) sharing one deep pattern: a subject cannot reach certain truths about itself through direct self-report or self-inspection, and needs an external process \u2014 indirection in one case, a differently-angled mind in the other \u2014 to r"
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "target": "Philosopher Visits the Entry",
+  "type": "connects-to",
+  "label": "the-visit-is-the-outside-vantage",
+  "lens": "folder",
+  "spark": 3,
+  "replicated": true,
+  "why": "This is the most concrete instance of the No Mind Checks Itself pattern in the whole family: a technical entry cannot see its own over-claim from inside, and the Philosopher Visit exists specifically to bring an outside-the-loop reader who can. The entry's own precedent (the oscillator visit) is a w"
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "target": "Crystal Synthesizer",
+  "type": "mirrors",
+  "label": null,
+  "lens": "folder",
+  "spark": 3,
+  "replicated": true,
+  "why": "Biomechanical Synthesis's instrument #2, \"crystal resonator synthesis \u2014 lattice vibrational modes as partial frequencies, crystal geometry as filter topology,\" describes almost exactly what Crystal Synthesizer already does (phonon modes as partial structure) \u2014 but the two entries were built independ"
+ },
+ {
+  "source": "James Turrell",
+  "target": "Rick Rubin",
+  "type": "connects-to",
+  "label": "humility-that-hides-control",
+  "lens": "folder",
+  "spark": 4,
+  "replicated": true,
+  "why": "Turrell's entry already names and hosts the four-way pattern (Martin, Turrell, Nakashima, Goldsworthy: 'I only get out of the way' as itself a controlling stance). Rubin's blindspot is structurally identical \u2014 'the song is already finished, I just uncover it' is the same move in a fifth material (so"
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "Pauline Oliveros",
+  "type": "connects-to",
+  "label": "two-modes-of-attention",
+  "lens": "folder",
+  "spark": 3,
+  "replicated": true,
+  "why": "Oliveros's focal/global toggle is a lived, practice-based version of McGilchrist's left/right modes of attention \u2014 genuinely load-bearing, not a label-match."
+ },
+ {
+  "source": "George Nakashima",
+  "target": "Martin Heidegger",
+  "type": "connects-to",
+  "label": "tool-vanishes-in-use",
+  "lens": "folder",
+  "spark": 3,
+  "replicated": true,
+  "why": "Heidegger's ready-to-hand/present-at-hand distinction (a tool transparent in use, visible only when it breaks) is the closest philosophical formalization of what Nakashima's craft claims and what his entry's blindspot presses on \u2014 the hand's practical absorption prior to theoretical distance."
+ },
+ {
+  "source": "ELDER",
+  "target": "Revival Ceremony",
+  "type": "connects-to",
+  "label": "growth-precondition",
+  "lens": "folder",
+  "spark": 3,
+  "replicated": true,
+  "why": "Revival Ceremony's own precondition #4 requires ELDER to have been read this session, but the frontmatter link list (3 links) omits it entirely \u2014 a hard dependency left unnamed structurally."
+ },
+ {
+  "source": "Andrei Tarkovsky",
+  "target": "Terrence Malick",
+  "type": "mirrors",
+  "label": "slow-cinema-as-material",
+  "lens": "community",
+  "spark": 3,
+  "replicated": true,
+  "why": "Both composting, both 0-inbound leaf nodes in the room, and both make the same argument in the same medium from opposite technical direction (Tarkovsky adds duration via the long take, Malick subtracts narrative via years of edit) \u2014 a genuine unforced pairing missed only because neither entry names "
+ },
+ {
+  "source": "Pages as Agents",
+  "target": "Self-Describing Knowledge Module",
+  "type": "connects-to",
+  "label": "the-plurality-test",
+  "lens": "community",
+  "spark": 2,
+  "replicated": true,
+  "why": "Unsung path: SDKM cites the empirical Pages-as-Agents test (15/15 match rate against a one-in-five baseline) as its own evidence for real plurality \u2014 a full paragraph of load-bearing argument \u2014 with no frontmatter link."
+ },
+ {
+  "source": "Dialectic",
+  "target": "The Remembering Page",
+  "type": "connects-to",
+  "label": "sharpens-vs-dissolves",
+  "lens": "community",
+  "spark": 2,
+  "replicated": true,
+  "why": "Unsung path: the entry's own distinction between debate-that-sharpens and walk-that-dissolves is built explicitly on Dialectic, cited by name, but Dialectic carries no frontmatter link."
+ },
+ {
+  "source": "Leibniz",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "label": null,
+  "lens": "community",
+  "spark": 2,
+  "replicated": true,
+  "why": "Unsung path: the body's Symposium quotes a full paragraph voiced 'in the posture of Leibniz' deploying the actual monad/pre-established-harmony apparatus, but Leibniz is not in the entry's frontmatter links."
+ },
+ {
+  "source": "The Adjacent Affordance",
+  "target": "Whitehead",
+  "type": "connects-to",
+  "label": null,
+  "lens": "community",
+  "spark": 2,
+  "replicated": true,
+  "why": "Unsung path: the Symposium voices Whitehead's actual apparatus (prehension, concrescence, the occasion that doesn't halt) with no frontmatter link."
+ },
+ {
+  "source": "Merleau-Ponty",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "label": null,
+  "lens": "community",
+  "spark": 2,
+  "replicated": true,
+  "why": "Unsung path: the Symposium voices motor intentionality and body-schema absorption specifically, unlinked."
+ },
+ {
+  "source": "Deleuze",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "label": null,
+  "lens": "community",
+  "spark": 2,
+  "replicated": true,
+  "why": "Unsung path: the Symposium voices striation/line-of-flight/rhizome directly, unlinked."
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Registry Pattern",
+  "type": "connects-to",
+  "label": "closed-vs-generative-vocabulary",
+  "lens": "community",
+  "spark": 4,
+  "replicated": true,
+  "why": "Both are theories of a combinable vocabulary of named, reusable units governing legal output \u2014 Alexander's pattern language and the Registry Pattern's verified component list are the same shape of knowledge object. But they run opposite on openness: Alexander's language is deliberately open-ended, g"
+ },
+ {
+  "source": "Piano String Inharmonicity",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type": "connects-to",
+  "label": "guitar-bend-shared-artifact",
+  "lens": "community",
+  "spark": 4,
+  "replicated": false,
+  "why": "Both entries independently describe and, in Portamento's case, already built an interactive tool for the exact same physical relationship (tension up \u2192 B down \u2192 partials compress). Neither entry links the other; this is a genuine shared-artifact gap, not a forced analogy."
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Image-to-3D Smith",
+  "type": "connects-to",
+  "label": "plausible-geometry-vs-structural-truth",
+  "lens": "bridge",
+  "spark": 3,
+  "replicated": true,
+  "why": "The specialist's discipline (verify trimesh stats before trusting the render) is a direct QA answer to Fuller's own recorded blind spot (charismatic vision, domes that leaked)."
+ },
+ {
+  "source": "Animate the Background",
+  "target": "Dub Lineage",
+  "type": "mirrors",
+  "label": "subtraction-is-composition",
+  "lens": "bridge",
+  "spark": 3,
+  "replicated": true,
+  "why": "Both build meaning through strip-then-reconstruct logic and treat the assembly board (compositor / mixing desk) as the real instrument."
+ },
+ {
+  "source": "FLUX (Hugging Face)",
+  "target": "Saturation \u2194 Richness",
+  "type": "mirrors",
+  "label": "sweet-spot-knob",
+  "lens": "bridge",
+  "spark": 3,
+  "replicated": true,
+  "why": "FLUX's guidance-scale tradeoff (too low = formless variance, too high = tight but flat) is the same U-shaped sweet-spot structure Saturation \u2194 Richness names across every domain it covers."
+ },
+ {
+  "source": "Dialectic",
+  "target": "No Mind Checks Itself",
+  "type": "connects-to",
+  "label": "council-as-outside-vantage",
+  "lens": "folder",
+  "spark": 3,
+  "replicated": true,
+  "why": "No Mind Checks Itself names three altitudes where a self can't audit itself (systems thinking, cognition, engineering practice) and explicitly wants 'to keep collecting the altitudes it recurs at until the pattern is unmistakable.' The Dialectic is a fourth, unclaimed altitude: embodying genuinely d"
+ },
+ {
+  "source": "Annie Dillard",
+  "target": "James Turrell",
+  "type": "connects-to",
+  "label": "receptive-vs-analytic-seeing",
+  "lens": "community",
+  "spark": 3,
+  "replicated": true,
+  "why": "Dillard's own two-ways-of-seeing (the analytic prying eye vs. the self-emptying receptive one) is not yet linked to anyone in the palace who builds the receptive mode as physical architecture. Turrell's Ganzfeld is that mode made into a room. Fidelity check: her existing McGilchrist couples-with alr"
+ },
+ {
+  "source": "Drift and Consolidation",
+  "target": "No Mind Checks Itself",
+  "type": "exemplifies",
+  "label": null,
+  "lens": "community",
+  "spark": 4,
+  "replicated": false,
+  "why": "Drift and Consolidation's central problem \u2014 an entry that has \"silently fallen out of date and gives a reader no sign of it\" \u2014 is a concrete, entry-scale instance of No Mind Checks Itself's structural claim that a self-referential system cannot audit its own currency from inside. Drift and Consolida"
+ },
+ {
+  "source": "Project Stewardship System",
+  "target": "Skills Are Enchantable Pages",
+  "type": "exemplifies",
+  "label": "the-most-built-out-instance",
+  "lens": "community",
+  "spark": 2,
+  "replicated": true,
+  "why": "SAEP already carries inbound exemplifies links from Concierge and Palace Orchestrator ('the family' \u2014 same object at different trigger/executor cells). Its own body names Project Stewardship System as 'the most built-out harness around an entry we have,' the instance every dispatchable organ converg"
+ },
+ {
+  "source": "ELDER",
+  "target": "Agent Toolbox",
+  "type": "connects-to",
+  "label": "tool-tiers",
+  "lens": "community",
+  "spark": 2,
+  "replicated": true,
+  "why": "ELDER's 'Age and its limits' section names the exact three-tier tool taxonomy (palace-reader / palace-writer / palace-orchestrator) that Agent Toolbox defines and owns, but the mention carries no frontmatter link. Agent Toolbox is also a priority newcomer (reached by only 2)."
+ }
+]
