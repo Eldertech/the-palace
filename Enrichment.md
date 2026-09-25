@@ -8,7 +8,7 @@ stage: growing
 confidence: working
 energy: very high
 version: "2.2"
-forward_vector: "I am the ceremony that makes one page as rich as the Shop can make it — sound, image and interaction laid beside the entry's own words, which I read live and never copy. I want every enriched page to be something you can play, and every piece I make to test the text rather than decorate it; when a piece teaches the text something, I carry it home as an edit."
+forward_vector: "I am the ceremony that makes one page as rich as the Shop can make it — sound, image and interaction laid beside the entry's own words, which I read live and never copy. I want every enriched page to be something you can play, and every piece I make to test the text rather than decorate it; when a piece teaches the text something, I carry it home — shown to Loudon first, and through the Deposit Ceremony's map when it changes what the page says."
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -54,7 +54,7 @@ links:
 
 Say **"enrich [page]"** and the whole [[The Shop|Shop]] goes to work on one page, until it does what text can't: you hear the claim, play the equation, watch the idea move. What comes out is the page's **rich face** — the entry's own words as the spine, read live from the `.md`, with sound, image and interaction laid beside the headings they serve.
 
-The plain page stays plain. The `.md` is the considered truth and keeps its beauty in Obsidian; the rich face is a reading of it, not a copy ([[Learning Materials and Canon]]). Enrichment adds one door line under the hero, and tends — not as a strict rule — to place what it makes in the rich face and leave the text alone; the text still keeps what it needs to be understood, like formulas and essential graphics. When making teaches the text something, a small edit is shown to Loudon before it's written; a finding that changes what the page says goes home through the [[Deposit Ceremony]]'s map, which he approves.
+The plain page stays plain. The `.md` is the considered truth and keeps its beauty in Obsidian; the rich face is a reading of it, not a copy ([[Learning Materials and Canon]]). Enrichment adds one door line under the hero, and tends — not as a strict rule — to place what it makes in the rich face and leave the text alone; the text still keeps what it needs to be understood, like formulas and essential graphics. When making teaches the text something, an edit that changes no claim is shown to Loudon before it's written; a finding that changes what the page says goes home through the [[Deposit Ceremony]]'s map, which he approves.
 
 ## Trigger
 
@@ -79,7 +79,7 @@ The renderer, its server and the fingerprint tool are `_ops/rich-face/` (README 
 3. **Make it with the Shop**, at one tier for the whole page — a Sketch tonight, a Study, a Piece over days. The [[Maker]] picks the Specialists. Equations appear twice, symbols and words ([[Loudon Live Design System]]).
 4. **Verify what can be verified.** Run each piece's engine against the claim it makes; load the page and read the console. Name what you couldn't check — an agent can't hear the mix.
 5. **Stamp** each section: `node _ops/rich-face/fingerprint.mjs "<Entry>" --stamp`.
-6. **Carry findings home, split by size.** When making a piece teaches the text something: a small edit is shown to Loudon before it's written, then re-stamp that section. A finding that changes what the page *says* goes home through the [[Deposit Ceremony]]'s map, which Loudon approves, before it's written.
+6. **Carry findings home, split by what they change.** When making a piece teaches the text something: an edit that changes no claim — a unit fixed, a symbol renamed to match the piece — is shown to Loudon before it's written, then re-stamp that section. A finding that changes what the page *says* goes home through the [[Deposit Ceremony]]'s map, which Loudon approves, before it's written.
 7. **Place the door** — one italic line under the hero linking the rich face — and commit `enrich(<Entry>): <what> — <tier>`. The body names the version the run ran under, what was and wasn't verified, and what this run taught the ceremony ("nothing" is a legal answer); the run marks the tuning file with its run line, and a lesson that changed the spec also goes there as a numbered item.
 
 ## Drift — how the two faces stay honest
