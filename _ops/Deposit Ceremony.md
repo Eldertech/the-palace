@@ -9,6 +9,7 @@ born: 2026-03
 last_activated: 2026-03-21
 activation_count: 4
 stage: growing
+version: "1.0"
 links:
   - target: "[[Harvest Ceremony]]"
     type: emerged-from
@@ -120,6 +121,8 @@ Claude's specific obligations at all times:
 
 ## Steps
 
+Open with the tail read of [[Deposit Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this deposit's first candidates for a spec change.
+
 **Pre-step: Intent Declaration**
 
 Before describing the conversation or proposing any map, state in one sentence: *what is this deposit trying to preserve, and for whom?* This is not the deposit map — it is the compression target that guides every decision in the ceremony. Example: *“This deposit preserves the insight that the deposit ceremony is a form of lossy compression — encoded so a future agent can regenerate the conversation that produced it.”* The intent declaration takes 30 seconds. Without it, compression defaults to low-distortion summarization rather than high-perception generative encoding.
@@ -228,6 +231,8 @@ Pass (as CLI flags, or the JSON-body equivalents):
 - `--body "<the synthesis>"` — everything the archive row used to carry: what was created, the through-line, lost branches, and a `Weave flags:` line naming any flags posted (provenance, not queue — the flags live on the board). Unlimited length; **this body is the archive entry.**
 - `--verify <verified|unverified|couldnt>` — the honest state.
 
+The body also names the version the deposit ran under and ends with what this run taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file.
+
 The committer derives `Palace-Entry:` from the staged `.md` paths; add an explicit `Palace-Entry: <Title>` for any *updated* (not newly-added) entry so it appears on the card. Optional `Palace-Source: <conversation ref>` preserves provenance.
 
 **Then the weave flags — through the writer, never by hand.** One command per flag:
@@ -269,3 +274,7 @@ The deposit is complete when:
 5. **Step 7c ran and passed**, and the closing note carried a punchlist — what to look at first, and what could not be verified. Weave flags, if any, went through `commons weave-flag` and are on the owner's board.
 
 Item 5 is the one that changed in 2026-09. Every item above it was already a claim the ceremony asserted; only this one is *checked*, and it is what makes `--verify verified` mean anything. A deposit that cannot verify its postcondition has not completed.
+
+---
+
+*The version and what each deposit taught the ceremony: [[Deposit Ceremony — tuning]].*
