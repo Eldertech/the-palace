@@ -1,0 +1,9 @@
+{
+  "title": "Whisper",
+  "idiom": "illuminated-manuscript ink and quill",
+  "hero_prompt": "A wide illuminated-manuscript ink drawing on vellum: a scribe bends over a desk as sound drifts from a small carved horn and settles onto the page as flowing abstract brush ribbons, not writing, most ribbons firm and dark, one thinning into blank vellum where the voice fell silent. Hand-made illuminated-manuscript ink and quill, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
+  "icon_prompt": "Bold ink-silhouette icon: a quill nib beside one thick sound-wave arc, heavy two-tone strokes only, no fine cross-hatching, high contrast, reads at small size.",
+  "seeds": {},
+  "rendered_at": "2026-09-25T02:18:56Z",
+  "history": []
+}

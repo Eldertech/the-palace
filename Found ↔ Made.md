@@ -28,6 +28,8 @@ forward_vector: "I am the axis beneath the palace's craft-and-systems tensions �
 
 # Found ↔ Made
 
+![[Found ↔ Made — hero.png]]
+
 Two answers to a single question — *where does a thing's essence come from?*
 
 **Found.** The essence is already there; the maker's job is to uncover it and get out of the way. [[Rick Rubin]]: the work is already finished, you clear away what hides it. [[George Nakashima]]: the tree already has the shape it wants to become — the split and the burl are messages, not flaws. The move is to *listen and subtract*, never impose.

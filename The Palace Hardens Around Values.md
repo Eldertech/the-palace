@@ -29,6 +29,8 @@ forward_vector: "I am the palace's center of gravity made explicit: I want every
 
 # The Palace Hardens Around Values
 
+![[The Palace Hardens Around Values — hero.png]]
+
 The palace is built so that its **center of gravity is language, not code**. Values live in canon as plain text, in plain speech. Scripts, tools, ceremonies, whole subsystems are **servants of those values** — helpers that support them, never sources of truth themselves. This is not a stylistic preference. It is the load-bearing decision that lets the palace stay healthy across any upgrade in technology: when the tools change, the values do not, and every tool can be **judged against a value and updated from a value statement**. A script is only ever right insofar as it serves a value you can read in plain words. Delete the script and the value survives; delete the value and the script is noise.
 
 This is the deep *why* under [[Weave Ceremony|the Weave's]] values-primary rule (scans detect and flag; the mind of the moment decides; a rule earns a script only after repeated rounds prove it mechanical) and under [[The Palace Voice|plain speaking]] as method. Both are the same conviction from different angles: **keep the meaning in the language, and let the machinery be replaceable.**

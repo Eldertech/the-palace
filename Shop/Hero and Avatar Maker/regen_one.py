@@ -77,7 +77,8 @@ TINY_PNG = base64.b64decode(
 # Hard rule (never overridable): FLUX letters engraving/manuscript idioms even
 # when told "no text", so every prompt carries this clause. Mirrors batch_hubs.
 ANTI_TEXT = (" Absolutely no letters, no numerals, no words, no labels, no captions, "
-             "no inscriptions, no writing of any kind anywhere in the image — purely pictorial.")
+             "no inscriptions, no writing of any kind anywhere in the image, and no artist's "
+             "signature, monogram or printmaker's mark in any corner — purely pictorial.")
 
 VALID_TARGETS = {"both", "hero", "icon"}
 

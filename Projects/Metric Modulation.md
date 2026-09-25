@@ -31,6 +31,8 @@ links:
 
 # Metric Modulation
 
+![[Metric Modulation — hero.png]]
+
 A tempo change where the new tempo is derived from a rhythmic value in the old tempo. Not a continuous glide — a reframing of the pulse itself. The listener hears smooth transition because the underlying rhythmic grid doesn't stop; it reinterprets.
 
 ## What Metric Modulation Is

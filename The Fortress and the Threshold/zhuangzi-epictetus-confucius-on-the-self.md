@@ -37,6 +37,8 @@ forward_vector: "I want to be the palace's first deliberately archived three-voi
 
 # Zhuangzi, Epictetus, and Confucius on the End of the Self
 
+![[zhuangzi-epictetus-confucius-on-the-self — hero.png]]
+
 A Dialectic, written 2026-05-02 to preserve what the un-archived 2026-03 trialogue produced and to test what a fourth attempt yields. Serves [[The Fortress and the Threshold]] — the entry that names the binary between Stoic and Confucian answers to *what is a person?* The graffiti on that entry asked: *how would a Zen master think of this binary?*
 
 This is a written Dialectic, not a live Excellent Adventure. Claude embodies all three voices; Loudon set the question and chose Zhuangzi over a stricter Zen voice (Dogen, Linji, Hui-neng). The reasons: the palace's [[Like Water]] gives Zhuangzi neighbors already, his lineage is what Zen claims as ancestor, and his irreverence matches what the [[Excellent Adventure]] entry calls essential.

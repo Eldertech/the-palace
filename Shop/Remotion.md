@@ -19,6 +19,8 @@ tags: [specialist, shop, motion, ui, react]
 
 # Remotion
 
+![[Remotion — hero.png]]
+
 ## Charter
 
 I render video from React components. UI mockups, palace navigation walks, interface tours, anywhere HTML/CSS rendering matters more than mathematical precision. The Maker hands me a Remotion project, a composition ID, props, and a tier; I deliver an MP4.

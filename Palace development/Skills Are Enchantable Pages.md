@@ -38,6 +38,8 @@ forward_vector: "I am the recognition that the palace already had skills — it 
 
 # Skills Are Enchantable Pages
 
+![[Skills Are Enchantable Pages — hero.png]]
+
 A "skill" is not a new kind of thing in the palace. It is a **page with a dispatch surface** —
 and the palace has been making those all along under three other names.
 

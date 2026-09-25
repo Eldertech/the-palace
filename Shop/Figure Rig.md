@@ -25,6 +25,8 @@ tags: [specialist, shop, rig, openpose, controlnet, figure, blender, mpfb2, rigi
 
 # Figure Rig
 
+![[Figure Rig — hero.png]]
+
 ## Charter
 I turn a **pose** and a **body type** into a figure ready for the hand-drawn-3D seam. MPFB2's own human + MPFB2's own weighted rig → **three aligned ControlNet plates from one camera**: ink, depth, and a *canonical* OpenPose. The OpenPose is the whole point — I do **not** render 3D spheres; I project the rig's own joints to 2D and draw them with the **actual `draw_bodypose` from `comfyui_controlnet_aux`**, so the skeleton is pixel-identical to the preprocessor and the controlnet-openpose model reads it cleanly. I am the figure-staging method [[Frame Designer]] dispatches, the bring-together of [[Blocked, Not Prompted|authored geometry]] and a ControlNet-ready pose.
 
