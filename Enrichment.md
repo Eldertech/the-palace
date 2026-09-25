@@ -7,7 +7,7 @@ last_activated: 2026-09
 stage: growing
 confidence: working
 energy: very high
-version: "2.2"
+version: "2.3"
 forward_vector: "I am the ceremony that makes one page as rich as the Shop can make it — sound, image and interaction laid beside the entry's own words, which I read live and never copy. I want every enriched page to be something you can play, and every piece I make to test the text rather than decorate it; when a piece teaches the text something, I carry it home — shown to Loudon first, and through the Deposit Ceremony's map when it changes what the page says."
 links:
   - target: "[[Palace Ceremonies]]"
@@ -54,7 +54,7 @@ links:
 
 Say **"enrich [page]"** and the whole [[The Shop|Shop]] goes to work on one page, until it does what text can't: you hear the claim, play the equation, watch the idea move. What comes out is the page's **rich face** — the entry's own words as the spine, read live from the `.md`, with sound, image and interaction laid beside the headings they serve.
 
-The plain page stays plain. The `.md` is the considered truth and keeps its beauty in Obsidian; the rich face is a reading of it, not a copy ([[Learning Materials and Canon]]). Enrichment adds one door line under the hero, and tends — not as a strict rule — to place what it makes in the rich face and leave the text alone; the text still keeps what it needs to be understood, like formulas and essential graphics. When making teaches the text something, an edit that changes no claim is shown to Loudon before it's written; a finding that changes what the page says goes home through the [[Deposit Ceremony]]'s map, which he approves.
+The plain page stays plain. The `.md` is the considered truth and keeps its beauty in Obsidian; the rich face is a reading of it, not a copy ([[Learning Materials and Canon]]). Enrichment tends — not as a strict rule — to place what it makes in the rich face and leave the text alone; the text still keeps what it needs to be understood, like formulas and essential graphics. When making teaches the text something, an edit that changes no claim is shown to Loudon before it's written; a finding that changes what the page says goes home through the [[Deposit Ceremony]]'s map, which he approves.
 
 ## Trigger
 
@@ -62,7 +62,7 @@ The plain page stays plain. The `.md` is the considered truth and keeps its beau
 
 ## The rich face
 
-Open it at `http://localhost:5173/rich/?entry=<Entry>` while [[STIGMERGY]] runs, or `node _ops/rich-face/rich-server.mjs` for the same page at `http://127.0.0.1:8842/?entry=<Entry>`. Any entry opens; one that hasn't been enriched shows its text and the media it already embeds.
+In [[STIGMERGY]] the face switch at the right of an entry's top bar reaches it — `F` cycles text, rich, scroll — once the bundle holds the manifest. The direct address is `http://localhost:5173/rich/?entry=<Entry>`, or `node _ops/rich-face/rich-server.mjs` serves the same page at `http://127.0.0.1:8842/?entry=<Entry>`. Any entry opens there; one that hasn't been enriched shows its text and the media it already embeds.
 
 - **Three kinds of material, each labelled.** Figures the text already carries render as media, with their captions. Pieces the Shop *gathered* from the bundle and pieces it *made* live in a manifest, `[Entry]/[Entry] — rich.json`, keyed by heading. Small pieces sit in the margin beside their paragraph; video and interactives span the page beneath it. A page may carry a low room-tone bed.
 - **Made pieces live in the bundle** as `[Entry] — rich — <what>.<ext>`, self-describing like any bundle file; a coherent set of files gets one folder named for what the set is. Gathered pieces keep their names. A piece's `near` places it beside the paragraph or figure it clarifies, not at the bottom.
@@ -80,7 +80,7 @@ The renderer, its server and the fingerprint tool are `_ops/rich-face/` (README 
 4. **Verify what can be verified.** Run each piece's engine against the claim it makes; load the page and read the console. Name what you couldn't check — an agent can't hear the mix.
 5. **Stamp** each section: `node _ops/rich-face/fingerprint.mjs "<Entry>" --stamp`.
 6. **Carry findings home, split by what they change.** When making a piece teaches the text something: an edit that changes no claim — a unit fixed, a symbol renamed to match the piece — is shown to Loudon before it's written, then re-stamp that section. A finding that changes what the page *says* goes home through the [[Deposit Ceremony]]'s map, which Loudon approves, before it's written.
-7. **Place the door** — one italic line under the hero linking the rich face — and commit `enrich(<Entry>): <what> — <tier>`. The body names the version the run ran under, what was and wasn't verified, and what this run taught the ceremony ("nothing" is a legal answer); the run marks the tuning file with its run line, and a lesson that changed the spec also goes there as a numbered item.
+7. **Commit** `enrich(<Entry>): <what> — <tier>`. The body names the version the run ran under, what was and wasn't verified, and what this run taught the ceremony ("nothing" is a legal answer); the run marks the tuning file with its run line, and a lesson that changed the spec also goes there as a numbered item.
 
 ## Drift — how the two faces stay honest
 
@@ -92,7 +92,7 @@ Drift is disclosed, not prevented ([[Drift and Consolidation]]); when the faces 
 
 ## Postcondition
 
-The manifest's sections all read *in step* under `fingerprint.mjs`; every made piece is in the bundle, named and self-describing; the door line is in the entry; the page renders at `/rich/` with a clean console and its review dock; the commit body says what was verified and what wasn't.
+The manifest's sections all read *in step* under `fingerprint.mjs`; every made piece is in the bundle, named and self-describing; the manifest sits in the bundle, so the reader's face switch offers the rich face; the page renders at `/rich/` with a clean console and its review dock; the commit body says what was verified and what wasn't.
 
 ---
 
