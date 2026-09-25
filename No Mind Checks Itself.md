@@ -59,3 +59,7 @@ The open question this entry carries forward, unresolved on purpose: does the se
 ---
 
 *Deposited 2026-07-06 from the first Multi-Lens Weave, where three independent lenses surfaced the same principle.*
+
+## Active Baton
+
+[[No Mind Checks Itself — baton]] — drafted 2026-09-25
