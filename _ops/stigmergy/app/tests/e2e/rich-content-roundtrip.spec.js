@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
 
-// v0.3 round-trip — the end-state proof. POST ONE enrichment-shaped §2.2
+// v0.3 round-trip — the end-state proof. POST ONE artifact-carrying §2.2
 // message to the REAL persistent blackboard (exercising the untouched strict
-// validator with the payload.kind discriminator), reload, and confirm the
+// validator with artifact fields in the opaque payload), reload, and confirm the
 // artifact renders inline. The blackboard file is saved and restored so the
 // test leaves no trace — mirrors the live-message-arrived capture pattern.
 
-test('an enrichment-shaped message round-trips: POST → persist → render inline', async ({ page, request }) => {
+test('an artifact-carrying message round-trips: POST → persist → render inline', async ({ page, request }) => {
   const { readFileSync, writeFileSync } = await import('node:fs');
   const { resolve } = await import('node:path');
   const { fileURLToPath } = await import('node:url');
@@ -36,14 +36,13 @@ test('an enrichment-shaped message round-trips: POST → persist → render inli
       score: 'green',
     },
     payload: {
-      kind: 'enrichment_card',
-      content: 'round-trip proof: an enrichment card written through the strict validator.',
+      content: 'round-trip proof: an inline artifact written through the strict validator.',
       artifact_path: 'Kuramoto Coupling/fireflies-pond.png',
     },
   };
 
   try {
-    // The discriminator-in-payload must pass the UNTOUCHED §2.2 validator.
+    // Artifact fields in the opaque payload must pass the UNTOUCHED §2.2 validator.
     const res = await request.post('/api/persistent', {
       data: msg,
       headers: { 'Content-Type': 'application/json' },
@@ -60,7 +59,6 @@ test('an enrichment-shaped message round-trips: POST → persist → render inli
 
     const card = page.locator(`[data-testid="message-row"][data-id="${id}"]`);
     await card.waitFor({ timeout: 10_000 });
-    await expect(card.getByTestId('enrichment-tag')).toBeVisible();
     const img = card.locator('[data-artifact-type="image"] [data-testid="artifact-img"]');
     await expect(img).toBeVisible();
     await expect(img).toHaveAttribute('src', /\/api\/file\?path=/);

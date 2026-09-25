@@ -177,7 +177,7 @@ describe('buildQueue', () => {
   });
 
   it('ignores non-queue messages', () => {
-    const noise = { id: 'n', type: 'BROADCAST', board: 'GENERAL', ts: '2026-05-29T10:00:00Z', payload: { kind: 'enrichment_card' } };
+    const noise = { id: 'n', type: 'BROADCAST', board: 'GENERAL', ts: '2026-05-29T10:00:00Z', payload: { kind: 'status_note' } };
     expect(buildQueue([noise])).toHaveLength(0);
   });
 
