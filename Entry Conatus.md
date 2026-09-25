@@ -94,7 +94,7 @@ When writing or revising any forward vector across the palace:
 3. **Read what's missing.** What sub-vector is the entry secretly carrying that hasn't been named? Most entries want more than they admit.
 4. **Ask: what is this entry's hunger?** A finished entry is not finished — it has eaten its current vector and wants the next one.
 
-[[Enrichment]] meets the vector from the making side: a page enriched with the whole Shop takes its forward vector as the brief, and what the making teaches goes home as an edit — sometimes to the vector itself. The [[Weave Ceremony]] should add forward-vector linting to its sweep — entries with `remain`/`stay`/`continue` verbs are flagged for revision.
+[[Enrichment]] meets the vector from the making side: a page enriched with the whole Shop takes its forward vector as the brief, and what the making teaches goes home — shown to Loudon first, through the [[Deposit Ceremony]]'s map when it changes what the page says — sometimes to the vector itself. The [[Weave Ceremony]] should add forward-vector linting to its sweep — entries with `remain`/`stay`/`continue` verbs are flagged for revision.
 
 ## Origin — 2026-05-05
 

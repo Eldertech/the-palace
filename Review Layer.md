@@ -74,7 +74,7 @@ The reference kit ends in a clipboard or a downloaded file — Loudon still carr
 
 ## Kinship with Enrichment
 
-The Review Layer and [[Enrichment]] are two halves of one loop. Enrichment *sends* — a page made rich, its sound and interactives laid beside its words. The Review Layer *collects* — Loudon's reactions, in context, structured. Every rich face carries its own review surface, cut to this entry's granularity rule: one note per section of the page, plus one for the page as a whole, built to send to [[STIGMERGY]] as a `human_eval` from TRICKSTER — the loudon-eval poster, generalized past the rating sheet. What comes back is there for the page's next round to read.
+The Review Layer and [[Enrichment]] are two halves of one loop. Enrichment *sends* — a page made rich, its sound and interactives laid beside its words. The Review Layer *collects* — Loudon's reactions, in context, structured. Every rich face carries its own review surface, cut to this entry's granularity rule: one note per section of the page, plus one for the page as a whole, built to send to [[STIGMERGY]] as a `human_eval` from TRICKSTER — the loudon-eval poster, generalized past the rating sheet. What comes back sits on the board; nothing turns it into work yet — that is [[Enrichment]]'s open handoff.
 
 ## Where the habit lives
 
