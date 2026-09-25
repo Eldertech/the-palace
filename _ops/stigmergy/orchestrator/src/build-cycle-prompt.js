@@ -213,6 +213,11 @@ export function buildCyclePrompt(opts) {
     }
   }
 
+  // A steward that tends a service rather than a project (the Shopkeeper, a
+  // `maker`) carries one line of role framing in its manifest, so it works
+  // outward instead of treating its own page as the thing to build.
+  const roleSection = manifest.role ? `\n# Your role\n\n${manifest.role}\n` : '';
+
   // The scroll seam (2026-09-23). The project's `[Entry] — scroll.md` carries
   // two things the steward must read before it acts: Loudon's STANDING ORDERS
   // (taste and direction written once, so the steward stops re-asking) and the
@@ -336,7 +341,7 @@ ${pageChange.changed
 ${isFirstActivation
     ? `This is your **first activation** as a permanent steward. The directory at \`${agentDirRel}\` was created today. Your state is empty (iteration 0, no cursor). Read the full board below to ground yourself, then post SPINNING UP + at least one TRICKSTER ask per the steward template.`
     : `You last ran at **${state.last_active}**. The gap is invisible to you; continue from where state shows. Today is **${today}** and you are cycle **${cycleN}**.`}
-
+${roleSection}
 # Your home entry — ${manifest.home} (read in full)
 
 \`\`\`markdown

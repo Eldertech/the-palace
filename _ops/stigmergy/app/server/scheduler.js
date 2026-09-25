@@ -1,9 +1,9 @@
 // server/scheduler.js — the WATCH-AND-STEER surface for the Mac-side heartbeat
 // scheduler (the launchd jobs in _ops/heartbeat/).
 //
-// The autonomy mechanism is NOT greenfield: the steward batch + Shopkeeper sweep
-// already auto-fire via launchd plists in _ops/heartbeat/launchd/, each wrapped
-// by a shell script that holds a 2-day stamp guard. The problem the v2.0 baton
+// The autonomy mechanism is NOT greenfield: the steward batch already
+// auto-fires via a launchd plist in _ops/heartbeat/launchd/, wrapped by a shell
+// script that holds a 2-day stamp guard. The problem the v2.0 baton
 // names is that this machinery is an INVISIBLE cron — and right now it is not
 // even installed. This module makes it legible (WATCH) and gives it one honest
 // lever (STEER), without ever shelling out.
@@ -30,9 +30,8 @@ const HEARTBEAT_REL = '_ops/heartbeat';
 const DIGEST_REL = '_ops/stigmergy/trickster-auto/heartbeat-latest.md';
 const PAUSE_BASENAME = '.paused';
 
-// The two heartbeat jobs, in display order. The steward-batch is the primary
-// surface for the STEWARDS deck; the shopkeeper-sweep rides alongside because
-// the `.paused` flag pauses BOTH wrappers (a genuine global heartbeat pause).
+// The heartbeat jobs the deck watches, in display order. The steward-batch is
+// the primary surface for the STEWARDS deck.
 const JOBS = [
   {
     kind: 'steward-batch',
@@ -43,16 +42,6 @@ const JOBS = [
     stamp: '.last-steward-batch',
     logPrefix: 'steward-batch-',
     title: 'steward batch',
-  },
-  {
-    kind: 'shopkeeper-sweep',
-    primary: false,
-    label: 'com.loudon.palace.shopkeeper-sweep',
-    plist: 'com.loudon.palace.shopkeeper-sweep.plist',
-    wrapper: 'run-shopkeeper-sweep.sh',
-    stamp: '.last-shopkeeper-sweep',
-    logPrefix: 'shopkeeper-sweep-',
-    title: 'shopkeeper sweep',
   },
 ];
 
@@ -305,7 +294,7 @@ export function setSchedulerPaused({ palaceRoot, paused, now = Date.now() } = {}
       writeFileSync(flagPath,
         `paused by STIGMERGY at ${ts}\n` +
         '# While this file exists, the heartbeat wrappers (run-steward-batch.sh,\n' +
-        '# run-shopkeeper-sweep.sh) no-op on each fire. Remove it — or click resume\n' +
+        '# run-commons-reaper-sweep.sh) no-op on each fire. Remove it — or click resume\n' +
         '# in the STEWARDS deck — to re-enable. launchd is never touched.\n',
         'utf8');
       return { ok: true, paused: true, flag_path: flagPath, pause_flag_rel: `${HEARTBEAT_REL}/${PAUSE_BASENAME}`, paused_since: ts };

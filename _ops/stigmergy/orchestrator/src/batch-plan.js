@@ -124,7 +124,11 @@ for (const dir of stewardDirs) {
   };
 
   if (!homeFile) { rec.reason = 'home_page_not_found'; plan.skipped.push(rec); continue; }
-  const verdict = dueForCycle({ stage, status, lastActive: rec.last_active, now, debounceHours, ignoreDebounce });
+  // The status gate reads project lifecycle (active | complete | archived). A
+  // stewarded service page's status means something else — a maker's is
+  // alive | stub — so for anything but a project the gate is not applied.
+  const isProject = !fm.type || fm.type === 'project';
+  const verdict = dueForCycle({ stage, status: isProject ? status : undefined, lastActive: rec.last_active, now, debounceHours, ignoreDebounce });
   if (!verdict.due) { rec.reason = verdict.reason; plan.skipped.push(rec); continue; }
   plan.due.push(rec);
 }
