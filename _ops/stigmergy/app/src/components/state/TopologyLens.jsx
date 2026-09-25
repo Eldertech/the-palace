@@ -17,6 +17,7 @@ import { buildPillarsByPath, annotateBridges, bridgeCounts } from '../../lib/top
 import {
   buildIconByPath, attachIcons, avatarRadiusFor, avatarCount,
 } from '../../lib/topology-avatars.js';
+import { fileUrl } from '../../lib/public-mode.js';
 
 // TOPOLOGY -- the typed-link graph lens. Renders the freshest
 // palace-map-full-*.json as a force-directed canvas. Clicking a node
@@ -340,7 +341,7 @@ export default function TopologyLens({ onSelect, entries = [] }) {
       img.decoding = 'async';
       img.onload = () => { if (drawRef.current) drawRef.current(); };
       img.onerror = () => { img._failed = true; if (drawRef.current) drawRef.current(); };
-      img.src = `/api/file?path=${encodeURIComponent(iconPath)}`;
+      img.src = fileUrl(iconPath);
       imgCache.set(iconPath, img);
       return img;
     }
@@ -754,7 +755,7 @@ function HoverCard({ tooltipRef, info, entry }) {
     >
       {info.icon ? (
             <img
-              src={`/api/file?path=${encodeURIComponent(info.icon)}`}
+              src={fileUrl(info.icon)}
               alt=""
               width={38}
               height={38}

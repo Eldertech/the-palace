@@ -172,12 +172,16 @@
 </div>
 
 <script type="module">
-import { marked } from 'https://cdn.jsdelivr.net/npm/marked@12/lib/marked.esm.js';
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked@12.0.2/lib/marked.esm.js';
 import { parseEntry, sectionProse, sectionKey, fingerprint } from './_rich/parse.js';
 
 const params = new URLSearchParams(location.search);
 const ENTRY = params.get('entry') || 'Kuramoto Coupling';
-const REVIEW = params.get('review') !== '0';
+// The public read view serves this page static (scripts/build-public.mjs sets
+// RICH_STATIC): lookups come from data/rich.json, nothing is posted, and the
+// text is the snapshot's rather than re-read live.
+const STATIC = window.RICH_STATIC === true;
+const REVIEW = !STATIC && params.get('review') !== '0';
 const $ = (s, el = document) => el.querySelector(s);
 const h = (tag, attrs = {}, ...kids) => {
   const el = document.createElement(tag);
@@ -205,7 +209,10 @@ let info, manifest, lastMd = '', entry, lastRead = Date.now();
 // Every URL is relative, so the page works at / and under STIGMERGY's /rich/.
 function mediaUrl(name) {
   if (name.startsWith('/')) return name.slice(1).split('/').map((p) => encodeURIComponent(decodeURIComponent(p))).join('/');
+  // Static: the snapshot's own map first — it knows the served name (a hero is a .jpg there).
+  if (STATIC && info.media && info.media[name]) return info.media[name];
   if (info.bundle && info.files.includes(name)) return info.bundle + encodeURIComponent(name);
+  if (STATIC) return info.bundle ? info.bundle + encodeURIComponent(name) : '';
   return `_api/media?name=${encodeURIComponent(name)}&prefer=${encodeURIComponent(info.bundle || '')}`;
 }
 
@@ -216,6 +223,11 @@ function mdToHtml(md, inline = false) {
     .replace(/\[\[([^\]|]+)(?:\|([^\]]*))?\]\]/g, (m, target, label) => {
       const t = target.trim(), l = (label || t.split('#')[0]).trim();
       if (/\.(mp4|webm|mov|wav|mp3|png|jpe?g|gif|webp|svg|html?)$/i.test(t)) return `[${l}](${mediaUrl(t)})`;
+      if (STATIC) {
+        // Static: a wikilink opens the entry in the read view, if it was published.
+        const p = info.paths && info.paths[t.split('#')[0]];
+        return p ? `[${l}](../?entry=${encodeURIComponent(p)} "wl")` : l;
+      }
       return `[${l}](?entry=${encodeURIComponent(t.split('#')[0])}${REVIEW ? '' : '&review=0'} "wl")`;
     });
   let html = inline ? marked.parseInline(pre) : marked.parse(pre);
@@ -278,7 +290,7 @@ async function mediaEl(name, opts = {}) {
 
 let mermaidMod;
 async function diagramEl(code) {
-  mermaidMod = mermaidMod || (await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs')).default;
+  mermaidMod = mermaidMod || (await import('https://cdn.jsdelivr.net/npm/mermaid@11.15.0/dist/mermaid.esm.min.mjs')).default;
   mermaidMod.initialize({ startOnLoad: false, theme: 'dark', securityLevel: 'loose', fontFamily: 'Manrope, system-ui, sans-serif' });
   const box = h('div', { class: 'diagram' });
   try { const { svg } = await mermaidMod.render('m' + Math.random().toString(36).slice(2), code); box.innerHTML = svg; }
@@ -499,8 +511,8 @@ async function poll() {
     }
   } catch { /* the server may be restarting; try again */ }
 }
-setInterval(poll, 3000);
-setInterval(() => { const s = Math.round((Date.now() - lastRead) / 1000); $('#sync').innerHTML = `text <b>live</b> · read ${s < 2 ? 'just now' : s + 's ago'}`; }, 1000);
+if (!STATIC) setInterval(poll, 3000);
+if (!STATIC) setInterval(() => { const s = Math.round((Date.now() - lastRead) / 1000); $('#sync').innerHTML = `text <b>live</b> · read ${s < 2 ? 'just now' : s + 's ago'}`; }, 1000);
 
 // ── the face switch ──
 // The same switch the reader carries (_ops/stigmergy/app/src/components/FaceSwitch.jsx):
@@ -510,13 +522,17 @@ setInterval(() => { const s = Math.round((Date.now() - lastRead) / 1000); $('#sy
 // text and scroll open there; served alone, the text opens in Obsidian and
 // the scroll isn't offered. F cycles.
 function layFaces() {
-  const mdRel = decodeURIComponent(info.md).replace(/^\//, '');
+  // The entry's palace-relative path (static: given; live: the served URL is that path).
+  const mdRel = info.path || decodeURIComponent(info.md).replace(/^\//, '');
   const stem = info.title;
   const underApp = /\/rich\/$/.test(location.pathname);
   const obsidian = `obsidian://open?vault=The%20Palace&file=${encodeURIComponent(mdRel.replace(/\.md$/, ''))}`;
   const href = {
     text: underApp ? `../?entry=${encodeURIComponent(mdRel)}` : obsidian,
-    scroll: underApp && (info.files || []).includes(`${stem} — scroll.md`) ? `../?deck=projects&project=${encodeURIComponent(stem)}` : null,
+    // Live, the scroll view on the PROJECTS deck; static, the scroll itself in the reader.
+    scroll: !underApp || !(info.files || []).includes(`${stem} — scroll.md`) ? null
+      : STATIC ? `../?entry=${encodeURIComponent(`${mdRel.replace(/\.md$/, '')}/${stem} — scroll.md`)}`
+      : `../?deck=projects&project=${encodeURIComponent(stem)}`,
   };
   const faces = $('#faces');
   for (const f of ['text', 'rich', 'scroll']) {
@@ -525,7 +541,7 @@ function layFaces() {
   }
   faces.hidden = false;
   // Obsidian stays one click away on your own machine, outside the switch.
-  if (underApp && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) {
+  if (!STATIC && underApp && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) {
     $('#obs').href = obsidian; $('#obs').hidden = false;
   }
   const order = [...faces.querySelectorAll('a.btn')];
@@ -540,9 +556,10 @@ function layFaces() {
 
 // ── boot ──
 async function boot() {
-  const r = await fetch(`_api/resolve?entry=${encodeURIComponent(ENTRY)}`);
-  if (!r.ok) { $('#sections').append(h('div', { class: 'err' }, `No entry named “${ENTRY}”.`)); return; }
-  info = await r.json();
+  const r = await fetch(STATIC ? '../data/rich.json' : `_api/resolve?entry=${encodeURIComponent(ENTRY)}`);
+  info = r.ok ? (STATIC ? (((await r.json()).entries || {})[ENTRY] || null) : await r.json()) : null;
+  if (!info) { $('#sections').append(h('div', { class: 'err' }, `No entry named “${ENTRY}”.`)); return; }
+  if (STATIC) $('#sync').innerHTML = 'text <b>snapshot</b>';
   document.title = `${info.title} · rich face`;
   manifest = info.manifest ? await (await fetch(info.manifest, { cache: 'no-store' })).json() : null;
   lastMd = await (await fetch(info.md, { cache: 'no-store' })).text();

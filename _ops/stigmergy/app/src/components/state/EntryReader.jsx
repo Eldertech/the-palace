@@ -12,6 +12,7 @@ import { fetchProjects } from '../../adapters/projects.js';
 import { rowSignal } from '../../lib/scroll-view.js';
 import FaceSwitch from '../FaceSwitch.jsx';
 import { orderFaces, nextFace, richHref } from '../../lib/faces.js';
+import { fileUrl, IS_PUBLIC } from '../../lib/public-mode.js';
 
 // One entry's full read shape, rendered:
 //   - FrontmatterHeader (title, type, stage, pillars, forward_vector,
@@ -112,7 +113,8 @@ export default function EntryReader({
     ? (okEntry.face_of ?? { path: okEntry.path, title: okEntry.title, faces: okEntry.faces, files: okEntry.face_files })
     : null;
   const isProject = okEntry?.frontmatter?.type === 'project';
-  const wantsRow = !!faceOwner && (isProject || (faceOwner.faces || []).includes('scroll'));
+  // The read view has no board or stewards, so no row to fetch.
+  const wantsRow = !IS_PUBLIC && !!faceOwner && (isProject || (faceOwner.faces || []).includes('scroll'));
   const projectTitle = faceOwner?.title ?? null;
   useEffect(() => {
     if (!wantsRow || !projectTitle) { setProjectRow(null); return undefined; }
@@ -190,7 +192,7 @@ export default function EntryReader({
   // Cache-buster: a companion regen overwrites the hero PNG in place (same path),
   // so the browser would keep showing the old backdrop after a reload. The file's
   // byte size changes between renders — append it so the new image loads.
-  const heroBust = heroFile && typeof heroFile.size === 'number' ? `&v=${heroFile.size}` : '';
+  const heroVersion = heroFile && typeof heroFile.size === 'number' ? heroFile.size : null;
 
   // The face switch. SCROLL always opens the scroll view on the PROJECTS deck
   // (it reads any entry's scroll, ceremonies included, with a live Now zone),
@@ -228,7 +230,7 @@ export default function EntryReader({
             // black before the body text begins; desaturated + dimmed so it
             // reads as ambient, not as a competing surface.
             backgroundImage:
-              `linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent) 0%, var(--bg) 95%), url("/api/file?path=${encodeURIComponent(heroPath)}${heroBust}")`,
+              `linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent) 0%, var(--bg) 95%), url("${fileUrl(heroPath, heroVersion)}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center 22%',
             backgroundRepeat: 'no-repeat',
@@ -287,6 +289,7 @@ export default function EntryReader({
             [<b style={{ color: 'var(--phosphor-white)' }}>E</b>]&nbsp;edit
           </span>
         ) : null}
+        {!IS_PUBLIC ? (<>
         <span
           data-testid="enchant-entry"
           onClick={() => setEnchanting(true)}
@@ -315,6 +318,7 @@ export default function EntryReader({
         >
           [<b style={{ color: 'var(--phosphor-white)' }}>L</b>]&nbsp;lens
         </span>
+        </>) : null}
         {picking !== null ? (
           <span style={{ marginLeft: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
             <input
@@ -408,7 +412,7 @@ export default function EntryReader({
             refIndex={refIndex}
             onNavigate={onNavigate}
           />
-          <BundlePanel bundle={entry.bundle} />
+          {!IS_PUBLIC ? <BundlePanel bundle={entry.bundle} /> : null}
         </div>
       </div>
       </div>

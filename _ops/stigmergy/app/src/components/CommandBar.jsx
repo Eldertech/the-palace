@@ -17,6 +17,11 @@ function LiveIndicator({ liveState = 'offline' }) {
   let label, color;
   if (liveState === 'connected') { label = 'LIVE'; color = 'var(--phosphor)'; }
   else if (liveState === 'connecting' || liveState === 'reconnecting') { label = 'RECONNECTING'; color = 'var(--warn)'; }
+  else if (typeof liveState === 'string' && liveState.startsWith('snapshot')) {
+    // The read view: a static snapshot, read-only — `snapshot` or `snapshot:<date>`.
+    const day = liveState.split(':')[1];
+    label = day ? `READ-ONLY · SNAPSHOT ${day}` : 'READ-ONLY SNAPSHOT'; color = 'var(--phosphor-dim)';
+  }
   else { label = 'OFFLINE'; color = 'var(--error)'; }
   return (
     <span
