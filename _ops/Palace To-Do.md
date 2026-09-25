@@ -62,6 +62,18 @@ here if it feeds that, or if it is cheap and unblocks something that does.
 
 - [ ] **Decide whether `breakthrough` is still a live type** — nine exist, none since June, while July produced [[The Palace Speaks]], [[The Multilinear Self]], [[The Blindspot Is the Surprise Fuel]] and others all typed `concept`. Either the bar rose deliberately, which should be written into [[SCHEMA]] §1, or the type is dead vocabulary in the always-loaded floor. One decision either way.
 
+## Own-session threads re-homed from the 2026-09-24 close
+
+Seven unrelated loose ends the September weave declined to settle in place (each wants its own session, not a weave touch). Re-homed here so they aren't lost — see `Weave Ceremony — Context` for the weave's own record of declining them.
+
+- [ ] **[[Two Batons, One Board]] — the fixture that hardcodes its path** — the entry (and `Palace development/STIGMERGY v1.0 — Palace Front-End.md`) has three homes across the codebase, and `_ops/stigmergy/app/tests/e2e/state-deck.spec.js:255` hardcodes its exact path as a fixture. If the entry moves, the test breaks silently. Its own session.
+- [ ] **[[STIGMERGY Philosophical Lenses]] → The Lens — re-scope, not a fold** — The Lens's own body asks for this re-scope; the weave dropped it as too big for a fold. Its own session.
+- [ ] **[[Objects to Think With]] — the 21-project list needs re-deriving** — against Papert's own criterion, not just re-counted. Its own session.
+- [ ] **[[Shop/Maker]] — whether the Shop can hold an operated Specialist, and the Producer layer** — an architecture question, plus generalizing the Post-producer charter (Loudon deferred both, 2026-09-02). Its own session.
+- [ ] **[[SCHEMA]] — the hub bar is stale** — "≥5 typed links" was set when the palace had ~30 entries; the median is now 6. Candidate replacement: pointed at by three or more rooms not holding it, or top-decile inbound. Needs a Schema Ceremony.
+- [ ] **[[STIGMERGY]] — `reconcileQueue` still closes a card on a touch** — app code; the linter half landed (`5b21f070`) but the app itself wasn't fixed. Its own session.
+- [ ] **[[Curriculum Map]] / `project-stage-builder` — a stale path** — the skill references `Projects/curriculum-map.md`, which doesn't exist; the real entry is `Projects/Curriculum Map.md`, and a same-named lowercase bundle folder sits beside it. Check before the skill runs again.
+
 ## Palace upkeep that is cheap and unblocks something
 
 - [ ] **Finish the flat-file companion migration into bundles** — the steward half is done (19 stewards have bundle-local plans). Still flat: `Jewel — Context.md` and the three ceremony Context companions in `_ops/`. Per [[SCHEMA]] §8 they need only minimal frontmatter after the move. Next action: four `git mv`s and a link sweep.
