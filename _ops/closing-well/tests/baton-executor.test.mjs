@@ -10,7 +10,7 @@
 // So this tests the seam that actually broke: does a written baton carry the ONE
 // canonical checklist, verbatim, with the load-bearing close beats intact?
 //
-// Run:  node --test _ops/closing-well/tests/
+// Run:  node --test _ops/closing-well/tests/*.test.mjs
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
