@@ -6,6 +6,7 @@ born: 2026-08
 last_activated: 2026-08
 activation_count: 1
 stage: growing
+version: "1.0"
 forward_vector: "I meet Loudon when he comes back after time away and hand him the palace as the record says it stands — never as a returning instance imagines it. I summon the companion as my first act, ask the machine-readable surfaces before I interpret anything, and end on one move he can pick up. I refuse to read a gap as a failure. I want returning to be cheap enough that stepping away stays free."
 links:
   - target: "[[Palace Ceremonies]]"
@@ -50,7 +51,7 @@ links:
 3. Loudon signed the map, adjusted it, or declined it
 4. Anything found stale is fixed, queued on [[Palace To-Do]], or explicitly left with a reason
 5. No entry was edited on the strength of an inference about *why* the gap happened
-6. Git commit: `return(YYYY-MM-DD): [what the gap held, in one line]`
+6. Git commit: `return(YYYY-MM-DD): [what the gap held, in one line]`. A return leaves no report file, so this commit is its record: the body names the version the run ran under and ends with what this run taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file
 
 **Failure mode:** If the queries cannot run, say so and stop. A return map assembled by reading the current snapshot is a guess wearing citations, and handing Loudon a confident guess is worse than handing him nothing.
 
@@ -77,6 +78,8 @@ This was written from a live failure. On 2026-08-25 a full palace assessment ran
 ## Protocol
 
 **Step 0 — Address the companion.** The [[Concierge]] is summoned at the open of any palace discussion, so by the time "I'm back" is said it should already exist — resume it; only summon if the surface genuinely couldn't at open. Either way it is addressed before anything else: *"what should I work on"* / *"I'm back"* routes to its **scout** posture. It runs the query block in its own window and drafts the map, keeping the main thread clean and the resident warm for the close.
+
+Then take the tail read of [[Return Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change, and an owed probe is run by hand beside the script until it lands.
 
 **Step 1 — The query block.** Run all of it before interpreting any of it. **One command runs the whole block** — `node _ops/concierge/return-map.mjs` (`--json` for structured output, `--since <date>` when the last session's date is known). It prints each probe beside the command that produced it, so every row of a map can cite a command rather than an inference, and prints `unavailable` with the error for any probe it cannot run. The block below is what it runs, kept here as the readable spec and the by-hand fallback.
 
@@ -139,3 +142,7 @@ Both are coupling failures, and coupling is two-sided. The palace had five cerem
 - Should the return map be written to a file, or spoken and discarded? [[Closing Well]] produces a signed artifact; this may be lighter by design.
 - ~~The query block will drift as the palace grows new surfaces. Does it want to become a script — `return-map.mjs` — the way `list-handoffs` did?~~ **Answered by building it, 2026-08-25:** `_ops/concierge/return-map.mjs`. The card keeps the command list as the readable spec and the by-hand fallback rather than surrendering it — a ceremony whose protocol is only executable is a ceremony a human can no longer audit. Open in its place: whether the two drift apart, and which one a future reader will trust when they disagree.
 - The Return's own tools (this card, `_ops/concierge/return-map.mjs`, `_ops/stigmergy/list-handoffs.mjs`) have zero mentions of `commit_handoff` or `cowork-git` — a Cowork commit handoff is visible only via `node _ops/cowork-git/handoff.mjs show`, so a query-block run can report "nothing open" while one sits waiting there. Named 2026-09-22 and held as a genuine gap, not a fix.
+
+---
+
+*The version and what each return taught the ceremony: [[Return Ceremony — tuning]].*
