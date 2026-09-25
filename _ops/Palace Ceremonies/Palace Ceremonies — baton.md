@@ -43,7 +43,7 @@ Claude Code on the Mac, palace root, `main`. Phase 2 fires inside a close, so it
 1. `SCHEMA — Reference.md` §6 (Versions, tuning, and run reports) and §8
 2. `SCHEMA — Context.md` — the v1.20 record, with its "Held open"
 3. `_ops/Weave Ceremony/Weave Ceremony — tuning.md` — the model as applied
-4. `Closing Well/Closing Well — gotchas.md`
+4. `Closing Well/Closing Well — tuning.md`
 5. `_ops/closing-well/executor.md`
 6. `_ops/Palace Ceremonies.md`
 7. `The Scroll.md`

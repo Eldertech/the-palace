@@ -170,5 +170,5 @@ Exit codes: `0` ok · `1` usage / not-found · `2` parse failure.
 
 ## Not built yet (Phase 6)
 
-- **Gotcha ledger wiring** — [[Closing Well — gotchas]] exists and is hand-appended; the
+- **Gotcha ledger wiring** — [[Closing Well — tuning]] exists and is hand-appended; the
   Agent appending to it *automatically* per close is Phase 6.

@@ -39,7 +39,7 @@ deferred flags are deliberately left open.
 - **Palace Enchantment** cross-ref (e4538455) — deferred content fold.
 - **toolbox recursion** (634a2386) — deferred dev.
 
-**Gotcha for [[Closing Well — gotchas]]:** a weave-apply that doesn't carry
+**Gotcha for [[Closing Well — tuning]]:** a weave-apply that doesn't carry
 `Palace-Resolves:` trailers (or touch the flag's *source* entry) leaves the board
 showing resolved flags as open — the graph is fixed but the board never hears. Emit
 the trailer per flag, or the next session re-triages done work.

@@ -105,3 +105,7 @@ perform it.
   pickups, so caught handoffs showed as ghosts — fixed on `fix/list-handoffs-ack-re`. On the
   strength of these signals, work moved forward: the doc-drift the test surfaced was fixed,
   and Phase 5 (executors + thin dispatch) began.
+
+## The Version and the Tuning File (2026-09-24)
+
+Closing Well took a version at the second close of 2026-09-24, as the second ceremony versioned under Schema v1.20, after the Weave. It was the model for the whole scheme — its ledger already recorded what each close taught it — but nothing on the page said which spec a close had run under, and the ledger filled only when someone remembered to append. **1.0 is the spec as that close's Phase 2 left it:** `version: "1.0"` on `Closing Well.md` (the spec page; the thin `_ops/Closing Well Ceremony.md` trigger card carries none), the executor's `tuning` row, the close map stamped with the ceremony version and ending on what the run taught, the moderator opening by reading the ledger (Schema v1.21), and the resident check and `--session` rule in the dispatch. The ledger was renamed from `Closing Well — gotchas` to `Closing Well — tuning`, because "gotchas" stays with the Specialists' tool traps and a close tunes the ceremony; its doubled 12 and 13 became 12a/12b and 13a/13b rather than renumbering everything after them and breaking the citations that point in. Items 1–24 are one per close, from before the version existed; from 25 on, an item is written only when a close changed the spec.

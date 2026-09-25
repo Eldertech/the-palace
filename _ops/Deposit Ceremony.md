@@ -131,7 +131,7 @@ Before describing the conversation or proposing any map, state in one sentence: 
 
 A good deposit map is specific about:
 
-- **Fold or mint?** — ask this *first*, out loud, before the rest of the map. Does this elaborate or answer an entry that already exists — especially a live one being actively read? If so, fold it in; a parallel node beside a living entry fragments the neighborhood and risks a near-duplicate. Minting is the lower-friction motion (a blank file, versus finding the right seam in a long entry), which is exactly why it is the default and exactly why it needs a check. This is [[Closing Well — gotchas|gotcha 18]], and it is the question to put to the [[Concierge]] rather than answer alone.
+- **Fold or mint?** — ask this *first*, out loud, before the rest of the map. Does this elaborate or answer an entry that already exists — especially a live one being actively read? If so, fold it in; a parallel node beside a living entry fragments the neighborhood and risks a near-duplicate. Minting is the lower-friction motion (a blank file, versus finding the right seam in a long entry), which is exactly why it is the default and exactly why it needs a check. This is [[Closing Well — tuning|gotcha 18]], and it is the question to put to the [[Concierge]] rather than answer alone.
 - **Entry type** — concept · hub · project · source · meta · practice · person · question · spore · specialist · maker (see [[SCHEMA]] §1 for the current type vocabulary and decision tree)
 - **Pillar affiliations** — which pillars does this touch?
 - **Proposed stage** — seed, sprout, or growing?

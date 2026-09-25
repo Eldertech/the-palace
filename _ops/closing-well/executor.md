@@ -99,6 +99,17 @@ Weave acts.
 *Executor check:* the appended line validates (§9); it names a concrete `proposed_action`; it
 lands on the **owner** board (the only global rendezvous), not a worktree copy.
 
+### tuning → append  (reuse: the ledger file)
+Tuning is a ledger append, not a close-map species: it rides every close, whatever the map
+held. Take the close map's last line, *What this run taught the ceremony*. "Nothing" is a
+legal answer and places nothing. Otherwise append the next numbered item to
+`Closing Well/Closing Well — tuning.md` under a heading for this close — but only when the
+close changed the spec: the item names what the close showed, the spec change it forced, and
+the version that change produced ([[SCHEMA — Reference]] §6). A lesson that changed nothing
+stays in the close map and the commit body. Commit it with the spec change it records.
+*Executor check:* the item's number follows the last one; it names a spec change and a
+version; the version it names is the one now in `Closing Well.md`'s frontmatter.
+
 ### let go → (nothing to place)
 Named in the reckoning, released. No executor — naming what didn't survive is the
 reflection's job, not the mechanism's.
