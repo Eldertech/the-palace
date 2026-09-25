@@ -47,4 +47,8 @@ What each deposit taught the ceremony. Each item names what the run showed and t
 
 ## From the versioning read — 2026-09-25
 
-13. **§ Where the Deposit Lands still shows a hand-rolled commit with the retired subject** — `git -C "<owner>" commit -m "Deposit — …"` (`Deposit Ceremony.md:81`) — which Step 7b forbids. An example is what gets copied. Spec change owed: the example becomes the committer with `PALACE_ROOT="<owner>"`.
+13. **§ Where the Deposit Lands still shows a hand-rolled commit with the retired subject** — `git -C "<owner>" commit -m "Deposit — …"` (`Deposit Ceremony.md:81`) — which Step 7b forbids. An example is what gets copied. Paid in v2.0: the section folded into step 6, which shows the committer with `PALACE_ROOT="<owner>"`.
+
+## From Loudon's redefinition — 2026-09-25
+
+14. **The deposit was written for one door and entered through several.** Its text addressed an archivist returning to an old conversation, while finds arrived mid-session, from harvests, from closes and from stewards, and at a session close the machinery reduced a deposit to its commit. Loudon: a deposit is any time something larger is added to canon; it must stay reflective, with a careful map and a reminder to consult an elder, whoever is asking — "a palace protection measure" that carries the palace's values and cares for the palace and for whoever brings the find. Forced: **v2.0** — one opening for any depositor, the three things the gate protects, care for Loudon, a child and a spent close, the values stated as they bear on a deposit, the Concierge before the map, and a completion signal that the bringer hears what became of its offer. Duplicated craft (template, link pass, filing) now points to where it lives.

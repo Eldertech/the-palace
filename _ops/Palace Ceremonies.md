@@ -60,7 +60,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 | Ceremony | Trigger | What Happens | Full Spec |
 |---|---|---|---|
 | The Harvest | "Let's harvest" | Search a body of past work and surface candidates worthy of deposit. Writes candidates to a working list. | [[Harvest Ceremony]] |
-| The Deposit | "Let's deposit" / "Add this to the palace" | Bring one source deeply into the palace. Draft entries, propose links, write on approval. Closes as a **movement close** ([[Closing Well]] § Scope): a punchlist into the source thread — what to look at first, what couldn't be verified — and a verified postcondition, not an asserted one. The commit *is* the record (`deposit(<id>):` subject + `Palace-Kind: deposit` + synthesis in the body); the [[Deposit Archive]] is frozen — no row appended. | [[Deposit Ceremony]] |
+| The Deposit | "Let's deposit" / "Add this to the palace" | The gate for a find entering canon — a new entry, or a fold that changes what one says — from any door: the session in the room, a harvest, a close, a steward. Larger additions only; upkeep is an edit. Re-enter the source, consult the [[Concierge]], make a careful map, and write only what Loudon has read; whoever brought the find hears what became of it. Closes as a **movement close** ([[Closing Well]] § Scope): a punchlist into the source thread — what to look at first, what couldn't be verified — and a verified postcondition, not an asserted one. The commit *is* the record (`deposit(<id>):` subject + `Palace-Kind: deposit` + synthesis in the body); the [[Deposit Archive]] is frozen — no row appended. | [[Deposit Ceremony]] |
 | The Map Build | "Let's build the map" / "Map build" / "Build a neighborhood map for [X]" | Scan palace frontmatter, extract typed links, compile edge list and ghost nodes. Output TSV, adjacency list, or JSON. Full survey or bounded by neighborhood field. | [[Map Build Ceremony]] |
 
 ## Revival
@@ -86,7 +86,7 @@ Not full ceremonies, but palace-aware interactions that can happen in any conver
 
 | Trigger | What Happens |
 |---|---|
-| "Add this to the palace" | Draft a new entry from the current conversation. Show for approval before writing. |
+| "Add this to the palace" | Not ad hoc: it runs the [[Deposit Ceremony]], the one way a find enters canon. |
 | "Connect this to the palace" | Propose typed links between the current topic and existing entries. |
 | "What does the palace say about [topic]?" | Read relevant entries and synthesize. Follow typed links. |
 

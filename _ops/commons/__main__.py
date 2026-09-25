@@ -84,7 +84,7 @@ def cmd_terminate(args):
 def cmd_weave_flag(args):
     """Post one weave_flag BROADCAST to the WEAVE board, validated before it lands.
 
-    The one write path for a weave flag. Ceremonies (Deposit Step 7b, the Closing Well
+    The one write path for a weave flag. Ceremonies (Deposit step 7, the Closing Well
     executor) call this instead of hand-appending a line: `make_message` supplies the
     stub-health block the validator's exempt set expects, and the arg parser enforces
     the payload keys the Weave's Step 1c reader looks for. Hand-rolling both is how
