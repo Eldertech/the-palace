@@ -16,15 +16,15 @@ const ENTRIES = [
 describe('buildRefIndex', () => {
   it('maps each entry basename to { path, hasBundle, icon }', () => {
     const idx = buildRefIndex(ENTRIES);
-    expect(idx.get('Kuramoto Coupling')).toEqual({ path: 'Kuramoto Coupling.md', hasBundle: false, icon: null });
-    expect(idx.get('Retrospective Delay')).toEqual({ path: 'Projects/Retrospective Delay.md', hasBundle: true, icon: null });
+    expect(idx.get('Kuramoto Coupling')).toEqual({ path: 'Kuramoto Coupling.md', hasBundle: false, icon: null, faces: ['text'] });
+    expect(idx.get('Retrospective Delay')).toEqual({ path: 'Projects/Retrospective Delay.md', hasBundle: true, icon: null, faces: ['text'] });
   });
 
   it('carries the bundle icon path when present, null otherwise', () => {
     const idx = buildRefIndex(ENTRIES);
     expect(idx.get('Quantum Synthesizer')).toEqual({
       path: 'Projects/Quantum Synthesizer.md', hasBundle: true,
-      icon: 'Projects/Quantum Synthesizer/Quantum Synthesizer — icon.png',
+      icon: 'Projects/Quantum Synthesizer/Quantum Synthesizer — icon.png', faces: ['text'],
     });
     // a non-string / blank icon normalizes to null
     expect(buildRefIndex([{ path: 'X.md', has_bundle: true, icon: '' }]).get('X').icon).toBeNull();
@@ -33,7 +33,7 @@ describe('buildRefIndex', () => {
 
   it('treats a missing has_bundle as false', () => {
     const idx = buildRefIndex(ENTRIES);
-    expect(idx.get('FOUR PILLARS')).toEqual({ path: 'FOUR PILLARS.md', hasBundle: false, icon: null });
+    expect(idx.get('FOUR PILLARS')).toEqual({ path: 'FOUR PILLARS.md', hasBundle: false, icon: null, faces: ['text'] });
   });
 
   it('keeps the first occurrence on a basename collision', () => {
@@ -41,7 +41,13 @@ describe('buildRefIndex', () => {
       { path: 'A/Delay.md', has_bundle: true },
       { path: 'B/Delay.md', has_bundle: false },
     ]);
-    expect(idx.get('Delay')).toEqual({ path: 'A/Delay.md', hasBundle: true, icon: null });
+    expect(idx.get('Delay')).toEqual({ path: 'A/Delay.md', hasBundle: true, icon: null, faces: ['text'] });
+  });
+
+  it('carries the faces a summary reports, defaulting to the text alone', () => {
+    const idx = buildRefIndex([{ path: 'Kuramoto Coupling.md', has_bundle: true, faces: ['text', 'rich'] }]);
+    expect(idx.get('Kuramoto Coupling').faces).toEqual(['text', 'rich']);
+    expect(buildRefIndex([{ path: 'X.md', faces: 'rich' }]).get('X').faces).toEqual(['text']);
   });
 
   it('is safe on non-array / malformed input', () => {

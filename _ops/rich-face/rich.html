@@ -31,6 +31,12 @@
   .top button:hover, .top a.btn:hover { border-color: var(--border-hover, var(--accent-line)); color: var(--fg-1); }
   .top button[aria-pressed="true"] { border-color: var(--accent-line); color: var(--accent); }
   .sync { color: var(--fg-3); }
+  /* the face switch — the same switch as the reader's: this entry's faces, this one lit */
+  .faces { display: flex; gap: 6px; align-items: center; }
+  .faces .lbl { color: var(--fg-3); margin-right: 2px; }
+  .top .faces a.btn { border-style: dashed; color: var(--fg-3); }
+  .top .faces a.btn[aria-current="page"] { border-style: solid; border-color: var(--accent-line); color: var(--accent); cursor: default; }
+  .top a.obs { color: var(--fg-3); border-bottom-color: var(--border); }
   .sync b { color: #6bd45a; font-weight: 500; }
 
   /* ── page ── */
@@ -141,7 +147,8 @@
   <div class="left"><span>Rich face</span><span class="sync" id="sync">reading the text…</span></div>
   <div class="right">
     <button id="bed" hidden aria-pressed="false" title="the page's room tone, low and looped">room tone ▸</button>
-    <a class="btn" id="plain" href="#" title="the entry itself — canonical, plain">the text ↗</a>
+    <a class="obs" id="obs" hidden title="open the entry in Obsidian">obsidian ↗</a>
+    <span class="faces" id="faces" hidden><span class="lbl" title="this entry's faces — F cycles">face</span></span>
   </div>
 </div>
 <div class="page">
@@ -495,6 +502,42 @@ async function poll() {
 setInterval(poll, 3000);
 setInterval(() => { const s = Math.round((Date.now() - lastRead) / 1000); $('#sync').innerHTML = `text <b>live</b> · read ${s < 2 ? 'just now' : s + 's ago'}`; }, 1000);
 
+// ── the face switch ──
+// The same switch the reader carries (_ops/stigmergy/app/src/components/FaceSwitch.jsx):
+// the entry's faces in a fixed order — text, rich, scroll — with this one lit.
+// The bundle is the signal: a scroll shows when the entry's own folder holds
+// `<Name> — scroll.md`. Mounted at `<base>rich/` (STIGMERGY, the read view) the
+// text and scroll open there; served alone, the text opens in Obsidian and
+// the scroll isn't offered. F cycles.
+function layFaces() {
+  const mdRel = decodeURIComponent(info.md).replace(/^\//, '');
+  const stem = info.title;
+  const underApp = /\/rich\/$/.test(location.pathname);
+  const obsidian = `obsidian://open?vault=The%20Palace&file=${encodeURIComponent(mdRel.replace(/\.md$/, ''))}`;
+  const href = {
+    text: underApp ? `../?entry=${encodeURIComponent(mdRel)}` : obsidian,
+    scroll: underApp && (info.files || []).includes(`${stem} — scroll.md`) ? `../?deck=projects&project=${encodeURIComponent(stem)}` : null,
+  };
+  const faces = $('#faces');
+  for (const f of ['text', 'rich', 'scroll']) {
+    if (f === 'rich') faces.append(h('a', { class: 'btn', 'aria-current': 'page' }, 'rich'));
+    else if (href[f]) faces.append(h('a', { class: 'btn', href: href[f] }, f));
+  }
+  faces.hidden = false;
+  // Obsidian stays one click away on your own machine, outside the switch.
+  if (underApp && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) {
+    $('#obs').href = obsidian; $('#obs').hidden = false;
+  }
+  const order = [...faces.querySelectorAll('a.btn')];
+  document.addEventListener('keydown', (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey || (e.key !== 'f' && e.key !== 'F')) return;
+    if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
+    const i = order.findIndex((a) => a.getAttribute('aria-current') === 'page');
+    const next = order[(i + 1) % order.length];
+    if (next && next.href) { e.preventDefault(); location.assign(next.href); }
+  });
+}
+
 // ── boot ──
 async function boot() {
   const r = await fetch(`_api/resolve?entry=${encodeURIComponent(ENTRY)}`);
@@ -504,7 +547,7 @@ async function boot() {
   manifest = info.manifest ? await (await fetch(info.manifest, { cache: 'no-store' })).json() : null;
   lastMd = await (await fetch(info.md, { cache: 'no-store' })).text();
   entry = parseEntry(lastMd);
-  $('#plain').href = `obsidian://open?vault=The%20Palace&file=${encodeURIComponent(decodeURIComponent(info.md).replace(/^\//, '').replace(/\.md$/, ''))}`;
+  layFaces();
 
   // head
   const fm = entry.fm, head = $('#head');

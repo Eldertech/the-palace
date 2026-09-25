@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import FaceSwitch from '../FaceSwitch.jsx';
+import { orderFaces, nextFace, richHref } from '../../lib/faces.js';
 import { Box, Button } from '../primitives.jsx';
 import { fetchScroll, saveStandingOrders } from '../../adapters/projects.js';
 import { parseMakingSections } from '../../lib/scroll-view.js';
@@ -82,6 +84,29 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
   const index = palace?.index || new Map();
   const refIndex = palace?.refIndex || null;
   const onNavigate = palace?.openEntryInState || null;
+  // The face switch, SCROLL lit: the home entry's faces come from the palace
+  // name index (the /api/entries summaries), and this view is a scroll face
+  // whether or not the file has been written yet.
+  const homeRef = palace?.refIndex?.get?.(home) ?? null;
+  const homePath = (row && row.path) || homeRef?.path || null;
+  const scrollFaces = orderFaces([...(homeRef?.faces || ['text']), 'scroll']);
+  const selectFace = (f) => {
+    if (f === 'text' && homePath && onNavigate) return onNavigate(homePath);
+    if (f === 'rich' && homePath) return window.location.assign(richHref(homePath, import.meta.env.BASE_URL));
+    return undefined;
+  };
+  useEffect(() => {
+    function onKey(e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key !== 'f' && e.key !== 'F') return;
+      const t = e.target;
+      if (t && (/input|textarea|select/i.test(t.tagName) || t.isContentEditable)) return;
+      e.preventDefault();
+      selectFace(nextFace(scrollFaces, 'scroll'));
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
   const running = !!(worker && worker.running && worker.current === home);
 
   async function doSave() {
@@ -109,9 +134,6 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
           : row ? <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{row.status || '—'} · {row.stage || '—'}{row.stewarded ? ` · cycle ${row.iteration ?? 0}` : ' · no steward'}</span> : null}
         {running ? <RunningTag name={home} /> : null}
         <span style={{ flex: 1 }} />
-        {row && row.path && onNavigate ? (
-          <span data-testid="scroll-read-entry"><Button tone="default" onClick={() => onNavigate(row.path)}>read the entry</Button></span>
-        ) : null}
         {row && row.stewarded ? (
           <>
             <span data-testid={`steward-launch-${String(home).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}><Button tone="default" disabled={running} onClick={() => setLaunch(true)}>launch interactive</Button></span>
@@ -127,6 +149,7 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
           <span data-testid="scroll-enchant"><Button tone="primary" disabled={!canEnchant} onClick={() => setConfirmEnchant(true)}>enchant a steward</Button></span>
         )) : null}
         {scroll ? <a href={`/api/open?path=${encodeURIComponent(scroll.path)}`} style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, textDecoration: 'none', borderBottom: '1px dashed currentColor' }} title={scroll.path}>{scroll.exists ? 'open the file' : (isCeremony ? 'not on disk yet — scroll.js --ceremonies writes it' : 'not on disk yet — first cycle or save creates it')}</a> : null}
+        <FaceSwitch faces={scrollFaces} current="scroll" onSelect={selectFace} />
       </div>
       {feedback ? <div style={{ color: fbColor[feedback.tone], textShadow: feedback.tone === 'dim' ? 'none' : 'var(--glow)', fontSize: 12, marginBottom: 8 }}>{feedback.text}</div> : null}
       {error ? <div data-testid="scroll-error" style={{ color: 'var(--error)', textShadow: 'var(--glow)', border: '1px solid var(--error)', padding: 8 }}>{error}</div> : null}

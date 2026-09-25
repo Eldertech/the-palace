@@ -10,6 +10,8 @@ import { checkPathSafety } from '../../lib/entry-edit.js';
 import { usePalaceRef } from '../../lib/palace-ref.jsx';
 import { fetchProjects } from '../../adapters/projects.js';
 import { rowSignal } from '../../lib/scroll-view.js';
+import FaceSwitch from '../FaceSwitch.jsx';
+import { orderFaces, nextFace, richHref } from '../../lib/faces.js';
 
 // One entry's full read shape, rendered:
 //   - FrontmatterHeader (title, type, stage, pillars, forward_vector,
@@ -102,18 +104,44 @@ export default function EntryReader({
   // Hooks live up here, above the early returns.
   const palace = usePalaceRef();
   const [projectRow, setProjectRow] = useState(null);
-  const isProject = state.kind === 'ok' && (state.entry.frontmatter?.type === 'project');
-  const projectTitle = state.kind === 'ok' ? state.entry.title : null;
+  // The face owner: the entry itself, or — when this file IS a face (its
+  // scroll, `<Name>/<Name> — scroll.md`) — the entry it belongs to. The face
+  // switch reads the owner's faces and lights the one being read.
+  const okEntry = state.kind === 'ok' ? state.entry : null;
+  const faceOwner = okEntry
+    ? (okEntry.face_of ?? { path: okEntry.path, title: okEntry.title, faces: okEntry.faces, files: okEntry.face_files })
+    : null;
+  const isProject = okEntry?.frontmatter?.type === 'project';
+  const wantsRow = !!faceOwner && (isProject || (faceOwner.faces || []).includes('scroll'));
+  const projectTitle = faceOwner?.title ?? null;
   useEffect(() => {
-    if (!isProject || !projectTitle) { setProjectRow(null); return undefined; }
+    if (!wantsRow || !projectTitle) { setProjectRow(null); return undefined; }
     let live = true;
     fetchProjects().then((r) => {
       if (!live || !r.ok) return;
       setProjectRow((r.projects || []).find((p) => p.home === projectTitle) || null);
     });
     return () => { live = false; };
-  }, [isProject, projectTitle]);
+  }, [wantsRow, projectTitle]);
   const projectSignal = projectRow ? rowSignal(projectRow) : null;
+
+  // F cycles the faces. The handler reads the latest switch through a ref, so
+  // one listener serves every entry; modified keys (Cmd-F) and typing pass by.
+  const faceKeyRef = useRef(null);
+  faceKeyRef.current = null;
+  useEffect(() => {
+    function onKey(e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key !== 'f' && e.key !== 'F') return;
+      const t = e.target;
+      if (t && (/input|textarea|select/i.test(t.tagName) || t.isContentEditable)) return;
+      if (!faceKeyRef.current) return;
+      e.preventDefault();
+      faceKeyRef.current();
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   if (state.kind === 'loading') {
     return (
@@ -164,6 +192,25 @@ export default function EntryReader({
   // byte size changes between renders — append it so the new image loads.
   const heroBust = heroFile && typeof heroFile.size === 'number' ? `&v=${heroFile.size}` : '';
 
+  // The face switch. SCROLL always opens the scroll view on the PROJECTS deck
+  // (it reads any entry's scroll, ceremonies included, with a live Now zone),
+  // keyed on the bundle stem; the scroll file in this reader is the fallback
+  // where that deck isn't mounted. A project with a row has its scroll view
+  // even before the file is written, so the row alone lights SCROLL.
+  const faces = orderFaces(projectRow ? [...(faceOwner.faces || []), 'scroll'] : faceOwner.faces);
+  const currentFace = entry.face_of ? entry.face_of.face : 'text';
+  const ownerStem = faceOwner.path.split('/').pop().replace(/\.md$/, '');
+  const selectFace = (f) => {
+    if (f === 'text') return onNavigate?.(faceOwner.path);
+    if (f === 'rich') return window.location.assign(richHref(faceOwner.path, import.meta.env.BASE_URL));
+    if (f === 'scroll') {
+      if (palace?.openProjectScroll) return palace.openProjectScroll(projectRow?.home ?? ownerStem);
+      if (faceOwner.files?.scroll) return onNavigate?.(faceOwner.files.scroll);
+    }
+    return undefined;
+  };
+  if (faces.length > 1) faceKeyRef.current = () => selectFace(nextFace(faces, currentFace));
+
   return (
     <div data-testid="entry-reader" data-path={entry.path} style={{ position: 'relative', zIndex: 1 }}>
       {heroPath ? (
@@ -191,7 +238,8 @@ export default function EntryReader({
         />
       ) : null}
       <div style={{ position: 'relative', zIndex: 1 }}>
-      <div style={{ marginBottom: 8 }}>
+      <div style={{ marginBottom: 8, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
         {onGoBack ? (
           <span
             data-testid="go-back"
@@ -237,23 +285,6 @@ export default function EntryReader({
             }}
           >
             [<b style={{ color: 'var(--phosphor-white)' }}>E</b>]&nbsp;edit
-          </span>
-        ) : null}
-        {projectRow && palace?.openProjectScroll ? (
-          <span
-            data-testid="entry-to-scroll"
-            onClick={() => palace.openProjectScroll(entry.title)}
-            title={`this is a project — open its scroll (where it stands now, standing orders, the making trail)`}
-            style={{
-              marginLeft: 8,
-              cursor: 'pointer',
-              color: 'var(--phosphor)', textShadow: 'var(--glow)',
-              border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
-              textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
-            }}
-          >
-            [<b style={{ color: 'var(--phosphor-white)' }}>&gt;</b>]&nbsp;scroll
-            {projectSignal ? <span data-testid="entry-to-scroll-signal" style={{ marginLeft: 6, color: projectSignal.tone === 'err' ? 'var(--error)' : projectSignal.tone === 'warn' ? 'var(--warn)' : 'var(--phosphor-dim)', textShadow: projectSignal.tone === 'dim' ? 'none' : 'var(--glow)', fontSize: 10 }}>· {projectSignal.text}</span> : null}
           </span>
         ) : null}
         <span
@@ -346,6 +377,8 @@ export default function EntryReader({
             FRONTMATTER PARSE WARNING: {entry.error}
           </span>
         ) : null}
+      </div>
+      <FaceSwitch faces={faces} current={currentFace} onSelect={selectFace} signal={projectSignal} />
       </div>
 
       <FrontmatterHeader
