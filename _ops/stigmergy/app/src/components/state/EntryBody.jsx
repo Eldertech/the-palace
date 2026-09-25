@@ -3,6 +3,7 @@ import { parseLinks, hrefFor } from '../../lib/format.js';
 import MermaidBlock from './MermaidBlock.jsx';
 import EntryRefChips from '../EntryRefChips.jsx';
 import { resolveRef } from '../../lib/entry-ref.js';
+import { fileUrl } from '../../lib/public-mode.js';
 
 // Minimal markdown renderer for entry bodies. Intentionally scoped: the
 // goal is "a reader can audit an entry" -- not Obsidian-parity rendering.
@@ -102,10 +103,9 @@ function resolveEmbedSrc(target, bundleFiles) {
       || f.relPath === t || (typeof f.relPath === 'string' && f.relPath.split('/').pop() === base))
   ));
   if (hit) {
-    const bust = typeof hit.size === 'number' ? `&v=${hit.size}` : '';
-    return { src: `/api/file?path=${encodeURIComponent(hit.relPath)}${bust}` };
+    return { src: fileUrl(hit.relPath, typeof hit.size === 'number' ? hit.size : null) };
   }
-  if (t.includes('/')) return { src: `/api/file?path=${encodeURIComponent(t)}` };
+  if (t.includes('/')) return { src: fileUrl(t) };
   return null;
 }
 

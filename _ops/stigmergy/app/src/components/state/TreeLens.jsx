@@ -6,6 +6,7 @@ import { typeColor } from '../../lib/entry-style.js';
 import { scoreEntry } from '../../lib/pulse.js';
 import { withRootGroup, flattenVisible, ancestorsToExpand } from '../../lib/tree.js';
 import { fetchTree } from '../../adapters/tree.js';
+import { openUrl, IS_PUBLIC } from '../../lib/public-mode.js';
 
 // Where the open-folder set persists across lens round-trips within a session.
 const EXPANDED_STORAGE_KEY = 'stigmergy.tree.expanded';
@@ -139,7 +140,7 @@ function BundleFileRow({ row, onSelect }) {
     // Owned .md files are entries — open them in the reader. Everything else
     // opens natively, the way BundlePanel does it.
     if (file.isEntry) onSelect?.(file.relPath);
-    else window.open(`/api/open?path=${encodeURIComponent(file.relPath)}`, '_self');
+    else window.open(openUrl(file.relPath), IS_PUBLIC ? '_blank' : '_self');
   };
   return (
     <div
@@ -170,7 +171,7 @@ function LooseFileRow({ row }) {
     <div
       data-testid="tree-loose-file-row"
       data-path={file.relPath}
-      onClick={() => window.open(`/api/open?path=${encodeURIComponent(file.relPath)}`, '_self')}
+      onClick={() => window.open(openUrl(file.relPath), IS_PUBLIC ? '_blank' : '_self')}
       style={{ ...ROW_BASE, paddingLeft: `${6 + depth * INDENT_CH * 8}px`, cursor: 'pointer' }}
     >
       <span style={{ width: '1.2ch', textAlign: 'center', color: 'var(--phosphor-dim)' }}>·</span>

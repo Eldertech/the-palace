@@ -4,9 +4,11 @@
 // on network/HTTP failure rather than throwing — the lens renders an inline
 // error band instead of a runtime exception (same contract as fetchEntries).
 
+import { IS_PUBLIC, dataUrl } from '../lib/public-mode.js';
+
 export async function fetchTree() {
   try {
-    const res = await fetch('/api/tree', { headers: { Accept: 'application/json' } });
+    const res = await fetch(IS_PUBLIC ? dataUrl('tree.json') : '/api/tree', { headers: { Accept: 'application/json' } });
     if (!res.ok) {
       return { ok: false, status: res.status, error: `http ${res.status}` };
     }
