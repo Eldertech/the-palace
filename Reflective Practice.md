@@ -36,6 +36,8 @@ forward_vector: "I teach the difference between thinking while the work can stil
 
 # Reflective Practice
 
+![[Reflective Practice — hero.png]]
+
 *Also: reflection-in-action · reflection-on-action · knowing-in-action · reflecting surface ·
 over-reflection · Donald Schön.*
 

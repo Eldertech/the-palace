@@ -26,6 +26,8 @@ forward_vector: "I want to become the palace's cross-paradigm reference for stat
 
 # State Machine
 
+![[State Machine — hero.png]]
+
 A system that is always in exactly one state, transitions between states based on conditions, and can perform different actions depending on which state it's in. The concept is universal — it appears in hardware design, software architecture, game logic, UI flows, biological systems, and signal processing. Any process that has distinct phases with rules for moving between them is a state machine, whether or not its creator calls it one.
 
 The [[Action Potential Oscillator]] is a state machine with four states: charge, spike rise, spike fall, and refractory recovery. A neuron is a state machine. A compressor's envelope follower is a state machine (attack vs. release). An ADSR envelope is a state machine. Recognizing the pattern is the first step; knowing how to implement it cleanly across different paradigms is the craft.

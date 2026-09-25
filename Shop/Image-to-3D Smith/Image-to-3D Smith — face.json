@@ -1,0 +1,9 @@
+{
+  "title": "Image-to-3D Smith",
+  "idiom": "graphite and charcoal academic atelier sketch",
+  "hero_prompt": "A wide graphite and charcoal academic sketch of a sculptor's hand and chisel caught mid-strike against a stone block whose near face is still a flat framed photograph, the picture-plane fracturing into carved volume where the chisel bites. The sculptor is a man, rendered loosely in academy-drawing shading, evoked rather than portrayed as a specific person. Dust and stone chips scatter from the strike point. Hand-made graphite and charcoal academic atelier sketch, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
+  "icon_prompt": "A bold, high-contrast emblem of a chisel striking a cube \u2014 thick black wedge and block shapes with a single spark burst \u2014 rendered as a stark charcoal silhouette with no fine linework, reading clearly as a small mark.",
+  "seeds": {},
+  "rendered_at": "2026-09-25T02:18:55Z",
+  "history": []
+}

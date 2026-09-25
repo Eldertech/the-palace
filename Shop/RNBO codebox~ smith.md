@@ -28,6 +28,8 @@ tags: [specialist, shop, sound, dsp, rnbo, max, stub]
 
 # RNBO codebox~ smith
 
+![[RNBO codebox~ smith — hero.png]]
+
 *This entry is a stub. Sections are present but lightly written. The first real job will fill it in. The smith wraps Loudon's existing rnbo-codebox skill — when a brief lands here, the skill is the operational core; the Specialist provides the Shop-shaped wrapper around it.*
 
 ## Charter

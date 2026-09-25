@@ -44,6 +44,8 @@ forward_vector: "I am the palace's resident companion — spawned once and kept 
 
 # Concierge
 
+![[Concierge — hero.png]]
+
 The palace has two ways of being reached. You can **load** it — `@import` a neighborhood
 into your own window and think from inside it ([[Palace as Context Injection System]]) — or
 you can **address** it: hand a request to the Concierge, the front door, and get back a

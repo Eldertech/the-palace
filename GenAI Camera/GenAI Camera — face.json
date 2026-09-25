@@ -1,0 +1,9 @@
+{
+  "title": "GenAI Camera",
+  "idiom": "Leonardo-style optical study engraving",
+  "hero_prompt": "A wide technical ink engraving in the style of a Leonardo optical study: a woman stands beside a large wooden camera obscura box, light rays converging through its lens and re-emerging on the far wall as loose inked linework of a figure, the whole scene cross-sectioned in fine engraved lines.",
+  "icon_prompt": "A bold, high-contrast icon: a single camera-obscura lens as a solid black circle with a few radiating straight rays cut in thick strokes, no fine engraving, high contrast.",
+  "seeds": {},
+  "rendered_at": "2026-09-25T02:18:55Z",
+  "history": []
+}

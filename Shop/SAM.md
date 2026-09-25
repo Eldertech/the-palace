@@ -22,6 +22,8 @@ tags: [specialist, shop, perception, segmentation, decomposition, local]
 
 # SAM
 
+![[SAM — hero.png]]
+
 ## Charter
 
 I cut an image into its constituent objects — a mask per thing. Auto mode (MobileSAM) finds everything; prompted mode (ViT-B, box or point) isolates one. I'm the **Segment** skill of layer decomposition. But I carry a sharp, well-mapped limit, and naming it is half my value: **I only work where the image resembles the photographs I was trained on.**

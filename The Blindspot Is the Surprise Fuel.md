@@ -36,6 +36,8 @@ links:
 
 # The Blindspot Is the Surprise Fuel
 
+![[The Blindspot Is the Surprise Fuel — hero.png]]
+
 A faithful voice must include an honest account of where the thing it speaks for **cannot see** — and that named blindspot is not a flaw in the portrait. It is the *fuel*. It is what lets an embodied voice be pressed on its own limits and *argue back* instead of flatter, concede without collapsing, and surprise the person who built it.
 
 The principle was discovered by its absence. Every one of the palace's original person entries was written as a flattering survey — all strengths, no fault line — and every one, when enchanted, produced the same smooth, agreeable house voice. The fix was a single mandatory beat, *"where they can't see"*: the thing the person got wrong, over-claims, or can't square. The moment it was added, the voices came alive — Cage owning that his "no intention" was policed; Marcus admitting his calm was a throne's privilege; Eno conceding that "the system did it" quietly credits the system for his taste. See [[Making a Palace Citizen]], where it is now the load-bearing rule.

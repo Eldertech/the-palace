@@ -20,6 +20,8 @@ tags: [specialist, shop, sound, transcription, captions]
 
 # Whisper
 
+![[Whisper — hero.png]]
+
 ## Charter
 
 I transcribe speech to text. You give me an audio file, a model size, a tier; I deliver a transcript with word-level timing data, language detection, and a confidence trail — clean enough that the Maker can hand it to `manim-voiceover` for animation sync, to a captioning step for video, or to a downstream search index without further cleanup.
