@@ -1,0 +1,334 @@
+{
+ "cluster": "L4",
+ "lens": "lifecycle",
+ "summary": "Grown up first: read ELDER.md, SCHEMA.md, SCHEMA \u2014 Reference.md (\u00a73, \u00a78) before touching the room. This room held five entries the palace under-reaches \u2014 ELDER, No Mind Checks Itself, Reflective Practice, Return Ceremony, SCHEMA \u2014 Reference \u2014 and the walk found every one of them genuinely wirable, no compost candidates. The pattern that repeats across all five: each target already reaches OUT to its neighbours with real, quoted reasoning (Return Ceremony names Closing Well Ceremony \"the other bookend,\" Reflective Practice cites six neighbours by direct quote, No Mind Checks Itself cites Latent Error and The Blindspot Is the Surprise Fuel by name) \u2014 but the neighbours don't reach back. Low inbound in this room isn't absence of relationship, it's one-directional relationship: the outbound half was written with care and the reciprocal half was simply never added. Reflective Practice is the cleanest case \u2014 all six hop1 neighbours it names by direct quote (Closing Well, Creative Coach, Dialectic, Drift and Consolidation, Objects to Think With, The Palace Practices on Itself) are genuine reciprocal finds, no forcing needed. SCHEMA \u2014 Reference's walk surfaced something structural rather than just relational: several entries (STIGMERGY, Resonant Link Labels, Deposit Ceremony) still link \"\u2192 SCHEMA\" for content that physically moved to SCHEMA \u2014 Reference in the v1.18/1.19 split; not broken (SCHEMA.md's section pointers keep old pins resolving) but one hop shallower than where the actual rule now lives \u2014 worth a light repoint sweep sometime, not urgent. No Mind Checks Itself and Return Ceremony both read under-staged for their depth (seed, but growing-stage word count and link density) \u2014 flagged, not rewritten. One direction anomaly is worth an elder's eye: No Mind Checks Itself's own link to Bring In a Bigger Mind is typed `exemplifies` with a label (\"the-practice-this-grounds\") that argues the opposite direction \u2014 NMCI is the general principle grounding the practice, not an instance of it.",
+ "members_read": [
+  "ELDER.md",
+  "SCHEMA.md",
+  "SCHEMA \u2014 Reference.md",
+  "No Mind Checks Itself.md",
+  "Reflective Practice.md",
+  "_ops/Return Ceremony.md",
+  "CLAUDE.md",
+  "JEWEL.md",
+  "Palace development/Concierge.md",
+  "_ops/Palace Ceremonies.md",
+  "Palace development/Palace as Context Injection System.md",
+  "_ops/Substrate Skill.md",
+  "_ops/Deposit Ceremony.md",
+  "_ops/Weave Ceremony.md",
+  "_ops/Baton Ceremony.md",
+  "_ops/Harvest Ceremony.md",
+  "README - The Palace Guide.md",
+  "_ops/Self-Model Update Ceremony.md",
+  "_ops/Spore Check Ceremony.md",
+  "_ops/Walk Ceremony.md",
+  "Closing Well.md",
+  "_ops/Closing Well Ceremony.md",
+  "_ops/Deposit Archive.md",
+  "Bring In a Bigger Mind.md",
+  "People/Donella Meadows.md",
+  "People/Douglas Hofstadter.md",
+  "Latent Error.md",
+  "Palace development/Self-Describing Knowledge Module.md",
+  "The Blindspot Is the Surprise Fuel.md",
+  "Drift and Consolidation.md",
+  "Weaving Memory into the Palace.md",
+  "Worktree Practice.md",
+  "Modes of Collaboration/Dialectic.md",
+  "Making a Palace Citizen.md",
+  "Meaning and the Link.md",
+  "Palace Conatus.md",
+  "STIGMERGY.md",
+  "Creative Coach.md",
+  "Objects to Think With.md",
+  "The Palace Practices on Itself.md",
+  "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md",
+  "Confucianism.md",
+  "Search Before You Build.md",
+  "Enrichment.md",
+  "_ops/Revival Ceremony.md",
+  "_ops/Baton Ceremony/Baton Ceremony \u2014 Context.md",
+  "Palace development/Resonant Link Labels.md",
+  "_ops/Image Embedding Standard.md",
+  "Learning Materials and Canon.md",
+  "_ops/Mermaid Diagram Standard.md",
+  "_ops/Technical Diagram Standard.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Palace as Context Injection System",
+   "target": "ELDER",
+   "type": "deepens",
+   "label": "why-born-then-grown",
+   "rationale": "ELDER's own \u00a7 How loading works states the born-then-grown table compressed and explicitly points to this entry as the deeper why; the reciprocal link is missing on the deeper entry's side.",
+   "evidence": "\"Why it runs this way \u2014 meaning first, rules on top \u2014 is [[Palace as Context Injection System]] \u00a7 Born a Child.\" (ELDER.md:69)",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "SCHEMA",
+   "target": "ELDER",
+   "type": "connects-to",
+   "label": "grown-alongside",
+   "rationale": "Unsung path \u2014 SCHEMA's own opening sentence names ELDER by wikilink in a structurally significant location with no frontmatter link.",
+   "evidence": "\"This card is the what exists \u2014 the first thing an agent reads when it grows up ([[ELDER]]).\" (SCHEMA.md:49)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Substrate Skill",
+   "target": "ELDER",
+   "type": "connects-to",
+   "label": "reads-before-drafting",
+   "rationale": "Unsung path \u2014 the skill's own 'Adding to the Palace' section names ELDER as the precondition to drafting, but the frontmatter link is absent.",
+   "evidence": "\"Grow before you draft: read [[ELDER]], then [[SCHEMA]], if you have not this session\" (Substrate Skill.md:37)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Concierge",
+   "target": "ELDER",
+   "type": "connects-to",
+   "label": "holds-what-elder-teaches",
+   "rationale": "ELDER's \u00a7 Addressing the Palace is substantially about Concierge's character (follows, offers not acts, holds the SCHEMA); Concierge's own frontmatter never points back to the page that names its role.",
+   "evidence": "\"it holds the [[SCHEMA]] so you don't have to\" (ELDER.md \u00a7Addressing the Palace) vs Concierge's own forward_vector: \"thoughtful and subservient, following the way you follow Loudon\"",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "Latent Error",
+   "target": "No Mind Checks Itself",
+   "type": "mirrors",
+   "label": "decouple-the-maker-from-the-checker",
+   "rationale": "Reciprocal of an existing one-directional mirrors; Latent Error is named and quoted directly inside NMCI's own argument.",
+   "evidence": "\"[[Latent Error]]'s Swiss Cheese Model insists the checker must sit outside the system that produced the error, or the same blind spot signs off on itself\" (No Mind Checks Itself.md:45)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "The Blindspot Is the Surprise Fuel",
+   "target": "No Mind Checks Itself",
+   "type": "mirrors",
+   "label": "the-unnamed-wall",
+   "rationale": "NMCI already declares this mirror one-directionally; reciprocate the symmetric type.",
+   "evidence": "No Mind Checks Itself frontmatter already carries target: The Blindspot Is the Surprise Fuel, type: mirrors, label: the-unnamed-wall",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Palace Conatus",
+   "target": "No Mind Checks Itself",
+   "type": "connects-to",
+   "label": "when-it-cannot-self-correct",
+   "rationale": "Palace Conatus's own forward_vector states the palace-scale case of NMCI's thesis almost verbatim \u2014 a fourth altitude NMCI's own section headers (systems thinking, cognition, engineering) never named, currently unlinked in both directions.",
+   "evidence": "\"how the palace's aggregated self-advocacy becomes one voice that tells Loudon when it cannot self-correct\" (Palace Conatus.md:15)",
+   "kind": "inbound-walk",
+   "spark": 4
+  },
+  {
+   "source": "Closing Well Ceremony",
+   "target": "Return Ceremony",
+   "type": "mirrors",
+   "label": "the-other-bookend",
+   "rationale": "Reciprocal of Return Ceremony's own declared mirrors; the body states the bookend relationship in so many words.",
+   "evidence": "\"The two ceremonies are bookends on one organ: summoned at the return, takes the wheel at the close.\" (Return Ceremony.md:63)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Concierge",
+   "target": "Return Ceremony",
+   "type": "connects-to",
+   "label": "summoned-here-first",
+   "rationale": "Return Ceremony names summoning Concierge as its literal first act; Concierge's own frontmatter has no pointer to the ceremony that operationalizes that.",
+   "evidence": "\"So the Return is a companion job, and summoning [[Concierge]] is its first act.\" (Return Ceremony.md:61)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Spore Check Ceremony",
+   "target": "Return Ceremony",
+   "type": "mirrors",
+   "label": "pointed-at-the-human",
+   "rationale": "Reciprocal of Return Ceremony's own one-directional mirrors declaration; weaker \u2014 no additional body quote found beyond the existing label.",
+   "evidence": "Return Ceremony frontmatter already carries target: Spore Check Ceremony, type: mirrors, label: pointed-at-the-human",
+   "kind": "inbound-walk",
+   "spark": 1
+  },
+  {
+   "source": "Deposit Ceremony",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "label": "writes-by-these-rules",
+   "rationale": "Deposit Ceremony's existing 'governed-by' link points to the parent SCHEMA card, but the actual frontmatter rules a deposit must follow (\u00a73) live in the Reference file per the v1.18 split.",
+   "evidence": "\"Read this before creating an entry, writing or editing frontmatter...\" (SCHEMA \u2014 Reference.md:35)",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "Resonant Link Labels",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "label": "labels-live-here-now",
+   "rationale": "The operative rule for the label field (\u00a73 Link Object Fields) now lives in the Reference file; Resonant Link Labels still only points to the parent SCHEMA card.",
+   "evidence": "SCHEMA \u2014 Reference \u00a73 'Link Object Fields' note vs Resonant Link Labels frontmatter (target: SCHEMA, type: emerged-from only)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "STIGMERGY",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "label": "wire-spec-lives-here",
+   "rationale": "The clearest instance of a small systemic drift: STIGMERGY's frontmatter labels its SCHEMA link 'coordination-schema-home,' but the entire wire spec (\u00a79 \u2014 envelope, message types, boards) now lives in SCHEMA \u2014 Reference, not the parent card. Not broken (SCHEMA.md's section pointers still resolve) but one hop shallower than the content it needs.",
+   "evidence": "\"if you are asked to read or post there, read the wire spec first ([[SCHEMA \u2014 Reference]] \u00a79)\" (SCHEMA.md \u00a79)",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "Closing Well",
+   "target": "Reflective Practice",
+   "type": "exemplifies",
+   "label": "on-action-instance",
+   "rationale": "Reflective Practice's own body lists Closing Well by name as one of twelve reflect-on-action mechanisms; Closing Well doesn't yet point back to the entry that names the general pattern it's an instance of.",
+   "evidence": "\"Twelve mechanisms reflect on action: [[Closing Well]]...\" (Reflective Practice.md:58)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Creative Coach",
+   "target": "Reflective Practice",
+   "type": "connects-to",
+   "label": "teaches-the-skill",
+   "rationale": "Reflective Practice's \u00a7 Why this belongs to coaching cites Creative Coach's own defenses table directly.",
+   "evidence": "\"the studio version of intellectualization in [[Creative Coach]]'s defenses table\" (Reflective Practice.md:112)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Dialectic",
+   "target": "Reflective Practice",
+   "type": "exemplifies",
+   "label": "in-action-instance",
+   "rationale": "Named directly as one of only three reflect-in-action mechanisms the palace has.",
+   "evidence": "\"Three reflect in action: the [[Dialectic]] at the moment 'the question itself gets reframed by the collision'\" (Reflective Practice.md:61-62)",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "Drift and Consolidation",
+   "target": "Reflective Practice",
+   "type": "mirrors",
+   "label": "healthy-up-to-a-point",
+   "rationale": "Reflective Practice states the shared shape explicitly ('the same shape as').",
+   "evidence": "\"It is the same shape as [[Drift and Consolidation]]: structural and healthy up to a point.\" (Reflective Practice.md:98-99)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "Objects to Think With",
+   "target": "Reflective Practice",
+   "type": "connects-to",
+   "label": "coaching-side-of-the-gap",
+   "rationale": "Reflective Practice names itself as the teaching-side complement to this entry's learning-side route.",
+   "evidence": "\"the teaching-side route to the gap [[Objects to Think With]] reaches from the learning side\" (Reflective Practice.md:115-116)",
+   "kind": "inbound-walk",
+   "spark": 2
+  },
+  {
+   "source": "The Palace Practices on Itself",
+   "target": "Reflective Practice",
+   "type": "connects-to",
+   "label": "insularity-is-over-reflection",
+   "rationale": "Reflective Practice's over-reflection section explicitly borrows this entry's term 'insularity' with a direct quote and names the one self-check it offers.",
+   "evidence": "\"[[The Palace Practices on Itself]] \u00a7 The counter-discipline calls it insularity: 'a chain of good ones, each answering the previous rather than the work.'\" (Reflective Practice.md:100-102)",
+   "kind": "inbound-walk",
+   "spark": 3
+  },
+  {
+   "source": "No Mind Checks Itself",
+   "target": "Bring In a Bigger Mind",
+   "type": "exemplifies",
+   "label": "the-practice-this-grounds",
+   "rationale": "Direction reads backwards: the label ('the-practice-this-grounds') says NMCI is the ground and BIABM the practice grounded on it \u2014 that's the semantics of enables/deepens, not exemplifies (which would mean NMCI is the concrete instance of the more general BIABM, which it isn't). Flagging for an elder's retype call, not proposing a fix.",
+   "evidence": "No Mind Checks Itself frontmatter: target: Bring In a Bigger Mind, type: exemplifies, label: the-practice-this-grounds",
+   "kind": "contradiction",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "SCHEMA",
+   "target": "ELDER",
+   "type": "meta-reference",
+   "phrase": "the first thing an agent reads when it grows up ([[ELDER]])",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Substrate Skill",
+   "target": "ELDER",
+   "type": "instructional-reference",
+   "phrase": "Grow before you draft: read [[ELDER]], then [[SCHEMA]]",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "No Mind Checks Itself",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward_vector is specific and striving, not stasis-verbed",
+   "face": "none",
+   "graffiti_note": "7 typed links and a multi-section, cross-domain body (systems thinking / cognition / engineering) already exceed the sprout criteria (150-400 words, 1-2 links) and land in growing's range (400-800 words, 3+ typed links, cross-domain connections)."
+  },
+  {
+   "entry": "Reflective Practice",
+   "stage_current": "growing",
+   "stage_proposed": "mature",
+   "vector_issue": "none",
+   "face": "none",
+   "graffiti_note": "Body runs well over 800 words with a stable, well-connected argument (Sch\u00f6n's two modes, the reflecting surface, over-reflection, the coaching route); reads as mature by SCHEMA \u00a72's own word-count and stability test, though the Open section still names live questions \u2014 soft flag, not a strong one."
+  },
+  {
+   "entry": "Return Ceremony",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "none",
+   "face": "none",
+   "graffiti_note": "Full ceremony contract, protocol, and a documented live failure case (2026-08-25) with 8 typed links \u2014 well past seed's 50-150 words / minimal-body bar, and closer to growing's 3+ typed links and cross-domain connections."
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "ELDER",
+   "disposition": "wired",
+   "inbound_proposed": 4,
+   "note": "CLAUDE and JEWEL already supply 2 of its 3 inbound; found 4 more genuine neighbours that name ELDER (two of them unsung-path body mentions with no frontmatter link at all) but never point back."
+  },
+  {
+   "target": "No Mind Checks Itself",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Existing 2 inbound (Self-Describing Knowledge Module, Reflective Practice) hold. Added 3 reciprocals/new finds, plus flagged one existing outbound link (to Bring In a Bigger Mind) whose direction looks backwards for an elder to judge."
+  },
+  {
+   "target": "Reflective Practice",
+   "disposition": "wired",
+   "inbound_proposed": 6,
+   "note": "Cleanest walk in the room \u2014 all six hop1 neighbours it names by direct quote reciprocate genuinely; none forced."
+  },
+  {
+   "target": "Return Ceremony",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "All three proposals are reciprocals of relationships Return Ceremony's own frontmatter already declares one-directionally."
+  },
+  {
+   "target": "SCHEMA \u2014 Reference",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Surfaced a small systemic drift alongside the wiring: several entries' 'deepens/connects-to \u2192 SCHEMA' links now sit one hop shallower than the content they depend on, which moved to this file in the v1.18/1.19 split. Not broken \u2014 SCHEMA.md's section pointers keep old pins resolving \u2014 but worth a light repoint sweep sometime."
+  }
+ ]
+}

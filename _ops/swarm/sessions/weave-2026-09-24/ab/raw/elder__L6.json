@@ -1,0 +1,346 @@
+{
+ "cluster": "L6",
+ "lens": "lifecycle",
+ "summary": "This room held two starving hubs-in-waiting (Bring In a Bigger Mind, Making a Palace Citizen \u2014 both dense with outbound thinking that nothing points back at), an under-linked pair of newborn citizens (Martin Buber, Martin Heidegger \u2014 seed-stage people whose own frontmatter already names the contradictions and mirrors that should exist, just not from the other side), and one true orphan (The Adjacent Affordance, 0 inbound, a well-formed concept that names its own mirror to The Dichotomy of Control and gets nothing back). The dominant pattern across all five: this palace under-reciprocates symmetric links. An entry declares `mirrors`/`contradicts`/`connects-to` outward constantly, but the target rarely declares it back, so \"inbound count\" undercounts real relational density \u2014 most of what I found wasn't invention, it was closing loops the entries had already half-drawn themselves (their own labels told me what the reciprocal link should say). The best find was a genuine cross-target bridge: Buber and Heidegger, both newborn citizens in this same room, are a real, well-documented philosophical contradiction (I-Thou meeting vs. the anonymous \"they\" of Being-with) that neither entry names, and both are conspicuously absent from Palace Philosophies' own register of the tradition despite fitting it exactly.",
+ "members_read": [
+  "Bring In a Bigger Mind.md",
+  "Making a Palace Citizen.md",
+  "People/Martin Buber.md",
+  "People/Martin Heidegger.md",
+  "The Adjacent Affordance.md",
+  "Mixture of Experts.md",
+  "No Mind Checks Itself.md",
+  "Modes of Collaboration/Philosopher Visits the Entry.md",
+  "STIGMERGY.md",
+  "The Lens.md",
+  "Deleuze.md",
+  "Modes of Collaboration/Dialectic.md",
+  "Modes of Collaboration/Excellent Adventure.md",
+  "Palace development/STIGMERGY Philosophical Lenses.md",
+  "Merleau-Ponty.md",
+  "Confucianism.md",
+  "Palace Philosophies.md",
+  "Spinoza.md",
+  "The Blindspot Is the Surprise Fuel.md",
+  "The Dichotomy of Control.md",
+  "The Drift.md",
+  "People/Donella Meadows.md",
+  "People/John Cage.md",
+  "_ops/Pages as Agents.md",
+  "Palace development/Palace Enchantment.md",
+  "The Remembering Page.md",
+  "Threshold Conatus.md",
+  "Stoicism.md",
+  "The Fortress and the Threshold.md",
+  "Whitehead.md",
+  "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+  "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
+  "People/Epictetus.md",
+  "Source Library.md",
+  "People/Marcus Aurelius.md",
+  "People/Seneca.md",
+  "The Four Virtues.md",
+  "People/Buckminster Fuller.md",
+  "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+  "Leibniz.md",
+  "Palace development/Palace as Context Injection System.md",
+  "SUBSTRATE.md",
+  "Spinoza Conatus.md",
+  "The View From Above.md"
+ ],
+ "walk_results": [
+  {
+   "target": "Bring In a Bigger Mind",
+   "disposition": "nothing-genuine",
+   "inbound_proposed": 0,
+   "note": "hop1/hop2 checked (Mixture of Experts, Philosopher Visits the Entry, STIGMERGY, The Lens, Deleuze, Dialectic, Excellent Adventure, Confucianism, Merleau-Ponty, Spinoza, etc.) \u2014 nothing beyond what's already declared genuinely wants to point here; the domain (adversarial cold-review by a bigger model) is narrow and specific enough that forcing a link from a general philosophy neighbour would be exactly the kind of force the brief warns against. The one real finding here is a retype flag on an existing link, not a new wire (see typed_relations)."
+  },
+  {
+   "target": "Making a Palace Citizen",
+   "disposition": "wired",
+   "inbound_proposed": 7,
+   "note": "Massive outbound, almost no reciprocal inbound \u2014 the room's clearest case of an entry that describes its own worked instances without any of them pointing back. Spinoza, Donella Meadows, and John Cage are named in MPC's own body as 'Worked instances'; none of the three link back. Palace Enchantment and Philosopher Visits the Entry are named as MPC's siblings/consumers; neither reciprocates. And the two other targets in this same room, Martin Buber and Martin Heidegger, are textbook products of this exact method (five-beat body, mandatory blindspot, seed-stage newborn citizen, agency_profile) yet don't cite it."
+  },
+  {
+   "target": "Martin Buber",
+   "disposition": "wired",
+   "inbound_proposed": 5,
+   "note": "Buber's own frontmatter already names Cooperation Yields Agency, Whitehead, Stoicism, and The Fortress and the Threshold as real relationships (couples-with/mirrors/contradicts/connects-to) \u2014 none of the four reciprocate, confirmed by full-file grep, not just a truncated read. Also missing entirely from Palace Philosophies' own register of the tradition, despite every other philosopher in that hub's outbound list having a return link."
+  },
+  {
+   "target": "Martin Heidegger",
+   "disposition": "wired",
+   "inbound_proposed": 5,
+   "note": "Same pattern: Heidegger already declares Merleau-Ponty (mirrors), Spinoza (contradicts), and The Dichotomy of Control (contradicts) as real relationships; none of the three reciprocate (confirmed by full-file grep). Also absent from Palace Philosophies' register. The room's existing inbound=3 checks out exactly against Epictetus, Buckminster Fuller, and Reverb \u2194 Space-Time, all of which do already reciprocate \u2014 so the gap is real and specific, not a data artifact."
+  },
+  {
+   "target": "The Adjacent Affordance",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "True orphan, 0 inbound, confirmed by grepping all six hop1 neighbours' full files for the entry's own title \u2014 none mention it, despite The Adjacent Affordance itself declaring The Dichotomy of Control as its direct 'engineering-register' mirror and Palace as Context Injection System as the literal source of one of its three worked examples (the @import symlink case). Stage (seed) looks stale given the content \u2014 see entry_health_flags."
+  }
+ ],
+ "typed_relations": [
+  {
+   "source": "Spinoza",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "label": "flagship-instance",
+   "kind": "inbound-walk",
+   "rationale": "MPC's own body calls Spinoza its 'first flagship' worked instance; Spinoza's frontmatter doesn't cite the method that made it.",
+   "evidence": "\"Worked instances\" section: '[[Spinoza]] \u2014 first flagship; the archetypal enchantment target.'",
+   "spark": 2
+  },
+  {
+   "source": "Donella Meadows",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "label": "instance",
+   "kind": "inbound-walk",
+   "rationale": "Named as a worked instance in MPC's body, built the same day as John Cage to test register spread.",
+   "evidence": "'[[Donella Meadows]] and [[John Cage]] \u2014 built the same day to test register spread (scientist, composer).'",
+   "spark": 2
+  },
+  {
+   "source": "John Cage",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "label": "non-philosopher-instance",
+   "kind": "inbound-walk",
+   "rationale": "Same as above \u2014 the non-philosopher stress test for the method, unreciprocated.",
+   "evidence": "MPC body: 'John Cage \u2014 the non-philosopher stress test.'",
+   "spark": 2
+  },
+  {
+   "source": "Palace Enchantment",
+   "target": "Making a Palace Citizen",
+   "type": "couples-with",
+   "label": "makes-the-enchantable",
+   "kind": "inbound-walk",
+   "rationale": "MPC already declares this exact couples-with in the other direction ('makes-the-enchantable'); Palace Enchantment doesn't say it back despite depending on citizens MPC produces.",
+   "evidence": "MPC frontmatter: target Palace Enchantment, type couples-with, label makes-the-enchantable.",
+   "spark": 1
+  },
+  {
+   "source": "Philosopher Visits the Entry",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "label": "citizens-are-made-here",
+   "kind": "inbound-walk",
+   "rationale": "MPC's body states directly that a dispatched citizen IS a philosophical lens ('A dispatched citizen is a lens' section); the lens practice doesn't cite where its citizens come from.",
+   "evidence": "MPC \u00a7 'A dispatched citizen is a lens': 'a single lens is one citizen dispatched to one node.'",
+   "spark": 2
+  },
+  {
+   "source": "Martin Buber",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "label": "newest-instance",
+   "kind": "inbound-walk",
+   "rationale": "Buber's own frontmatter is a textbook product of MPC's method (seed-stage newborn citizen, agency_profile with the four sub-fields, mandatory blindspot, Voice section citing a speech file) but never names the method.",
+   "evidence": "Buber body has the exact five-beat shape MPC specifies: life/mind-moves/question/blindspot/recommended-path/Voice.",
+   "spark": 3
+  },
+  {
+   "source": "Martin Heidegger",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "label": "newest-instance",
+   "kind": "inbound-walk",
+   "rationale": "Same as Buber \u2014 same five-beat shape, same seed-stage newborn-citizen convention, no citation of the method.",
+   "evidence": "Heidegger body: same shape, same Voice-note-citing-speech-file convention.",
+   "spark": 3
+  },
+  {
+   "source": "Cooperation Yields Agency",
+   "target": "Martin Buber",
+   "type": "couples-with",
+   "label": "relation-before-the-related",
+   "kind": "inbound-walk",
+   "rationale": "Buber already declares this couples-with; CYA (a core World file) doesn't reciprocate despite Buber's ontology being a direct philosophical ancestor of 'shared intent, not control or service.'",
+   "evidence": "Buber frontmatter: target Cooperation Yields Agency, type couples-with, label relation-before-the-related.",
+   "spark": 2
+  },
+  {
+   "source": "Whitehead",
+   "target": "Martin Buber",
+   "type": "mirrors",
+   "label": "relation-is-primary",
+   "kind": "inbound-walk",
+   "rationale": "Buber already mirrors Whitehead with this exact label; Whitehead's own entry (the palace's strongest process-relational voice) doesn't say it back.",
+   "evidence": "Buber frontmatter: target Whitehead, type mirrors, label relation-is-primary.",
+   "spark": 2
+  },
+  {
+   "source": "Stoicism",
+   "target": "Martin Buber",
+   "type": "contradicts",
+   "label": "the-self-needs-the-Thou",
+   "kind": "inbound-walk",
+   "rationale": "Buber already contradicts Stoicism with this label (the sovereign fortress-self vs. the self that only comes into being through relation); Stoicism, a hub that already holds several contradictions, doesn't reciprocate.",
+   "evidence": "Buber frontmatter: target Stoicism, type contradicts, label the-self-needs-the-Thou.",
+   "spark": 2
+  },
+  {
+   "source": "The Fortress and the Threshold",
+   "target": "Martin Buber",
+   "type": "connects-to",
+   "label": "threshold-pole",
+   "kind": "inbound-walk",
+   "rationale": "Buber names himself as sitting on the threshold pole of this entry's own binary; the entry doesn't cite him back.",
+   "evidence": "Buber frontmatter: target The Fortress and the Threshold, type connects-to, label threshold-pole.",
+   "spark": 2
+  },
+  {
+   "source": "Martin Buber",
+   "target": "Martin Heidegger",
+   "type": "contradicts",
+   "label": "the-Thou-vs-the-they",
+   "kind": "bridge",
+   "rationale": "Both are seed-stage newborn citizens in this same room, and neither cites the other, despite a well-documented real philosophical break: Buber's whole philosophy is a critique of exactly the kind of anonymous Being/das-Man Heidegger builds Dasein from \u2014 I-Thou meeting vs. Being-with-the-they. This is the strongest cross-target find in the room.",
+   "evidence": "Buber: 'this is why he refuses both individualism... and collectivism.' Heidegger: 'we flee the anxiety of our own groundlessness into das Man (\"the they\")... almost no account of other people as anything but \"the they.\"'",
+   "spark": 4,
+   "classify": "link"
+  },
+  {
+   "source": "Martin Buber",
+   "target": "Palace Philosophies",
+   "type": "connects-to",
+   "label": "the-symposium",
+   "kind": "new",
+   "rationale": "Palace Philosophies' body catalogues the full register of philosophers with their own pages (Deleuze, Zen, Confucianism, Taoism, Machiavelli, Plato, Leibniz, Simondon, Whitehead, Merleau-Ponty) \u2014 Buber is missing from that list despite fitting it exactly (relational ontology, own page, own contradiction with Stoicism).",
+   "evidence": "Palace Philosophies \u00a7 'The rest of the register': lists ten named philosophers, none of them Buber.",
+   "spark": 2
+  },
+  {
+   "source": "Martin Heidegger",
+   "target": "Palace Philosophies",
+   "type": "connects-to",
+   "label": "the-symposium",
+   "kind": "new",
+   "rationale": "Same gap \u2014 Heidegger is also absent from the register despite being a major, well-developed citizen with his own contradictions already declared against Spinoza and the Dichotomy of Control.",
+   "evidence": "Palace Philosophies \u00a7 'The rest of the register' \u2014 no Heidegger entry.",
+   "spark": 2
+  },
+  {
+   "source": "Merleau-Ponty",
+   "target": "Martin Heidegger",
+   "type": "mirrors",
+   "label": "tool-absorbed-into-the-body",
+   "kind": "inbound-walk",
+   "rationale": "Heidegger already mirrors Merleau-Ponty with this exact label \u2014 the ready-to-hand/zuhanden analysis is literally where Merleau-Ponty's body-schema-absorption idea comes from \u2014 and Merleau-Ponty's own entry doesn't cite him at all.",
+   "evidence": "Heidegger frontmatter: target Merleau-Ponty, type mirrors, label tool-absorbed-into-the-body. Heidegger body: 'a claim that speaks directly to any instrument absorbed into the body until it disappears.'",
+   "spark": 3
+  },
+  {
+   "source": "Spinoza",
+   "target": "Martin Heidegger",
+   "type": "contradicts",
+   "label": "being-vs-substance",
+   "kind": "inbound-walk",
+   "rationale": "Heidegger already contradicts Spinoza with this label; Spinoza's own entry doesn't reciprocate despite being the palace's oldest metaphysical voice and a natural sparring partner for the question of Being vs. substance.",
+   "evidence": "Heidegger frontmatter: target Spinoza, type contradicts, label being-vs-substance.",
+   "spark": 2
+  },
+  {
+   "source": "The Dichotomy of Control",
+   "target": "Martin Heidegger",
+   "type": "contradicts",
+   "label": "thrownness-vs-control",
+   "kind": "inbound-walk",
+   "rationale": "Heidegger already contradicts this entry with this label (thrownness \u2014 the situation you never chose \u2014 against the Stoic sort-into-what's-yours); The Dichotomy of Control doesn't say it back.",
+   "evidence": "Heidegger frontmatter: target The Dichotomy of Control, type contradicts, label thrownness-vs-control.",
+   "spark": 2
+  },
+  {
+   "source": "The Dichotomy of Control",
+   "target": "The Adjacent Affordance",
+   "type": "mirrors",
+   "label": "engineering-register",
+   "kind": "inbound-walk",
+   "rationale": "The Adjacent Affordance names itself as the engineering register of this exact Stoic discipline; the reciprocal doesn't exist, and this is the single cleanest fix for the orphan.",
+   "evidence": "AA frontmatter: target The Dichotomy of Control, type mirrors, label engineering-register. AA body: 'This is the engineering register of the Stoic The Dichotomy of Control.'",
+   "spark": 2
+  },
+  {
+   "source": "Palace as Context Injection System",
+   "target": "The Adjacent Affordance",
+   "type": "connects-to",
+   "label": "symlink-instance",
+   "kind": "inbound-walk",
+   "rationale": "One of AA's three founding examples (the @import-can't-resolve-spaces case) is literally documented inside this entry's own \u00a7 The @import Floor \u2014 AA cites it, this entry doesn't cite back.",
+   "evidence": "AA body: 'a space-free symlink stands in as an alias... (see [[Palace as Context Injection System]] \u00a7 The @import Floor).'",
+   "spark": 2
+  },
+  {
+   "source": "No Mind Checks Itself",
+   "target": "Bring In a Bigger Mind",
+   "type": "deepens",
+   "label": "the-practice-this-grounds",
+   "kind": "retype",
+   "rationale": "Currently typed exemplifies (No Mind Checks Itself \u2192 exemplifies \u2192 Bring In a Bigger Mind), which per SCHEMA \u00a74 says the source is the concrete instance of the more general target. That's backwards here: No Mind Checks Itself is the general structural principle (three altitudes \u2014 systems thinking, cognition, engineering practice); Bring In a Bigger Mind is the one concrete practice. If anything the direction should reverse (Bring In a Bigger Mind \u2192 exemplifies \u2192 No Mind Checks Itself), or \u2014 since Bring In a Bigger Mind's own body frames itself as still a hypothesis being tested against the more general claim \u2014 deepens fits better in the direction proposed here (Bring In a Bigger Mind elaborates/operationalizes the general principle, source elaborates, target is ground). Flagging for a human call on which direction is right, not asserting one.",
+   "evidence": "No Mind Checks Itself frontmatter: target Bring In a Bigger Mind, type exemplifies, label the-practice-this-grounds. SCHEMA \u00a74: 'exemplifies \u2014 A is a concrete instance of the more general B.'",
+   "spark": 2
+  },
+  {
+   "source": "The Adjacent Affordance",
+   "target": "cowork-git",
+   "type": "enables",
+   "kind": "newcomer",
+   "rationale": "Unsung path \u2014 the body names the tool by wikilink as directly built on this principle ('the entire [[cowork-git]] tool stands on this'), a structurally significant mention per SCHEMA \u00a74, but it isn't in AA's frontmatter links.",
+   "evidence": "AA body: 'moving them aside (rename) instead of deleting them makes committing-from-Cowork possible at all. The entire [[cowork-git]] tool stands on this.'",
+   "spark": 1
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "The Adjacent Affordance",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 vector is specific and self-aware about its own limit (names the failure case explicitly)",
+   "graffiti_note": "Content doesn't match stage: a 12-voice cross-domain Symposium, three real worked examples from three different substrates, and a named cousin/limit section is well past 'minimal body, origin noted' (seed). It likely stalled at seed because it had zero inbound \u2014 nothing was reading it, so nothing pushed it forward. Worth reassessing once the proposed reciprocal links land.",
+   "face": "merits-face"
+  },
+  {
+   "entry": "Bring In a Bigger Mind",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "vector_issue": "none \u2014 vector is unusually honest about its own thinness (one real case, names its own open question)",
+   "graffiti_note": "Stage and vector both fit; the entry knows what it doesn't know yet, which is the right posture for one data point.",
+   "face": "none"
+  },
+  {
+   "entry": "Making a Palace Citizen",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "vector_issue": "none",
+   "graffiti_note": "Stage fits the content (extensive, validated method with a real lab companion). The health issue here isn't the entry's own state \u2014 it's that nothing links back to it despite being cited as the origin method by name in at least five other entries' bodies.",
+   "face": "none"
+  },
+  {
+   "entry": "Martin Buber",
+   "stage_current": "seed",
+   "stage_proposed": "",
+   "vector_issue": "none \u2014 vector is specific and names its own blindspot as a live dispatch instruction",
+   "graffiti_note": "Seed is correct per the Making a Palace Citizen convention (fully-formed human, newborn citizen) \u2014 activation_count is still 1, so it hasn't yet earned growth through dispatch. No drift here; the gap is purely inbound wiring, not the entry's own maturity.",
+   "face": "none"
+  },
+  {
+   "entry": "Martin Heidegger",
+   "stage_current": "seed",
+   "stage_proposed": "",
+   "vector_issue": "none",
+   "graffiti_note": "Same as Buber \u2014 seed is correct by convention, activation_count 1, the entry itself is not stale, the graph around it is under-wired.",
+   "face": "none"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "cowork-git",
+   "type": "enables",
+   "phrase": "The entire [[cowork-git]] tool stands on this.",
+   "structurally_significant": true
+  }
+ ]
+}

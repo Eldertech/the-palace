@@ -1,0 +1,106 @@
+new-entry catch-up — map: palace-map-full-2026-09-24.json
+newcomer rule: git-added since 0cf827603a17 or born >= 2026-07, and under target
+median INBOUND (established): 5  ->  catch-up target ~0.8×M = 4
+young entries already at/over target (not listed): 13
+
+newcomers under target (25) — deficit is for the coordinator, never the worker:
+  [[Agent Toolbox]]  inbound 0 → target 4 (deficit 4)
+  [[OBS]]  inbound 0 → target 4 (deficit 4)
+  [[GenAI Camera]]  inbound 1 → target 4 (deficit 3)
+  [[LDN RTM]]  inbound 1 → target 4 (deficit 3)
+  [[Reflective Practice]]  inbound 1 → target 4 (deficit 3)
+  [[Return Ceremony]]  inbound 1 → target 4 (deficit 3)
+  [[Search Before You Build]]  inbound 1 → target 4 (deficit 3)
+  [[The Palace Voice]]  inbound 1 → target 4 (deficit 3)
+  [[The Practice Rediscovers Its Philosophy]]  inbound 1 → target 4 (deficit 3)
+  [[Tool Builder]]  inbound 1 → target 4 (deficit 3)
+  [[Weaving Memory into the Palace]]  inbound 1 → target 4 (deficit 3)
+  [[Zoom Out to the Structure]]  inbound 1 → target 4 (deficit 3)
+  [[Bring In a Bigger Mind]]  inbound 2 → target 4 (deficit 2)
+  [[ControlNet as Topology]]  inbound 2 → target 4 (deficit 2)
+  [[Making a Palace Citizen]]  inbound 2 → target 4 (deficit 2)
+  [[Martin Buber]]  inbound 2 → target 4 (deficit 2)
+  [[No Mind Checks Itself]]  inbound 2 → target 4 (deficit 2)
+  [[SCHEMA — Reference]]  inbound 2 → target 4 (deficit 2)
+  [[Skills Are Enchantable Pages]]  inbound 2 → target 4 (deficit 2)
+  [[The Remembering Page]]  inbound 2 → target 4 (deficit 2)
+  [[ELDER]]  inbound 3 → target 4 (deficit 1)
+  [[Iain McGilchrist]]  inbound 3 → target 4 (deficit 1)
+  [[Martin Heidegger]]  inbound 3 → target 4 (deficit 1)
+  [[The Aftermath Frame]]  inbound 3 → target 4 (deficit 1)
+  [[The Palace Hardens Around Values]]  inbound 3 → target 4 (deficit 1)
+
+unreachable — inbound 0, any age (20):
+  [[Agent Toolbox]]
+  [[Andrei Tarkovsky]]  (composting)
+  [[Annie Dillard]]
+  [[Audition Gate]]
+  [[Block It in Blender, Ink It in genAI]]
+  [[Buckminster Fuller]]
+  [[Does Personifying an Agent Change What It Does]]
+  [[Gemma 4 — Local Coordination Guide]]
+  [[LoRA Trainer]]
+  [[Media Library]]  (composting)
+  [[OBS]]
+  [[Quadratic Interpolation in DSP]]
+  [[SMPTE LTC]]
+  [[Slime Mold Delay]]
+  [[Terrence Malick]]  (composting)
+  [[The Adjacent Affordance]]
+  [[The Substrate Drifts]]
+  [[Tract Mirror]]
+  [[Worktree Practice]]
+  [[control-vocabulary-math]]
+
+unreachable _ops/ files with canon frontmatter — bundle-hygiene review, not the walk (5):
+  [[Artifacts to Projects Migration — handoff]]  _ops/Artifacts to Projects Migration — handoff.md
+  [[Graffiti Pass — Handoff 2026-05-02 — Session 2]]  _ops/Graffiti Pass — Handoff 2026-05-02 — Session 2.md
+  [[Map Log]]  _ops/Map Log.md
+  [[Schema Ceremony Proposal — exemplifies + member-of]]  _ops/Schema Ceremony Proposal — exemplifies + member-of.md
+  [[Technical Diagram Standard]]  _ops/Technical Diagram Standard.md
+
+{{NEW_ENTRIES}} paste block:
+Born since the last Weave, still under-reached:
+- [[Agent Toolbox]] (currently 0 inbound)
+- [[OBS]] (currently 0 inbound)
+- [[GenAI Camera]] (currently 1 inbound)
+- [[LDN RTM]] (currently 1 inbound)
+- [[Reflective Practice]] (currently 1 inbound)
+- [[Return Ceremony]] (currently 1 inbound)
+- [[Search Before You Build]] (currently 1 inbound)
+- [[The Palace Voice]] (currently 1 inbound)
+- [[The Practice Rediscovers Its Philosophy]] (currently 1 inbound)
+- [[Tool Builder]] (currently 1 inbound)
+- [[Weaving Memory into the Palace]] (currently 1 inbound)
+- [[Zoom Out to the Structure]] (currently 1 inbound)
+- [[Bring In a Bigger Mind]] (currently 2 inbound)
+- [[ControlNet as Topology]] (currently 2 inbound)
+- [[Making a Palace Citizen]] (currently 2 inbound)
+- [[Martin Buber]] (currently 2 inbound)
+- [[No Mind Checks Itself]] (currently 2 inbound)
+- [[SCHEMA — Reference]] (currently 2 inbound)
+- [[Skills Are Enchantable Pages]] (currently 2 inbound)
+- [[The Remembering Page]] (currently 2 inbound)
+- [[ELDER]] (currently 3 inbound)
+- [[Iain McGilchrist]] (currently 3 inbound)
+- [[Martin Heidegger]] (currently 3 inbound)
+- [[The Aftermath Frame]] (currently 3 inbound)
+- [[The Palace Hardens Around Values]] (currently 3 inbound)
+No entry points to these yet (any age):
+- [[Agent Toolbox]]
+- [[Annie Dillard]]
+- [[Audition Gate]]
+- [[Block It in Blender, Ink It in genAI]]
+- [[Buckminster Fuller]]
+- [[Does Personifying an Agent Change What It Does]]
+- [[Gemma 4 — Local Coordination Guide]]
+- [[LoRA Trainer]]
+- [[OBS]]
+- [[Quadratic Interpolation in DSP]]
+- [[SMPTE LTC]]
+- [[Slime Mold Delay]]
+- [[The Adjacent Affordance]]
+- [[The Substrate Drifts]]
+- [[Tract Mirror]]
+- [[Worktree Practice]]
+- [[control-vocabulary-math]]

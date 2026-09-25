@@ -1,0 +1,230 @@
+{
+ "cluster": "F-Shop",
+ "lens": "folder",
+ "members_read": [
+  "Shop/Blender.md",
+  "Shop/ComfyUI.md",
+  "Shop/D3.js.md",
+  "Shop/Depth Anything.md",
+  "Shop/FLUX (Hugging Face).md",
+  "Shop/Figure Rig.md",
+  "Shop/Hero and Avatar Maker.md",
+  "Shop/Image-to-3D Smith.md",
+  "Shop/Kokoro.md",
+  "Shop/LaMa.md",
+  "Shop/LaTeX.md",
+  "Shop/Lettering.md",
+  "Shop/LoRA Trainer.md",
+  "Shop/Maker.md",
+  "Shop/Manim CE.md",
+  "Shop/Matplotlib.md",
+  "Shop/Mermaid.md",
+  "Shop/Midjourney.md",
+  "Shop/OBS.md",
+  "Shop/Observable Plot.md",
+  "Shop/RNBO codebox~ smith.md",
+  "Shop/Remotion.md",
+  "Shop/RunPod GPU Backend.md",
+  "Shop/SAM.md",
+  "Shop/Shopkeeper.md",
+  "Shop/Stable Audio Open.md",
+  "Shop/Three.js.md",
+  "Shop/Tone.js.md",
+  "Shop/VCV Patch Generator.md",
+  "Shop/Web Audio Worklet.md",
+  "Shop/Whisper.md",
+  "Shop/ffmpeg.md",
+  "Shop/p5.js.md"
+ ],
+ "summary": "The Shop is the palace's best-disciplined family \u2014 33 entries running one shared template (Charter/Voice/Tiers/Job Contract/Self-Check/Gotchas/Recipes), one foreman (Maker) that resolves a design-system cascade before any Specialist runs, and a house habit worth naming: nearly every Charter contains an explicit \"I refuse to invent/guess/fake\" clause, and several Specialists (Kokoro, Whisper, ComfyUI, SAM/LaMa, OBS, VCV Patch Generator) treat honest failure as more valuable than a plausible-looking success. That refusal-as-craft pattern is load-bearing enough to deserve a name of its own (flagged below). The family isn't cluttered in the way Loudon worried this morning \u2014 it doesn't need merging or composting; the \"stub\" convention already lets a thin entry sit patiently until its first real job without embarrassment, and the perception trio (Depth Anything/SAM/LaMa) earns three separate entries under SCHEMA's one-external-tool test even though they're short and always cited together. What it does have is ordinary drift: two 0-inbound newcomers (OBS, LoRA Trainer) whose siblings already depend on them in prose but never declared the link; Maker's own hand-written Promotion log and Roster prose have fallen behind the roster it foreman's (Image-to-3D Smith, Figure Rig, Lettering, Depth Anything/LaMa/SAM are alive or stub but absent from that prose); three sibling Specialists (Matplotlib, Mermaid, LaTeX) are each independently asking for the exact house-defaults wrapper that Observable Plot already built and proved; and Maker flagged its own Selection Heuristics section as due for a split at ~15 Specialists \u2014 the roster is now more than double that.",
+ "coherence_findings": [
+  {
+   "issue": "LoRA Trainer's Tiers table has only Piece (ai-toolkit/FLUX) and Study (kohya/SDXL) \u2014 no Sketch \u2014 unlike every other Specialist in the family, which all define Sketch/Study/Piece.",
+   "kind": "tier-vocabulary drift",
+   "entries": [
+    "Shop/LoRA Trainer.md"
+   ],
+   "proposed_action": "Ask whether training is inherently non-sketchable (a run is a run, no cheap draft) or whether a tiny-dataset/few-step smoke tier belongs, and either declare the omission deliberate in-entry or add a Sketch rung."
+  },
+  {
+   "issue": "Matplotlib, Mermaid, and LaTeX each carry an independent Open Question asking for the same missing thing \u2014 a house-defaults wrapper (palace.mplstyle / base themeVariables / palace.sty) analogous to Observable Plot's proven palace-plot-defaults.js + palette-tokens.js pattern. None has been built, and each entry is unaware the other two are asking the identical question.",
+   "kind": "repeated unresolved need / house-standard drift",
+   "entries": [
+    "Shop/Matplotlib.md",
+    "Shop/Mermaid.md",
+    "Shop/LaTeX.md",
+    "Shop/Observable Plot.md"
+   ],
+   "proposed_action": "One consolidated pass building three thin wrappers off the Plot precedent, rather than three Specialists separately re-deriving the same infrastructure need."
+  },
+  {
+   "issue": "Maker.md's hand-written 'Promotion log' (append-only history of how each alive Specialist earned status) stops at LoRA Trainer (2026-06-16) and never mentions several Specialists that are alive with real dated recipes: Figure Rig, Depth Anything, LaMa, SAM, Lettering. The generated Roster table (build-roster.mjs) is presumably current since it reads frontmatter directly, but the narrative promotion-log prose is stale.",
+   "kind": "roster/promotion-log drift",
+   "entries": [
+    "Shop/Maker.md"
+   ],
+   "proposed_action": "Append the missing promotions (BLUELINE's perception trio + Figure Rig + Lettering) to Maker's Promotion log on the next touch of that entry."
+  },
+  {
+   "issue": "Image-to-3D Smith is not mentioned anywhere in Maker.md's Roster prose (neither Promotion log nor the 'Still stub' list), even though it exists as a real stub Specialist awaiting Loudon's go-ahead per Shopkeeper's fulfilled commission.",
+   "kind": "roster gap",
+   "entries": [
+    "Shop/Maker.md",
+    "Shop/Image-to-3D Smith.md"
+   ],
+   "proposed_action": "Add Image-to-3D Smith to Maker's 'Still stub' list alongside RNBO codebox~ smith and LaTeX."
+  },
+  {
+   "issue": "OBS is the one Specialist that structurally breaks the Maker's whole model \u2014 'operated, not dispatched,' no Sketch/Study/Piece tiers, no re-runnable deliverable \u2014 and it says so explicitly in its own Charter and Tiers section. Maker.md's Host Capability Check table and Selection Heuristics never acknowledge this exception exists.",
+   "kind": "house-standard drift / undocumented exception",
+   "entries": [
+    "Shop/OBS.md",
+    "Shop/Maker.md"
+   ],
+   "proposed_action": "A one-line note in Maker's Host Capability Check or Selection Heuristics naming OBS as the operated (not dispatched) exception, so a future reader isn't surprised the tier system doesn't apply."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Shop/Manim CE.md",
+   "question": "Whisper voiceover sync uses model size (tiny/base/small/medium/large) \u2014 which is the default?",
+   "verdict": "answered-elsewhere",
+   "by_entry": "Shop/Whisper.md",
+   "proposed_action": "Manim CE's Open Questions should cite Whisper's 2026-05-26 gotcha: base model confirmed sufficient for manim-voiceover sync (word-timing precision well inside the \u00b110ms need)."
+  },
+  {
+   "entry": "Shop/Maker.md",
+   "question": "The Selection Heuristics section is the part that most strongly encodes Loudon-specific taste \u2014 at what point does it want to be its own entry (Shop/House Taste.md)?",
+   "verdict": "should-act",
+   "proposed_action": "The threshold this question itself named ('when the Roster grows past ~15 specialists') has been crossed \u2014 the Roster is now 33. Worth actually splitting Selection Heuristics into its own entry on the next Maker touch, not leaving it as a standing open question."
+  },
+  {
+   "entry": "Shop/Maker.md",
+   "question": "How to handle briefs that cross into a Producer layer (cross-medium, multi-deliverable, scheduled across days)?",
+   "verdict": "progressed",
+   "by_entry": "Shop/OBS.md",
+   "proposed_action": "OBS's own entry names itself 'the second independent pressure on the Shop's Producer-layer seam' \u2014 two Specialists now independently pushing on the same architectural wall (Maker from brief complexity, OBS from real-time-with-a-human) strengthens the case for scoping a Producer-layer proposal rather than leaving it open indefinitely."
+  },
+  {
+   "entry": "Shop/Image-to-3D Smith.md",
+   "question": "Is the stub's first job a Sketch \u2192 Three.js display test (fastest proof) or a Study \u2192 Blender import (what the gap is actually about)?",
+   "verdict": "progressed",
+   "by_entry": "Shop/RunPod GPU Backend.md",
+   "proposed_action": "RunPod GPU Backend's own Untested Horizons names Image-to-3D as ready to run ('Hunyuan3D-2/TRELLIS now have a real GPU to run on') \u2014 the compute blocker this question implicitly worried about is already solved; the remaining decision is purely which first job, not whether the substrate exists."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [
+  {
+   "entry": "Shop/Whisper.md",
+   "stage_current": "alive",
+   "stage_proposed": "alive",
+   "vector_issue": "none",
+   "graffiti_note": "Open Questions still lists 'Default model size for Study tier \u2014 decide on first real job' as open, but the entry's own 2026-05-26 gotcha explicitly says 'Decided the standing open question... base is sufficient.' Stale checklist item, not a real open question."
+  },
+  {
+   "entry": "Shop/Maker.md",
+   "stage_current": "alive",
+   "stage_proposed": "alive",
+   "vector_issue": "none",
+   "graffiti_note": "Test Suite section reads 'Last run: never' \u2014 the foreman of 33 self-checking Specialists has never run its own Brief Decoding / Routing / Comparison / Cross-Specialist Coherence test plan."
+  },
+  {
+   "entry": "Shop/Shopkeeper.md",
+   "stage_current": "stub",
+   "stage_proposed": "stub",
+   "vector_issue": "none",
+   "graffiti_note": "Pending Commission note ('Approved 2026-06-08 \u2014 execute next scheduled run... Deposit an Image-to-3D smith Specialist') reads as still-open, but Image-to-3D Smith already exists as a stub entry with a probe record \u2014 the commission was fulfilled and the note should close or update to reference the shipped stub."
+  },
+  {
+   "entry": "Shop/LoRA Trainer.md",
+   "stage_current": "alive",
+   "stage_proposed": "alive",
+   "vector_issue": "none",
+   "graffiti_note": "Tiers table defines only Piece and Study \u2014 the family-wide Sketch rung is absent with no stated reason, unlike every other Specialist which either has one or explicitly declines it."
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Shop/Maker.md",
+   "target": "Kuramoto Coupling",
+   "type": "connects-to",
+   "label": "first-testbed",
+   "phrase": "the [[Kuramoto Coupling]] arc' is named repeatedly across Maker's Recipes as the family's original test-bed for the whole round-trip (Kokoro/Manim/Whisper/ComfyUI), but Maker's own frontmatter never links it.",
+   "structurally_significant": true
+  }
+ ],
+ "typed_relations": [
+  {
+   "source": "Shop/RunPod GPU Backend.md",
+   "target": "Shop/LoRA Trainer.md",
+   "type": "connects-to",
+   "label": "trains-loras-on",
+   "kind": "new",
+   "rationale": "LoRA Trainer already declares 'rides-the-substrate' toward RunPod GPU Backend, but the Weave's inbound count is literal-target-based, so the reciprocal declaration is genuinely missing \u2014 and RunPod's own Untested Horizons list ('LoRAs / fine-tunes \u2014 style packs or alternate checkpoints, loaded on a pod') shows it already thinks of LoRA Trainer as a customer.",
+   "evidence": "LoRA Trainer: \"rides [[Shop/RunPod GPU Backend]] for the compute\" / RunPod: \"LoRAs / fine-tunes \u2014 style packs or alternate checkpoints, loaded on a pod\"",
+   "spark": 2
+  },
+  {
+   "source": "Shop/ComfyUI.md",
+   "target": "Shop/LoRA Trainer.md",
+   "type": "connects-to",
+   "label": "consumes-the-weights",
+   "kind": "new",
+   "rationale": "ComfyUI's own Capabilities and Strengths sections repeatedly cite LoRAs as a core control mechanism ('Custom LoRAs allow training a Loudon Live aesthetic that's fully under our control'), yet the entry that actually trains them is never linked from ComfyUI's frontmatter \u2014 a genuine missing downstream-consumer edge.",
+   "evidence": "ComfyUI: \"Custom LoRAs allow training a Loudon Live aesthetic that's fully under our control\"",
+   "spark": 2
+  },
+  {
+   "source": "Shop/Maker.md",
+   "target": "Shop/OBS.md",
+   "type": "connects-to",
+   "label": "operated-not-dispatched",
+   "kind": "newcomer",
+   "rationale": "OBS is a priority newcomer (0 inbound) whose entire Charter is built around breaking the Maker's dispatch model, and it already links to Maker one-directionally ('operated-not-dispatched'). The reciprocal declaration both raises OBS's inbound count and gives Maker's frontmatter an honest pointer to its one structural exception.",
+   "evidence": "OBS: \"I am the Shop's first Specialist that is operated rather than dispatched\" \u2014 Maker: connects-to Trickster, answers-to, but no link to OBS at all",
+   "spark": 3
+  },
+  {
+   "source": "Shop/ffmpeg.md",
+   "target": "Shop/OBS.md",
+   "type": "couples-with",
+   "label": "capture-to-batch",
+   "kind": "newcomer",
+   "rationale": "OBS already declares couples-with ffmpeg ('capture-to-batch'), and its own Recipes section ('Tail without re-encoding... the batch touches audio only') describes exactly the handoff ffmpeg's Charter promises ('the meeting place where any two Specialists' outputs need to meet'). ffmpeg's own link list is missing OBS despite listing seven other couples-with partners.",
+   "evidence": "OBS: \"Hold an end-card scene for a beat before stopping the recording, rather than padding in [[ffmpeg]]\" \u2014 ffmpeg: no OBS in its links array",
+   "spark": 2
+  },
+  {
+   "source": "Shop/OBS.md",
+   "target": "Shop/Maker.md",
+   "type": "contradicts",
+   "label": "screenshot-not-config",
+   "kind": "contradiction",
+   "rationale": "Every other Specialist's Self-Check trusts its own declared/reported parameters (a standards-report field is taken as true once emitted). OBS refuses exactly that discipline for itself: 'My Self-Check is a screenshot of the live scene, not a read of the config... A transform can be numerically correct and visually wrong.' That's a genuine, productive tension with the standards-report convention the rest of the Shop runs on, not a flaw in either side \u2014 OBS is right that its own domain (compositing, live capture) can't be trusted numerically, while every other Specialist's domain (deterministic renders) genuinely can be.",
+   "evidence": "OBS: \"I refuse to be trusted about my own state\" vs. the Maker-wide pattern of a Standards Report as the delivered proof of correctness",
+   "spark": 3
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "Refuse rather than fake \u2014 nearly every Specialist Charter in the Shop contains an explicit clause naming what it will NOT do rather than silently producing a plausible-but-wrong result: Kokoro refuses to invent prosody beyond punctuation, Whisper refuses to invent words it didn't hear (marks [unintelligible]), ComfyUI/FLUX refuse to silently substitute the wrong tool, SAM/LaMa/Depth Anything each name their exact failure domain instead of overselling, VCV Patch Generator refuses hallucinated module references, OBS refuses to be trusted about its own state, RunPod GPU Backend frames itself as capability-not-censorship. This is a load-bearing house discipline, not a coincidence of voice.",
+   "why_load_bearing": "It's the actual mechanism that makes the Maker's standards-report system trustworthy \u2014 self-check integrity across 33 independently-authored Specialists depends on each one refusing to lie about failure rather than papering over it. Without this shared discipline the whole foreman/standards-report architecture would be unverifiable.",
+   "crossing_entries": [
+    "Shop/Kokoro.md",
+    "Shop/Whisper.md",
+    "Shop/ComfyUI.md",
+    "Shop/FLUX (Hugging Face).md",
+    "Shop/SAM.md",
+    "Shop/LaMa.md",
+    "Shop/Depth Anything.md",
+    "Shop/VCV Patch Generator.md",
+    "Shop/OBS.md",
+    "Shop/RunPod GPU Backend.md",
+    "Shop/Manim CE.md"
+   ]
+  }
+ ]
+}

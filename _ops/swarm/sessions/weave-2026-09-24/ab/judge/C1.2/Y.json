@@ -1,0 +1,83 @@
+{
+ "arm": "Y",
+ "room": "C1.2",
+ "total_proposals": 19,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Semantic Delay",
+   "type": "connects-to",
+   "target": "Slime Mold Delay",
+   "label": "routing-by-meaning",
+   "rationale": "Same reciprocal-link case as above \u2014 closes a second inbound gap for the newcomer Slime Mold Delay.",
+   "evidence": "Slime Mold Delay already declares this one-directionally: \"Semantic Delay: routing-by-meaning.\"",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "unsung",
+   "source": "The Curve Is the Material",
+   "type": "connects-to",
+   "target": "Phonon Dispersion",
+   "label": null,
+   "rationale": "### [[Phonon Dispersion]] in Crystal Lattices",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "relation",
+   "source": "Retrospective Delay",
+   "type": "connects-to",
+   "target": "Slime Mold Delay",
+   "label": "thinking-vs-remembering",
+   "rationale": "Reciprocal link \u2014 Slime Mold Delay is a 0-inbound newcomer; Retrospective Delay already names the relationship but doesn't record it.",
+   "evidence": "Slime Mold Delay already declares this relation one-directionally: \"Retrospective Delay: thinking-vs-remembering.\"",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Tonnetz",
+   "label": null,
+   "rationale": "### The [[Tonnetz]] \u2014 Harmony and Timbre Are the Same Geometry",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "The Curve Is the Material",
+   "type": "connects-to",
+   "target": "Photonic Time Crystals",
+   "label": "physics-grounding-for-photonic-function-family",
+   "rationale": "Photonic Time Crystals is the deep-physics grounding this function-family entry gestures at without naming \u2014 a direct, addressable gap.",
+   "evidence": "The Curve Is the Material lists \"Photonic / crystal modes: Dispersion relation from crystal band structure... Already derived for the crystal synthesis project\" as one of its named function families, but only names 'the crystal synthesis project' generically.",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Quasicrystals",
+   "label": null,
+   "rationale": "### [[Quasicrystals]] and the Cut-and-Project Method",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "relation",
+   "source": "SMPTE LTC",
+   "type": "connects-to",
+   "target": "Trickster",
+   "label": "engineering-trickster",
+   "rationale": "The word 'trickster' appears twice in the body, unlinked, while two other room members (Retrospective Delay, Semantic Delay) already treat [[Trickster]] as a load-bearing entry \u2014 this is a verbatim unsung path, not an imposed reading.",
+   "evidence": "\"Timecode is a trickster convention: it pretends to measure absolute time but is in fact a counter.\" / \"Drop-frame NTSC...a trickster convention in the spec itself.\"",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Orbital Resonance",
+   "label": null,
+   "rationale": "### [[Orbital Resonance]] and the KAM Theorem",
+   "item_id": "Y8"
+  }
+ ]
+}

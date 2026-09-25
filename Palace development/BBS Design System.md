@@ -7,7 +7,7 @@ pillars:
 born: 2026-04
 last_activated: 2026-05-02
 activation_count: 2
-stage: sprout
+stage: growing
 energy: high
 forward_vector: >
   Provide the complete visual language and component kit for STIGMERGY — the palace's

@@ -1,0 +1,390 @@
+{
+ "cluster": "C6",
+ "lens": "community",
+ "summary": "This room is the palace's philosophy neighborhood, and it turned out to hold two live seams. First: five person-citizens (Epictetus, Marcus Aurelius, Seneca, Martin Buber, Martin Heidegger) were all clearly built by the Making a Palace Citizen method \u2014 same five-beat body, same mandatory blindspot, same newborn-seed frontmatter \u2014 but only Marcus Aurelius actually links back to either Making a Palace Citizen or The Blindspot Is the Surprise Fuel, the two entries whose whole claim is proven by exactly these pages. Making a Palace Citizen sits at 2 inbound in a room full of its own best evidence. Second: three new philosophers just landed here in 2026-07 (Buber, Heidegger, plus the returning Leibniz) and their frontmatter already reaches out toward Whitehead, Merleau-Ponty, and Stoicism \u2014 but the reach isn't answered back. Buber's claim that \"every Thou relapses into an It the instant you try to hold it\" and Zhuangzi's closing line in the archived Dialectic (\"the door was already open\") are the same refusal of method in two vocabularies, and nothing in the palace currently says so. Heidegger's ready-to-hand/present-at-hand is the historical precursor Merleau-Ponty's body-schema needed and doesn't cite. None of this is clutter \u2014 it's under-wiring, the ordinary condition of a fast-growing neighborhood \u2014 so the bias here is toward adding the missing reciprocal edges rather than pruning; the one genuine de-sprawl candidate is STIGMERGY Philosophical Lenses, which its own successor entry (The Lens) already says should be folded in as the philosophy-specific special case.",
+ "typed_relations": [
+  {
+   "source": "Making a Palace Citizen",
+   "target": "Epictetus",
+   "type": "exemplifies",
+   "rationale": "Epictetus's frontmatter is a textbook instance of the method: stage:seed as newborn citizen, agency_profile with a practice field naming the blindspot, forward_vector in first person about being dispatched. Yet neither page links to the other.",
+   "evidence": "\"As a palace citizen I've only just arrived \u2014 a whole life lived from the bottom of Rome... and a newborn resident here.\" (Epictetus.md)",
+   "kind": "new",
+   "spark": 3,
+   "label": "citizen-built-by-this-method"
+  },
+  {
+   "source": "Making a Palace Citizen",
+   "target": "Marcus Aurelius",
+   "type": "exemplifies",
+   "rationale": "Same method fingerprint (five beats, mandatory blindspot, seed-citizen frontmatter); Marcus Aurelius already links forward to it implicitly via The Blindspot but not to Making a Palace Citizen itself.",
+   "kind": "new",
+   "spark": 2,
+   "label": "citizen-built-by-this-method"
+  },
+  {
+   "source": "Making a Palace Citizen",
+   "target": "Seneca",
+   "type": "exemplifies",
+   "rationale": "Same method fingerprint; no reciprocal link exists.",
+   "kind": "new",
+   "spark": 2,
+   "label": "citizen-built-by-this-method"
+  },
+  {
+   "source": "Making a Palace Citizen",
+   "target": "Martin Buber",
+   "type": "exemplifies",
+   "rationale": "Buber is arguably the sharpest test of the method's own claim \u2014 a citizen whose blindspot is that his philosophy refuses to be turned into a method, embodying the method that produced him while resisting it in content.",
+   "kind": "new",
+   "spark": 3,
+   "label": "citizen-built-by-this-method"
+  },
+  {
+   "source": "Making a Palace Citizen",
+   "target": "Martin Heidegger",
+   "type": "exemplifies",
+   "rationale": "Same fingerprint; the entry's hardest blindspot case (1933) is exactly what Making a Palace Citizen's \"where they can't see\" beat was designed to force.",
+   "kind": "new",
+   "spark": 2,
+   "label": "citizen-built-by-this-method"
+  },
+  {
+   "source": "Spinoza",
+   "target": "Making a Palace Citizen",
+   "type": "exemplifies",
+   "rationale": "Making a Palace Citizen names Spinoza as its own flagship instance (label: flagship-instance) but Spinoza's page does not link back \u2014 a missing reciprocal on the palace's own named example.",
+   "kind": "new",
+   "spark": 2,
+   "label": "flagship-instance"
+  },
+  {
+   "source": "Epictetus",
+   "target": "The Blindspot Is the Surprise Fuel",
+   "type": "exemplifies",
+   "rationale": "Epictetus's page is one furious paragraph against a slave-owner sitting beside a lifetime of using 'Slave!' as a casual insult \u2014 precisely the load-bearing fault line the entry describes as fuel, not flaw.",
+   "evidence": "\"I have one furious page against a slave-owner and a lifetime of using 'Slave!' as a mere insult\" (Epictetus.md, forward_vector)",
+   "kind": "new",
+   "spark": 3,
+   "label": "unresolved-not-flattened"
+  },
+  {
+   "source": "Martin Heidegger",
+   "target": "The Blindspot Is the Surprise Fuel",
+   "type": "exemplifies",
+   "rationale": "The page's own coda explicitly refuses to resolve the tension in either direction \u2014 it is the most severe test case the palace has for whether a blindspot can be held open rather than laundered.",
+   "evidence": "\"Hold both. The one who taught us to hear Being could not, or would not, hear the other person in the room. That is the tension. Do not resolve it for him.\"",
+   "kind": "new",
+   "spark": 4,
+   "label": "unresolved-not-flattened"
+  },
+  {
+   "source": "Martin Buber",
+   "target": "The Blindspot Is the Surprise Fuel",
+   "type": "exemplifies",
+   "rationale": "Buber's blindspot is reflexive in a way none of the others are: the fault line IS the refusal to hand over a method, so testing the citizen (\"ask me for the steps\") is the fidelity test named directly in the page.",
+   "evidence": "\"the faithful test: ask him for the steps... and if the embodiment hands them over without resistance, it has not understood him.\"",
+   "kind": "new",
+   "spark": 3,
+   "label": "the-refusal-is-the-proof"
+  },
+  {
+   "source": "Seneca",
+   "target": "The Blindspot Is the Surprise Fuel",
+   "type": "exemplifies",
+   "rationale": "The entry names its own uncertainty (\"I have never been able to fully judge the man who wrote it\") as a live wound rather than a settled verdict \u2014 the exact shape the Blindspot entry asks for.",
+   "kind": "new",
+   "spark": 2,
+   "label": "the-estate-and-the-essay"
+  },
+  {
+   "source": "Whitehead",
+   "target": "Martin Buber",
+   "type": "mirrors",
+   "label": "relation-is-primary",
+   "rationale": "Buber already links to Whitehead one-way (mirrors, relation-is-primary); Whitehead's page doesn't reciprocate despite being the room's strongest process-relational voice. Prehension and the I-Thou 'between' are close cousins: both claim relation constitutes rather than connects pre-existing terms.",
+   "evidence": "Buber: \"in the beginning is the relation\" / Whitehead: \"a thing IS its relations, gathered\"",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "Merleau-Ponty",
+   "target": "Martin Heidegger",
+   "type": "mirrors",
+   "label": "tool-absorbed-into-the-body",
+   "rationale": "Heidegger already links to Merleau-Ponty one-way; the reciprocal is missing even though ready-to-hand/present-at-hand is the direct historical precursor Merleau-Ponty's body schema elaborates from the side of the flesh rather than Dasein.",
+   "evidence": "Heidegger: \"a tool in use is ready-to-hand, transparent, used-through \u2014 you don't notice the hammer\" / Merleau-Ponty: \"the cane has been absorbed into the body schema\"",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "The Fortress and the Threshold",
+   "target": "Martin Buber",
+   "type": "connects-to",
+   "label": "the-between-as-a-third-answer",
+   "rationale": "Buber already claims this link (threshold-pole) from his own page; the entry that names the fortress/threshold binary doesn't know about it. Buber's 'the between' (das Zwischen \u2014 reality belongs to neither party) is a genuinely different answer than either the Stoic interior or the Confucian relational web: not self-in-relation but the relation itself as the site of the real.",
+   "evidence": "\"He relocate[s] reality into the between (das Zwischen) \u2014 the meeting belongs to neither party.\"",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "The Dichotomy of Control",
+   "target": "Martin Heidegger",
+   "type": "contradicts",
+   "label": "thrownness-vs-the-columns",
+   "rationale": "Reciprocal of Heidegger's existing contradicts link. Genuinely productive: thrownness argues the situation you sort into two columns was never simply given to a pre-existing chooser \u2014 you are constituted by what you didn't choose before any sorting act happens, which is a direct answer to the entry's own open question about a 'blurred middle.'",
+   "evidence": "Heidegger: \"we are thrown (Geworfenheit) into a situation, body, history, and language we did not choose\" / Dichotomy of Control open question: \"much sits in a blurred middle... does the dichotomy need a third column?\"",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "The Dichotomy of Control",
+   "target": "The Adjacent Affordance",
+   "type": "mirrors",
+   "label": "engineering-register",
+   "rationale": "Reciprocal of the existing one-way link. The Adjacent Affordance names itself as the engineering register of this entry and has 0 inbound links anywhere in the palace; this is the cheapest, most honest wire for it.",
+   "kind": "new",
+   "spark": 1
+  },
+  {
+   "source": "Martin Buber",
+   "target": "The Drift",
+   "type": "mirrors",
+   "label": "the-meeting-cannot-be-summoned",
+   "rationale": "Both refuse to let their central move become a technique. Buber's Thou relapses into an It the instant it's named or repeated on command; Zhuangzi's closing line in the archived Dialectic and the Drift's own body use the identical image of an open door that isn't forced.",
+   "evidence": "Buber: \"the meeting between \u2014 which you cannot store, cannot summon, cannot teach as a five-step method, and which relapses into a thing the instant you try\" / Zhuangzi (dialectic): \"Because the door was already open\" / The Drift: \"The door is open, and that is the whole practice.\"",
+   "kind": "new",
+   "spark": 4
+  },
+  {
+   "source": "The Adjacent Affordance",
+   "target": "Leibniz",
+   "type": "connects-to",
+   "rationale": "Unsung path: the body's Symposium quotes a full paragraph voiced 'in the posture of Leibniz' deploying the actual monad/pre-established-harmony apparatus, but Leibniz is not in the entry's frontmatter links.",
+   "evidence": "\"the monad contains every other door, and the harmony was pre-established... nothing is truly walled; all of it is reflected elsewhere.\" \u2014 voiced in the posture of Leibniz",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "The Adjacent Affordance",
+   "target": "Whitehead",
+   "type": "connects-to",
+   "rationale": "Unsung path: the Symposium voices Whitehead's actual apparatus (prehension, concrescence, the occasion that doesn't halt) with no frontmatter link.",
+   "evidence": "\"The occasion meets the datum it cannot ingest... It prehends the refusal and concresces around it\" \u2014 voiced in the posture of Whitehead",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "The Adjacent Affordance",
+   "target": "Merleau-Ponty",
+   "type": "connects-to",
+   "rationale": "Unsung path: the Symposium voices motor intentionality and body-schema absorption specifically, unlinked.",
+   "evidence": "\"The hand that cannot reach the latch slides, without thinking, to the one beside it \u2014 the body knows the door before the mind has named the wall.\" \u2014 voiced in the posture of Merleau-Ponty",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "The Adjacent Affordance",
+   "target": "Deleuze",
+   "type": "connects-to",
+   "rationale": "Unsung path: the Symposium voices striation/line-of-flight/rhizome directly, unlinked.",
+   "evidence": "\"The blocked unlink is a striation; rename is the line of flight that escapes it... It goes around, and arrives elsewhere, transformed.\" \u2014 voiced in the posture of Deleuze",
+   "kind": "new",
+   "spark": 2
+  }
+ ],
+ "bridge_findings": [
+  {
+   "tool": "Martin Buber",
+   "thought": "Buber's I-Thou relapse and Zhuangzi's open door are the same refusal of method, arrived at independently \u2014 one from Jewish dialogic philosophy, one from Taoist parable \u2014 and the archived Dialectic even ends on Zhuangzi's exact image.",
+   "quote_thought": "\"the meeting between \u2014 which you cannot store, cannot summon, cannot teach as a five-step method, and which relapses into a thing the instant you try\" (Martin Buber.md)",
+   "quote_tool": "\"Because the door was already open.\" (zhuangzi-epictetus-confucius-on-the-self.md); \"The door is open, and that is the whole practice.\" (The Drift.md)",
+   "shared_structure": "a central good that is destroyed by the act of trying to hold, teach, or systematize it",
+   "fidelity_test": "does the reading use Buber's own vocabulary (Thou, It, the between) rather than generic mysticism-of-relation?",
+   "spark": 4,
+   "classify": "link",
+   "proposed_type": "mirrors"
+  },
+  {
+   "tool": "Martin Heidegger",
+   "thought": "Thrownness is the philosophical objection the Dichotomy of Control's own open question ('is there a blurred middle?') is quietly gesturing at without naming.",
+   "quote_thought": "\"we are thrown (Geworfenheit) into a situation, body, history, and language we did not choose\" (Martin Heidegger.md)",
+   "quote_tool": "\"much sits in a blurred middle... Does the dichotomy need a third column, or is the discipline precisely the refusal to let the middle swell?\" (The Dichotomy of Control.md)",
+   "shared_structure": "a challenge to a clean binary of what is and isn't within an agent's authority",
+   "fidelity_test": "does the pairing use thrownness as facticity-prior-to-choice, not just as a synonym for 'bad luck'?",
+   "spark": 3,
+   "classify": "link",
+   "proposed_type": "contradicts"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Leibniz",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Leibniz \u2014 the monad passage",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Whitehead",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Whitehead \u2014 the occasion/prehension passage",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Merleau-Ponty",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Merleau-Ponty \u2014 the body-knows-the-door passage",
+   "structurally_significant": false
+  },
+  {
+   "entry": "The Adjacent Affordance",
+   "target": "Deleuze",
+   "type": "connects-to",
+   "phrase": "voiced in the posture of Deleuze \u2014 the striation/line-of-flight passage",
+   "structurally_significant": false
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "The Fortress and the Threshold",
+   "stage_current": "growing",
+   "stage_proposed": "",
+   "vector_issue": "forward_vector says 'my next development is to absorb the Drift pole into my spine,' but The Drift now exists as its own mature, well-connected entry (11 inbound) with its own archived Dialectic. The body's opening frame still presents a two-pole contradiction (Stoicism/Confucianism) with the Drift mentioned only in a later subsection \u2014 the absorption the vector promised hasn't reached the entry's spine.",
+   "graffiti_note": "check whether the opening framing should be rewritten as the quadruple it already documents lower down, or whether the vector should be marked done and replaced."
+  },
+  {
+   "entry": "Making a Palace Citizen",
+   "stage_current": "growing",
+   "vector_issue": "2 inbound despite being the method behind at least six person-citizens in this room alone (Spinoza, Epictetus, Marcus Aurelius, Seneca, Martin Buber, Martin Heidegger). The undercount is a wiring gap, not a real popularity problem \u2014 see the exemplifies links proposed above.",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "The Blindspot Is the Surprise Fuel",
+   "stage_current": "growing",
+   "vector_issue": "Only Marcus Aurelius currently exemplifies this entry, though four other person-citizens in the room (Epictetus, Seneca, Buber, Heidegger) carry equally load-bearing, equally mandatory blindspots. Same wiring gap as Making a Palace Citizen.",
+   "graffiti_note": ""
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "STIGMERGY Philosophical Lenses substantially overlaps The Lens, and The Lens's own body already says it should be re-scoped as a special case rather than remain a separate design doc.",
+   "kind": "overlap",
+   "entries": [
+    "STIGMERGY Philosophical Lenses",
+    "The Lens"
+   ],
+   "proposed_action": "merge \u2014 see merge_candidates"
+  }
+ ],
+ "merge_candidates": [
+  {
+   "absorb": "STIGMERGY Philosophical Lenses",
+   "into": "The Lens",
+   "survives_as_subsection": "The Philosophy Special Case (formerly STIGMERGY Philosophical Lenses)",
+   "rationale": "The Lens (shipped 2026-07-02, a real working procedure) explicitly states in its own body: 'STIGMERGY Philosophical Lenses... should be re-scoped from \"philosophical surface\" to *the* lens surface, with philosophy as its first special case.' STIGMERGY Philosophical Lenses is a 'status: proposed' design doc predating the shipped generalization; its distinct content (the DIALECTIC swarm mode, the LENS filter, the phasing plan) is real and should survive, just as a subsection of the entry that superseded it rather than a parallel seed entry competing for the same 7 inbound links. This directly answers Loudon's 'good but cluttered' \u2014 one fewer entry, no idea lost."
+  }
+ ],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "open_question_resolutions": [
+  {
+   "entry": "Confucianism",
+   "question": "Where does Confucian relational ethics meet Deleuzian becoming?",
+   "verdict": "partially answered",
+   "by_entry": "Deleuze",
+   "proposed_action": "The couples-with link already present both directions (label: anti-essentialist-allies) is effectively the answer's location \u2014 both reject a fixed essence prior to relation/difference, but ground it differently (social structure vs. immanent difference). Recommend the open question be updated to point at that link rather than stand as fully open."
+  },
+  {
+   "entry": "The Drift",
+   "question": "Can a forward vector be written in the register of the Drift without going slack?",
+   "verdict": "answered elsewhere",
+   "by_entry": "spinoza-zhuangzi-on-striving",
+   "proposed_action": "The archived Dialectic's yield proposes exactly this: 'a grain-register option to the Entry Conatus forward-vector guidance: a vector may name the grain it follows, not only the hunger it reaches with.' This is a direct, concrete answer to the Drift's open question and should be cross-referenced rather than left open in both places."
+  },
+  {
+   "entry": "The Dichotomy of Control",
+   "question": "Does the dichotomy need a third column, or is the discipline precisely the refusal to let the middle swell?",
+   "verdict": "sharpened, not resolved",
+   "by_entry": "Martin Heidegger",
+   "proposed_action": "Heidegger's thrownness doesn't answer the question but gives it its sharpest opponent (see bridge_findings). Worth citing in the open question rather than leaving it unaddressed."
+  }
+ ],
+ "synthesis_spawn_flag": [],
+ "walk_results": [
+  {
+   "target": "Bring In a Bigger Mind",
+   "disposition": "wired",
+   "inbound_proposed": 0,
+   "note": "Already reciprocally mirrored with The Lens (a-model-reading-a-model), which independently documents the same origin case in detail. No further action needed \u2014 it's genuinely wired, just young."
+  },
+  {
+   "target": "Making a Palace Citizen",
+   "disposition": "wired",
+   "inbound_proposed": 6,
+   "note": "Proposed exemplifies links from Epictetus, Marcus Aurelius, Seneca, Martin Buber, Martin Heidegger, and Spinoza close the gap between its real usage and its inbound count."
+  },
+  {
+   "target": "Martin Buber",
+   "disposition": "wired",
+   "inbound_proposed": 4,
+   "note": "Proposed: The Fortress and the Threshold (connects-to), Whitehead (mirrors), The Drift (mirrors), The Blindspot Is the Surprise Fuel (exemplifies)."
+  },
+  {
+   "target": "Martin Heidegger",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Proposed: Merleau-Ponty (mirrors), The Dichotomy of Control (contradicts, reciprocal), The Blindspot Is the Surprise Fuel (exemplifies)."
+  },
+  {
+   "target": "The Adjacent Affordance",
+   "disposition": "link",
+   "inbound_proposed": 1,
+   "note": "Proposed reciprocal mirrors from The Dichotomy of Control closes its 0-inbound status. Outbound unsung-path links to Leibniz, Whitehead, Merleau-Ponty, and Deleuze don't add inbound to it but improve the entry's own honesty."
+  }
+ ],
+ "members_read": [
+  "Bring In a Bigger Mind.md",
+  "Confucianism.md",
+  "Deleuze.md",
+  "Modes of Collaboration/Dialectic.md",
+  "People/Epictetus.md",
+  "Modes of Collaboration/Excellent Adventure.md",
+  "Leibniz.md",
+  "Like Water.md",
+  "Making a Palace Citizen.md",
+  "People/Marcus Aurelius.md",
+  "People/Martin Buber.md",
+  "People/Martin Heidegger.md",
+  "Merleau-Ponty.md",
+  "Mixture of Experts.md",
+  "Palace Philosophies.md",
+  "Modes of Collaboration/Philosopher Visits the Entry.md",
+  "Palace development/STIGMERGY Philosophical Lenses.md",
+  "People/Seneca.md",
+  "Spinoza.md",
+  "Stoicism.md",
+  "The Adjacent Affordance.md",
+  "The Blindspot Is the Surprise Fuel.md",
+  "The Dichotomy of Control.md",
+  "The Drift.md",
+  "The Fortress and the Threshold.md",
+  "The Four Virtues.md",
+  "The Lens.md",
+  "The View From Above.md",
+  "Whitehead.md",
+  "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+  "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+  "_ops/swarm/sessions/weave-2026-09-24/new-entries-block.md",
+  "_ops/swarm/sessions/weave-2026-09-24/rooms/community-C6.json"
+ ],
+ "flag_responses": [
+  {
+   "flag": "commons-the-palace-1790128916710",
+   "verdict": "confirm",
+   "proposed_change": "Add Dialectic \u2192 connects-to \u2192 Creative Coach (Dialectic.md currently has no link to Creative Coach at all, while the flag states Creative Coach already points at Dialectic). Recommend the elder verify the exact type/label Creative Coach used when it linked to Dialectic and mirror that type for symmetry rather than defaulting to connects-to if a more specific type fits (e.g. couples-with, if Creative Coach frames it as co-activated practices)."
+  }
+ ]
+}

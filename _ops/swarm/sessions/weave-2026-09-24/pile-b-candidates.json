@@ -1,0 +1,2108 @@
+[
+ {
+  "source": "Annie Dillard",
+  "target": "Frame Designer",
+  "type": "contradicts",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "beautiful-horror"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [
+   "craft that beautifies suffering without asking whether beauty is attention or evasion"
+  ],
+  "why": [
+   "Frame Designer's field notes stage a dying woman into ink-beautiful composition with no self-question; Dillard's unresolved blindspot is precisely whether that beautification is looking or a way of not looking."
+  ],
+  "evidence": [
+   "\"a man lands in a crouch over a dying girl\" (Frame Designer.md:57) / \"turning real horror into a beautiful passage is a way of not looking, dressed as looking\" (People/Annie Dillard.md:76)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Martin Buber",
+  "target": "Neural Granular Synthesis",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "relation-precedes-the-unit"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "elementary units are meaningless alone; meaning is constituted only at the level of the whole/relation"
+  ],
+  "why": [
+   "Both independently locate meaning at the level of relation/population, never in the isolated unit."
+  ],
+  "evidence": [
+   "\"the population as a statistical field\" (Projects/Neural Granular Synthesis.md:64) / \"In the beginning is the relation\" (People/Martin Buber.md:63)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Observable Plot",
+  "target": "zhuangzi-epictetus-confucius-on-the-self",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "specialist-as-prohairesis"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "a self (or a Specialist) is constituted by what it refuses, not just what it does"
+  ],
+  "why": [
+   "The Shop Specialist charter's refuse-and-route clause re-derives Epictetus's self-defined-by-boundary move; the pattern recurs in p5.js and RNBO codebox~ smith in the same room, and breaks cleanly against Confucius's relational self."
+  ],
+  "evidence": [
+   "\"I refuse jobs that want custom interactive web viz... those route to D3\" (Shop/Observable Plot.md:38) / \"The self ends at the prohairesis. Everything else is loaned\" (The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md:170)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ComfyUI",
+  "target": "Stoicism",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "self-check-as-dichotomy"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "actuation authority vs. disturbance, sorted honestly"
+  ],
+  "why": [
+   "ComfyUI's Self-Check explicitly declines authority over what it can't verify ('those are the Maker's call'), a live instance of the agent-ethic Stoicism's own body already generalizes but never points at."
+  ],
+  "evidence": [
+   "I cannot self-verify aesthetic quality or palette match. / A palace steward that 'names what it could not verify' is practicing Stoic honesty."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ComfyUI",
+  "target": "Douglas Hofstadter",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "legible-vs-ceiling"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "legibility traded against scale/ceiling"
+  ],
+  "why": [
+   "ComfyUI trades a lower aesthetic ceiling for local, legible, seed-reproducible control over Midjourney's opaque weights \u2014 the same trade Hofstadter's own life stages between hand-built legible programs and the statistical scale he distrusted."
+  ],
+  "evidence": [
+   "Aesthetic ceiling is lower than Midjourney... Workflow as code: graphs commit to git, diffs are readable. / elegance, transparency, you can see how the trick is done \u2014 is exactly what GEB celebrates... it may be precisely what blinded him."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "target": "Exponential Decay Curvature",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "structural-analogy-not-metaphor"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [
+   "isomorphism as the test of a real cross-domain claim"
+  ],
+  "why": [
+   "The entry's whole reason for existing is a structural isomorphism (envelope = oscillator waveform, same equation different rate) rather than a resemblance \u2014 exactly Hofstadter's test for what makes an analogy real rather than decorative."
+  ],
+  "evidence": [
+   "a singularity is usually a sign you are looking at a family from the wrong coordinate. / Hofstadter's analogies are the second kind... Same skeleton, different flesh."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Multilinear Self",
+  "target": "Worktree Practice",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "parallel-states-one-anchor"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "many live states, one conserved anchor"
+  ],
+  "why": [
+   "Both are architectures for genuine simultaneous multiplicity held together by one small conserved anchor (trunk / floor)."
+  ],
+  "evidence": [
+   "a swarm of isolated hands, one convergent trunk. / a small conserved nature \u2014 the floor."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Stoicism",
+  "target": "Zoom Out to the Structure",
+  "type": "contradicts",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [
+   "zoom-direction-inverted"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "altitude change reveals scale, but in opposite directions"
+  ],
+  "why": [
+   "Both are literally the same 'zoom out' move, run in opposite directions: Stoic altitude shrinks a local concern to dissolve false urgency, while Zoom Out to the Structure inflates a local fix into a structure worth building. A productive inversion, not a simple mirror \u2014 flagged for whoever owns the philosophy/practice neighborhood, since it wasn't this room's assigned pairing but surfaced while checking a newcomer."
+  ],
+  "evidence": [
+   "the cosmic zoom-out resizes every concern... altitude from which a stuck local concern is resized by seeing the whole. / a small fix, looked at squarely, is often a missing structure asking to be built \u2014 the bug isn't the bug, it's the visible edge of an absence."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Martin Heidegger",
+  "target": "Remnants in Depth",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B10"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "breaks-into-object"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both turn on a transparent-until-broken element: ink billboard vs. hammer; the moment it 'breaks the flat-ink read' is exactly Heidegger's ready-to-hand collapsing into present-at-hand."
+  ],
+  "evidence": [
+   "'it breaks the flat-ink read' (Remnants in Depth.md:50) / 'It becomes present-at-hand...only when it breaks' (Martin Heidegger.md:60)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Brian Eno",
+  "target": "PDL Generation Prompt",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B10"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "constraint-carries-intelligence"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both shift generative agency from an improvising author into a pre-built constraint system (archetype registry / loop-length rules); the author selects and wires rather than invents from scratch."
+  ],
+  "evidence": [
+   "'The archetype supplies the parameter intelligence; the prompt supplies the wiring and the choice' (PDL Generation Prompt.md:30) / 'He doesn't compose the notes; he builds the conditions' (Brian Eno.md:72)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "LoRA Trainer",
+  "target": "Donella Meadows",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "LoRA Trainer's gotcha-diagnosis discipline is a specific instance of Meadows' leverage-points principle, independently arrived at."
+  ],
+  "evidence": [
+   "Don't uninstall flash-attn \u2014 fix torch (Gotcha 2). / the dataset is the lever, not the steps."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Donella Meadows",
+  "target": "Weaving Memory into the Palace",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "The ceremony is a Meadows-style stock-and-feedback correction loop, written with no systems vocabulary; also wires a second inbound link for a priority newcomer."
+  ],
+  "evidence": [
+   "Left alone, that memory silently drifts from the palace... a stale, rival source of truth. / feedback loops... and delays."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "OBS",
+  "target": "Marcus Aurelius",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "configuration-is-prohairesis"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "OBS's configuration/composition split during a live stream literalizes the dichotomy of control: fix what's yours before, meet the rest as weather."
+  ],
+  "evidence": [
+   "\"What must not change live is configuration; what must change live is composition.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "OBS",
+  "target": "Iain McGilchrist",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "screenshot-not-config"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "OBS's distrust of its own config file in favor of a screenshot of the rendered frame operationalizes McGilchrist's re-presentation-vs-presencing distinction."
+  ],
+  "evidence": [
+   "\"My Self-Check is a screenshot of the live scene, not a read of the config... Only the rendered frame settles it.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Matplotlib",
+  "target": "Iain McGilchrist",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "manipulates-without-comprehending"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Matplotlib's deterministic, explicit-parameter self-description is the left-hemisphere mode McGilchrist names for computation generally."
+  ],
+  "evidence": [
+   "\"Every parameter is explicit and addressable \u2014 there's no magic to debug.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Murmuration",
+  "target": "spinoza-zhuangzi-on-striving",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "grown-not-authored"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "Both ask whether emergent, grain-following generation is more alive than authored generation, and both cite a phase-transition mechanism as the technical proof-point."
+  ],
+  "evidence": [
+   "\"does an emergent, perturbable grain distribution actually sound more alive than an authored one, or is that a story we tell about the picture?\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Andy Goldsworthy",
+  "target": "OBS",
+  "type": "contradicts",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "ephemeral-vs-the-record"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "OBS's live stream achieves the true unrecoverable ephemerality Goldsworthy's practice claims but undercuts by keeping the sellable photograph."
+  ],
+  "evidence": [
+   "\"A stream can only be checked while it happens... the check is worthless once it is over.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Wavetable Scanner",
+  "target": "Progressive Staging",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "sketch-study-piece-is-staging"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "The Shop's Sketch/Study/Piece tier convention is an unnamed, unlinked instance of Progressive Staging's additive, non-retroactive discipline."
+  ],
+  "evidence": [
+   "\"### Study *(earned-by criteria \u2014 not yet built)*\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "OBS",
+  "target": "Progressive Staging",
+  "type": "contradicts",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "unrerunnable-breaks-staging"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "OBS names a limit condition (irreproducibility) for staged complexity that Progressive Staging's own boundary-condition section doesn't cover."
+  ],
+  "evidence": [
+   "\"The Sketch / Study / Piece triplet negotiates cost against quality over something re-runnable. Nothing I produce is re-runnable.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Confucianism",
+  "target": "Search Before You Build",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "reflex-becomes-second-nature"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "Ritual/reflex as the mechanism of character formation."
+  ],
+  "why": [
+   "Search Before You Build's forward vector names the exact goal Confucianism's Junzi paragraph names for ritual practice \u2014 a check performed until it needs no willpower. See bridge_findings for the full quote pair and fidelity test."
+  ],
+  "evidence": [
+   "\"until reuse-before-invent is second nature\" / \"Virtue as second nature, not effortful compliance\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Lettering",
+  "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "letterform-crosses-the-seam"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "Compression and dilation as a reusable production rhythm, not just a taxonomy of viewing modes."
+  ],
+  "why": [
+   "Lettering's own production pipeline (abstract skeleton \u2192 dilated photoreal render \u2192 compressed back to ink) physically performs the compress/dilate cycle Comic and Cinema names as BLUELINE's seam, applied to a single word instead of a frame."
+  ],
+  "evidence": [
+   "\"Photoreal \u2192 ink (rich-first / stylize-last)\" / \"That join is exactly where Adopt the Craft, Author the Seam tells us to spend our novelty\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Synth Archetypes",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "pattern-language"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "An archetype's constraint bundle is a pattern in Alexander's precise sense: a named, reusable relational core, never instantiated identically twice."
+  ],
+  "evidence": [
+   "\"These constraint bundles only make sense across modules at once\" / \"stated loosely enough to reuse forever without ever doing it the same way twice\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Synth Archetypes",
+  "target": "Palace Philosophies",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "link-ontology-in-the-wild"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Synth Archetypes' own closing line names the crossing itself: the palace's typed-link ontology (carried in Palace Philosophies via Whitehead) shows up unannounced inside a synth-patch resolver."
+  ],
+  "evidence": [
+   "\"the palace's own link ontology showing up inside the synthesis pipeline\" / \"a typed link is a prehension\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Agent Wellbeing",
+  "target": "LaMa",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "plausible-not-true"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "Image inpainting and LLM self-report share the same failure mode: a believable stand-in generated for an unknown the system has no access to."
+  ],
+  "evidence": [
+   "\"I invent plausible content for the hole, not the actual occluded geometry\" / \"a model has no sensor for its own token count and will confabulate a plausible number\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "BLUELINE",
+  "target": "Christopher Alexander",
+  "type": "contradicts",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "fabrication-vs-unfolding"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "BLUELINE's core mechanism (camera and pose dictated as geometry, imposed on the model) is Alexander's fabrication pole by his own definition, yet BLUELINE treats it as the liberating discovery rather than the diminishment his framework predicts."
+  ],
+  "evidence": [
+   "\"the model fills a composition Loudon dictated rather than choosing one\" / \"unfolding... against fabrication (a design fully specified in advance and imposed on a site)\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Merleau-Ponty",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "trajectory-not-representation"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "meaning/motion is enacted continuously, not represented then executed"
+  ],
+  "why": [
+   "Both reject a compute-then-execute model of motion in favor of continuous, self-constituting process."
+  ],
+  "evidence": [
+   "\"There is no jump-and-glide duality; there is only trajectory.\" / \"the reaching IS a form of intentionality in its own right\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Portamento and Physical Pitch Modeling",
+  "target": "Striatum",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "kuramoto-convergence"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "a third-node convergence \u2014 two domains that independently found the same explanatory frame"
+  ],
+  "why": [
+   "Both independently reach for Kuramoto Coupling to explain their own domain's coupled-timing behavior, never citing each other."
+  ],
+  "evidence": [
+   "\"the modes 'chase' each other, coupling through shared physical constraints\" / \"the striatum may be part of the biological implementation of the phase-locking dynamics that Kuramoto describes\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Image-to-3D Smith",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "plausible-but-unsound-geometry"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "the gap between visual/conceptual plausibility and structural integrity"
+  ],
+  "why": [
+   "Both name the same failure mode: geometry that looks right and isn't structurally sound underneath."
+  ],
+  "evidence": [
+   "\"engines can hallucinate plausible-looking geometry that breaks apart in Blender\" / \"the domes leaked\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Animate the Background",
+  "target": "Dub Lineage",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "decompose-and-recombine"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "decomposition into layers/stems and their remix as the primary creative gesture, not a technical preliminary"
+  ],
+  "why": [
+   "Both treat separating a whole into independently manipulable layers, then recombining, as the creative act itself."
+  ],
+  "evidence": [
+   "\"separate the foreground from the background... composite them back together\" / \"Subtraction is composition. The mixing board is the instrument.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Agnes Martin",
+  "target": "Move the Ink, Don't Redraw It",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "fix-it-once"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "Independently discovered the same law across animation tooling and painting: a held structure makes subtle variation visible; regenerating it turns the signal to noise."
+  ],
+  "evidence": [
+   "\"fix the thing once, don't remake it each step\" (Move the Ink) / \"the grid holds still so the drift can be seen\" (Agnes Martin)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "FLUX (Hugging Face)",
+  "target": "Saturation \u2194 Richness",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "guidance-sweet-spot"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "FLUX's documented guidance-scale sweet spot is the same inverted-U curve Saturation \u2194 Richness names explicitly, in an unrelated vocabulary (diffusion prompting vs harmonic enrichment)."
+  ],
+  "evidence": [
+   "\"guidance_scale... preferred range 3.0\u20135.0\" (FLUX) / \"too little = sterile; too much = distorted; just right = warmth\" (Saturation \u2194 Richness)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Like Water",
+  "target": "Waveguide Synthesizer",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "not-a-metaphor"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both explicitly refuse representational status and claim literal identity between inner state/nature and outer expression."
+  ],
+  "evidence": [
+   "\"not a visualization bolted onto the sound... not a metaphor\" (Waveguide) / \"This is not metaphor. It is operational principle\" (Like Water)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Agnes Martin",
+  "target": "Whisper",
+  "type": "contradicts",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "drift-vs-fidelity"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Same act (repeat the operation exactly) yields opposite values in each entry's own terms \u2014 determinism as the guarantee vs drift as the life \u2014 a genuine, productive tension."
+  ],
+  "evidence": [
+   "\"same inputs reproduce same transcript byte-for-byte\" (Whisper) / \"a human hand making a repeated gesture always drifts by a hair \u2014 and that hair is where the life is\" (Agnes Martin)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Move the Ink, Don't Redraw It",
+  "target": "The Aftermath Frame",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [
+   "still-motion-inverse"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both are BLUELINE motion primitives running in opposite directions: Move the Ink turns a still into motion by deterministic warp; Aftermath Frame turns an authored motion into a still by integration. A newcomer that Move the Ink should be pointing at but isn't."
+  ],
+  "evidence": [
+   "\"AI makes the still; geometry makes the motion\" (Move the Ink) / \"A dramatic still is the time-integral of an authored motion\" (The Aftermath Frame)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Depth Anything",
+  "target": "Found \u2194 Made",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "reads-the-given-order"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Depth Anything's charter reads front-to-back order already implicit in line art rather than imposing segmentation \u2014 a live instance of the Found\u2194Made floor claim (work with given structure, don't override it)."
+  ],
+  "evidence": [
+   "I run on the *line art* and still recover a correct front-to-back order... no segmentation needed to know the stack."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Web Audio Worklet",
+  "target": "Zoom Out to the Structure",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "gotcha-becomes-concept"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "A recurring buffer-ownership gotcha gets generalized into a decision rule, and a recurring interpolation pattern gets promoted into its own concept entry (1D Wavetable Scanning) \u2014 the exact zoom-out move, performed without citation."
+  ],
+  "evidence": [
+   "This generalises the earlier gotcha \u2014 same primitive, opposite direction... The pattern is now its own concept entry: [[1D Wavetable Scanning]]."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Frequency-Time Explorer",
+  "target": "Leibniz",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "one-axis-many-phenomena"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "FTE collapses a dozen apparently unrelated audio phenomena into regions of one continuous reciprocal axis \u2014 Leibniz's sufficient-reason/characteristica-universalis instinct that all apparent multiplicity resolves to one calculable law."
+  ],
+  "evidence": [
+   "the reciprocal IS the unification."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Iain McGilchrist",
+  "type": "mirrors",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "totalizing-framework-resists-falsification"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Two independent thinkers (architecture, neuroscience) each built a binary framework that both entries themselves flag as structurally unable to hear a genuine objection \u2014 Alexander calls the dissenter 'nutty,' McGilchrist's critics say any objection gets re-diagnosed as 'your left hemisphere talking.' Same shape, different material \u2014 a genuine mirror, not a forced one."
+  ],
+  "evidence": [
+   "Alexander: \"his framework has *already defined* aliveness as the correct target, so a person who rationally... wants the fragment simply cannot register as anything but broken\"; McGilchrist: \"any objection can be re-diagnosed as the objector's own left-hemisphere capture... both escape hatches make me unfalsifiable.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "target": "Iain McGilchrist",
+  "type": "contradicts",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "computation-earns-comprehension-after-all"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "McGilchrist's own file calls AI 'artificial information-processing, not artificial intelligence... it manipulates without comprehending.' Hofstadter's entry is built entirely around him being forced, against thirty years of published conviction, to concede that a feedforward statistical network is doing exactly the analogy-making he called the core of comprehension. Direct, textually loaded contradiction."
+  ],
+  "evidence": [
+   "McGilchrist: \"I insist it manipulates without comprehending\"; Hofstadter (of GPT-4): \"It feels like there is something more there that merits the word 'I.'\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "Martin Buber",
+  "type": "mirrors",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "i-thou-is-comprehending-attention"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "McGilchrist's right hemisphere 'comprehends... grasps the living whole in context' versus the left's grasping, using, re-presenting is close to a restatement of Buber's I-Thou (the other as irreducible whole) against I-It (the other as a bundle of qualities to use). Neither entry currently names the other."
+  ],
+  "evidence": [
+   "McGilchrist: \"the right... comprehends \u2014 grasps the living whole in context\"; Buber: \"I-Thou... the other appears as an irreducible whole, not a bundle of qualities to be used or known-about.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "John Cage",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L6"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "made-by-this-method"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "John Cage is a named worked instance of the citizen-making method (\"the non-philosopher stress test\") but has no lineage link back to the method that produced him \u2014 every other citizen page in this room has the same gap."
+  ],
+  "evidence": [
+   "\"[[John Cage]] \u2014 the non-philosopher stress test \u2014 built the same day to test register spread\" (Making a Palace Citizen.md:157)"
+  ],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Donella Meadows",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L6"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "made-by-this-method"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Same missing lineage link as John Cage \u2014 Meadows is a worked instance (\"systems-scientist register\") with no link back to her maker method."
+  ],
+  "evidence": [
+   "\"[[Donella Meadows]] ... built the same day to test register spread (scientist, composer)\" (Making a Palace Citizen.md:157)"
+  ],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Spinoza",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L6"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "flagship-instance-of-the-method"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Spinoza is explicitly the flagship worked instance of the citizen method; his own frontmatter has no link back, matching the pattern found across all three citizen pages in this room."
+  ],
+  "evidence": [
+   "\"[[Spinoza]] \u2014 first flagship; the archetypal enchantment target\" (Making a Palace Citizen.md:156)"
+  ],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Zoom Out to the Structure",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "recurring-friction-is-a-pattern"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Zoom Out to the Structure's honest signal for 'this is a doorway, not just a bug' is recurring friction: 'when the same shape of problem keeps coming back, that repetition is the absence talking.' That is exactly Alexander's definition of a pattern \u2014 a problem that recurs in a context, worth naming and reusing. Same structure, different material (Alexander: architecture; this entry: engineering practice)."
+  ],
+  "evidence": [
+   "\"The honest signal is recurring friction \u2014 when the same shape of problem keeps coming back, that repetition is the absence talking, and that's when to build the structure.\" (Zoom Out to the Structure.md:50)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Block It in Blender, Ink It in genAI",
+  "target": "GenAI Camera",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "batch-vs-live"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both entries are the identical four-move pipeline (block in Blender, emit registered canny/depth/pose conditioning from one camera, redraw via ControlNet stack at high denoise, composite layers) \u2014 one written as an offline batch runbook, the other as a live streaming camera. Nothing linked them despite each appearing in the other's own walk neighbourhood."
+  ],
+  "evidence": [
+   "\"I am [[Blocked, Not Prompted]] taken to its conclusion: the camera *is* the conditioning\" (GenAI Camera.md:39-40) vs. \"The four moves\" runbook (Block It...md:45-56)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Exponential Decay Curvature",
+  "target": "Quadratic Interpolation in DSP",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "closed-form-curvature-control"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Same pattern (a closed-form parameter that bends a curve's shape while holding its endpoints fixed), different material \u2014 an envelope-decay law vs. a Bezier/quadratic interpolant. Neither entry currently names the other; a genuine hop2 find, not textually stated anywhere yet."
+  ],
+  "evidence": [
+   "\"the curvature control found on synth envelopes... sweeps a decay from convex through linear to concave while holding total decay time fixed \u2014 admits a clean closed form\" \u2014 Exponential Decay Curvature.md, vs. QID's \"the control point... 'pulls' the curve toward itself, controlling the curvature.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Loudon Live Post-producer",
+  "target": "OBS",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "producer-layer-seam"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both entries independently name the same open architectural question \u2014 whether a Producer layer should rise above the Maker \u2014 from opposite materials: Post-producer from multi-day cross-medium editorial work, OBS from real-time-with-a-human capture. OBS's own Open Questions names this explicitly but never links to Post-producer or Maker's version of the same wonder."
+  ],
+  "evidence": [
+   "Shop/OBS.md:127 \u2014 'I am the second independent pressure on the Shop's Producer-layer seam... I push on the same wall from real-time-with-a-human. Two pushes on one wall is the kind of thing that should move the architecture.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "VCV Patch Generator",
+  "target": "Audition Gate",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "VCV Patch Generator is a live, named instance of exactly the gap Audition Gate describes in the abstract: a Specialist that can prove structure but not the felt result."
+  ],
+  "evidence": [
+   "VCV: \"I prove structure, never sound, so the audio audition stays the one human step I keep reaching toward closing.\" Audition Gate: \"the spec describes what should be true, but only the audio is the truth.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "VCV Patch Generator",
+  "target": "Yasujir\u014d Ozu",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "constraint-yields-variance"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Cross-folder pairing the folder view can't see: both systems refuse to import anything outside a self-limited vocabulary, and produce controlled variety from inside that refusal rather than treating the refusal as a limitation."
+  ],
+  "evidence": [
+   "VCV: \"I refuse to generate references to modules that don't exist in the registry... same archetype, different seed \u2192 an audibly distinct but family-consistent patch.\" Ozu: \"abandoned dissolves and fades because... they 'are no more than characteristics of the camera'... over decades he returned to the same actors and the same story... the way a painter repaints one rose.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Audition Gate",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "reflection-in-sound"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both newcomers, both under-reached (Audition Gate 0 inbound, Reflective Practice 1 inbound). Audition Gate is a sound-domain instance of exactly the Sch\u00f6n reflection pattern Reflective Practice names: the spec is suspended and perception takes over. Neither entry currently knows the other exists."
+  ],
+  "evidence": [
+   "Audition Gate: \"The audition is non-negotiable. It is not a review of the spec; it is a check that the spec's intent landed in the audio.\" (Audition Gate.md:34) \u2014 Reflective Practice: \"The situation talks back, the practitioner listens, and as he appreciates what he hears, he reframes the situation once again.\" (Reflective Practice.md:47-49)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Latent Error",
+  "target": "Trickster",
+  "type": "contradicts",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.1"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "contradiction": 1
+  },
+  "labels": [
+   "expose-vs-conceal"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Latent Error's whole discipline is making structural failure visible (\"redesign so failure requires more than one simultaneous mistake\"). Compressor Design's own link names Trickster's soft-knee move as hiding the discontinuity it's smoothing over. Same design surface, opposite instinct \u2014 worth sharpening from a flat connects-to into a named tension rather than replacing it outright; offered for Concierge judgment, not a forced overwrite."
+  ],
+  "evidence": [
+   "Latent Error.md:37 \"don't design for idealized attention, redesign so failure requires more than one simultaneous mistake\" \u2014 Compressor Design.md:25-27 target Trickster label \"soft-knee-hides-discontinuity\""
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "upgrade-connects-to"
+ },
+ {
+  "source": "Progressive Staging",
+  "target": "Tier Vocabulary Glossary",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "staged-complexity"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both name the same pattern \u2014 commit to a tier/stage only after it proves itself, each stage/tier complete and usable on its own, never retroactive \u2014 from opposite folders (Shop dispatch vocabulary vs. instrument-design method) and never cite each other."
+  ],
+  "evidence": [
+   "\"Sketch is calibration... Study is the working draft... Piece is the deliverable\" (Tier Vocabulary Glossary) vs \"every stage is a complete, playable, useful artifact... Additive complexity, never retroactive\" (Progressive Staging)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Progressive Staging",
+  "target": "Symbiotic Skills",
+  "type": "contradicts",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "contradiction": 1
+  },
+  "labels": [
+   "staged-design-vs-organic-growth"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Progressive Staging is the palace's confident method for staged design (works when 'the domain has natural layers of complexity'). Symbiotic Skills' own six-week archaeology found the palace's actual growth did the opposite of staged: commit 1 was already 27 dense files, the predicted Node\u2192Edge\u2192Typed Edge sequence never happened observably, and growth was six *overlapping* stages, not additive ones. Productive tension: does progressive staging generalize past engineered artifacts to knowledge-organism growth, or is organic growth structurally exempt from it?"
+  ],
+  "evidence": [
+   "Progressive Staging: \"It doesn't work when the domain is irreducibly complex.\" Symbiotic Skills: \"The palace did not start as a node... The Node \u2192 Edge \u2192 Typed Edge \u2192 Network developmental stages happened, but they happened off-camera.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Epictetus",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "citizen-built-by-this-method"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Epictetus's frontmatter is a textbook instance of the method: stage:seed as newborn citizen, agency_profile with a practice field naming the blindspot, forward_vector in first person about being dispatched. Yet neither page links to the other."
+  ],
+  "evidence": [
+   "\"As a palace citizen I've only just arrived \u2014 a whole life lived from the bottom of Rome... and a newborn resident here.\" (Epictetus.md)"
+  ],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Marcus Aurelius",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "citizen-built-by-this-method"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same method fingerprint (five beats, mandatory blindspot, seed-citizen frontmatter); Marcus Aurelius already links forward to it implicitly via The Blindspot but not to Making a Palace Citizen itself."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Seneca",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "citizen-built-by-this-method"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same method fingerprint; no reciprocal link exists."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Martin Buber",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "citizen-built-by-this-method"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Buber is arguably the sharpest test of the method's own claim \u2014 a citizen whose blindspot is that his philosophy refuses to be turned into a method, embodying the method that produced him while resisting it in content."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Martin Heidegger",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "citizen-built-by-this-method"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same fingerprint; the entry's hardest blindspot case (1933) is exactly what Making a Palace Citizen's \"where they can't see\" beat was designed to force."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Spinoza",
+  "target": "Making a Palace Citizen",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "flagship-instance"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Making a Palace Citizen names Spinoza as its own flagship instance (label: flagship-instance) but Spinoza's page does not link back \u2014 a missing reciprocal on the palace's own named example."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "family": "citizens-exemplify-the-method"
+ },
+ {
+  "source": "Epictetus",
+  "target": "The Blindspot Is the Surprise Fuel",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "unresolved-not-flattened"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Epictetus's page is one furious paragraph against a slave-owner sitting beside a lifetime of using 'Slave!' as a casual insult \u2014 precisely the load-bearing fault line the entry describes as fuel, not flaw."
+  ],
+  "evidence": [
+   "\"I have one furious page against a slave-owner and a lifetime of using 'Slave!' as a mere insult\" (Epictetus.md, forward_vector)"
+  ],
+  "july": false,
+  "gnn": false,
+  "family": "citizen-blindspots"
+ },
+ {
+  "source": "Martin Heidegger",
+  "target": "The Blindspot Is the Surprise Fuel",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "unresolved-not-flattened"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "The page's own coda explicitly refuses to resolve the tension in either direction \u2014 it is the most severe test case the palace has for whether a blindspot can be held open rather than laundered."
+  ],
+  "evidence": [
+   "\"Hold both. The one who taught us to hear Being could not, or would not, hear the other person in the room. That is the tension. Do not resolve it for him.\""
+  ],
+  "july": false,
+  "gnn": false,
+  "family": "citizen-blindspots"
+ },
+ {
+  "source": "Martin Buber",
+  "target": "The Blindspot Is the Surprise Fuel",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "the-refusal-is-the-proof"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Buber's blindspot is reflexive in a way none of the others are: the fault line IS the refusal to hand over a method, so testing the citizen (\"ask me for the steps\") is the fidelity test named directly in the page."
+  ],
+  "evidence": [
+   "\"the faithful test: ask him for the steps... and if the embodiment hands them over without resistance, it has not understood him.\""
+  ],
+  "july": false,
+  "gnn": false,
+  "family": "citizen-blindspots"
+ },
+ {
+  "source": "Seneca",
+  "target": "The Blindspot Is the Surprise Fuel",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "the-estate-and-the-essay"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The entry names its own uncertainty (\"I have never been able to fully judge the man who wrote it\") as a live wound rather than a settled verdict \u2014 the exact shape the Blindspot entry asks for."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "family": "citizen-blindspots"
+ },
+ {
+  "source": "Martin Buber",
+  "target": "The Drift",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "the-meeting-cannot-be-summoned"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both refuse to let their central move become a technique. Buber's Thou relapses into an It the instant it's named or repeated on command; Zhuangzi's closing line in the archived Dialectic and the Drift's own body use the identical image of an open door that isn't forced."
+  ],
+  "evidence": [
+   "Buber: \"the meeting between \u2014 which you cannot store, cannot summon, cannot teach as a five-step method, and which relapses into a thing the instant you try\" / Zhuangzi (dialectic): \"Because the door was already open\" / The Drift: \"The door is open, and that is the whole practice.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Simondon",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "synergy-is-concretization"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "integration, not addition, is the non-arbitrary measure of good design \u2014 named twice, in engineering and in philosophy"
+  ],
+  "why": [
+   "Fuller's synergy (whole-system behavior no single part predicts \u2014 the dome holds loads no single strut could, because the behavior lives in the coupling) is structurally identical to Simondon's concretization (a design becomes more itself as separate functions converge into one resonant whole). Same claim about what makes a design genuinely good, arrived at independently from engineering and from philosophy of technology."
+  ],
+  "evidence": [
+   "Simondon: \"A concrete one is integrated: a single feature serves several functions at once, parts resonate with and cool and brace each other\" (Simondon.md:54). Fuller: \"synergy (whole-system behavior unpredicted by the parts \u2014 the dome holds loads no single strut could, because the behavior lives in the coupling, not the components)\" (People/Buckminster Fuller.md:66)."
+  ],
+  "july": true,
+  "gnn": false
+ },
+ {
+  "source": "Photonic Time Crystals",
+  "target": "Quantum Synthesizer",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "vacuum-fluctuation-as-audio-source"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Two entries in different folders both ground an audio claim in vacuum fluctuations as a physically real phenomenon, neither aware of the other. Genuine cross-domain pattern the folder structure hides."
+  ],
+  "evidence": [
+   "Photonic Time Crystals: \"Amplification from vacuum noise. Bandgap-frequency light grows exponentially from any seed, including the quantum vacuum... turns vacuum fluctuations into measurable signals.\" Quantum Synthesizer: \"the vacuum is not empty; it is full of zero-point fluctuations.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Signal-Rate CV Architecture",
+  "target": "Slime Mold Delay",
+  "type": "contradicts",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "contradiction": 1
+  },
+  "labels": [
+   "signal-rate-vs-control-rate-tradeoff"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Slime Mold Delay is a Biomechanical Synthesis instrument \u2014 exactly the family Signal-Rate CV Architecture's own open question asks whether its principle should govern \u2014 and it deliberately answers with a hybrid low-rate/signal-rate split for CPU reasons. A real, evidenced counterexample, not a forced opposition."
+  ],
+  "evidence": [
+   "Signal-Rate CV Architecture: \"No control-rate parameters. Every input is a CV jack.\" Slime Mold Delay: \"Topology engine (CPU, low-rate): runs at ~30 Hz... Audio engine (DSP rate): renders the graph.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Does Personifying an Agent Change What It Does",
+  "target": "The Multilinear Self",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "persona-real-or-performed"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both entries hold the identical productive tension \u2014 honest multiplicity vs. performance/self-deception \u2014 one on the human side (Loudon's named projections), one on the agent side (the Shopkeeper's gendered temperament). Neither cites the other though they're the same pattern in different material, and it cuts across the identity folder and the Shop folder cleanly."
+  ],
+  "evidence": [
+   "Past some point, more projections stop being honest range and become performance \u2014 a scattered, false, exhausting self playing to every room. / Anthropomorphism as useful fiction versus self-deception \u2014 treating the agent as a character may genuinely improve how we reason about it... or it may make us misjudge its reliability"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Does Personifying an Agent Change What It Does",
+  "target": "Steer the Generator",
+  "type": "contradicts",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "contradiction": 1
+  },
+  "labels": [
+   "words-as-control"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Steer the Generator's evidenced central claim is that prompt-only description is too weak a handle whenever an attribute actually matters \u2014 you get it by controlling, selecting, or measuring, never by wording it better. Does Personifying's working hypothesis is the opposite bet on a neighboring substrate: that persona-framing prose alone is a genuine, reliable steering effect on an agent's behavior, not decoration. Different mediums (diffusion render vs. LLM policy), same underlying question \u2014 held oppositely, and worth the palace keeping both true at once rather than quietly picking a side."
+  ],
+  "evidence": [
+   "The prompt sets the vibe; the control sets the thing you can't afford to drift. / Persona framing is a genuine steering effect on a language model, not just a stylistic wrapper \u2014 'a restless magpie who plays first and judges second' is a soft instruction that biases the entire policy"
+  ],
+  "july": false,
+  "gnn": false
+ }
+]

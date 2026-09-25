@@ -46,6 +46,10 @@ links:
     label: power-to-act
   - target: "[[Biomechanical Synthesis — enrichment — grotesque-pedagogy-haiku]]"
     type: connects-to
+  - target: "[[Blood Compressor]]"
+    type: spawned
+  - target: "[[Slime Mold Delay]]"
+    type: spawned
 last_activated: 2026-03
 activation_count: 1
 forward_vector: "I am the palace's most viscerally pedagogical framework — the set of eight instruments that prove DSP mechanics are unforgettable when made physical and grotesque."

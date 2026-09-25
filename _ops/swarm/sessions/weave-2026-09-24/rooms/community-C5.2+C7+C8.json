@@ -1,0 +1,55 @@
+{
+ "lens": "community",
+ "id": "C5.2+C7+C8",
+ "members": [
+  {
+   "id": "CLAUDE",
+   "path": "CLAUDE.md",
+   "stage": "foundational",
+   "inbound": 2
+  },
+  {
+   "id": "D3.js",
+   "path": "Shop/D3.js.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "ELDER",
+   "path": "ELDER.md",
+   "stage": "foundational",
+   "inbound": 3
+  },
+  {
+   "id": "LaTeX",
+   "path": "Shop/LaTeX.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Matplotlib",
+   "path": "Shop/Matplotlib.md",
+   "stage": null,
+   "inbound": 7
+  },
+  {
+   "id": "Mermaid",
+   "path": "Shop/Mermaid.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Observable Plot",
+   "path": "Shop/Observable Plot.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "SCHEMA \u2014 Reference",
+   "path": "SCHEMA \u2014 Reference.md",
+   "stage": "foundational",
+   "inbound": 2
+  }
+ ],
+ "directed_flags": {}
+}

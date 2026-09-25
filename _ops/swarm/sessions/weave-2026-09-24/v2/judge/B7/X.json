@@ -1,0 +1,82 @@
+{
+ "arm": "X",
+ "room": "B7",
+ "total_proposals": 11,
+ "sample": [
+  {
+   "kind": "bridge",
+   "source": "Whisper",
+   "type": "",
+   "target": "George Nakashima",
+   "rationale": "Both refuse to smooth over damage/loss \u2014 Whisper marks what it couldn't hear instead of guessing; the butterfly joint marks where the wood broke instead of hiding it. Each treats the visible seam as more honest than a polished, seamless result.",
+   "evidence": "\"I refuse to invent words I didn't hear. If a section is unintelligible, I mark it [unintelligible] rather than guess... the diff at each step becomes an honest measure of what narration loses.\" || \"Nakashima didn't hide the crack. He cut a bowtie-shaped inlay across it... proof of the repair, not a cover for it.\"",
+   "item_id": "X1"
+  },
+  {
+   "kind": "bridge",
+   "source": "Move the Ink, Don't Redraw It",
+   "type": "mirrors",
+   "target": "Agnes Martin",
+   "rationale": "Both independently arrived at the same law: a fixed, unregenerated structure is the precondition for subtle variation to be legible \u2014 remake the structure each pass (redraw, re-rule) and the signal (the drift, the hand) dissolves into noise/boil rather than becoming visible.",
+   "evidence": "\"the procedural paper tooth is generated once and reused on every frame. A static substrate cannot boil... at every layer where stability matters, fix the thing once, don't remake it each step\" || \"A hand-ruled line is never perfectly straight; draw the same grid a thousand times and no two lines fall the same... The grid holds still so the drift can be seen; take it away and the difference vanishes into noise.\"",
+   "item_id": "X2"
+  },
+  {
+   "kind": "bridge",
+   "source": "Waveguide Synthesizer",
+   "type": "mirrors",
+   "target": "Like Water",
+   "rationale": "Both entries make the identical rhetorical move of explicitly rejecting representation in favor of literal identity \u2014 the interface IS the physics; the virtue IS the nature \u2014 refusing to let a faithful expression be demoted to a stand-in for the real thing.",
+   "evidence": "\"what you see is not a visualization bolted onto the sound, it is the same delay-line state that produces the sound, drawn in space... The waveguide's spatial state is exact, not a metaphor.\" || \"This is not metaphor. It is operational principle... The virtue and the nature are not separate.\"",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "FLUX (Hugging Face)",
+   "type": "mirrors",
+   "target": "Saturation \u2194 Richness",
+   "label": "guidance-sweet-spot",
+   "rationale": "FLUX's documented guidance-scale sweet spot is the same inverted-U curve Saturation \u2194 Richness names explicitly, in an unrelated vocabulary (diffusion prompting vs harmonic enrichment).",
+   "evidence": "\"guidance_scale... preferred range 3.0\u20135.0\" (FLUX) / \"too little = sterile; too much = distorted; just right = warmth\" (Saturation \u2194 Richness)",
+   "item_id": "X4"
+  },
+  {
+   "kind": "relation",
+   "source": "Move the Ink, Don't Redraw It",
+   "type": "mirrors",
+   "target": "Agnes Martin",
+   "label": "fix-it-once",
+   "rationale": "Independently discovered the same law across animation tooling and painting: a held structure makes subtle variation visible; regenerating it turns the signal to noise.",
+   "evidence": "\"fix the thing once, don't remake it each step\" (Move the Ink) / \"the grid holds still so the drift can be seen\" (Agnes Martin)",
+   "item_id": "X5"
+  },
+  {
+   "kind": "bridge",
+   "source": "FLUX (Hugging Face)",
+   "type": "mirrors",
+   "target": "Saturation \u2194 Richness",
+   "rationale": "FLUX's guidance scale is a two-sided sweet-spot curve exactly like the saturation curve: too low reads as chaotic/unmoored (the image-generation analog of distortion), too high reads as flat/sterile (over-controlled). The Shop entry names a documented \"preferred range\" without ever naming the pattern it's re-deriving.",
+   "evidence": "\"lower guidance \u2192 more variance; higher \u2192 tighter prompt fidelity but flatter\" ... \"guidance_scale (float, default 4.5): FLUX preferred range 3.0\u20135.0\" || \"too little = clean but sterile; just right = warm and full; too much = distorted and broken. Start clean, add gradually, stop just before it sounds wrong.\"",
+   "item_id": "X6"
+  },
+  {
+   "kind": "relation",
+   "source": "Move the Ink, Don't Redraw It",
+   "type": "mirrors",
+   "target": "The Aftermath Frame",
+   "label": "still-motion-inverse",
+   "rationale": "Both are BLUELINE motion primitives running in opposite directions: Move the Ink turns a still into motion by deterministic warp; Aftermath Frame turns an authored motion into a still by integration. A newcomer that Move the Ink should be pointing at but isn't.",
+   "evidence": "\"AI makes the still; geometry makes the motion\" (Move the Ink) / \"A dramatic still is the time-integral of an authored motion\" (The Aftermath Frame)",
+   "item_id": "X7"
+  },
+  {
+   "kind": "unsung",
+   "source": "Metaphor as Coupling Medium",
+   "type": "connects-to",
+   "target": "Martin Heidegger",
+   "label": "language-opens",
+   "rationale": "\"Language is the house of being. \u2014 Martin Heidegger\" (epigraph); the whole entry argues metaphor opens associative space the way Heidegger argues language discloses being rather than merely labels it",
+   "item_id": "X8"
+  }
+ ]
+}

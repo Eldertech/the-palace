@@ -1,0 +1,76 @@
+{
+ "arm": "X",
+ "room": "C1.2",
+ "total_proposals": 19,
+ "sample": [
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Berry Phase",
+   "label": null,
+   "rationale": "### [[Berry Phase]] and Holonomy",
+   "item_id": "X1"
+  },
+  {
+   "kind": "stage",
+   "source": "What Claim Does Scientific Sonification Make?",
+   "type": "seed->sprout",
+   "rationale": "Seed range is 50\u2013150 words with a minimal body; this entry runs a full three-path argument with named sections well past that, and already carries 2 typed links (sprout's own threshold).",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "Quadratic Interpolation in DSP",
+   "type": "connects-to",
+   "target": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "label": "interpolation-quality",
+   "rationale": "Quadratic Interpolation's own \u00a72 is titled 'Wavetable Synthesis' and argues quadratic is 'the sweet spot' there; Wavetable Synthesis Research's Engineering Essentials independently ranks linear/cubic/windowed-sinc for the same job. Same design question, argued from both sides, unlinked.",
+   "evidence": "Quadratic Interpolation \u00a72: 'The manifesto: Quadratic is the sweet spot for wavetable synthesis.' Wavetable Synthesis Research: 'Interpolation between frames: linear is minimum viable, cubic (Hermite or 4-point) is better, windowed-sinc (Kaiser window) is highest quality.'",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "Signal-Rate CV Architecture",
+   "type": "connects-to",
+   "target": "SMPTE LTC",
+   "label": null,
+   "rationale": "Reciprocal fix \u2014 SMPTE LTC already links forward to Signal-Rate CV Architecture (connects-to); the reverse is missing on Signal-Rate CV Architecture's side. Both entries argue for treating every timing/control quantity as continuous signal rather than discrete event.",
+   "evidence": "SMPTE LTC: target '[[Signal-Rate CV Architecture]]' type connects-to (already present, one direction only).",
+   "item_id": "X4"
+  },
+  {
+   "kind": "demote",
+   "source": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+   "target": null,
+   "rationale": "Full entry frontmatter (type: concept, stage, links, forward_vector) but the content and the non-canonical `parent:` field both read as reference documentation for one project's control surface rather than a freestanding idea the palace reasons with elsewhere. It matches SCHEMA \u00a78's `spec` bundle-file type more than a top-level `concept` \u2014 would become e.g. `Neural Granular Synthesis/Neural Granular Synthesis \u2014 spec \u2014 control-vocabulary-math.md`. Offered as a candidate for Loudon/the folder worker to weigh, not a directive \u2014 the content itself is careful and worth keeping somewhere.",
+   "item_id": "X5"
+  },
+  {
+   "kind": "relation",
+   "source": "The Curve Is the Material",
+   "type": "deepens",
+   "target": "The Metaphor Stretch",
+   "label": "the-half-physics-does-determine",
+   "rationale": "The Metaphor Stretch names the general gap between physics and playability \u2014 'the physics gives you the ratios but not absolute pitch, voice count, decay rate.' The Curve Is the Material is the fully worked-out account of exactly the half physics DOES determine (the curve/ratio family) \u2014 it deepens Metaphor Stretch's 'stretch' framework rather than standing apart from it.",
+   "evidence": "The Metaphor Stretch: 'the source physics gives you ratios and tendencies \u2014 but not a playable instrument.' The Curve Is the Material: 'Every physically meaningful inharmonic spectrum is described by a mathematical function of partial number... The function shape and its parameters uniquely identify a physical system.'",
+   "item_id": "X6"
+  },
+  {
+   "kind": "unsung",
+   "source": "Wavetable Space as Torus",
+   "type": "connects-to",
+   "target": "Quasicrystals",
+   "label": null,
+   "rationale": "### [[Quasicrystals]] and the Cut-and-Project Method",
+   "item_id": "X7"
+  },
+  {
+   "kind": "stage",
+   "source": "Slime Mold Delay",
+   "type": "sprout->growing",
+   "rationale": "Body already exceeds sprout's 400-word ceiling and carries 8 typed cross-domain links (sprout wants 1\u20132, growing wants 3+) \u2014 the entry's frontmatter says sprout, its content already argues growing.",
+   "item_id": "X8"
+  }
+ ]
+}

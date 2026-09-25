@@ -26,6 +26,9 @@ links:
     label: the-control
   - target: "[[Pages as Agents]]"
     type: connects-to
+  - target: "[[Steer the Generator]]"
+    type: contradicts
+    label: words-as-control
 ---
 
 # Does Personifying an Agent Change What It Does?

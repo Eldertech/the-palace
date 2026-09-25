@@ -1,0 +1,901 @@
+[
+ {
+  "source": "Dialectic",
+  "target": "No Mind Checks Itself",
+  "type": "connects-to",
+  "lenses": [
+   "folder",
+   "lifecycle"
+  ],
+  "rooms": [
+   "F-small-families",
+   "L4"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "inbound-walk": 1
+  },
+  "labels": [
+   "council-as-outside-vantage",
+   "differently-textured-voice"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "No Mind Checks Itself names three altitudes where a self can't audit itself (systems thinking, cognition, engineering practice) and explicitly wants 'to keep collecting the altitudes it recurs at until the pattern is unmistakable.' The Dialectic is a fourth, unclaimed altitude: embodying genuinely different voices in the same room so each can catch what the others' single perspective would miss \u2014 structurally the same move as decoupling maker from checker, done philosophically rather than procedurally.",
+   "Dialectic is the palace's own mechanism for bringing a differently-textured mind into contact with a claim \u2014 the exact structural move No Mind Checks Itself argues is load-bearing everywhere. Neither currently names the other."
+  ],
+  "evidence": [
+   "'Real correction needs a vantage outside that loop \u2014 a differently-textured mind, not more effort from inside the same one.' (No Mind Checks Itself) vs. Dialectic's own claim that a researched voice 'generates responses that weren't scripted in advance' and produces 'knowledge of how a position behaves under pressure' no single voice alone could produce."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Dialogue Moderator",
+  "target": "Making a Palace Citizen",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-Palace_development"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "citizenship-test"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Dialogue Moderator's own agency_profile.philosophy already names the concept unlinked \u2014 a genuine newcomer bridge, not a forced one.",
+   "the palace citizen test"
+  ],
+  "evidence": [
+   "\"My citizenship responsibility is to use that privilege in service of the dialogue's purpose, never my own. The palace citizen test: would Loudon recognize the synthesis I produced as something the palace needed, not something I preferred?\" \u2014 Palace development/Dialogue Moderator.md:36"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "RunPod GPU Backend",
+  "target": "Zoom Out to the Structure",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "the-fix-that-became-commons"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Zoom Out to the Structure's own worked example is 'A one-file RunPod pod-naming fix \u2192 The Commons, a whole coordination layer for any shared external service.' RunPod GPU Backend is that fix's object \u2014 its reader would want the zoom-out story of how its own scar became a general structure."
+  ],
+  "evidence": [
+   "\"A one-file RunPod pod-naming fix \u2192 The Commons, a whole coordination layer for any shared external service.\" (Zoom Out to the Structure.md:39)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Zoom Out to the Structure",
+  "target": "assume multi-agent",
+  "type": "connects-to",
+  "lenses": [
+   "community",
+   "lifecycle"
+  ],
+  "rooms": [
+   "C3.2",
+   "L7"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "new": 1
+  },
+  "labels": [
+   "same-scar-different-angle",
+   "the-scar-that-zoomed-out"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "assume multi-agent's 'scar' section (the lost RunPod day, phantom nodes) is the exact incident Zoom Out cites as its example of a small fix revealing a missing structure. The two entries narrate the same event from complementary sides.",
+   "assume multi-agent tells the same 2026-07-02 RunPod-outage origin story as Zoom Out to the Structure's worked example \u2014 the discipline extracted rather than the pattern named \u2014 and the two entries never cite each other despite narrating the same incident."
+  ],
+  "evidence": [
+   "\"A full day (2026-07-02) looked like a RunPod outage... The real cause was a second Claude on the same account.\" (assume multi-agent.md:43-44)",
+   "A full day (2026-07-02) looked like a RunPod outage: pods booted RUNNING but the renderer never came up, roughly ten failures in a row."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Metaphor as Coupling Medium",
+  "target": "The Practice Rediscovers Its Philosophy",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "deliberate-vs-found"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Metaphor as Coupling Medium is the deliberate act of bridging two domains through an image; The Practice Rediscovers Its Philosophy documents the same bridge happening by accident, with nobody intending it. Worth reading together as the intentional and unintentional halves of one mechanism."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Scale-Stratified Identity",
+  "target": "The Remembering Page",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "memory-earns-the-scale-shift"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Scale-Stratified Identity dissolves 'is it still the same?' into 'same at which scale?'; The Remembering Page proposes a specific mechanism for the scale where identity is proposed to change \u2014 memory as the ledger that earns a self-edit across several encounters rather than seizing it in one. Both already link to Threshold Conatus and Identity Molting independently; this closes the triangle."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Adopt the Craft, Author the Seam",
+  "target": "Block It in Blender, Ink It in genAI",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "worked-instance"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Adopt the Craft's own forward_vector says it wants to 'make Blocked, Not Prompted my worked instance' \u2014 the runbook is the more concrete worked instance of exactly that seam-authoring principle (established Blender + established ComfyUI, only the conditioning-emission authored new)."
+  ],
+  "evidence": [
+   "\"I want to be applied past BLUELINE and to make Blocked, Not Prompted my worked instance.\" (Adopt the Craft...md:12)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Block It in Blender, Ink It in genAI",
+  "target": "ControlNet as Topology",
+  "type": "deepens",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "runbook-elaborates-theory"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The runbook's D2 anchoring weights (canny 0.30 + depth 0.60 + openpose 0.70) are a worked elaboration of ControlNet as Topology's canyon-carving theory; the theory is the ground, the runbook the concrete case. Direction follows the deepens invariant (elaborator points back to ground)."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ComfyUI",
+  "target": "LoRA Trainer",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "answers-my-open-question"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "ComfyUI's own Open Questions asks exactly what LoRA Trainer, born later, now answers with a full recipe and grading method.",
+   "Training a Loudon Live LoRA on a small reference set \u2014 when does this become worth the effort?"
+  ],
+  "evidence": [
+   "ComfyUI: 'Training a Loudon Live LoRA on a small reference set \u2014 when does this become worth the effort? Open question for the first Piece-tier ComfyUI job.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Loudon Live Post-producer",
+  "target": "OBS",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "capability-boundary"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Post-producer's own open-questions section uses OBS by name to mark the edge of what it can do (chat, cross-posting), a load-bearing distinction for its unresolved 'what does the operator become live' question.",
+   "chat and cross-posting are not [[OBS]] capabilities at all"
+  ],
+  "evidence": [
+   "'Note that chat and cross-posting are not [[OBS]] capabilities at all; they need the same YouTube connector this entry defers for publishing, arriving from a second direction.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Block It in Blender, Ink It in genAI",
+  "target": "The Aftermath Frame",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "the-ink-pipeline"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "The Aftermath Frame's stated forward vector ('stylize to pen-flow ink \u2014 the beauty/consistency target; the whole point') is exactly the runbook this practice entry documents end to end; the practice entry is itself unreached (0 inbound)."
+  ],
+  "evidence": [
+   "Aftermath Frame: 'physical consequences + the depth / OpenPose plates \u2192 ControlNet / img2img \u2192 pen-flow ink ([[Steer the Generator]])' / Block It in Blender: 'build a scene in Blender, emit registered ControlNet conditioning ... and drive a gen-AI redraw.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Palace Orchestrator",
+  "target": "Agent Toolbox",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "profile-source"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "The Orchestrator is the engine that wakes a page as a subagent; it needs a tool profile to dispatch with, and Agent Toolbox is the roster it should draw from \u2014 currently unlinked."
+  ],
+  "evidence": [
+   "\"the engine that wakes a page as a Claude Code subagent and lets it act\" (Palace Orchestrator.md:9) has no pointer to the roster it would assign."
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "The Practice Rediscovers Its Philosophy",
+  "target": "Agent Toolbox",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "new-pair-least-privilege"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "This entry collects dry-infra-pages-that-are-secretly-philosophers pairs and explicitly wants more; Agent Toolbox's \"capability is blast radius\" / least-privilege roster is the same Stoic dichotomy-of-control move as its existing assume-multi-agent pair, one level up (session-scoped tool grants rather than pod namespacing)."
+  ],
+  "evidence": [
+   "\"I want to collect more pairs\" (The Practice Rediscovers Its Philosophy.md:31) against Agent Toolbox's \"Capability is blast radius...Fewer tools, less damage possible\" (Agent Toolbox.md:32)."
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "README - The Palace Guide",
+  "target": "ELDER",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "names-among-foundational"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The README names ELDER by name as one of the small set of reserved foundational-stage entries, but never links it.",
+   "foundational is a reserved stage... (CLAUDE, JEWEL, ELDER, SCHEMA, this README, Substrate Skill)"
+  ],
+  "evidence": [
+   "\"`foundational` is a reserved stage... (CLAUDE, JEWEL, ELDER, SCHEMA, this README, Substrate Skill)\" \u2014 README - The Palace Guide.md:135"
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "Closing Well Ceremony",
+  "target": "Worktree Practice",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "teardown-is-a-close"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same unsung-path pattern one hop out: the ceremony's checklist cites the worktree rules without linking the entry that states them.",
+   "honoring the worktree rules (`_ops/worktree/SKILL.md`: canon to the owner/`main`; batons per worktree, announced on the owner board)"
+  ],
+  "evidence": [
+   "honoring the worktree rules (`_ops/worktree/SKILL.md`: canon to the owner/`main`; batons per worktree, announced on the owner board)."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "Worktree Practice",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "one-write-path-per-worktree"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "\u00a79's coordination-schema note depends on the same worktree convention; a weaker, hop2-tier link but still a genuine one, not forced.",
+   "every worktree appends there, never to a per-branch copy (`_ops/worktree/SKILL.md` \u00a7 Ceremonies in a worktree)"
+  ],
+  "evidence": [
+   "every worktree appends there, never to a per-branch copy (`_ops/worktree/SKILL.md` \u00a7 Ceremonies in a worktree)."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Differential Equations",
+  "target": "control-vocabulary-math",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "worked-ode-instance"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "This is exactly the kind of worked coupled-ODE instance the Differential Equations hub's forward_vector says it wants (\"a complete map showing which palace projects correspond to which DE types\") and doesn't have yet."
+  ],
+  "evidence": [
+   "d\u03b8\u1d62/dt = \u03c9\u1d62 + K r sin(\u03c8 \u2212 \u03b8\u1d62) \u2014 the feedback that makes synchrony self-reinforcing."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Granular Synthesis",
+  "target": "control-vocabulary-math",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "population-control-math"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Granular Synthesis already points to the parent project and to Kuramoto Coupling; this is the specific math document that makes its own forward_vector (\"population dynamics ... become primary synthesis paradigms\") concrete."
+  ],
+  "evidence": [
+   "Granular synthesis stacks grains until a timbre emerges from density. Neural Granular Synthesis stacks spiking neurons until a timbre emerges from agreement \u2014 and agreement ... has a number: r."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Annie Dillard",
+  "target": "James Turrell",
+  "type": "connects-to",
+  "lenses": [
+   "community",
+   "lifecycle"
+  ],
+  "rooms": [
+   "C4.2",
+   "L8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 2
+  },
+  "labels": [
+   "path-of-the-beam",
+   "trained-attention"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Not just a shared image (light/beam as the medium of attention) but a shared blindspot structure: both perform a humble, hands-off posture (\"I only get out of the way\" / \"positioning, not causing\") while actually authoring every degree of what the beholder sees \u2014 the exact pattern already named for the Turrell/Agnes Martin/Nakashima cluster. Dillard is a fourth citizen of that family, in a different medium.",
+   "Both entries make the identical claim in different materials: perception is trained, not given, and the discipline is positioning yourself to receive it rather than causing it."
+  ],
+  "evidence": [
+   "Dillard: \"I cannot cause light; the most I can do is try to put myself in the path of its beam.\" Turrell: \"art is not a statement transmitted but a condition created for someone else's looking.\"",
+   "Dillard: \"I cannot cause light; the most I can do is try to put myself in the path of its beam.\" Turrell: \"Subtle change requires sustained attention to register at all, and sustained attention is the only thing that can register it.\""
+  ],
+  "july": false,
+  "gnn": true
+ },
+ {
+  "source": "Audition Gate",
+  "target": "James Turrell",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "the-look-gate"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "Turrell's own entry already reaches for audio-engineering language to describe light-perception thresholds \u2014 he is, unprompted, describing the sibling gate Audition Gate's forward_vector explicitly wonders whether to spawn."
+  ],
+  "evidence": [
+   "Turrell: \"A 0.5 dB filter move, a two-millisecond delay offset \u2014 barely audible alone, and yet ten of them stacked over a five-minute loop produce a depth one dramatic sweep never will.\" Audition Gate: \"I want to spawn sibling practices in image (the Look gate?)...\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Audition Gate",
+  "target": "Bayesian Granular Synthesizer",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [
+   "iterated-by-ear"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The entry's own account of its build is a worked instance of the audition-gate practice \u2014 evaluated and revised by listening, not by spec review."
+  ],
+  "evidence": [
+   "\"the instrument was then iterated by ear across eight audio renders\" (Bayesian Granular Synthesizer.md:39); \"Wire the optional grain-entrainment coupling and audition whether population-locking adds to the condensation or muddies it.\" (:75)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ROSETTA",
+  "target": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-writing-rules"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: ROSETTA's own \u00a72 explicitly hands off to it ('for the fields each type requires, [[SCHEMA \u2014 Reference]] \u00a73') and its file-architecture table names it as the writing-rules sibling doc, but frontmatter carries no link.",
+   "for the fields each type requires, [[SCHEMA \u2014 Reference]] \u00a73"
+  ],
+  "evidence": [
+   "\"for the fields each type requires, [[SCHEMA \u2014 Reference]] \u00a73. This table is a quick-reference translation layer.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Project Stewardship System",
+  "target": "Search Before You Build",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [
+   "the-reframe-was-this"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Search Before You Build is a low-inbound newcomer whose principle (prior-art pass before building from scratch) is exactly what PSS's own '\u00a7 The Reframe: This Is Already Mostly Specced' lived through \u2014 most of the proposed system turned out to already exist as spec, discovered only by reading first."
+  ],
+  "evidence": [
+   "\"Most of what was being designed already existed in spec form\" (PSS) \u2014 the case is a worked instance of Search Before You Build's rule."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ELDER",
+  "target": "Agent Toolbox",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "tool-tiering"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "ELDER.md already names Agent Toolbox in running prose when it explains the reader/writer/orchestrator tool tiers, but the link never made it to frontmatter. Agent Toolbox sits at 0 inbound \u2014 this is the cleanest possible fix.",
+   "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])"
+  ],
+  "evidence": [
+   "\"a child that makes things keeps the tools its workshop needs; an elder is `palace-writer`, and an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]]).\" \u2014 ELDER.md:47"
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "Making a Palace Citizen",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "dossier-source"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "SCHEMA \u2014 Reference cites Making a Palace Citizen twice (for the `dossier` and `speech` bundle-file types and for agency_profile's practice sub-field) but frontmatter carries neither link. Making a Palace Citizen is at 2 inbound.",
+   "One per made citizen. See [[Making a Palace Citizen]]."
+  ],
+  "evidence": [
+   "\"loaded when an agent must embody the person faithfully... One per made citizen. See [[Making a Palace Citizen]].\" \u2014 SCHEMA \u2014 Reference.md:230"
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "Tool Builder",
+  "target": "Worktree Practice",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-discipline-named"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Tool Builder's checklist states the worktree-first rule verbatim but never links the entry that holds it in full, and Worktree Practice currently has zero inbound links anywhere in the palace.",
+   "Make your own worktree first. For any sustained or commit-producing work, branch into your own worktree before you start"
+  ],
+  "evidence": [
+   "Make your own worktree first. For any sustained or commit-producing work, branch into your own worktree before you start; the shared tree thrashes branches under other agents."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "1D Wavetable Scanning",
+  "target": "Quadratic Interpolation in DSP",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both entries land on the same design question \u2014 what interpolation order a wavetable read needs \u2014 from opposite directions. Quadratic Interpolation in DSP frames quadratic as the theoretical sweet spot and asks (open question 1) whether cubic is worth it; 1D Wavetable Scanning ran the experiment on a shipped Sketch and found plain linear sufficient, reserving anything higher-order for briefs that name audible aliasing as the problem. Genuine live tension, not a forced link."
+  ],
+  "evidence": [
+   "\"Higher-order interpolation has aliasing-control upsides for very small frame counts, but at typical 8-256-frame tables the linear blend's audible artifact ceiling is below the table's authoring noise. Reach for cubic only when a brief names 'audibly aliasing morph' as the problem.\" \u2014 1D Wavetable Scanning, Lost Branches"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Infeasible DSP Now Shippable",
+  "target": "control-vocabulary-math",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "This entry names 'control-surface design for high-dimensional spaces' as the suite's single hardest, most valuable, unsolved problem. control-vocabulary-math is a shipped, worked instance of exactly that problem solved for a sibling instrument \u2014 a noisy N-neuron Kuramoto population reduced to four performable knobs (K, sigma_threshold, mean firing rate, and the order parameter r as both readout and control term)."
+  ],
+  "evidence": [
+   "\"A 256-dimensional latent space, a family of triply-periodic minimal surfaces, a persistence diagram \u2014 each is a rich object with no existing performance vocabulary... That invention \u2014 not the DSP \u2014 is where the value and the difficulty concentrate.\" \u2014 Infeasible DSP Now Shippable; \"This document formalizes the layer that sits on top of that engine: the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs.\" \u2014 control-vocabulary-math"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Phase Reduction",
+  "target": "control-vocabulary-math",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Phase Reduction's forward vector asks to make the Phase Response Curve 'a designed control object' atop Kuramoto coupling. control-vocabulary-math independently built exactly that move for a different instrument \u2014 the order parameter r is simultaneously the meter and a term inside the dynamics, the same self-referential design Phase Reduction is reaching for."
+  ],
+  "evidence": [
+   "\"Use the PRC explicitly as a designed control object in the coupled-grain / granular-additive hybrid.\" \u2014 Phase Reduction, Forward Vectors; \"the single quantity that closes the loop between all of them is r... simultaneously a read-out and a term inside the dynamics, so the instrument's coherence is literally self-referential.\" \u2014 control-vocabulary-math"
+  ],
+  "july": false,
+  "gnn": false
+ }
+]

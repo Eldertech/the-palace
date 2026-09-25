@@ -1,0 +1,152 @@
+{
+ "cluster": "L1",
+ "lens": "lifecycle",
+ "summary": "This room is the BLUELINE/GenAI-image-pipeline neighbourhood plus one Loudon Live outlier (LDN RTM), and the pattern across all five targets was the same: the target's own frontmatter is already well-linked outward, but the specific neighbours it names \u2014 or that name it \u2014 never link back. Three targets (Block It in Blender Ink It in genAI, Does Personifying an Agent Change What It Does, LDN RTM) got genuine wired inbound; ControlNet as Topology got one; GenAI Camera's existing single inbound (from Search Before You Build) already covers the strongest relation, so I left it alone rather than force a second. One structural pattern worth naming for the Weave: several of these misses are *reciprocal-registration* gaps on symmetric types (contradicts, connects-to) \u2014 the source side declared the relation, the target side never got the return link, so the entry looked under-reached even though the relationship was already canon on the other page. Worth the room noting for future walks: check the neighbour's own frontmatter for a same-named relation pointing the other way before assuming nothing exists. Methodological note for the comparison this run supports: this task handed me SCHEMA + SCHEMA \u2014 Reference in full before I touched an entry, and that mattered concretely \u2014 the direction invariant (source points back toward its ground for deepens/emerged-from/exemplifies/member-of; only spawned/enables point forward) is exactly what let me tell a genuine gap (BLUELINE never pointing forward to the runbook it produced) from a false one (GenAI Camera already exemplifies ControlNet as Topology, so ControlNet as Topology doesn't also need to declare it). Without that section read closely I'd likely have proposed several backwards or duplicate links.",
+ "typed_relations": [
+  {
+   "source": "BLUELINE",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "spawned",
+   "label": "distilled-runbook",
+   "kind": "new",
+   "rationale": "The runbook declares emerged-from BLUELINE and is proven entirely in BLUELINE's own proofs folder, but BLUELINE never points forward to the artifact it produced \u2014 leaving it at 0 inbound despite being fully validated project output.",
+   "evidence": "\"Proven in [[BLUELINE]]; the scripts live in `Projects/BLUELINE/proofs/blender-handdrawn/`.\"",
+   "spark": 2
+  },
+  {
+   "source": "Shop/Figure Rig",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "connects-to",
+   "label": "feeds-the-runbook",
+   "kind": "new",
+   "rationale": "Figure Rig is dispatched at move 1 of the runbook and its output feeds the redraw directly, but Figure Rig's frontmatter stops at Blocked, Not Prompted and BLUELINE, never naming the concrete downstream procedure it's used in.",
+   "evidence": "\"For a posed figure, dispatch [[Shop/Figure Rig]] \u2014 `--pose-json ...`\"",
+   "spark": 2
+  },
+  {
+   "source": "Hand-Drawn 3D Look",
+   "target": "Block It in Blender, Ink It in genAI",
+   "type": "connects-to",
+   "label": "the-runbook",
+   "kind": "new",
+   "rationale": "The runbook is where Hand-Drawn 3D Look's own claim (\"proven the redraw survives on a posed figure\") gets its concrete proof; the runbook cites Hand-Drawn 3D Look as \"the look,\" but the look-menu entry doesn't point to the runbook that operationalizes it.",
+   "evidence": "\"The look + the when-to-use-what matrix: [[Hand-Drawn 3D Look]].\"",
+   "spark": 2
+  },
+  {
+   "source": "Steer the Generator",
+   "target": "ControlNet as Topology",
+   "type": "exemplifies",
+   "label": "control-the-structure",
+   "kind": "new",
+   "rationale": "Steer the Generator's first move \u2014 condition rather than describe \u2014 is a direct restatement of the armature/canyon-carving principle ControlNet as Topology develops at length, but the practice entry never cites the concept that grounds it.",
+   "evidence": "\"Control the structure that matters \u2014 don't describe it, condition on it.\"",
+   "spark": 3
+  },
+  {
+   "source": "Shop/Shopkeeper",
+   "target": "Does Personifying an Agent Change What It Does",
+   "type": "connects-to",
+   "label": "first-case",
+   "kind": "new",
+   "rationale": "The question names the Shopkeeper as its first datum by title, and Shopkeeper's own forward_vector even gestures at the adjacent Diversity-of-Thought question, but no link exists to the specific question Shopkeeper is the experimental subject of.",
+   "evidence": "\"The [[Shopkeeper]] is the first datum; the [[Maker]] is the control.\"",
+   "spark": 3
+  },
+  {
+   "source": "Shop/Maker",
+   "target": "Does Personifying an Agent Change What It Does",
+   "type": "connects-to",
+   "label": "the-control",
+   "kind": "new",
+   "rationale": "Maker is explicitly named as the experiment's control condition (role-voice, no gender, vs. Shopkeeper's temperament) but carries no link to the question it's the control for.",
+   "evidence": "\"the [[Maker]] is the control.\"",
+   "spark": 3
+  },
+  {
+   "source": "Loudon Live",
+   "target": "LDN RTM",
+   "type": "connects-to",
+   "label": "flagship-activity",
+   "kind": "new",
+   "rationale": "Loudon Live's own link to Toolkit \u2014 Audio Plugins is already labeled \"rtm-source,\" so the parent entry has already anticipated RTM in its link vocabulary without ever linking the activity itself, even though LDN RTM declares itself member-of Loudon Live.",
+   "evidence": "LDN RTM body: \"**[[Loudon Live]]** \u2014 RTM is one activity of a sprawling school that also holds workshops, concept videos, interactive artifacts, and retreats.\"",
+   "spark": 2
+  },
+  {
+   "source": "Progressive Staging",
+   "target": "LDN RTM",
+   "type": "contradicts",
+   "label": "atomizes",
+   "kind": "new",
+   "rationale": "LDN RTM already declares this productive tension from its own side; Progressive Staging carries no reciprocal, so a reader who lands on Progressive Staging first has no path to the named contradiction.",
+   "evidence": "LDN RTM body: \"**[[Progressive Staging]]** \u2014 the productive contradiction. Staging insists every stage is a complete pedagogical moment; RTM's units are deliberately not moments.\"",
+   "spark": 3
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "ControlNet as Topology",
+   "target": "GenAI Camera",
+   "type": "connects-to (already covered in reverse)",
+   "phrase": "the rule, learned building the [[GenAI Camera]]: to keep a form but free its surface, condition on pose; to pin the surface, condition on depth",
+   "structurally_significant": true,
+   "label": "not a genuine gap \u2014 GenAI Camera already declares exemplifies \u2192 ControlNet as Topology, which is the correct direction per the schema's directionality invariant. Flagging only because the body citation sits in a load-bearing subsection (\u00a7 Pose vs depth) and a fresh reader of ControlNet as Topology's frontmatter alone wouldn't see the relation without following the body prose."
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Does Personifying an Agent Change What It Does",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward_vector is specific and well-formed",
+   "graffiti_note": "6 sections, 6 typed links, ~700 words of developed reasoning (hypothesis, tracking method, three named tensions, maturation criteria) \u2014 this exceeds SCHEMA's own seed band (50-150 words, minimal body) and reads as growing by its own word-count/link-count test."
+  },
+  {
+   "entry": "GenAI Camera",
+   "stage_current": "growing",
+   "stage_proposed": "fruiting",
+   "vector_issue": "none",
+   "graffiti_note": "Already spawned a downstream entry (Search Before You Build emerged-from it), carries a fully proven multi-camera pipeline with dated gotchas and recipes, and its own body says \"proven 2026-07-09\" repeatedly \u2014 this is actively generating new entries and connections, which is SCHEMA's own definition of fruiting, not growing."
+  },
+  {
+   "entry": "LDN RTM",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none",
+   "graffiti_note": "122 lines, 8 typed links, a full Cross-Domain Resonances section and a Lost Branches section \u2014 far past SCHEMA's sprout band (150-400 words, 1-2 links). The project itself is young and the pilot chunk isn't shot yet, but the entry's own development is well past sprout."
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Block It in Blender, Ink It in genAI",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Proposed inbound from BLUELINE, Figure Rig, and Hand-Drawn 3D Look \u2014 all three neighbours already use or cite this runbook in their own prose without linking it."
+  },
+  {
+   "target": "ControlNet as Topology",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Proposed inbound from Steer the Generator, whose first move restates ControlNet as Topology's core principle without citing it. Kuramoto Coupling (hub, hop1) deliberately not linked down \u2014 a hub at 72 inbound doesn't need to reach for a growing concept."
+  },
+  {
+   "target": "Does Personifying an Agent Change What It Does",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Both Shopkeeper and Maker are named by title in the question's own body as its experiment/control pair; neither links back. Strongest finds in this room \u2014 the relationship already exists in prose on both sides, just undeclared in frontmatter on one."
+  },
+  {
+   "target": "GenAI Camera",
+   "disposition": "nothing-genuine",
+   "inbound_proposed": 0,
+   "note": "Existing single inbound (Search Before You Build, emerged-from) is solid and specific. Checked BLUELINE, The Scroll, ControlNet as Topology, Steer the Generator for reciprocal or new links \u2014 BLUELINE/Scroll relations already correctly declared from GenAI Camera's own side (direction invariant means no reciprocal needed); ControlNet as Topology's citation is a body-only unsung path, noted separately, not a missing typed link."
+  },
+  {
+   "target": "LDN RTM",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Loudon Live and Progressive Staging both have a load-bearing but undeclared relation to LDN RTM \u2014 one anticipated in a link label (\"rtm-source\"), one a named contradiction stated only from LDN RTM's side."
+  }
+ ]
+}

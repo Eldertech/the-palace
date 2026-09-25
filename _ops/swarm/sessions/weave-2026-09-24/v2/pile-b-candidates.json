@@ -1,0 +1,1225 @@
+[
+ {
+  "source": "Neural Granular Synthesis",
+  "target": "Songlines",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "population-is-the-meaning"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both locate meaning/coherence only in the aggregate pattern or traversal, never in a single unit \u2014 the neuron/grain vs. the point on a map."
+  ],
+  "evidence": [
+   "'The magic is in the population, not the grain.' / 'A songline is not a map. A map represents terrain. A songline enacts terrain.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Martin Buber",
+  "target": "The Scroll",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "refuses-the-fixed-record"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "The Scroll's Now-zone (regenerated, never hand-edited, replacing a plan.md that 'lied') and Buber's warning that a named Thou relapses into an It both refuse letting a living relation calcify into a dead description."
+  ],
+  "evidence": [
+   "'so it cannot lie when the steward sleeps; that was the failure of the plan.md read-model it replaced' / 'every Thou must relapse into an It the instant it is named, analyzed, or used'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Observable Plot",
+  "target": "Source Library",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "curated-roster"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both are curated rosters governed by an explicit membership test and explicit deferral to a better-suited neighbor rather than trying to cover everything."
+  ],
+  "evidence": [
+   "'I refuse jobs that want custom interactive web viz... those route to D3' / 'Every source earns its place by enabling pattern recognition across domains'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "target": "Three.js",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "structural-mapping-over-surface"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Three.js's charter principle that meaning lives in what geometry is bound to, not its surface look, is Hofstadter's analogy/metaphor distinction implemented as an engineering rule."
+  ],
+  "evidence": [
+   "\"the meaning usually lives in *what the geometry is bound to*\" / \"Electron orbitals are like planetary orbits... a structural mapping, imperfect but real\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "target": "Manim CE",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "legible-and-hand-built"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Manim's byte-identical, code-is-source-of-truth determinism is the working instance of the small, legible, hand-crafted aesthetic Hofstadter championed for forty-five years and then watched get outrun by statistical scale."
+  ],
+  "evidence": [
+   "\"Renders are deterministic given the same `.py` and Manim version\" / \"Elegant, legible, comprehensible: you can watch exactly how they work\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "target": "Exponential Decay Curvature",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "levels-of-description-flip-identity"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "The envelope-is-an-oscillator-at-audio-rate result is a worked DSP proof of Hofstadter's claim that two apparently distinct phenomena are one structure read at different scales, with neither level more 'real.'"
+  ],
+  "evidence": [
+   "\"The same curve, slowed down, is a sound's loudness contour; sped up, it is the sound itself\" / \"Neither level is the 'real' one\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Multilinear Self",
+  "target": "Three.js",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "projection-of-a-higher-dimensional-whole"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Three.js's OrbitControls literally do what The Multilinear Self describes in prose: a higher-dimensional thing is met one projected view at a time, and cycling the view is how the whole is understood."
+  ],
+  "evidence": [
+   "\"a vibrating surface you orbit\" / \"you show them one true cast of it, then another, and cycling through them is how they meet the whole person\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Brian Eno",
+  "target": "Hand-Drawn 3D Look",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B10"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "anchor-then-surrender"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both practices lock a frame with ferocious, specific control (over-anchoring canny+depth+openpose / choosing the loops and constraints) and then deliberately surrender inside it to a generative process, curating the results by taste rather than scripting them."
+  ],
+  "evidence": [
+   "properly anchored, a figure holds its authored pose all the way to denoise 0.95 / generate-many, pick the emotional register \u2014 He chooses the loops, the synths, the constraints, the take, with ferocious taste, and then lets go only inside the box he built."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Martin Heidegger",
+  "target": "The Substrate Drifts",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B10"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "breakdown-reveals-ground"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Three STIGMERGY bugs shared one root: code assumed the blackboard was static and uniform (ready-to-hand, transparent) and only its breakage revealed it as living, heterogeneous, resistant (present-at-hand) \u2014 Heidegger's tool-analysis almost verbatim, in infrastructure vocabulary."
+  ],
+  "evidence": [
+   "A tool that assumes a fixed, uniform substrate is not 'correct now, broken later.' It is already wrong and merely lucky. \u2014 It becomes present-at-hand, an inert object staring back, only when it breaks."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "LoRA Trainer",
+  "target": "Spinoza",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "identity-persists-across-modes"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "The DINO/ArcFace grading protocol operationalizes conatus: it tests whether a trained identity persists as itself under changing external circumstance (context, seed) rather than dissolving into them."
+  ],
+  "evidence": [
+   "\"Render the subject across new contexts \u00d7 different seeds (where seed-locking can't help)\" / \"the endeavor to persist in its own being is the actual essence of the thing itself.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Block It in Blender, Ink It in genAI",
+  "target": "Donella Meadows",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "geometry-is-the-lever-adjectives-arent"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "The runbook's founding move \u2014 author structure, not wording \u2014 is Meadows' leverage-points ranking in practice: the parameter (a prompt word) barely moves the system, the paradigm-level lever (the scene's geometry) is where the real push lives."
+  ],
+  "evidence": [
+   "\"Drama is geometry, not adjectives.\" / \"the obvious lever (a number, a price, a parameter) barely moves anything, and the real levers ... are exactly the ones everyone flinches away from.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Donella Meadows",
+  "target": "LoRA Trainer",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "dataset-is-the-lever-not-the-steps"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "The DreamBooth-control diagnostic is a leverage-point isolation: when a result fails, find which part of the system's structure is responsible before touching the parameters (training steps) that don't matter."
+  ],
+  "evidence": [
+   "\"the pipeline is sound and the dataset is the problem \u2014 don't debug the recipe\" / \"structure produces behavior ... swapping the faces at the top changes nothing until you change the structure.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Weaving Memory into the Palace",
+  "target": "Worktree Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge",
+   "community",
+   "lifecycle"
+  ],
+  "rooms": [
+   "B4",
+   "C5.1",
+   "L3"
+  ],
+  "n": 4,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 3,
+   "unsung-path": 1
+  },
+  "labels": [
+   "worked-example"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "a cluster of git/worktree cautions \u2192 a single \"shared-tree discipline\" nugget \u2192 [[Worktree Practice]]",
+   "Weaving Memory into the Palace's own body names [[Worktree Practice]] as the worked example of its consolidation step, but the link only runs outward from Weaving Memory's frontmatter \u2014 there's no reciprocal pointer and, per the unsung-path check, no frontmatter entry at all captures this specific naming from either side beyond the source page's own prose mention.",
+   "the consolidate-near-duplicates worked example naming [[Worktree Practice]]"
+  ],
+  "evidence": [
+   "\"a cluster of git/worktree cautions \u2192 a single \\\"shared-tree discipline\\\" nugget \u2192 [[Worktree Practice]]\""
+  ],
+  "july": false,
+  "gnn": false,
+  "group": "cross-lens-new"
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "OBS",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "rendered-frame-not-the-file"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "OBS's 'screenshot is the verify, not a config read' independently re-derives McGilchrist's left/right-hemisphere split between re-presentation and the living whole."
+  ],
+  "evidence": [
+   "\"Only the rendered frame settles it.\" / \"re-presents \u2014 takes the living thing and makes a static, portable, decontextualized version\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Figure Rig",
+  "target": "spinoza-zhuangzi-on-striving",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "force-fit-vs-the-grain"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Figure Rig's own vocabulary of ending its 'force-fit era' matches the dialectic's central distinction between striving with the grain and forcing against it."
+  ],
+  "evidence": [
+   "\"the force-fit era is over\" / \"striving with the grain and striving against it\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Andy Goldsworthy",
+  "target": "Murmuration",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "is-it-really-emergent-or-authored"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both entries ask, of their own practice, whether the claimed 'emergence'/'collaboration' is real or a story told by the one who framed and chose it."
+  ],
+  "evidence": [
+   "\"does an emergent... grain distribution actually sound more alive than an authored one, or is that a story we tell about the picture?\" / \"'Collaboration with nature' is a flattering word for what is still authorial selection\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Confucianism",
+  "target": "Lettering",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "form-before-feeling"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Lettering's skeleton-then-diffusion pipeline and Confucian li both hold that a disciplined prior form produces the felt/expressive content, rather than the interior state coming first and being represented."
+  ],
+  "evidence": [
+   "\"the skeleton is the pose, the material is the render. Diffusion fills the letters; it cannot spell them away.\" / \"The form produces the interior, not the other way around.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Creative Coach",
+  "target": "VCV Patch Generator",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "proves-structure-not-feel"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both entries name the same honest boundary in different materials: what can be verified/demonstrated structurally versus what only direct, embodied presence (the ear; the room) can settle."
+  ],
+  "evidence": [
+   "\"I prove structure, never sound ... the standing seam between what the tool proves and what only the ear settles.\" / \"Modelling is what a broadcast can do. Everything in the second list needs someone in the room.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Search Before You Build",
+  "target": "Leverage Points Framework",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "information-flow-redesign"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "The reflex is a worked, previously-uncited instance of intervening at Meadows' Information Flows leverage point \u2014 it redesigns when/how prior art reaches the builder rather than optimizing effort at the parameter level."
+  ],
+  "evidence": [
+   "\"The palace only pays off if prior art surfaces before the keystroke, unprompted.\" / \"Information flows (#6) shape behavior without direct commands ... redesigning information flows is high-leverage resistance.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Synth Archetypes",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "loose-reuse"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both name a structural unit specified loosely enough to reuse without repeating identically."
+  ],
+  "evidence": [
+   "\"one archetype \u2192 a distribution of parameter sets, not a fixed one\" / \"stated loosely enough to reuse forever without ever doing it the same way twice\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Agent Wellbeing",
+  "target": "LaMa",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "plausible-confabulation"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "Both name confabulation of a plausible fill as the failure mode of a generative system asked to represent what it can't perceive."
+  ],
+  "evidence": [
+   "\"I'll paint a believable surface \u2014 not necessarily that door\" / \"will confabulate a plausible number\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Palace Philosophies",
+  "target": "Synth Archetypes",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "typed-link-is-prehension"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both independently state that a typed relation between things is the primary unit of the system."
+  ],
+  "evidence": [
+   "\"essentially typed links between modules weighted by musical co-dependency\" / \"a typed link is a prehension\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Merleau-Ponty",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "is-not-represented-it-is"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "process-not-value, in DSP grammar and phenomenology grammar"
+  ],
+  "why": [
+   "Near-identical grammar: \"The pitch IS the glide\" / \"the reaching IS a form of intentionality\" \u2014 both deny a target-then-interpolation two-step."
+  ],
+  "evidence": [
+   "\"The glide does not happen to the pitch. The pitch IS the glide.\" / \"The reaching IS a form of intentionality in its own right.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "synergy-is-coupling"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "relations-are-primary, in struts and in resonant modes"
+  ],
+  "why": [
+   "Portamento's coupled-mode string physics and Fuller's synergetics both locate the real behavior in the coupling, not the parts \u2014 confirmed by both already independently linking to Kuramoto Coupling."
+  ],
+  "evidence": [
+   "\"the modes 'chase' each other, coupling through shared physical constraints\" / \"the dome holds loads no single strut could, because the behavior lives in the coupling, not the components\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Agnes Martin",
+  "target": "Move the Ink, Don't Redraw It",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B7"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "fixed-substrate-reveals-drift"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both discover that fixing a structure/substrate once is the precondition for subtle real variation to be perceptible instead of dissolving into noise/boil."
+  ],
+  "evidence": [
+   "\"A static substrate cannot boil\" (Move the Ink) / \"The grid holds still so the drift can be seen; take it away and the difference vanishes into noise\" (Agnes Martin)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Depth Anything",
+  "target": "Found \u2194 Made",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "found-pole-tool"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Depth Anything reads front-to-back order that is already fully present in the image, with zero segmentation \u2014 the tool's own description of its method is the Found pole verbatim, in a different vocabulary."
+  ],
+  "evidence": [
+   "I read depth out of a flat image \u2014 even a pen drawing \u2014 and hand back front-to-back order / no segmentation needed to know the stack."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Midjourney",
+  "target": "Found \u2194 Made",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "made-pole-tool"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Midjourney's own account of its iteration character \u2014 narrowing a distribution rather than refining a fixed target \u2014 is the Made pole enacted as a tool's operating model."
+  ],
+  "evidence": [
+   "I cannot refine an exact composition; I can only narrow the distribution it's drawn from."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Frequency-Time Explorer",
+  "target": "Leibniz",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "reciprocal-calculemus"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "FTE's reciprocal axis (one formula that resolves rhythm, pitch, filtering, modulation, and Doppler into regions of one computable quantity) is a small working instance of Leibniz's characteristica universalis \u2014 a calculus meant to dissolve apparent disputes."
+  ],
+  "evidence": [
+   "The reciprocal IS the unification. / the dream of the characteristica universalis... 'Calculemus' \u2014 let us calculate."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Drift",
+  "target": "Web Audio Worklet",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "emergent-not-authored"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "The Murmuration recipe's granular cloud is explicitly emergent from arranged flock physics, not authored grain-by-grain \u2014 the exact move The Drift names as its lens on synthesis, arrived at independently through a build session."
+  ],
+  "evidence": [
+   "The flock's spatial distribution is the granular cloud \u2014 emergent, not authored. / Particle synthesis is closer to the Drift \u2014 you set up physics and watch the cloud emerge."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Iain McGilchrist",
+  "type": "mirrors",
+  "lenses": [
+   "community",
+   "folder"
+  ],
+  "rooms": [
+   "C4.1",
+   "F-People"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 2
+  },
+  "labels": [
+   "totalizing-framework-resists-falsification",
+   "unfalsifiable-wholeness-claim"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Two independent thinkers (architecture, neuroscience) each built a binary framework that both entries themselves flag as structurally unable to hear a genuine objection \u2014 Alexander calls the dissenter 'nutty,' McGilchrist's critics say any objection gets re-diagnosed as 'your left hemisphere talking.' Same shape, different material \u2014 a genuine mirror, not a forced one.",
+   "Both are seed-stage dossiers built on the identical fault line: a thinker who insists 'wholeness'/'degree of life' is objective and real (not taste or cultural consensus), and whose framework is structured so that any objector who genuinely doesn't feel the claim gets reframed as broken or captured rather than answered \u2014 Alexander: the fragment-wanter is 'nutty'; McGilchrist: the doubter is just their 'left hemisphere talking.' Fidelity check: swap in Donella Meadows (also in this room, also insists on an objective structural claim) \u2014 it fails, because her blindspot is moral urgency outrunning her model, not an unfalsifiable totalizing frame that re-diagnoses critics; the specific 'wholeness is objective, and doubt proves the doubter's capture' shape is unique to this pair."
+  ],
+  "evidence": [
+   "Alexander: \"his framework has *already defined* aliveness as the correct target, so a person who rationally... wants the fragment simply cannot register as anything but broken\"; McGilchrist: \"any objection can be re-diagnosed as the objector's own left-hemisphere capture... both escape hatches make me unfalsifiable.\"",
+   "Christopher Alexander: 'His framework has already defined aliveness as the correct target, so a person who rationally... wants the fragment simply cannot register as anything but broken.' Iain McGilchrist: 'any objection can be re-diagnosed as the objector's own left-hemisphere capture, while any claim that turns out literally false can retreat to \"it was only a metaphor.\" Both escape hatches...'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "target": "Iain McGilchrist",
+  "type": "contradicts",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "computation-earns-comprehension-after-all"
+  ],
+  "max_spark": 5,
+  "deep_patterns": [],
+  "why": [
+   "McGilchrist's own file calls AI 'artificial information-processing, not artificial intelligence... it manipulates without comprehending.' Hofstadter's entry is built entirely around him being forced, against thirty years of published conviction, to concede that a feedforward statistical network is doing exactly the analogy-making he called the core of comprehension. Direct, textually loaded contradiction."
+  ],
+  "evidence": [
+   "McGilchrist: \"I insist it manipulates without comprehending\"; Hofstadter (of GPT-4): \"It feels like there is something more there that merits the word 'I.'\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "Martin Buber",
+  "type": "mirrors",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "i-thou-is-comprehending-attention"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "McGilchrist's right hemisphere 'comprehends... grasps the living whole in context' versus the left's grasping, using, re-presenting is close to a restatement of Buber's I-Thou (the other as irreducible whole) against I-It (the other as a bundle of qualities to use). Neither entry currently names the other."
+  ],
+  "evidence": [
+   "McGilchrist: \"the right... comprehends \u2014 grasps the living whole in context\"; Buber: \"I-Thou... the other appears as an irreducible whole, not a bundle of qualities to be used or known-about.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Excellent Adventure",
+  "target": "Martin Buber",
+  "type": "contradicts",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "meeting-cannot-be-method"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Genuine, sourced tension rather than a generic 'philosopher meets practice' link: Excellent Adventure is the palace's named practice for summoning a philosopher into embodied dialogue on command, and Buber's own content says the exact thing that practice does cannot be done \u2014 the I-Thou meeting relapses into an It the instant it is named, analyzed, or turned into a technique, and a faithful embodiment of him should refuse a 'five steps to I-Thou' request rather than comply. This is Buber's own built-in fidelity test, aimed at exactly this kind of practice."
+  ],
+  "evidence": [
+   "\"the meeting I built everything on cannot be held, taught, or made into a method... Send me where someone asks for '5 steps to I-Thou' \u2014 my refusing is the truest test that it is really me\" (Martin Buber.md agency_profile.practice)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Martin Buber",
+  "target": "Martin Heidegger",
+  "type": "contradicts",
+  "lenses": [
+   "community",
+   "lifecycle"
+  ],
+  "rooms": [
+   "C6",
+   "L5"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "inbound-walk": 1,
+   "new": 1
+  },
+  "labels": [
+   "they-vs-thou",
+   "thou-vs-the-they"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Two newcomers reachable through each other's second ring, and both bodies independently cite Levinas turning on them from opposite directions \u2014 Heidegger for having no ethical resource against the singular Other (Dasein flees into 'das Man,' the they), Buber for having an ethics of the Other that is too comfortably symmetrical to carry real asymmetric obligation. That's a real, specific, generative contradiction about how each philosophy handles the other person, not a generic 'two philosophers disagree' link.",
+   "Both pages are in the room and both explicitly stage the same critic (Levinas) against them for opposite reasons \u2014 Levinas breaks with Heidegger for having no ethics-first account of the other, and breaks with Buber for making the meeting too symmetrical to carry Levinas's asymmetric obligation. The two pages name exactly opposed treatments of das Man/the impersonal mass versus the I-Thou meeting, but have never been linked to each other. Fidelity check: swapping in, say, Epictetus for Buber doesn't produce the same specific opposition \u2014 Epictetus's quarrel with Heidegger (already linked, contradicts The Dichotomy of Control) is about control/thrownness, a different axis entirely."
+  ],
+  "evidence": [
+   "\"Dasein... flee[s] the anxiety of our own groundlessness into das Man ('the they')\" / \"Being and Time has essentially no ethics and treats other people mostly as 'the they'\" (Martin Heidegger.md) vs \"Through the Thou a person becomes I\" / Levinas: \"the I-Thou is too symmetrical\" (Martin Buber.md)",
+   "Heidegger: 'I have almost no ethics and almost no account of other people as anything but \"the they\"' / Buber: 'there is no I as such, only the I of I-Thou and the I of I-It... Through the Thou a person becomes I.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Andy Goldsworthy",
+  "target": "Martin Heidegger",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "newcomer": 1
+  },
+  "labels": [
+   "rootedness-hides-its-violence"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both pages build an ethic of staying in one place long enough to earn the right to work it (Heidegger's dwelling/rootedness, Goldsworthy's 'you have to live somewhere a long time'), and both entries independently indict that same rootedness rhetoric for laundering a specific historical violence over the land or people it claims to honor. Neither page currently links the other; Heidegger is an under-reached newcomer (reached by 6)."
+  ],
+  "evidence": [
+   "Heidegger: 'his conviction that thinking belongs close to the ground... inseparable from the soil-and-destiny rhetoric that made 1933 possible.' Goldsworthy: 'his weather and erosion do the work that landlords and property law actually did... it was not the sheep who put people off the land, but the landlords.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "Merleau-Ponty",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "comprehending-not-representing"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both name the same structure from different disciplines: skilled/comprehending cognition is a direct, pre-reflective grasp of a living whole, and the reductive move (computing/representing, or the left hemisphere's re-presentation) is what destroys it. McGilchrist is a priority newcomer (reached by only 6) and this is not generic \u2014 swap in Deleuze for McGilchrist and the specific embodied-attention register doesn't hold the same way (Deleuze's difference-in-itself is metaphysical, not about attention as a felt, bodily act)."
+  ],
+  "evidence": [
+   "Merleau-Ponty: 'You do not navigate the world by computing the position of your limbs; your body has a pre-reflective, operative grasp of itself' / McGilchrist: 'The right pays broad, open, sustained, vigilant attention; it comprehends \u2014 grasps the living whole in context... lets the world presence before it is broken into parts,' against the left hemisphere which 'abstracts, categorizes, and re-presents.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Registry Pattern",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "named-vocabulary-of-legal-moves"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both are the same structural move: a curated, named vocabulary of reusable units that constrains what can legally be built, so a builder outside the domain can compose within it reliably. Alexander's pattern language is a combinable set of named, reusable solution-patterns linked by 'this pattern calls that one'; Registry Pattern is a curated component vocabulary injected before generation so an LLM cannot hallucinate what doesn't exist. Fidelity check: swap in Simondon (also in this room) and it fails \u2014 concretization is about functions converging into one integrated part, not about naming a combinable vocabulary of legal moves; this pairing is specific to Alexander."
+  ],
+  "evidence": [
+   "Registry Pattern: 'naming the things in a domain precisely enough that a mind outside that domain can build within it.' Christopher Alexander: 'A pattern language is a knowledge graph before the term existed \u2014 named, reusable, cross-scale, combinable units linked by \"this pattern calls that one.\"'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Quantization \u2194 Precision vs Flow",
+  "target": "Synth Archetypes",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "region-plus-seed"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both entries land on the identical resolution: don't choose between rigid precision and pure randomness \u2014 define a bounded region (grid resolution / perceptual region) and let a free parameter (seed / humanize offset) pick a point inside it, so structure and variation coexist. Quantization \u2194 Precision vs Flow's groove-template and humanize sections and Synth Archetypes' seeded region-sampling are the same mechanism in different materials (MIDI timing vs synthesis parameters). Fidelity check: swap in Kick Drum \u2194 Foundation and it fails \u2014 that entry is about commitment to one fixed foundation, not about a bounded region with a free point inside it."
+  ],
+  "evidence": [
+   "Synth Archetypes: 'The archetype constrains the region; a seed picks the point inside it... instead of the \"every kick sounds identical\" trap.' Quantization \u2194 Precision vs Flow: 'Quantize to HUMAN timing, not mechanical grid... The pattern itself determines the character' and 'The question isn't \"to quantize or not.\" It's: to what resolution?'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Does Personifying an Agent Change What It Does",
+  "target": "The Multilinear Self",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "projection-real-or-decorative"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both entries hold open the exact same unresolved question in different materials: does a persona change the substance of the thing wearing it, or is it purely relational/aesthetic dressing on an unchanged core? One asks it of an AI agent's gendered temperament (the Shopkeeper), the other of a human's public personas (LDN, Professor Compressor, TRICKSTER). Neither currently links to the other, and the pairing survives the fidelity swap \u2014 no other room member poses this question in its general form."
+  ],
+  "evidence": [
+   "Does Personifying: \"does 'she' do any functional work, or is it purely relational and aesthetic?\" / The Multilinear Self: \"Each name is a projection of it \u2014 a real shadow the whole self casts into a particular room. Honest, just partial... the line between honest multiplicity and pretending.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ControlNet as Topology",
+  "target": "Synthesis Topologies",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "fixed-skeleton-free-surface"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Synthesis Topologies names 'fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces)' as one of its topology in-betweens. ControlNet as Topology names ControlNet itself as 'an armature... the wire skeleton a figure is built around \u2014 it fixes the pose before a single detail exists.' Same organizing move \u2014 a fixed structural skeleton constrains a free surface of variation \u2014 in two completely different domains (audio synth architecture, diffusion-model conditioning)."
+  ],
+  "evidence": [
+   "Synthesis Topologies: 'Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces).' ControlNet as Topology: 'ControlNet is an armature. In clay modeling the armature is the wire skeleton a figure is built around \u2014 it fixes the pose before a single detail exists.'"
+  ],
+  "july": false,
+  "gnn": false
+ }
+]

@@ -16,9 +16,6 @@ links:
   - target: "[[Generative Audio Devices]]"
     type: connects-to
     label: topology-emergent-counterpart
-  - target: "[[2D Torus Wavetable Synthesizer]]"
-    type: connects-to
-    label: torus-as-topology-choice
   - target: "[[Registry Pattern]]"
     type: connects-to
     label: pdl-as-topology-constraint

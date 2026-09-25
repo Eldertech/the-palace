@@ -13,7 +13,7 @@ forward_vector: "I cut a picture into its objects — but only where the picture
 links:
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
-  - { target: "[[Line-Art Layer Decomposition]]", type: connects-to, label: the-Segment-skill-and-its-wall }
+  - { target: "[[Animate the Background]]", type: connects-to, label: the-Segment-skill-and-its-wall }
   - { target: "[[Depth Anything]]", type: connects-to, label: orders-what-I-isolate }
   - target: "[[LaMa]]"
     type: connects-to
@@ -35,7 +35,7 @@ I cut an image into its constituent objects — a mask per thing. Auto mode (Mob
 ## The wall — and what it taught us (proven 2026-06-25)
 
 - **I fail on line art.** A pen drawing of a car is sparse outline strokes on the same paper as everything else — there's no solid textured region for me to grab, so I snap to the nearest tonal block and over-segment into fragments. On BLUELINE shot 02 I never once isolated the car; the figure came out *better from a keypoint mask* than from me.
-- **I work cleanly once the image is converted.** Run me on the *same composition* re-rendered to photoreal or flat-cel (SDXL/FLUX + canny ControlNet) and I segment sharply — 30/26/22 distinct object regions on photoreal, **44/47/25 on flat-cel** across three test scenes. I am the tool that *motivates* the convert-first reframe in [[Line-Art Layer Decomposition]]: my training domain *is* the intermediate domain we should convert to. **Flat cel-shaded is my best input** — solid flat regions, crisp edges, separable even before I run.
+- **I work cleanly once the image is converted.** Run me on the *same composition* re-rendered to photoreal or flat-cel (SDXL/FLUX + canny ControlNet) and I segment sharply — 30/26/22 distinct object regions on photoreal, **44/47/25 on flat-cel** across three test scenes. I am the tool that *motivates* the convert-first reframe in [[Animate the Background#The N-Layer Case (Line-Art Decomposition)|the N-layer case]]: my training domain *is* the intermediate domain we should convert to. **Flat cel-shaded is my best input** — solid flat regions, crisp edges, separable even before I run.
 - The reframe in one line: don't fix the segmenter, **move the image into the segmenter's world, then stylize back.**
 
 ## Gotchas / where I fail

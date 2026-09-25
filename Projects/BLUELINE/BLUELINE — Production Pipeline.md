@@ -30,7 +30,7 @@ links:
 > **This is the conceptual map; [[BLUELINE — Production Plan]] is the status/threads/horizon front door.** Three subsystems
 > that grew after this doc map onto its stages: **Text & Lettering** ([[BLUELINE — Text Layer]]) is the
 > overlay at stage 7 (words over art, never diffused); **Line-Art Decomposition**
-> ([[Line-Art Layer Decomposition]]) serves Seam A / compositing (convert flat-ink → flat-cel → layers);
+> ([[Animate the Background#The N-Layer Case (Line-Art Decomposition)|Animate the Background § The N-Layer Case]]) serves Seam A / compositing (convert flat-ink → flat-cel → layers);
 > and the **elemental-motion tiers** (Track VI: warp the ink · sim + composite) are stage 6, the motion
 > spine — all gathered in [[BLUELINE — Motion and Flow]].
 

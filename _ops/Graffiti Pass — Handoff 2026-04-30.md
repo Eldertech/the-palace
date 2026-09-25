@@ -2,7 +2,7 @@
 title: Graffiti Pass — Handoff 2026-04-30
 type: meta
 born: 2026-04-30
-stage: sprout
+stage: composting
 links:
   - target: "[[Palace To-Do]]"
     type: connects-to

@@ -89,7 +89,7 @@ lineage is noted where it maps.)*
 | 5 | **Render Backend** (was Track I) | ✅ operational | [[BLUELINE — Render Backend]] | `render-backend/`, `proofs/track-II-lora` (the ruler) |
 | 6 | **Style & Identity** (was Track II) | ✅ house style locked · identity via InstantID next | [[Steer the Generator]] | `proofs/style-lock`, `style-atlas`, `visual-language-console` |
 | 7 | **Text & Lettering** | ✅ rung 1 proven (material register + Living Balloon) | [[BLUELINE — Text Layer]] | `proofs/text-layer`, `proofs/lyrics-layer` |
-| 8 | **Line-Art Decomposition** | ✅ validated (convert-first flat-cel) | [[Line-Art Layer Decomposition]] | `proofs/blender-fire` |
+| 8 | **Line-Art Decomposition** | ✅ validated (convert-first flat-cel) | [[Animate the Background#The N-Layer Case (Line-Art Decomposition)\|Animate the Background § The N-Layer Case]] | `proofs/blender-fire` |
 | 9 | **The Page** ← new | ○ seed (locked 2026-07-09) | [[BLUELINE — The Page]] | — (compositor spec) |
 
 **One-line each:**

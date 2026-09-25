@@ -1,0 +1,87 @@
+{
+ "arm": "Y",
+ "room": "C1.3",
+ "total_proposals": 10,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Linear Predictive Coding",
+   "type": "spawned",
+   "target": "Tract Mirror",
+   "label": null,
+   "rationale": "Tract Mirror is literally LPC's central thesis built into a shipped VST \u2014 the strongest spawned relation in the room, and it answers LPC's own open question about whether the source-filter identity is only a prose claim. Currently only Tract Mirror points back (emerged-from); LPC has no forward pointer to what it produced.",
+   "evidence": "\"The thesis is the mirrors link from [[Linear Predictive Coding]] to [[Waveguide Synthesizer]], executed: the LPC lattice filter's reflection coefficients are the impedance mismatches between successive tube segments.\" \u2014 Tract Mirror",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Infeasible DSP Now Shippable",
+   "type": "connects-to",
+   "target": "control-vocabulary-math",
+   "label": null,
+   "rationale": "This entry names 'control-surface design for high-dimensional spaces' as the suite's single hardest, most valuable, unsolved problem. control-vocabulary-math is a shipped, worked instance of exactly that problem solved for a sibling instrument \u2014 a noisy N-neuron Kuramoto population reduced to four performable knobs (K, sigma_threshold, mean firing rate, and the order parameter r as both readout and control term).",
+   "evidence": "\"A 256-dimensional latent space, a family of triply-periodic minimal surfaces, a persistence diagram \u2014 each is a rich object with no existing performance vocabulary... That invention \u2014 not the DSP \u2014 is where the value and the difficulty concentrate.\" \u2014 Infeasible DSP Now Shippable; \"This document formalizes the layer that sits on top of that engine: the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs.\" \u2014 control-vocabulary-math",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "relation",
+   "source": "Waveguide Synthesizer",
+   "type": "mirrors",
+   "target": "Linear Predictive Coding",
+   "label": null,
+   "rationale": "LPC declares this mirrors link explicitly ('LPC's lattice and the digital waveguide are the same structure read from opposite ends'), and Tract Mirror carries the same claim from a third angle, but Waveguide Synthesizer's own frontmatter is silent on it \u2014 the triangle is missing its third leg.",
+   "evidence": "\"That is why the link to [[Waveguide Synthesizer]] is a mirrors and not a passing reference: the vocal tract and the plucked string are one piece of mathematics wearing two bodies.\" \u2014 Linear Predictive Coding",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "2D Torus Wavetable Synthesizer",
+   "type": "exemplifies",
+   "target": "Synthesis Topologies",
+   "label": null,
+   "rationale": "Synthesis Topologies \u00a73 already names the torus project's seven-surface design as its concrete exemplar of the 'fixed-skeleton-variable-flesh' in-between category, but the torus entry's own frontmatter has no pointer back to the general framework it instantiates. Direction invariant: exemplifies points to the ground (the general entry).",
+   "evidence": "\"Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces).\" \u2014 Synthesis Topologies \u00a73",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "Waveguide Synthesizer",
+   "type": "enables",
+   "target": "Dispersion Table",
+   "label": null,
+   "rationale": "Dispersion Table's whole generalization (store phase-response curves, not waveforms) is built directly on Waveguide Synthesizer's physics scaffolding, but Waveguide Synthesizer doesn't point forward to what it made possible.",
+   "evidence": "\"See [[Waveguide Synthesizer]] for the physics scaffolding (D'Alembert's traveling-wave solution, the delay-line architecture, Karplus-Strong as the lossy case).\" \u2014 Dispersion Table",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "Three.js",
+   "type": "couples-with",
+   "target": "Tract Mirror",
+   "label": null,
+   "rationale": "Tract Mirror's GUI is a WKWebView running three.js \u2014 Three.js's first job that leaves the browser proper. Tract Mirror declares couples-with \u2192 Three.js; worth the reciprocal so Three.js's own roster names its native-plugin job.",
+   "evidence": "\"JUCE 8 + WebView GUI \u2014 C++ DSP core; the GUI is a WKWebView running three.js, so every interim mockup artifact is a step toward the real interface.\" \u2014 Tract Mirror",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "relation",
+   "source": "Phase Reduction",
+   "type": "connects-to",
+   "target": "control-vocabulary-math",
+   "label": null,
+   "rationale": "Phase Reduction's forward vector asks to make the Phase Response Curve 'a designed control object' atop Kuramoto coupling. control-vocabulary-math independently built exactly that move for a different instrument \u2014 the order parameter r is simultaneously the meter and a term inside the dynamics, the same self-referential design Phase Reduction is reaching for.",
+   "evidence": "\"Use the PRC explicitly as a designed control object in the coupled-grain / granular-additive hybrid.\" \u2014 Phase Reduction, Forward Vectors; \"the single quantity that closes the loop between all of them is r... simultaneously a read-out and a term inside the dynamics, so the instrument's coherence is literally self-referential.\" \u2014 control-vocabulary-math",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "relation",
+   "source": "Chebyshev is Fourier",
+   "type": "connects-to",
+   "target": "Rank-N Lattice Analysis",
+   "label": null,
+   "rationale": "Chebyshev is Fourier's own Forward Vectors names the 'wavelet \u2192 modal \u2192 rank-N-lattice family' it wants to join, but the frontmatter link runs only one direction (Rank-N Lattice Analysis \u2192 Chebyshev is Fourier, label choose-your-basis).",
+   "evidence": "\"Map the full Fourier \u2192 wavelet \u2192 modal \u2192 rank-N-lattice family as a single 'choose-your-basis' entry; this dissolution is one member of it.\"",
+   "item_id": "Y8"
+  }
+ ]
+}

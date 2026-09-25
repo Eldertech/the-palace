@@ -55,6 +55,9 @@ links:
   - target: "[[The Blindspot Is the Surprise Fuel]]"
     type: exemplifies
     label: the-system-quietly-credits-my-taste
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Brian Eno

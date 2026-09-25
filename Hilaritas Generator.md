@@ -45,9 +45,6 @@ links:
   - target: "[[Identity Molting]]"
     type: connects-to
     label: threshold-fuel
-  - target: "[[Tristitia Generator]]"
-    type: spawned
-    label: spinozan-mirror
   - target: "[[Palace Philosophies]]"
     type: connects-to
     label: counterweight

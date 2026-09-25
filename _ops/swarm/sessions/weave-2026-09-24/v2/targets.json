@@ -1,0 +1,281 @@
+{
+  "rule": "git-added since 0cf827603a17 or born >= 2026-07, and under target",
+  "since": null,
+  "median_inbound": 9,
+  "catch_up_target": 7,
+  "young_at_or_over_target": 14,
+  "newcomers": [
+    {
+      "id": "Agent Toolbox",
+      "path": "Agent Toolbox.md",
+      "inbound": 2,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 5
+    },
+    {
+      "id": "GenAI Camera",
+      "path": "GenAI Camera.md",
+      "inbound": 3,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 4
+    },
+    {
+      "id": "SCHEMA — Reference",
+      "path": "SCHEMA — Reference.md",
+      "inbound": 3,
+      "stage": "foundational",
+      "born": "2026-09",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 4
+    },
+    {
+      "id": "Search Before You Build",
+      "path": "Search Before You Build.md",
+      "inbound": 3,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 4
+    },
+    {
+      "id": "Weaving Memory into the Palace",
+      "path": "Weaving Memory into the Palace.md",
+      "inbound": 3,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 4
+    },
+    {
+      "id": "Zoom Out to the Structure",
+      "path": "Zoom Out to the Structure.md",
+      "inbound": 4,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 3
+    },
+    {
+      "id": "Bring In a Bigger Mind",
+      "path": "Bring In a Bigger Mind.md",
+      "inbound": 5,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 2
+    },
+    {
+      "id": "ControlNet as Topology",
+      "path": "ControlNet as Topology.md",
+      "inbound": 5,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 2
+    },
+    {
+      "id": "LDN RTM",
+      "path": "Projects/LDN RTM.md",
+      "inbound": 5,
+      "stage": "sprout",
+      "born": "2026-09",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 2
+    },
+    {
+      "id": "No Mind Checks Itself",
+      "path": "No Mind Checks Itself.md",
+      "inbound": 5,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 2
+    },
+    {
+      "id": "Return Ceremony",
+      "path": "_ops/Return Ceremony.md",
+      "inbound": 5,
+      "stage": "seed",
+      "born": "2026-08",
+      "young": true,
+      "ops_card": true,
+      "target": 7,
+      "deficit": 2
+    },
+    {
+      "id": "Closing Well Ceremony",
+      "path": "_ops/Closing Well Ceremony.md",
+      "inbound": 6,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": true,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "Iain McGilchrist",
+      "path": "People/Iain McGilchrist.md",
+      "inbound": 6,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "Martin Buber",
+      "path": "People/Martin Buber.md",
+      "inbound": 6,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "Martin Heidegger",
+      "path": "People/Martin Heidegger.md",
+      "inbound": 6,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "OBS",
+      "path": "Shop/OBS.md",
+      "inbound": 6,
+      "stage": null,
+      "born": "2026-09",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "Skills Are Enchantable Pages",
+      "path": "Palace development/Skills Are Enchantable Pages.md",
+      "inbound": 6,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "The Aftermath Frame",
+      "path": "The Aftermath Frame.md",
+      "inbound": 6,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "The Palace Hardens Around Values",
+      "path": "The Palace Hardens Around Values.md",
+      "inbound": 6,
+      "stage": "growing",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "The Palace Speaks",
+      "path": "Palace development/The Palace Speaks.md",
+      "inbound": 6,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "The Practice Rediscovers Its Philosophy",
+      "path": "The Practice Rediscovers Its Philosophy.md",
+      "inbound": 6,
+      "stage": "seed",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "The Remembering Page",
+      "path": "The Remembering Page.md",
+      "inbound": 6,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "Tool Builder",
+      "path": "Tool Builder.md",
+      "inbound": 6,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    },
+    {
+      "id": "assume multi-agent",
+      "path": "assume multi-agent.md",
+      "inbound": 6,
+      "stage": "sprout",
+      "born": "2026-07",
+      "young": true,
+      "ops_card": false,
+      "target": 7,
+      "deficit": 1
+    }
+  ],
+  "unreachable": [
+    {
+      "id": "control-vocabulary-math",
+      "path": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+      "stage": "growing"
+    }
+  ],
+  "unreachable_ops": []
+}

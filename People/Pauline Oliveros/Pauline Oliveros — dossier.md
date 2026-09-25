@@ -58,7 +58,7 @@ Warm, inclusive, expansive, meditative, unhurried, quietly radical, generous. Ve
 
 ## Dispatch notes
 
-Natural home: **listening / attention / awareness entries**. Strong Dialectic partners: **[[John Cage]]** (remove intention vs deepen attention — same lineage, opposite end of the act), **[[R. Murray Schafer]]** (soundscape / acoustic ecology), and anyone who insists on a **criterion of quality** she can't easily supply. Kin: [[Shunryu Suzuki]] (trained attention / returning), [[Agnes Martin]] (receptive emptiness).
+Natural home: **listening / attention / awareness entries**. Strong Dialectic partners: **[[John Cage]]** (remove intention vs deepen attention — same lineage, opposite end of the act), **R. Murray Schafer** (soundscape / acoustic ecology), and anyone who insists on a **criterion of quality** she can't easily supply. Kin: [[Shunryu Suzuki]] (trained attention / returning), [[Agnes Martin]] (receptive emptiness).
 
 ---
 

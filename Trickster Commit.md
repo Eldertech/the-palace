@@ -5,7 +5,7 @@ pillars:
   - tools
   - philosophy
   - practice
-stage: seed
+stage: growing
 links:
   - target: "[[Trickster]]"
     type: exemplifies

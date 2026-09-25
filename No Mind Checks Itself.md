@@ -6,7 +6,7 @@ pillars:
   - practice
   - tools
 born: 2026-07
-stage: seed
+stage: growing
 links:
   - target: "[[Bring In a Bigger Mind]]"
     type: exemplifies

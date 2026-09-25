@@ -1,0 +1,1705 @@
+[
+ {
+  "source": "Martin Buber",
+  "target": "RNBO codebox~ smith",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "one-source-many-renderings"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "the gap between a source and its rendering is where meaning gets lost or bitten"
+  ],
+  "why": [
+   "A canonical source distorts unpredictably once it must pass through a specific rendering/translation medium."
+  ],
+  "evidence": [
+   "\"same source, slightly different behavior across M4L / VST3 / AU / web\" (Shop/RNBO codebox~ smith.md:65) / \"translation is a veil\" (People/Martin Buber.md:86)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Douglas Hofstadter",
+  "target": "Manim CE",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "small-legible-and-exact"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "hand-built legibility as a design value"
+  ],
+  "why": [
+   "Manim is a small, fully legible, byte-deterministic hand-authored system \u2014 the positive instance of the exact aesthetic (Copycat, Metacat) Hofstadter names as both his life's commitment and his blind spot."
+  ],
+  "evidence": [
+   "Renders are deterministic given the same .py and Manim version. / Elegant, legible, comprehensible: you can watch exactly how they work."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Martin Heidegger",
+  "target": "The Substrate Drifts",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B10"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "already-moving-ground"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both indict treating an already-moving, multi-authored ground as static; correctness that ignores this is coincidence, not knowledge \u2014 thrownness applied to software."
+  ],
+  "evidence": [
+   "'A tool that assumes a fixed, uniform substrate... is already wrong and merely lucky' (The Substrate Drifts.md:47) / 'We are thrown...into a situation...we did not choose' (Martin Heidegger.md:60)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Hand-Drawn 3D Look",
+  "target": "Yasujir\u014d Ozu",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B10"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "apparatus-shrinks"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both name a practice whose apparatus is meant to shrink as its core mechanism grows more self-sufficient \u2014 concretization, iterated."
+  ],
+  "evidence": [
+   "'the cleaner Blender draws, the less the gen-AI seam has to do' (Hand-Drawn 3D Look.md:12) / 'each film gets sparer, not more elaborate' (Yasujir\u014d Ozu.md:70)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "SMPTE LTC",
+  "target": "Hilaritas Generator",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "SMPTE LTC's pedagogy passage independently lists Hilaritas Generator's four design primitives without naming them."
+  ],
+  "evidence": [
+   "Building an LTC generator from first principles teaches the full signal chain of timecode... audio-as-data."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Dialectic",
+  "target": "The 2.5D Paper Stack",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Holding two contraries as generative, rather than resolving them, is the shared method."
+  ],
+  "evidence": [
+   "Two generative moves live in tension here, and the tension is the point (Blake's contraries \u2014 both true)."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Graphic Storytelling",
+  "target": "Pauline Oliveros",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Closure and deep listening both locate the real work in the audience's active completion of a withheld field."
+  ],
+  "evidence": [
+   "the reader supplies the missing motion and time there... the viewer is completing it. / Hearing is passive; listening is a practice."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Andy Goldsworthy",
+  "target": "Figure Rig",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "material-dictates-the-rig"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Growing the mesh and its skeleton together instead of force-fitting a foreign rig mirrors Goldsworthy's material-dictates-the-form ethic."
+  ],
+  "evidence": [
+   "\"instead of force-fitting a foreign mesh onto a hand-built rig\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Andy Goldsworthy",
+  "target": "assume multi-agent",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "hidden-agent-not-weather"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both are stories of mistaking a hidden agent's action for impersonal natural/systemic failure."
+  ],
+  "evidence": [
+   "\"looked like a RunPod outage... The real cause was a second Claude on the same account.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Leverage Points Framework",
+  "target": "Rank-N Lattice Analysis",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "same-structure-different-material"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "Structural identity across materials as the palace's own recurring epistemic stance."
+  ],
+  "why": [
+   "Weak/diffuse tie \u2014 see bridge_findings; recommend a deposit (a new small entry naming the cross-cutting epistemic stance) over a direct link, since the same claim also appears verbatim in Compression \u2194 Intimacy."
+  ],
+  "evidence": [
+   "\"Mathematics is the art of giving the same name to different things\" / \"the same pattern appears in different materials\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Lao Tzu",
+  "target": "SAM",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "work-with-the-grain"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "SAM's convert-first fix and wu wei are the same move: stop forcing the tool against its nature, change the material to match the grain instead."
+  ],
+  "evidence": [
+   "\"move the image into the segmenter's world, then stylize back\" / \"acting with the grain of things rather than against it\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Agent Wellbeing",
+  "target": "SAM",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "calibrated-not-universal"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both name a hard limit: a perception/measurement tool's reading is valid only within its trained/calibrated domain, never a universal threshold."
+  ],
+  "evidence": [
+   "\"I only work where the picture looks like the photos I learned on\" / \"the threshold is calibrated on the companion's own model, never a universal 70/85%\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Synth Archetypes",
+  "target": "The Palace Voice",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "warn-dont-fix"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both build a gate that flags drift loudly without auto-correcting it \u2014 the advisory posture is the design."
+  ],
+  "evidence": [
+   "\"It is advisory: a flagged entry wants a human read, not an automatic rewrite\" / \"the emitter warns... without crossing the line into injecting it\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "synergy-is-coupling"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [
+   "emergent whole-behavior from weak coupling of parts, named independently in two vocabularies"
+  ],
+  "why": [
+   "Fuller's synergetics and Portamento's coupled-mode section both locate the system's behavior in the coupling, not any single part \u2014 and Fuller already mirrors Kuramoto Coupling under this exact label."
+  ],
+  "evidence": [
+   "\"the system is a coupled oscillator network\" / \"synergy (whole-system behavior unpredicted by the parts... the behavior lives in the coupling, not the components)\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "D3.js",
+  "target": "Found \u2194 Made",
+  "type": "exemplifies",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "respects-the-solvers-nature"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "The d3-force gotcha shows the tool's given nature (relaxation solver, not kinematic integrator) resisting override, and the fix is working with that nature rather than fighting it."
+  ],
+  "evidence": [
+   "the real D3 win is the selection/SVG/interaction grammar, not the physics engine."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Midjourney",
+  "target": "The Drift",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "accepts-the-draw"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Midjourney's stance \u2014 arrange conditions (prompt, sref) and accept a draw from a distribution rather than an exact composition \u2014 mirrors The Drift's no-architecture, arrange-and-release stance."
+  ],
+  "evidence": [
+   "I cannot refine an exact composition; I can only narrow the distribution it's drawn from."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Leibniz",
+  "target": "Tract Mirror",
+  "type": "mirrors",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "bridge": 1
+  },
+  "labels": [
+   "reflects-the-whole"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Tract Mirror's claim that the rendered tube geometry IS the filter, not a picture of it, echoes Leibniz's whole-present-in-every-part; fit is real but softer than the other findings (also plausible against Found \u2194 Made)."
+  ],
+  "evidence": [
+   "The tubes on screen are not a visualization of the filter \u2014 they are the filter, drawn in space."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "target": "Oblique Portrait",
+  "type": "mirrors",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-small-families"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "outside-the-loop"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Different problems (self-honesty about taste vs. self-auditing for error) sharing one deep pattern: a subject cannot reach certain truths about itself through direct self-report or self-inspection, and needs an external process \u2014 indirection in one case, a differently-angled mind in the other \u2014 to reach what the loop can't see from inside."
+  ],
+  "evidence": [
+   "Oblique Portrait: 'You cannot access certain interior material by pointing at it... The front door is locked \u2014 not by deception, but by identity.' No Mind Checks Itself: 'A self-model can only see as far as its own loop runs.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "No Mind Checks Itself",
+  "target": "Philosopher Visits the Entry",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-small-families"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "the-visit-is-the-outside-vantage"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "This is the most concrete instance of the No Mind Checks Itself pattern in the whole family: a technical entry cannot see its own over-claim from inside, and the Philosopher Visit exists specifically to bring an outside-the-loop reader who can. The entry's own precedent (the oscillator visit) is a worked example of exactly the principle No Mind Checks Itself names abstractly."
+  ],
+  "evidence": [
+   "'A poorly-researched philosopher produces a caricature that flatters the entry; a well-researched one says something the entry's author did not expect.' \u2014 the named precedent even found the entry's claim over-stated and 'offered the entry a smaller, more durable claim.'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "target": "Crystal Synthesizer",
+  "type": "mirrors",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-Projects"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Biomechanical Synthesis's instrument #2, \"crystal resonator synthesis \u2014 lattice vibrational modes as partial frequencies, crystal geometry as filter topology,\" describes almost exactly what Crystal Synthesizer already does (phonon modes as partial structure) \u2014 but the two entries were built independently and neither links to the other. Neither one should absorb the other (different origin framing, different pillars-of-emphasis), but the overlap is real and worth naming so a reader of Biomechanical Synthesis doesn't think instrument #2 is still unbuilt."
+  ],
+  "evidence": [
+   "\"2. Crystal resonator synthesis \u2014 lattice vibrational modes as partial frequencies, crystal geometry as filter topology\" (Projects/Biomechanical Synthesis.md:66); \"A synthesizer whose partial structure is derived directly from the vibrational phonon modes of crystalline lattices\" (Projects/Crystal Synthesizer.md:49)"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "James Turrell",
+  "target": "Rick Rubin",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "humility-that-hides-control"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Turrell's entry already names and hosts the four-way pattern (Martin, Turrell, Nakashima, Goldsworthy: 'I only get out of the way' as itself a controlling stance). Rubin's blindspot is structurally identical \u2014 'the song is already finished, I just uncover it' is the same move in a fifth material (sound/taste instead of grid/light/wood/stone)."
+  ],
+  "evidence": [
+   "Turrell: \"the same blindspot in four materials (grid, wood, stone-and-ice, light)\"; Rubin: \"'uncover the essence' assumes an essence was waiting, and that 'I just feel it' may credit taste for what confidence and luck did.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Iain McGilchrist",
+  "target": "Pauline Oliveros",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "two-modes-of-attention"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Oliveros's focal/global toggle is a lived, practice-based version of McGilchrist's left/right modes of attention \u2014 genuinely load-bearing, not a label-match."
+  ],
+  "evidence": [
+   "Oliveros: \"She toggles deliberately between *focal* attention (a single point) and *global* attention (the entire sphere)\"; McGilchrist: \"left... narrow, focused, grasping... right... broad, open, sustained, vigilant.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "George Nakashima",
+  "target": "Martin Heidegger",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-People"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "tool-vanishes-in-use"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Heidegger's ready-to-hand/present-at-hand distinction (a tool transparent in use, visible only when it breaks) is the closest philosophical formalization of what Nakashima's craft claims and what his entry's blindspot presses on \u2014 the hand's practical absorption prior to theoretical distance."
+  ],
+  "evidence": [
+   "Heidegger: \"a tool in use is ready-to-hand... you don't notice the hammer, you notice the nail going in\"; Nakashima: \"touch is how he understands, not merely how he builds.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "ELDER",
+  "target": "Revival Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-_ops"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "growth-precondition"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Revival Ceremony's own precondition #4 requires ELDER to have been read this session, but the frontmatter link list (3 links) omits it entirely \u2014 a hard dependency left unnamed structurally.",
+   "The operator has grown this session \u2014 [[ELDER]] and [[SCHEMA]] read"
+  ],
+  "evidence": [
+   "\"The operator has grown this session \u2014 [[ELDER]] and [[SCHEMA]] read \u2014 since the revival writes a stage change and proposes typed links\" \u2014 Revival Ceremony.md:30"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Drift and Consolidation",
+  "target": "Reflective Practice",
+  "type": "mirrors",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "inbound-walk": 1
+  },
+  "labels": [
+   "healthy-to-a-point"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Reflective Practice states the mirror itself in its own body \u2014 same shape, structural and healthy up to a point, then it turns \u2014 but the link only runs from Reflective Practice's side."
+  ],
+  "evidence": [
+   "\"It is the same shape as [[Drift and Consolidation]]: structural and healthy up to a point.\" \u2014 Reflective Practice.md:98-99"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "upgrade-connects-to"
+ },
+ {
+  "source": "Hand-Drawn 3D Look",
+  "target": "Move the Ink, Don't Redraw It",
+  "type": "couples-with",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "still-vs-motion-split"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Hand-Drawn 3D Look's own forward vector names the exact seam Move the Ink occupies ('the day my motion atmosphere and ink remnants ride one flow field') and its body has a 'Motion is atmosphere' section describing the same displacement-not-redraw discipline, but the two entries don't link to each other."
+  ],
+  "evidence": [
+   "Hand-Drawn 3D Look.md:71 \u2014 'Motion is atmosphere... procedural (no Mantaflow bake) so they re-render identically'; Move the Ink.md:32 \u2014 'AI makes the still; geometry makes the motion'"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Andrei Tarkovsky",
+  "target": "Terrence Malick",
+  "type": "mirrors",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "slow-cinema-as-material"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both composting, both 0-inbound leaf nodes in the room, and both make the same argument in the same medium from opposite technical direction (Tarkovsky adds duration via the long take, Malick subtracts narrative via years of edit) \u2014 a genuine unforced pairing missed only because neither entry names the other."
+  ],
+  "evidence": [
+   "Tarkovsky: \"a lump of time...cuts off and discards whatever he does not need.\" Malick: \"makes films the way a river carves a canyon \u2014 slowly, and mostly out of sight.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Weave Ceremony",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Reflective Practice.md:58-59 names 'the Weave' explicitly as one of twelve mechanisms that 'reflect on action.' The taxonomy link should point back to its ground per SCHEMA's exemplifies invariant. Weave Ceremony's own frontmatter carries no link to Reflective Practice."
+  ],
+  "evidence": [
+   "\"Twelve mechanisms reflect on action: [[Closing Well]], the [[Weave Ceremony|Weave]], [[Return Ceremony|Return]]...\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Return Ceremony",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Same list in Reflective Practice names Return as reflect-on-action; Return Ceremony is a 2026-08 newcomer with only 1 inbound and no link to this framework that already classifies it."
+  ],
+  "evidence": [
+   "\"[[Return Ceremony|Return]], [[Spore Check Ceremony|Spore Check]], [[Revival Ceremony|Revival]]...\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Spore Check Ceremony",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Named in the same list; Spore Check Ceremony carries no frontmatter link back."
+  ],
+  "evidence": [
+   "Reflective Practice.md \u00a7 The palace reflects afterwards"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Revival Ceremony",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same list; Revival Ceremony carries no frontmatter link back."
+  ],
+  "evidence": [
+   "Reflective Practice.md \u00a7 The palace reflects afterwards"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Walk Ceremony",
+  "target": "Reflective Practice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "reflect-on-action"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same list; the Walk is named as reflect-on-action but its frontmatter has no link back to the entry that classifies it."
+  ],
+  "evidence": [
+   "Reflective Practice.md \u00a7 The palace reflects afterwards"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "README - The Palace Guide",
+  "target": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "bundle-spec"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "The README cites SCHEMA \u2014 Reference by name for the bundle spec, but the citation never made it into frontmatter. SCHEMA \u2014 Reference is a newcomer at 2 inbound.",
+   "Full spec: [[SCHEMA \u2014 Reference]] \u00a78"
+  ],
+  "evidence": [
+   "\"Full spec: [[SCHEMA \u2014 Reference]] \u00a78.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "Substrate Skill",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "operational-rules"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Substrate Skill cites SCHEMA \u2014 Reference twice in body (link-object fields, bundle vocabulary) with no frontmatter link.",
+   "the fields a link object takes are [[SCHEMA \u2014 Reference]] \u00a73"
+  ],
+  "evidence": [
+   "\"the fields a link object takes are [[SCHEMA \u2014 Reference]] \u00a73\"; \"The current vocabulary of bundle types lives in [[SCHEMA \u2014 Reference]] \u00a78.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "Technical Diagram Standard",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "bundle-filing"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Technical Diagram Standard cites SCHEMA \u2014 Reference \u00a78 twice for the filing/bundle rule, unlinked in frontmatter.",
+   "per [[SCHEMA \u2014 Reference]] \u00a78"
+  ],
+  "evidence": [
+   "\"per [[SCHEMA \u2014 Reference]] \u00a78 \u2014 and this standard's own teaching examples live in its bundle\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Deposit Ceremony \u2014 Context",
+  "target": "Return Ceremony",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "reader-pattern"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The Context file's closing paragraph explicitly says the deposit's fresh-reader discipline is 'the Return Ceremony's move applied one scale down' \u2014 a direct structural debt, unlinked in frontmatter.",
+   "which is the [[Return Ceremony]]'s move applied one scale down"
+  ],
+  "evidence": [
+   "\"which is the [[Return Ceremony]]'s move applied one scale down\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Speak Like a Person, Log Like a Protocol",
+  "target": "The Palace Voice",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "SLPLP is a concrete, dated instance of the general voice discipline (translate jargon, protect the reader from the wire) applied to one surface (STIGMERGY). Palace Voice's Registers section discusses mode-riding registers but never names SLPLP as its own worked example, though SLPLP predates it by a month."
+  ],
+  "evidence": [
+   "\"Two registers, always co-present, never confused\" (SLPLP) vs Palace Voice's \"Jargon \u2192 off. Translate or gloss.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Palace Voice",
+  "target": "The Reader's Context Window",
+  "type": "couples-with",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "order-and-word"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Reader's Context Window already names itself \"the structural sibling of Speak Like a Person, Log Like a Protocol\" \u2014 words vs. order. The Palace Voice is the words-discipline for the whole palace; Reader's Context Window is the missing order-discipline. Neither points at the other."
+  ],
+  "evidence": [
+   "\"That principle governs the register of the words on a surface; this one governs their sequence and their count. Together they are the two laws of a palace front-end.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Pages as Agents",
+  "target": "Self-Describing Knowledge Module",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-plurality-test"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: SDKM cites the empirical Pages-as-Agents test (15/15 match rate against a one-in-five baseline) as its own evidence for real plurality \u2014 a full paragraph of load-bearing argument \u2014 with no frontmatter link.",
+   "[[Pages as Agents]] ran the test: three readers... matched fifteen of fifteen"
+  ],
+  "evidence": [
+   "\"[[Pages as Agents]] ran the test: three readers, given only the answers, matched fifteen of fifteen back to the page that wrote them, against a one-in-five baseline.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Self-Describing Knowledge Module",
+  "target": "SCHEMA",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-tbox"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: SCHEMA is named repeatedly as the module's own TBox/seed (\"CLAUDE.md and SCHEMA are the seed\") and anchors the entire 'What Must Travel' table, yet never appears in frontmatter.",
+   "CLAUDE.md and [[SCHEMA]] are the seed"
+  ],
+  "evidence": [
+   "\"CLAUDE.md and [[SCHEMA]] are the seed; the entries are the growth.\""
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "Dialectic",
+  "target": "The Remembering Page",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "sharpens-vs-dissolves"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: the entry's own distinction between debate-that-sharpens and walk-that-dissolves is built explicitly on Dialectic, cited by name, but Dialectic carries no frontmatter link.",
+   "A debate (a [[Dialectic]]) sharpens a contrary"
+  ],
+  "evidence": [
+   "\"A debate (a [[Dialectic]]) sharpens a contrary: two pages defend their grips and leave more distinct than they arrived.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Oblique Portrait",
+  "target": "Swarm Weave",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-anti-lens"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path, minor: Swarm Weave names Oblique Portrait as the Cage/Eno precedent for the oblique lens but doesn't link it.",
+   "a chance cover with no axis at all \u2014 a Cage/Eno move ([[Oblique Portrait]]...)"
+  ],
+  "evidence": [
+   "\"a chance cover with no axis at all \u2014 a Cage/Eno move ([[Oblique Portrait]], the go oblique Enrichment trigger).\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Flocking",
+  "target": "Surfaces and Capabilities",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [
+   "the-pump-proof"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path, minor: the rAF-pump techniques are stated as \"all confirmed on the [[Flocking]] shoot-out\" \u2014 the evidentiary source for a whole subsection \u2014 with no frontmatter link.",
+   "all confirmed on the [[Flocking]] shoot-out"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Leibniz",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: the body's Symposium quotes a full paragraph voiced 'in the posture of Leibniz' deploying the actual monad/pre-established-harmony apparatus, but Leibniz is not in the entry's frontmatter links.",
+   "voiced in the posture of Leibniz \u2014 the monad passage"
+  ],
+  "evidence": [
+   "\"the monad contains every other door, and the harmony was pre-established... nothing is truly walled; all of it is reflected elsewhere.\" \u2014 voiced in the posture of Leibniz"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Adjacent Affordance",
+  "target": "Whitehead",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: the Symposium voices Whitehead's actual apparatus (prehension, concrescence, the occasion that doesn't halt) with no frontmatter link.",
+   "voiced in the posture of Whitehead \u2014 the occasion/prehension passage"
+  ],
+  "evidence": [
+   "\"The occasion meets the datum it cannot ingest... It prehends the refusal and concresces around it\" \u2014 voiced in the posture of Whitehead"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Merleau-Ponty",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: the Symposium voices motor intentionality and body-schema absorption specifically, unlinked.",
+   "voiced in the posture of Merleau-Ponty \u2014 the body-knows-the-door passage"
+  ],
+  "evidence": [
+   "\"The hand that cannot reach the latch slides, without thinking, to the one beside it \u2014 the body knows the door before the mind has named the wall.\" \u2014 voiced in the posture of Merleau-Ponty"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Deleuze",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 2,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1,
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Unsung path: the Symposium voices striation/line-of-flight/rhizome directly, unlinked.",
+   "voiced in the posture of Deleuze \u2014 the striation/line-of-flight passage"
+  ],
+  "evidence": [
+   "\"The blocked unlink is a striation; rename is the line of flight that escapes it... It goes around, and arrives elsewhere, transformed.\" \u2014 voiced in the posture of Deleuze"
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Buckminster Fuller",
+  "target": "Found \u2194 Made",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "made-pole"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Fuller's design-science treats scarcity as a design failure, not a fixed essence to be uncovered \u2014 there is no waiting nature to a resource-constrained world, only what better engineering builds into it. This is the exact 'made' claim the entry already anchors with Meadows, stated at civilizational scale instead of systems-modeling scale."
+  ],
+  "evidence": [
+   "Found \u2194 Made: \"There is no waiting essence \u2014 only what you sing or build into being... you don't uncover their nature, you intervene to bend their trajectory\" (Found \u2194 Made.md:35). Fuller: \"scarcity is a design failure, not a law of nature\" (People/Buckminster Fuller.md:74)."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Found \u2194 Made",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "found-pole"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Alexander's core process distinction \u2014 unfolding (small, structure-preserving, context-responsive growth) against fabrication (a plan specified in advance and imposed) \u2014 is the architecture-scale statement of the found pole the entry already anchors with Nakashima: work with what a site already gives rather than override it."
+  ],
+  "evidence": [
+   "\"unfolding (growth through small, structure-preserving, context-responsive steps) against fabrication (a design fully specified in advance and imposed on a site)\" (People/Christopher Alexander.md:67)."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Christopher Alexander",
+  "target": "Registry Pattern",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C4.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "closed-vs-generative-vocabulary"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [
+   "a named, combinable vocabulary as the precondition for reliable generation \u2014 open for a human building a town, closed for a model that cannot yet be trusted with openness"
+  ],
+  "why": [
+   "Both are theories of a combinable vocabulary of named, reusable units governing legal output \u2014 Alexander's pattern language and the Registry Pattern's verified component list are the same shape of knowledge object. But they run opposite on openness: Alexander's language is deliberately open-ended, generative, endlessly recombinable; the Registry Pattern deliberately closes the vocabulary to prevent hallucination. Genuinely contestable whether this is closer to a mirror or a contradiction, so connects-to with a label rather than forcing a type."
+  ],
+  "evidence": [
+   "Alexander: \"A pattern language is a knowledge graph before the term existed \u2014 named, reusable, cross-scale, combinable units linked by 'this pattern calls that one'\" (People/Christopher Alexander.md:69). Registry Pattern: \"The registry collapses the output space to only what is actually possible\" (Registry Pattern.md:39)."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Piano String Inharmonicity",
+  "target": "Portamento and Physical Pitch Modeling",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "guitar-bend-shared-artifact"
+  ],
+  "max_spark": 4,
+  "deep_patterns": [],
+  "why": [
+   "Both entries independently describe and, in Portamento's case, already built an interactive tool for the exact same physical relationship (tension up \u2192 B down \u2192 partials compress). Neither entry links the other; this is a genuine shared-artifact gap, not a forced analogy."
+  ],
+  "evidence": [
+   "\"When you bend a piano string...tension increases...Inharmonicity decreases\" (Piano String Inharmonicity) vs. Portamento's tool 6: \"Guitar String Bend Physics \u2014 Finger bends a string; tension increases, inharmonicity decreases. See partials compress toward ideal harmonic positions.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Photonic Time Crystals",
+  "target": "Wallpaper Groups",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "geometry-constrains-spectrum"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Both are cases of the same underlying claim \u2014 periodic boundary conditions produce a discrete, finite, enumerable mode/band spectrum \u2014 approached from optics and from tiling respectively. Both already point to Hyperdimensional Prism as the shared parent but never to each other."
+  ],
+  "evidence": [
+   "Photonic Time Crystals: \"ranges of frequencies that propagate freely...interspersed with ranges that don't\" (band structure from periodicity) vs. Wallpaper Groups' crystallographic restriction theorem and 230 space groups governing crystal mode structure."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Photonic Time Crystals",
+  "target": "The Curve Is the Material",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "physics-grounding-for-photonic-function-family"
+  ],
+  "max_spark": 3,
+  "deep_patterns": [],
+  "why": [
+   "Photonic Time Crystals is the deep-physics grounding this function-family entry gestures at without naming \u2014 a direct, addressable gap."
+  ],
+  "evidence": [
+   "The Curve Is the Material lists \"Photonic / crystal modes: Dispersion relation from crystal band structure... Already derived for the crystal synthesis project\" as one of its named function families, but only names 'the crystal synthesis project' generically."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Quadratic Interpolation in DSP",
+  "target": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C1.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "interpolation-methods"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Wavetable Synthesis Research has effectively settled the open question Quadratic Interpolation in DSP is still asking, and this is also the room's one genuine opportunity to wire an inbound link to a 0-inbound newcomer."
+  ],
+  "evidence": [
+   "Quadratic Interpolation's open question: \"Cubic vs. quadratic in oscillators... is the extra cost justified?\" vs. Wavetable Synthesis Research's design requirement: \"at least cubic interpolation\" and \"linear is minimum viable, cubic...is better, windowed-sinc...is highest quality.\""
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "LDN RTM",
+  "target": "Toolkit \u2014 Synthesizers",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "series-now-real"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same stale-placeholder pattern as the flagged plugins entry \u2014 this entry's RTM section explicitly says 'when the software synth inventory entry is created, this series concept should be linked there.' It's created; it's LDN RTM."
+  ],
+  "evidence": [
+   "When the software synth inventory entry is created, this series concept should be linked there."
+  ],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Tool Builder",
+  "target": "Search Before You Build",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "missing-checklist-item"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Tool Builder compiles the palace's hard-won tool-building scars as a checklist but is missing the sibling reflex of searching prior art before building \u2014 a discipline in the same family, currently a separate under-linked sprout."
+  ],
+  "evidence": [
+   "Each rule below is the compressed form of a real scar. Read it before you build."
+  ],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ }
+]

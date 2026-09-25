@@ -1,0 +1,84 @@
+{
+ "arm": "X",
+ "room": "B8",
+ "total_proposals": 18,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "OBS",
+   "type": "exemplifies",
+   "target": "Iain McGilchrist",
+   "label": "screenshot-not-config",
+   "rationale": "OBS's distrust of its own config file in favor of a screenshot of the rendered frame operationalizes McGilchrist's re-presentation-vs-presencing distinction.",
+   "evidence": "\"My Self-Check is a screenshot of the live scene, not a read of the config... Only the rendered frame settles it.\"",
+   "item_id": "X1"
+  },
+  {
+   "kind": "relation",
+   "source": "OBS",
+   "type": "exemplifies",
+   "target": "Marcus Aurelius",
+   "label": "configuration-is-prohairesis",
+   "rationale": "OBS's configuration/composition split during a live stream literalizes the dichotomy of control: fix what's yours before, meet the rest as weather.",
+   "evidence": "\"What must not change live is configuration; what must change live is composition.\"",
+   "item_id": "X2"
+  },
+  {
+   "kind": "bridge",
+   "source": "Murmuration",
+   "type": "mirrors",
+   "target": "spinoza-zhuangzi-on-striving",
+   "rationale": "Both pose the identical open question \u2014 does letting a system's own internal dynamics generate variation ('grown'/with-the-grain) produce something more alive than hand-authoring it \u2014 and both even reach for the same technical proof-point (a driven system crossing a real bifurcation/phase threshold).",
+   "evidence": "\"The wager that makes it a project rather than a sketch: grain-parameter distributions here are grown from a dynamical system the player perturbs, not authored.\" / \"does an emergent, perturbable grain distribution actually sound more alive than an authored one, or is that a story we tell about the picture? The honest test is blind.\" || \"There is striving with the grain and striving against it.\" / \"The with-grain/against-grain axis lands directly on Parametric Resonance: force at the wrong rate and you get nothing or chaos; 'force' at the grain-rate and the system blooms into oscillation from infinitesimal noise.\"",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "Wavetable Scanner",
+   "type": "exemplifies",
+   "target": "Progressive Staging",
+   "label": "sketch-study-piece-is-staging",
+   "rationale": "The Shop's Sketch/Study/Piece tier convention is an unnamed, unlinked instance of Progressive Staging's additive, non-retroactive discipline.",
+   "evidence": "\"### Study *(earned-by criteria \u2014 not yet built)*\"",
+   "item_id": "X4"
+  },
+  {
+   "kind": "relation",
+   "source": "Figure Rig",
+   "type": "mirrors",
+   "target": "Andy Goldsworthy",
+   "label": "material-dictates-the-rig",
+   "rationale": "Growing the mesh and its skeleton together instead of force-fitting a foreign rig mirrors Goldsworthy's material-dictates-the-form ethic.",
+   "evidence": "\"instead of force-fitting a foreign mesh onto a hand-built rig\"",
+   "item_id": "X5"
+  },
+  {
+   "kind": "bridge",
+   "source": "OBS",
+   "type": "contradicts",
+   "target": "Progressive Staging",
+   "rationale": "OBS names a limit condition for staged complexity that Progressive Staging's own 'When to Use This' section doesn't cover: not irreducible complexity, but irreproducibility. A live take can't be staged because there's no second run to stage it on.",
+   "evidence": "\"N/A \u2014 I am operated, not dispatched. There is no Sketch of a live take... The Sketch / Study / Piece triplet negotiates cost against quality over something re-runnable. Nothing I produce is re-runnable.\" || \"It doesn't work when the domain is irreducibly complex \u2014 when nothing functions until everything is present.\"",
+   "item_id": "X6"
+  },
+  {
+   "kind": "bridge",
+   "source": "OBS",
+   "type": "exemplifies",
+   "target": "Marcus Aurelius",
+   "rationale": "Both draw one hard line: fix, by an act of prior will, everything within your own actuation authority \u2014 then meet whatever happens afterward as weather, without touching that fixed part again.",
+   "evidence": "\"What must not change live is configuration; what must change live is composition.\" / \"Before, both modes \u2014 assert, never assume... Any failure here is fatal.\" || \"Yours: your intention, your effort, your response, your judgment of things. Not yours: the plague, the reception, the outcome, other people. Spend your force where you have authority; meet the rest as weather.\"",
+   "item_id": "X7"
+  },
+  {
+   "kind": "relation",
+   "source": "Murmuration",
+   "type": "mirrors",
+   "target": "spinoza-zhuangzi-on-striving",
+   "label": "grown-not-authored",
+   "rationale": "Both ask whether emergent, grain-following generation is more alive than authored generation, and both cite a phase-transition mechanism as the technical proof-point.",
+   "evidence": "\"does an emergent, perturbable grain distribution actually sound more alive than an authored one, or is that a story we tell about the picture?\"",
+   "item_id": "X8"
+  }
+ ]
+}

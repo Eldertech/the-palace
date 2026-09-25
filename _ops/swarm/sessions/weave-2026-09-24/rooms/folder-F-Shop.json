@@ -1,0 +1,205 @@
+{
+ "lens": "folder",
+ "id": "F-Shop",
+ "family": "Shop",
+ "members": [
+  {
+   "id": "Blender",
+   "path": "Shop/Blender.md",
+   "stage": null,
+   "inbound": 8
+  },
+  {
+   "id": "ComfyUI",
+   "path": "Shop/ComfyUI.md",
+   "stage": null,
+   "inbound": 10
+  },
+  {
+   "id": "D3.js",
+   "path": "Shop/D3.js.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Depth Anything",
+   "path": "Shop/Depth Anything.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "FLUX (Hugging Face)",
+   "path": "Shop/FLUX (Hugging Face).md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Figure Rig",
+   "path": "Shop/Figure Rig.md",
+   "stage": null,
+   "inbound": 4
+  },
+  {
+   "id": "Hero and Avatar Maker",
+   "path": "Shop/Hero and Avatar Maker.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Image-to-3D Smith",
+   "path": "Shop/Image-to-3D Smith.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Kokoro",
+   "path": "Shop/Kokoro.md",
+   "stage": null,
+   "inbound": 8
+  },
+  {
+   "id": "LaMa",
+   "path": "Shop/LaMa.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "LaTeX",
+   "path": "Shop/LaTeX.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Lettering",
+   "path": "Shop/Lettering.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "LoRA Trainer",
+   "path": "Shop/LoRA Trainer.md",
+   "stage": null,
+   "inbound": 0
+  },
+  {
+   "id": "Maker",
+   "path": "Shop/Maker.md",
+   "stage": null,
+   "inbound": 44
+  },
+  {
+   "id": "Manim CE",
+   "path": "Shop/Manim CE.md",
+   "stage": null,
+   "inbound": 7
+  },
+  {
+   "id": "Matplotlib",
+   "path": "Shop/Matplotlib.md",
+   "stage": null,
+   "inbound": 7
+  },
+  {
+   "id": "Mermaid",
+   "path": "Shop/Mermaid.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Midjourney",
+   "path": "Shop/Midjourney.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "OBS",
+   "path": "Shop/OBS.md",
+   "stage": null,
+   "inbound": 0
+  },
+  {
+   "id": "Observable Plot",
+   "path": "Shop/Observable Plot.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "RNBO codebox~ smith",
+   "path": "Shop/RNBO codebox~ smith.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Remotion",
+   "path": "Shop/Remotion.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "RunPod GPU Backend",
+   "path": "Shop/RunPod GPU Backend.md",
+   "stage": "growing",
+   "inbound": 7
+  },
+  {
+   "id": "SAM",
+   "path": "Shop/SAM.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Shopkeeper",
+   "path": "Shop/Shopkeeper.md",
+   "stage": null,
+   "inbound": 2
+  },
+  {
+   "id": "Stable Audio Open",
+   "path": "Shop/Stable Audio Open.md",
+   "stage": null,
+   "inbound": 3
+  },
+  {
+   "id": "Three.js",
+   "path": "Shop/Three.js.md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Tone.js",
+   "path": "Shop/Tone.js.md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "VCV Patch Generator",
+   "path": "Shop/VCV Patch Generator.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Web Audio Worklet",
+   "path": "Shop/Web Audio Worklet.md",
+   "stage": null,
+   "inbound": 4
+  },
+  {
+   "id": "Whisper",
+   "path": "Shop/Whisper.md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "ffmpeg",
+   "path": "Shop/ffmpeg.md",
+   "stage": null,
+   "inbound": 7
+  },
+  {
+   "id": "p5.js",
+   "path": "Shop/p5.js.md",
+   "stage": null,
+   "inbound": 6
+  }
+ ]
+}

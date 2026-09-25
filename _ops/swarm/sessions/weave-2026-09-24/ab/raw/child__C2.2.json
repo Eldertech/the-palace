@@ -1,0 +1,372 @@
+{
+ "cluster": "C2.2",
+ "lens": "community",
+ "summary": "This room is the palace's infrastructure-and-self-description belt (STIGMERGY, SUBSTRATE, ROSETTA, Project Stewardship System, Swarm Weave, Symbiotic Skills, The Scroll, The Palace Voice, plus the conatus/threshold philosophy cluster and a handful of small design-discipline seeds). It reads coherent \u2014 the machinery genuinely does serve the values it claims to, and two entries (Progressive Staging vs. Symbiotic Skills) turn out to be arguing with each other about whether staged design generalizes to organic growth without ever having met. The clearest de-sprawl move is confirming a compost already in motion (Tristitia Generator, nutrients already in Spinoza Conatus) and merging a self-aware seed (Two Batons, One Board, whose own forward vector asks to dissolve into Project Stewardship System) into the entry that already treats it as one case. Two small design-discipline entries (Speak Like a Person Log Like a Protocol, The Reader's Context Window) are the palace's actual UI philosophy but sit unlinked from The Palace Voice, the entry that should be their parent. And ROSETTA and Self-Describing Knowledge Module \u2014 both meta-pages about what the palace *is* \u2014 disagree with each other on four points, which they both partially know (SDKM names it as an open question) but neither has fixed.",
+ "members_read": [
+  "Progressive Staging.md",
+  "Palace development/Project Stewardship System.md",
+  "ROSETTA.md",
+  "Palace development/Resonant Link Labels.md",
+  "STIGMERGY.md",
+  "SUBSTRATE.md",
+  "Scale-Stratified Identity.md",
+  "Palace development/Self-Describing Knowledge Module.md",
+  "Projects/Semantic Webcam.md",
+  "Palace development/Skills Are Enchantable Pages.md",
+  "Songlines.md",
+  "Speak Like a Person, Log Like a Protocol.md",
+  "Spinoza Conatus.md",
+  "Striatum.md",
+  "Surfaces and Capabilities.md",
+  "Palace development/Swarm Weave.md",
+  "Palace development/Symbiotic Skills.md",
+  "The Cooperation Path.md",
+  "The Palace Hardens Around Values.md",
+  "Palace development/The Palace Speaks.md",
+  "The Palace Voice.md",
+  "The Practice Rediscovers Its Philosophy.md",
+  "The Reader's Context Window.md",
+  "The Remembering Page.md",
+  "The Scroll.md",
+  "The Substrate Drifts.md",
+  "Threshold Conatus.md",
+  "Tier Vocabulary Glossary.md",
+  "Palace development/Tree of Thoughts.md",
+  "Trickster.md",
+  "Trickster Commit.md",
+  "Tristitia Generator.md",
+  "Palace development/Two Batons, One Board.md",
+  "Palace development/Walk That Weaves.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Speak Like a Person, Log Like a Protocol",
+   "target": "The Palace Voice",
+   "type": "exemplifies",
+   "rationale": "SLPLP is a concrete, dated instance of the general voice discipline (translate jargon, protect the reader from the wire) applied to one surface (STIGMERGY). Palace Voice's Registers section discusses mode-riding registers but never names SLPLP as its own worked example, though SLPLP predates it by a month.",
+   "evidence": "\"Two registers, always co-present, never confused\" (SLPLP) vs Palace Voice's \"Jargon \u2192 off. Translate or gloss.\"",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "The Reader's Context Window",
+   "target": "The Palace Voice",
+   "type": "couples-with",
+   "label": "order-and-word",
+   "rationale": "Reader's Context Window already names itself \"the structural sibling of Speak Like a Person, Log Like a Protocol\" \u2014 words vs. order. The Palace Voice is the words-discipline for the whole palace; Reader's Context Window is the missing order-discipline. Neither points at the other.",
+   "evidence": "\"That principle governs the register of the words on a surface; this one governs their sequence and their count. Together they are the two laws of a palace front-end.\"",
+   "kind": "new",
+   "spark": 3
+  },
+  {
+   "source": "Tier Vocabulary Glossary",
+   "target": "Progressive Staging",
+   "type": "mirrors",
+   "label": "staged-complexity",
+   "rationale": "Both name the same pattern \u2014 commit to a tier/stage only after it proves itself, each stage/tier complete and usable on its own, never retroactive \u2014 from opposite folders (Shop dispatch vocabulary vs. instrument-design method) and never cite each other.",
+   "evidence": "\"Sketch is calibration... Study is the working draft... Piece is the deliverable\" (Tier Vocabulary Glossary) vs \"every stage is a complete, playable, useful artifact... Additive complexity, never retroactive\" (Progressive Staging)",
+   "kind": "new",
+   "spark": 4
+  },
+  {
+   "source": "Progressive Staging",
+   "target": "Symbiotic Skills",
+   "type": "contradicts",
+   "label": "staged-design-vs-organic-growth",
+   "rationale": "Progressive Staging is the palace's confident method for staged design (works when 'the domain has natural layers of complexity'). Symbiotic Skills' own six-week archaeology found the palace's actual growth did the opposite of staged: commit 1 was already 27 dense files, the predicted Node\u2192Edge\u2192Typed Edge sequence never happened observably, and growth was six *overlapping* stages, not additive ones. Productive tension: does progressive staging generalize past engineered artifacts to knowledge-organism growth, or is organic growth structurally exempt from it?",
+   "evidence": "Progressive Staging: \"It doesn't work when the domain is irreducibly complex.\" Symbiotic Skills: \"The palace did not start as a node... The Node \u2192 Edge \u2192 Typed Edge \u2192 Network developmental stages happened, but they happened off-camera.\"",
+   "kind": "contradiction",
+   "spark": 4
+  },
+  {
+   "source": "ROSETTA",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "label": "the-writing-rules",
+   "rationale": "Unsung path: ROSETTA's own \u00a72 explicitly hands off to it ('for the fields each type requires, [[SCHEMA \u2014 Reference]] \u00a73') and its file-architecture table names it as the writing-rules sibling doc, but frontmatter carries no link.",
+   "evidence": "\"for the fields each type requires, [[SCHEMA \u2014 Reference]] \u00a73. This table is a quick-reference translation layer.\"",
+   "kind": "newcomer",
+   "spark": 2
+  },
+  {
+   "source": "ROSETTA",
+   "target": "Skills Are Enchantable Pages",
+   "type": "connects-to",
+   "label": "harness-mapping",
+   "rationale": "Unsung path: ROSETTA's \u00a74c is the whole dictionary this entry's family concept depends on, and ROSETTA says so directly, twice \u2014 but the link never made it to frontmatter.",
+   "evidence": "\"This is that dictionary. It is also where the realization that a palace page and a harness skill are the same object is recorded: [[Skills Are Enchantable Pages]].\"",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "SUBSTRATE",
+   "target": "Loudon Live",
+   "type": "connects-to",
+   "label": "the-unbalanced-node",
+   "rationale": "Unsung path, and a substantive one: SUBSTRATE's Current State section spends a full paragraph naming Loudon Live as the palace's one asymmetric node (28 inbound, zero outbound) and calls it out by the palace's own relational-primacy standard \u2014 but doesn't link it.",
+   "evidence": "\"[[Loudon Live]] takes 28 inbound links and emits none... the palace's stated public destination is the single node not participating in its own relational logic.\"",
+   "kind": "newcomer",
+   "spark": 3
+  },
+  {
+   "source": "Project Stewardship System",
+   "target": "Talking Keyboard",
+   "type": "connects-to",
+   "label": "stage-mismatch-case-study",
+   "rationale": "Unsung path: named twice as the load-bearing empirical case (the pronunciation bug that proved the recursion-within-entries rule) and listed in the required-reading pickup sequence, but absent from frontmatter despite Generative Sample Libraries (its sibling case) being linked.",
+   "evidence": "\"The pronunciation bug in [[Talking Keyboard]] (Phase 1 of [[Generative Sample Libraries]], May 2026) showed this clearly\" and \"Read [[Generative Sample Libraries]] and [[Talking Keyboard]] \u2014 the case study where stage-mismatch was first surfaced empirically.\"",
+   "kind": "newcomer",
+   "spark": 2
+  },
+  {
+   "source": "Project Stewardship System",
+   "target": "Search Before You Build",
+   "type": "connects-to",
+   "label": "the-reframe-was-this",
+   "rationale": "Search Before You Build is a low-inbound newcomer whose principle (prior-art pass before building from scratch) is exactly what PSS's own '\u00a7 The Reframe: This Is Already Mostly Specced' lived through \u2014 most of the proposed system turned out to already exist as spec, discovered only by reading first.",
+   "evidence": "\"Most of what was being designed already existed in spec form\" (PSS) \u2014 the case is a worked instance of Search Before You Build's rule.",
+   "kind": "newcomer",
+   "spark": 3
+  },
+  {
+   "source": "Self-Describing Knowledge Module",
+   "target": "Pages as Agents",
+   "type": "connects-to",
+   "label": "the-plurality-test",
+   "rationale": "Unsung path: SDKM cites the empirical Pages-as-Agents test (15/15 match rate against a one-in-five baseline) as its own evidence for real plurality \u2014 a full paragraph of load-bearing argument \u2014 with no frontmatter link.",
+   "evidence": "\"[[Pages as Agents]] ran the test: three readers, given only the answers, matched fifteen of fifteen back to the page that wrote them, against a one-in-five baseline.\"",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "Self-Describing Knowledge Module",
+   "target": "SCHEMA",
+   "type": "connects-to",
+   "label": "the-tbox",
+   "rationale": "Unsung path: SCHEMA is named repeatedly as the module's own TBox/seed (\"CLAUDE.md and SCHEMA are the seed\") and anchors the entire 'What Must Travel' table, yet never appears in frontmatter.",
+   "evidence": "\"CLAUDE.md and [[SCHEMA]] are the seed; the entries are the growth.\"",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "The Remembering Page",
+   "target": "Dialectic",
+   "type": "connects-to",
+   "label": "sharpens-vs-dissolves",
+   "rationale": "Unsung path: the entry's own distinction between debate-that-sharpens and walk-that-dissolves is built explicitly on Dialectic, cited by name, but Dialectic carries no frontmatter link.",
+   "evidence": "\"A debate (a [[Dialectic]]) sharpens a contrary: two pages defend their grips and leave more distinct than they arrived.\"",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "The Remembering Page",
+   "target": "Weaving Memory into the Palace",
+   "type": "connects-to",
+   "rationale": "Tentative \u2014 target not read this pass (newcomer, 1 inbound). Titles suggest they may overlap or even duplicate territory (both are about giving the palace a memory layer). Flagging for a worker who has read the target: either a genuine link or a coherence risk (two entries independently proposing the same infrastructure).",
+   "kind": "newcomer",
+   "spark": 2
+  },
+  {
+   "source": "Swarm Weave",
+   "target": "Oblique Portrait",
+   "type": "connects-to",
+   "label": "the-anti-lens",
+   "rationale": "Unsung path, minor: Swarm Weave names Oblique Portrait as the Cage/Eno precedent for the oblique lens but doesn't link it.",
+   "evidence": "\"a chance cover with no axis at all \u2014 a Cage/Eno move ([[Oblique Portrait]], the go oblique Enrichment trigger).\"",
+   "kind": "new",
+   "spark": 1
+  },
+  {
+   "source": "Surfaces and Capabilities",
+   "target": "Flocking",
+   "type": "connects-to",
+   "label": "the-pump-proof",
+   "rationale": "Unsung path, minor: the rAF-pump techniques are stated as \"all confirmed on the [[Flocking]] shoot-out\" \u2014 the evidentiary source for a whole subsection \u2014 with no frontmatter link.",
+   "kind": "new",
+   "spark": 1
+  }
+ ],
+ "bridge_findings": [
+  {
+   "tool": "Tier Vocabulary Glossary",
+   "thought": "Progressive Staging",
+   "shared_structure": "Commit to the next level of fidelity only after the current one proves itself; every level is complete and usable on its own; never retroactive.",
+   "spark": 4,
+   "classify": "link",
+   "fidelity_test": "Neither entry cites the other despite living in the same Weave community and sharing an identical staging logic across a Shop-dispatch domain and an instrument-pedagogy domain.",
+   "proposed_type": "mirrors"
+  },
+  {
+   "tool": "Progressive Staging",
+   "thought": "Symbiotic Skills",
+   "shared_structure": "Both make claims about how complex things should/do grow in stages \u2014 one prescriptive (design method), one descriptive-and-disproven (the palace's actual git history). They contradict on whether staged growth is achievable outside engineered domains with natural layers.",
+   "spark": 4,
+   "classify": "link",
+   "fidelity_test": "The tension is not forced \u2014 Symbiotic Skills explicitly names its predicted staged sequence as one of its 'predictions that did not bear out.'",
+   "proposed_type": "contradicts"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "ROSETTA",
+   "target": "SCHEMA \u2014 Reference",
+   "type": "connects-to",
+   "phrase": "for the fields each type requires, [[SCHEMA \u2014 Reference]] \u00a73",
+   "structurally_significant": true
+  },
+  {
+   "entry": "ROSETTA",
+   "target": "Skills Are Enchantable Pages",
+   "type": "connects-to",
+   "phrase": "where the realization that a palace page and a harness skill are the same object is recorded",
+   "structurally_significant": true
+  },
+  {
+   "entry": "SUBSTRATE",
+   "target": "Loudon Live",
+   "type": "connects-to",
+   "phrase": "the palace's stated public destination is the single node not participating in its own relational logic",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Project Stewardship System",
+   "target": "Talking Keyboard",
+   "type": "connects-to",
+   "phrase": "The pronunciation bug in [[Talking Keyboard]]... showed this clearly",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Self-Describing Knowledge Module",
+   "target": "Pages as Agents",
+   "type": "connects-to",
+   "phrase": "[[Pages as Agents]] ran the test: three readers... matched fifteen of fifteen",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Self-Describing Knowledge Module",
+   "target": "SCHEMA",
+   "type": "connects-to",
+   "phrase": "CLAUDE.md and [[SCHEMA]] are the seed",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Remembering Page",
+   "target": "Dialectic",
+   "type": "connects-to",
+   "phrase": "A debate (a [[Dialectic]]) sharpens a contrary",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Swarm Weave",
+   "target": "Oblique Portrait",
+   "type": "connects-to",
+   "phrase": "a chance cover with no axis at all \u2014 a Cage/Eno move ([[Oblique Portrait]]...)",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Surfaces and Capabilities",
+   "target": "Flocking",
+   "type": "connects-to",
+   "phrase": "all confirmed on the [[Flocking]] shoot-out",
+   "structurally_significant": false
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Trickster",
+   "face": "merits-face",
+   "vector_issue": "Stray markdown artifact: forward_vector string ends in a literal '**' \u2014 \"...joyful creation.**\" \u2014 an unclosed bold marker left in the YAML value.",
+   "graffiti_note": "Its closest dialogic partners (Spinoza Conatus, Threshold Conatus) both carry agency_profile blocks from enchanted dialogues; Trickster \u2014 a hub, confidence: working, central to the whole enchantment/swarm apparatus \u2014 has none. Worth an enchanted pass to give it one."
+  },
+  {
+   "entry": "Trickster Commit",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "Stage reads seed but the entry documents a fully shipped Phase 1 (2026-06-09) plus a second shipped surface (the EDIT form, integration-tested) \u2014 the substance is well past seed."
+  },
+  {
+   "entry": "Speak Like a Person, Log Like a Protocol",
+   "graffiti_note": "Unresolved author-to-Loudon comment asking whether 'concept' is the right type or it should sit alongside SCHEMA/SUBSTRATE/ROSETTA as meta \u2014 never answered."
+  },
+  {
+   "entry": "The Substrate Drifts",
+   "graffiti_note": "Unresolved author-to-Loudon comment: 'candidate to promote into SUBSTRATE.md as a standing design rule once it proves out across more tools than STIGMERGY' \u2014 still stage seed, still only cites STIGMERGY; the gate it names for itself hasn't been checked."
+  },
+  {
+   "entry": "Walk That Weaves",
+   "stage_current": "sprout",
+   "vector_issue": "Its own revival_conditions ('Swarm Weave is ceremony-ified and running cleanly for two cycles') read as satisfied \u2014 see open_question_resolutions."
+  },
+  {
+   "entry": "Tristitia Generator",
+   "stage_current": "composting",
+   "graffiti_note": "Marked composting since the 2026-07-06 Weave, nutrients folded into Spinoza Conatus \u00a7 The Affects: Tristitia \u2014 verified this pass: the content is genuinely there, near-verbatim. Awaiting the deletion confirmation the comment itself asks for."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Walk That Weaves",
+   "question": "Revival condition: 'Swarm Weave is ceremony-ified and running cleanly for two cycles.'",
+   "by_entry": "Swarm Weave",
+   "verdict": "met, and exceeded",
+   "proposed_action": "Revive for reconsideration. Swarm Weave's own body shows the Multi-Lens Weave already running (first run 2026-07-06, this Weave itself is a later generation of it) and its 'warmth (co-activation)' lens is functionally close to what Walk That Weaves envisioned (starting from freshest activation and following links outward). Recommend either a scoped revival naming the residual gap (a felt, movement-based ceremony vs. a dispatched-worker one) or an explicit compost-into-Swarm-Weave with the overlap named."
+  },
+  {
+   "entry": "Resonant Link Labels",
+   "question": "'What label vocabulary do entries that are already in the palace want? The first Weave that runs Step 3c will start answering this.'",
+   "by_entry": "SUBSTRATE",
+   "verdict": "answered",
+   "proposed_action": "SUBSTRATE's Current State reports 1,692 of 2,852 typed links (59%) carry a resonant label \u2014 'the second register is in real use, not aspirational.' Update Resonant Link Labels' Forward Vectors to mark this settled and move attention to its still-open second question (temperature vs. mechanism labels)."
+  },
+  {
+   "entry": "Symbiotic Skills",
+   "question": "Which rewrite reframe \u2014 honest-prerequisite, late-sequence, or two-track?",
+   "by_entry": "Self-Describing Knowledge Module",
+   "verdict": "partial \u2014 grounding material exists, not a verdict",
+   "proposed_action": "SDKM's Fischer SER analysis (seed / evolutionary growth / reseeding) and its own tacit-knowledge-audit framing are close cousins of Symbiotic Skills' rewrite question and were deposited after Symbiotic Skills' archaeology. Recommend reading SDKM before running the Symbiotic Skills rewrite session \u2014 it may supply the vocabulary the reframe decision needs."
+  }
+ ],
+ "merge_candidates": [
+  {
+   "absorb": "Two Batons, One Board",
+   "into": "Project Stewardship System",
+   "survives_as_subsection": "\u00a7 The Human-Originated Handoff (Two Batons, One Board)",
+   "rationale": "The entry's own forward_vector states it directly: 'I should dissolve into the Baton Ceremony, the Stewardship system, and a scheduler spec as each absorbs the part of me it needs.' Its own body says it 'is folded here into the Project Stewardship System as one specific case.' Project Stewardship System already carries a reciprocal connects-to link (human-originated-handoff-case). Most of the entry's content is now either superseded status (Stage E shipped) or the single residual open item (bridging handoff_ready onto the board) \u2014 both fit cleanly as a subsection rather than a standalone seed-stage entry."
+  }
+ ],
+ "compost_candidates": [
+  {
+   "entry": "Tristitia Generator",
+   "rationale": "Already marked stage: composting since the 2026-07-06 Weave with an explicit note that nutrients were folded into Spinoza Conatus \u00a7 The Affects: Tristitia, 'awaiting deletion confirmation next Weave cycle.' This pass verified the redistribution actually happened and is faithful. This is exactly the confirmation the entry has been waiting on.",
+   "nutrients_to": [
+    "Spinoza Conatus"
+   ]
+  }
+ ],
+ "coherence_findings": [
+  {
+   "kind": "contradiction",
+   "entries": [
+    "ROSETTA",
+    "Self-Describing Knowledge Module"
+   ],
+   "issue": "Two of the palace's own self-description tables disagree with each other on four points: (1) whether the palace is a 'module / runtime' (SDKM) or 'a system of modules / a runtime' (ROSETTA); (2) SDKM has no row for the Ceremony Contract, only the Ceremony Linter; (3) a ceremony is a read-only SPARQL query in SDKM's table but a query-plus-update in ROSETTA's; (4) SDKM collapses Entry Type and SCHEMA.md into one row where ROSETTA splits them with different DDD terms. SDKM already names all four discrepancies in its own Open Questions and calls resolving them 'prior to Proof 1, not parallel to it.'",
+   "proposed_action": "A short reconciliation pass, owned by whichever page becomes authoritative (SDKM's own suggestion is that this matters more than it looks, since transfer \u2014 Proof 1/2/3 \u2014 depends on which table is right). Not urgent, but it's a self-description entry disagreeing with itself across two canon pages, which is the exact class of thing this Weave's community lens exists to catch."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "Stage as a universal palace primitive \u2014 the same 'commit to the next level of fidelity only once the current one is proven' logic appears as an entry's SCHEMA `stage` field, Progressive Staging's design method, Tier Vocabulary Glossary's Sketch/Study/Piece, and Project Stewardship System's stage-conditional steward posture.",
+   "crossing_entries": [
+    "Progressive Staging",
+    "Tier Vocabulary Glossary",
+    "Project Stewardship System",
+    "Symbiotic Skills"
+   ],
+   "why_load_bearing": "If this pattern is real it explains why so many unrelated palace subsystems independently reinvented the same staged-commitment logic \u2014 but it may already be adequately covered by Substrate Skill \u00a7 Stage as Alignment Confidence, which this room did not have as a member. Recommend a worker who has read Substrate Skill confirm before spawning a new entry \u2014 this may be redundant rather than missing."
+  }
+ ],
+ "flag_responses": [],
+ "demote_candidates": [],
+ "walk_results": []
+}

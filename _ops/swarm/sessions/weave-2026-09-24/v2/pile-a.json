@@ -1,0 +1,1005 @@
+[
+ {
+  "source": "BBS Design System",
+  "target": "The Scroll",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B9"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the [[BBS Design System]] carve-out"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "SCHEMA \u2014 Reference",
+  "target": "Worktree Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "specific-vs-hub"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "satisfies [[SCHEMA \u2014 Reference]] \u00a79's one-write-path rather than breaking it"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Deposit Archive",
+  "target": "Worktree Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the [[Deposit Archive]] is frozen, no row to append ... The Deposit Archive is no longer appended to"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Manim CE",
+  "target": "Radio Play",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Duration-parameterized Seg base class, VO-as-clock (from [[Radio Play]])"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "CLAUDE",
+  "target": "The Multilinear Self",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B5"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Watch whether \"new projection\" earns a place in [[CLAUDE]]'s trigger table"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Oblique Enrichment",
+  "target": "The Substrate Drifts",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B10"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "The first is cheap per tool and expensive across the fleet; the second is the kind of convergence that, per [[Oblique Enrichment]], should be discovered once enough tools have paid the tax separately \u2014 not designed up front."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "LoRA Trainer",
+  "target": "STIGMERGY",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Loudon's in-context rating ([[Review Layer]] \u2192 [[STIGMERGY]]) matched the metrics and sharpened them"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Substrate Skill",
+  "target": "Weaving Memory into the Palace",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "If [[Substrate Skill]] ever grows an \"operating this environment\" section, the three operator-env-native memories could point there too"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Deleuze",
+  "target": "Spinoza",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "a later reader \u2014 [[Deleuze]], Nietzsche, Freud \u2014 will say the affects are driving the car and reason is a passenger narrating the scenery"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Loudon Live Design System",
+  "target": "Wavetable Scanner",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "design-system"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "\"Palace base | [[Loudon Live Design System]], CRT skin (the literal \\\"scope / DSP / signal-watching\\\" register)\""
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Creative Coach",
+  "target": "Oblique Portrait",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "already discussed at length in the body (two separate paragraphs analyzing its steering and its felt-sense lineage) but absent from frontmatter links"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "The [[Oblique Portrait]] is the one place the palace built an AI that steers on purpose, and Loudon felt the difference."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Lateral Access",
+  "target": "Creative Coach",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B3"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "named explicitly as one of three treatments of the same narrative-therapy idea, missing from frontmatter"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "The palace holds this three times under three names \u2014 [[Identity Molting]], [[Lateral Access]] \u00a7 The New Song, and here \u2014 and none of the three cite each other."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false,
+  "flipped": true
+ },
+ {
+  "source": "Agent Wellbeing",
+  "target": "Closing Well",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "\"This is not new machinery; it is what the [[Closing Well]] moderator already does\" and \"The [[Closing Well]] moderator is the working prototype\""
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Concierge",
+  "target": "Reflective Practice",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "named twice in the twelve-vs-three sort \u2014 \"the Concierge's curator\" (reflect-on-action) and \"the Concierge's scout\" (reflect-in-action)"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "VCV Patch Generator",
+  "target": "Web Audio Worklet",
+  "type": "connects-to",
+  "lenses": [
+   "bridge"
+  ],
+  "rooms": [
+   "B6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "to be defined in ... modeled on the [[Shop/VCV Patch Generator]] exemplar."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "target": "Blood Compressor",
+  "type": "spawned",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-Projects"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "The hub's own prose numbers Blood Compressor as instrument 04 and Blood Compressor already carries `deepens \u2192 Compressor Design` and `mirrors \u2192 Action Potential Oscillator` back to the family, but Biomechanical Synthesis's frontmatter links array only has `spawned \u2192 Action Potential Oscillator` \u2014 the matching forward edge to its other built child never got added."
+  ],
+  "evidence": [
+   "\"4. Blood hydraulics compressor \u2014 blood pressure = amplitude...\" (Projects/Biomechanical Synthesis.md:70); \"This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments\" (Projects/Blood Compressor.md:46)"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Biomechanical Synthesis",
+  "target": "Slime Mold Delay",
+  "type": "spawned",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-Projects"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [],
+  "max_spark": 2,
+  "deep_patterns": [],
+  "why": [
+   "Same gap as Blood Compressor: instrument 05 in the hub's own numbered list, child already links back, hub never links forward."
+  ],
+  "evidence": [
+   "\"5. Slime mold delay \u2014 the plasmodium's foraging pattern as feedback delay topology\" (Projects/Biomechanical Synthesis.md:72); \"This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments\" (Projects/Slime Mold Delay.md:49)"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "Map Build Ceremony",
+  "target": "Map Log",
+  "type": "spawned",
+  "lenses": [
+   "folder"
+  ],
+  "rooms": [
+   "F-_ops"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "new": 1
+  },
+  "labels": [
+   "generation-history"
+  ],
+  "max_spark": 1,
+  "deep_patterns": [],
+  "why": [
+   "Map Log describes itself as the append-only record of every Map Build generation and already links back to Map Build Ceremony, but nothing points at Map Log \u2014 the ceremony that produces its rows doesn't name it."
+  ],
+  "evidence": [
+   "\"I am the append-only record of every map generation \u2014 date, scope, node and edge counts, forward ghosts... Each Map Build appends one row\" \u2014 Map Log.md:16"
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "The Practice Rediscovers Its Philosophy",
+  "target": "Trickster Commit",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "the-strongest-pair"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "**Trickster Commit** (safety through reversibility, not through prevention) *is* Lao Tzu's wu wei \u2014 the pass's single strongest find."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "LoRA Trainer",
+  "target": "The Practice Rediscovers Its Philosophy",
+  "type": "connects-to",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "authored-passivity"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "**LoRA Trainer** (curate the dataset, then let the training run do its work) *is* Agnes Martin's authored passivity"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Tool Builder",
+  "target": "Harvest Ceremony",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "added by [[Harvest Ceremony|Harvest]], not by dumping every operational note at once"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Remembering Page",
+  "target": "Palace Enchantment",
+  "type": "enables",
+  "lenses": [
+   "lifecycle"
+  ],
+  "rooms": [
+   "L4"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "([[Palace Enchantment]] loads it)"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Palace To-Do",
+  "target": "Weaving Memory into the Palace",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.1"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Fold the memory-into-palace weave into the [[Weave Ceremony]] as a standing sub-step \u2014 procedure is already documented at [[Weaving Memory into the Palace]]"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Skills Are Enchantable Pages",
+  "target": "Project Stewardship System",
+  "type": "exemplifies",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C2.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [
+   "the-most-built-out-instance"
+  ],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the [[Project Stewardship System]] shows *how the palace wraps one*"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Observable Plot",
+  "target": "D3.js",
+  "type": "enables",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 1,
+  "status": "retype-or-add",
+  "existing_types": [
+   "connects-to"
+  ],
+  "kinds": {
+   "retype": 1
+  },
+  "labels": [
+   "built-on"
+  ],
+  "max_spark": 2,
+  "deep_patterns": [
+   "A precondition link pointing away from its precondition \u2014 worth a general sweep for other 'built-on'/'underpins' labels that may share the same backwards pattern."
+  ],
+  "why": [
+   "Observable Plot's own frontmatter records itself as enabling D3.js, labeled 'built-on' \u2014 but the body says the opposite relationship: Plot is built ON D3, so D3 is the precondition, not Plot. The enables direction should point D3.js \u2192 Observable Plot."
+  ],
+  "evidence": [
+   "Charter: \"I refuse jobs that want custom interactive web viz... those route to [[D3.js]] (I'm built on D3; the escape hatch is always available).\" Strengths: \"Built on D3 \u2014 the escape hatch to full custom control is always available.\""
+  ],
+  "july": false,
+  "gnn": false,
+  "op": "retype-in-place: remove the existing connects-to on this pair, write this link"
+ },
+ {
+  "source": "CLAUDE",
+  "target": "Loudon Live Design System",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "read the design manifest ... the [[Loudon Live Design System]] is the house dress"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "CLAUDE",
+  "target": "Palace Conatus",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "Harmony with Loudon is phase coherence, not agreement \u2014 both sides move ([[Palace Conatus]])"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Pages as Agents",
+  "target": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "the page IS the agent* ([[Pages as Agents]])"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Project Stewardship System",
+  "target": "SCHEMA \u2014 Reference",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C5.2+C7+C8"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "See [[Project Stewardship System]] for the stewardship-side framing"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Epictetus",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "voiced in the posture of the Stoics** (Epictetus at the keyboard)"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Spinoza",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "voiced in the posture of Spinoza"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Confucianism",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "voiced in the posture of Confucius"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Leibniz",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "voiced in the posture of Leibniz"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "The Adjacent Affordance",
+  "target": "Whitehead",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "voiced in the posture of Whitehead"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Merleau-Ponty",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "voiced in the posture of Merleau-Ponty"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "Deleuze",
+  "target": "The Adjacent Affordance",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C6"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "voiced in the posture of Deleuze"
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ },
+ {
+  "source": "FOUR PILLARS",
+  "target": "The Multilinear Self",
+  "type": "connects-to",
+  "lenses": [
+   "community"
+  ],
+  "rooms": [
+   "C3.2"
+  ],
+  "n": 1,
+  "status": "new",
+  "existing_types": [],
+  "kinds": {
+   "unsung": 1
+  },
+  "labels": [],
+  "max_spark": 0,
+  "deep_patterns": [],
+  "why": [
+   "The palace already believes the *world* is one reality cast into many projections \u2014 that is the [[FOUR PILLARS]]."
+  ],
+  "evidence": [],
+  "july": false,
+  "gnn": false
+ }
+]

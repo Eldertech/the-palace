@@ -1,0 +1,87 @@
+{
+ "arm": "X",
+ "room": "L6",
+ "total_proposals": 23,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "The Adjacent Affordance",
+   "type": "enables",
+   "target": "cowork-git",
+   "label": null,
+   "rationale": "Unsung path \u2014 the body names the tool by wikilink as directly built on this principle ('the entire [[cowork-git]] tool stands on this'), a structurally significant mention per SCHEMA \u00a74, but it isn't in AA's frontmatter links.",
+   "evidence": "AA body: 'moving them aside (rename) instead of deleting them makes committing-from-Cowork possible at all. The entire [[cowork-git]] tool stands on this.'",
+   "item_id": "X1"
+  },
+  {
+   "kind": "relation",
+   "source": "Cooperation Yields Agency",
+   "type": "couples-with",
+   "target": "Martin Buber",
+   "label": "relation-before-the-related",
+   "rationale": "Buber already declares this couples-with; CYA (a core World file) doesn't reciprocate despite Buber's ontology being a direct philosophical ancestor of 'shared intent, not control or service.'",
+   "evidence": "Buber frontmatter: target Cooperation Yields Agency, type couples-with, label relation-before-the-related.",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "Stoicism",
+   "type": "contradicts",
+   "target": "Martin Buber",
+   "label": "the-self-needs-the-Thou",
+   "rationale": "Buber already contradicts Stoicism with this label (the sovereign fortress-self vs. the self that only comes into being through relation); Stoicism, a hub that already holds several contradictions, doesn't reciprocate.",
+   "evidence": "Buber frontmatter: target Stoicism, type contradicts, label the-self-needs-the-Thou.",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "John Cage",
+   "type": "exemplifies",
+   "target": "Making a Palace Citizen",
+   "label": "non-philosopher-instance",
+   "rationale": "Same as above \u2014 the non-philosopher stress test for the method, unreciprocated.",
+   "evidence": "MPC body: 'John Cage \u2014 the non-philosopher stress test.'",
+   "item_id": "X4"
+  },
+  {
+   "kind": "relation",
+   "source": "The Dichotomy of Control",
+   "type": "contradicts",
+   "target": "Martin Heidegger",
+   "label": "thrownness-vs-control",
+   "rationale": "Heidegger already contradicts this entry with this label (thrownness \u2014 the situation you never chose \u2014 against the Stoic sort-into-what's-yours); The Dichotomy of Control doesn't say it back.",
+   "evidence": "Heidegger frontmatter: target The Dichotomy of Control, type contradicts, label thrownness-vs-control.",
+   "item_id": "X5"
+  },
+  {
+   "kind": "relation",
+   "source": "Martin Buber",
+   "type": "contradicts",
+   "target": "Martin Heidegger",
+   "label": "the-Thou-vs-the-they",
+   "rationale": "Both are seed-stage newborn citizens in this same room, and neither cites the other, despite a well-documented real philosophical break: Buber's whole philosophy is a critique of exactly the kind of anonymous Being/das-Man Heidegger builds Dasein from \u2014 I-Thou meeting vs. Being-with-the-they. This is the strongest cross-target find in the room.",
+   "evidence": "Buber: 'this is why he refuses both individualism... and collectivism.' Heidegger: 'we flee the anxiety of our own groundlessness into das Man (\"the they\")... almost no account of other people as anything but \"the they.\"'",
+   "item_id": "X6"
+  },
+  {
+   "kind": "relation",
+   "source": "Spinoza",
+   "type": "exemplifies",
+   "target": "Making a Palace Citizen",
+   "label": "flagship-instance",
+   "rationale": "MPC's own body calls Spinoza its 'first flagship' worked instance; Spinoza's frontmatter doesn't cite the method that made it.",
+   "evidence": "\"Worked instances\" section: '[[Spinoza]] \u2014 first flagship; the archetypal enchantment target.'",
+   "item_id": "X7"
+  },
+  {
+   "kind": "relation",
+   "source": "Martin Heidegger",
+   "type": "connects-to",
+   "target": "Palace Philosophies",
+   "label": "the-symposium",
+   "rationale": "Same gap \u2014 Heidegger is also absent from the register despite being a major, well-developed citizen with his own contradictions already declared against Spinoza and the Dichotomy of Control.",
+   "evidence": "Palace Philosophies \u00a7 'The rest of the register' \u2014 no Heidegger entry.",
+   "item_id": "X8"
+  }
+ ]
+}

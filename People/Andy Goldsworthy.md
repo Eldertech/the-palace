@@ -41,6 +41,15 @@ links:
   - target: "[[The Aftermath Frame]]"
     type: connects-to
     label: resistance-is-information
+  - target: "[[Martin Buber]]"
+    type: connects-to
+    label: relapses-into-it-at-the-shutter
+  - target: "[[OBS]]"
+    type: contradicts
+    label: ephemeral-vs-the-record
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Andy Goldsworthy

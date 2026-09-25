@@ -1,0 +1,207 @@
+{
+ "cluster": "F-Projects",
+ "lens": "folder",
+ "summary": "This room is the palace's synthesis/instrument-building engine \u2014 41 entries, and it holds together better than the \"cluttered\" feeling suggests. Reading the whole family at once, four real sub-families emerge on their own: the grain-cloud siblings (Particle Synthesis, Neural Granular Synthesis, Bayesian Granular Synthesizer, Murmuration, Shimmer Cloud), the inharmonicity/Bessel taxonomy (Bessel Functions in Synthesis, Piano String Inharmonicity, Categorizing Inharmonicity, Crystal Synthesizer, Quantum Synthesizer, Wallpaper Groups, Inharmonic Wavetable Synthesis, 2D Torus Wavetable Synthesizer), the delay/time-axis family (Retrospective Delay, Semantic Delay, Slime Mold Delay, Frequency-Time Duality/Explorer, Metric Modulation), and the generative-content pipelines (Generative Sample/Wavetable Libraries, Generative Preset Development, Talking Keyboard, Phoneme Choir). Most cross-links already exist and are load-bearing, not decorative. The genuine clutter I found is narrower than \"too many entries\": (1) the same unanswered perceptual-threshold-of-inharmonicity question is asked independently, near-verbatim, in three sibling entries with no cross-reference; (2) Biomechanical Synthesis's own hub prose lists Blood Compressor and Slime Mold Delay as instruments 04/05 but its frontmatter links array never grew the matching `spawned` edges, even though both children already point back to it; (3) its instrument #2 (\"crystal resonator synthesis\") independently duplicates the already-built Crystal Synthesizer without either entry knowing about the other. I found no entry in this room I'd honestly call thin-and-neighborless enough to compost, and no merge that wouldn't destroy a distinct idea \u2014 the size here is real breadth, not sprawl. The one soft de-sprawl move worth naming: Curriculum Map is pure cross-project scaffolding infrastructure wearing full entry frontmatter, and is a candidate to fold into whatever Loudon Live hub entry exists outside this room \u2014 but I can't confirm that target from within this room, so I'm flagging rather than proposing it as a find.",
+ "members_read": [
+  "Projects/2D Torus Wavetable Synthesizer.md",
+  "Projects/2D Torus Wavetable Synthesizer/2D Wavetable Catalog.md",
+  "Projects/Action Potential Oscillator.md",
+  "Projects/BLUELINE/BLUELINE.md",
+  "Projects/Bayesian Granular Synthesizer.md",
+  "Projects/Bessel Functions in Synthesis.md",
+  "Projects/Biomechanical Synthesis.md",
+  "Projects/Blood Compressor.md",
+  "Projects/Categorizing Inharmonicity.md",
+  "Projects/Compressor Design.md",
+  "Projects/Crystal Synthesizer.md",
+  "Projects/Curriculum Map.md",
+  "Projects/Floquet Time-Modulated Loops/Floquet Time-Modulated Loops.md",
+  "Projects/Frequency-Time Duality.md",
+  "Projects/Frequency-Time Explorer.md",
+  "Projects/Generative Preset Development.md",
+  "Projects/Generative Sample Libraries.md",
+  "Projects/Generative Wavetable Libraries.md",
+  "Projects/Inharmonic Wavetable Synthesis.md",
+  "Projects/LDN RTM.md",
+  "Projects/Meadows and Music \u2014 Leverage Points.md",
+  "Projects/Meadows and an Artist's Career.md",
+  "Projects/Metric Modulation.md",
+  "Projects/Murmuration.md",
+  "Projects/Neural Granular Synthesis.md",
+  "Projects/Particle Synthesis.md",
+  "Projects/Phoneme Choir.md",
+  "Projects/Piano String Inharmonicity.md",
+  "Projects/Portamento and Physical Pitch Modeling.md",
+  "Projects/Preset Oracle.md",
+  "Projects/Quantum Synthesizer.md",
+  "Projects/Retrospective Delay.md",
+  "Projects/Semantic Delay.md",
+  "Projects/Semantic Webcam.md",
+  "Projects/Shepard Tone Synthesizer.md",
+  "Projects/Shimmer Cloud.md",
+  "Projects/Slime Mold Delay.md",
+  "Projects/Talking Keyboard.md",
+  "Projects/2D Torus Wavetable Synthesizer/Torus Warping Catalog.md",
+  "Projects/Tract Mirror.md",
+  "Projects/Wallpaper Groups.md",
+  "Projects/Waveguide Synthesizer.md",
+  "Projects/Neural Granular Synthesis/control-vocabulary-math.md"
+ ],
+ "typed_relations": [
+  {
+   "source": "Biomechanical Synthesis",
+   "target": "Blood Compressor",
+   "type": "spawned",
+   "rationale": "The hub's own prose numbers Blood Compressor as instrument 04 and Blood Compressor already carries `deepens \u2192 Compressor Design` and `mirrors \u2192 Action Potential Oscillator` back to the family, but Biomechanical Synthesis's frontmatter links array only has `spawned \u2192 Action Potential Oscillator` \u2014 the matching forward edge to its other built child never got added.",
+   "evidence": "\"4. Blood hydraulics compressor \u2014 blood pressure = amplitude...\" (Projects/Biomechanical Synthesis.md:70); \"This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments\" (Projects/Blood Compressor.md:46)",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "Biomechanical Synthesis",
+   "target": "Slime Mold Delay",
+   "type": "spawned",
+   "rationale": "Same gap as Blood Compressor: instrument 05 in the hub's own numbered list, child already links back, hub never links forward.",
+   "evidence": "\"5. Slime mold delay \u2014 the plasmodium's foraging pattern as feedback delay topology\" (Projects/Biomechanical Synthesis.md:72); \"This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments\" (Projects/Slime Mold Delay.md:49)",
+   "kind": "new",
+   "spark": 2
+  },
+  {
+   "source": "Biomechanical Synthesis",
+   "target": "Crystal Synthesizer",
+   "type": "mirrors",
+   "rationale": "Biomechanical Synthesis's instrument #2, \"crystal resonator synthesis \u2014 lattice vibrational modes as partial frequencies, crystal geometry as filter topology,\" describes almost exactly what Crystal Synthesizer already does (phonon modes as partial structure) \u2014 but the two entries were built independently and neither links to the other. Neither one should absorb the other (different origin framing, different pillars-of-emphasis), but the overlap is real and worth naming so a reader of Biomechanical Synthesis doesn't think instrument #2 is still unbuilt.",
+   "evidence": "\"2. Crystal resonator synthesis \u2014 lattice vibrational modes as partial frequencies, crystal geometry as filter topology\" (Projects/Biomechanical Synthesis.md:66); \"A synthesizer whose partial structure is derived directly from the vibrational phonon modes of crystalline lattices\" (Projects/Crystal Synthesizer.md:49)",
+   "kind": "new",
+   "spark": 3
+  }
+ ],
+ "coherence_findings": [
+  {
+   "kind": "repeated-open-question",
+   "issue": "The perceptual threshold at which inharmonicity magnitude becomes audible (\"how much B before it sounds bell-like / inharmonic\") is asked as an unresolved Open Question independently in three sibling entries, each unaware of the others' phrasing of the same question.",
+   "entries": [
+    "Projects/Piano String Inharmonicity.md:185 \u2014 \"What is the perceptual threshold for inharmonicity? How much B is needed before listeners hear it as 'bell-like'?\"",
+    "Projects/Categorizing Inharmonicity.md:275 \u2014 \"Perceptual threshold: At what magnitude does each inharmonicity type become audibly distinct from harmonic?\"",
+    "Projects/Crystal Synthesizer.md:161 / Crystal Synthesizer \u2014 Staging.md:179 \u2014 \"How do you auralize a phonon dispersion curve directly? Is the dispersion relation itself a 'timbre' parameter?\""
+   ],
+   "proposed_action": "No entry needs to answer the others' question wholesale, but Categorizing Inharmonicity is already the taxonomy hub (Piano String Inharmonicity and Crystal Synthesizer both `deepens`/`connects-to` it) \u2014 it is the natural place to hold a single 'perceptual threshold' subsection the other two link into, rather than three parallel unresolved questions."
+  },
+  {
+   "kind": "missing-inbound-link",
+   "issue": "Biomechanical Synthesis's frontmatter link array undercounts its own hub prose \u2014 it lists 8 instruments in body text but only carries a forward `spawned` link to 1 of the 3 that are actually built (Action Potential Oscillator), leaving Blood Compressor and Slime Mold Delay's back-links one-directional.",
+   "entries": [
+    "Projects/Biomechanical Synthesis.md",
+    "Projects/Blood Compressor.md",
+    "Projects/Slime Mold Delay.md"
+   ],
+   "proposed_action": "See typed_relations \u2014 add the two missing `spawned` edges."
+  },
+  {
+   "kind": "roster-gap",
+   "issue": "Biomechanical Synthesis names 8 instrument concepts; only 3 have concrete entries (Action Potential Oscillator #1, Blood Compressor #4, Slime Mold Delay #5). Instruments #2 (crystal resonator \u2014 see the mirrors finding above), #3 (mycelial network), #6 (carnivorous plant gate), #7 (bioluminescent phase bank), #8 (cochlear implant vocoder) are prose-only, five years' worth of sprawl-in-waiting inside one hub. Not itself a clutter problem \u2014 it's an honest roster with real gaps \u2014 but worth Loudon knowing the count so the hub isn't mistaken for further along than it is.",
+   "entries": [
+    "Projects/Biomechanical Synthesis.md"
+   ],
+   "proposed_action": "No action needed from this weave; flagging for awareness only."
+  },
+  {
+   "kind": "metadata-drift",
+   "issue": "Roughly half the room's entries carry a `hook_quality` / `beauty` / `confidence` / `who_leads` metadata block (2D Torus, Action Potential Oscillator, Bayesian Granular Synthesizer, Bessel Functions, Categorizing Inharmonicity, Crystal Synthesizer, Floquet Time-Modulated Loops, Portamento, Shepard Tone Synthesizer, Wallpaper Groups, Blood Compressor, Slime Mold Delay, LDN RTM...); the other half don't (Frequency-Time Duality, Metric Modulation, Neural Granular Synthesis, Particle Synthesis, Quantum Synthesizer, Waveguide Synthesizer, Tract Mirror, Murmuration, Semantic Webcam...). Not a schema violation \u2014 the fields are optional \u2014 but it means the room can't be sorted or compared on 'hook quality' consistently, which undercuts the metric's own purpose.",
+   "entries": [],
+   "proposed_action": "No forced backfill recommended (a guessed hook_quality is worse than none) \u2014 noting for awareness, not a work item."
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Generative Wavetable Libraries",
+   "question": "\"The [[2D Torus Wavetable Synthesizer]] work is active and adjacent. Does this project subsume that, parallel it, or feed it?\" (Projects/Generative Wavetable Libraries.md:180)",
+   "verdict": "should-act",
+   "by_entry": "2D Torus Wavetable Synthesizer / 2D Wavetable Catalog",
+   "proposed_action": "Reading both: 2D Torus is the concrete, fruiting-stage RNBO instrument with a hand-curated catalog (2D Wavetable Catalog); Generative Wavetable Libraries is a growing-stage, chat-driven authoring *pipeline*. The honest answer is 'feed' \u2014 GWL is infrastructure that could generate candidate surfaces for the 2D Wavetable Catalog, not a parallel or a subsuming project. Worth retyping the existing GWL \u2192 2D Torus `connects-to` (label: 2d-form) to an `enables` (label: candidate-surface-source) once GWL actually produces a surface the catalog adopts \u2014 premature to retype before that happens, so leaving as connects-to for now but naming the resolution."
+  },
+  {
+   "entry": "Neural Granular Synthesis",
+   "question": "\"Can we tune threshold variance to target specific regions of timbre space?\" (Projects/Neural Granular Synthesis.md:109)",
+   "verdict": "progressed",
+   "by_entry": "Neural Granular Synthesis/control-vocabulary-math.md",
+   "proposed_action": "control-vocabulary-math.md formalizes exactly this variable (\u03c3_threshold, \"threshold spread\") as a named, ranged control in its variable table \u2014 the parameter now has a symbol and a playable surface, though the empirical mapping to timbre regions is still unmeasured. The question moved from 'is this even a controllable knob' to 'what does this knob's range do perceptually' \u2014 genuine progress, not yet answered."
+  },
+  {
+   "entry": "Action Potential Oscillator",
+   "question": "\"What does a 'noisy' neuron sound like when N=10 vs N=10,000 channels?\" and the reach toward \"a population-dynamics instrument of N Kuramoto-coupled neurons\" (Projects/Action Potential Oscillator.md:160, frontmatter forward_vector)",
+   "verdict": "progressed",
+   "by_entry": "Neural Granular Synthesis/control-vocabulary-math.md",
+   "proposed_action": "The control-vocabulary-math entry is explicitly built to sit on top of the Action Potential Oscillator's Faust population engine and formalizes N, K, r (synchrony index) as the playable surface \u2014 this is the missing population-control layer Action Potential Oscillator's forward_vector was reaching for. Still open: the actual sonic character at N=10 vs N=10,000, which needs an audio render, not more math."
+  },
+  {
+   "entry": "Wallpaper Groups",
+   "question": "\"Is there a 'most inharmonic' wallpaper group \u2014 a group whose tiling structure, translated into sound, produces the most chaotic, least predictable spectrum?\" (Projects/Wallpaper Groups.md:154)",
+   "verdict": "still-open",
+   "proposed_action": "Categorizing Inharmonicity has the taxonomy machinery (stretched / Bessel / stochastic / chaotic / phase-accumulation types) that could classify a wallpaper-group-derived spectrum once one exists, but no sibling has actually run this experiment. Naming the sibling that *would* answer it, not one that has."
+  },
+  {
+   "entry": "Talking Keyboard",
+   "question": "\"Does the SFZ instrument feel useful for actual learning..., or is it a curiosity?\" (Projects/Talking Keyboard.md:93)",
+   "verdict": "still-open",
+   "proposed_action": "Phoneme Choir asks the near-identical question (\"Does the instrument feel useful for actual music-making..., or is it a curiosity?\", Projects/Phoneme Choir.md:116) \u2014 both sister builds carry the same unresolved test independently rather than pointing at a shared resolution mechanism (a Stage 4 Loudon Live demo, which both forward_vectors separately invoke). Coherence issue more than a resolution: one shared 'has this been played by someone other than its builder' open question, tracked once in Generative Sample Libraries, would serve both children better than two copies."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [
+  {
+   "file": "Projects/Curriculum Map.md",
+   "disposition": "keep",
+   "rationale": "Weighed seriously against the 'cluttered' note: this is cross-project scaffolding infrastructure (which projects build on which, entry points, gaps) wearing full entry frontmatter, and its own frontmatter is missing a forward_vector entirely \u2014 a genuine health flag. It reads more like a working index than a standalone idea. But its natural merge target is a Loudon Live hub entry, which is not a member of this room, so I can't verify whether that hub already exists or would actually absorb it well. Flagging rather than proposing \u2014 an elder should check whether Loudon Live already has a curriculum section before deciding."
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Projects/Curriculum Map.md",
+   "stage_current": "sprout",
+   "stage_proposed": "",
+   "vector_issue": "No forward_vector field present in frontmatter at all (title/type/pillars/born/last_activated/stage/links only) \u2014 every other member in this room has one.",
+   "face": "none",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Projects/Crystal Synthesizer.md",
+   "stage_current": "fruiting",
+   "stage_proposed": "",
+   "vector_issue": "forward_vector reads as a single flat sentence (\"I will become a synthesizer that makes audible the optical properties of crystals\") with none of the specificity or open-edge reaching that this room's other fruiting/growing entries carry (compare 2D Torus Wavetable Synthesizer's or Frequency-Time Duality's multi-clause vectors) \u2014 looks like an early draft that never got updated as the project matured to fruiting with hook_quality 9 / beauty 10 and five spawned children.",
+   "face": "none",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Projects/Waveguide Synthesizer.md",
+   "stage_current": "seed",
+   "stage_proposed": "growing",
+   "vector_issue": "Stage says 'seed' but the entry carries a full Open Questions section, 8 real inbound links, and a detailed architecture body \u2014 that's well past what this room's other seed-stage entries (Tract Mirror, 0 inbound) look like. The stage tag may no longer fit the content.",
+   "face": "none",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "Projects/LDN RTM.md",
+   "stage_current": "sprout",
+   "stage_proposed": "",
+   "vector_issue": "Already has a spawned child (LDN RTM \u2014 Live 12, series one) \u2014 a sprout that has already produced its first fruit reads as under-staged, though not confidently enough to force a retype without seeing the child entry's own maturity.",
+   "face": "none",
+   "graffiti_note": ""
+  }
+ ],
+ "unsung_paths": [],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "The 20 Hz perceptual threshold (rate becomes pitch) as its own named concept, distinct from Frequency-Time Duality which currently carries it as one section among several.",
+   "why_load_bearing": "Frequency-Time Duality's own Open Questions ask this directly: \"Does the recursion observation imply the duality wants its own concept entry for the 20 Hz threshold itself as a perceptual constant? It currently lives scattered across body text in this entry, Frequency-Time Explorer, and Microsound.\" (Projects/Frequency-Time Duality.md:77). This is the entry naming its own gap, not me inferring one \u2014 worth an elder's attention rather than action here.",
+   "crossing_entries": [
+    "Frequency-Time Duality",
+    "Frequency-Time Explorer"
+   ]
+  }
+ ],
+ "bridge_findings": [],
+ "walk_results": [],
+ "flag_responses": []
+}

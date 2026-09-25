@@ -1,0 +1,247 @@
+{
+ "lens": "community",
+ "id": "C4.1",
+ "members": [
+  {
+   "id": "4 Pillars Framework - The Founding Conversation",
+   "path": "4 Pillars Framework - The Founding Conversation.md",
+   "stage": "mature",
+   "inbound": 5
+  },
+  {
+   "id": "Agnes Martin",
+   "path": "People/Agnes Martin.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Brian Eno",
+   "path": "People/Brian Eno.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "Buckminster Fuller",
+   "path": "People/Buckminster Fuller.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Christopher Alexander",
+   "path": "People/Christopher Alexander.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Compression \u2194 Intimacy",
+   "path": "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Cooking \u2194 Mixing",
+   "path": "Cross-Domain Resonances/Cooking \u2194 Mixing.md",
+   "stage": "mature",
+   "inbound": 3
+  },
+  {
+   "id": "Cross-Domain Resonances",
+   "path": "Cross-Domain Resonances.md",
+   "stage": "growing",
+   "inbound": 18
+  },
+  {
+   "id": "Donella Meadows",
+   "path": "People/Donella Meadows.md",
+   "stage": "seed",
+   "inbound": 12
+  },
+  {
+   "id": "Douglas Hofstadter",
+   "path": "People/Douglas Hofstadter.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Dovetail Joint \u2194 Counterpoint",
+   "path": "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
+   "stage": "mature",
+   "inbound": 3
+  },
+  {
+   "id": "FOUR PILLARS",
+   "path": "FOUR PILLARS.md",
+   "stage": "mature",
+   "inbound": 118
+  },
+  {
+   "id": "Found \u2194 Made",
+   "path": "Found \u2194 Made.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Frequency Domain \u2194 Perspective Shift",
+   "path": "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+   "stage": "mature",
+   "inbound": 3
+  },
+  {
+   "id": "Generative Audio Devices",
+   "path": "Generative Audio Devices.md",
+   "stage": "sprout",
+   "inbound": 14
+  },
+  {
+   "id": "George Nakashima",
+   "path": "People/George Nakashima.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Iain McGilchrist",
+   "path": "People/Iain McGilchrist.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "John Cage",
+   "path": "People/John Cage.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Julia Cameron",
+   "path": "People/Julia Cameron.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Kick Drum \u2194 Foundation",
+   "path": "Cross-Domain Resonances/Kick Drum \u2194 Foundation.md",
+   "stage": "mature",
+   "inbound": 5
+  },
+  {
+   "id": "Lao Tzu",
+   "path": "People/Lao Tzu.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "Leverage Points Framework",
+   "path": "Leverage Points Framework.md",
+   "stage": "mature",
+   "inbound": 10
+  },
+  {
+   "id": "Meadows and Music \u2014 Leverage Points",
+   "path": "Projects/Meadows and Music \u2014 Leverage Points.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "Meadows and an Artist's Career",
+   "path": "Projects/Meadows and an Artist's Career.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "PDL Generation Prompt",
+   "path": "PDL Generation Prompt.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "PDL Renderer",
+   "path": "PDL Renderer.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Pauline Oliveros",
+   "path": "People/Pauline Oliveros.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Quality Manifesto",
+   "path": "Quality Manifesto.md",
+   "stage": "mature",
+   "inbound": 45
+  },
+  {
+   "id": "Quantization \u2194 Precision vs Flow",
+   "path": "Cross-Domain Resonances/Quantization \u2194 Precision vs Flow.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "R. Murray Schafer",
+   "path": "People/R. Murray Schafer.md",
+   "stage": "composting",
+   "inbound": 1
+  },
+  {
+   "id": "Registry Pattern",
+   "path": "Registry Pattern.md",
+   "stage": "seed",
+   "inbound": 9
+  },
+  {
+   "id": "Rick Rubin",
+   "path": "People/Rick Rubin.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "Sam Maloof",
+   "path": "People/Sam Maloof.md",
+   "stage": "composting",
+   "inbound": 2
+  },
+  {
+   "id": "Saturation \u2194 Richness",
+   "path": "Cross-Domain Resonances/Saturation \u2194 Richness.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Shunryu Suzuki",
+   "path": "People/Shunryu Suzuki.md",
+   "stage": "seed",
+   "inbound": 6
+  },
+  {
+   "id": "Sidechain \u2194 Conversation",
+   "path": "Cross-Domain Resonances/Sidechain \u2194 Conversation.md",
+   "stage": "mature",
+   "inbound": 6
+  },
+  {
+   "id": "Simondon",
+   "path": "Simondon.md",
+   "stage": "sprout",
+   "inbound": 11
+  },
+  {
+   "id": "Source Library",
+   "path": "Source Library.md",
+   "stage": "growing",
+   "inbound": 29
+  },
+  {
+   "id": "Synth Archetypes",
+   "path": "Synth Archetypes.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Synthesis \u2194 Emergence",
+   "path": "Cross-Domain Resonances/Synthesis \u2194 Emergence.md",
+   "stage": "mature",
+   "inbound": 4
+  }
+ ],
+ "directed_flags": {}
+}

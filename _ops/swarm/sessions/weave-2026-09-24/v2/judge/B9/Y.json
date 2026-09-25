@@ -1,0 +1,80 @@
+{
+ "arm": "Y",
+ "room": "B9",
+ "total_proposals": 14,
+ "sample": [
+  {
+   "kind": "unsung",
+   "source": "Frame Designer",
+   "type": "connects-to",
+   "target": "assume multi-agent",
+   "label": "convention-cited",
+   "rationale": "never an account-wide GET /pods \u2192 DELETE all, which strangles other agents' pods ([[assume multi-agent]])",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "unsung",
+   "source": "The Scroll",
+   "type": "connects-to",
+   "target": "GenAI Camera",
+   "label": "template-origin",
+   "rationale": "First built for [[GenAI Camera]] \u2014 copy the root bundle GenAI Camera/... as the working template",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "bridge",
+   "source": "RNBO codebox~ smith",
+   "type": "connects-to",
+   "target": "Martin Buber",
+   "rationale": "A single canonical source is not neutral once it must materialize through a specific rendering medium \u2014 the codebox source through an export target, Buber's German through an English translator's choices \u2014 and the gap between renderings is where the real content lives or bites.",
+   "evidence": "Export-target divergence is real and biting \u2014 same source, slightly different behavior across M4L / VST3 / AU / web. || translation is a veil: every English sentence has passed through a translator's judgment... Ronald Gregor Smith (1937) keeps the archaic 'Thou'... Walter Kaufmann (1970) replaces it with 'You'.",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "RNBO codebox~ smith",
+   "type": "connects-to",
+   "target": "Martin Buber",
+   "label": "one-source-many-renderings",
+   "rationale": "A canonical source distorts unpredictably once it must pass through a specific rendering/translation medium.",
+   "evidence": "\"same source, slightly different behavior across M4L / VST3 / AU / web\" (Shop/RNBO codebox~ smith.md:65) / \"translation is a veil\" (People/Martin Buber.md:86)",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "bridge",
+   "source": "Frame Designer",
+   "type": "contradicts",
+   "target": "Annie Dillard",
+   "rationale": "Both take a scene of death and run it through a controlled aesthetic technique (lyric sentence-craft / stylized ink compositing) that produces beauty out of the horror, without the technique itself ever asking whether that beautification is attention or evasion.",
+   "evidence": "a man lands in a crouch over a dying girl as the crowd recoils in a burning street \u2014 Field notes \u2014 the new-story dying-girl frame (2026-06-22) || She renders the frog's dissolution in prose as controlled and lovely as her epiphanies \u2014 and the honest question, which she has no closing move against, is whether turning real horror into a beautiful passage is a way of not looking, dressed as looking",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "unsung",
+   "source": "Frame Designer",
+   "type": "connects-to",
+   "target": "Shop/ComfyUI",
+   "label": "render-backend",
+   "rationale": "conditioned render (render_shot: OpenPose+depth \u2192 locked pen-flow via [[Shop/ComfyUI]])",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "unsung",
+   "source": "The Scroll",
+   "type": "connects-to",
+   "target": "SCHEMA \u2014 Reference",
+   "label": "spec-compliance",
+   "rationale": "carries the minimal bundle frontmatter of [[SCHEMA \u2014 Reference]] \u00a78 (scroll type)",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "unsung",
+   "source": "Observable Plot",
+   "type": "connects-to",
+   "target": "Flocking \u2014 Maker's Comparison Recommendation",
+   "label": "cross-reference",
+   "rationale": "See [[Flocking \u2014 Maker's Comparison Recommendation]] addendum",
+   "item_id": "Y8"
+  }
+ ]
+}

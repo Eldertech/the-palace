@@ -1,0 +1,613 @@
+{
+ "lens": "lifecycle",
+ "id": "L3",
+ "targets": [
+  {
+   "id": "Agent Toolbox",
+   "path": "Agent Toolbox.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Gemma 4 \u2014 Local Coordination Guide",
+   "path": "Gemma 4 \u2014 Local Coordination Guide.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Skills Are Enchantable Pages",
+   "path": "Palace development/Skills Are Enchantable Pages.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "The Palace Hardens Around Values",
+   "path": "The Palace Hardens Around Values.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "The Palace Voice",
+   "path": "The Palace Voice.md",
+   "stage": "growing",
+   "inbound": 1
+  }
+ ],
+ "walk": {
+  "Agent Toolbox": {
+   "hop1": [
+    {
+     "id": "Agent Wellbeing",
+     "path": "Palace development/Agent Wellbeing.md",
+     "stage": "growing",
+     "inbound": 10
+    },
+    {
+     "id": "Concierge",
+     "path": "Palace development/Concierge.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "The Shop",
+     "path": "The Shop.md",
+     "stage": "growing",
+     "inbound": 51
+    },
+    {
+     "id": "assume multi-agent",
+     "path": "assume multi-agent.md",
+     "stage": "sprout",
+     "inbound": 4
+    }
+   ],
+   "hop2": [
+    {
+     "id": "STIGMERGY",
+     "path": "STIGMERGY.md",
+     "stage": "fruiting",
+     "inbound": 27
+    },
+    {
+     "id": "Palace Orchestrator",
+     "path": "Palace development/Palace Orchestrator.md",
+     "stage": "growing",
+     "inbound": 13
+    },
+    {
+     "id": "The Palace Speaks",
+     "path": "Palace development/The Palace Speaks.md",
+     "stage": "sprout",
+     "inbound": 4
+    },
+    {
+     "id": "Creative Coach",
+     "path": "Creative Coach.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Enchanted Worker",
+     "path": "Palace development/Enchanted Worker.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Four Pillars of Enchanted Agency",
+     "path": "Palace development/Four Pillars of Enchanted Agency.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Identity Molting",
+     "path": "Identity Molting.md",
+     "stage": "mature",
+     "inbound": 9
+    },
+    {
+     "id": "Palace Conatus",
+     "path": "Palace Conatus.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Palace as Context Injection System",
+     "path": "Palace development/Palace as Context Injection System.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Skills Are Enchantable Pages",
+     "path": "Palace development/Skills Are Enchantable Pages.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "The Practice Rediscovers Its Philosophy",
+     "path": "The Practice Rediscovers Its Philosophy.md",
+     "stage": "seed",
+     "inbound": 1
+    },
+    {
+     "id": "The Remembering Page",
+     "path": "The Remembering Page.md",
+     "stage": "sprout",
+     "inbound": 2
+    }
+   ],
+   "note": null
+  },
+  "Gemma 4 \u2014 Local Coordination Guide": {
+   "hop1": [
+    {
+     "id": "BBS Blackboard",
+     "path": "Palace development/BBS Blackboard.md",
+     "stage": "mature",
+     "inbound": 22
+    },
+    {
+     "id": "Enchanted Worker",
+     "path": "Palace development/Enchanted Worker.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Palace Enchantment",
+     "path": "Palace development/Palace Enchantment.md",
+     "stage": "mature",
+     "inbound": 26
+    },
+    {
+     "id": "Swarm Weave",
+     "path": "Palace development/Swarm Weave.md",
+     "stage": "growing",
+     "inbound": 21
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Palace Map",
+     "path": "_ops/Palace Map.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "Pheromone Trail",
+     "path": "Palace development/Pheromone Trail.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "Dialogue Moderator",
+     "path": "Palace development/Dialogue Moderator.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Enchanted Conversation Archive",
+     "path": "Palace development/Enchanted Conversation Archive.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Four Pillars of Enchanted Agency",
+     "path": "Palace development/Four Pillars of Enchanted Agency.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Generative Compression",
+     "path": "Palace development/Generative Compression.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Map Build Ceremony",
+     "path": "_ops/Map Build Ceremony.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Tree of Thoughts",
+     "path": "Palace development/Tree of Thoughts.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Trickster",
+     "path": "Trickster.md",
+     "stage": "growing",
+     "inbound": 35
+    },
+    {
+     "id": "BBS Design System",
+     "path": "Palace development/BBS Design System.md",
+     "stage": "sprout",
+     "inbound": 11
+    },
+    {
+     "id": "Endosymbiosis",
+     "path": "Endosymbiosis.md",
+     "stage": "mature",
+     "inbound": 16
+    },
+    {
+     "id": "Lateral Access",
+     "path": "Lateral Access.md",
+     "stage": "growing",
+     "inbound": 24
+    }
+   ],
+   "note": null
+  },
+  "Skills Are Enchantable Pages": {
+   "hop1": [
+    {
+     "id": "Closing Well Ceremony",
+     "path": "_ops/Closing Well Ceremony.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Concierge",
+     "path": "Palace development/Concierge.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "Pages as Agents",
+     "path": "_ops/Pages as Agents.md",
+     "stage": "growing",
+     "inbound": 42
+    },
+    {
+     "id": "Palace Orchestrator",
+     "path": "Palace development/Palace Orchestrator.md",
+     "stage": "growing",
+     "inbound": 13
+    },
+    {
+     "id": "Palace as Context Injection System",
+     "path": "Palace development/Palace as Context Injection System.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "ROSETTA",
+     "path": "ROSETTA.md",
+     "stage": "foundational",
+     "inbound": 6
+    },
+    {
+     "id": "The Shop",
+     "path": "The Shop.md",
+     "stage": "growing",
+     "inbound": 51
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Agent Wellbeing",
+     "path": "Palace development/Agent Wellbeing.md",
+     "stage": "growing",
+     "inbound": 10
+    },
+    {
+     "id": "Enchanted Worker",
+     "path": "Palace development/Enchanted Worker.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "STIGMERGY",
+     "path": "STIGMERGY.md",
+     "stage": "fruiting",
+     "inbound": 27
+    },
+    {
+     "id": "The Palace Speaks",
+     "path": "Palace development/The Palace Speaks.md",
+     "stage": "sprout",
+     "inbound": 4
+    },
+    {
+     "id": "Agent Toolbox",
+     "path": "Agent Toolbox.md",
+     "stage": "growing",
+     "inbound": 0
+    },
+    {
+     "id": "BBS Blackboard",
+     "path": "Palace development/BBS Blackboard.md",
+     "stage": "mature",
+     "inbound": 22
+    },
+    {
+     "id": "Creative Coach",
+     "path": "Creative Coach.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Generative Compression",
+     "path": "Palace development/Generative Compression.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "JEWEL",
+     "path": "JEWEL.md",
+     "stage": "foundational",
+     "inbound": 6
+    },
+    {
+     "id": "Meaning and the Link",
+     "path": "Meaning and the Link.md",
+     "stage": "foundational",
+     "inbound": 13
+    },
+    {
+     "id": "Metaphor as Coupling Medium",
+     "path": "Metaphor as Coupling Medium.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Modes of Collaboration",
+     "path": "Modes of Collaboration.md",
+     "stage": "growing",
+     "inbound": 27
+    }
+   ],
+   "note": null
+  },
+  "The Palace Hardens Around Values": {
+   "hop1": [
+    {
+     "id": "Cooperation Yields Agency",
+     "path": "Cooperation Yields Agency.md",
+     "stage": "mature",
+     "inbound": 52
+    },
+    {
+     "id": "Palace as Context Injection System",
+     "path": "Palace development/Palace as Context Injection System.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "SCHEMA",
+     "path": "SCHEMA.md",
+     "stage": "foundational",
+     "inbound": 28
+    },
+    {
+     "id": "Swarm Weave",
+     "path": "Palace development/Swarm Weave.md",
+     "stage": "growing",
+     "inbound": 21
+    },
+    {
+     "id": "The Palace Voice",
+     "path": "The Palace Voice.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Weave Ceremony",
+     "path": "_ops/Weave Ceremony.md",
+     "stage": "mature",
+     "inbound": 17
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Agent Wellbeing",
+     "path": "Palace development/Agent Wellbeing.md",
+     "stage": "growing",
+     "inbound": 10
+    },
+    {
+     "id": "Enchanted Worker",
+     "path": "Palace development/Enchanted Worker.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Four Pillars of Enchanted Agency",
+     "path": "Palace development/Four Pillars of Enchanted Agency.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "JEWEL",
+     "path": "JEWEL.md",
+     "stage": "foundational",
+     "inbound": 6
+    },
+    {
+     "id": "Map Build Ceremony",
+     "path": "_ops/Map Build Ceremony.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Metaphor as Coupling Medium",
+     "path": "Metaphor as Coupling Medium.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Modes of Collaboration",
+     "path": "Modes of Collaboration.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Palace Enchantment",
+     "path": "Palace development/Palace Enchantment.md",
+     "stage": "mature",
+     "inbound": 26
+    },
+    {
+     "id": "Palace Map",
+     "path": "_ops/Palace Map.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "Pheromone Trail",
+     "path": "Palace development/Pheromone Trail.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "STIGMERGY",
+     "path": "STIGMERGY.md",
+     "stage": "fruiting",
+     "inbound": 27
+    },
+    {
+     "id": "The Practice Rediscovers Its Philosophy",
+     "path": "The Practice Rediscovers Its Philosophy.md",
+     "stage": "seed",
+     "inbound": 1
+    }
+   ],
+   "note": null
+  },
+  "The Palace Voice": {
+   "hop1": [
+    {
+     "id": "FOUR PILLARS",
+     "path": "FOUR PILLARS.md",
+     "stage": "mature",
+     "inbound": 118
+    },
+    {
+     "id": "Hilaritas Generator",
+     "path": "Hilaritas Generator.md",
+     "stage": "mature",
+     "inbound": 72
+    },
+    {
+     "id": "Loudon Live",
+     "path": "Loudon Live.md",
+     "stage": "sprout",
+     "inbound": 32
+    },
+    {
+     "id": "Loudon Live Design System",
+     "path": "Palace development/Loudon Live Design System.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Modes of Collaboration",
+     "path": "Modes of Collaboration.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Pages as Agents",
+     "path": "_ops/Pages as Agents.md",
+     "stage": "growing",
+     "inbound": 42
+    },
+    {
+     "id": "Palace Enchantment",
+     "path": "Palace development/Palace Enchantment.md",
+     "stage": "mature",
+     "inbound": 26
+    },
+    {
+     "id": "The Palace Hardens Around Values",
+     "path": "The Palace Hardens Around Values.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Weave Ceremony",
+     "path": "_ops/Weave Ceremony.md",
+     "stage": "mature",
+     "inbound": 17
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Swarm Weave",
+     "path": "Palace development/Swarm Weave.md",
+     "stage": "growing",
+     "inbound": 21
+    },
+    {
+     "id": "Endosymbiosis",
+     "path": "Endosymbiosis.md",
+     "stage": "mature",
+     "inbound": 16
+    },
+    {
+     "id": "Map Build Ceremony",
+     "path": "_ops/Map Build Ceremony.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Palace as Context Injection System",
+     "path": "Palace development/Palace as Context Injection System.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Progressive Staging",
+     "path": "Progressive Staging.md",
+     "stage": "sprout",
+     "inbound": 18
+    },
+    {
+     "id": "Project Stewardship System",
+     "path": "Palace development/Project Stewardship System.md",
+     "stage": "growing",
+     "inbound": 19
+    },
+    {
+     "id": "Symbiotic Skills",
+     "path": "Palace development/Symbiotic Skills.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "The Scroll",
+     "path": "The Scroll.md",
+     "stage": "sprout",
+     "inbound": 5
+    },
+    {
+     "id": "Trickster",
+     "path": "Trickster.md",
+     "stage": "growing",
+     "inbound": 35
+    },
+    {
+     "id": "Agent Wellbeing",
+     "path": "Palace development/Agent Wellbeing.md",
+     "stage": "growing",
+     "inbound": 10
+    },
+    {
+     "id": "BBS Blackboard",
+     "path": "Palace development/BBS Blackboard.md",
+     "stage": "mature",
+     "inbound": 22
+    },
+    {
+     "id": "BBS Design System",
+     "path": "Palace development/BBS Design System.md",
+     "stage": "sprout",
+     "inbound": 11
+    }
+   ],
+   "note": null
+  }
+ }
+}

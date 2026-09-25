@@ -1,0 +1,167 @@
+{
+ "cluster": "B1",
+ "lens": "bridge",
+ "members_read": [
+  "1D Wavetable Scanning.md",
+  "Animate the Background.md",
+  "Shop/Image-to-3D Smith.md",
+  "PDL Renderer.md",
+  "Projects/Portamento and Physical Pitch Modeling.md",
+  "Shop/Remotion.md",
+  "People/Buckminster Fuller.md",
+  "Dub Lineage.md",
+  "Entry Conatus.md",
+  "People/Julia Cameron.md",
+  "Merleau-Ponty.md",
+  "Striatum.md"
+ ],
+ "bridge_findings": [
+  {
+   "tool": "Projects/Portamento and Physical Pitch Modeling.md",
+   "thought": "Merleau-Ponty.md",
+   "quote_tool": "\"The glide does not happen to the pitch. The pitch IS the glide. Every moment of the trajectory is a moment of physical settling. Listen to where the voice overshoots; that is where the body is alive.\"",
+   "quote_thought": "\"The hand reaching for the cup does not first form a mental representation and then execute it; the reaching IS a form of intentionality in its own right... There is a knowing-how that is not a watered-down knowing-that.\"",
+   "shared_structure": "Both refuse a discrete-state-plus-interpolation model of process in favor of continuous, embodied trajectory as the primary reality \u2014 motion isn't computed toward a target, it IS the target-seeking.",
+   "fidelity_test": "Swapped in Striatum (also thought-side, also touches motor/timing) \u2014 the reading collapses: Striatum's contribution is procedural-learning mechanism, not a claim that trajectory-as-such is prior to representation. Swapped in Remotion or PDL Renderer for the tool side \u2014 neither entry makes any ontological claim about pitch/motion as lived process. The pairing survives only with this specific tool and this specific thinker.",
+   "shared_pattern": "",
+   "spark": 4,
+   "classify": "link",
+   "proposed_type": "mirrors",
+   "thought_summary": "Two independent derivations of the same claim \u2014 continuous embodied process is ontologically prior to discrete representation \u2014 arrived at from physics/DSP on one side and phenomenology on the other, with no evidence either entry knew the other existed."
+  },
+  {
+   "tool": "Projects/Portamento and Physical Pitch Modeling.md",
+   "thought": "Striatum.md",
+   "quote_tool": "\"If each mode is viewed as an oscillator with its own natural frequency and damping, and they are weakly coupled... then the system is a coupled oscillator network. The modes do not settle independently; they are coupled via the acoustic boundary... This connects to Kuramoto Coupling.\"",
+   "quote_thought": "\"The basal ganglia, including the striatum, are essential for beat-based timing \u2014 detecting and predicting rhythmic patterns... This connects to Kuramoto Coupling: the striatum may be part of the biological implementation of the phase-locking dynamics that Kuramoto describes mathematically.\"",
+   "shared_structure": "Both entries, independently, reach for the same coupled-oscillator/phase-locking vocabulary to explain a domain that has no obvious a priori reason to be described that way \u2014 vibrating string/vocal-fold modes on one side, basal ganglia timing circuits on the other.",
+   "fidelity_test": "Swapped in Merleau-Ponty for the thought side \u2014 his phenomenology never invokes coupling or phase-locking; the resonance is specific to Striatum's neuroscience. Swapped in PDL Renderer or Remotion for the tool side \u2014 neither touches multi-mode coupling or timing at all. The pairing is genuine, not an artifact of both already pointing at the Kuramoto Coupling hub.",
+   "spark": 3,
+   "classify": "link",
+   "proposed_type": "mirrors"
+  },
+  {
+   "tool": "Animate the Background.md",
+   "thought": "Dub Lineage.md",
+   "quote_tool": "\"What you authored \u2014 the hero, the camera, the staging \u2014 stays crisp and exactly where you drew it. What should breathe \u2014 sky, smoke, fire, water, a crowd \u2014 gets real motion... author what matters, let the model animate what merely lives.\"",
+   "quote_thought": "\"From King Tubby's stripping of the riddim to Lee 'Scratch' Perry's cosmic deconstructions, dub established that removing and transforming is as creative as adding... Subtraction is composition. The mixing board is the instrument. The engineer plays.\"",
+   "shared_structure": "Both name a production discipline of keeping a stable authored substrate fixed while a technical medium (mixing board / diffusion model) transforms only the space around it \u2014 the riddim stays, the echo moves; the drawn hero stays, the sky moves.",
+   "fidelity_test": "Swapped in Julia Cameron for the thought side \u2014 her practice is about unblocking a maker, not about a production technique that partitions substrate from transformable field; no resonance. Swapped in PDL Renderer or Remotion for the tool side \u2014 neither has a separate-and-preserve-then-transform structure. The pairing holds only for this specific pair.",
+   "spark": 4,
+   "classify": "link",
+   "proposed_type": "mirrors"
+  },
+  {
+   "tool": "Animate the Background.md",
+   "thought": "People/Julia Cameron.md",
+   "quote_tool": "\"Plain SVD gives plausible motion... but not controllable direction... So for backgrounds, take what it gives and select, rather than fight it (Steer the Generator).\"",
+   "quote_thought": "\"You don't edit and you don't perform \u2014 you drain whatever is in the way... no re-reading for at least eight weeks.\"",
+   "shared_structure": "Both face an unruly, only-partly-controllable generative process and name a discipline for what to do with its output \u2014 but the disciplines are opposites: Cameron forbids judgment/selection entirely for a fixed period; the tool practice's answer is to select immediately, curating the good take out of many plausible ones.",
+   "fidelity_test": "Swapped in Buckminster Fuller for the thought side \u2014 his relationship to imperfect output is optimization, not a judgment-suspension-vs-selection question; no resonance. Swapped in PDL Renderer for the tool side \u2014 it has no take-many/select-one structure. The tension is specific to this pair.",
+   "spark": 3,
+   "classify": "link",
+   "proposed_type": "contradicts"
+  }
+ ],
+ "typed_relations": [
+  {
+   "source": "Projects/Portamento and Physical Pitch Modeling",
+   "target": "Merleau-Ponty",
+   "type": "mirrors",
+   "label": "trajectory-is-prior-to-representation",
+   "rationale": "The project's central claim \u2014 pitch is not a value that gets interpolated toward, it IS the continuous physical settling \u2014 is the DSP/physics re-derivation of Merleau-Ponty's motor intentionality: the body/system doesn't represent-then-move, the moving IS the meaning.",
+   "evidence": "\"The pitch IS the glide. Every moment of the trajectory is a moment of physical settling.\" / \"The reaching IS a form of intentionality in its own right.\"",
+   "kind": "bridge",
+   "spark": 4,
+   "deep_pattern": "Continuous embodied process as ontologically prior to discrete state \u2014 arrived at independently from acoustics/physical modeling and from phenomenology."
+  },
+  {
+   "source": "Projects/Portamento and Physical Pitch Modeling",
+   "target": "Striatum",
+   "type": "mirrors",
+   "label": "coupled-oscillators-across-material",
+   "rationale": "Both entries independently reach for phase-locking / coupled-oscillator vocabulary (and both cite Kuramoto Coupling) to explain their own domain \u2014 vibrating-mode coupling in strings/voice on one side, basal-ganglia beat-timing on the other.",
+   "evidence": "\"The modes do not settle independently; they are coupled via the acoustic boundary.\" / \"the striatum may be part of the biological implementation of the phase-locking dynamics that Kuramoto describes mathematically.\"",
+   "kind": "bridge",
+   "spark": 3,
+   "deep_pattern": "Same coupling mathematics recognized in two unrelated physical substrates."
+  },
+  {
+   "source": "Animate the Background",
+   "target": "Dub Lineage",
+   "type": "mirrors",
+   "label": "preserve-the-substrate-transform-the-field",
+   "rationale": "Both name a production discipline where a stable authored core is kept fixed while a technical medium transforms only the surrounding field \u2014 dub keeps the riddim and echoes the space; the compositing practice keeps the drawn hero and animates the sky/smoke around him.",
+   "evidence": "\"What you authored... stays crisp... What should breathe... gets real motion.\" / \"Subtraction is composition. The mixing board is the instrument. The engineer plays.\"",
+   "kind": "bridge",
+   "spark": 4,
+   "deep_pattern": "A production philosophy \u2014 hold the substrate, transform the field around it \u2014 recurring across analog studio craft and generative-video compositing."
+  },
+  {
+   "source": "Animate the Background",
+   "target": "Julia Cameron",
+   "type": "contradicts",
+   "label": "select-immediately-vs-suspend-judgment",
+   "rationale": "Both name a discipline for handling an unruly, only-partly-controllable generative output \u2014 Cameron forbids any judgment or re-reading for weeks; the compositing practice's rule is to select the best take immediately out of many plausible generations. Productive tension on how to treat generative overflow, not a resolved question.",
+   "evidence": "\"take what it gives and select, rather than fight it\" / \"you don't edit and you don't perform... no re-reading for at least eight weeks.\"",
+   "kind": "bridge",
+   "spark": 3,
+   "deep_pattern": "Two opposite answers to the same problem: what do you do with imperfect, abundant generative output before it can be trusted?"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "1D Wavetable Scanning",
+   "target": "pack_wavetable.py",
+   "type": "connects-to",
+   "label": "centroid-sort-source",
+   "phrase": "\"This is the order [[pack_wavetable.py]] produces and the one most user-facing wavetable libraries should default to\"",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Animate the Background",
+   "target": "Line-Art Layer Decomposition",
+   "type": "emerged-from",
+   "label": "folded-in-source",
+   "phrase": "\"Folded in 2026-07-06 from [[Line-Art Layer Decomposition]] \u2014 the same four steps... generalized from two layers to N\"",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "1D Wavetable Scanning",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward_vector is active and outward-reaching",
+   "graffiti_note": "Body is well past sprout's 150-400 word / 1-2 link band: 4 typed links, cross-domain reach into Waveguide Synthesizer's geometry-is-the-data pattern, and a fully worked design rationale. Reads as growing already.",
+   "face": "none"
+  },
+  {
+   "entry": "Entry Conatus",
+   "stage_current": "sprout",
+   "stage_proposed": "growing or mature",
+   "vector_issue": "none \u2014 forward_vector is exemplary conatus-bearing prose (the entry's own subject matter)",
+   "graffiti_note": "8 typed links, 8 inbound (per room file), a fully worked example, an origin narrative, and five open questions \u2014 this is deep, generative, cross-cutting palace infrastructure, not a sprout by any word-count or link-count reading in SCHEMA \u00a72.",
+   "face": "none"
+  },
+  {
+   "entry": "Merleau-Ponty",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward_vector is active and names a concrete next development",
+   "graffiti_note": "12 typed links, 10 inbound (per room file), a full worked STIGMERGY application, and now (per this weave) at least two more genuine cross-pillar resonances (Portamento, potentially Striatum). Well past sprout's 1-2 link band.",
+   "face": "none"
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "Preserve-the-substrate, transform-the-field \u2014 a production discipline where a fixed authored core is held still while a technical medium (mixing board, diffusion model, any generative field-filler) is given license to transform only what surrounds it.",
+   "why_load_bearing": "It names something both Dub Lineage and Animate the Background are independently practicing and would sharpen both if made explicit as its own concept \u2014 currently the pattern is implicit in each entry's specific craft rather than named as a transferable production principle.",
+   "crossing_entries": [
+    "Dub Lineage",
+    "Animate the Background"
+   ]
+  }
+ ],
+ "summary": "Six tool-side entries and six thought-side entries, none linked to each other before this pass. Most pairings were, as expected, null \u2014 a Blender specialist and a poet of morning pages mostly have nothing to say to each other, and I didn't force it. Four pairings survived the fidelity test. The strongest is Portamento and Physical Pitch Modeling against Merleau-Ponty: the project's DSP claim that \"the pitch IS the glide\" \u2014 trajectory as prior to representation \u2014 is the physics re-derivation of motor intentionality, arrived at with no evidence either side knew the other existed. A second, quieter one: Portamento and Striatum both reach independently for Kuramoto's coupled-oscillator language to explain their own domain (vibrating modes vs. basal-ganglia timing) \u2014 genuine convergence, not just a shared hub. Animate the Background and Dub Lineage share a deeper production philosophy neither names explicitly \u2014 hold the authored substrate fixed, let the technical medium transform only the field around it (riddim/echo; drawn hero/animated sky) \u2014 worth a synthesis pass of its own. And Animate the Background's \"take what it gives and select\" sits in real, productive tension with Julia Cameron's \"don't judge, don't select, don't re-read\" \u2014 two opposite disciplines for the same problem of untrustworthy generative abundance. Two body-text mentions ([[pack_wavetable.py]] in 1D Wavetable Scanning, [[Line-Art Layer Decomposition]] in Animate the Background) are structurally significant but ungirded by a frontmatter link. Three entries (1D Wavetable Scanning, Entry Conatus, Merleau-Ponty) read as understaged relative to SCHEMA \u00a72's word-count and link-count bands for `sprout` \u2014 worth a stage bump at the next Weave pass, not a rewrite."
+}

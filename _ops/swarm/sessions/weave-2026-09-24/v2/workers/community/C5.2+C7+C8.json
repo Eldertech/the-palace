@@ -1,0 +1,123 @@
+{
+ "cluster": "C5.2+C7+C8",
+ "lens": "community",
+ "members_read": [
+  "CLAUDE.md",
+  "ELDER.md",
+  "SCHEMA \u2014 Reference.md",
+  "Shop/D3.js.md",
+  "Shop/LaTeX.md",
+  "Shop/Matplotlib.md",
+  "Shop/Mermaid.md",
+  "Shop/Observable Plot.md",
+  "Agent Toolbox.md",
+  "_ops/swarm/sessions/weave-2026-09-24/v2/new-entries-block.md"
+ ],
+ "summary": "This room is two subclusters stitched together by graph topology, not by theme: the palace's foundational meta trio (CLAUDE, ELDER, SCHEMA \u2014 Reference) and five Shop visualization Specialists (D3.js, LaTeX, Matplotlib, Mermaid, Observable Plot). The Shop tools are already densely and correctly cross-linked to each other (alternative-to / couples-with / enables chains that route briefs correctly), and the meta trio is already linked to itself \u2014 but I found no genuine bridge between the two halves; the meta docs never name a Shop tool and vice versa, so I'm not forcing one. The real finds were inside each half: a backwards `enables` link on Observable Plot (it claims to enable D3.js when its own prose says the opposite \u2014 Plot is built on D3, so D3 is the precondition), and a cluster of unsung wikilinks in ELDER and SCHEMA \u2014 Reference \u2014 dense reference prose that names entries (most usefully, the newcomer [[Agent Toolbox]], plus [[Palace Orchestrator]] and [[Entry Conatus]]) without carrying them into frontmatter.",
+ "typed_relations": [
+  {
+   "source": "Observable Plot",
+   "target": "D3.js",
+   "type": "enables",
+   "current_type": "enables (misdirected)",
+   "kind": "retype",
+   "label": "built-on",
+   "rationale": "Observable Plot's own frontmatter records itself as enabling D3.js, labeled 'built-on' \u2014 but the body says the opposite relationship: Plot is built ON D3, so D3 is the precondition, not Plot. The enables direction should point D3.js \u2192 Observable Plot.",
+   "evidence": "Charter: \"I refuse jobs that want custom interactive web viz... those route to [[D3.js]] (I'm built on D3; the escape hatch is always available).\" Strengths: \"Built on D3 \u2014 the escape hatch to full custom control is always available.\"",
+   "spark": 2,
+   "deep_pattern": "A precondition link pointing away from its precondition \u2014 worth a general sweep for other 'built-on'/'underpins' labels that may share the same backwards pattern."
+  },
+  {
+   "source": "ELDER",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "tool-tiers",
+   "rationale": "ELDER's 'Age and its limits' section names the exact three-tier tool taxonomy (palace-reader / palace-writer / palace-orchestrator) that Agent Toolbox defines and owns, but the mention carries no frontmatter link. Agent Toolbox is also a priority newcomer (reached by only 2).",
+   "evidence": "\"a child that makes things keeps the tools its workshop needs; an elder is `palace-writer`, and an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]]).\"",
+   "spark": 2,
+   "deep_pattern": "ELDER states the age/tool-limit *principle*; Agent Toolbox is where that principle is actually mechanized into a roster. Fidelity test passed \u2014 this reasoning is specific to Agent Toolbox's actual profile table, not a generic 'see also.'"
+  },
+  {
+   "source": "SCHEMA \u2014 Reference",
+   "target": "Palace Orchestrator",
+   "type": "enables",
+   "kind": "new",
+   "label": "wire-for",
+   "rationale": "\u00a79 explicitly calls itself the spec and Palace Orchestrator the thing that executes it, with an imperative to read it first \u2014 a textbook enables relation (precondition \u2192 dependent), stated in the entry's own words but never wired into frontmatter.",
+   "evidence": "\"\u00a74 types the edges between entries; \u00a79 types the edges between agents ... This section is the wire; [[Palace Orchestrator]] is the executor. Read that before posting.\"",
+   "spark": 2
+  },
+  {
+   "source": "SCHEMA \u2014 Reference",
+   "target": "Entry Conatus",
+   "type": "connects-to",
+   "kind": "new",
+   "label": "forward-vector-discipline",
+   "rationale": "SCHEMA \u2014 Reference's own frontmatter-fields table sends the reader to Entry Conatus for the discipline of writing a forward_vector, but doesn't carry the link itself.",
+   "evidence": "\"The forward vector is the entry's articulated *conatus*: see [[Entry Conatus]] for the discipline of writing one.\"",
+   "spark": 1
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "ELDER",
+   "target": "Agent Toolbox",
+   "type": "connects-to",
+   "phrase": "an elder that dispatches others, `palace-orchestrator` ([[Agent Toolbox]])",
+   "structurally_significant": true
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "Palace Orchestrator",
+   "type": "enables",
+   "phrase": "This section is the wire; [[Palace Orchestrator]] is the executor. Read that before posting.",
+   "structurally_significant": true
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "Entry Conatus",
+   "type": "connects-to",
+   "phrase": "see [[Entry Conatus]] for the discipline of writing one",
+   "structurally_significant": true
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "Loudon Live Design System",
+   "type": "connects-to",
+   "phrase": "read the design manifest ... the [[Loudon Live Design System]] is the house dress",
+   "structurally_significant": false
+  },
+  {
+   "entry": "CLAUDE",
+   "target": "Palace Conatus",
+   "type": "connects-to",
+   "phrase": "Harmony with Loudon is phase coherence, not agreement \u2014 both sides move ([[Palace Conatus]])",
+   "structurally_significant": false
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "Pages as Agents",
+   "type": "connects-to",
+   "phrase": "the page IS the agent* ([[Pages as Agents]])",
+   "structurally_significant": false
+  },
+  {
+   "entry": "SCHEMA \u2014 Reference",
+   "target": "Project Stewardship System",
+   "type": "connects-to",
+   "phrase": "See [[Project Stewardship System]] for the stewardship-side framing",
+   "structurally_significant": false
+  }
+ ],
+ "bridge_findings": [],
+ "coherence_findings": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "open_question_resolutions": [],
+ "synthesis_spawn_flag": [],
+ "walk_results": [],
+ "flag_responses": []
+}

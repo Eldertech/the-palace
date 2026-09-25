@@ -1,0 +1,241 @@
+{
+ "lens": "community",
+ "id": "C5.1",
+ "members": [
+  {
+   "id": "Artifacts to Projects Migration \u2014 handoff",
+   "path": "_ops/Artifacts to Projects Migration \u2014 handoff.md",
+   "stage": "composting",
+   "inbound": 0
+  },
+  {
+   "id": "Baton Ceremony",
+   "path": "_ops/Baton Ceremony.md",
+   "stage": "mature",
+   "inbound": 10
+  },
+  {
+   "id": "Baton Ceremony \u2014 Context",
+   "path": "_ops/Baton Ceremony/Baton Ceremony \u2014 Context.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Closing Well",
+   "path": "Closing Well.md",
+   "stage": "growing",
+   "inbound": 22
+  },
+  {
+   "id": "Closing Well Ceremony",
+   "path": "_ops/Closing Well Ceremony.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "Deposit Archive",
+   "path": "_ops/Deposit Archive.md",
+   "stage": "dormant",
+   "inbound": 5
+  },
+  {
+   "id": "Deposit Ceremony",
+   "path": "_ops/Deposit Ceremony.md",
+   "stage": "growing",
+   "inbound": 26
+  },
+  {
+   "id": "Deposit Ceremony \u2014 Context",
+   "path": "_ops/Deposit Ceremony/Deposit Ceremony \u2014 Context.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Drift and Consolidation",
+   "path": "Drift and Consolidation.md",
+   "stage": "sprout",
+   "inbound": 6
+  },
+  {
+   "id": "Enrichment",
+   "path": "Enrichment.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Entry Conatus",
+   "path": "Entry Conatus.md",
+   "stage": "sprout",
+   "inbound": 8
+  },
+  {
+   "id": "Graffiti Pass \u2014 Handoff 2026-04-30",
+   "path": "_ops/Graffiti Pass \u2014 Handoff 2026-04-30.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Graffiti Pass \u2014 Handoff 2026-05-02",
+   "path": "_ops/Graffiti Pass \u2014 Handoff 2026-05-02.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2",
+   "path": "_ops/Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2.md",
+   "stage": "sprout",
+   "inbound": 0
+  },
+  {
+   "id": "Harvest Ceremony",
+   "path": "_ops/Harvest Ceremony.md",
+   "stage": "mature",
+   "inbound": 11
+  },
+  {
+   "id": "Harvest Ceremony \u2014 Context",
+   "path": "_ops/Harvest Ceremony \u2014 Context.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Image Embedding Standard",
+   "path": "_ops/Image Embedding Standard.md",
+   "stage": "mature",
+   "inbound": 2
+  },
+  {
+   "id": "Learning Materials and Canon",
+   "path": "Learning Materials and Canon.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Mermaid Diagram Standard",
+   "path": "_ops/Mermaid Diagram Standard.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "No Mind Checks Itself",
+   "path": "No Mind Checks Itself.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Palace Audit \u2014 2026-05-28",
+   "path": "_ops/Palace Audit \u2014 2026-05-28.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Palace Ceremonies",
+   "path": "_ops/Palace Ceremonies.md",
+   "stage": "growing",
+   "inbound": 17
+  },
+  {
+   "id": "Palace Quotes",
+   "path": "_ops/Palace Quotes.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Palace To-Do",
+   "path": "_ops/Palace To-Do.md",
+   "stage": "growing",
+   "inbound": 8
+  },
+  {
+   "id": "README - The Palace Guide",
+   "path": "README - The Palace Guide.md",
+   "stage": "foundational",
+   "inbound": 7
+  },
+  {
+   "id": "Reflective Practice",
+   "path": "Reflective Practice.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Return Ceremony",
+   "path": "_ops/Return Ceremony.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "Revival Ceremony",
+   "path": "_ops/Revival Ceremony.md",
+   "stage": "mature",
+   "inbound": 2
+  },
+  {
+   "id": "SCHEMA",
+   "path": "SCHEMA.md",
+   "stage": "foundational",
+   "inbound": 28
+  },
+  {
+   "id": "Schema Ceremony Proposal \u2014 exemplifies + member-of",
+   "path": "_ops/Schema Ceremony Proposal \u2014 exemplifies + member-of.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Self-Model Update Ceremony",
+   "path": "_ops/Self-Model Update Ceremony.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "Spore Check Ceremony",
+   "path": "_ops/Spore Check Ceremony.md",
+   "stage": "mature",
+   "inbound": 6
+  },
+  {
+   "id": "Substrate Skill",
+   "path": "_ops/Substrate Skill.md",
+   "stage": "mature",
+   "inbound": 16
+  },
+  {
+   "id": "Technical Diagram Standard",
+   "path": "_ops/Technical Diagram Standard.md",
+   "stage": "sprout",
+   "inbound": 0
+  },
+  {
+   "id": "Walk Ceremony",
+   "path": "_ops/Walk Ceremony.md",
+   "stage": "mature",
+   "inbound": 4
+  },
+  {
+   "id": "Weave Ceremony",
+   "path": "_ops/Weave Ceremony.md",
+   "stage": "mature",
+   "inbound": 17
+  },
+  {
+   "id": "Weave Ceremony \u2014 Context",
+   "path": "_ops/Weave Ceremony \u2014 Context.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "Weaving Memory into the Palace",
+   "path": "Weaving Memory into the Palace.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Worktree Practice",
+   "path": "Worktree Practice.md",
+   "stage": "growing",
+   "inbound": 0
+  }
+ ],
+ "directed_flags": {}
+}

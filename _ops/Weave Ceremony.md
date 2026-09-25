@@ -68,6 +68,8 @@ The Weave now runs as a **Multi-Lens Swarm Weave** — the map cut by several le
 
 The single-agent protocol below remains valid for: palaces under ~20 entries, quick topological spot-checks, or situations where Claude Code sub-agent orchestration is unavailable. For the current palace (100+ entries), execute as a Swarm Weave.
 
+**Ceremonies are woven too.** Since 2026-09-24 the map builder makes every `_ops/` ceremony card with a canon type a node, so ceremonies are read, linked and partitioned like any entry.
+
 **Standard opening steps:** Before dispatching workers, do two things in order. **First, load the foundation** (Protocol Step 0) — the Weave writes typed links and may promote or create entries, all of which [[SCHEMA]] governs; a Weave run without §4 in context is operating blind to the rules it is about to apply. **Second, run a [[Map Build Ceremony]]** (`"Let's build the map"`) to produce a fresh `palace-map-full-[date].json`. Workers use this map for neighbor resolution; the coordinator uses it for topology reporting. A Weave run without a fresh map is operating on stale topology.
 
 ## Ceremony Contract
@@ -115,7 +117,7 @@ Before anything else — before the map build, before dispatching a single worke
 
 The youngest entries get the boldest care. A newborn entry is the least-alive node in the palace, and only a Weave can wire its *inbound* links — those live in other entries' files, so a deposit cannot place them. This step makes new entries the Weave's priority citizens.
 
-Identify the new arrivals: entries with `born` since the last Weave (or files git-added since the last Weave commit), plus any `activation_count: 1` entry that hasn't found its neighborhood. Then set a **catch-up target** — a guideline, not a gate: aim to close roughly **80% of each newcomer's gap** to a typical entry's connectedness (a useful proxy is the median link-degree of established entries). These catch-up links are prioritized, not rationed — they don't count against the general introduction guideline (Step 3b), and in a Weave that welcomes new entries, widen that guideline by roughly a fifth to make room.
+Identify the new arrivals: entries with `born` since the last Weave (or files git-added since the last Weave commit), plus any `activation_count: 1` entry that hasn't found its neighborhood. Then set a **catch-up target** — a guideline, not a gate: aim to close roughly **80% of each newcomer's gap** to a typical entry's connectedness (measured as *reach* — the entries that point at it, plus its partners on symmetric links, which hold both ways — against the median reach of established entries; `new-entry-catchup.py` computes it). These catch-up links are prioritized, not rationed — they don't count against the general introduction guideline (Step 3b), and in a Weave that welcomes new entries, widen that guideline by roughly a fifth to make room.
 
 Then prime the whole swarm toward them: thread the new-entry list and a directive into **every** worker prompt — *"These entries were born this cycle and are under-connected. As you audit your entry, actively consider whether it should link to one of them; propose inbound links generously, but only genuine ones."* Because inbound links live in the established entries, meeting a newcomer's catch-up target is work spent *by the old graph on the new* — integrating the newcomer and enriching the old in a single motion. Genuine links only; reachability is never faked to hit a target.
 

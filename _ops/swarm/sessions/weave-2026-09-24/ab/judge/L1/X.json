@@ -1,0 +1,77 @@
+{
+ "arm": "X",
+ "room": "L1",
+ "total_proposals": 12,
+ "sample": [
+  {
+   "kind": "stage",
+   "source": "Does Personifying an Agent Change What It Does",
+   "type": "seed->growing",
+   "rationale": "none \u2014 forward_vector is specific and well-formed",
+   "item_id": "X1"
+  },
+  {
+   "kind": "unsung",
+   "source": "ControlNet as Topology",
+   "type": "connects-to (already covered in reverse)",
+   "target": "GenAI Camera",
+   "label": "not a genuine gap \u2014 GenAI Camera already declares exemplifies \u2192 ControlNet as Topology, which is the correct direction per the schema's directionality invariant. Flagging only because the body citation sits in a load-bearing subsection (\u00a7 Pose vs depth) and a fresh reader of ControlNet as Topology's frontmatter alone wouldn't see the relation without following the body prose.",
+   "rationale": "the rule, learned building the [[GenAI Camera]]: to keep a form but free its surface, condition on pose; to pin the surface, condition on depth",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "Shop/Maker",
+   "type": "connects-to",
+   "target": "Does Personifying an Agent Change What It Does",
+   "label": "the-control",
+   "rationale": "Maker is explicitly named as the experiment's control condition (role-voice, no gender, vs. Shopkeeper's temperament) but carries no link to the question it's the control for.",
+   "evidence": "\"the [[Maker]] is the control.\"",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "Steer the Generator",
+   "type": "exemplifies",
+   "target": "ControlNet as Topology",
+   "label": "control-the-structure",
+   "rationale": "Steer the Generator's first move \u2014 condition rather than describe \u2014 is a direct restatement of the armature/canyon-carving principle ControlNet as Topology develops at length, but the practice entry never cites the concept that grounds it.",
+   "evidence": "\"Control the structure that matters \u2014 don't describe it, condition on it.\"",
+   "item_id": "X4"
+  },
+  {
+   "kind": "relation",
+   "source": "BLUELINE",
+   "type": "spawned",
+   "target": "Block It in Blender, Ink It in genAI",
+   "label": "distilled-runbook",
+   "rationale": "The runbook declares emerged-from BLUELINE and is proven entirely in BLUELINE's own proofs folder, but BLUELINE never points forward to the artifact it produced \u2014 leaving it at 0 inbound despite being fully validated project output.",
+   "evidence": "\"Proven in [[BLUELINE]]; the scripts live in `Projects/BLUELINE/proofs/blender-handdrawn/`.\"",
+   "item_id": "X5"
+  },
+  {
+   "kind": "relation",
+   "source": "Hand-Drawn 3D Look",
+   "type": "connects-to",
+   "target": "Block It in Blender, Ink It in genAI",
+   "label": "the-runbook",
+   "rationale": "The runbook is where Hand-Drawn 3D Look's own claim (\"proven the redraw survives on a posed figure\") gets its concrete proof; the runbook cites Hand-Drawn 3D Look as \"the look,\" but the look-menu entry doesn't point to the runbook that operationalizes it.",
+   "evidence": "\"The look + the when-to-use-what matrix: [[Hand-Drawn 3D Look]].\"",
+   "item_id": "X6"
+  },
+  {
+   "kind": "stage",
+   "source": "LDN RTM",
+   "type": "sprout->growing",
+   "rationale": "none",
+   "item_id": "X7"
+  },
+  {
+   "kind": "stage",
+   "source": "GenAI Camera",
+   "type": "growing->fruiting",
+   "rationale": "none",
+   "item_id": "X8"
+  }
+ ]
+}

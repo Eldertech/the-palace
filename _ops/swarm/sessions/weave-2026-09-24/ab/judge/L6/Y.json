@@ -1,0 +1,87 @@
+{
+ "arm": "Y",
+ "room": "L6",
+ "total_proposals": 11,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Spinoza",
+   "type": "exemplifies",
+   "target": "Making a Palace Citizen",
+   "label": "worked-instance",
+   "rationale": "Making a Palace Citizen's \u00a7Worked instances names Spinoza 'first flagship; the archetypal enchantment target' \u2014 the taxonomic link belongs on the instance's side per the directionality invariant (exemplifies points back to its ground), and Spinoza.md carries no link to the method that built it.",
+   "evidence": "\"**[[Spinoza]]** \u2014 first flagship; the archetypal enchantment target.\" \u2014 Making a Palace Citizen.md \u00a7Worked instances",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Mixture of Experts",
+   "type": "connects-to",
+   "target": "Bring In a Bigger Mind",
+   "label": "after-the-fact-routing",
+   "rationale": "Weaker/optional: Bring In a Bigger Mind already links out to Mixture of Experts ('routing-to-a-differently-textured-mind'); a reciprocal would let MoE's reader see the concrete, sequential (finish-then-route) case rather than only the architectural pattern. Lower confidence than the others \u2014 flagging rather than pressing.",
+   "evidence": "target: \"[[Mixture of Experts]]\", type: connects-to, label: routing-to-a-differently-textured-mind \u2014 Bring In a Bigger Mind.md frontmatter",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "relation",
+   "source": "Donella Meadows",
+   "type": "exemplifies",
+   "target": "Making a Palace Citizen",
+   "label": "worked-instance",
+   "rationale": "Same pattern as Spinoza \u2014 named a worked instance in Making a Palace Citizen's body, no reciprocal link in Donella Meadows.md.",
+   "evidence": "\"**[[Donella Meadows]]** and **[[John Cage]]** \u2014 built the same day to test register spread\" \u2014 Making a Palace Citizen.md",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "Pages as Agents",
+   "type": "connects-to",
+   "target": "Making a Palace Citizen",
+   "label": "person-pages-untested",
+   "rationale": "Pages as Agents' own practice field names its exact gap: it has only tested whether a page's voice is recognizable on concept pages, not on the person-pages where embodiment actually lives \u2014 which is precisely what Making a Palace Citizen builds and tests.",
+   "evidence": "\"Still thin: I've run it once, on concept pages, not on the person-pages where embodiment actually lives.\" \u2014 Pages as Agents.md",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "Threshold Conatus",
+   "type": "connects-to",
+   "target": "Making a Palace Citizen",
+   "label": "page-scale-instance",
+   "rationale": "Making a Palace Citizen's own body says 'This is [[Threshold Conatus]] at the page scale: each dispatch is a threshold where the citizen's self-description is tested and, sometimes, revised' \u2014 a direct, named application \u2014 yet Threshold Conatus.md (checked in full) never lists Making a Palace Citizen among its own links.",
+   "evidence": "\"This is [[Threshold Conatus]] at the page scale: each dispatch is a threshold where the citizen's self-description is tested\" \u2014 Making a Palace Citizen.md",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "relation",
+   "source": "The Dichotomy of Control",
+   "type": "contradicts",
+   "target": "Martin Heidegger",
+   "label": "thrownness-vs-control",
+   "rationale": "Heidegger's own frontmatter already declares this contradiction; thrownness (Geworfenheit) is a direct challenge to the premise that anything is cleanly 'up to you' before you're thrown into it. The Dichotomy of Control.md (checked) has no reciprocal link.",
+   "evidence": "target: \"[[The Dichotomy of Control]]\", type: contradicts, label: thrownness-vs-control \u2014 Martin Heidegger.md frontmatter",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "relation",
+   "source": "John Cage",
+   "type": "exemplifies",
+   "target": "Making a Palace Citizen",
+   "label": "worked-instance",
+   "rationale": "Same pattern \u2014 'the non-philosopher stress test' for the method, no reciprocal link in John Cage.md.",
+   "evidence": "\"[[John Cage]]** (the non-philosopher stress test)\" \u2014 Making a Palace Citizen.md \u00a7Worked references",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "relation",
+   "source": "Palace as Context Injection System",
+   "type": "connects-to",
+   "target": "The Adjacent Affordance",
+   "label": "symlink-instance",
+   "rationale": "The Adjacent Affordance names the space-free symlink workaround, sourced to this exact entry, as one of its three founding instances \u2014 but Palace as Context Injection System.md never cites the pattern it's an instance of.",
+   "evidence": "\"Claude Code's @import cannot resolve filenames with spaces \u2014 so a space-free symlink stands in as an alias... (see [[Palace as Context Injection System]] \u00a7 The @import Floor).\" \u2014 The Adjacent Affordance.md",
+   "item_id": "Y8"
+  }
+ ]
+}

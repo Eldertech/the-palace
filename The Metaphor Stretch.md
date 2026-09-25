@@ -5,7 +5,7 @@ pillars: [creation, tools, philosophy, practice]
 born: 2026-04
 last_activated: 2026-04
 activation_count: 1
-stage: sprout
+stage: growing
 confidence: working
 energy: high
 forward_vector: "I am the gap between physics and playability where instrument design actually happens. I want to become the named taxonomy of how boundary-crossing instruments translate physical constraints into musical agency — those Decision Points where the physics gives shape but the designer gives the instrument a home."
@@ -44,6 +44,14 @@ This is where the most important teaching moments live. The moment a student und
 3. **Decay Scaling** — Anharmonic phonon-phonon coupling guarantees that high-frequency modes decay faster than low-frequency modes. The physics guarantees this *direction*; it does not specify the *rate*. The decay exponent is where the instrument designer's hand touches the physics.
 
 4. **Fidelity Claim** — Pure sines, shaped decay, or band-limited noise per partial (approaching the continuous DOS). Each makes a different claim about what the sound represents. This is the deepest stretch: the explicit statement of what the instrument is.
+
+The Fidelity Claim first arrived as its own question, *what claim does scientific sonification make?*, at the end of the first Crystal Synthesizer audio session: the dispersion math was right, the audio existed, and nobody could say what it was telling you about crystals. The physics wasn't in doubt. The claim was. Three paths came out of it, and this Decision Point is where you pick one:
+
+- **Lean into discrete.** Derived from physics, not a simulation of it. "These frequency ratios are real; the rest is composition" — the way a gamelan is shaped by bronze without simulating it. The most musically honest, the least scientifically ambitious. It teaches instrument design.
+- **Approach continuous.** Band-limited noise per DOS bin, closing the gap between N voices and 10²² modes. "This approximates what you'd hear if you could transduce THz vibration straight into audio." The most ambitious, the hardest to perform, and the beating dissolves into texture. It teaches scientific visualization.
+- **Separate the claims.** Two versions or two modes, each labeled: one maximally faithful (*this is what the dispersion relation contains*), one musically shaped (*this is a composition drawn from it*). It refuses to collapse the difference, which makes it the most honest about knowledge and maybe the most teachable. It teaches epistemology.
+
+The honest artifact below cuts across all three. Going continuous removes the beating, and with it a feature that points truly at the physics. Leaning discrete keeps it and calls it composition. Separating the claims can keep it in the shaped mode and drop it in the faithful one. The code's `FIDELITY` parameter is an early sketch of that third path. None is chosen yet. Performing or teaching the instrument for the first time will force the choice, and the right claim may differ for scientists, musicians, and students.
 
 ## The Honest Artifact
 

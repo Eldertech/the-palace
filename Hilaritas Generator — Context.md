@@ -46,6 +46,6 @@ October 2024 marked a threshold in Loudon's evolution as a teacher — navigated
 
 - Can hilaritas be measured? Is there a phenomenological or physiological signature? Flow-state research (Csikszentmihalyi) may overlap but isn't identical.
 - Is there a minimum number of pillars that must be active for hilaritas to emerge? Can you get it from just two?
-- The inverse: what is a "tristitia generator"? Identifying the patterns that reliably decrease power-to-act would be as valuable. See [[Tristitia Generator]].
+- The inverse: what is a "tristitia generator"? Identifying the patterns that reliably decrease power-to-act would be as valuable. See [[Spinoza Conatus#The Affects: Tristitia]].
 - **Can hilaritas be designed for in asynchronous, one-to-many formats, or does it require live, responsive encounter?** Loudon's autodidact mission requires reaching people who will never be in the room. This question determines the shape of the curriculum this entry wants to become.
 - Does [[Identity Molting]] need to become part of the learning architect's toolkit? A learner whose identity is the obstacle requires a different design than one who simply doesn't know something yet.

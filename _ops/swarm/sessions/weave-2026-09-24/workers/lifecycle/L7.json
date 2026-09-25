@@ -1,0 +1,159 @@
+{
+ "cluster": "L7",
+ "lens": "lifecycle",
+ "summary": "This room's five targets mostly already know their own neighbourhood \u2014 four of the five had already linked outward to every hop1 neighbour in their own frontmatter, so the real work was inbound: finding which of those neighbours (or their neighbours) owed a link back. The Substrate Drifts is the clean case \u2014 a zero-inbound seed entry whose hop1 ring (BBS Blackboard, SUBSTRATE, Project Stewardship System) are literally the systems its bugs happened on, and none of the three pointed back before this walk. Zoom Out to the Structure's hop2 ring turned up the actual RunPod story it cites as a worked example (RunPod GPU Backend, assume multi-agent) plus a genuine cross-domain bridge to Christopher Alexander's pattern language. Two targets (The Practice Rediscovers Its Philosophy, Weaving Memory into the Palace) turned out to have unsung paths \u2014 a named entry sitting unlinked in their own body prose (Trickster Commit; Worktree Practice, already wikilinked but missing from frontmatter) \u2014 worth fixing before chasing further inbound. Weaving Memory into the Palace's forward vector (\"I want to become a named step in the Weave Ceremony\") is stale: Weave Ceremony already links back to it (memory-home) \u2014 the aspiration has already landed and the vector should say so.",
+ "typed_relations": [
+  {
+   "source": "RunPod GPU Backend",
+   "target": "Zoom Out to the Structure",
+   "type": "connects-to",
+   "label": "the-fix-that-became-commons",
+   "kind": "inbound-walk",
+   "rationale": "Zoom Out to the Structure's own worked example is 'A one-file RunPod pod-naming fix \u2192 The Commons, a whole coordination layer for any shared external service.' RunPod GPU Backend is that fix's object \u2014 its reader would want the zoom-out story of how its own scar became a general structure.",
+   "evidence": "\"A one-file RunPod pod-naming fix \u2192 The Commons, a whole coordination layer for any shared external service.\" (Zoom Out to the Structure.md:39)",
+   "spark": 2
+  },
+  {
+   "source": "assume multi-agent",
+   "target": "Zoom Out to the Structure",
+   "type": "connects-to",
+   "label": "the-scar-that-zoomed-out",
+   "kind": "inbound-walk",
+   "rationale": "assume multi-agent's 'scar' section (the lost RunPod day, phantom nodes) is the exact incident Zoom Out cites as its example of a small fix revealing a missing structure. The two entries narrate the same event from complementary sides.",
+   "evidence": "\"A full day (2026-07-02) looked like a RunPod outage... The real cause was a second Claude on the same account.\" (assume multi-agent.md:43-44)",
+   "spark": 2
+  },
+  {
+   "source": "Christopher Alexander",
+   "target": "Zoom Out to the Structure",
+   "type": "mirrors",
+   "label": "recurring-friction-is-a-pattern",
+   "kind": "bridge",
+   "rationale": "Zoom Out to the Structure's honest signal for 'this is a doorway, not just a bug' is recurring friction: 'when the same shape of problem keeps coming back, that repetition is the absence talking.' That is exactly Alexander's definition of a pattern \u2014 a problem that recurs in a context, worth naming and reusing. Same structure, different material (Alexander: architecture; this entry: engineering practice).",
+   "evidence": "\"The honest signal is recurring friction \u2014 when the same shape of problem keeps coming back, that repetition is the absence talking, and that's when to build the structure.\" (Zoom Out to the Structure.md:50)",
+   "spark": 4
+  },
+  {
+   "source": "Metaphor as Coupling Medium",
+   "target": "The Practice Rediscovers Its Philosophy",
+   "type": "connects-to",
+   "label": "deliberate-vs-found",
+   "kind": "inbound-walk",
+   "rationale": "Metaphor as Coupling Medium is the deliberate act of bridging two domains through an image; The Practice Rediscovers Its Philosophy documents the same bridge happening by accident, with nobody intending it. Worth reading together as the intentional and unintentional halves of one mechanism.",
+   "spark": 3
+  },
+  {
+   "source": "Scale-Stratified Identity",
+   "target": "The Remembering Page",
+   "type": "connects-to",
+   "label": "memory-earns-the-scale-shift",
+   "kind": "inbound-walk",
+   "rationale": "Scale-Stratified Identity dissolves 'is it still the same?' into 'same at which scale?'; The Remembering Page proposes a specific mechanism for the scale where identity is proposed to change \u2014 memory as the ledger that earns a self-edit across several encounters rather than seizing it in one. Both already link to Threshold Conatus and Identity Molting independently; this closes the triangle.",
+   "spark": 3
+  },
+  {
+   "source": "BBS Blackboard",
+   "target": "The Substrate Drifts",
+   "type": "connects-to",
+   "label": "where-it-bit",
+   "kind": "inbound-walk",
+   "rationale": "The Substrate Drifts documents three bugs from treating the live blackboard as static \u2014 BBS Blackboard is that blackboard. Its own frontmatter already uses the label 'where-it-bit' for this relationship; the return link was simply missing.",
+   "evidence": "\"Three independent bugs in the STIGMERGY v0.3 session shared one root: the code treated the palace blackboard as static and uniform when it is in fact living and heterogeneous.\" (The Substrate Drifts.md:32)",
+   "spark": 2
+  },
+  {
+   "source": "SUBSTRATE",
+   "target": "The Substrate Drifts",
+   "type": "connects-to",
+   "label": "pending-promotion",
+   "kind": "inbound-walk",
+   "rationale": "The Substrate Drifts carries an explicit editorial note asking to be promoted into SUBSTRATE.md as a standing design rule once it proves out across more tools \u2014 SUBSTRATE (the deepens-ground the target already names) should be pointing at the candidate waiting to be folded in.",
+   "evidence": "\"CLAUDE \u2192 LOUDON: candidate to promote into SUBSTRATE.md as a standing design rule once it proves out across more tools than STIGMERGY.\" (The Substrate Drifts.md:53)",
+   "spark": 2
+  },
+  {
+   "source": "Project Stewardship System",
+   "target": "The Substrate Drifts",
+   "type": "connects-to",
+   "label": "the-accumulator-bites",
+   "kind": "inbound-walk",
+   "rationale": "The Substrate Drifts names Project Stewardship System as one of the four registers that make the board a moving target ('it accumulates \u2014 Project Stewardship System keeps depositing requests no one has answered yet'). The accumulator entry should point at the concrete case where its own accumulation broke something.",
+   "evidence": "\"it accumulates \u2014 [[Project Stewardship System]] keeps depositing requests no one has answered yet\" (The Substrate Drifts.md:42)",
+   "spark": 2
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "The Practice Rediscovers Its Philosophy",
+   "target": "Trickster Commit",
+   "type": "connects-to",
+   "label": "the-strongest-pair",
+   "phrase": "Trickster Commit (safety through reversibility, not through prevention) *is* Lao Tzu's wu wei \u2014 the pass's single strongest find.",
+   "structurally_significant": true
+  },
+  {
+   "entry": "The Substrate Drifts",
+   "target": "STIGMERGY",
+   "type": "connects-to",
+   "label": "v0.3-session",
+   "phrase": "Three independent bugs in the STIGMERGY v0.3 session shared one root",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Weaving Memory into the Palace",
+   "target": "Worktree Practice",
+   "type": "connects-to",
+   "label": "consolidated-example",
+   "phrase": "a cluster of git/worktree cautions \u2192 a single \"shared-tree discipline\" nugget \u2192 [[Worktree Practice]]",
+   "structurally_significant": true
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "Weaving Memory into the Palace",
+   "stage_current": "sprout",
+   "vector_issue": "Forward vector's headline ambition \u2014 'I want to become a named step in the [[Weave Ceremony]]' \u2014 is already fulfilled: Weave Ceremony.md:41-43 links to this entry with label 'memory-home'. The vector reads as an open want that has, in fact, landed.",
+   "face": "none",
+   "graffiti_note": ""
+  },
+  {
+   "entry": "The Remembering Page",
+   "stage_current": "sprout",
+   "vector_issue": "",
+   "face": "none",
+   "graffiti_note": "Energy: very high, hook_quality: 9, beauty: 8, nine outbound links and a fully worked-out mechanism (perspectival memory, append-only, earned-not-seized identity) \u2014 reads considerably more developed than 'sprout' usually means in this room. Worth a second look at whether it should be 'growing.'"
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Zoom Out to the Structure",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Stage (sprout) and vector still fit; once RunPod GPU Backend, assume multi-agent, and Christopher Alexander are wired the entry is well past its single-inbound isolation and could graduate toward growing."
+  },
+  {
+   "target": "The Practice Rediscovers Its Philosophy",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "The real find here was an unsung outbound path (Trickster Commit) rather than new inbound; Metaphor as Coupling Medium is one genuine inbound add. Stage (seed) and vector still fit \u2014 this entry is young and specific."
+  },
+  {
+   "target": "The Remembering Page",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "One genuine inbound (Scale-Stratified Identity). See entry_health_flags \u2014 content depth argues for a stage bump independent of this walk."
+  },
+  {
+   "target": "The Substrate Drifts",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "The room's clearest find: a zero-inbound seed entry whose three hop1 neighbours (BBS Blackboard, SUBSTRATE, Project Stewardship System) are literally the systems it documents bugs on, none pointing back before this walk. Stage (seed) still fits \u2014 it is a tight, single-session case study, not yet generalized."
+  },
+  {
+   "target": "Weaving Memory into the Palace",
+   "disposition": "link",
+   "inbound_proposed": 0,
+   "note": "Already sufficiently wired \u2014 Weave Ceremony links back (see entry_health_flags: the forward_vector's aspiration for this is stale, already achieved). The genuine find at this target was an unsung outbound path (Worktree Practice), not new inbound."
+  }
+ ]
+}

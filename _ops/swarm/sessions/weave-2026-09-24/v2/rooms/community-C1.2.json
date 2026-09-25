@@ -1,0 +1,503 @@
+{
+ "lens": "community",
+ "id": "C1.2",
+ "members": [
+  {
+   "id": "Phoneme Choir",
+   "path": "Projects/Phoneme Choir.md",
+   "type": "project",
+   "stage": "fruiting",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 emerged-from \u2190 Audition Gate",
+    "\u2190 emerged-from \u2190 Entry Conatus",
+    "\u2190 mirrors \u2190 Talking Keyboard  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Generative Sample Libraries",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Modes of Collaboration",
+    "\u2192 connects-to \u2192 Substrate Skill",
+    "\u2192 emerged-from \u2192 Generative Sample Libraries",
+    "\u2192 enables \u2192 The Metaphor Stretch",
+    "\u2192 mirrors \u2192 Talking Keyboard"
+   ]
+  },
+  {
+   "id": "Photonic Time Crystals",
+   "path": "Photonic Time Crystals.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 8,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Floquet Theory  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Floquet Time-Modulated Loops",
+    "\u2192 connects-to \u2192 2D Torus Wavetable Synthesizer",
+    "\u2192 connects-to \u2192 Floquet Theory",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Mathieu Equation",
+    "\u2192 connects-to \u2192 Wavetable Space as Torus",
+    "\u2192 deepens \u2192 Frequency-Time Duality",
+    "\u2192 emerged-from \u2192 Floquet Time-Modulated Loops",
+    "\u2192 mirrors \u2192 Crystal Synthesizer",
+    "\u2192 mirrors \u2192 Shimmer Cloud"
+   ]
+  },
+  {
+   "id": "Piano String Inharmonicity",
+   "path": "Projects/Piano String Inharmonicity.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 14,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Action Potential Oscillator  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Modes of Collaboration  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Ohm's Law  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Shepard Tone Synthesizer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 The Curve Is the Material  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Categorizing Inharmonicity",
+    "\u2190 deepens \u2190 Three Kinds of Warp",
+    "\u2190 emerged-from \u2190 Harmonicity and Inharmonicity",
+    "\u2190 emerged-from \u2190 Inharmonic Wavetable Synthesis",
+    "\u2190 enables \u2190 Logarithmic Interface Scaling",
+    "\u2190 mirrors \u2190 Frequency-Time Explorer  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Octave Equivalence  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Floquet Time-Modulated Loops",
+    "\u2192 connects-to \u2192 Harmonicity and Inharmonicity",
+    "\u2192 connects-to \u2192 Logarithmic Interface Scaling",
+    "\u2192 deepens \u2192 Boundary-Crossing Instruments",
+    "\u2192 deepens \u2192 Dispersion",
+    "\u2192 mirrors \u2192 Frequency-Time Duality",
+    "\u2192 mirrors \u2192 Octave Equivalence",
+    "\u2192 mirrors \u2192 Ohm's Law"
+   ]
+  },
+  {
+   "id": "Playful Interface Design",
+   "path": "Playful Interface Design.md",
+   "type": "practice",
+   "stage": "growing",
+   "reached_by": 11,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Dub Lineage  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 JSUI  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Loudon Live Design System  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Retrospective Delay  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Trickster  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Merleau-Ponty",
+    "\u2190 enables \u2190 p5.js",
+    "\u2192 connects-to \u2192 Biomechanical Synthesis",
+    "\u2192 connects-to \u2192 Preset Oracle",
+    "\u2192 connects-to \u2192 Semantic Delay",
+    "\u2192 deepens \u2192 Trickster",
+    "\u2192 enables \u2192 JSUI",
+    "\u2192 mirrors \u2192 Boundary-Crossing Instruments",
+    "\u2192 spawned \u2192 Retrospective Delay"
+   ]
+  },
+  {
+   "id": "Portamento and Physical Pitch Modeling",
+   "path": "Projects/Portamento and Physical Pitch Modeling.md",
+   "type": "project",
+   "stage": "mature",
+   "reached_by": 8,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Biomechanical Synthesis  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Differential Equations  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Dispersion  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Quadratic Interpolation in DSP  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Shepard Tone Synthesizer",
+    "\u2192 connects-to \u2192 Action Potential Oscillator",
+    "\u2192 connects-to \u2192 Bessel Functions in Synthesis",
+    "\u2192 connects-to \u2192 Biomechanical Synthesis",
+    "\u2192 couples-with \u2192 Kuramoto Coupling",
+    "\u2192 deepens \u2192 Frequency-Time Duality"
+   ]
+  },
+  {
+   "id": "Preset Oracle",
+   "path": "Projects/Preset Oracle.md",
+   "type": "project",
+   "stage": "mature",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 DSP Frameworks  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 JSUI  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Playful Interface Design  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Generative Audio Devices  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Generative Preset Development  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Hilaritas Generator",
+    "\u2192 connects-to \u2192 Symbiotic Skills",
+    "\u2192 deepens \u2192 Spinoza Conatus",
+    "\u2192 mirrors \u2192 FOUR PILLARS",
+    "\u2192 mirrors \u2192 Oblique Portrait"
+   ]
+  },
+  {
+   "id": "Quadratic Interpolation in DSP",
+   "path": "Quadratic Interpolation in DSP.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2192 connects-to \u2192 DSP Frameworks",
+    "\u2192 connects-to \u2192 Differential Equations",
+    "\u2192 connects-to \u2192 Latent Error",
+    "\u2192 connects-to \u2192 Portamento and Physical Pitch Modeling",
+    "\u2192 spawned \u2192 Compressor Design"
+   ]
+  },
+  {
+   "id": "Quantum Synthesizer",
+   "path": "Projects/Quantum Synthesizer.md",
+   "type": "project",
+   "stage": "dormant",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Bessel Functions in Synthesis  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Categorizing Inharmonicity  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Differential Equations  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Media Library  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Wallpaper Groups  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Crystal Synthesizer  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Hyperdimensional Prism",
+    "\u2192 couples-with \u2192 Bessel Functions in Synthesis",
+    "\u2192 deepens \u2192 Harmonicity and Inharmonicity",
+    "\u2192 deepens \u2192 Spinoza Conatus",
+    "\u2192 mirrors \u2192 Boundary-Crossing Instruments"
+   ]
+  },
+  {
+   "id": "Retrospective Delay",
+   "path": "Projects/Retrospective Delay.md",
+   "type": "project",
+   "stage": "growing",
+   "reached_by": 16,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Biomechanical Synthesis  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Generative Sample Libraries  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Hero and Avatar Maker  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Loudon Live  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Slime Mold Delay  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Trickster  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 Compressor Design  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 Dub Lineage",
+    "\u2190 mirrors \u2190 BLUELINE  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 JSUI",
+    "\u2190 spawned \u2190 Playful Interface Design",
+    "\u2192 connects-to \u2192 Boundary-Crossing Instruments",
+    "\u2192 connects-to \u2192 Granular Synthesis",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Playful Interface Design",
+    "\u2192 connects-to \u2192 Semantic Delay",
+    "\u2192 couples-with \u2192 Progressive Staging",
+    "\u2192 deepens \u2192 Frequency-Time Duality",
+    "\u2192 deepens \u2192 Trickster",
+    "\u2192 emerged-from \u2192 Dub Lineage"
+   ]
+  },
+  {
+   "id": "Reverb \u2194 Space-Time",
+   "path": "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+   "type": "concept",
+   "stage": "mature",
+   "reached_by": 4,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Martin Heidegger  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Cross-Domain Resonances",
+    "\u2192 connects-to \u2192 Granular Synthesis",
+    "\u2192 connects-to \u2192 Martin Heidegger",
+    "\u2192 exemplifies \u2192 FOUR PILLARS",
+    "\u2192 member-of \u2192 Cross-Domain Resonances",
+    "\u2192 mirrors \u2192 Frequency-Time Duality"
+   ]
+  },
+  {
+   "id": "SMPTE LTC",
+   "path": "SMPTE LTC.md",
+   "type": "project",
+   "stage": "growing",
+   "reached_by": 3,
+   "existing_links": [
+    "\u2192 connects-to \u2192 Frequency-Time Duality",
+    "\u2192 connects-to \u2192 Modes of Collaboration",
+    "\u2192 connects-to \u2192 Signal-Rate CV Architecture",
+    "\u2192 deepens \u2192 Boundary-Crossing Instruments"
+   ]
+  },
+  {
+   "id": "Semantic Delay",
+   "path": "Projects/Semantic Delay.md",
+   "type": "project",
+   "stage": "growing",
+   "reached_by": 11,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Claude CLI Reference  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Palace Graffiti  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Playful Interface Design  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Retrospective Delay  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Slime Mold Delay  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Dub Lineage",
+    "\u2190 emerged-from \u2190 Metric Modulation",
+    "\u2190 emerged-from \u2190 Trickster",
+    "\u2192 connects-to \u2192 Boundary-Crossing Instruments",
+    "\u2192 couples-with \u2192 Kuramoto Coupling",
+    "\u2192 deepens \u2192 Spinoza Conatus",
+    "\u2192 emerged-from \u2192 Dub Lineage",
+    "\u2192 mirrors \u2192 Frequency-Time Duality"
+   ]
+  },
+  {
+   "id": "Shepard Tone Synthesizer",
+   "path": "Projects/Shepard Tone Synthesizer.md",
+   "type": "project",
+   "stage": "growing",
+   "reached_by": 12,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Loudon Live  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Generative Sample Libraries",
+    "\u2190 deepens \u2190 Generative Wavetable Libraries",
+    "\u2190 emerged-from \u2190 Octave Equivalence",
+    "\u2190 enables \u2190 Wavetable Space as Torus",
+    "\u2192 connects-to \u2192 Frequency-Time Duality",
+    "\u2192 connects-to \u2192 Granular Synthesis",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Particle Synthesis",
+    "\u2192 connects-to \u2192 Piano String Inharmonicity",
+    "\u2192 connects-to \u2192 Signal-Rate CV Architecture",
+    "\u2192 deepens \u2192 Portamento and Physical Pitch Modeling",
+    "\u2192 enables \u2192 Octave Equivalence",
+    "\u2192 mirrors \u2192 Hyperdimensional Prism"
+   ]
+  },
+  {
+   "id": "Shimmer Cloud",
+   "path": "Projects/Shimmer Cloud.md",
+   "type": "spore",
+   "stage": "dormant",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Dispersion  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Granular Synthesis  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Three.js  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Photonic Time Crystals  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Dispersion",
+    "\u2192 deepens \u2192 Frequency-Time Duality",
+    "\u2192 emerged-from \u2192 Granular Synthesis",
+    "\u2192 mirrors \u2192 Hyperdimensional Prism",
+    "\u2192 mirrors \u2192 Particle Synthesis"
+   ]
+  },
+  {
+   "id": "Signal-Rate CV Architecture",
+   "path": "Signal-Rate CV Architecture.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 9,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Action Potential Oscillator  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 SMPTE LTC  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Shepard Tone Synthesizer  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 State Machine  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 Generative Audio Devices",
+    "\u2190 mirrors \u2190 Crystal Synthesizer  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Crystal Synthesizer",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 couples-with \u2192 Progressive Staging",
+    "\u2192 enables \u2192 Action Potential Oscillator",
+    "\u2192 enables \u2192 Biomechanical Synthesis",
+    "\u2192 mirrors \u2192 Boundary-Crossing Instruments"
+   ]
+  },
+  {
+   "id": "Slime Mold Delay",
+   "path": "Projects/Slime Mold Delay.md",
+   "type": "project",
+   "stage": "sprout",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2192 connects-to \u2192 Biomechanical Synthesis",
+    "\u2192 connects-to \u2192 Retrospective Delay",
+    "\u2192 connects-to \u2192 Semantic Delay",
+    "\u2192 couples-with \u2192 Kuramoto Coupling",
+    "\u2192 couples-with \u2192 Substrate Skill",
+    "\u2192 deepens \u2192 Particle Synthesis",
+    "\u2192 mirrors \u2192 Hyperdimensional Prism",
+    "\u2192 mirrors \u2192 Spinoza Conatus"
+   ]
+  },
+  {
+   "id": "State Machine",
+   "path": "State Machine.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 5,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Action Potential Oscillator  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 Progressive Staging",
+    "\u2192 connects-to \u2192 DSP Frameworks",
+    "\u2192 connects-to \u2192 Signal-Rate CV Architecture",
+    "\u2192 enables \u2192 Action Potential Oscillator",
+    "\u2192 mirrors \u2192 Progressive Staging",
+    "\u2192 mirrors \u2192 ROSETTA"
+   ]
+  },
+  {
+   "id": "Talking Keyboard",
+   "path": "Projects/Talking Keyboard.md",
+   "type": "project",
+   "stage": "fruiting",
+   "reached_by": 7,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Project Stewardship System  (symmetric: holds both ways)",
+    "\u2190 emerged-from \u2190 Audition Gate",
+    "\u2190 mirrors \u2190 Phoneme Choir  (symmetric: holds both ways)",
+    "\u2190 spawned \u2190 Generative Sample Libraries",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Modes of Collaboration",
+    "\u2192 connects-to \u2192 Project Stewardship System",
+    "\u2192 connects-to \u2192 Substrate Skill",
+    "\u2192 emerged-from \u2192 Generative Sample Libraries",
+    "\u2192 mirrors \u2192 Phoneme Choir"
+   ]
+  },
+  {
+   "id": "The Curve Is the Material",
+   "path": "The Curve Is the Material.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 10,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Found \u2194 Made  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Inharmonic Wavetable Synthesis  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Sam Maloof  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Synthesis Topologies  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Wavetable Space as Torus  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 Bessel Functions in Synthesis",
+    "\u2192 connects-to \u2192 Categorizing Inharmonicity",
+    "\u2192 connects-to \u2192 Lateral Access",
+    "\u2192 connects-to \u2192 Metaphor as Coupling Medium",
+    "\u2192 connects-to \u2192 Piano String Inharmonicity",
+    "\u2192 deepens \u2192 Harmonicity and Inharmonicity",
+    "\u2192 deepens \u2192 Inharmonic Wavetable Synthesis",
+    "\u2192 enables \u2192 Wavetable Space as Torus"
+   ]
+  },
+  {
+   "id": "The Metaphor Stretch",
+   "path": "The Metaphor Stretch.md",
+   "type": "concept",
+   "stage": "sprout",
+   "reached_by": 6,
+   "existing_links": [
+    "\u2190 emerged-from \u2190 What Claim Does Scientific Sonification Make?",
+    "\u2190 enables \u2190 Phoneme Choir",
+    "\u2190 spawned \u2190 Crystal Synthesizer",
+    "\u2192 connects-to \u2192 Boundary-Crossing Instruments",
+    "\u2192 connects-to \u2192 Crystal Synthesizer",
+    "\u2192 connects-to \u2192 Dispersion",
+    "\u2192 mirrors \u2192 Hyperdimensional Prism"
+   ]
+  },
+  {
+   "id": "Wallpaper Groups",
+   "path": "Projects/Wallpaper Groups.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 14,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Chebyshev is Fourier  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 DSP in Looping Dimensions  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Graffiti Pass \u2014 Handoff 2026-05-02 \u2014 Session 2  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Media Library  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Phase Reduction  (symmetric: holds both ways)",
+    "\u2190 deepens \u2190 Crystal Synthesizer",
+    "\u2190 deepens \u2190 Metric Modulation",
+    "\u2190 mirrors \u2190 FOUR PILLARS  (symmetric: holds both ways)",
+    "\u2190 mirrors \u2190 Wavetable Space as Torus  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Granular Synthesis",
+    "\u2192 connects-to \u2192 Hyperdimensional Prism",
+    "\u2192 connects-to \u2192 Kuramoto Coupling",
+    "\u2192 connects-to \u2192 Quantum Synthesizer",
+    "\u2192 mirrors \u2192 Spinoza Conatus",
+    "\u2192 spawned \u2192 Metric Modulation"
+   ]
+  },
+  {
+   "id": "Wavetable Space as Torus",
+   "path": "Wavetable Space as Torus.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 15,
+   "existing_links": [
+    "\u2190 connects-to \u2190 Deleuze  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Floquet Time-Modulated Loops  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Inharmonic Wavetable Synthesis  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Photonic Time Crystals  (symmetric: holds both ways)",
+    "\u2190 connects-to \u2190 Three Kinds of Warp  (symmetric: holds both ways)",
+    "\u2190 contradicts \u2190 Mathieu Equation  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 2D Torus Wavetable Synthesizer  (symmetric: holds both ways)",
+    "\u2190 couples-with \u2190 DSP in Looping Dimensions  (symmetric: holds both ways)",
+    "\u2190 enables \u2190 The Curve Is the Material",
+    "\u2192 connects-to \u2192 Bessel Functions in Synthesis",
+    "\u2192 connects-to \u2192 Deleuze",
+    "\u2192 connects-to \u2192 Harmonicity and Inharmonicity",
+    "\u2192 connects-to \u2192 Philosopher Visits the Entry",
+    "\u2192 connects-to \u2192 Simondon",
+    "\u2192 connects-to \u2192 The Curve Is the Material",
+    "\u2192 contradicts \u2192 Mathieu Equation",
+    "\u2192 couples-with \u2192 2D Torus Wavetable Synthesizer",
+    "\u2192 deepens \u2192 Inharmonic Wavetable Synthesis",
+    "\u2192 deepens \u2192 Wavetable Synthesis -- Research & Higher-Dimensional Design",
+    "\u2192 enables \u2192 Shepard Tone Synthesizer",
+    "\u2192 exemplifies \u2192 DSP in Looping Dimensions",
+    "\u2192 mirrors \u2192 Kuramoto Coupling",
+    "\u2192 mirrors \u2192 Wallpaper Groups"
+   ]
+  },
+  {
+   "id": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "path": "Wavetable Synthesis -- Research & Higher-Dimensional Design.md",
+   "type": "concept",
+   "stage": "mature",
+   "reached_by": 8,
+   "existing_links": [
+    "\u2190 deepens \u2190 Inharmonic Wavetable Synthesis",
+    "\u2190 deepens \u2190 Wavetable Space as Torus",
+    "\u2190 mirrors \u2190 Generative Wavetable Libraries  (symmetric: holds both ways)",
+    "\u2192 connects-to \u2192 DSP in Looping Dimensions",
+    "\u2192 connects-to \u2192 FOUR PILLARS",
+    "\u2192 connects-to \u2192 Loudon Live",
+    "\u2192 couples-with \u2192 Neural Granular Synthesis",
+    "\u2192 mirrors \u2192 Hyperdimensional Prism",
+    "\u2192 spawned \u2192 2D Torus Wavetable Synthesizer",
+    "\u2192 spawned \u2192 Embeddings as Relational Meaning"
+   ]
+  },
+  {
+   "id": "What Claim Does Scientific Sonification Make?",
+   "path": "What Claim Does Scientific Sonification Make?.md",
+   "type": "question",
+   "stage": "seed",
+   "reached_by": 1,
+   "existing_links": [
+    "\u2190 spawned \u2190 Crystal Synthesizer",
+    "\u2192 emerged-from \u2192 Crystal Synthesizer",
+    "\u2192 emerged-from \u2192 The Metaphor Stretch"
+   ]
+  },
+  {
+   "id": "control-vocabulary-math",
+   "path": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+   "type": "concept",
+   "stage": "growing",
+   "reached_by": 0,
+   "existing_links": [
+    "\u2192 deepens \u2192 Kuramoto Coupling",
+    "\u2192 emerged-from \u2192 Action Potential Oscillator",
+    "\u2192 member-of \u2192 Neural Granular Synthesis"
+   ]
+  }
+ ],
+ "directed_flags": {}
+}

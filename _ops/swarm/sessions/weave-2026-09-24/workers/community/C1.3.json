@@ -1,0 +1,190 @@
+{
+ "cluster": "C1.3",
+ "lens": "community",
+ "summary": "This room is a tight, mostly-healthy DSP-theory neighborhood built around the 2D Torus Wavetable Synthesizer and its satellites (Dissolutions, Three Kinds of Warp, Rank-N Lattice Analysis, Volterra Kernels, Dispersion Table, LPC, Phase Reduction) plus the browser-instrument track (Wavetable Scanner, Waveguide Synthesizer, Tract Mirror, Three.js). It is already well-cross-linked internally \u2014 the Dissolutions hub in particular is doing exactly the de-sprawl job a hub should do, gathering seven \"same object, two doorways\" insights instead of letting each sit isolated. Given Loudon's \"cluttered\" note this morning, I looked hard for merge/compost candidates and didn't find genuine ones: the apparent duplication (concept entry vs. artifact entry, e.g. 1D Wavetable Scanning vs. Wavetable Scanner, or LPC vs. Tract Mirror) is a deliberate and stated split, not sprawl. The one real piece of clutter I found is small and literal: Tract Mirror declares two separate link types to the same target (Linear Predictive Coding). The more interesting work this pass turned up is outward-facing: Tract Mirror sits inside this room with zero inbound despite being the most concrete proof-of-thesis in the cluster, and two newcomers outside the room \u2014 control-vocabulary-math and Quadratic Interpolation in DSP \u2014 turn out to be worked answers to open questions this room's entries pose out loud (the \"hardest problem\" of high-dimensional control-surface design, and the linear-vs-quadratic-vs-cubic wavetable interpolation question) but haven't yet found.",
+ "members_read": [
+  "1D Wavetable Scanning.md",
+  "Projects/2D Torus Wavetable Synthesizer.md",
+  "Projects/2D Torus Wavetable Synthesizer/2D Wavetable Catalog.md",
+  "Chebyshev is Fourier.md",
+  "DSP in Looping Dimensions.md",
+  "Dispersion Table.md",
+  "Dissolutions.md",
+  "Exponential Decay Curvature.md",
+  "Infeasible DSP Now Shippable.md",
+  "Linear Predictive Coding.md",
+  "Phase Reduction.md",
+  "Rank-N Lattice Analysis.md",
+  "Synthesis Topologies.md",
+  "Three Kinds of Warp.md",
+  "Shop/Three.js.md",
+  "Projects/2D Torus Wavetable Synthesizer/Torus Warping Catalog.md",
+  "Projects/Tract Mirror.md",
+  "Volterra Kernels and the Torus.md",
+  "Projects/Waveguide Synthesizer.md",
+  "Wavetable Scanner.md",
+  "Projects/Neural Granular Synthesis/control-vocabulary-math.md (newcomer, read for bridge)",
+  "Quadratic Interpolation in DSP.md (newcomer, read for bridge)"
+ ],
+ "typed_relations": [
+  {
+   "source": "2D Torus Wavetable Synthesizer",
+   "target": "Synthesis Topologies",
+   "type": "exemplifies",
+   "kind": "new",
+   "rationale": "Synthesis Topologies \u00a73 already names the torus project's seven-surface design as its concrete exemplar of the 'fixed-skeleton-variable-flesh' in-between category, but the torus entry's own frontmatter has no pointer back to the general framework it instantiates. Direction invariant: exemplifies points to the ground (the general entry).",
+   "evidence": "\"Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces).\" \u2014 Synthesis Topologies \u00a73"
+  },
+  {
+   "source": "Chebyshev is Fourier",
+   "target": "Rank-N Lattice Analysis",
+   "type": "connects-to",
+   "kind": "new",
+   "rationale": "Chebyshev is Fourier's own Forward Vectors names the 'wavelet \u2192 modal \u2192 rank-N-lattice family' it wants to join, but the frontmatter link runs only one direction (Rank-N Lattice Analysis \u2192 Chebyshev is Fourier, label choose-your-basis).",
+   "evidence": "\"Map the full Fourier \u2192 wavelet \u2192 modal \u2192 rank-N-lattice family as a single 'choose-your-basis' entry; this dissolution is one member of it.\""
+  },
+  {
+   "source": "Waveguide Synthesizer",
+   "target": "Dispersion Table",
+   "type": "enables",
+   "kind": "new",
+   "rationale": "Dispersion Table's whole generalization (store phase-response curves, not waveforms) is built directly on Waveguide Synthesizer's physics scaffolding, but Waveguide Synthesizer doesn't point forward to what it made possible.",
+   "evidence": "\"See [[Waveguide Synthesizer]] for the physics scaffolding (D'Alembert's traveling-wave solution, the delay-line architecture, Karplus-Strong as the lossy case).\" \u2014 Dispersion Table"
+  },
+  {
+   "source": "Waveguide Synthesizer",
+   "target": "Linear Predictive Coding",
+   "type": "mirrors",
+   "kind": "new",
+   "rationale": "LPC declares this mirrors link explicitly ('LPC's lattice and the digital waveguide are the same structure read from opposite ends'), and Tract Mirror carries the same claim from a third angle, but Waveguide Synthesizer's own frontmatter is silent on it \u2014 the triangle is missing its third leg.",
+   "evidence": "\"That is why the link to [[Waveguide Synthesizer]] is a mirrors and not a passing reference: the vocal tract and the plucked string are one piece of mathematics wearing two bodies.\" \u2014 Linear Predictive Coding"
+  },
+  {
+   "source": "Waveguide Synthesizer",
+   "target": "Tract Mirror",
+   "type": "mirrors",
+   "kind": "newcomer",
+   "spark": 2,
+   "rationale": "Tract Mirror carries 0 inbound despite being the room's most concrete proof-of-thesis. Tract Mirror already declares mirrors \u2192 Waveguide Synthesizer ('the-tube-to-its-string'); the reciprocal is the cheapest, most honest inbound wire available.",
+   "evidence": "\"Where the [[Waveguide Synthesizer]] renders the string body of this mathematics in the browser, Tract Mirror renders the tube body.\" \u2014 Tract Mirror"
+  },
+  {
+   "source": "Linear Predictive Coding",
+   "target": "Tract Mirror",
+   "type": "spawned",
+   "kind": "newcomer",
+   "spark": 3,
+   "rationale": "Tract Mirror is literally LPC's central thesis built into a shipped VST \u2014 the strongest spawned relation in the room, and it answers LPC's own open question about whether the source-filter identity is only a prose claim. Currently only Tract Mirror points back (emerged-from); LPC has no forward pointer to what it produced.",
+   "evidence": "\"The thesis is the mirrors link from [[Linear Predictive Coding]] to [[Waveguide Synthesizer]], executed: the LPC lattice filter's reflection coefficients are the impedance mismatches between successive tube segments.\" \u2014 Tract Mirror"
+  },
+  {
+   "source": "Three.js",
+   "target": "Tract Mirror",
+   "type": "couples-with",
+   "kind": "newcomer",
+   "spark": 1,
+   "rationale": "Tract Mirror's GUI is a WKWebView running three.js \u2014 Three.js's first job that leaves the browser proper. Tract Mirror declares couples-with \u2192 Three.js; worth the reciprocal so Three.js's own roster names its native-plugin job.",
+   "evidence": "\"JUCE 8 + WebView GUI \u2014 C++ DSP core; the GUI is a WKWebView running three.js, so every interim mockup artifact is a step toward the real interface.\" \u2014 Tract Mirror"
+  },
+  {
+   "source": "1D Wavetable Scanning",
+   "target": "Quadratic Interpolation in DSP",
+   "type": "connects-to",
+   "kind": "newcomer",
+   "spark": 3,
+   "rationale": "Both entries land on the same design question \u2014 what interpolation order a wavetable read needs \u2014 from opposite directions. Quadratic Interpolation in DSP frames quadratic as the theoretical sweet spot and asks (open question 1) whether cubic is worth it; 1D Wavetable Scanning ran the experiment on a shipped Sketch and found plain linear sufficient, reserving anything higher-order for briefs that name audible aliasing as the problem. Genuine live tension, not a forced link.",
+   "evidence": "\"Higher-order interpolation has aliasing-control upsides for very small frame counts, but at typical 8-256-frame tables the linear blend's audible artifact ceiling is below the table's authoring noise. Reach for cubic only when a brief names 'audibly aliasing morph' as the problem.\" \u2014 1D Wavetable Scanning, Lost Branches"
+  },
+  {
+   "source": "Infeasible DSP Now Shippable",
+   "target": "control-vocabulary-math",
+   "type": "connects-to",
+   "kind": "newcomer",
+   "spark": 4,
+   "rationale": "This entry names 'control-surface design for high-dimensional spaces' as the suite's single hardest, most valuable, unsolved problem. control-vocabulary-math is a shipped, worked instance of exactly that problem solved for a sibling instrument \u2014 a noisy N-neuron Kuramoto population reduced to four performable knobs (K, sigma_threshold, mean firing rate, and the order parameter r as both readout and control term).",
+   "evidence": "\"A 256-dimensional latent space, a family of triply-periodic minimal surfaces, a persistence diagram \u2014 each is a rich object with no existing performance vocabulary... That invention \u2014 not the DSP \u2014 is where the value and the difficulty concentrate.\" \u2014 Infeasible DSP Now Shippable; \"This document formalizes the layer that sits on top of that engine: the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs.\" \u2014 control-vocabulary-math"
+  },
+  {
+   "source": "Phase Reduction",
+   "target": "control-vocabulary-math",
+   "type": "connects-to",
+   "kind": "newcomer",
+   "spark": 3,
+   "rationale": "Phase Reduction's forward vector asks to make the Phase Response Curve 'a designed control object' atop Kuramoto coupling. control-vocabulary-math independently built exactly that move for a different instrument \u2014 the order parameter r is simultaneously the meter and a term inside the dynamics, the same self-referential design Phase Reduction is reaching for.",
+   "evidence": "\"Use the PRC explicitly as a designed control object in the coupled-grain / granular-additive hybrid.\" \u2014 Phase Reduction, Forward Vectors; \"the single quantity that closes the loop between all of them is r... simultaneously a read-out and a term inside the dynamics, so the instrument's coherence is literally self-referential.\" \u2014 control-vocabulary-math"
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Tract Mirror declares two separate typed links to the same target (Linear Predictive Coding): emerged-from/'mirror-made-playable' and mirrors/'the-lattice-made-playable'. Two different relation types to one target, doing overlapping work \u2014 a small, literal instance of the clutter Loudon flagged this morning.",
+   "kind": "duplicate-link",
+   "entries": [
+    "Projects/Tract Mirror.md"
+   ],
+   "proposed_action": "Keep emerged-from (the true lineage fact \u2014 Tract Mirror grew out of the LPC entry). Drop the mirrors duplicate; the mirrors relationship to LPC is already fully carried structurally by Waveguide Synthesizer\u2194LPC (proposed above) and by Tract Mirror's own mirrors link to Waveguide Synthesizer ('the-tube-to-its-string')."
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "DSP in Looping Dimensions",
+   "stage_current": "sprout",
+   "stage_proposed": "growing",
+   "vector_issue": "none \u2014 forward_vector is specific and load-bearing",
+   "graffiti_note": "15 inbound links and cited as the shared spine by Volterra Kernels, Rank-N Lattice Analysis, Dispersion Table, Torus Warping Catalog, and Chebyshev is Fourier. It is functioning as the room's foundational reference, not a first-draft sprout.",
+   "face": "none"
+  },
+  {
+   "entry": "Tract Mirror",
+   "stage_current": "seed",
+   "stage_proposed": "seed",
+   "vector_issue": "none",
+   "graffiti_note": "Structural problem, not a content one: 0 inbound despite being the clearest built proof of the LPC/Waveguide mirrors thesis in the whole room. See typed_relations for the proposed wiring.",
+   "face": "none"
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "2D Torus Wavetable Synthesizer",
+   "question": "How is the morphing implemented across surfaces \u2014 crossfading c_mn coefficients in spectral space, or crossfading W directly in spatial space?",
+   "by_entry": "2D Wavetable Catalog",
+   "verdict": "partially resolved",
+   "proposed_action": "2D Wavetable Catalog's own open question already names spectral-domain interpolation as the right tool for cross-symmetry surface morphs (Membrane\u2194Chladni) \u2014 pull that decision up as the working answer instead of carrying it as two separate open questions."
+  },
+  {
+   "entry": "Quadratic Interpolation in DSP",
+   "question": "Cubic vs. quadratic in oscillators: is the extra cost justified for audio, or is quadratic sufficient?",
+   "by_entry": "1D Wavetable Scanning",
+   "verdict": "answered-in-practice, narrowly",
+   "proposed_action": "1D Wavetable Scanning already ran this experiment on a shipped Sketch and found linear sufficient, cubic reserved for briefs naming audible aliasing. Cross-link (see typed_relations) so the open question cites a real shipped data point instead of staying purely theoretical."
+  },
+  {
+   "entry": "Rank-N Lattice Analysis",
+   "question": "Invent control vocabularies for high-dimensional instrument spaces (the recurring 'hardest problem')",
+   "by_entry": "control-vocabulary-math",
+   "verdict": "concrete instance exists",
+   "proposed_action": "Link Rank-N Lattice Analysis and Infeasible DSP Now Shippable to control-vocabulary-math as a worked example rather than treating the control-vocabulary problem as wholly unsolved territory."
+  },
+  {
+   "entry": "Phase Reduction",
+   "question": "Document the meta-pattern: Loudon's intuitions about framework-kinship keep getting confirmed \u2014 worth its own note if a third instance lands.",
+   "by_entry": "Volterra Kernels and the Torus",
+   "verdict": "unconfirmed third instance \u2014 do not force",
+   "proposed_action": "Volterra Kernels and the Torus is mirrors-linked from Phase Reduction as 'unification-via-identity,' but its own body doesn't narrate an intuition-first genesis the way Chebyshev is Fourier and Phase Reduction do explicitly. Before spinning up a meta-entry, check the source session for whether the hunch actually came first \u2014 don't count it as instance three on the strength of the pattern alone."
+  },
+  {
+   "entry": "Chebyshev is Fourier",
+   "question": "Seed the wider theme entry 'The Right Representation Reveals the Symmetry' that this and the log-scaling/Ohm's-Law material can both link into (currently a ghost).",
+   "by_entry": "Dissolutions",
+   "verdict": "likely superseded \u2014 recommend not spawning",
+   "proposed_action": "Dissolutions already names, as ingredient 2 of every dissolution, 'a reframing \u2014 typically a coordinate change, a basis change, a timescale rescaling, or a representational shift \u2014 that surfaces a single underlying object.' That is the same claim the ghost hub would make. Rather than planting a second hub, fold 'the right representation reveals the symmetry' into Dissolutions' own prose as the name for ingredient 2 \u2014 one hub doing the job instead of two doing half each."
+  }
+ ],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "unsung_paths": [],
+ "flag_responses": [],
+ "bridge_findings": [],
+ "walk_results": [],
+ "synthesis_spawn_flag": []
+}

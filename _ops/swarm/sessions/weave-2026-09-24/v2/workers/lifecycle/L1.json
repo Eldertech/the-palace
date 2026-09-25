@@ -1,0 +1,142 @@
+{
+ "cluster": "L1",
+ "lens": "lifecycle",
+ "summary": "All five targets in this room already have their hop1 neighbours fully wired \u2014 every direct neighbour in BLUELINE's ink-pipeline cluster (ControlNet as Topology, GenAI Camera, Search Before You Build) and every direct neighbour in the Loudon Live production cluster (LDN RTM, OBS) already points back. The real gaps were one hop further out, and they were genuine, not padding: Figure Rig \u2014 the specialist that literally projects a rig's ORG-bones into a canonical OpenPose plate \u2014 turns out to be the concrete instance both ControlNet as Topology's \"armature\" metaphor and GenAI Camera's own pose-plate technique are talking about, and neither entry currently claims it. On the production side, two unsung paths surfaced real misses rather than invented ones: Loudon Live Post-producer already wikilinks [[OBS]] in its own body when explaining what OBS can't do (chat, cross-posting) but never added the frontmatter link; and LDN RTM names ffmpeg in plain prose (contrasting its end-card technique against \"an ffmpeg pad\") without linking the tool at all. Search Before You Build's own origin story literally cites BLUELINE's `lib/comfy.py` as the prior art it failed to reuse \u2014 the tie to BLUELINE was sitting in its own text, unlinked. No compost, no merges, nothing forced; the cluster is well-knit at one hop and thin exactly where the walk is supposed to find the thinness.",
+ "members_read": [
+  "ControlNet as Topology.md",
+  "GenAI Camera.md",
+  "Projects/LDN RTM.md",
+  "Shop/OBS.md",
+  "Search Before You Build.md",
+  "Hand-Drawn 3D Look.md",
+  "Block It in Blender, Ink It in genAI.md",
+  "Shop/Figure Rig.md",
+  "Animate the Background.md",
+  "Move the Ink, Don't Redraw It.md",
+  "Frame Designer.md",
+  "Palace development/Loudon Live Design System.md",
+  "Loudon Live Post-producer.md",
+  "Projects/BLUELINE/BLUELINE \u2014 The Page.md (grep only)"
+ ],
+ "typed_relations": [
+  {
+   "source": "Shop/Figure Rig.md",
+   "target": "ControlNet as Topology.md",
+   "type": "exemplifies",
+   "kind": "inbound-walk",
+   "label": "armature-in-the-flesh",
+   "rationale": "CNaT's central metaphor for a ControlNet pose/depth map is 'an armature... the wire skeleton a figure is built around.' Figure Rig is the literal machine that builds one: it projects the rig's own joints and draws them with the real controlnet_aux draw_bodypose so 'the skeleton is pixel-identical to the preprocessor.' Fidelity test: swap in Blender (a hop2 sibling) and the armature language stops fitting \u2014 Blender is the substrate, Figure Rig is the armature-maker.",
+   "evidence": "CNaT: 'ControlNet is an armature... A depth map, a pose, an edge map is exactly that skeleton.' Figure Rig: 'I project the rig's own joints to 2D and draw them with the actual draw_bodypose from comfyui_controlnet_aux, so the skeleton is pixel-identical to the preprocessor.'",
+   "spark": 3
+  },
+  {
+   "source": "Shop/Figure Rig.md",
+   "target": "GenAI Camera.md",
+   "type": "connects-to",
+   "kind": "inbound-walk",
+   "label": "org-bone-projection",
+   "rationale": "Both entries independently describe the same specific technique \u2014 projecting a rig's ORG- bones geometrically into an OpenPose plate rather than running DWPose on a greybox render. GenAI Camera names it as a design choice; Figure Rig is where the technique lives. Fidelity test: swap in ComfyUI or Blender (both connected to GenAI Camera already) and the specific bone-projection claim disappears \u2014 it only holds for Figure Rig.",
+   "evidence": "GenAI Camera: 'an OpenPose pose plate projected geometrically from the rig's ORG- bones (never DWPose-on-greybox \u2014 armature projection).' Figure Rig: 'The OpenPose reads off the rig's own ORG- bones, so a hand-pose round-trips to conditioning plates with no extra work.'",
+   "spark": 3
+  },
+  {
+   "source": "Shop/ffmpeg.md",
+   "target": "Projects/LDN RTM.md",
+   "type": "connects-to",
+   "kind": "inbound-walk",
+   "label": "the-pad-not-taken",
+   "rationale": "LDN RTM's whole no-timeline pipeline is defined partly by what it refuses \u2014 it names ffmpeg specifically as the padding technique it avoids ('a single still frame of the Lissajous... rather than an ffmpeg pad'), and ffmpeg is still the tool underneath the rest of the batch (audio-only touch, tail without re-encoding \u2014 the exact recipe already on ffmpeg's and OBS's own pages). An unsung path: LDN RTM names ffmpeg in prose with no frontmatter link.",
+   "evidence": "LDN RTM: 'a single still frame of the Lissajous... rather than an ffmpeg pad \u2014 so the video stream is copied, never re-encoded, and the batch touches audio only.'",
+   "spark": 2
+  },
+  {
+   "source": "Loudon Live Post-producer.md",
+   "target": "Shop/OBS.md",
+   "type": "connects-to",
+   "kind": "inbound-walk",
+   "label": "not-a-chat-tool",
+   "rationale": "Loudon Live Post-producer already carries a live [[OBS]] wikilink in its Open Questions, explaining a real boundary (OBS can't handle chat or cross-posting, that needs the YouTube connector both entries defer). The relation exists in prose but was never promoted to frontmatter \u2014 a clean unsung path, and a genuine one since both entries are already reasoning about the same seam (what the publishing connector will eventually own).",
+   "evidence": "Loudon Live Post-producer: 'Note that chat and cross-posting are not [[OBS]] capabilities at all; they need the same YouTube connector this entry defers for publishing, arriving from a second direction.'",
+   "spark": 2
+  },
+  {
+   "source": "Projects/BLUELINE/BLUELINE.md",
+   "target": "Search Before You Build.md",
+   "type": "connects-to",
+   "kind": "inbound-walk",
+   "label": "the-comfy-lib-miss",
+   "rationale": "Search Before You Build's own founding story names BLUELINE's code directly as the prior art it failed to reuse a second time \u2014 not GenAI Camera alone (which already links back via emerged-from), but BLUELINE's lib/comfy.py specifically. BLUELINE doesn't currently point to this practice at all despite being its second cited case.",
+   "evidence": "Search Before You Build: 'Same with the ComfyUI client I started fresh while lib/comfy.py already existed.'",
+   "spark": 2
+  },
+  {
+   "source": "Hand-Drawn 3D Look.md",
+   "target": "ControlNet as Topology.md",
+   "type": "connects-to",
+   "kind": "inbound-walk",
+   "label": "over-anchor-the-plates",
+   "rationale": "Hand-Drawn 3D Look's forward_vector names the exact multi-conditioner stacking CNaT theorizes ('stacking ControlNets is multi-scale terrain \u2014 depth carves the large valley, canny carves the fine ridges'). Weaker than the Figure Rig find \u2014 several BLUELINE entries mention the canny+depth+openpose combo \u2014 so flagging at lower confidence rather than dropping it; it is Hand-Drawn 3D Look's own stated proof result, not a borrowed detail.",
+   "evidence": "Hand-Drawn 3D Look: 'I have proven the redraw survives on a posed figure (over-anchor it: canny + depth + openpose).' CNaT: 'Stacking ControlNets is multi-scale terrain \u2014 depth carves the large valley, canny carves the fine ridges within it.'",
+   "spark": 1
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Projects/LDN RTM.md",
+   "target": "Shop/ffmpeg.md",
+   "type": "connects-to",
+   "phrase": "rather than an ffmpeg pad",
+   "label": "the-pad-not-taken",
+   "structurally_significant": true
+  },
+  {
+   "entry": "Loudon Live Post-producer.md",
+   "target": "Shop/OBS.md",
+   "type": "connects-to",
+   "phrase": "chat and cross-posting are not [[OBS]] capabilities at all",
+   "label": "not-a-chat-tool",
+   "structurally_significant": true
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "ControlNet as Topology",
+   "disposition": "wired",
+   "inbound_proposed": 2,
+   "note": "Hop1 fully connected already. Figure Rig (hop2) is the entry ControlNet as Topology's armature language is actually describing and had no link; Hand-Drawn 3D Look flagged weaker."
+  },
+  {
+   "target": "GenAI Camera",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Hop1 fully connected already (reached_by 3 comes from symmetric connects-to + one emerged-from). Figure Rig (hop2) shares the exact ORG-bone pose-projection technique and had no link either direction."
+  },
+  {
+   "target": "LDN RTM",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Hop1 fully connected already. ffmpeg surfaced via an unsung path in LDN RTM's own no-timeline-pipeline prose."
+  },
+  {
+   "target": "OBS",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Hop1 fully connected already. Loudon Live Post-producer surfaced via an unsung path \u2014 its Open Questions section already wikilinks OBS."
+  },
+  {
+   "target": "Search Before You Build",
+   "disposition": "wired",
+   "inbound_proposed": 1,
+   "note": "Hop1 fully connected already. BLUELINE (hop2) is the specific prior-art source cited in the entry's own founding story and wasn't linked."
+  }
+ ],
+ "bridge_findings": [],
+ "coherence_findings": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "demote_candidates": [],
+ "entry_health_flags": [],
+ "open_question_resolutions": [],
+ "flag_responses": [],
+ "synthesis_spawn_flag": []
+}

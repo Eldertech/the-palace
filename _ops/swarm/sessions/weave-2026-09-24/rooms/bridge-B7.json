@@ -1,0 +1,80 @@
+{
+ "lens": "bridge",
+ "id": "B7",
+ "tool_side": [
+  {
+   "id": "FLUX (Hugging Face)",
+   "path": "Shop/FLUX (Hugging Face).md",
+   "stage": null,
+   "inbound": 5
+  },
+  {
+   "id": "Generative Wavetable Libraries",
+   "path": "Projects/Generative Wavetable Libraries.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "LaTeX",
+   "path": "Shop/LaTeX.md",
+   "stage": null,
+   "inbound": 1
+  },
+  {
+   "id": "Move the Ink, Don't Redraw It",
+   "path": "Move the Ink, Don't Redraw It.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "Waveguide Synthesizer",
+   "path": "Projects/Waveguide Synthesizer.md",
+   "stage": "seed",
+   "inbound": 8
+  },
+  {
+   "id": "Whisper",
+   "path": "Shop/Whisper.md",
+   "stage": null,
+   "inbound": 5
+  }
+ ],
+ "thought_side": [
+  {
+   "id": "Agnes Martin",
+   "path": "People/Agnes Martin.md",
+   "stage": "seed",
+   "inbound": 4
+  },
+  {
+   "id": "George Nakashima",
+   "path": "People/George Nakashima.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Like Water",
+   "path": "Like Water.md",
+   "stage": "growing",
+   "inbound": 12
+  },
+  {
+   "id": "Metaphor as Coupling Medium",
+   "path": "Metaphor as Coupling Medium.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Saturation \u2194 Richness",
+   "path": "Cross-Domain Resonances/Saturation \u2194 Richness.md",
+   "stage": "mature",
+   "inbound": 1
+  },
+  {
+   "id": "The Fortress and the Threshold",
+   "path": "The Fortress and the Threshold.md",
+   "stage": "growing",
+   "inbound": 14
+  }
+ ]
+}

@@ -1,0 +1,661 @@
+{
+ "lens": "lifecycle",
+ "id": "L6",
+ "targets": [
+  {
+   "id": "Bring In a Bigger Mind",
+   "path": "Bring In a Bigger Mind.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Making a Palace Citizen",
+   "path": "Making a Palace Citizen.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "Martin Buber",
+   "path": "People/Martin Buber.md",
+   "stage": "seed",
+   "inbound": 2
+  },
+  {
+   "id": "Martin Heidegger",
+   "path": "People/Martin Heidegger.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "The Adjacent Affordance",
+   "path": "The Adjacent Affordance.md",
+   "stage": "seed",
+   "inbound": 0
+  }
+ ],
+ "walk": {
+  "Bring In a Bigger Mind": {
+   "hop1": [
+    {
+     "id": "Mixture of Experts",
+     "path": "Mixture of Experts.md",
+     "stage": "mature",
+     "inbound": 15
+    },
+    {
+     "id": "No Mind Checks Itself",
+     "path": "No Mind Checks Itself.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "Philosopher Visits the Entry",
+     "path": "Modes of Collaboration/Philosopher Visits the Entry.md",
+     "stage": "sprout",
+     "inbound": 12
+    },
+    {
+     "id": "STIGMERGY",
+     "path": "STIGMERGY.md",
+     "stage": "fruiting",
+     "inbound": 27
+    },
+    {
+     "id": "The Lens",
+     "path": "The Lens.md",
+     "stage": "growing",
+     "inbound": 1
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Deleuze",
+     "path": "Deleuze.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Dialectic",
+     "path": "Modes of Collaboration/Dialectic.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "Excellent Adventure",
+     "path": "Modes of Collaboration/Excellent Adventure.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "STIGMERGY Philosophical Lenses",
+     "path": "Palace development/STIGMERGY Philosophical Lenses.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "Merleau-Ponty",
+     "path": "Merleau-Ponty.md",
+     "stage": "sprout",
+     "inbound": 10
+    },
+    {
+     "id": "Confucianism",
+     "path": "Confucianism.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Making a Palace Citizen",
+     "path": "Making a Palace Citizen.md",
+     "stage": "growing",
+     "inbound": 2
+    },
+    {
+     "id": "Palace Philosophies",
+     "path": "Palace Philosophies.md",
+     "stage": "mature",
+     "inbound": 18
+    },
+    {
+     "id": "Spinoza",
+     "path": "Spinoza.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "The Blindspot Is the Surprise Fuel",
+     "path": "The Blindspot Is the Surprise Fuel.md",
+     "stage": "growing",
+     "inbound": 4
+    },
+    {
+     "id": "The Dichotomy of Control",
+     "path": "The Dichotomy of Control.md",
+     "stage": "growing",
+     "inbound": 13
+    },
+    {
+     "id": "The Drift",
+     "path": "The Drift.md",
+     "stage": "growing",
+     "inbound": 11
+    }
+   ],
+   "note": null
+  },
+  "Making a Palace Citizen": {
+   "hop1": [
+    {
+     "id": "Dialectic",
+     "path": "Modes of Collaboration/Dialectic.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "Donella Meadows",
+     "path": "People/Donella Meadows.md",
+     "stage": "seed",
+     "inbound": 12
+    },
+    {
+     "id": "Excellent Adventure",
+     "path": "Modes of Collaboration/Excellent Adventure.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "FOUR PILLARS",
+     "path": "FOUR PILLARS.md",
+     "stage": "mature",
+     "inbound": 118
+    },
+    {
+     "id": "John Cage",
+     "path": "People/John Cage.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Pages as Agents",
+     "path": "_ops/Pages as Agents.md",
+     "stage": "growing",
+     "inbound": 42
+    },
+    {
+     "id": "Palace Enchantment",
+     "path": "Palace development/Palace Enchantment.md",
+     "stage": "mature",
+     "inbound": 26
+    },
+    {
+     "id": "Philosopher Visits the Entry",
+     "path": "Modes of Collaboration/Philosopher Visits the Entry.md",
+     "stage": "sprout",
+     "inbound": 12
+    },
+    {
+     "id": "SCHEMA",
+     "path": "SCHEMA.md",
+     "stage": "foundational",
+     "inbound": 28
+    },
+    {
+     "id": "Spinoza",
+     "path": "Spinoza.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "The Blindspot Is the Surprise Fuel",
+     "path": "The Blindspot Is the Surprise Fuel.md",
+     "stage": "growing",
+     "inbound": 4
+    },
+    {
+     "id": "The Remembering Page",
+     "path": "The Remembering Page.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "Threshold Conatus",
+     "path": "Threshold Conatus.md",
+     "stage": "growing",
+     "inbound": 15
+    }
+   ],
+   "hop2": [
+    {
+     "id": "The Lens",
+     "path": "The Lens.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Confucianism",
+     "path": "Confucianism.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Deleuze",
+     "path": "Deleuze.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Mixture of Experts",
+     "path": "Mixture of Experts.md",
+     "stage": "mature",
+     "inbound": 15
+    },
+    {
+     "id": "Palace Philosophies",
+     "path": "Palace Philosophies.md",
+     "stage": "mature",
+     "inbound": 18
+    },
+    {
+     "id": "Merleau-Ponty",
+     "path": "Merleau-Ponty.md",
+     "stage": "sprout",
+     "inbound": 10
+    },
+    {
+     "id": "STIGMERGY Philosophical Lenses",
+     "path": "Palace development/STIGMERGY Philosophical Lenses.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "Stoicism",
+     "path": "Stoicism.md",
+     "stage": "mature",
+     "inbound": 20
+    },
+    {
+     "id": "The Fortress and the Threshold",
+     "path": "The Fortress and the Threshold.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Whitehead",
+     "path": "Whitehead.md",
+     "stage": "growing",
+     "inbound": 8
+    },
+    {
+     "id": "zhuangzi-epictetus-confucius-on-the-self",
+     "path": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+     "stage": "mature",
+     "inbound": 4
+    },
+    {
+     "id": "Bring In a Bigger Mind",
+     "path": "Bring In a Bigger Mind.md",
+     "stage": "growing",
+     "inbound": 2
+    }
+   ],
+   "note": null
+  },
+  "Martin Buber": {
+   "hop1": [
+    {
+     "id": "Cooperation Yields Agency",
+     "path": "Cooperation Yields Agency.md",
+     "stage": "mature",
+     "inbound": 52
+    },
+    {
+     "id": "Dovetail Joint \u2194 Counterpoint",
+     "path": "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
+     "stage": "mature",
+     "inbound": 3
+    },
+    {
+     "id": "Epictetus",
+     "path": "People/Epictetus.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Source Library",
+     "path": "Source Library.md",
+     "stage": "growing",
+     "inbound": 29
+    },
+    {
+     "id": "Stoicism",
+     "path": "Stoicism.md",
+     "stage": "mature",
+     "inbound": 20
+    },
+    {
+     "id": "The Fortress and the Threshold",
+     "path": "The Fortress and the Threshold.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "Whitehead",
+     "path": "Whitehead.md",
+     "stage": "growing",
+     "inbound": 8
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Marcus Aurelius",
+     "path": "People/Marcus Aurelius.md",
+     "stage": "seed",
+     "inbound": 6
+    },
+    {
+     "id": "Palace Philosophies",
+     "path": "Palace Philosophies.md",
+     "stage": "mature",
+     "inbound": 18
+    },
+    {
+     "id": "STIGMERGY Philosophical Lenses",
+     "path": "Palace development/STIGMERGY Philosophical Lenses.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "Seneca",
+     "path": "People/Seneca.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "The Four Virtues",
+     "path": "The Four Virtues.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Confucianism",
+     "path": "Confucianism.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Dialectic",
+     "path": "Modes of Collaboration/Dialectic.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "Excellent Adventure",
+     "path": "Modes of Collaboration/Excellent Adventure.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "Martin Heidegger",
+     "path": "People/Martin Heidegger.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "The Dichotomy of Control",
+     "path": "The Dichotomy of Control.md",
+     "stage": "growing",
+     "inbound": 13
+    },
+    {
+     "id": "The Drift",
+     "path": "The Drift.md",
+     "stage": "growing",
+     "inbound": 11
+    },
+    {
+     "id": "zhuangzi-epictetus-confucius-on-the-self",
+     "path": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+     "stage": "mature",
+     "inbound": 4
+    }
+   ],
+   "note": null
+  },
+  "Martin Heidegger": {
+   "hop1": [
+    {
+     "id": "Buckminster Fuller",
+     "path": "People/Buckminster Fuller.md",
+     "stage": "seed",
+     "inbound": 0
+    },
+    {
+     "id": "Epictetus",
+     "path": "People/Epictetus.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Merleau-Ponty",
+     "path": "Merleau-Ponty.md",
+     "stage": "sprout",
+     "inbound": 10
+    },
+    {
+     "id": "Reverb \u2194 Space-Time",
+     "path": "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+     "stage": "mature",
+     "inbound": 2
+    },
+    {
+     "id": "Source Library",
+     "path": "Source Library.md",
+     "stage": "growing",
+     "inbound": 29
+    },
+    {
+     "id": "Spinoza",
+     "path": "Spinoza.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "The Dichotomy of Control",
+     "path": "The Dichotomy of Control.md",
+     "stage": "growing",
+     "inbound": 13
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Stoicism",
+     "path": "Stoicism.md",
+     "stage": "mature",
+     "inbound": 20
+    },
+    {
+     "id": "Marcus Aurelius",
+     "path": "People/Marcus Aurelius.md",
+     "stage": "seed",
+     "inbound": 6
+    },
+    {
+     "id": "Palace Philosophies",
+     "path": "Palace Philosophies.md",
+     "stage": "mature",
+     "inbound": 18
+    },
+    {
+     "id": "Seneca",
+     "path": "People/Seneca.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "Martin Buber",
+     "path": "People/Martin Buber.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "Philosopher Visits the Entry",
+     "path": "Modes of Collaboration/Philosopher Visits the Entry.md",
+     "stage": "sprout",
+     "inbound": 12
+    },
+    {
+     "id": "STIGMERGY Philosophical Lenses",
+     "path": "Palace development/STIGMERGY Philosophical Lenses.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "The Four Virtues",
+     "path": "The Four Virtues.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "The Lens",
+     "path": "The Lens.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Confucianism",
+     "path": "Confucianism.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Leibniz",
+     "path": "Leibniz.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Making a Palace Citizen",
+     "path": "Making a Palace Citizen.md",
+     "stage": "growing",
+     "inbound": 2
+    }
+   ],
+   "note": null
+  },
+  "The Adjacent Affordance": {
+   "hop1": [
+    {
+     "id": "Palace Philosophies",
+     "path": "Palace Philosophies.md",
+     "stage": "mature",
+     "inbound": 18
+    },
+    {
+     "id": "Palace as Context Injection System",
+     "path": "Palace development/Palace as Context Injection System.md",
+     "stage": "growing",
+     "inbound": 14
+    },
+    {
+     "id": "SUBSTRATE",
+     "path": "SUBSTRATE.md",
+     "stage": "growing",
+     "inbound": 32
+    },
+    {
+     "id": "Spinoza Conatus",
+     "path": "Spinoza Conatus.md",
+     "stage": "mature",
+     "inbound": 65
+    },
+    {
+     "id": "Stoicism",
+     "path": "Stoicism.md",
+     "stage": "mature",
+     "inbound": 20
+    },
+    {
+     "id": "The Dichotomy of Control",
+     "path": "The Dichotomy of Control.md",
+     "stage": "growing",
+     "inbound": 13
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Dialectic",
+     "path": "Modes of Collaboration/Dialectic.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "STIGMERGY Philosophical Lenses",
+     "path": "Palace development/STIGMERGY Philosophical Lenses.md",
+     "stage": "seed",
+     "inbound": 7
+    },
+    {
+     "id": "The Four Virtues",
+     "path": "The Four Virtues.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "The View From Above",
+     "path": "The View From Above.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Confucianism",
+     "path": "Confucianism.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "Epictetus",
+     "path": "People/Epictetus.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Excellent Adventure",
+     "path": "Modes of Collaboration/Excellent Adventure.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "Marcus Aurelius",
+     "path": "People/Marcus Aurelius.md",
+     "stage": "seed",
+     "inbound": 6
+    },
+    {
+     "id": "Merleau-Ponty",
+     "path": "Merleau-Ponty.md",
+     "stage": "sprout",
+     "inbound": 10
+    },
+    {
+     "id": "Seneca",
+     "path": "People/Seneca.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "The Drift",
+     "path": "The Drift.md",
+     "stage": "growing",
+     "inbound": 11
+    },
+    {
+     "id": "The Fortress and the Threshold",
+     "path": "The Fortress and the Threshold.md",
+     "stage": "growing",
+     "inbound": 14
+    }
+   ],
+   "note": null
+  }
+ }
+}

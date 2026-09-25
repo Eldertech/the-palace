@@ -16,9 +16,6 @@ links:
   - target: "[[Four Pillars of Enchanted Agency]]"
     type: connects-to
     label: grounds-in
-  - target: "[[Toolkit Assessment — Working Doc]]"
-    type: couples-with
-    label: built-with
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: instrument-striving-principle
@@ -42,7 +39,7 @@ The full ecosystem of hardware and software Loudon uses for making music, teachi
 
 Any Claude instance reading this hub plus one category entry should have immediate, reliable orientation in that domain — without needing to reconstruct the landscape from scattered conversation history.
 
-This entry grows over time. Categories are added as interview sessions complete. Depth is added as tools are used, taught, and connected to palace concepts.
+This entry grows over time. Categories are added as interview sessions complete. The interview notes and category status live in its working doc, [[Loudon's Toolkit — context — assessment]]. Depth is added as tools are used, taught, and connected to palace concepts.
 
 ---
 

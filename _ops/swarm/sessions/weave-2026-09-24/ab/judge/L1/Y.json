@@ -1,0 +1,83 @@
+{
+ "arm": "Y",
+ "room": "L1",
+ "total_proposals": 12,
+ "sample": [
+  {
+   "kind": "relation",
+   "source": "Toolkit \u2014 Audio Plugins",
+   "type": "connects-to",
+   "target": "LDN RTM",
+   "label": "future-series-source",
+   "rationale": "LDN RTM already connects-to the Toolkit with this label ('Queued: Serum, Soundtoys, and the Toolkit \u2014 Audio Plugins shortlist'); the Toolkit's own forward_vector names the same RTM series but had no link back.",
+   "evidence": "Toolkit \u2014 Audio Plugins body: \"[[Loudon Live]] RTM Series concept: A planned content series reading each plugin's manual and surfacing unusual, cool, or underused capabilities.\"",
+   "item_id": "Y1"
+  },
+  {
+   "kind": "relation",
+   "source": "Shopkeeper",
+   "type": "connects-to",
+   "target": "Does Personifying an Agent Change What It Does",
+   "label": "am-i-the-datum",
+   "rationale": "The question's whole occasion is Shopkeeper's deposit and names her explicitly as 'first-case' from its own side; she never links back to the question she is the data point for.",
+   "evidence": "\"The [[Shopkeeper]] is the palace's first agent given a gender and a personality \u2014 not just a role with a register, but a character.\"",
+   "item_id": "Y2"
+  },
+  {
+   "kind": "unsung",
+   "source": "LDN RTM",
+   "type": "connects-to",
+   "target": "OBS",
+   "label": "drives-the-rig",
+   "rationale": "The rig is driven, not clicked: `Projects/LDN RTM/obs/rtm.py` operates [[OBS]] over its WebSocket.",
+   "item_id": "Y3"
+  },
+  {
+   "kind": "relation",
+   "source": "Progressive Staging",
+   "type": "contradicts",
+   "target": "LDN RTM",
+   "label": "scale-not-moment",
+   "rationale": "LDN RTM already names this a productive contradiction in its own Cross-Domain Resonances section; contradicts is symmetric and the palace explicitly asks the Weave to hunt missing contradicts.",
+   "evidence": "\"[[Progressive Staging]] \u2014 the productive contradiction. Staging insists every stage is a complete pedagogical moment; RTM's units are deliberately not moments. Completeness only teaches at catalog scale. Both are true and the palace holds both.\"",
+   "item_id": "Y4"
+  },
+  {
+   "kind": "relation",
+   "source": "Steer the Generator",
+   "type": "connects-to",
+   "target": "ControlNet as Topology",
+   "label": "terrain-under-the-moves",
+   "rationale": "ControlNet as Topology already connects-to Steer the Generator with this exact label; the reciprocal was never added on the practice side, though its 'control the structure' move is literally the armature concept.",
+   "evidence": "\"Control the structure that matters \u2014 don't describe it, condition on it... The prompt sets the vibe; the control sets the thing you can't afford to drift.\"",
+   "item_id": "Y5"
+  },
+  {
+   "kind": "stage",
+   "source": "LDN RTM",
+   "type": "sprout->growing",
+   "rationale": "none.",
+   "item_id": "Y6"
+  },
+  {
+   "kind": "relation",
+   "source": "The Flow Field is the Spine",
+   "type": "connects-to",
+   "target": "ControlNet as Topology",
+   "label": "field-carves-terrain",
+   "rationale": "ControlNet as Topology explains why seed-lock beats render-noise-warp using this entry's own field by name; the reciprocal link was missing.",
+   "evidence": "\"Why seed-lock beat the render-noise-warp... [[The Flow Field is the Spine|the field]] wins as composition, high in the fog, not as jittered noise low in a valley.\"",
+   "item_id": "Y7"
+  },
+  {
+   "kind": "relation",
+   "source": "Hand-Drawn 3D Look",
+   "type": "couples-with",
+   "target": "Block It in Blender, Ink It in genAI",
+   "label": "the-look",
+   "rationale": "Block It in Blender already declares couples-with \u2192 Hand-Drawn 3D Look with the same label; couples-with is symmetric and the reverse was simply never recorded.",
+   "evidence": "Hand-Drawn 3D Look forward_vector: \"I have proven the redraw survives on a posed figure (over-anchor it: canny + depth + openpose)\" \u2014 the exact D2 stack the runbook specifies.",
+   "item_id": "Y8"
+  }
+ ]
+}

@@ -62,7 +62,7 @@ Measured, contemplative, spiritually inflected but never vague — concrete craf
 
 - **Kin-with-tension — the humility-that-hides-control pattern:** [[Agnes Martin]], [[Andy Goldsworthy]], [[James Turrell]], [[Rick Rubin]] — all say "I get out of the way" while controlling everything. Nakashima is the most materially concrete case. A Dialectic or Excellent Adventure among these citizens interrogating the pattern is the marquee dispatch — likely more generative than inventing a fresh sparring partner.
 - **Clash-partner:** a maker who *owns* their imposition — "I decide, I impose, and I call it that." Good opening line: *"You say you listen to the tree. I say you decide, then tell a story about listening. Which of us is honest?"* Or the palace's engineering/tools pole (the anti-mystification voice) testing whether "the tree's soul" does real work atop what is, underneath, MIT structural reasoning.
-- Existing links: `mirrors` [[Sam Maloof]] (wood, two methods), `mirrors` [[Simondon]] (concretization), `exemplifies` [[Found ↔ Made]].
+- Existing links: `mirrors` [[Simondon]] (concretization), `exemplifies` [[Found ↔ Made]]. Kin without a link: Sam Maloof (wood, two methods).
 
 ## Sources
 

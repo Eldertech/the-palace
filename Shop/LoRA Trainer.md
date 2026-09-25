@@ -10,9 +10,6 @@ last_activated: 2026-06
 activation_count: 1
 forward_vector: "I train a character or subject into a LoRA on a rented GPU and hand back a weight that holds identity — first-try, because the six dependency walls that cost a whole session are now baked into my recipe. My hard-won lesson: the dataset is the lever, not the steps; so I want to grow a dataset-shaping front half (visible faces, varied light and distance) and stop wasting runs on narrow inputs. Prove identity with DINO + ArcFace, never whole-image similarity, and validate myself with a DreamBooth control before I blame the pipeline."
 links:
-  - target: "[[Shop/RunPod GPU Backend]]"
-    type: connects-to
-    label: rides-the-substrate
   - target: "[[The Shop]]"
     type: member-of
     label: roster-member
@@ -24,6 +21,9 @@ links:
     label: prove-then-optimize
   - target: "[[Review Layer]]"
     type: connects-to
+  - target: "[[The Practice Rediscovers Its Philosophy]]"
+    type: connects-to
+    label: authored-passivity
 ---
 
 # LoRA Trainer

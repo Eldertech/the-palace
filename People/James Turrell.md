@@ -47,6 +47,9 @@ links:
   - target: "[[Seneca]]"
     type: contradicts
     label: fifty-year-crater-vs-the-finite-hour
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # James Turrell

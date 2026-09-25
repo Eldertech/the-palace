@@ -1,0 +1,194 @@
+{
+ "bridge_findings": [
+  {
+   "tool": "",
+   "thought": "Dialectic's own Cross-Domain Resonance section names exactly this bridge but never turns it into a frontmatter link: the council's researched voices are the raw material for person-entry citizenship.",
+   "shared_structure": "Both require the same act \u2014 research a voice deeply enough (vocabulary, characteristic moves, blindspots) that it can be embodied faithfully. Dialectic does this to stage a conversation; Making a Palace Citizen does it to give the voice a permanent home with a dossier.",
+   "spark": 3,
+   "classify": "link",
+   "quote_thought": "\"The council's voices often become candidates for `person` entries in the palace. A voice well-researched enough to embody is well-researched enough to deposit.\" \u2014 Dialectic.md, Cross-Domain Resonance section",
+   "proposed_type": "connects-to",
+   "fidelity_test": "Read aloud: Dialectic \u2192 connects-to (research-becomes-dossier) \u2192 Making a Palace Citizen. Genuine \u2014 Dialectic names its own output feeding that method, it just never wired the link."
+  },
+  {
+   "tool": "",
+   "thought": "Weaker echo of the same bridge from Philosopher Visits the Entry, which also demands pre-embodiment research ('Research enough to be surprised by them') but doesn't explicitly promise deposit the way Dialectic does.",
+   "shared_structure": "Same research discipline, narrower payoff (one philosopher visiting one entry, not a council becoming citizens).",
+   "spark": 2,
+   "classify": "none",
+   "quote_thought": "\"Research enough to be surprised by them. Their vocabulary, one move they reach for, one thing they got wrong.\" \u2014 Philosopher Visits the Entry.md \u00a7 The Method",
+   "proposed_type": "connects-to",
+   "fidelity_test": "Optional, weaker than the Dialectic bridge \u2014 offered for the elder's judgment, not pushed."
+  }
+ ],
+ "cluster": "F-small-families",
+ "lens": "folder",
+ "members_read": [
+  "Cross-Domain Resonances/Compression \u2194 Intimacy.md",
+  "Cross-Domain Resonances/Cooking \u2194 Mixing.md",
+  "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
+  "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+  "Cross-Domain Resonances/Kick Drum \u2194 Foundation.md",
+  "Cross-Domain Resonances/Quantization \u2194 Precision vs Flow.md",
+  "Cross-Domain Resonances/Reverb \u2194 Space-Time.md",
+  "Cross-Domain Resonances/Saturation \u2194 Richness.md",
+  "Cross-Domain Resonances/Sidechain \u2194 Conversation.md",
+  "Cross-Domain Resonances/Synthesis \u2194 Emergence.md",
+  "Modes of Collaboration/Dialectic.md",
+  "Modes of Collaboration/Excellent Adventure.md",
+  "Modes of Collaboration/Oblique Portrait.md",
+  "Modes of Collaboration/Philosopher Visits the Entry.md",
+  "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+  "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md"
+ ],
+ "coherence_findings": [
+  {
+   "kind": "house-standard-strength",
+   "issue": "The ten Cross-Domain Resonances entries share one strict template (Pattern \u2192 Technical Side \u2192 Structural Identity table \u2192 Teaching the Resonance in three parts \u2192 Advanced Applications \u2192 Common Student Discoveries/Misunderstandings \u2192 Teaching Notes \u2192 a Deeper-Principle philosopher pairing \u2192 Success Metrics \u2192 an italicized closing coda) and identical batch metadata (born 2026-03, stage mature, last_activated 2026-06-26, activation_count 2, confidence established, energy very high, who_leads shared). This reads as deliberate, coherent house style, not drift \u2014 worth naming as a strength rather than flagging.",
+   "entries": [
+    "Compression \u2194 Intimacy",
+    "Cooking \u2194 Mixing",
+    "Dovetail Joint \u2194 Counterpoint",
+    "Frequency Domain \u2194 Perspective Shift",
+    "Kick Drum \u2194 Foundation",
+    "Quantization \u2194 Precision vs Flow",
+    "Reverb \u2194 Space-Time",
+    "Saturation \u2194 Richness",
+    "Sidechain \u2194 Conversation",
+    "Synthesis \u2194 Emergence"
+   ],
+   "proposed_action": "None needed \u2014 noted for the record; no coherence repair called for."
+  },
+  {
+   "kind": "vitality-flag",
+   "issue": "All ten Cross-Domain Resonances entries carry the exact same last_activated (2026-06-26) and activation_count (2), meaning the whole sub-family was touched together once, three months ago, and none individually since \u2014 despite being 'mature' and heavily inbound-linked. Not urgent, but the uniform staleness is itself a signal the set hasn't been read individually since its last batch pass.",
+   "entries": [
+    "Compression \u2194 Intimacy",
+    "Cooking \u2194 Mixing",
+    "Dovetail Joint \u2194 Counterpoint",
+    "Frequency Domain \u2194 Perspective Shift",
+    "Kick Drum \u2194 Foundation",
+    "Quantization \u2194 Precision vs Flow",
+    "Reverb \u2194 Space-Time",
+    "Saturation \u2194 Richness",
+    "Sidechain \u2194 Conversation",
+    "Synthesis \u2194 Emergence"
+   ],
+   "proposed_action": "No rewrite proposed \u2014 this Weave pass itself should bump last_activated on these ten if the elder folds these findings in."
+  },
+  {
+   "kind": "hub-candidacy",
+   "issue": "Dialectic (18 inbound), Excellent Adventure (18 inbound), Oblique Portrait (13 inbound), and Philosopher Visits the Entry (12 inbound) all clear the SCHEMA \u00a71 hub threshold (\u22655 inbound typed links, 'earned... via the Weave'). None has been promoted to type `hub`. This is a Weave, which is exactly the moment SCHEMA says promotion gets proposed.",
+   "entries": [
+    "Dialectic",
+    "Excellent Adventure",
+    "Oblique Portrait",
+    "Philosopher Visits the Entry"
+   ],
+   "proposed_action": "Flag for the elder running this Weave / a Palace Map pass: propose `hub` type for Dialectic and Excellent Adventure at minimum (18 inbound each, well past threshold); Oblique Portrait and Philosopher Visits the Entry are close calls worth a second look. This is a type-system decision outside a folder-lens worker's write authority \u2014 surfacing, not deciding."
+  },
+  {
+   "kind": "frontmatter-title-mismatch",
+   "issue": "Both archived-Dialectic transcript files violate SCHEMA \u00a73's required-field rule that title must match the filename (minus .md): `spinoza-zhuangzi-on-striving.md` carries title \"Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work\"; `zhuangzi-epictetus-confucius-on-the-self.md` carries title \"Zhuangzi, Epictetus, and Confucius on the End of the Self.\" Both also carry full first-class entry frontmatter (type: concept, stage: mature, pillars, confidence, energy) while sitting inside another entry's bundle folder (Spinoza Conatus/ and The Fortress and the Threshold/ respectively) \u2014 the exact location SCHEMA \u00a78's `dialectic` bundle type was designed for, though these two are not using that minimal-frontmatter form.",
+   "entries": [
+    "spinoza-zhuangzi-on-striving",
+    "zhuangzi-epictetus-confucius-on-the-self"
+   ],
+   "proposed_action": "Do not demote \u2014 both transcripts produced genuinely new, actively-cited yield (the conatus second-axis, The Drift's origin) that a bundle file's invisibility to Weave topology would hide. Instead: rename the files to match their titles (or shorten the titles to match cleaner slugs) so SCHEMA \u00a73 is satisfied. Leave the type:concept / bundle-folder-location combination as-is; it's an unusual but working pattern the room task itself already names as a known category ('entries living inside other entries' bundle folders')."
+  },
+  {
+   "kind": "stale-path-reference",
+   "issue": "Oblique Portrait.md points to a local archive at `The Palace/Modes of collaboration/Oblique Portrait/oblique-portrait-dossier-2026-03.html` \u2014 lowercase 'collaboration' \u2014 while the actual folder in this checkout is `Modes of Collaboration/` (capital C). Likely a stale path from before a rename; not a wikilink, so outside ghost-link scope, but worth a look.",
+   "entries": [
+    "Oblique Portrait"
+   ],
+   "proposed_action": "Verify the archive path resolves; fix casing if it doesn't. Noting only, per this lens's scope."
+  }
+ ],
+ "demote_candidates": [
+  {
+   "file": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
+   "disposition": "keep",
+   "rationale": "Lives in a bundle folder and could formally become a SCHEMA \u00a78 `dialectic` bundle file, but it carries 4 inbound links and produced the conatus 'second axis' that Spinoza Conatus and Hilaritas Generator are asked to absorb \u2014 genuinely load-bearing, active content. Demoting to a minimal-frontmatter bundle file would hide it from Weave topology, which would be a real loss. Fix the filename/title mismatch (see coherence_findings) instead of demoting."
+  },
+  {
+   "file": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
+   "disposition": "keep",
+   "rationale": "Same reasoning: 4 inbound, spawned The Drift as a new entry, actively cited by the sibling Dialectic. Keep as a first-class entry; fix the filename/title mismatch rather than fold it into bundle substrate."
+  }
+ ],
+ "entry_health_flags": [],
+ "merge_candidates": [],
+ "compost_candidates": [],
+ "open_question_resolutions": [
+  {
+   "entry": "zhuangzi-epictetus-confucius-on-the-self",
+   "question": "The Drift (or: The Open Door) \u2014 the fourth, no-architecture pole wants its own palace entry.",
+   "verdict": "resolved",
+   "by_entry": "The Drift",
+   "proposed_action": "None \u2014 already spawned and now actively linked from both spinoza-zhuangzi-on-striving (no-architecture-pole) and Philosopher Visits the Entry's roster. Confirm The Drift's own frontmatter names emerged-from back to this Dialectic if it doesn't already."
+  },
+  {
+   "entry": "zhuangzi-epictetus-confucius-on-the-self",
+   "question": "A Dialectic with Spinoza in the room. What does Spinoza say to Zhuangzi? (forward vector)",
+   "verdict": "resolved",
+   "by_entry": "spinoza-zhuangzi-on-striving",
+   "proposed_action": "None \u2014 this forward vector was directly fulfilled by the sibling Dialectic; the two already cross-link (mirrors, same-method-second-question)."
+  },
+  {
+   "entry": "Excellent Adventure",
+   "question": "What figures or traditions are most fruitful for this method? Is there a pattern to which voices come alive most fully?",
+   "verdict": "progressed",
+   "by_entry": "Philosopher Visits the Entry",
+   "proposed_action": "Cite the 'Starting Roster' section (voice-to-entry-family pairings: Deleuze for generative/synthesis-space, Spinoza Conatus + The Drift for threshold entries, Confucianism/Leibniz for coupling entries, Simondon/Merleau-Ponty for instrument entries, Plato/Whitehead for mathematical-form entries) as a working answer, scoped to entry-visits rather than the full Excellent Adventure \u2014 still open beyond that scope."
+  },
+  {
+   "entry": "Excellent Adventure",
+   "question": "Next development: a protocol document specifying how to choose the historical figure, frame the encounter, and know when the adventure has done its work.",
+   "verdict": "progressed",
+   "by_entry": "Philosopher Visits the Entry",
+   "proposed_action": "Philosopher Visits the Entry \u00a7 The Method is exactly this protocol, but scoped narrower (one philosopher, one entry) than the full Excellent Adventure (any figure, any question/moment). Worth an explicit cross-reference rather than treating it as fully closing the parent's forward vector."
+  },
+  {
+   "entry": "spinoza-zhuangzi-on-striving / zhuangzi-epictetus-confucius-on-the-self",
+   "question": "A live re-run with Loudon steering one of the voices.",
+   "verdict": "still-open",
+   "proposed_action": "This exact ask appears, worded almost identically, in both archived Dialectics' forward vectors \u2014 a standing request named twice and acted on neither time. Worth surfacing to Loudon directly rather than treating as routine backlog."
+  },
+  {
+   "entry": "Dialectic",
+   "question": "Build an interactive front end where figures can be moved around a virtual space, have conversations with each other, and Loudon can interject questions to groups of philosophers and personalities.",
+   "verdict": "still-open",
+   "proposed_action": "No sibling in this room addresses it; genuinely unresolved."
+  }
+ ],
+ "synthesis_spawn_flag": [
+  {
+   "unnamed_idea": "A meta-pattern runs under roughly half the Cross-Domain Resonances set \u2014 irreversibility, scarcity, or constraint is what teaches taste (Cooking \u2194 Mixing's subtraction-first thinking, Saturation \u2194 Richness's sweet spot between sterile and broken, Kick Drum \u2194 Foundation's commit-to-the-foundation, Quantization's 'resolution determines expression'). Each entry names its own local version; nothing names the shared principle across all four.",
+   "why_load_bearing": "It's the thing a student would eventually generalize from working through several of these entries in sequence \u2014 and right now that generalization has to happen in the student's head, not on the page.",
+   "crossing_entries": [
+    "Cooking \u2194 Mixing",
+    "Saturation \u2194 Richness",
+    "Kick Drum \u2194 Foundation",
+    "Quantization \u2194 Precision vs Flow"
+   ]
+  }
+ ],
+ "unsung_paths": [],
+ "walk_results": [],
+ "typed_relations": [
+  {
+   "source": "Dialectic",
+   "target": "Making a Palace Citizen",
+   "type": "connects-to",
+   "label": "research-becomes-dossier",
+   "rationale": "Dialectic's own body already states the bridge in plain language but never turns it into a frontmatter link. The two entries describe the same research discipline (biographical/intellectual/stylistic material sufficient for faithful embodiment) aimed at two different outputs \u2014 a staged conversation vs. a permanent citizen.",
+   "evidence": "\"The council's voices often become candidates for `person` entries in the palace. A voice well-researched enough to embody is well-researched enough to deposit.\" \u2014 Dialectic.md, Cross-Domain Resonance section",
+   "kind": "new",
+   "spark": 3,
+   "deep_pattern": "Both are the same act (research a voice until it surprises you) pointed at two different palace destinations \u2014 a temporary embodiment vs. a permanent one."
+  }
+ ],
+ "flag_responses": [],
+ "summary": "This room glues together three unrelated things for weave logistics \u2014 the ten-entry Cross-Domain Resonances teaching library, the four-entry Modes of Collaboration family, and two archived-Dialectic transcripts that live inside other entries' bundle folders \u2014 and they should be read as three separate families, not one. The Cross-Domain Resonances set is the healthiest thing I read all session: ten entries sharing one deliberate template, no forced links, no generic forward vectors, and \u2014 checked carefully \u2014 no missing contradicts and no redundant pairs worth merging, despite Loudon's \"cluttered\" worry; it reads like a designed curriculum, not sprawl. The one real thread worth naming is that four of the ten quietly teach the same underlying lesson (constraint/irreversibility as what produces taste) without that lesson ever being named as its own idea anywhere. The Modes of Collaboration family is where the actual news is: Dialectic, Excellent Adventure, and Oblique Portrait have all badly cleared the SCHEMA hub threshold (18, 18, and 13 inbound against a bar of 5) and nobody has proposed promotion \u2014 this Weave is the moment SCHEMA says to make that call. The two archived Dialectics (Spinoza/Zhuangzi on striving, and Zhuangzi/Epictetus/Confucius on the self) are genuinely earning their keep \u2014 one spawned The Drift as a new entry, the other directly answered a forward vector the first one carried \u2014 but both violate SCHEMA \u00a73's title-must-match-filename rule and sit in an unusual bundle-folder-but-full-entry position that's worth a filename fix rather than a demotion, since they're too load-bearing to hide from Weave topology. One genuine cross-family bridge surfaced on a close read: Dialectic's own text already names its relationship to Making a Palace Citizen (research good enough to embody is research good enough to deposit) but never wired the link."
+}

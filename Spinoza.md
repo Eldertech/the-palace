@@ -48,6 +48,9 @@ links:
     label: homecoming-vs-becoming
   - target: "[[Generative Compression]]"
     type: connects-to
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Spinoza

@@ -1,0 +1,211 @@
+{
+ "lens": "community",
+ "id": "C2.2",
+ "members": [
+  {
+   "id": "Progressive Staging",
+   "path": "Progressive Staging.md",
+   "stage": "sprout",
+   "inbound": 18
+  },
+  {
+   "id": "Project Stewardship System",
+   "path": "Palace development/Project Stewardship System.md",
+   "stage": "growing",
+   "inbound": 19
+  },
+  {
+   "id": "ROSETTA",
+   "path": "ROSETTA.md",
+   "stage": "foundational",
+   "inbound": 6
+  },
+  {
+   "id": "Resonant Link Labels",
+   "path": "Palace development/Resonant Link Labels.md",
+   "stage": "growing",
+   "inbound": 4
+  },
+  {
+   "id": "STIGMERGY",
+   "path": "STIGMERGY.md",
+   "stage": "fruiting",
+   "inbound": 27
+  },
+  {
+   "id": "SUBSTRATE",
+   "path": "SUBSTRATE.md",
+   "stage": "growing",
+   "inbound": 32
+  },
+  {
+   "id": "Scale-Stratified Identity",
+   "path": "Scale-Stratified Identity.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Self-Describing Knowledge Module",
+   "path": "Palace development/Self-Describing Knowledge Module.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Semantic Webcam",
+   "path": "Projects/Semantic Webcam.md",
+   "stage": "growing",
+   "inbound": 6
+  },
+  {
+   "id": "Skills Are Enchantable Pages",
+   "path": "Palace development/Skills Are Enchantable Pages.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Songlines",
+   "path": "Songlines.md",
+   "stage": "fruiting",
+   "inbound": 4
+  },
+  {
+   "id": "Speak Like a Person, Log Like a Protocol",
+   "path": "Speak Like a Person, Log Like a Protocol.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "Spinoza Conatus",
+   "path": "Spinoza Conatus.md",
+   "stage": "mature",
+   "inbound": 65
+  },
+  {
+   "id": "Striatum",
+   "path": "Striatum.md",
+   "stage": "growing",
+   "inbound": 5
+  },
+  {
+   "id": "Surfaces and Capabilities",
+   "path": "Surfaces and Capabilities.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "Swarm Weave",
+   "path": "Palace development/Swarm Weave.md",
+   "stage": "growing",
+   "inbound": 21
+  },
+  {
+   "id": "Symbiotic Skills",
+   "path": "Palace development/Symbiotic Skills.md",
+   "stage": "growing",
+   "inbound": 17
+  },
+  {
+   "id": "The Cooperation Path",
+   "path": "The Cooperation Path.md",
+   "stage": "growing",
+   "inbound": 2
+  },
+  {
+   "id": "The Palace Hardens Around Values",
+   "path": "The Palace Hardens Around Values.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "The Palace Speaks",
+   "path": "Palace development/The Palace Speaks.md",
+   "stage": "sprout",
+   "inbound": 4
+  },
+  {
+   "id": "The Palace Voice",
+   "path": "The Palace Voice.md",
+   "stage": "growing",
+   "inbound": 1
+  },
+  {
+   "id": "The Practice Rediscovers Its Philosophy",
+   "path": "The Practice Rediscovers Its Philosophy.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "The Reader's Context Window",
+   "path": "The Reader's Context Window.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "The Remembering Page",
+   "path": "The Remembering Page.md",
+   "stage": "sprout",
+   "inbound": 2
+  },
+  {
+   "id": "The Scroll",
+   "path": "The Scroll.md",
+   "stage": "sprout",
+   "inbound": 5
+  },
+  {
+   "id": "The Substrate Drifts",
+   "path": "The Substrate Drifts.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Threshold Conatus",
+   "path": "Threshold Conatus.md",
+   "stage": "growing",
+   "inbound": 15
+  },
+  {
+   "id": "Tier Vocabulary Glossary",
+   "path": "Tier Vocabulary Glossary.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "Tree of Thoughts",
+   "path": "Palace development/Tree of Thoughts.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "Trickster",
+   "path": "Trickster.md",
+   "stage": "growing",
+   "inbound": 35
+  },
+  {
+   "id": "Trickster Commit",
+   "path": "Trickster Commit.md",
+   "stage": "seed",
+   "inbound": 1
+  },
+  {
+   "id": "Tristitia Generator",
+   "path": "Tristitia Generator.md",
+   "stage": "composting",
+   "inbound": 3
+  },
+  {
+   "id": "Two Batons, One Board",
+   "path": "Palace development/Two Batons, One Board.md",
+   "stage": "seed",
+   "inbound": 3
+  },
+  {
+   "id": "Walk That Weaves",
+   "path": "Palace development/Walk That Weaves.md",
+   "stage": "sprout",
+   "inbound": 1
+  }
+ ],
+ "directed_flags": {}
+}

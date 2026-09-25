@@ -1,0 +1,441 @@
+{
+  "cluster_count": 10,
+  "clusters": [
+    {
+      "id": "B1",
+      "size": 12,
+      "members": [
+        "1D Wavetable Scanning",
+        "Animate the Background",
+        "Buckminster Fuller",
+        "Dub Lineage",
+        "Entry Conatus",
+        "Image-to-3D Smith",
+        "Julia Cameron",
+        "Merleau-Ponty",
+        "PDL Renderer",
+        "Portamento and Physical Pitch Modeling",
+        "Remotion",
+        "Striatum"
+      ],
+      "tool_side": [
+        "1D Wavetable Scanning",
+        "Animate the Background",
+        "Image-to-3D Smith",
+        "PDL Renderer",
+        "Portamento and Physical Pitch Modeling",
+        "Remotion"
+      ],
+      "thought_side": [
+        "Buckminster Fuller",
+        "Dub Lineage",
+        "Entry Conatus",
+        "Julia Cameron",
+        "Merleau-Ponty",
+        "Striatum"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B2",
+      "size": 12,
+      "members": [
+        "2D Wavetable Catalog",
+        "Agent Wellbeing",
+        "BLUELINE",
+        "Christopher Alexander",
+        "LaMa",
+        "Lao Tzu",
+        "Palace Philosophies",
+        "Quadratic Interpolation in DSP",
+        "Reflective Practice",
+        "SAM",
+        "Synth Archetypes",
+        "The Palace Voice"
+      ],
+      "tool_side": [
+        "2D Wavetable Catalog",
+        "BLUELINE",
+        "LaMa",
+        "Quadratic Interpolation in DSP",
+        "SAM",
+        "Synth Archetypes"
+      ],
+      "thought_side": [
+        "Agent Wellbeing",
+        "Christopher Alexander",
+        "Lao Tzu",
+        "Palace Philosophies",
+        "Reflective Practice",
+        "The Palace Voice"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B3",
+      "size": 12,
+      "members": [
+        "Bayesian Granular Synthesizer",
+        "Blender",
+        "Comic and Cinema \u2014 Two Ways of Seeing",
+        "Compression \u2194 Intimacy",
+        "Confucianism",
+        "Creative Coach",
+        "Lettering",
+        "Leverage Points Framework",
+        "Rank-N Lattice Analysis",
+        "Search Before You Build",
+        "Seneca",
+        "VCV Patch Generator"
+      ],
+      "tool_side": [
+        "Bayesian Granular Synthesizer",
+        "Blender",
+        "Lettering",
+        "Rank-N Lattice Analysis",
+        "Search Before You Build",
+        "VCV Patch Generator"
+      ],
+      "thought_side": [
+        "Comic and Cinema \u2014 Two Ways of Seeing",
+        "Compression \u2194 Intimacy",
+        "Confucianism",
+        "Creative Coach",
+        "Leverage Points Framework",
+        "Seneca"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B4",
+      "size": 12,
+      "members": [
+        "Block It in Blender, Ink It in genAI",
+        "Dialectic",
+        "Dispersion Table",
+        "Donella Meadows",
+        "Graphic Storytelling",
+        "Hilaritas Generator",
+        "LoRA Trainer",
+        "Pauline Oliveros",
+        "SMPTE LTC",
+        "Spinoza",
+        "The 2.5D Paper Stack",
+        "Weaving Memory into the Palace"
+      ],
+      "tool_side": [
+        "Block It in Blender, Ink It in genAI",
+        "Dispersion Table",
+        "LoRA Trainer",
+        "SMPTE LTC",
+        "The 2.5D Paper Stack",
+        "Weaving Memory into the Palace"
+      ],
+      "thought_side": [
+        "Dialectic",
+        "Donella Meadows",
+        "Graphic Storytelling",
+        "Hilaritas Generator",
+        "Pauline Oliveros",
+        "Spinoza"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B5",
+      "size": 12,
+      "members": [
+        "ComfyUI",
+        "Douglas Hofstadter",
+        "Epictetus",
+        "Exponential Decay Curvature",
+        "Identity Molting",
+        "Manim CE",
+        "Quality Manifesto",
+        "Stoicism",
+        "The Multilinear Self",
+        "Three.js",
+        "Tone.js",
+        "Worktree Practice"
+      ],
+      "tool_side": [
+        "ComfyUI",
+        "Exponential Decay Curvature",
+        "Manim CE",
+        "Three.js",
+        "Tone.js",
+        "Worktree Practice"
+      ],
+      "thought_side": [
+        "Douglas Hofstadter",
+        "Epictetus",
+        "Identity Molting",
+        "Quality Manifesto",
+        "Stoicism",
+        "The Multilinear Self"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B6",
+      "size": 12,
+      "members": [
+        "D3.js",
+        "Depth Anything",
+        "Found \u2194 Made",
+        "Frequency-Time Explorer",
+        "Lateral Access",
+        "Leibniz",
+        "Midjourney",
+        "Rick Rubin",
+        "The Drift",
+        "Tract Mirror",
+        "Web Audio Worklet",
+        "Zoom Out to the Structure"
+      ],
+      "tool_side": [
+        "D3.js",
+        "Depth Anything",
+        "Frequency-Time Explorer",
+        "Midjourney",
+        "Tract Mirror",
+        "Web Audio Worklet"
+      ],
+      "thought_side": [
+        "Found \u2194 Made",
+        "Lateral Access",
+        "Leibniz",
+        "Rick Rubin",
+        "The Drift",
+        "Zoom Out to the Structure"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B7",
+      "size": 12,
+      "members": [
+        "Agnes Martin",
+        "FLUX (Hugging Face)",
+        "Generative Wavetable Libraries",
+        "George Nakashima",
+        "LaTeX",
+        "Like Water",
+        "Metaphor as Coupling Medium",
+        "Move the Ink, Don't Redraw It",
+        "Saturation \u2194 Richness",
+        "The Fortress and the Threshold",
+        "Waveguide Synthesizer",
+        "Whisper"
+      ],
+      "tool_side": [
+        "FLUX (Hugging Face)",
+        "Generative Wavetable Libraries",
+        "LaTeX",
+        "Move the Ink, Don't Redraw It",
+        "Waveguide Synthesizer",
+        "Whisper"
+      ],
+      "thought_side": [
+        "Agnes Martin",
+        "George Nakashima",
+        "Like Water",
+        "Metaphor as Coupling Medium",
+        "Saturation \u2194 Richness",
+        "The Fortress and the Threshold"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B8",
+      "size": 12,
+      "members": [
+        "Andy Goldsworthy",
+        "Figure Rig",
+        "Iain McGilchrist",
+        "Marcus Aurelius",
+        "Matplotlib",
+        "Murmuration",
+        "OBS",
+        "Progressive Staging",
+        "Shunryu Suzuki",
+        "Wavetable Scanner",
+        "assume multi-agent",
+        "spinoza-zhuangzi-on-striving"
+      ],
+      "tool_side": [
+        "Figure Rig",
+        "Matplotlib",
+        "Murmuration",
+        "OBS",
+        "Wavetable Scanner",
+        "assume multi-agent"
+      ],
+      "thought_side": [
+        "Andy Goldsworthy",
+        "Iain McGilchrist",
+        "Marcus Aurelius",
+        "Progressive Staging",
+        "Shunryu Suzuki",
+        "spinoza-zhuangzi-on-striving"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B9",
+      "size": 12,
+      "members": [
+        "Annie Dillard",
+        "Frame Designer",
+        "James Turrell",
+        "Martin Buber",
+        "Neural Granular Synthesis",
+        "Observable Plot",
+        "RNBO codebox~ smith",
+        "Songlines",
+        "Source Library",
+        "The Scroll",
+        "p5.js",
+        "zhuangzi-epictetus-confucius-on-the-self"
+      ],
+      "tool_side": [
+        "Frame Designer",
+        "Neural Granular Synthesis",
+        "Observable Plot",
+        "RNBO codebox~ smith",
+        "The Scroll",
+        "p5.js"
+      ],
+      "thought_side": [
+        "Annie Dillard",
+        "James Turrell",
+        "Martin Buber",
+        "Songlines",
+        "Source Library",
+        "zhuangzi-epictetus-confucius-on-the-self"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    },
+    {
+      "id": "B10",
+      "size": 11,
+      "members": [
+        "Brian Eno",
+        "Hand-Drawn 3D Look",
+        "John Cage",
+        "Martin Heidegger",
+        "Mermaid",
+        "PDL Generation Prompt",
+        "Piano String Inharmonicity",
+        "Remnants in Depth",
+        "Spinoza Conatus",
+        "The Substrate Drifts",
+        "Yasujir\u014d Ozu"
+      ],
+      "tool_side": [
+        "Hand-Drawn 3D Look",
+        "Mermaid",
+        "PDL Generation Prompt",
+        "Piano String Inharmonicity",
+        "Remnants in Depth",
+        "The Substrate Drifts"
+      ],
+      "thought_side": [
+        "Brian Eno",
+        "John Cage",
+        "Martin Heidegger",
+        "Spinoza Conatus",
+        "Yasujir\u014d Ozu"
+      ],
+      "cross_pairs_already_linked": 0,
+      "internal_edge_count": null,
+      "boundary_edge_count": null,
+      "boundary_edges": []
+    }
+  ],
+  "params": {
+    "groups": 10,
+    "per_side": 6,
+    "seed": 20260924,
+    "tool_side_size": 103,
+    "thought_side_size": 59,
+    "tool_side_in_rooms": 60,
+    "thought_side_in_rooms": 59,
+    "excluded_both_or_neither": 105
+  },
+  "unclustered": [
+    "1 from 2",
+    "2D Torus Wavetable Synthesizer",
+    "Action Potential Oscillator",
+    "Audition Gate",
+    "Blood Compressor",
+    "Compressor Design",
+    "Crystal Synthesizer",
+    "DSP Frameworks",
+    "Floquet Time-Modulated Loops",
+    "Generative Audio Devices",
+    "Generative Preset Development",
+    "Generative Sample Libraries",
+    "Granular Synthesis",
+    "Hero and Avatar Maker",
+    "Inharmonic Wavetable Synthesis",
+    "Kokoro",
+    "LDN RTM",
+    "Loudon Live",
+    "Loudon Live Post-producer",
+    "Loudon's Toolkit",
+    "Maker",
+    "Meadows and an Artist's Career",
+    "Objects to Think With",
+    "Palace Enchantment",
+    "Phoneme Choir",
+    "Preset Oracle",
+    "Project Stewardship System",
+    "Radio Play",
+    "Retrospective Delay",
+    "RunPod GPU Backend",
+    "STIGMERGY Philosophical Lenses",
+    "Semantic Delay",
+    "Semantic Webcam",
+    "Shepard Tone Synthesizer",
+    "Shopkeeper",
+    "Slime Mold Delay",
+    "Stable Audio Open",
+    "Swarm Weave",
+    "Symbiotic Skills",
+    "Talking Keyboard",
+    "Tier Vocabulary Glossary",
+    "Tool Builder",
+    "ffmpeg"
+  ],
+  "lens": "bridge",
+  "map": "palace-map-full-2026-09-24.json",
+  "node_count": 351
+}

@@ -3,7 +3,7 @@ title: "Search Before You Build"
 type: practice
 pillars: [practice, tools]
 born: 2026-07
-stage: sprout
+stage: growing
 confidence: working
 energy: high
 who_leads: shared

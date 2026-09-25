@@ -10,8 +10,6 @@ links:
     type: connects-to
   - target: "[[Loudon Live]]"
     type: connects-to
-  - target: "[[Octave Equivalence]]"
-    type: connects-to
   - target: "[[Piano String Inharmonicity]]"
     type: connects-to
   - target: "[[Portamento and Physical Pitch Modeling]]"
@@ -122,4 +120,4 @@ Monophonic portamento at signal rate. All octaves glide together as a unit — t
 Per-voice bandpass filters, key-tracked. Timbre varies across the octave stack. Palace connection: [[Piano String Inharmonicity]].
 
 ### Stage 5: The Portal (RNBO)
-VST/AU export. Microtuning experiments — what happens to the illusion outside equal temperament? Palace connection: [[Kuramoto Coupling]], [[Octave Equivalence]].
+VST/AU export. Microtuning experiments — what happens to the illusion outside equal temperament? Palace connection: [[Kuramoto Coupling]], [[Shepard Tone Synthesizer#Theory — Octave Equivalence]].

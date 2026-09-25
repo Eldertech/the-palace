@@ -18,6 +18,8 @@ links:
   - { target: "[[Blocked, Not Prompted]]", type: exemplifies, label: author-the-geometry }
   - { target: "[[BLUELINE]]", type: connects-to, label: commissioned-by }
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[ControlNet as Topology]]", type: exemplifies, label: "armature-in-the-flesh" }
+  - { target: "[[GenAI Camera]]", type: connects-to, label: "org-bone-projection" }
 tags: [specialist, shop, rig, openpose, controlnet, figure, blender, mpfb2, rigify]
 ---
 

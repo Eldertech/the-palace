@@ -29,6 +29,11 @@ links:
     type: connects-to
   - target: "[[Registry Pattern]]"
     type: connects-to
+  - target: "[[Web Audio Worklet]]"
+    type: connects-to
+  - target: "[[Audition Gate]]"
+    type: exemplifies
+    label: proves-structure-not-feel
 tags: [specialist, shop, sound, modular, generative, registry]
 ---
 

@@ -1,0 +1,613 @@
+{
+ "lens": "lifecycle",
+ "id": "L8",
+ "targets": [
+  {
+   "id": "Worktree Practice",
+   "path": "Worktree Practice.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "control-vocabulary-math",
+   "path": "Projects/Neural Granular Synthesis/control-vocabulary-math.md",
+   "stage": "growing",
+   "inbound": 0
+  },
+  {
+   "id": "Annie Dillard",
+   "path": "People/Annie Dillard.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Buckminster Fuller",
+   "path": "People/Buckminster Fuller.md",
+   "stage": "seed",
+   "inbound": 0
+  },
+  {
+   "id": "Iain McGilchrist",
+   "path": "People/Iain McGilchrist.md",
+   "stage": "seed",
+   "inbound": 3
+  }
+ ],
+ "walk": {
+  "Worktree Practice": {
+   "hop1": [
+    {
+     "id": "Baton Ceremony",
+     "path": "_ops/Baton Ceremony.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "Deposit Ceremony",
+     "path": "_ops/Deposit Ceremony.md",
+     "stage": "growing",
+     "inbound": 26
+    },
+    {
+     "id": "SCHEMA",
+     "path": "SCHEMA.md",
+     "stage": "foundational",
+     "inbound": 28
+    },
+    {
+     "id": "STIGMERGY",
+     "path": "STIGMERGY.md",
+     "stage": "fruiting",
+     "inbound": 27
+    },
+    {
+     "id": "The Dichotomy of Control",
+     "path": "The Dichotomy of Control.md",
+     "stage": "growing",
+     "inbound": 13
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Closing Well Ceremony",
+     "path": "_ops/Closing Well Ceremony.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Drift and Consolidation",
+     "path": "Drift and Consolidation.md",
+     "stage": "sprout",
+     "inbound": 6
+    },
+    {
+     "id": "Harvest Ceremony",
+     "path": "_ops/Harvest Ceremony.md",
+     "stage": "mature",
+     "inbound": 11
+    },
+    {
+     "id": "Palace Ceremonies",
+     "path": "_ops/Palace Ceremonies.md",
+     "stage": "growing",
+     "inbound": 17
+    },
+    {
+     "id": "SCHEMA \u2014 Reference",
+     "path": "SCHEMA \u2014 Reference.md",
+     "stage": "foundational",
+     "inbound": 2
+    },
+    {
+     "id": "Image Embedding Standard",
+     "path": "_ops/Image Embedding Standard.md",
+     "stage": "mature",
+     "inbound": 2
+    },
+    {
+     "id": "Learning Materials and Canon",
+     "path": "Learning Materials and Canon.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Mermaid Diagram Standard",
+     "path": "_ops/Mermaid Diagram Standard.md",
+     "stage": "mature",
+     "inbound": 1
+    },
+    {
+     "id": "README - The Palace Guide",
+     "path": "README - The Palace Guide.md",
+     "stage": "foundational",
+     "inbound": 7
+    },
+    {
+     "id": "Substrate Skill",
+     "path": "_ops/Substrate Skill.md",
+     "stage": "mature",
+     "inbound": 16
+    },
+    {
+     "id": "Technical Diagram Standard",
+     "path": "_ops/Technical Diagram Standard.md",
+     "stage": "sprout",
+     "inbound": 0
+    },
+    {
+     "id": "Weaving Memory into the Palace",
+     "path": "Weaving Memory into the Palace.md",
+     "stage": "sprout",
+     "inbound": 1
+    }
+   ],
+   "note": null
+  },
+  "control-vocabulary-math": {
+   "hop1": [
+    {
+     "id": "Action Potential Oscillator",
+     "path": "Projects/Action Potential Oscillator.md",
+     "stage": "growing",
+     "inbound": 27
+    },
+    {
+     "id": "Kuramoto Coupling",
+     "path": "Kuramoto Coupling.md",
+     "stage": "mature",
+     "inbound": 72
+    },
+    {
+     "id": "Neural Granular Synthesis",
+     "path": "Projects/Neural Granular Synthesis.md",
+     "stage": "growing",
+     "inbound": 12
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Biomechanical Synthesis",
+     "path": "Projects/Biomechanical Synthesis.md",
+     "stage": "mature",
+     "inbound": 7
+    },
+    {
+     "id": "Granular Synthesis",
+     "path": "Granular Synthesis.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Harmonicity and Inharmonicity",
+     "path": "Harmonicity and Inharmonicity.md",
+     "stage": "growing",
+     "inbound": 15
+    },
+    {
+     "id": "Bayesian Granular Synthesizer",
+     "path": "Projects/Bayesian Granular Synthesizer.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "Bessel Functions in Synthesis",
+     "path": "Projects/Bessel Functions in Synthesis.md",
+     "stage": "growing",
+     "inbound": 13
+    },
+    {
+     "id": "Blood Compressor",
+     "path": "Projects/Blood Compressor.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Compressor Design",
+     "path": "Projects/Compressor Design.md",
+     "stage": "mature",
+     "inbound": 13
+    },
+    {
+     "id": "DSP Frameworks",
+     "path": "DSP Frameworks.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Differential Equations",
+     "path": "Differential Equations.md",
+     "stage": "mature",
+     "inbound": 7
+    },
+    {
+     "id": "Floquet Time-Modulated Loops",
+     "path": "Projects/Floquet Time-Modulated Loops/Floquet Time-Modulated Loops.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "Frequency-Time Duality",
+     "path": "Projects/Frequency-Time Duality.md",
+     "stage": "growing",
+     "inbound": 30
+    },
+    {
+     "id": "Generative Preset Development",
+     "path": "Projects/Generative Preset Development.md",
+     "stage": "growing",
+     "inbound": 5
+    }
+   ],
+   "note": null
+  },
+  "Annie Dillard": {
+   "hop1": [
+    {
+     "id": "Andy Goldsworthy",
+     "path": "People/Andy Goldsworthy.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Iain McGilchrist",
+     "path": "People/Iain McGilchrist.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Julia Cameron",
+     "path": "People/Julia Cameron.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Merleau-Ponty",
+     "path": "Merleau-Ponty.md",
+     "stage": "sprout",
+     "inbound": 10
+    },
+    {
+     "id": "Natalie Goldberg",
+     "path": "People/Natalie Goldberg.md",
+     "stage": "composting",
+     "inbound": 2
+    },
+    {
+     "id": "Quality Manifesto",
+     "path": "Quality Manifesto.md",
+     "stage": "mature",
+     "inbound": 45
+    },
+    {
+     "id": "Source Library",
+     "path": "Source Library.md",
+     "stage": "growing",
+     "inbound": 29
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Rick Rubin",
+     "path": "People/Rick Rubin.md",
+     "stage": "seed",
+     "inbound": 8
+    },
+    {
+     "id": "Agnes Martin",
+     "path": "People/Agnes Martin.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Cross-Domain Resonances",
+     "path": "Cross-Domain Resonances.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "George Nakashima",
+     "path": "People/George Nakashima.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "James Turrell",
+     "path": "People/James Turrell.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Shunryu Suzuki",
+     "path": "People/Shunryu Suzuki.md",
+     "stage": "seed",
+     "inbound": 6
+    },
+    {
+     "id": "Yasujir\u014d Ozu",
+     "path": "People/Yasujir\u014d Ozu.md",
+     "stage": "seed",
+     "inbound": 1
+    },
+    {
+     "id": "Andrei Tarkovsky",
+     "path": "People/Andrei Tarkovsky.md",
+     "stage": "composting",
+     "inbound": 0
+    },
+    {
+     "id": "Brian Eno",
+     "path": "People/Brian Eno.md",
+     "stage": "seed",
+     "inbound": 8
+    },
+    {
+     "id": "Buckminster Fuller",
+     "path": "People/Buckminster Fuller.md",
+     "stage": "seed",
+     "inbound": 0
+    },
+    {
+     "id": "Christopher Alexander",
+     "path": "People/Christopher Alexander.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "Donella Meadows",
+     "path": "People/Donella Meadows.md",
+     "stage": "seed",
+     "inbound": 12
+    }
+   ],
+   "note": null
+  },
+  "Buckminster Fuller": {
+   "hop1": [
+    {
+     "id": "Cooperation Yields Agency",
+     "path": "Cooperation Yields Agency.md",
+     "stage": "mature",
+     "inbound": 52
+    },
+    {
+     "id": "Donella Meadows",
+     "path": "People/Donella Meadows.md",
+     "stage": "seed",
+     "inbound": 12
+    },
+    {
+     "id": "FOUR PILLARS",
+     "path": "FOUR PILLARS.md",
+     "stage": "mature",
+     "inbound": 118
+    },
+    {
+     "id": "Kuramoto Coupling",
+     "path": "Kuramoto Coupling.md",
+     "stage": "mature",
+     "inbound": 72
+    },
+    {
+     "id": "Leverage Points Framework",
+     "path": "Leverage Points Framework.md",
+     "stage": "mature",
+     "inbound": 10
+    },
+    {
+     "id": "Martin Heidegger",
+     "path": "People/Martin Heidegger.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Source Library",
+     "path": "Source Library.md",
+     "stage": "growing",
+     "inbound": 29
+    }
+   ],
+   "hop2": [
+    {
+     "id": "4 Pillars Framework - The Founding Conversation",
+     "path": "4 Pillars Framework - The Founding Conversation.md",
+     "stage": "mature",
+     "inbound": 5
+    },
+    {
+     "id": "Found \u2194 Made",
+     "path": "Found \u2194 Made.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Kick Drum \u2194 Foundation",
+     "path": "Cross-Domain Resonances/Kick Drum \u2194 Foundation.md",
+     "stage": "mature",
+     "inbound": 5
+    },
+    {
+     "id": "Meadows and Music \u2014 Leverage Points",
+     "path": "Projects/Meadows and Music \u2014 Leverage Points.md",
+     "stage": "growing",
+     "inbound": 4
+    },
+    {
+     "id": "Rick Rubin",
+     "path": "People/Rick Rubin.md",
+     "stage": "seed",
+     "inbound": 8
+    },
+    {
+     "id": "Agnes Martin",
+     "path": "People/Agnes Martin.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Andrei Tarkovsky",
+     "path": "People/Andrei Tarkovsky.md",
+     "stage": "composting",
+     "inbound": 0
+    },
+    {
+     "id": "Andy Goldsworthy",
+     "path": "People/Andy Goldsworthy.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Annie Dillard",
+     "path": "People/Annie Dillard.md",
+     "stage": "seed",
+     "inbound": 0
+    },
+    {
+     "id": "Brian Eno",
+     "path": "People/Brian Eno.md",
+     "stage": "seed",
+     "inbound": 8
+    },
+    {
+     "id": "Christopher Alexander",
+     "path": "People/Christopher Alexander.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "Cross-Domain Resonances",
+     "path": "Cross-Domain Resonances.md",
+     "stage": "growing",
+     "inbound": 18
+    }
+   ],
+   "note": null
+  },
+  "Iain McGilchrist": {
+   "hop1": [
+    {
+     "id": "Annie Dillard",
+     "path": "People/Annie Dillard.md",
+     "stage": "seed",
+     "inbound": 0
+    },
+    {
+     "id": "Cooperation Yields Agency",
+     "path": "Cooperation Yields Agency.md",
+     "stage": "mature",
+     "inbound": 52
+    },
+    {
+     "id": "Frequency Domain \u2194 Perspective Shift",
+     "path": "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
+     "stage": "mature",
+     "inbound": 3
+    },
+    {
+     "id": "Lateral Access",
+     "path": "Lateral Access.md",
+     "stage": "growing",
+     "inbound": 24
+    },
+    {
+     "id": "Rick Rubin",
+     "path": "People/Rick Rubin.md",
+     "stage": "seed",
+     "inbound": 8
+    },
+    {
+     "id": "Source Library",
+     "path": "Source Library.md",
+     "stage": "growing",
+     "inbound": 29
+    },
+    {
+     "id": "Yasujir\u014d Ozu",
+     "path": "People/Yasujir\u014d Ozu.md",
+     "stage": "seed",
+     "inbound": 1
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Brian Eno",
+     "path": "People/Brian Eno.md",
+     "stage": "seed",
+     "inbound": 8
+    },
+    {
+     "id": "Cross-Domain Resonances",
+     "path": "Cross-Domain Resonances.md",
+     "stage": "growing",
+     "inbound": 18
+    },
+    {
+     "id": "Julia Cameron",
+     "path": "People/Julia Cameron.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Andy Goldsworthy",
+     "path": "People/Andy Goldsworthy.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "Donella Meadows",
+     "path": "People/Donella Meadows.md",
+     "stage": "seed",
+     "inbound": 12
+    },
+    {
+     "id": "Douglas Hofstadter",
+     "path": "People/Douglas Hofstadter.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "John Cage",
+     "path": "People/John Cage.md",
+     "stage": "seed",
+     "inbound": 4
+    },
+    {
+     "id": "Lao Tzu",
+     "path": "People/Lao Tzu.md",
+     "stage": "seed",
+     "inbound": 6
+    },
+    {
+     "id": "Natalie Goldberg",
+     "path": "People/Natalie Goldberg.md",
+     "stage": "composting",
+     "inbound": 2
+    },
+    {
+     "id": "Simondon",
+     "path": "Simondon.md",
+     "stage": "sprout",
+     "inbound": 11
+    },
+    {
+     "id": "Terrence Malick",
+     "path": "People/Terrence Malick.md",
+     "stage": "composting",
+     "inbound": 0
+    },
+    {
+     "id": "Agnes Martin",
+     "path": "People/Agnes Martin.md",
+     "stage": "seed",
+     "inbound": 4
+    }
+   ],
+   "note": null
+  }
+ }
+}

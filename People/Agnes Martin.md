@@ -37,6 +37,15 @@ links:
   - target: "[[James Turrell]]"
     type: connects-to
     label: receiving-not-authoring
+  - target: "[[Move the Ink, Don't Redraw It]]"
+    type: mirrors
+    label: fixed-substrate-reveals-drift
+  - target: "[[Move the Ink, Don't Redraw It]]"
+    type: contradicts
+    label: redraws-by-hand
+  - target: "[[Making a Palace Citizen]]"
+    type: exemplifies
+    label: made-by-this-method
 ---
 
 # Agnes Martin

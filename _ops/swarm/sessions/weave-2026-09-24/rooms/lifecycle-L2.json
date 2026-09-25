@@ -1,0 +1,601 @@
+{
+ "lens": "lifecycle",
+ "id": "L2",
+ "targets": [
+  {
+   "id": "LoRA Trainer",
+   "path": "Shop/LoRA Trainer.md",
+   "stage": null,
+   "inbound": 0
+  },
+  {
+   "id": "OBS",
+   "path": "Shop/OBS.md",
+   "stage": null,
+   "inbound": 0
+  },
+  {
+   "id": "Search Before You Build",
+   "path": "Search Before You Build.md",
+   "stage": "sprout",
+   "inbound": 1
+  },
+  {
+   "id": "The Aftermath Frame",
+   "path": "The Aftermath Frame.md",
+   "stage": "growing",
+   "inbound": 3
+  },
+  {
+   "id": "Tool Builder",
+   "path": "Tool Builder.md",
+   "stage": "sprout",
+   "inbound": 1
+  }
+ ],
+ "walk": {
+  "LoRA Trainer": {
+   "hop1": [
+    {
+     "id": "Review Layer",
+     "path": "Review Layer.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "RunPod GPU Backend",
+     "path": "Shop/RunPod GPU Backend.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "The Shop",
+     "path": "The Shop.md",
+     "stage": "growing",
+     "inbound": 51
+    }
+   ],
+   "hop2": [
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "ComfyUI",
+     "path": "Shop/ComfyUI.md",
+     "stage": null,
+     "inbound": 10
+    },
+    {
+     "id": "FLUX (Hugging Face)",
+     "path": "Shop/FLUX (Hugging Face).md",
+     "stage": null,
+     "inbound": 5
+    },
+    {
+     "id": "Hero and Avatar Maker",
+     "path": "Shop/Hero and Avatar Maker.md",
+     "stage": null,
+     "inbound": 2
+    },
+    {
+     "id": "Image-to-3D Smith",
+     "path": "Shop/Image-to-3D Smith.md",
+     "stage": null,
+     "inbound": 1
+    },
+    {
+     "id": "Loudon Live Design System",
+     "path": "Palace development/Loudon Live Design System.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "The Commons",
+     "path": "The Commons.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "assume multi-agent",
+     "path": "assume multi-agent.md",
+     "stage": "sprout",
+     "inbound": 4
+    },
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "Enrichment",
+     "path": "Enrichment.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Murmuration",
+     "path": "Projects/Murmuration.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Palace as Context Injection System",
+     "path": "Palace development/Palace as Context Injection System.md",
+     "stage": "growing",
+     "inbound": 14
+    }
+   ],
+   "note": null
+  },
+  "OBS": {
+   "hop1": [
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "LDN RTM",
+     "path": "Projects/LDN RTM.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Loudon Live",
+     "path": "Loudon Live.md",
+     "stage": "sprout",
+     "inbound": 32
+    },
+    {
+     "id": "Loudon Live Design System",
+     "path": "Palace development/Loudon Live Design System.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Maker",
+     "path": "Shop/Maker.md",
+     "stage": null,
+     "inbound": 44
+    },
+    {
+     "id": "The Shop",
+     "path": "The Shop.md",
+     "stage": "growing",
+     "inbound": 51
+    },
+    {
+     "id": "ffmpeg",
+     "path": "Shop/ffmpeg.md",
+     "stage": null,
+     "inbound": 7
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Loudon Live Post-producer",
+     "path": "Loudon Live Post-producer.md",
+     "stage": null,
+     "inbound": 3
+    },
+    {
+     "id": "Autodidact Polymaths",
+     "path": "Autodidact Polymaths.md",
+     "stage": "sprout",
+     "inbound": 7
+    },
+    {
+     "id": "ComfyUI",
+     "path": "Shop/ComfyUI.md",
+     "stage": null,
+     "inbound": 10
+    },
+    {
+     "id": "Kokoro",
+     "path": "Shop/Kokoro.md",
+     "stage": null,
+     "inbound": 8
+    },
+    {
+     "id": "Manim CE",
+     "path": "Shop/Manim CE.md",
+     "stage": null,
+     "inbound": 7
+    },
+    {
+     "id": "Radio Play",
+     "path": "Radio Play.md",
+     "stage": "sprout",
+     "inbound": 4
+    },
+    {
+     "id": "Review Layer",
+     "path": "Review Layer.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Stable Audio Open",
+     "path": "Shop/Stable Audio Open.md",
+     "stage": null,
+     "inbound": 3
+    },
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "FLUX (Hugging Face)",
+     "path": "Shop/FLUX (Hugging Face).md",
+     "stage": null,
+     "inbound": 5
+    },
+    {
+     "id": "Flocking",
+     "path": "Flocking.md",
+     "stage": "sprout",
+     "inbound": 13
+    },
+    {
+     "id": "Hero and Avatar Maker",
+     "path": "Shop/Hero and Avatar Maker.md",
+     "stage": null,
+     "inbound": 2
+    }
+   ],
+   "note": null
+  },
+  "Search Before You Build": {
+   "hop1": [
+    {
+     "id": "Adopt the Craft, Author the Seam",
+     "path": "Adopt the Craft, Author the Seam.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Concierge",
+     "path": "Palace development/Concierge.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "GenAI Camera",
+     "path": "GenAI Camera.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Return Ceremony",
+     "path": "_ops/Return Ceremony.md",
+     "stage": "seed",
+     "inbound": 1
+    }
+   ],
+   "hop2": [
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Blocked, Not Prompted",
+     "path": "Blocked, Not Prompted.md",
+     "stage": "seed",
+     "inbound": 14
+    },
+    {
+     "id": "Animate the Background",
+     "path": "Animate the Background.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "Blender",
+     "path": "Shop/Blender.md",
+     "stage": null,
+     "inbound": 8
+    },
+    {
+     "id": "Comic and Cinema \u2014 Two Ways of Seeing",
+     "path": "Comic and Cinema \u2014 Two Ways of Seeing.md",
+     "stage": "sprout",
+     "inbound": 7
+    },
+    {
+     "id": "ControlNet as Topology",
+     "path": "ControlNet as Topology.md",
+     "stage": "growing",
+     "inbound": 2
+    },
+    {
+     "id": "Frame Designer",
+     "path": "Frame Designer.md",
+     "stage": null,
+     "inbound": 11
+    },
+    {
+     "id": "Graphic Storytelling",
+     "path": "Graphic Storytelling.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Hand-Drawn 3D Look",
+     "path": "Hand-Drawn 3D Look.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Line-Art Layer Decomposition",
+     "path": "Line-Art Layer Decomposition.md",
+     "stage": "composting",
+     "inbound": 3
+    },
+    {
+     "id": "Remnants in Depth",
+     "path": "Remnants in Depth.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "Steer the Generator",
+     "path": "Steer the Generator.md",
+     "stage": "sprout",
+     "inbound": 10
+    }
+   ],
+   "note": null
+  },
+  "The Aftermath Frame": {
+   "hop1": [
+    {
+     "id": "Andy Goldsworthy",
+     "path": "People/Andy Goldsworthy.md",
+     "stage": "seed",
+     "inbound": 3
+    },
+    {
+     "id": "BLUELINE",
+     "path": "Projects/BLUELINE/BLUELINE.md",
+     "stage": "growing",
+     "inbound": 20
+    },
+    {
+     "id": "Blocked, Not Prompted",
+     "path": "Blocked, Not Prompted.md",
+     "stage": "seed",
+     "inbound": 14
+    },
+    {
+     "id": "Figure Rig",
+     "path": "Shop/Figure Rig.md",
+     "stage": null,
+     "inbound": 4
+    },
+    {
+     "id": "Graphic Storytelling",
+     "path": "Graphic Storytelling.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Steer the Generator",
+     "path": "Steer the Generator.md",
+     "stage": "sprout",
+     "inbound": 10
+    },
+    {
+     "id": "The Flow Field is the Spine",
+     "path": "The Flow Field is the Spine.md",
+     "stage": "growing",
+     "inbound": 7
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Frame Designer",
+     "path": "Frame Designer.md",
+     "stage": null,
+     "inbound": 11
+    },
+    {
+     "id": "Animate the Background",
+     "path": "Animate the Background.md",
+     "stage": "sprout",
+     "inbound": 2
+    },
+    {
+     "id": "Block It in Blender, Ink It in genAI",
+     "path": "Block It in Blender, Ink It in genAI.md",
+     "stage": "growing",
+     "inbound": 0
+    },
+    {
+     "id": "ControlNet as Topology",
+     "path": "ControlNet as Topology.md",
+     "stage": "growing",
+     "inbound": 2
+    },
+    {
+     "id": "Hand-Drawn 3D Look",
+     "path": "Hand-Drawn 3D Look.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "Lettering",
+     "path": "Shop/Lettering.md",
+     "stage": null,
+     "inbound": 1
+    },
+    {
+     "id": "Adopt the Craft, Author the Seam",
+     "path": "Adopt the Craft, Author the Seam.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Blender",
+     "path": "Shop/Blender.md",
+     "stage": null,
+     "inbound": 8
+    },
+    {
+     "id": "GenAI Camera",
+     "path": "GenAI Camera.md",
+     "stage": "growing",
+     "inbound": 1
+    },
+    {
+     "id": "Typography as Meaning",
+     "path": "Typography as Meaning.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "ComfyUI",
+     "path": "Shop/ComfyUI.md",
+     "stage": null,
+     "inbound": 10
+    },
+    {
+     "id": "Comic and Cinema \u2014 Two Ways of Seeing",
+     "path": "Comic and Cinema \u2014 Two Ways of Seeing.md",
+     "stage": "sprout",
+     "inbound": 7
+    }
+   ],
+   "note": null
+  },
+  "Tool Builder": {
+   "hop1": [
+    {
+     "id": "Closing Well",
+     "path": "Closing Well.md",
+     "stage": "growing",
+     "inbound": 22
+    },
+    {
+     "id": "FOUR PILLARS",
+     "path": "FOUR PILLARS.md",
+     "stage": "mature",
+     "inbound": 118
+    },
+    {
+     "id": "STIGMERGY",
+     "path": "STIGMERGY.md",
+     "stage": "fruiting",
+     "inbound": 27
+    },
+    {
+     "id": "Simondon",
+     "path": "Simondon.md",
+     "stage": "sprout",
+     "inbound": 11
+    },
+    {
+     "id": "The Commons",
+     "path": "The Commons.md",
+     "stage": "growing",
+     "inbound": 5
+    },
+    {
+     "id": "The Palace Practices on Itself",
+     "path": "The Palace Practices on Itself.md",
+     "stage": "growing",
+     "inbound": 6
+    },
+    {
+     "id": "assume multi-agent",
+     "path": "assume multi-agent.md",
+     "stage": "sprout",
+     "inbound": 4
+    }
+   ],
+   "hop2": [
+    {
+     "id": "Review Layer",
+     "path": "Review Layer.md",
+     "stage": "growing",
+     "inbound": 3
+    },
+    {
+     "id": "RunPod GPU Backend",
+     "path": "Shop/RunPod GPU Backend.md",
+     "stage": "growing",
+     "inbound": 7
+    },
+    {
+     "id": "Zoom Out to the Structure",
+     "path": "Zoom Out to the Structure.md",
+     "stage": "sprout",
+     "inbound": 1
+    },
+    {
+     "id": "Adopt the Craft, Author the Seam",
+     "path": "Adopt the Craft, Author the Seam.md",
+     "stage": "growing",
+     "inbound": 9
+    },
+    {
+     "id": "Hero and Avatar Maker",
+     "path": "Shop/Hero and Avatar Maker.md",
+     "stage": null,
+     "inbound": 2
+    },
+    {
+     "id": "OBS",
+     "path": "Shop/OBS.md",
+     "stage": null,
+     "inbound": 0
+    },
+    {
+     "id": "Christopher Alexander",
+     "path": "People/Christopher Alexander.md",
+     "stage": "seed",
+     "inbound": 2
+    },
+    {
+     "id": "Concierge",
+     "path": "Palace development/Concierge.md",
+     "stage": "sprout",
+     "inbound": 9
+    },
+    {
+     "id": "Endosymbiosis",
+     "path": "Endosymbiosis.md",
+     "stage": "mature",
+     "inbound": 16
+    },
+    {
+     "id": "Palace Philosophies",
+     "path": "Palace Philosophies.md",
+     "stage": "mature",
+     "inbound": 18
+    },
+    {
+     "id": "Project Stewardship System",
+     "path": "Palace development/Project Stewardship System.md",
+     "stage": "growing",
+     "inbound": 19
+    },
+    {
+     "id": "Reflective Practice",
+     "path": "Reflective Practice.md",
+     "stage": "growing",
+     "inbound": 1
+    }
+   ],
+   "note": null
+  }
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "arm": "X",
+ "room": "C1.3",
+ "total_proposals": 7,
+ "sample": [
+  {
+   "kind": "bridge",
+   "source": "Synthesis Topologies",
+   "type": "mirrors",
+   "target": "ControlNet as Topology",
+   "rationale": "A fixed structural skeleton (torus surface architecture / ControlNet armature) constrains a free surface of variation (surface content / rendered detail) \u2014 same design pattern, audio synthesis vs. diffusion conditioning.",
+   "evidence": "Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces) || ControlNet is an armature... it fixes the pose before a single detail exists",
+   "item_id": "X1"
+  },
+  {
+   "kind": "bridge",
+   "source": "control-vocabulary-math",
+   "type": "connects-to",
+   "target": "Infeasible DSP Now Shippable",
+   "rationale": "Both are answers to the same named problem: reducing a high-dimensional, mathematically-tractable-but-previously-unplayable DSP object to a small, performable control vocabulary.",
+   "evidence": "the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs || control-surface design is the hardest problem in the suite... Invent control vocabularies for high-dimensional instrument spaces",
+   "item_id": "X2"
+  },
+  {
+   "kind": "relation",
+   "source": "control-vocabulary-math",
+   "type": "mirrors",
+   "target": "Three Kinds of Warp",
+   "label": "sync-bifurcation-as-knob",
+   "rationale": "Both formalize the Kuramoto synchronization threshold as a designed musical control, not just a physics fact \u2014 one on a torus's two phasors, one on a population of spiking neurons. control-vocabulary-math's K_c ('below it the crowd drifts, above it synchrony switches on') is the same object as Three Kinds of Warp's type-3 lock/drift bifurcation ('a snap, not a fade'), same math, different material.",
+   "evidence": "control-vocabulary-math: 'The critical coupling K_c is the threshold where r lifts off zero \u2014 below it the crowd drifts, above it synchrony switches on.' Three Kinds of Warp: 'Below the synchronization threshold the rotation numbers shift... above threshold they lock... Bends the lattice itself... The Kuramoto coupling f1 = K sin(phi2-phi1) is the canonical instance.'",
+   "item_id": "X3"
+  },
+  {
+   "kind": "relation",
+   "source": "control-vocabulary-math",
+   "type": "connects-to",
+   "target": "Infeasible DSP Now Shippable",
+   "label": "worked-control-vocabulary",
+   "rationale": "Infeasible DSP Now Shippable names 'control-surface design is the hardest problem in the suite' and its own Forward Vectors say 'invent control vocabularies for high-dimensional instrument spaces \u2014 the concrete form of the hardest problem.' control-vocabulary-math is a worked instance of exactly that: it collapses a 16-64-neuron Kuramoto population into four performable knobs (K, sigma_threshold, frequency spread, drive) with r as the single closing-the-loop readout.",
+   "evidence": "Infeasible DSP Now Shippable: 'control-surface design is the hardest problem in the suite... Invent control vocabularies for high-dimensional instrument spaces \u2014 the concrete form of the hardest problem.' control-vocabulary-math: 'This document formalizes the layer that sits on top of that engine: the statistical descriptors that turn a noisy crowd of N spiking neurons into four or five smooth, performable knobs.'",
+   "item_id": "X4"
+  },
+  {
+   "kind": "relation",
+   "source": "Synthesis Topologies",
+   "type": "mirrors",
+   "target": "ControlNet as Topology",
+   "label": "fixed-skeleton-free-surface",
+   "rationale": "Synthesis Topologies names 'fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces)' as one of its topology in-betweens. ControlNet as Topology names ControlNet itself as 'an armature... the wire skeleton a figure is built around \u2014 it fixes the pose before a single detail exists.' Same organizing move \u2014 a fixed structural skeleton constrains a free surface of variation \u2014 in two completely different domains (audio synth architecture, diffusion-model conditioning).",
+   "evidence": "Synthesis Topologies: 'Fixed-skeleton-variable-flesh designs (2D Torus Wavetable Synthesizer's seven surfaces).' ControlNet as Topology: 'ControlNet is an armature. In clay modeling the armature is the wire skeleton a figure is built around \u2014 it fixes the pose before a single detail exists.'",
+   "item_id": "X5"
+  },
+  {
+   "kind": "relation",
+   "source": "Three Kinds of Warp",
+   "type": "connects-to",
+   "target": "Dissolutions",
+   "label": "resists-dissolution",
+   "rationale": "Dissolutions' own Forward Vectors ask whether it needs a 'Refusals' sibling \u2014 'entries that resist dissolution despite looking like they should merge.' Three Kinds of Warp's 1D obstruction theorem is exactly that structural refusal: no amount of clever type-1 phase reshaping (the move every commercial wavetable warp makes) can ever become type-2 or type-3 and produce inharmonicity \u2014 two things that look mergeable (more sophisticated warping = eventually inharmonic) and provably are not.",
+   "evidence": "Dissolutions: 'Does the catalogue eventually grow a sibling \u2014 Refusals, the entries that resist dissolution despite looking like they should merge? Two things that keep being mistaken for one and shouldn't be?' Three Kinds of Warp: 'The theorem holds for any warp at all... Every commercial wavetable warp redistributes energy among the harmonic slots; none of them moves a partial between slots... Structurally cannot produce inharmonicity.'",
+   "item_id": "X6"
+  },
+  {
+   "kind": "unsung",
+   "source": "2D Torus Wavetable Synthesizer",
+   "type": "connects-to",
+   "target": "README \u2014 RNBO Prototype",
+   "label": "Named twice in the Status and Open Decisions sections as the actual acceptance-test protocol for the RNBO prototype (a load-bearing next step for the whole project), but carries no frontmatter link back.",
+   "rationale": "Awaiting Loudon to assemble the parent Max patch and run the five-step verification protocol in [[README \u2014 RNBO Prototype]]",
+   "item_id": "X7"
+  }
+ ]
+}

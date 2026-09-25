@@ -1,0 +1,187 @@
+{
+ "cluster": "C4.1",
+ "lens": "community",
+ "members_read": [
+  "4 Pillars Framework - The Founding Conversation.md (frontmatter only)",
+  "People/Agnes Martin.md",
+  "People/Brian Eno.md",
+  "People/Buckminster Fuller.md",
+  "People/Christopher Alexander.md",
+  "Cross-Domain Resonances/Compression \u2194 Intimacy.md (not read, frontmatter unread)",
+  "Cross-Domain Resonances.md",
+  "People/Donella Meadows.md",
+  "People/Douglas Hofstadter.md",
+  "FOUR PILLARS.md",
+  "Found \u2194 Made.md",
+  "Generative Audio Devices.md",
+  "People/George Nakashima.md",
+  "People/Iain McGilchrist.md",
+  "Leverage Points Framework.md",
+  "Quality Manifesto.md",
+  "Registry Pattern.md",
+  "People/Rick Rubin.md",
+  "People/R. Murray Schafer.md",
+  "People/Sam Maloof.md",
+  "Simondon.md",
+  "Source Library.md"
+ ],
+ "summary": "This room is the palace's Source Library neighborhood \u2014 the systems-thinkers (Meadows, Fuller, Alexander, Hofstadter), the craft/making people (Nakashima, Maloof, Rubin, Eno, Agnes Martin), the Cross-Domain Resonances machinery, and the tooling side (Registry Pattern, Generative Audio Devices, Simondon). The strongest thing it taught me: the room's two \"systems architects of the whole world,\" Buckminster Fuller and Christopher Alexander, sit unconnected to each other and under-connected to the rest of the room even though they're making structurally identical claims from opposite material politics (industrial efficiency vs. hand-craft), and Fuller in particular \u2014 a rich, dossier-grade citizen with zero inbound \u2014 is exactly the kind of miss a community weave exists to catch, because no folder owns the Fuller\u2194Alexander\u2194Simondon\u2194Found-Made web; each lives in a different corner. The other real finding is procedural, not relational: Sam Maloof and R. Murray Schafer are already staged `composting` with an explicit note that this very weave is the \"next Weave\" meant to confirm or revive them \u2014 both read as high-quality, well-connected entries, but they're the pre-dossier \"interim\" style (no agency_profile) being retired in favor of the richer Nakashima/Alexander/Fuller format, and their compost records already name the inbound links still needing redistribution. Loudon's \"good but cluttered\" note lands here less as duplicate content and more as loose ends \u2014 an asymmetric contradicts link, a hub (Source Library) whose body names citizens its frontmatter doesn't yet register, and a foundational hub (FOUR PILLARS) whose prose has visibly compressed into fragments under its own weight.",
+ "typed_relations": [
+  {
+   "source": "Christopher Alexander",
+   "target": "Buckminster Fuller",
+   "type": "contradicts",
+   "label": "craft-vs-industry",
+   "rationale": "Both architects claim an objective, near-universal criterion for what makes a built world work \u2014 but from opposite material politics. Alexander's 'degree of life' is rooted in traditional, hand-made, small-grained materials and explicitly pre-loads a verdict against glass and steel; Fuller's ephemeralization is rooted in industrial/synthetic efficiency and treats craft slowness as waste to be designed away. Same totalizing confidence ('this is the only correct target'), same kind of blindspot (an aesthetic/political preference dressed as physical law), opposite poles.",
+   "evidence": "Alexander: \"His fifteen properties \u2014 roughness, echoes, levels of scale \u2014 describe hand-craft far more naturally than glass or steel\" (People/Christopher Alexander.md:77). Fuller: \"scarcity is a design failure. War is an engineering problem\" (People/Buckminster Fuller.md:91).",
+   "deep_pattern": "two optimist-architects who each believe design alone can fix the human condition, and each cannot hear the other's material as legitimate",
+   "spark": 3,
+   "kind": "new"
+  },
+  {
+   "source": "Simondon",
+   "target": "Buckminster Fuller",
+   "type": "mirrors",
+   "label": "synergy-is-concretization",
+   "rationale": "Fuller's synergy (whole-system behavior no single part predicts \u2014 the dome holds loads no single strut could, because the behavior lives in the coupling) is structurally identical to Simondon's concretization (a design becomes more itself as separate functions converge into one resonant whole). Same claim about what makes a design genuinely good, arrived at independently from engineering and from philosophy of technology.",
+   "evidence": "Simondon: \"A concrete one is integrated: a single feature serves several functions at once, parts resonate with and cool and brace each other\" (Simondon.md:54). Fuller: \"synergy (whole-system behavior unpredicted by the parts \u2014 the dome holds loads no single strut could, because the behavior lives in the coupling, not the components)\" (People/Buckminster Fuller.md:66).",
+   "deep_pattern": "integration, not addition, is the non-arbitrary measure of good design \u2014 named twice, in engineering and in philosophy",
+   "spark": 4,
+   "kind": "new"
+  },
+  {
+   "source": "Buckminster Fuller",
+   "target": "Found \u2194 Made",
+   "type": "exemplifies",
+   "label": "made-pole",
+   "rationale": "Fuller's design-science treats scarcity as a design failure, not a fixed essence to be uncovered \u2014 there is no waiting nature to a resource-constrained world, only what better engineering builds into it. This is the exact 'made' claim the entry already anchors with Meadows, stated at civilizational scale instead of systems-modeling scale.",
+   "evidence": "Found \u2194 Made: \"There is no waiting essence \u2014 only what you sing or build into being... you don't uncover their nature, you intervene to bend their trajectory\" (Found \u2194 Made.md:35). Fuller: \"scarcity is a design failure, not a law of nature\" (People/Buckminster Fuller.md:74).",
+   "spark": 3,
+   "kind": "new"
+  },
+  {
+   "source": "Christopher Alexander",
+   "target": "Found \u2194 Made",
+   "type": "exemplifies",
+   "label": "found-pole",
+   "rationale": "Alexander's core process distinction \u2014 unfolding (small, structure-preserving, context-responsive growth) against fabrication (a plan specified in advance and imposed) \u2014 is the architecture-scale statement of the found pole the entry already anchors with Nakashima: work with what a site already gives rather than override it.",
+   "evidence": "\"unfolding (growth through small, structure-preserving, context-responsive steps) against fabrication (a design fully specified in advance and imposed on a site)\" (People/Christopher Alexander.md:67).",
+   "spark": 3,
+   "kind": "new"
+  },
+  {
+   "source": "Registry Pattern",
+   "target": "Christopher Alexander",
+   "type": "connects-to",
+   "label": "closed-vs-generative-vocabulary",
+   "rationale": "Both are theories of a combinable vocabulary of named, reusable units governing legal output \u2014 Alexander's pattern language and the Registry Pattern's verified component list are the same shape of knowledge object. But they run opposite on openness: Alexander's language is deliberately open-ended, generative, endlessly recombinable; the Registry Pattern deliberately closes the vocabulary to prevent hallucination. Genuinely contestable whether this is closer to a mirror or a contradiction, so connects-to with a label rather than forcing a type.",
+   "evidence": "Alexander: \"A pattern language is a knowledge graph before the term existed \u2014 named, reusable, cross-scale, combinable units linked by 'this pattern calls that one'\" (People/Christopher Alexander.md:69). Registry Pattern: \"The registry collapses the output space to only what is actually possible\" (Registry Pattern.md:39).",
+   "deep_pattern": "a named, combinable vocabulary as the precondition for reliable generation \u2014 open for a human building a town, closed for a model that cannot yet be trusted with openness",
+   "spark": 4,
+   "kind": "new"
+  }
+ ],
+ "unsung_paths": [
+  {
+   "entry": "Source Library",
+   "target": "Buckminster Fuller",
+   "type": "spawned (asymmetric \u2014 Fuller already declares member-of back)",
+   "label": "",
+   "phrase": "**Buckminster Fuller** - Synergetics, doing more with less",
+   "structurally_significant": false
+  },
+  {
+   "entry": "Source Library",
+   "target": "Christopher Alexander",
+   "type": "spawned (asymmetric \u2014 Alexander already declares member-of back)",
+   "label": "",
+   "phrase": "**Christopher Alexander** - Pattern language, organic architecture",
+   "structurally_significant": false
+  }
+ ],
+ "coherence_findings": [
+  {
+   "issue": "Buckminster Fuller declares `contradicts` Donella Meadows (label: ephemeralization-vs-limits) in his own frontmatter, but Meadows's frontmatter link list has no matching entry back. Contradicts is a symmetric type per SCHEMA \u00a74 \u2014 this is presumably meant to read both ways, and the asymmetry is likely why Fuller shows 0 inbound despite an established, well-argued tension (\"Aim Donella Meadows at him and watch... a direct rebuke\" is literally in his own body text).",
+   "kind": "asymmetric-symmetric-link",
+   "entries": [
+    "People/Buckminster Fuller.md",
+    "People/Donella Meadows.md"
+   ],
+   "proposed_action": "Add the reciprocal `contradicts` entry to Donella Meadows's frontmatter (or confirm the palace's convention is that symmetric types only need one declaration and inbound-counting should read both directions \u2014 in which case this is a counting-tool note, not a content fix)."
+  },
+  {
+   "issue": "Source Library's body text (\u00a7 Systems Thinkers, \u00a7 Artists & Makers, \u00a7 Musicians & Sound Thinkers) names Buckminster Fuller, Christopher Alexander, and several People-folder members as core roster entries, but the frontmatter `links` block only declares `spawned` to 5 of them (Meadows, Suzuki, Marcus Aurelius, Lao Tzu, Eno). The other named members (Fuller, Alexander, Nakashima, Maloof, Agnes Martin, Rubin, Oliveros, Cage, Schafer) instead carry the relation from their own side via `member-of`. Not wrong \u2014 member-of already establishes it correctly per the direction invariant \u2014 but the two patterns coexisting in one hub reads as drift, not design.",
+   "kind": "inconsistent-relation-direction",
+   "entries": [
+    "Source Library.md"
+   ],
+   "proposed_action": "No link change needed (member-of is the schema-correct direction), but worth a note to whoever next touches Source Library's frontmatter: the 5 `spawned` entries look like an older convention the hub hasn't fully migrated away from."
+  },
+  {
+   "issue": "FOUR PILLARS \u2014 the palace's single highest-inbound entry (118) \u2014 has a `## Quality` section that reads as compressed fragments rather than prose: \"Quality is furtherance of your own highest goals. Try these three metrics: wellbeing, integrity, depth of relationships / the game reorients. Life itself becomes something new.\" The middle sentence is missing its subject. There is also a floating unbolded line (\"make, and you will learn\") immediately before the heading that restates it, then the same phrase reappears bolded two lines later.",
+   "kind": "graffiti-note / prose-drift",
+   "entries": [
+    "FOUR PILLARS.md"
+   ],
+   "proposed_action": "Flag only, per instructions \u2014 do not rewrite. Worth an elder's polish pass given how load-bearing this entry is."
+  }
+ ],
+ "compost_candidates": [
+  {
+   "entry": "People/Sam Maloof.md",
+   "rationale": "Already staged `stage: composting` (2026-07-08) with an explicit HTML comment: \"Move 5 closes by composting the final interim People entries rather than rebuilding them. Reversible: the next Weave confirms deletion or revives.\" This is that Weave. The entry itself is genuinely good \u2014 rich quotes, a live mirror to Agnes Martin, a contradicts to Move the Ink \u2014 but it is the pre-dossier format (no agency_profile, no dual-register Voice section) that the room's other People entries (Nakashima, Alexander, Fuller) have since superseded. Confirming compost, not reviving, is consistent with the de-sprawl instruction and with Loudon's own prior call.",
+   "nutrients_to": [
+    "George Nakashima (mirrors \u2014 already redistributed 2026-07-08 per the compost note)",
+    "Move the Ink, Don't Redraw It (contradicts \u2014 flagged in the compost note as still needing redistribution before deletion actually happens)"
+   ]
+  },
+  {
+   "entry": "People/R. Murray Schafer.md",
+   "rationale": "Same situation as Maloof: staged `stage: composting` (2026-07-08) with the identical compost note, same batch, same reasoning (pre-dossier interim format). The content is strong (the Schafer/Oliveros/Cage listening triangle is a real find) but the compost decision predates this weave and this weave is its confirmation point.",
+   "nutrients_to": [
+    "Pauline Oliveros (deep-listening link \u2014 flagged in the compost note as still needing redistribution)",
+    "LaMa (contradicts \u2014 flagged in the compost note as still needing redistribution)"
+   ]
+  }
+ ],
+ "open_question_resolutions": [
+  {
+   "entry": "Cross-Domain Resonances",
+   "question": "How many resonances is too many? (Paralysis by over-connection)",
+   "by_entry": "Found \u2194 Made",
+   "verdict": "partially-resolved",
+   "proposed_action": "Found \u2194 Made shows that resonances the hub has already spawned (Rubin/Nakashima found-pole, Meadows made-pole) are not isolated bridges but instances of one shared axis. The paralysis risk the open question worries about eases if new resonances are first tested against existing axes (found/made, subtraction, mutual support...) before being minted as standalone bridge entries \u2014 growth in depth on fewer axes, not width across more of them. Worth a line in Cross-Domain Resonances' Open Questions section pointing at Found \u2194 Made as the working answer, not a rewrite of the question itself."
+  }
+ ],
+ "entry_health_flags": [
+  {
+   "entry": "FOUR PILLARS",
+   "vector_issue": "",
+   "stage_current": "mature",
+   "stage_proposed": "",
+   "graffiti_note": "The `## Quality` section's prose has degraded into disconnected fragments (see coherence_findings) \u2014 not a forward_vector problem, a body-prose one, but worth surfacing given this is the palace's most-connected page.",
+   "face": "none"
+  },
+  {
+   "entry": "Buckminster Fuller",
+   "vector_issue": "",
+   "stage_current": "seed",
+   "stage_proposed": "",
+   "graffiti_note": "Dossier-grade content (agency_profile, dual Voice register, honest blindspot section) with zero inbound and zero entry points per the new-entries-block \u2014 the richest content-to-connectedness mismatch in the room. Not a rewrite issue; a wiring issue this weave addresses directly in typed_relations.",
+   "face": "none"
+  }
+ ],
+ "walk_results": [
+  {
+   "target": "Buckminster Fuller",
+   "disposition": "wired",
+   "inbound_proposed": 3,
+   "note": "Proposed: Christopher Alexander (contradicts), Simondon (mirrors), Found \u2194 Made (exemplifies) \u2014 all genuine, none forced. Plus a coherence fix (Donella Meadows reciprocal contradicts) that would restore a 4th if the asymmetry is in fact a bug rather than convention."
+  }
+ ],
+ "flag_responses": [],
+ "merge_candidates": [],
+ "demote_candidates": [],
+ "synthesis_spawn_flag": [],
+ "bridge_findings": []
+}

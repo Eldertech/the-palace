@@ -30,6 +30,8 @@ it is not the contract unless Loudon changes Step 1c, and then reconcileQueue ch
 `--board PATH` reads another board file — from a worktree, pass main's live
 `_ops/swarm/persistent/blackboard.jsonl` (the worktree's copy is only what was committed).
 
+A flag withdrawn by a RETRACT (`re: <id>`) is not counted at all.
+
 Older flags carry `target` + `note` instead of `source_entries` + `proposed_action`.
 The board can't touch-close those (it watches source_entries only), so neither does
 this linter: they close by trailer or decline. They are displayed with their real ask.
@@ -95,15 +97,20 @@ def main():
         print("no persistent board found — nothing to check.")
         return 0
 
-    # Collect weave_flag BROADCASTs (latest object per id wins).
-    flags = {}
+    # Collect weave_flag BROADCASTs (latest object per id wins), and every RETRACT's `re`
+    # (SCHEMA — Reference §9: a mistaken post is withdrawn by appending a RETRACT naming it).
+    flags, retracted = {}, set()
     for line in BOARD.read_text(encoding="utf-8").splitlines():
         line = line.strip()
-        if not line or '"weave_flag"' not in line:
+        if not line or ('"weave_flag"' not in line and '"RETRACT"' not in line):
             continue
         try:
             m = json.loads(line)
         except Exception:
+            continue
+        if m.get("type") == "RETRACT":
+            if m.get("re"):
+                retracted.add(m["re"])
             continue
         p = m.get("payload", {})
         if p.get("kind") != "weave_flag":
@@ -116,6 +123,9 @@ def main():
     commits = commit_log(datetime.fromtimestamp(oldest, timezone.utc).isoformat()) if stamps else []
     all_bodies = git(["log", "--format=%B"])   # explicit ids may predate the oldest flag's clock
 
+    withdrawn = sorted(fid for fid in flags if fid in retracted)
+    for fid in withdrawn:
+        del flags[fid]
     open_flags, touched, explicit = [], [], []
     for fid, f in flags.items():
         p = f["p"]
@@ -142,7 +152,7 @@ def main():
             return f"source: {src}"
         return f"target: {p.get('target') or p.get('target_entry') or '—'}  (older flag shape — closes by trailer/decline only)"
 
-    print(f"weave-flags: {len(flags)} on WEAVE board | {len(explicit)} resolved explicitly (trailer/decline/ack) | "
+    print(f"weave-flags: {len(flags)} live on WEAVE board ({len(withdrawn)} retracted, not counted) | {len(explicit)} resolved explicitly (trailer/decline/ack) | "
           f"{len(touched)} TOUCHED-UNVERIFIED | {len(open_flags)} OPEN" + ("  [--strict: touches counted open]" if strict else ""))
     if touched:
         print("\nTOUCHED-UNVERIFIED — a commit touched a source entry after the flag; read each by hand:")
