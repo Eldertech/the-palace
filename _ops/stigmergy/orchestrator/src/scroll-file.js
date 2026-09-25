@@ -45,7 +45,7 @@ export const ORDERS_PLACEHOLDER =
   '_Loudon\'s standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._';
 
 export const CEREMONY_ORDERS_PLACEHOLDER =
-  '_Loudon\'s standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._';
+  '_Loudon\'s standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run\'s tail read picks it up, and Now shows it as owed until a run acts on it._';
 
 export const PAGE_ORDERS_PLACEHOLDER =
   '_Loudon\'s standing direction for this page — never regenerated. A steward, if the page ever has one, reads it every cycle before anything else._';

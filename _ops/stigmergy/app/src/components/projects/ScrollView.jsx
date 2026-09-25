@@ -19,8 +19,10 @@ import { RunningTag } from './status.jsx';
 //                      with the same TricksterCard the TRICKSTER deck uses
 //                      (one card component, one grant builder — no fork).
 //   Standing Orders  — Loudon's zone, editable here and nowhere else in the
-//                      terminal; saved to the scroll file, read by the steward
-//                      at the top of every cycle.
+//                      terminal. A project's are saved to the scroll file and
+//                      read by the steward at the top of every cycle; a
+//                      ceremony's go into its tuning ledger as owed lines,
+//                      which the next run's tail read picks up.
 //   The making       — the trail, newest first, each section's media inline.
 //
 // The scroll text is markdown; EntryBody (the STATE deck's renderer) draws it
@@ -64,7 +66,8 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
     if (!r.ok) { setError(r.error || 'could not load the scroll'); return; }
     setError(null);
     setScroll(r);
-    setOrders((cur) => (ordersDirty ? cur : (r.zones?.orders || '')));
+    // A ceremony's box takes a new order; its standing ones live in the ledger.
+    setOrders((cur) => (ordersDirty || r.kind === 'ceremony' ? cur : (r.zones?.orders || '')));
   }, [home, ordersDirty]);
 
   useEffect(() => { load(); }, [load]);
@@ -84,8 +87,9 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
   async function doSave() {
     setSaving(true); setSaved(null);
     const r = await saveStandingOrders(home, orders);
-    if (r.ok) { setScroll(r); setOrdersDirty(false); setSaved({ tone: 'ok', text: `saved to ${r.path} — the steward reads it at its next cycle` }); }
-    else setSaved({ tone: 'err', text: r.error || 'save failed' });
+    if (r.ok && r.kind === 'ceremony') { setScroll(r); setOrders(''); setOrdersDirty(false); setSaved({ tone: 'ok', text: `added to ${r.tuning} as owed — the next run's tail read picks it up` }); }
+    else if (r.ok) { setScroll(r); setOrdersDirty(false); setSaved({ tone: 'ok', text: `saved to ${r.path} — the steward reads it at its next cycle` }); }
+    else setSaved({ tone: 'err', text: r.error === 'empty-order' ? 'nothing to add' : (r.error || 'save failed') });
     setSaving(false);
   }
 
@@ -122,7 +126,7 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
         ) : (
           <span data-testid="scroll-enchant"><Button tone="primary" disabled={!canEnchant} onClick={() => setConfirmEnchant(true)}>enchant a steward</Button></span>
         )) : null}
-        {scroll ? <a href={`/api/open?path=${encodeURIComponent(scroll.path)}`} style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, textDecoration: 'none', borderBottom: '1px dashed currentColor' }} title={scroll.path}>{scroll.exists ? 'open the file' : (isCeremony ? 'not on disk yet — a save creates it' : 'not on disk yet — first cycle or save creates it')}</a> : null}
+        {scroll ? <a href={`/api/open?path=${encodeURIComponent(scroll.path)}`} style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, textDecoration: 'none', borderBottom: '1px dashed currentColor' }} title={scroll.path}>{scroll.exists ? 'open the file' : (isCeremony ? 'not on disk yet — scroll.js --ceremonies writes it' : 'not on disk yet — first cycle or save creates it')}</a> : null}
       </div>
       {feedback ? <div style={{ color: fbColor[feedback.tone], textShadow: feedback.tone === 'dim' ? 'none' : 'var(--glow)', fontSize: 12, marginBottom: 8 }}>{feedback.text}</div> : null}
       {error ? <div data-testid="scroll-error" style={{ color: 'var(--error)', textShadow: 'var(--glow)', border: '1px solid var(--error)', padding: 8 }}>{error}</div> : null}
@@ -154,18 +158,31 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
           </div>
           </>}
 
-          <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{isCeremony ? 'yours — never regenerated; nothing reads it automatically yet' : 'yours — the steward reads this before anything else, every cycle'}</span>}>Standing Orders</ZoneTitle>
+          <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{isCeremony ? 'yours — each order goes into the tuning ledger, owed until a run acts on it' : 'yours — the steward reads this before anything else, every cycle'}</span>}>Standing Orders</ZoneTitle>
           <div data-testid="scroll-orders">
+            {isCeremony ? (
+              <div data-testid="scroll-ledger-orders" style={{ fontSize: 12, marginBottom: 8 }}>
+                {(scroll.ledger_orders || []).length === 0 ? <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>no orders in the ledger yet.</div> : null}
+                {(scroll.ledger_orders || []).map((o, i) => (
+                  <div key={`${o.date}-${i}`} style={{ display: 'flex', gap: 10, alignItems: 'baseline', padding: '2px 0' }}>
+                    <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', whiteSpace: 'nowrap' }}>{o.date}</span>
+                    <span style={{ flex: 1, color: 'var(--phosphor)' }}>{o.text}</span>
+                    <span style={{ color: o.owed ? 'var(--warn)' : 'var(--phosphor-dim)', textShadow: o.owed ? 'var(--glow)' : 'none', fontSize: 11, whiteSpace: 'nowrap', textTransform: 'uppercase', letterSpacing: '.04em' }}>{o.status}</span>
+                  </div>
+                ))}
+                {scroll.zones.orders ? <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginTop: 6 }}>written in the scroll file, and not in the ledger: <span style={{ color: 'var(--phosphor)' }}>{scroll.zones.orders}</span></div> : null}
+              </div>
+            ) : null}
             <textarea
               data-testid="scroll-orders-input"
               value={orders}
               onChange={(e) => { setOrders(e.target.value); setOrdersDirty(true); setSaved(null); }}
-              placeholder={isCeremony ? 'Your standing direction for this ceremony. A change to how it runs belongs in its tuning ledger or its card.' : "Taste, priorities, 'stop asking me about X', 'always prefer Y'. Write it once here instead of answering it every cycle."}
+              placeholder={isCeremony ? 'A direction for this ceremony. It goes into the tuning ledger as owed, and the next run reads it first.' : "Taste, priorities, 'stop asking me about X', 'always prefer Y'. Write it once here instead of answering it every cycle."}
               rows={Math.max(4, Math.min(16, (orders.match(/\n/g) || []).length + 2))}
               style={{ width: '100%', boxSizing: 'border-box', background: 'var(--phosphor-deep)', color: 'var(--phosphor)', textShadow: 'var(--glow)', border: '1px solid var(--phosphor-dim)', borderRadius: 0, fontFamily: 'var(--font-mono)', fontSize: 13, padding: 8, outline: 'none', caretColor: 'var(--phosphor-white)', resize: 'vertical' }}
             />
             <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginTop: 6 }}>
-              <span data-testid="scroll-orders-save"><Button tone="primary" disabled={saving || !ordersDirty} onClick={doSave}>{saving ? 'saving…' : 'save standing orders'}</Button></span>
+              <span data-testid="scroll-orders-save"><Button tone="primary" disabled={saving || !ordersDirty} onClick={doSave}>{saving ? 'saving…' : (isCeremony ? 'add to the ledger' : 'save standing orders')}</Button></span>
               {ordersDirty ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11 }}>unsaved</span> : null}
               {saved ? <span style={{ color: fbColor[saved.tone], textShadow: 'var(--glow)', fontSize: 11 }}>{saved.text}</span> : null}
             </div>
