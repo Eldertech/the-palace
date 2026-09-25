@@ -262,3 +262,58 @@ ceremony does changed beyond what this record changes, so no ceremony's version 
 [[ELDER]] (version), `_ops/Substrate Skill.md` (the same sentence). [[README - The Palace Guide]], [[ROSETTA]]
 and SUBSTRATE state no run rules and are unchanged; [[Palace Ceremonies]] is unchanged. **Additive:** no type,
 link type, required field, or stage changed.
+
+## Every run marks its ledger — v1.23 (2026-09-25)
+
+**Every run leaves one line in its ceremony's tuning ledger, whatever it taught:** `- run · <date> ·
+v<version> · <what it ran on> · nothing new`, or `taught item N`. The tail read sets those lines aside
+before it takes its 40. An order Loudon saves on a ceremony's scroll lands in the same ledger as an owed
+line. The ledgers merge by union. All of it is in [[SCHEMA — Reference]] §6.
+
+**Why.** A ledger that heard only from runs that changed the ceremony couldn't say whether the ceremony
+ran at all: a run that taught nothing left no mark, so "the spec held" looked the same as "never ran".
+The ceremony scroll filled the gap by matching commit subjects, one hand-kept pattern per ceremony, and
+the patterns drifted as fast as the cards. By the end of the day they were written they had missed both
+closes of 2026-09-25, a close whose subject carried a suffix (`cceec447`), and the Map Log's 2026-04-01
+build, and had counted one July build twice. Loudon, 2026-09-25: every run marks the ledger, and
+"nothing" is data.
+
+**Why a markdown line, not JSON.** The ledger is a palace page, read as prose by the next run's tail read
+and by Loudon. A JSONL file beside it was considered with him and rejected: it would split one record in
+two and put the half the machine counts out of the reader's sight. One line with a fixed prefix is as
+countable.
+
+**Why the line names what the run ran on.** Loudon's draft had four fields. Testing the union merge showed
+that git keeps one copy of two identical added lines, so two runs on one day under one version, each
+teaching nothing, would count as one. The fifth field — the entry a baton was for, a close's id, a map's
+scope — makes that rare, and gives the scroll's trail something to show where it used to show a commit
+subject. The reader takes the four-field line too.
+
+**Why union.** Every run now writes to its ledger, so two sessions running the same ceremony on two
+branches append to the end of the same file — a conflict every time under git's default merge. In a
+scratch repo on 2026-09-25, two branches each appending a run line rebased and merged cleanly with both
+lines kept; without the attribute the same rebase conflicted. On a copy of Closing Well's ledger, a new
+item group on one branch and a run line on the other rebased cleanly, both kept. The same test found the
+cost: a line edited in place (an owed order paid) beside a line appended on the other branch came back in
+both forms, with no conflict to say so. §6 says which form wins.
+
+**Why the tail read skips run lines.** Closing Well has run two closes in a day. Forty lines of `- run ·`
+would push out the items the read is for.
+
+**Scope.** The rule lives in §6. The ceremony scroll counts runs from run lines; its commit-subject
+patterns and record-file scans are gone. The ledgers took one backfill: a line for each run since the
+ceremony's current version, and one for the Closing Well close that produced v1.1 — 21 lines in four
+ledgers (Baton 6, Closing Well 2, Map Build 12, Return 1). The cards still say to take "its last 40
+lines" and to put a lesson in the tuning file only when it changed the spec; none yet tells a run to
+leave its line.
+
+**Held open.** Whether each card gains that line, and whether it moves the card's version. v1.21 moved the
+Weave to 1.1 for adding a step to its card; v1.22 moved nothing for changing the bound of a step the cards
+cite. This change sits between the two — a new closing act, defined here — and it is Loudon's call.
+
+**Mirrors.** SCHEMA (version; the §6 pointer), SCHEMA — Reference (version, §6, the §8 `scroll` and
+`tuning` rows), CLAUDE.md (version), [[ELDER]] (version), `_ops/Substrate Skill.md` (the run-rules
+sentence), [[README - The Palace Guide]] (the ledger line under the bundles). [[ROSETTA]] and SUBSTRATE
+state no run rules and are unchanged; [[Palace Ceremonies]] is unchanged by this ceremony, since no
+ceremony was added or removed. `.gitattributes` is new. **Additive:** no type, link type, required field,
+or stage changed.

@@ -7,7 +7,7 @@ pillars:
   - philosophy
 born: 2026-03
 stage: foundational
-version: "1.22"
+version: "1.23"
 schema: SCHEMA.md
 last_schema_ceremony: 2026-09-25
 github: https://github.com/Eldertech/the-palace

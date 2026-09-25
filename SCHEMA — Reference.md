@@ -5,7 +5,7 @@ pillars:
   - tools
   - practice
 born: 2026-09
-version: "1.22"
+version: "1.23"
 stage: foundational
 status: canonical
 links:
@@ -203,19 +203,46 @@ adding or removing a ceremony still is (§5).
 | What | Where | Holds |
 |---|---|---|
 | `version` | the ceremony's frontmatter | the spec's current version |
-| `[Ceremony] — tuning.md` | the ceremony's bundle (§8 type `tuning`) | a numbered ledger grouped by run date; each item says what the run showed, the spec change it forced, and the version that change produced |
+| `[Ceremony] — tuning.md` | the ceremony's bundle (§8 type `tuning`) | one run line for every run, and numbered items grouped by run date; each item says what the run showed, the spec change it forced, and the version that change produced |
 | `ceremony_version` | each run report's frontmatter, on top of §8's minimal fields | the version the run ran under — a stamp, never updated |
 | `## What this run taught the ceremony` | the last section of each run report | the run's answer; "nothing" is a legal answer |
 
-The question is asked on every run. A tuning item is written only when the run changed the ceremony, so the
-ledger and the version move together, and a run that taught nothing leaves both alone.
+**Every run marks the ledger.** Whatever it taught, a run appends one line to the end of the tuning file, in
+the commit that records the run:
 
-Every run opens with a **tail read** of the ceremony's tuning file, never the whole of it: its last 40 lines
-(`tail -n 40 <file>`), and every item still **owed**, wherever it sits (`grep -n -w -i owed <file>`). Those are
-the first candidates for the run's spec change. Forty lines is generous on purpose — several runs' worth in every
-ledger so far — and a window that opens partway through an older run costs nothing, because each item stands
-alone. The ledger grows; the read stays the same size. An owed item says *owed* in so many words, so the grep
-finds it.
+```
+- run · <date> · v<version> · <what it ran on> · nothing new
+- run · <date> · v<version> · <what it ran on> · taught item N
+```
+
+Closing Well's ledger has `- run · 2026-09-25 · v1.1 · close-2026-09-25-ceremonies · taught item 31`; the
+Baton's has `- run · 2026-09-25 · v1.0 · No Mind Checks Itself · nothing new`. "Nothing new" is data: the spec
+held. The fixed prefix makes the runs countable (`grep -c '^- run · ' <file>`), and the ceremony's scroll
+counts them there. A numbered item is still written only when the run changed the ceremony, so the items and
+the version move together, and the run line names the item it wrote.
+
+**An order from Loudon**, saved on a ceremony's scroll, is appended the same way:
+`- from Loudon · <date> · <his words> · owed`. The run that acts on it replaces `owed` with what it did —
+`paid in item 32`.
+
+Every run opens with a **tail read** of the tuning file, never the whole of it: its last 40 lines once the run
+lines are set aside, and every line still **owed**, wherever it sits:
+
+```
+grep -v '^- run · ' <file> | tail -n 40
+grep -n -w -i owed <file>
+```
+
+Those are the first candidates for the run's spec change. Forty lines is generous on purpose — several runs'
+worth in every ledger so far — and a window that opens partway through an older run costs nothing, because
+each item stands alone. Run lines are set aside because a busy ceremony would fill the window with them. The
+ledger grows; the read stays the same size. An owed item says *owed* in so many words, so the grep finds it.
+
+**Ledgers merge by union.** `.gitattributes` gives every `* — tuning.md` git's `union` merge, so two branches
+that each append to the same ledger both keep their lines, without a conflict. It costs two things. Two
+identical lines merge into one, which is why a run line names what the run ran on. And a line edited in place
+beside a line appended on another branch comes back in both forms: when an item or an order shows up both
+owed and paid, it is paid, and the next run deletes the stale copy.
 
 ---
 
@@ -254,8 +281,8 @@ This keeps every file in the palace self-describing without conflating bundle fi
 | `sketch` | Half-formed material not yet ready for the entry body but too substantial for an HTML comment. |
 | `enrichment` | A small made piece the entry embeds in its own body — a haiku, a twelve-word compression. Pieces laid *beside* the text rather than in it belong to `rich`. |
 | `rich` | The entry's **rich face**: `[Entry] — rich.json`, a heading-keyed manifest of the Shop pieces laid beside the text, each section stamped with a fingerprint of the prose it was made against so the page can say when a piece may lag. Pieces made for it are `[Entry] — rich — [qualifier].<ext>`; gathered pieces keep their names. The rich face never writes the `.md`; what making teaches goes home as an ordinary edit. See [[Enrichment]]. |
-| `scroll` | The entry's **front door** — any entry may carry one. Three zones: **Now**, machine-owned and regenerated on every look; **Standing Orders**, Loudon's, never regenerated; and **the making**, an append-only trail, newest first. What Now counts depends on the entry: a project's reads [[STIGMERGY]]'s board (open asks, answers not yet consumed, last shipped, stall, drift); a ceremony's counts its runs since the spec last changed and gives its current version. Markdown. See [[The Scroll]], [[Project Stewardship System]]. |
-| `tuning` | A ceremony's **tuning ledger** — the numbered record of what its runs changed, grouped by run date, each item tied to the spec change it forced. Written only when a run changed the ceremony; one per ceremony. See §6. (Not `gotchas` — that word stays with a Specialist's tool traps.) |
+| `scroll` | The entry's **front door** — any entry may carry one. Three zones: **Now**, machine-owned and regenerated on every look; **Standing Orders**, Loudon's, never regenerated; and **the making**, an append-only trail, newest first. What Now counts depends on the entry: a project's reads [[STIGMERGY]]'s board (open asks, answers not yet consumed, last shipped, stall, drift); a ceremony's counts its runs since the spec last changed, from its tuning ledger's run lines, and gives its current version. A ceremony's Standing Orders go into that ledger as owed lines (§6). Markdown. See [[The Scroll]], [[Project Stewardship System]]. |
+| `tuning` | A ceremony's **tuning ledger** — one line for every run, and a numbered item, grouped by run date and tied to the spec change it forced, for every run that changed the ceremony. Loudon's orders for the ceremony wait here as owed lines. One per ceremony; merged by union. See §6. (Not `gotchas` — that word stays with a Specialist's tool traps.) |
 | `staging` | The entry's **teaching arc** — stage-by-stage Loudon Live session plans ordered by didactic difficulty. Learner-facing, stable once designed; produced by [[project-stage-builder]], not the steward. The steward *reads* it and flags arc-level changes to Loudon rather than editing silently. |
 | `dossier` | The deep research corpus behind a `person` entry — timeline, positions, characteristic moves, lexicon, blindspots, sourced quotes, dispatch notes — loaded when an agent must *embody* the person faithfully (Dialectic, Excellent Adventure, Philosopher Visit). One per made citizen. See [[Making a Palace Citizen]]. |
 | `speech` | Cited, **context-tagged** verbatim excerpts of how a `person` actually talks, opening with a sources-and-their-limits ledger (spontaneous vs performative vs rehearsed vs fabricated), so voice is built from ground truth rather than synthesis. Feeds the entry's `## Voice`. See [[Making a Palace Citizen]] §Voice fidelity. |
