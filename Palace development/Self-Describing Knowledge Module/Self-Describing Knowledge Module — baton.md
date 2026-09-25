@@ -73,6 +73,8 @@ Re-run D1 through it for a certified memory-free result, and compare it with run
 
 Owed from the 2026-09-25 close: correct the worktree memory claim — `_ops/worktree/SKILL.md:90–92`, `_ops/worktree/new-worktree.mjs:225`, `_ops/worktree/symlinks.json:63` say a new worktree path starts with empty memory; on Claude Code 2.1.280 auto-memory binds to the git repository (run 1). And decide with Part 3 where the popup lesson lives — a dismissed question is not an answer; restate the ask in plain text (Loudon: "sometimes I click through them or try to minimise them and loose track of them").
 
+A live data point to read first: the arc-reader fix ran on 2026-09-25 as a session spawned from a task chip, born like any child here but briefed by another Claude. Loudon isn't sure what a chip carries or how well it holds palace values. Read how that session behaved — did it ask to grow up or route its ledger edit through the Concierge, and did it show him the diff before landing? — and decide whether chip-spawned sessions become a scenario.
+
 ## Receiving environment
 
 Claude Code on the Mac, on main. The headless child:
