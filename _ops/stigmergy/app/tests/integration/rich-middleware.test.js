@@ -1,8 +1,8 @@
 import { describe, test, expect, beforeAll, afterAll } from 'vitest';
 import http from 'node:http';
-import { resolve, dirname } from 'node:path';
+import { resolve, dirname, join, normalize, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mkdtempSync, rmSync, mkdirSync, writeFileSync, copyFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, mkdirSync, writeFileSync, copyFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import request from 'supertest';
 import { blackboardMiddleware } from '../../server/middleware.js';
@@ -48,9 +48,19 @@ function makeTempPalace() {
 }
 
 describe('the rich face at /rich/', () => {
-  let root, server;
-  beforeAll(() => { root = makeTempPalace(); server = makeServer(root); });
-  afterAll(() => { server.close(); rmSync(root, { recursive: true, force: true }); });
+  let root, sibling, server;
+  beforeAll(() => {
+    root = makeTempPalace();
+    sibling = root + '-sibling'; // shares the palace's name as a prefix
+    mkdirSync(sibling, { recursive: true });
+    writeFileSync(resolve(sibling, 'secret.txt'), 'outside the palace', 'utf8');
+    server = makeServer(root);
+  });
+  afterAll(() => {
+    server.close();
+    rmSync(root, { recursive: true, force: true });
+    rmSync(sibling, { recursive: true, force: true });
+  });
 
   test('/rich redirects to /rich/, keeping the query', async () => {
     const r = await request(server).get('/rich?entry=Demo%20Entry');
@@ -98,8 +108,24 @@ describe('the rich face at /rich/', () => {
     expect(r.headers.location).toBe('/rich/Elsewhere/stray.png');
   });
 
+  // Each climb below lands on a file that really exists, so a 404 means the
+  // guard refused it — not that there was nothing there to serve.
   test('refuses to climb out of the palace', async () => {
-    expect((await request(server).get('/rich/..%2F..%2Fetc%2Fpasswd')).status).toBe(404);
+    const climb = '../'.repeat(24);
+    expect(normalize(join(root, climb + 'etc/passwd'))).toBe('/etc/passwd');
+    expect(existsSync('/etc/passwd')).toBe(true);
+    expect((await request(server).get('/rich/' + '..%2F'.repeat(24) + 'etc%2Fpasswd')).status).toBe(404);
+  });
+
+  test('refuses a sibling folder whose name starts with the palace\'s', async () => {
+    expect(existsSync(resolve(sibling, 'secret.txt'))).toBe(true);
+    expect((await request(server).get(`/rich/..%2F${encodeURIComponent(basename(sibling))}%2Fsecret.txt`)).status).toBe(404);
+  });
+
+  // On POSIX a backslash is a filename character, not a separator, so this one
+  // guards against a future decoder that treats it as one (or a Windows host).
+  test('refuses an encoded-backslash climb', async () => {
+    expect((await request(server).get('/rich/' + '..%5C'.repeat(24) + 'etc%5Cpasswd')).status).toBe(404);
   });
 
   test('paths outside /rich are not its business', async () => {
