@@ -8,7 +8,7 @@ born: 2026-03
 last_activated: 2026-07-04
 activation_count: 9
 stage: growing
-version: "2.0"
+version: "2.1"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to

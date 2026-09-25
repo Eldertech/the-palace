@@ -12,7 +12,7 @@ forward_vector: "I am the Map Build's record of what each run taught it, numbere
 
 What each build taught the ceremony, and the lessons that reached it from elsewhere. Each item names what was shown and the spec change it forced, or says **owed** when the change hasn't landed. Newest last. Hashes are commits to `_ops/Map Build Ceremony.md` unless noted.
 
-**v2.0 (2026-09-25)** keeps the count the card already had. `version: 2` was stamped when the card took its present form on 2026-03-30 (`4fbb103f`), after the typed ghost manifest — the Map Log's "v2 ceremony" row of 2026-03-27. 2.0 quotes it and adds the opening read. The number moves when the procedure does — a step, a postcondition, a gate — never for prose. A build's record is its Map Log row, whose scope cell names the version, and the commit that carries the row.
+**v2.0** keeps the count the card already had. `version: 2` was stamped when the card took its present form on 2026-03-30 (`4fbb103f`), after the typed ghost manifest — the Map Log's "v2 ceremony" row of 2026-03-27. **v2.1 (2026-09-25)** adds the opening read and the version in the Map Log row (item 5). The number moves when the procedure does — a step, a postcondition, a gate — never for prose. A build's record is its Map Log row, whose scope cell names the version, and the commit that carries the row.
 
 ## From the first full builds — 2026-03-27
 
@@ -38,3 +38,7 @@ What each build taught the ceremony, and the lessons that reached it from elsewh
 
 3. **The card says `_ops/` cards are not nodes; the builder has made them nodes since 2026-09-24.** Ceremony cards with a canon type are nodes in `build-map-2026-09-24.py` (`5b21f070`; [[Weave Ceremony — tuning]] 25), but Step 2 still says ops entries "are not mapped as nodes" (`Map Build Ceremony.md:77`), and `ops_ghost` still assumes the root scan can't see them (`:110`). Spec change owed: Step 2 and the ghost taxonomy catch up with the builder.
 4. **The last two full builds left no Map Log row.** The newest row is 2026-07-04, but `_ops/maps/` holds full maps from 2026-08-26 and 2026-09-24. The postcondition still asks for the row, and without it the version stamp has nowhere to go. Spec change owed: find what built those maps without the row, and make the row part of that path — or say in the card where such a build records itself.
+
+## From the Phase 5 review — 2026-09-25
+
+5. **The card changed and the version didn't.** `8f3fe3f7` added the opening step — the tail read of this file (`Map Build Ceremony.md:62`) — and a clause to the postcondition: the Map Log row's scope cell names the version, and the commit that carries the row says what the run taught (`:42`). The same commit turned `version: 2` into `"2.0"`, the same value, so the ceremony scroll went on counting every build since March as a run of the current spec. Both changes are procedure. Forced: **v2.1**. No step changes here; the number catches up with `8f3fe3f7`.
