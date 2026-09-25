@@ -63,7 +63,7 @@ inline in the message row.
 
 **`GET /api/file?path=<palace-relative>`**
 - Streams the file's bytes with content-type detection (the content-type
-  table now lives in `server/cards.js`), `Content-Length`, and `Cache-Control: no-cache`.
+  table lives in `server/http.js`), `Content-Length`, and `Cache-Control: no-cache`.
 - `400` on a missing/empty path, path traversal, an absolute path, or a
   directory. `404` when the file does not exist.
 - The `path` is resolved through the same `resolveInsidePalace` guard as
