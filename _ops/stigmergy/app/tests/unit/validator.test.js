@@ -486,6 +486,38 @@ const LEGACY_DRIFT_IDS = new Set([
   'blender-control-deposit-weave-1-4e98b1eb',
 ]);
 
+// A message the board has already corrected is superseded, not live: a RETRACT
+// whose `re` names it (usually followed by a valid repost). The board is
+// append-only, so this is its only correction path. The RETRACT must itself
+// pass the validator and name a message that exists, so a retraction can't
+// quietly excuse an arbitrary line.
+function retractedIds(msgs) {
+  const ids = new Set(msgs.map((m) => m.id));
+  return new Set(
+    msgs.filter((m) => m.type === 'RETRACT' && ids.has(m.re) && validateMessage(m).valid).map((m) => m.re),
+  );
+}
+
+describe('retractedIds — corrections the board made itself', () => {
+  const bad = { ...VALID, id: 'bad-1', health: { score: 'green', model: 'claude-opus-5' } };
+  const retract = (re, extra = {}) => ({ ...VALID, id: `${re}-retract`, type: 'RETRACT', re, payload: { reason: 'malformed health' }, ...extra });
+
+  test('a valid RETRACT naming an existing message supersedes it', () => {
+    expect(validateMessage(retract('bad-1')).valid).toBe(true);
+    expect(retractedIds([bad, retract('bad-1')]).has('bad-1')).toBe(true);
+  });
+
+  test('a RETRACT naming nothing that exists excuses nothing', () => {
+    expect(retractedIds([bad, retract('no-such-id')]).size).toBe(0);
+  });
+
+  test('an invalid RETRACT excuses nothing', () => {
+    const invalid = retract('bad-1', { health: { score: 'green' } });
+    expect(validateMessage(invalid).valid).toBe(false);
+    expect(retractedIds([bad, invalid]).has('bad-1')).toBe(false);
+  });
+});
+
 describe('integration — live blackboard.jsonl', () => {
   test('every non-legacy message on the live persistent board passes the strict validator', () => {
     const PALACE_ROOT = resolve(__dirname, '../../../../../');
@@ -493,9 +525,10 @@ describe('integration — live blackboard.jsonl', () => {
     const text = readFileSync(bbPath, 'utf8');
     const lines = text.split('\n').filter((l) => l.trim().length > 0);
     expect(lines.length).toBeGreaterThanOrEqual(1);
-    for (const line of lines) {
-      const m = JSON.parse(line);
-      if (LEGACY_DRIFT_IDS.has(m.id)) continue;
+    const msgs = lines.map((l) => JSON.parse(l));
+    const retracted = retractedIds(msgs);
+    for (const m of msgs) {
+      if (LEGACY_DRIFT_IDS.has(m.id) || retracted.has(m.id)) continue;
       const result = validateMessage(m);
       expect(result.valid, `msg ${m.id}: ${JSON.stringify(result)}`).toBe(true);
     }
