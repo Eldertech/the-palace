@@ -43,6 +43,8 @@ date is known.
 it fills with plausible inference, and inference arrives dressed as assessment. This is the
 ceremony's rule that outranks the others: *the record answers, you do not.*
 
+Before you draft the map, take the tail read of `_ops/Return Ceremony/Return Ceremony — tuning.md` — `tail -n 40` and `grep -n -w -i owed`, never the whole file ([[SCHEMA — Reference]] §6). An owed probe is one the script doesn't run yet — run it by hand and say you did.
+
 **If a probe comes back `unavailable`, say so in the map.** Never let a missing answer be replaced
 by a reasonable-sounding one. If the script itself cannot run, run the commands in the [[Return
 Ceremony]] card by hand and say that you did.
