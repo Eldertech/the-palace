@@ -127,7 +127,7 @@ Then check it, before anything is committed. The postcondition is verified, not 
 
 - `lint-doc-drift` exits with 0 errors, and `lint-ghost-links`, `lint-bundle-hygiene`, `lint-entry-naming` and `lint-link-directions` return nothing against the new files.
 - Every link target resolves.
-- The Concierge reads the placement cold. It is the one check you can't perform on your own work.
+- Someone who didn't write it reads the placement cold: the Concierge when an elder placed; a fresh reader, given only the approved map and the diff, when the Concierge did. No one can perform this check on their own work.
 
 A command's exit code is not verification.
 
@@ -166,7 +166,7 @@ A deposit completes in one of two ways.
 
 **It crossed.**
 
-1. The Concierge was consulted before the map and read the placement before it landed.
+1. The Concierge was consulted before the map, and someone who didn't write the placement read it before it landed.
 2. Loudon approved the map and read every word that was written.
 3. Step 6's checks ran, and the commit's verify state says honestly what they found.
 4. It is committed on `main`: `deposit(<id>):`, the record in the body, `Palace-Kind: deposit`. Any weave flags went through the writer on Loudon's approval.
