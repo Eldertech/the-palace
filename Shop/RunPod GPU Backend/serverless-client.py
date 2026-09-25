@@ -17,7 +17,8 @@ Design choices worth knowing:
     The workflow JSON selects the behaviour; the endpoint is just the GPU.
   - Secrets never touch a palace file. The key is read from RUNPOD_API_KEY (or
     passed explicitly). Nothing is persisted to disk. This matches the palace's
-    no-token-in-git rule (see Shopkeeper/next-run-commission.md).
+    no-token-in-git rule (see the Shopkeeper's Standing Orders,
+    Shop/Shopkeeper/Shopkeeper — scroll.md).
   - --mock runs the entire call flow against a fake transport, so the client can
     be smoke-tested with no key and no live endpoint.
 
