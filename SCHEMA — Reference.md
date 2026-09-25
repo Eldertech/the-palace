@@ -5,7 +5,7 @@ pillars:
   - tools
   - practice
 born: 2026-09
-version: "1.18"
+version: "1.20"
 stage: foundational
 status: canonical
 links:
@@ -79,6 +79,7 @@ Which types require which fields is the `adds` column in §1. The allowed values
 - `status` — `active | complete | archived` for `project`; `alive | stub` for `specialist` and `maker`
 - `medium` — `paper | book | tool | recording | other` for `source`; `sound | image | motion | interactive | plumbing | other` for `specialist`
 - `domains` — array of intellectual fields (`person`) · `revival_conditions` — string naming what would trigger revival (`spore`) · `tool` / `tool_version` — canonical tool name and pinned version, for reproducibility (`specialist`)
+- `version` — a quoted string. On a schema-level `meta` entry it is the schema's version. On a ceremony it is that ceremony's own, and it moves only when the ceremony's spec changes — never on a run (§6).
 
 ### Optional Fields (used selectively)
 
@@ -192,6 +193,23 @@ When a ceremony file exceeds ~8KB, split it into two files:
 - [[Weave Ceremony]] + [[Weave Ceremony — Context]]
 - [[Baton Ceremony]] + [[Baton Ceremony — Context]]
 
+### Versions, tuning, and run reports
+
+Every ceremony carries a `version` (§3). It moves only when the ceremony's spec changes, and the reason is
+recorded — as a tuning item when a run forced the change, in the commit body when nothing did. Running the
+ceremony never moves it. Changing a ceremony's version is an edit to that ceremony, not a Schema Ceremony;
+adding or removing a ceremony still is (§5).
+
+| What | Where | Holds |
+|---|---|---|
+| `version` | the ceremony's frontmatter | the spec's current version |
+| `[Ceremony] — tuning.md` | the ceremony's bundle (§8 type `tuning`) | a numbered ledger grouped by run date; each item says what the run showed, the spec change it forced, and the version that change produced |
+| `ceremony_version` | each run report's frontmatter, on top of §8's minimal fields | the version the run ran under — a stamp, never updated |
+| `## What this run taught the ceremony` | the last section of each run report | the run's answer; "nothing" is a legal answer |
+
+The question is asked on every run. A tuning item is written only when the run changed the ceremony, so the
+ledger and the version move together, and a run that taught nothing leaves both alone.
+
 ---
 
 ---
@@ -228,7 +246,8 @@ This keeps every file in the palace self-describing without conflating bundle fi
 | `source` | Extracted, quoted, translated, or annotated source material supporting the entry. Use the qualifier slot to name which one (`Foo — source — borges.md`). |
 | `sketch` | Half-formed material not yet ready for the entry body but too substantial for an HTML comment. |
 | `enrichment` | Material added via Enrichment ceremonies. Use the qualifier slot to name which enrichment. |
-| `scroll` | The project's **front door** — a Now zone regenerated from [[STIGMERGY]]'s board on every look (open asks, answers not yet consumed, last shipped, stall, drift), Loudon's **Standing Orders** (never regenerated), and an append-only making trail keyed on message id, newest first. Markdown; machine-owned except the orders zone; one per active project. Replaced `plan` on 2026-09-23 — the plan carried decision state only and regenerated only on a cycle, so it lied whenever the steward slept. See [[The Scroll]], [[Project Stewardship System]]. |
+| `scroll` | The entry's **front door** — any entry may carry one. Three zones: **Now**, machine-owned and regenerated on every look; **Standing Orders**, Loudon's, never regenerated; and **the making**, an append-only trail, newest first. What Now counts depends on the entry: a project's reads [[STIGMERGY]]'s board (open asks, answers not yet consumed, last shipped, stall, drift); a ceremony's counts its runs since the spec last changed and gives its current version. Markdown. See [[The Scroll]], [[Project Stewardship System]]. |
+| `tuning` | A ceremony's **tuning ledger** — the numbered record of what its runs changed, grouped by run date, each item tied to the spec change it forced. Written only when a run changed the ceremony; one per ceremony. See §6. (Not `gotchas` — that word stays with a Specialist's tool traps.) |
 | `staging` | The entry's **teaching arc** — stage-by-stage Loudon Live session plans ordered by didactic difficulty. Learner-facing, stable once designed; produced by [[project-stage-builder]], not the steward. The steward *reads* it and flags arc-level changes to Loudon rather than editing silently. |
 | `dossier` | The deep research corpus behind a `person` entry — timeline, positions, characteristic moves, lexicon, blindspots, sourced quotes, dispatch notes — loaded when an agent must *embody* the person faithfully (Dialectic, Excellent Adventure, Philosopher Visit). One per made citizen. See [[Making a Palace Citizen]]. |
 | `speech` | Cited, **context-tagged** verbatim excerpts of how a `person` actually talks, opening with a sources-and-their-limits ledger (spontaneous vs performative vs rehearsed vs fabricated), so voice is built from ground truth rather than synthesis. Feeds the entry's `## Voice`. See [[Making a Palace Citizen]] §Voice fidelity. |
