@@ -56,12 +56,16 @@ The batch runs the agent in a **shadow posture** and lets the *wrapper* commit:
   (SCHEMA §9, N-writer repo) — and clears stale git locks itself. The
   steward-batch commits steward machinery + the board + every changed
   `[Entry] — scroll.md`.
-- **Text-only (decided 2026-06-09).** Rendered media — `.wav` / `.png` /
-  `.svg` / `.html` a steward produces — is **left
-  uncommitted** on purpose. It still renders on the Trickster card from disk;
-  review it there and commit it on approval. This keeps the repo from
-  accreting binaries tied to proposals that may be rejected. To change it,
-  widen the wrapper's pathspec to include media extensions.
+- **Each cycle commits what it shipped (decided 2026-09-25).** When a cycle
+  ends, `process-cycle.js` commits the files that cycle's messages listed in
+  `artifacts` — text and media alike, each at most 10 MB, only inside the
+  steward's own bundle, never a file carrying entry frontmatter — together
+  with its machinery, its scroll and the board, in one commit scoped to exactly
+  those paths (`palace-commit.mjs --only`; `cycle-commit.js`). A shipped thing
+  is a made thing, not a proposal awaiting review; one left uncommitted is lost
+  the day the tree is cleaned. Files over the cap stay on disk and are named in
+  the commit body. The wrapper's own commit is the sweep for anything a cycle
+  commit missed.
 
 This replaces the old "do NOT commit, leave the tree for Loudon" rule — a
 Cowork-era holdover. That constraint existed because the Cowork sandbox could

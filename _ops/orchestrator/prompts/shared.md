@@ -388,7 +388,12 @@ GENERAL. Use it for every made thing, with all of these fields:
 ```
 
 `catchup` is the sentence Loudon reads first when he opens the project; write
-it as if he has forgotten everything. `left_rough` is the set-down-honestly
+it as if he has forgotten everything. **Every file you list in `artifacts` is
+committed with your cycle** — list each one you made, by its palace path.
+A file you don't list stays uncommitted and can be lost; files over 10 MB,
+files outside your bundle, and drafts carrying entry frontmatter (`type:`) are
+never committed this way. Draft a proposed entry without `type:` in its
+frontmatter, and let the elder who lands it add the rest. `left_rough` is the set-down-honestly
 line from the steward posture, made a field so it survives. A cycle may post
 several `shipped_artifact`s; each becomes its own section of the trail.
 
