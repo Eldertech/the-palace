@@ -205,7 +205,7 @@ The canonical Kuramoto model assumes **symmetric coupling**: every oscillator in
 
 The stubbornness parameter is K_receive:
 
-- **K_receive = 0** → completely unmoved by others. A fixed-frequency anchor. This is the clock Loudon proposed: "If I took the lowest note and refused to change its frequency/phase, would the others synchronize to it?" The answer is yes. With K_receive = 0, that oscillator becomes an immovable attractor. Others couple to it; it never couples back. Like the tonic note in a harmonic spectrum—it doesn't chase the harmonics, the harmonics are defined relative to it.
+- **K_receive = 0** → completely unmoved by others. A fixed-frequency anchor. This is the clock Loudon proposed: "If I took the lowest note and refused to change its frequency/phase, would the others synchronize to it?" The answer is yes, if it also pulls hard enough (K_send — see *Stubbornness sets the destination*, below). With K_receive = 0, that oscillator becomes an immovable attractor. Others couple to it; it never couples back. Like the tonic note in a harmonic spectrum—it doesn't chase the harmonics, the harmonics are defined relative to it.
 
 - **K_receive → ∞** → maximally submissive. Instantly adopts whatever phase the population dictates. A voice with no resistance, a follower.
 
