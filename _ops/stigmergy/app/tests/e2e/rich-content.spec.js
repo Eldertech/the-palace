@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-// v0.3 — inline rich-content rendering. Exercises the demo enrichment cards
+// v0.3 — inline rich-content rendering. Exercises the demo artifact messages
 // (demo-art-1 single image, demo-art-2 multi image+audio+html) on GENERAL.
 
 async function gotoGeneral(page) {
@@ -10,7 +10,7 @@ async function gotoGeneral(page) {
   await expect(page.getByTestId('message-row').first()).toBeVisible({ timeout: 15_000 });
 }
 
-test('an enrichment card renders an inline image artifact', async ({ page }) => {
+test('a message renders an inline image artifact', async ({ page }) => {
   await gotoGeneral(page);
   const card = page.locator('[data-testid="message-row"][data-id="demo-art-1"]');
   await expect(card).toBeVisible();
@@ -18,12 +18,6 @@ test('an enrichment card renders an inline image artifact', async ({ page }) => 
   const img = card.locator('[data-testid="artifact"][data-artifact-type="image"] [data-testid="artifact-img"]');
   await expect(img).toBeVisible();
   await expect(img).toHaveAttribute('src', /\/api\/file\?path=/);
-});
-
-test('enrichment cards carry the enrichment tag', async ({ page }) => {
-  await gotoGeneral(page);
-  const card = page.locator('[data-testid="message-row"][data-id="demo-art-1"]');
-  await expect(card.getByTestId('enrichment-tag')).toBeVisible();
 });
 
 test('a multi-artifact card renders image + audio + iframe with captions', async ({ page }) => {

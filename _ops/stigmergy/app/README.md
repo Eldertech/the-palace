@@ -78,11 +78,9 @@ Any message type may carry an artifact in its (opaque) `payload`:
 - `payload.artifact_path: "<palace-relative>"` — a single artifact, or
 - `payload.artifacts: [{ path, caption? }]` — a coherent multi-artifact set.
 
-`payload.kind: "enrichment_card"` is a legacy v0.3 discriminator — nothing
-needs it; when present the row shows a small `enrichment` tag. The §2.2 validator is unchanged —
-`payload` is opaque by spec, so the discriminator and artifact fields pass
-straight through. Artifact rendering is keyed on artifact *presence*, not on
-message type or `kind`.
+The §2.2 validator is unchanged — `payload` is opaque by spec, so the artifact
+fields pass straight through. Artifact rendering is keyed on artifact
+*presence*, not on message type or `kind`.
 
 Rendering: image → `<img>`; audio → `<audio controls>` (browser-default
 controls in v0.3); HTML → `<iframe sandbox="allow-scripts">` (deliberately

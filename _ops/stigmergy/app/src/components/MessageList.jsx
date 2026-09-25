@@ -143,11 +143,6 @@ function MessageRow({ msg }) {
         <span style={{ color: accent, textShadow: 'var(--glow)', fontWeight: 600 }}>
           {type}
         </span>
-        {msg.payload && msg.payload.kind === 'enrichment_card' && (
-          <span data-testid="enrichment-tag" style={{ marginLeft: 8 }}>
-            <Tag tone="link">enrichment</Tag>
-          </span>
-        )}
         {msg.payload && msg.payload.kind === 'choice' && (
           <span data-testid="choice-tag" style={{ marginLeft: 8 }}>
             <Tag tone="link">choice</Tag>
