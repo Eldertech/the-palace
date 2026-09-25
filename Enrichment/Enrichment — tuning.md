@@ -5,7 +5,7 @@ links:
   - target: "[[Enrichment]]"
     type: connects-to
     label: tuning-for
-forward_vector: "I am Enrichment's record of what each run taught it, numbered, each lesson tied to the spec change it forced, so the ceremony's version has a reason you can read. Append after a run that changed the ceremony; never prune what a real run taught."
+forward_vector: "I am Enrichment's record of what each run taught it, numbered, each lesson tied to the spec change it forced, so the ceremony's version has a reason you can read. Every run leaves a line here; a run that changed the ceremony also leaves a numbered item. Never prune what a real run taught."
 ---
 
 # Enrichment — tuning
