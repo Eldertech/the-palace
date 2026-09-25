@@ -47,6 +47,45 @@ export function iconRelFor(palaceRoot, absBundleDir) {
   return hit ? toRel(join(absBundleDir, hit.name)) : null;
 }
 
+// An entry's faces (CLAUDE.md § A page and its folder): the text always; the
+// rich face when its bundle holds `<Title> — rich.json`, the manifest
+// Enrichment writes; the scroll when it holds `<Title> — scroll.md`. The bundle
+// is the signal — no line in the body announces a face. Only the bundle's own
+// manifest counts, never a workshop copy under `_ops/rich-face/manifests/`, so
+// the switch never offers a face that hasn't been placed.
+// Returns { faces: ['text', ...], files: { rich?, scroll? } } with
+// palace-relative paths.
+export function facesFor(palaceRoot, absBundleDir) {
+  const faces = ['text'];
+  const files = {};
+  if (typeof absBundleDir !== 'string' || absBundleDir === '') return { faces, files };
+  const root = resolve(palaceRoot);
+  const stem = basename(absBundleDir);
+  for (const [face, name] of [['rich', `${stem} — rich.json`], ['scroll', `${stem} — scroll.md`]]) {
+    const full = join(absBundleDir, name);
+    try {
+      if (existsSync(full) && statSync(full).isFile()) {
+        faces.push(face);
+        files[face] = full.startsWith(root + sep) ? full.slice(root.length + 1).replaceAll(sep, '/') : full;
+      }
+    } catch (_) { /* unreadable → not a face */ }
+  }
+  return { faces, files };
+}
+
+// The inverse of facesFor for a face that is itself a markdown file: when
+// `relPath` is `<Dir>/<Name>/<Name> — scroll.md`, return the owning entry
+// `{ path: '<Dir>/<Name>.md', face: 'scroll' }`; otherwise null.
+export function faceOwnerOf(relPath) {
+  if (typeof relPath !== 'string') return null;
+  const parts = relPath.split('/');
+  if (parts.length < 2) return null;
+  const file = parts[parts.length - 1];
+  const dir = parts[parts.length - 2];
+  if (file !== `${dir} — scroll.md`) return null;
+  return { path: `${parts.slice(0, -1).join('/')}.md`, face: 'scroll' };
+}
+
 // Classify a bundle file by extension so the UI can render media inline
 // (image/audio/video/html) and treat the rest as openable files.
 export function classifyFile(name) {
