@@ -175,7 +175,119 @@ function summarizeToolInput(name, input) {
     pick('query') || pick('prompt') || pick('description') || pick('url') ||
     pick('old_string') || null;
   if (first) return first;
+  if (typeof input.plan === 'string') return oneLine(input.plan.split('\n')[0], 160); // ExitPlanMode: its title
   try { return oneLine(JSON.stringify(input), 160); } catch { return ''; }
+}
+
+// ---- whose voice -----------------------------------------------------------
+// A HUMAN beat is testimony: the moderator reads the arc cold and builds findings
+// on what the human said. So HUMAN must hold everything they typed or clicked, and
+// nothing a machine put in their seat. Their words arrive by three carriers:
+//   1. a user record — a typed turn;
+//   2. a `queued_command` attachment — a message sent while Claude was working,
+//      absorbed mid-turn. It carries the time it was sent but is written where it
+//      was absorbed, a few records later (its queue-operation records only mirror it);
+//   3. a tool_result that answers a popup — AskUserQuestion, ExitPlanMode, or a
+//      permission prompt rejected, bare or with words.
+// And these user records are not theirs: task notifications, messages from other
+// sessions (origin 'peer'), scheduled and SDK launches (turnOrigin 'sdk'), meta
+// injections (skill bodies, "Continue from where you left off", image notes),
+// local-command output, the compaction summary, <system-reminder> blocks. Those
+// become ⚙ one-liners, never HUMAN.
+
+const REMINDER = /<system-reminder>[\s\S]*?<\/system-reminder>/g;
+function stripReminders(s) { return String(s).replace(REMINDER, '').trim(); }
+
+// Returns a label if a machine wrote this user record, null if the human did.
+// Positive evidence only: a record with no marks either way (older transcripts,
+// before `origin` existed) stays HUMAN.
+function machineVoice(o, text) {
+  const origin = o.origin && o.origin.kind;
+  if (origin === 'human') return null;
+  if (origin) return origin;                        // task-notification, peer, coordinator…
+  if (o.turnOrigin && o.turnOrigin !== 'human') return o.turnOrigin; // sdk: a scheduled/scripted launch
+  if (o.isCompactSummary) return 'compaction summary';
+  if (o.isMeta) return 'meta';
+  if (text.startsWith('<task-notification>')) return 'task-notification';
+  if (/^<local-command-(stdout|stderr|caveat)>/.test(text)) return 'local command output';
+  return null;
+}
+
+function machineLine(kind, text) {
+  if (kind === 'task-notification') {
+    const tag = (t) => { const m = text.match(new RegExp(`<${t}>([\\s\\S]*?)</${t}>`)); return m ? m[1].trim() : null; };
+    const summary = tag('summary');
+    if (summary) return oneLine(summary, 240);
+  }
+  const peer = /<cross-session-message\b([^>]*)>([\s\S]*?)(?:<\/cross-session-message>|$)/.exec(text);
+  if (peer) {
+    const from = /from-name="([^"]*)"/.exec(peer[1]);
+    return oneLine(`${from ? `"${from[1]}" — ` : ''}${peer[2]}`, 240);
+  }
+  return oneLine(text, 240);
+}
+
+// A typed turn, cleaned only of what the harness wrapped around it.
+function humanWords(text, blocks) {
+  let t = text;
+  const cmd = /<command-name>([\s\S]*?)<\/command-name>/.exec(t);
+  if (cmd) {
+    const args = /<command-args>([\s\S]*?)<\/command-args>/.exec(t);
+    t = [cmd[1].trim(), args ? args[1].trim() : ''].filter(Boolean).join(' ');
+  }
+  const images = blocks ? blocks.filter(b => b && b.type === 'image').length : 0;
+  if (images) t += `\n[+${images} image${images === 1 ? '' : 's'}]`;
+  return t;
+}
+
+const REJECTED = "The user doesn't want to proceed with this tool use.";
+const DISMISSED = /^\[User dismissed\b/;
+
+function askedList(questions, answers, notes) {
+  return questions.map(q => {
+    const head = q.header ? `**${q.header}** — ${q.question}` : q.question;
+    if (!answers) return `- ${head}`;
+    const a = answers[q.question];
+    const note = notes && notes[q.question] && notes[q.question].notes;
+    const said = a == null || DISMISSED.test(a) ? 'dismissed without answering' : a;
+    return `- ${head}\n  → ${said}${note ? `\n  → note: ${note}` : ''}`;
+  }).join('\n');
+}
+
+// If this tool_result is the human answering a popup, return their answer as text.
+function popupAnswer(call, tr, body, result) {
+  const name = call && call.name;
+  const input = (call && call.input) || {};
+  if (tr.is_error && body.startsWith(REJECTED)) {
+    const said = /the user said:\n([\s\S]*)$/.exec(body);
+    if (name === 'AskUserQuestion') {
+      const asked = askedList(input.questions || [], null);
+      return said
+        ? `Rejected AskUserQuestion and said:\n${said[1].trim()}\n\nIt had asked:\n${asked}`
+        : `Rejected AskUserQuestion without answering:\n${asked}`;
+    }
+    const what = name ? `${name}(${summarizeToolInput(name, input)})` : 'a tool call';
+    return said ? `Rejected ${what} and said:\n${said[1].trim()}` : `Rejected ${what} without comment.`;
+  }
+  if (tr.is_error) return null;
+  if (name === 'AskUserQuestion') {
+    const answers = result && typeof result === 'object' && result.answers;
+    if (!answers) return `Answered AskUserQuestion:\n${body}`; // unknown shape: keep it whole
+    const questions = Array.isArray(result.questions) ? result.questions : (input.questions || []);
+    const unasked = Object.keys(answers).filter(q => !questions.some(x => x.question === q));
+    const all = [...questions, ...unasked.map(question => ({ question }))];
+    const dismissedAll = all.length > 0 && all.every(q => DISMISSED.test(answers[q.question] || ''));
+    return dismissedAll
+      ? `Dismissed AskUserQuestion without answering:\n${askedList(all, null)}`
+      : `Answered AskUserQuestion:\n${askedList(all, answers, result.annotations)}`;
+  }
+  if (name === 'ExitPlanMode' && body.startsWith('User has approved')) {
+    const title = summarizeToolInput(name, (result && result.plan) ? result : input);
+    const edited = result && result.planWasEdited ? ', having edited it before approving' : '';
+    const where = result && result.filePath ? ` (the approved text: ${result.filePath})` : '';
+    return `Approved the plan "${title}"${edited}${where}.`;
+  }
+  return null;
 }
 
 function distill(file, opts) {
@@ -185,39 +297,70 @@ function distill(file, opts) {
 
   const beats = [];
   let meta = { sessionId: null, cwd: null, branches: new Set(), firstTs: null, lastTs: null, models: new Set() };
-  let userTurns = 0, asstTurns = 0, toolCalls = 0;
+  let userTurns = 0, midTurns = 0, popups = 0, machineNotes = 0, asstTurns = 0, toolCalls = 0;
+  const calls = new Map(); // tool_use id → { name, input }, so a result knows what it answers
 
   for (const l of lines) {
     let o;
     try { o = JSON.parse(l); } catch { continue; }
     if (o.isSidechain === true) continue; // subagent noise — not the session arc
     const t = o.type;
+    const ts = o.timestamp;
+
+    if (t === 'attachment') {
+      const a = o.attachment;
+      if (!a || a.type !== 'queued_command') continue;
+      const text = stripReminders(typeof a.prompt === 'string' ? a.prompt : asText(a.prompt));
+      if (!text) continue;
+      const sent = a.timestamp || ts;
+      const human = a.commandMode === 'prompt' && !a.isMeta && (!a.origin || a.origin.kind === 'human');
+      if (human) {
+        midTurns++;
+        beats.push({ role: 'HUMAN', tag: 'mid-turn', text, ts: sent, float: true });
+      } else {
+        machineNotes++;
+        const kind = (a.origin && a.origin.kind) || a.commandMode || 'queued'; // peer, task-notification…
+        beats.push({ role: 'MACHINE', text: `${kind}: ${machineLine(kind, text)}`, ts: sent, float: true });
+      }
+      continue;
+    }
     if (t !== 'user' && t !== 'assistant') continue;
 
     if (o.sessionId && !meta.sessionId) meta.sessionId = o.sessionId;
     if (o.cwd && !meta.cwd) meta.cwd = o.cwd;
     if (o.gitBranch) meta.branches.add(o.gitBranch);
-    if (o.timestamp) { if (!meta.firstTs) meta.firstTs = o.timestamp; meta.lastTs = o.timestamp; }
+    if (ts) { if (!meta.firstTs) meta.firstTs = ts; meta.lastTs = ts; }
 
     const msg = (o.message && typeof o.message === 'object') ? o.message : {};
     if (msg.model) meta.models.add(msg.model);
     const content = msg.content;
 
     if (t === 'user') {
-      // A user record can be a real human turn OR a tool_result carrier.
+      // A user record can be a typed turn, a machine's injection, or a tool_result
+      // carrier — and a tool_result can be the human answering a popup.
       const blocks = Array.isArray(content) ? content : null;
       const toolResults = blocks ? blocks.filter(b => b && b.type === 'tool_result') : [];
-      const humanText = asText(content);
-      if (humanText.trim()) {
-        userTurns++;
-        beats.push({ role: 'HUMAN', text: humanText.trim() });
-      } else if (toolResults.length) {
-        for (const tr of toolResults) {
-          const body = typeof tr.content === 'string' ? tr.content : asText(tr.content);
-          const tag = tr.is_error ? 'tool ✗' : 'tool ✓';
-          const spine = tr.is_error || SPINE_RESULT.test(body);
-          beats.push({ role: 'RESULT', text: `[${tag}] ${oneLine(body, 180)}`, spine });
+      for (const tr of toolResults) {
+        const body = typeof tr.content === 'string' ? tr.content : asText(tr.content);
+        const answer = popupAnswer(calls.get(tr.tool_use_id), tr, body, o.toolUseResult);
+        if (answer) {
+          popups++;
+          beats.push({ role: 'HUMAN', tag: 'popup', text: answer, ts });
+          continue;
         }
+        const tag = tr.is_error ? 'tool ✗' : 'tool ✓';
+        const spine = tr.is_error || SPINE_RESULT.test(body);
+        beats.push({ role: 'RESULT', text: `[${tag}] ${oneLine(body, 180)}`, spine, ts });
+      }
+      const text = stripReminders(asText(content));
+      if (!text) continue;
+      const kind = machineVoice(o, text);
+      if (kind) {
+        machineNotes++;
+        beats.push({ role: 'MACHINE', text: `${kind}: ${machineLine(kind, text)}`, ts });
+      } else {
+        userTurns++;
+        beats.push({ role: 'HUMAN', text: humanWords(text, blocks), ts });
       }
     } else { // assistant
       asstTurns++;
@@ -225,16 +368,31 @@ function distill(file, opts) {
       for (const b of blocks) {
         if (!b || typeof b !== 'object') continue;
         if (b.type === 'text' && b.text && b.text.trim()) {
-          beats.push({ role: 'CLAUDE', text: b.text.trim() });
+          beats.push({ role: 'CLAUDE', text: b.text.trim(), ts });
         } else if (b.type === 'thinking' && opts.thinking && b.thinking) {
-          beats.push({ role: 'think', text: oneLine(b.thinking, 400) });
+          beats.push({ role: 'think', text: oneLine(b.thinking, 400), ts });
         } else if (b.type === 'tool_use') {
           toolCalls++;
+          calls.set(b.id, { name: b.name, input: b.input });
           const text = `${b.name}(${summarizeToolInput(b.name, b.input)})`;
-          beats.push({ role: 'call', text, spine: isSpineCall(b.name, text) });
+          beats.push({ role: 'call', text, spine: isSpineCall(b.name, text), ts });
         }
       }
     }
+  }
+
+  // A queued message is written where it was absorbed, after the work it arrived
+  // during. Seat it back at the moment it was sent: before the first beat stamped
+  // later. Every other beat keeps its file order.
+  const floats = beats.filter(b => b.float).sort((a, b) => (a.ts < b.ts ? -1 : a.ts > b.ts ? 1 : 0));
+  if (floats.length) {
+    const seated = beats.filter(b => !b.float);
+    for (const f of floats) {
+      const at = f.ts ? seated.findIndex(b => !b.float && b.ts && b.ts > f.ts) : -1;
+      seated.splice(at < 0 ? seated.length : at, 0, f);
+    }
+    beats.length = 0;
+    beats.push(...seated);
   }
 
   let navDropped = 0;
@@ -264,7 +422,7 @@ function distill(file, opts) {
     beats.splice(head, dropped, { role: 'ELIDED', text: `… ${dropped} interior beats elided (--max-turns) …` });
   }
 
-  return { meta, beats, stats: { userTurns, asstTurns, toolCalls, lines: lines.length, navDropped } };
+  return { meta, beats, stats: { userTurns, midTurns, popups, machineNotes, asstTurns, toolCalls, lines: lines.length, navDropped } };
 }
 
 function render({ meta, beats, stats }, file) {
@@ -274,6 +432,9 @@ function render({ meta, beats, stats }, file) {
   out.push('> Mechanical projection of the raw session transcript (Closing Well —');
   out.push('> transcript-reader). Text kept verbatim; tool calls collapsed to');
   out.push('> one-liners; tool output truncated; thinking dropped unless --thinking.');
+  out.push('> HUMAN is everything the human typed or clicked: turns, messages sent');
+  out.push('> (mid-turn) while Claude worked, and (popup) answers. ⚙ lines are user');
+  out.push('> records a machine wrote — notifications, injections — never theirs.');
   out.push('> **This is not a summary — reconstruct the arc yourself.**');
   out.push('');
   out.push(`- source: \`${file}\``);
@@ -282,13 +443,14 @@ function render({ meta, beats, stats }, file) {
   out.push(`- branches touched: ${[...meta.branches].map(b => '`' + b + '`').join(', ') || '?'}`);
   out.push(`- models: ${[...meta.models].join(', ') || '?'}`);
   out.push(`- span: ${meta.firstTs || '?'} → ${meta.lastTs || '?'}`);
-  out.push(`- turns: ${stats.userTurns} human · ${stats.asstTurns} assistant · ${stats.toolCalls} tool calls · ${stats.lines} records`);
+  out.push(`- turns: ${stats.userTurns} human (+${stats.midTurns} mid-turn, ${stats.popups} popup) · ${stats.asstTurns} assistant · ${stats.toolCalls} tool calls · ${stats.machineNotes} ⚙ machine notes · ${stats.lines} records`);
   if (stats.navDropped) out.push(`- spine mode: ${stats.navDropped} navigation beats dropped (reads/greps/routine results)`);
   out.push('');
   out.push('---');
   out.push('');
   for (const b of beats) {
-    if (b.role === 'HUMAN') { out.push(`### 🧑 HUMAN`); out.push(b.text); out.push(''); }
+    if (b.role === 'HUMAN') { out.push(`### 🧑 HUMAN${b.tag ? ` (${b.tag})` : ''}`); out.push(b.text); out.push(''); }
+    else if (b.role === 'MACHINE') { out.push(`  · ⚙ ${b.text}`); }
     else if (b.role === 'CLAUDE') { out.push(`### 🤖 CLAUDE`); out.push(b.text); out.push(''); }
     else if (b.role === 'call') { out.push(`  · call → ${b.text}`); }
     else if (b.role === 'RESULT') { out.push(`  · ${b.text}`); }

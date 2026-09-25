@@ -126,6 +126,19 @@ must reconstruct the arc itself, or the "cold, from the transcript alone" test i
 meaningless. `--max-turns N` elides interior beats (keeping head and tail) for very
 long sessions.
 
+### Whose voice
+
+A HUMAN beat is testimony — the moderator builds findings on it — so it holds everything
+the human typed or clicked, and nothing else. `### 🧑 HUMAN` is a typed turn;
+`(mid-turn)` is a message sent while Claude was working (a `queued_command` attachment,
+seated at the moment it was sent, not where it was absorbed); `(popup)` is an answer to a
+popup — AskUserQuestion answered or dismissed, every question whole; a plan approved; a
+permission prompt rejected, bare or with words. User records a machine wrote — task
+notifications, messages from other sessions, skill bodies and other `isMeta` injections,
+scheduled/SDK launches, local-command output, the compaction summary — render as `· ⚙`
+one-liners, never HUMAN. `tests/transcript-reader.test.mjs` holds this line on real
+records ([[Closing Well — tuning]] item 31).
+
 ## transcript-reader.mjs — reference
 
 ```
@@ -136,6 +149,7 @@ long sessions.
 --distill --session <id>       distill by session id
 --distill --out <path>         write the arc to a file (prints the path)
 --distill --thinking           include truncated thinking blocks
+--distill --spine              collapse runs of reads/greps/routine results (HUMAN beats always kept)
 --distill --max-turns N        elide interior beats past N (keeps opening + close)
 ```
 
