@@ -7,9 +7,7 @@
 //
 // We extend the exclusion list with build/test/dep artifacts that would
 // otherwise drown the index (node_modules, dist/, playwright-report, the
-// stigmergy app's own __pycache__, etc.) and Enrichment card folders
-// (card-NNN cards are not knowledge entries; they're work-product data
-// already rendered by Phase 4.5). Everything else is included; the
+// stigmergy app's own __pycache__, etc.). Everything else is included; the
 // frontmatter decides whether the entry has type/pillars/stage signal.
 
 import { readdirSync, statSync, readFileSync, existsSync } from 'node:fs';

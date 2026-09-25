@@ -56,10 +56,12 @@ text pieces default to the margin; video, interactives and diagrams to the band.
   inline) so it plays inside the rich face and opened on its own. Worklet DSP goes in as a Blob URL,
   stereo in both places, a compressor after it ([[Web Audio Worklet]]).
 - **Fixed canvas heights.** A canvas that takes its height from its own panel feeds back through the
-  iframe's auto-fit and grows without end.
+  iframe's auto-fit and grows without end (Kuramoto's pieces passed 9,000 px).
 - **One voice at a time.** Post `{type:'rich:play'}` to the parent when sound starts; stop on
   `{type:'rich:hush'}`. The page hushes every other video, strip and piece.
 - **Test the claim headless.** Pull the worklet source out of the page and run it in Node against the
   equation the section states before trusting what the page shows.
+- **A line that links the rich face is the door**, not prose — the parser skips it, or adding it would drift its own section (Kuramoto, 2026-09-24).
+- **Prefix the renderer's own classes.** An entry's diagram can define the same names — Kuramoto's Mermaid defines `drift`.
 - **Name and header.** `[Entry] — rich — <what>.html`, with a leading comment carrying title, born,
   the parent link and a forward vector; `.md` pieces carry minimal frontmatter (the renderer strips it).

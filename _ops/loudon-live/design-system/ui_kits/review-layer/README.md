@@ -33,7 +33,7 @@ Each moment becomes one autosaving note (localStorage, namespaced per project+ro
 - **Download .json** — structured, one record per moment (`{id, label, tag, note}`). Best when you want **individual responses** Claude can act on one at a time (the oblique-harvest pattern).
 - **Download .md** — the markdown digest as a file (clipboard fallback for `file://`).
 
-These are a **stopgap**. The direction worth building is posting responses straight to [[STIGMERGY]] (the palace blackboard) so the loop closes with no copy-paste and no chat round-trip — at which point clipboard/download become the fallback for artifacts running outside the palace. The rich face ([[Enrichment]], `_ops/rich-face/`) already posts that way — a note per section, sent to the board as a `human_eval`; that is the method to reach for when an artifact runs inside the palace.
+These are a **stopgap**. The direction worth building is posting responses straight to [[STIGMERGY]] (the palace blackboard) so the loop closes with no copy-paste and no chat round-trip — at which point clipboard/download become the fallback for artifacts running outside the palace. The rich face ([[Enrichment]], `_ops/rich-face/`) is built to post that way — a note per section, sent to the board as a `human_eval`; that is the method to reach for when an artifact runs inside the palace.
 
 ## Granularity — the one rule that matters
 

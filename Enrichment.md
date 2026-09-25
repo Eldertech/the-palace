@@ -14,7 +14,7 @@ links:
     type: connects-to
     label: ceremony-registry
   - target: "[[The Scroll]]"
-    type: couples-with
+    type: connects-to
     label: sibling-face
   - target: "[[The Shop]]"
     type: connects-to
@@ -29,11 +29,8 @@ links:
     type: connects-to
     label: section-notes
   - target: "[[Hilaritas Generator]]"
-    type: deepens
+    type: exemplifies
     label: a-page-that-plays
-  - target: "[[Palace Enchantment]]"
-    type: connects-to
-    label: gives-it-senses
   - target: "[[Loudon Live Design System]]"
     type: connects-to
     label: house-dress
@@ -43,9 +40,6 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
     label: first-rich-face
-  - target: "[[Oblique Enrichment]]"
-    type: connects-to
-    label: oblique-instinct-kept
   - target: "[[Latent Error]]"
     type: connects-to
     label: the-hidden-assumption
@@ -57,7 +51,7 @@ links:
 
 Say **"enrich [page]"** and the whole [[The Shop|Shop]] goes to work on one page, until it does what text can't: you hear the claim, play the equation, watch the idea move. What comes out is the page's **rich face** — the entry's own words as the spine, read live from the `.md`, with sound, image and interaction laid beside the headings they serve.
 
-The plain page stays plain. The `.md` is the considered truth and keeps its beauty in Obsidian; the rich face is a reading of it, not a copy ([[Learning Materials and Canon]]). The only thing enrichment adds to the text is one door line under the hero.
+The plain page stays plain. The `.md` is the considered truth and keeps its beauty in Obsidian; the rich face is a reading of it, not a copy ([[Learning Materials and Canon]]). Enrichment adds one door line under the hero and, when making teaches the text something, an ordinary edit, shown first.
 
 ## Trigger
 
@@ -76,13 +70,14 @@ The renderer, its server and the fingerprint tool are `_ops/rich-face/` (README 
 
 ## The steps
 
-1. **Read the entry whole, then its bundle. Gather first.** Bundles hold media nothing links to — narrations, beds, renders from earlier rounds.
+0. **Open by reading [[Enrichment — tuning]]** — the items still owed first, then anything recorded after the version the last run ran under. Those are this run's first candidates for a spec change ([[SCHEMA — Reference]] §6).
+1. **Read the entry whole, then its bundle. Gather first.** The forward vector is the brief: the page should be made rich in the direction it already leans. Bundles hold media nothing links to — narrations, beds, renders from earlier rounds.
 2. **Walk it section by section** and ask one question: what can only be shown, heard or played here? Prefer a piece that **tests the section's claim** over one that illustrates it — or one that shows what the section takes for granted without saying ([[Latent Error]]). A piece with nothing to test and nothing to make felt doesn't ship.
 3. **Make it with the Shop**, at one tier for the whole page — a Sketch tonight, a Study, a Piece over days. The [[Maker]] picks the Specialists. Equations appear twice, symbols and words ([[Loudon Live Design System]]).
 4. **Verify what can be verified.** Run each piece's engine against the claim it makes; load the page and read the console. Name what you couldn't check — an agent can't hear the mix.
 5. **Stamp** each section: `node _ops/rich-face/fingerprint.mjs "<Entry>" --stamp`.
 6. **Carry findings home.** When making a piece teaches the text something, edit the entry, then re-stamp that section.
-7. **Place the door** — one italic line under the hero linking the rich face — and commit `enrich(<Entry>): <what> — <tier>`.
+7. **Place the door** — one italic line under the hero linking the rich face — and commit `enrich(<Entry>): <what> — <tier>`. The body names the version the run ran under, what was and wasn't verified, and what this run taught the ceremony ("nothing" is a legal answer); a lesson that changed the spec also goes in the tuning file.
 
 ## Drift — how the two faces stay honest
 
