@@ -73,7 +73,7 @@ thirty citizens include no clinicians, no psychologists, no HCI researchers.
 | 5 | The palace as holding — Winnicott; the machinery↔traditions mapping | **decline — nothing deposits** | Nine rows checked against the files: two hold, three overstated, four wrong, and the failures cluster on one error — the palace's mechanisms act on *entries*, these traditions act on *people*. The two that hold are the two whose subject is Loudon, which inverts the section's thesis. *Holding* is a pun on *holding to*: the palace impinges by design. Loudon's call was that nothing deposits, including the small folds. |
 | 6 | The lineage — Fischer, Engelbart, Papert, Clark & Chalmers, Luhmann, Star & Griesemer, Schön; the homogenisation risk | **3 folds + 2 mints** | Fischer → [[Self-Describing Knowledge Module]]. Engelbart → [[The Palace Practices on Itself]]. Constructionism → [[Objects to Think With]] (minted). Schön → [[Reflective Practice]] (minted 2026-09-22), the largest. **The homogenisation risk is declined** (2026-09-23): the finding is about populations, and the palace is one person's. The risk that bites here is the single voice, which `Self-Describing Knowledge Module.md:187` already holds, and "Friction as Requirement" was already declined as a mint. Luhmann already on the lineage list; Star & Griesemer, Clark & Chalmers, Papert-as-citation declined. |
 | 7 | The triad — artist / coach / AI; offers-not-commits; the environment never decides | **fold → [[Creative Coach]]** | Offers-not-commits is already stated four times; a principle entry would be a fifth telling. What was new is the second person and the third edge, and Loudon's own distinction: AI reflects well, but the calibrated question toward a held destination needs a clock and a body channel it does not have. |
-| 8 | Threads to test — Balint for artists; Instruments That Hold You; Molting in public | open | |
+| 8 | Threads to test — Balint for artists; Instruments That Hold You; Molting in public | **2 folds + 1 question** | Balint → [[Creative Coach]] (push-back as the artist's rule; Loudon will run it in a live class and carry the workshop himself). Instruments → minted `question` [[Can an Instrument Notice Where the Work Stops?]], "holding" dropped per §5. Molting in public → [[Identity Molting]] fold, with Loudon's answer: the visible past is the evidence of the molt, not a block to it. |
 | 9 | People — sixteen names proposed as citizens | open | |
 | 11 | Set down — artists under technological disruption; programme logistics | declined (by the source) | Recorded as a refusal, not re-litigated. Findable here if it ever becomes interesting. |
 
@@ -424,6 +424,26 @@ is not enough without a **clock** and a **body channel**. And *"How do you feel?
 the effective moves are to point at the body and to offer a reading to be corrected. The rule
 "the environment never decides" survives with a refinement — *holding a destination in trust is not
 deciding*.
+
+### §8 — Threads to test · settled 2026-09-24
+
+**Balint → [[Creative Coach]] § If the room held three.** The section corrected the palace, not the
+source. Loudon said artists already run these — songwriting circles, where what comes back is "great
+job" and means little. Asked to describe one properly, the sourced account (PMC3303639; Bradford VTS;
+the Balint Society) showed the palace's own row had it backwards: "heard, not advised" put the
+listening on the wrong side. In Balint the presenter pushes back and is silent while the group works
+the case aloud. Loudon's read: for creative work that is the whole value — critique makes the maker
+defend, and silence removes intent from the room so only the work is discussed. The row was
+corrected; the `balint-stance-unturned` label on Sidechain ↔ Conversation is flagged, not changed.
+Loudon carries the workshop himself and will run it in a live class before it goes further here.
+Cousin found, not deposited: Art21's absent-artist critique (after Diana Al-Hadid).
+
+**Instruments That Hold You → minted `question`.** Reframed around §7: an instrument at the desk has
+the clock and the body channel a chat window lacks. "Holding" dropped from the name (§5).
+
+**Molting in public → [[Identity Molting]].** Beeple verified (daily since 2007-05-01). Loudon's
+answer, a hermit crab's old shell still exists after it moves on, went in beside **exuviae**, the cast
+skin as evidence a molt happened.
 
 ---
 
