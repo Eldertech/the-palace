@@ -15,11 +15,11 @@ forward_vector: "I am Walk Ceremony's scroll — the one page that opens on whic
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:16.547Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.0 · the spec last changed 2026-09-25 (`8f3fe3f7`) — edit(ceremonies): Walk, Spore Check, Self-Model, Revival 1.0; Map Build 2.0
 - **Runs since the change:** none yet — v1.0 has not run
-- **Last run:** none recorded since the ceremony was first versioned
+- **Last run:** none in the ledger yet
 - **Owed in the ledger:** 1 — item 2; the next run's tail read picks it up first
 - **Latest lesson:** item 2, from the versioning read — 2026-09-25 — [[Walk Ceremony — tuning]]
 
@@ -36,7 +36,7 @@ _None yet._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making

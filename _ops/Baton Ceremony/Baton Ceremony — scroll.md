@@ -15,20 +15,22 @@ forward_vector: "I am Baton Ceremony's scroll — the one page that opens on whi
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:15.335Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.0 · the spec last changed 2026-09-25 (`40eeb7e2`) — edit(Baton Ceremony): v1.0 — version, tuning ledger, the tail read
-- **Runs since the change:** 4 records on 1 day
-- **Last run:** 2026-09-25 — baton(Language as a Tonal Medium): run Enrichment 2.1 from the waiting plan (`494901a1`)
+- **Runs since the change:** 6 runs on 1 day, counted from the ledger's run lines
+- **Last run:** 2026-09-25 — Palace Ceremonies, review and Phase 5 · nothing new (under v1.0)
 - **Owed in the ledger:** nothing
 - **Latest lesson:** item 8, from the footer drift — 2026-08-25 — [[Baton Ceremony — tuning]]
 
 ### Runs since v1.0
 
-- 2026-09-25 — baton(Language as a Tonal Medium): run Enrichment 2.1 from the waiting plan `494901a1`
-- 2026-09-25 — baton(Kuramoto Coupling): sort inline media under Enrichment's placement rule `a561e6fd`
-- 2026-09-25 — baton(Enrichment): Make rich-face review notes into work — both shapes: a QUEUE `e0eebfa9`
-- 2026-09-25 — baton(Palace Ceremonies): Phase 3 landed; carry phases 4–5 `e0c9b6c6`
+- 2026-09-25 — Palace Ceremonies, review and Phase 5 · nothing new
+- 2026-09-25 — No Mind Checks Itself · nothing new
+- 2026-09-25 — Language as a Tonal Medium · nothing new
+- 2026-09-25 — Kuramoto Coupling · nothing new
+- 2026-09-25 — Enrichment · nothing new
+- 2026-09-25 — Palace Ceremonies, phases 4–5 · nothing new
 
 ### Owed
 
@@ -39,28 +41,42 @@ _Nothing owed._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="commit-494901a19867a6effea576778a4fb6bc5fcc7321" -->
+<!-- scroll:entry id="run-110bfb98fb" -->
+### 2026-09-25 — Palace Ceremonies, review and Phase 5
+
+nothing new
+<sub>a run under v1.0 · its line in the tuning ledger</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="run-1409a5c7c5" -->
+### 2026-09-25 — No Mind Checks Itself
+
+nothing new
+<sub>a run under v1.0 · its line in the tuning ledger</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="run-689a43701e" -->
 ### 2026-09-25 — baton(Language as a Tonal Medium): run Enrichment 2.1 from the waiting plan
 <sub>`494901a1` · a run under v1.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="commit-a561e6fd34f110ecf8134d3ae176a2b1d6987d13" -->
+<!-- scroll:entry id="run-66ae7fab6c" -->
 ### 2026-09-25 — baton(Kuramoto Coupling): sort inline media under Enrichment's placement rule
 <sub>`a561e6fd` · a run under v1.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="commit-e0eebfa92d9d068885467d8795b84dbddecc8135" -->
+<!-- scroll:entry id="run-eaa7bebe30" -->
 ### 2026-09-25 — baton(Enrichment): Make rich-face review notes into work — both shapes: a QUEUE
 <sub>`e0eebfa9` · a run under v1.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="commit-e0c9b6c6f4b372cac44edcf701cdce23c1f41d42" -->
+<!-- scroll:entry id="run-1df51f4c48" -->
 ### 2026-09-25 — baton(Palace Ceremonies): Phase 3 landed; carry phases 4–5
 
 Closed palace-ceremonies-remainder-20260925T022957Z --partial against cb6f8ab7 (Phase 3: Schema v1.22 the tail read, every named ceremony versioned with a tuning ledger, Deposit v2.0). The remainder is a fresh open card, palace-ceremonies-remainder-20260925T140031Z, pointing at the same baton, now rewritten to carry only phases 4 (scrolls for any entry, a ceremonies group on the PROJECTS deck) and 5 (the principle in Palace Ceremonies). Board: the claim, the close and the remainder, all three this session's.

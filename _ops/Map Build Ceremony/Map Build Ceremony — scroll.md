@@ -15,25 +15,17 @@ forward_vector: "I am Map Build Ceremony's scroll — the one page that opens on
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:15.941Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v2.0 · the spec last changed 2026-03-30 (`4fbb103f`) — Weave — 2026-03-30 — 56 links added, 4 entries promoted, 2 orphans flagged/deleted
-- **Runs since the change:** 11 records on 10 days
-- **Last run:** 2026-09-24 — full map built
+- **Version:** v2.1 · the spec last changed 2026-09-25 (`c2dae8bd`) — edit(Map Build Ceremony): 2.1 — the version catches up with 8f3fe3f7
+- **Runs since the change:** none yet — v2.1 has not run
+- **Last run:** 2026-09-24 — full, the September weave · nothing new (under v2.0)
 - **Owed in the ledger:** 2 — items 3, 4; the next run's tail read picks them up first
-- **Latest lesson:** item 4, from the versioning read — 2026-09-25 — [[Map Build Ceremony — tuning]]
+- **Latest lesson:** item 5, from the Phase 5 review — 2026-09-25 — [[Map Build Ceremony — tuning]]
 
-### Runs since v2.0
+### Runs since v2.1
 
-- 2026-09-24 — full map built
-- 2026-08-26 — full map built
-- 2026-07-05 — palace(map-build): skip @import symlinks; rebuild to 300 nodes; compost Streaming Details `0e4bc5c3`
-- 2026-07-04 — palace(map-build): full survey post-cleanup; re-promote Dialectics; fix error-ghost `0f5c70c0`
-- 2026-07-04 — full map built
-- 2026-06-16 — full map built
-- 2026-06-07 — full map built
-- 2026-06-05 — full map built
-- _…and 3 more in the trail below._
+_None yet._
 
 ### Owed
 
@@ -45,34 +37,34 @@ forward_vector: "I am Map Build Ceremony's scroll — the one page that opens on
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="map-full-2026-09-24" -->
+<!-- scroll:entry id="run-ee75e7ff52" -->
 ### 2026-09-24 — full map built
 
 [palace-map-full-2026-09-24.json](_ops/maps/palace-map-full-2026-09-24.json)
 <sub>record · under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="map-full-2026-08-26" -->
+<!-- scroll:entry id="run-749f180a78" -->
 ### 2026-08-26 — full map built
 
 [palace-map-full-2026-08-26.json](_ops/maps/palace-map-full-2026-08-26.json)
 <sub>record · under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="commit-0e4bc5c3993be230206e498e7dd7308f764fec54" -->
+<!-- scroll:entry id="run-7c25cbdf22" -->
 ### 2026-07-05 — palace(map-build): skip @import symlinks; rebuild to 300 nodes; compost Streaming Details
 
 The Python map builder followed the five _-underscore @import symlinks at the palace root (Cooperation_Yields_Agency.md etc. -> spaced originals), minting phantom duplicate nodes with underscore ids and no bundle avatar. Add 'if p.is_symlink(): continue'. Rebuild reflects Loudon's frontmatter demotions (canon-only, 336 -> 300 nodes) and drops the composted orphan Streaming Details (chronic degree-0, two prior compost bounces) — graph is now fully connected, zero orphans, zero error-ghosts.
 <sub>`0e4bc5c3` · a run under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="commit-0f5c70c024eb98004b8cd8e0213e842ecc4d72c0" -->
+<!-- scroll:entry id="run-c76e38c759" -->
 ### 2026-07-04 — palace(map-build): full survey post-cleanup; re-promote Dialectics; fix error-ghost
 
 Ran the Map Build Ceremony (frontmatter-driven builder) after the bundle-hygiene sweep. 325 nodes, 2617 edges, 0 error-ghosts. The 30 demoted working-docs correctly dropped out of the node set.
@@ -86,46 +78,60 @@ Ran the Map Build Ceremony (frontmatter-driven builder) after the bundle-hygiene
 <sub>record · under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="map-full-2026-06-16" -->
+<!-- scroll:entry id="run-11817e7b83" -->
 ### 2026-06-16 — full map built
 
 [palace-map-full-2026-06-16.json](_ops/maps/palace-map-full-2026-06-16.json)
 <sub>record · under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="map-full-2026-06-07" -->
+<!-- scroll:entry id="run-86d13a2d7e" -->
 ### 2026-06-07 — full map built
 
 [palace-map-full-2026-06-07.json](_ops/maps/palace-map-full-2026-06-07.json)
 <sub>record · under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="map-full-2026-06-05" -->
+<!-- scroll:entry id="run-11186bc0a1" -->
 ### 2026-06-05 — full map built
 
 [palace-map-full-2026-06-05.json](_ops/maps/palace-map-full-2026-06-05.json)
 <sub>record · under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="map-full-2026-05-14" -->
+<!-- scroll:entry id="run-10716386a8" -->
+### 2026-06-05 — full, before the weave
+
+nothing new
+<sub>a run under v2.0 · its line in the tuning ledger</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="run-313c901fb2" -->
 ### 2026-05-14 — full map built
 
 [palace-map-full-2026-05-14.json](_ops/maps/palace-map-full-2026-05-14.json)
 <sub>record · under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="map-full-2026-04-27" -->
+<!-- scroll:entry id="run-1c52a12db7" -->
 ### 2026-04-27 — full map built
 
 [palace-map-full-2026-04-27.json](_ops/maps/palace-map-full-2026-04-27.json)
 <sub>record · under v2.0</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="map-full-2026-04-07" -->
+<!-- scroll:entry id="run-57f7c42d93" -->
 ### 2026-04-07 — full map built
 
 [palace-map-full-2026-04-07.json](_ops/maps/palace-map-full-2026-04-07.json)
 <sub>record · under v2.0</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="run-9f2cd569a0" -->
+### 2026-04-01 — full
+
+nothing new
+<sub>a run under v2.0 · its line in the tuning ledger</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="version-4fbb103fdd38ce27b4a1044fb3e0a9d7567b9b05" -->

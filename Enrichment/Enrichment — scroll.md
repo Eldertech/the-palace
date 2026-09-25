@@ -15,11 +15,11 @@ forward_vector: "I am Enrichment's scroll — the one page that opens on which v
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:15.717Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v2.1 · the spec last changed 2026-09-25 (`d4ac41f3`) — edit(Enrichment): v2.1 — Loudon's placement rule; step 6 splits by size
 - **Runs since the change:** none yet — v2.1 has not run
-- **Last run:** 2026-09-24 — enrich(Kuramoto Coupling): the first rich face — study (`033e1774`)
+- **Last run:** none in the ledger yet
 - **Owed in the ledger:** nothing
 - **Latest lesson:** item 5, from Closing Well, 2026-09-25 — [[Enrichment — tuning]]
 
@@ -36,7 +36,7 @@ _Nothing owed._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making

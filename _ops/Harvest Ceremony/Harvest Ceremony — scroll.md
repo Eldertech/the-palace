@@ -15,11 +15,11 @@ forward_vector: "I am Harvest Ceremony's scroll — the one page that opens on w
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:15.830Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.0 · the spec last changed 2026-09-25 (`3ca903dc`) — edit(Harvest Ceremony): v1.0 — version, tuning ledger, the tail read
 - **Runs since the change:** none yet — v1.0 has not run
-- **Last run:** 2026-09-06 — Harvest record — Environments That Hold
+- **Last run:** none in the ledger yet
 - **Owed in the ledger:** nothing
 - **Latest lesson:** item 6, from *Environments That Hold* — 2026-09-06 to 09-24 — [[Harvest Ceremony — tuning]]
 
@@ -36,7 +36,7 @@ _Nothing owed._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making
