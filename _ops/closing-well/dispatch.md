@@ -221,7 +221,9 @@ Return only the placement report; place what was assented, re-decide nothing.
 
 The executors it runs (deposit → owner committer; baton → `baton-executor.mjs`; artifact →
 bundle + index) and the two routing rules live in `executor.md`. `landed` / `provisional` /
-`none` rows execute nothing. The working instance's whole job by now is to relay the report.
+`none` rows execute nothing. The working instance's whole job by now is to relay the report —
+and, for a row the executor *prepared* rather than landed, to show Loudon its diff and land the
+branch on his yes (`executor.md` § keep → deposit).
 
 **When an executor is cut off, verify the tree before believing its last sentence** (gotcha 22).
 A partial report's final claim is the least reliable thing in it — the 2026-08-25 run said
