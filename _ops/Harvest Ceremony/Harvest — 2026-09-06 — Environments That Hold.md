@@ -528,12 +528,3 @@ striving is an expression of the palace's conatus, not an instance of it); a ROS
 **Flagged for the next Weave:** SDKM now sits at five inbound typed links, the `hub` threshold, which
 SCHEMA says is earned via the Weave and never self-assigned; and [[The Palace Hardens Around Values]]
 makes the What-Must-Travel argument better, in July, with no link in either direction.
-
-
----
-
-## Active Baton
-
-[[Harvest — 2026-09-06 — baton]] — drafted 2026-09-06, announced on `GENERAL`. Carries the Schön
-deposit (§6's last half) and the walk from §7. Passed because both Loudon's context and the session's
-were full at the end of a long day.
