@@ -88,15 +88,15 @@ surface. It is a cast skin, in [[Identity Molting]]'s sense.
 
 ## The ceremony scroll
 
-Every ceremony has a scroll too, and any entry with a tuning ledger counts as a ceremony, so a
-new one needs no registration. Its **Now** answers the ceremony's own questions: which version
-is live, whether it has run since the spec last changed, and which tuning items are still owed.
-Runs are read from git, from the commits whose subject is the ceremony's record as its card
-names it, plus the two records that are not commits: a harvest's record file and a map build's
-map. **The making** is the trail of runs and version changes, newest first, keyed on the commit
-so nothing duplicates. **Standing Orders** are Loudon's, but no ceremony reads them yet; a
-direction that should change how a ceremony runs belongs in its tuning ledger or its card. The
-PROJECTS deck lists every ceremony in its CEREMONIES box, beside the projects.
+Every ceremony has a scroll too. The machinery finds a ceremony by its tuning ledger, so a new
+one needs no registration in code. Its **Now** answers the ceremony's own questions: which version
+is live, whether it has run since the spec last changed, and what the ledger still owes. Runs are
+counted from the ledger, where every run leaves one line whatever it taught ([[SCHEMA — Reference]]
+§6); version changes come from git. **The making** is the trail of runs and version changes, newest
+first, each keyed on its run line or its commit so nothing duplicates. **Standing Orders** feed the
+ledger: an order saved on the deck is appended there as owed, the next run's tail read picks it up,
+and Now shows it as owed until a run acts on it. The PROJECTS deck lists every ceremony in its
+CEREMONIES box, beside the projects.
 
 Any other page can carry a scroll the same way (`scroll.js --home "<Title>"`). With the text and
 the rich face, the scroll is one of a page's three faces, and like the rich face it is the page's
