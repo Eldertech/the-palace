@@ -94,7 +94,9 @@ The [[Four Pillars]] — creation, tools, philosophy, practice — are the curri
 
 ### The RTM series
 
-Within the channel, a planned content series sits alongside the project staging: ***Read The Manual*** — deep-dive sessions exposing unusual, underused, or beautiful capabilities of specific synthesizers and plugins, in Loudon's *always-positive, always-supportive-of-makers* voice. Software-first (screenable, cheaper for students, accessible), with hardware appearances reserved for manufacturer-sponsored work. The current shortlist (per [[Toolkit — Audio Plugins]]) includes Eventide H3000 Factory, u-he Diva + Zebra2, Reaktor 6, Newfangled Pendulate, MeldaProduction full suite, Surge XT, Vital, Soundtoys, Polyverse, Klevgrand Tomofon.
+***Read The Manual*** runs alongside the project staging: one product's whole manual, read, tested, and covered one short video per section. The format, the rig, and the queue of manuals live in [[LDN RTM]].
+
+Loudon also records audio commentary on student projects the same way, for the students themselves rather than a public catalog; [[LDN RTM]] § Forward Vectors describes it.
 
 ## The visual identity
 

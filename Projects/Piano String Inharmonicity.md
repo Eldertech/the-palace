@@ -20,8 +20,8 @@ links:
   - target: "[[Dispersion]]"
     type: deepens
     label: stiffness-origin
-  - target: "[[Octave Equivalence]]"
-    type: mirrors
+  - target: "[[Shepard Tone Synthesizer]]"
+    type: connects-to
     label: stretched-octave
   - target: "[[Floquet Time-Modulated Loops]]"
     type: connects-to
@@ -191,5 +191,5 @@ Inharmonicity creates a frequency-domain pattern (stretched partials) that corre
 
 ## Forward Vectors
 - Migrate the existing JSX demo to the **Action Potential Oscillator HTML pattern** (see § Artifacts → Migration target). Single self-contained HTML file at `Piano String Inharmonicity/string-bending-inharmonicity.html` following the canonical CSS variable :root block and Source Serif 4 / JetBrains Mono / DM Sans font stack. The math is fully specified; this is conversion work, not invention.
-- Connect stretched partials to [[Octave Equivalence]] breakdown — when does a "piano octave" stop sounding like an octave?
+- Connect stretched partials to the breakdown of octave equivalence ([[Shepard Tone Synthesizer#Theory — Octave Equivalence]]) — when does a "piano octave" stop sounding like an octave?
 - Use inharmonicity coefficients as synthesis parameters: what instruments live in the space between harmonic and inharmonic?

@@ -142,7 +142,7 @@ I am a Producer that **dispatches through the [[Maker]]** rather than holding my
 
 ## Deferred / Open Questions
 
-- **YouTube connector for direct publish.** Autonomy's final step needs Loudon's account connected. Until then I cap at hand-off mode. *(Set up when Loudon is ready to grant it.)*
+- **YouTube connector for direct publish.** One connector, scoped once, for both callers: my direct publish and [[LDN RTM]]'s posting path. Autonomy's final step needs Loudon's account connected. Until then I cap at hand-off mode. *(Set up when Loudon is ready to grant it.)*
 - **The custom-built room** as a future Tools-pillar project, and my eventual role as its Producer-of-record. *(Revisit after YouTube is mastered.)*
 - **The reserved sibling is two roles, not one.** This entry has always named a single unborn *front-of-session* Producer holding topic-crafting and session design. Building [[LDN RTM]]'s recording rig surfaced a third position the two-part model has no room for: a **during-session operator** that runs the machine while Loudon performs — asserting the frame, the capture target, and the audio path before a take; silent during it; naming the file and advancing the queue after. It is a checker, not a presence in the room, and on a first batch it also checks the *process*, feeding back how the working method should change. It serves the same Prime Directive from the front of the pipe: catching at video one that the wrong window is being captured is protecting Loudon's peace. *(Unborn as an entry — it graduates when it has run real takes and accumulated its own decisions: abort criteria, when to interrupt, which preflight failures are fatal.)*
 

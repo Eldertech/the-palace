@@ -2,9 +2,9 @@
   "meta": {
     "generated": "2026-09-24",
     "scope": "full",
-    "node_count": 351,
+    "node_count": 339,
     "ops_node_count": 19,
-    "edge_count": 2950,
+    "edge_count": 2870,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [
@@ -444,7 +444,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 9,
+      "inbound_count": 8,
       "ops_card": false
     },
     {
@@ -480,19 +480,7 @@
       "last_activated": "2026-07",
       "activation_count": "3",
       "outbound_count": 7,
-      "inbound_count": 4,
-      "ops_card": false
-    },
-    {
-      "id": "Andrei Tarkovsky",
-      "path": "People/Andrei Tarkovsky.md",
-      "type": "person",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": "2026-07-08",
-      "activation_count": "3",
-      "outbound_count": 6,
-      "inbound_count": 0,
+      "inbound_count": 3,
       "ops_card": false
     },
     {
@@ -516,7 +504,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 6,
-      "inbound_count": 2,
+      "inbound_count": 3,
       "ops_card": false
     },
     {
@@ -527,21 +515,9 @@
       "has_forward_vector": true,
       "last_activated": "2026-07",
       "activation_count": "3",
-      "outbound_count": 9,
+      "outbound_count": 8,
       "inbound_count": 0,
       "ops_card": false
-    },
-    {
-      "id": "Artifacts to Projects Migration \u2014 handoff",
-      "path": "_ops/Artifacts to Projects Migration \u2014 handoff.md",
-      "type": "meta",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 2,
-      "inbound_count": 0,
-      "ops_card": true
     },
     {
       "id": "Audition Gate",
@@ -600,7 +576,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "5",
       "outbound_count": 22,
-      "inbound_count": 21,
+      "inbound_count": 20,
       "ops_card": false
     },
     {
@@ -720,7 +696,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "8",
       "outbound_count": 8,
-      "inbound_count": 37,
+      "inbound_count": 36,
       "ops_card": false
     },
     {
@@ -808,18 +784,6 @@
       "ops_card": false
     },
     {
-      "id": "Claude CLI Reference",
-      "path": "Claude CLI Reference.md",
-      "type": "meta",
-      "stage": "composting",
-      "has_forward_vector": false,
-      "last_activated": "2026-03",
-      "activation_count": "1",
-      "outbound_count": 8,
-      "inbound_count": 1,
-      "ops_card": false
-    },
-    {
       "id": "Closing Well",
       "path": "Closing Well.md",
       "type": "practice",
@@ -864,7 +828,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 7,
+      "inbound_count": 6,
       "ops_card": false
     },
     {
@@ -983,8 +947,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "2",
-      "outbound_count": 11,
-      "inbound_count": 16,
+      "outbound_count": 10,
+      "inbound_count": 15,
       "ops_card": false
     },
     {
@@ -1020,7 +984,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 5,
+      "inbound_count": 4,
       "ops_card": false
     },
     {
@@ -1104,7 +1068,7 @@
       "last_activated": "2026-05",
       "activation_count": "2",
       "outbound_count": 11,
-      "inbound_count": 18,
+      "inbound_count": 17,
       "ops_card": false
     },
     {
@@ -1248,7 +1212,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 6,
+      "inbound_count": 4,
       "ops_card": false
     },
     {
@@ -1392,7 +1356,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "35",
       "outbound_count": 10,
-      "inbound_count": 118,
+      "inbound_count": 111,
       "ops_card": false
     },
     {
@@ -1476,7 +1440,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 15,
-      "inbound_count": 12,
+      "inbound_count": 11,
       "ops_card": false
     },
     {
@@ -1500,7 +1464,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 30,
+      "inbound_count": 29,
       "ops_card": false
     },
     {
@@ -1560,7 +1524,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "2",
       "outbound_count": 11,
-      "inbound_count": 9,
+      "inbound_count": 8,
       "ops_card": false
     },
     {
@@ -1607,7 +1571,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-07",
       "activation_count": "3",
-      "outbound_count": 14,
+      "outbound_count": 13,
       "inbound_count": 2,
       "ops_card": false
     },
@@ -1692,7 +1656,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 8,
-      "inbound_count": 15,
+      "inbound_count": 14,
       "ops_card": false
     },
     {
@@ -1739,8 +1703,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "11",
-      "outbound_count": 14,
-      "inbound_count": 72,
+      "outbound_count": 13,
+      "inbound_count": 67,
       "ops_card": false
     },
     {
@@ -1752,7 +1716,7 @@
       "last_activated": "2026-03",
       "activation_count": "10",
       "outbound_count": 10,
-      "inbound_count": 40,
+      "inbound_count": 39,
       "ops_card": false
     },
     {
@@ -1776,7 +1740,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 9,
+      "inbound_count": 8,
       "ops_card": false
     },
     {
@@ -1860,7 +1824,7 @@
       "last_activated": "2026-07",
       "activation_count": "3",
       "outbound_count": 8,
-      "inbound_count": 3,
+      "inbound_count": 2,
       "ops_card": false
     },
     {
@@ -1872,7 +1836,7 @@
       "last_activated": "2026-07",
       "activation_count": "3",
       "outbound_count": 8,
-      "inbound_count": 3,
+      "inbound_count": 2,
       "ops_card": false
     },
     {
@@ -1920,7 +1884,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "18",
       "outbound_count": 19,
-      "inbound_count": 72,
+      "inbound_count": 71,
       "ops_card": false
     },
     {
@@ -1943,8 +1907,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 4,
+      "outbound_count": 5,
+      "inbound_count": 3,
       "ops_card": false
     },
     {
@@ -1992,7 +1956,7 @@
       "last_activated": "2026-03",
       "activation_count": "2",
       "outbound_count": 5,
-      "inbound_count": 7,
+      "inbound_count": 6,
       "ops_card": false
     },
     {
@@ -2068,18 +2032,6 @@
       "ops_card": false
     },
     {
-      "id": "Line-Art Layer Decomposition",
-      "path": "Line-Art Layer Decomposition.md",
-      "type": "project",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": "2026-06",
-      "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 3,
-      "ops_card": false
-    },
-    {
       "id": "Linear Predictive Coding",
       "path": "Linear Predictive Coding.md",
       "type": "concept",
@@ -2088,7 +2040,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 9,
-      "inbound_count": 6,
+      "inbound_count": 5,
       "ops_card": false
     },
     {
@@ -2112,7 +2064,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 4,
+      "inbound_count": 3,
       "ops_card": false
     },
     {
@@ -2171,8 +2123,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 7,
-      "inbound_count": 5,
+      "outbound_count": 6,
+      "inbound_count": 4,
       "ops_card": false
     },
     {
@@ -2332,18 +2284,6 @@
       "ops_card": false
     },
     {
-      "id": "Media Library",
-      "path": "Media Library.md",
-      "type": "meta",
-      "stage": "composting",
-      "has_forward_vector": false,
-      "last_activated": "2026-03",
-      "activation_count": "1",
-      "outbound_count": 10,
-      "inbound_count": 0,
-      "ops_card": false
-    },
-    {
       "id": "Merleau-Ponty",
       "path": "Merleau-Ponty.md",
       "type": "concept",
@@ -2436,7 +2376,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 14,
-      "inbound_count": 27,
+      "inbound_count": 26,
       "ops_card": false
     },
     {
@@ -2447,8 +2387,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 4,
-      "inbound_count": 6,
+      "outbound_count": 3,
+      "inbound_count": 5,
       "ops_card": false
     },
     {
@@ -2464,18 +2404,6 @@
       "ops_card": false
     },
     {
-      "id": "Natalie Goldberg",
-      "path": "People/Natalie Goldberg.md",
-      "type": "person",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": "2026-07-08",
-      "activation_count": "3",
-      "outbound_count": 5,
-      "inbound_count": 2,
-      "ops_card": false
-    },
-    {
       "id": "Neural Granular Synthesis",
       "path": "Projects/Neural Granular Synthesis.md",
       "type": "project",
@@ -2484,7 +2412,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 12,
+      "inbound_count": 11,
       "ops_card": false
     },
     {
@@ -2560,18 +2488,6 @@
       "ops_card": false
     },
     {
-      "id": "Octave Equivalence",
-      "path": "Octave Equivalence.md",
-      "type": "concept",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 5,
-      "inbound_count": 2,
-      "ops_card": false
-    },
-    {
       "id": "Ohm's Law",
       "path": "Ohm's Law.md",
       "type": "concept",
@@ -2616,7 +2532,7 @@
       "last_activated": "2026-06",
       "activation_count": "2",
       "outbound_count": 16,
-      "inbound_count": 42,
+      "inbound_count": 41,
       "ops_card": true
     },
     {
@@ -2640,7 +2556,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 3,
-      "inbound_count": 2,
+      "inbound_count": 1,
       "ops_card": true
     },
     {
@@ -2652,7 +2568,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 15,
-      "inbound_count": 17,
+      "inbound_count": 16,
       "ops_card": true
     },
     {
@@ -2748,7 +2664,7 @@
       "last_activated": "2026-08",
       "activation_count": "8",
       "outbound_count": 5,
-      "inbound_count": 8,
+      "inbound_count": 7,
       "ops_card": true
     },
     {
@@ -2796,7 +2712,7 @@
       "last_activated": "2026-07",
       "activation_count": "3",
       "outbound_count": 8,
-      "inbound_count": 2,
+      "inbound_count": 1,
       "ops_card": false
     },
     {
@@ -2868,7 +2784,7 @@
       "last_activated": "2026-04",
       "activation_count": "2",
       "outbound_count": 8,
-      "inbound_count": 12,
+      "inbound_count": 11,
       "ops_card": false
     },
     {
@@ -2952,7 +2868,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 45,
+      "inbound_count": 41,
       "ops_card": false
     },
     {
@@ -2976,19 +2892,7 @@
       "last_activated": "2026-01",
       "activation_count": "0",
       "outbound_count": 6,
-      "inbound_count": 6,
-      "ops_card": false
-    },
-    {
-      "id": "R. Murray Schafer",
-      "path": "People/R. Murray Schafer.md",
-      "type": "person",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": "2026-07-08",
-      "activation_count": "3",
-      "outbound_count": 7,
-      "inbound_count": 1,
+      "inbound_count": 5,
       "ops_card": false
     },
     {
@@ -3275,20 +3179,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-08",
       "activation_count": "7",
-      "outbound_count": 21,
-      "inbound_count": 32,
-      "ops_card": false
-    },
-    {
-      "id": "Sam Maloof",
-      "path": "People/Sam Maloof.md",
-      "type": "person",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": "2026-07-08",
-      "activation_count": "3",
-      "outbound_count": 7,
-      "inbound_count": 2,
+      "outbound_count": 20,
+      "inbound_count": 30,
       "ops_card": false
     },
     {
@@ -3372,7 +3264,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 8,
+      "inbound_count": 7,
       "ops_card": false
     },
     {
@@ -3407,7 +3299,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "12",
-      "outbound_count": 9,
+      "outbound_count": 8,
       "inbound_count": 6,
       "ops_card": false
     },
@@ -3443,8 +3335,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-07",
       "activation_count": "3",
-      "outbound_count": 7,
-      "inbound_count": 6,
+      "outbound_count": 6,
+      "inbound_count": 5,
       "ops_card": false
     },
     {
@@ -3528,7 +3420,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 8,
-      "inbound_count": 29,
+      "inbound_count": 24,
       "ops_card": false
     },
     {
@@ -3563,8 +3455,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "13",
-      "outbound_count": 15,
-      "inbound_count": 65,
+      "outbound_count": 14,
+      "inbound_count": 63,
       "ops_card": false
     },
     {
@@ -3612,7 +3504,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 11,
+      "inbound_count": 10,
       "ops_card": false
     },
     {
@@ -3659,7 +3551,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-29",
       "activation_count": "2",
-      "outbound_count": 6,
+      "outbound_count": 5,
       "inbound_count": 2,
       "ops_card": false
     },
@@ -3748,18 +3640,6 @@
       "ops_card": true
     },
     {
-      "id": "Terrence Malick",
-      "path": "People/Terrence Malick.md",
-      "type": "person",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": "2026-07-08",
-      "activation_count": "3",
-      "outbound_count": 7,
-      "inbound_count": 0,
-      "ops_card": false
-    },
-    {
       "id": "The 2.5D Paper Stack",
       "path": "The 2.5D Paper Stack.md",
       "type": "concept",
@@ -3840,7 +3720,7 @@
       "last_activated": "2026-04",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 5,
+      "inbound_count": 4,
       "ops_card": false
     },
     {
@@ -4144,18 +4024,6 @@
       "ops_card": false
     },
     {
-      "id": "Toolkit Assessment \u2014 Working Doc",
-      "path": "_ops/Toolkit Assessment \u2014 Working Doc.md",
-      "type": "meta",
-      "stage": "growing",
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 1,
-      "ops_card": true
-    },
-    {
       "id": "Toolkit \u2014 Audio Plugins",
       "path": "Toolkit \u2014 Audio Plugins.md",
       "type": "meta",
@@ -4199,7 +4067,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 5,
+      "outbound_count": 4,
       "inbound_count": 0,
       "ops_card": false
     },
@@ -4237,18 +4105,6 @@
       "activation_count": null,
       "outbound_count": 3,
       "inbound_count": 2,
-      "ops_card": false
-    },
-    {
-      "id": "Tristitia Generator",
-      "path": "Tristitia Generator.md",
-      "type": "concept",
-      "stage": "composting",
-      "has_forward_vector": true,
-      "last_activated": "2026-03",
-      "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 3,
       "ops_card": false
     },
     {
@@ -4317,8 +4173,8 @@
       "type": "question",
       "stage": "growing",
       "has_forward_vector": true,
-      "last_activated": "2026-03",
-      "activation_count": "1",
+      "last_activated": "2026-09",
+      "activation_count": "2",
       "outbound_count": 6,
       "inbound_count": 1,
       "ops_card": false
@@ -4332,7 +4188,7 @@
       "last_activated": "2026-05",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 9,
+      "inbound_count": 8,
       "ops_card": false
     },
     {
@@ -4401,8 +4257,8 @@
       "type": "practice",
       "stage": "growing",
       "has_forward_vector": false,
-      "last_activated": "2026-03",
-      "activation_count": "1",
+      "last_activated": "2026-09",
+      "activation_count": "2",
       "outbound_count": 3,
       "inbound_count": 2,
       "ops_card": true
@@ -4435,12 +4291,12 @@
       "id": "What Claim Does Scientific Sonification Make?",
       "path": "What Claim Does Scientific Sonification Make?.md",
       "type": "question",
-      "stage": "seed",
+      "stage": "composting",
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "1",
       "outbound_count": 2,
-      "inbound_count": 1,
+      "inbound_count": 0,
       "ops_card": false
     },
     {
@@ -4488,7 +4344,7 @@
       "last_activated": "2026-07",
       "activation_count": "3",
       "outbound_count": 9,
-      "inbound_count": 1,
+      "inbound_count": 0,
       "ops_card": false
     },
     {
@@ -6648,12 +6504,6 @@
       "label": "motion-primitive-for"
     },
     {
-      "source": "Move the Ink, Don't Redraw It",
-      "type": "contradicts",
-      "target": "Sam Maloof",
-      "label": "repetition-teaches-the-hand-boils-the-model"
-    },
-    {
       "source": "JSUI",
       "type": "spawned",
       "target": "Retrospective Delay",
@@ -6892,66 +6742,6 @@
       "type": "connects-to",
       "target": "Block It in Blender, Ink It in genAI",
       "label": "staging-runbook"
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "FOUR PILLARS",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "Spinoza Conatus",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "Hyperdimensional Prism",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "enables",
-      "target": "SUBSTRATE",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "Quantum Synthesizer",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "Crystal Synthesizer",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "DSP Frameworks",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "Latent Error",
-      "label": null
-    },
-    {
-      "source": "Media Library",
-      "type": "connects-to",
-      "target": "Wallpaper Groups",
-      "label": null
     },
     {
       "source": "Metaphor as Coupling Medium",
@@ -7288,12 +7078,6 @@
       "type": "connects-to",
       "target": "Four Pillars of Enchanted Agency",
       "label": "grounds-in"
-    },
-    {
-      "source": "Loudon's Toolkit",
-      "type": "couples-with",
-      "target": "Toolkit Assessment \u2014 Working Doc",
-      "label": "built-with"
     },
     {
       "source": "Loudon's Toolkit",
@@ -8982,36 +8766,6 @@
       "label": "time-space-instance"
     },
     {
-      "source": "Line-Art Layer Decomposition",
-      "type": "deepens",
-      "target": "Animate the Background",
-      "label": "the-N-layer-generalization"
-    },
-    {
-      "source": "Line-Art Layer Decomposition",
-      "type": "emerged-from",
-      "target": "BLUELINE",
-      "label": "proving-ground"
-    },
-    {
-      "source": "Line-Art Layer Decomposition",
-      "type": "connects-to",
-      "target": "Steer the Generator",
-      "label": "rich-first-stylize-last"
-    },
-    {
-      "source": "Line-Art Layer Decomposition",
-      "type": "connects-to",
-      "target": "Adopt the Craft, Author the Seam",
-      "label": "work-rich-stylize-last"
-    },
-    {
-      "source": "Line-Art Layer Decomposition",
-      "type": "connects-to",
-      "target": "Frame Designer",
-      "label": "a-decomposition-the-roster-wants"
-    },
-    {
       "source": "Radio Play",
       "type": "emerged-from",
       "target": "The Shop",
@@ -9058,36 +8812,6 @@
       "type": "connects-to",
       "target": "Loudon Live Design System",
       "label": "teaching-radio"
-    },
-    {
-      "source": "Octave Equivalence",
-      "type": "emerged-from",
-      "target": "Shepard Tone Synthesizer",
-      "label": null
-    },
-    {
-      "source": "Octave Equivalence",
-      "type": "couples-with",
-      "target": "Frequency-Time Duality",
-      "label": null
-    },
-    {
-      "source": "Octave Equivalence",
-      "type": "connects-to",
-      "target": "Harmonicity and Inharmonicity",
-      "label": null
-    },
-    {
-      "source": "Octave Equivalence",
-      "type": "mirrors",
-      "target": "Piano String Inharmonicity",
-      "label": "stretched-octave"
-    },
-    {
-      "source": "Octave Equivalence",
-      "type": "enables",
-      "target": "Logarithmic Interface Scaling",
-      "label": "perceptual-scaling"
     },
     {
       "source": "Quality Manifesto",
@@ -9309,12 +9033,6 @@
       "source": "SUBSTRATE",
       "type": "connects-to",
       "target": "Songlines",
-      "label": null
-    },
-    {
-      "source": "SUBSTRATE",
-      "type": "connects-to",
-      "target": "Tristitia Generator",
       "label": null
     },
     {
@@ -10058,12 +9776,6 @@
     {
       "source": "Surfaces and Capabilities",
       "type": "connects-to",
-      "target": "Claude CLI Reference",
-      "label": "cli-vector"
-    },
-    {
-      "source": "Surfaces and Capabilities",
-      "type": "connects-to",
       "target": "Modes of Collaboration",
       "label": null
     },
@@ -10198,12 +9910,6 @@
       "type": "couples-with",
       "target": "Deleuze",
       "label": "monism-radicalized"
-    },
-    {
-      "source": "Spinoza Conatus",
-      "type": "spawned",
-      "target": "Tristitia Generator",
-      "label": "shadow-concept"
     },
     {
       "source": "Spinoza Conatus",
@@ -10528,54 +10234,6 @@
       "type": "couples-with",
       "target": "Identity Molting",
       "label": "continuity-across-the-molt"
-    },
-    {
-      "source": "Claude CLI Reference",
-      "type": "enables",
-      "target": "SUBSTRATE",
-      "label": null
-    },
-    {
-      "source": "Claude CLI Reference",
-      "type": "connects-to",
-      "target": "Modes of Collaboration",
-      "label": null
-    },
-    {
-      "source": "Claude CLI Reference",
-      "type": "enables",
-      "target": "Palace Ceremonies",
-      "label": null
-    },
-    {
-      "source": "Claude CLI Reference",
-      "type": "connects-to",
-      "target": "Pages as Agents",
-      "label": null
-    },
-    {
-      "source": "Claude CLI Reference",
-      "type": "connects-to",
-      "target": "Boundary-Crossing Instruments",
-      "label": "tool-as-bridge"
-    },
-    {
-      "source": "Claude CLI Reference",
-      "type": "connects-to",
-      "target": "Dialectic",
-      "label": null
-    },
-    {
-      "source": "Claude CLI Reference",
-      "type": "connects-to",
-      "target": "Neural Granular Synthesis",
-      "label": null
-    },
-    {
-      "source": "Claude CLI Reference",
-      "type": "connects-to",
-      "target": "Semantic Delay",
-      "label": null
     },
     {
       "source": "Trickster",
@@ -12648,30 +12306,6 @@
       "label": "ceremony-index"
     },
     {
-      "source": "Tristitia Generator",
-      "type": "mirrors",
-      "target": "Hilaritas Generator",
-      "label": "joy-sadness-mirror"
-    },
-    {
-      "source": "Tristitia Generator",
-      "type": "deepens",
-      "target": "Spinoza Conatus",
-      "label": "tristitia-as-conatus"
-    },
-    {
-      "source": "Tristitia Generator",
-      "type": "connects-to",
-      "target": "FOUR PILLARS",
-      "label": null
-    },
-    {
-      "source": "Tristitia Generator",
-      "type": "connects-to",
-      "target": "Identity Molting",
-      "label": null
-    },
-    {
       "source": "Hilaritas Generator",
       "type": "contradicts",
       "target": "Creative Coach",
@@ -12730,12 +12364,6 @@
       "type": "connects-to",
       "target": "Identity Molting",
       "label": "threshold-fuel"
-    },
-    {
-      "source": "Hilaritas Generator",
-      "type": "spawned",
-      "target": "Tristitia Generator",
-      "label": "spinozan-mirror"
     },
     {
       "source": "Hilaritas Generator",
@@ -13477,8 +13105,8 @@
     },
     {
       "source": "Piano String Inharmonicity",
-      "type": "mirrors",
-      "target": "Octave Equivalence",
+      "type": "connects-to",
+      "target": "Shepard Tone Synthesizer",
       "label": "stretched-octave"
     },
     {
@@ -13539,12 +13167,6 @@
       "source": "Shepard Tone Synthesizer",
       "type": "connects-to",
       "target": "Granular Synthesis",
-      "label": null
-    },
-    {
-      "source": "Shepard Tone Synthesizer",
-      "type": "enables",
-      "target": "Octave Equivalence",
       "label": null
     },
     {
@@ -14236,12 +13858,6 @@
       "type": "connects-to",
       "target": "Tract Mirror \u2014 build plan \u2014 JUCE VST",
       "label": null
-    },
-    {
-      "source": "Tract Mirror",
-      "type": "mirrors",
-      "target": "Linear Predictive Coding",
-      "label": "the-lattice-made-playable"
     },
     {
       "source": "Bayesian Granular Synthesizer",
@@ -15022,12 +14638,6 @@
       "type": "spawned",
       "target": "The Metaphor Stretch",
       "label": "midwifed"
-    },
-    {
-      "source": "Crystal Synthesizer",
-      "type": "spawned",
-      "target": "What Claim Does Scientific Sonification Make?",
-      "label": null
     },
     {
       "source": "Crystal Synthesizer",
@@ -15950,12 +15560,6 @@
     {
       "source": "LaMa",
       "type": "connects-to",
-      "target": "Line-Art Layer Decomposition",
-      "label": null
-    },
-    {
-      "source": "LaMa",
-      "type": "connects-to",
       "target": "Animate the Background",
       "label": null
     },
@@ -15968,7 +15572,7 @@
     {
       "source": "LaMa",
       "type": "connects-to",
-      "target": "R. Murray Schafer",
+      "target": "Pauline Oliveros",
       "label": null
     },
     {
@@ -15986,7 +15590,7 @@
     {
       "source": "SAM",
       "type": "connects-to",
-      "target": "Line-Art Layer Decomposition",
+      "target": "Animate the Background",
       "label": null
     },
     {
@@ -16016,7 +15620,7 @@
     {
       "source": "Depth Anything",
       "type": "connects-to",
-      "target": "Line-Art Layer Decomposition",
+      "target": "Animate the Background",
       "label": null
     },
     {
@@ -17022,18 +16626,6 @@
       "label": null
     },
     {
-      "source": "Artifacts to Projects Migration \u2014 handoff",
-      "type": "emerged-from",
-      "target": "Palace Audit \u2014 2026-05-28",
-      "label": "last-open-audit-item"
-    },
-    {
-      "source": "Artifacts to Projects Migration \u2014 handoff",
-      "type": "connects-to",
-      "target": "Palace To-Do",
-      "label": "queued-from"
-    },
-    {
       "source": "Deposit Ceremony",
       "type": "emerged-from",
       "target": "Harvest Ceremony",
@@ -17820,54 +17412,6 @@
       "label": null
     },
     {
-      "source": "Toolkit Assessment \u2014 Working Doc",
-      "type": "enables",
-      "target": "Loudon's Toolkit",
-      "label": null
-    },
-    {
-      "source": "R. Murray Schafer",
-      "type": "member-of",
-      "target": "Source Library",
-      "label": null
-    },
-    {
-      "source": "R. Murray Schafer",
-      "type": "deepens",
-      "target": "FOUR PILLARS",
-      "label": "informs"
-    },
-    {
-      "source": "R. Murray Schafer",
-      "type": "connects-to",
-      "target": "Pauline Oliveros",
-      "label": "deep-listening"
-    },
-    {
-      "source": "R. Murray Schafer",
-      "type": "connects-to",
-      "target": "Dub Lineage",
-      "label": "schizophonia"
-    },
-    {
-      "source": "R. Murray Schafer",
-      "type": "connects-to",
-      "target": "John Cage",
-      "label": "letting-sounds-be"
-    },
-    {
-      "source": "R. Murray Schafer",
-      "type": "connects-to",
-      "target": "Hilaritas Generator",
-      "label": "practice-seed"
-    },
-    {
-      "source": "R. Murray Schafer",
-      "type": "contradicts",
-      "target": "LaMa",
-      "label": "invent-the-absence-vs-honor-it"
-    },
-    {
       "source": "Epictetus",
       "type": "member-of",
       "target": "Source Library",
@@ -18210,90 +17754,6 @@
       "label": "made-by-this-method"
     },
     {
-      "source": "Terrence Malick",
-      "type": "member-of",
-      "target": "Source Library",
-      "label": null
-    },
-    {
-      "source": "Terrence Malick",
-      "type": "deepens",
-      "target": "FOUR PILLARS",
-      "label": "informs"
-    },
-    {
-      "source": "Terrence Malick",
-      "type": "connects-to",
-      "target": "Generative Compression",
-      "label": "gestation"
-    },
-    {
-      "source": "Terrence Malick",
-      "type": "connects-to",
-      "target": "Hilaritas Generator",
-      "label": "transcendence-through-craft"
-    },
-    {
-      "source": "Terrence Malick",
-      "type": "deepens",
-      "target": "Quality Manifesto",
-      "label": "deep-work-over-speed"
-    },
-    {
-      "source": "Terrence Malick",
-      "type": "connects-to",
-      "target": "Dub Lineage",
-      "label": "texture-over-foreground"
-    },
-    {
-      "source": "Terrence Malick",
-      "type": "mirrors",
-      "target": "Yasujir\u014d Ozu",
-      "label": "restraint-and-patience-in-cinema"
-    },
-    {
-      "source": "Sam Maloof",
-      "type": "member-of",
-      "target": "Source Library",
-      "label": null
-    },
-    {
-      "source": "Sam Maloof",
-      "type": "connects-to",
-      "target": "FOUR PILLARS",
-      "label": "informs"
-    },
-    {
-      "source": "Sam Maloof",
-      "type": "connects-to",
-      "target": "The Curve Is the Material",
-      "label": "curve-as-structure"
-    },
-    {
-      "source": "Sam Maloof",
-      "type": "connects-to",
-      "target": "Quality Manifesto",
-      "label": "depth-of-engagement"
-    },
-    {
-      "source": "Sam Maloof",
-      "type": "connects-to",
-      "target": "Hilaritas Generator",
-      "label": "making-as-life"
-    },
-    {
-      "source": "Sam Maloof",
-      "type": "connects-to",
-      "target": "Agnes Martin",
-      "label": "repetition-with-variation"
-    },
-    {
-      "source": "Sam Maloof",
-      "type": "contradicts",
-      "target": "Move the Ink, Don't Redraw It",
-      "label": "repetition-teaches-the-hand-boils-the-model"
-    },
-    {
       "source": "Donella Meadows",
       "type": "member-of",
       "target": "Source Library",
@@ -18448,36 +17908,6 @@
       "type": "exemplifies",
       "target": "Making a Palace Citizen",
       "label": "made-by-this-method"
-    },
-    {
-      "source": "Natalie Goldberg",
-      "type": "member-of",
-      "target": "Source Library",
-      "label": null
-    },
-    {
-      "source": "Natalie Goldberg",
-      "type": "deepens",
-      "target": "FOUR PILLARS",
-      "label": "informs"
-    },
-    {
-      "source": "Natalie Goldberg",
-      "type": "connects-to",
-      "target": "Hilaritas Generator",
-      "label": "process-over-product"
-    },
-    {
-      "source": "Natalie Goldberg",
-      "type": "connects-to",
-      "target": "Quality Manifesto",
-      "label": "showing-up"
-    },
-    {
-      "source": "Natalie Goldberg",
-      "type": "connects-to",
-      "target": "Shunryu Suzuki",
-      "label": "zen-through-making"
     },
     {
       "source": "Douglas Hofstadter",
@@ -18697,12 +18127,6 @@
     },
     {
       "source": "George Nakashima",
-      "type": "mirrors",
-      "target": "Sam Maloof",
-      "label": "wood-craft-two-methods"
-    },
-    {
-      "source": "George Nakashima",
       "type": "contradicts",
       "target": "Compressor Design",
       "label": "reveal-the-break-vs-hide-it"
@@ -18878,12 +18302,6 @@
     {
       "source": "Annie Dillard",
       "type": "connects-to",
-      "target": "Natalie Goldberg",
-      "label": "daily-practice-writers"
-    },
-    {
-      "source": "Annie Dillard",
-      "type": "connects-to",
       "target": "Julia Cameron",
       "label": "daily-practice-writers"
     },
@@ -18898,42 +18316,6 @@
       "type": "exemplifies",
       "target": "Making a Palace Citizen",
       "label": "made-by-this-method"
-    },
-    {
-      "source": "Andrei Tarkovsky",
-      "type": "member-of",
-      "target": "Source Library",
-      "label": null
-    },
-    {
-      "source": "Andrei Tarkovsky",
-      "type": "connects-to",
-      "target": "James Turrell",
-      "label": null
-    },
-    {
-      "source": "Andrei Tarkovsky",
-      "type": "deepens",
-      "target": "FOUR PILLARS",
-      "label": null
-    },
-    {
-      "source": "Andrei Tarkovsky",
-      "type": "connects-to",
-      "target": "Quality Manifesto",
-      "label": "reject-metrics"
-    },
-    {
-      "source": "Andrei Tarkovsky",
-      "type": "connects-to",
-      "target": "Pauline Oliveros",
-      "label": "patience-as-practice"
-    },
-    {
-      "source": "Andrei Tarkovsky",
-      "type": "connects-to",
-      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
-      "label": "long-take-dilation"
     },
     {
       "source": "Shunryu Suzuki",
@@ -18958,12 +18340,6 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "wellbeing-over-metrics"
-    },
-    {
-      "source": "Shunryu Suzuki",
-      "type": "connects-to",
-      "target": "Natalie Goldberg",
-      "label": "first-thought"
     },
     {
       "source": "Shunryu Suzuki",

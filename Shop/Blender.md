@@ -122,6 +122,15 @@ frames: [Shop/Blender/tests/](../Shop/Blender/tests/) — `blocking/pose_and_emi
 Full gotchas: [gotchas-2026-06-13.md](../Shop/Blender/tests/gotchas-2026-06-13.md). See the
 [[Shop/Blender/toyxyz-conditioning-recipe]] for the tuned per-channel parameters.
 
+The same conditioning move, run end to end as a redraw rather than a fill, is the runbook
+[[Block It in Blender, Ink It in genAI]]. Its figure stack is canny 0.30 + depth 0.60 + openpose 0.70,
+lighter on canny and pose than this fill's 0.45 / 0.7 / 0.9, because a redraw at denoise ~0.95 has to
+leave the surface free to re-ink. The runbook also holds the consolidated gotcha index.
+
+More Blender 5.x gotchas, and the billboard-remnants recipe for putting alpha cards over Freestyle
+line art, live in [[Remnants in Depth]] § The clean composite. The view-transform trap (AgX greys the
+paper) is in [[Hand-Drawn 3D Look]].
+
 ## Test Suite
 
 Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in

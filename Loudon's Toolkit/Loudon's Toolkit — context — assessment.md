@@ -1,17 +1,14 @@
 ---
-title: Toolkit Assessment — Working Doc
-type: meta
-pillars:
-  - tools
-  - practice
-born: 2026-04
-stage: growing
+title: "Loudon's Toolkit — context — assessment"
+born: 2026-04-21
 links:
   - target: "[[Loudon's Toolkit]]"
-    type: enables
+    type: connects-to
+    label: working-doc-of
+forward_vector: "I am the mason's notebook behind Loudon's Toolkit: interview notes, category status and session continuity. I stay working substrate, not canon, and I retire into the entry's Archive when every category is deposited."
 ---
 
-# Toolkit Assessment — Working Doc
+# Loudon's Toolkit — assessment (working doc)
 
 The mason's notebook for building the [[Loudon's Toolkit]] cluster. Not a palace entry — a working surface. Interview notes, status tracking, raw captures, and session continuity live here.
 

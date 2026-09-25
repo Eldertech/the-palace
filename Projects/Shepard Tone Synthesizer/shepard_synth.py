@@ -28,7 +28,7 @@ The interface accepts:
 The interface returns:
     - audio:  numpy.ndarray, shape (n_samples,), dtype float32, range ~[-1, 1]
 
-Pairs with [[Octave Equivalence]] §"Stage 1 — A Static Drone Is Already An Illusion"
+Pairs with [[Shepard Tone Synthesizer]] § Theory — Octave Equivalence §"Stage 1 — A Static Drone Is Already An Illusion"
 (draft pending Loudon's approval — see this cycle's TRICKSTER ask).
 
 Author: Shepard Tone Synthesizer (palace steward, cycle 3, 2026-05-27)

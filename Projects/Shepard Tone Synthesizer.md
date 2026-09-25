@@ -21,8 +21,6 @@ links:
     type: mirrors
   - target: "[[Granular Synthesis]]"
     type: connects-to
-  - target: "[[Octave Equivalence]]"
-    type: enables
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
   - target: "[[Particle Synthesis]]"
@@ -31,7 +29,7 @@ links:
     type: connects-to
   - target: "[[Signal-Rate CV Architecture]]"
     type: connects-to
-forward_vector: "I want to become a fully staged teaching instrument — the psychoacoustic illusion as a progressive revelation, where Stage 1 is the simplest possible Shepard tone and each subsequent stage adds one layer of physical or perceptual complexity. My development alongside Octave Equivalence is not optional: the theory and the instrument should grow together, each stage of the synthesizer paired with a corresponding section in the theory entry that explains what you're hearing and why."
+forward_vector: "I want to become a fully staged teaching instrument — the psychoacoustic illusion as a progressive revelation, where Stage 1 is the simplest possible Shepard tone and each subsequent stage adds one layer of physical or perceptual complexity. My development alongside my own Theory — Octave Equivalence section is not optional: the theory and the instrument should grow together, each stage of the synthesizer paired with a corresponding theory section that explains what you're hearing and why."
 ---
 
 # Shepard Tone Synthesizer
@@ -170,7 +168,7 @@ It also reinforces an important psychoacoustic insight: the Shepard tone proves 
 
 ## Theory — Octave Equivalence
 
-*This section absorbed the former [[Octave Equivalence]] entry (2026-07-06 Weave) — its theory-shadow, folded in whole because it had no independent life outside explaining this instrument.*
+*This section absorbed the former Octave Equivalence entry (2026-07-06 Weave) — its theory-shadow, folded in whole because it had no independent life outside explaining this instrument.*
 
 The whole illusion rests on one perceptual fact: pitches separated by a factor of 2 in frequency are heard as "the same note" in different registers. This is **octave equivalence**, and it is not a cultural convention — it appears across virtually all musical traditions and has neurological grounding in the tonotopic organization of the auditory cortex. The ear doesn't just tolerate the 2:1 ratio; it treats it as identity.
 

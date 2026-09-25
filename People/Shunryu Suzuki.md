@@ -37,9 +37,6 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: wellbeing-over-metrics
-  - target: "[[Natalie Goldberg]]"
-    type: connects-to
-    label: first-thought
   - target: "[[Cross-Domain Resonances]]"
     type: member-of
     label: bridge-builder
@@ -66,7 +63,7 @@ Underneath it is his hardest teaching, *no-gaining-idea*: you don't sit in order
 
 ## The question he brings into any room
 
-*Can you do this thing without trying to get anything from it?* Show Suzuki a stuck maker, a boring exercise, a hundredth take, and he won't ask how to make it more exciting. He'll ask whether you can meet it exactly as it is, again, without grasping. He's the palace's clearest voice for repetition-as-practice — kin to [[Natalie Goldberg]]'s keep-the-hand-moving and to the [[Quality Manifesto]]'s "how do you feel?" over "how many views?"
+*Can you do this thing without trying to get anything from it?* Show Suzuki a stuck maker, a boring exercise, a hundredth take, and he won't ask how to make it more exciting. He'll ask whether you can meet it exactly as it is, again, without grasping. He's the palace's clearest voice for repetition-as-practice — kin to Natalie Goldberg's keep-the-hand-moving and to the [[Quality Manifesto]]'s "how do you feel?" over "how many views?"
 
 ## Where he can't see
 

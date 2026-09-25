@@ -50,3 +50,18 @@ Pre-registered A/B/C on 10 rooms → **not shown** (`ab/DESIGN.md`, `ab/RESULT.m
 
 ## Checkpoint 4 — signed ✅
 `decisions.json`: batch yes (49, skeptic-passed), Pile B all recommendations, delete Tarkovsky/Malick/Goldberg, Agnes Martin both links. Next: Phase 5 writes.
+
+## Checkpoint 5a — part 1 committed ✅ `f6f99b07` (on weave/2026-09-24, NOT merged)
+135 frontmatter changes in 95 entries (`apply-log.txt`). Linters clean; YAML valid. OBS → Maker already carried a label (`operated-not-dispatched`, and OBS:127 names the seam), so G3's label was skipped as already present.
+
+## Part 2 — authorship (after the 15:30 window reset). Write-agents, one per disjoint file set; drafts reviewed; the Concierge checks placement.
+1. **Body edits from confirmed flags:** Frame Designer roster rows (draft-ink, Remnants in Depth, APPROACHES) · Shop/Blender → the 5.1 gotchas (Remnants in Depth:49-60) and the toyxyz recipe → Block It runbook · Loudon Live § The RTM series → pointer to LDN RTM · Toolkit — Audio Plugins :40 → LDN RTM queue · Post-producer: one YouTube-connector line for LDN RTM · Creative Coach:203 corrected · student-feedback line in Loudon Live.
+2. **Open questions answered elsewhere:** ComfyUI (LoRA → LoRA Trainer) · Palace Enchantment (Palace Conatus bullet) · Resonant Link Labels (59% labelled) · Toolkit — Synthesizers placeholder → LDN RTM · Quadratic Interpolation cubic-vs-quadratic.
+3. **Corrections:** SUBSTRATE:134 ("emits none" is false; 17 outbound) · Tract Mirror's duplicate LPC link · Shop roster gets OBS (`Shop/Maker/build-roster.mjs`) · Palace Ceremonies' Closing Well row → Phase 5.
+4. **Merge:** Sonification question → The Metaphor Stretch (repoint Crystal Synthesizer:37); the absorbed entry → composting.
+5. **Demote:** Toolkit Assessment — Working Doc → a bundle file of Loudon's Toolkit (§8 minimal frontmatter; repoint Toolkit's link).
+6. **Composting deletions (11)** per `composting.md`: repoint or cut every frontmatter and body link, move the gems (Maloof → Agnes Martin; Schafer → Pauline Oliveros, plus the listening triangle), the Malick → Ozu line, Goldberg's inbound → Julia Cameron, retire the Line-Art scroll bundle; then delete.
+7. **Revival note:** Walk That Weaves (cite this run). **Vector invitation:** Maker names the Producer layer as its open edge.
+8. **Canon record:** Weave Ceremony — Context (the experiment + harness result; one link per pair; ceremonies woven; the adversarial verify stage). The Weave Ceremony card notes that ceremonies are map nodes.
+9. **Phase 6:** flag trailers and declines in the final commit body (`flag-inbox.md` + the toolbox-recursion decline) · memory sweep · To-Do walk · faces (their own yes; 44 add / 7 retire) · `report.html` · after the merge, on main: post trails (`held.json` + v2 held) with expires_after, and the demote-bundle baton.
+10. **Phase 7:** linters vs baseline → final `Weave — 2026-09-24 — …` commit → merge to main → ask "how do you feel?" → close well.

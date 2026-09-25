@@ -7,8 +7,8 @@ pillars:
   - tools
 born: 2026-03
 stage: growing
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-09
+activation_count: 2
 energy: high
 revival_conditions: Swarm Weave is ceremony-ified and running cleanly for two cycles. Revisit whether the Walk's single-agent, trail-following character suggests a third ceremony mode.
 links:
@@ -63,6 +63,16 @@ not like an inspection.
 Whether this is a third ceremony, a mode within the Walk, a mode within the Weave,
 or something that only makes sense once the Swarm is running — that is the
 unresolved question.
+
+---
+
+## Revival Note (2026-09-24)
+
+The revival condition is met: the [[Swarm Weave]] is a ceremony and has run well past two cycles (sessions in `_ops/swarm/sessions/` from 2026-03-30 through September). And the 2026-09-24 weave ran a pass shaped like this question. Its lifecycle lens started workers from newcomers the palace barely reached and had them walk outward along typed links, proposing connections from what surfaced on the way rather than from a survey.
+
+The honest lesson is that the first walk was misled by a counting bug, not by walking. The catch-up script counted symmetric links one way only, so it told walkers a newcomer had almost no inbound links when it already had several partners, and nearly half the walk's proposals re-drew links that already existed. With the count fixed, the rerun's 35 walk proposals held no duplicates (`_ops/swarm/sessions/weave-2026-09-24/ab/RESULT.md`).
+
+So a walk can weave. Whether it is a third ceremony, or a lens inside the Weave, is still open, and this entry stays a question.
 
 ---
 

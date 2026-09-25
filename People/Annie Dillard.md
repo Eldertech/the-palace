@@ -41,9 +41,6 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: attention-as-practice
-  - target: "[[Natalie Goldberg]]"
-    type: connects-to
-    label: daily-practice-writers
   - target: "[[Julia Cameron]]"
     type: connects-to
     label: daily-practice-writers

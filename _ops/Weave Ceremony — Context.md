@@ -3,8 +3,8 @@ title: "Weave Ceremony — Context"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-09
+activation_count: 2
 stage: growing
 links:
   - target: "[[Weave Ceremony]]"
@@ -68,6 +68,18 @@ The single-agent protocol was the original design. The palace crossed the single
 ## Scope — Unsung Paths vs. Harvest
 
 Two behaviors look alike and must not be conflated inside the Weave worker. **Unsung paths** (in scope): entry titles the prose *already names* but the YAML hasn't registered — the connection is made, only the structural catch-up remains; formalize all of them (Step 3a). **Finding concepts that don't yet exist as entries but should** (out of scope): that is **harvest** — the work of an enchanted page looking at itself and wanting to thrive, deciding which concepts to pull into being. It belongs to [[Palace Enchantment]], where a page develops its own forward vectors and names what it wants to exist — not to the Weave worker, which never proposes new entry *creation*. If a Weave run surfaces such candidates, note them as out-of-scope and defer. (This is distinct from the 15-introduction cap above, which governs new typed *links* between entries that already exist, not new entries.) — Loudon's decision, 2026-04-08.
+
+## Who the Workers Should Be (2026-09-24)
+
+Loudon asked whether the weave's errors came from running its workers as children rather than elders. It was tested the same day, with the rule fixed before any result came back: the same 10 rooms were rerun as children, as schema-only readers, and as grown elders, and blind elder judges checked every sampled proposal against the files.
+
+**Growing up the workers didn't help.** The elder arm was no better than the children (71% of sampled proposals invalid in both) and cost about 16% more per worker. Schema-only leaned best but missed the fixed bar. What the judges' notes found instead was that most errors were the harness's. The catch-up counted symmetric links one way, so it sent walk workers after entries that were already joined. Workers were never shown the links a pair already had. Fixing that (counting *reach*, showing each member's existing links in both directions, "read both pages first", the fidelity test on every relation) took duplicates from 13% to 2% and the judged invalid rate from 78% to 64%.
+
+**What remained was judgment: forced or passing links**, about half of what even the fixed run proposed, and no change to what workers read touched it. Every correction that day came from a *second* reader: the Concierge's cold read, the blind judges, a rerun that re-found a link the coordinator had wrongly declined, and a skeptic pass that refuted 33 of 82 batch candidates. The first readers never caught their own. That is [[No Mind Checks Itself]] running in the weave itself.
+
+So the working shape, to be re-tested before it becomes a rule: workers stay children, with the fixed harness and the SCHEMA card; **an adversarial skeptic stage** sits between the fan-out and the synthesis, for anything that will be signed in a batch; and the Concierge reads the decision surface cold before Loudon does. The full record, with the numbers, is in `_ops/swarm/sessions/weave-2026-09-24/ab/RESULT.md`.
+
+**One link per pair.** The same weave settled a curation guideline: a pair of entries carries one typed link. Where a specific link already exists, a weaker one isn't added. Where a generic `connects-to` exists, it is retyped in place. Lineage reciprocals are the exception (`spawned` ↔ `emerged-from`, `enables`), and only where the lineage is direct: a *diffuse* origin (`emerged-from`) doesn't earn a `spawned` back.
 
 ## Open Questions
 

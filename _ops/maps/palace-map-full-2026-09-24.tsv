@@ -344,7 +344,6 @@ Differential Equations	connects-to	DSP Frameworks
 Move the Ink, Don't Redraw It	couples-with	The 2.5D Paper Stack
 Move the Ink, Don't Redraw It	connects-to	BLUELINE
 Move the Ink, Don't Redraw It	enables	Frame Designer
-Move the Ink, Don't Redraw It	contradicts	Sam Maloof
 JSUI	spawned	Retrospective Delay
 JSUI	connects-to	FOUR PILLARS
 JSUI	connects-to	Preset Oracle
@@ -385,16 +384,6 @@ Frame Designer	emerged-from	The 2.5D Paper Stack
 Frame Designer	connects-to	assume multi-agent
 Frame Designer	connects-to	The Commons
 Frame Designer	connects-to	Block It in Blender, Ink It in genAI
-Media Library	connects-to	FOUR PILLARS
-Media Library	connects-to	Spinoza Conatus
-Media Library	connects-to	Hyperdimensional Prism
-Media Library	enables	SUBSTRATE
-Media Library	connects-to	Quantum Synthesizer
-Media Library	connects-to	Crystal Synthesizer
-Media Library	connects-to	DSP Frameworks
-Media Library	connects-to	Kuramoto Coupling
-Media Library	connects-to	Latent Error
-Media Library	connects-to	Wallpaper Groups
 Metaphor as Coupling Medium	connects-to	Lateral Access
 Metaphor as Coupling Medium	mirrors	Kuramoto Coupling
 Metaphor as Coupling Medium	connects-to	Hilaritas Generator
@@ -451,7 +440,6 @@ SCHEMA	spawned	SCHEMA — Context
 SCHEMA	spawned	SCHEMA — Reference
 Loudon's Toolkit	spawned	Toolkit — Synthesizers
 Loudon's Toolkit	connects-to	Four Pillars of Enchanted Agency
-Loudon's Toolkit	couples-with	Toolkit Assessment — Working Doc
 Loudon's Toolkit	mirrors	Spinoza Conatus
 Loudon's Toolkit	enables	Progressive Staging
 Loudon's Toolkit	connects-to	Toolkit — Audio Plugins
@@ -733,11 +721,6 @@ Cross-Domain Resonances	connects-to	Source Library
 Cross-Domain Resonances	connects-to	Shunryu Suzuki
 Cross-Domain Resonances	connects-to	Brian Eno
 Cross-Domain Resonances	exemplifies	Metric Modulation
-Line-Art Layer Decomposition	deepens	Animate the Background
-Line-Art Layer Decomposition	emerged-from	BLUELINE
-Line-Art Layer Decomposition	connects-to	Steer the Generator
-Line-Art Layer Decomposition	connects-to	Adopt the Craft, Author the Seam
-Line-Art Layer Decomposition	connects-to	Frame Designer
 Radio Play	emerged-from	The Shop
 Radio Play	connects-to	Maker
 Radio Play	connects-to	Kokoro
@@ -746,11 +729,6 @@ Radio Play	connects-to	ffmpeg
 Radio Play	connects-to	FOUR PILLARS
 Radio Play	connects-to	Modes of Collaboration
 Radio Play	connects-to	Loudon Live Design System
-Octave Equivalence	emerged-from	Shepard Tone Synthesizer
-Octave Equivalence	couples-with	Frequency-Time Duality
-Octave Equivalence	connects-to	Harmonicity and Inharmonicity
-Octave Equivalence	mirrors	Piano String Inharmonicity
-Octave Equivalence	enables	Logarithmic Interface Scaling
 Quality Manifesto	deepens	FOUR PILLARS
 Quality Manifesto	deepens	Leverage Points Framework
 Quality Manifesto	connects-to	Loudon Live
@@ -788,7 +766,6 @@ SUBSTRATE	connects-to	Spinoza Conatus
 SUBSTRATE	connects-to	Palace Enchantment
 SUBSTRATE	connects-to	Palace Conatus
 SUBSTRATE	connects-to	Songlines
-SUBSTRATE	connects-to	Tristitia Generator
 SUBSTRATE	connects-to	Lateral Access
 SUBSTRATE	connects-to	1 from 2
 SUBSTRATE	connects-to	Palace Ceremonies
@@ -912,7 +889,6 @@ Surfaces and Capabilities	enables	Baton Ceremony
 Surfaces and Capabilities	connects-to	Maker
 Surfaces and Capabilities	connects-to	The Shop
 Surfaces and Capabilities	connects-to	Closing Well
-Surfaces and Capabilities	connects-to	Claude CLI Reference
 Surfaces and Capabilities	connects-to	Modes of Collaboration
 The Palace Voice	mirrors	Loudon Live Design System
 The Palace Voice	deepens	Pages as Agents
@@ -936,7 +912,6 @@ Spinoza Conatus	connects-to	Pages as Agents
 Spinoza Conatus	enables	Cooperation Yields Agency
 Spinoza Conatus	mirrors	Endosymbiosis
 Spinoza Conatus	couples-with	Deleuze
-Spinoza Conatus	spawned	Tristitia Generator
 Spinoza Conatus	contradicts	Merleau-Ponty
 Scale-Stratified Identity	deepens	Spinoza Conatus
 Scale-Stratified Identity	mirrors	Action Potential Oscillator
@@ -991,14 +966,6 @@ The Remembering Page	couples-with	Agent Wellbeing
 The Remembering Page	deepens	Modes of Collaboration
 The Remembering Page	connects-to	Entry Conatus
 The Remembering Page	couples-with	Identity Molting
-Claude CLI Reference	enables	SUBSTRATE
-Claude CLI Reference	connects-to	Modes of Collaboration
-Claude CLI Reference	enables	Palace Ceremonies
-Claude CLI Reference	connects-to	Pages as Agents
-Claude CLI Reference	connects-to	Boundary-Crossing Instruments
-Claude CLI Reference	connects-to	Dialectic
-Claude CLI Reference	connects-to	Neural Granular Synthesis
-Claude CLI Reference	connects-to	Semantic Delay
 Trickster	emerged-from	Semantic Delay
 Trickster	mirrors	Oblique Portrait
 Trickster	connects-to	1 from 2
@@ -1344,10 +1311,6 @@ CLAUDE	connects-to	SCHEMA
 CLAUDE	connects-to	SUBSTRATE
 CLAUDE	connects-to	FOUR PILLARS
 CLAUDE	connects-to	Palace Ceremonies
-Tristitia Generator	mirrors	Hilaritas Generator
-Tristitia Generator	deepens	Spinoza Conatus
-Tristitia Generator	connects-to	FOUR PILLARS
-Tristitia Generator	connects-to	Identity Molting
 Hilaritas Generator	contradicts	Creative Coach
 Hilaritas Generator	emerged-from	Spinoza Conatus
 Hilaritas Generator	emerged-from	FOUR PILLARS
@@ -1358,7 +1321,6 @@ Hilaritas Generator	spawned	Excellent Adventure
 Hilaritas Generator	deepens	Striatum
 Hilaritas Generator	deepens	Meadows and Music — Leverage Points
 Hilaritas Generator	connects-to	Identity Molting
-Hilaritas Generator	spawned	Tristitia Generator
 Hilaritas Generator	connects-to	Palace Philosophies
 Hilaritas Generator	connects-to	Hilaritas Generator — Context
 Hilaritas Generator	connects-to	Quality Manifesto
@@ -1482,7 +1444,7 @@ Piano String Inharmonicity	mirrors	Frequency-Time Duality
 Piano String Inharmonicity	connects-to	Logarithmic Interface Scaling
 Piano String Inharmonicity	mirrors	Ohm's Law
 Piano String Inharmonicity	deepens	Dispersion
-Piano String Inharmonicity	mirrors	Octave Equivalence
+Piano String Inharmonicity	connects-to	Shepard Tone Synthesizer
 Piano String Inharmonicity	connects-to	Floquet Time-Modulated Loops
 Particle Synthesis	deepens	Granular Synthesis
 Particle Synthesis	mirrors	Boundary-Crossing Instruments
@@ -1493,7 +1455,6 @@ Shepard Tone Synthesizer	deepens	Portamento and Physical Pitch Modeling
 Shepard Tone Synthesizer	connects-to	Frequency-Time Duality
 Shepard Tone Synthesizer	mirrors	Hyperdimensional Prism
 Shepard Tone Synthesizer	connects-to	Granular Synthesis
-Shepard Tone Synthesizer	enables	Octave Equivalence
 Shepard Tone Synthesizer	connects-to	Kuramoto Coupling
 Shepard Tone Synthesizer	connects-to	Particle Synthesis
 Shepard Tone Synthesizer	connects-to	Piano String Inharmonicity
@@ -1609,7 +1570,6 @@ Tract Mirror	mirrors	Waveguide Synthesizer
 Tract Mirror	couples-with	Three.js
 Tract Mirror	connects-to	Boundary-Crossing Instruments
 Tract Mirror	connects-to	Tract Mirror — build plan — JUCE VST
-Tract Mirror	mirrors	Linear Predictive Coding
 Bayesian Granular Synthesizer	connects-to	Neural Granular Synthesis
 Bayesian Granular Synthesizer	couples-with	Phase Reduction
 Bayesian Granular Synthesizer	connects-to	Frequency-Time Duality
@@ -1740,7 +1700,6 @@ Crystal Synthesizer	emerged-from	Dispersion
 Crystal Synthesizer	deepens	Differential Equations
 Crystal Synthesizer	mirrors	Signal-Rate CV Architecture
 Crystal Synthesizer	spawned	The Metaphor Stretch
-Crystal Synthesizer	spawned	What Claim Does Scientific Sonification Make?
 Crystal Synthesizer	spawned	Crystal Sonification Reference
 Retrospective Delay	connects-to	Semantic Delay
 Retrospective Delay	deepens	Trickster
@@ -1894,18 +1853,17 @@ Figure Rig	connects-to	ControlNet as Topology
 Figure Rig	connects-to	GenAI Camera
 LaMa	connects-to	The Shop
 LaMa	connects-to	Maker
-LaMa	connects-to	Line-Art Layer Decomposition
 LaMa	connects-to	Animate the Background
 LaMa	connects-to	SAM
-LaMa	connects-to	R. Murray Schafer
+LaMa	connects-to	Pauline Oliveros
 SAM	connects-to	The Shop
 SAM	connects-to	Maker
-SAM	connects-to	Line-Art Layer Decomposition
+SAM	connects-to	Animate the Background
 SAM	connects-to	Depth Anything
 SAM	connects-to	LaMa
 Depth Anything	connects-to	The Shop
 Depth Anything	connects-to	Maker
-Depth Anything	connects-to	Line-Art Layer Decomposition
+Depth Anything	connects-to	Animate the Background
 Depth Anything	connects-to	SAM
 Depth Anything	connects-to	LaMa
 Lettering	member-of	The Shop
@@ -2073,8 +2031,6 @@ Schema Ceremony Proposal — exemplifies + member-of	connects-to	SCHEMA
 Schema Ceremony Proposal — exemplifies + member-of	connects-to	Palace To-Do
 Schema Ceremony Proposal — exemplifies + member-of	emerged-from	Palace Audit — 2026-05-28
 Graffiti Pass — Handoff 2026-04-30	connects-to	Palace To-Do
-Artifacts to Projects Migration — handoff	emerged-from	Palace Audit — 2026-05-28
-Artifacts to Projects Migration — handoff	connects-to	Palace To-Do
 Deposit Ceremony	emerged-from	Harvest Ceremony
 Deposit Ceremony	enables	Deposit Archive
 Deposit Ceremony	deepens	SUBSTRATE
@@ -2206,14 +2162,6 @@ Harvest Ceremony — Context	deepens	Oblique Portrait
 Palace Quotes	connects-to	Palace Philosophies
 Palace Quotes	connects-to	FOUR PILLARS
 Palace Quotes	connects-to	Hilaritas Generator
-Toolkit Assessment — Working Doc	enables	Loudon's Toolkit
-R. Murray Schafer	member-of	Source Library
-R. Murray Schafer	deepens	FOUR PILLARS
-R. Murray Schafer	connects-to	Pauline Oliveros
-R. Murray Schafer	connects-to	Dub Lineage
-R. Murray Schafer	connects-to	John Cage
-R. Murray Schafer	connects-to	Hilaritas Generator
-R. Murray Schafer	contradicts	LaMa
 Epictetus	member-of	Source Library
 Epictetus	exemplifies	Stoicism
 Epictetus	connects-to	The Dichotomy of Control
@@ -2271,20 +2219,6 @@ Iain McGilchrist	connects-to	Rick Rubin
 Iain McGilchrist	mirrors	Martin Buber
 Iain McGilchrist	mirrors	Merleau-Ponty
 Iain McGilchrist	exemplifies	Making a Palace Citizen
-Terrence Malick	member-of	Source Library
-Terrence Malick	deepens	FOUR PILLARS
-Terrence Malick	connects-to	Generative Compression
-Terrence Malick	connects-to	Hilaritas Generator
-Terrence Malick	deepens	Quality Manifesto
-Terrence Malick	connects-to	Dub Lineage
-Terrence Malick	mirrors	Yasujirō Ozu
-Sam Maloof	member-of	Source Library
-Sam Maloof	connects-to	FOUR PILLARS
-Sam Maloof	connects-to	The Curve Is the Material
-Sam Maloof	connects-to	Quality Manifesto
-Sam Maloof	connects-to	Hilaritas Generator
-Sam Maloof	connects-to	Agnes Martin
-Sam Maloof	contradicts	Move the Ink, Don't Redraw It
 Donella Meadows	member-of	Source Library
 Donella Meadows	enables	Leverage Points Framework
 Donella Meadows	deepens	FOUR PILLARS
@@ -2311,11 +2245,6 @@ Julia Cameron	contradicts	Agnes Martin
 Julia Cameron	mirrors	Rick Rubin
 Julia Cameron	connects-to	Hilaritas Generator
 Julia Cameron	exemplifies	Making a Palace Citizen
-Natalie Goldberg	member-of	Source Library
-Natalie Goldberg	deepens	FOUR PILLARS
-Natalie Goldberg	connects-to	Hilaritas Generator
-Natalie Goldberg	connects-to	Quality Manifesto
-Natalie Goldberg	connects-to	Shunryu Suzuki
 Douglas Hofstadter	member-of	Source Library
 Douglas Hofstadter	deepens	Cross-Domain Resonances
 Douglas Hofstadter	deepens	FOUR PILLARS
@@ -2352,7 +2281,6 @@ George Nakashima	mirrors	Like Water
 George Nakashima	connects-to	Quality Manifesto
 George Nakashima	connects-to	Dovetail Joint ↔ Counterpoint
 George Nakashima	connects-to	Hilaritas Generator
-George Nakashima	mirrors	Sam Maloof
 George Nakashima	contradicts	Compressor Design
 George Nakashima	exemplifies	Found ↔ Made
 George Nakashima	connects-to	Agnes Martin
@@ -2382,21 +2310,13 @@ Annie Dillard	couples-with	Iain McGilchrist
 Annie Dillard	connects-to	Andy Goldsworthy
 Annie Dillard	connects-to	Merleau-Ponty
 Annie Dillard	connects-to	Quality Manifesto
-Annie Dillard	connects-to	Natalie Goldberg
 Annie Dillard	connects-to	Julia Cameron
 Annie Dillard	contradicts	BLUELINE
 Annie Dillard	exemplifies	Making a Palace Citizen
-Andrei Tarkovsky	member-of	Source Library
-Andrei Tarkovsky	connects-to	James Turrell
-Andrei Tarkovsky	deepens	FOUR PILLARS
-Andrei Tarkovsky	connects-to	Quality Manifesto
-Andrei Tarkovsky	connects-to	Pauline Oliveros
-Andrei Tarkovsky	connects-to	Comic and Cinema — Two Ways of Seeing
 Shunryu Suzuki	member-of	Source Library
 Shunryu Suzuki	connects-to	Sidechain ↔ Conversation
 Shunryu Suzuki	deepens	FOUR PILLARS
 Shunryu Suzuki	connects-to	Quality Manifesto
-Shunryu Suzuki	connects-to	Natalie Goldberg
 Shunryu Suzuki	member-of	Cross-Domain Resonances
 Shunryu Suzuki	exemplifies	Making a Palace Citizen
 Martin Heidegger	member-of	Source Library
