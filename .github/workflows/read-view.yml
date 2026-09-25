@@ -3,15 +3,16 @@
 # main (_ops/stigmergy/app/scripts/build-public.mjs) and publishes it to
 # GitHub Pages at https://eldertech.github.io/the-palace/.
 #
-# Every push to main rebuilds the view; it can also be run by hand. Pages
-# deploys from GitHub Actions (repo Settings → Pages → Source). Pages went on
-# 2026-09-25 with Loudon's yes and a clean Sentry gate.
+# Manual only while Pages is off. Pages goes on with Loudon's yes and a clean
+# Sentry gate (node _ops/sentry/sweep.mjs --gate) — the 2026-09-25 gate was not
+# clean. Then set Pages to deploy from GitHub Actions (repo Settings → Pages →
+# Source), restore the push trigger, and every push to main rebuilds the view.
 name: Read view
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]
 
 permissions:
   contents: read
