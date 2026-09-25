@@ -40,3 +40,9 @@ What each baton taught the ceremony. Each item names what the run showed and the
 ## From the footer drift — 2026-08-25
 
 8. **A checklist that is copied drifts.** The lifecycle reached the spec on 07-07 and never reached `baton-executor.mjs`'s own copy, so for seven weeks machine-written batons shipped the pre-lifecycle text. Forced: one home for the checklist (`_ops/Baton Ceremony/Baton Ceremony — on-pickup.md`) and `lint-baton-footer.py` to guard it (`f6cf60c0`).
+- run · 2026-09-25 · v1.0 · Palace Ceremonies, phases 4–5 · nothing new
+- run · 2026-09-25 · v1.0 · Enrichment · nothing new
+- run · 2026-09-25 · v1.0 · Kuramoto Coupling · nothing new
+- run · 2026-09-25 · v1.0 · Language as a Tonal Medium · nothing new
+- run · 2026-09-25 · v1.0 · No Mind Checks Itself · nothing new
+- run · 2026-09-25 · v1.0 · Palace Ceremonies, review and Phase 5 · nothing new
