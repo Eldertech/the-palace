@@ -453,3 +453,42 @@ describe('spawn failure is not a barren cycle (2026-09-23)', () => {
     expect(hist).not.toContain('"iteration":8');
   });
 });
+
+describe('processCycle — a cycle cut off by an error is interrupted, not barren', () => {
+  let root;
+  afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
+
+  test('a session-limit result with no messages: no barren count, no stall, iteration kept', () => {
+    root = mkdtempSync(path.join(tmpdir(), 'palace-pc-int-'));
+    const agentDir = '_ops/agents/permanent/test-steward';
+    mkdirSync(path.join(root, agentDir), { recursive: true });
+    mkdirSync(path.join(root, '_ops/swarm/persistent'), { recursive: true });
+    writeFileSync(path.join(root, agentDir, 'manifest.json'), JSON.stringify({ agent_id: 'Test Steward', home: 'Test Steward', mode: 'long_duration_background', session_id: 's', model: { name: 'claude-opus-5-5' } }));
+    writeFileSync(path.join(root, agentDir, 'state.json'), JSON.stringify({ iteration: 10, last_active: '2026-09-25T02:37:00Z', last_read_cursor: 'x' }));
+    // The previous cycle was barren, so a naive read would call this one STALLED.
+    writeFileSync(path.join(root, agentDir, 'history.jsonl'), JSON.stringify({ event: 'CYCLE_COMPLETE', posted_messages: [] }) + '\n');
+    writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), '');
+    // The real shape of the 2026-09-25 02:40 NGS transcript.
+    const transcript = [
+      JSON.stringify({ type: 'system', subtype: 'init', model: 'claude-opus-5-5' }),
+      JSON.stringify({ type: 'assistant', message: { usage: {}, content: [{ type: 'text', text: "You've hit your session limit · resets 1am (America/New_York)" }] } }),
+      JSON.stringify({ type: 'result', subtype: 'success', is_error: true, num_turns: 1, result: "You've hit your session limit · resets 1am (America/New_York)" }),
+    ].join('\n');
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    writeFileSync(transcriptPath, transcript);
+
+    const summary = processCycle({ palaceRoot: root, transcriptPath, agentDir, cycleN: 11, iteration: 11, tsNow: '2026-09-25T02:40:22Z' });
+
+    expect(summary.stop_hint).toBe('interrupted');
+    expect(summary.interrupted).toBe(true);
+    expect(summary.barren).toBe(false);
+    expect(summary.stalled).toBe(false);
+    const state = JSON.parse(readFileSync(path.join(root, agentDir, 'state.json'), 'utf8'));
+    expect(state.iteration).toBe(10);
+    const history = readFileSync(path.join(root, agentDir, 'history.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
+    const last = history[history.length - 1];
+    expect(last.event).toBe('CYCLE_INTERRUPTED');
+    expect(last.error).toMatch(/session limit/);
+    expect(history.some((e) => e.event === 'CYCLE_BARREN')).toBe(false);
+  });
+});

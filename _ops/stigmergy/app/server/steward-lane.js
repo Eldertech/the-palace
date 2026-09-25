@@ -166,11 +166,12 @@ export function runCapFor(manifest, override = null) {
  *   blocking_ask         → stop (Loudon's move)
  *   interactive_session  → stop (a conversation, not a cycle)
  *   spawn_failed         → stop at once, no retry — the worker never ran
+ *   interrupted          → stop at once, no retry — the worker was cut off (a usage limit)
  *                          (retrying an environment failure just repeats it)
  */
 export function nextRunStep(run, stopHint) {
   const r = run || { cap: 1, position: 1, retried: false };
-  if (stopHint === 'spawn_failed') return null;
+  if (stopHint === 'spawn_failed' || stopHint === 'interrupted') return null;
   if (stopHint === 'barren') {
     if (r.retried) return null;
     return { cap: r.cap, position: r.position, retried: true, retryOfBarren: true };
@@ -184,6 +185,7 @@ export function nextRunStep(run, stopHint) {
 /** Why a run ended, in one word for the log + the deck. */
 export function stopReason(run, stopHint) {
   if (stopHint === 'spawn_failed') return 'spawn_failed';
+  if (stopHint === 'interrupted') return 'interrupted';
   if (stopHint === 'barren') return run && run.retried ? 'stalled' : 'barren';
   if (stopHint === 'blocking_ask') return 'paused_on_loudon';
   if (stopHint === 'interactive_session') return 'wants_a_session';
@@ -290,8 +292,9 @@ export function createStewardLane(opts = {}) {
       // next move is Loudon's, not another cycle.
       next = nextRunStep(run, summary.stop_hint);
       writeLastCycle({
-        ok: summary.stop_hint !== 'spawn_failed', name: meta.home, cycle_n: meta.cycleN, ts: meta.tsNow, ...summary,
+        ok: summary.stop_hint !== 'spawn_failed' && summary.stop_hint !== 'interrupted', name: meta.home, cycle_n: meta.cycleN, ts: meta.tsNow, ...summary,
         ...(summary.stop_hint === 'spawn_failed' ? { error: 'the worker never spoke — see the lane log (auth? permission mode? root?); the cycle was not counted' } : {}),
+        ...(summary.stop_hint === 'interrupted' ? { error: `the worker was cut off before posting (${(summary.errors && summary.errors[0] && summary.errors[0].error) || 'error'}); the cycle was not counted` } : {}),
         run: { ...run, stop_hint: summary.stop_hint, continued: !!next, stopped_because: next ? null : stopReason(run, summary.stop_hint) },
       });
       logLine(`run: ${meta.home} cycle ${meta.cycleN} (${run.position}/${run.cap}) -> ${summary.stop_hint}${next ? (next.retryOfBarren ? ' -> retrying once' : ` -> continuing (${next.position}/${next.cap})`) : ` -> run ends (${stopReason(run, summary.stop_hint)})`}`);
