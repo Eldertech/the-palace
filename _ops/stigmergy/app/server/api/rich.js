@@ -12,6 +12,16 @@ import { createRichHandler } from '../../../../rich-face/rich-handler.mjs';
 
 const handlers = new Map(); // palaceRoot -> handler (one per root; tests use temp roots)
 
+// Where a review is forwarded: this same server, addressed by the socket the
+// request arrived on — never the client's Host header, which any caller can
+// set to point the forward somewhere else.
+export function selfOrigin(req) {
+  const s = req.socket || {};
+  if (!s.localAddress || !s.localPort) return 'http://localhost:5173';
+  const addr = s.localAddress.includes(':') ? `[${s.localAddress.replace(/%/g, '%25')}]` : s.localAddress;
+  return `${s.encrypted ? 'https' : 'http'}://${addr}:${s.localPort}`;
+}
+
 export async function richRoutes(ctx) {
   const { req, res, palaceRoot, urlPath } = ctx;
   if (urlPath !== '/rich' && !urlPath.startsWith('/rich/')) return false;
@@ -21,7 +31,7 @@ export async function richRoutes(ctx) {
       root: palaceRoot,
       here: resolve(palaceRoot, '_ops/rich-face'),
       base: '/rich',
-      app: (r) => `http://${r.headers.host || 'localhost:5173'}`,
+      app: selfOrigin,
     });
     handlers.set(palaceRoot, handle);
   }
