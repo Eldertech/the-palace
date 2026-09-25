@@ -7,18 +7,24 @@
 // (SCHEMA — Reference §6 and §8). The ledger is the marker, so a new ceremony
 // needs no registration here.
 //
-// Runs are read from git: the commits whose subject is that ceremony's record
-// (each card says what its record is — RUN_SUBJECTS below mirrors them). Two
-// ceremonies leave a record that is not a commit subject: a harvest's record
-// file in its bundle, and a map build's map file in `_ops/maps/` (with its Map
-// Log row). Trail sections are keyed on the commit hash or the record's own
-// name, so re-materializing never duplicates or deletes.
+// Runs are read from the ledger. Every run leaves one line there, whatever it
+// taught (SCHEMA — Reference §6):
+//
+//   - run · 2026-09-25 · v1.1 · close-2026-09-25-ceremonies · taught item 31
+//
+// Version changes are read from git: the commits where the card's version
+// value changed. An order Loudon saves on a ceremony's scroll lands in the
+// ledger too, as `- from Loudon · <date> · <his words> · owed`, and counts as
+// owed until a run replaces `owed` with what it did. Trail sections are keyed
+// on the version commit or on the run line itself, so re-materializing never
+// duplicates or deletes.
 //
 // Canon: [[The Scroll]], [[Palace Ceremonies]]. Project scrolls: scroll-file.js.
 
-import { existsSync, readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, writeFileSync, mkdirSync, appendFileSync } from 'node:fs';
 import { join, relative, basename } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { resolveBundleDir, EXCLUDE_DIRS } from './entry-paths.js';
 import { parseFrontmatter } from './entry-frontmatter.js';
 import {
@@ -29,30 +35,98 @@ const day = (iso) => (iso ? String(iso).slice(0, 10) : '—');
 const dash = (v) => (v == null || v === '' ? '—' : String(v));
 
 
-// The commit subjects that record a run, per ceremony. Each line mirrors what
-// the ceremony's card says its record is; the retired forms stay so history
-// still counts. Tooling commits that share a prefix are excluded by the pattern.
-export const RUN_SUBJECTS = {
-  'Deposit Ceremony': [/^deposit\(/, /^Deposit — /],
-  'Baton Ceremony': [/^baton\(/],
-  'Weave Ceremony': [/^Weave — /, /^Weave follow-up — /, /^weave-apply — /, /^weave\(/],
-  'Closing Well': [/^close well\(/, /^close\(/, /^[a-z]+\(close-\d{4}-\d{2}-\d{2}\)/],
-  // rich-face runs only: the face batch (`enrich(faces)`, "hero + icon") is a different job
-  Enrichment: [/^enrich\((?!faces\))[^)]*\): (?!hero \+ icon)/],
-  'Return Ceremony': [/^return\(/],
-  'Walk Ceremony': [/^Walk — /],
-  'Spore Check Ceremony': [/^Spore Check — /],
-  'Revival Ceremony': [/^Revival — /],
-  'Self-Model Update Ceremony': [/^Self-Model Update — /],
-  'Harvest Ceremony': [/^Harvest — /],
-  'Map Build Ceremony': [/^Map Build — /, /^palace\(map-build\)/],
-};
+// A run line: `- run · <date> · v<version> · <what it ran on> · <outcome>`.
+// The outcome is `nothing new` or `taught item N`; the "what" field may be
+// absent (`- run · <date> · v<version> · <outcome>`), and the reader takes both.
+const RUN_RE = /^- run · (\d{4}-\d{2}-\d{2}) · v?(\d[\w.]*) · (.+?)\s*$/;
 
-/** Does this commit subject record a run of `home`? */
-export function isRunSubject(home, subject) {
-  const pats = RUN_SUBJECTS[home];
-  if (!pats) return false;
-  return pats.some((re) => re.test(String(subject || '')));
+/** One run line → { date, version, what, outcome }, or null. */
+export function parseRunLine(line) {
+  const m = RUN_RE.exec(String(line || ''));
+  if (!m) return null;
+  const cut = m[3].lastIndexOf(' · ');
+  return {
+    date: m[1],
+    version: normVersion(m[2]),
+    what: cut >= 0 ? m[3].slice(0, cut).trim() : '',
+    outcome: (cut >= 0 ? m[3].slice(cut + 3) : m[3]).trim(),
+  };
+}
+
+/**
+ * Every run line in a ledger, in file order (newest last). Each carries a key
+ * made from the line itself, so a trail section keyed on it survives a union
+ * merge that reorders lines; a second identical line gets its own key.
+ */
+export function parseRuns(ledgerText) {
+  const seen = new Map();
+  const out = [];
+  String(ledgerText || '').split('\n').forEach((line, index) => {
+    const r = parseRunLine(line);
+    if (!r) return;
+    const text = line.trim();
+    const h = createHash('sha1').update(text).digest('hex').slice(0, 10);
+    const n = (seen.get(h) || 0) + 1;
+    seen.set(h, n);
+    out.push({ ...r, line: text, index, key: `run-${h}${n > 1 ? `-${n}` : ''}` });
+  });
+  return out;
+}
+
+/** The run line a run leaves (SCHEMA — Reference §6). */
+export function runLine({ date, version, what = '', outcome = 'nothing new' }) {
+  const v = normVersion(version);
+  const w = String(what || '').replace(/\s+/g, ' ').replace(/ · /g, ', ').trim();
+  return `- run · ${date} · v${v} · ${w ? `${w} · ` : ''}${outcome}`;
+}
+
+// An order from Loudon, saved on the ceremony's scroll:
+// `- from Loudon · <date> · <his words> · owed` — the last field says `owed`
+// until a run acts on it and replaces it with what it did.
+const ORDER_RE = /^- from Loudon · (\d{4}-\d{2}-\d{2}) · (.+) · ([^·]+?)\s*$/;
+
+/** The line an order becomes. His words go in whole, on one line. */
+export function orderLine(date, words) {
+  return `- from Loudon · ${date} · ${String(words || '').replace(/\s+/g, ' ').trim()} · owed`;
+}
+
+/**
+ * Loudon's orders in a ledger: [{ date, text, status, owed }]. A union merge
+ * can keep both forms of a line paid in place — the paid one and the stale
+ * owed one (SCHEMA — Reference §6) — so an order paid anywhere is paid.
+ */
+export function parseOrders(ledgerText) {
+  const all = [];
+  for (const line of String(ledgerText || '').split('\n')) {
+    const m = ORDER_RE.exec(line);
+    if (m) all.push({ date: m[1], text: m[2].trim(), status: m[3].trim() });
+  }
+  const isOwed = (o) => /^owed$/i.test(o.status);
+  const k = (o) => `${o.date}\u0000${o.text}`;
+  const paid = new Set(all.filter((o) => !isOwed(o)).map(k));
+  const shown = new Set();
+  const out = [];
+  for (const o of all) {
+    if (isOwed(o) && paid.has(k(o))) continue;
+    if (shown.has(`${k(o)}\u0000${o.status}`)) continue;
+    shown.add(`${k(o)}\u0000${o.status}`);
+    out.push({ ...o, owed: isOwed(o) });
+  }
+  return out;
+}
+
+/**
+ * Append one line to a ledger's end. A line that follows prose gets a blank
+ * line before it, so it reads as a list; one that follows a list item joins it.
+ */
+export function appendLedgerLine(ledgerPath, line) {
+  const text = existsSync(ledgerPath) ? readFileSync(ledgerPath, 'utf8') : '';
+  const last = text.replace(/\s+$/, '').split('\n').pop() || '';
+  const endsBlank = text === '' || /\n[ \t]*\n$/.test(text);
+  const listy = /^\s*(?:[-*]|\d+[a-z]?\.)\s/.test(last);
+  let pre = text && !text.endsWith('\n') ? '\n' : '';
+  if (!endsBlank && !listy && last.trim()) pre += '\n';
+  appendFileSync(ledgerPath, `${pre}${line}\n`);
 }
 
 /** "2" → "2.0"; strips quotes. So a quoting fix never reads as a spec change. */
@@ -153,21 +227,6 @@ export function versionHistory(palaceRoot, entryRel) {
   return changes;
 }
 
-/**
- * Commits from `fromHash` (inclusive) to HEAD, newest first — subjects only,
- * cheap. `HEAD --not <hash>^@` rather than `<hash>~1..HEAD`, so a ceremony
- * versioned in a repository's first commit still counts.
- */
-function commitsFrom(palaceRoot, fromHash) {
-  const range = fromHash ? ['HEAD', '--not', `${fromHash}^@`] : ['HEAD'];
-  const out = git(palaceRoot, ['log', '--format=%H%x1f%aI%x1f%s', ...range]).trim();
-  if (!out) return [];
-  return out.split('\n').map((line) => {
-    const [hash, ts, subject] = line.split('\x1f');
-    return { hash, ts, subject };
-  });
-}
-
 /** Bodies for a handful of commits, in one git call: Map hash → body. */
 function bodiesFor(palaceRoot, hashes) {
   const map = new Map();
@@ -189,28 +248,20 @@ export function bodyLead(body, max = 600) {
   return flat.length > max ? `${flat.slice(0, max - 1)}…` : flat;
 }
 
-/** Non-commit records: harvest record files, map files. [{ key, ts, label, path }] */
-export function recordRuns(palaceRoot, home, bundleDir) {
-  const out = [];
-  if (home === 'Harvest Ceremony' && bundleDir && existsSync(bundleDir)) {
-    for (const f of readdirSync(bundleDir)) {
-      const m = /^Harvest — (\d{4}-\d{2}-\d{2}) — (.+)\.md$/.exec(f);
-      if (m) out.push({ key: `record-${f}`, ts: m[1], label: `Harvest record — ${m[2]}`, path: relative(palaceRoot, join(bundleDir, f)) });
-    }
-  }
-  if (home === 'Map Build Ceremony') {
-    const dir = join(palaceRoot, '_ops/maps');
-    const seen = new Set();
-    if (existsSync(dir)) {
-      for (const f of readdirSync(dir)) {
-        const m = /^palace-map-(\w+)-(\d{4}-\d{2}-\d{2})\.(tsv|json)$/.exec(f);
-        if (!m || seen.has(`${m[1]}-${m[2]}`)) continue;
-        seen.add(`${m[1]}-${m[2]}`);
-        out.push({ key: `map-${m[1]}-${m[2]}`, ts: m[2], label: `${m[1]} map built`, path: `_ops/maps/${f}` });
-      }
-    }
-  }
-  return out.sort((a, b) => String(b.ts).localeCompare(String(a.ts)));
+/**
+ * Where a run sits in time, for ordering the trail. A run line carries only
+ * its date, so it is placed inside the span its version was live — after the
+ * change that made the version, before the next — and same-day runs keep the
+ * ledger's own order (newest last).
+ */
+function runMs(run, changes) {
+  const i = changes.findIndex((c) => c.version === run.version);
+  const from = i >= 0 ? Date.parse(changes[i].ts) : NaN;
+  const to = i >= 0 && i + 1 < changes.length ? Date.parse(changes[i + 1].ts) : NaN;
+  let base = Date.parse(`${run.date}T00:00:00`);
+  if (!Number.isNaN(from) && base <= from) base = from + 1;
+  if (!Number.isNaN(to) && base + run.index >= to) base = to - 1e6;
+  return base + run.index;
 }
 
 /**
@@ -231,33 +282,13 @@ export function readCeremonyState(palaceRoot, home) {
   const last = changes.length ? changes[changes.length - 1] : null;
   // The working tree can hold a version git hasn't seen yet.
   const spec = last && last.version === version ? last : (version ? { hash: null, ts: null, subject: 'not committed yet', version } : null);
-  const first = changes.length ? changes[0] : null;
-
-  const commits = first ? commitsFrom(palaceRoot, first.hash) : [];
-  const changeHashes = new Set(changes.map((c) => c.hash));
-  const versionAt = (ts) => {
-    let v = null;
-    for (const c of changes) if (!ts || Date.parse(c.ts) <= Date.parse(ts)) v = c.version;
-    return v;
-  };
-  const matched = commits.filter((c) => isRunSubject(home, c.subject) && !changeHashes.has(c.hash)).slice(0, 60);
-  const bodies = bodiesFor(palaceRoot, [...matched.map((c) => c.hash), ...changes.map((c) => c.hash)]);
+  const bodies = bodiesFor(palaceRoot, changes.map((c) => c.hash));
   for (const c of changes) c.lead = bodyLead(bodies.get(c.hash));
-  const runs = matched
-    .map((c) => ({ key: `commit-${c.hash}`, hash: c.hash, ts: c.ts, subject: c.subject, lead: bodyLead(bodies.get(c.hash)), version: versionAt(c.ts) }));
-  const records = recordRuns(palaceRoot, home, b.bundleDir).map((r) => ({ ...r, version: versionAt(r.ts) }));
 
-  // A commit ran after the change if it descends from it (ancestry, not the
-  // clock); a record file has no commit of its own, so its date decides.
-  const sinceSpec = spec && spec.hash
-    ? new Set(git(palaceRoot, ['log', '--format=%H', `${spec.hash}..HEAD`]).split('\n').filter(Boolean))
-    : new Set();
-  const specMs = spec && spec.ts ? Date.parse(spec.ts) : NaN;
-  const recordAfter = (day10) => (Number.isNaN(specMs) ? false : Date.parse(`${day10}T23:59:59Z`) > specMs);
-  const runsSince = [
-    ...runs.filter((r) => sinceSpec.has(r.hash)),
-    ...records.filter((r) => recordAfter(r.ts)),
-  ].sort((x, y) => String(y.ts).localeCompare(String(x.ts)));
+  // Newest first. A run belongs to the version its line names.
+  const runs = parseRuns(ledger)
+    .map((r) => ({ ...r, kind: 'run', ts: r.date, ms: runMs(r, changes) }))
+    .sort((x, y) => y.ms - x.ms);
 
   return {
     home,
@@ -268,12 +299,17 @@ export function readCeremonyState(palaceRoot, home) {
     spec,
     versions: changes,
     runs,
-    records,
-    runs_since: runsSince,
-    last_run: [...runs, ...records].sort((x, y) => String(y.ts).localeCompare(String(x.ts)))[0] || null,
+    runs_since: version ? runs.filter((r) => r.version === version) : [],
+    last_run: runs[0] || null,
     owed: parseOwed(ledger),
+    orders: parseOrders(ledger),
     latest: parseLatestLesson(ledger),
   };
+}
+
+/** How a run reads in a list: its date, what it ran on, what it taught. */
+export function runText(r) {
+  return `${r.date} — ${r.what || 'a run'} · ${r.outcome}`;
 }
 
 /** Render a ceremony's NOW zone (between the markers, markers excluded). */
@@ -288,32 +324,37 @@ export function renderCeremonyNow(st, { tsNow }) {
   else if (st.spec) L.push(`- **Version:** ${v} · changed in the working tree, not committed yet`);
   else L.push('- **Version:** none on the card — the ceremony is not versioned yet');
   const n = st.runs_since.length;
-  if (!st.spec || !st.spec.hash) L.push('- **Runs since the change:** — (nothing to count from until the version is committed)');
+  if (!st.version) L.push('- **Runs since the change:** — (no version to count against)');
   else if (!n) L.push(`- **Runs since the change:** none yet — ${v} has not run`);
   else {
-    const days = new Set(st.runs_since.map((r) => day(r.ts))).size;
-    L.push(`- **Runs since the change:** ${n} record${n === 1 ? '' : 's'} on ${days} day${days === 1 ? '' : 's'}`);
+    const days = new Set(st.runs_since.map((r) => r.date)).size;
+    L.push(`- **Runs since the change:** ${n} run${n === 1 ? '' : 's'} on ${days} day${days === 1 ? '' : 's'}, counted from the ledger's run lines`);
   }
-  if (st.last_run) L.push(`- **Last run:** ${day(st.last_run.ts)} — ${st.last_run.subject || st.last_run.label}${st.last_run.hash ? ` (\`${st.last_run.hash.slice(0, 8)}\`)` : ''}`);
-  else L.push('- **Last run:** none recorded since the ceremony was first versioned');
-  L.push(`- **Owed in the ledger:** ${st.owed.length ? `${st.owed.length} — item${st.owed.length === 1 ? '' : 's'} ${st.owed.map((o) => o.n).join(', ')}; the next run's tail read picks ${st.owed.length === 1 ? 'it' : 'them'} up first` : 'nothing'}`);
+  L.push(`- **Last run:** ${st.last_run ? `${runText(st.last_run)} (under v${st.last_run.version})` : 'none in the ledger yet'}`);
+  const orders = (st.orders || []).filter((o) => o.owed);
+  const owedCount = st.owed.length + orders.length;
+  const parts = [];
+  if (st.owed.length) parts.push(`item${st.owed.length === 1 ? '' : 's'} ${st.owed.map((o) => o.n).join(', ')}`);
+  if (orders.length) parts.push(`${orders.length} order${orders.length === 1 ? '' : 's'} from Loudon`);
+  L.push(`- **Owed in the ledger:** ${owedCount ? `${owedCount} — ${parts.join(' and ')}; the next run's tail read picks ${owedCount === 1 ? 'it' : 'them'} up first` : 'nothing'}`);
   if (st.latest && st.latest.heading) L.push(`- **Latest lesson:** item ${dash(st.latest.item)}, ${st.latest.heading.replace(/^From /, 'from ')} — [[${st.home} — tuning]]`);
   L.push('');
   L.push(`### Runs since ${v}`);
   L.push('');
   if (!n) L.push('_None yet._');
-  for (const r of st.runs_since.slice(0, 8)) L.push(`- ${day(r.ts)} — ${r.subject || r.label}${r.hash ? ` \`${r.hash.slice(0, 8)}\`` : ''}`);
+  for (const r of st.runs_since.slice(0, 8)) L.push(`- ${runText(r)}`);
   if (n > 8) L.push(`- _…and ${n - 8} more in the trail below._`);
   L.push('');
   L.push('### Owed');
   L.push('');
-  if (!st.owed.length) L.push('_Nothing owed._');
+  if (!owedCount) L.push('_Nothing owed._');
   for (const o of st.owed) L.push(`- **${o.n}.** ${o.text}`);
+  for (const o of orders) L.push(`- **From Loudon, ${o.date}.** ${o.text}`);
   L.push('');
   return L.join('\n');
 }
 
-/** One trail section: a run, a record, or a version change. */
+/** One trail section: a run or a version change. */
 export function renderCeremonySection(item) {
   const L = [];
   L.push(`<!-- scroll:entry id="${item.key}" -->`);
@@ -323,27 +364,22 @@ export function renderCeremonySection(item) {
     L.push(item.subject);
     if (item.lead) { L.push(''); L.push(item.lead); }
     L.push(`<sub>\`${item.hash.slice(0, 8)}\` · version change</sub>`);
-  } else if (item.path) {
-    L.push(`### ${day(item.ts)} — ${item.label}`);
-    L.push('');
-    L.push(`[${basename(item.path)}](${item.path})`);
-    L.push(`<sub>record${item.version ? ` · under v${item.version}` : ''}</sub>`);
   } else {
-    L.push(`### ${day(item.ts)} — ${item.subject}`);
-    if (item.lead) { L.push(''); L.push(item.lead); }
-    L.push(`<sub>\`${item.hash.slice(0, 8)}\` · a run${item.version ? ` under v${item.version}` : ''}</sub>`);
+    L.push(`### ${item.date} — ${item.what || 'a run'}`);
+    L.push('');
+    L.push(item.outcome);
+    L.push(`<sub>a run${item.version ? ` under v${item.version}` : ''} · its line in the tuning ledger</sub>`);
   }
   L.push('<!-- /scroll:entry -->');
   return L.join('\n');
 }
 
-/** Trail items (runs, records, version changes) newest first. */
+/** Trail items (runs and version changes) newest first. */
 export function ceremonyTrail(st) {
   const versions = (st.versions || []).map((c) => ({
-    kind: 'version', key: `version-${c.hash}`, hash: c.hash, ts: c.ts, subject: c.subject, version: c.version, lead: c.lead || '',
+    kind: 'version', key: `version-${c.hash}`, hash: c.hash, ts: c.ts, ms: Date.parse(c.ts), subject: c.subject, version: c.version, lead: c.lead || '',
   }));
-  return [...versions, ...st.runs, ...st.records]
-    .sort((a, b) => String(b.ts).localeCompare(String(a.ts)));
+  return [...versions, ...st.runs].sort((a, b) => b.ms - a.ms);
 }
 
 /**
@@ -364,7 +400,7 @@ export function materializeCeremonyScroll({ palaceRoot, home, tsNow = new Date()
     text = renderSkeleton({
       home, born: day(tsNow), nowText, kind: 'ceremony',
       ordersText: CEREMONY_ORDERS_PLACEHOLDER,
-      makingText: newSections.join('\n\n') || '_No run recorded since the ceremony was first versioned — the first run will open the trail._',
+      makingText: newSections.join('\n\n') || '_No run in the ledger yet — the first run\'s line will open the trail._',
     });
   } else {
     const r = updateScrollText(existing, { nowText, newSections });

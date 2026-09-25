@@ -4,33 +4,90 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import {
-  isRunSubject, normVersion, parseOwed, parseLatestLesson, bodyLead, listCeremonies, isCeremony,
+  parseRunLine, parseRuns, runLine, parseOrders, orderLine, appendLedgerLine,
+  normVersion, parseOwed, parseLatestLesson, bodyLead, listCeremonies, isCeremony,
   readCeremonyState, renderCeremonyNow, renderCeremonySection, materializeCeremonyScroll, materializeAnyScroll,
   CEREMONY_ORDERS_PLACEHOLDER,
 } from '../../src/ceremony-scroll.js';
 import { MARK, readStandingOrders, updateScrollText } from '../../src/scroll-file.js';
 
-describe('run signatures', () => {
-  test('each ceremony counts its own record, not tooling that shares a prefix', () => {
-    expect(isRunSubject('Deposit Ceremony', 'deposit(D-2026-09-04-CROSSED): only what crossed')).toBe(true);
-    expect(isRunSubject('Deposit Ceremony', 'Deposit — the retired subject still counts')).toBe(true);
-    expect(isRunSubject('Deposit Ceremony', 'edit(Deposit Ceremony): v2.0')).toBe(false);
-    expect(isRunSubject('Return Ceremony', 'return(2026-09-25): ten hours')).toBe(true);
-    expect(isRunSubject('Closing Well', 'close well(2026-08-25): finish the backstage rows')).toBe(true);
-    expect(isRunSubject('Closing Well', 'edit(close-2026-09-02): the counter-discipline gets its proof')).toBe(true);
-    expect(isRunSubject('Closing Well', 'closing-well(gotchas): append trap 18')).toBe(false);
-    expect(isRunSubject('Weave Ceremony', 'Weave — 2026-09-24 — part 1')).toBe(true);
-    expect(isRunSubject('Walk Ceremony', 'Walk — 2026-10-01 — Kuramoto Coupling — metadata updates')).toBe(true);
+describe('run lines', () => {
+  test('a run line reads as date, version, what it ran on, and what it taught', () => {
+    expect(parseRunLine('- run · 2026-09-25 · v1.1 · close-2026-09-25-ceremonies · taught item 31')).toEqual({
+      date: '2026-09-25', version: '1.1', what: 'close-2026-09-25-ceremonies', outcome: 'taught item 31',
+    });
+    expect(parseRunLine('- run · 2026-04-01 · v2 · full · nothing new').version).toBe('2.0');
   });
 
-  test('Enrichment counts rich faces, not the face batch', () => {
-    expect(isRunSubject('Enrichment', 'enrich(Kuramoto Coupling): the first rich face — study')).toBe(true);
-    expect(isRunSubject('Enrichment', 'enrich(faces): 45 entries get a face')).toBe(false);
-    expect(isRunSubject('Enrichment', 'enrich(Walk Ceremony): hero + icon — purpose: visual identity')).toBe(false);
+  test('the four-field shape reads too, with nothing for what it ran on', () => {
+    expect(parseRunLine('- run · 2026-09-25 · v1.1 · nothing new')).toEqual({ date: '2026-09-25', version: '1.1', what: '', outcome: 'nothing new' });
   });
 
-  test('an entry with no signature has no runs', () => {
-    expect(isRunSubject('Kuramoto Coupling', 'deposit(x): y')).toBe(false);
+  test('only a line that starts with the prefix is a run', () => {
+    expect(parseRunLine('  - run · 2026-09-25 · v1.1 · nothing new')).toBe(null);
+    expect(parseRunLine('31. **A run · 2026-09-25 · v1.1** taught this.')).toBe(null);
+    expect(parseRunLine('- from Loudon · 2026-09-25 · Ask first. · owed')).toBe(null);
+  });
+
+  test('runLine writes what the parser reads, and keeps its own separator out of the what field', () => {
+    const line = runLine({ date: '2026-09-25', version: '1.0', what: 'Palace Ceremonies · review', outcome: 'nothing new' });
+    expect(line).toBe('- run · 2026-09-25 · v1.0 · Palace Ceremonies, review · nothing new');
+    expect(parseRunLine(line).what).toBe('Palace Ceremonies, review');
+  });
+
+  test('keys come from the line, and a second identical line gets its own', () => {
+    const runs = parseRuns(['# x', '- run · 2026-09-25 · v1.0 · nothing new', 'prose', '- run · 2026-09-25 · v1.0 · nothing new', '- run · 2026-09-26 · v1.0 · a · nothing new'].join('\n'));
+    expect(runs.map((r) => r.index)).toEqual([1, 3, 4]);
+    expect(runs[0].key).toMatch(/^run-[0-9a-f]{10}$/);
+    expect(runs[1].key).toBe(`${runs[0].key}-2`);
+    expect(new Set(runs.map((r) => r.key)).size).toBe(3);
+    // the key survives a reorder (a union merge can interleave lines)
+    const again = parseRuns('- run · 2026-09-26 · v1.0 · a · nothing new\n- run · 2026-09-25 · v1.0 · nothing new');
+    expect(again.find((r) => r.date === '2026-09-26').key).toBe(runs[2].key);
+  });
+});
+
+describe('orders from Loudon', () => {
+  test('an order is his words on one line, owed until a run says otherwise', () => {
+    expect(orderLine('2026-09-25', '  Ask before adding\na probe.  ')).toBe('- from Loudon · 2026-09-25 · Ask before adding a probe. · owed');
+    const orders = parseOrders([
+      '- from Loudon · 2026-09-25 · Ask before adding a probe. · owed',
+      '- from Loudon · 2026-09-26 · Keep it short · even the card. · paid in item 32',
+    ].join('\n'));
+    expect(orders).toEqual([
+      { date: '2026-09-25', text: 'Ask before adding a probe.', status: 'owed', owed: true },
+      { date: '2026-09-26', text: 'Keep it short · even the card.', status: 'paid in item 32', owed: false },
+    ]);
+  });
+
+  test('a union merge that keeps both forms of a paid line reads as paid', () => {
+    const orders = parseOrders([
+      '- from Loudon · 2026-09-25 · Ask first. · paid in item 32',
+      '- from Loudon · 2026-09-25 · Ask first. · owed',
+    ].join('\n'));
+    expect(orders).toEqual([{ date: '2026-09-25', text: 'Ask first.', status: 'paid in item 32', owed: false }]);
+  });
+
+  test('the owed grep of the tail read finds an order line', () => {
+    expect(/\bowed\b/i.test(orderLine('2026-09-25', 'x'))).toBe(true);
+  });
+
+  describe('appendLedgerLine', () => {
+    let dir;
+    afterEach(() => { if (dir) rmSync(dir, { recursive: true, force: true }); dir = null; });
+    const ledger = (text) => { dir = mkdtempSync(path.join(tmpdir(), 'ledger-')); const p = path.join(dir, 'X — tuning.md'); writeFileSync(p, text); return p; };
+
+    test('after a list item it joins the list; after prose it opens one', () => {
+      const a = ledger('31. **An item.** Spec change owed.\n');
+      appendLedgerLine(a, '- run · 2026-09-25 · v1.1 · nothing new');
+      expect(readFileSync(a, 'utf8')).toBe('31. **An item.** Spec change owed.\n- run · 2026-09-25 · v1.1 · nothing new\n');
+      const b = ledger('No items yet.');
+      appendLedgerLine(b, '- run · 2026-09-25 · v1.0 · nothing new');
+      expect(readFileSync(b, 'utf8')).toBe('No items yet.\n\n- run · 2026-09-25 · v1.0 · nothing new\n');
+      const c = ledger('No items yet.\n\n');
+      appendLedgerLine(c, '- run · 2026-09-25 · v1.0 · nothing new');
+      expect(readFileSync(c, 'utf8')).toBe('No items yet.\n\n- run · 2026-09-25 · v1.0 · nothing new\n');
+    });
   });
 });
 
@@ -74,6 +131,7 @@ describe('a ceremony in a real repo', () => {
 
   const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
   const card = (v) => ['---', 'title: "Return Ceremony"', 'type: practice', 'stage: growing', v == null ? null : `version: ${v}`, '---', '', '# Return Ceremony', ''].filter((l) => l != null).join('\n');
+  const LEDGER = () => path.join(root, '_ops/Return Ceremony/Return Ceremony — tuning.md');
   const commit = (msg, date) => { git('add', '-A'); execFileSync('git', ['commit', '-q', '-m', msg], { cwd: root, env: { ...process.env, GIT_AUTHOR_DATE: date, GIT_COMMITTER_DATE: date } }); };
 
   function palace() {
@@ -84,18 +142,18 @@ describe('a ceremony in a real repo', () => {
     writeFileSync(path.join(root, '_ops/Return Ceremony.md'), card(null));
     commit('add the card', '2026-09-01T10:00:00Z');
     writeFileSync(path.join(root, '_ops/Return Ceremony.md'), card('"1.0"'));
-    writeFileSync(path.join(root, '_ops/Return Ceremony/Return Ceremony — tuning.md'), '# Return Ceremony — tuning\n\n## From the first return — 2026-09-02\n\n1. **A debt.** Spec change owed: a probe.\n');
+    writeFileSync(LEDGER(), '# Return Ceremony — tuning\n\n## From the first return — 2026-09-02\n\n1. **A debt.** Spec change owed: a probe.\n');
     commit('edit(Return Ceremony): v1.0 — version, tuning ledger\n\nThe reason for 1.0.', '2026-09-02T10:00:00Z');
-    writeFileSync(path.join(root, 'note.md'), 'x');
+    appendLedgerLine(LEDGER(), '- run · 2026-09-03 · v1.0 · a gap · taught item 1');
     commit('return(2026-09-03): a gap\n\nWhat the gap held.', '2026-09-03T10:00:00Z');
     writeFileSync(path.join(root, '_ops/Return Ceremony.md'), card(1));   // a reformat, not a change
     commit('edit(Return Ceremony): quote the version', '2026-09-04T10:00:00Z');
     writeFileSync(path.join(root, '_ops/Return Ceremony.md'), card('"1.1"'));
     commit('edit(Return Ceremony): v1.1 — a new probe', '2026-09-05T10:00:00Z');
-    writeFileSync(path.join(root, 'note.md'), 'y');
+    appendLedgerLine(LEDGER(), '- run · 2026-09-06 · v1.1 · back again · nothing new');
     commit('return(2026-09-06): back again', '2026-09-06T10:00:00Z');
     writeFileSync(path.join(root, 'note.md'), 'z');
-    commit('edit(Other): not a run', '2026-09-07T10:00:00Z');
+    commit('return(2026-09-07): a commit subject alone is not a run', '2026-09-07T10:00:00Z');
     return root;
   }
 
@@ -105,29 +163,49 @@ describe('a ceremony in a real repo', () => {
     expect(listCeremonies(root)).toEqual([{ title: 'Return Ceremony', tuning: '_ops/Return Ceremony/Return Ceremony — tuning.md' }]);
   });
 
-  test('state: the spec change is the last VALUE change, and runs are counted after it', () => {
+  test('state: the spec change is the last VALUE change, and runs are the ledger\'s run lines', () => {
     palace();
     const st = readCeremonyState(root, 'Return Ceremony');
     expect(st.version).toBe('1.1');
     expect(st.versions.map((c) => c.version)).toEqual(['1.0', '1.1']);   // the reformat is not a change
     expect(st.spec.subject).toBe('edit(Return Ceremony): v1.1 — a new probe');
-    expect(st.runs.map((r) => r.subject)).toEqual(['return(2026-09-06): back again', 'return(2026-09-03): a gap']);
+    expect(st.runs.map((r) => r.what)).toEqual(['back again', 'a gap']);   // newest first; the bare commit is not counted
     expect(st.runs.map((r) => r.version)).toEqual(['1.1', '1.0']);
-    expect(st.runs_since.map((r) => r.subject)).toEqual(['return(2026-09-06): back again']);
+    expect(st.runs_since.map((r) => r.what)).toEqual(['back again']);
+    expect(st.last_run.outcome).toBe('nothing new');
     expect(st.owed.map((o) => o.n)).toEqual(['1']);
-    expect(st.runs[1].lead).toBe('What the gap held.');
+    expect(st.versions[0].lead).toBe('The reason for 1.0.');
+  });
+
+  test('a run line counts the moment it is written, committed or not', () => {
+    palace();
+    appendLedgerLine(LEDGER(), '- run · 2026-09-08 · v1.1 · uncommitted · nothing new');
+    expect(readCeremonyState(root, 'Return Ceremony').runs_since.map((r) => r.what)).toEqual(['uncommitted', 'back again']);
+  });
+
+  test('an owed order from Loudon shows in Now until a run pays it', () => {
+    palace();
+    appendLedgerLine(LEDGER(), orderLine('2026-09-08', 'Ask before adding a probe.'));
+    const st = readCeremonyState(root, 'Return Ceremony');
+    const now = renderCeremonyNow(st, { tsNow: 'x' });
+    expect(now).toMatch(/\*\*Owed in the ledger:\*\* 2 — item 1 and 1 order from Loudon/);
+    expect(now).toContain('- **From Loudon, 2026-09-08.** Ask before adding a probe.');
+    const text = readFileSync(LEDGER(), 'utf8').replace('Ask before adding a probe. · owed', 'Ask before adding a probe. · paid in item 2');
+    writeFileSync(LEDGER(), text);
+    expect(renderCeremonyNow(readCeremonyState(root, 'Return Ceremony'), { tsNow: 'x' })).not.toContain('From Loudon');
   });
 
   test('the Now zone says the version, the runs since, and what is owed', () => {
     palace();
     const now = renderCeremonyNow(readCeremonyState(root, 'Return Ceremony'), { tsNow: '2026-09-08T00:00:00Z' });
     expect(now).toMatch(/\*\*Version:\*\* v1\.1 · the spec last changed 2026-09-05/);
-    expect(now).toMatch(/\*\*Runs since the change:\*\* 1 record on 1 day/);
+    expect(now).toMatch(/\*\*Runs since the change:\*\* 1 run on 1 day/);
+    expect(now).toMatch(/\*\*Last run:\*\* 2026-09-06 — back again · nothing new \(under v1\.1\)/);
     expect(now).toMatch(/\*\*Owed in the ledger:\*\* 1 — item 1/);
     expect(now).toMatch(/Latest lesson:\*\* item 1, from the first return/);
   });
 
-  test('an uncommitted version change is said, not counted', () => {
+  test('an uncommitted version change is said as such', () => {
     palace();
     writeFileSync(path.join(root, '_ops/Return Ceremony.md'), card('"1.2"'));
     const st = readCeremonyState(root, 'Return Ceremony');
@@ -147,15 +225,16 @@ describe('a ceremony in a real repo', () => {
     expect(readStandingOrders(text)).toBe('');   // the ceremony placeholder reads as no orders
     expect(text).toContain(CEREMONY_ORDERS_PLACEHOLDER);
     expect(r1.added_sections).toBe(4);           // two runs, two version changes
-    expect(text.indexOf('back again')).toBeLessThan(text.indexOf('a gap'));   // newest first
+    const order = ['back again', 'the spec moved to v1.1', 'a gap', 'the spec moved to v1.0'].map((t) => text.indexOf(t));
+    expect(order).toEqual([...order].sort((a, b) => a - b));   // newest first, each run after the change it ran under
 
-    writeFileSync(path.join(root, 'note.md'), 'w');
-    commit('return(2026-09-09): a third', '2026-09-09T10:00:00Z');
+    appendLedgerLine(LEDGER(), '- run · 2026-09-09 · v1.1 · a third · nothing new');
     const r2 = materializeCeremonyScroll({ palaceRoot: root, home: 'Return Ceremony', tsNow: '2026-09-10T00:00:00Z' });
     expect(r2.created).toBe(false);
     expect(r2.added_sections).toBe(1);
     const after = readFileSync(file, 'utf8');
-    expect(after.match(/scroll:entry id="commit-/g).length).toBe(3);
+    expect(after.match(/scroll:entry id="run-/g).length).toBe(3);
+    expect(after).toContain('Now shows it as owed until a run acts on it');   // the ceremony placeholder
   });
 
   test('Standing Orders survive a regeneration', () => {
@@ -181,12 +260,13 @@ describe('a ceremony in a real repo', () => {
 });
 
 describe('sections', () => {
-  test('a run, a record and a version change each render with their key', () => {
-    const run = renderCeremonySection({ key: 'commit-abcdef12', hash: 'abcdef1234', ts: '2026-09-03T10:00:00Z', subject: 'return(2026-09-03): a gap', lead: 'Held.', version: '1.0' });
-    expect(run).toContain('<!-- scroll:entry id="commit-abcdef12" -->');
+  test('a run and a version change each render with their key', () => {
+    const [r] = parseRuns('- run · 2026-09-03 · v1.0 · a gap · taught item 1');
+    const run = renderCeremonySection({ ...r, kind: 'run' });
+    expect(run).toContain(`<!-- scroll:entry id="${r.key}" -->`);
+    expect(run).toContain('### 2026-09-03 — a gap');
+    expect(run).toContain('taught item 1');
     expect(run).toContain('a run under v1.0');
-    const rec = renderCeremonySection({ key: 'record-x', ts: '2026-09-06', label: 'Harvest record — X', path: '_ops/Harvest Ceremony/Harvest — 2026-09-06 — X.md', version: '1.0' });
-    expect(rec).toContain('[Harvest — 2026-09-06 — X.md](_ops/Harvest Ceremony/Harvest — 2026-09-06 — X.md)');
     const ver = renderCeremonySection({ kind: 'version', key: 'version-abc', hash: 'abcdef1234', ts: '2026-09-05T10:00:00Z', subject: 'edit(X): v1.1', version: '1.1', lead: '' });
     expect(ver).toContain('the spec moved to v1.1');
   });

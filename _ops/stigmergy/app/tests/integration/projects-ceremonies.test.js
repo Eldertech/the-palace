@@ -7,8 +7,8 @@ import { execFileSync } from 'node:child_process';
 import request from 'supertest';
 import { blackboardMiddleware } from '../../server/middleware.js';
 import { createStewardLane } from '../../server/steward-lane.js';
-import { buildCeremonyRows, buildServiceRows, ceremonyStates } from '../../server/projects.js';
-import { MARK } from '../../../orchestrator/src/scroll-file.js';
+import { buildCeremonyRows, buildServiceRows, ceremonyStates, writeStandingOrders } from '../../server/projects.js';
+import { MARK, CEREMONY_ORDERS_PLACEHOLDER } from '../../../orchestrator/src/scroll-file.js';
 
 function makeServer(palaceRoot) {
   const stewardLane = createStewardLane({
@@ -28,7 +28,8 @@ function makeServer(palaceRoot) {
 }
 
 // A temp palace in a git repo: one project, one ceremony (Return, v1.0, one
-// run since), and one stewarded page that is not a project (a service).
+// run line since), and one stewarded page that is not a project (a service).
+const LEDGER_REL = '_ops/Return Ceremony/Return Ceremony — tuning.md';
 function makePalace({ withGit = true } = {}) {
   const root = mkdtempSync(resolve(tmpdir(), 'stigmergy-ceremonies-test-'));
   const git = (...args) => execFileSync('git', args, { cwd: root, stdio: ['ignore', 'pipe', 'ignore'] });
@@ -49,7 +50,7 @@ function makePalace({ withGit = true } = {}) {
   if (withGit) {
     git('init', '-q'); git('config', 'user.email', 't@t'); git('config', 'user.name', 't');
     git('add', '-A'); git('commit', '-q', '-m', 'edit(Return Ceremony): v1.0 — version, tuning ledger');
-    writeFileSync(resolve(root, 'note.md'), 'x');
+    writeFileSync(resolve(root, LEDGER_REL), readFileSync(resolve(root, LEDGER_REL), 'utf8') + '- run · 2026-09-25 · v1.0 · ten hours · taught item 7\n');
     git('add', '-A'); git('commit', '-q', '-m', 'return(2026-09-25): ten hours');
   }
   return root;
@@ -67,25 +68,26 @@ describe('the deck lists ceremonies and services', () => {
     expect(res.body.services.map((r) => r.home)).toEqual(['Shopkeeper']);
     expect(res.body.services[0]).toMatchObject({ kind: 'service', type: 'maker', stewarded: true });
     const [c] = res.body.ceremonies;
-    expect(c).toMatchObject({ kind: 'ceremony', home: 'Return Ceremony', version: '1.0', runs_since: 1, owed: ['7'] });
-    expect(c.last_run.subject).toBe('return(2026-09-25): ten hours');
+    expect(c).toMatchObject({ kind: 'ceremony', home: 'Return Ceremony', version: '1.0', runs_since: 1, owed: ['7'], orders_owed: 0 });
+    expect(c.last_run).toEqual({ ts: '2026-09-25', subject: 'ten hours · taught item 7', version: '1.0' });
   });
 
   test('ceremony state is cached until HEAD moves', () => {
     root = makePalace();
     const a = ceremonyStates({ palaceRoot: root })[0];
     expect(ceremonyStates({ palaceRoot: root })[0]).toBe(a);   // same object: served from cache
-    writeFileSync(resolve(root, 'note.md'), 'y');
+    writeFileSync(resolve(root, LEDGER_REL), readFileSync(resolve(root, LEDGER_REL), 'utf8') + '- run · 2026-09-26 · v1.0 · again · nothing new\n');
     execFileSync('git', ['commit', '-q', '-am', 'return(2026-09-26): again'], { cwd: root, stdio: 'ignore' });
     const b = ceremonyStates({ palaceRoot: root })[0];
     expect(b).not.toBe(a);
     expect(b.runs_since).toHaveLength(2);
   });
 
-  test('without git the ceremony still lists, with nothing counted', () => {
+  test('without git the ceremony still lists, and its run lines still count', () => {
     root = makePalace({ withGit: false });
+    writeFileSync(resolve(root, LEDGER_REL), readFileSync(resolve(root, LEDGER_REL), 'utf8') + '- run · 2026-09-25 · v1.0 · ten hours · nothing new\n');
     const [c] = buildCeremonyRows({ palaceRoot: root });
-    expect(c).toMatchObject({ home: 'Return Ceremony', version: '1.0', runs_since: 0, owed: ['7'] });
+    expect(c).toMatchObject({ home: 'Return Ceremony', version: '1.0', runs_since: 1, owed: ['7'] });
     expect(c.spec_changed.hash).toBe(null);
     expect(buildServiceRows({ palaceRoot: root }).map((r) => r.home)).toEqual(['Shopkeeper']);
   });
@@ -99,18 +101,45 @@ describe('a ceremony scroll through the projects endpoints', () => {
     expect(res.body.kind).toBe('ceremony');
     expect(res.body.exists).toBe(false);
     expect(res.body.zones.now).toMatch(/\*\*Version:\*\* v1\.0/);
-    expect(res.body.zones.making).toContain('return(2026-09-25): ten hours');
+    expect(res.body.zones.making).toContain('### 2026-09-25 — ten hours');
+    expect(res.body.zones.making).not.toContain('return(2026-09-25)');   // a commit subject is not a run
     expect(existsSync(resolve(root, '_ops/Return Ceremony/Return Ceremony — scroll.md'))).toBe(false);
   });
 
-  test('PUT /api/projects/orders writes a ceremony scroll and keeps its orders', async () => {
+  test('PUT /api/projects/orders puts a ceremony\'s order in its tuning ledger as owed', async () => {
     root = makePalace();
-    const res = await request(makeServer(root)).put('/api/projects/orders').send({ home: 'Return Ceremony', orders: 'Ask before adding a probe.' });
+    const res = await request(makeServer(root)).put('/api/projects/orders').send({ home: 'Return Ceremony', orders: 'Ask before adding\na probe.' });
     expect(res.status).toBe(200);
-    expect(res.body.zones.orders).toBe('Ask before adding a probe.');
+    expect(res.body.kind).toBe('ceremony');
+    expect(res.body.tuning).toBe(LEDGER_REL);
+    const ledger = readFileSync(resolve(root, LEDGER_REL), 'utf8');
+    expect(ledger.endsWith('- run · 2026-09-25 · v1.0 · ten hours · taught item 7\n- from Loudon · ' + res.body.ledger_orders[0].date + ' · Ask before adding a probe. · owed\n')).toBe(true);
+    expect(res.body.ledger_orders).toEqual([{ date: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/), text: 'Ask before adding a probe.', status: 'owed', owed: true }]);
+    expect(res.body.zones.orders).toBe('');                      // the box takes the next order
+    expect(res.body.zones.now).toContain('1 order from Loudon');
+    expect(res.body.zones.now).toContain('Ask before adding a probe.');
+    // the scroll file is not the destination; nothing wrote it
+    expect(existsSync(resolve(root, '_ops/Return Ceremony/Return Ceremony — scroll.md'))).toBe(false);
+    const [row] = buildCeremonyRows({ palaceRoot: root });
+    expect(row.owed).toEqual(['7', `Loudon ${res.body.ledger_orders[0].date}`]);
+    expect(row.orders_owed).toBe(1);
+  });
+
+  test('a ceremony order uses the date it is given, and an empty one adds nothing', () => {
+    root = makePalace();
+    const before = readFileSync(resolve(root, LEDGER_REL), 'utf8');
+    expect(writeStandingOrders({ palaceRoot: root, home: 'Return Ceremony', orders: '   ' })).toEqual({ error: 'empty-order' });
+    expect(readFileSync(resolve(root, LEDGER_REL), 'utf8')).toBe(before);
+    const r = writeStandingOrders({ palaceRoot: root, home: 'Return Ceremony', orders: 'Keep the block to one command.', today: '2026-10-01' });
+    expect(r.ledger_orders).toEqual([{ date: '2026-10-01', text: 'Keep the block to one command.', status: 'owed', owed: true }]);
+  });
+
+  test('a new ceremony scroll carries the placeholder that says where orders go', () => {
+    root = makePalace();
+    execFileSync('node', [resolve(__dirname, '../../../orchestrator/src/scroll.js'), '--ceremonies', '--root', root], { stdio: 'ignore' });
     const text = readFileSync(resolve(root, '_ops/Return Ceremony/Return Ceremony — scroll.md'), 'utf8');
-    expect(text).toContain("The ceremony's front door");
-    expect(text).toContain(MARK.makingStart);
+    expect(text).toContain(`${MARK.ordersStart}\n${CEREMONY_ORDERS_PLACEHOLDER}\n${MARK.ordersEnd}`);
+    expect(CEREMONY_ORDERS_PLACEHOLDER).toMatch(/tuning ledger as owed/);
   });
 
   test('an unknown home is a 404', async () => {

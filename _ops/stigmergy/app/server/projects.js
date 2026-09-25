@@ -2,8 +2,9 @@
 // as one row, stewarded or not, plus the read/write seam for its scroll. Two
 // more groups share the deck (2026-09-25): SERVICES, stewarded pages that are
 // not projects (the Shopkeeper, once enchanted), and CEREMONIES, every entry
-// with a tuning ledger — its version, its runs since the spec last changed,
-// and what the ledger still owes (orchestrator/src/ceremony-scroll.js).
+// with a tuning ledger — its version, its runs since the spec last changed
+// (counted from the ledger's run lines), and what the ledger still owes
+// (orchestrator/src/ceremony-scroll.js).
 //
 // The big-picture view Loudon asked for (2026-09-23): "no really good big-
 // picture view of the projects and all their current states." One row per
@@ -15,8 +16,9 @@
 // Reading a scroll here regenerates its Now zone IN MEMORY for display (the
 // "regenerated on every look" promise) without touching disk — the on-disk
 // scroll is written by steward cycles, by an explicit `write`, and whenever
-// Loudon saves Standing Orders. That keeps the working tree quiet between
-// cycles while the terminal always shows the live state.
+// Loudon saves a project's Standing Orders. That keeps the working tree quiet
+// between cycles while the terminal always shows the live state. A ceremony's
+// orders go to its tuning ledger instead, as an owed line the next run reads.
 
 import { existsSync, readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
@@ -30,7 +32,7 @@ import {
 import { resolveBundleDir, findEntryFile } from '../../orchestrator/src/entry-paths.js';
 import {
   listCeremonies, readCeremonyState, isCeremony, materializeCeremonyScroll, materializeAnyScroll,
-  CEREMONY_ORDERS_PLACEHOLDER,
+  tuningPathFor, appendLedgerLine, orderLine,
 } from '../../orchestrator/src/ceremony-scroll.js';
 import { parseFrontmatter } from '../../orchestrator/src/entry-frontmatter.js';
 import { enchantSteward } from '../../orchestrator/src/enchant.js';
@@ -206,6 +208,7 @@ export function buildCeremonyRows({ palaceRoot }) {
   const rows = ceremonyStates({ palaceRoot }).map((st) => {
     const scrollRel = relative(palaceRoot, join(st.bundleDir, `${st.home} — scroll.md`));
     const lastTs = st.last_run ? String(st.last_run.ts) : null;
+    const ordersOwed = (st.orders || []).filter((o) => o.owed);
     return {
       kind: 'ceremony',
       home: st.home,
@@ -214,9 +217,10 @@ export function buildCeremonyRows({ palaceRoot }) {
       version: st.version,
       spec_changed: st.spec ? { ts: st.spec.ts, hash: st.spec.hash, subject: st.spec.subject } : null,
       runs_since: st.runs_since.length,
-      run_days_since: new Set(st.runs_since.map((r) => String(r.ts).slice(0, 10))).size,
-      last_run: st.last_run ? { ts: lastTs, subject: st.last_run.subject || st.last_run.label, hash: st.last_run.hash || null } : null,
-      owed: st.owed.map((o) => o.n),
+      run_days_since: new Set(st.runs_since.map((r) => r.date)).size,
+      last_run: st.last_run ? { ts: lastTs, subject: `${st.last_run.what || 'a run'} · ${st.last_run.outcome}`, version: st.last_run.version } : null,
+      owed: [...st.owed.map((o) => o.n), ...ordersOwed.map((o) => `Loudon ${o.date}`)],
+      orders_owed: ordersOwed.length,
       latest: st.latest,
       last_activity: [lastTs, st.spec && st.spec.ts].filter(Boolean).sort().pop() || null,
       scroll_path: scrollRel,
@@ -249,6 +253,8 @@ function readCeremonyScroll({ palaceRoot, home, write, now }) {
       owed: st.owed.map((o) => o.n),
       stewarded: false, open: [], answered_unconsumed: [], stalled: false, drift: null, stands: '',
     },
+    tuning: st.tuning,
+    ledger_orders: st.orders,
     steward: null,
     ts: now,
   };
@@ -316,18 +322,32 @@ export function readScroll({ palaceRoot, home, write = false, now = new Date().t
   };
 }
 
+/** Loudon's local date, YYYY-MM-DD — the date the palace's ledgers use. */
+function localDay(d = new Date()) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 /**
- * Write Loudon's Standing Orders into the scroll (creating the scroll first if
- * needed). Only the orders zone changes; the Now zone is regenerated as part
- * of the write so the file on disk is fresh. Returns the updated readScroll.
+ * Write Loudon's Standing Orders. For a project (or any page), into the
+ * scroll, creating it first if needed: only the orders zone changes, and the
+ * Now zone is regenerated as part of the write so the file on disk is fresh.
+ * For a ceremony, one owed line appended to its tuning ledger
+ * (`- from Loudon · <date> · <his words> · owed`, SCHEMA — Reference §6),
+ * which the next run's tail read picks up; the scroll file is not touched.
+ * Returns the updated readScroll.
  */
-export function writeStandingOrders({ palaceRoot, home, orders, now = new Date().toISOString() }) {
+export function writeStandingOrders({ palaceRoot, home, orders, now = new Date().toISOString(), today = localDay() }) {
   const bundle = resolveBundleDir(palaceRoot, home);
   if (!bundle) return { error: 'entry-file-not-found' };
+  if (isCeremony(palaceRoot, home)) {
+    const words = String(orders || '').replace(/\s+/g, ' ').trim();
+    if (!words) return { error: 'empty-order' };
+    appendLedgerLine(tuningPathFor(palaceRoot, home), orderLine(today, words));
+    return readScroll({ palaceRoot, home, now });
+  }
   const stewards = stewardIndex(palaceRoot);
   const s = stewards.get(home) || null;
   const scrollPath = join(bundle.bundleDir, `${home} — scroll.md`);
-  const ceremony = isCeremony(palaceRoot, home);
   if (!existsSync(scrollPath)) {
     const r = materializeAnyScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, tsNow: now });
     if (!r.written) return { error: r.reason || 'could-not-create-scroll' };
@@ -337,7 +357,7 @@ export function writeStandingOrders({ palaceRoot, home, orders, now = new Date()
   const end = start >= 0 ? text.indexOf(MARK.ordersEnd, start) : -1;
   if (start < 0 || end < 0) return { error: 'orders-markers-missing', path: relative(palaceRoot, scrollPath) };
   const body = String(orders || '').trim();
-  const next = text.slice(0, start + MARK.ordersStart.length) + '\n' + (body || (ceremony ? CEREMONY_ORDERS_PLACEHOLDER : ORDERS_PLACEHOLDER)) + '\n' + text.slice(end);
+  const next = text.slice(0, start + MARK.ordersStart.length) + '\n' + (body || ORDERS_PLACEHOLDER) + '\n' + text.slice(end);
   if (!existsSync(bundle.bundleDir)) mkdirSync(bundle.bundleDir, { recursive: true });
   writeFileSync(scrollPath, next);
   // Refresh the Now zone on disk too (a save is a look).
