@@ -31,17 +31,45 @@ const CT = {
 const RENDERER_FILES = new Set(['parse.js']);
 
 const json = (res, code, obj) => { res.writeHead(code, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(obj)); };
+const statOrNull = (p) => { try { return statSync(p); } catch { return null; } };
+const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+
+// A review is refused here at the size the board itself refuses
+// (MAX_BODY_BYTES in app/server/http.js), so nothing is forwarded only to bounce.
+const MAX_REVIEW_BYTES = 64 * 1024;
+const ID_TASK_CHARS = 64; // the task travels whole in the payload; only its slug in the id is cut
+
+// Collect the body as bytes and decode once at the end: decoding chunk by chunk
+// garbles a character whose bytes land in two chunks. Past the cap it answers
+// 413 and resolves null; the rest of the body is read and dropped, not kept.
+function readBody(req, res, cap) {
+  return new Promise((ok, fail) => {
+    const chunks = [];
+    let total = 0, settled = false;
+    const settle = (fn, v) => { if (!settled) { settled = true; fn(v); } };
+    req.on('data', (c) => {
+      if (settled) return;
+      total += c.length;
+      if (total > cap) { chunks.length = 0; json(res, 413, { error: `too large — the board takes at most ${cap / 1024} KB` }); settle(ok, null); return; }
+      chunks.push(c);
+    });
+    req.on('end', () => settle(ok, Buffer.concat(chunks).toString('utf8')));
+    req.on('error', (e) => settle(fail, e));
+    req.on('close', () => settle(fail, new Error('the request closed before its body ended')));
+  });
+}
 
 // The human_eval message — honest zeros for a human, iteration >= 1, and the
 // human node's model id (SCHEMA — Reference §9).
 export function buildReviewMessage(data) {
+  const d = isPlainObject(data) ? data : {};
   const ts = new Date().toISOString();
-  const task = String(data.task || 'rich-face');
+  const task = String(d.task || 'rich-face');
   return {
-    schema_version: '1.0', id: `human-eval-${task.replace(/[^\w-]+/g, '-')}-${Date.now()}`, ts,
+    schema_version: '1.0', id: `human-eval-${task.replace(/[^\w-]+/g, '-').slice(0, ID_TASK_CHARS)}-${Date.now()}`, ts,
     session_id: `human-eval-${ts.slice(0, 10)}`, from: 'TRICKSTER', to: '*', type: 'BROADCAST', board: 'FLAGS',
     health: { context_pct: 0, stop_reason: 'human_eval', iteration: 1, tokens_this_call: 0, model: 'loudon-trickster', score: 'green' },
-    payload: { kind: 'human_eval', task, groups: data.groups || {}, overall: data.overall || {} },
+    payload: { kind: 'human_eval', task, groups: d.groups || {}, overall: d.overall || {} },
   };
 }
 
@@ -76,25 +104,47 @@ export function createRichHandler({ root, here, base = '', app }) {
     return { title, md: relUrl(md), bundle: existsSync(bundle) ? relUrl(bundle) + '/' : null, manifest: manifest ? relUrl(manifest) : null, files };
   }
 
-  function serveFile(req, res, file) {
-    const size = statSync(file).size;
+  function serveFile(req, res, file, size) {
     const headers = { 'Content-Type': CT[extname(file).toLowerCase()] || 'application/octet-stream', 'Accept-Ranges': 'bytes', 'Cache-Control': 'no-store' };
     const range = req.headers.range && req.headers.range.match(/bytes=(\d*)-(\d*)/);
+    let status = 200, opts;
     if (range) {
       const start = range[1] === '' ? size - parseInt(range[2], 10) : parseInt(range[1], 10);
       let end = range[1] !== '' && range[2] !== '' ? parseInt(range[2], 10) : size - 1;
       if (!(start >= 0) || start >= size || end < start) { res.writeHead(416, { 'Content-Range': `bytes */${size}` }); res.end(); return; }
       end = Math.min(end, size - 1);
-      res.writeHead(206, { ...headers, 'Content-Range': `bytes ${start}-${end}/${size}`, 'Content-Length': end - start + 1 });
-      createReadStream(file, { start, end }).pipe(res);
-      return;
-    }
-    res.writeHead(200, { ...headers, 'Content-Length': size });
-    if (req.method === 'HEAD') { res.end(); return; }
-    createReadStream(file).pipe(res);
+      status = 206; opts = { start, end };
+      Object.assign(headers, { 'Content-Range': `bytes ${start}-${end}/${size}`, 'Content-Length': end - start + 1 });
+    } else headers['Content-Length'] = size;
+    // HEAD answers from the stat alone and never opens the file.
+    if (req.method === 'HEAD') { res.writeHead(status, headers); res.end(); return; }
+    // Answer only once the file is open: one that went missing since the stat,
+    // or that can't be read, gets an honest status instead of a half-sent 200,
+    // and a stream error is always handled here — never an uncaught 'error'.
+    const stream = createReadStream(file, opts);
+    stream.on('open', () => { res.writeHead(status, headers); stream.pipe(res); });
+    stream.on('error', (e) => {
+      if (res.headersSent) { res.destroy(); return; }
+      res.writeHead(e.code === 'ENOENT' ? 404 : 403, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+      res.end('cannot read: ' + relative(ROOT, file));
+    });
+    res.on('close', () => stream.destroy());
   }
 
+  // A bad request must never take the server down: whatever throws on the way
+  // through becomes a 500 for that request alone.
   return async function handle(req, res) {
+    try {
+      return await route(req, res);
+    } catch (e) {
+      console.error('[rich-face]', req.method, req.url, e);
+      if (res.headersSent) res.destroy();
+      else json(res, 500, { error: 'the rich face failed on this request: ' + (e && e.message ? e.message : String(e)) });
+      return true;
+    }
+  };
+
+  async function route(req, res) {
     const u = new URL(req.url, 'http://x');
     let path = u.pathname;
     if (base) {
@@ -118,10 +168,11 @@ export function createRichHandler({ root, here, base = '', app }) {
       return true;
     }
     if (path === '/_api/review' && req.method === 'POST') {
-      let body = '';
-      for await (const c of req) { body += c; if (body.length > 256 * 1024) { json(res, 413, { error: 'too large' }); return true; } }
+      const body = await readBody(req, res, MAX_REVIEW_BYTES);
+      if (body === null) return true; // 413 already sent
       let data;
       try { data = JSON.parse(body); } catch (e) { json(res, 400, { error: 'bad json: ' + e.message }); return true; }
+      if (!isPlainObject(data)) { json(res, 400, { error: 'a review is a JSON object' }); return true; }
       const msg = buildReviewMessage(data);
       const target = app(req).replace(/\/$/, '');
       try {
@@ -142,8 +193,9 @@ export function createRichHandler({ root, here, base = '', app }) {
       const name = path.slice('/_rich/'.length);
       file = RENDERER_FILES.has(name) ? join(HERE, name) : null;
     } else file = inside(ROOT, path);
-    if (!file || !existsSync(file) || !statSync(file).isFile()) { res.writeHead(404); res.end('not found: ' + path); return true; }
-    serveFile(req, res, file);
+    const st = file ? statOrNull(file) : null;
+    if (!st || !st.isFile()) { res.writeHead(404); res.end('not found: ' + path); return true; }
+    serveFile(req, res, file, st.size);
     return true;
-  };
+  }
 }
