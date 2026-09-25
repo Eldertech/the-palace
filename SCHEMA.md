@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.22"
+version: "1.23"
 stage: foundational
 status: canonical
 links:
@@ -176,7 +176,8 @@ propagate to, the postcondition, and the access vectors.
 
 **Moved to [[SCHEMA — Reference]] §6** — the operational-card / `— Context` split at ~8KB, which
 ceremonies are currently split, and how a ceremony keeps its version: the `version` field, the tuning
-ledger, what every run reads first, and what every run report carries.
+ledger, what every run reads first and the line it leaves there, what every run report carries, and why
+the ledgers merge by union.
 
 ---
 

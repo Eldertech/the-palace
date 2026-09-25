@@ -1,0 +1,4 @@
+# Tuning ledgers merge by union: two branches that each append a line to the
+# same ledger keep both, without a conflict (SCHEMA — Reference §6). The quotes
+# keep the spaces inside the pattern; unquoted, it would split at them.
+"* — tuning.md" merge=union
