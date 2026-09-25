@@ -4,7 +4,6 @@
 // creation, and so tests keep a single, obvious injection point (audit §4).
 
 import { resolve } from 'node:path';
-import { createActuator } from './actuator.js';
 import { createStewardLane } from './steward-lane.js';
 import { createCompanionLane } from './companion-lane.js';
 import { createRegenLane } from './regen-lane.js';

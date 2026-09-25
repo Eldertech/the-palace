@@ -1,14 +1,12 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest';
 import http from 'node:http';
-import { resolve, dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { mkdtempSync, rmSync, mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import request from 'supertest';
 import { blackboardMiddleware } from '../../server/middleware.js';
 import { VERDICTS_REL } from '../../server/digest-verdicts.js';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function makeServer(palaceRoot) {
   const plugin = blackboardMiddleware(palaceRoot);
