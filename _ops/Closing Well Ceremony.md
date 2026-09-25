@@ -106,9 +106,10 @@ Use context to tell an invocation from a passing mention of the practice.
    indexed in its bundle — honoring the worktree rules (`_ops/worktree/SKILL.md`:
    canon to the owner/`main`; batons per worktree, announced on the owner board).
    The commit is the record.
-7. Ask what this close taught the ceremony. Append to [[Closing Well — tuning]]
-   only if the answer changed the spec — "nothing" is a legal answer. The
-   ledger is what makes "professional" literal.
+7. Ask what this close taught the ceremony, and mark [[Closing Well — tuning]]
+   with the close's run line — "nothing" is a legal answer. A numbered item goes
+   there only if the answer changed the spec. The ledger is what makes
+   "professional" literal.
 
 **Postconditions:**
 1. A reckoning was drafted and assented to (or the session was found to warrant no

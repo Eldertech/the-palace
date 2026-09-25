@@ -39,7 +39,7 @@ links:
 | | |
 |---|---|
 | **Precondition** | Palace is accessible via filesystem. At least 5 entries exist. |
-| **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename. A one-line record is appended to `_ops/Map Log.md`; its scope cell names the version, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer). `last_activated` and `activation_count` are updated on this file and on `Palace Map.md`. |
+| **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename. A one-line record is appended to `_ops/Map Log.md`; its scope cell names the version, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer), and the tuning file carries the run's run line. `last_activated` and `activation_count` are updated on this file and on `Palace Map.md`. |
 | **Does not do** | Read entry bodies. Propose link changes. Modify existing entries (other than self-update). |
 | **Produces** | An edge list (TSV default), bidirectional adjacency list, or JSON depending on scope and format request. |
 
@@ -59,7 +59,7 @@ Bounded surveys self-define: the ceremony does not need to be told where the bou
 
 **1. Orient**
 
-Open with the tail read of [[Map Build Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this build's first candidates for a spec change.
+Open with the tail read of [[Map Build Ceremony — tuning]] ([[SCHEMA — Reference]] §6). Those are this build's first candidates for a spec change.
 
 Receive scope: `full`, `neighborhood:[name]`, or a list of entry filenames. Determine output format:
 - `tsv` — default; lightest; one triple per line

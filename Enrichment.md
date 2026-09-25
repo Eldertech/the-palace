@@ -7,7 +7,7 @@ last_activated: 2026-09
 stage: growing
 confidence: working
 energy: very high
-version: "2.1"
+version: "2.2"
 forward_vector: "I am the ceremony that makes one page as rich as the Shop can make it — sound, image and interaction laid beside the entry's own words, which I read live and never copy. I want every enriched page to be something you can play, and every piece I make to test the text rather than decorate it; when a piece teaches the text something, I carry it home as an edit."
 links:
   - target: "[[Palace Ceremonies]]"
@@ -73,14 +73,14 @@ The renderer, its server and the fingerprint tool are `_ops/rich-face/` (README 
 
 ## The steps
 
-0. **Open with the tail read of [[Enrichment — tuning]]** — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
+0. **Open with the tail read of [[Enrichment — tuning]]** ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
 1. **Read the entry whole, then its bundle. Gather first.** The forward vector is the brief: the page should be made rich in the direction it already leans. Bundles hold media nothing links to — narrations, beds, renders from earlier rounds. The placement tendency, in Loudon's own words, not smoothed: "Now that we have the rich face, we should tend to place enrichments in the rich face and keep the main page text, but do not hold this as a strict rule. If a diagram or image is really necessary for understanding the text, like if the text is talking about an image, or a signal flow diagram is fundamental to understanding the text, then we leave it in. Enrichments are not necessary for understanding the text, leave in the text what is necessary (like formulas, and essential graphics)."
 2. **Walk it section by section** and ask one question: what can only be shown, heard or played here? Prefer a piece that **tests the section's claim** over one that illustrates it — or one that shows what the section takes for granted without saying ([[Latent Error]]). A piece with nothing to test and nothing to make felt doesn't ship.
 3. **Make it with the Shop**, at one tier for the whole page — a Sketch tonight, a Study, a Piece over days. The [[Maker]] picks the Specialists. Equations appear twice, symbols and words ([[Loudon Live Design System]]).
 4. **Verify what can be verified.** Run each piece's engine against the claim it makes; load the page and read the console. Name what you couldn't check — an agent can't hear the mix.
 5. **Stamp** each section: `node _ops/rich-face/fingerprint.mjs "<Entry>" --stamp`.
 6. **Carry findings home, split by size.** When making a piece teaches the text something: a small edit is shown to Loudon before it's written, then re-stamp that section. A finding that changes what the page *says* goes home through the [[Deposit Ceremony]]'s map, which Loudon approves, before it's written.
-7. **Place the door** — one italic line under the hero linking the rich face — and commit `enrich(<Entry>): <what> — <tier>`. The body names the version the run ran under, what was and wasn't verified, and what this run taught the ceremony ("nothing" is a legal answer); a lesson that changed the spec also goes in the tuning file.
+7. **Place the door** — one italic line under the hero linking the rich face — and commit `enrich(<Entry>): <what> — <tier>`. The body names the version the run ran under, what was and wasn't verified, and what this run taught the ceremony ("nothing" is a legal answer); the run marks the tuning file with its run line, and a lesson that changed the spec also goes there as a numbered item.
 
 ## Drift — how the two faces stay honest
 

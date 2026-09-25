@@ -6,7 +6,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: mature
-version: "1.0"
+version: "1.1"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -54,7 +54,7 @@ The Spore Check is also the palace's composting decision point. Some ideas never
 
 **Step 1: Read all dormant entries**
 
-First take the tail read of [[Spore Check Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
+First take the tail read of [[Spore Check Ceremony — tuning]] ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
 
 Read every entry with `stage: dormant`. For each, note:
 - When it was last activated
@@ -105,7 +105,7 @@ Wait for Loudon's confirmation or adjustments before writing.
 
 **Step 5: Apply and commit**
 
-Apply all confirmed dispositions. Then commit: `Spore Check — [date] — [N revived, N composted, N held]`. The commit is the run's record: its body names the version and ends with what this run taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file.
+Apply all confirmed dispositions. Then commit: `Spore Check — [date] — [N revived, N composted, N held]`. The commit is the run's record: its body names the version and ends with what this run taught the ceremony ("nothing" is a legal answer); the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item.
 
 ## The Composting Note
 

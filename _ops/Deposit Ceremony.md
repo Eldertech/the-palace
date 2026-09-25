@@ -9,7 +9,7 @@ born: 2026-03
 last_activated: 2026-03-21
 activation_count: 4
 stage: growing
-version: "2.0"
+version: "2.1"
 forward_vector: "I am the palace's gate for finds. Whoever brings one, I slow them down long enough to see it again, ask an elder where it lives, map it with care, and let Loudon read every word before it becomes canon. I want the palace to grow only by what was truly found, and everyone who offers something to be answered."
 links:
   - target: "[[Harvest Ceremony]]"
@@ -90,7 +90,7 @@ These are the palace's values as they bear on this one decision. Hold them while
 
 ## Steps
 
-**Open.** Take the tail read of [[Deposit Ceremony — tuning]]: its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Resume the [[Concierge]], or summon it if none is resident; never spawn a second. Then say, visibly, that you are shifting into deposit mode: you have been a participant, and now you are stepping back to look at what was made.
+**Open.** Take the tail read of [[Deposit Ceremony — tuning]] ([[SCHEMA — Reference]] §6). Resume the [[Concierge]], or summon it if none is resident; never spawn a second. Then say, visibly, that you are shifting into deposit mode: you have been a participant, and now you are stepping back to look at what was made.
 
 **1. Intent.** In one sentence: what is this deposit trying to preserve, and for whom? This is the compression target every later choice answers to.
 
@@ -140,7 +140,7 @@ PALACE_ROOT="<owner>" node "<owner>/_ops/stigmergy/app/scripts/palace-commit.mjs
   --path "<Entry>.md" [--path "<Entry>/<file>"] --dry-run   # drop --dry-run to land
 ```
 
-The body is the record; the [[Deposit Archive]] is the LOG deck filtered to `Palace-Kind: deposit`, and its frozen table is never appended to. The body holds what was kept, the through-line, lost branches, the version this ran under, and what this run taught the ceremony ("nothing" is a legal answer; a lesson that changes the spec also goes in the tuning file).
+The body is the record; the [[Deposit Archive]] is the LOG deck filtered to `Palace-Kind: deposit`, and its frozen table is never appended to. The body holds what was kept, the through-line, lost branches, the version this ran under, and what this run taught the ceremony ("nothing" is a legal answer; the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item).
 
 Weave flags: show Loudon each flag's body, and post only on his approval, through the writer, never by hand. One command per flag, run from `_ops/` (`--dry-run` validates without posting): `python3 -m commons weave-flag --flag-type … --source-entries "A,B" --target-entry "…" --proposed-action "…" --rationale "…" --source-deposit-id <id> --sender "<page>"`.
 
