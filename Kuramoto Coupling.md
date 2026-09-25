@@ -245,4 +245,6 @@ The musical mapping becomes explicit:
 - Adaptive/Hebbian coupling (dKᵢⱼ/dt = ε(sin(θⱼ - θᵢ) - Kᵢⱼ)): a system that discovers its own harmonic structure. What prevents it from converging to a single rigid state?
 - Hysteresis near Kc: sweeping K up produces synchronization at one threshold; sweeping down, coherence persists longer before breaking. Can this asymmetry be musically exploited?
 
+## Active Baton
 
+[[Kuramoto Coupling — baton]] — drafted 2026-09-25
