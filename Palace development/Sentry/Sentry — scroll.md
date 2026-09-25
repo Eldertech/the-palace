@@ -15,17 +15,17 @@ forward_vector: "I am Sentry's scroll — the one page that opens on which versi
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T23:45:50.802Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T23:48:31.521Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.0 · the spec last changed 2026-09-25 (`8c506407`) — Schema Ceremony — Sentry added — v1.24
-- **Runs since the change:** 1 run on 1 day, counted from the ledger's run lines
+- **Version:** v1.1 · the spec last changed 2026-09-25 (`39326ef4`) — edit(Sentry): v1.1 — the hosting check reads Dependabot's alerts; 10
+- **Runs since the change:** none yet — v1.1 has not run
 - **Last run:** 2026-09-25 — deep sweep of 34b1c52a, 7 raised, held locally · nothing new (under v1.0)
 - **Owed in the ledger:** 1 — item 4; the next run's tail read picks it up first
-- **Latest lesson:** item 9, from the first watch — 2026-09-25 (hand-run, before the Sentry had a page) — [[Sentry — tuning]]
+- **Latest lesson:** item 10, from the first run on main — 2026-09-25 (deep sweep of 34b1c52a) — [[Sentry — tuning]]
 
-### Runs since v1.0
+### Runs since v1.1
 
-- 2026-09-25 — deep sweep of 34b1c52a, 7 raised, held locally · nothing new
+_None yet._
 
 ### Owed
 
@@ -42,6 +42,15 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="version-39326ef45f3e98590a09d4414dd3b592216620e0" -->
+### 2026-09-25 — the spec moved to v1.1
+
+edit(Sentry): v1.1 — the hosting check reads Dependabot's alerts; 10
+
+The first run on main raised npm advisories from two lockfiles with dev dependencies left out. Minutes later, with Dependabot switched on, GitHub reported 53 open advisories across every manifest, dev tooling included. The Sentry's view was narrower than the host's.
+<sub>`39326ef4` · version change</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="run-e0c42c8439" -->
 ### 2026-09-25 — deep sweep of 34b1c52a, 7 raised, held locally
 
