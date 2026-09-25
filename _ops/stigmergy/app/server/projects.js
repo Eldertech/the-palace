@@ -1,5 +1,9 @@
 // server/projects.js — the PROJECTS deck's data: every `type: project` entry
-// as one row, stewarded or not, plus the read/write seam for its scroll.
+// as one row, stewarded or not, plus the read/write seam for its scroll. Two
+// more groups share the deck (2026-09-25): SERVICES, stewarded pages that are
+// not projects (the Shopkeeper, once enchanted), and CEREMONIES, every entry
+// with a tuning ledger — its version, its runs since the spec last changed,
+// and what the ledger still owes (orchestrator/src/ceremony-scroll.js).
 //
 // The big-picture view Loudon asked for (2026-09-23): "no really good big-
 // picture view of the projects and all their current states." One row per
@@ -14,15 +18,20 @@
 // Loudon saves Standing Orders. That keeps the working tree quiet between
 // cycles while the terminal always shows the live state.
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { existsSync, readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
+import { join, relative, dirname } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { readJsonl } from '@stigmergy/core/blackboard';
 import { listProjectEntries, stewardIndex } from '../../orchestrator/src/scroll.js';
 import {
   MARK, ORDERS_PLACEHOLDER, computeNow, renderNow, renderSkeleton, readZone, readStandingOrders,
   updateScrollText, materializeScroll, lastGitTouch, scanBundleMediaFiles,
 } from '../../orchestrator/src/scroll-file.js';
-import { resolveBundleDir } from '../../orchestrator/src/entry-paths.js';
+import { resolveBundleDir, findEntryFile } from '../../orchestrator/src/entry-paths.js';
+import {
+  listCeremonies, readCeremonyState, isCeremony, materializeCeremonyScroll, materializeAnyScroll,
+  CEREMONY_ORDERS_PLACEHOLDER,
+} from '../../orchestrator/src/ceremony-scroll.js';
 import { parseFrontmatter } from '../../orchestrator/src/entry-frontmatter.js';
 import { enchantSteward } from '../../orchestrator/src/enchant.js';
 
@@ -77,55 +86,172 @@ export function buildProjectRows({ palaceRoot, board = null, stewardLane = null,
   const worker = stewardLane ? stewardLane.status() : null;
   const rows = [];
   for (const p of listProjectEntries(palaceRoot)) {
-    const bundle = resolveBundleDir(palaceRoot, p.title);
-    const entryText = (() => { try { return readFileSync(join(palaceRoot, p.file), 'utf8'); } catch { return ''; } })();
-    const fm = parseFrontmatter(entryText);
-    const s = stewards.get(p.title) || null;
-    let state = null; let history = []; let manifest = null;
-    if (s) {
-      const dirAbs = s.dir.startsWith('/') ? s.dir : join(palaceRoot, s.dir);
-      state = readJsonSafe(join(dirAbs, 'state.json'));
-      manifest = readJsonSafe(join(dirAbs, 'manifest.json'));
-      history = readHistorySafe(join(dirAbs, 'history.jsonl'));
-    }
-    const nowView = computeNow({
-      home: p.title, board: boardMsgs, state, history,
-      meta: { stage: fm.stage, data: fm }, entryText, tsNow: now,
-      lastTouch: null, bundleMedia: [],
-    });
-    const scrollRel = bundle ? relative(palaceRoot, join(bundle.bundleDir, `${p.title} — scroll.md`)) : null;
-    const scrollExists = scrollRel ? existsSync(join(palaceRoot, scrollRel)) : false;
-    const lastShip = nowView.last_shipped;
-    const lastActivity = [nowView.latest_spoken_ts, state && state.last_active].filter(Boolean).sort().pop() || null;
-    const running = !!(worker && worker.running && worker.current === p.title);
-    rows.push({
-      home: p.title,
-      path: p.file,
-      status: p.status,
-      stage: p.stage,
-      stewarded: !!s,
-      steward_dir: s ? s.dir : null,
-      iteration: nowView.iteration,
-      last_active: nowView.last_active,
-      run_cap: manifest && manifest.stopping_conditions && Number.isInteger(manifest.stopping_conditions.max_iterations) ? manifest.stopping_conditions.max_iterations : (s ? 1 : null),
-      model: manifest && manifest.model ? manifest.model.name || null : null,
-      health: state && state.health ? state.health.score || null : null,
-      stalled: nowView.stall.stalled,
-      barren_streak: nowView.stall.barren_streak,
-      open_asks: nowView.open.length,
-      open_blocking: nowView.open.some((r) => r.blocking),
-      answered_unconsumed: nowView.answered_unconsumed.length,
-      last_shipped: lastShip ? { id: lastShip.id, ts: lastShip.ts, headline: (lastShip.payload && (lastShip.payload.headline || lastShip.payload.subject)) || null } : null,
-      last_activity: lastActivity,
-      drift: nowView.drift,
-      stands: nowView.stands || '',
-      scroll_path: scrollRel,
-      scroll_exists: scrollExists,
-      running,
-      run: running && worker.current_run ? { position: worker.current_run.position, cap: worker.current_run.cap, cycle_n: worker.current_run.cycle_n } : null,
-    });
+    rows.push(entryRow({ palaceRoot, p, boardMsgs, stewards, worker, now }));
   }
   return sortProjects(rows);
+}
+
+/**
+ * Stewarded pages that are not projects — the SERVICES group. Same row shape
+ * and signal as a project row, so the deck renders them with the same code.
+ */
+export function buildServiceRows({ palaceRoot, board = null, stewardLane = null, now = new Date().toISOString() }) {
+  const boardMsgs = board || readBoard(palaceRoot);
+  const stewards = stewardIndex(palaceRoot);
+  const worker = stewardLane ? stewardLane.status() : null;
+  const projects = new Set(listProjectEntries(palaceRoot).map((p) => p.title));
+  const rows = [];
+  for (const home of stewards.keys()) {
+    if (projects.has(home)) continue;
+    const file = findEntryFile(palaceRoot, home);
+    if (!file) continue;
+    const fm = (() => { try { return parseFrontmatter(readFileSync(file, 'utf8')); } catch { return {}; } })();
+    const p = { title: home, file: relative(palaceRoot, file), status: typeof fm.status === 'string' ? fm.status : null, stage: typeof fm.stage === 'string' ? fm.stage : null };
+    rows.push({ ...entryRow({ palaceRoot, p, boardMsgs, stewards, worker, now }), kind: 'service', type: fm.type || null });
+  }
+  return sortProjects(rows);
+}
+
+function entryRow({ palaceRoot, p, boardMsgs, stewards, worker, now }) {
+  const bundle = resolveBundleDir(palaceRoot, p.title);
+  const entryText = (() => { try { return readFileSync(join(palaceRoot, p.file), 'utf8'); } catch { return ''; } })();
+  const fm = parseFrontmatter(entryText);
+  const s = stewards.get(p.title) || null;
+  let state = null; let history = []; let manifest = null;
+  if (s) {
+    const dirAbs = s.dir.startsWith('/') ? s.dir : join(palaceRoot, s.dir);
+    state = readJsonSafe(join(dirAbs, 'state.json'));
+    manifest = readJsonSafe(join(dirAbs, 'manifest.json'));
+    history = readHistorySafe(join(dirAbs, 'history.jsonl'));
+  }
+  const nowView = computeNow({
+    home: p.title, board: boardMsgs, state, history,
+    meta: { stage: fm.stage, data: fm }, entryText, tsNow: now,
+    lastTouch: null, bundleMedia: [],
+  });
+  const scrollRel = bundle ? relative(palaceRoot, join(bundle.bundleDir, `${p.title} — scroll.md`)) : null;
+  const scrollExists = scrollRel ? existsSync(join(palaceRoot, scrollRel)) : false;
+  const lastShip = nowView.last_shipped;
+  const lastActivity = [nowView.latest_spoken_ts, state && state.last_active].filter(Boolean).sort().pop() || null;
+  const running = !!(worker && worker.running && worker.current === p.title);
+  return {
+    kind: 'project',
+    home: p.title,
+    path: p.file,
+    status: p.status,
+    stage: p.stage,
+    stewarded: !!s,
+    steward_dir: s ? s.dir : null,
+    iteration: nowView.iteration,
+    last_active: nowView.last_active,
+    run_cap: manifest && manifest.stopping_conditions && Number.isInteger(manifest.stopping_conditions.max_iterations) ? manifest.stopping_conditions.max_iterations : (s ? 1 : null),
+    model: manifest && manifest.model ? manifest.model.name || null : null,
+    health: state && state.health ? state.health.score || null : null,
+    stalled: nowView.stall.stalled,
+    barren_streak: nowView.stall.barren_streak,
+    open_asks: nowView.open.length,
+    open_blocking: nowView.open.some((r) => r.blocking),
+    answered_unconsumed: nowView.answered_unconsumed.length,
+    last_shipped: lastShip ? { id: lastShip.id, ts: lastShip.ts, headline: (lastShip.payload && (lastShip.payload.headline || lastShip.payload.subject)) || null } : null,
+    last_activity: lastActivity,
+    drift: nowView.drift,
+    stands: nowView.stands || '',
+    scroll_path: scrollRel,
+    scroll_exists: scrollExists,
+    running,
+    run: running && worker.current_run ? { position: worker.current_run.position, cap: worker.current_run.cap, cycle_n: worker.current_run.cycle_n } : null,
+  };
+}
+
+// Ceremony state reads git history, so it is cached per ceremony until HEAD or
+// one of its files changes; the ceremony list itself is re-walked at most every
+// 30 s. The deck polls every 3 s and must not pay for twelve git walks each time.
+const ceremonyCache = { root: null, listAt: 0, list: null, states: new Map() };
+
+function gitHead(palaceRoot) {
+  try {
+    return execFileSync('git', ['rev-parse', 'HEAD'], { cwd: palaceRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 5000 }).trim();
+  } catch { return ''; }
+}
+
+const mtimes = (paths) => paths.map((p) => { try { return statSync(p).mtimeMs; } catch { return 0; } }).join(':');
+
+export function ceremonyStates({ palaceRoot, fresh = false }) {
+  const t = Date.now();
+  if (fresh || ceremonyCache.root !== palaceRoot || !ceremonyCache.list || t - ceremonyCache.listAt > 30000) {
+    if (ceremonyCache.root !== palaceRoot) ceremonyCache.states.clear();
+    ceremonyCache.root = palaceRoot;
+    ceremonyCache.list = listCeremonies(palaceRoot);
+    ceremonyCache.listAt = t;
+  }
+  const head = gitHead(palaceRoot);
+  const out = [];
+  for (const c of ceremonyCache.list) {
+    const tuningAbs = join(palaceRoot, c.tuning);
+    const hit = ceremonyCache.states.get(c.title);
+    const watch = [tuningAbs, dirname(tuningAbs), join(palaceRoot, '_ops/maps')];
+    if (hit && hit.state) watch.push(join(palaceRoot, hit.state.path));
+    const key = `${head}|${mtimes(watch)}`;
+    if (!fresh && hit && hit.key === key) { if (hit.state) out.push(hit.state); continue; }
+    const state = readCeremonyState(palaceRoot, c.title);
+    const keyAfter = state ? `${head}|${mtimes([...watch.slice(0, 3), join(palaceRoot, state.path)])}` : key;
+    ceremonyCache.states.set(c.title, { key: keyAfter, state });
+    if (state) out.push(state);
+  }
+  return out;
+}
+
+/** One row per ceremony, newest activity first. */
+export function buildCeremonyRows({ palaceRoot }) {
+  const rows = ceremonyStates({ palaceRoot }).map((st) => {
+    const scrollRel = relative(palaceRoot, join(st.bundleDir, `${st.home} — scroll.md`));
+    const lastTs = st.last_run ? String(st.last_run.ts) : null;
+    return {
+      kind: 'ceremony',
+      home: st.home,
+      path: st.path,
+      tuning: st.tuning,
+      version: st.version,
+      spec_changed: st.spec ? { ts: st.spec.ts, hash: st.spec.hash, subject: st.spec.subject } : null,
+      runs_since: st.runs_since.length,
+      run_days_since: new Set(st.runs_since.map((r) => String(r.ts).slice(0, 10))).size,
+      last_run: st.last_run ? { ts: lastTs, subject: st.last_run.subject || st.last_run.label, hash: st.last_run.hash || null } : null,
+      owed: st.owed.map((o) => o.n),
+      latest: st.latest,
+      last_activity: [lastTs, st.spec && st.spec.ts].filter(Boolean).sort().pop() || null,
+      scroll_path: scrollRel,
+      scroll_exists: existsSync(join(palaceRoot, scrollRel)),
+    };
+  });
+  return rows.sort((a, b) => String(b.last_activity || '').localeCompare(String(a.last_activity || '')) || a.home.localeCompare(b.home));
+}
+
+/** A ceremony's scroll, Now regenerated live; written to disk only with `write`. */
+function readCeremonyScroll({ palaceRoot, home, write, now }) {
+  const r = materializeCeremonyScroll({ palaceRoot, home, tsNow: now, dryRun: !write });
+  if (!r.text) return r.reason === 'entry-file-not-found' ? null : { home, path: r.scrollPath || null, exists: false, error: r.reason };
+  const st = r.state;
+  return {
+    home,
+    kind: 'ceremony',
+    path: r.scrollPath,
+    exists: write || !r.created,
+    text: r.text,
+    zones: {
+      now: readZone(r.text, MARK.nowStart, MARK.nowEnd) || '',
+      orders: readStandingOrders(r.text),
+      making: readZone(r.text, MARK.makingStart, MARK.makingEnd) || '',
+    },
+    now: {
+      version: st.version,
+      spec_changed: st.spec ? { ts: st.spec.ts, hash: st.spec.hash } : null,
+      runs_since: st.runs_since.length,
+      owed: st.owed.map((o) => o.n),
+      stewarded: false, open: [], answered_unconsumed: [], stalled: false, drift: null, stands: '',
+    },
+    steward: null,
+    ts: now,
+  };
 }
 
 /**
@@ -135,6 +261,7 @@ export function buildProjectRows({ palaceRoot, board = null, stewardLane = null,
  * `write`), so the deck can always open a project.
  */
 export function readScroll({ palaceRoot, home, write = false, now = new Date().toISOString() }) {
+  if (isCeremony(palaceRoot, home)) return readCeremonyScroll({ palaceRoot, home, write, now });
   const bundle = resolveBundleDir(palaceRoot, home);
   if (!bundle) return null;
   const stewards = stewardIndex(palaceRoot);
@@ -200,8 +327,9 @@ export function writeStandingOrders({ palaceRoot, home, orders, now = new Date()
   const stewards = stewardIndex(palaceRoot);
   const s = stewards.get(home) || null;
   const scrollPath = join(bundle.bundleDir, `${home} — scroll.md`);
+  const ceremony = isCeremony(palaceRoot, home);
   if (!existsSync(scrollPath)) {
-    const r = materializeScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, tsNow: now });
+    const r = materializeAnyScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, tsNow: now });
     if (!r.written) return { error: r.reason || 'could-not-create-scroll' };
   }
   const text = readFileSync(scrollPath, 'utf8');
@@ -209,11 +337,11 @@ export function writeStandingOrders({ palaceRoot, home, orders, now = new Date()
   const end = start >= 0 ? text.indexOf(MARK.ordersEnd, start) : -1;
   if (start < 0 || end < 0) return { error: 'orders-markers-missing', path: relative(palaceRoot, scrollPath) };
   const body = String(orders || '').trim();
-  const next = text.slice(0, start + MARK.ordersStart.length) + '\n' + (body || ORDERS_PLACEHOLDER) + '\n' + text.slice(end);
+  const next = text.slice(0, start + MARK.ordersStart.length) + '\n' + (body || (ceremony ? CEREMONY_ORDERS_PLACEHOLDER : ORDERS_PLACEHOLDER)) + '\n' + text.slice(end);
   if (!existsSync(bundle.bundleDir)) mkdirSync(bundle.bundleDir, { recursive: true });
   writeFileSync(scrollPath, next);
   // Refresh the Now zone on disk too (a save is a look).
-  materializeScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, tsNow: now });
+  materializeAnyScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, tsNow: now });
   return readScroll({ palaceRoot, home, now });
 }
 

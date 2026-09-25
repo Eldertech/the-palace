@@ -1,12 +1,13 @@
 // server/api/projects.js — the PROJECTS deck endpoints.
-//   GET /api/projects                  — every type:project entry as a row (+ worker status)
+//   GET /api/projects                  — every type:project entry as a row, plus services
+//                                        (stewarded non-projects) and ceremonies (+ worker status)
 //   GET /api/projects/scroll?home=     — one project's scroll, Now zone regenerated live
 //                                        (&write=1 also persists the regeneration)
 //   PUT /api/projects/orders           — { home, orders } → write Standing Orders
 //   POST /api/projects/enchant         — { home } → give the project a steward (idempotent)
 
 import { jsonResponse, readBody } from '../http.js';
-import { buildProjectRows, readScroll, writeStandingOrders, enchantProject } from '../projects.js';
+import { buildProjectRows, buildServiceRows, buildCeremonyRows, readScroll, writeStandingOrders, enchantProject } from '../projects.js';
 
 export async function projectsRoutes(ctx) {
   const { req, res, palaceRoot, urlPath, query, method, stewardLane } = ctx;
@@ -15,6 +16,8 @@ export async function projectsRoutes(ctx) {
     try {
       jsonResponse(res, 200, {
         projects: buildProjectRows({ palaceRoot, stewardLane }),
+        services: buildServiceRows({ palaceRoot, stewardLane }),
+        ceremonies: buildCeremonyRows({ palaceRoot }),
         worker: stewardLane ? stewardLane.status() : null,
         ts: new Date().toISOString(),
       });
@@ -29,7 +32,7 @@ export async function projectsRoutes(ctx) {
     if (!home) { jsonResponse(res, 400, { error: 'missing ?home' }); return true; }
     try {
       const r = readScroll({ palaceRoot, home, write: query.get('write') === '1' });
-      if (!r) { jsonResponse(res, 404, { error: 'project not found', home }); return true; }
+      if (!r) { jsonResponse(res, 404, { error: 'entry not found', home }); return true; }
       jsonResponse(res, 200, r);
     } catch (err) {
       jsonResponse(res, 500, { error: `read scroll failed: ${err.message}` });
