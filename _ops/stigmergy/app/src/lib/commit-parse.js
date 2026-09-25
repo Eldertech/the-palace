@@ -25,6 +25,20 @@ export const KNOWN_KINDS = [
   'weave', 'schema', 'ops', 'merge', 'mixed',
 ];
 
+// Other spellings of a known kind, read on the way in. The spec table defines
+// `handoff` as "a baton written or consumed", and the Baton Ceremony (and
+// baton-executor.mjs) write `baton(<Entry>):` — the same kind under the
+// ceremony's own name. Readers accept an alias; producers write the canonical
+// kind, so the enum above stays the one list the pickers offer.
+export const KIND_ALIASES = { baton: 'handoff' };
+
+export function canonicalKind(token) {
+  if (typeof token !== 'string') return null;
+  const t = token.toLowerCase();
+  if (KNOWN_KINDS.includes(t)) return t;
+  return KIND_ALIASES[t] ?? null;
+}
+
 const KIND_COLOR = {
   deposit: 'var(--phosphor-bright)',
   edit: 'var(--phosphor)',
@@ -65,8 +79,8 @@ export function parseSubject(subject) {
   const raw = typeof subject === 'string' ? subject.trim() : '';
   // <kind>(<scope>): <summary>   -- scope optional
   const m = raw.match(/^([a-z]+)(?:\(([^)]*)\))?:\s+(.+)$/);
-  if (m && KNOWN_KINDS.includes(m[1])) {
-    return { kind: m[1], scope: m[2] ?? null, summary: m[3], declared: true };
+  if (m && canonicalKind(m[1])) {
+    return { kind: canonicalKind(m[1]), scope: m[2] ?? null, summary: m[3], declared: true };
   }
   // A subject that uses `<token>(scope):` or `<Token>:` form but whose token
   // is NOT a known kind -- keep the scope/summary split for display, but the
@@ -105,7 +119,7 @@ export function parseTrailers(body) {
     if (!(key in out.raw)) out.raw[key] = [];
     out.raw[key].push(val);
     switch (key) {
-      case 'Palace-Kind': out.kind = val.toLowerCase(); break;
+      case 'Palace-Kind': out.kind = canonicalKind(val) ?? val.toLowerCase(); break;
       case 'Palace-Entry': out.entries.push(val); break;
       case 'Palace-Stage': out.stage.push(val); break;
       case 'Palace-Vector': out.vector.push(val); break;

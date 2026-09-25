@@ -68,8 +68,9 @@ node _ops/closing-well/baton-executor.mjs \
 It writes `<Entry>/<Entry> — baton.md`, adds the `## Active Baton` pointer to the parent
 entry, validates + (with `--post`) appends the `handoff_ready` line to the owner's persistent
 board, and prints the exact `git commit` command to land the file + pointer. A feature-branch
-baton is non-canon and committed *in the worktree* with plain git (the commit-msg hook stamps
-`Palace-Kind: baton`) — the committer is reserved for deposits, which need its deps and land on
+baton is non-canon and committed *in the worktree* with plain git (subject `baton(<Entry>):`,
+trailer `Palace-Kind: handoff` — the commit-msg hook reads `baton` as the Baton Ceremony's
+spelling of `handoff`) — the committer is reserved for deposits, which need its deps and land on
 the owner.
 *Executor check:* the announce validates (§9); the worktree coordinate is real
 (`git worktree list`); the baton file + pointer are committed so git is its archive.
