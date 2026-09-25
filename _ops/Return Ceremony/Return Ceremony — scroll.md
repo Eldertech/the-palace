@@ -15,17 +15,17 @@ forward_vector: "I am Return Ceremony's scroll — the one page that opens on wh
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:20:24.470Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.0 · the spec last changed 2026-09-25 (`81f0404a`) — edit(Return Ceremony): v1.0 — version, tuning ledger, the tail read
-- **Runs since the change:** 1 run on 1 day, counted from the ledger's run lines
+- **Version:** v1.1 · the spec last changed 2026-09-25 (`94b12dcc`) — edit(ceremonies): every card marks its ledger — the versions move
+- **Runs since the change:** none yet — v1.1 has not run
 - **Last run:** 2026-09-25 — ten hours · taught items 7–10 (under v1.0)
 - **Owed in the ledger:** 4 — items 7, 8, 9, 10; the next run's tail read picks them up first
 - **Latest lesson:** item 10, from the return of 2026-09-25 — ten hours, the first run under the scout — [[Return Ceremony — tuning]]
 
-### Runs since v1.0
+### Runs since v1.1
 
-- 2026-09-25 — ten hours · taught items 7–10
+_None yet._
 
 ### Owed
 
@@ -45,6 +45,15 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="version-94b12dcc0e63093254cff49c2eecf1f94031d471" -->
+### 2026-09-25 — the spec moved to v1.1
+
+edit(ceremonies): every card marks its ledger — the versions move
+
+Schema v1.23 says every run marks its tuning ledger with a run line, but every card still said a lesson goes in the tuning file only when the spec changed, so no run would have written one. Each card now says it: the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item. The opening lines drop their restatement of the tail read's bounds and point at §6, so the bound lives in one place.
+<sub>`94b12dcc` · version change</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="run-1e1424190e" -->
 ### 2026-09-25 — return(2026-09-25): ten hours; a steward stalled, versioning next
 

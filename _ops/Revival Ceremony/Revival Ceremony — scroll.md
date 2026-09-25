@@ -15,15 +15,15 @@ forward_vector: "I am Revival Ceremony's scroll — the one page that opens on w
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:20:24.566Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.0 · the spec last changed 2026-09-25 (`8f3fe3f7`) — edit(ceremonies): Walk, Spore Check, Self-Model, Revival 1.0; Map Build 2.0
-- **Runs since the change:** none yet — v1.0 has not run
+- **Version:** v1.1 · the spec last changed 2026-09-25 (`94b12dcc`) — edit(ceremonies): every card marks its ledger — the versions move
+- **Runs since the change:** none yet — v1.1 has not run
 - **Last run:** none in the ledger yet
 - **Owed in the ledger:** nothing
 - **Latest lesson:** item 1, from Schema v1.19, every agent is born a child — 2026-09-22 — [[Revival Ceremony — tuning]]
 
-### Runs since v1.0
+### Runs since v1.1
 
 _None yet._
 
@@ -42,6 +42,15 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="version-94b12dcc0e63093254cff49c2eecf1f94031d471" -->
+### 2026-09-25 — the spec moved to v1.1
+
+edit(ceremonies): every card marks its ledger — the versions move
+
+Schema v1.23 says every run marks its tuning ledger with a run line, but every card still said a lesson goes in the tuning file only when the spec changed, so no run would have written one. Each card now says it: the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item. The opening lines drop their restatement of the tail read's bounds and point at §6, so the bound lives in one place.
+<sub>`94b12dcc` · version change</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="version-8f3fe3f782238fe3ffcee5d173c90f2a88ea28d6" -->
 ### 2026-09-25 — the spec moved to v1.0
 

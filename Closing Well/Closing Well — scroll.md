@@ -15,21 +15,22 @@ forward_vector: "I am Closing Well's scroll — the one page that opens on which
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:20:23.957Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.1 · the spec last changed 2026-09-25 (`ce4eb6ab`) — edit(Closing Well): v1.1 — the prepared row; tuning item 30
-- **Runs since the change:** 1 run on 1 day, counted from the ledger's run lines
+- **Version:** v1.2 · the spec last changed 2026-09-25 (`94b12dcc`) — edit(ceremonies): every card marks its ledger — the versions move
+- **Runs since the change:** none yet — v1.2 has not run
 - **Last run:** 2026-09-25 — close-2026-09-25-ceremonies · taught item 31 (under v1.1)
-- **Owed in the ledger:** 1 — item 31; the next run's tail read picks it up first
-- **Latest lesson:** item 31, from the ceremony-versioning close — 2026-09-25 — [[Closing Well — tuning]]
+- **Owed in the ledger:** 2 — items 31, 32; the next run's tail read picks them up first
+- **Latest lesson:** item 32, from the Palace Ceremonies review — 2026-09-25 — [[Closing Well — tuning]]
 
-### Runs since v1.1
+### Runs since v1.2
 
-- 2026-09-25 — close-2026-09-25-ceremonies · taught item 31
+_None yet._
 
 ### Owed
 
 - **31.** The reader drops what Loudon says mid-turn, and a cold read built a finding on the gap. In the arc, Loudon asked for "the last 2 tunings". Then, with no human turn in between, t…
+- **32.** The prepare path has no status that reaches it. A keep row whose words Loudon hasn't read is `provisional` (`executor.md:41`), and `provisional` executes nothing (`:30–32`; `dis…
 
 <!-- scroll:now:end -->
 
@@ -42,6 +43,15 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="version-94b12dcc0e63093254cff49c2eecf1f94031d471" -->
+### 2026-09-25 — the spec moved to v1.2
+
+edit(ceremonies): every card marks its ledger — the versions move
+
+Schema v1.23 says every run marks its tuning ledger with a run line, but every card still said a lesson goes in the tuning file only when the spec changed, so no run would have written one. Each card now says it: the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item. The opening lines drop their restatement of the tail read's bounds and point at §6, so the bound lives in one place.
+<sub>`94b12dcc` · version change</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="run-8512d060aa" -->
 ### 2026-09-25 — close-2026-09-25-ceremonies
 
