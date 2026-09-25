@@ -13,17 +13,6 @@ import { appendJsonLine } from '@stigmergy/core/blackboard';
 export const SESSIONS_REL = '_ops/swarm/sessions';
 export const PERSISTENT_REL = '_ops/swarm/persistent/blackboard.jsonl';
 
-// The supervisor prompt the fired worker runs as (the Enrichment ceremony's
-// headless `claude -p` brief). Read at fire time so edits take effect without
-// a server restart. Falls back to a minimal instruction if the file is gone.
-export function readSupervisorPrompt(palaceRoot) {
-  const p = resolve(palaceRoot, 'Enrichment/supervisor-prompt.md');
-  if (existsSync(p)) {
-    try { return readFileSync(p, 'utf8'); } catch (_) { /* fall through */ }
-  }
-  return 'Run the Enrichment ceremony: read Enrichment/inbox.md, act on each card-block per the ceremony spec, then clear the inbox and top the queue to five.';
-}
-
 export function jsonResponse(res, status, payload) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');

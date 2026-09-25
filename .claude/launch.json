@@ -140,6 +140,17 @@
         "_ops/swarm/experiments/palace-gnn-2026-08-26"
       ],
       "port": 8220
+    },
+    {
+      "name": "rich-face",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "_ops/rich-face/rich-server.mjs",
+        "--port",
+        "8842"
+      ],
+      "port": 8842,
+      "url": "http://127.0.0.1:8842"
     }
   ]
 }

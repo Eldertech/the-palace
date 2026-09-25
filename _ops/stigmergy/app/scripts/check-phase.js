@@ -183,19 +183,18 @@ const PHASES = {
   16: {
     label: 'v1.0 Phase 4.5 — Enrichment consolidation',
     vitest: [
-      'card-model.test.js', 'queue-model.test.js', 'commit-parse.test.js',
+      'queue-model.test.js', 'commit-parse.test.js',
       'git-log-parse.test.js', 'frontmatter-diff.test.js', 'log-filter.test.js',
       'worker-log.test.js', 'yaml-frontmatter.test.js', 'parser.test.js',
       'schema.test.js', 'middleware.test.js', 'validator.test.js',
     ],
-    integration: ['cards-middleware.test.js', 'actuator.test.js', 'git-middleware.test.js'],
+    integration: ['actuator.test.js', 'git-middleware.test.js'],
     playwright: [
-      'boot.spec.js', 'tokens.spec.js', 'card-queue.spec.js',
+      'boot.spec.js', 'tokens.spec.js',
     ],
-    screenshots: [
-      'phase-16-v1.0/card-queue.png',
-      'phase-16-v1.0/card-detail.png',
-    ],
+    // The card queue this phase absorbed was retired 2026-09-24 (Enrichment v2.0,
+    // the rich face); its tests and captures went with it.
+    screenshots: [],
   },
   17: {
     label: 'v1.0 Phase 5 Stage A — STATE write (dry-run)',

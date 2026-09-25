@@ -88,8 +88,7 @@ function FileDiff({ fd }) {
     );
   }
   if (fd.kind === 'media') {
-    // Enrichment additions render as the *rendered* enrichment (the spec's
-    // "enrichment additions as the rendered enrichment").
+    // A media addition renders as the media itself, not as a byte diff.
     return (
       <div data-testid="file-diff" data-kind="media" style={{
         border: '1px solid var(--phosphor-dim)', padding: '6px 10px', marginBottom: 8,

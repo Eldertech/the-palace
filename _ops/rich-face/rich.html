@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en" class="skin-graphite">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rich Face</title>
+<link rel="stylesheet" href="_ops/loudon-live/design-system/colors_and_type.css">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-elev-1: #12121a; --bg-elev-2: #1a1a28; --border: #4a4a5e; --border-soft: rgba(255,255,255,0.06);
+    --fg-1: #e8e8f0; --fg-2: #c8c8d8; --fg-3: #8a8aa0; --fg-4: #4a4a5a; --accent: #e8b84a; --accent-dim: #7a6030;
+    --accent-soft: rgba(232,184,74,0.10); --accent-line: rgba(232,184,74,0.50); --warn: #ff9b4a;
+    --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Manrope', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --ease: cubic-bezier(.4, 0, .2, 1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); }
+  [hidden] { display: none !important; }
+  body { color: var(--fg-2); font-family: var(--sans); font-weight: 300; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-dim); }
+  a:hover { border-bottom-color: var(--accent); }
+
+  /* ── top strip ── */
+  .top { position: sticky; top: 0; z-index: 20; display: flex; gap: 18px; align-items: center; justify-content: space-between;
+    padding: 10px 24px; background: rgba(10,10,15,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border-soft);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-3); }
+  .top .left, .top .right { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .top button, .top a.btn { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--fg-2); background: none;
+    border: 1px solid var(--border); border-radius: 2px; padding: 3px 9px; cursor: pointer; }
+  .top button:hover, .top a.btn:hover { border-color: var(--border-hover, var(--accent-line)); color: var(--fg-1); }
+  .top button[aria-pressed="true"] { border-color: var(--accent-line); color: var(--accent); }
+  .sync { color: var(--fg-3); }
+  .sync b { color: #6bd45a; font-weight: 500; }
+
+  /* ── page ── */
+  .page { max-width: 1180px; margin: 0 auto; padding: 0 24px 140px; }
+  .head { padding: 48px 0 36px; border-bottom: 1.5px solid var(--border); margin-bottom: 56px; }
+  .head .hero { width: 100%; max-height: 440px; object-fit: cover; display: block; border-radius: 2px; margin-bottom: 36px; }
+  .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+  .head h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--fg-1); margin: 0 0 22px; }
+  .head .fv { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.4; color: var(--fg-2); max-width: 760px; margin: 0 0 26px; }
+  .head .fv::before { content: 'in its own voice'; display: block; font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 8px; }
+  .head .meta { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-3); }
+  .head .ledger { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--fg-3); }
+  .head .ledger span + span::before { content: ' · '; color: var(--fg-4); }
+
+  /* ── sections ── */
+  section.sec { margin-bottom: 84px; }
+  .sec-label { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-3);
+    padding-bottom: 12px; border-bottom: 1.5px solid var(--border); margin-bottom: 26px; display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+  .sec-label .flags { display: flex; gap: 14px; align-items: baseline; }
+  .sec h2 { font-family: var(--serif); font-weight: 300; font-size: 34px; line-height: 1.1; letter-spacing: -0.01em; color: var(--fg-1); margin: 0 0 22px; }
+  .row { display: grid; grid-template-columns: minmax(0, 68ch) minmax(240px, 1fr); column-gap: 48px; align-items: start; }
+  .row + .row { margin-top: 2px; }
+  .prose { font-family: var(--serif); font-size: 17px; line-height: 1.75; color: var(--fg-1); font-weight: 400; letter-spacing: 0.005em; }
+  .prose p { margin: 0 0 1em; }
+  .prose strong { font-weight: 600; color: #f3f3f8; }
+  .prose em { font-style: italic; }
+  .prose ul, .prose ol { margin: 0 0 1em; padding-left: 1.3em; }
+  .prose li { margin: 0 0 .5em; }
+  .prose li::marker { color: var(--accent-dim); }
+  .prose code { font-family: var(--mono); font-size: .82em; color: var(--fg-2); background: var(--bg-elev-1); padding: 1px 5px; border-radius: 2px; }
+  .prose blockquote { margin: 0 0 1em; padding-left: 16px; border-left: 1.5px solid var(--border); color: var(--fg-2); font-style: italic; }
+  .prose a.wl { border-bottom: 1px dotted var(--accent-dim); }
+  .margin { display: flex; flex-direction: column; gap: 18px; padding-top: 6px; }
+  .band { margin: 12px 0 40px; display: flex; flex-direction: column; gap: 28px; }
+  .band figure.fig:has(.aud) { max-width: 560px; }
+  .band figure.fig:has(video) { max-width: 880px; }
+
+  /* ── figures ── */
+  figure.fig { margin: 0; }
+  .fig .media { border: 1px solid var(--border-soft); border-radius: 2px; background: var(--bg-elev-1); overflow: hidden; }
+  .fig video, .fig img { display: block; width: 100%; height: auto; }
+  .fig iframe { display: block; width: 100%; border: 0; background: var(--bg); min-height: 360px; }
+  .fig .diagram { padding: 28px 16px; display: flex; justify-content: center; background: var(--bg); }
+  .fig .diagram svg { max-width: 100%; height: auto; }
+  .fig .textpiece { padding: 18px 20px; font-family: var(--serif); font-size: 17px; line-height: 1.65; color: var(--fg-1); background: var(--bg-elev-1); }
+  .fig .textpiece p { margin: 0 0 .7em; }
+  .fig .textpiece p:last-child { margin-bottom: 0; }
+  .fig .textpiece .eq { font-family: var(--serif); font-size: 21px; color: #f3f3f8; }
+  .fig .textpiece .words { font-family: var(--sans); font-weight: 300; font-size: 13.5px; line-height: 1.55; color: var(--fg-2); }
+  .fig figcaption { margin-top: 10px; font-family: var(--sans); font-weight: 300; font-size: 13.5px; line-height: 1.55; color: var(--fg-2); }
+  .fig figcaption p { margin: 0 0 .5em; }
+  .fig figcaption strong { color: var(--fg-1); font-weight: 500; }
+  .fig .tag { margin-top: 8px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-4); display: flex; flex-wrap: wrap; gap: 10px; }
+  .fig .tag .made { color: var(--accent-dim); }
+  .fig .also { margin-top: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--fg-3); }
+  .fig .also button { font: inherit; color: var(--accent); background: none; border: 0; border-bottom: 1px solid var(--accent-dim); padding: 0; cursor: pointer; }
+  .rf-drift { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--warn); margin: 0 0 8px; line-height: 1.5; }
+  .rf-drift::before { content: '◐ '; }
+
+  /* ── audio strip (no browser chrome) ── */
+  .aud { display: grid; grid-template-columns: 34px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; }
+  .aud button { width: 34px; height: 34px; border-radius: 2px; border: 1px solid var(--border); background: var(--bg); color: var(--accent); font-size: 13px; cursor: pointer; }
+  .aud button:hover { border-color: var(--accent-line); }
+  .aud .bar { height: 3px; background: var(--fg-4); position: relative; cursor: pointer; }
+  .aud .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--accent); }
+  .aud .lbl { grid-column: 2 / 4; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--fg-3); margin-top: -4px; }
+  .aud .t { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }
+
+  /* ── lost, banner, review ── */
+  #lost { border-top: 1.5px dashed var(--warn); padding-top: 18px; }
+  #lost .sec-label { color: var(--warn); border-bottom-color: rgba(255,155,74,0.35); }
+  .banner { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 30; background: var(--bg-elev-2); border: 1px solid var(--warn);
+    color: var(--fg-1); font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; padding: 10px 16px; border-radius: 2px; display: flex; gap: 14px; align-items: center; }
+  .banner button { font: inherit; color: var(--warn); background: none; border: 1px solid var(--warn); border-radius: 2px; padding: 2px 8px; cursor: pointer; }
+  .pin { font-family: var(--mono); font-size: 12px; color: var(--fg-3); background: none; border: 0; cursor: pointer; letter-spacing: 0.1em; padding: 0; }
+  .pin.has { color: var(--accent); }
+  .rf-note { display: none; margin: -12px 0 24px; }
+  .rf-note.open { display: block; }
+  .rf-note textarea, #dock textarea { width: 100%; min-height: 72px; resize: vertical; background: var(--bg-elev-1); color: var(--fg-1); border: 1px solid var(--border);
+    border-radius: 2px; padding: 10px 12px; font-family: var(--sans); font-weight: 300; font-size: 14px; line-height: 1.5; }
+  .rf-note textarea:focus, #dock textarea:focus { outline: none; border-color: var(--accent-line); }
+  #dock { position: fixed; right: 18px; bottom: 18px; z-index: 25; width: min(360px, calc(100vw - 36px)); background: var(--bg-elev-2); border: 1px solid var(--border);
+    border-radius: 2px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--fg-3); }
+  #dock header { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; cursor: pointer; text-transform: uppercase; }
+  #dock .body { display: none; padding: 0 12px 12px; }
+  #dock.open .body { display: block; }
+  #dock .actions { display: flex; gap: 8px; margin-top: 10px; }
+  #dock .actions button { flex: 1; font: inherit; text-transform: uppercase; letter-spacing: 0.12em; background: var(--bg); color: var(--fg-2); border: 1px solid var(--border); border-radius: 2px; padding: 7px 8px; cursor: pointer; }
+  #dock .actions button.send { color: var(--accent); border-color: var(--accent-line); }
+  #dock .msg { margin-top: 8px; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; }
+
+  footer.sig { margin-top: 100px; padding-top: 22px; border-top: 1.5px solid var(--border); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-3); }
+  footer.sig .wm { font-family: var(--serif); font-size: 18px; letter-spacing: 0.02em; text-transform: none; color: var(--fg-1); }
+  footer.sig .wm i { font-weight: 300; }
+  .err { font-family: var(--mono); color: var(--warn); padding: 60px 0; }
+
+  @media (max-width: 920px) {
+    .row { grid-template-columns: minmax(0, 1fr); }
+    .margin { padding-top: 0; margin-bottom: 18px; }
+    .top { padding: 10px 16px; }
+    .page { padding: 0 16px 140px; }
+  }
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="left"><span>Rich face</span><span class="sync" id="sync">reading the text…</span></div>
+  <div class="right">
+    <button id="bed" hidden aria-pressed="false" title="the page's room tone, low and looped">room tone ▸</button>
+    <a class="btn" id="plain" href="#" title="the entry itself — canonical, plain">the text ↗</a>
+  </div>
+</div>
+<div class="page">
+  <div class="head" id="head"></div>
+  <main id="sections"></main>
+  <section class="sec" id="lost" hidden>
+    <div class="sec-label"><span>Lost its place</span><span>pieces whose heading is gone</span></div>
+    <div class="band" id="lost-body"></div>
+  </section>
+  <footer class="sig" id="sig"></footer>
+</div>
+<div class="banner" id="banner" hidden><span>The text's shape changed — sections or figures moved.</span><button onclick="location.reload()">re-lay the page</button></div>
+<div id="dock" hidden>
+  <header id="dock-head"><span>◇ Review</span><span id="dock-count">0 notes</span></header>
+  <div class="body">
+    <div style="margin-bottom:6px;text-transform:uppercase">The whole page</div>
+    <textarea id="overall" placeholder="How does the page land as a whole?"></textarea>
+    <div class="actions"><button class="send" id="send">Send to STIGMERGY</button><button id="copy">Copy</button></div>
+    <div class="msg" id="dock-msg">Leave a note on any section with its ◇. Notes save as you type.</div>
+  </div>
+</div>
+
+<script type="module">
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked@12/lib/marked.esm.js';
+import { parseEntry, sectionProse, sectionKey, fingerprint } from './_rich/parse.js';
+
+const params = new URLSearchParams(location.search);
+const ENTRY = params.get('entry') || 'Kuramoto Coupling';
+const REVIEW = params.get('review') !== '0';
+const $ = (s, el = document) => el.querySelector(s);
+const h = (tag, attrs = {}, ...kids) => {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v; else if (k === 'html') el.innerHTML = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v); else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const c of kids.flat()) if (c != null) el.append(c.nodeType ? c : document.createTextNode(c));
+  return el;
+};
+const kindOf = (name) => {
+  if (/\.(mp4|webm|mov)$/i.test(name)) return 'video';
+  if (/\.(wav|mp3|ogg|m4a|flac)$/i.test(name)) return 'audio';
+  if (/\.(png|jpe?g|gif|webp|svg)$/i.test(name)) return 'image';
+  if (/\.html?$/i.test(name)) return 'interactive';
+  if (/\.md$/i.test(name)) return 'text';
+  return 'file';
+};
+const SMALL = new Set(['audio', 'image', 'text']);
+
+let info, manifest, lastMd = '', entry, lastRead = Date.now();
+
+// ── media urls: bundle first, then the vault-wide lookup Obsidian would do.
+// Every URL is relative, so the page works at / and under STIGMERGY's /rich/.
+function mediaUrl(name) {
+  if (name.startsWith('/')) return name.slice(1).split('/').map((p) => encodeURIComponent(decodeURIComponent(p))).join('/');
+  if (info.bundle && info.files.includes(name)) return info.bundle + encodeURIComponent(name);
+  return `_api/media?name=${encodeURIComponent(name)}&prefer=${encodeURIComponent(info.bundle || '')}`;
+}
+
+// ── markdown: Obsidian wikilinks → links to other rich faces ──
+function mdToHtml(md, inline = false) {
+  const pre = md
+    .replace(/!\[\[([^\]|]+)(?:\|([^\]]*))?\]\]/g, (m, n) => `![](${mediaUrl(n.trim())})`)
+    .replace(/\[\[([^\]|]+)(?:\|([^\]]*))?\]\]/g, (m, target, label) => {
+      const t = target.trim(), l = (label || t.split('#')[0]).trim();
+      if (/\.(mp4|webm|mov|wav|mp3|png|jpe?g|gif|webp|svg|html?)$/i.test(t)) return `[${l}](${mediaUrl(t)})`;
+      return `[${l}](?entry=${encodeURIComponent(t.split('#')[0])}${REVIEW ? '' : '&review=0'} "wl")`;
+    });
+  let html = inline ? marked.parseInline(pre) : marked.parse(pre);
+  return html.replace(/<a href="([^"]*)" title="wl">/g, '<a class="wl" href="$1">');
+}
+
+// ── the one custom control: an audio strip with no browser chrome ──
+function audioStrip(src, label) {
+  const a = new Audio(); a.preload = 'metadata'; a.src = src; audios.add(a);
+  const btn = h('button', { 'aria-label': 'play' }, '▸');
+  const fill = h('i'); const bar = h('div', { class: 'bar' }, fill);
+  const t = h('span', { class: 't' }, '0:00');
+  const fmt = (s) => isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '–';
+  a.addEventListener('loadedmetadata', () => { t.textContent = fmt(a.duration); });
+  a.addEventListener('timeupdate', () => { fill.style.width = `${(a.currentTime / (a.duration || 1)) * 100}%`; t.textContent = fmt(a.duration - a.currentTime); });
+  a.addEventListener('play', () => { btn.textContent = '❚❚'; document.dispatchEvent(new CustomEvent('rich:play', { detail: a })); });
+  a.addEventListener('pause', () => { btn.textContent = '▸'; });
+  a.addEventListener('ended', () => { btn.textContent = '▸'; fill.style.width = '0'; });
+  btn.onclick = () => (a.paused ? a.play() : a.pause());
+  bar.onclick = (e) => { const r = bar.getBoundingClientRect(); a.currentTime = ((e.clientX - r.left) / r.width) * (a.duration || 0); };
+  return h('div', { class: 'aud' }, btn, bar, t, h('div', { class: 'lbl' }, label));
+}
+// One voice at a time. Starting any strip, video or interactive quiets the
+// rest; the interactives speak the same tiny protocol over postMessage
+// (they send 'rich:play' when they start and stop on 'rich:hush').
+const audios = new Set();
+function hushAll(except) {
+  document.querySelectorAll('video').forEach((v) => { if (v !== except) v.pause(); });
+  audios.forEach((x) => { if (x !== except) x.pause(); });
+  document.querySelectorAll('iframe').forEach((f) => { if (f.contentWindow !== except) f.contentWindow?.postMessage({ type: 'rich:hush' }, location.origin); });
+}
+document.addEventListener('rich:play', (e) => hushAll(e.detail));
+window.addEventListener('message', (e) => { if (e.origin === location.origin && e.data?.type === 'rich:play') hushAll(e.source); });
+
+function iframeFor(src, height) {
+  const f = h('iframe', { src, loading: 'lazy', allow: 'autoplay', title: src.split('/').pop() });
+  if (height) f.style.height = height + 'px';
+  else f.addEventListener('load', () => {            // same-origin: fit the piece's own height
+    try {
+      const doc = f.contentDocument;
+      const fit = () => { f.style.height = Math.max(360, doc.documentElement.scrollHeight) + 'px'; };
+      fit(); new ResizeObserver(fit).observe(doc.documentElement);
+    } catch { f.style.height = '640px'; }
+  });
+  return f;
+}
+
+async function mediaEl(name, opts = {}) {
+  const src = mediaUrl(name), kind = kindOf(name);
+  if (kind === 'video') { const v = h('video', { src, controls: true, preload: 'metadata', playsinline: true }); v.addEventListener('play', () => document.dispatchEvent(new CustomEvent('rich:play', { detail: v }))); return v; }
+  if (kind === 'audio') { const s = audioStrip(src, opts.label || name); return s; }
+  if (kind === 'image') return h('img', { src, alt: opts.label || name, loading: 'lazy' });
+  if (kind === 'interactive') return iframeFor(src, opts.height);
+  if (kind === 'text') {
+    const md = (await (await fetch(src, { cache: 'no-store' })).text()).replace(/^---\n[\s\S]*?\n---\n?/, ''); // a bundle file's own frontmatter
+    return h('div', { class: 'textpiece', html: mdToHtml(md) });
+  }
+  return h('a', { href: src }, name);
+}
+
+let mermaidMod;
+async function diagramEl(code) {
+  mermaidMod = mermaidMod || (await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs')).default;
+  mermaidMod.initialize({ startOnLoad: false, theme: 'dark', securityLevel: 'loose', fontFamily: 'Manrope, system-ui, sans-serif' });
+  const box = h('div', { class: 'diagram' });
+  try { const { svg } = await mermaidMod.render('m' + Math.random().toString(36).slice(2), code); box.innerHTML = svg; }
+  catch (e) { box.textContent = 'diagram did not render: ' + e.message; }
+  return box;
+}
+
+// A figure the text carries (its caption travels with it, so it can't drift).
+async function textFigure(b) {
+  const fig = h('figure', { class: 'fig' });
+  const media = h('div', { class: 'media' });
+  if (b.diagram) media.append(await diagramEl(b.diagram));
+  else {
+    const [first, ...rest] = b.media;
+    media.append(await mediaEl(first.name, { label: first.label }));
+    if (rest.length && kindOf(first.name) === 'video') {
+      const also = h('div', { class: 'also' }, 'also here: ');
+      for (const r of rest) also.append(h('button', { onclick: () => { const v = media.querySelector('video'); v.src = mediaUrl(r.name); v.play(); } }, r.label || r.name), ' ');
+      fig._also = also;
+    }
+  }
+  fig.append(media);
+  if (b.caption) fig.append(h('figcaption', { html: mdToHtml(b.caption) }));
+  if (fig._also) fig.append(fig._also);
+  fig.append(h('div', { class: 'tag' }, h('span', {}, 'from the text')));
+  fig._kind = b.diagram ? 'diagram' : kindOf(b.media[0].name);
+  return fig;
+}
+
+// A piece the rich face adds (made or gathered) — the kind that can drift.
+async function manifestFigure(p, sec) {
+  const fig = h('figure', { class: 'fig', 'data-piece': p.file });
+  fig.append(h('div', { class: 'rf-drift', hidden: true }));   // first, so a tall piece can't hide it
+  const media = h('div', { class: 'media' }, await mediaEl(p.file, { label: p.title, height: p.height }));
+  fig.append(media);
+  if (p.caption) fig.append(h('figcaption', { html: mdToHtml(p.caption) }));
+  fig.append(h('div', { class: 'tag' },
+    h('span', { class: p.origin === 'made' ? 'made' : '' }, p.origin === 'made' ? `made · ${p.by || 'the Shop'}` : 'gathered from the bundle'),
+    h('span', {}, `${sec.made || manifest.made || ''}`)));
+  fig._kind = kindOf(p.file);
+  fig._place = p.place;
+  return fig;
+}
+
+// ── lay one section: prose rows, margin figures, band figures ──
+async function laySection(s, idx) {
+  const el = h('section', { class: 'sec', id: 's-' + idx, 'data-key': s.key });
+  const flags = h('span', { class: 'flags' });
+  const label = h('div', { class: 'sec-label' }, h('span', {}, s.level === 1 ? 'Opening' : `§ ${String(idx).padStart(2, '0')}`), flags);
+  el.append(label);
+  if (s.level > 1) el.append(h('h2', { html: mdToHtml(s.heading, true) }));
+
+  const rows = [];
+  let cur = null;
+  const newRow = () => { cur = { prose: h('div', { class: 'prose' }), margin: h('div', { class: 'margin' }), band: h('div', { class: 'band' }) }; rows.push(cur); return cur; };
+  const place = (fig) => {
+    const small = fig._place ? fig._place === 'margin' : SMALL.has(fig._kind);
+    if (!cur) newRow();
+    if (small) (cur.band.childElementCount ? newRow() : cur).margin.append(fig);
+    else cur.band.append(fig);
+  };
+
+  // Where each manifest piece goes: right after the paragraph that holds its
+  // `near` phrase, or right after the figure whose file it names; otherwise at
+  // the section's end. A `near` that no longer matches is itself a drift sign.
+  const norm = (t) => t.replace(/[*_`]/g, '').replace(/\s+/g, ' ').toLowerCase();
+  const ms = manifestSection(s.key);
+  const afterProse = new Map(), afterFig = new Map(), atEnd = [];
+  const proseBlocks = s.blocks.filter((b) => b.type === 'prose');
+  const figNames = new Set(s.blocks.filter((b) => b.type === 'figure' && !b.diagram).flatMap((b) => b.media.map((m) => m.name)));
+  for (const p of (ms && ms.pieces) || []) {
+    if (p.near && figNames.has(p.near)) { (afterFig.get(p.near) || afterFig.set(p.near, []).get(p.near)).push(p); continue; }
+    const i = p.near ? proseBlocks.findIndex((b) => norm(b.md).includes(norm(p.near))) : -1;
+    if (i >= 0) (afterProse.get(i) || afterProse.set(i, []).get(i)).push(p);
+    else atEnd.push({ ...p, _lostNear: p.near || null });
+  }
+  const placePieces = async (list) => { for (const p of list || []) { const fig = await manifestFigure(p, ms); fig._lostNear = p._lostNear; place(fig); } };
+
+  let pi = 0;
+  for (const b of s.blocks) {
+    if (b.type === 'prose') {
+      if (!cur || cur.band.childElementCount || cur.margin.childElementCount) newRow();
+      cur.prose.append(h('div', { 'data-prose': `${idx}:${pi}`, html: mdToHtml(b.md) }));
+      await placePieces(afterProse.get(pi));
+      pi++;
+    } else {
+      place(await textFigure(b));
+      if (!b.diagram) for (const m of b.media) await placePieces(afterFig.get(m.name));
+    }
+  }
+  await placePieces(atEnd);
+
+  for (const r of rows) {
+    if (r.prose.childElementCount || r.margin.childElementCount) el.append(h('div', { class: 'row' }, r.prose, r.margin));
+    if (r.band.childElementCount) el.append(r.band);
+  }
+
+  if (REVIEW) {
+    const k = noteKey(s.key);
+    const ta = h('textarea', { placeholder: `A note on “${s.heading}” — the words, the pieces, or both.` });
+    ta.value = localStorage.getItem(k) || '';
+    const box = h('div', { class: 'rf-note' }, ta);
+    const pin = h('button', { class: 'pin' + (ta.value ? ' has' : ''), title: 'leave a note on this section' }, ta.value ? '◆ note' : '◇ note');
+    pin.onclick = () => { box.classList.toggle('open'); if (box.classList.contains('open')) ta.focus(); };
+    ta.oninput = () => { localStorage.setItem(k, ta.value); pin.className = 'pin' + (ta.value ? ' has' : ''); pin.textContent = ta.value ? '◆ note' : '◇ note'; countNotes(); };
+    flags.append(pin);
+    label.after(box);
+  }
+  return el;
+}
+
+function manifestSection(key) { return manifest && (manifest.sections || []).find((m) => sectionKey(m.heading) === key); }
+
+// ── drift: compare each made piece's stamp against the prose it serves ──
+async function checkDrift() {
+  let lagging = 0;
+  for (const s of entry.sections) {
+    const ms = manifestSection(s.key);
+    if (!ms) continue;
+    const now = await fingerprint(sectionProse(s));
+    const drifted = ms.made_against && ms.made_against !== now;
+    const secEl = document.querySelector(`section.sec[data-key="${CSS.escape(s.key)}"]`);
+    if (!secEl) continue;
+    secEl.querySelectorAll('figure[data-piece]').forEach((fig) => {
+      const d = fig.querySelector('.rf-drift');
+      const notes = [];
+      if (drifted) notes.push(`made against an earlier version of this section — the words have changed since ${ms.made || 'it was made'}`);
+      if (fig._lostNear) notes.push(`its anchor phrase “${fig._lostNear}” is gone from the text — placed at the section's end`);
+      d.hidden = !notes.length; d.textContent = notes.join(' · ');
+      d.title = drifted ? `stamped ${ms.made_against} · text now ${now}` : '';
+      if (notes.length) lagging++;
+    });
+    const flags = secEl.querySelector('.flags');
+    let lag = flags.querySelector('.lag');
+    if (drifted && !lag) { lag = h('span', { class: 'lag', style: 'color:var(--warn)' }, '◐ may lag the text'); flags.prepend(lag); }
+    if (!drifted && lag) lag.remove();
+  }
+  return lagging;
+}
+
+// ── review dock: one note per section, one for the page; send → STIGMERGY ──
+const round = () => (manifest && manifest.round) || 1;
+const noteKey = (k) => `richface:${ENTRY}:r${round()}:${k}`;
+function countNotes() {
+  let n = 0;
+  for (const s of entry.sections) if ((localStorage.getItem(noteKey(s.key)) || '').trim()) n++;
+  if (($('#overall').value || '').trim()) n++;
+  $('#dock-count').textContent = `${n} note${n === 1 ? '' : 's'}`;
+  return n;
+}
+function collectNotes() {
+  const groups = {};
+  for (const s of entry.sections) { const v = (localStorage.getItem(noteKey(s.key)) || '').trim(); if (v) groups[s.heading] = { note: v }; }
+  return { task: `rich-face:${ENTRY}:round-${round()}`, groups, overall: { note: ($('#overall').value || '').trim(), round: round(), url: location.href } };
+}
+function mountDock() {
+  const dock = $('#dock'); dock.hidden = false;
+  $('#dock-head').onclick = () => dock.classList.toggle('open');
+  const ok = noteKey('__overall');
+  $('#overall').value = localStorage.getItem(ok) || '';
+  $('#overall').oninput = () => { localStorage.setItem(ok, $('#overall').value); countNotes(); };
+  $('#copy').onclick = async () => {
+    const d = collectNotes();
+    const md = [`# Review — ${ENTRY} rich face, round ${round()}`, '', d.overall.note && `**The whole page:** ${d.overall.note}`, '',
+      ...Object.entries(d.groups).map(([k, v]) => `**${k}:** ${v.note}`)].filter((x) => x !== false && x !== '').join('\n\n');
+    try { await navigator.clipboard.writeText(md); $('#dock-msg').textContent = 'Copied as markdown.'; } catch { $('#dock-msg').textContent = 'Clipboard blocked — use Send.'; }
+  };
+  $('#send').onclick = async () => {
+    const d = collectNotes();
+    if (!countNotes()) { $('#dock-msg').textContent = 'Nothing to send yet.'; return; }
+    $('#dock-msg').textContent = 'Sending…';
+    try {
+      const r = await fetch('_api/review', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+      const j = await r.json();
+      $('#dock-msg').textContent = r.ok ? `On the board — ${j.message_id}. The next session reads it from there.` : `Not sent: ${j.error || JSON.stringify(j.board_response)}`;
+    } catch (e) { $('#dock-msg').textContent = 'Not sent: ' + e.message; }
+  };
+  countNotes();
+}
+
+// ── room tone: the page's bed, low and looped ──
+function mountBed() {
+  const bed = manifest && manifest.page && manifest.page.bed;
+  if (!bed) return;
+  const btn = $('#bed'); btn.hidden = false;
+  const a = new Audio(mediaUrl(bed.file)); a.loop = true; a.volume = 0;
+  let target = bed.volume || 0.18, raf;
+  const fade = (to) => { cancelAnimationFrame(raf); const step = () => { a.volume += (to - a.volume) * 0.06; if (Math.abs(to - a.volume) > 0.004) raf = requestAnimationFrame(step); else { a.volume = to; if (!to) a.pause(); } }; step(); };
+  btn.onclick = () => {
+    const on = btn.getAttribute('aria-pressed') !== 'true';
+    btn.setAttribute('aria-pressed', on); btn.textContent = on ? 'room tone ❚❚' : 'room tone ▸';
+    if (on) { a.play(); fade(target); } else fade(0);
+  };
+}
+
+// ── live: re-read the text every few seconds ──
+const structureOf = (e) => e.sections.map((s) => s.key + ':' + s.blocks.map((b) => b.type === 'prose' ? 'p' : 'f' + (b.diagram ? 'd' : b.media.map((m) => m.name).join('+'))).join(',')).join('|');
+let lastManifest = '';
+async function poll() {
+  try {
+    if (info.manifest) {
+      const mt = await (await fetch(info.manifest, { cache: 'no-store' })).text();
+      if (lastManifest && mt !== lastManifest) { manifest = JSON.parse(mt); await checkDrift(); }
+      lastManifest = mt;
+    }
+    const md = await (await fetch(info.md, { cache: 'no-store' })).text();
+    lastRead = Date.now();
+    if (md !== lastMd) {
+      const next = parseEntry(md);
+      if (structureOf(next) !== structureOf(entry)) { $('#banner').hidden = false; }
+      else {
+        next.sections.forEach((s, i) => s.blocks.filter((b) => b.type === 'prose').forEach((b, j) => {
+          const el = document.querySelector(`[data-prose="${i}:${j}"]`); if (el) el.innerHTML = mdToHtml(b.md);
+        }));
+        entry = next; await checkDrift();
+      }
+      lastMd = md;
+    }
+  } catch { /* the server may be restarting; try again */ }
+}
+setInterval(poll, 3000);
+setInterval(() => { const s = Math.round((Date.now() - lastRead) / 1000); $('#sync').innerHTML = `text <b>live</b> · read ${s < 2 ? 'just now' : s + 's ago'}`; }, 1000);
+
+// ── boot ──
+async function boot() {
+  const r = await fetch(`_api/resolve?entry=${encodeURIComponent(ENTRY)}`);
+  if (!r.ok) { $('#sections').append(h('div', { class: 'err' }, `No entry named “${ENTRY}”.`)); return; }
+  info = await r.json();
+  document.title = `${info.title} · rich face`;
+  manifest = info.manifest ? await (await fetch(info.manifest, { cache: 'no-store' })).json() : null;
+  lastMd = await (await fetch(info.md, { cache: 'no-store' })).text();
+  entry = parseEntry(lastMd);
+  $('#plain').href = `obsidian://open?vault=The%20Palace&file=${encodeURIComponent(decodeURIComponent(info.md).replace(/^\//, '').replace(/\.md$/, ''))}`;
+
+  // head
+  const fm = entry.fm, head = $('#head');
+  if (entry.hero) head.append(h('img', { class: 'hero', src: mediaUrl(entry.hero), alt: '' }));
+  head.append(h('div', { class: 'eyebrow' }, [fm.type, fm.stage].filter(Boolean).join(' · ') || 'entry'));
+  head.append(h('h1', {}, entry.title));
+  if (fm.forward_vector) head.append(h('p', { class: 'fv' }, fm.forward_vector));
+  if (fm.pillars) head.append(h('div', { class: 'meta' }, fm.pillars.join(' / ')));
+
+  // sections
+  const main = $('#sections');
+  for (let i = 0; i < entry.sections.length; i++) main.append(await laySection(entry.sections[i], i));
+
+  // lost: manifest sections whose heading no longer exists
+  const keys = new Set(entry.sections.map((s) => s.key));
+  const lost = (manifest && manifest.sections || []).filter((m) => !keys.has(sectionKey(m.heading)));
+  // A heading renamed without touching its words keeps its fingerprint — so a
+  // lost section whose stamp matches a current section was probably renamed.
+  const fpNow = new Map();
+  for (const s of entry.sections) fpNow.set(await fingerprint(sectionProse(s)), s.heading);
+  for (const m of lost) for (const p of m.pieces || []) {
+    const fig = await manifestFigure(p, m);
+    const renamed = m.made_against && fpNow.get(m.made_against);
+    fig.querySelector('.rf-drift').hidden = false;
+    fig.querySelector('.rf-drift').textContent = `was placed under “${m.heading}”, which the text no longer has`
+      + (renamed ? ` — its words are still here, under “${renamed}”: probably a rename` : '');
+    $('#lost-body').append(fig);
+  }
+  $('#lost').hidden = !lost.length;
+
+  // ledger: what the page is made of
+  const textFigs = entry.sections.reduce((n, s) => n + s.blocks.filter((b) => b.type === 'figure').length, 0);
+  const pieces = (manifest && manifest.sections || []).flatMap((m) => m.pieces || []);
+  const made = pieces.filter((p) => p.origin === 'made').length;
+  const lagging = await checkDrift();
+  const ledger = h('div', { class: 'ledger' },
+    h('span', {}, manifest ? `enriched · ${manifest.tier || 'sketch'} · ${manifest.made || ''}` : 'not yet enriched'),
+    h('span', {}, `${textFigs} carried by the text`),
+    manifest && h('span', {}, `${pieces.length - made} gathered`),
+    manifest && h('span', {}, `${made} made`),
+    lagging ? h('span', { style: 'color:var(--warn)' }, `${lagging} may lag the text`) : null);
+  head.append(ledger);
+
+  $('#sig').append(h('span', { class: 'wm', html: 'Loud’n <i>Live</i>' }),
+    h('span', {}, 'the text is the truth · this face is a reading of it'));
+
+  mountBed();
+  if (REVIEW) mountDock();
+  if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+}
+boot().catch((e) => { $('#sections').append(h('div', { class: 'err' }, 'The page could not be laid: ' + e.message)); console.error(e); });
+</script>
+</body>
+</html>

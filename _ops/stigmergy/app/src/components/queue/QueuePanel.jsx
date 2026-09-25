@@ -1,13 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Box } from '../primitives.jsx';
 import QueueItem from './QueueItem.jsx';
-import CardItem from './CardItem.jsx';
 import LaunchModal from './LaunchModal.jsx';
 import ResponseModal from '../ResponseModal.jsx';
 import { buildQueue, reconcileQueue, partitionQueue, laneCounts, rankQueue } from '../../lib/queue-model.js';
 import { handoffLaunchContext } from '../../lib/launch-prompt.js';
 import { fetchLog } from '../../adapters/log.js';
-import { fetchCards, respondToCard } from '../../adapters/cards.js';
 import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
 import { postMessage } from '../../adapters/blackboard.js';
 import { buildHandoffClaim, buildHandoffClose } from '../../lib/handoff-builder.js';
@@ -35,7 +33,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   // null when closed. Only deny / grant--limited / custom open it now.
   const [respondingTo, setRespondingTo] = useState(null);
   // The normalized context whose "launch interactive" modal is open — a handoff
-  // baton or an enrichment card (stewards next). See buildLaunchPrompt for kinds.
+  // baton (stewards next). See buildLaunchPrompt for kinds.
   const [launchContext, setLaunchContext] = useState(null);
   // Decisions made this session: itemId -> { verb, detail, pending, error }.
   // buildQueue drops an answered request (it is no longer "open"), so we keep
@@ -48,10 +46,6 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   // the card lingers ~10s so you can read it, then tidies itself away.
   const autoClearTimers = useRef(new Map());
   const AUTO_CLEAR_MS = 10_000;
-  // Enrichment cards (Phase 4.5): the absorbed Enrichment card queue.
-  const [cards, setCards] = useState([]);
-  const [cardBusy, setCardBusy] = useState(false);
-  const [cardNote, setCardNote] = useState(null); // last response feedback
   // Unsung-path audit (the Weave's posting half, in the terminal). `audit` holds
   // the last result: a dry-run plan (phase 'dry'), a live post ('posted'), or an
   // error. `auditBusy` guards the two clicks while a request is in flight.
@@ -245,10 +239,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   const loadCommits = () => {
     fetchLog({ limit: 200 }).then((r) => { if (r.ok) setCommits(r.commits || []); });
   };
-  const loadCards = () => {
-    fetchCards().then((r) => { if (r.ok) setCards(r.cards || []); });
-  };
-  useEffect(() => { loadCommits(); loadCards(); }, []);
+  useEffect(() => { loadCommits(); }, []);
 
   // Auto-clear: once a verdict is confirmed (not pending, no error), schedule
   // the decided card to tidy itself ~10s later -- long enough to read it.
@@ -276,23 +267,6 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     const timers = autoClearTimers.current;
     return () => { for (const t of timers.values()) clearTimeout(t); timers.clear(); };
   }, []);
-
-  // Respond to a card: POST writes the inbox block + fires the supervisor
-  // through the actuator. On success we refresh cards after a beat (the worker
-  // drains the inbox + tops the queue asynchronously).
-  const respondCard = async (response) => {
-    setCardBusy(true);
-    setCardNote(null);
-    const r = await respondToCard(response);
-    if (r.ok) {
-      setCardNote({ tone: 'ok', text: `${response.action} sent${r.fired ? ' -- supervisor fired' : ' -- queued (worker busy)'}` });
-    } else {
-      setCardNote({ tone: 'err', text: r.error || `respond failed (${r.status ?? '?'})` });
-    }
-    setCardBusy(false);
-    // Give the worker a moment, then refresh the card list.
-    setTimeout(loadCards, 1500);
-  };
 
   const items = useMemo(() => {
     // Decisions (RESOURCE_REQUESTs) live on the TRICKSTER deck, not here. QUEUE
@@ -392,16 +366,12 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     if (pointer?.type === 'entry' && onJumpEntry) onJumpEntry(pointer.target);
   };
 
-  // Map a queue handoff item / an enrichment card into the normalized launch
-  // context the LaunchModal renders. Same primitive, two surfaces — stewards
-  // and steward-requested sessions plug in here next. The handoff mapping lives
+  // Map a queue handoff item into the normalized launch context the LaunchModal
+  // renders — stewards and steward-requested sessions plug in here next. The
+  // handoff mapping lives
   // in handoffLaunchContext so the card's "copy prompt" button (QueueItem) and
   // this modal launch build the identical prompt — worktree coordinate included.
   const launchHandoff = (it) => setLaunchContext(handoffLaunchContext(it));
-  const launchCard = (card) => setLaunchContext({
-    kind: 'card', id: card.id, entry: card.target_name, from: card.target_name,
-    sourcePath: `Enrichment/${card.id}/`, purpose: card.purpose, summary: card.summary,
-  });
 
   // Per-kind labels for the audit-result panel. vector-tuning is GENERATIVE: its
   // dry run scans (no proposals built yet), so it reads "would generate" and its
@@ -625,36 +595,6 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           ) : null}
         </div>
       ) : null}
-
-      {/* Enrichment cards (Phase 4.5): the absorbed Enrichment card queue.
-          Render-and-act -- deposit/revise/discard write the inbox block and
-          fire the supervisor through the actuator. */}
-      <div data-testid="card-queue" style={{ marginTop: 10, borderTop: '1px solid var(--phosphor-dim)', paddingTop: 8 }}>
-        <div style={{ display: 'flex', gap: 10, alignItems: 'baseline', marginBottom: 6 }}>
-          <span style={{ color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)', fontSize: 12, textTransform: 'uppercase', letterSpacing: '.06em' }}>
-            enrichment cards
-          </span>
-          <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{cards.length} in queue</span>
-          <span
-            onClick={loadCards}
-            style={{ cursor: 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline', fontSize: 11 }}
-          >refresh</span>
-          {cardNote ? (
-            <span data-testid="card-feedback" style={{ color: cardNote.tone === 'ok' ? 'var(--phosphor)' : 'var(--error)', textShadow: 'var(--glow)', fontSize: 11 }}>
-              {cardNote.text}
-            </span>
-          ) : null}
-        </div>
-        {cards.length === 0 ? (
-          <div data-testid="card-queue-empty" style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontStyle: 'italic', fontSize: 12 }}>
-            no enrichment cards in the queue.
-          </div>
-        ) : (
-          cards.map((c) => (
-            <CardItem key={c.id} card={c} onRespond={respondCard} busy={cardBusy} onLaunch={launchCard} />
-          ))
-        )}
-      </div>
 
       {/* Response modal: opens only for the answers that need typed input --
           deny, grant--limited, and custom. (Plain grant and asker-supplied

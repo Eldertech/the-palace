@@ -2,21 +2,19 @@
 // session" pre-loaded with a palace context.
 //
 // This is the GENERAL primitive behind the QUEUE's "launch interactive" action.
-// Complex work (catching a baton, working an enrichment card, steering a steward
+// Complex work (catching a baton, steering a steward
 // at a critical moment) wants a watchable, steerable session you talk to — not a
 // fire-and-forget headless worker. So instead of dispatching a blind `claude -p`,
 // the terminal hands you a ready prompt to paste into a fresh interactive session
 // (Claude Code / Cowork / the Companion), where you watch and steer in dialogue.
 //
-// It debuts on handoffs (kind: 'handoff'); enrichment cards and stewards plug in
-// as new `kind`s with their own builder.
+// It debuts on handoffs (kind: 'handoff'); stewards plug in as a new `kind` with
+// their own builder, and others can follow.
 
 export function buildLaunchPrompt(ctx = {}) {
   switch (ctx.kind || 'handoff') {
     case 'handoff':
       return handoffPrompt(ctx);
-    case 'card':
-      return cardPrompt(ctx);
     case 'steward':
       return stewardPrompt(ctx);
     default:
@@ -105,27 +103,6 @@ function handoffPrompt({ sourcePath, entry, from, id, summary, move, invocation,
   lines.push(
     '',
     `(The QUEUE item for handoff ${id || '?'} has been marked picked up.)`,
-  );
-  return lines.join('\n');
-}
-
-function cardPrompt({ id, entry, purpose, summary, sourcePath }) {
-  const folder = sourcePath || (id ? `Enrichment/${id}/` : 'the card folder');
-  const target = entry ? `[[${String(entry).replace(/\.md$/, '')}]]` : 'an entry';
-  const lines = [
-    'You are working an enrichment card in The Palace, in a fresh interactive',
-    'session at the palace root. Refine and resolve it in dialogue — Loudon is',
-    'watching and will steer.',
-    '',
-    `1. ${ORIENT} ...and Enrichment.md (the ceremony you are running).`,
-    `2. The card lives at ${folder} (card.md + artifact). It enriches ${target}.`,
-  ];
-  if (purpose) lines.push(`   Purpose: ${purpose}`);
-  if (summary) lines.push(`   ${summary}`);
-  lines.push(
-    '3. Work it with Loudon: sharpen the artifact, then act per the Enrichment',
-    "   round protocol — deposit (place it in the entry's bundle + commit),",
-    '   revise, or discard.',
   );
   return lines.join('\n');
 }

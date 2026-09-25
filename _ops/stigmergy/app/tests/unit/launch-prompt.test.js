@@ -152,18 +152,3 @@ describe('buildLaunchPrompt — steward', () => {
     expect(p).not.toContain('cycle undefined');           // no undefined leakage
   });
 });
-
-describe('buildLaunchPrompt — card', () => {
-  test('references the card folder, target entry, purpose, and the enrichment ceremony', () => {
-    const p = buildLaunchPrompt({
-      kind: 'card', id: 'card-007', entry: 'Kuramoto Coupling',
-      purpose: 'forcing compression', summary: 'a 12-word koan',
-    });
-    expect(p).toContain('Enrichment/card-007/');
-    expect(p).toContain('[[Kuramoto Coupling]]');
-    expect(p).toContain('forcing compression');
-    expect(p).toContain('a 12-word koan');
-    expect(p).toContain('Enrichment.md');
-    expect(p).toMatch(/deposit/i);
-  });
-});

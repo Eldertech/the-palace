@@ -36,15 +36,12 @@ const SOFT_EXCLUDE_DIRS = new Set([
 // Path prefixes (palace-relative, leading-segment match) excluded as
 // machinery rather than knowledge. We keep _ops/-rooted markdown like
 // `_ops/Substrate Skill.md` and `_ops/stigmergy/v1.0-build-handoff.md`
-// because those ARE knowledge — but we skip the app/, swarm/, and
-// Enrichment card folders.
+// because those ARE knowledge — but we skip the app/ and swarm/ machinery.
 const EXCLUDE_PREFIXES = [
   '_ops/stigmergy/app/',
   '_ops/stigmergy/orchestrator/',
   '_ops/stigmergy/trickster-auto/',
   '_ops/swarm/',
-  'Enrichment/card-',
-  'Enrichment/Archive/',
 ];
 
 function isHardExcluded(name) {
