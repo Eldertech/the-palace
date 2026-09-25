@@ -90,7 +90,7 @@ The oblique approach is strongly preferred over item-by-item audit. See [[Harves
 2. **Verify the outside claims by fetching them** — the paper itself, not "the source says."
 3. **Teach the material**, especially where the fit breaks. The question is what is here to learn, not whether it earns a page.
 4. **Debate the disposition** — mint, fold, revive, decline — as an argument, not a recommendation.
-5. **Show the deposit map and wait.** Target, fold or mint, type, stage, links, findability terms, verify status, and the full text. No exceptions, including "he clearly wants this." This beat is the palace's main defence against becoming the voice that writes it.
+5. **Show the deposit map and wait** ([[Deposit Ceremony]] step 4). Target, fold or mint, type, stage, links, findability terms, verify status, and the full text. No exceptions, including "he clearly wants this." This beat is the palace's main defence against becoming the voice that writes it.
 6. **Write on approval**, have the Concierge check it afterwards, and record it.
 
 Here depositing happens inside the loop, each write through the [[Deposit Ceremony]]'s gate. The record carries one row per section and is not done until every row has a disposition and a reason.

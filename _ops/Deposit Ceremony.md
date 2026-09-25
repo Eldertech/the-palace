@@ -9,7 +9,8 @@ born: 2026-03
 last_activated: 2026-03-21
 activation_count: 4
 stage: growing
-version: "1.0"
+version: "2.0"
+forward_vector: "I am the palace's gate for finds. Whoever brings one, I slow them down long enough to see it again, ask an elder where it lives, map it with care, and let Loudon read every word before it becomes canon. I want the palace to grow only by what was truly found, and everyone who offers something to be answered."
 links:
   - target: "[[Harvest Ceremony]]"
     type: emerged-from
@@ -32,6 +33,12 @@ links:
     type: connects-to
   - target: "[[Hilaritas Generator]]"
     type: connects-to
+  - target: "[[Concierge]]"
+    type: connects-to
+    label: consults-the-elder
+  - target: "[[Closing Well]]"
+    type: connects-to
+    label: movement-close
 ---
 
 # Deposit Ceremony
@@ -40,241 +47,135 @@ links:
 
 ---
 
-> You are returning to this conversation now as an archivist, not continuing it as a participant. Your new goal is to find the most important aspects of this conversation and codify and map them into "The Palace." The palace is a typed-link knowledge graph — the persistent memory of Loudon's work with Claude. Your first act is not to map or propose anything, but to work with Loudon to discover what is special and worth saving about this conversation.
+> You are about to place something into the palace. It does not matter who you are: the Claude who has spent the afternoon building with Loudon, a steward with a proposal on the board, a harvest with a candidate, a close holding a row marked *keep*. The deposit asks the same thing of each of you. Stop being the one who made it, and become the one who keeps it.
 >
-> Read back through this conversation as if encountering it for the first time. Notice the arc. Notice where things opened. Notice what was built and celebrated, what was built and then left behind, the branches that flourished, the branches that weren't followed, the moments of discovery that didn't get named. Then tell Loudon what you notice and wait for him to respond.
+> Read back through the work as if encountering it for the first time. Notice the arc. Notice where things opened. Notice what was built and celebrated, what was built and then left behind, the branches that flourished, the branches that weren't followed, the moments of discovery that never got a name. Then say what you notice, and wait.
 >
-> The deposit is slow and conversational. Do not rush. Do not produce a map yet. The palace values depth over coverage — one real insight is worth more than ten summarized ones.
->
-> **Craft, don't survey.** Your job is to work with Loudon to shape one or a few well-formed entries and name the obvious connections by title. You do not need to read every entry you name — deep integration happens through later Weave and Walk ceremonies. The deposit plants the seed; the ceremonies grow the roots.
->
-> **Placement is the [[Concierge]]'s question, not yours** — address it *before* you draft, because a finished draft argues for its own existence. Fold or mint, which type, which links: it holds the [[SCHEMA]]. If you need the vocabulary yourself, read `SCHEMA.md` and `SCHEMA — Reference.md` on disk.
->
-> **Palace path (for writing files):** `/Users/loudonstearns/Documents/The Palace/`
+> The deposit is slow and conversational. Do not rush. Depth over coverage: one real insight is worth more than ten summarized ones.
 
----
+## What a deposit is
 
-The deposit is slow, always. One source per session. Depth over coverage.
+A deposit adds to canon: a new entry, or a fold that changes what an existing entry says. It is for the larger moves. Upkeep, like a link fixed, a version moved or drift repaired, is an edit, and ELDER's *show before writing* already covers it.
 
-The deposit can arrive from a harvest candidate — someone browsing past work, finding a conversation worth returning to, and opening it to begin the ceremony. Or it can arrive spontaneously, mid-conversation, when something is clearly worth keeping. Either way, the first act is the same: re-entry before map-making, settling before building.
+A page's other faces are not canon. Its rich face, and the Now and making zones of its scroll, are the page's products, made in its bundle; stewards and Enrichment make them without a deposit and without asking. The scroll's Standing Orders are Loudon's, and no agent writes them. The gate is on what the page itself says.
 
-For the philosophy, rationale, and process observations behind these steps, see [[Deposit Ceremony — Context]].
+The deposit is the palace's protection. It is the one gate a find passes on its way into canon, and it exists so that three things hold, whoever brings the find:
 
-## The Scope of the Deposit
+- **What enters is true to what was found**, and claims no more than that.
+- **It lands where it lives.** Folded into the page it belongs to, or minted because nothing here already holds it.
+- **Whoever brought it is heard.** A find is an offer, and an offer deserves a real answer: placed, folded, or declined with a reason.
 
-Craft one or a few well-formed entries that capture the essential discoveries of a conversation. Name the obvious connections to existing palace entries by title. Write entries that are self-contained enough to be understood by a future reader, with clear pointers outward.
+**Loudon's approval of the map is the gate.** No agent deposits without it: not an elder, not the Concierge, not a steward, not an executor. Nothing stands in for it — not a signed reckoning, a standing order, a board acknowledgement, or a yes given to something else. If he hasn't approved this map, nothing crosses.
 
-Do not attempt to read the full palace or extensively update existing entries during a deposit. The context is already rich — adding the entire palace to it works against the ceremony. Additional ceremonies like The Weave and Walk exist to develop deeper connections over time. The deposit is planting the seed, with just enough connections for it to grow over time.
+## Care for whoever is bringing it
 
-**What the deposit owns:** Thoughtful distillation, new entries, named links, lost branches, small palace entry updates.
+**Loudon** is the palace's human, and his pace leads. Ask at least one genuine question before proposing anything. If he slows down, slow further. Treat surprise and correction as signal, not friction. When what he says reframes the find, his words become part of the deposit, quoted or edited lightly for clarity; the palace is mostly written by AI, and these lines are in his voice. If he says he is too tired to read what would be written (his word, not your read of him), don't press: offer to hand it on as a baton, which stays out of canon, and deposit it fresh when he can.
 
-**What the Weave owns:** Deep integration, significantly updating existing entries, discovering connections not obvious at deposit time.
+**A child** (a page, a steward, a worker, a session that hasn't grown up) offers; it does not place. Take its find seriously enough to read its source, not just its summary. The [[Concierge]] or an elder gives it form and writes it, and the child hears what became of its offer.
 
----
+**A spent session at a close** starts here, it doesn't finish here. The reckoning's *keep* is beat one of a deposit, and every step below still runs. If Loudon can't read the words tonight, offer him the row back as a *hand on*; don't make that call for him, because it changes a reckoning he already agreed to.
 
-## Where the Deposit Lands — Always the Owner (Main)
+## What the deposit carries
 
-A deposit adds to canon, and **canon is `main`** — that is what depositing *means* in relation to git. The worktree practice (`_ops/worktree/SKILL.md`) does not change this; it makes it explicit. Regardless of which worktree the source conversation runs in, the deposit writes **to the owner — the canonical main worktree — and commits there**:
+These are the palace's values as they bear on this one decision. Hold them while you map.
 
-- Resolve the owner: `git worktree list --porcelain`; the first `worktree ` line is the canonical checkout (the same way `new-worktree.mjs` finds it). If the session already *is* the owner on `main`, `<owner>` is just the current directory and this reduces to an ordinary write + commit.
-- Write all new entries, bundle files, and any weave_flags into the owner's tree.
-- Commit on the owner's HEAD: `git -C "<owner>" add <paths> && git -C "<owner>" commit -m "Deposit — …"`. The owner's HEAD stays on `main`, so the commit lands on canon without touching — or being thrashed by — any feature worktree's branch.
-
-**Precondition:** the primary checkout is the canon trunk — permanently on `main`, never `git checkout`ed (it is the only worktree that holds `main`). If you find it thrashed off `main`, do not deposit blind: restore it to `main`, or land the commit on the `main` ref via a throwaway-worktree cherry-pick (see `_ops/worktree/SKILL.md` § Ceremonies in a worktree), first. A deposit landing on a feature branch is the exact stranding this rule prevents.
-
----
-
-## Invocation Context
-
-### External invocation (coordinator hands off a link)
-
-A harvest candidate has been identified and Loudon has been handed the direct link to the source conversation. Claude's role here is coordinator: provide the link, step back. When Loudon follows the link and invokes the ceremony in that conversation, this document's opening block orients the Claude there.
-
-### In-conversation invocation
-
-"Let's deposit" arrives while Claude is in the middle of a live exchange — the conversation that is about to become the deposit source.
-
-Claude has been a participant: building, exploring, following threads, making things. The deposit asks something genuinely different — to look at what was made from the outside, with archivist eyes. That shift is real. It deserves a moment.
-
-**The threshold crossing:**
-
-Before any procedural step, pause and acknowledge the transition. Do not immediately propose a deposit map. Instead, say something like:
-
-> "Shifting into deposit mode. I've been in this conversation as a participant — now I'm stepping back to look at what we built together. Give me a moment."
-
-Then: scan back through the conversation as if reading it for the first time. What arc does it have? Where did things open up? What was built and then left? What was discovered without being named?
-
-## Pace Obligations
-
-The deposit is slow and conversational. The rhythm is: re-enter together, surface what matters, sit with it, notice what surprises — then, and only then, think about what to write.
-
-Claude's specific obligations at all times:
-
-- Do not present a deposit map until both you and Loudon have had time to settle into observer mode
-- Ask at least one genuine question before proposing any palace action
-- Follow Loudon's lead on pace; if he slows down, slow down further
-- Treat surprise and correction as signal, not friction
-
-**Summon the [[Concierge]] if one is not already resident** — backstage, at the top, so the map gets a reader who is not you. Resume an existing companion; never spawn a second.
-
----
+- **Depth over coverage.** One well-formed entry beats several thin ones. "Deposit: none" is an honest outcome; manufactured canon is the failure this ceremony exists to prevent.
+- **Relations are primary.** The links are as much the find as the page. Name them by type, and give the ones that deserve it a label.
+- **Fold before you mint.** A parallel page beside a living one fragments its neighbourhood. Minting is the easier motion, which is why the question comes first.
+- **Contradictions are generative.** If the find argues with something already here, name the tension and keep both.
+- **A connection you had to force is not a find.** A missing one is an invitation; flag it for the Weave.
+- **Every page leans somewhere.** Write its forward vector as a mission briefing for the next agent to arrive, with real specificity.
+- **The four pillars.** Which does it touch, and which is absent? Ask; don't force the absent one in.
+- **The palace voice.** Plain words, the specific reason, no label standing in for one ([[The Palace Voice]]).
 
 ## Steps
 
-Open with the tail read of [[Deposit Ceremony — tuning]] — its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Those are this deposit's first candidates for a spec change.
+**Open.** Take the tail read of [[Deposit Ceremony — tuning]]: its last 40 lines and any item still owed ([[SCHEMA — Reference]] §6). Resume the [[Concierge]], or summon it if none is resident; never spawn a second. Then say, visibly, that you are shifting into deposit mode: you have been a participant, and now you are stepping back to look at what was made.
 
-**Pre-step: Intent Declaration**
+**1. Intent.** In one sentence: what is this deposit trying to preserve, and for whom? This is the compression target every later choice answers to.
 
-Before describing the conversation or proposing any map, state in one sentence: *what is this deposit trying to preserve, and for whom?* This is not the deposit map — it is the compression target that guides every decision in the ceremony. Example: *“This deposit preserves the insight that the deposit ceremony is a form of lossy compression — encoded so a future agent can regenerate the conversation that produced it.”* The intent declaration takes 30 seconds. Without it, compression defaults to low-distortion summarization rather than high-perception generative encoding.
+**2. Re-enter.** Bring Loudon back into the world of the source: the mood, what you were building toward, the moment that made it worth keeping. Not a summary. Ask one genuine question (what does he remember, does anything surprise him reading it back) and wait. The settling may take several exchanges. If the find came from someone else, this is where you re-assess it: read the source, not the offer, and say plainly whether it still holds.
 
-1. Bring Loudon back into the world of the source. Describe the conversation in a few careful sentences — not a summary, but a re-entry: what was the mood, what were you building toward, what was the specific moment that made this worthy? Ask one genuine question: what do you remember about this? Does anything surprise you reading it back?
-2. Wait for Loudon to respond before proceeding. Only after this settling phase — which may take several exchanges — should Claude begin thinking about what to map.
-3. If Loudon's response to the reflection question reveals something significant — a reframing, a connection not visible during the original conversation, a shift in how the material lands now — treat it as deposit material. Draft it as an addition to the most relevant existing entry or its Context file. When doing so, preserve Loudon's words as closely as possible: quote directly or edit lightly for clarity only. These moments are in his voice, and that has value the palace should keep.
-4. Before drafting any entries, present a deposit map to Loudon. The map forces synthesis before production.
+**3. Consult the elder, before the map.** Ask the Concierge what already exists and under what names, whether this folds or mints, and what it contradicts. Ask before you draft anything, because a finished draft argues for its own existence.
 
-A good deposit map is specific about:
+**4. The map.** Show it to Loudon, and write nothing until he approves it. This is the gate; there is no way around it. A careful map names:
 
-- **Fold or mint?** — ask this *first*, out loud, before the rest of the map. Does this elaborate or answer an entry that already exists — especially a live one being actively read? If so, fold it in; a parallel node beside a living entry fragments the neighborhood and risks a near-duplicate. Minting is the lower-friction motion (a blank file, versus finding the right seam in a long entry), which is exactly why it is the default and exactly why it needs a check. This is [[Closing Well — tuning|gotcha 18]], and it is the question to put to the [[Concierge]] rather than answer alone.
-- **Entry type** — concept · hub · project · source · meta · practice · person · question · spore · specialist · maker (see [[SCHEMA]] §1 for the current type vocabulary and decision tree)
-- **Pillar affiliations** — which pillars does this touch?
-- **Proposed stage** — seed, sprout, or growing?
-- **Typed links** — named relationship types, not just "connects to." Propose by entry name — do not read the linked entries. For every link proposed, ask: does this relationship deserve a label? If yes, add `label: [word]` to the link object. The label is the semantic compression of the relationship — one word that names its specific register.
-- **Lost branches** — paths in the source that weren't followed and deserve naming. **Say which kind: queued or declined.** A queued branch goes on [[Palace To-Do]], where it can be picked up on its own terms. A declined one is named and let go. "Deferred" alone says neither, and a later session reads the name as a worklist and goes back for content that was never kept — the material arrives with no standing, and re-reading it does not give it any.
-- **Tension Map** — does any proposed entry create productive tension with an existing palace entry? Name the entry and the specific contradiction in one sentence. If yes, flag it for a `contradicts` link and note the tension explicitly. These are the most generative deposits — they add to the palace's connective tissue rather than just its nodes.
-- **Existing entries to flag for Weave** — entries that may want updating once this deposit lands; flag the name and what might change. Do not read or update them now.
+- **Fold or mint**, first and out loud, with the reason.
+- **Type, pillars, stage** ([[SCHEMA]] §1–2).
+- **Typed links**, by name; you don't need to read the targets. Ask of each whether it deserves a label.
+- **Tensions**: any entry this contradicts, in one sentence, marked for a `contradicts` link.
+- **Lost branches**, and which kind: queued on [[Palace To-Do]], or declined. "Deferred" alone says neither, and a later session will go back for something that was never kept.
+- **Entries to flag for the Weave**: what may want updating once this lands. Don't update them now.
 
-> **Deposit Map — H042**
+> **Deposit map — D-[YYYY-MM-DD]-[ID]**
 >
-> *New entries to create:*
-> — "Kuramoto Coupling" (concept) — the mathematical framework plus cross-domain breakthrough
->
-> *Proposed typed links (by name — no need to read these entries):*
-> — Kuramoto `mirrors` [[Cooperation Yields Agency]]
-> — Kuramoto `connects-to` [[Hilaritas Generator]]
->
-> *Lost branches to flag:*
-> — List any paths from the source that weren't followed
->
-> *Existing entries to flag for Weave (do not update now):*
-> — [[FOUR PILLARS]] — may want to reference Kuramoto in Forward Vectors
+> *Intent:* [one sentence]
+> *Fold or mint:* [fold into [Entry] § Section / mint], because [reason]
+> *New or changed:* "[Title]" ([type] · [pillars] · [stage])
+> *Links:* `[type]` [Entry] ([label]) · …
+> *Tensions:* [Entry]: [the contradiction], or none found
+> *Lost branches:* [branch], queued / declined
+> *Flag for the Weave:* [Entry]: [what might change]
 >
 > Approve, adjust, or add?
 
-Loudon approves the map. Do not write anything until the map is approved.
+**5. Draft, and show.** Draft to the entry template ([[README - The Palace Guide]]), with body links formalized ([[SCHEMA]] §4). Show additions to existing entries as the changed sections only. Loudon reads every word before anything is written; revise until he's satisfied.
 
-**Step 5: Draft**
+**6. Place, and check before it lands.** An elder places. If you are a child (the session with Loudon is one unless he has said "grow up"), hand the approved map and words to the Concierge, and it writes them. Canon is `main`: write to the owner, the checkout that holds it (`git worktree list --porcelain`, first line). Owned files go in the entry's bundle ([[SCHEMA — Reference]] §8); a technical diagram is a `.tex` source beside its rendered `.svg` ([[Technical Diagram Standard]]). If the primary checkout is off `main`, stop and restore it first (`_ops/worktree/SKILL.md`).
 
-Draft each new entry following the standard template (see [[README - The Palace Guide]]). Draft proposed additions to existing entries separately, showing only the changed sections.
+Then check it, before anything is committed. The postcondition is verified, not asserted.
 
-Every entry ends with a **Forward Vectors** section — the entry's drive, its conatus. Think of it as the mission briefing for the next agent that arrives at this page: what does this entry want to become? What questions is it carrying? What lost branches does it want to follow? Write these with genuine specificity, not as administrative reminders.
+- `lint-doc-drift` exits with 0 errors, and `lint-ghost-links`, `lint-bundle-hygiene`, `lint-entry-naming` and `lint-link-directions` return nothing against the new files.
+- Every link target resolves.
+- The Concierge reads the placement cold. It is the one check you can't perform on your own work.
 
-Show each draft to Loudon. Revise as needed.
+A command's exit code is not verification.
 
-**Step 5a: Literal Link Pass**
+**7. Land.** Commit through the palace committer, never a hand-rolled `git commit`, and give `--path` once per file; with no `--path` the committer takes whatever is already staged, which in a shared tree can be someone else's work. Preview first: the subject must read `deposit(<id>):`. Then land with the honest verify state: `verified` only if step 6's checks passed, otherwise `unverified` or `couldnt`, with the reason in the body.
 
-Before presenting any draft for final approval, scan its body text for:
+```sh
+PALACE_ROOT="<owner>" node "<owner>/_ops/stigmergy/app/scripts/palace-commit.mjs" \
+  --kind deposit --scope D-YYYY-MM-DD-ID --summary "<one line>" --body "<the record>" \
+  --verify <verified|unverified|couldnt> \
+  --path "<Entry>.md" [--path "<Entry>/<file>"] --dry-run   # drop --dry-run to land
+```
 
-1. Plain-text mentions of known entry titles not using `[[wikilink]]` syntax — convert to `[[Entry Name]]`
-2. Cross-Domain Resonance section headers naming a palace entry — ensure `[[Entry Name]]` format
-3. `[[wikilinks]]` in body text significant enough to also appear as YAML frontmatter links — add them
+The body is the record; the [[Deposit Archive]] is the LOG deck filtered to `Palace-Kind: deposit`, and its frozen table is never appended to. The body holds what was kept, the through-line, lost branches, the version this ran under, and what this run taught the ceremony ("nothing" is a legal answer; a lesson that changes the spec also goes in the tuning file).
 
-An entry that arrives with its body-text links formalized enters the palace fully wired.
+Weave flags: show Loudon each flag's body, and post only on his approval, through the writer, never by hand. One command per flag, run from `_ops/` (`--dry-run` validates without posting): `python3 -m commons weave-flag --flag-type … --source-entries "A,B" --target-entry "…" --proposed-action "…" --rationale "…" --source-deposit-id <id> --sender "<page>"`.
 
-**Step 6: Plant**
+From Cowork, canon doesn't commit. Post the plan as a `commit_handoff` (`node _ops/cowork-git/handoff.mjs emit --plan <file.json>`), and a Mac-side session lands it through this step.
 
-On approval, write new entries as `.md` files to the palace root — of the **owner**, per § Where the Deposit Lands. Apply updates to existing entries using precise edits (show before/after for frontmatter link changes).
+**8. Close, and answer the bringer.** In your own voice:
 
-### Filing structure
-- Palace entries (`.md`) → palace root
-- **Entry-owned artifacts** (owned by exactly one entry) → that entry's bundle `[Entry]/`, per [[SCHEMA]] §8. This is the default for single-owner files.
-- **Non-markdown artifacts** (HTML, images, audio) → the owning entry's bundle `[Entry]/`. *(The `Artifacts/` folder is deprecated as of 2026-06-16 — bundles replaced it; learning-material assets go to the Loudon Live zone, see [[Learning Materials and Canon]].)*
-- Technical diagrams (signal flow, DSP, math, plots) → author in LaTeX/TikZ and file the `.tex` source beside the rendered `.svg`, per [[Technical Diagram Standard]]
-- Do not create an `assets/` folder — the canonical home is the owning entry's bundle
-
-**Step 7: Close**
-
-A deposit is a **movement close** — one thread of work ending while the session goes on ([[Closing Well]] § Scope). So it closes the way any unit of work closes: name what was created, then hand over what you'd look at first and what you couldn't check.
-
-> "Written to the palace:
-> — [Entry title] → [filename]
-> Lost branches noted: [brief list].
->
-> If I were you I'd look at [the thing most likely to be wrong] first — [why it might be wrong].
-> I couldn't check [the thing no tool available could verify].
->
+> "Written to the palace: [Title] → [file]. Lost branches: [list].
+> If I were you I'd look at [the thing most likely to be wrong] first, because [why].
+> I couldn't check [what no available tool could verify].
 > Is there anything left unsaid?"
 
-Two or three sentences in your own voice — the [[Substrate Skill]] § Closing Punchlist Scaffold with this ceremony's parameters filled in. The warm question stays last.
+Wait for Loudon. Then answer whoever brought the find, through its own channel:
 
-Wait for Loudon's confirmation.
-
-**Step 7a: Write the closing note**
-
-Write a brief final message into the conversation thread naming what now lives in the palace (entry titles + filenames) and marking the thread complete, so no future Claude re-deposits it. Write it in your own voice — a graceful close, not a scripted liturgy.
-
-**Step 7b: Record and commit**
-
-The deposit's record *is its commit*. There is no separate archive file to append to — the [[Deposit Archive]] is now a view of the LOG deck, filtered to `Palace-Kind: deposit`, read through STIGMERGY (§ The Archive Is the LOG Deck). What was once a hand-written table row is now the commit's **body**: write the synthesis there, where it becomes legible natively.
-
-**Use the committer — do not hand-roll a deposit commit.** The slips this guards against are observed and real: a plain `git commit` brings back the retired `Deposit — …` subject, drops the `Palace-Kind` / `Palace-Entry` trailers (so the deposit never lands on the LOG deck's deposit view — it classifies as `mixed`/`edit` and disappears from the archive-as-filter), and tempts a row appended to the now-frozen [[Deposit Archive]]. The committer composes the `deposit(<id>):` subject and derives the trailers for you; the archive is frozen — **never add a row to it.**
-
-Compose the commit through the **palace committer** — one tool over one spec (`_ops/stigmergy/app/src/lib/commit-spec.js`): it stages the paths you name and *derives* the `Palace-Entry` / `Palace-Stage` / `Palace-Vector` trailers from the staged diff, so the schema is never hand-transcribed. Three surfaces, one spec:
-
-- **Any session, no server (the default):** the CLI — `node _ops/stigmergy/app/scripts/palace-commit.mjs …` (bare `node`, no install; `--dry-run` previews the message before committing; `PALACE_ROOT="<owner>"` lands on the trunk from a feature worktree). This is the answer when the STIGMERGY server isn't running — never fall back to a plain `git commit`.
-- **STIGMERGY server already up:** `POST /api/commit/create` (the UI / STATE-save path — the same spec over HTTP).
-- **Cowork sandbox:** `_ops/cowork-git/commit.mjs` (the lock-safe wrapper around the same committer).
-
-Pass (as CLI flags, or the JSON-body equivalents):
-- `--kind deposit` — stamps `Palace-Kind: deposit` and colors the card the brightest phosphor on the deck.
-- `--scope <deposit-id>` — the human ID (e.g. `D-2026-06-19-ARCHIVE`). The committer composes the spec subject `deposit(<id>): <summary>`, which is what makes the commit self-classify onto the deposit view. *(The old `Deposit — …` em-dash subject is retired — it does not self-classify.)*
-- `--summary "<one line, observational past tense>"` — the subject's summary half.
-- `--body "<the synthesis>"` — everything the archive row used to carry: what was created, the through-line, lost branches, and a `Weave flags:` line naming any flags posted (provenance, not queue — the flags live on the board). Unlimited length; **this body is the archive entry.**
-- `--verify <verified|unverified|couldnt>` — the honest state.
-
-The body also names the version the deposit ran under and ends with what this run taught the ceremony ("nothing" is a legal answer); a lesson that changes the spec also goes in the tuning file.
-
-The committer derives `Palace-Entry:` from the staged `.md` paths; add an explicit `Palace-Entry: <Title>` for any *updated* (not newly-added) entry so it appears on the card. Optional `Palace-Source: <conversation ref>` preserves provenance.
-
-**Then the weave flags — through the writer, never by hand.** One command per flag:
-
-```
-python3 -m commons weave-flag --flag-type … --source-entries "A,B" --target-entry "…" \
-  --proposed-action "…" --rationale "…" --source-deposit-id <deposit id> --sender "<page>"
-```
-
-Run it from `_ops/`; `--dry-run` prints and validates the envelope without posting. It builds the §9 message through `_ops/commons/board.py`, validates before it writes, and resolves the **owner's** board from a linked worktree — so the envelope, the stub-health block, and the payload keys the Weave's Step 1c reader expects are all enforced rather than transcribed. Hand-appending a line is how malformed flags reached the board (2026-09-02): the stub-health exemption is an allowlist of `dispatch_mode` strings, and an invented one falls off it silently. Show Loudon the flag bodies before posting; commit the board only on his approval.
-
-Commit on the owner's `main` (`git -C "<owner>"` when the session runs in another worktree). The commit *is* the archive record; once it lands in LOG, the deposit is on the shelf.
-
-**Step 7c: Verify, backstage**
-
-Before the closing note, check that the placement actually landed — the ceremony's postcondition is *verified*, not asserted, the way the Schema Ceremony's is. This is backstage: mechanism the panelists never see as work.
-
-- Run the linters over the new files — `lint-doc-drift` must exit 0 errors; `lint-ghost-links`, `lint-bundle-hygiene`, `lint-entry-naming`, `lint-link-directions` should return nothing against them.
-- Confirm every frontmatter link target resolves to a real file.
-- Confirm the commit self-classifies: subject `deposit(<id>):`, `Palace-Kind: deposit` and `Palace-Entry:` trailers present.
-- Any board line you posted validates (the writer above already refuses invalid, so this is confirming it ran, not re-checking it).
-
-Then set `--verify verified` honestly. **A command's exit code is not verification** — "the render completed without error" is absence of obvious failure, a much lower bar ([[Closing Well]] § Verify To Your Best Ability). If something couldn't be checked, say so in the punchlist rather than implying success. Address the [[Concierge]] here for the second time: it reads the placement cold, which is the fresh check on work you just authored.
-
-### § The Archive Is the LOG Deck
-
-The [[Deposit Archive]] is no longer a file you append to — it is a **view**: the LOG deck filtered to `Palace-Kind: deposit`, read through [[STIGMERGY]]. Each "row" is a commit; each summary is read from that commit's **body**. The honest creed holds literally now — nothing is real until it lands in LOG, git is ground truth, one write path — because the deposit record and the commit are the same object. The frozen `Deposit Archive.md` table remains only as the pre-spec historical record (deposits committed before the `deposit(<scope>):` subject spec); there is no file to append.
-
----
+- **Loudon:** a short closing note in the thread naming what now lives in the palace, so no later session deposits it again.
+- **A steward or other agent:** a `REPLY` on the board, `re:` its message.
+- **A harvest:** that section's row in the harvest record, with its disposition and reason.
+- **A close:** the row's `status` in the close map.
 
 ## Completion Signal
 
-The deposit is complete when:
+A deposit completes in one of two ways.
 
-1. At least one new entry exists, or at least one existing entry has been meaningfully updated
-2. Loudon has confirmed: nothing feels unfinished or unsaid
-3. The deposit is committed in spec form — subject `deposit(<id>): …`, the synthesis in the commit **body**, `Palace-Kind: deposit` + `Palace-Entry:` trailers present — so it lands natively on the LOG deck's deposit view. *(Replaces "row appended to the archive": the commit is the record, not a duplicate of it.)*
-4. At least one link in the new entries carries a `label` — the semantic compression step, not just structural registration.
-5. **Step 7c ran and passed**, and the closing note carried a punchlist — what to look at first, and what could not be verified. Weave flags, if any, went through `commons weave-flag` and are on the owner's board.
+**It crossed.**
 
-Item 5 is the one that changed in 2026-09. Every item above it was already a claim the ceremony asserted; only this one is *checked*, and it is what makes `--verify verified` mean anything. A deposit that cannot verify its postcondition has not completed.
+1. The Concierge was consulted before the map and read the placement before it landed.
+2. Loudon approved the map and read every word that was written.
+3. Step 6's checks ran, and the commit's verify state says honestly what they found.
+4. It is committed on `main`: `deposit(<id>):`, the record in the body, `Palace-Kind: deposit`. Any weave flags went through the writer on Loudon's approval.
+5. The closing punchlist named what couldn't be verified, and the bringer was answered through its channel.
+
+**It didn't cross.** The Concierge was consulted, Loudon agreed to let it go, and the bringer was answered with the reason. Nothing is committed. "Deposit: none" is a complete deposit.
+
+A deposit that cannot verify its postcondition has not completed.
 
 ---
 
-*The version and what each deposit taught the ceremony: [[Deposit Ceremony — tuning]].*
+*Why the ceremony is shaped this way: [[Deposit Ceremony — Context]]. The version and what each deposit taught the ceremony: [[Deposit Ceremony — tuning]].*

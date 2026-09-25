@@ -33,25 +33,36 @@ Loudon; `none` is a first-class outcome).
 
 ## The executors, by species
 
-### keep → deposit  (reuse: the palace committer)
-The Deposit Ceremony's own rule holds: **the commit is the record**; use the committer,
-never a hand-rolled `git commit`. Run the **owner's** copy of the committer, from the owner
-tree — canon lands there (rule 1), and only the owner tree reliably has the committer's deps
-(`js-yaml`; a `docs`-profile worktree does not, so the worktree copy throws `ERR_MODULE_NOT_FOUND`).
+### keep → deposit  (the Deposit Ceremony runs; the executor lands it)
+A *keep* row starts a deposit; it doesn't finish one ([[Deposit Ceremony]]). Loudon's assent to
+the reckoning stands in for the deposit's intent and re-entry — **not for its map.** The rest
+runs with Loudon before you commit anything: the Concierge on placement, the map *he approves*,
+him reading every word, the checks. **Land a keep row only if Loudon approved its map and read
+its words.** A keep row without both is `provisional`, not `candidate`: execute nothing, and
+name it in the punchlist so the room can offer it back to him as a *hand on*.
+
+When the words are approved, the Deposit Ceremony's own rule holds: **the commit is the record**;
+use the committer, never a hand-rolled `git commit`. Run the **owner's** copy of the committer,
+from the owner tree — canon lands there (rule 1), and only the owner tree reliably has the
+committer's deps (`js-yaml`; a `docs`-profile worktree does not, so the worktree copy throws
+`ERR_MODULE_NOT_FOUND`). Give `--path` once per file: the committer silently ignores flags it
+doesn't know, and with no `--path` it commits whatever is already staged, which in a shared
+tree can be another session's work.
 
 ```bash
 # Land canon on the owner's main, using the owner's committer:
 node "<owner>/_ops/stigmergy/app/scripts/palace-commit.mjs" \
-  --kind deposit --scope <D-YYYY-MM-DD-ID> \
-  --paths "<Entry>.md,<Entry>/<links/artifacts touched>" \
-  --summary "<synthesis one-liner>" --verify <how> --dry-run   # preview; drop --dry-run to land
+  --kind deposit --scope <D-YYYY-MM-DD-ID> --summary "<synthesis one-liner>" \
+  --body "<the record>" --verify <verified|unverified|couldnt> \
+  --path "<Entry>.md" [--path "<Entry>/<file>"] --dry-run   # preview; drop --dry-run to land
 ```
 The committer composes the `deposit(<id>):` subject, derives `Palace-Entry`/`Palace-Stage`/
 `Palace-Vector` from the staged diff, and stamps `Palace-Kind: deposit` so the deposit
-self-classifies onto the LOG deck's deposit view. The synthesis goes in the commit **body**;
+self-classifies onto the LOG deck's deposit view. The record goes in the commit **body**;
 the frozen `Deposit Archive.md` is never appended to. (`--kind`, `--summary`, `--verify` are
 required.)
-*Executor check:* the commit lands on the owner's `main` (rule 1); links resolve (no ghost
+*Executor check:* Loudon approved the row's map and read its words (`candidate`, not `provisional`); every file went
+in by `--path`; the commit lands on the owner's `main` (rule 1); links resolve (no ghost
 nodes); `--dry-run` subject reads `deposit(<id>): …` before landing.
 
 ### hand on → baton  (reuse: `baton-executor.mjs` → `board-post.mjs` + the committer)
@@ -87,7 +98,7 @@ line points at it, the commit is not mis-stamped `deposit`.
 A hygiene debt the close *saw* but shouldn't settle from a session-only vantage — a deposit
 owing reciprocal inbound links, a touched entry that looks like demotion-substrate, a faceless
 entry grown to merit one, a memory to weave home. Post **one** `weave_flag` through the writer — `python3 -m commons weave-flag` from `_ops/`,
-the same one write path the [[Deposit Ceremony]] uses (Step 7b). It builds the §9 envelope,
+the same one write path the [[Deposit Ceremony]] uses (step 7). It builds the §9 envelope,
 validates before it writes, and resolves the **owner's** persistent WEAVE board from a linked
 worktree. Pass `--flag-type --source-entries --target-entry --proposed-action --rationale
 --source-deposit-id` (for a close, the close's id, e.g. `close-YYYY-MM-DD`); `--dry-run`

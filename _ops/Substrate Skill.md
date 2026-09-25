@@ -36,7 +36,7 @@ When Loudon asks "what does the palace say about [topic]," read all entries that
 
 Grow before you draft: read [[ELDER]], then [[SCHEMA]], if you have not this session — a child offers the idea; an elder gives it frontmatter.
 
-When Loudon says "add this to the palace" or when a conversation produces something palace-worthy (a breakthrough, a new concept, a significant reframing), draft a new entry following this template:
+When Loudon says "add this to the palace" or when a conversation produces something palace-worthy (a breakthrough, a new concept, a significant reframing), that is a deposit: run the [[Deposit Ceremony]] — re-enter, consult the [[Concierge]], a careful map, Loudon reads every word. The entry itself follows this template:
 
 ```yaml
 ---
@@ -67,9 +67,7 @@ How this relates to other domains. Use [[wiki links]] in prose.
 What remains unresolved.
 ```
 
-Show the draft to Loudon for approval before writing to the palace. Propose typed links — suggest which existing entries relate and what the relationship type should be. Loudon confirms or adjusts.
-
-After writing a new entry, check whether existing entries should link BACK to the new one. Propose frontmatter updates for those entries too.
+The Deposit's map carries the typed links; links back from existing entries are flagged for the Weave rather than written during the deposit.
 
 ### The Typed Link Ontology
 
