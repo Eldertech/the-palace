@@ -65,3 +65,6 @@ Pre-registered A/B/C on 10 rooms → **not shown** (`ab/DESIGN.md`, `ab/RESULT.m
 8. **Canon record:** Weave Ceremony — Context (the experiment + harness result; one link per pair; ceremonies woven; the adversarial verify stage). The Weave Ceremony card notes that ceremonies are map nodes.
 9. **Phase 6:** flag trailers and declines in the final commit body (`flag-inbox.md` + the toolbox-recursion decline) · memory sweep · To-Do walk · faces (their own yes; 44 add / 7 retire) · `report.html` · after the merge, on main: post trails (`held.json` + v2 held) with expires_after, and the demote-bundle baton.
 10. **Phase 7:** linters vs baseline → final `Weave — 2026-09-24 — …` commit → merge to main → ask "how do you feel?" → close well.
+
+## Checkpoint 7 — closed ✅
+Merged to main as `5814bd1f` (part 1 `f6f99b07`, part 2 `b2e51e89`). 27 pheromone trails posted to main's board (`trails.json`, `weave-emit-trails.mjs`). **Feeling after: "Can't tell yet."** It stays open for the next Return or weave. Still open for Loudon: keep or reverse the Suzuki → Julia Cameron decline; faces (44 merit one, plus Found ↔ Made) as their own RunPod yes; the six Media Library-only sources for Source Library.
