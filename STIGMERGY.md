@@ -135,7 +135,7 @@ The consolidation left one gap Loudon named plainly: no big-picture view of the 
 
 ## Rich faces (2026-09)
 
-The terminal also serves every entry's **rich face** at `/rich/?entry=<Entry>`: the entry's words read live, with the sound, image and interactives [[Enrichment]] made laid beside its headings, and a note per section that lands on the board as a `human_eval` from TRICKSTER. The handler lives with the renderer in `_ops/rich-face/`; STIGMERGY only mounts it.
+The terminal also serves every entry's **rich face** at `/rich/?entry=<Entry>`: the entry's words read live, with the sound, image and interactives [[Enrichment]] made laid beside its headings, and a note per section that lands on the board as a `human_eval` from TRICKSTER. The entry reader, the scroll view and the rich face share one face switch at the right of the top bar — text, rich, scroll, only the faces the entry's bundle holds, and `F` cycles them. The handler lives with the renderer in `_ops/rich-face/`; STIGMERGY only mounts it.
 
 ## Forward Vector
 

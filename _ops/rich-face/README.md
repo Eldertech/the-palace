@@ -47,9 +47,10 @@ text pieces default to the margin; video, interactives and diagrams to the band.
   (with no H1, it opens a section keyed to the title). No two sections ever share a key that way.
 - A figure is a blockquote holding media (its prose is the caption), a paragraph that is only an embed
   (an italic line right after it is the caption), or a ```` ```mermaid ```` fence.
-- The **door** — any line linking `/rich/?entry=` — belongs to the plain view only: the rich face drops
-  that line (the words around it stay; it is never a caption) and it never counts toward a fingerprint.
-  Inside a code fence it is only text.
+- A legacy **door** — any line linking `/rich/?entry=` — is still dropped, as tolerance: the rich face
+  never shows that line (the words around it stay; it is never a caption) and it never counts toward a
+  fingerprint. Inside a code fence it is only text. A reader reaches the rich face by the face switch
+  now, which offers it when the entry's bundle holds the manifest — not by a line in the body.
 - A section's fingerprint is SHA-256 (first 12 hex) of its prose blocks, whitespace-collapsed. Figures'
   captions don't count — they travel with their media.
 
@@ -65,7 +66,7 @@ text pieces default to the margin; video, interactives and diagrams to the band.
 - **Test the claim headless.** Pull the worklet source out of the page and run it in Node against the
   equation the section states before trusting what the page shows. `check-kuramoto-pieces.mjs` is the worked example:
   `node _ops/rich-face/check-kuramoto-pieces.mjs` re-checks every claim Kuramoto's pieces make.
-- **A line that links the rich face is the door**, not prose — the parser skips it, or adding it would drift its own section (Kuramoto, 2026-09-24).
+- **A line that links the rich face is a legacy door**, not prose — the parser still skips it, or adding one would drift its own section (Kuramoto, 2026-09-24). Don't write new ones; the face switch is the way in.
 - **Prefix the renderer's own classes.** An entry's diagram can define the same names — Kuramoto's Mermaid defines `drift`.
 - **Name and header.** `[Entry] — rich — <what>.html`, with a leading comment carrying title, born,
   the parent link and a forward vector; `.md` pieces carry minimal frontmatter (the renderer strips it).
