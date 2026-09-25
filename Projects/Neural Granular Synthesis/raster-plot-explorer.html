@@ -105,6 +105,9 @@
     looking at a waveform — you are looking at a <em>crowd</em>. Turn the coupling up and
     the scatter snaps into vertical stripes: the population has agreed. The number that
     measures that agreement is <em>r</em>, the synchrony index, printed live below.
+    The neurons sit on a <em>ring</em>: change <em>who listens to whom</em> (the kernel) and
+    <em>how late they listen</em> (the lag α), and two more shapes appear — a traveling wave,
+    and a chimera, where half the same crowd locks while the other half drifts.
   </p>
 
   <div class="layout">
@@ -120,12 +123,38 @@
         <span class="swatch" style="background:var(--amber)"></span><b>Vertical stripes</b> — synchrony, the crowd is phase-locked (r → 1). &nbsp;
         <span class="swatch" style="background:var(--indigo)"></span><b>Random scatter</b> — incoherence, no coupling (r → 0). &nbsp;
         <b>Diagonal bands</b> — a traveling wave, the mean phase ψ marching across the population.
-        The teal trace along the bottom is r itself over the last few seconds.
+        <b>Chimera</b> — stripes in one band of rows, scatter in the rest: one crowd, two states.
+        The teal trace along the bottom is global r over time; the teal strip on the right is
+        <em>local</em> r down the ring — full all the way is lock, empty is drift, half-and-half is a chimera.
       </p>
     </div>
 
     <div class="panel">
       <h2>Play the crowd</h2>
+
+      <div class="buttons" id="presets" style="margin:0 0 16px">
+        <button data-p="drift">drift</button>
+        <button data-p="lock">lock</button>
+        <button data-p="wave">traveling wave</button>
+        <button data-p="chimera">chimera</button>
+      </div>
+      <div class="note" id="settle" style="margin:-8px 0 14px;min-height:1.2em"></div>
+
+      <div class="ctrl">
+        <label>kernel&nbsp;G <span class="val" id="gLab">uniform</span></label>
+        <select id="kern" style="width:100%;background:#1d1d24;color:var(--ink);border:1px solid var(--line);padding:4px;font-family:inherit">
+          <option value="uniform">uniform — everyone hears everyone (mean field)</option>
+          <option value="local">local — only near neighbours</option>
+          <option value="nonlocal">nonlocal — near ones loud, far ones faint</option>
+        </select>
+        <div class="note">Who listens to whom around the ring. A traveling wave needs local; a chimera needs nonlocal.</div>
+      </div>
+
+      <div class="ctrl">
+        <label>phase lag&nbsp;α <span class="val" id="aLab">0.00</span></label>
+        <input id="alpha" type="range" min="0" max="1.57" step="0.001" value="0">
+        <div class="note">How late each neuron hears the others. Near π/2 a neuron almost ignores neighbours already in step with it — that is what lets one patch lock while the next drifts.</div>
+      </div>
 
       <div class="ctrl">
         <label>coupling&nbsp;K <span class="val" id="kLab">0.00</span></label>
@@ -147,7 +176,7 @@
 
       <div class="ctrl">
         <label>population&nbsp;N <span class="val" id="nLab">48</span></label>
-        <input id="N" type="range" min="8" max="96" step="1" value="48">
+        <input id="N" type="range" min="8" max="128" step="1" value="48">
         <div class="note">Rows in the plot. Larger N = smoother statistics, sharper transition.</div>
       </div>
 
@@ -167,24 +196,22 @@
 
 <script>
 /* ──────────────────────────────────────────────────────────────────────────
-   Simulated spike model — a mean-field Kuramoto population of N phase
-   oscillators. This is the simplest model that reproduces the three raster
-   signatures (stripes / scatter / diagonal bands) and the live order
-   parameter r. It is deliberately a teaching stand-in for the real
-   neuropulse.dsp engine, not the engine itself.
+   Simulated spike model — a ring of N phase-oscillator neurons
+   (Kuramoto–Sakaguchi with a coupling kernel; mirrors kernel_lib.py):
 
-   Per oscillator i:
-     dθᵢ/dt = ωᵢ + K · r · sin(ψ − θᵢ)
-   where (r, ψ) are the magnitude and angle of the mean field:
-     r·e^{iψ} = (1/N) Σ e^{iθⱼ}
-   A neuron "spikes" each time its phase θ wraps past 2π. We draw a dot at
-   that (time, neuron) coordinate. That is the raster plot.
+     dθᵢ/dt = ωᵢ − K · Σⱼ G(i−j) · sin(θᵢ − θⱼ + α)
+
+   G is the coupling kernel over ring distance. Uniform G + α = 0 is the old
+   mean-field model (stripes / scatter). A narrow G lets a twisted phase
+   pattern survive as a traveling wave (diagonal bands). A nonlocal G with
+   α near π/2 supports a chimera — locked and drifting domains coexisting
+   in one population. A neuron "spikes" each time its phase wraps past 2π.
+   It is a teaching stand-in for the neuropulse.dsp engine, not the engine.
    ────────────────────────────────────────────────────────────────────────── */
 
 const cv  = document.getElementById('raster');
 const ctx = cv.getContext('2d');
 
-// device-pixel sharpening
 function fit() {
   const dpr = window.devicePixelRatio || 1;
   const cssW = cv.clientWidth, cssH = 420;
@@ -196,83 +223,123 @@ function fit() {
 let view = fit();
 window.addEventListener('resize', () => { view = fit(); });
 
-// ---- controls ----
+const $ = id => document.getElementById(id);
 const els = {
-  K: document.getElementById('K'), sigma: document.getElementById('sigma'),
-  freq: document.getElementById('freq'), N: document.getElementById('N'),
-  kLab: document.getElementById('kLab'), sLab: document.getElementById('sLab'),
-  fLab: document.getElementById('fLab'), nLab: document.getElementById('nLab'),
-  rVal: document.getElementById('rVal'), fVal: document.getElementById('fVal'),
-  kVal: document.getElementById('kVal'), regime: document.getElementById('regime'),
-  play: document.getElementById('play'), reset: document.getElementById('reset'),
-  sweep: document.getElementById('sweep'),
+  K: $('K'), sigma: $('sigma'), freq: $('freq'), N: $('N'), kern: $('kern'), alpha: $('alpha'),
+  kLab: $('kLab'), sLab: $('sLab'), fLab: $('fLab'), nLab: $('nLab'), gLab: $('gLab'), aLab: $('aLab'),
+  rVal: $('rVal'), fVal: $('fVal'), kVal: $('kVal'), regime: $('regime'),
+  play: $('play'), reset: $('reset'), sweep: $('sweep'), settle: $('settle'),
 };
 
-let N, phase, omega, Kscale, spikes /* ring buffers of spike times per neuron */;
-let rHist = [];                  // recent r values for the bottom trace
-const WINDOW = 6.0;              // seconds of history shown horizontally
-let t = 0;                       // sim clock (s)
-let running = true, sweeping = false, sweepDir = 1;
+// Presets = the four regimes of kernel_lib.REGIMES. `init` picks the seed
+// state: a phase twist for the wave, a coherent bump for the chimera (a
+// chimera is bistable with full sync, so it has to be seeded, then settled).
+const PRESETS = {
+  drift:   { K: 0.0, sigma: 0.18, kern: 'uniform',  alpha: 0.0,   N: 64,  init: 'random' },
+  lock:    { K: 1.6, sigma: 0.18, kern: 'uniform',  alpha: 0.0,   N: 64,  init: 'random' },
+  wave:    { K: 1.2, sigma: 0.01, kern: 'local',    alpha: 0.0,   N: 128, init: 'twist'  },
+  chimera: { K: 1.0, sigma: 0.0,  kern: 'nonlocal', alpha: 1.457, N: 128, init: 'bump'   },
+};
+const SETTLE_S = 30;             // seconds of silent pre-roll for the chimera
+const LOCAL_WIN = 0.02;          // local-r window, as a fraction of the ring
+// Fixed 2 ms Euler step. Not cosmetic: at 4 ms the lagged coupling's error
+// pushes a chimera into full sync within seconds (measured); 2 ms holds it.
+const SIM_DT = 0.002;
+
+let N, phase, omega, Kscale, G, Gloc, spikes;
+let rHist = [];
+const WINDOW = 6.0;
+let t = 0;
+let running = true, sweeping = false, sweepDir = 1, initMode = 'random';
+
+// seeded RNG so a reseed of a preset is repeatable
+let seed = 7;
+function rand() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+
+function ringKernel(n, kind, width = 0.012, kappa = 4.0) {
+  const g = new Float64Array(n);
+  let sum = 0;
+  for (let d = 0; d < n; d++) {
+    const x = Math.min(d, n - d) / n;
+    g[d] = kind === 'uniform' ? 1
+         : kind === 'local'   ? Math.exp(-0.5 * (x / width) ** 2)
+         :                      Math.exp(-2 * kappa * x);
+    sum += g[d];
+  }
+  for (let d = 0; d < n; d++) g[d] /= sum;
+  return g;
+}
 
 function reseed() {
   N = +els.N.value;
   phase = new Float64Array(N);
   omega = new Float64Array(N);
   spikes = Array.from({ length: N }, () => []);
-  const meanF = +els.freq.value;
-  const sigma = +els.sigma.value;
+  const meanF = +els.freq.value, sigma = +els.sigma.value;
+  seed = 7;
+  let m = 0;
   for (let i = 0; i < N; i++) {
-    phase[i] = Math.random() * 2 * Math.PI;
-    // natural angular frequency: mean rate ± a spread tied to σ (threshold
-    // spread widens effective rate disagreement → raises K_c, exactly as the
-    // math doc §2 predicts).
-    const jitter = (Math.random() * 2 - 1);          // uniform [-1,1]
-    const fi = meanF * (1 + (0.10 + 0.9 * sigma) * jitter);
+    const fi = meanF * (1 + sigma * (rand() * 2 - 1));
     omega[i] = 2 * Math.PI * Math.max(0.2, fi);
+    m += omega[i];
+    const x = i / N;
+    if (initMode === 'twist')      phase[i] = 2 * Math.PI * 3 * x + 0.25 * rand();
+    else if (initMode === 'bump')  phase[i] = 6 * Math.exp(-30 * (x - 0.5) ** 2) * (rand() * 2 - 1);
+    else                           phase[i] = rand() * 2 * Math.PI;
+    phase[i] = ((phase[i] % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
   }
-  // Nondimensionalize coupling against the mean angular frequency, so the K
-  // slider lives in its natural 0–2 musical range: the pull K·Kscale·r·sin(…)
-  // becomes comparable to the oscillation rate at K≈1, and K_c (lock-on) sits
-  // around K≈0.25 for the default spread.
-  let m = 0; for (let i = 0; i < N; i++) m += omega[i]; Kscale = m / N;
-  rHist = [];
-  t = 0;
+  Kscale = m / N;               // K ≈ 1 → coupling pull comparable to the oscillation rate
+  G = ringKernel(N, els.kern.value);
+  Gloc = ringKernel(N, 'local', LOCAL_WIN);
+  rHist = []; t = 0;
 }
-reseed();
 
-// order parameter: r·e^{iψ} = (1/N) Σ e^{iθ}
+// local field  Lᵢ = Σⱼ G(i−j) e^{iθⱼ}   (direct O(N²); N ≤ 128 is cheap)
+const cs = new Float64Array(128), sn = new Float64Array(128);
+function localField(kern, outX, outY) {
+  for (let j = 0; j < N; j++) { cs[j] = Math.cos(phase[j]); sn[j] = Math.sin(phase[j]); }
+  for (let i = 0; i < N; i++) {
+    let x = 0, y = 0;
+    for (let j = 0; j < N; j++) { const g = kern[(i - j + N) % N]; x += g * cs[j]; y += g * sn[j]; }
+    outX[i] = x; outY[i] = y;
+  }
+}
+const LX = new Float64Array(128), LY = new Float64Array(128);
+const rLocal = new Float64Array(128);
+
 function orderParam() {
   let sx = 0, sy = 0;
   for (let i = 0; i < N; i++) { sx += Math.cos(phase[i]); sy += Math.sin(phase[i]); }
-  sx /= N; sy /= N;
-  return { r: Math.hypot(sx, sy), psi: Math.atan2(sy, sx) };
+  return { r: Math.hypot(sx / N, sy / N), psi: Math.atan2(sy, sx) };
 }
 
-let lastR = 0, lastPsi = 0, fpsRate = 0, spikeCountWin = 0, spikeWinStart = 0;
+let lastR = 0, lastPsi = 0, fpsRate = 0, spikeWinStart = 0;
 
-function step(dt) {
-  const K = +els.K.value;
-  const { r, psi } = orderParam();
-  lastR = r; lastPsi = psi;
+function step(dt, record = true) {
+  const K = +els.K.value * Kscale, a = +els.alpha.value;
+  localField(G, LX, LY);
   for (let i = 0; i < N; i++) {
-    const before = phase[i];
-    // mean-field Kuramoto update (coupling nondimensionalized by Kscale)
-    phase[i] += (omega[i] + K * Kscale * r * Math.sin(psi - phase[i])) * dt;
+    // Σ G sin(θᵢ − θⱼ + α) = Im[e^{i(θᵢ+α)} · conj(Lᵢ)]
+    const c = Math.cos(phase[i] + a), s = Math.sin(phase[i] + a);
+    const drive = -K * (s * LX[i] - c * LY[i]);
+    phase[i] += (omega[i] + drive) * dt;
     if (phase[i] >= 2 * Math.PI) {
-      const wraps = Math.floor(phase[i] / (2 * Math.PI));
-      phase[i] -= wraps * 2 * Math.PI;
-      // record a spike at this time
-      spikes[i].push(t);
-      spikeCountWin++;
-      // trim old spikes outside the window
-      const cut = t - WINDOW;
-      while (spikes[i].length && spikes[i][0] < cut) spikes[i].shift();
+      phase[i] -= Math.floor(phase[i] / (2 * Math.PI)) * 2 * Math.PI;
+      if (record) {
+        spikes[i].push(t);
+        const cut = t - WINDOW;
+        while (spikes[i].length && spikes[i][0] < cut) spikes[i].shift();
+      }
+    } else if (phase[i] < 0) {
+      phase[i] += 2 * Math.PI;
     }
   }
+  if (!record) return;
   t += dt;
+  const { r, psi } = orderParam();
+  lastR = r; lastPsi = psi;
   rHist.push({ t, r });
   while (rHist.length && rHist[0].t < t - WINDOW) rHist.shift();
-  // firing-rate meter (spikes/sec across whole window)
   if (t - spikeWinStart > 0.5) {
     let total = 0; for (let i = 0; i < N; i++) total += spikes[i].length;
     fpsRate = total / (N * Math.min(WINDOW, t || WINDOW));
@@ -280,43 +347,41 @@ function step(dt) {
   }
 }
 
+function updateLocal() {
+  localField(Gloc, LX, LY);
+  for (let i = 0; i < N; i++) rLocal[i] = Math.hypot(LX[i], LY[i]);
+}
+
 function draw() {
   const { w, h } = view;
-  const padL = 8, padR = 8, padT = 8, padB = 46; // bottom strip = r trace
+  const padL = 8, padR = 44, padT = 8, padB = 46;
   const plotW = w - padL - padR, plotH = h - padT - padB;
-  ctx.clearRect(0, 0, w, h);
-
-  // grid baseline
   ctx.fillStyle = '#06060a'; ctx.fillRect(0, 0, w, h);
+  const t0 = t - WINDOW, rowH = plotH / N;
 
-  const t0 = t - WINDOW;
-  const rowH = plotH / N;
-
-  // spikes
+  // spikes — coloured by each neuron's LOCAL coherence, so a chimera shows
+  // amber rows beside indigo rows instead of one global tint
   for (let i = 0; i < N; i++) {
     const y = padT + i * rowH + rowH / 2;
+    ctx.fillStyle = mix('#6366f1', '#f2b134', rLocal[i]);
     const arr = spikes[i];
     for (let k = 0; k < arr.length; k++) {
       const x = padL + ((arr[k] - t0) / WINDOW) * plotW;
       if (x < padL) continue;
-      // color spikes by current synchrony: indigo when scattered, amber when locked
-      ctx.fillStyle = mix('#6366f1', '#f2b134', lastR);
-      ctx.fillRect(x - 0.8, y - Math.max(1.2, rowH * 0.32), 1.7, Math.max(2.4, rowH * 0.64));
+      ctx.fillRect(x - 0.8, y - Math.max(1.0, rowH * 0.32), 1.7, Math.max(2.0, rowH * 0.64));
     }
   }
 
-  // mean-phase marker: a faint moving line where ψ currently points in time.
-  // Maps the crowd's collective "now"; when locked it sweeps as a clean front.
-  const psiFrac = (lastPsi + Math.PI) / (2 * Math.PI); // 0..1
-  const px = padL + (1 - psiFrac) * plotW;
-  ctx.strokeStyle = 'rgba(242,177,52,' + (0.10 + 0.5 * lastR) + ')';
-  ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(px, padT); ctx.lineTo(px, padT + plotH); ctx.stroke();
+  // right strip: local r down the ring
+  const sx = padL + plotW + 6, sw = padR - 10;
+  ctx.fillStyle = '#0d0d12'; ctx.fillRect(sx, padT, sw, plotH);
+  ctx.fillStyle = 'rgba(51,224,200,0.85)';
+  for (let i = 0; i < N; i++) ctx.fillRect(sx, padT + i * rowH, sw * rLocal[i], Math.max(1, rowH));
 
-  // bottom strip: r over time
+  // bottom strip: global r over time
   const sy0 = padT + plotH + 8, sH = padB - 14;
   ctx.strokeStyle = '#2a2a32'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(padL, sy0 + sH); ctx.lineTo(padL + plotW, sy0 + sH); ctx.stroke();
-  // r ≈ 0.3 lock guide
   const lockY = sy0 + sH - 0.3 * sH;
   ctx.strokeStyle = 'rgba(138,138,147,0.4)'; ctx.setLineDash([3,3]);
   ctx.beginPath(); ctx.moveTo(padL, lockY); ctx.lineTo(padL + plotW, lockY); ctx.stroke();
@@ -324,72 +389,105 @@ function draw() {
   ctx.strokeStyle = '#33e0c8'; ctx.lineWidth = 1.6; ctx.beginPath();
   let started = false;
   for (const p of rHist) {
-    const x = padL + ((p.t - t0) / WINDOW) * plotW;
-    const y = sy0 + sH - p.r * sH;
+    const x = padL + ((p.t - t0) / WINDOW) * plotW, y = sy0 + sH - p.r * sH;
     if (!started) { ctx.moveTo(x, y); started = true; } else ctx.lineTo(x, y);
   }
   ctx.stroke();
 
-  // labels
   ctx.fillStyle = '#8a8a93';
   ctx.font = '10px "JetBrains Mono", monospace';
-  ctx.fillText('r', padL + 2, sy0 + 9);
+  ctx.fillText('global r', padL + 2, sy0 + 9);
   ctx.fillText('lock ≈ 0.3', padL + plotW - 58, lockY - 3);
   ctx.fillText('time →  (' + WINDOW.toFixed(0) + 's window)', padL + plotW - 150, padT + 11);
+  ctx.fillText('local r', sx - 4, padT + plotH + 18);
 }
 
-function mix(a, b, t) {
-  t = Math.max(0, Math.min(1, t));
-  const pa = [parseInt(a.slice(1,3),16), parseInt(a.slice(3,5),16), parseInt(a.slice(5,7),16)];
-  const pb = [parseInt(b.slice(1,3),16), parseInt(b.slice(3,5),16), parseInt(b.slice(5,7),16)];
-  const c = pa.map((v, i) => Math.round(v + (pb[i]-v) * t));
-  return 'rgb(' + c.join(',') + ')';
+function mix(a, b, f) {
+  f = Math.max(0, Math.min(1, f));
+  const pa = [1,3,5].map(k => parseInt(a.slice(k, k + 2), 16));
+  const pb = [1,3,5].map(k => parseInt(b.slice(k, k + 2), 16));
+  return 'rgb(' + pa.map((v, i) => Math.round(v + (pb[i] - v) * f)).join(',') + ')';
 }
 
 function updateMeters() {
   els.rVal.textContent = lastR.toFixed(2);
   els.fVal.textContent = fpsRate.toFixed(1);
   els.kVal.textContent = (+els.K.value).toFixed(2);
-  const r = lastR;
+  // regime read from local AND global coherence — global r alone calls a
+  // traveling wave "drift" and cannot see a chimera at all
+  let hi = 0, lo = 0;
+  for (let i = 0; i < N; i++) { if (rLocal[i] > 0.9) hi++; else if (rLocal[i] < 0.6) lo++; }
+  hi /= N; lo /= N;
   let label, col;
-  if (r < 0.30)      { label = 'drift';    col = '#6366f1'; }
-  else if (r < 0.75) { label = 'critical'; col = '#f59e0b'; }
-  else               { label = 'lock';     col = '#f2b134'; }
+  if (hi > 0.2 && lo > 0.2)            { label = 'chimera';        col = '#e879f9'; }
+  else if (hi > 0.8 && lastR < 0.3)    { label = 'traveling wave'; col = '#33e0c8'; }
+  else if (lastR >= 0.75)              { label = 'lock';           col = '#f2b134'; }
+  else if (lastR >= 0.30)              { label = 'critical';       col = '#f59e0b'; }
+  else                                 { label = 'drift';          col = '#6366f1'; }
   els.regime.textContent = label;
   els.regime.style.background = col;
-  els.regime.style.color = (r >= 0.75) ? '#0b0b0d' : '#0b0b0d';
+  els.regime.style.color = '#0b0b0d';
 }
 
-// ---- control wiring ----
 function syncLabels() {
   els.kLab.textContent = (+els.K.value).toFixed(2);
   els.sLab.textContent = (+els.sigma.value).toFixed(3);
   els.fLab.textContent = (+els.freq.value).toFixed(1);
   els.nLab.textContent = els.N.value;
+  els.gLab.textContent = els.kern.value;
+  els.aLab.textContent = (+els.alpha.value).toFixed(2);
 }
-['K','sigma','freq','N'].forEach(id => {
+['K','sigma','freq','N','alpha','kern'].forEach(id => {
   els[id].addEventListener('input', () => {
     syncLabels();
-    if (id === 'N' || id === 'sigma' || id === 'freq') reseed();
+    if (id === 'N' || id === 'sigma' || id === 'freq') { initMode = 'random'; reseed(); }
+    if (id === 'kern') G = ringKernel(N, els.kern.value);
   });
 });
+
+function applyPreset(name) {
+  const p = PRESETS[name];
+  els.K.value = p.K; els.sigma.value = p.sigma; els.kern.value = p.kern;
+  els.alpha.value = p.alpha; els.N.value = p.N;
+  initMode = p.init; sweeping = false; els.sweep.classList.remove('on');
+  syncLabels(); reseed();
+  document.querySelectorAll('#presets button').forEach(b => b.classList.toggle('on', b.dataset.p === name));
+  if (name === 'chimera') {
+    // settle the seeded bump silently so you arrive at the steady state
+    els.settle.textContent = 'settling the chimera (' + SETTLE_S + ' s of simulated time)…';
+    setTimeout(() => {
+      for (let k = 0; k < SETTLE_S / SIM_DT; k++) step(SIM_DT, false);
+      els.settle.textContent = 'settled. Watch the amber rows hold while the indigo rows slip.';
+    }, 30);
+  } else {
+    els.settle.textContent = name === 'wave'
+      ? 'seeded with a three-turn twist; global r reads ≈0 — the strip on the right says otherwise.'
+      : '';
+  }
+}
+document.querySelectorAll('#presets button').forEach(b =>
+  b.addEventListener('click', () => applyPreset(b.dataset.p)));
+
 syncLabels();
+reseed();
 
 els.play.addEventListener('click', () => {
   running = !running;
   els.play.textContent = running ? '⏸ pause' : '▶ play';
   els.play.classList.toggle('on', running);
 });
-els.reset.addEventListener('click', reseed);
+els.reset.addEventListener('click', () => {
+  const on = document.querySelector('#presets button.on');
+  if (on) applyPreset(on.dataset.p); else reseed();
+});
 els.sweep.addEventListener('click', () => {
   sweeping = !sweeping;
   els.sweep.classList.toggle('on', sweeping);
 });
 
-// ---- main loop ----
-let prev = performance.now();
+let prev = performance.now(), frameN = 0;
 function frame(now) {
-  const wall = Math.min(0.05, (now - prev) / 1000); // clamp big gaps
+  const wall = Math.min(0.05, (now - prev) / 1000);
   prev = now;
   if (running) {
     if (sweeping) {
@@ -398,10 +496,10 @@ function frame(now) {
       if (k <= 0) { k = 0; sweepDir = 1; }
       els.K.value = k.toFixed(3); els.kLab.textContent = k.toFixed(2);
     }
-    // fixed sub-steps for numerical stability at high K
-    const sub = 3, dt = wall / sub;
+    const sub = Math.max(1, Math.ceil(wall / SIM_DT)), dt = wall / sub;
     for (let s = 0; s < sub; s++) step(dt);
   }
+  if ((frameN++ & 3) === 0) updateLocal();
   draw();
   updateMeters();
   requestAnimationFrame(frame);

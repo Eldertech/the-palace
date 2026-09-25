@@ -1,0 +1,1362 @@
+[
+ {
+  "sigma": 0.02,
+  "K": 0.0,
+  "r": 0.073,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.235,
+  "clarity": 0.847,
+  "centroid_hz": 753.0,
+  "loudness_db": 3.5
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.05,
+  "r": 0.971,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 395.0,
+  "loudness_db": 16.8
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.1,
+  "r": 0.993,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 568.0,
+  "loudness_db": 21.8
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.15,
+  "r": 0.997,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 626.0,
+  "loudness_db": 23.1
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.2,
+  "r": 0.998,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 657.0,
+  "loudness_db": 23.6
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.25,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 680.0,
+  "loudness_db": 23.8
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.3,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 697.0,
+  "loudness_db": 24.0
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.35,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 709.0,
+  "loudness_db": 24.1
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.4,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 719.0,
+  "loudness_db": 24.1
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.45,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 726.0,
+  "loudness_db": 24.2
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.5,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 732.0,
+  "loudness_db": 24.2
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.55,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 736.0,
+  "loudness_db": 24.2
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.6,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 739.0,
+  "loudness_db": 24.2
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.65,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 742.0,
+  "loudness_db": 24.3
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.7,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 744.0,
+  "loudness_db": 24.3
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.75,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 746.0,
+  "loudness_db": 24.3
+ },
+ {
+  "sigma": 0.02,
+  "K": 0.8,
+  "r": 1.0,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 748.0,
+  "loudness_db": 24.3
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.0,
+  "r": 0.076,
+  "pitch_hz": 106.0,
+  "harmonicity": 0.089,
+  "clarity": 0.442,
+  "centroid_hz": 776.0,
+  "loudness_db": 3.2
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.05,
+  "r": 0.148,
+  "pitch_hz": 107.0,
+  "harmonicity": 0.09,
+  "clarity": 0.513,
+  "centroid_hz": 783.0,
+  "loudness_db": 3.0
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.1,
+  "r": 0.952,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 354.0,
+  "loudness_db": 14.4
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.15,
+  "r": 0.98,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 442.0,
+  "loudness_db": 18.5
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.2,
+  "r": 0.989,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 519.0,
+  "loudness_db": 20.6
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.25,
+  "r": 0.993,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 568.0,
+  "loudness_db": 21.8
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.3,
+  "r": 0.995,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 598.0,
+  "loudness_db": 22.4
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.35,
+  "r": 0.997,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 618.0,
+  "loudness_db": 22.9
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.4,
+  "r": 0.997,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 633.0,
+  "loudness_db": 23.2
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.45,
+  "r": 0.998,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 646.0,
+  "loudness_db": 23.4
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.5,
+  "r": 0.998,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 657.0,
+  "loudness_db": 23.6
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.55,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 667.0,
+  "loudness_db": 23.7
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.6,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 676.0,
+  "loudness_db": 23.8
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.65,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 684.0,
+  "loudness_db": 23.9
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.7,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 691.0,
+  "loudness_db": 23.9
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.75,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 697.0,
+  "loudness_db": 24.0
+ },
+ {
+  "sigma": 0.05,
+  "K": 0.8,
+  "r": 0.999,
+  "pitch_hz": 110.0,
+  "harmonicity": 1.0,
+  "clarity": 0.99,
+  "centroid_hz": 702.0,
+  "loudness_db": 24.0
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.0,
+  "r": 0.087,
+  "pitch_hz": 108.0,
+  "harmonicity": 0.038,
+  "clarity": 0.175,
+  "centroid_hz": 762.0,
+  "loudness_db": 3.3
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.05,
+  "r": 0.101,
+  "pitch_hz": 104.0,
+  "harmonicity": 0.053,
+  "clarity": 0.184,
+  "centroid_hz": 770.0,
+  "loudness_db": 3.0
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.1,
+  "r": 0.211,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.136,
+  "clarity": 0.241,
+  "centroid_hz": 715.0,
+  "loudness_db": 3.8
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.15,
+  "r": 0.899,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.99,
+  "centroid_hz": 326.0,
+  "loudness_db": 10.5
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.2,
+  "r": 0.952,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 354.0,
+  "loudness_db": 14.4
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.25,
+  "r": 0.971,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 395.0,
+  "loudness_db": 16.8
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.3,
+  "r": 0.98,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 442.0,
+  "loudness_db": 18.5
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.35,
+  "r": 0.986,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 484.0,
+  "loudness_db": 19.7
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.4,
+  "r": 0.989,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 519.0,
+  "loudness_db": 20.6
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.45,
+  "r": 0.992,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 546.0,
+  "loudness_db": 21.3
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.5,
+  "r": 0.993,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 568.0,
+  "loudness_db": 21.8
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.55,
+  "r": 0.994,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 584.0,
+  "loudness_db": 22.2
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.6,
+  "r": 0.995,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 598.0,
+  "loudness_db": 22.5
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.65,
+  "r": 0.996,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 608.0,
+  "loudness_db": 22.7
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.7,
+  "r": 0.997,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 618.0,
+  "loudness_db": 22.9
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.75,
+  "r": 0.997,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.99,
+  "centroid_hz": 626.0,
+  "loudness_db": 23.0
+ },
+ {
+  "sigma": 0.1,
+  "K": 0.8,
+  "r": 0.997,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.999,
+  "clarity": 0.991,
+  "centroid_hz": 633.0,
+  "loudness_db": 23.2
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.0,
+  "r": 0.077,
+  "pitch_hz": 106.0,
+  "harmonicity": 0.068,
+  "clarity": 0.091,
+  "centroid_hz": 752.0,
+  "loudness_db": 3.3
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.05,
+  "r": 0.09,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.038,
+  "clarity": 0.104,
+  "centroid_hz": 785.0,
+  "loudness_db": 3.1
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.1,
+  "r": 0.131,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.081,
+  "clarity": 0.154,
+  "centroid_hz": 723.0,
+  "loudness_db": 3.6
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.15,
+  "r": 0.202,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.085,
+  "clarity": 0.19,
+  "centroid_hz": 725.0,
+  "loudness_db": 4.0
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.2,
+  "r": 0.845,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.99,
+  "clarity": 0.991,
+  "centroid_hz": 335.0,
+  "loudness_db": 8.2
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.25,
+  "r": 0.925,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.995,
+  "clarity": 0.991,
+  "centroid_hz": 332.0,
+  "loudness_db": 12.1
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.3,
+  "r": 0.952,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.997,
+  "clarity": 0.991,
+  "centroid_hz": 354.0,
+  "loudness_db": 14.4
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.35,
+  "r": 0.966,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 380.0,
+  "loudness_db": 16.1
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.4,
+  "r": 0.975,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.997,
+  "clarity": 0.991,
+  "centroid_hz": 411.0,
+  "loudness_db": 17.4
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.45,
+  "r": 0.98,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 442.0,
+  "loudness_db": 18.5
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.5,
+  "r": 0.984,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 471.0,
+  "loudness_db": 19.4
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.55,
+  "r": 0.987,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 497.0,
+  "loudness_db": 20.1
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.6,
+  "r": 0.989,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 519.0,
+  "loudness_db": 20.6
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.65,
+  "r": 0.991,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 538.0,
+  "loudness_db": 21.1
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.7,
+  "r": 0.992,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 554.0,
+  "loudness_db": 21.5
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.75,
+  "r": 0.993,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 568.0,
+  "loudness_db": 21.8
+ },
+ {
+  "sigma": 0.15,
+  "K": 0.8,
+  "r": 0.994,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.998,
+  "clarity": 0.991,
+  "centroid_hz": 579.0,
+  "loudness_db": 22.0
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.0,
+  "r": 0.077,
+  "pitch_hz": 125.0,
+  "harmonicity": 0.034,
+  "clarity": 0.115,
+  "centroid_hz": 765.0,
+  "loudness_db": 3.5
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.05,
+  "r": 0.112,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.057,
+  "clarity": 0.15,
+  "centroid_hz": 747.0,
+  "loudness_db": 3.4
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.1,
+  "r": 0.122,
+  "pitch_hz": 126.0,
+  "harmonicity": 0.115,
+  "clarity": 0.127,
+  "centroid_hz": 730.0,
+  "loudness_db": 3.4
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.15,
+  "r": 0.143,
+  "pitch_hz": 126.0,
+  "harmonicity": 0.093,
+  "clarity": 0.152,
+  "centroid_hz": 741.0,
+  "loudness_db": 3.9
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.2,
+  "r": 0.185,
+  "pitch_hz": 112.0,
+  "harmonicity": 0.092,
+  "clarity": 0.151,
+  "centroid_hz": 720.0,
+  "loudness_db": 4.0
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.25,
+  "r": 0.478,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.465,
+  "clarity": 0.572,
+  "centroid_hz": 571.0,
+  "loudness_db": 4.1
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.3,
+  "r": 0.898,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.988,
+  "clarity": 0.99,
+  "centroid_hz": 326.0,
+  "loudness_db": 10.5
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.35,
+  "r": 0.933,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.993,
+  "clarity": 0.991,
+  "centroid_hz": 335.0,
+  "loudness_db": 12.7
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.4,
+  "r": 0.952,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.994,
+  "clarity": 0.991,
+  "centroid_hz": 354.0,
+  "loudness_db": 14.4
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.45,
+  "r": 0.963,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.995,
+  "clarity": 0.991,
+  "centroid_hz": 373.0,
+  "loudness_db": 15.7
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.5,
+  "r": 0.971,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.995,
+  "clarity": 0.991,
+  "centroid_hz": 395.0,
+  "loudness_db": 16.7
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.55,
+  "r": 0.976,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.996,
+  "clarity": 0.991,
+  "centroid_hz": 418.0,
+  "loudness_db": 17.7
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.6,
+  "r": 0.98,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.996,
+  "clarity": 0.991,
+  "centroid_hz": 441.0,
+  "loudness_db": 18.5
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.65,
+  "r": 0.983,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.997,
+  "clarity": 0.991,
+  "centroid_hz": 463.0,
+  "loudness_db": 19.2
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.7,
+  "r": 0.986,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.997,
+  "clarity": 0.991,
+  "centroid_hz": 484.0,
+  "loudness_db": 19.7
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.75,
+  "r": 0.988,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.997,
+  "clarity": 0.991,
+  "centroid_hz": 502.0,
+  "loudness_db": 20.2
+ },
+ {
+  "sigma": 0.2,
+  "K": 0.8,
+  "r": 0.989,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.996,
+  "clarity": 0.991,
+  "centroid_hz": 519.0,
+  "loudness_db": 20.6
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.0,
+  "r": 0.082,
+  "pitch_hz": 103.0,
+  "harmonicity": 0.066,
+  "clarity": 0.086,
+  "centroid_hz": 747.0,
+  "loudness_db": 3.3
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.05,
+  "r": 0.087,
+  "pitch_hz": 117.0,
+  "harmonicity": 0.079,
+  "clarity": 0.155,
+  "centroid_hz": 746.0,
+  "loudness_db": 3.6
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.1,
+  "r": 0.103,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.059,
+  "clarity": 0.147,
+  "centroid_hz": 759.0,
+  "loudness_db": 3.1
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.15,
+  "r": 0.129,
+  "pitch_hz": 130.0,
+  "harmonicity": 0.089,
+  "clarity": 0.147,
+  "centroid_hz": 716.0,
+  "loudness_db": 3.5
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.2,
+  "r": 0.144,
+  "pitch_hz": 112.0,
+  "harmonicity": 0.068,
+  "clarity": 0.177,
+  "centroid_hz": 722.0,
+  "loudness_db": 3.8
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.25,
+  "r": 0.177,
+  "pitch_hz": 112.0,
+  "harmonicity": 0.067,
+  "clarity": 0.163,
+  "centroid_hz": 749.0,
+  "loudness_db": 3.6
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.3,
+  "r": 0.392,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.336,
+  "clarity": 0.352,
+  "centroid_hz": 634.0,
+  "loudness_db": 3.8
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.35,
+  "r": 0.872,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.971,
+  "clarity": 0.99,
+  "centroid_hz": 332.0,
+  "loudness_db": 9.3
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.4,
+  "r": 0.916,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.981,
+  "clarity": 0.991,
+  "centroid_hz": 330.0,
+  "loudness_db": 11.5
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.45,
+  "r": 0.938,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.987,
+  "clarity": 0.991,
+  "centroid_hz": 338.0,
+  "loudness_db": 13.1
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.5,
+  "r": 0.952,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.988,
+  "clarity": 0.987,
+  "centroid_hz": 354.0,
+  "loudness_db": 14.4
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.55,
+  "r": 0.961,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.989,
+  "clarity": 0.991,
+  "centroid_hz": 369.0,
+  "loudness_db": 15.4
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.6,
+  "r": 0.968,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.99,
+  "clarity": 0.989,
+  "centroid_hz": 385.0,
+  "loudness_db": 16.4
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.65,
+  "r": 0.973,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.991,
+  "clarity": 0.991,
+  "centroid_hz": 404.0,
+  "loudness_db": 17.2
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.7,
+  "r": 0.977,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.992,
+  "clarity": 0.991,
+  "centroid_hz": 423.0,
+  "loudness_db": 17.9
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.75,
+  "r": 0.98,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.993,
+  "clarity": 0.991,
+  "centroid_hz": 441.0,
+  "loudness_db": 18.5
+ },
+ {
+  "sigma": 0.25,
+  "K": 0.8,
+  "r": 0.983,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.992,
+  "clarity": 0.991,
+  "centroid_hz": 459.0,
+  "loudness_db": 19.0
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.0,
+  "r": 0.076,
+  "pitch_hz": 127.0,
+  "harmonicity": 0.049,
+  "clarity": 0.083,
+  "centroid_hz": 757.0,
+  "loudness_db": 3.3
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.05,
+  "r": 0.093,
+  "pitch_hz": 119.0,
+  "harmonicity": 0.052,
+  "clarity": 0.101,
+  "centroid_hz": 771.0,
+  "loudness_db": 3.1
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.1,
+  "r": 0.109,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.066,
+  "clarity": 0.119,
+  "centroid_hz": 769.0,
+  "loudness_db": 3.5
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.15,
+  "r": 0.117,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.085,
+  "clarity": 0.156,
+  "centroid_hz": 756.0,
+  "loudness_db": 3.3
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.2,
+  "r": 0.13,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.066,
+  "clarity": 0.15,
+  "centroid_hz": 736.0,
+  "loudness_db": 3.8
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.25,
+  "r": 0.153,
+  "pitch_hz": 112.0,
+  "harmonicity": 0.073,
+  "clarity": 0.178,
+  "centroid_hz": 743.0,
+  "loudness_db": 3.9
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.3,
+  "r": 0.193,
+  "pitch_hz": 112.0,
+  "harmonicity": 0.082,
+  "clarity": 0.19,
+  "centroid_hz": 733.0,
+  "loudness_db": 4.2
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.35,
+  "r": 0.358,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.242,
+  "clarity": 0.307,
+  "centroid_hz": 668.0,
+  "loudness_db": 3.7
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.4,
+  "r": 0.844,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.939,
+  "clarity": 0.983,
+  "centroid_hz": 335.0,
+  "loudness_db": 8.1
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.45,
+  "r": 0.898,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.961,
+  "clarity": 0.989,
+  "centroid_hz": 326.0,
+  "loudness_db": 10.5
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.5,
+  "r": 0.924,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.971,
+  "clarity": 0.99,
+  "centroid_hz": 332.0,
+  "loudness_db": 12.1
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.55,
+  "r": 0.941,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.976,
+  "clarity": 0.99,
+  "centroid_hz": 341.0,
+  "loudness_db": 13.3
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.6,
+  "r": 0.952,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.977,
+  "clarity": 0.991,
+  "centroid_hz": 354.0,
+  "loudness_db": 14.3
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.65,
+  "r": 0.96,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.978,
+  "clarity": 0.991,
+  "centroid_hz": 366.0,
+  "loudness_db": 15.3
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.7,
+  "r": 0.966,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.981,
+  "clarity": 0.991,
+  "centroid_hz": 379.0,
+  "loudness_db": 16.0
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.75,
+  "r": 0.971,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.983,
+  "clarity": 0.991,
+  "centroid_hz": 394.0,
+  "loudness_db": 16.7
+ },
+ {
+  "sigma": 0.3,
+  "K": 0.8,
+  "r": 0.975,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.984,
+  "clarity": 0.991,
+  "centroid_hz": 410.0,
+  "loudness_db": 17.4
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.0,
+  "r": 0.077,
+  "pitch_hz": 138.0,
+  "harmonicity": 0.097,
+  "clarity": 0.096,
+  "centroid_hz": 770.0,
+  "loudness_db": 3.2
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.05,
+  "r": 0.086,
+  "pitch_hz": 122.0,
+  "harmonicity": 0.041,
+  "clarity": 0.137,
+  "centroid_hz": 760.0,
+  "loudness_db": 3.3
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.1,
+  "r": 0.092,
+  "pitch_hz": 143.0,
+  "harmonicity": 0.112,
+  "clarity": 0.146,
+  "centroid_hz": 757.0,
+  "loudness_db": 3.2
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.15,
+  "r": 0.102,
+  "pitch_hz": 143.0,
+  "harmonicity": 0.095,
+  "clarity": 0.119,
+  "centroid_hz": 769.0,
+  "loudness_db": 3.3
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.2,
+  "r": 0.121,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.073,
+  "clarity": 0.145,
+  "centroid_hz": 726.0,
+  "loudness_db": 3.7
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.25,
+  "r": 0.131,
+  "pitch_hz": 111.0,
+  "harmonicity": 0.097,
+  "clarity": 0.149,
+  "centroid_hz": 721.0,
+  "loudness_db": 3.6
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.3,
+  "r": 0.144,
+  "pitch_hz": 142.0,
+  "harmonicity": 0.106,
+  "clarity": 0.186,
+  "centroid_hz": 720.0,
+  "loudness_db": 3.9
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.35,
+  "r": 0.159,
+  "pitch_hz": 112.0,
+  "harmonicity": 0.053,
+  "clarity": 0.151,
+  "centroid_hz": 725.0,
+  "loudness_db": 4.2
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.4,
+  "r": 0.191,
+  "pitch_hz": 116.0,
+  "harmonicity": 0.076,
+  "clarity": 0.143,
+  "centroid_hz": 743.0,
+  "loudness_db": 3.8
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.45,
+  "r": 0.26,
+  "pitch_hz": 113.0,
+  "harmonicity": 0.127,
+  "clarity": 0.198,
+  "centroid_hz": 727.0,
+  "loudness_db": 3.8
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.5,
+  "r": 0.447,
+  "pitch_hz": 109.0,
+  "harmonicity": 0.384,
+  "clarity": 0.443,
+  "centroid_hz": 594.0,
+  "loudness_db": 4.1
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.55,
+  "r": 0.863,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.897,
+  "clarity": 0.99,
+  "centroid_hz": 333.0,
+  "loudness_db": 8.9
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.6,
+  "r": 0.898,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.922,
+  "clarity": 0.991,
+  "centroid_hz": 326.0,
+  "loudness_db": 10.5
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.65,
+  "r": 0.919,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.933,
+  "clarity": 0.99,
+  "centroid_hz": 331.0,
+  "loudness_db": 11.7
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.7,
+  "r": 0.933,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.938,
+  "clarity": 0.991,
+  "centroid_hz": 335.0,
+  "loudness_db": 12.7
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.75,
+  "r": 0.944,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.939,
+  "clarity": 0.991,
+  "centroid_hz": 344.0,
+  "loudness_db": 13.5
+ },
+ {
+  "sigma": 0.4,
+  "K": 0.8,
+  "r": 0.952,
+  "pitch_hz": 110.0,
+  "harmonicity": 0.941,
+  "clarity": 0.991,
+  "centroid_hz": 354.0,
+  "loudness_db": 14.3
+ }
+]
