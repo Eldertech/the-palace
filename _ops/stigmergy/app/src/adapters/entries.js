@@ -5,9 +5,11 @@
 // Both return null on network/HTTP failure rather than throwing — the UI
 // renders an inline error band instead of a runtime exception.
 
+import { IS_PUBLIC, dataUrl, pathId } from '../lib/public-mode.js';
+
 export async function fetchEntries() {
   try {
-    const res = await fetch('/api/entries', { headers: { Accept: 'application/json' } });
+    const res = await fetch(IS_PUBLIC ? dataUrl('entries.json') : '/api/entries', { headers: { Accept: 'application/json' } });
     if (!res.ok) {
       return { ok: false, status: res.status, error: `http ${res.status}` };
     }
@@ -64,7 +66,10 @@ export async function fetchEntry(relPath) {
     return { ok: false, error: 'missing path' };
   }
   try {
-    const res = await fetch(`/api/entry?path=${encodeURIComponent(relPath)}`, {
+    // The read view names each entry's snapshot by pathId; a path outside the
+    // published set simply isn't there (404 → the reader's error band).
+    const url = IS_PUBLIC ? dataUrl(`entry/${pathId(relPath)}.json`) : `/api/entry?path=${encodeURIComponent(relPath)}`;
+    const res = await fetch(url, {
       headers: { Accept: 'application/json' },
     });
     if (!res.ok) {

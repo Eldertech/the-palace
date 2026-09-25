@@ -1,0 +1,55 @@
+# The palace's public read view — the reader's door (Loudon Live.md: two
+# doors, this read view or git). Builds STIGMERGY's STATE deck static from
+# main (_ops/stigmergy/app/scripts/build-public.mjs) and publishes it to
+# GitHub Pages at https://eldertech.github.io/the-palace/.
+#
+# Every push to main rebuilds the view; it can also be run by hand. Pages
+# deploys from GitHub Actions (repo Settings → Pages → Source). Pages went on
+# 2026-09-25 with Loudon's yes and a clean Sentry gate.
+name: Read view
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: read-view
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: _ops/stigmergy/package-lock.json
+      - name: ImageMagick (shrinks heroes and icons for the page)
+        run: sudo apt-get update -q && sudo apt-get install -y -q imagemagick
+      - name: Install STIGMERGY
+        run: npm ci --prefix _ops/stigmergy
+      - name: Build the read view
+        run: node _ops/stigmergy/app/scripts/build-public.mjs --base /the-palace/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _ops/stigmergy/app/dist-public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

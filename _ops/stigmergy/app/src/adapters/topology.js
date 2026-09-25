@@ -2,9 +2,11 @@
 // server endpoint. Returns null on network/HTTP failure rather than
 // throwing; the UI renders an inline error band instead.
 
+import { IS_PUBLIC, dataUrl } from '../lib/public-mode.js';
+
 export async function fetchTopology() {
   try {
-    const res = await fetch('/api/topology', { headers: { Accept: 'application/json' } });
+    const res = await fetch(IS_PUBLIC ? dataUrl('topology.json') : '/api/topology', { headers: { Accept: 'application/json' } });
     if (!res.ok) {
       return { ok: false, status: res.status, error: `http ${res.status}` };
     }
@@ -19,7 +21,7 @@ export async function fetchTopology() {
 // palace's current state (not from the dated map snapshot).
 export async function fetchUnsungPaths() {
   try {
-    const res = await fetch('/api/unsung-paths', { headers: { Accept: 'application/json' } });
+    const res = await fetch(IS_PUBLIC ? dataUrl('unsung-paths.json') : '/api/unsung-paths', { headers: { Accept: 'application/json' } });
     if (!res.ok) {
       return { ok: false, status: res.status, error: `http ${res.status}` };
     }
