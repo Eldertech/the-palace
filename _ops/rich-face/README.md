@@ -60,7 +60,8 @@ text pieces default to the margin; video, interactives and diagrams to the band.
 - **One voice at a time.** Post `{type:'rich:play'}` to the parent when sound starts; stop on
   `{type:'rich:hush'}`. The page hushes every other video, strip and piece.
 - **Test the claim headless.** Pull the worklet source out of the page and run it in Node against the
-  equation the section states before trusting what the page shows.
+  equation the section states before trusting what the page shows. `check-kuramoto-pieces.mjs` is the worked example:
+  `node _ops/rich-face/check-kuramoto-pieces.mjs` re-checks every claim Kuramoto's pieces make.
 - **A line that links the rich face is the door**, not prose — the parser skips it, or adding it would drift its own section (Kuramoto, 2026-09-24).
 - **Prefix the renderer's own classes.** An entry's diagram can define the same names — Kuramoto's Mermaid defines `drift`.
 - **Name and header.** `[Entry] — rich — <what>.html`, with a leading comment carrying title, born,
