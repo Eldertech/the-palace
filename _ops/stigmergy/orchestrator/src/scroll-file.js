@@ -139,12 +139,16 @@ function readHistory(historyPath) {
 /**
  * The stall read: from the history tail, how many consecutive most-recent
  * cycles posted nothing. 0 = the last cycle produced something (or no cycles).
- * A `state.health.stalled` flag set by the lane (barren twice) is honored too.
+ * A `state.health.stalled` flag set by the lane (barren twice) is honored too;
+ * a `STALL_CLEARED` history event ends the backward count.
  */
 export function readStall(history, state = {}) {
   let barren = 0;
   for (let i = history.length - 1; i >= 0; i--) {
     const e = history[i];
+    // A reviewed clearance (a human or an elder read the transcripts and found
+    // the barren cycles were something else — a usage limit, say) ends the count.
+    if (e.event === 'STALL_CLEARED') break;
     if (e.event !== 'CYCLE_COMPLETE') continue;
     if (Array.isArray(e.posted_messages) && e.posted_messages.length) break;
     barren += 1;
