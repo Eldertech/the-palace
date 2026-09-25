@@ -32,3 +32,7 @@ The card's pace obligations exist because the baton genre is inherently tempted 
 - The § Where the Baton Lives section names several shapes observed so far — framed as an open set, not a closed five. Do they want distinct templates, or is one flexible template plus a shape label enough? The cross-surface paste-prompt in particular reads like a prompt, not an entry companion, and may want its own skeleton.
 - Should the `host_capability_check` in [[Maker]] read [[Surfaces and Capabilities]] directly, so a cross-surface baton's receiving-environment section can be generated rather than hand-written?
 - Multiple parallel batons on a single entry — [[SCHEMA]] §8 is silent on this. Does the bundle pattern want to enforce one active baton per entry, or permit branching?
+
+## The Version and the Tuning File (2026-09-25)
+
+Versioned **v1.0** with the remaining ceremonies: the card as it stood that day — three-state lifecycle, the footer's one home, the cold-start variant — plus the opening read. It marks where counting starts, not a ranking of what came before. The number moves when the procedure does — a step, the footer, a completion signal — never for prose. The eight lessons that built the card, from the footer that travels in the artifact to the linter that keeps it from drifting, are numbered in [[Baton Ceremony — tuning]]; each baton's commit names the version and says what the run taught.
