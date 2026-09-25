@@ -250,7 +250,7 @@ owed and paid, it is paid, and the next run deletes the stale copy.
 
 ## 8. Entry Bundles
 
-An **entry bundle** is an optional sibling folder, named identically to the entry (no extension), that holds the entry's owned files: batons, context companions, sources, sketches, enrichments, rich faces. The `.md` is the canonical surface; the bundle is its private substrate. Bundles are plumbing, not ceremony — they appear when a ceremony needs a file to live somewhere, and do not require their own invocation.
+An **entry bundle** is an optional sibling folder, named identically to the entry (no extension), that holds the entry's owned files. To anyone who arrives they are of three kinds ([[CLAUDE]] § A page and its folder): **faces** a reader meets beside the text — the rich face and the scroll; **memory** the next worker reads — the Context companion, the tuning ledger, the baton; and **workshop**, everything else made along the way. The `.md` is the canonical surface and the first face. Bundles are plumbing, not ceremony — they appear when a ceremony needs a file to live somewhere, and do not require their own invocation.
 
 **Folder naming:** `[Entry].md` ↔ `[Entry]/` (exact match, no extension).
 
