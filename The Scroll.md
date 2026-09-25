@@ -79,11 +79,28 @@ live one ([[Drift and Consolidation]]).
 
 Machinery: `_ops/stigmergy/orchestrator/src/scroll-file.js` materializes it (every steward
 cycle via `process-cycle.js`, on demand via `scroll.js --home | --all`); STIGMERGY serves it
-with a live Now zone at `GET /api/projects/scroll`. Loose standards kept from the first scroll:
+with a live Now zone at `GET /api/projects/scroll`. A ceremony's scroll comes from
+`ceremony-scroll.js` (`scroll.js --ceremonies`), through the same endpoint. Loose standards kept from the first scroll:
 one per entry, append as you go, each section points at the real media, nothing deleted. A section the
 work later proves wrong stays too, labelled: the GenAI Camera scroll keeps renders the thin-pose bug
 invalidated, each with a caveat line, because the record of being wrong is worth more than a clean
 surface. It is a cast skin, in [[Identity Molting]]'s sense.
+
+## The ceremony scroll
+
+Every ceremony has a scroll too, and any entry with a tuning ledger counts as a ceremony, so a
+new one needs no registration. Its **Now** answers the ceremony's own questions: which version
+is live, whether it has run since the spec last changed, and which tuning items are still owed.
+Runs are read from git, from the commits whose subject is the ceremony's record as its card
+names it, plus the two records that are not commits: a harvest's record file and a map build's
+map. **The making** is the trail of runs and version changes, newest first, keyed on the commit
+so nothing duplicates. **Standing Orders** are Loudon's, but no ceremony reads them yet; a
+direction that should change how a ceremony runs belongs in its tuning ledger or its card. The
+PROJECTS deck lists every ceremony in its CEREMONIES box, beside the projects.
+
+Any other page can carry a scroll the same way (`scroll.js --home "<Title>"`). With the text and
+the rich face, the scroll is one of a page's three faces, and like the rich face it is the page's
+product, made without a deposit ([[Deposit Ceremony]]).
 
 ## Building a live scroll — template & gotchas (2026-07-09)
 
@@ -121,7 +138,7 @@ a scroll per *making-thread*, not one per entry — one-scroll-per-entry holds o
 ## Forward Vector
 
 Thirty-six project scrolls exist as of 2026-09-23, backfilled from the board and rendered in
-STIGMERGY's PROJECTS deck; the first live HTML scroll ([[GenAI Camera]], 2026-07-09) still stands
+STIGMERGY's PROJECTS deck, and twelve ceremony scrolls as of 2026-09-25; the first live HTML scroll ([[GenAI Camera]], 2026-07-09) still stands
 as the loop-making variant. Two things to watch: whether the *Standing Orders* zone actually
 shortens the question traffic on the TRICKSTER board (the reason it exists), and whether a busy
 project wants its trail split per making-thread (the GenAI Camera finding) once a run of ten
