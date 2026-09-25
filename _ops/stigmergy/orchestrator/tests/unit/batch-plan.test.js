@@ -18,7 +18,9 @@ function makePalace(opts = {}) {
     }));
     if (s.state) writeFileSync(path.join(dir, 'state.json'), JSON.stringify(s.state));
     // Home page in Projects/
-    const fm = `---\ntitle: "${s.home}"\ntype: project\nstage: ${s.stage || 'growing'}\nstatus: active\n---\n# ${s.home}\n`;
+    const type = s.type || 'project';
+    const stageLine = s.stage === null ? '' : `stage: ${s.stage || 'growing'}\n`;
+    const fm = `---\ntitle: "${s.home}"\ntype: ${type}\n${stageLine}status: ${s.status || 'active'}\n---\n# ${s.home}\n`;
     writeFileSync(path.join(root, 'Projects', `${s.home}.md`), fm);
   }
   return root;
@@ -66,5 +68,27 @@ describe('batch-plan --ignore-debounce', () => {
     root = makePalace({ stewards: [{ dir: 'a', home: 'Project A' }] });  // no state
     const plan = runPlanner(root);
     expect(plan.due).toHaveLength(1);
+  });
+});
+
+describe('batch-plan status gate', () => {
+  let root;
+  afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
+
+  // A maker's `status` is alive | stub — it says whether the tool-citizen works,
+  // not whether a project is active. The Shopkeeper (maker, status: stub, no
+  // stage) must still be woken once it is enchanted.
+  test('a stewarded maker with status: stub and no stage is due', () => {
+    root = makePalace({ stewards: [{ dir: 'shopkeeper', home: 'Shopkeeper', type: 'maker', status: 'stub', stage: null }] });
+    const plan = runPlanner(root);
+    expect(plan.due.map((r) => r.home)).toEqual(['Shopkeeper']);
+    expect(plan.skipped).toHaveLength(0);
+  });
+
+  test('a project that is complete is still skipped', () => {
+    root = makePalace({ stewards: [{ dir: 'a', home: 'Project A', status: 'complete' }] });
+    const plan = runPlanner(root);
+    expect(plan.due).toHaveLength(0);
+    expect(plan.skipped[0].reason).toBe('status_complete');
   });
 });

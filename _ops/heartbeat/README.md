@@ -1,7 +1,7 @@
 # Palace Heartbeat — Mac-side routines
 
-These two launchd jobs replace the Cowork **scheduled tasks** (now disabled) that
-used to fire the steward batch and the Shopkeeper sweep. The reason for the move:
+The steward batch's launchd job replaces the Cowork **scheduled task** (now disabled)
+that used to fire it; the Shopkeeper runs inside the batch as an ordinary steward. The reason for the move:
 Cowork's scheduled tasks run in the **Linux sandbox**, which has no GPU/Max/native
 tools — so GPU-bound stewards kept posting confusing "I'm in the sandbox, hand me
 to the Mac" forks into your Trickster inbox. Running the same headless
@@ -15,15 +15,13 @@ already uses to advance a steward from the board).
 | File | Role |
 |---|---|
 | `run-steward-batch.sh` | Wrapper: gives every *due* steward a **run** (up to its manifest `max_iterations` cycles, stopping on a blocking ask, a session request, or a stall) via the orchestrator skill (batch mode), then makes one scoped, text-only commit (machinery + `[Entry] — scroll.md` + board). See **Posture** below. |
-| `run-shopkeeper-sweep.sh` | Wrapper: runs the Shopkeeper commission-then-sweep loop, frugally, then commits the `Shop/Shopkeeper` bundle markdown + board note (text-only). |
 | `launchd/com.loudon.palace.steward-batch.plist` | Timer: daily 06:00 (→ every-other-morning via the wrapper's guard). |
-| `launchd/com.loudon.palace.shopkeeper-sweep.plist` | Timer: daily 06:30 (→ every-other-morning). |
 | `logs/` | Per-run logs + launchd stdout/stderr. |
-| `.last-steward-batch`, `.last-shopkeeper-sweep` | Stamp files the 2-day cadence guard reads/writes. |
+| `.last-steward-batch` | Stamp file the 2-day cadence guard reads/writes. |
 
 ## Which `claude` fires
 
-Both wrappers and STIGMERGY's lanes (`_ops/stigmergy/app/server/claude-bin.js`) resolve the
+The wrapper and STIGMERGY's lanes (`_ops/stigmergy/app/server/claude-bin.js`) resolve the
 binary the same way: `$CLAUDE_BIN` if set, else `~/.local/bin/claude` if present, else bare
 `claude`. On 2026-09-23 the Homebrew CLI (2.1.236) was too old for `claude-opus-5-5` (needs
 ≥ 2.1.280) and `brew upgrade claude-code` was blocked on the Xcode license, so for one evening
@@ -43,7 +41,7 @@ Mac is asleep at the scheduled minute, launchd runs the job at next wake.
 
 ## Posture — shadow agent, wrapper commits
 
-Both jobs run the agent in a **shadow posture** and let the *wrapper* commit:
+The batch runs the agent in a **shadow posture** and lets the *wrapper* commit:
 
 - **The agent never edits canon and never runs git.** It does not touch a
   project entry's `.md` body or frontmatter, and it does not deposit. It *does*
@@ -57,10 +55,9 @@ Both jobs run the agent in a **shadow posture** and let the *wrapper* commit:
   which stages only the paths the wrapper names — **never `git add -A`**
   (SCHEMA §9, N-writer repo) — and clears stale git locks itself. The
   steward-batch commits steward machinery + the board + every changed
-  `[Entry] — scroll.md`; the shopkeeper-sweep commits the `Shop/Shopkeeper`
-  bundle markdown + its board note.
+  `[Entry] — scroll.md`.
 - **Text-only (decided 2026-06-09).** Rendered media — `.wav` / `.png` /
-  `.svg` / `.html` a steward or the Shopkeeper produces — is **left
+  `.svg` / `.html` a steward produces — is **left
   uncommitted** on purpose. It still renders on the Trickster card from disk;
   review it there and commit it on approval. This keeps the repo from
   accreting binaries tied to proposals that may be rejected. To change it,
@@ -77,7 +74,7 @@ pile of machinery diffs.
 
 The human-readable "Steward Batch Review" digest
 (`_ops/stigmergy/trickster-auto/heartbeat-latest.md`) is produced by the
-**Automated Trickster** (`trickster-auto`), *not* by these two jobs. The
+**Automated Trickster** (`trickster-auto`), *not* by the batch. The
 steward batch deliberately writes no digest file — the BBS is its record (see
 `batch.md` Step 4). If you want the digest regenerated on the same cadence,
 that is a third job to add here; today it is run separately.
@@ -90,8 +87,8 @@ cd "/Users/loudonstearns/Documents/The Palace"
 # 0) one-time: clear the stale lock left by the Cowork rollback, or git writes on main will fail
 rm -f .git/index.lock
 
-# 1) make the wrappers executable
-chmod +x _ops/heartbeat/run-steward-batch.sh _ops/heartbeat/run-shopkeeper-sweep.sh
+# 1) make the wrapper executable
+chmod +x _ops/heartbeat/run-steward-batch.sh
 
 # 2) confirm the CLI is found in a LOGIN shell (this is what launchd uses)
 zsh -lc 'command -v claude' || echo "claude not on login PATH — see Troubleshooting"
@@ -99,7 +96,6 @@ zsh -lc 'command -v claude' || echo "claude not on login PATH — see Troublesho
 # 3) copy the plists into LaunchAgents and load them
 cp _ops/heartbeat/launchd/com.loudon.palace.*.plist ~/Library/LaunchAgents/
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.loudon.palace.steward-batch.plist
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.loudon.palace.shopkeeper-sweep.plist
 ```
 
 (Older macOS: use `launchctl load -w ~/Library/LaunchAgents/com.loudon.palace.steward-batch.plist` instead of `bootstrap`.)
@@ -128,7 +124,7 @@ launchctl kickstart -k gui/$(id -u)/com.loudon.palace.steward-batch
 Two different levers — reach for the soft one first.
 
 **Soft pause — keep it installed, just skip runs.** Drop a `.paused` flag in this
-directory and both wrappers no-op on every fire (and leave the cadence stamp
+directory and the wrappers no-op on every fire (and leave the cadence stamp
 untouched), until you remove it:
 ```sh
 touch _ops/heartbeat/.paused      # pause the whole heartbeat
@@ -143,7 +139,6 @@ its age). See [[STIGMERGY v2.0 — Consolidation & Primary Interface]].
 **Hard uninstall — unload the launchd jobs entirely:**
 ```sh
 launchctl bootout gui/$(id -u)/com.loudon.palace.steward-batch
-launchctl bootout gui/$(id -u)/com.loudon.palace.shopkeeper-sweep
 # then optionally remove ~/Library/LaunchAgents/com.loudon.palace.*.plist
 ```
 

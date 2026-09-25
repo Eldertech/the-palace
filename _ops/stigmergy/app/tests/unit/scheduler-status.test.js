@@ -21,8 +21,8 @@ const STEWARD_PLIST = `<?xml version="1.0" encoding="UTF-8"?>
   <dict><key>Hour</key><integer>6</integer><key>Minute</key><integer>0</integer></dict>
 </dict></plist>`;
 
-const SHOPKEEPER_PLIST = STEWARD_PLIST
-  .replace('steward-batch', 'shopkeeper-sweep')
+const HALF_PAST_PLIST = STEWARD_PLIST
+  .replace('steward-batch', 'other-job')
   .replace('<integer>0</integer></dict>', '<integer>30</integer></dict>');
 
 const WRAPPER = 'set -uo pipefail\nPALACE="/x"\nINTERVAL_DAYS=2\nMODEL="opus"\n';
@@ -34,10 +34,8 @@ function makePalace({ withPlistsInRepo = true, installLabels = [], stamps = {}, 
   mkdirSync(join(hb, 'logs'), { recursive: true });
   if (withPlistsInRepo) {
     writeFileSync(join(hb, 'launchd', 'com.loudon.palace.steward-batch.plist'), STEWARD_PLIST);
-    writeFileSync(join(hb, 'launchd', 'com.loudon.palace.shopkeeper-sweep.plist'), SHOPKEEPER_PLIST);
   }
   writeFileSync(join(hb, 'run-steward-batch.sh'), WRAPPER);
-  writeFileSync(join(hb, 'run-shopkeeper-sweep.sh'), WRAPPER);
 
   // A fake LaunchAgents dir; only the labels we name are "installed".
   const laDir = join(root, '_fake-launchagents');
@@ -66,7 +64,7 @@ function makePalace({ withPlistsInRepo = true, installLabels = [], stamps = {}, 
 describe('scheduler pure parsers', () => {
   test('parsePlistCalendar reads Hour/Minute from StartCalendarInterval', () => {
     expect(parsePlistCalendar(STEWARD_PLIST)).toEqual({ hour: 6, minute: 0 });
-    expect(parsePlistCalendar(SHOPKEEPER_PLIST)).toEqual({ hour: 6, minute: 30 });
+    expect(parsePlistCalendar(HALF_PAST_PLIST)).toEqual({ hour: 6, minute: 30 });
   });
 
   test('parsePlistCalendar returns null when no interval', () => {
