@@ -179,10 +179,27 @@ const CHECKS = {
       const status = sa[k]?.status ?? 'unknown';
       if (status !== 'enabled') findings.push(finding('hosting', `github-${k.replace(/_/g, '-')}`, sev, slug, 0, `${slug}:${k}`, `${k} is ${status}`, allow, null, k));
     }
+    // GitHub's Dependabot reads every manifest, dev dependencies included — wider than the deps check.
+    // Weighted like it: a runtime critical is high, a runtime high is medium, development is at most medium.
+    const dep = gh(`repos/${slug}/dependabot/alerts?state=open&per_page=100`);
+    if (Array.isArray(dep)) {
+      const byManifest = {};
+      for (const al of dep) {
+        const m = al.dependency?.manifest_path || '?', sc = al.dependency?.scope || 'runtime', sv = al.security_advisory?.severity || 'low';
+        const k = (byManifest[m] ||= { runtime: {}, development: {} });
+        k[sc] = k[sc] || {}; k[sc][sv] = (k[sc][sv] || 0) + 1;
+      }
+      for (const [m, c] of Object.entries(byManifest)) {
+        const r = c.runtime || {}, d = c.development || {};
+        const sev = r.critical ? 'high' : r.high || d.critical ? 'medium' : 'low';
+        const fmt = o => ['critical', 'high', 'medium', 'low'].filter(x => o[x]).map(x => `${x} ${o[x]}`).join(' · ') || 'none';
+        findings.push(finding('hosting', 'dependabot-alerts', sev, m, 0, `${m}:${JSON.stringify(c)}`, `runtime: ${fmt(r)} — development: ${fmt(d)}`, allow, null, m));
+      }
+    }
     const pages = gh(`repos/${slug}/pages`);
     const alerts = gh(`repos/${slug}/secret-scanning/alerts?state=open&per_page=100`);
     if (Array.isArray(alerts) && alerts.length) findings.push(finding('hosting', 'github-secret-alerts', 'high', slug, 0, `${slug}:alerts:${alerts.length}`, `${alerts.length} open GitHub secret-scanning alert(s)`, allow, null, String(alerts.length)));
-    report.notes.push(`hosting: ${slug} is ${repo.visibility}; Pages ${pages.__error ? 'off' : `on (${pages.html_url})`}; secret-scanning alerts ${Array.isArray(alerts) ? alerts.length : 'unreadable'}`);
+    report.notes.push(`hosting: ${slug} is ${repo.visibility}; Pages ${pages.__error ? 'off' : `on (${pages.html_url})`}; secret-scanning alerts ${Array.isArray(alerts) ? alerts.length : 'unreadable'}; Dependabot alerts ${Array.isArray(dep) ? dep.length : 'unreadable'}`);
     return { findings, meta: { visibility: repo.visibility, pages: !pages.__error, summary: `${repo.visibility}, Pages ${pages.__error ? 'off' : 'on'}` } };
   },
 };

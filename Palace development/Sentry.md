@@ -4,7 +4,7 @@ type: meta
 pillars: [tools, practice, philosophy]
 born: 2026-09
 stage: sprout
-version: "1.0"
+version: "1.1"
 forward_vector: "I am the palace's watch at the doors it is opening — I sweep for what should not leave and raise it, masked, to Loudon, who decides, so the palace can grow more public without growing careless."
 links:
   - target: "[[No Mind Checks Itself]]"
@@ -58,7 +58,7 @@ It has one tooth. At `git push` it reads what is about to leave and says no to a
 - **Personal data** — contact details, ID and card numbers, GPS in photos, data exports. And the kind no rule can see: the private life of someone who never chose to be public — a student, a colleague, a correspondent.
 - **Text aimed at agents** — every page here is loaded into an agent as context, so harvested web text that tells its reader to drop its rules, or hides instructions in invisible Unicode, is an attack on the palace's readers.
 - **Agents and tools** — the permissions agents run under, and the scripts that delete or reach the network ([[Agent Toolbox]], [[assume multi-agent]]).
-- **Dependencies and hosting** — npm advisories in the palace's apps, and GitHub's own settings: secret scanning, push protection, Pages.
+- **Dependencies and hosting** — npm advisories in the palace's apps, GitHub's own Dependabot alerts across every manifest, and GitHub's settings: secret scanning, push protection, Pages.
 
 ## How to reach it
 
