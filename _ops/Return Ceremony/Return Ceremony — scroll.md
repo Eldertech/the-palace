@@ -15,17 +15,17 @@ forward_vector: "I am Return Ceremony's scroll — the one page that opens on wh
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:16.100Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.0 · the spec last changed 2026-09-25 (`81f0404a`) — edit(Return Ceremony): v1.0 — version, tuning ledger, the tail read
-- **Runs since the change:** 1 record on 1 day
-- **Last run:** 2026-09-25 — return(2026-09-25): ten hours; a steward stalled, versioning next (`5669302b`)
+- **Runs since the change:** 1 run on 1 day, counted from the ledger's run lines
+- **Last run:** 2026-09-25 — ten hours · taught items 7–10 (under v1.0)
 - **Owed in the ledger:** 4 — items 7, 8, 9, 10; the next run's tail read picks them up first
 - **Latest lesson:** item 10, from the return of 2026-09-25 — ten hours, the first run under the scout — [[Return Ceremony — tuning]]
 
 ### Runs since v1.0
 
-- 2026-09-25 — return(2026-09-25): ten hours; a steward stalled, versioning next `5669302b`
+- 2026-09-25 — ten hours · taught items 7–10
 
 ### Owed
 
@@ -39,13 +39,13 @@ forward_vector: "I am Return Ceremony's scroll — the one page that opens on wh
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="commit-5669302b7585e469190acdc1c74a97f9eeb23fcd" -->
+<!-- scroll:entry id="run-1e1424190e" -->
 ### 2026-09-25 — return(2026-09-25): ten hours; a steward stalled, versioning next
 
 The first return run under the Concierge's scout posture, and the first return(...) commit. Ran under: the card as v1.0 stamps it, less the opening read (there was no ledger yet to read).

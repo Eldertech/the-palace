@@ -15,11 +15,11 @@ forward_vector: "I am Weave Ceremony's scroll — the one page that opens on whi
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:16.656Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.1 · the spec last changed 2026-09-24 (`8432c4ed`) — edit(Weave Ceremony): v1.1 — open by reading the tuning file
 - **Runs since the change:** none yet — v1.1 has not run
-- **Last run:** none recorded since the ceremony was first versioned
+- **Last run:** none in the ledger yet
 - **Owed in the ledger:** 5 — items 21, 24, 29, 30, 39; the next run's tail read picks them up first
 - **Latest lesson:** item 39, from the 2026-09-24 close (the ceremony-evolution close, after the weave) — [[Weave Ceremony — tuning]]
 
@@ -40,7 +40,7 @@ _None yet._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making

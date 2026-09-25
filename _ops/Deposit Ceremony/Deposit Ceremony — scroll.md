@@ -15,11 +15,11 @@ forward_vector: "I am Deposit Ceremony's scroll — the one page that opens on w
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:15.588Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v2.0 · the spec last changed 2026-09-25 (`cb6f8ab7`) — edit(Deposit Ceremony): v2.0 — the gate for every find
 - **Runs since the change:** none yet — v2.0 has not run
-- **Last run:** none recorded since the ceremony was first versioned
+- **Last run:** none in the ledger yet
 - **Owed in the ledger:** nothing
 - **Latest lesson:** item 14, from Loudon's redefinition — 2026-09-25 — [[Deposit Ceremony — tuning]]
 
@@ -36,7 +36,7 @@ _Nothing owed._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making

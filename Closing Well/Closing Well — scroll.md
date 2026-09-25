@@ -15,33 +15,40 @@ forward_vector: "I am Closing Well's scroll — the one page that opens on which
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T14:33:15.475Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v1.1 · the spec last changed 2026-09-25 (`ce4eb6ab`) — edit(Closing Well): v1.1 — the prepared row; tuning item 30
-- **Runs since the change:** none yet — v1.1 has not run
-- **Last run:** none recorded since the ceremony was first versioned
-- **Owed in the ledger:** nothing
-- **Latest lesson:** item 30, from the Enrichment 2.0 close — 2026-09-25 — [[Closing Well — tuning]]
+- **Runs since the change:** 1 run on 1 day, counted from the ledger's run lines
+- **Last run:** 2026-09-25 — close-2026-09-25-ceremonies · taught item 31 (under v1.1)
+- **Owed in the ledger:** 1 — item 31; the next run's tail read picks it up first
+- **Latest lesson:** item 31, from the ceremony-versioning close — 2026-09-25 — [[Closing Well — tuning]]
 
 ### Runs since v1.1
 
-_None yet._
+- 2026-09-25 — close-2026-09-25-ceremonies · taught item 31
 
 ### Owed
 
-_Nothing owed._
+- **31.** The reader drops what Loudon says mid-turn, and a cold read built a finding on the gap. In the arc, Loudon asked for "the last 2 tunings". Then, with no human turn in between, t…
 
 <!-- scroll:now:end -->
 
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this ceremony — never regenerated. Nothing reads this zone automatically yet: a direction that should change how the ceremony runs belongs in its tuning ledger or its card._
+_Loudon's standing direction for this ceremony. An order saved on the PROJECTS deck goes into the tuning ledger as owed; the next run's tail read picks it up, and Now shows it as owed until a run acts on it._
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="run-8512d060aa" -->
+### 2026-09-25 — close-2026-09-25-ceremonies
+
+taught item 31
+<sub>a run under v1.1 · its line in the tuning ledger</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="version-ce4eb6abc1ec969285d65b98de6b5305e8b66715" -->
 ### 2026-09-25 — the spec moved to v1.1
 
@@ -49,6 +56,13 @@ edit(Closing Well): v1.1 — the prepared row; tuning item 30
 
 Loudon's yes, 2026-09-25, at the Enrichment close. A keep row the room has assented to but whose words Loudon hasn't read was, by executor.md, `provisional` — execute nothing. This close found a path between: the executor commits the edit on its own worktree branch, never merges, and returns the full diff; the working Claude shows him the words and lands the branch on his yes. That is how Enrichment 2.1 landed (d4ac41f3).
 <sub>`ce4eb6ab` · version change</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="run-1dad291621" -->
+### 2026-09-25 — close-2026-09-25-enrichment
+
+taught item 30
+<sub>a run under v1.0 · its line in the tuning ledger</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="version-0304148dfaf2d879a32b30d88ee4d5903a300a50" -->
