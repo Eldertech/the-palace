@@ -89,6 +89,17 @@ describe('computeNow + renderNow', () => {
     expect(readStall(one, { health: { stalled: true } }).stalled).toBe(true);
   });
 
+  test('a reviewed STALL_CLEARED ends the backward count', () => {
+    const cut = [...HISTORY,
+      { event: 'CYCLE_COMPLETE', ts: '2026-09-25T02:37:00Z', iteration: 10, posted_messages: [] },
+      { event: 'CYCLE_COMPLETE', ts: '2026-09-25T02:40:22Z', iteration: 11, posted_messages: [] },
+      { event: 'STALL_CLEARED', ts: '2026-09-25T23:40:00Z', note: 'both cycles hit the session limit' }];
+    expect(readStall(cut, {})).toEqual({ barren_streak: 0, stalled: false, last_cycle_barren: false });
+    // A barren cycle after the clearance counts again from there.
+    const again = [...cut, { event: 'CYCLE_COMPLETE', ts: '2026-09-26T06:00:00Z', iteration: 12, posted_messages: [] }];
+    expect(readStall(again, {}).barren_streak).toBe(1);
+  });
+
   test('an unstewarded project renders honestly: no steward, no cycles, vector pointer', () => {
     const now = computeNow({ home: 'BLUELINE', board: [], state: null, history: [], meta: { stage: 'growing', data: { status: 'active' } }, entryText: '', tsNow: '2026-09-23T00:00:00Z', bundleMedia: [{ path: 'a.png' }] });
     expect(now.stewarded).toBe(false);
