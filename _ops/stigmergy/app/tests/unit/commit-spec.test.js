@@ -89,6 +89,18 @@ describe('validateCommitMessage', () => {
     expect(validateCommitMessage('Checkpoint — full state dump').valid).toBe(false);
   });
 
+  it('accepts a baton( subject as handoff, with either trailer spelling', () => {
+    // The shape a hand-written baton commit takes (c6839973).
+    const hand = validateCommitMessage('baton(Palace Ceremonies): carry the rollout\n\nPalace-Kind: handoff\nPalace-Verify: verified');
+    expect(hand.valid).toBe(true);
+    expect(hand.parsed.kind).toBe('handoff');
+    expect(hand.warnings.some((w) => /disagrees/.test(w))).toBe(false);
+    // The shape baton-executor.mjs printed before it learned to write `handoff`.
+    const legacy = validateCommitMessage('baton(Foo): carry the thing\n\nPalace-Kind: baton\nPalace-Verify: verified');
+    expect(legacy.valid).toBe(true);
+    expect(legacy.parsed.trailers.kind).toBe('handoff');
+  });
+
   it('skips leading comment lines (raw hook input)', () => {
     const msg = '# please enter a commit message\n\ndeposit(Foo): real subject\n\nPalace-Kind: deposit\nPalace-Verify: verified';
     expect(validateCommitMessage(msg).valid).toBe(true);

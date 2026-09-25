@@ -210,12 +210,14 @@ if (!vres.ok) die(2, `handoff_ready announce is invalid:\n${JSON.stringify(vres.
 
 // ---- act ------------------------------------------------------------------
 // A feature-branch baton is non-canon and lives in this worktree; commit it here with a
-// plain git commit — the palace commit-msg hook annotates it (Palace-Kind: baton). The
-// committer (palace-commit.mjs) is reserved for DEPOSITS, which land on the owner where its
-// deps exist; a `docs`-profile worktree can't run it (no js-yaml). See executor.md.
+// plain git commit. `baton(` is the Baton Ceremony's spelling of the `handoff` kind — the
+// commit-msg hook reads it as handoff (commit-parse.js KIND_ALIASES) — so the trailer carries
+// the canonical kind. The committer (palace-commit.mjs) is reserved for DEPOSITS, which land
+// on the owner where its deps exist; a `docs`-profile worktree can't run it (no js-yaml).
+// See executor.md.
 const commitCmd =
   `git add "${relBaton}" "${relEntry}" && ` +
-  `git commit -m "baton(${entry}): ${move.slice(0, 60)}" -m "Palace-Kind: baton"`;
+  `git commit -m "baton(${entry}): ${move.slice(0, 60)}" -m "Palace-Kind: handoff"`;
 
 if (!doWrite) {
   process.stdout.write(

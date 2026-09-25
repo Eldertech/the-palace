@@ -23,6 +23,11 @@ describe('parseSubject', () => {
     expect(r.summary).toBe('full state');
     expect(r.subjectToken).toBe('checkpoint');
   });
+  it('reads baton( as the handoff kind (the Baton Ceremony spelling)', () => {
+    expect(parseSubject('baton(Palace Ceremonies): carry the rollout')).toEqual({
+      kind: 'handoff', scope: 'Palace Ceremonies', summary: 'carry the rollout', declared: true,
+    });
+  });
   it('handles free-prose pre-spec subjects', () => {
     const r = parseSubject('Swarm Weave A/B experiment: does peer access change output?');
     expect(r.declared).toBe(false);
