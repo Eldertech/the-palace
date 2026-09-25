@@ -10,7 +10,10 @@
 // spine) and which are figures (media the text already carries, with their
 // captions). Pieces the rich face *adds* live in the manifest, not here.
 
-const MEDIA_EXT = /\.(mp4|webm|mov|wav|mp3|ogg|m4a|flac|png|jpe?g|gif|webp|svg|html?)$/i;
+// One list of media extensions, so what counts as media and what counts as a
+// media-only line (not caption) can't disagree.
+const MEDIA_EXTS = 'mp4|webm|mov|wav|mp3|ogg|m4a|flac|png|jpe?g|gif|webp|svg|html?';
+const MEDIA_EXT = new RegExp(`\\.(?:${MEDIA_EXTS})$`, 'i');
 
 // ── frontmatter ────────────────────────────────────────────────────────────
 function splitFrontmatter(md) {
@@ -53,17 +56,29 @@ export function mediaRefs(text) {
   };
   for (const m of text.matchAll(/!\[\[([^\]|]+)(?:\|([^\]]*))?\]\]/g)) push(m[1], m[2], true);
   for (const m of text.matchAll(/(?<!!)\[\[([^\]|]+)(?:\|([^\]]*))?\]\]/g)) push(m[1], m[2], false);
-  for (const m of text.matchAll(/\[([^\]]+)\]\(([^)\s]+)\)/g)) push(decodeURI(m[2]), m[1], false);
+  for (const m of text.matchAll(/\[([^\]]+)\]\(([^)\s]+)\)/g)) push(safeDecodeURI(m[2]), m[1], false);
   return out;
 }
+// A stray % (a filename like "growth-100%.png") is not an escape; keep it as written.
+function safeDecodeURI(s) { try { return decodeURI(s); } catch { return s; } }
 
 const isHero = (name) => /—\s*hero\.(png|jpe?g|webp)$/i.test(name);
 const ONLY_EMBED = /^!\[\[[^\]]+\]\]\s*$/;
-const ONLY_MEDIA_LINE = /^(?:!\[\[[^\]]+\]\]|\[[^\]]+\]\([^)\s]+\.(?:html?|mp4|wav|mp3|png|jpe?g|gif|webp|svg)\))\s*$/i;
+const ONLY_MEDIA_LINE = new RegExp(`^(?:!\\[\\[[^\\]]+\\]\\]|\\[[^\\]]+\\]\\([^)\\s]+\\.(?:${MEDIA_EXTS})\\))\\s*$`, 'i');
 const ITALIC_LINE = /^\*[^*].*\*$/;
 // The entry's one-line door to its own rich face. It belongs to the plain view
 // only: the rich face never shows it, and it never counts toward a fingerprint.
+// It is dropped by the line, before blocks are built, so the words around it
+// stay and it can never become a figure's caption. Inside a code fence it is
+// only text, and stays.
 const DOOR = /\]\((?:https?:\/\/[^)\s]*)?\/rich\/\?entry=[^)]*\)/;
+function dropDoors(lines) {
+  let inFence = false;
+  return lines.filter((line) => {
+    if (/^```/.test(line)) inFence = !inFence;
+    return inFence || !DOOR.test(line);
+  });
+}
 
 // ── keys ───────────────────────────────────────────────────────────────────
 export function sectionKey(heading) {
@@ -76,10 +91,10 @@ export function sectionKey(heading) {
 //            a paragraph that is only an embed, or a ```mermaid fence;
 //            an italic-only line right after a figure becomes its caption.
 function toBlocks(body) {
-  const lines = body.split('\n');
+  const lines = dropDoors(body.split('\n'));
   const blocks = [];
   let i = 0;
-  const pushProse = (md) => { if (md.trim() && !DOOR.test(md)) blocks.push({ type: 'prose', md: md.trim() }); };
+  const pushProse = (md) => { if (md.trim()) blocks.push({ type: 'prose', md: md.trim() }); };
 
   while (i < lines.length) {
     const line = lines[i];
@@ -171,7 +186,7 @@ export function parseEntry(md) {
       continue;
     }
     if (!cur) {
-      if (!line.trim()) continue;
+      if (!line.trim() || (!inFence && DOOR.test(line))) continue; // neither opens a section
       open(fm.title || 'Opening', 1);
       preamble = cur;
     }
