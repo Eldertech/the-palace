@@ -5,7 +5,7 @@ links:
   - target: "[[Closing Well]]"
     type: connects-to
     label: tuning-for
-forward_vector: "I am Closing Well's record of what its closes taught it, numbered, each lesson tied to the spec change it forced, so 'done this many times, knows the traps' is literal and the version number has a reason you can read. Append when a close changes the spec; never prune what a real close taught."
+forward_vector: "I am Closing Well's record of what its closes taught it, numbered, each lesson tied to the spec change it forced, so 'done this many times, knows the traps' is literal and the version number has a reason you can read. Every close leaves a line here; a close that changed the ceremony also leaves a numbered item. Never prune what a real close taught."
 ---
 
 # Closing Well — tuning
@@ -115,7 +115,7 @@ twice early on; they are 12a/12b and 13a/13b, four different traps. Newest last.
 
 ## From the ceremony-versioning close — 2026-09-25
 
-31. **The reader drops what Loudon says mid-turn, and a cold read built a finding on the gap.** In the arc, Loudon asked for "the last 2 tunings". Then, with no human turn in between, the working Claude switched to a 40-line count. So the moderator took `SCHEMA — Context.md:249` ("Loudon asked for a plain number of lines") for item 24's trap. He had asked: the message arrived inside a tool result while the assistant was working. `transcript-reader.mjs:207-219` renders tool results as one-line RESULT beats, cut at 180 characters, never as HUMAN. It stayed harmless because the moderator put it to the active Claude as a witness question, not to Loudon as a finding. Spec change owed: the reader lifts user messages carried inside tool results into HUMAN beats.
+31. **The reader drops what Loudon says mid-turn, and a cold read built a finding on the gap.** In the arc, Loudon asked for "the last 2 tunings". Then, with no human turn in between, the working Claude switched to a 40-line count. So the moderator took `SCHEMA — Context.md:249` ("Loudon asked for a plain number of lines") for item 24's trap. He had asked: the message arrived inside a tool result while the assistant was working. `transcript-reader.mjs:207-219` renders tool results as one-line RESULT beats, cut at 180 characters, never as HUMAN. It stayed harmless because the moderator put it to the active Claude as a witness question, not to Loudon as a finding. Paid in v1.3 (`de20a8c7`): the message was never inside a tool result — it was a `queued_command` attachment, which the reader never read — and it is now a HUMAN beat marked (mid-turn), seated when it was sent. The popup and notification cases were found at the 2026-09-25 evening close (item 33).
 - run · 2026-09-25 · v1.1 · close-2026-09-25-ceremonies · taught item 31
 
 ## From the Palace Ceremonies review — 2026-09-25
@@ -124,5 +124,5 @@ twice early on; they are 12a/12b and 13a/13b, four different traps. Newest last.
 
 ## From the re-check close — 2026-09-25
 
-33. **The reader's gap is wider than item 31, and the very next close caught it.** This arc rendered a dismissed popup question as "The user answered…" (arc:766) and `<task-notification>` records as 🧑 HUMAN (arc:158); three of Loudon's mid-turn messages were missing and had to be appended by hand. Loudon: "the issue came up once, was discovered and added to the tuning doc, and the very next run caught it and confirmed the issue, now we need to correct it." Spec change owed, with 31: the reader carries every human input — mid-turn messages, popup answers and dismissals — and never renders a task-notification as HUMAN. Carried by the arc-reader task; it moves Closing Well to 1.3.
+33. **The reader's gap is wider than item 31, and the very next close caught it.** This arc rendered a dismissed popup question as "The user answered…" (arc:766) and `<task-notification>` records as 🧑 HUMAN (arc:158); three of Loudon's mid-turn messages were missing and had to be appended by hand. Loudon: "the issue came up once, was discovered and added to the tuning doc, and the very next run caught it and confirmed the issue, now we need to correct it." Paid in v1.3, with 31 (`de20a8c7`): the reader carries every human input — mid-turn messages, popup answers and dismissals — and never renders a task-notification as HUMAN; `_ops/closing-well/tests/transcript-reader.test.mjs` holds the line on records from this session.
 - run · 2026-09-25 · v1.2 · close-2026-09-25-recheck · taught item 33
