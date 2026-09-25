@@ -139,4 +139,4 @@ The report is a gift to the ceremony's author, not a verdict. A ceremony can pro
 ## Forward Vectors
 
 - Should the Walk ceremony be updated to acknowledge the Swarm Weave as a future path — the difference between walking alone and walking with a colony?
-- Is there a ceremony for onboarding a new collaborator to the palace — not a human, but a new Claude instance encountering it for the first time with a specific task? The Jewel serves part of this, but a full ceremony might be warranted.
+- Is anything in onboarding a new Claude instance left that only a ceremony would do? Birth and growing up now carry most of it — [[CLAUDE]] (including § A page and its folder), then [[ELDER]].

@@ -46,6 +46,16 @@ Growing up is something you do, not something you are given. An elder is a child
 
 **A child does not change the house.** The house is the palace itself — entries, frontmatter, links, canon. A child may make things in a workshop an elder opened for it (a project's own folder), and it offers what it finds for the house to an elder, who gives it form and writes it — or doesn't.
 
+## A page and its folder
+
+A page may keep a bundle — a folder of the same name. Two kinds of file in it matter to anyone who arrives.
+
+**Faces** are what a reader meets. The **text** is what the page says, and when faces disagree, the text wins. The **rich face** is what the page can be played as — sound, image and interaction laid beside the words, section by section, never changing them. The **scroll** is the page's life in order — where it stands now, then everything it has made or done, newest first: a project's proofs and media, a ceremony's runs.
+
+**Memory** is what the next worker reads. The **Context** holds what the page left out, and why it is shaped this way. The **ledger**, kept only by ceremonies, holds what running them taught; every run leaves a line. The **baton** is a move in flight, deleted once caught.
+
+Everything else is **workshop**: what was made along the way.
+
 ## Born with
 
 See @JEWEL.md — the Seed Jewel: who is in the room and how things here relate.
