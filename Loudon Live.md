@@ -154,7 +154,7 @@ Paths visible at the moment of this deposit, deliberately not taken:
 - **Anthropic / palace work as topic.** Is the construction of the palace and the work-with-AI itself a session-worthy topic, or is that a different audience and channel?
 - **Autodidact polymath as own entry.** Does the autodidact polymath posture want its own palace entry, separate from this one? It is gestured at here; it does not contain itself here.
 - **Stream artifacts vs. project entries.** What is the relationship between live-stream output (streams as artifacts) and the underlying `Projects/` entries? Does each stream want a typed link from this page, or do they aggregate up through [[Curriculum Map]]?
-- **Public-facing palace surface.** Where does the audience enter the palace, if at all? Is there a public-facing read-only surface, or does the channel stay separate from the palace's interior?
+- ~~**Public-facing palace surface.**~~ **Settled 2026-09-25.** Two doors. The audience enters through a **public read view**: a static, read-only build of [[STIGMERGY]]'s STATE deck (PULSE, TOPOLOGY, TREE and the entry reader), with a switch from an entry's text to its rich face where it has one. It shows an entry's faces (the text, the rich face, the scroll) and leaves its memory out: the Context, the ledger, the baton, and the board. Or the audience enters through **git**: the public repository carries the whole house for anyone who wants it. The read view is to be hosted on GitHub Pages and rebuilt on each push to `main`. Decided, not yet built or published; turning Pages on waits for Loudon's own yes.
 
 ## Forward Vectors
 
