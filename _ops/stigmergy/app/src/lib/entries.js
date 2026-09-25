@@ -13,7 +13,7 @@
 import { readdirSync, statSync, readFileSync, existsSync } from 'node:fs';
 import { join, resolve, sep, basename, dirname } from 'node:path';
 import { parseFrontmatter, normalizeLinks, normalizePillars } from './yaml-frontmatter.js';
-import { bundleDirFor, listBundleFiles, iconRelFor } from './bundle.js';
+import { bundleDirFor, listBundleFiles, iconRelFor, facesFor, faceOwnerOf } from './bundle.js';
 
 // Top-level dirs we never walk into.
 const HARD_EXCLUDE_DIRS = new Set([
@@ -120,6 +120,7 @@ function summarize(relPath, fm, body) {
     body_size: typeof body === 'string' ? body.length : 0,
     has_bundle: false, // patched in caller (needs absolute path)
     icon: null,        // patched in caller — palace-relative path to the bundle avatar, if any
+    faces: ['text'],   // patched in caller — the faces its bundle carries (text, rich, scroll)
     // True when this .md lives INSIDE some entry's bundle folder (SCHEMA §8
     // owned file: a baton/plan/staging/context/sketch, not a first-class
     // entry). Patched in listEntries' second pass — it needs the full set of
@@ -150,6 +151,7 @@ export function listEntries(palaceRoot) {
     const bundleDir = bundleDirFor(abs);
     summary.has_bundle = bundleDir !== null;
     summary.icon = bundleDir ? iconRelFor(root, bundleDir) : null;
+    if (bundleDir) summary.faces = facesFor(root, bundleDir).faces;
     if (bundleDir) {
       bundleDirRels.push(bundleDir.slice(root.length + 1).replaceAll(sep, '/'));
     }
@@ -209,9 +211,11 @@ export function readEntry(palaceRoot, relPath) {
   const summary = summarize(normalizedRel, frontmatter, body);
   const bundleDir = bundleDirFor(abs);
   let bundle = null;
+  let faceFiles = {};
   if (bundleDir) {
     summary.has_bundle = true;
     summary.icon = iconRelFor(root, bundleDir);
+    ({ faces: summary.faces, files: faceFiles } = facesFor(root, bundleDir));
     bundle = {
       dir: bundleDir.slice(root.length + 1).replaceAll(sep, '/'),
       files: listBundleFiles(root, bundleDir),
@@ -225,6 +229,21 @@ export function readEntry(palaceRoot, relPath) {
     links: normalizeLinks(frontmatter.links),
     bundle,
     summary,
+    faces: summary.faces,
+    face_files: faceFiles,
+    face_of: faceOfFor(root, normalizedRel),
     error: error ?? null,
   };
+}
+
+// When this file is one of another entry's faces (its scroll), name the owner
+// and the owner's faces, so the reader can light SCROLL and switch back to the
+// text. Null for an ordinary entry, or when the owner is missing.
+function faceOfFor(root, relPath) {
+  const owner = faceOwnerOf(relPath);
+  if (!owner) return null;
+  const abs = join(root, owner.path);
+  if (!existsSync(abs)) return null;
+  const { faces, files } = facesFor(root, bundleDirFor(abs));
+  return { path: owner.path, title: basename(owner.path, '.md'), face: owner.face, faces, files };
 }

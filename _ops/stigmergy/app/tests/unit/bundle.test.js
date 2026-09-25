@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { mkdtempSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { bundleDirFor, classifyFile, listBundleFiles, iconRelFor } from '../../src/lib/bundle.js';
+import { bundleDirFor, classifyFile, listBundleFiles, iconRelFor, facesFor, faceOwnerOf } from '../../src/lib/bundle.js';
 
 describe('classifyFile', () => {
   it('classifies by extension', () => {
@@ -100,5 +100,47 @@ describe('iconRelFor', () => {
     expect(iconRelFor(root, join(root, 'Bare'))).toBeNull();
     expect(iconRelFor(root, join(root, 'Does Not Exist'))).toBeNull();
     expect(iconRelFor(root, null)).toBeNull();
+  });
+});
+
+describe('facesFor + faceOwnerOf', () => {
+  let root;
+  beforeAll(() => {
+    root = mkdtempSync(join(tmpdir(), 'stigmergy-faces-'));
+    mkdirSync(join(root, 'Plain'));
+    writeFileSync(join(root, 'Plain', 'Plain — hero.png'), 'PNG');
+    mkdirSync(join(root, 'Rich'));
+    writeFileSync(join(root, 'Rich', 'Rich — rich.json'), '{}');
+    writeFileSync(join(root, 'Rich', 'Rich — scroll.md'), '# s\n');
+    mkdirSync(join(root, 'Odd'));
+    // A manifest named for another entry is not this entry's face.
+    writeFileSync(join(root, 'Odd', 'Other — rich.json'), '{}');
+  });
+  afterAll(() => {
+    rmSync(root, { recursive: true, force: true });
+  });
+
+  it('always has the text face, and nothing else without a bundle', () => {
+    expect(facesFor(root, null)).toEqual({ faces: ['text'], files: {} });
+    expect(facesFor(root, join(root, 'Plain'))).toEqual({ faces: ['text'], files: {} });
+  });
+
+  it('reads rich and scroll from the bundle, in a fixed order', () => {
+    const { faces, files } = facesFor(root, join(root, 'Rich'));
+    expect(faces).toEqual(['text', 'rich', 'scroll']);
+    expect(files).toEqual({ rich: 'Rich/Rich — rich.json', scroll: 'Rich/Rich — scroll.md' });
+  });
+
+  it('keys on the bundle stem, not any manifest in the folder', () => {
+    expect(facesFor(root, join(root, 'Odd')).faces).toEqual(['text']);
+  });
+
+  it('names the owner of a scroll file, and only of a scroll file', () => {
+    expect(faceOwnerOf('Projects/Foo/Foo — scroll.md')).toEqual({ path: 'Projects/Foo.md', face: 'scroll' });
+    expect(faceOwnerOf('Foo/Foo — scroll.md')).toEqual({ path: 'Foo.md', face: 'scroll' });
+    expect(faceOwnerOf('Foo/Bar — scroll.md')).toBeNull();
+    expect(faceOwnerOf('Foo/Foo — baton.md')).toBeNull();
+    expect(faceOwnerOf('Foo — scroll.md')).toBeNull();
+    expect(faceOwnerOf(null)).toBeNull();
   });
 });

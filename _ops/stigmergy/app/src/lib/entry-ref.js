@@ -31,6 +31,7 @@ export function buildRefIndex(entrySummaries) {
         path: s.path,
         hasBundle: s.has_bundle === true,
         icon: typeof s.icon === 'string' && s.icon.trim() !== '' ? s.icon : null,
+        faces: Array.isArray(s.faces) ? s.faces : ['text'],
       });
     }
   }

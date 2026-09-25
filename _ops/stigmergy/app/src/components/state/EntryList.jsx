@@ -55,6 +55,9 @@ function EntryRow({ entry, onSelect }) {
           {entry.has_bundle ? <span style={{
             marginLeft: 6, color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', fontSize: 10,
           }}>[+bundle]</span> : null}
+          {Array.isArray(entry.faces) && entry.faces.includes('rich') ? <span data-testid="entry-rich-chip" title="has a rich face — sound, image and interactives beside the text" style={{
+            marginLeft: 6, color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)', fontSize: 10,
+          }}>[rich]</span> : null}
           {entry.has_active_handoff ? <span style={{
             marginLeft: 6, color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 10,
           }}>[handoff]</span> : null}
