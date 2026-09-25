@@ -15,7 +15,7 @@ forward_vector: "I am Map Build Ceremony's scroll — the one page that opens on
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T17:30:00.000Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T17:20:24.360Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
 - **Version:** v2.1 · the spec last changed 2026-09-25 (`c2dae8bd`) — edit(Map Build Ceremony): 2.1 — the version catches up with 8f3fe3f7
 - **Runs since the change:** none yet — v2.1 has not run
@@ -43,6 +43,15 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="version-c2dae8bdcf2f271f4756dd74f8461844b2771a0f" -->
+### 2026-09-25 — the spec moved to v2.1
+
+edit(Map Build Ceremony): 2.1 — the version catches up with 8f3fe3f7
+
+8f3fe3f7 gave the card an opening step (the tail read, :62) and a postcondition clause (the Map Log row names the version; its commit says what the run taught, :42), and turned `version: 2` into "2.0" — the same value. Both are procedure, so the version should have moved; the scroll kept counting every build since March as a run of the current spec.
+<sub>`c2dae8bd` · version change</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="run-ee75e7ff52" -->
 ### 2026-09-24 — full map built
 
