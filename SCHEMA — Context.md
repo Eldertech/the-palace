@@ -317,3 +317,42 @@ sentence), [[README - The Palace Guide]] (the ledger line under the bundles). [[
 state no run rules and are unchanged; [[Palace Ceremonies]] is unchanged by this ceremony, since no
 ceremony was added or removed. `.gitattributes` is new. **Additive:** no type, link type, required field,
 or stage changed.
+
+## The Sentry — v1.24 (2026-09-25)
+
+**A ceremony is added: [[Sentry]]**, a `meta` page that is its own ceremony's spec (as [[Enrichment]] is),
+with its scroll and tuning ledger in `Palace development/Sentry/` and its machinery in `_ops/sentry/`. It
+sweeps for what must not leave a public repository — secrets, personal data, text written to steer the agents
+who read here, loose permissions, vulnerable dependencies, GitHub settings — and raises what it finds to
+Loudon, masked. Its one tooth is a pre-push gate that refuses a credential.
+
+**Why.** The palace is public on purpose and becoming more public ([[Loudon Live]], `c5240fac`: a read view on
+GitHub Pages, and git as the second door). The 2026-09-25 hosting assessment checked only the working tree,
+and a tree scan cannot see history, which a public repo publishes whole. Nothing in the palace owned security:
+no entry named secret scanning, dependency audits or prompt injection in harvested content. Loudon asked for a
+page whose forward vector is the watch, known from the foundational documents so it can be woken for advice,
+with a record of every check it stands.
+
+**Why a page that is its own ceremony, not a card in `_ops/`.** The ceremony scroll is built next to the
+ledger of whichever entry has one (`ceremony-scroll.js`), so a separate card would take the ledger and the
+scroll and leave the Sentry page with neither. The bundle sits in `Palace development/` because on a
+case-insensitive volume a `Sentry` bundle inside `_ops/` and the lowercase machinery folder would be one
+folder.
+
+**Why open findings are held, not recorded.** Everything tracked is public — scroll, ledger, board, batons,
+commit bodies. A record that names an open finding points a stranger at it. So open findings live in the owner
+checkout's held folder beside the Sentry's machinery (never in a worktree), a folder that ignores itself; a
+run line carries a scope and a bare count; `allow.json` carries hashes. This is new to the palace: until now
+"private" here meant "not a face", and memory files are as public as faces. Whether other organs adopt the
+rule is left open.
+
+**Why the gate fails closed.** [[Tool Builder]]: fail-closed on safety. The commit-msg hook it is modelled on
+fails open, which is right for a hook that only annotates. A missing gitleaks is only a warning, because the
+Sentry's own rules still read every blob.
+
+**Mirrors.** SCHEMA, SCHEMA — Reference, CLAUDE.md and [[ELDER]] (version); CLAUDE.md's trigger table;
+[[Palace Ceremonies]] (a row, `enables → [[Sentry]]`, "twelve" → "thirteen"); [[ROSETTA]] (§1 and §5 rows);
+[[README - The Palace Guide]] (a paragraph). SUBSTRATE states no ceremony list and is unchanged;
+`_ops/Substrate Skill.md` defers to [[Palace Ceremonies]] and is unchanged; [[Agent Toolbox]] is unchanged —
+the deep read dispatches the existing `palace-reader`. **Additive:** no type, link type, required field, or
+stage changed.

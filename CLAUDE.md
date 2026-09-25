@@ -7,7 +7,7 @@ pillars:
   - philosophy
 born: 2026-03
 stage: foundational
-version: "1.23"
+version: "1.24"
 schema: SCHEMA.md
 last_schema_ceremony: 2026-09-25
 github: https://github.com/Eldertech/the-palace
@@ -91,6 +91,7 @@ A child knows the names of the rites. When Loudon uses one as an instruction, re
 | "weave", "let's weave" | [[Weave Ceremony]] |
 | "walk", "let's walk" | [[Walk Ceremony]] |
 | "enrich [page]", "enrich this page", "let's enrich [page]" | [[Enrichment]] |
+| "sentry sweep", "security sweep", "sentry, check [X]" | [[Sentry]] — also before anything widens the public surface |
 | "spore check" | [[Spore Check Ceremony]] |
 | "revive [entry]", "let's revive [entry]", "time to revive [entry]" | [[Revival Ceremony]] |
 | "map build", "build the map", "neighborhood map for [X]" | [[Map Build Ceremony]] |

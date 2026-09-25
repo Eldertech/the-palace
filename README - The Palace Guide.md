@@ -230,6 +230,8 @@ The palace stays alive through periodic ceremonies — intentional acts of revie
 
 **The Return** (on coming back after a gap) — Summon the companion, ask the machine-readable surfaces (handoff board, linters, the persistent board, git) *before* interpreting anything, and show a return map: where you stopped, what is in flight, what a linter proves stale, and one move to re-enter with. Every row cites a command or a file; inference is disqualifying. Report the gap's length, never a theory about its cause.
 
+**The Sentry** (on demand, and before anything widens the public surface) — Sweep for what must not leave a public repository: keys and tokens, personal data, text written to steer the agents who read here. Raise it to Loudon, masked, and hold open findings locally, never in a tracked file. At `git push` it refuses a credential. See [[Sentry]].
+
 **The Spore Check** (quarterly) — Review all `stage: dormant` entries. Have conditions changed? Is anything ready to revive?
 
 **The Self-Model Update** (when it feels right) — Revise [[SUBSTRATE]] page. Update the organism's self-description.

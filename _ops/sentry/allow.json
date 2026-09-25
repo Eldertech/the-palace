@@ -1,0 +1,171 @@
+{
+  "about": "Reviewed exceptions for the Sentry. Entries carry a hash of the finding, never its value or its path, so this file can be public without pointing anywhere. Add an entry only after reading the finding; give the reason.",
+  "must_stay_ignored": [
+    "RunPod Images/studio/config.json"
+  ],
+  "skip": [
+    {
+      "prefix": ".obsidian/plugins/",
+      "families": [
+        "pii"
+      ],
+      "reason": "vendored third-party plugins; author contact lines in their manifests are theirs to publish"
+    }
+  ],
+  "findings": [
+    {
+      "fp": "3aafed10aed9e8ca",
+      "rule": "generic-assign",
+      "reason": "an error-message constant in vendored zip.js (obsidian-html-plugin)",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "ceaaecbec2391dcb",
+      "rule": "generic-assign",
+      "reason": "an option-name constant in vendored zip.js (obsidian-html-plugin)",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "4bc362f4c13139d3",
+      "rule": "email",
+      "reason": "Loudon's own address inside a Google Drive mount path; already public as the commit author",
+      "date": "2026-09-25"
+    }
+  ],
+  "values": [
+    {
+      "vfp": "4f239908e3a1aa58",
+      "rule": "email",
+      "reason": "Loudon's own address — public as the author of every commit",
+      "date": "2026-09-25"
+    }
+  ],
+  "gitleaks": [
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    },
+    {
+      "fp": "6294ae13c7d7dabf",
+      "rule": "generic-api-key",
+      "reason": "reviewed 2026-09-25: file IDs and a device ID, not credentials",
+      "date": "2026-09-25"
+    }
+  ]
+}
