@@ -45,9 +45,9 @@ describe('JobLine', () => {
   });
 
   it('handles an un-run, un-scheduled job without throwing', () => {
-    const job = { kind: 'shopkeeper-sweep', primary: false, title: 'shopkeeper sweep', state: 'not_installed', cadence: null, last_run: {}, next_fire: null };
+    const job = { kind: 'other-job', primary: false, title: 'other job', state: 'not_installed', cadence: null, last_run: {}, next_fire: null };
     const html = renderToStaticMarkup(React.createElement(JobLine, { job }));
-    expect(html).toContain('shopkeeper sweep');
+    expect(html).toContain('other job');
     expect(html).toContain('cadence unknown');
     expect(html).toContain('last: —');
   });
