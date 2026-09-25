@@ -9,6 +9,7 @@ import { buildIndex } from '../../lib/wikilink.js';
 import { buildRefIndex } from '../../lib/entry-ref.js';
 import { useEntryNavigation, useLensNavigation, parseTreeTargetFromUrl } from '../../lib/url-nav.js';
 import { Banner } from '../primitives.jsx';
+import { IS_PUBLIC } from '../../lib/public-mode.js';
 
 // STATE deck shell. Holds the entries index, and toggles between the
 // PULSE list view (default) and a single EntryReader when a row is
@@ -88,7 +89,7 @@ export default function StateDeck({ jumpTarget = null, onEntryPathChange, reload
 
   return (
     <div data-testid="state-deck">
-      {selected && editing ? (
+      {selected && editing && !IS_PUBLIC ? (
         <EntryEditor
           path={selected}
           index={wikilinkIndex}
@@ -101,7 +102,7 @@ export default function StateDeck({ jumpTarget = null, onEntryPathChange, reload
           refIndex={refIndex}
           onNavigate={nav.openEntry}
           onBack={nav.backToPulse}
-          onEdit={nav.openEditor}
+          onEdit={IS_PUBLIC ? undefined : nav.openEditor}
           onGoBack={nav.goBack}
           reloadNonce={reloadNonce}
         />

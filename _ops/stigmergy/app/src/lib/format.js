@@ -1,6 +1,8 @@
 // Formatting helpers — message-type glyphs, timestamp formatting,
 // column alignment, board metadata.
 
+import { openUrl } from './public-mode.js';
+
 export const BOARDS = ['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER'];
 
 // Per Infrastructure Spec §2.4 + BBS Production Plan Phase 3 spec.
@@ -163,6 +165,5 @@ export function hrefFor(url) {
     reveal = /(^|[?&])reveal(=1|=true)?($|&)/.test(rel.slice(q));
     rel = rel.slice(0, q);
   }
-  const base = `/api/open?path=${encodeURIComponent(rel)}`;
-  return reveal ? `${base}&reveal=1` : base;
+  return openUrl(rel, { reveal });
 }

@@ -6,6 +6,7 @@ import { sortEntries, DEFAULT_DIR, SORT_KEYS } from '../../lib/entry-sort.js';
 import EntryAvatar from '../EntryAvatar.jsx';
 import PulseDot from './PulseDot.jsx';
 import { typeColor } from '../../lib/entry-style.js';
+import { IS_PUBLIC } from '../../lib/public-mode.js';
 
 // PULSE: the vitality lens that is STATE's default index. Entries sorted
 // by how alive they are right now (recency * activation_count * stage *
@@ -52,13 +53,13 @@ function EntryRow({ entry, onSelect }) {
           minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
         }}>
           {entry.title ?? entry.path}
-          {entry.has_bundle ? <span style={{
+          {entry.has_bundle && !IS_PUBLIC ? <span style={{
             marginLeft: 6, color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', fontSize: 10,
           }}>[+bundle]</span> : null}
           {Array.isArray(entry.faces) && entry.faces.includes('rich') ? <span data-testid="entry-rich-chip" title="has a rich face — sound, image and interactives beside the text" style={{
             marginLeft: 6, color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)', fontSize: 10,
           }}>[rich]</span> : null}
-          {entry.has_active_handoff ? <span style={{
+          {entry.has_active_handoff && !IS_PUBLIC ? <span style={{
             marginLeft: 6, color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 10,
           }}>[handoff]</span> : null}
         </span>
