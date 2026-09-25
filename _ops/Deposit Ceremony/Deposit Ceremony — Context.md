@@ -180,3 +180,7 @@ The deposit that created [[LDN RTM]] closed on four claims and none of them had 
 The through-line: **every one of these was caught by a reader who was not the drafter.** The ceremony now summons that reader at Step 1 rather than hoping for one, which is the [[Return Ceremony]]'s move applied one scale down — and it completes a lifecycle the palace had two-thirds of already: Return opens a session with a resident, the Deposit guarantees one exists mid-session, [[Closing Well]] consumes it as moderator.
 
 *(This also answers half of gotcha 9's open question — where verification-checks live in the close's species set. They live backstage, at Step 7c. Where weave-flags live is still open.)*
+
+## The Version and the Tuning File (2026-09-25)
+
+Versioned **v1.0** with the remaining ceremonies: the card as it stood that day — the record in the commit body, verification backstage at Step 7c, the Concierge asked fold-or-mint first — plus the opening read. It marks where counting starts, not a ranking of the deposits before it. The number moves when the procedure does — a step, a gate, a completion signal — never for prose. The lessons that shaped the card are numbered in [[Deposit Ceremony — tuning]]; the LDN RTM section above is the long form of items 8 and 9. A deposit leaves no report file, so its commit body names the version and says what the run taught.
