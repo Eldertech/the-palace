@@ -14,8 +14,8 @@ import { launchInteractiveSession } from '../../adapters/launch.js';
 // paired handoff_picked_up so the QUEUE item self-clears (the baton's own
 // On-pickup checklist still governs the actual catch + file deletion).
 //
-// The general primitive behind a future "launch interactive" on enrichment
-// cards and stewards; debuts here on handoffs.
+// The general primitive behind a future "launch interactive" on stewards;
+// debuts here on handoffs.
 
 // Raw BBS button so each action carries a stable data-testid (the shared
 // primitive Button doesn't forward arbitrary props).

@@ -13,7 +13,6 @@ import { logRoutes } from './api/log.js';
 import { workerRoutes } from './api/worker.js';
 import { stewardsRoutes } from './api/stewards.js';
 import { projectsRoutes } from './api/projects.js';
-import { cardsRoutes } from './api/cards.js';
 import { digestRoutes } from './api/digest.js';
 import { entrySaveRoutes } from './api/entry-save.js';
 import { entryAgentRoutes } from './api/entry-agent.js';
@@ -22,6 +21,7 @@ import { lensRoutes } from './api/lens.js';
 import { weaveRoutes } from './api/weave.js';
 import { schedulerRoutes } from './api/scheduler.js';
 import { sessionsRoutes } from './api/sessions.js';
+import { richRoutes } from './api/rich.js';
 
 const FAMILIES = [
   persistentRoutes,
@@ -31,7 +31,6 @@ const FAMILIES = [
   workerRoutes,
   stewardsRoutes,
   projectsRoutes,
-  cardsRoutes,
   digestRoutes,
   entrySaveRoutes,
   entryAgentRoutes,
@@ -40,6 +39,7 @@ const FAMILIES = [
   weaveRoutes,
   schedulerRoutes,
   sessionsRoutes,
+  richRoutes,
 ];
 
 /**

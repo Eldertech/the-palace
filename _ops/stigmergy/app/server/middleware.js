@@ -13,8 +13,8 @@
 //   GET  /api/log  /api/commit  /api/uncommitted   POST /api/commit/create
 //   GET  /api/worker   POST /api/worker/fire
 //   GET  /api/stewards   POST /api/steward/advance  /api/stewards/advance-all
-//   GET  /api/cards   POST /api/cards/respond
 //   POST /api/digest/verdict   GET /api/digest/verdicts   POST /api/entry/save
+//   GET  /rich/?entry=<Entry>  — an entry's rich face (_ops/rich-face/)
 //
 // The palace root is derived from PALACE_ROOT if set, else from a default path.
 // Tests pass an explicit `palaceRoot` to avoid env-var coupling, and may inject
@@ -27,7 +27,7 @@ import { dispatch } from './router.js';
 export { resolveInsidePalace, contentTypeFor, readPersistent, listSessions, readSession } from './http.js';
 
 export function blackboardMiddleware(palaceRoot, opts = {}) {
-  // The two long-lived worker lanes (Enrichment actuator + steward lane). See
+  // The long-lived worker lanes (the board actuator + the steward lane). See
   // workers.js for the scar #4 single-global-worker rule and the
   // STIGMERGY_STUB_WORKER gate. Tests inject opts.actuator / opts.stewardLane.
   const { actuator, stewardLane, companionLane } = buildWorkers(palaceRoot, opts);
