@@ -84,3 +84,7 @@ What each weave taught the ceremony, appended after the run. Each entry names th
 35. **The board tells the truth.** Payloads read from the board, a trailer per closed flag, touches checked by hand, the flag linter green before any trail is posted — the answer to 21 and 24 (`PLAN.md:39`, `:180`).
 36. **Pheromone trails.** Held findings go on the board as flags the next weave reads first, with an advisory `expires_after`, instead of becoming a longer queue (`PLAN.md:40`, `:165`, `:192`).
 37. **Cross-cycle convergence.** Workers never see July's held list; anything they find again on their own counts as confidence that has survived time (`PLAN.md:41`, `:130`).
+
+## From the 2026-09-24 close (the ceremony-evolution close, after the weave)
+
+38. **The ledger's first forced change was "read the ledger".** The card told a run to write tuning items and never to read them, so the four owed changes (21, 24, 29, 30) had no path back into a run. Loudon, at the close: "Is there a point in logging growth if we don't ask to check it." Forced: Step 0 now reads this file, owed items first, then anything after the last-run version — **v1.1**. The rule itself went into Schema v1.21 for every ceremony.
