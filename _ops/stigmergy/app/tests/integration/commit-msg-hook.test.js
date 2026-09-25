@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach, afterEach } from 'vitest';
-import { mkdtempSync, rmSync, writeFileSync, readFileSync, mkdirSync, chmodSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync, readFileSync, mkdirSync, chmodSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { resolve, join, dirname } from 'node:path';
@@ -85,5 +85,23 @@ describe('commit-msg hook installed in a real repo', () => {
     execFileSync('node', [INSTALLER, '--uninstall'], { cwd: root, encoding: 'utf8' });
     const out2 = execFileSync('node', [INSTALLER, '--check'], { cwd: root, encoding: 'utf8' });
     expect(out2).toMatch(/NOT installed/);
+  });
+
+  test('installer resolves the shared hooks dir from a linked worktree', () => {
+    // In a worktree `.git` is a file; the installer must still find <main>/.git/hooks.
+    writeFileSync(join(root, 'c.md'), 'z');
+    g('add', '-A');
+    g('commit', '-m', 'seed\n\nPalace-Kind: ops\nPalace-Verify: verified\nPalace-Author: claude');
+    const wt = join(root, 'wt');
+    g('worktree', 'add', '-q', wt);
+    const run = (...a) => execFileSync('node', [INSTALLER, ...a], { cwd: wt, encoding: 'utf8' });
+    const sharedHook = join(root, '.git', 'hooks', 'commit-msg');
+
+    expect(run('--check')).toMatch(/INSTALLED/);
+    run('--uninstall');
+    expect(existsSync(sharedHook)).toBe(false);
+    run();
+    expect(readFileSync(sharedHook, 'utf8')).toMatch(/Palace commit-msg hook/);
+    expect(existsSync(join(wt, '.git', 'hooks'))).toBe(false);
   });
 });

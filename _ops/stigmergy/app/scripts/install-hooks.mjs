@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// install-hooks — install the palace commit-msg hook into .git/hooks/.
+// install-hooks — install the palace commit-msg hook into the repo's hooks directory.
 //
 // DELIBERATE, NOT AUTOMATIC. A commit-msg hook is repo-global: it affects
 // every commit by every session and by Loudon's Obsidian/CLI. So installation
@@ -18,10 +18,15 @@
 
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, writeFileSync, copyFileSync, chmodSync, rmSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, isAbsolute } from 'node:path';
 
-function repoRoot() {
-  return execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
+const git = a => execFileSync('git', a, { encoding: 'utf8' }).trim();
+
+// `--git-path hooks` honors core.hooksPath and resolves to the shared hooks dir from any worktree
+// (in a worktree `.git` is a file, so joining root + '.git/hooks' would point nowhere).
+function hooksDir() {
+  const dir = git(['rev-parse', '--path-format=absolute', '--git-path', 'hooks']);
+  return isAbsolute(dir) ? dir : join(git(['rev-parse', '--show-toplevel']), dir);
 }
 
 // The shim: resolve the repo root at hook time, then exec node on the tracked
@@ -39,18 +44,17 @@ exit 0
 `;
 
 function main() {
-  const root = repoRoot();
-  const hooksDir = join(root, '.git', 'hooks');
-  const hookPath = join(hooksDir, 'commit-msg');
-  const backupPath = join(hooksDir, 'commit-msg.pre-palace');
+  const dir = hooksDir();
+  const hookPath = join(dir, 'commit-msg');
+  const backupPath = join(dir, 'commit-msg.pre-palace');
   const mode = process.argv.includes('--uninstall') ? 'uninstall'
     : process.argv.includes('--check') ? 'check' : 'install';
 
   if (mode === 'check') {
-    if (!existsSync(hookPath)) { console.log('commit-msg hook: NOT installed'); return; }
+    if (!existsSync(hookPath)) { console.log(`commit-msg hook: NOT installed — ${hookPath}`); return; }
     const body = readFileSync(hookPath, 'utf8');
     const isOurs = body.includes('Palace commit-msg hook');
-    console.log(`commit-msg hook: ${isOurs ? 'INSTALLED (palace)' : 'present (foreign)'}`);
+    console.log(`commit-msg hook: ${isOurs ? 'INSTALLED (palace)' : 'present (foreign)'} — ${hookPath}`);
     if (existsSync(backupPath)) console.log('backup present: commit-msg.pre-palace');
     return;
   }
