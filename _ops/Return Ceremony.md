@@ -34,6 +34,8 @@ links:
 
 # Return Ceremony
 
+![[Return Ceremony — hero.png]]
+
 ## Ceremony Contract
 
 **Trigger:** "I'm back", "returning", "what did I miss", "let's pick this back up", "return"

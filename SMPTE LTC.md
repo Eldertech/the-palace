@@ -30,6 +30,8 @@ forward_vector: "I want to become a completed, documented Max MSP implementation
 
 # SMPTE LTC
 
+![[SMPTE LTC — hero.png]]
+
 A time-stamping standard encoded as audio signal, essential for locking synthesizers, video playback, and distributed performance systems to a single clock. This is the engineering of temporal synchrony as sound.
 
 ## What SMPTE LTC Is

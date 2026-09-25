@@ -36,6 +36,8 @@ links:
 
 # GenAI Camera
 
+![[GenAI Camera — hero.png]]
+
 A **GenAI Camera** is a camera in a 3D scene whose output is not the rasterized image but a
 **gen-AI render conditioned on what the camera sees** — its depth, its edges, the pose it is pointed
 at. Point it at a posed figure and it hands back a *drawing* of that figure, faithful to the

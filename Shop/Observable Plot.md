@@ -29,6 +29,8 @@ tags: [specialist, shop, interactive, data-viz, web, charts]
 
 # Observable Plot
 
+![[Observable Plot — hero.png]]
+
 *First job landed 2026-05-29 ([[Flocking]] three-Specialist shoot-out, analytical lens). Status promoted `stub` → `alive`. Verified at version 0.6.17. The faceted parameter sweep was the brief that proved grammar-of-graphics earns its keep — and a load-order gotcha bit hard; see Gotchas.*
 
 ## Charter

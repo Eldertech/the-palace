@@ -28,6 +28,8 @@ links:
 
 # Gemma 4 — Local Coordination Guide
 
+![[Gemma 4 — Local Coordination Guide — hero.png]]
+
 A compiled working reference for coordinating local Gemma 4 model instances — focused on tool use, file access, and the architectural differences between Gemma 4 and Claude/Haiku that matter most in practice.
 
 Artifact: `[[GEMMA4_GUIDE]]` — in the `Gemma 4 — Local Coordination Guide/` bundle.

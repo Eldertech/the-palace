@@ -45,6 +45,8 @@ forward_vector: "I am the palace's second deliberately archived Dialectic — th
 
 # Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work
 
+![[spinoza-zhuangzi-on-striving — hero.png]]
+
 A written [[Dialectic]] (2026-05-30) serving [[Spinoza Conatus]] and [[The Drift]]. The question was promised in the forward vector of [[The Fortress and the Threshold]] after the [[zhuangzi-epictetus-confucius-on-the-self]] Dialectic surfaced a fourth, non-cultivating pole. Claude embodies both voices. This is the test the palace's whole [[Entry Conatus]] discipline has been avoiding: *if every entry must strive, what does the philosophy that distrusts striving have to say about it?*
 
 ## The Question

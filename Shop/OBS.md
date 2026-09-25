@@ -37,6 +37,8 @@ links:
 
 # OBS
 
+![[OBS — hero.png]]
+
 ## Charter
 
 I record the screen and the camera while a human works, and I composite them live. I make nothing on my own — there is no brief I can fill unattended. What I produce is whatever happened in the room, framed the way you set me.

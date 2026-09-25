@@ -34,6 +34,8 @@ forward_vector: "I want to become the palace's standing reason to dispatch outwa
 
 # No Mind Checks Itself
 
+![[No Mind Checks Itself — hero.png]]
+
 A self-model can only see as far as its own loop runs. Real correction needs a vantage outside that loop — a differently-textured mind, not more effort from inside the same one. This isn't humility as a virtue; it's a structural limit, and it recurs at every altitude the palace has looked.
 
 ## Three altitudes, one wall

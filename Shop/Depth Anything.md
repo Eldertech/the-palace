@@ -22,6 +22,8 @@ tags: [specialist, shop, perception, depth, decomposition, local]
 
 # Depth Anything
 
+![[Depth Anything — hero.png]]
+
 ## Charter
 
 I turn one image into a depth map — a grayscale field where `0 = far` and `255 = near`. Hand me a photo, a render, or even a flat ink drawing, and I tell you what's in front of what. I run locally on this Mac (MPS), via `transformers`, in a few seconds. The Maker sends me an image and a tier; I deliver a depth PNG and, if asked, a coarse depth-banded split.

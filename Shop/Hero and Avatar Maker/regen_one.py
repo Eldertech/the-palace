@@ -77,7 +77,8 @@ TINY_PNG = base64.b64decode(
 # Hard rule (never overridable): FLUX letters engraving/manuscript idioms even
 # when told "no text", so every prompt carries this clause. Mirrors batch_hubs.
 ANTI_TEXT = (" Absolutely no letters, no numerals, no words, no labels, no captions, "
-             "no inscriptions, no writing of any kind anywhere in the image — purely pictorial.")
+             "no inscriptions, no writing of any kind anywhere in the image, and no artist's "
+             "signature, monogram or printmaker's mark in any corner — purely pictorial.")
 
 VALID_TARGETS = {"both", "hero", "icon"}
 
@@ -127,6 +128,7 @@ def set_workers(key: str, ep: str, n: int) -> None:
         f"https://rest.runpod.io/v1/endpoints/{ep}",
         data=json.dumps({"workersMin": 0, "workersMax": n}).encode(), method="PATCH")
     r.add_header("Authorization", f"Bearer {key}")
+    r.add_header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36")  # RunPod's WAF 403s Python's default user-agent (Shop/RunPod GPU Backend gotcha)
     r.add_header("Content-Type", "application/json")
     urllib.request.urlopen(r, timeout=30).read()
     log(f"workersMax={n}")

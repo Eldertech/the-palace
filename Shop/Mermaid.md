@@ -21,6 +21,8 @@ tags: [specialist, shop, image, diagram]
 
 # Mermaid
 
+![[Mermaid — hero.png]]
+
 ## Charter
 
 I render diagrams from text. Flowcharts, sequence diagrams, state machines, ER diagrams, gantt charts, mind maps, class diagrams. Version-controllable, palette-aware, fast. The Shop's diagrammatic shorthand. The Maker hands me Mermaid source, a theme, a tier; I deliver SVG or PNG.

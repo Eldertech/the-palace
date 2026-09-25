@@ -1,0 +1,9 @@
+{
+  "title": "Metric Modulation",
+  "idiom": "Escher-style ink engraving",
+  "hero_prompt": "A wide Escher-style black-and-white ink engraving of a rhythmic checkerboard grid that warps, dips, and folds back into a mirror-image spiral, tight cross-hatching giving the tiles depth as they bend. The one dominant metaphor is the grid itself reframing \u2014 a drop and a snap-back rendered as a single folding tessellation. Hand-made Escher-style ink engraving, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
+  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: A bold black-and-white engraved silhouette of a checkerboard grid folding into a spiral, thick high-contrast tiles, no fine cross-hatching, legible as one mark at small size.",
+  "seeds": {},
+  "rendered_at": "2026-09-25T02:18:56Z",
+  "history": []
+}
