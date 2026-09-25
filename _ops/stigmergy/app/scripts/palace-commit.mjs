@@ -10,9 +10,12 @@
 //   node scripts/palace-commit.mjs \
 //     --kind edit --scope "Foo" --summary "tweak the vector" \
 //     --verify verified [--body "..."] [--campaign slug] [--resolves id] \
-//     [--author claude] [--path "Foo.md" --path "Bar.md"] [--dry-run]
+//     [--author claude] [--path "Foo.md" --path "Bar.md"] [--only] [--dry-run]
 //
-// If no --path is given, whatever is already staged is used. Stale Cowork git
+// If no --path is given, whatever is already staged is used. With --only, the
+// commit holds exactly the named paths — anything else already staged by
+// another writer stays staged and out of this commit (`git commit --only`),
+// and the new hash is printed as `palace-commit: committed <hash>`. Stale Cowork git
 // locks are cleared first (the known sharp edge). With --dry-run it prints the
 // message it WOULD commit and exits without committing.
 //
@@ -52,12 +55,13 @@ export function clearStaleLocks(palaceRoot) {
 
 // Read the staged diff and compute per-md frontmatter changes. Returns
 // { paths, mdChanges } in the shape deriveTrailers expects.
-export function readStagedDiff(palaceRoot) {
+export function readStagedDiff(palaceRoot, onlyPaths = null) {
   // `-c core.quotepath=false`: RAW utf-8 paths, so a non-ASCII filename (every
   // em-dash bundle file, e.g. `Foo — baton.md`) parses + matches instead of
   // coming back octal-escaped + double-quoted. Without it the file stages but is
   // silently dropped from the commit. (Mirrors commitSelected in server/commit.js.)
-  const nameStatus = git(palaceRoot, ['-c', 'core.quotepath=false', 'diff', '--cached', '--name-status'], { allowFail: true });
+  const scope = onlyPaths && onlyPaths.length ? ['--', ...onlyPaths] : [];
+  const nameStatus = git(palaceRoot, ['-c', 'core.quotepath=false', 'diff', '--cached', '--name-status', ...scope], { allowFail: true });
   const paths = [];
   const mdChanges = [];
   for (const line of nameStatus.split(/\r?\n/)) {
@@ -86,7 +90,7 @@ export function readStagedDiff(palaceRoot) {
 // Build the full commit message from the staged diff + the author's inputs.
 // Pure-ish: only reads git (no commit). Exposed for tests.
 export function buildMessageFromStaged(palaceRoot, opts) {
-  const { paths, mdChanges } = readStagedDiff(palaceRoot);
+  const { paths, mdChanges } = readStagedDiff(palaceRoot, opts.only ? opts.paths : null);
   const trailers = deriveTrailers({
     paths,
     mdChanges,
@@ -122,6 +126,7 @@ function parseArgs(argv) {
       case '--resolves': opts.resolves.push(next()); break;
       case '--path': opts.paths.push(next()); break;
       case '--dry-run': opts.dryRun = true; break;
+      case '--only': opts.only = true; break;
       default: break;
     }
   }
@@ -148,8 +153,18 @@ function main() {
 
   // quotepath=false for consistency with readStagedDiff (this one only checks
   // emptiness, but keep both path-reads in the same raw-utf-8 frame).
-  const staged = git(palaceRoot, ['-c', 'core.quotepath=false', 'diff', '--cached', '--name-only'], { allowFail: true }).trim();
+  if (opts.only && opts.paths.length === 0) {
+    process.stderr.write('palace-commit: --only needs at least one --path.\n');
+    process.exit(2);
+  }
+  const scope = opts.only ? ['--', ...opts.paths] : [];
+  const staged = git(palaceRoot, ['-c', 'core.quotepath=false', 'diff', '--cached', '--name-only', ...scope], { allowFail: true }).trim();
   if (staged === '') {
+    if (opts.only) {
+      // Nothing changed under the named paths — a clean no-op, not an error.
+      process.stdout.write('palace-commit: nothing to commit under the named paths\n');
+      process.exit(0);
+    }
     process.stderr.write('palace-commit: nothing staged. Name paths with --path, or stage first.\n');
     process.exit(2);
   }
@@ -165,7 +180,14 @@ function main() {
   const msgFile = join(tmp, 'COMMIT_MSG');
   writeFileSync(msgFile, message, 'utf8');
   try {
-    execFileSync('git', ['commit', '-F', msgFile], { cwd: palaceRoot, stdio: 'inherit' });
+    if (opts.only) {
+      const out = execFileSync('git', ['commit', '-F', msgFile, '--only', '--', ...opts.paths], { cwd: palaceRoot, encoding: 'utf8' });
+      process.stdout.write(out);
+      const m = out.match(/^\[[^\]]*?([0-9a-f]{7,40})\]/m);
+      if (m) process.stdout.write(`palace-commit: committed ${m[1]}\n`);
+    } else {
+      execFileSync('git', ['commit', '-F', msgFile], { cwd: palaceRoot, stdio: 'inherit' });
+    }
   } finally {
     try { rmSync(tmp, { recursive: true, force: true }); } catch (_) { /* ignore */ }
   }

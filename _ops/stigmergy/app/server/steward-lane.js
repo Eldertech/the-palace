@@ -279,6 +279,7 @@ export function createStewardLane(opts = {}) {
         tsNow: meta.tsNow,
         dispatchedBy: 'bbs-actuator',
         boardPath,
+        commit: true,                  // the cycle commits what it shipped (cycle-commit.js)
       });
       // The run controller (2026-09-23). A steward activation is a RUN of up
       // to `cap` cycles: keep firing the same steward while it ships and

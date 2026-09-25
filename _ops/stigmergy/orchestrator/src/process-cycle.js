@@ -26,13 +26,15 @@
 // and reconciliation in reconcilePendingRequests; both are pure and unit-tested.
 
 import { readFileSync, writeFileSync, appendFileSync } from 'node:fs';
-import { resolve, join, basename } from 'node:path';
+import { resolve, join, basename, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { buildHealthBlock } from './health.js';
 import { validateForPosting } from '@stigmergy/core/schema';
 import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 import { scanBundleMedia, applyArtifactBackstop, lintArtifactReferences } from './artifact-backstop.js';
 import { materializeScroll } from './scroll-file.js';
+import { resolveBundleDir } from './entry-paths.js';
+import { commitCycle } from './cycle-commit.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
 
@@ -200,6 +202,9 @@ export function processCycle(opts) {
     dispatchedBy = 'palace-orchestrator',
     boardPath,
     enableArtifactBackstop = true,
+    // Commit what the cycle shipped (cycle-commit.js). Off by default so a
+    // caller opts in; the CLI and the STIGMERGY lane both do.
+    commit = false,
   } = opts;
 
   if (!transcriptPath) throw new Error('processCycle: transcriptPath is required');
@@ -253,8 +258,12 @@ export function processCycle(opts) {
   // bound we want. First cycles (last_active null) no-op. See artifact-backstop.js.
   const windowStartMs = state.last_active ? Date.parse(state.last_active) : null;
   const windowEndMs = tsNow ? Date.parse(tsNow) : undefined;
+  // The steward's own bundle, wherever its entry lives (a service steward's is
+  // not under Projects/ — the Shopkeeper's is Shop/Shopkeeper/).
+  const bundle = resolveBundleDir(palaceRoot, home);
+  const bundleRel = bundle ? relative(palaceRoot, bundle.bundleDir) : null;
   const mediaCandidates = enableArtifactBackstop
-    ? [join('Projects', home), home].flatMap((d) => scanBundleMedia(palaceRoot, d))
+    ? [...new Set([join('Projects', home), home, bundleRel].filter(Boolean))].flatMap((d) => scanBundleMedia(palaceRoot, d))
     : [];
   const backstop = [];
   const messagesForBoard = messages.map((m) => {
@@ -390,6 +399,30 @@ export function processCycle(opts) {
     scroll = { written: false, reason: `error: ${e.message}` };
   }
 
+  // ── Commit what the cycle shipped (decided 2026-09-25) ────────────────────
+  // The files this cycle's messages declared, inside the steward's bundle and
+  // at most 10 MB each, plus its machinery, its scroll and the board — one
+  // commit scoped to exactly those paths. Runs last, so a failure here costs
+  // nothing already written; the files simply stay uncommitted.
+  let commitResult = null;
+  if (commit) {
+    try {
+      commitResult = commitCycle({
+        palaceRoot, home, cycleN,
+        bundleDir: bundle ? bundle.bundleDir : null,
+        messages: valid.filter((m) => appended.includes(m.id)),
+        extraPaths: [
+          join(agentDirAbs, 'state.json'),
+          join(agentDirAbs, 'history.jsonl'),
+          ...(scroll && scroll.scrollPath ? [scroll.scrollPath] : []),
+          boardFile,
+        ],
+      });
+    } catch (e) {
+      commitResult = { ok: false, hash: null, error: e.message };
+    }
+  }
+
   return {
     posted_ids: appended,
     valid_count: valid.length,
@@ -407,6 +440,8 @@ export function processCycle(opts) {
     stalled,
     // Where the project's scroll landed (replaces the plan.md read-model).
     scroll,
+    // What the cycle committed (null when the caller did not opt in).
+    commit: commitResult,
   };
 }
 
@@ -425,6 +460,7 @@ function main() {
     cycleNotes: arg('--cycle-notes'),
     dispatchedBy: arg('--dispatched-by', 'palace-orchestrator'),
     boardPath: arg('--board'),
+    commit: !argv.includes('--no-commit'),
   });
   process.stdout.write(JSON.stringify(summary, null, 2) + '\n');
 }

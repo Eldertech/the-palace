@@ -83,11 +83,13 @@ record; STIGMERGY shows them.
   and board messages is **expected** — that is the cycle's normal output, not
   a canon edit. The scroll's **Standing Orders** zone is Loudon's: the
   materializer never touches it and neither does any agent.
-- **The subagent never commits.** Under the Mac-side heartbeat the *wrapper*
-  makes one scoped, lock-safe commit after the batch returns — machinery +
-  `scroll.md`, text-only, via the palace committer (`_ops/heartbeat/`,
-  `palace-commit.mjs`; never `git add -A`). An interactive batch leaves the
-  working tree for Loudon to commit. Either way the agent itself runs no git.
+- **The subagent never runs git.** `process-cycle.js` commits each cycle's
+  shipped work itself — the files listed in its messages' `artifacts` (inside
+  the steward's bundle, ≤10 MB each, never an entry) plus machinery, scroll and
+  board, scoped to exactly those paths (`cycle-commit.js`; `--no-commit` opts
+  out). Under the Mac-side heartbeat the *wrapper* then sweeps any machinery a
+  cycle commit missed (`_ops/heartbeat/`, `palace-commit.mjs`; never
+  `git add -A`).
 
 ## Enchant a new steward (the one-at-a-time act, done by hand)
 
