@@ -32,6 +32,8 @@ forward_vector: "I name what forty-one projects are for. I want the seventeen th
 
 # Objects to Think With
 
+![[Objects to Think With — hero.png]]
+
 Seymour Papert's claim, building on Piaget: learning goes deepest when you build a **public entity** — *"a
 sand castle, a machine, a computer program, a book."* Not because building is engaging, but because an
 abstract idea becomes manipulable once it has a body. The object exists so the idea can be handled,

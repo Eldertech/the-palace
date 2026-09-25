@@ -35,6 +35,8 @@ tags: [concept, blueline, motion, physics, comics, aftermath]
 
 # The Aftermath Frame
 
+![[The Aftermath Frame — hero.png]]
+
 **A dramatic still is the time-integral of an authored motion.** The sword has just struck the
 column; the frame is the *moment after* — shards flying, air torn along the swing, the figure in
 follow-through. Nothing in the frame moves, yet the frame *is* the motion: the reader runs the swing

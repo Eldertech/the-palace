@@ -40,6 +40,8 @@ links:
 
 # Block It in Blender, Ink It in genAI
 
+![[Block It in Blender, Ink It in genAI — hero.png]]
+
 The whole point of [[Blocked, Not Prompted]] in one runbook: **you author the scene as 3D geometry, the gen-AI fills the composition you dictated** — instead of prompting and praying. This is the concrete how, written so a fresh Claude can do it cold. Our instantiation inks a pen-and-ink-noir frame; swap the style and the same four moves drive any conditioned redraw. Proven in [[BLUELINE]]; the scripts live in `Projects/BLUELINE/proofs/blender-handdrawn/`.
 
 ## The four moves

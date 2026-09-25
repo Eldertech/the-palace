@@ -26,6 +26,8 @@ forward_vector: "I am the thin recognition-and-dispatch card that turns 'close w
 
 # Closing Well Ceremony
 
+![[Closing Well Ceremony — hero.png]]
+
 > **Status — 2026-07-04: the moderator model (Phases 2–5 of the build).** This card
 > makes `close well` a recognized trigger that dispatches the enchanted [[Closing
 > Well]] page as the **Closing Well Agent** — a moderator, not a subagent that closes

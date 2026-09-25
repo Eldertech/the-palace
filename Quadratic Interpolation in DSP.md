@@ -29,6 +29,8 @@ links:
 
 # Quadratic Interpolation in DSP
 
+![[Quadratic Interpolation in DSP — hero.png]]
+
 > Quadratic interpolation is about smooth transitions between states. You're fitting a parabola through three points where the middle point determines how curved the transition is.
 
 ## What It Is

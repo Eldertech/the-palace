@@ -1,0 +1,9 @@
+{
+  "title": "OBS",
+  "idiom": "engraved camera-obscura woodcut",
+  "hero_prompt": "A hand-etched engraving of a camera obscura chamber: a man performs at a workbench lit by one hard beam of light, his image projected inverted onto a screen beside him exactly as it falls, dense cross-hatched ink shading, technical woodcut style, monochrome with a single amber highlight.",
+  "icon_prompt": "Square bold emblem: a single thick black aperture-iris shape opening onto a small lens circle, engraving style reduced to bold high-contrast geometric shapes, no fine crosshatching. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels.",
+  "seeds": {},
+  "rendered_at": "2026-09-25T02:18:55Z",
+  "history": []
+}

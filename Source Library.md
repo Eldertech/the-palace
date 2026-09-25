@@ -80,6 +80,10 @@ This is the intellectual and artistic foundation of the 4 Pillars framework. Not
 - **John Cage** - Silence, chance, letting sounds be themselves
 - **R. Murray Schafer** - Acoustic ecology, soundscapes
 - **Éliane Radigue** - Patience, slow evolution, electronic meditation
+- **Claude Debussy** - Orchestration as timbre design; the whole-tone scale slips out of harmonic constraint
+- **Erik Satie** - Minimalism, constraint, repetition
+- **Karlheinz Stockhausen** - Synthesis, serialism, space
+- **Merzbow** - Noise as material
 
 ### Artists & Makers
 **Why they're here:** Teach visual thinking, material practice, craft as philosophy
@@ -105,6 +109,14 @@ This is the intellectual and artistic foundation of the 4 Pillars framework. Not
 - **Andrei Tarkovsky** - Sculpting in time, spiritual cinema
 - **Yasujirō Ozu** - Stillness, domestic space, pillow shots
 - **Terrence Malick** - Nature, memory, voiceover as consciousness
+- ***Particles of Attachment*** - Molecular and granular structure, and connection *(unread; its maker still to find)*
+
+### Scientists & Classical Sources
+**Why they're here:** Teach that geometry, computation and curiosity are themselves ways of making
+
+- **Plato, *The Timaeus*** - The geometric construction of matter and the cosmos; geometry as creation. Seeds [[Crystal Synthesizer]] and [[Wallpaper Groups]]
+- **Richard Feynman, *The Pleasure of Finding Things Out*** - Joy in exploration, the delight of not-knowing
+- **Alan Turing** - Computation, the Church–Turing thesis, what can and can't be computed; implicit in [[DSP Frameworks]] thinking
 
 ## How Sources Connect to Themes
 

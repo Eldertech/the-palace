@@ -1,0 +1,9 @@
+{
+  "title": "ControlNet as Topology",
+  "idiom": "Renaissance chalk-and-charcoal sculptor's study",
+  "hero_prompt": "A wide chalk-and-charcoal Renaissance sculptor's-studio drawing: a bent wire armature in a striding pose stands inside a half-carved block of marble, the figure's form just emerging around the wire from raw stone and chisel strokes in warm sepia chalk, no people, no hands. Hand-made Renaissance chalk-and-charcoal sculptor's study, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
+  "icon_prompt": "A bold, high-contrast icon: a wire armature bent into a single striding figure's pose, drawn as one thick black chisel-cut line against a bare marble-white ground, no hatching. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels.",
+  "seeds": {},
+  "rendered_at": "2026-09-25T02:18:55Z",
+  "history": []
+}

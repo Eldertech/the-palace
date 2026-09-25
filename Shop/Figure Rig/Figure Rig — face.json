@@ -1,0 +1,9 @@
+{
+  "title": "Figure Rig",
+  "idiom": "Vesalius-style anatomical woodcut engraving",
+  "hero_prompt": "A wide anatomical woodcut engraving, in the style of a Vesalius plate, of a striding female figure mid-stride, her joints marked as small circled pivot points at hip, knee, and ankle like a living armature. Fine crosshatched ink lines render muscle and bone giving way to bare articulation at the joints. The figure strides confidently across a plain paper ground, evoked rather than portrayed as a specific person.",
+  "icon_prompt": "A bold, high-contrast emblem of a single ball-and-socket joint \u2014 a thick engraved circle pierced by two crossing limb-lines \u2014 rendered as stark black woodcut linework on a pale ground, no fine crosshatching, reading clearly as a small mark.",
+  "seeds": {},
+  "rendered_at": "2026-09-25T02:18:55Z",
+  "history": []
+}

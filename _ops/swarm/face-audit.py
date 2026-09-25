@@ -99,18 +99,30 @@ def has_face(md_path):
     Bundle = sibling folder named exactly like the entry (SCHEMA §8). Accepts the
     title-matched name or any `* — hero.png` / `* — icon.png` (STIGMERGY's rule)."""
     stem = os.path.basename(md_path)[:-3]
-    bundle = os.path.join(os.path.dirname(md_path), stem)
-    if not os.path.isdir(bundle):
-        return False, False
-    hero = icon = False
+    # A face may be filed under the filename OR the frontmatter title (JEWEL keeps its face in
+    # "The Jewel/", ROSETTA in "Rosetta Stone/"). Checking only the stem re-flagged six faced
+    # entries on 2026-09-24 and a batch gave them duplicate faces.
+    names = [stem]
     try:
-        for f in os.listdir(bundle):
-            if f.endswith("— hero.png") or f.endswith("- hero.png"):
-                hero = True
-            elif f.endswith("— icon.png") or f.endswith("- icon.png"):
-                icon = True
+        with open(md_path, encoding="utf-8") as fh:
+            m = re.search(r'^title:\s*"?(.+?)"?\s*$', fh.read(4000), re.M)
+        if m and m.group(1).strip() != stem:
+            names.append(m.group(1).strip())
     except OSError:
         pass
+    hero = icon = False
+    for name in names:
+        bundle = os.path.join(os.path.dirname(md_path), name)
+        if not os.path.isdir(bundle):
+            continue
+        try:
+            for f in os.listdir(bundle):
+                if f.endswith("— hero.png") or f.endswith("- hero.png"):
+                    hero = True
+                elif f.endswith("— icon.png") or f.endswith("- icon.png"):
+                    icon = True
+        except OSError:
+            pass
     return hero, icon
 
 

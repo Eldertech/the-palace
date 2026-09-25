@@ -1,0 +1,9 @@
+{
+  "title": "Depth Anything",
+  "idiom": "ukiyo-e woodblock print (Hokusai style)",
+  "hero_prompt": "A wide ukiyo-e woodblock print in the Hokusai manner: a lone walker in the foreground, a bamboo grove behind, a mountain ridge far back, the three planes separating like sliding paper screens pulled apart, flat bold colour bands and woodblock grain, no signage, no seal stamp, no chop mark. Hand-made ukiyo-e woodblock print (Hokusai style), with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
+  "icon_prompt": "A bold woodblock emblem of three stacked overlapping silhouette bands receding in size, rendered as a stark high-contrast black-on-white mark. No fine linework, no letters or text \u2014 reads clearly at small size.",
+  "seeds": {},
+  "rendered_at": "2026-09-25T02:18:55Z",
+  "history": []
+}

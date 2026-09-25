@@ -83,6 +83,7 @@ class Transport:
         data = json.dumps(body).encode() if body is not None else None
         req = urllib.request.Request(url, data=data, method=method)
         req.add_header("Authorization", f"Bearer {self.api_key}")
+        req.add_header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36")  # RunPod's WAF 403s Python's default user-agent (Shop/RunPod GPU Backend gotcha)
         req.add_header("Content-Type", "application/json")
         try:
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:

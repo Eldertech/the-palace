@@ -39,6 +39,8 @@ tags: [specialist, shop, sound, modular, generative, registry]
 
 # VCV Patch Generator
 
+![[VCV Patch Generator — hero.png]]
+
 *The generator wraps Stage 1 of [[Generative Audio Devices]] — the registry-pattern-constrained pipeline that emits loadable VCV Rack patches from a Patch Description Language (PDL). First Piece-tier job ran 2026-05-29: the T7b archetype audition, which filled in the bundle below. The Rack audio audition is the one open human step.*
 
 ## Charter

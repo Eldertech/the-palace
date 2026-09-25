@@ -30,6 +30,8 @@ links:
 
 # ControlNet as Topology
 
+![[ControlNet as Topology — hero.png]]
+
 Every way of steering a diffusion model is a **shape you carve** — and the whole family, from a prompt to a LoRA, is a rack of sculptor's tools, each doing something a stone-carver would recognize.
 
 ## The sculptor's studio (a door in)
