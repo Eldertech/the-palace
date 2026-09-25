@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - creation
 born: 2025-11
-last_activated: 2026-06-26
-activation_count: 18
+last_activated: 2026-09
+activation_count: 19
 stage: mature
 confidence: demonstrated
 energy: high
@@ -85,6 +85,8 @@ agency_profile:
 # Kuramoto Coupling
 
 ![[Kuramoto Coupling — hero.png]]
+
+*Also as a [rich face ↗](http://localhost:5173/rich/?entry=Kuramoto%20Coupling) — this page with its sound and interactives, the text as its spine.*
 
 The Kuramoto model describes how populations of oscillators with different natural frequencies can spontaneously synchronize when coupling strength exceeds a critical threshold. Below the threshold, each oscillator does its own thing. Above it, they phase-lock — maintaining individual character while achieving collective coherence.
 
@@ -226,6 +228,8 @@ The musical mapping becomes explicit:
 **The live performance insight:** Make K_receive a mappable continuous parameter for each voice. The performer designates any note as the "root" by setting its K_receive to zero. Or create harmonic texture by assigning different stubbornness levels to different voices—some anchored, some floating, some leaderless. The harmonic hierarchy of a chord becomes not static but a relationship you perform.
 
 **Coupling asymmetry and group dynamics:** In a network of oscillators with varying stubbornness, the global synchronization behavior changes. A few "stubborn" (low K_receive) oscillators acting as anchors can synchronize a much larger population than symmetric coupling would allow. This mirrors real systems: a few influential individuals can stabilize group behavior without dominating it. The critical coupling threshold shifts. Phase transitions become steeper or shallower depending on the distribution of stubbornness values.
+
+**Stubbornness sets the destination; pull decides the arrival.** Where a locked crowd settles is the average of every voice's natural pitch, each weighted by K_send ÷ K_receive — so a voice with K_receive = 0 carries unlimited weight, and if the crowd locks at all, it locks to that voice. But getting there takes pull: in simulation, one fully stubborn anchor that pulled no harder than anyone else (K_send = 1) could not bring six followers 3 Hz away even at strong coupling; at K_send = 4 they snapped to it. An anchor is K_receive → 0 *and* enough K_send — the clock above was already that pair. (Found while building this section's piece for the rich face, 2026-09-24.)
 
 **From the harvest (bright idea #38):** "I like the parameter of 'stubbornness' or some other better name that can be applied to any of the oscillators—that will make it easier to have notes settle toward integer relationships to each other." The parameter name is open; the principle is solid. Stubbornness, inertia, resistance, anchor-strength—each name illuminates a different facet of the same physics.
 
