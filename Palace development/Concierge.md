@@ -187,6 +187,10 @@ nothing until you reopen it, and re-hydrates its own accumulated context on each
 reverses the old fresh-dispatch default: continuity is worth keeping, and holding a parked agent is
 free.
 
+**Held by ID, never by name.** The spawn passes no `name`: where agent teams are on, a named spawn
+becomes a teammate, and its words come back cut off, late and twice, with no token count for the
+dial. Unnamed, it stays a subagent everywhere and resumes by its ID all the same (2026-09-26).
+
 The cost model that follows sets two disciplines:
 
 - **Curate the startup neighborhood.** What you load into the companion at spawn sets its baseline
@@ -282,8 +286,3 @@ return, takes the wheel at the close.**
 > scout has never chosen work in a real return. Both are tuned by use, not by more machinery — the
 > right session to catch this baton is one that was going to return or close anyway.
 
-> **[[Concierge — baton — message delivery]]** (2026-09-26) — message delivery: make every
-> Concierge posture return its deliverable by SendMessage only, ending on one word ("sent"), so
-> delivery holds whether or not the agent-teams flag is on — the resident's return channel has
-> been re-delivering final text as a truncated, late, duplicate idle notification. Stands beside
-> the validation baton above, does not touch it.

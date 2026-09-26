@@ -45,7 +45,12 @@ can spawn it, then kept until the session ends. The mechanics:
    tier** as its standing expertise (SUBSTRATE · ROSETTA · Substrate Skill · Palace Ceremonies ·
    STIGMERGY + the wire spec) — the companion is deeper in *how the palace runs* than the working
    Claude, so it can validate and support the palace in parallel. Per-address *work-targets* come
-   later; the birth-load is the expertise, not the task. Keep its **agent ID**.
+   later; the birth-load is the expertise, not the task. Keep its **agent ID** — and spawn it
+   **without a `name`**. With agent teams enabled, a named Agent call launches a teammate whose
+   returns arrive as truncated, late, duplicated idle notifications with no `<usage>` block for the
+   dial; an unnamed one stays a subagent in every mode and is still resumable by its ID
+   (docs: code.claude.com/docs/en/sub-agents § Subagent names; the 2026-09-26 transcript survey:
+   every failure was a named spawn in a CLI session, none on Desktop or unnamed).
 2. **Re-address it** (`SendMessage` to the held ID) as the work moves, each time naming the
    **posture** and handing the posture prompt's slots. Between addresses it is *parked* — it
    consumes nothing until you reopen it, and re-hydrates its own accumulated context on resume
