@@ -16,7 +16,7 @@ links:
     type: connects-to
   - target: "[[Hilaritas Generator]]"
     type: connects-to
-  - target: "[[Meadows and Music — Origin and Process]]"
+  - target: "[[Meadows and Music — Leverage Points — Context]]"
     type: couples-with
   - target: "[[Leverage Points Framework]]"
     type: emerged-from
