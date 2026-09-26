@@ -19,7 +19,7 @@ The build detail for the moves in the plan on [[Semantic Delay — scroll]]. The
 
 Wrap SoulX-Singer-SVC as a long-lived Python process. Load model once. Expose `convert(audio_bytes, sr, prompt_id, options) → audio_bytes`. Maintain registry of loaded prompt wavs with precomputed F0. Run RMVPE on target audio internally. Return at known SR (probably 24k). Local TCP, length-prefixed binary frames. This daemon *is* the VST's future backend — version the RPC from v0.1.
 
-> Note: the daemon was built on a Unix domain socket rather than TCP, as [[Semantic Delay — Phase 1 Plan Review 2026-04-20]] proposed; TCP is held back for a daemon on another machine (`daemon/RPC-v0.1.md`). The contract, skeleton and conformance tests are built with the model stubbed out. Wiring the real model is the punchlist in `daemon/Stage 1.5 — Wire the Model — Mac handoff — 2026-06-08.md`.
+> Note: the daemon was built on a Unix domain socket rather than TCP, as the 2026-04-20 plan review proposed; TCP is held back for a daemon on another machine (`daemon/RPC-v0.1.md`). The contract, skeleton and conformance tests are built with the model stubbed out. Wiring the real model is the punchlist in `daemon/Stage 1.5 — Wire the Model — Mac handoff — 2026-06-08.md`.
 
 ## Let each echo follow the melody, or wander
 *Stage 4, the rhythmic coupling layer. Code so far: `standalone/coupling.py`, `standalone/f0.py`.*
@@ -41,10 +41,20 @@ Read host BPM and playhead. Align delay taps to musical time (dotted-eighth, qua
 
 Three options, easiest → hardest: (a) user installs daemon separately (clean, worst UX); (b) bundle Python runtime with installer (2–5 GB, moderate effort, good UX); (c) ONNX-export model to C++ runtime (likely impractical for F5-family flow-matching today — research project, not an engineering step). Ship (a) first; revisit (b) if/when commercializing.
 
+When it ships beyond this machine: the daemon goes as a separate signed helper with hardened runtime and `com.apple.security.cs.allow-unsigned-executable-memory`, which PyTorch's JIT needs — never an unsigned binary inside the plugin bundle. A bundled Apple-Silicon build runs 2–3 GB; PyInstaller works, and Nuitka is leaner but fragile with PyTorch.
+
 ## Bring the words back
 *Stage 8, the LLM transform re-enters. The start of Phase 2.*
 
 Tap captured phrase → Whisper/Paraformer → LLM spirit transform → re-synthesize via SoulX-Singer **SVS** mode using original F0 contour as melody guide. SVC stays for "keep words, change voice" spirits; SVS returns for "change words, change voice" spirits. Full spirit pantheon is earned: each spirit is a routing choice between the two models with different text-transform logic upstream.
+
+**Where it sits.** The chain — Whisper → LLM → SVS as a phrase-delay primitive, F0 kept, new lyrics constrained to the old syllables — has not been shipped or published. Every piece is solved; the delay framing is empty territory, and that is Phase 2's positioning. Cite rather than claim: Text2FX (DAFx 2024) for natural-language effect control, SingSong (2023), LyricJam (2021) as the ancestor of pool-then-select, DiffSinger and VISinger2 for the SVS backbone, Holly Herndon's Holly+ (2021) as voice-cloning-as-art, Hexorcismos (Moisés Horta Valenzuela) when naming the spirit pantheon, Edward Large's GrFNN and Patel's *Music, Language, and the Brain* for the [[Kuramoto Coupling]] grounding, and Diana Deutsch's speech-to-song illusion for why the singing mode works at all. The nearest products (RVC covers, Suno Covers, Udio, ACE Studio, Synthesizer V) are offline and song-length; none is an effect in a DAW.
+
+## Risks that stand across every move
+
+- **The training-data license — check it before any commercial plan.** The code is Apache-2.0, but F5-TTS-family checkpoints are sometimes trained on Emilia, parts of which are CC-BY-NC. Read the SoulX checkpoint's own training-data license on its Hugging Face model card. If the data is non-commercial, Phase 1 can ship as research or art, but it can't be sold without retraining on a permissive corpus. The 2026-04-20 plan review called this the biggest product-phase risk, and nothing has checked it yet.
+- **Keep PyTorch pinned.** Every 2.x minor has changed MPS numerics or broken a flow-matching sampler at least once. Stage 0 pinned back to 2.2.0 after 2.11 gave no speed-up ([[Semantic Delay]] § Stage 0); hold that pin in the daemon's lockfile once it has one.
+- **If SoulX disappoints.** Stage 0's RTF of 1.65 is past the 0.75 line, so the bake-off is technically triggered; listening decides. The candidates: **YingMusic-SVC** (arXiv 2512.04793, `GiantAILab/YingMusic-SVC`, Dec 2025) — robust zero-shot SVC that handles accompaniment leakage better, the real swap; **seed-vc** (Plachtaa) — true streaming at ~300–400 ms, for a future low-latency variant, not Phase 1; **RVC** — flips the design: each spirit its own trained model from a dedicated voice-artist session, worth it if the spirits feel generic.
 
 ---
 
