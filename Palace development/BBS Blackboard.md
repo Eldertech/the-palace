@@ -39,7 +39,7 @@ links:
   - target: "[[Project Stewardship System]]"
     type: enables
     label: routine-stewardship-substrate
-  - target: "[[Oblique Enrichment]]"
+  - target: "[[Enrichment]]"
     type: connects-to
     label: review-surface-and-stigmergy-medium
   - target: "[[Semantic Webcam]]"

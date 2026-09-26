@@ -48,6 +48,6 @@ A tool that assumes a fixed, uniform substrate is not "correct now, broken later
 
 ## Open question
 
-Where should the guarantee live — in **each tool** (defensive parsing, hermetic tests, snapshot/restore), or in a **shared substrate-access layer** every tool reads through, so heterogeneity-tolerance and hermeticity are paid for once and inherited? The first is cheap per tool and expensive across the fleet; the second is the kind of convergence that, per [[Oblique Enrichment]], should be *discovered* once enough tools have paid the tax separately — not designed up front.
+Where should the guarantee live — in **each tool** (defensive parsing, hermetic tests, snapshot/restore), or in a **shared substrate-access layer** every tool reads through, so heterogeneity-tolerance and hermeticity are paid for once and inherited? The first is cheap per tool and expensive across the fleet; the second is the kind of convergence that should be *discovered* once enough tools have paid the tax separately — not designed up front.
 
 <!-- CLAUDE → LOUDON: candidate to promote into SUBSTRATE.md as a standing design rule once it proves out across more tools than STIGMERGY. -->
