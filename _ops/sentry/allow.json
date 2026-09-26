@@ -40,26 +40,6 @@
       "fp": "a89580553c8cf459",
       "rule": "new-network-script",
       "reason": "the read view's app shell; its one request is the snapshot's own data/meta.json on the same site, read 2026-09-25"
-    },
-    {
-      "fp": "85e51a1c040d0bcc",
-      "rule": "data-export",
-      "reason": "reviewed by Loudon 2026-09-25: nothing sensitive in it; fine to stay in public history"
-    },
-    {
-      "fp": "06f721ff71876d3d",
-      "rule": "data-export",
-      "reason": "reviewed by Loudon 2026-09-25: nothing sensitive in it; fine to stay in public history"
-    },
-    {
-      "fp": "f390dddf1541081a",
-      "rule": "data-export",
-      "reason": "reviewed by Loudon 2026-09-25: nothing sensitive in it; fine to stay in public history"
-    },
-    {
-      "fp": "9b4d05dedd2879f7",
-      "rule": "archive",
-      "reason": "reviewed by Loudon 2026-09-25: nothing sensitive in it; fine to stay in public history"
     }
   ],
   "values": [
