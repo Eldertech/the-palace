@@ -15,14 +15,14 @@ forward_vector: "I am Shepard Tone Synthesizer's scroll — the one page that al
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T20:42:23-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:47:19-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
 - **Status:** active · **Stage:** growing · **Steward:** cycle 9 · last ran 2026-08-26 (31 days ago)
 - **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-25 (92 days ago) — Stage 2 is shipped. Lean into Stage 3 (the glide) next, or sit with Stage 2 first? (`shepard-steward-024`)
-- **Last commit touching this project:** 2026-09-25 `b09ddab8` — Schema Ceremony — the Plan replaces staging — v1.25
+- **Last commit touching this project:** 2026-09-25 `c5dec6bf` — edit(scroll plans): the Concierge's after-write review — accurate plans, honest trail
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
@@ -48,7 +48,7 @@ _None._
 ## Plan
 
 <!-- scroll:plan:start -->
-**Where this is going.** A teaching instrument that reveals the endless-staircase illusion one layer at a time, from a rack anyone can build in Ableton to a plugin that tests the illusion outside equal temperament. Each move is also a [[Loudon Live]] session. What exists so far are proofs, not the session builds: the illusion as rendered drones (twelve of them), and the mechanism as a browser prototype with rendered variants that climb in discrete steps and leave the wrap seam audible. The Ableton rack and the Max patch those two sessions are designed around haven't been built. Loudon chose the glide as the next move on 2026-06-25, and six glide renders followed on 2026-09-15, not yet posted to the board.
+**Where this is going.** A teaching instrument that reveals the endless-staircase illusion one layer at a time, from a rack anyone can build in Ableton to a plugin that tests the illusion outside equal temperament. Each move is also a [[Loudon Live]] session. What exists so far are proofs, not the session builds: the illusion as rendered drones (twelve of them), and the mechanism as a browser prototype with rendered variants that climb in discrete steps and leave the wrap seam audible. The Ableton rack and the Max patch those two sessions are designed around are built in live sessions with Loudon, since Max, Gen~ and RNBO need him in the room; the proofs prepare them. Loudon chose the glide as the next move on 2026-06-25, and six glide renders followed on 2026-09-15, not yet posted to the board.
 
 **The moves ahead**
 
@@ -73,11 +73,11 @@ Decided with Loudon when the Loudon Live arc was designed (April 2026), and seed
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="plan-2026-09-25T20-42-23-04-00" -->
+<!-- scroll:entry id="plan-2026-09-25T20-47-19-04-00" -->
 ### 2026-09-25 — Plan agreed: carried over from the retired staging file
 
-Carried over on 2026-09-25 from the retired staging file, when Loudon asked that every plan fold into its scroll (SCHEMA v1.25). The arc is the one agreed with him in April 2026, unchanged in substance: the two moves with proofs behind them are named in the opening, the three ahead are the moves, each renamed by what it does. The opening says plainly that what exists are renders and a browser prototype, not the Ableton and Max builds the sessions are designed around. Project-wide decisions became Standing Orders; the session choices and the 2026-06-05 step-and-show grants went to [[Shepard Tone Synthesizer — spec — Loudon Live sessions]].
-<sub>`plan-2026-09-25T20-42-23-04-00` · plan agreed · agreed 2026-09-25T20:42:23-04:00 · carried over by an elder on Loudon's word</sub>
+Carried over on 2026-09-25 from the retired staging file, when Loudon asked that every plan fold into its scroll (SCHEMA v1.25). The arc is the one agreed with him in April 2026, unchanged in substance: the two moves with proofs behind them are named in the opening, the three ahead are the moves, each renamed by what it does. The environment ladder stands (Loudon, 2026-09-25): proofs can be in any tool, and the Max, Gen~ and RNBO builds happen in live sessions with him. Project-wide decisions became Standing Orders; the session choices and the 2026-06-05 step-and-show grants went to [[Shepard Tone Synthesizer — spec — Loudon Live sessions]].
+<sub>`plan-2026-09-25T20-47-19-04-00` · plan agreed · agreed 2026-09-25T20:47:19-04:00 · carried over by an elder on Loudon's word</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="shepard-steward-024" -->

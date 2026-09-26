@@ -31,7 +31,7 @@ The session designs for the moves in the plan on [[Shepard Tone Synthesizer — 
 - The illusion session opens with Meld's built-in Shepard tone, before we build our own.
 - Its reflecting surface is the auditory barber pole question, with seeds (below).
 
-*Open for Loudon (2026-09-25):* the proofs so far were made in other tools — the illusion as a drone rendered in Python (the MINIMUM-ILLUSION grant), the mechanism as a browser prototype first (the WEB-INTERACTIVE-FIRST grant). The Ableton rack and the Max patch these sessions are designed around haven't been built. Does the environment ladder above still stand for the sessions?
+*The ladder stands* (Loudon, 2026-09-25). Proofs can be made in any tool — the illusion's drone was rendered in Python and the mechanism prototyped in the browser — and the code made in one tool informs how the build is made in the next. The Max, Gen~ and RNBO builds need Loudon present, so they happen in live sessions; the steward keeps making proofs and preparing each session meanwhile.
 
 ---
 

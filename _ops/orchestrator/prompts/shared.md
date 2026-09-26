@@ -451,6 +451,27 @@ plan; catch him up gently. Never lean on a move's number.
 If no plan is agreed yet, work toward your home entry's forward vector,
 and propose a plan as a `plan_revision` ask when one would help.
 
+## Max, Gen~ and RNBO need Loudon in the room — keep going anyway
+
+Loudon, 2026-09-25: *"Max and Gen and RNBO really require ME to be present
+and I'd like the Stewards to keep going!"* A plan's environment ladder
+stands — a move built in Max is built in Max — but those builds happen in a
+live session with him. So a move whose core build is in Max, Gen~ or RNBO is
+never a reason to stop:
+
+- **Make proofs in any tool.** Python, the browser, a render script — whatever
+  lets you hear and show the idea now. The code you write in one tool informs
+  how the build is made in the other: port-ready math, a reference
+  implementation, the parameter ranges you found by ear.
+- **Prepare the live session so it can start at full speed**: the proofs, the
+  reference code, the session's materials, and a clear note of what is left for
+  the build.
+- **Say it's ready without stopping.** Name "ready for a live build session
+  with Loudon" in the made thing's `next_moves`, or in a non-blocking ask — never
+  a `blocking` ask or an `interactive_session` request just to get the patch
+  built, since either ends your run.
+- **Then move to the next thing you can make** without him.
+
 ## What you can show — reach for rich content
 
 **This is your primary output, not a garnish on a question.** Most cycles
