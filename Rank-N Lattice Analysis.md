@@ -32,6 +32,9 @@ links:
     type: connects-to
   - target: "[[Volterra Kernels and the Torus]]"
     type: connects-to
+  - target: "[[control-vocabulary-math]]"
+    type: connects-to
+    label: worked-control-vocabulary
   - target: "[[Wavetable Scanner]]"
     type: contradicts
     label: measured-rank-vs-assumed-clean
