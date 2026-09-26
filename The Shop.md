@@ -54,9 +54,6 @@ links:
   - target: "[[Trickster]]"
     type: connects-to
     label: provisional-producer
-  - target: "[[Tier Vocabulary Glossary]]"
-    type: spawned
-    label: tier-vocabulary
   - target: "[[Agent Toolbox]]"
     type: spawned
     label: ported-toolbox-technique
