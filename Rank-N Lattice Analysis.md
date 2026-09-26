@@ -30,10 +30,11 @@ links:
     label: minimal-spectrum-of-the-stored-field
   - target: "[[Dispersion Table]]"
     type: connects-to
-  - target: "[[Infeasible DSP Now Shippable]]"
-    type: connects-to
   - target: "[[Volterra Kernels and the Torus]]"
     type: connects-to
+  - target: "[[control-vocabulary-math]]"
+    type: connects-to
+    label: worked-control-vocabulary
   - target: "[[Wavetable Scanner]]"
     type: contradicts
     label: measured-rank-vs-assumed-clean
@@ -72,12 +73,12 @@ One artifact is simultaneously **what was heard** (the analysis of the input) an
 
 ## Note on the T³ material
 
-The source session also extended the torus to **T³** — three simultaneous harmonicity gates ($\omega_1{:}\omega_2$, $\omega_2{:}\omega_3$, $\omega_1{:}\omega_3$), with regime structure determined by which pairs lock (closed cable-knot / dense sub-torus / full-cube dense), and computational limits where trilinear interpolation and memory bandwidth bite before CPU does. If that T³ regime taxonomy already lives in [[DSP in Looping Dimensions]], it should be *linked, not duplicated* — the genuinely novel, uncaptured pieces here are the **analysis side** (rank-N fitting; synth-as-oscilloscope) and the strategic framing split into the companion entry [[Infeasible DSP Now Shippable]].
+The source session also extended the torus to **T³** — three simultaneous harmonicity gates ($\omega_1{:}\omega_2$, $\omega_2{:}\omega_3$, $\omega_1{:}\omega_3$), with regime structure determined by which pairs lock (closed cable-knot / dense sub-torus / full-cube dense), and computational limits where trilinear interpolation and memory bandwidth bite before CPU does. If that T³ regime taxonomy already lives in [[DSP in Looping Dimensions]], it should be *linked, not duplicated* — the genuinely novel, uncaptured pieces here are the **analysis side** (rank-N fitting; synth-as-oscilloscope) and the strategic framing, which now sits with the commercial-release decision in [[2D Torus Wavetable Synthesizer]].
 
 ## Forward Vectors
 
 - Prototype the analyzer → synth round-trip as a single tool: record, watch the lattice converge, play it back.
-- Invent control vocabularies for high-dimensional instrument spaces — the recurring "hardest problem" named in the companion entry.
+- Invent control vocabularies for high-dimensional instrument spaces — the recurring hardest problem. [[control-vocabulary-math]] is one worked instance; the Torus's Hopf control surface is the open one.
 - Does measured rank correlate with perceived inharmonicity, or do listeners hear something the rank doesn't capture? An empirical question.
 
 ## Lost Branches
