@@ -141,7 +141,9 @@ export function isHarnessError(rec) {
 /** `usage_limit` for a session/usage/rate limit; `api_error` for any other failure. */
 export function classifyInterruption(kind, text) {
   if (kind === 'rate_limit') return 'usage_limit';
-  return /\b(session|usage|weekly|daily) limit\b|rate[ _-]?limit/i.test(String(text || '')) ? 'usage_limit' : 'api_error';
+  // Wordings seen on disk: "You've hit your limit", "…your session limit",
+  // "usage limit reached", "rate_limit_error".
+  return /\bhit your (?:\w+ )?limit\b|\b(?:session|usage|weekly|daily) limit\b|rate[ _-]?limit/i.test(String(text || '')) ? 'usage_limit' : 'api_error';
 }
 
 /**

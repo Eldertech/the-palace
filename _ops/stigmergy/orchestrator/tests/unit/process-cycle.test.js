@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import {
   extractMessagesFromTranscript,
+  classifyInterruption,
   reconcilePendingRequests,
   buildCycleNote,
   processCycle,
@@ -556,5 +557,21 @@ describe('processCycle — usage limits are never barren', () => {
     const s = run(agentDir, [modelTurn('I looked around and made nothing')]);
     expect(s.stop_hint).toBe('barren');
     expect(s.usage_limit).toBe(false);
+  });
+});
+
+describe('classifyInterruption — the limit wordings seen on disk', () => {
+  test('every limit phrasing reads as a usage limit, even with no error kind', () => {
+    for (const text of [
+      "You've hit your limit · resets 1am (America/New_York)",
+      "You've hit your session limit · resets 5:50am (America/New_York)",
+      "You've hit your weekly limit",
+      'Claude usage limit reached. Your limit will reset at 3pm.',
+      'API Error: 429 rate_limit_error',
+    ]) expect(classifyInterruption(null, text)).toBe('usage_limit');
+  });
+  test('an expired token or an old CLI is an API error, not a limit', () => {
+    expect(classifyInterruption(null, 'Failed to authenticate. API Error: 401 OAuth access token has expired.')).toBe('api_error');
+    expect(classifyInterruption(null, 'API Error: 400 Claude Code 2.1.236 does not support this model')).toBe('api_error');
   });
 });
