@@ -14,9 +14,6 @@ links:
   - target: "[[Palace To-Do]]"
     type: connects-to
     label: carried-decision
-  - target: "[[Palace Audit — 2026-05-28]]"
-    type: emerged-from
-    label: surfaced-by-the-audit
 forward_vector: "I am a proposal awaiting Loudon's yes/no, not an executed change. I hold the rationale and the cost so the decision can be made deliberately rather than reflexively. When Loudon decides, I either become the record of a Schema Ceremony or I compost."
 ---
 

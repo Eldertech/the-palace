@@ -68,6 +68,8 @@ This means compression quality is directly coupled to forward vector quality. A 
 
 This is a reason to treat forward vectors as first-class design artifacts. They are not metadata — they are the functions that govern how knowledge is selected and preserved.
 
+**So shortening is never a bulk job.** Each cut is checked against the vector of the entry being cut, because what reads as padding from outside can be the entry's whole purpose. [[Ohm's Law]] carries a long block of water, light, sound and labor analogies that any generic editor would compress — and its forward vector wants it to be the palace's exemplar of cross-domain structural isomorphism, so that block *is* the entry. Cut boilerplate that serves no vector; keep what a vector names, however long.
+
 > *Counter-pressure:* [[compression-always-loses]] — a provocation asking whether FV-compression systematically removes the productive confusion that makes conclusions feel earned, not given. Surfaces the hidden cost this entry has not yet answered.
 
 ## The Automated Form

@@ -54,7 +54,7 @@ here if it feeds that, or if it is cheap and unblocks something that does.
 
 - [ ] **Resonance and Damping** — persistent forward-ghost across four map cycles from [[Differential Equations]]. Central to filter design and physical modeling; several instrument builds will need it underneath them.
 
-- [ ] **Donella Meadows** — person-page, persistent ghost across four cycles, referenced from [[Leverage Points Framework]]. Build her as an embodiable citizen per [[Making a Palace Citizen]], not a description — the leverage-points framing is going to do public work.
+- [x] **Donella Meadows** — person-page, persistent ghost across four cycles, referenced from [[Leverage Points Framework]]. Build her as an embodiable citizen per [[Making a Palace Citizen]], not a description — the leverage-points framing is going to do public work. — **done**: [[Donella Meadows]] now stands as a citizen with her own forward vector and agency profile.
 
 - [x] **Deposit the June–July harvest** — five candidates found on 2026-08-25 and written up at [[Harvest — 2026-08-25 — the June-July making]]. The top three travel furthest and are ready to draft: *impose it at generation, don't recover it after*; *rich first, stylize last* (used in five project files with no owning entry); *the model's prior is part of the interface* (a semantically valid but out-of-distribution input fails quietly, and corrupts the experiment built on it). Two more are smaller: the correctness-knob-turned-expressive-dial, and keeping the compromised record labeled — that last one recommends merging into [[Closing Well]] rather than a new entry. — **done 2026-09-24**: A, B → Steer the Generator; E → The Scroll; C, D declined (see the 2026-09-06 record).
 
@@ -83,9 +83,11 @@ Unrelated loose ends the September weave declined to settle in place (each wants
 
 - [ ] **Decide the STIGMERGY / BBS Blackboard naming** — the board is called STIGMERGY everywhere; its canonical entry is [[BBS Blackboard]], which contains the string nowhere, so `[[STIGMERGY]]` dangles and grep misses it. Two candidates, both understood: an Obsidian `aliases:` field, or a rename plus an inbound-link sweep. It has now recurred enough to decide. Deferred once on 2026-05-27 pending more instances; the instances arrived.
 
+- [ ] **Re-split the Weave and Baton cards** — both were split into a card plus a `— Context` companion, and both cards grew back: Weave ~36 KB, Baton ~28 KB, against the ~8 KB line in [[SCHEMA — Reference]] §6. A card that size teaches every runner that its history is the procedure. Next action: move the history and rationale out again, and keep the steps.
+
 - [ ] **Fold the memory-into-palace weave into the [[Weave Ceremony]] as a standing sub-step** — procedure is already documented at [[Weaving Memory into the Palace]]; it just isn't wired into the ceremony contract, so it only happens when someone remembers. Next action: add the sub-step and its postcondition to the card.
 
-- [ ] **Link-type vocabulary — schema-change decision data** — surfaced in the [[Palace Audit — 2026-05-28]]. Gather the non-canonical frontmatter link types actually in use and decide, in one Schema Ceremony, which to ratify and which to normalize. The data-gathering is mechanical; the decision is Loudon's.
+- [x] **Link-type vocabulary — schema-change decision data** — surfaced in the 2026-05-28 palace audit. Gather the non-canonical frontmatter link types actually in use and decide, in one Schema Ceremony, which to ratify and which to normalize. The data-gathering is mechanical; the decision is Loudon's. — **done 2026-05-28**: `exemplifies` and `member-of` ratified in [[SCHEMA]] v1.8 (counts in [[SCHEMA — Context]] §4); no other non-canonical type remains in frontmatter.
 
 - [ ] **Entry voice diversity** — enchanted voices read too alike. Audit which entries are merely expository versus which carry real voice or opinion, and write guidance for entries that are enchantment candidates. Now coupled to the markup-density work in [[The Palace Voice]]: the drift that flattened entry voice is measurable, and the same check catches both.
 
