@@ -27,7 +27,7 @@ links:
   - target: "[[Semantic Webcam]]"
     type: connects-to
     label: flock-made-visible
-  - target: "[[Oblique Enrichment]]"
+  - target: "[[Enrichment]]"
     type: connects-to
     label: emergence-as-provocation
   - target: "[[Flocking]]"

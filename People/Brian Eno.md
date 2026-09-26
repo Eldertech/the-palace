@@ -32,7 +32,7 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: deepens
     label: constraint-as-pillar-method
-  - target: "[[Oblique Enrichment]]"
+  - target: "[[Enrichment]]"
     type: connects-to
     label: oblique-strategies-principle
   - target: "[[Semantic Webcam]]"

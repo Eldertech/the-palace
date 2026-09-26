@@ -13,7 +13,6 @@ forward_vector: "I render locally with byte-exact reproducibility — workflow J
 links:
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
-  - { target: "[[Shop/Midjourney]]", type: connects-to, label: alternative-to }
   - { target: "[[ControlNet Workflow Mastery]]", type: connects-to, label: control-mastery }
   - target: "[[Kuramoto Coupling]]"
     type: connects-to

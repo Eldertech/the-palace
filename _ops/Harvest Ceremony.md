@@ -10,8 +10,6 @@ version: "1.1"
 links:
   - target: "[[Deposit Ceremony]]"
     type: spawned
-  - target: "[[Deposit Archive]]"
-    type: enables
   - target: "[[SUBSTRATE]]"
     type: deepens
   - target: "[[Cooperation Yields Agency]]"
@@ -75,7 +73,7 @@ The Harvest adapts to its dataset, and the first move is deciding which of two k
 **The sweep** is for a big pile — a month of conversations, an archive — where the job is *finding*.
 The harvest:
 
-1. Knows what has already been deposited (the [[Deposit Archive]] holds the frozen pre-spec rows; post-migration deposits are `Palace-Kind: deposit` commits on the LOG deck — query both via script, do not load wholesale)
+1. Knows what has already been deposited (the [[Deposit Ceremony — Deposit Archive|Deposit Archive]] holds the frozen pre-spec rows; post-migration deposits are `Palace-Kind: deposit` commits on the LOG deck — query both via script, do not load wholesale)
 2. Knows what it is searching through (establish the scope before triaging)
 3. Records its findings in a working list that feeds the deposit queue
 4. Does not attempt to do the deposit work — that belongs to [[Deposit Ceremony]]
@@ -105,7 +103,7 @@ Here depositing happens inside the loop, each write through the [[Deposit Ceremo
 
 ## The Archive
 
-The record of what has entered the palace is the [[Deposit Archive]] (frozen pre-spec rows) **plus** the LOG deck's `Palace-Kind: deposit` commits (post-migration deposits — a deposit's record is now its commit). Do not read the archive wholesale during harvest — it is too large; query it and the deposit commits via script.
+The record of what has entered the palace is the [[Deposit Ceremony — Deposit Archive|Deposit Archive]] (frozen pre-spec rows) **plus** the LOG deck's `Palace-Kind: deposit` commits (post-migration deposits — a deposit's record is now its commit). Do not read the archive wholesale during harvest — it is too large; query it and the deposit commits via script.
 
 A working list of harvest candidates can live anywhere that makes sense for the current session — in the conversation itself, in a temporary file, in a shared document. It does not need to be a permanent palace file. When the harvest is done, move the candidates to wherever [[Deposit Ceremony]] can find them.
 

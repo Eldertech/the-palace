@@ -66,7 +66,7 @@ node "<owner>/_ops/stigmergy/app/scripts/palace-commit.mjs" \
 The committer composes the `deposit(<id>):` subject, derives `Palace-Entry`/`Palace-Stage`/
 `Palace-Vector` from the staged diff, and stamps `Palace-Kind: deposit` so the deposit
 self-classifies onto the LOG deck's deposit view. The record goes in the commit **body**;
-the frozen `Deposit Archive.md` is never appended to. (`--kind`, `--summary`, `--verify` are
+the frozen Deposit Archive (`_ops/Deposit Ceremony/Archive/`) is never appended to. (`--kind`, `--summary`, `--verify` are
 required.)
 *Executor check:* Loudon approved the row's map and read its words (`candidate`, not `provisional`); every file went
 in by `--path`; the commit lands on the owner's `main` (rule 1); links resolve (no ghost

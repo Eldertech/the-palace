@@ -122,7 +122,8 @@ owner with `git worktree list --porcelain` (first `worktree ` line) — the same
 - **Deposit** — a deposit adds to canon, and canon is `main`. It always writes its entries and
   weave_flags to the **owner** and commits there (`git -C "<owner>" …`), regardless of which
   worktree the conversation ran in. The commit body *is* the record (`Palace-Kind: deposit`; the
-  `_ops/Deposit Archive.md` is frozen — no row to append). See
+  `_ops/Deposit Ceremony/Archive/Deposit Ceremony — Deposit Archive.md`
+  is frozen — no row to append). See
   `_ops/Deposit Ceremony.md` step 6.
 - **Coordination state** — the persistent blackboard (`_ops/swarm/persistent/blackboard.jsonl`) is
   tracked + append-only, so per-branch copies fragment and merge-conflict.

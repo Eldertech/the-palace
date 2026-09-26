@@ -219,7 +219,7 @@ Don't wait for perfection. Plant seeds. Tend them later.
 
 ## Palace Ceremonies
 
-The palace stays alive through periodic ceremonies — intentional acts of review and maintenance. For the complete list with triggers and full specs, see [[Palace Ceremonies]] (in `_ops/`). All ceremony files, their context companions, and working queues (Harvest Queue, Deposit Archive, etc.) live in `_ops/`.
+The palace stays alive through periodic ceremonies — intentional acts of review and maintenance. For the complete list with triggers and full specs, see [[Palace Ceremonies]] (in `_ops/`). All ceremony files, their context companions, and working queues (Palace To-Do, Palace Graffiti, etc.) live in `_ops/`.
 
 **The Deposit** (whenever something larger is worth adding to canon) — A new entry, or a fold that changes what an existing one says. Whoever brings the find, the deposit slows down to re-enter it, asks the [[Concierge]] where it lives, maps it with care, and writes only what Loudon has read. This is the most important ceremony for the palace's growth — every other ceremony tends what already exists; deposit is how new tissue arrives, and it is the palace's protection against what shouldn't. Triggered by "deposit" or "add this to the palace." See [[Deposit Ceremony]].
 

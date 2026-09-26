@@ -65,7 +65,7 @@ The reason to lift this out of a project entry: the equivalence is probably not 
 
 Each is a candidate site to ask the Semantic Webcam's question again with different materials.
 
-## Why it belongs to Oblique Enrichment
+## Why it is oblique
 
 Meaning here arrives the way it does in the [[Oblique Portrait]] method: not by pointing at it. You do not render a face and then label it; you choose words for their darkness and the face assembles itself in the negative space. Legibility is approached sideways, through light — which is exactly the oblique move. See [[Semantic Webcam]] for the instrument; this page is the lens.
 
