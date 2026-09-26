@@ -403,3 +403,53 @@ folder (the scroll sentence) and § The Palace Voice (the catch-up rule); SCHEMA
 the read seam); [[ROSETTA]] states no bundle vocabulary and is unchanged; [[Palace Ceremonies]] is
 unchanged — no ceremony was added or removed. **Structural, not breaking:** no entry type, link type,
 required field or stage changed; older scrolls gain an empty Plan zone on their next regeneration.
+
+## §3 — Use replaces activation — v1.26 (2026-09-26)
+
+**`activation_count` and `last_activated` are retired, and how an entry is used is computed from git.**
+The fields asked every agent that read or engaged a page to bump two numbers in its frontmatter. On the
+day of retirement, 127 of 347 typed entries carried no count at all and 152 of the 220 that did sat at 1
+or 2. FOUR PILLARS, loaded into every session through CLAUDE.md, read 35. The count tracked neither
+reading nor editing: Kuramoto Coupling read 19 against 37 commits, the Substrate Skill 3 against 39. Bumps
+fell from 147 in June to 18 by late September. The rule could not be kept: most sessions are children, and
+a child may not write the house (v1.19), so most reads could never legally be counted. The number measured
+who remembered to bump it.
+
+**What counts as use.** Loudon, retiring it: the signal should be about how an entry is *used*. He named
+the two streams that matter beyond the page itself — the **bundle**, because that is where a page is played,
+run and made with, and **incoming links**, because another page reaching for it is activity too. So
+`entry-use.py` counts three things: days the page was edited, days anything in its bundle was edited, and
+entries that formed a link to it (typed or body `[[wikilink]]`, once per linking entry, dated to the first
+appearance). The choices under that:
+
+- **Days, not commits.** Agents commit at very different grains; one session is one day of use.
+- **Sweeps earn no edit days.** Measured on the history: commits touching more than ten entries are
+  migrations, scroll refreshes, face rollouts and rename sweeps; below that they are ordinary work. The
+  links a sweep forms still count — a Weave that forms a link has formed one.
+- **History follows renames.** Title renames resolve through git's rename records, so a rename that
+  rewrites every `[[Old]]` into `[[New]]` forms nothing, and an entry keeps the use of its old name and its
+  old folders (including the `Artifacts/` era).
+- **Reported all-time and over 90 days.** The window is the decay the [[Making a Palace Citizen]]
+  founders' circle asked for (Meadows' reinforcing loop on the count), without anyone keeping it.
+
+It is never written back into an entry: a computed number in frontmatter would be stale the moment it
+landed, and writing it would itself be a use.
+
+**What moved.** The Map Build puts `use` and `last_used` on every map node in place of the two fields.
+STIGMERGY's PULSE scores on recent use and days since last use, and the entry header shows the three
+streams. `face-audit.py`'s grey band takes the top tenth by use, a share rather than a number, because
+all-time use only grows. `new-entry-catchup.py`'s bare default was the `activation_count == 1` proxy; it is
+now the since-the-last-Weave rule a real Weave already used. The Weave reads use for dormancy (no recent
+use and no tie to current work → propose `dormant`), which gives [[Palace Conatus]]'s open question —
+staleness as a signal a ceremony could compute — a working answer. Ceremonies that bumped or read the
+fields changed their specs and versions: Map Build 2.2 (its self-update step is gone), Revival 1.2 (a read
+without change is a read, nothing to record), Self-Model Update 1.2, Spore Check 1.2, Walk 1.2, Weave 1.3.
+The fields were stripped from every entry's frontmatter in the same ceremony, since a stale example is how
+a retired rule comes back.
+
+**Mirrors.** SCHEMA, SCHEMA — Reference, CLAUDE.md and [[ELDER]] (version); SCHEMA — Reference §3 (the two
+rows retired, the computed signal described); SUBSTRATE (Parameters Encoded); `_ops/Substrate Skill.md`
+(§ Updating Entries); [[Deposit Ceremony — Context]] (§ Updating Existing Entries); the Concierge's curator
+prompt (the bump left the do-tier). [[ROSETTA]], [[README - The Palace Guide]] and [[Palace Ceremonies]]
+state neither field and are unchanged. **Structural, not breaking:** no entry type, link type, required
+field or stage changed; the two fields were only ever recommended.

@@ -9,7 +9,7 @@ import { typeColor } from '../../lib/entry-style.js';
 import { IS_PUBLIC } from '../../lib/public-mode.js';
 
 // PULSE: the vitality lens that is STATE's default index. Entries sorted
-// by how alive they are right now (recency * activation_count * stage *
+// by how alive they are right now (recency * recent use * stage *
 // has-active-handoff). One ranked list, not a flat file tree -- which is
 // the whole point of leaving Obsidian's file browser behind for triage.
 //
@@ -74,7 +74,7 @@ function EntryRow({ entry, onSelect }) {
         color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>
-        {entry.last_activated ?? entry.born ?? '--'}
+        {entry.last_used ?? entry.born ?? '--'}
       </span>
     </div>
   );

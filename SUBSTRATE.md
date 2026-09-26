@@ -105,7 +105,7 @@ The distinction: root entries are *of* the palace; `_ops/` files *operate* the p
 
 ## Parameters Encoded
 
-Each entry carries: identity (title, type, pillar affiliations), relationships (typed links, connection density), temporal data (born, last activated, activation count, stage), depth (confidence, richness, who-leads), and aesthetic/emotional data (energy, hook quality, beauty, danger/edge).
+Each entry carries: identity (title, type, pillar affiliations), relationships (typed links, connection density), temporal data (born, stage), depth (confidence, richness, who-leads), and aesthetic/emotional data (energy, hook quality, beauty, danger/edge). How an entry is *used* is not carried — it is read from git: days its page and its bundle were edited, and entries that formed a link to it (`_ops/swarm/entry-use.py`, [[SCHEMA — Reference]] §3).
 
 ## Ceremonies
 

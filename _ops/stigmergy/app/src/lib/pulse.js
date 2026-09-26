@@ -1,8 +1,9 @@
 // PULSE — the vitality lens.
 //
 // Sort/filter entries by how alive they are right now. The score combines:
-//   - `last_activated` recency (months since)
-//   - `activation_count` magnitude (log-scaled)
+//   - `last_used` recency (days since) — computed from git, see entry-use.js
+//   - recent `use` magnitude (log-scaled): page edit days + bundle edit days +
+//     entries that formed a link to it, over the last 90 days
 //   - `stage` signal (fruiting > growing/sprout > mature > seed > dormant > composting)
 //   - has-Active-Handoff marker (body contains "## Active Handoff")
 //   - has-stewardship marker (body contains "stewardship" near the top)
@@ -21,31 +22,25 @@ const STAGE_WEIGHT = {
   composting: 0.05,
 };
 
-// Months between two YYYY-MM (or YYYY-MM-DD) strings; `today` defaults to
-// now-ish (callers can inject a fixed clock for testing).
-export function monthsBetween(then, today = new Date()) {
+// Days between a YYYY-MM-DD (or YYYY-MM) string and now. Infinity if unparseable.
+export function daysSince(then, now = new Date()) {
   if (typeof then !== 'string' || then.length < 7) return Infinity;
-  const ty = parseInt(then.slice(0, 4), 10);
-  const tm = parseInt(then.slice(5, 7), 10);
-  if (!Number.isFinite(ty) || !Number.isFinite(tm)) return Infinity;
-  const ny = today.getUTCFullYear();
-  const nm = today.getUTCMonth() + 1;
-  return (ny - ty) * 12 + (nm - tm);
+  const t = Date.parse(then.length === 7 ? `${then}-01` : then.slice(0, 10));
+  if (!Number.isFinite(t)) return Infinity;
+  return Math.max(0, (now.getTime() - t) / 86400000);
 }
 
-// Map months-stale to a 0..1 recency score. 0 months → 1.0; 12+ months → 0.0.
-function recencyScore(monthsStale) {
-  if (!Number.isFinite(monthsStale)) return 0;
-  if (monthsStale <= 0) return 1;
-  if (monthsStale >= 12) return 0;
-  return 1 - monthsStale / 12;
+// Map days-since-last-use to 0..1. Today → 1.0; a year or more → 0.0.
+function freshness(days) {
+  if (!Number.isFinite(days)) return 0;
+  return Math.max(0, 1 - days / 365);
 }
 
-// Map activation_count to a 0..1 magnitude score via log scale.
-function activationScore(count) {
+// Map recent use to a 0..1 magnitude score via log scale.
+function useScore(count) {
   const c = typeof count === 'number' && Number.isFinite(count) ? count : 0;
   if (c <= 0) return 0;
-  // log(1) = 0, log(16) ≈ 2.77 → /3 caps near 1
+  // log(1) = 0, log(20) ≈ 3.0 → /3 caps near the palace's top twentieth
   return Math.min(1, Math.log(c + 1) / 3);
 }
 
@@ -53,9 +48,8 @@ function activationScore(count) {
 // Returns a number 0..~1.5.
 export function scoreEntry(entry, now = new Date()) {
   if (!entry || typeof entry !== 'object') return 0;
-  const monthsStale = monthsBetween(entry.last_activated, now);
-  const recency = recencyScore(monthsStale);
-  const magnitude = activationScore(entry.activation_count);
+  const recency = freshness(daysSince(entry.last_used, now));
+  const magnitude = useScore(entry.use?.recent?.use);
   const stageW = STAGE_WEIGHT[(entry.stage ?? '').toLowerCase()] ?? 0.4;
   const handoff = entry.has_active_handoff ? 0.25 : 0;
   const stewardship = entry.has_stewardship_marker ? 0.15 : 0;

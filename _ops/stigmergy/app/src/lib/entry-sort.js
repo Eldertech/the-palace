@@ -27,7 +27,7 @@ export const DEFAULT_DIR = {
 };
 
 function activityKey(entry) {
-  const v = entry?.last_activated ?? entry?.born ?? '';
+  const v = entry?.last_used ?? entry?.born ?? '';
   if (typeof v !== 'string' || v.length < 7) return null;
   return v.slice(0, 10);
 }

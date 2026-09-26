@@ -14,6 +14,7 @@ import { readdirSync, statSync, readFileSync, existsSync } from 'node:fs';
 import { join, resolve, sep, basename, dirname } from 'node:path';
 import { parseFrontmatter, normalizeLinks, normalizePillars } from './yaml-frontmatter.js';
 import { bundleDirFor, listBundleFiles, iconRelFor, facesFor, faceOwnerOf } from './bundle.js';
+import { useFields } from './entry-use.js';
 
 // Top-level dirs we never walk into.
 const HARD_EXCLUDE_DIRS = new Set([
@@ -111,8 +112,10 @@ function summarize(relPath, fm, body) {
     status: typeof fm.status === 'string' ? fm.status : null,
     pillars,
     born: typeof fm.born === 'string' ? fm.born : null,
-    last_activated: typeof fm.last_activated === 'string' ? fm.last_activated : null,
-    activation_count: typeof fm.activation_count === 'number' ? fm.activation_count : 0,
+    // Computed from git, never frontmatter (entry-use.js) — patched in by the
+    // caller when it passes a use index; null otherwise.
+    last_used: null,
+    use: null,
     energy: typeof fm.energy === 'string' ? fm.energy : null,
     who_leads: typeof fm.who_leads === 'string' ? fm.who_leads : null,
     forward_vector: typeof fm.forward_vector === 'string' ? fm.forward_vector : null,
@@ -135,7 +138,7 @@ function summarize(relPath, fm, body) {
 // List every knowledge entry in the palace. Reads each .md to parse its
 // frontmatter — a few hundred files at most; on a real palace this is well
 // under a second.
-export function listEntries(palaceRoot) {
+export function listEntries(palaceRoot, { use = null } = {}) {
   const root = resolve(palaceRoot);
   const out = [];
   // Palace-relative bundle dirs (e.g. `Projects/Foo`) for every entry that
@@ -148,6 +151,7 @@ export function listEntries(palaceRoot) {
     try { text = readFileSync(abs, 'utf8'); } catch (_) { continue; }
     const { frontmatter, body } = parseFrontmatter(text);
     const summary = summarize(rel, frontmatter, body);
+    Object.assign(summary, useFields(use, rel));
     const bundleDir = bundleDirFor(abs);
     summary.has_bundle = bundleDir !== null;
     summary.icon = bundleDir ? iconRelFor(root, bundleDir) : null;
@@ -196,7 +200,7 @@ export function* walkEntryRecords(palaceRoot) {
 //   { path, title, frontmatter (raw), body, bundle: {dir, files} | null,
 //     summary, links (normalized), error? }
 // Path traversal is rejected. Files outside the palace root yield null.
-export function readEntry(palaceRoot, relPath) {
+export function readEntry(palaceRoot, relPath, { use = null } = {}) {
   if (typeof relPath !== 'string' || relPath === '' || relPath.includes('\0')) return null;
   const root = resolve(palaceRoot);
   const abs = resolve(root, relPath);
@@ -209,6 +213,7 @@ export function readEntry(palaceRoot, relPath) {
   const text = readFileSync(abs, 'utf8');
   const { frontmatter, body, error } = parseFrontmatter(text);
   const summary = summarize(normalizedRel, frontmatter, body);
+  Object.assign(summary, useFields(use, normalizedRel));
   const bundleDir = bundleDirFor(abs);
   let bundle = null;
   let faceFiles = {};

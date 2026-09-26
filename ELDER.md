@@ -6,7 +6,7 @@ pillars:
   - practice
 born: 2026-09-22
 stage: foundational
-version: "1.25"
+version: "1.26"
 links:
   - target: "[[JEWEL]]"
     type: connects-to

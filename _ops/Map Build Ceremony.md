@@ -8,7 +8,7 @@ born: 2026-03
 last_activated: 2026-07-04
 activation_count: 9
 stage: growing
-version: "2.1"
+version: "2.2"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -39,8 +39,8 @@ links:
 | | |
 |---|---|
 | **Precondition** | Palace is accessible via filesystem. At least 5 entries exist. |
-| **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename. A one-line record is appended to `_ops/Map Log.md`; its scope cell names the version, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer), and the tuning file carries the run's run line. `last_activated` and `activation_count` are updated on this file and on `Palace Map.md`. |
-| **Does not do** | Read entry bodies. Propose link changes. Modify existing entries (other than self-update). |
+| **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename. A one-line record is appended to `_ops/Map Log.md`; its scope cell names the version, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer), and the tuning file carries the run's run line. |
+| **Does not do** | Read entry bodies. Propose link changes. Modify existing entries. |
 | **Produces** | An edge list (TSV default), bidirectional adjacency list, or JSON depending on scope and format request. |
 
 ---
@@ -162,6 +162,8 @@ JSON:
 }
 ```
 
+Each JSON node carries `use` and `last_used` — how the entry is being used, computed from git by `_ops/swarm/entry-use.py`: days its page was edited, days its bundle was edited, and entries that formed a link to it, all-time and over the last 90 days ([[SCHEMA — Reference]] §3). The builder computes them; nothing is read from frontmatter.
+
 **6. Place**
 
 Write map file to `/Users/loudonstearns/Documents/The Palace/_ops/maps/` (create directory if absent):
@@ -180,14 +182,6 @@ Append a one-line record to `_ops/Map Log.md` (create file if absent):
 The final column stores the names of all `forward_ghost` nodes as a comma-separated list. This enables persistence tracking across map generations — a ghost that appears in three consecutive log entries is a deposit candidate.
 
 Do not read the log to do this — append only.
-
-**8. Self-Update**
-
-Update `last_activated` (to today's date) and increment `activation_count` in:
-- This file (`Map Build Ceremony.md`)
-- `Palace Map.md`
-
-This keeps the palace self-model current. The ceremony is not complete until these fields are written.
 
 ---
 
@@ -220,7 +214,7 @@ The outgoing adjacency list is recommended for Tier 1 agent context loading — 
 - Should map generation be triggered automatically at Harvest close, making it a required step rather than a separate ceremony?
 - Ghost persistence tracking: the Map Log now records forward ghost names. A ghost appearing in three consecutive entries is a deposit candidate. Should a ceremony step or a separate Spore Check variant surface these automatically?
 - Should the ceremony produce a diff against the previous map — what edges were added, what ghost nodes appeared or resolved — making the palace's growth arc visible over time?
-- Weighted maps: activation_count and energy fields could produce edge weights, making a weighted graph where well-traveled links appear stronger. Useful for swarm dispatch prioritization?
+- Weighted maps: nodes now carry `use` (page, bundle and link activity from git), which could weight edges so well-traveled links appear stronger. Useful for swarm dispatch prioritization?
 
 ---
 

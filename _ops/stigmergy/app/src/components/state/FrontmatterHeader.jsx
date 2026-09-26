@@ -9,8 +9,9 @@ import StageGlyph from './StageGlyph.jsx';
 //   - stage glyph
 //   - pillars as chips
 //   - forward_vector as the hero quote (the entry's conatus)
-//   - compact metadata row: born, last_activated, activation_count,
-//     confidence, energy, who_leads, version (for meta)
+//   - compact metadata row: born, confidence, energy, who_leads, version
+//     (for meta), then how the entry is used — computed from git, not
+//     frontmatter (summary.use / summary.last_used, see entry-use.js)
 //
 // The forward_vector is large and quoted because it is what the entry
 // itself says it wants (per [[Entry Conatus]]). The header is for orienting
@@ -88,9 +89,10 @@ export function ForwardVectorHero({ forward_vector }) {
 export default function FrontmatterHeader({ title, frontmatter = {}, summary = {} }) {
   const {
     type, stage, status, energy, confidence, who_leads,
-    born, last_activated, activation_count, version,
+    born, version,
   } = frontmatter;
   const pillars = summary.pillars ?? [];
+  const use = summary.use;
 
   return (
     <div data-testid="frontmatter-header" style={{ marginBottom: 14 }}>
@@ -121,12 +123,24 @@ export default function FrontmatterHeader({ title, frontmatter = {}, summary = {
         fontSize: 12, fontFamily: 'var(--font-mono)',
       }}>
         <MetadataItem label="born" value={born} />
-        <MetadataItem label="last_activated" value={last_activated} />
-        <MetadataItem label="activation_count" value={activation_count} />
         <MetadataItem label="confidence" value={confidence} />
         <MetadataItem label="energy" value={energy} />
         <MetadataItem label="who_leads" value={who_leads} />
         <MetadataItem label="version" value={version} />
+        <MetadataItem label="last used" value={summary.last_used} />
+        {use ? (
+          <span data-testid="entry-use"
+            title="from git — days the page was edited · days its bundle was edited · entries that linked to it (last 90 days / all time)"
+            style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
+            <span style={{ opacity: 0.7 }}>use</span>{' '}
+            <span style={{ color: 'var(--phosphor)' }}>
+              {use.recent.use} / {use.use}
+            </span>
+            <span style={{ opacity: 0.7 }}>
+              {'  '}page {use.page} · bundle {use.bundle} · linked {use.linked}
+            </span>
+          </span>
+        ) : null}
       </div>
     </div>
   );

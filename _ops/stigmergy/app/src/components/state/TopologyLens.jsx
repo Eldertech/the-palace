@@ -799,8 +799,8 @@ function HoverCard({ tooltipRef, info, entry }) {
             <div style={{ ...dimStyle, marginTop: 6, opacity: 0.75, fontSize: 10 }}>
               {[
                 entry.born ? `born ${entry.born}` : null,
-                entry.last_activated ? `active ${entry.last_activated}` : null,
-                typeof entry.activation_count === 'number' && entry.activation_count > 0 ? `×${entry.activation_count}` : null,
+                entry.last_used ? `used ${entry.last_used}` : null,
+                entry.use?.recent?.use > 0 ? `${entry.use.recent.use} recent` : null,
                 typeof entry.link_count === 'number' ? `${entry.link_count} typed links` : null,
                 entry.energy ? `energy ${entry.energy}` : null,
               ].filter(Boolean).join('  ·  ')}

@@ -71,7 +71,7 @@ Mermaid supports several diagram types. These are the ones that map naturally to
 
 **`timeline`** — Use for project arcs, stage transition histories, and chronological development of an idea. The development stages `seed → sprout → growing → mature → fruiting → dormant → composting` can be rendered as a timeline showing an entry's trajectory.
 
-**`xychart-beta`** — Use sparingly, for quantitative relationships only: activation counts over time, energy levels across entries, hook quality distributions. Not a general-purpose diagram type — only appropriate when the data is real.
+**`xychart-beta`** — Use sparingly, for quantitative relationships only: an entry's use over time, energy levels across entries, hook quality distributions. Not a general-purpose diagram type — only appropriate when the data is real.
 
 ---
 

@@ -2,11 +2,11 @@ import { describe, it, expect } from 'vitest';
 import { sortEntries, DEFAULT_DIR, SORT_KEYS } from '../../src/lib/entry-sort.js';
 
 const SAMPLE = [
-  { title: 'Beta',   type: 'concept', stage: 'mature',   last_activated: '2026-04', pulse: 0.40 },
-  { title: 'Alpha',  type: 'hub',     stage: 'fruiting', last_activated: '2026-05', pulse: 0.92 },
-  { title: 'Gamma',  type: 'project', stage: 'sprout',   last_activated: '2026-03', pulse: 0.55 },
-  { title: 'Delta',  type: 'concept', stage: 'dormant',  last_activated: '2024-01', pulse: 0.10 },
-  { title: 'Echo',   type: null,      stage: null,       last_activated: null,      pulse: 0.05 },
+  { title: 'Beta',   type: 'concept', stage: 'mature',   last_used: '2026-04-10', pulse: 0.40 },
+  { title: 'Alpha',  type: 'hub',     stage: 'fruiting', last_used: '2026-05-10', pulse: 0.92 },
+  { title: 'Gamma',  type: 'project', stage: 'sprout',   last_used: '2026-03-10', pulse: 0.55 },
+  { title: 'Delta',  type: 'concept', stage: 'dormant',  last_used: '2024-01-10', pulse: 0.10 },
+  { title: 'Echo',   type: null,      stage: null,       last_used: null,      pulse: 0.05 },
 ];
 
 describe('sortEntries — pulse', () => {
@@ -90,9 +90,9 @@ describe('sortEntries — activity', () => {
     expect(out[3].title).toBe('Alpha');
     expect(out[4].title).toBe('Echo');
   });
-  it('falls back to `born` when last_activated is missing', () => {
+  it('falls back to `born` when last_used is missing', () => {
     const out = sortEntries([
-      { title: 'A', last_activated: '2026-05', pulse: 0 },
+      { title: 'A', last_used: '2026-05-10', pulse: 0 },
       { title: 'B', born: '2026-06', pulse: 0 },
     ], { key: 'activity', dir: 'desc' });
     expect(out[0].title).toBe('B');

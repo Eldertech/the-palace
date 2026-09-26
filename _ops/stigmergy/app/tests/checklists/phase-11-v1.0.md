@@ -14,7 +14,7 @@ The three-deck navigation (`STATE / QUEUE / LOG = present / future / past`) is w
 - A YAML-as-header rendering for every entry (title, type badge, stage glyph, pillar chips, forward-vector hero quote, metadata row).
 - A typed-link panel (frontmatter `links`) **separate from** body wikilinks (SCHEMA §4 made visible).
 - A bundle-aware navigator (SCHEMA §8) with media artifacts rendered inline via the existing v0.3 rich-content engine.
-- A **PULSE vitality lens** as the default index — entries sorted by recency / activation_count / stage / has-handoff, not alphabetically.
+- A **PULSE vitality lens** as the default index — entries sorted by recency of use / recent use / stage / has-handoff, not alphabetically.
 
 QUEUE is preserved as a shim around the existing v0.4 board view (Phase 4 will reframe it). LOG is a stub announcing Phase 2.
 
@@ -32,7 +32,7 @@ Return `pass` / `fail: <reason>` / `n/a` per item, with a one-line citation.
 ### PULSE — the vitality lens (default index)
 
 5. **PULSE list renders real palace entries.** The header text reads `PULSE -- vitality lens (N/N entries)` where N is the live palace entry count (≥ 100 against the real palace). The list is inside a `3px double` border (the primary container weight).
-6. **Sort order is vitality, not alphabet.** The top entries should be those with high `activation_count`, recent `last_activated`, and high-energy stages (fruiting/growing/sprout/mature). Foundational metas may surface mid-list, not bottom.
+6. **Sort order is vitality, not alphabet.** The top entries should be those with high recent use, a recent `last_used`, and high-energy stages (fruiting/growing/sprout/mature). Foundational metas may surface mid-list, not bottom.
 7. **Each row shows: pulse meter, type, title, stage, last-activity.** The pulse meter is 5 ASCII dots (`*` filled / `.` empty), in monospace. The type is a single uppercase word in a per-type accent color. The stage is lowercase, dim. Activity is `YYYY-MM` or `YYYY-MM-DD`.
 8. **Bundle and handoff markers are surfaced on the row.** Entries with sibling folders (Kuramoto Coupling, Project Stewardship System) show `[+bundle]`. Entries with an `## Active Handoff` block show `[handoff]` (warn-amber).
 9. **The filter input narrows the list.** Typing `kuramoto` collapses the visible rows to entries whose title/type/path matches; clearing restores the full list.
@@ -43,7 +43,7 @@ Return `pass` / `fail: <reason>` / `n/a` per item, with a one-line citation.
 11. **Type badge + stage glyph + status badge + pillar chips** sit on one row beneath the title. Pillar chips use per-pillar accent colors (cyan/magenta/yellow/phosphor-bright); each pillar chip has a `1px solid` border in its accent color.
 12. **Stage glyph is a 7-position lifecycle indicator.** `seed > sprout > growing > mature > fruiting > dormant > composting`. The current stage is `*` (filled, phosphor-white, glowing). Earlier stages are `o`; later stages are `.`. Arrows between positions are `>` for traversed, `-` for not. `foundational` shows as a single inert chip with no lifecycle row (per SCHEMA §2).
 13. **Forward vector is the hero.** Rendered inside a `3px double` border with `phosphor-deep` fill, captioned `FORWARD VECTOR -- THE ENTRY'S CONATUS` in dim 10px. The quote uses italic phosphor with glow. Quotes around the value: `"..."`.
-14. **Metadata row** (born / last_activated / activation_count / confidence / energy / who_leads / version) renders as compact `label value` pairs in dim phosphor + phosphor. Empty / zero / null values are omitted (no `(null)` placeholders).
+14. **Metadata row** (born / confidence / energy / who_leads / version / last used / use — page · bundle · linked, from git) renders as compact `label value` pairs in dim phosphor + phosphor. Empty / zero / null values are omitted (no `(null)` placeholders).
 
 ### Entry reader — body (the conversational fabric)
 

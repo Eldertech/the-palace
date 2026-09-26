@@ -6,7 +6,7 @@ born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: mature
-version: "1.1"
+version: "1.2"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -33,9 +33,8 @@ links:
 **Postconditions:**
 1. Entry stage has been updated from `dormant` to `seed`, `sprout`, or `growing` (depending on body depth)
 2. A `## Revival Note` section has been added to the entry body, naming what changed and why revival conditions were met
-3. `last_activated` and `activation_count` are current
-4. At least one new typed link has been proposed connecting the revived entry to current palace work
-5. Git commit made: `Revival — [entry name] — [date] — [one-line reason]`
+3. At least one new typed link has been proposed connecting the revived entry to current palace work
+4. Git commit made: `Revival — [entry name] — [date] — [one-line reason]`
 
 **Failure mode:** If the revival rationale is unclear or the connection to current work is tenuous, halt and return to Spore Check. A revival without a clear rationale is a confusion, not a ceremony. The entry should remain dormant until the rationale can be stated plainly.
 
@@ -83,14 +82,12 @@ Revived from dormancy.
 **Current direction:** [one sentence on where this entry is likely to grow next]
 ```
 
-**Step 5: Update stage and metadata**
+**Step 5: Update stage**
 
-- Update `stage` to match the current body depth:
-  - Thin body (stub) → `seed`
-  - Genuine definition + 1–2 links → `sprout`
-  - Cross-domain connections + 3+ links → `growing`
-- Update `last_activated` to current month
-- Increment `activation_count`
+Update `stage` to match the current body depth:
+- Thin body (stub) → `seed`
+- Genuine definition + 1–2 links → `sprout`
+- Cross-domain connections + 3+ links → `growing`
 
 **Step 6: Propose and add new typed links**
 
@@ -100,11 +97,11 @@ Present proposed links to Loudon. Add confirmed links to the entry's frontmatter
 
 `Revival — [entry name] — [date] — [one-line reason]`. The commit is the run's record: its body names the version and ends with what this revival taught the ceremony ("nothing" is a legal answer); the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item.
 
-## Revival vs. Simple Activation
+## Revival vs. a Read
 
-Not every re-engagement with a dormant entry is a Revival. If you read a dormant entry during a Walk and find it interesting but don't substantially update it or add new links, that is an activation (increment the count, update `last_activated`) — not a Revival. The Revival Ceremony is for when the entry's stage genuinely changes and new connections are made.
+Not every re-engagement with a dormant entry is a Revival. If you read a dormant entry during a Walk and find it interesting but don't substantially update it or add new links, that is a read — nothing to record, and nothing to write — not a Revival. The Revival Ceremony is for when the entry's stage genuinely changes and new connections are made. (Use is computed from git — [[SCHEMA — Reference]] §3 — so a revival's edits and the links it forms show up there on their own.)
 
-The test: after the interaction, is the entry meaningfully different from when it was dormant? If yes: Revival. If no: activation.
+The test: after the interaction, is the entry meaningfully different from when it was dormant? If yes: Revival. If no: a read.
 
 ## The Waking
 

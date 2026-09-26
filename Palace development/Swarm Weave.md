@@ -436,11 +436,11 @@ different behavioral branches based on local state. The `worker_profile` is the
 state. The worker reads it and routes: deep analysis vs. shallow metadata check,
 local scope vs. pillar-wide search.
 
-**Kuramoto threshold** — entries below a certain `activation_count` or `energy`
+**Kuramoto threshold** — entries below a certain recent use or `energy`
 get a minimal worker automatically, without needing an explicit profile. The
-coupling is below threshold; don't attempt synchrony. This can be derived from
-existing frontmatter fields — the pheromone concentration is already in the page,
-if you know how to read it.
+coupling is below threshold; don't attempt synchrony. This needs no new fields —
+every map node carries its use and every page its energy; the pheromone
+concentration is already there, if you know how to read it.
 
 ### What the Swarm Should Never Do
 
