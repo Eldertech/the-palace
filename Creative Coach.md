@@ -261,7 +261,7 @@ canonical form, then coaching an artist is less about managing defenses than abo
 toward the one their craft already rewards. That is a different job from removing an obstacle, and a
 more hopeful one.
 
-This lens is private. Defense-mechanism language is clinical and psychodynamic. It is useful for
+Defense-mechanism language is clinical and psychodynamic. It is useful for
 choosing a move and corrosive said aloud to the person — naming someone's defense to them is itself
 a direct approach to material that is defended, which is the one thing guaranteed not to work.
 
