@@ -64,7 +64,7 @@ export function ForwardVectorHero({ forward_vector }) {
         padding: '10px 16px',
         margin: '0 0 16px',
         background: 'var(--phosphor-deep)',
-        maxWidth: '78ch',
+        maxWidth: '100%',
       }}
     >
       <div style={{
