@@ -12,8 +12,6 @@ forward_vector: "I am the palace's gate for finds. Whoever brings one, I slow th
 links:
   - target: "[[Harvest Ceremony]]"
     type: emerged-from
-  - target: "[[Deposit Archive]]"
-    type: enables
   - target: "[[SUBSTRATE]]"
     type: deepens
   - target: "[[README - The Palace Guide]]"
@@ -138,7 +136,7 @@ PALACE_ROOT="<owner>" node "<owner>/_ops/stigmergy/app/scripts/palace-commit.mjs
   --path "<Entry>.md" [--path "<Entry>/<file>"] --dry-run   # drop --dry-run to land
 ```
 
-The body is the record; the [[Deposit Archive]] is the LOG deck filtered to `Palace-Kind: deposit`, and its frozen table is never appended to. The body holds what was kept, the through-line, lost branches, the version this ran under, and what this run taught the ceremony ("nothing" is a legal answer; the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item).
+The body is the record; the Deposit Archive is the LOG deck filtered to `Palace-Kind: deposit`, and the frozen pre-spec table ([[Deposit Ceremony — Deposit Archive]]) is never appended to. The body holds what was kept, the through-line, lost branches, the version this ran under, and what this run taught the ceremony ("nothing" is a legal answer; the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item).
 
 Weave flags: show Loudon each flag's body, and post only on his approval, through the writer, never by hand. One command per flag, run from `_ops/` (`--dry-run` validates without posting): `python3 -m commons weave-flag --flag-type … --source-entries "A,B" --target-entry "…" --proposed-action "…" --rationale "…" --source-deposit-id <id> --sender "<page>"`.
 

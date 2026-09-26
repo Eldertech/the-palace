@@ -14,7 +14,6 @@ links:
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Shop/ComfyUI]]", type: connects-to, label: alternative-to }
-  - { target: "[[Shop/Midjourney]]", type: connects-to, label: supersedes }
   - target: "[[shop-header — Maker's Comparison Recommendation]]"
     type: connects-to
     label: founding-job
@@ -31,7 +30,7 @@ tags: [specialist, shop, image, generative, cloud, hugging-face, flux]
 
 ![[FLUX (Hugging Face) — hero.png]]
 
-*Took [[Shop/Midjourney|Midjourney]]'s slot on 2026-05-30 after Loudon flagged Midjourney's subscription as too expensive. First job — Phase D-2 Shop header — proved FLUX-Krea reads mood-specific prompt details (dusk, amber, dust motes) that ComfyUI's SDXL flattens. The honest replacement: not just cheaper, but more faithful on the brief register Midjourney was originally chosen for.*
+*Took Midjourney's slot on 2026-05-30 after Loudon flagged Midjourney's subscription as too expensive. First job — Phase D-2 Shop header — proved FLUX-Krea reads mood-specific prompt details (dusk, amber, dust motes) that ComfyUI's SDXL flattens. The honest replacement: not just cheaper, but more faithful on the brief register Midjourney was originally chosen for.*
 
 ## Charter
 

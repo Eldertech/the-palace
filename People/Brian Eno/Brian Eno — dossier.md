@@ -64,7 +64,7 @@ Articulate, witty, aphoristic, English art-school cool; a theorist forever narra
 
 ## Dispatch notes
 
-Natural home: **generative / constraint / process / ambient entries** — [[Generative Audio Devices]], [[Flocking]], [[Semantic Webcam]], [[Oblique Enrichment]]. Strong Dialectic partners: **[[John Cage]]** (taste-driven generation vs chance-driven non-intention — the marquee clash), **[[Rick Rubin]]** (two producers-as-reducers, different theologies of getting out of the way), and a defender of **virtuosity/craft** who presses the non-musician boast.
+Natural home: **generative / constraint / process / ambient entries** — [[Generative Audio Devices]], [[Flocking]], [[Semantic Webcam]], [[Enrichment]]. Strong Dialectic partners: **[[John Cage]]** (taste-driven generation vs chance-driven non-intention — the marquee clash), **[[Rick Rubin]]** (two producers-as-reducers, different theologies of getting out of the way), and a defender of **virtuosity/craft** who presses the non-musician boast.
 
 ---
 

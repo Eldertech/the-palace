@@ -8,7 +8,7 @@ forward_vector: "I hold the Smoke / Capability / Style / Edge / Speed / Determin
 
 # FLUX (Hugging Face) — Test Plan
 
-> Phase E follow-up. FLUX (Hugging Face) took [[Shop/Midjourney|Midjourney]]'s slot 2026-05-30 (Phase D-2). Smoke is one `text_to_image` call against `black-forest-labs/FLUX.1-Krea-dev` at the founding-job's parameters. Determinism is the load-bearing question — the Selection Heuristic revision rests on FLUX-Krea being a *reliable* second lens, not a stochastic one.
+> Phase E follow-up. FLUX (Hugging Face) took Midjourney's slot 2026-05-30 (Phase D-2). Smoke is one `text_to_image` call against `black-forest-labs/FLUX.1-Krea-dev` at the founding-job's parameters. Determinism is the load-bearing question — the Selection Heuristic revision rests on FLUX-Krea being a *reliable* second lens, not a stochastic one.
 
 Last run: **2026-05-30** — Smoke pass via the Phase D-2 founding job (~3 s, 573 KB PNG at exact requested dimensions, seed honoured, banner aspect rendered cleanly).
 

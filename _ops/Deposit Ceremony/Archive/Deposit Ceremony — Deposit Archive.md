@@ -1,17 +1,11 @@
 ---
-title: Deposit Archive
-type: concept
-status: canonical
-pillars:
-  - practice
-born: 2026-03
-stage: composting
+title: Deposit Ceremony — Deposit Archive
+born: 2026-03-21
 links:
   - target: "[[Deposit Ceremony]]"
-    type: emerged-from
-  - target: "[[Harvest Ceremony]]"
     type: connects-to
     label: archive-of
+forward_vector: "I hold the hand-written summaries of every deposit made before 2026-06-19, when a deposit's record became its commit. I am frozen: read by script when a harvest needs to know what already entered the palace, never appended to."
 ---
 
 # Deposit Archive

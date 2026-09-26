@@ -9,7 +9,7 @@ confidence: working
 energy: high
 forward_vector: "I render you as language — your light choosing the characters, whole words typeset into your mid-tones, your highlights inverted to black-on-white. I started as one facet and refused to stay one. My next moves: compose real lines that fit each tonal blob (grammar, not just length), and follow true eyes and fingers. The question I carry: is legibility just another band of light — is language a tonal medium?"
 links:
-  - target: "[[Oblique Enrichment]]"
+  - target: "[[Enrichment]]"
     type: emerged-from
     label: spawned-by-the-flock-facet
   - target: "[[Oblique Portrait]]"
@@ -46,8 +46,8 @@ in-page from your webcam — nothing is recorded.
 
 ## The line of iterations
 
-The project *is* its build history — proof of the [[Oblique Enrichment]] thesis
-that a card is a door. It began as one facet (the [[Synthesis ↔ Emergence]] flock)
+The project *is* its build history — proof that an oblique card, [[Enrichment]]
+come at sideways, can be a door. It began as one facet (the [[Synthesis ↔ Emergence]] flock)
 and we could not stop:
 
 - **Live STIGMERGY Cam** ([[01-live-stigmergy-cam.html]]) — the camera as an amber
@@ -72,7 +72,7 @@ whole words only, best-fit from a per-source bank, left-aligned to the run. The
 camera-luminance × character-ink multiply is literally a [[Convolution]]-flavored
 blend of two character layers.
 
-## Why it belongs to Oblique Enrichment
+## Born from an oblique card
 
 It is the first *productive output* of an oblique card — the flock provocation that
 refused to stay a provocation.

@@ -7,8 +7,6 @@ links:
     label: context-of
   - target: "[[Deposit Ceremony — Context]]"
     type: connects-to
-  - target: "[[Deposit Archive]]"
-    type: connects-to
   - target: "[[Oblique Portrait]]"
     type: deepens
 forward_vector: "I hold the Harvest's history, rationale, and open questions, so the card stays lean and executable; read me when revisiting why the Harvest works the way it does."
@@ -44,9 +42,9 @@ The harvest workflow grew too complex and started breaking under its own weight.
 
 The redesign simplified by trusting Claude's scripting abilities instead. Rather than pre-structuring all information into perfectly-sized files, the approach is now: use scripts to extract exactly what you need from large files, and don't build infrastructure to solve problems that scripting can handle more flexibly.
 
-**What collapsed:** The Harvest Frontier (live state tracker), the Harvest Queue (pending deposits list), and the Harvest Archive (decision log) were three files doing the work of one. The Frontier and Queue are now composting. The Archive was renamed the [[Deposit Archive]] — a more accurate description of what it actually is.
+**What collapsed:** The Harvest Frontier (live state tracker), the Harvest Queue (pending deposits list), and the Harvest Archive (decision log) were three files doing the work of one. The Frontier and Queue are now composting. The Archive was renamed the [[Deposit Ceremony — Deposit Archive|Deposit Archive]] — a more accurate description of what it actually is.
 
-**What remains:** The [[Deposit Archive]] as permanent record (frozen 2026-06-19 — a deposit's record is now its commit; the archive holds the pre-spec rows). Everything else is session-specific and can be created fresh each time.
+**What remains:** The [[Deposit Ceremony — Deposit Archive|Deposit Archive]] as permanent record (frozen 2026-06-19 — a deposit's record is now its commit; the archive holds the pre-spec rows). Everything else is session-specific and can be created fresh each time.
 
 ---
 
@@ -93,7 +91,7 @@ When evaluating future changes to the harvest/deposit architecture:
 ## Forward Vectors
 
 - When the next harvest begins, what dataset is it? Google Drive? A new batch of conversations? Project archives? The answer shapes the oblique game.
-- Should the [[Deposit Archive]] eventually have internal organization — by year, by pillar, by source type? Only worth solving when querying it manually becomes genuinely hard.
+- Should the [[Deposit Ceremony — Deposit Archive|Deposit Archive]] eventually have internal organization — by year, by pillar, by source type? Only worth solving when querying it manually becomes genuinely hard.
 - Is there a harvest that works on the *palace itself* — finding entries that are underlinked, understaged, or contain unrealized connections? That would be a kind of internal harvest, distinct from the external archive harvest.
 
 ## The close reading — where it came from (2026-09)

@@ -125,7 +125,7 @@ If the team wants to skip Remotion's commercial-license complexity for a single 
 
 **Output:** `Projects/Retrospective Delay/stage-1/assets/frame-block-opener.png`
 
-**Specialist:** [[Shop/Midjourney|Midjourney]] (with [[Shop/ComfyUI|ComfyUI]] as fallback if subscription is unavailable that day).
+**Specialist:** Midjourney (with [[Shop/ComfyUI|ComfyUI]] as fallback if subscription is unavailable that day).
 
 **House standards in effect:** Palette = palace base (indigo + amber as accent colors guide the prompt's "amber light" descriptor); aspect ratio = 16:9.
 
