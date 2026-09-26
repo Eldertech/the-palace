@@ -24,7 +24,9 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # arm64: the STIGMERGY lockfile carries rollup's native binaries for arm64
+    # Linux (and macOS) but not x64 Linux, so npm ci on x64 builds without one.
+    runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v4
         with:
