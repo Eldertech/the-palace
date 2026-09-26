@@ -1,11 +1,11 @@
 ---
 title: Deposit Archive
-type: meta
+type: concept
+status: canonical
 pillars:
   - practice
 born: 2026-03
-stage: dormant
-status: canonical
+stage: composting
 links:
   - target: "[[Deposit Ceremony]]"
     type: emerged-from
