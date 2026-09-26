@@ -15,14 +15,15 @@ forward_vector: "I am Shepard Tone Synthesizer's scroll — the one page that al
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-26T00:30:05.869Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** growing · **Steward:** cycle 9 · last ran 2026-08-26 (28 days ago)
+- **Status:** active · **Stage:** growing · **Steward:** cycle 9 · last ran 2026-08-26 (31 days ago)
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-06-25 (89 days ago) — Stage 2 is shipped. Lean into Stage 3 (the glide) next, or sit with Stage 2 first? (`shepard-steward-024`)
-- **Last commit touching this project:** 2026-09-22 `9d925a0` — ops(Shepard Tone Synthesizer): flush working proofs, renders + code
-- **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
+- **Last shipped:** 2026-06-25 (92 days ago) — Stage 2 is shipped. Lean into Stage 3 (the glide) next, or sit with Stage 2 first? (`shepard-steward-024`)
+- **Last commit touching this project:** 2026-09-24 `b2e51e89` — Weave — 2026-09-24 — 49 links, 9 contradictions, 12 let go, 17 stages, 1 hub, 25 citizens linked
+- **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
@@ -44,15 +45,45 @@ _None._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** A teaching instrument that reveals the endless-staircase illusion one layer at a time, from a rack anyone can build in Ableton to a plugin that tests the illusion outside equal temperament. Each move is also a [[Loudon Live]] session. Two are behind us: the illusion itself, built from stacked octaves and one bandpass filter in Ableton, and the mechanism, the same stack built by hand in Max, climbing in discrete steps with the wrap seam left audible so the finite machine shows through. Loudon chose the glide as the next move on 2026-06-25.
+
+**The moves ahead**
+
+1. **The glide.** In Gen~, every octave slides together as one voice at signal rate, so the pitch moves continuously instead of in steps, and the session asks why moving in lockstep keeps the illusion alive. Neighbor: [[Portamento and Physical Pitch Modeling]].
+2. **The timbre.** Give each voice its own key-tracked bandpass filter in Gen~, so the color changes across the octave stack, and hear what that does to the illusion. Neighbor: [[Piano String Inharmonicity]].
+3. **The portal.** Export to VST/AU through RNBO, then try the illusion outside equal temperament with microtuning. Neighbors: [[Kuramoto Coupling]], and the octave-equivalence theory in [[Shepard Tone Synthesizer]].
+
+Session designs, including the two behind us: [[Shepard Tone Synthesizer — spec — Loudon Live sessions]].
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Decided with Loudon when the Loudon Live arc was designed (April 2026), carried over from the retired staging file:
+
+- **The environment grows with the moves**: Ableton Live for the illusion, vanilla Max for the mechanism, Gen~ for the glide and the timbre, RNBO for the portal.
+- **The illusion session uses Ableton alone** — a MIDI Effect Rack of stacked Pitch devices and an AutoFilter as the Shepard bandpass. No Max.
+- **A session is about 85% making, 15% framing**, and Escher leads the framing.
+- **The cross-domain anchor is Escher's impossible staircase**: a finite system, infinite perceived motion.
+- **Open with Meld's built-in Shepard tone** before building our own.
+- **The reflecting surface**: "This is an auditory barber pole. What other visual illusions could you move into the audio domain?" — with seeds.
+- **The audience is autodidact polymaths**: producers fluent in a DAW. The first session needs no Max, no code and no synthesis theory.
+- **This is the curriculum's most accessible door**, with zero prerequisites.
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-28-29-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the retired staging file
+
+Agreed with Loudon on 2026-09-25, when plans moved into scrolls (SCHEMA v1.25). This is the staging file's five-stage arc, unchanged in substance: the two stages behind us are named in the opening, the three ahead are the moves, each renamed by what it does. The staging file's decisions became Standing Orders; its session designs, including the step-and-show choices granted 2026-06-05, became [[Shepard Tone Synthesizer — spec — Loudon Live sessions]].
+<sub>`plan-2026-09-25T20-28-29-04-00` · plan agreed · agreed 2026-09-25T20:28:29-04:00 · carried over by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="shepard-steward-024" -->
 ### 2026-06-25 — cycle 8 — Stage 2 is shipped. Lean into Stage 3 (the glide) next, or sit with Stage 2 first?
 > still working · six variants + prototype on the board · I lean STAGE-3

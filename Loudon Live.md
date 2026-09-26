@@ -142,7 +142,7 @@ Paths visible at the moment of this deposit, deliberately not taken:
 - **[[Confucianism]]** — the relational ethic of the teaching itself.
 - **[[Autodidact Polymaths]]** — the audience.
 - **[[2D Torus Wavetable Synthesizer]]** — the candidate signature instrument for the channel's launch / first signature device.
-- **[[Curriculum Map]]** — the cross-project scaffolding used by the `project-stage-builder` skill to surface prerequisite chains.
+- **[[Curriculum Map]]** — the cross-project scaffolding that surfaces prerequisite chains between the projects' plans.
 
 ## Open Questions
 

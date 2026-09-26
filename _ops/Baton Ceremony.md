@@ -10,7 +10,7 @@ born: 2026-05
 last_activated: 2026-06-26
 activation_count: 3
 stage: mature
-version: "1.1"
+version: "1.2"
 forward_vector: "I am how one Claude hands a live task to the next without dropping it. I keep getting tighter — fewer words, faster pickup, less ritual — so passing a baton feels natural to anyone who uses me, human or AI, and nobody has to stop and think about how. I want the catch so clean the next worker is already moving before they finish reading."
 links:
   - target: "[[Generative Compression]]"
@@ -62,14 +62,16 @@ links:
 
 ## When to reach for a baton
 
-The baton is the **default way one session hands the next its place in an ongoing plan** — not a special measure reserved for work abandoned mid-move. Finishing one stage of a live project and pointing at the next *is* a handoff, and it wants a baton, **even when a production plan already lists that next stage.** The plan names *what* comes next; the baton carries what the plan can't — this session's calibrations, the residue of what was tried and learned, and a pickup so clean the next worker is moving before they finish reading.
+The baton is the **default way one session hands the next its place in an ongoing plan** — not a special measure reserved for work abandoned mid-move. Finishing one stage of a live project and pointing at the next *is* a handoff, and it wants a baton, **even when the scroll's Plan already lists that next move.** The plan names *what* comes next; the baton carries what the plan can't — this session's calibrations, the residue of what was tried and learned, and a pickup so clean the next worker is moving before they finish reading.
 
 Two occasions call a baton, and the second is the common one:
 
 - **A move stopped mid-flight** — the classic case; the baton preserves the half-finished state and the negative space.
-- **A plan advancing to its next stage** — the *continuation baton*. It carries heavy accumulated state (everything built so far) plus this session's calibrations. This is the everyday use, not the exception. "There's no half-finished move to rescue" is **not** a reason to skip it — a continuation rarely has one.
+- **A plan advancing to its next move** — the *continuation baton*. It carries heavy accumulated state (everything built so far) plus this session's calibrations. This is the everyday use, not the exception. "There's no half-finished move to rescue" is **not** a reason to skip it — a continuation rarely has one.
 
-**Only skip a baton** when the next step is trivially reconstructable from the entry (or plan) alone — genuinely small enough that a fresh Claude needs nothing this session knew (§ Pace Obligations).
+**A baton that points at the plan restates the move** in plain words and where it sits in the whole — never "step 3" alone — and names the plan it was written against (the newest `plan-` section on the scroll's trail), so a pickup after the plan has changed can tell.
+
+**Only skip a baton** when the next step is trivially reconstructable from the entry (or its scroll's Plan) alone — genuinely small enough that a fresh Claude needs nothing this session knew (§ Pace Obligations).
 
 *(A rarer variant — the **cold-start / commissioning baton**, for genuinely un-started work with no prior state — carries framing instead of momentum; its full treatment is being worked separately. Do not call a continuation "cold-start": the difference is whether real state travels with it.)*
 

@@ -15,14 +15,15 @@ forward_vector: "I am Crystal Synthesizer's scroll — the one page that always 
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-26T00:30:05.869Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** fruiting · **Steward:** cycle 9 · last ran 2026-08-26 (28 days ago)
+- **Status:** active · **Stage:** fruiting · **Steward:** cycle 9 · last ran 2026-08-26 (31 days ago)
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-06-25 (90 days ago) — Hypothesis arc closes — diamond and labradorite, same synth, same strike, only the symmetry changes. (`crystal-synth-steward-020`)
-- **Last commit touching this project:** 2026-09-22 `fde9e98` — ops(Crystal Synthesizer): flush working proofs, renders + code
-- **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
+- **Last shipped:** 2026-06-25 (92 days ago) — Hypothesis arc closes — diamond and labradorite, same synth, same strike, only the symmetry changes. (`crystal-synth-steward-020`)
+- **Last commit touching this project:** 2026-09-24 `b2e51e89` — Weave — 2026-09-24 — 49 links, 9 contradictions, 12 let go, 17 stages, 1 hub, 25 citizens linked
+- **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
@@ -44,15 +45,43 @@ _None._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** An instrument whose timbre is chosen by crystal physics rather than by taste, built in five moves that are also five [[Loudon Live]] sessions, each one testing a prediction the one before it made. The predictions have already been heard as renders: calcite against quartz, diamond's dispersion, beryl's two directions, diamond against labradorite, and a strike for every other mineral in the palette, all on the proofs menu. Next comes the instrument that lets anyone play them.
+
+**The moves ahead**
+
+1. **Make a playable crystal in Max.** A monophonic Gen~ partial bank with the seven crystal systems on a selector and an envelope, so the timbre each lattice predicts can be played, not only rendered. The first session; its design is in [[Crystal Synthesizer — spec — Loudon Live sessions]].
+2. **Take it on the road.** Make it polyphonic, wrap it in RNBO, export it to the Eventide H90, and open the Faust path: one structure carried across four materials, the way one crystal symmetry shapes both its light and its sound.
+3. **Let the crystal ring.** Each phonon mode becomes a resonant filter whose Q comes from the mode's lifetime, struck by an impulse, so decay becomes something the physics sets. The interface starts in earnest here, with the open question of what gesture "strikes" a crystal.
+4. **Build the prism in time.** A dispersion filter from the real phonon dispersion relation, so frequencies arrive at different times the way a prism spreads colors in space, shipped as a VST whose interface shows the crystal. It wants its own interface design session first.
+5. **Hear a real mineral** (stretch). Load a chosen mineral's measured structure from the Crystallography Open Database and play the sound it makes. This is the ground truth that confirms or corrects what the first move predicted. It may need a physics collaborator.
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Decided with Loudon when the Loudon Live arc was designed (April 2026), carried over from the retired staging file:
+
+- **Build in Gen~ inside RNBO** — Gen~ for the sound, RNBO for portability.
+- **Hypothesis-testing throughout.** A timbral description is a prediction, not a fact; the instrument is how we check it.
+- **A session is about 70% making, 30% framing**, and the framing is led by an HTML piece, not a lecture.
+- **The cross-domain anchor is "one structure, many projections"**: the same phonon mode ratios travel from Gen~ to RNBO to the H90 to Faust, as one crystal symmetry shapes both its optics and its acoustics.
+- **The interface grows move by move**: functional, then portable, then serious, then visual, then physical.
+- **The audience is autodidact polymaths**: producers fluent in a DAW, with a maker's sensibility and no physics required.
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-26-51-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the retired staging file
+
+Agreed with Loudon on 2026-09-25, when plans moved into scrolls (SCHEMA v1.25). This is the staging file's five-stage arc, unchanged in substance, with each stage renamed by what it does and where the work stands written in. The staging file's decisions became Standing Orders; its session designs became [[Crystal Synthesizer — spec — Loudon Live sessions]].
+<sub>`plan-2026-09-25T20-26-51-04-00` · plan agreed · agreed 2026-09-25T20:26:51-04:00 · carried over by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="crystal-synth-steward-020" -->
 ### 2026-06-25 — cycle 8 — Hypothesis arc closes — diamond and labradorite, same synth, same strike, only the symmetry changes.
 > shipped · triclinic A/B render + a proofs menu indexing all four crystal proofs to date.

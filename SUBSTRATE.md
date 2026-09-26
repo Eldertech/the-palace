@@ -115,7 +115,7 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 *Refreshed 2026-08-25 via a full topology scan (Self-Model Update ceremony). The previous refresh was 2026-06-16; its figures had drifted materially and are corrected below.*
 
-The palace holds **355 typed entries** (by frontmatter `type`), inside a tree of **812 markdown files** — the remainder are bundle files (batons, context, plans, staging, proofs, sketches) and untyped artifacts. By location: 170 root, 42 `Projects/`, 40 `_ops/`, 32 `Shop/`, 30 `People/`, 27 `Palace development/`, 10 `Cross-Domain Resonances/`, plus per-entry bundles. (Tool installs and virtualenvs are excluded.)
+The palace holds **355 typed entries** (by frontmatter `type`), inside a tree of **812 markdown files** — the remainder are bundle files (batons, context, scrolls, specs, proofs, sketches) and untyped artifacts. By location: 170 root, 42 `Projects/`, 40 `_ops/`, 32 `Shop/`, 30 `People/`, 27 `Palace development/`, 10 `Cross-Domain Resonances/`, plus per-entry bundles. (Tool installs and virtualenvs are excluded.)
 
 *Correction to the 2026-06-16 figures:* that scan reported ~410 entries in ~710 files. The entry count was inflated — it counted files carrying non-canonical `type:` values (`theme`, `proof`, `spec`, `artifact`) that have since been normalized or demoted to bundle files. The self-model over-reported the organism by about 15% for two months, which is the exact failure this ceremony exists to catch.
 

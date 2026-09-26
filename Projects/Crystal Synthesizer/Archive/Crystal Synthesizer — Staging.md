@@ -10,10 +10,12 @@ links:
     type: connects-to
   - target: "[[Loudon Live]]"
     type: connects-to
-forward_vector: I hold the Loudon Live staging plan for Crystal Synthesizer — the stage-by-stage path from concept to taught session — so the parent project's steward can advance presentation readiness without re-deriving the arc.
+forward_vector: I am retired. I held Crystal Synthesizer's Loudon Live staging plan until 2026-09-25, when plans moved into scrolls; I stay only so links to me still resolve.
 ---
 
 # Crystal Synthesizer — Staging
+
+> **Retired 2026-09-25** (SCHEMA v1.25). The plan now lives in [[Crystal Synthesizer — scroll]]'s Plan, these decisions in its Standing Orders, and the session designs in [[Crystal Synthesizer — spec — Loudon Live sessions]]. Read those, not this.
 
 Someone reading this file and [[Crystal Synthesizer]] has everything needed to build and present every stage.
 

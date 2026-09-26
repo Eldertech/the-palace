@@ -28,7 +28,7 @@ links:
   - target: "[[Drift and Consolidation]]"
     type: couples-with
     label: the-live-half
-forward_vector: "I am the page a project keeps that always opens on where it stands now, then reads down through everything it has made, newest first. Every active project carries me; STIGMERGY opens on me; the steward reads my standing orders before it moves. I want to be the one place Loudon looks to get back into a project, and to stay a reading surface, never a ceremony — regenerated at the top, appended to below, deleted from never."
+forward_vector: "I am the page a project keeps that always opens on where it stands now and the plan it is following, then reads down through everything it has made, newest first. Every active project carries me; STIGMERGY opens on me; the steward reads my standing orders and my plan before it moves. I want to be the one place Loudon looks to get back into a project, and to stay a reading surface, never a ceremony — regenerated at the top, agreed in the plan, appended to below, deleted from never."
 ---
 
 # The Scroll
@@ -50,7 +50,7 @@ front door of the [[Project Stewardship System]].
 
 Every active project carries `[Entry]/[Entry] — scroll.md`. It is the one page Loudon opens to
 get back *into* a project after time away or after a steward has moved it, and it always opens
-on the present. Three zones, delimited by HTML-comment markers so machinery can tell them apart:
+on the present. Four zones, delimited by HTML-comment markers so machinery can tell them apart:
 
 - **Now** — regenerated on every look, never hand-edited. Status, stage, the steward's cycle
   and last run, what is *waiting on you* (open asks), what is *ready to advance* (answers filed
@@ -60,6 +60,8 @@ on the present. Three zones, delimited by HTML-comment markers so machinery can 
   paragraph — the open asks, the answers not yet consumed, and what has been decided. It is
   computed from the board, the steward's runtime, the entry's frontmatter and git, so it cannot
   lie when the steward sleeps; that was the failure of the `plan.md` read-model it replaced.
+- **Plan** — the path agreed with Loudon: where the work is going, then the moves ahead. Written,
+  not computed, and changed only with his yes; every change lands on the trail. See below.
 - **Standing Orders** — Loudon's zone, never regenerated. Taste, priorities, "stop asking me
   about X," written once. The steward reads it before anything else every cycle and it outranks
   the steward's lean and any older grant. Edited on STIGMERGY's PROJECTS deck, nowhere else.
@@ -86,13 +88,49 @@ work later proves wrong stays too, labelled: the GenAI Camera scroll keeps rende
 invalidated, each with a caveat line, because the record of being wrong is worth more than a clean
 surface. It is a cast skin, in [[Identity Molting]]'s sense.
 
+## The Plan
+
+The Plan is what Loudon and the work have agreed to do next. It is short enough to read in one
+screen: a sentence or two on where the work is going and what is already behind it, then the moves
+ahead, in order. Each move is named by what it does — "make the crystal polyphonic and portable,"
+never "Stage 2" — because the plan is read cold, by Loudon after time away and by a steward
+waking fresh. Detail a move needs, such as a Loudon Live session design, lives in a `spec` the
+plan links to. A plan states the path; where the work stands on it is Now's job, in the steward's
+own catch-up.
+
+**It changes only with Loudon's yes**, through one write path, and every change lands at the top of
+the making trail as a dated section saying what changed and why, quoting the plan it replaced.
+Three ways in:
+
+- Loudon revises it on the PROJECTS deck, with a line on what changed and why.
+- An elder writes it on his word — `scroll.js --home "<Title>" --plan <file> --why "…"`.
+- A steward proposes it. When building teaches it the path should change, it posts a
+  `plan_revision` ask carrying its evidence and the whole revised plan; the TRICKSTER card shows
+  that plan above the question, and a grant choosing **adopt** makes it the plan on the next look.
+
+**Off plan is an offer, declared.** A steward may make something outside the plan as proof of a
+different direction. It posts it with `off_plan` naming the direction, and the trail heads the
+section *Off plan* — so it is never mistaken for progress on the plan, and can be weighed as what
+it is.
+
+**Anyone pointing at the plan catches Loudon up.** Restate the move in plain words and where it sits
+in the whole; assume he has forgotten the plan. A move's number alone is never enough ([[The Palace
+Voice]]).
+
+Now keeps the plan honest from outside: it shows when the plan was agreed, how much has been made
+since, and whether a proposed revision is waiting. The plan is agreed text, not a read-model, so it
+survives the board being archived and reads in Obsidian with no machinery. It replaced the
+`staging` bundle file (SCHEMA v1.25), which had held a plan, Loudon's decisions and session designs
+in one coat; they went to the Plan, Standing Orders, and `spec` files.
+
 ## The ceremony scroll
 
 Every ceremony has a scroll too. The machinery finds a ceremony by its tuning ledger, so a new
 one needs no registration in code. Its **Now** answers the ceremony's own questions: which version
 is live, whether it has run since the spec last changed, and what the ledger still owes. Runs are
 counted from the ledger, where every run leaves one line whatever it taught ([[SCHEMA — Reference]]
-§6); version changes come from git. **The making** is the trail of runs and version changes, newest
+§6); version changes come from git. A ceremony's scroll has no Plan: its ledger's owed lines are its
+plan, and Now shows them. **The making** is the trail of runs and version changes, newest
 first, each keyed on its run line or its commit so nothing duplicates. **Standing Orders** feed the
 ledger: an order saved on the deck is appended there as owed, the next run's tail read picks it up,
 and Now shows it as owed until a run acts on it. The PROJECTS deck lists every ceremony in its
@@ -139,8 +177,10 @@ a scroll per *making-thread*, not one per entry — one-scroll-per-entry holds o
 
 Thirty-six project scrolls exist as of 2026-09-23, backfilled from the board and rendered in
 STIGMERGY's PROJECTS deck, and twelve ceremony scrolls as of 2026-09-25; the first live HTML scroll ([[GenAI Camera]], 2026-07-09) still stands
-as the loop-making variant. Two things to watch: whether the *Standing Orders* zone actually
-shortens the question traffic on the TRICKSTER board (the reason it exists), and whether a busy
+as the loop-making variant. Three things to watch: whether the *Standing Orders* zone actually
+shortens the question traffic on the TRICKSTER board (the reason it exists); whether the *Plan*
+stays short and current — how often a steward proposes a revision with evidence, and whether
+off-plan work turns into adopted plans; and whether a busy
 project wants its trail split per making-thread (the GenAI Camera finding) once a run of ten
 cycles lands a dozen sections in one morning. The HTML export from the markdown source is not
 built yet; it is wanted the first time a scroll needs to travel outside the terminal.

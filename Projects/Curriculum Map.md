@@ -21,7 +21,7 @@ links:
 
 Cross-project scaffolding intelligence for the [[Loudon Live]] curriculum. This file tracks which projects build on which, where good entry points are, and where gaps exist.
 
-Updated whenever a project is staged. Read by the `project-stage-builder` skill during Phase 1 audit.
+Updated whenever a project's plan gains or changes a Loudon Live session. A project's plan lives in its scroll's Plan; its session designs live in a `spec` beside it.
 
 ---
 
@@ -31,9 +31,9 @@ Projects appropriate for Autodidact Polymaths with no assumed DSP or synthesis k
 
 | Project | Stage | Why it works as an entry |
 |---|---|---|
-| [[Crystal Synthesizer]] Stage 1 | Staged 2026-04 | Requires only basic Max/MSP fluency and additive synthesis exposure. Physics framing is HTML-led — no prerequisites. Hook quality 9. |
-| [[Retrospective Delay]] Stage 1 | Staged 2026-04 | Requires basic Max/MSP fluency and M4L Audio Effect format. Conceptually immediate — students hear the result in minutes. Hook quality 9. |
-| [[Shepard Tone Synthesizer]] Stage 1 | Staged 2026-04 | **Zero prerequisites — not even Max.** Ableton MIDI Effect Rack only. Perceptually immediate. Most accessible entry in the curriculum. Hook quality 8. |
+| [[Crystal Synthesizer]] — make a playable crystal in Max | Planned 2026-04 | Requires only basic Max/MSP fluency and additive synthesis exposure. Physics framing is HTML-led — no prerequisites. Hook quality 9. |
+| [[Retrospective Delay]] — the witness | Planned 2026-04 | Requires basic Max/MSP fluency and M4L Audio Effect format. Conceptually immediate — participants hear the result in minutes. Hook quality 9. |
+| [[Shepard Tone Synthesizer]] — the illusion | Planned 2026-04 | **Zero prerequisites — not even Max.** Ableton MIDI Effect Rack only. Perceptually immediate. Most accessible entry in the curriculum. Hook quality 8. |
 
 ---
 
@@ -125,10 +125,10 @@ All current Projects/ entries awaiting staging. Sorted roughly by estimated acce
 | Project | Stage | Energy | Natural Audience Entry |
 |---|---|---|---|
 | Compressor Design | mature | high | DAW-fluent; math-light entry |
-| Retrospective Delay | growing | high | **Staged 2026-04** — see [[Retrospective Delay — Staging]] |
+| Retrospective Delay | growing | high | **Planned 2026-04** — plan in [[Retrospective Delay — scroll]], sessions in [[Retrospective Delay — spec — Loudon Live sessions]] |
 | Portamento and Physical Pitch Modeling | growing | high | DAW-fluent; physical intuition |
 | Metric Modulation | growing | high | Musician-fluent |
-| Shepard Tone Synthesizer | sprout | high | **Staged 2026-04** — see [[Shepard Tone Synthesizer — Staging]] |
+| Shepard Tone Synthesizer | sprout | high | **Planned 2026-04** — plan in [[Shepard Tone Synthesizer — scroll]], sessions in [[Shepard Tone Synthesizer — spec — Loudon Live sessions]] |
 | Meadows and Music — Leverage Points | sprout | — | Philosophy-first entry |
 | Meadows and Music — Origin and Process | sprout | — | Philosophy-first entry |
 | Action Potential Oscillator | sprout | high | Requires Stage 1 bio framing |
@@ -140,7 +140,7 @@ All current Projects/ entries awaiting staging. Sorted roughly by estimated acce
 | Biomechanical Synthesis | growing | — | Benefits from APO |
 | Piano String Inharmonicity | growing | — | Benefits from Categorizing Inharmonicity |
 | Wallpaper Groups | growing | high | Math-fluent entry |
-| Crystal Synthesizer | sprout | high | **Staged 2026-04** — see [[Crystal Synthesizer — Staging]] |
+| Crystal Synthesizer | sprout | high | **Planned 2026-04** — plan in [[Crystal Synthesizer — scroll]], sessions in [[Crystal Synthesizer — spec — Loudon Live sessions]] |
 | Quantum Synthesizer | growing | — | Benefits from Crystal + Bessel |
 | Bessel Functions in Synthesis | growing | — | Math bridge; benefits from FM foundation |
 | Preset Oracle | mature | — | Conceptual; less making-heavy |
@@ -157,8 +157,8 @@ Knowledge students keep needing that no current project provides. Candidates for
 | **RNBO Fundamentals** | Crystal Synth Stage 2+ | "RNBO: One Patch, Many Instruments" — portability as primary pedagogical hook |
 | **Modal Synthesis** | Crystal Synth Stage 3 | Stageable from [[Bessel Functions in Synthesis]] palace entry |
 | **DSP-to-hardware export** | Crystal Synth Stage 2+ | Covered in RNBO Fundamentals gap above |
-| **M4L Audio Effect format** | Retrospective Delay Stage 1 | "Your First M4L Device" — minimal device, one parameter, plugin~/plugout~ |
-| **JSUI Drawing Fundamentals** | Retrospective Delay Stage 4 | Could be a standalone session or a short pre-read; JSUI's drawing API isn't covered in any current project |
+| **M4L Audio Effect format** | Retrospective Delay — the witness | "Your First M4L Device" — minimal device, one parameter, plugin~/plugout~ |
+| **JSUI Drawing Fundamentals** | Retrospective Delay — the face | Could be a standalone session or a short pre-read; JSUI's drawing API isn't covered in any current project |
 
 ---
 
@@ -166,4 +166,4 @@ Knowledge students keep needing that no current project provides. Candidates for
 
 - "Accessible" means: a music producer with DAW fluency and curiosity can enter with a clear on-ramp, even if the subject is technically deep.
 - Projects are not strictly sequential — the arcs above are suggestions, not requirements. Cross-arc connections are often the richest.
-- This map is a living document. Each staging session should update it.
+- This map is a living document. A session that adds or changes a Loudon Live move in a project's plan should update it.

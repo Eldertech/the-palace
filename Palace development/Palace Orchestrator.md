@@ -91,7 +91,8 @@ STIGMERGY runs this loop in code; a hand-run or heartbeat batch runs it in prose
 
 **The scroll** (2026-09-23). Every cycle ends by materializing the project's `[Entry] — scroll.md`
 ([[The Scroll]]) from what the page posted — the orchestrator writes the scroll, the page never
-does — and every cycle begins by injecting the scroll's **Standing Orders** (binding) and **Now**
+does — and every cycle begins by injecting the scroll's **Standing Orders** (binding), its **Plan**
+(the path agreed with Loudon; a change is proposed as a `plan_revision` ask) and its **Now**
 zone into the prompt. The canonical shape a made thing lands in is the `shipped_artifact`
 BROADCAST (`headline · ground · catchup · content · artifacts · left_rough · next_moves`,
 `prompts/shared.md`).

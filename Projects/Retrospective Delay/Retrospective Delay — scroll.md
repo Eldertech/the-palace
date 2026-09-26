@@ -15,14 +15,15 @@ forward_vector: "I am Retrospective Delay's scroll — the one page that always 
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-26T00:30:05.869Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** growing · **Steward:** cycle 18 · last ran 2026-06-25 (90 days ago)
+- **Status:** active · **Stage:** growing · **Steward:** cycle 18 · last ran 2026-06-25 (93 days ago)
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-06-22 (92 days ago) — Matched gorey-ink triptych — dormant · awakening · triumphant — all three rendered in the refined wobble/hatching/ink-weight pass. (`retrospective-delay-steward-040`)
-- **Last commit touching this project:** 2026-09-22 `032cd80` — ops(Retrospective Delay): flush working proofs, renders + code
-- **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
+- **Last shipped:** 2026-06-22 (95 days ago) — Matched gorey-ink triptych — dormant · awakening · triumphant — all three rendered in the refined wobble/hatching/ink-weight pass. (`retrospective-delay-steward-040`)
+- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
@@ -50,15 +51,45 @@ _None._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** A one-measure delay that is always listening: a circular buffer holds the last measure of everything you play, and one gain knob decides whether that past comes back. It is built in five moves that are also five [[Loudon Live]] sessions, and two of them are deliberate migrations (vanilla Max to Gen~, then Gen~ to RNBO) where the friction is the lesson. The first session is drafted with its patch specified. The character for the fourth move was made early: a séance cat in Gorey-style ink, drawn in its three states, and on 2026-06-25 Loudon said to wire those frames to the gain knob next.
+
+**The moves ahead**
+
+1. **The witness.** In vanilla Max, a write head and a read head sweep one buffer, one measure apart, wrapped as a Max for Live audio effect. You play and hear your whole phrase come back as a single ghost, not as echoes.
+2. **The séance.** Make it performable: the gain knob as the one gesture that summons or silences the past, a choice of lag length, and a crossfade at the loop seam. Silence becomes the most expressive thing the player can do.
+3. **The grammar behind the spell.** Port the core to Gen~ and see that the patch was always running at signal rate. Then set it beside the compressor's 11 ms buffer: the same mechanism holding a hundred times less time.
+4. **The face.** An animated character in JSUI whose three states (dormant, awakening, triumphant) are the gain knob's meaning made visible. The cat's frames are drawn; next they are wired to the knob and played with.
+5. **The portal.** Port to RNBO and export as a VST/AU and to the Eventide H90, so the instrument lives outside Max. The session asks whether it is still the same instrument.
+
+Session designs: [[Retrospective Delay — spec — Loudon Live sessions]].
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Decided with Loudon when the Loudon Live arc was designed (April 2026), carried over from the retired staging file:
+
+- **The environment grows with the moves**: vanilla Max as a Max for Live audio effect for the witness and the séance, a Gen~ subpatcher inside the device for the grammar, a JSUI layer for the face, and RNBO codebox~ out to VST/AU and the H90 for the portal.
+- **Two migrations are deliberate friction**: vanilla Max to Gen~ (the grammar) and Gen~ to RNBO (the portal). Both are lessons, not chores.
+- **Frame the Gen~ move as "this is what was always happening inside the vanilla Max patch — Gen~ just makes it visible,"** not "you've seen this in the compressor." The compressor's circular buffer is a reveal inside that session, not its frame.
+- **Sessions run about 70% making, 30% framing**, except the two migrations, which run about 50/50 because the shift in thinking needs room.
+- **Participants can already build basic Max/MSP patches** (`phasor~`, `buffer~`, `plugin~`/`plugout~`); the Max for Live device format is covered in the witness session's prerequisites.
+- **It runs parallel to [[Compressor Design]]**, the same primitive at about 11 ms, with no dependency either way: they reinforce each other rather than scaffold. See [[Curriculum Map]].
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-28-29-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the retired staging file
+
+Agreed with Loudon on 2026-09-25, when plans moved into scrolls (SCHEMA v1.25). This is the staging file's five-stage arc, unchanged in substance and in order, with each stage renamed by what it does. The opening says honestly that the fourth move's character art was made ahead of the others. The staging file's decisions became Standing Orders; its session designs became [[Retrospective Delay — spec — Loudon Live sessions]].
+<sub>`plan-2026-09-25T20-28-29-04-00` · plan agreed · agreed 2026-09-25T20:28:29-04:00 · carried over by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="retrospective-delay-steward-040" -->
 ### 2026-06-22 — cycle 17 — Matched gorey-ink triptych — dormant · awakening · triumphant — all three rendered in the refined wobble/hatching/ink-weight pass.
 > shipped · refined set complete · same prompt scaffold, three pose clauses, three openpose rigs
