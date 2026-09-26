@@ -119,8 +119,11 @@ rule as the scroll's Now zone (`server/projects.js` → the orchestrator's
 
 Click a name to open the project's **scroll** (`[Entry] — scroll.md` in its
 bundle, the front door that replaced `plan.md`): the **Now** zone regenerated on
-every fetch, the project's **open asks** as the same TricksterCards the
-TRICKSTER deck uses, **Standing Orders** (Loudon's zone, editable only here in
+every fetch, the **Plan** agreed with Loudon (revised here with a line on what
+changed and why, which lands on the trail; a steward's `plan_revision` ask shows
+its whole proposed plan on its card, and choosing `adopt` makes it the plan), the
+project's **open asks** as the same TricksterCards the TRICKSTER deck uses,
+**Standing Orders** (Loudon's zone, editable only here in
 the terminal, read by the steward at the top of every cycle), and **The making**
 (the trail, newest first, media inline). Advancing fires a *run* — up to the
 manifest's `stopping_conditions.max_iterations` consecutive cycles while the
@@ -130,6 +133,7 @@ steward ships and nothing waits on Loudon.
 - `GET /api/projects/scroll?home=<Title>[&write=1]` — the scroll with a live Now
   zone (in memory; `write=1` persists it).
 - `PUT /api/projects/orders` `{ home, orders }` — write Standing Orders.
+- `PUT /api/projects/plan` `{ home, plan, why }` — write the agreed Plan; the change is logged on the trail.
 - `POST /api/steward/advance` `{ name, max_cycles? }` — start a run.
 
 ## Run

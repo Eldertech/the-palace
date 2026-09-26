@@ -122,7 +122,7 @@ dispatchable organ converges on its shape:
   the orchestrator;
 - **a thin trigger surface fires it** — the `.claude/skills/…` shim, a CLAUDE.md trigger row,
   a scheduled task;
-- **entry-specific working state lives in the bundle** — `[Entry] — plan.md`, with
+- **entry-specific working state lives in the bundle** — `[Entry] — scroll.md`, its Now, its agreed Plan and its trail, with
   single-source-of-truth fields (stage, `forward_vector`) read *live* from frontmatter, never
   copied. This is the **Machinery/Content Split** ([[Project Stewardship System]]): engine in
   ops, content with the entry.

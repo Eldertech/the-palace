@@ -15,14 +15,14 @@ forward_vector: "I am Crystal Synthesizer's scroll — the one page that always 
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-26T00:30:05.869Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:42:23-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
 - **Status:** active · **Stage:** fruiting · **Steward:** cycle 9 · last ran 2026-08-26 (31 days ago)
 - **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-25 (92 days ago) — Hypothesis arc closes — diamond and labradorite, same synth, same strike, only the symmetry changes. (`crystal-synth-steward-020`)
-- **Last commit touching this project:** 2026-09-24 `b2e51e89` — Weave — 2026-09-24 — 49 links, 9 contradictions, 12 let go, 17 stages, 1 hub, 25 citizens linked
+- **Last commit touching this project:** 2026-09-25 `b09ddab8` — Schema Ceremony — the Plan replaces staging — v1.25
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
@@ -62,7 +62,7 @@ _None._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-Decided with Loudon when the Loudon Live arc was designed (April 2026), carried over from the retired staging file:
+Decided with Loudon when the Loudon Live arc was designed (April 2026), and seeded here once from the retired staging file on 2026-09-25:
 
 - **Build in Gen~ inside RNBO** — Gen~ for the sound, RNBO for portability.
 - **Hypothesis-testing throughout.** A timbral description is a prediction, not a fact; the instrument is how we check it.
@@ -75,11 +75,11 @@ Decided with Loudon when the Loudon Live arc was designed (April 2026), carried 
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="plan-2026-09-25T20-26-51-04-00" -->
+<!-- scroll:entry id="plan-2026-09-25T20-42-23-04-00" -->
 ### 2026-09-25 — Plan agreed: carried over from the retired staging file
 
-Agreed with Loudon on 2026-09-25, when plans moved into scrolls (SCHEMA v1.25). This is the staging file's five-stage arc, unchanged in substance, with each stage renamed by what it does and where the work stands written in. The staging file's decisions became Standing Orders; its session designs became [[Crystal Synthesizer — spec — Loudon Live sessions]].
-<sub>`plan-2026-09-25T20-26-51-04-00` · plan agreed · agreed 2026-09-25T20:26:51-04:00 · carried over by an elder on Loudon's word</sub>
+Carried over on 2026-09-25 from the retired staging file, when Loudon asked that every plan fold into its scroll (SCHEMA v1.25). The arc is the one agreed with him in April 2026, unchanged in substance: each stage is renamed by what it does, and where the work stands is written in. The staging file's decisions became Standing Orders; its session designs became [[Crystal Synthesizer — spec — Loudon Live sessions]].
+<sub>`plan-2026-09-25T20-42-23-04-00` · plan agreed · agreed 2026-09-25T20:42:23-04:00 · carried over by an elder on Loudon's word</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="crystal-synth-steward-020" -->

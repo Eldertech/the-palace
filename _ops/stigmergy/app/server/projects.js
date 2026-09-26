@@ -28,7 +28,7 @@ import { listProjectEntries, stewardIndex } from '../../orchestrator/src/scroll.
 import {
   MARK, ORDERS_PLACEHOLDER, computeNow, renderNow, renderSkeleton, readZone, readStandingOrders,
   updateScrollText, materializeScroll, lastGitTouch, scanBundleMediaFiles,
-  readPlan, readPlanInfo, ensurePlanZone, applyAdoptedPlans, writePlan as writePlanFile,
+  readPlan, readPlanInfo, ensurePlanZone, applyAdoptedPlans, writePlan as writePlanFile, localIso,
 } from '../../orchestrator/src/scroll-file.js';
 import { resolveBundleDir, findEntryFile } from '../../orchestrator/src/entry-paths.js';
 import {
@@ -373,7 +373,7 @@ export function writeStandingOrders({ palaceRoot, home, orders, now = new Date()
  * ceremony has no Plan zone (its plan is its tuning ledger's owed lines).
  * Returns the updated readScroll.
  */
-export function writePlan({ palaceRoot, home, plan, why = '', headline = '', now = new Date().toISOString() }) {
+export function writePlan({ palaceRoot, home, plan, why = '', headline = '', now = localIso() }) {
   if (!resolveBundleDir(palaceRoot, home)) return { error: 'entry-file-not-found' };
   if (isCeremony(palaceRoot, home)) return { error: 'ceremony-has-no-plan' };
   const s = stewardIndex(palaceRoot).get(home) || null;

@@ -69,7 +69,7 @@ Two occasions call a baton, and the second is the common one:
 - **A move stopped mid-flight** — the classic case; the baton preserves the half-finished state and the negative space.
 - **A plan advancing to its next move** — the *continuation baton*. It carries heavy accumulated state (everything built so far) plus this session's calibrations. This is the everyday use, not the exception. "There's no half-finished move to rescue" is **not** a reason to skip it — a continuation rarely has one.
 
-**A baton that points at the plan restates the move** in plain words and where it sits in the whole — never "step 3" alone — and names the plan it was written against (the newest `plan-` section on the scroll's trail), so a pickup after the plan has changed can tell.
+**A baton that points at the plan restates the move** in plain words and where it sits in the whole — never "step 3" alone — and names the plan it was written against (the newest `plan-` section on the scroll's trail). A catcher who finds a newer one is in the case the pickup checklist's step 2 already covers: the project moved on since the baton was written.
 
 **Only skip a baton** when the next step is trivially reconstructable from the entry (or its scroll's Plan) alone — genuinely small enough that a fresh Claude needs nothing this session knew (§ Pace Obligations).
 

@@ -569,11 +569,17 @@ export function ensurePlanZone(text) {
   return t.slice(0, at) + '\n\n' + zone.trimEnd() + t.slice(at);
 }
 
+/** The local calendar date of a timestamp (a grant stamped in UTC at 22:00 is still today). */
+function localDay(ts) {
+  const t = Date.parse(ts);
+  return Number.isNaN(t) ? day(ts) : localIso(new Date(t)).slice(0, 10);
+}
+
 /** The trail section a plan change leaves: what changed, why, and the plan it replaced. */
 export function renderPlanSection({ id, headline = '', why = '', by = '', ts, previous = '' }) {
   const L = [];
   L.push(`<!-- scroll:entry id="${id}" -->`);
-  L.push(`### ${day(ts)} — ${previous ? 'Plan revised' : 'Plan agreed'}${headline ? `: ${headline}` : ''}`);
+  L.push(`### ${localDay(ts)} — ${previous ? 'Plan revised' : 'Plan agreed'}${headline ? `: ${headline}` : ''}`);
   if (why && String(why).trim()) { L.push(''); L.push(String(why).trim()); }
   if (previous) {
     L.push('');
@@ -594,12 +600,21 @@ export function renderPlanSection({ id, headline = '', why = '', by = '', ts, pr
  */
 export function applyPlan(existing, { plan, id, headline = '', why = '', by = '', ts = localIso() }) {
   const text = ensurePlanZone(existing);
-  const pid = id || `plan-${ts.replace(/[:.+]/g, '-')}`;
-  if (existingEntryIds(text).has(pid)) return { applied: false, text, reason: 'already-applied' };
+  const have = existingEntryIds(text);
+  // An adopted proposal carries its own id — seen before means already applied.
+  // A direct write mints one from the moment; two writes in the same second
+  // are two changes, so the second takes a suffix rather than being dropped.
+  if (id && have.has(id)) return { applied: false, text, reason: 'already-applied' };
   const body = String(plan || '').trim();
   if (/<!--\s*\/?scroll:/.test(body)) return { applied: false, text, reason: 'plan-contains-scroll-markers' };
   const previous = readPlan(text);
   if (body === previous) return { applied: false, text, reason: 'unchanged' };
+  let pid = id;
+  if (!pid) {
+    const base = `plan-${ts.replace(/[:.+]/g, '-')}`;
+    pid = base;
+    for (let n = 2; have.has(pid); n++) pid = `${base}-${n}`;
+  }
   const ps = text.indexOf(MARK.planStart);
   const pe = text.indexOf(MARK.planEnd, ps);
   const ms = text.indexOf(MARK.makingStart);

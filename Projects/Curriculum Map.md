@@ -120,7 +120,7 @@ These two projects share the circular buffer primitive and can be done in either
 
 ## Unstaged Projects
 
-All current Projects/ entries awaiting staging. Sorted roughly by estimated accessibility (most accessible first — subject to revision as staging begins).
+All current Projects/ entries not yet given a Loudon Live plan. Sorted roughly by estimated accessibility (most accessible first — subject to revision as their plans are made).
 
 | Project | Stage | Energy | Natural Audience Entry |
 |---|---|---|---|
@@ -131,7 +131,7 @@ All current Projects/ entries awaiting staging. Sorted roughly by estimated acce
 | Shepard Tone Synthesizer | sprout | high | **Planned 2026-04** — plan in [[Shepard Tone Synthesizer — scroll]], sessions in [[Shepard Tone Synthesizer — spec — Loudon Live sessions]] |
 | Meadows and Music — Leverage Points | sprout | — | Philosophy-first entry |
 | Meadows and Music — Origin and Process | sprout | — | Philosophy-first entry |
-| Action Potential Oscillator | sprout | high | Requires Stage 1 bio framing |
+| Action Potential Oscillator | sprout | high | Requires the biology framing of its first move (the membrane as a capacitor) |
 | Categorizing Inharmonicity | growing | high | Benefits from Compressor + APO |
 | Granular Synthesis | — | — | TBD |
 | Neural Granular Synthesis | growing | — | Benefits from APO |
@@ -154,9 +154,9 @@ Knowledge students keep needing that no current project provides. Candidates for
 | Gap | Needed by | Candidate session |
 |---|---|---|
 | **Gen~ Foundations** | Crystal Synth Stage 1+ (and any future DSP project) | "Gen~ for Sound Designers" — standalone session, no physics, just patching |
-| **RNBO Fundamentals** | Crystal Synth Stage 2+ | "RNBO: One Patch, Many Instruments" — portability as primary pedagogical hook |
-| **Modal Synthesis** | Crystal Synth Stage 3 | Stageable from [[Bessel Functions in Synthesis]] palace entry |
-| **DSP-to-hardware export** | Crystal Synth Stage 2+ | Covered in RNBO Fundamentals gap above |
+| **RNBO Fundamentals** | Crystal Synthesizer — taking it on the road, and after | "RNBO: One Patch, Many Instruments" — portability as primary pedagogical hook |
+| **Modal Synthesis** | Crystal Synthesizer — letting the crystal ring | Stageable from [[Bessel Functions in Synthesis]] palace entry |
+| **DSP-to-hardware export** | Crystal Synthesizer — taking it on the road, and after | Covered in RNBO Fundamentals gap above |
 | **M4L Audio Effect format** | Retrospective Delay — the witness | "Your First M4L Device" — minimal device, one parameter, plugin~/plugout~ |
 | **JSUI Drawing Fundamentals** | Retrospective Delay — the face | Could be a standalone session or a short pre-read; JSUI's drawing API isn't covered in any current project |
 

@@ -391,6 +391,8 @@ an agent. "Staging" collided with the `stage` lifecycle field, git staging, BLUE
 "score" read to an agent as a graph and a metric. A plan is made of **moves**, the palace's word for a
 unit of work in flight.
 
+**What moved with it.** A staging file was read-only to a steward; a `spec` is workshop, so a steward now develops a move's session design as part of building the move, and the cycle prompt no longer loads session designs — the plan links to them. The three converted scrolls' Standing Orders were seeded once, from the staging files' decision tables, on Loudon's word; the PROJECTS deck stays the only place orders are edited after that. Only project-wide direction went to orders; a choice that belongs to one session went to that session's spec, because orders outrank later grants.
+
 **Ceremonies.** A ceremony's scroll has no Plan zone: its tuning ledger's owed lines are its plan, and
 Now already shows them. The `project-stage-builder` skill, which wrote staging files, is composted.
 

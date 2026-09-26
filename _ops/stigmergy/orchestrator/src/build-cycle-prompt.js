@@ -198,7 +198,7 @@ export function buildCyclePrompt(opts) {
   // outward instead of treating its own page as the thing to build.
   const roleSection = manifest.role ? `\n# Your role\n\n${manifest.role}\n` : '';
 
-  // The scroll seam (2026-09-23; the Plan, v1.24). The project's
+  // The scroll seam (2026-09-23; the Plan, v1.25). The project's
   // `[Entry] — scroll.md` carries three things the steward must read before it
   // acts: Loudon's STANDING ORDERS (taste and direction written once, so the
   // steward stops re-asking), the PLAN (the path agreed with Loudon, changed

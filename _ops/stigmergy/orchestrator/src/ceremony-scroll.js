@@ -1,5 +1,6 @@
-// ceremony-scroll.js — a ceremony's scroll. The same three zones as a
-// project's (Now · Standing Orders · the making), with a Now that answers the
+// ceremony-scroll.js — a ceremony's scroll. A project's zones less the Plan
+// (Now · Standing Orders · the making; a ceremony's plan is its ledger's owed
+// lines), with a Now that answers the
 // ceremony's own questions: which version is live, has it run since the spec
 // last changed, and what does its tuning ledger still owe?
 //

@@ -96,6 +96,8 @@ The witness complete. The gain knob and lag parameterization build directly on i
 
 ## The grammar behind the spell
 *The third move · port to Gen~*
+
+*Decided in April 2026:* frame this move as "this is what was always happening inside the vanilla Max patch — Gen~ just makes it visible," not "you've seen this in the compressor." The compressor's circular buffer is a reveal inside the session, not its frame.
 *~90 minutes | Making/Framing: 50/50*
 
 ### Session Arc
@@ -155,7 +157,7 @@ A UI designer and a DSP engineer are solving the same problem: how does the syst
 The séance complete (the device needs to be performable before the interface is worth building). Basic JavaScript helpful but not required — JSUI's drawing API is learnable within the session.
 
 ### Materials
-- *The character's three frames are drawn (`stage-4-character/jsui/`); the rest comes after the grammar is delivered*
+- *The cat's three frames are drawn and wired to the gain knob in `stage-4-character/jsui/seance-cat.js`, with a rendered `wired-preview.png`; it hasn't yet been played in Max. The rest comes after the grammar is delivered.*
 
 ---
 

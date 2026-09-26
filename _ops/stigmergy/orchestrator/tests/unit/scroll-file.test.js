@@ -302,6 +302,12 @@ describe('the plan', () => {
     // idempotent on id; unchanged text and scroll markers are refused
     expect(applyPlan(second.text, { plan: 'Go sideways.', id: 'plan-2' }).reason).toBe('already-applied');
     expect(applyPlan(second.text, { plan: 'Go down.', id: 'plan-3' }).reason).toBe('unchanged');
+    // two direct writes in the same second are two changes, not one
+    const a = applyPlan(second.text, { plan: 'Go left.', ts: '2026-09-27T10:00:00-04:00' });
+    const b = applyPlan(a.text, { plan: 'Go right.', ts: '2026-09-27T10:00:00-04:00' });
+    expect(b.applied).toBe(true);
+    expect(b.id).toBe(`${a.id}-2`);
+    expect(readPlan(b.text)).toBe('Go right.');
     expect(applyPlan(second.text, { plan: `x ${MARK.makingStart}`, id: 'plan-4' }).reason).toBe('plan-contains-scroll-markers');
   });
 

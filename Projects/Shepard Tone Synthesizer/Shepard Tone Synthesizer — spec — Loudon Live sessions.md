@@ -23,12 +23,20 @@ forward_vector: I hold the Loudon Live session design for each move in the Shepa
 
 # Shepard Tone Synthesizer — spec — Loudon Live sessions
 
-The session designs for the moves in the plan on [[Shepard Tone Synthesizer — scroll]]. The plan says what comes next and why; this says how each move is taught on [[Loudon Live]]. The first two moves are designed and built; the three ahead carry their scope, and each gets its full design when it comes up. Loudon's decisions about how the sessions run (the environments, the Escher frame, the 85/15 making-to-framing ratio, the audience) are in the scroll's Standing Orders.
+The session designs for the moves in the plan on [[Shepard Tone Synthesizer — scroll]]. The plan says what comes next and why; this says how each move is taught on [[Loudon Live]]. The first two moves are designed and have proofs behind them; the three ahead carry their scope, and each gets its full design when it comes up. The project-wide decisions (the Escher anchor, the 85/15 making-to-framing ratio, the audience) are in the scroll's Standing Orders.
+
+**Session choices decided in April 2026**, when the arc was designed:
+- The environment steps up with the sessions: Ableton Live for the illusion, vanilla Max for the mechanism, Gen~ for the glide and the timbre, RNBO for the portal.
+- The illusion session uses Ableton alone — a MIDI Effect Rack of stacked Pitch devices and an AutoFilter as the Shepard bandpass. No Max.
+- The illusion session opens with Meld's built-in Shepard tone, before we build our own.
+- Its reflecting surface is the auditory barber pole question, with seeds (below).
+
+*Open for Loudon (2026-09-25):* the proofs so far were made in other tools — the illusion as a drone rendered in Python (the MINIMUM-ILLUSION grant), the mechanism as a browser prototype first (the WEB-INTERACTIVE-FIRST grant). The Ableton rack and the Max patch these sessions are designed around haven't been built. Does the environment ladder above still stand for the sessions?
 
 ---
 
 ## The illusion
-*"Escher's Impossible Staircase in Sound" · the first move, behind us · a session of about 60–75 minutes*
+*"Escher's Impossible Staircase in Sound" · the first move · proofs made, session not yet built · a session of about 60–75 minutes*
 
 ### Session Arc
 
@@ -79,7 +87,7 @@ None required. Participants who want deeper context on psychoacoustics before th
 ---
 
 ## The mechanism
-*The second move, behind us · vanilla Max*
+*The second move · vanilla Max · a browser prototype and rendered variants made, the Max patch not yet built*
 
 Build the octave stacker as a Max patch and see what was invisible in the illusion: simple oscillators, one global filter. Neighbor: [[Signal-Rate CV Architecture]].
 
@@ -93,9 +101,11 @@ Build the octave stacker as a Max patch and see what was invisible in the illusi
 ---
 
 ## The glide
-*The third move · Gen~ · scope only, not yet designed*
+*The third move · Gen~ · scope only, not yet designed · first renders made 2026-09-15*
 
 Monophonic portamento at signal rate. All the octaves glide together as one unit — the key design insight from the entry. Neighbor: [[Portamento and Physical Pitch Modeling]].
+
+**Renders so far** (`proofs/`, 2026-09-15): glides at 120, 450 and 1200 ms, a zero-time step for comparison, an endless glissando, and one with the voices out of sync (`2026-09-15-stage3-broken-async-450ms.wav`) — where the illusion breaks, and the session's best argument for lockstep.
 
 ---
 
