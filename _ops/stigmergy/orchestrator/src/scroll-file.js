@@ -76,6 +76,13 @@ const dash = (v) => (v == null || v === '' ? '—' : String(v));
 const day = (iso) => (iso ? String(iso).slice(0, 10) : '—');
 const escapePipes = (s) => String(s).replace(/\|/g, '\\|');
 
+/** Now as ISO 8601 in local time with its offset — the date Loudon sees on his clock. */
+export function localIso(d = new Date()) {
+  const p = (n) => String(Math.abs(n)).padStart(2, '0');
+  const off = -d.getTimezoneOffset();
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}${off >= 0 ? '+' : '-'}${p(Math.trunc(off / 60))}:${p(off % 60)}`;
+}
+
 function daysBetween(fromIso, toIso) {
   const a = fromIso ? Date.parse(fromIso) : NaN;
   const b = toIso ? Date.parse(toIso) : Date.now();
@@ -537,7 +544,7 @@ export function readPlanInfo(text) {
   const making = readZone(text, MARK.makingStart, MARK.makingEnd) || '';
   const m = /<!--\s*scroll:entry id="(plan-[^"]+)"\s*-->([\s\S]*?)<!--\s*\/scroll:entry\s*-->/.exec(making);
   if (!m) return { text: plan, revised: null, id: null };
-  const agreed = /agreed (\d{4}-\d{2}-\d{2}T[0-9:.]+Z?)/.exec(m[2]);
+  const agreed = /agreed (\d{4}-\d{2}-\d{2}T[0-9:.]+(?:Z|[+-]\d{2}:\d{2})?)/.exec(m[2]);
   const heading = /^###\s+(\d{4}-\d{2}-\d{2})/m.exec(m[2]);
   return { text: plan, revised: agreed ? agreed[1] : (heading ? heading[1] : null), id: m[1] };
 }
@@ -585,9 +592,9 @@ export function renderPlanSection({ id, headline = '', why = '', by = '', ts, pr
  * the deck, an elder's CLI write on Loudon's yes, and an adopted proposal all
  * come through here. Idempotent on `id`; refuses text carrying scroll markers.
  */
-export function applyPlan(existing, { plan, id, headline = '', why = '', by = '', ts = new Date().toISOString() }) {
+export function applyPlan(existing, { plan, id, headline = '', why = '', by = '', ts = localIso() }) {
   const text = ensurePlanZone(existing);
-  const pid = id || `plan-${ts.replace(/[:.]/g, '-')}`;
+  const pid = id || `plan-${ts.replace(/[:.+]/g, '-')}`;
   if (existingEntryIds(text).has(pid)) return { applied: false, text, reason: 'already-applied' };
   const body = String(plan || '').trim();
   if (/<!--\s*\/?scroll:/.test(body)) return { applied: false, text, reason: 'plan-contains-scroll-markers' };
@@ -763,7 +770,7 @@ export function materializeScroll(opts) {
  * the change on the trail (`why` says what changed and why), then regenerates Now.
  * Not for ceremonies: a ceremony's plan is its tuning ledger's owed lines.
  */
-export function writePlan({ palaceRoot, home, plan, headline = '', why = '', by = 'Loudon', agentDir, ts = new Date().toISOString() }) {
+export function writePlan({ palaceRoot, home, plan, headline = '', why = '', by = 'Loudon', agentDir, ts = localIso() }) {
   const bundle = resolveBundleDir(palaceRoot, home);
   if (!bundle) return { error: 'entry-file-not-found' };
   const scrollPath = join(bundle.bundleDir, `${home} — scroll.md`);
