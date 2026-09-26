@@ -134,10 +134,10 @@ export default function FrontmatterHeader({ title, frontmatter = {}, summary = {
             style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
             <span style={{ opacity: 0.7 }}>use</span>{' '}
             <span style={{ color: 'var(--phosphor)' }}>
-              {use.recent.use} / {use.use}
+              {use.recent.use} in 90 days · {use.use} in all
             </span>
             <span style={{ opacity: 0.7 }}>
-              {'  '}page {use.page} · bundle {use.bundle} · linked {use.linked}
+              {'  '}(page {use.page} · bundle {use.bundle} · linked {use.linked})
             </span>
           </span>
         ) : null}
