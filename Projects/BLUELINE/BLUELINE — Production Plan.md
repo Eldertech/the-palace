@@ -1,7 +1,7 @@
 ---
 title: "BLUELINE — Production Plan"
 born: 2026-06-14
-forward_vector: "I am BLUELINE's front door and single source of truth: what it is, its goals, where every thread stands, and — the part that used to be missing — what to work on next. A new agent or human who searches 'production plan' lands here and is oriented in one read. When a thread's state or the horizon changes, I am the first thing updated."
+forward_vector: "I am BLUELINE's map: what it is, its goals and locked scope, where every thread stands, and where every proof lives. A new agent or human who searches 'production plan' lands here and is oriented in one read, and I send them to BLUELINE's scroll for what to work on next, the plan agreed with Loudon. When a thread's state changes, I am the first thing updated."
 links:
   - target: "[[BLUELINE]]"
     type: connects-to
@@ -34,8 +34,8 @@ links:
 
 # BLUELINE — Production Plan
 
-> **Read first.** This is BLUELINE's front door: **what it is · its goals · where it stands · the
-> threads · what's next.** For depth, follow the links — the *conceptual stage map* is
+> **Read first.** This is BLUELINE's map: **what it is · its goals · where it stands · the
+> threads · every proof placed.** What comes next is the plan on [[BLUELINE — scroll]]. For depth, follow the links — the *conceptual stage map* is
 > [[BLUELINE — Production Pipeline]]; the *contracts* are [[BLUELINE — Render Backend]],
 > [[BLUELINE — Board Record Schema]], [[BLUELINE — toolbox]]; each thread has its own doc (below).
 
@@ -114,42 +114,7 @@ lineage is noted where it maps.)*
 
 ## 5. The horizon — what's next
 
-The one prioritized, cross-thread stack. Each item links the thread that owns it.
-
-**Ready now** (build; no new unknowns):
-1. **Motion & Flow · Edge 1 — pose → field** *(3D-native + interactive GN studio shipped 2026-07-03).*
-   The field lives in the Blender scene (`proofs/session-5-flow-3d/`) and is now an interactive
-   **Geometry-Nodes studio on the real Figure Rig** — pose the figure, tweak the field
-   (`proofs/session-6-flow-gn-studio/flow_studio.blend`). Still open: flow-field-biased ink splatter +
-   feed-the-field-to-render img2img fuse; add the streamline register; Mantaflow for emergent wake.
-   → [[BLUELINE — Motion and Flow]] §Edge 1.
-2. **Figure & Pose — face keypoints + a pose library.** `draw_facepose` (the 70-pt map) and a
-   dial-a-frame catalogue. → [[Shop/Figure Rig]].
-3. **Style & Identity — InstantID face-slot.** Bake identity + gaze at generation. → [[Steer the Generator]].
-4. **Text & Lettering — rungs 2+.** Dialogue-balloon modes #2/#3; letter *into* the frame. → [[BLUELINE — Text Layer]].
-5. **Cross-cutting — level the 6 boards to uniform fidelity, and a shareable muxed cut.** → [[Frame Designer]] + `Shop/ffmpeg`.
-6. **Motion & Flow · Edge 3 — pose-blend-along-flow** *(greenlit 2026-07-03 — Loudon relaxed the "staged, not simulated" lock).* Interpolate held key-poses along the flow direction (coil→leap that follows the wind); bounded experiment, simulated contact still out. The technique was already ready; it just needed the scope call. → [[BLUELINE — Motion and Flow]] §Edge 3.
-
-**The big lifts** (design / research):
-7. **Motion & Flow · Edge 2 — field → clock** *(+ the aftermath frame; first proof 2026-07-03).* A
-   time-varying field that evolves per beat (the priority frontier; substrate exists in Track VI's
-   `warp.py` / `fields.py:from_flow`). Its concrete, dramatic form is **the aftermath frame** — the still
-   as the record of a motion, now with **derived physics**: the **Swing Solver** models the swing as a
-   rotation (real tip speed / contact velocity), motion real + consequences comic-amplified
-   (`proofs/session-7-aftermath/` + `session-8-swing/`). Productize the shards/burst via Track VI
-   (Mantaflow + rigid bodies), IK-animate the full swing, and stylize to ink.
-   → [[BLUELINE — Motion and Flow]] §Edge 2 + §the aftermath frame.
-8. **Figure & Pose — the multi-figure ladder.** Separated → contact → interlocked → crowd; Route A
-   3-guide stack / Route B regional conditioning ("the next big prize"). → [[Shop/Figure Rig]].
-9. **Board Record & Staging — Seam B + the staging-AI.** Exact blocking → exact keypoints; language →
-   staging spec. → [[BLUELINE — Production Pipeline]] §the two seams.
-10. **Render Backend — serverless graduation** for the Piece tier. → [[BLUELINE — Render Backend]].
-
-**Decisions for Loudon** (a call, not a build):
-11. **Visual Language Console · Phase 2** — the hybrid style atlas on RunPod (quote GPU first).
-
-**The gate:** full-song **production volume** begins once a board pair survives the motion test, the
-boards are leveled to uniform fidelity, and a muxed cut exists.
+The plan — what comes next, agreed with Loudon — lives on [[BLUELINE — scroll]], where it changes only with his yes.
 
 ## 6. Every proof folder, placed
 
@@ -186,7 +151,7 @@ backbone · comics skin · feature tissue · music-video clock) — *adopt the c
 
 ## 8. Doc map
 
-- **Front door / status / horizon** — *this doc*.
+- **Map / status / every proof** — *this doc*. **What's next** — the plan on [[BLUELINE — scroll]].
 - **Conceptual stage map** — [[BLUELINE — Production Pipeline]] (stages 0–7, the two seams).
 - **Contracts** — [[BLUELINE — Render Backend]] · [[BLUELINE — Board Record Schema]] · [[BLUELINE — toolbox]].
 - **Priority thread** — [[BLUELINE — Motion and Flow]].
