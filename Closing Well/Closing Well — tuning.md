@@ -128,3 +128,8 @@ twice early on; they are 12a/12b and 13a/13b, four different traps. Newest last.
 - run · 2026-09-25 · v1.2 · close-2026-09-25-recheck · taught item 33
 - run · 2026-09-25 · v1.3 · close-2026-09-25-arc-reader · nothing new
 - run · 2026-09-25 · v1.3 · close-2026-09-25-shopkeeper-fold-in · nothing new
+
+## From the infeasible-fold close — 2026-09-26
+
+34. **The resident's long answer, returned as a turn-ending result, gets truncated by the idle notification — SendMessage replies arrive whole.** Three times this close (the placement answer, Pass 1, and one more) a long resident answer landed as the turn's own result and lost its tail; every SendMessage reply in the same close arrived intact. Spec change owed: the resident delivers every pass via SendMessage, and keeps each short enough to arrive whole — in `dispatch.md` and the Concierge postures. Not paid this close (out of scope for a backstage placement); for the session that owns Closing Well, or the next Closing Well run.
+- run · 2026-09-26 · v1.3 · close-2026-09-26-infeasible-fold · taught item 34
