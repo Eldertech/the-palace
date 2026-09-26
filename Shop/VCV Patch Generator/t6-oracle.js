@@ -7,8 +7,8 @@
 //
 // Lives in this Specialist's bundle (relocated 2026-06-16 from the gitignored
 // _tools/; git is now its home). Reads `PDL Renderer.html` from the palace root,
-// two levels up from this bundle. The grading prompt is [[PDL Generation Prompt]];
-// sample runs are in ./t6-runs/.
+// two levels up from this bundle. The prompt it grades sits beside it, in
+// [[VCV Patch Generator — spec — PDL generation prompt]]; sample runs are in ./t6-runs/.
 //
 // Usage:  node "Shop/VCV Patch Generator/t6-oracle.js" <agent-output-file> [<label>]
 //         cat output.txt | node "Shop/VCV Patch Generator/t6-oracle.js"

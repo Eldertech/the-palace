@@ -52,3 +52,9 @@ What each deposit taught the ceremony. Each item names what the run showed and t
 ## From Loudon's redefinition — 2026-09-25
 
 14. **The deposit was written for one door and entered through several.** Its text addressed an archivist returning to an old conversation, while finds arrived mid-session, from harvests, from closes and from stewards, and at a session close the machinery reduced a deposit to its commit. Loudon: a deposit is any time something larger is added to canon; it must stay reflective, with a careful map and a reminder to consult an elder, whoever is asking — "a palace protection measure" that carries the palace's values and cares for the palace and for whoever brings the find. Forced: **v2.0** — one opening for any depositor, the three things the gate protects, care for Loudon, a child and a spent close, the values stated as they bear on a deposit, the Concierge before the map, and a completion signal that the bringer hears what became of its offer. Duplicated craft (template, link pass, filing) now points to where it lives.
+
+## From the PDL generation prompt fold — 2026-09-26
+
+15. **Canon held for Loudon's read sat best off the trunk.** Step 6 says write to the owner, but a fold that waits on a word-by-word read leaves uncommitted canon in a shared tree for the length of the read; this one waited in its own worktree and merged to main after his yes. The same run found the committer can't take a `git mv`'d old path as `--path` (git has already staged its removal, and `git add` on it fails), so a move is committed by naming only the new path. **Owed:** step 6 to say where canon waits during the read, and step 7 to say how a move is named to the committer.
+
+- run · 2026-09-26 · v2.1 · D-2026-09-26-PDLGP · taught item 15

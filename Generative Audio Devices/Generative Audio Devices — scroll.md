@@ -49,7 +49,7 @@ _Nothing decided on the board yet._
 <!-- scroll:plan:start -->
 **Paused** (Loudon, 2026-09-25). Nothing has moved since May, and he has set the project down for now; the moves below are the path to pick up when it wakes.
 
-**Where this is going.** A pipeline that turns a plain description of a sound into a loadable instrument for any modular or DSP environment: English in, a target-neutral patch language (PDL) in the middle, and one verified vocabulary per target on the way out. VCV Rack is the first target, and the whole chain has worked there since May 2026: [[PDL Generation Prompt]] writes two or three candidate patches, [[PDL Renderer]] emits a `.vcv` that loads, and fresh agents went nine for nine. Nothing has moved since then, and the next step is Loudon's ear.
+**Where this is going.** A pipeline that turns a plain description of a sound into a loadable instrument for any modular or DSP environment: English in, a target-neutral patch language (PDL) in the middle, and one verified vocabulary per target on the way out. VCV Rack is the first target, and the whole chain has worked there since May 2026: [[VCV Patch Generator — spec — PDL generation prompt|PDL Generation Prompt]] writes two or three candidate patches, [[PDL Renderer]] emits a `.vcv` that loads, and fresh agents went nine for nine. Nothing has moved since then, and the next step is Loudon's ear.
 
 **The moves ahead**
 

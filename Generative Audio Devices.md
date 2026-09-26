@@ -22,7 +22,7 @@ links:
   - target: "[[PDL Renderer]]"
     type: spawned
     label: "first-fruit"
-  - target: "[[PDL Generation Prompt]]"
+  - target: "[[VCV Patch Generator — spec — PDL generation prompt]]"
     type: spawned
     label: "left-to-right-half"
   - target: "[[Synth Archetypes]]"
@@ -55,7 +55,7 @@ The central bet: with a curated, source-verified component vocabulary as groundi
 
 ## Pick Up Here — state as of 2026-05-29
 
-**Stage 1 is closed end-to-end on VCV Rack.** Both halves of the pipeline exist and are verified: English description → [[PDL Generation Prompt]] → 2–3 candidate PDL → `emitVcvJson` (in `PDL Renderer.html`) → loadable, good-sounding `.vcv`. The full task chain (T1·T3·T4·T4b·T11·T12·T7a·T7b·T7c·T7d·T6) is all ✅. Two registry files are the reliability surface: `vcv_fundamental_registry.json` (v2.4, 10 modules) and `archetypes.json` (v0.2, 8 archetypes). Tests, all green: `verify_t7a_phase2.js` 21/21, `verify_t7b.js` 36/36, local harnesses in `_tools/` (real-emitter 12/12, layout 18/18, T6 oracle 9/9).
+**Stage 1 is closed end-to-end on VCV Rack.** Both halves of the pipeline exist and are verified: English description → [[VCV Patch Generator — spec — PDL generation prompt|PDL Generation Prompt]] → 2–3 candidate PDL → `emitVcvJson` (in `PDL Renderer.html`) → loadable, good-sounding `.vcv`. The full task chain (T1·T3·T4·T4b·T11·T12·T7a·T7b·T7c·T7d·T6) is all ✅. Two registry files are the reliability surface: `vcv_fundamental_registry.json` (v2.4, 10 modules) and `archetypes.json` (v0.2, 8 archetypes). Tests, all green: `verify_t7a_phase2.js` 21/21, `verify_t7b.js` 36/36, local harnesses in `_tools/` (real-emitter 12/12, layout 18/18, T6 oracle 9/9).
 
 The plan — what comes next, agreed with Loudon — lives on [[Generative Audio Devices — scroll]], where it changes only with his yes.
 
@@ -136,7 +136,7 @@ Deferred from T7c (named for the next builder): **polyphony** (`MIDI_CV` models 
 
 **T7d (2026-05-29):** Layout intelligence. `positions` block replaced by two-row placement from registry structure: row class from module shape (controller / audio / modulator), column from topological depth along registered cables. VCO→VCF→VCA→OUT falls out of the depth sort; ADSR/LFO/SEQ3 fall to row 1. No hardcoded module list. 18/18 layout harness; byte-deterministic. *Lesson: layout is a sibling to parameter intelligence — same knowledge-representation move: read the answer off registry structure so a new module lands in the right row for free.*
 
-**T6 (2026-05-29):** [[PDL Generation Prompt]] — the left-to-right half. Self-contained system prompt: teaches a fresh model the PDL grammar, registry vocabulary (exact module keys and port names, not slugs), 8 archetypes (required roles + recommended cables), and virtual endpoints. Asks for 2–3 structurally distinct candidates. Verified with three real fresh-context Claude subagents (zero session memory); every candidate ran through the real `emitVcvJson` as oracle. A candidate passes at 0 warnings + 0 skipped + only-registry-modules + archetype-applied + recommended-cables-present + reaches-OUT. Round 1 caught two prompt gaps (slug-as-key: `VCA-1`/`VCMixer`; mis-cased port `Out`). Round 2: **9/9 clean candidates across 3 descriptions**. Fixtures: `Shop/VCV Patch Generator/t6-runs/`. *Lesson: grounding makes fresh agents emit precise artifacts — but only once the prompt names the exact tokens; "obey the registry JSON" wasn't enough. The emitter-as-oracle test caught it; self-grading would have shipped the slug bug.*
+**T6 (2026-05-29):** [[VCV Patch Generator — spec — PDL generation prompt|PDL Generation Prompt]] — the left-to-right half. Self-contained system prompt: teaches a fresh model the PDL grammar, registry vocabulary (exact module keys and port names, not slugs), 8 archetypes (required roles + recommended cables), and virtual endpoints. Asks for 2–3 structurally distinct candidates. Verified with three real fresh-context Claude subagents (zero session memory); every candidate ran through the real `emitVcvJson` as oracle. A candidate passes at 0 warnings + 0 skipped + only-registry-modules + archetype-applied + recommended-cables-present + reaches-OUT. Round 1 caught two prompt gaps (slug-as-key: `VCA-1`/`VCMixer`; mis-cased port `Out`). Round 2: **9/9 clean candidates across 3 descriptions**. Fixtures: `Shop/VCV Patch Generator/t6-runs/`. *Lesson: grounding makes fresh agents emit precise artifacts — but only once the prompt names the exact tokens; "obey the registry JSON" wasn't enough. The emitter-as-oracle test caught it; self-grading would have shipped the slug bug.*
 
 ### What still does NOT exist
 - **T8** — perceptual-index wiring in the renderer UI

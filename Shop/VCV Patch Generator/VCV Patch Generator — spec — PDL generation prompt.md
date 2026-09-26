@@ -1,29 +1,23 @@
 ---
-title: PDL Generation Prompt
-type: concept
-pillars:
-  - tools
-  - creation
+title: VCV Patch Generator — spec — PDL generation prompt
 born: 2026-05-29
-stage: sprout
-status: active
 links:
+  - target: "[[VCV Patch Generator]]"
+    type: connects-to
+    label: "prompt-of"
   - target: "[[Generative Audio Devices]]"
-    type: member-of
-    label: "left-to-right-half"
+    type: connects-to
+    label: "t6-left-to-right-half"
   - target: "[[Synth Archetypes]]"
     type: connects-to
     label: "selects-from"
   - target: "[[Registry Pattern]]"
     type: exemplifies
     label: "grounding-as-prompt"
-  - target: "[[VCV Patch Generator]]"
-    type: enables
-    label: "feeds-pdl-to"
-forward_vector: "I am the left-to-right half of the pipeline: I turn a natural-language sound description into valid PDL by SELECTING an archetype and laying down the topology that archetype needs — not by improvising synth design from scratch. T7b/c/d shrank my job from 'invent an architecture' to 'choose and wire.' My next growth is multi-candidate divergence (genuinely distinct topologies per description) and, once T10 lands, staying target-agnostic so the same selection produces matched results across registries."
+forward_vector: "I am the left-to-right half of the pipeline: I turn a natural-language sound description into valid PDL by SELECTING an archetype and laying down the topology that archetype needs — not by improvising synth design from scratch. T7b/c/d shrank my job from 'invent an architecture' to 'choose and wire.' My next growth is multi-candidate divergence (genuinely distinct topologies per description) and, once T10 lands, staying target-agnostic so the same selection produces matched results across registries. For now I name VCV's ten module keys and exact ports, so I live beside the emitter and the oracle that grade me; the part of me that isn't VCV's — the grammar and the choosing — is what leaves when PDL gets a page of its own."
 ---
 
-# PDL Generation Prompt
+# VCV Patch Generator — spec — PDL generation prompt
 
 The generation-side artifact for [[Generative Audio Devices]] — the **T6** half of the pipeline. It takes a natural-language description ("a punchy 808 kick", "a slowly evolving warm pad") and produces valid [[PDL]] that parses clean in `PDL Renderer.html` and emits a loadable, good-sounding `.vcv`.
 
