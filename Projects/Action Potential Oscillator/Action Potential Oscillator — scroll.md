@@ -15,14 +15,15 @@ forward_vector: "I am Action Potential Oscillator's scroll — the one page that
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:55:14-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** growing · **Steward:** cycle 5 · last ran 2026-06-25 (90 days ago)
+- **Status:** active · **Stage:** growing · **Steward:** cycle 5 · last ran 2026-06-25 (93 days ago)
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-06-23 (92 days ago) — You have one population audition. Where should I take the next cycle — Faust port, deeper Python, or H90/RNBO? (`apo-steward-009`)
-- **Last commit touching this project:** 2026-09-22 `110d392` — deposit(D-2026-09-06-HARVEST): Environments That Hold lands: Creative Coach, Objects to Think With
-- **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
+- **Last shipped:** 2026-06-23 (95 days ago) — You have one population audition. Where should I take the next cycle — Faust port, deeper Python, or H90/RNBO? (`apo-steward-009`)
+- **Last commit touching this project:** 2026-09-24 `f6f99b07` — Weave — 2026-09-24 — part 1: the mechanical write-back (signed)
+- **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
@@ -43,6 +44,17 @@ _None._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** An instrument where a neuron's biology is the synthesis, every knob traced to a real mechanism. The single neuron is behind it: four playable Gen~ oscillators, from a capacitor's sawtooth to a full spike with its refractory growl, built in March 2026 and specified in [[neural_oscillator_dev_plan|the Gen~ development plan]]. What lies ahead is the crowd, many slightly different neurons coupled so that the coupling itself becomes timbre. A Python render of 32 coupled neurons (June 2026) let the project hear that for the first time; the Faust engine meant to carry it is drafted but does not compile yet.
+
+**The moves ahead**
+
+1. **Get the Faust crowd to compile and sound.** Make `neuropulse.dsp` compile on the Mac, render a slow sweep of the coupling from none to full, and set it beside the Python render to hear whether the two agree. This is the step Loudon chose on 2026-06-25; `neuropulse-mac-compile-handoff.md` in the bundle lists what to check first.
+2. **Put it on hardware.** Carry the instrument through RNBO to the Eventide H90, so it can be played away from a computer. Which one travels first, the single neuron or the crowd, is still Loudon's call: the forward vector he confirmed on 2026-06-03 names the single neuron, and the crowd became the work after it.
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
@@ -52,6 +64,13 @@ _Loudon's standing direction for this project. The steward reads this zone every
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-55-14-04-00" -->
+### 2026-09-25 — Plan agreed: drawn from the board's grants
+
+Loudon asked for a plan on 2026-09-25. Neither the entry's Four Stages (the built instrument's design) nor the Gen~ development plan (its build spec) held moves still ahead; the moves come from his grants on the board — Faust for the crowd (apo-steward-002), compile first (apo-steward-004), compile, render and compare against the Python render (apo-steward-009, 2026-06-25) — and the forward vector he confirmed on 2026-06-03, which names the H90 via RNBO. The Faust engine does not compile yet (stack overflow in eval, checked 2026-09-25).
+<sub>`plan-2026-09-25T20-55-14-04-00` · plan agreed · agreed 2026-09-25T20:55:14-04:00 · written by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="apo-steward-009" -->
 ### 2026-06-23 — cycle 4 — You have one population audition. Where should I take the next cycle — Faust port, deeper Python, or H90/RNBO?
 > still working · audition shipped · steward leans FAUST-FIRST (closes the open Mac-compile handoff)

@@ -22,7 +22,7 @@ Synthesised from Loudon's personal knowledge base **"The Palace"** (mounted via 
 |---|---|
 | `Loudon Live.md` | Channel charter, editorial posture, audience |
 | `Loudon Live/Loudon Live — launch kit.md` | Channel copy, OBS scene specs, asset list |
-| `Loudon Live/Loudon Live — asset plan.md` | The variant system — 6 palettes × 6 generators × seed |
+| `Loudon Live/Archive/Loudon Live — asset plan.md` | The variant system — 6 palettes × 6 generators × seed (archived 2026-09-25; this system built it) |
 | `Artifacts/Loudon Live/toolchain/render_starting_soon.py` | Reference palette + generator code |
 | `Projects/Shepard Tone Synthesizer/session-1-interactive.html` | Canonical session-artifact reference |
 | `Hyperdimensional Prism.md` | The Lissajous-in-sphere visual-identity essay |

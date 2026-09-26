@@ -60,7 +60,7 @@ _Nothing decided on the board yet._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-Decided with Loudon between June and July 2026 and carried over from the locked scope in [[BLUELINE — Production Plan]]; not to be reopened without a reason:
+Decided with Loudon between June and July 2026, carried over from the locked scope in [[BLUELINE — Production Plan]], and confirmed by him as orders on 2026-09-25; not to be reopened without a reason:
 
 - **Fixed tempo.** Sync is exact arithmetic, with beats falling on whole frames, never elastic alignment.
 - **Staged, not simulated.** Comic motion is camera, effects and pose, never simulated contact between figures. Relaxed on 2026-07-03: blending held poses along the flow is in scope as a bounded experiment.

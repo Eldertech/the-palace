@@ -15,14 +15,14 @@ forward_vector: "I am Generative Audio Devices's scroll — the one page that al
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-25T20:41:02-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:56:04-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
 - **Status:** active · **Stage:** sprout · **Steward:** cycle 0 · last ran —
 - **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** nothing on the board yet
-- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Last commit touching this project:** 2026-09-25 `65af5aba` — edit(plans): the generative family's plans move into their scrolls
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
@@ -47,6 +47,8 @@ _Nothing decided on the board yet._
 ## Plan
 
 <!-- scroll:plan:start -->
+**Paused** (Loudon, 2026-09-25). Nothing has moved since May, and he has set the project down for now; the moves below are the path to pick up when it wakes.
+
 **Where this is going.** A pipeline that turns a plain description of a sound into a loadable instrument for any modular or DSP environment: English in, a target-neutral patch language (PDL) in the middle, and one verified vocabulary per target on the way out. VCV Rack is the first target, and the whole chain has worked there since May 2026: [[PDL Generation Prompt]] writes two or three candidate patches, [[PDL Renderer]] emits a `.vcv` that loads, and fresh agents went nine for nine. Nothing has moved since then, and the next step is Loudon's ear.
 
 **The moves ahead**
@@ -68,11 +70,11 @@ _Loudon's standing direction for this project. The steward reads this zone every
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="plan-2026-09-25T20-41-02-04-00" -->
-### 2026-09-25 — Plan agreed: carried over from the entry's roadmap and pick-up note
+<!-- scroll:entry id="plan-2026-09-25T20-56-04-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the Roadmap, and paused
 
-Carried over on 2026-09-25 from the Roadmap and the forward half of 'Pick Up Here' in [[Generative Audio Devices]], when plans moved into scrolls (SCHEMA v1.25). The order is the pick-up note's (the Rack audition, then the second target); the roadmap's two smaller moves follow as side moves, and the two deferred gaps are named at the end. Task ids (T8, T9, T10) were replaced by names. Nothing on the plan was done since 2026-05-29, so no move was dropped.
-<sub>`plan-2026-09-25T20-41-02-04-00` · plan agreed · agreed 2026-09-25T20:41:02-04:00 · carried over by an elder on Loudon's word</sub>
+Carried over on 2026-09-25 from the entry's Roadmap and the forward half of Pick Up Here, when Loudon asked that every plan fold into its scroll (SCHEMA v1.25). Order from Pick Up Here: hear it in Rack, then prove it on a second target; the search box and the PDL page are side moves with no fixed place; the two deferred gaps (polyphony, the parameter recount) are named at the end. Nothing has moved since 2026-05-29 (f1ff24c2), and the same day Loudon called the project paused: the entry's stage is now dormant, and the plan is the path to pick up when it wakes.
+<sub>`plan-2026-09-25T20-56-04-04-00` · plan agreed · agreed 2026-09-25T20:56:04-04:00 · carried over by an elder on Loudon's word</sub>
 <!-- /scroll:entry -->
 
 _Nothing made yet — the first shipped thing will open the trail._

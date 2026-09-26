@@ -6,7 +6,7 @@ pillars:
   - tools
   - practice
 born: 2026-04
-stage: sprout
+stage: dormant
 status: active
 links:
   - target: "[[FOUR PILLARS]]"

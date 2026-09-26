@@ -66,7 +66,10 @@ _None._
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Loudon's direction from the board, approved as orders on 2026-09-25:
+
+- **Run in parallel with the [[2D Torus Wavetable Synthesizer]]**, with no shared boundary: this project's tables are its own artifacts, not an export layer for the Torus work (his `proceed_parallel` grant, 2026-05-27).
+- **Make every file easy to open in Serum and Ableton, and say exactly what to test and what to listen for** (his note of 2026-06-23).
 <!-- scroll:orders:end -->
 
 ## The making

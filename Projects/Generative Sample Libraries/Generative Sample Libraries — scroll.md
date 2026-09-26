@@ -67,6 +67,8 @@ _None._
 
 <!-- scroll:orders:start -->
 Never start a render you can't finish and post inside one cycle. Chunk long sweeps (the 300-take range sweep is a 40-minute job): run one chunk, post what it showed, say what's left. A cycle that ends waiting on a background job ships nothing and is counted barren.
+
+- **Stable Audio is out as a source.** Loudon, 2026-09-24, after hearing the head-to-head: "Stable audio is horrible." (approved as an order 2026-09-25)
 <!-- scroll:orders:end -->
 
 ## The making

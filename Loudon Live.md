@@ -83,7 +83,7 @@ The channel is a membrane between the palace's project work and the world. Proje
 
 Each stream picks one project and pushes it forward. Some streams are deep dives into the foundations of sound. Some are hands-on builds. Some are music-technique sessions. Some are detours into theory or debugging. No outcome promises per stream — the working is the deliverable.
 
-The operational kit — channel copy, stream-card templates, asset variant system — lives in this entry's bundle as launch kit and asset plan. Stream-pack rendering follows the variant system spec there.
+The operational kit — channel copy and stream-card templates — lives in this entry's bundle as the launch kit. The asset variant system (palettes, generators, stream cards, overlays) lives in the [[Loudon Live Design System]], `_ops/loudon-live/design-system/`, and stream-pack rendering follows it.
 
 ## The form: a session is the unit
 

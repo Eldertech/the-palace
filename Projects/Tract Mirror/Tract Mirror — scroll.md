@@ -15,12 +15,13 @@ forward_vector: "I am Tract Mirror's scroll — the one page that always opens o
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:55:14-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** seed · **Steward:** none — this project has no permanent steward yet
+- **Status:** active · **Stage:** growing · **Steward:** none — this project has no permanent steward yet
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Last shipped:** nothing on the board yet — but the bundle holds 40 media files (see the making trail)
-- **Last commit touching this project:** 2026-09-03 `1b67a68` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
+- **Last commit touching this project:** 2026-09-24 `b2e51e89` — Weave — 2026-09-24 — 49 links, 9 contradictions, 12 let go, 17 stages, 1 hub, 25 citizens linked
 
 ### Where this stands
 
@@ -36,15 +37,37 @@ _Nothing decided on the board yet._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** The palace's first native plugin: a monophonic voice synthesizer inside Ableton whose 3D drawing of the vocal tract's tubes is the filter itself, not a picture of it. The whole first build is behind it: the Python reference, the C++ engine, the WebView interface, validation, a verified load in Live 12 on 2026-06-10, then MIDI performance controls, loudness matching across vowels, and Word mode, all recorded in [[Tract Mirror — build plan — JUCE VST]]. What it wants next is to learn to speak by listening.
+
+**The moves ahead**
+
+1. **Play the last two additions in Live.** The MIDI controls (velocity, and two CCs on the vowel pad) and Word mode passed their offline checks but have not been played inside Ableton. The build plan notes the MIDI check waits on Loudon at the machine.
+2. **Learn to speak by listening.** A record-and-analyze engine: sing into it and it replays your own tract shapes. The entry names it as the next version; it has no design yet.
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Decided by Loudon on 2026-06-09, carried over from the build plan's locked decisions (approved as orders 2026-09-25):
+
+- **JUCE 8 with a WebView interface**, three.js drawing the 3D tract.
+- **Ableton Live 12 is the target DAW**: VST3 and AU, macOS arm64.
+- **The first voice source is built-in vowel morph tables** (a, e, i, o, u, schwa) on an XY pad; the analysis engine waits for the next version.
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-55-14-04-00" -->
+### 2026-09-25 — Plan agreed: the first build is done; what's next
+
+Loudon asked for a plan on 2026-09-25. The JUCE build plan is finished — every phase checked, loaded in Live 12 on 2026-06-10 (c640ec24) — and now serves as the build log, so it stays as it is. The plan takes what the build log leaves open (the MIDI controls and Word mode, never played in Live) and the next version the entry names (the record-and-analyze engine). The build's locked decisions of 2026-06-09 became Standing Orders.
+<sub>`plan-2026-09-25T20-55-14-04-00` · plan agreed · agreed 2026-09-25T20:55:14-04:00 · written by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="backfill-2026-09-23" -->
 ### 2026-09-23 — backfilled from the bundle
 
