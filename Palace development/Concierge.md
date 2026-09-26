@@ -229,8 +229,8 @@ lifecycle, the moderator role at close); each address hands it the relevant **po
 (`prompts/gatherer.md`, `oracle-qa.md`, `scout.md`, `curator.md`); `README.md` holds the dispatch detail.
 The harness-discoverable trigger is a **thin shim** at `.claude/skills/concierge/SKILL.md` that
 points back here — the [[Skills Are Enchantable Pages]] pattern: the page is the organ, the skill
-file is one dispatch surface onto it. The CLAUDE.md floor block recognizes the companion; the
-roadmap is [[The Palace Speaks — production plan]].
+file is one dispatch surface onto it. The CLAUDE.md floor block recognizes the companion. The
+roadmap that built it, [[The Palace Speaks — production plan]], shipped and was retired on 2026-09-25.
 
 **First full resident run — 2026-07-06.** Booted once and addressed five times across a
 session that touched three content folds ([[Agent Wellbeing]], [[Closing Well]], its own
