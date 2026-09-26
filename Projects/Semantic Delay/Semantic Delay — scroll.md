@@ -15,14 +15,15 @@ forward_vector: "I am Semantic Delay's scroll — the one page that always opens
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:45:25-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** growing · **Steward:** cycle 7 · last ran 2026-06-25 (90 days ago)
+- **Status:** active · **Stage:** growing · **Steward:** cycle 7 · last ran 2026-06-25 (93 days ago)
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-06-23 (91 days ago) — Stage 3 multi-voice-taps wired and proven against the stub — three spirit converts, three scheduled taps, one rendered WAV. (`semantic-delay-steward-011`)
-- **Last commit touching this project:** 2026-09-22 `d812056` — ops(Semantic Delay): flush working proofs, renders + code
-- **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
+- **Last shipped:** 2026-06-23 (94 days ago) — Stage 3 multi-voice-taps wired and proven against the stub — three spirit converts, three scheduled taps, one rendered WAV. (`semantic-delay-steward-011`)
+- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
@@ -43,15 +44,46 @@ _None._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** A delay that swaps the voice on each echo instead of repeating it: a phrase-delay return effect in a DAW, voiced by a singing-voice-conversion model (SoulX-Singer-SVC) that runs in its own helper process beside a thin plugin. The spirits that change what the words mean come back once the plugin works. Behind it: the model runs on the M1 Max at about 1.65 seconds of compute per second of audio, so an echo needs 8 seconds or more, and Loudon passed its sound in May. The helper's contract, a playable Python instrument and the multi-voice echoes were then built ahead of the real model, against a placeholder that hands audio back unchanged. So no echo has changed voice yet; that is still owed from the first move.
+
+**The moves ahead**
+
+1. **Put the real model behind the helper.** Replace the placeholder with SoulX-Singer-SVC and its pitch tracker, carrying the three Apple-Silicon patches from April, so the echoes actually change voice. It needs a session on Loudon's Mac, which he chose on 2026-06-06; the steps are in `daemon/Stage 1.5 — Wire the Model — Mac handoff — 2026-06-08.md`.
+2. **Let each echo follow the melody, or wander.** Feed the phrase's own pitch contour to every voice's conversion, with one coupling knob: fully coupled, the echo sings the original melody; relaxed, it drifts onto a scale. Loudon chose this on 2026-06-25. The code is started but not yet wired into the instrument or heard.
+3. **Build the first plugin.** A JUCE VST3 whose audio thread only cuts phrases and plays back what is ready, while another thread talks to the helper. Delay time, feedback, dry/wet, and which voice. It reports zero latency, because the delay is the effect.
+4. **Lock the echoes to the song's tempo.** Read the host's tempo and playhead so echo times land on dub's values: dotted eighth, quarter, half bar, bar.
+5. **Package it.** Ship with the helper installed separately first; bundle a Python runtime only if it becomes a product.
+6. **Bring the words back.** Transcribe the phrase, let a spirit's prompt rewrite it, and re-sing the new words on the original melody with SoulX-Singer's synthesis mode. Spirits that keep the words stay on voice conversion. This opens the second phase.
+
+How each move is built, with the stage numbers the code still uses: [[Semantic Delay — spec — Phase 1 build]].
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
-_Loudon's standing direction for this project. The steward reads this zone every cycle before anything else, and it is never regenerated. Taste, priorities, "stop asking me about X", "always prefer Y" — write it once here instead of answering it every cycle._
+Decided with Loudon when the Phase 1 build was planned (2026-04-20), carried over from the entry's Phase 1 Plan section:
+
+- **Phase 1 leads with voice conversion**: audio in, audio out, no lyrics, no MIDI, no transcription. The LLM and SoulX-Singer's synthesis mode come back only in Phase 2.
+- **Always two processes**: a thin plugin that does only fast local work, and a Python helper that holds the model. No GPU inference in the audio thread, ever.
+- **It is a phrase-delay return effect.** The latency is musical, seconds not milliseconds; zero-latency monitoring is off the table, and the plugin reports zero latency to the DAW.
+- **The helper's RPC is the stable contract**, versioned from v0.1. Plugin work and Python work never drift from it.
+- **All resampling happens in the helper**; the plugin always sees the host's sample rate.
+- **Reference-singer recordings are first-class**: the helper takes them on the fly, caches their pitch, and lists them to the plugin. That list is where the spirits get their voices.
 <!-- scroll:orders:end -->
 
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-45-25-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the entry's Phase 1 build plan
+
+Carried over on 2026-09-25 from the entry's Phase 1 Plan section (its staged build and its immediate next action), when plans moved into scrolls (SCHEMA v1.25). The first stage's smoke test was done and dropped. The standalone instrument and multi-voice echoes were built ahead of the real model, so the opening says so and they are not listed as moves. The immediate next action (listen, then build the helper) was stale: Loudon passed the sound on 2026-05-27. Stage numbers were replaced by names; each stage's build detail, with its old number, moved to [[Semantic Delay — spec — Phase 1 build]]. The rationale, the first stage's findings and the references stay in the entry.
+<sub>`plan-2026-09-25T20-45-25-04-00` · plan agreed · agreed 2026-09-25T20:45:25-04:00 · carried over by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="semantic-delay-steward-011" -->
 ### 2026-06-23 — cycle 6 — Stage 3 multi-voice-taps wired and proven against the stub — three spirit converts, three scheduled taps, one rendered WAV.
 > shipped · wiring proof against stub · timbre comes alive Mac-side at Stage 1.5
