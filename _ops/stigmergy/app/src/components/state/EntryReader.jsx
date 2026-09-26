@@ -12,7 +12,8 @@ import { fetchProjects } from '../../adapters/projects.js';
 import { rowSignal } from '../../lib/scroll-view.js';
 import FaceSwitch from '../FaceSwitch.jsx';
 import { orderFaces, nextFace, richHref } from '../../lib/faces.js';
-import { fileUrl, IS_PUBLIC } from '../../lib/public-mode.js';
+import { fileUrl, IS_PUBLIC, BASE, getSiteMeta } from '../../lib/public-mode.js';
+import NoCarrier from '../public/NoCarrier.jsx';
 
 // One entry's full read shape, rendered:
 //   - FrontmatterHeader (title, type, stage, pillars, forward_vector,
@@ -153,6 +154,10 @@ export default function EntryReader({
     );
   }
 
+  if (state.kind === 'err' && IS_PUBLIC) {
+    return <NoCarrier dialed={path} home={BASE} repo={getSiteMeta()?.repo ?? null} />;
+  }
+
   if (state.kind === 'err') {
     return (
       <div data-testid="entry-error" style={{
@@ -240,8 +245,10 @@ export default function EntryReader({
         />
       ) : null}
       <div style={{ position: 'relative', zIndex: 1 }}>
-      <div style={{ marginBottom: 8, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div style={{ marginBottom: 8, display: 'flex', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
+      {/* A basis wide enough for the buttons, so on a narrow screen the face
+          switch drops to its own line instead of riding over the path. */}
+      <div style={{ flex: '1 1 280px', minWidth: 0 }}>
         {onGoBack ? (
           <span
             data-testid="go-back"
@@ -372,6 +379,7 @@ export default function EntryReader({
         ) : null}
         <span style={{
           marginLeft: 12, color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
+          overflowWrap: 'anywhere',
         }}>{entry.path}</span>
         {entry.error ? (
           <span style={{
@@ -391,7 +399,7 @@ export default function EntryReader({
         summary={entry.summary ?? {}}
       />
 
-      <div style={{
+      <div className="reader-grid" style={{
         display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 360px',
         gap: 24, alignItems: 'flex-start',
       }}>

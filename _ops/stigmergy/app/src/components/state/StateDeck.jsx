@@ -112,6 +112,9 @@ export default function StateDeck({ jumpTarget = null, onEntryPathChange, reload
           {lens === 'topology' ? (
             <TopologyLens
               onSelect={nav.openEntry}
+              // The read view opens on the Four Pillars — the palace's own
+              // organization, and its most legible picture for a first visit.
+              defaultDim={IS_PUBLIC ? 'pillar' : undefined}
               entries={state.kind === 'ok' ? state.entries : []}
             />
           ) : lens === 'tree' ? (

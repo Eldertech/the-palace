@@ -17,6 +17,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { DECKS, DECK_ALIASES } from './decks.js';
+import { IS_PUBLIC } from './public-mode.js';
 
 // Parse `?commit=<sha>` from the URL. Returns the sha or null. SSR-safe.
 export function parseCommitFromUrl(searchString) {
@@ -180,16 +181,18 @@ export function useEntryNavigation() {
   };
 }
 
-// The STATE lenses. Pulse is the implicit default (omitted from the URL);
-// topology and tree are named. Unknown values fall back to pulse.
+// The STATE lenses. The default is implicit (omitted from the URL): PULSE in
+// STIGMERGY, TOPOLOGY in the public read view, whose visitors land on the
+// graph. Unknown values fall back to the default.
 export const LENSES = new Set(['pulse', 'topology', 'tree']);
+export const DEFAULT_LENS = IS_PUBLIC ? 'topology' : 'pulse';
 
 // Parse `?lens=topology` / `?lens=tree` from the URL. Returns a known lens id
 // or 'pulse' (the default). SSR-safe.
 export function parseLensFromUrl(searchString) {
-  if (typeof searchString !== 'string') return 'pulse';
+  if (typeof searchString !== 'string') return DEFAULT_LENS;
   const v = new URLSearchParams(searchString).get('lens');
-  return LENSES.has(v) ? v : 'pulse';
+  return LENSES.has(v) ? v : DEFAULT_LENS;
 }
 
 // Build a new search string preserving all params except `lens`. Pulse is
@@ -197,7 +200,7 @@ export function parseLensFromUrl(searchString) {
 export function buildLensSearch(searchString, lens) {
   const params = new URLSearchParams(searchString || '');
   params.delete('lens');
-  if (lens && lens !== 'pulse' && LENSES.has(lens)) params.set('lens', lens);
+  if (lens && lens !== DEFAULT_LENS && LENSES.has(lens)) params.set('lens', lens);
   const s = params.toString();
   return s === '' ? '' : `?${s}`;
 }
@@ -227,7 +230,7 @@ export function buildTreeTargetSearch(searchString, path) {
 // a lens switch when a sibling slice moved.
 export function useLensNavigation() {
   const initial = typeof window === 'undefined'
-    ? 'pulse'
+    ? DEFAULT_LENS
     : parseLensFromUrl(window.location.search);
   const [lens, setLensState] = useState(initial);
 
@@ -241,7 +244,7 @@ export function useLensNavigation() {
   }, []);
 
   const setLens = useCallback((next) => {
-    const lensId = LENSES.has(next) ? next : 'pulse';
+    const lensId = LENSES.has(next) ? next : DEFAULT_LENS;
     if (typeof window !== 'undefined') {
       const nextSearch = buildLensSearch(window.location.search, lensId);
       const currentSearch = window.location.search || '';
