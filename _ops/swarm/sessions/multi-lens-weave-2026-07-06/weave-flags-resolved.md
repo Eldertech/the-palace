@@ -28,7 +28,7 @@ deferred flags are deliberately left open.
 
 **The Palace Speaks / Skills 2026-07-04 (5):** →Agent Wellbeing (second register) · →Palace as Context Injection (contradicts) · →Closing Well (agency_profile) · →Pages as Agents / Skills (directed, no reverse) · →Concierge (rewind fold).
 
-**Swarm Weave 2026-07-05 (1):** doc-drift (done by 9910360).
+**Swarm Weave 2026-07-05 (1):** doc-drift (done by 37019a4).
 
 ## Left OPEN (11) — deliberately not resolved
 

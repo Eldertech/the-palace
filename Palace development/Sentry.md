@@ -74,7 +74,7 @@ Commands, severities and the two engines (the Sentry's own rules, and gitleaks b
 Everything tracked here is public — scroll, ledger, board, batons, commit messages. A record that names an open finding points a stranger straight at it. So:
 
 - **Open findings live in `_ops/sentry/held/`** in the owner checkout — masked, with paths, ignored by their own folder. They are raised to Loudon in the session and never written into a tracked file.
-- **A run's line names its scope and a bare count** — *deep sweep of c5240fac, 3 raised, held locally* — never a class of finding, never a place.
+- **A run's line names its scope and a bare count** — *deep sweep of 5eac9572, 3 raised, held locally* — never a class of finding, never a place.
 - **`allow.json` holds reviewed exceptions as hashes with a reason**, never a value or a path.
 - **A finding in public history is closed** only when the history is rewritten, force-pushed, and GitHub's cached copies are purged. After that the ledger may say what it was — without the old commit or the path.
 

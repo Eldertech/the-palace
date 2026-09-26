@@ -21,7 +21,7 @@ forward_vector: "I am Quantum Synthesizer's scroll — the one page that always 
 - **Waiting on you:** 2 open asks
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-09-23 (today) — The entry says piano partials go sharp because the string turns nonlinear. They don't. Apply my drafted fix? (`quantum-synth-008`)
-- **Last commit touching this project:** 2026-09-23 `bbab2d7` — steward(Quantum Synthesizer, Waveguide Synthesizer): pilot cycles 5 and 8 under the run contract
+- **Last commit touching this project:** 2026-09-23 `239cb8c` — steward(Quantum Synthesizer, Waveguide Synthesizer): pilot cycles 5 and 8 under the run contract
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

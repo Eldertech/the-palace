@@ -278,7 +278,7 @@ return, takes the wheel at the close.**
 [[Concierge — baton]] — re-batoned 2026-08-25 from the partial close of the work-choice handoff
 (`concierge-remainder-20260825T225852Z`). **Three of the four moves have landed:** the health dial
 (`dial.mjs`, 2026-07-08), the fold of the companion character + moderator into [[Closing Well]]
-(`bc3731e`), and the **work-choice vector** — the scout posture + `return-map.mjs` (`30c3b8a`). What
+(`02e949a`), and the **work-choice vector** — the scout posture + `return-map.mjs` (`fc0b980`). What
 remains is the one thing building cannot finish: **live validation.** The V3 "companion takes the
 wheel" close has exactly one real data point, and the scout has never chosen work in a real return.
 Both are tuned by use, not by more machinery — the right session to catch this baton is one that was

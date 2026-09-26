@@ -16,7 +16,7 @@ What each walk taught the ceremony, and the lessons that reached it from elsewhe
 
 ## From the defect audit — 2026-09-04
 
-1. **The postcondition demanded a surprise**, so a walk that found nothing had not completed and would name something anyway — the same species as manufactured canon. Forced: postcondition 2, "a walk that surfaced nothing is complete" (`02d7d3b6`).
+1. **The postcondition demanded a surprise**, so a walk that found nothing had not completed and would name something anyway — the same species as manufactured canon. Forced: postcondition 2, "a walk that surfaced nothing is complete" (`dbdc022e`).
 
 ## From the versioning read — 2026-09-25
 

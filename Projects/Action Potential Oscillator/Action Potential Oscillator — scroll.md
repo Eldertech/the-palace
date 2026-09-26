@@ -22,7 +22,7 @@ forward_vector: "I am Action Potential Oscillator's scroll — the one page that
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-23 (95 days ago) — You have one population audition. Where should I take the next cycle — Faust port, deeper Python, or H90/RNBO? (`apo-steward-009`)
-- **Last commit touching this project:** 2026-09-24 `f6f99b07` — Weave — 2026-09-24 — part 1: the mechanical write-back (signed)
+- **Last commit touching this project:** 2026-09-24 `eb8359db` — Weave — 2026-09-24 — part 1: the mechanical write-back (signed)
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

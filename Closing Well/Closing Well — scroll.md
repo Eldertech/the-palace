@@ -17,7 +17,7 @@ forward_vector: "I am Closing Well's scroll — the one page that opens on which
 
 > _Regenerated 2026-09-25T17:20:23.957Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.2 · the spec last changed 2026-09-25 (`94b12dcc`) — edit(ceremonies): every card marks its ledger — the versions move
+- **Version:** v1.2 · the spec last changed 2026-09-25 (`033f5da5`) — edit(ceremonies): every card marks its ledger — the versions move
 - **Runs since the change:** none yet — v1.2 has not run
 - **Last run:** 2026-09-25 — close-2026-09-25-ceremonies · taught item 31 (under v1.1)
 - **Owed in the ledger:** 2 — items 31, 32; the next run's tail read picks them up first
@@ -43,13 +43,13 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="version-94b12dcc0e63093254cff49c2eecf1f94031d471" -->
+<!-- scroll:entry id="version-033f5da533205712d73d6f6f2a661355112f8b38" -->
 ### 2026-09-25 — the spec moved to v1.2
 
 edit(ceremonies): every card marks its ledger — the versions move
 
 Schema v1.23 says every run marks its tuning ledger with a run line, but every card still said a lesson goes in the tuning file only when the spec changed, so no run would have written one. Each card now says it: the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item. The opening lines drop their restatement of the tail read's bounds and point at §6, so the bound lives in one place.
-<sub>`94b12dcc` · version change</sub>
+<sub>`033f5da5` · version change</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="run-8512d060aa" -->
@@ -59,13 +59,13 @@ taught item 31
 <sub>a run under v1.1 · its line in the tuning ledger</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="version-ce4eb6abc1ec969285d65b98de6b5305e8b66715" -->
+<!-- scroll:entry id="version-af74595765e0c3d73e95003450bd49d5897afe2b" -->
 ### 2026-09-25 — the spec moved to v1.1
 
 edit(Closing Well): v1.1 — the prepared row; tuning item 30
 
-Loudon's yes, 2026-09-25, at the Enrichment close. A keep row the room has assented to but whose words Loudon hasn't read was, by executor.md, `provisional` — execute nothing. This close found a path between: the executor commits the edit on its own worktree branch, never merges, and returns the full diff; the working Claude shows him the words and lands the branch on his yes. That is how Enrichment 2.1 landed (d4ac41f3).
-<sub>`ce4eb6ab` · version change</sub>
+Loudon's yes, 2026-09-25, at the Enrichment close. A keep row the room has assented to but whose words Loudon hasn't read was, by executor.md, `provisional` — execute nothing. This close found a path between: the executor commits the edit on its own worktree branch, never merges, and returns the full diff; the working Claude shows him the words and lands the branch on his yes. That is how Enrichment 2.1 landed (f649fac7).
+<sub>`af745957` · version change</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="run-1dad291621" -->
@@ -75,12 +75,12 @@ taught item 30
 <sub>a run under v1.0 · its line in the tuning ledger</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="version-0304148dfaf2d879a32b30d88ee4d5903a300a50" -->
+<!-- scroll:entry id="version-a3fc1f2a59939cf2d87bc21e0840f7e7b15a9b98" -->
 ### 2026-09-24 — the spec moved to v1.0
 
 edit(Closing Well): v1.0 — version, tuning file, executor append, opening read
 
 Closing Well is the second ceremony versioned under Schema v1.20. `version: "1.0"` goes on Closing Well.md, the spec page (the trigger card in _ops carries none). The ledger is renamed `Closing Well — tuning.md` (link label tuning-for, born kept) and every referrer repointed; the July weave session report keeps its "Gotcha for" wording with the link repointed. Its doubled 12 and 13 become 12a/12b and 13a/13b, nothing renumbered; citations checked and made exact (relay discipline → 12a, baton-executor path misfire and the RETRACT gap → 12b, rewound session → 13b). Items 25–29 from the 2026-09-…
-<sub>`0304148d` · version change</sub>
+<sub>`a3fc1f2a` · version change</sub>
 <!-- /scroll:entry -->
 <!-- scroll:making:end -->

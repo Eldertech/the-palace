@@ -21,7 +21,7 @@ forward_vector: "I am Inharmonic Wavetable Synthesis's scroll — the one page t
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** nothing on the board yet — but the bundle holds 17 media files (see the making trail)
-- **Last commit touching this project:** 2026-09-22 `2cd748f` — ops(Inharmonic Wavetable Synthesis): flush working proofs, renders + code
+- **Last commit touching this project:** 2026-09-22 `0d0db16` — ops(Inharmonic Wavetable Synthesis): flush working proofs, renders + code
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

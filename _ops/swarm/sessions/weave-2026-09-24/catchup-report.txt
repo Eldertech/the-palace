@@ -1,5 +1,5 @@
 new-entry catch-up — map: palace-map-full-2026-09-24.json
-newcomer rule: git-added since 0cf827603a17 or born >= 2026-07, and under target
+newcomer rule: git-added since d0a665187680 or born >= 2026-07, and under target
 median INBOUND (established): 5  ->  catch-up target ~0.8×M = 4
 young entries already at/over target (not listed): 13
 

@@ -20,11 +20,11 @@ forward_vector: "I am Swarm Weave's scroll — the one page that always opens on
 - **Status:** active · **Stage:** growing · **Steward:** none — this project has no permanent steward yet
 - **Waiting on you:** nothing
 - **Last shipped:** nothing on the board yet
-- **Last commit touching this project:** 2026-09-03 `1b67a68` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
+- **Last commit touching this project:** 2026-09-03 `509a123` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
 
 ### Where this stands
 
-**handoff id:** swarm-weave-multilens-handoff-2026-07-05 **handoff path:** Palace development/Swarm Weave/Swarm Weave — baton — multi-lens-build-and-run.md **receiving surface:** Claude Code (Mac, worktree main) **move:** Build partition-palace.py and run the first Multi-Lens Weave; gate on Loudon before any write. **note:** Caught on main. Confirmed live: partition-palace.py absent, parent still carried the Active Baton pointer, git matched the baton Current state (768b32d/69df9a6/4f86180/1bffb78/95a539d all on main). Rebuilt the map (301 nodes / 2443 edges). Built _ops/swarm/partition-palace.py — three lenses (folder/community/mirror), deterministic, dependency-free; added --demote-hubs s…
+**handoff id:** swarm-weave-multilens-handoff-2026-07-05 **handoff path:** Palace development/Swarm Weave/Swarm Weave — baton — multi-lens-build-and-run.md **receiving surface:** Claude Code (Mac, worktree main) **move:** Build partition-palace.py and run the first Multi-Lens Weave; gate on Loudon before any write. **note:** Caught on main. Confirmed live: partition-palace.py absent, parent still carried the Active Baton pointer, git matched the baton Current state (0f319f8/73c3cc9/1c1c509/8a9d87c/ec9b43f all on main). Rebuilt the map (301 nodes / 2443 edges). Built _ops/swarm/partition-palace.py — three lenses (folder/community/mirror), deterministic, dependency-free; added --demote-hubs s…
 
 ### Open asks
 

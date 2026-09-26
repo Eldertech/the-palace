@@ -4,7 +4,7 @@
 > path runs perfectly with the patcher edit window closed (the `[qmetro]` + `valid()` self-heal fix holds,
 > bug retired). **Section addressing has moved off Ableton locators/markers and onto the device's own-track
 > MIDI clips** (§1, §2b): a clip is a named *span* (name + start + length), so sections are durations, not
-> points. This spec is the as-built/as-designed reference. **Harness wire rename done** (commit `e4f4292`):
+> points. This spec is the as-built/as-designed reference. **Harness wire rename done** (commit `db31a2a`):
 > `transport_sim.py` + `clock_client.html` emit/parse `/transport/section`, matching the live device.
 > **The as-built JS now lives alongside as `transport.js`** — copy that file into `[js transport.js]`
 > rather than pasting from the §2b block: a dropped `//` and three em-dashes pasted from this markdown

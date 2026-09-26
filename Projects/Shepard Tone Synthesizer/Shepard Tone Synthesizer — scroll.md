@@ -22,7 +22,7 @@ forward_vector: "I am Shepard Tone Synthesizer's scroll — the one page that al
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-25 (92 days ago) — Stage 2 is shipped. Lean into Stage 3 (the glide) next, or sit with Stage 2 first? (`shepard-steward-024`)
-- **Last commit touching this project:** 2026-09-25 `8a13a528` — edit(stewardship): Max, Gen~ and RNBO wait for Loudon; stewards keep going
+- **Last commit touching this project:** 2026-09-25 `6975e346` — edit(stewardship): Max, Gen~ and RNBO wait for Loudon; stewards keep going
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

@@ -1,6 +1,6 @@
 # STIGMERGY — Weave Flag v1.0 — Completion handback
 
-**Build plan:** [`Palace development/STIGMERGY — Weave Flag Item Type Build Plan.md`](../../Palace%20development/STIGMERGY%20%E2%80%94%20Weave%20Flag%20Item%20Type%20Build%20Plan.md) (palace entry e5a97f9)
+**Build plan:** [`Palace development/STIGMERGY — Weave Flag Item Type Build Plan.md`](../../Palace%20development/STIGMERGY%20%E2%80%94%20Weave%20Flag%20Item%20Type%20Build%20Plan.md) (palace entry 807c364)
 **Branch:** `stigmergy-v1.0-weave-flag` off `stigmergy-v1.0-frontend-rebuild`
 **Run date:** 2026-06-05
 **Author:** Claude Opus 4.7 (1M context), Loudon absent during the run.
@@ -11,7 +11,7 @@ The contract held. Five phases, one stop-condition check (the two pre-existing e
 
 ## Per-phase results
 
-### Phase 1 — `queue-model.js` recognizes `weave_flag`     ✓ green (commit `dbdc3cc`)
+### Phase 1 — `queue-model.js` recognizes `weave_flag`     ✓ green (commit `4342196`)
 
 - `buildQueue()` grew a `weave_flag` branch sibling to `vector_proposal` — closes via the shared `responded` set (RESOURCE_GRANT/RESOURCE_DENY with `re: <id>`) and via `reconcileQueue()` entry-touch on the new array-aware path.
 - `reconcileQueue()` extended to honor an array `entries: [string]` field on items (singular `entry` still works). Case-insensitive; canonical-cased title preserved in the reason string.
@@ -26,7 +26,7 @@ The contract held. Five phases, one stop-condition check (the two pre-existing e
   - explicit `Palace-Resolves: <id>` closes
   - `synthesizeFlagAsk` per flag_type
 
-### Phase 2 — `QueueItem.jsx` renders `weave_flag` cards     ✓ green (commit `cca67fa`)
+### Phase 2 — `QueueItem.jsx` renders `weave_flag` cards     ✓ green (commit `188c9d2`)
 
 - WEAVE FLAG badge added with dim-phosphor outline — flags read as standing audits, distinct from the bright-magenta WEAVE PROPOSAL cards.
 - Metadata row: `flag_type` chip (human-language label via `FLAG_TYPE_LABEL`; raw flag_type fallback for unknown types), `source_deposit_id`, source_entries list, `target_entry` rendered in `--ansi-bright-cyan` as a destination (per build plan §Phases / Phase 2 scope).
@@ -35,7 +35,7 @@ The contract held. Five phases, one stop-condition check (the two pre-existing e
 - E2E coverage: `tests/e2e/queue-deck.spec.js` gains a 7th test asserting badge, flag_type chip, deposit id, sources, target, proposed_action lead, Grant/Deny visibility, and STATE pointer to first source entry. **7/7 queue-deck e2e tests green.**
 - Screenshot: [`screenshots/weave-flag-v1.0/queue-deck-with-flag.png`](screenshots/weave-flag-v1.0/queue-deck-with-flag.png) — 1280×900 viewport, WEAVE lane focused, demo flag card visible alongside the demo vector_proposal.
 
-### Phase 3 — Migrate 11 Palace To-Do items     ✓ green (commit `481e000`)
+### Phase 3 — Migrate 11 Palace To-Do items     ✓ green (commit `675398b`)
 
 - One-shot migration via `scripts/migrate-weave-flags.mjs`:
   - reads current `_ops/swarm/persistent/blackboard.jsonl`
@@ -63,7 +63,7 @@ The contract held. Five phases, one stop-condition check (the two pre-existing e
 - Live QUEUE verified: 11 WEAVE FLAG cards visible on `?deck=QUEUE` against the real board.
 - Screenshot: [`screenshots/weave-flag-v1.0/queue-deck-migrated-flags.png`](screenshots/weave-flag-v1.0/queue-deck-migrated-flags.png) — 1280×900, WEAVE lane filter, the `hub_candidate` BATCH01 card at top showing all 9 dissolution-cluster source entries and the `stale if:` array.
 
-### Phase 4 — Deposit Ceremony grows one line     ✓ green (commit `996b3f7`)
+### Phase 4 — Deposit Ceremony grows one line     ✓ green (commit `7949b58`)
 
 - Step 7b gains one bullet describing the `weave_flag` BROADCAST append. Bodies shown to Loudon before write; commit only on his approval. Archive row's `Weave flags:` prose stays as audit, not queue.
 - Completion Signal gains a 7th condition: *"Weave flags, if any, written to the persistent board as `payload.kind: 'weave_flag'` BROADCAST messages."*

@@ -22,7 +22,7 @@ forward_vector: "I am Generative Audio Devices's scroll — the one page that al
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** nothing on the board yet
-- **Last commit touching this project:** 2026-09-25 `65af5aba` — edit(plans): the generative family's plans move into their scrolls
+- **Last commit touching this project:** 2026-09-25 `8bbde4b1` — edit(plans): the generative family's plans move into their scrolls
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
@@ -73,7 +73,7 @@ _Loudon's standing direction for this project. The steward reads this zone every
 <!-- scroll:entry id="plan-2026-09-25T20-56-04-04-00" -->
 ### 2026-09-25 — Plan agreed: carried over from the Roadmap, and paused
 
-Carried over on 2026-09-25 from the entry's Roadmap and the forward half of Pick Up Here, when Loudon asked that every plan fold into its scroll (SCHEMA v1.25). Order from Pick Up Here: hear it in Rack, then prove it on a second target; the search box and the PDL page are side moves with no fixed place; the two deferred gaps (polyphony, the parameter recount) are named at the end. Nothing has moved since 2026-05-29 (f1ff24c2), and the same day Loudon called the project paused: the entry's stage is now dormant, and the plan is the path to pick up when it wakes.
+Carried over on 2026-09-25 from the entry's Roadmap and the forward half of Pick Up Here, when Loudon asked that every plan fold into its scroll (SCHEMA v1.25). Order from Pick Up Here: hear it in Rack, then prove it on a second target; the search box and the PDL page are side moves with no fixed place; the two deferred gaps (polyphony, the parameter recount) are named at the end. Nothing has moved since 2026-05-29 (45ffdd4c), and the same day Loudon called the project paused: the entry's stage is now dormant, and the plan is the path to pick up when it wakes.
 <sub>`plan-2026-09-25T20-56-04-04-00` · plan agreed · agreed 2026-09-25T20:56:04-04:00 · carried over by an elder on Loudon's word</sub>
 <!-- /scroll:entry -->
 

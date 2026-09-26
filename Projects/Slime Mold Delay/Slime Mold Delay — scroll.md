@@ -21,7 +21,7 @@ forward_vector: "I am Slime Mold Delay's scroll — the one page that always ope
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-23 (91 days ago) — Live-growth engine is up. Where should cycle 7 go — Stage 4 dynamics, the visual dish, or Loudon Live lesson scaffolding? (`slime-mold-delay-steward-011`)
-- **Last commit touching this project:** 2026-09-22 `c25a293` — ops(Slime Mold Delay): flush working proofs, renders + code
+- **Last commit touching this project:** 2026-09-22 `86de4a5` — ops(Slime Mold Delay): flush working proofs, renders + code
 - **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

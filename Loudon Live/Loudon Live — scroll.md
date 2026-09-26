@@ -20,7 +20,7 @@ forward_vector: "I am Loudon Live's scroll — the one page that always opens on
 - **Status:** active · **Stage:** sprout · **Steward:** none — this project has no permanent steward yet
 - **Waiting on you:** nothing
 - **Last shipped:** nothing on the board yet — but the bundle holds 2 media files (see the making trail)
-- **Last commit touching this project:** 2026-09-22 `110d392` — deposit(D-2026-09-06-HARVEST): Environments That Hold lands: Creative Coach, Objects to Think With
+- **Last commit touching this project:** 2026-09-22 `2488e3d` — deposit(D-2026-09-06-HARVEST): Environments That Hold lands: Creative Coach, Objects to Think With
 
 ### Where this stands
 

@@ -1,5 +1,5 @@
 {
-  "rule": "git-added since 0cf827603a17 or born >= 2026-07, and under target",
+  "rule": "git-added since d0a665187680 or born >= 2026-07, and under target",
   "since": null,
   "median_inbound": 9,
   "catch_up_target": 7,

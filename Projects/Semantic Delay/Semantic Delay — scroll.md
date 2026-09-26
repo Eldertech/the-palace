@@ -22,7 +22,7 @@ forward_vector: "I am Semantic Delay's scroll — the one page that always opens
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-23 (94 days ago) — Stage 3 multi-voice-taps wired and proven against the stub — three spirit converts, three scheduled taps, one rendered WAV. (`semantic-delay-steward-011`)
-- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Last commit touching this project:** 2026-09-23 `c666210b` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

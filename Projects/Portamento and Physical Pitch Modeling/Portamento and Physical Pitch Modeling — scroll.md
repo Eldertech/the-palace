@@ -21,7 +21,7 @@ forward_vector: "I am Portamento and Physical Pitch Modeling's scroll — the on
 - **Waiting on you:** nothing
 - **Ready to advance:** 1 answer filed since the steward last ran — a cycle will consume it
 - **Last shipped:** 2026-06-23 (91 days ago) — Reel is on the board. Which sub-vector wants the next cycle? (`portamento-steward-015`)
-- **Last commit touching this project:** 2026-09-22 `853aea9` — ops(Portamento and Physical Pitch Modeling): flush working proofs, renders + code
+- **Last commit touching this project:** 2026-09-22 `6af4ad8` — ops(Portamento and Physical Pitch Modeling): flush working proofs, renders + code
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

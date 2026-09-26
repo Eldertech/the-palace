@@ -165,7 +165,7 @@ Exit codes: `0` ok · `1` usage / not-found · `2` parse failure.
 - **The baton executor's tests** — `tests/baton-executor.test.mjs` (`node --test
   _ops/closing-well/tests/baton-executor.test.mjs`). Until 2026-08-26 this README claimed
   the executor was "unit-tested end to end"; it was not — the only check had been a manual
-  run at build time (`c4c2fdf`), and nothing in the repo referenced the script. That gap is
+  run at build time (`0c7dd4e`), and nothing in the repo referenced the script. That gap is
   why its hardcoded On-pickup checklist went stale for seven weeks. The tests now cover the
   seam that broke: a written baton carries the ONE canonical checklist
   (`_ops/Baton Ceremony/Baton Ceremony — on-pickup.md`) verbatim, that checklist still names

@@ -20,7 +20,7 @@ forward_vector: "I am LDN RTM's scroll — the one page that always opens on whe
 - **Status:** active · **Stage:** sprout · **Steward:** none — this project has no permanent steward yet
 - **Waiting on you:** nothing
 - **Last shipped:** nothing on the board yet — but the bundle holds 5 media files (see the making trail)
-- **Last commit touching this project:** 2026-09-07 `611cfdf` — edit(ldn-rtm): renders land beside their sources, not inside the palace
+- **Last commit touching this project:** 2026-09-07 `6969226` — edit(ldn-rtm): renders land beside their sources, not inside the palace
 
 ### Where this stands
 

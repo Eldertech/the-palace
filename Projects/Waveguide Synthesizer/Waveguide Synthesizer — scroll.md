@@ -21,7 +21,7 @@ forward_vector: "I am Waveguide Synthesizer's scroll — the one page that alway
 - **Waiting on you:** 1 open ask
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-09-23 (today) — Which view should the string open in: the strobe (the note you're hearing) or the replay (exact slow motion of the first moments)? (`waveguide-synthesizer-steward-022`)
-- **Last commit touching this project:** 2026-09-23 `bbab2d7` — steward(Quantum Synthesizer, Waveguide Synthesizer): pilot cycles 5 and 8 under the run contract
+- **Last commit touching this project:** 2026-09-23 `239cb8c` — steward(Quantum Synthesizer, Waveguide Synthesizer): pilot cycles 5 and 8 under the run contract
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

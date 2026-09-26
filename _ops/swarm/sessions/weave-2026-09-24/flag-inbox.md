@@ -14,7 +14,7 @@ The fixed linter reports **62 live flags** (3 retracted): 34 resolved explicitly
 
 ## DONE → `Palace-Resolves` trailer in the weave commit (5)
 - `handdrawn3d-deposit-weave-2-6274be5e`: flow-field-biased emission, `Remnants in Depth.md:71` (M)
-- `weaveflag-memory-recon-2026-06-16`: Step 6b rewritten, reconciliation ran in b89c8d8f (M)
+- `weaveflag-memory-recon-2026-06-16`: Step 6b rewritten, reconciliation ran in 83222581 (M)
 - `11be93de-…`: gitlock-junk litter gone on disk (M; older `git-*.lock.*` files from May remain)
 - `weaveflag-baton-partial-path-lifecycle-2026-08-25`: `_ops/Baton Ceremony.md:233-235` (H)
 - `commons-the-palace-1788434783015`: gotcha 23 plus the charter (H)
@@ -47,8 +47,8 @@ The fixed linter reports **62 live flags** (3 retracted): 34 resolved explicitly
 
 ## NOT DONE, its own session → decline with a pointer (commit body) (3)
 - `12400dd0-…` Board Record per-shot field. BLUELINE workshop work for the BLUELINE steward.
-- `commons-…-1788434782780` The board's `reconcileQueue` (`queue-model.js:352-372`) still closes flags on an entry touch. App code with tests. Half fixed by the linter in 5b21f070.
+- `commons-…-1788434782780` The board's `reconcileQueue` (`queue-model.js:352-372`) still closes flags on an entry touch. App code with tests. Half fixed by the linter in dd094117.
 - `weaveflag-found-made-face-debt-2026-07-06` Found ↔ Made face. Goes to the Step 5c face batch, not a worker.
 
 ## Notes
-- The 5 June deposit flags in the old shape still fail the strict validator (dd8f97a0). Trailers close them; their board lines stay as they are.
+- The 5 June deposit flags in the old shape still fail the strict validator (e1e51e7e). Trailers close them; their board lines stay as they are.

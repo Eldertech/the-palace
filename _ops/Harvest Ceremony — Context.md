@@ -107,4 +107,4 @@ Named mid-run on the first commissioned harvest, *Environments That Hold* (2026-
 
 ## The Version and the Tuning File (2026-09-25)
 
-Versioned **v1.0** with the remaining ceremonies: the card as it stood after the close reading landed (`bceb2d2e`), plus the opening read. It marks where counting starts, not a ranking of the harvests before it. The number moves when the procedure does — a mode, a beat, a gate — never for prose. The lessons that shaped the card, from the March sweep to *Environments That Hold*, are numbered in [[Harvest Ceremony — tuning]]; each harvest's record stamps `ceremony_version` and ends with what the run taught.
+Versioned **v1.0** with the remaining ceremonies: the card as it stood after the close reading landed (`2fd29e7c`), plus the opening read. It marks where counting starts, not a ranking of the harvests before it. The number moves when the procedure does — a mode, a beat, a gate — never for prose. The lessons that shaped the card, from the March sweep to *Environments That Hold*, are numbered in [[Harvest Ceremony — tuning]]; each harvest's record stamps `ceremony_version` and ends with what the run taught.

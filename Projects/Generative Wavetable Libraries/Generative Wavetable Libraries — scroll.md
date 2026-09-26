@@ -22,7 +22,7 @@ forward_vector: "I am Generative Wavetable Libraries's scroll — the one page t
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-23 (95 days ago) — AKWF fit-test shipped — branch 1.b carries an end-to-end run in two user turns (`gwl-steward-039`)
-- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Last commit touching this project:** 2026-09-23 `c666210b` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 - **Signal:** steady
 - **Drift:** 6 cycles since the entry was last consolidated (cycle 9) — the entry body may lag; this scroll does not.
 

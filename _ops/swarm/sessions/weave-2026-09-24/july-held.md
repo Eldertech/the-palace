@@ -10,7 +10,7 @@ forward_vector: "I am what the July weave found but didn't land, kept away from 
 
 # July held — NEVER shown to workers
 
-Sources: `multi-lens-weave-2026-07-06/synthesis-report.md` (Batches 3, 5, 8) and the HELD paragraph in commit `587682ec`. Phase 3 matches worker findings against these by entry pair. A blind re-find is **cross-cycle convergence**.
+Sources: `multi-lens-weave-2026-07-06/synthesis-report.md` (Batches 3, 5, 8) and the HELD paragraph in commit `44339ae6`. Phase 3 matches worker findings against these by entry pair. A blind re-find is **cross-cycle convergence**.
 
 ## Missing contradictions (July Batch 3; every one held for individual signing)
 1. The Drift ↔ Merleau-Ponty (unfortified flow vs cultivated body-schema)

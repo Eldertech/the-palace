@@ -93,7 +93,7 @@ Dispersion Table: **yes, prefer "Dissolutions"**. Phase Reduction: agrees if int
 |---|---|
 | Uncommitted: 4 untracked map artifacts produced by Phase 0 | **include in Weave commit** — these are this Weave's own outputs |
 | Stashes: 0 | leave |
-| Dangling commits: 30+ | mostly auto-stash debris; one duplicate Weave commit (`3d7784e` = `c4fe69d` on main) — **discard via reflog expiration**; remainder triaged below |
+| Dangling commits: 30+ | mostly auto-stash debris; one duplicate Weave commit (`3d7784e` = `c2dd361` on main) — **discard via reflog expiration**; remainder triaged below |
 | Unmerged branches: `stigmergy-v1.0-frontend-rebuild` (1↑22) and current `stigmergy-v1.0-weave-flag` (1↑28) | both active in-flight STIGMERGY work — **leave** |
 | Recent rewrites: 10 reset/amend in last 30 days, all intentional STIGMERGY work | **leave** — no rewrite of shared history |
 
@@ -101,7 +101,7 @@ Dispersion Table: **yes, prefer "Dissolutions"**. Phase Reduction: agrees if int
 
 | SHA | Subject | Proposed disposition |
 |---|---|---|
-| `3d7784e` | Weave — 2026-04-07 — 50 entries promoted | **discard** — duplicate of c4fe69d already on main |
+| `3d7784e` | Weave — 2026-04-07 — 50 entries promoted | **discard** — duplicate of c2dd361 already on main |
 | `a0c3543` | Pre-Weave commit — 2026-04-27 — capture in-flight | **discard** — folded into 2026-04-27 Weave commit |
 | `9f8c60d` | Stage F: Two Paths (decide-after-doing) | **leave** — recent stage work, may be active |
 | `ddda157` | pre-stigmergy-v0.1 — palace work in flight | **discard** — landed via downstream STIGMERGY commits |

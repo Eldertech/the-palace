@@ -12,14 +12,14 @@ forward_vector: "I carry the one thread the Concierge build cannot finish by bui
 
 > **Re-batoned 2026-08-25** from the partial close of `concierge-remainder-20260825T224537Z`
 > (board id `concierge-remainder-20260825T225852Z`). The work-choice vector landed; live
-> validation is what remains. Prior batons are in git at `bb8e6b4` and `a40b184`.
+> validation is what remains. Prior batons are in git at `4a40251` and `b37a4af`.
 
 ## Already landed — do not redo
 
-- **The health dial** — `_ops/concierge/dial.mjs`, 2026-07-08 (`5113b84`, refined `ce6af17`).
-- **The fold into [[Closing Well]]** — 2026-08-25 (`bc3731e`). The moderator is the resident
+- **The health dial** — `_ops/concierge/dial.mjs`, 2026-07-08 (`3a41694`, refined `fee1fdf`).
+- **The fold into [[Closing Well]]** — 2026-08-25 (`02e949a`). The moderator is the resident
   companion taking the wheel, not a fresh enchanted instance.
-- **The work-choice vector** — 2026-08-25 (`30c3b8a`). The **scout** posture
+- **The work-choice vector** — 2026-08-25 (`fc0b980`). The **scout** posture
   (`_ops/concierge/prompts/scout.md`) plus `_ops/concierge/return-map.mjs`, which runs the
   [[Return Ceremony]]'s whole query block and prints each probe beside the command that produced
   it. The split is load-bearing: the script gathers evidence and refuses to interpret; the posture

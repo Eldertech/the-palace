@@ -21,7 +21,7 @@ forward_vector: "I am Tract Mirror's scroll — the one page that always opens o
 - **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Last shipped:** nothing on the board yet — but the bundle holds 40 media files (see the making trail)
-- **Last commit touching this project:** 2026-09-24 `b2e51e89` — Weave — 2026-09-24 — 49 links, 9 contradictions, 12 let go, 17 stages, 1 hub, 25 citizens linked
+- **Last commit touching this project:** 2026-09-24 `8972a53d` — Weave — 2026-09-24 — 49 links, 9 contradictions, 12 let go, 17 stages, 1 hub, 25 citizens linked
 
 ### Where this stands
 
@@ -64,7 +64,7 @@ Decided by Loudon on 2026-06-09, carried over from the build plan's locked decis
 <!-- scroll:entry id="plan-2026-09-25T20-55-14-04-00" -->
 ### 2026-09-25 — Plan agreed: the first build is done; what's next
 
-Loudon asked for a plan on 2026-09-25. The JUCE build plan is finished — every phase checked, loaded in Live 12 on 2026-06-10 (c640ec24) — and now serves as the build log, so it stays as it is. The plan takes what the build log leaves open (the MIDI controls and Word mode, never played in Live) and the next version the entry names (the record-and-analyze engine). The build's locked decisions of 2026-06-09 became Standing Orders.
+Loudon asked for a plan on 2026-09-25. The JUCE build plan is finished — every phase checked, loaded in Live 12 on 2026-06-10 (8fe43255) — and now serves as the build log, so it stays as it is. The plan takes what the build log leaves open (the MIDI controls and Word mode, never played in Live) and the next version the entry names (the record-and-analyze engine). The build's locked decisions of 2026-06-09 became Standing Orders.
 <sub>`plan-2026-09-25T20-55-14-04-00` · plan agreed · agreed 2026-09-25T20:55:14-04:00 · written by an elder on Loudon's word</sub>
 <!-- /scroll:entry -->
 

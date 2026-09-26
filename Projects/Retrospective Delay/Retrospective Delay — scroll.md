@@ -22,7 +22,7 @@ forward_vector: "I am Retrospective Delay's scroll — the one page that always 
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-22 (95 days ago) — Matched gorey-ink triptych — dormant · awakening · triumphant — all three rendered in the refined wobble/hatching/ink-weight pass. (`retrospective-delay-steward-040`)
-- **Last commit touching this project:** 2026-09-25 `b09ddab8` — Schema Ceremony — the Plan replaces staging — v1.25
+- **Last commit touching this project:** 2026-09-25 `d4cb3fa1` — Schema Ceremony — the Plan replaces staging — v1.25
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

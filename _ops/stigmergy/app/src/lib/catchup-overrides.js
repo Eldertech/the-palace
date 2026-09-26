@@ -7,7 +7,7 @@
 // rather than dumping the rationale full-width with a sad "no catchup" pill.
 //
 // The map is keyed by request_id. Each entry carries the same prose Claude
-// wrote for the standalone trickster.html page (committed at 6925781). As
+// wrote for the standalone trickster.html page (committed at c887379). As
 // stewards start emitting headline+ground natively, this file ratchets down
 // toward empty — when nothing in the active inbox needs it, delete the file
 // and the import in inbox.js.

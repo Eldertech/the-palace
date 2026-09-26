@@ -59,5 +59,5 @@ precedent): they bias toward over-excluding, and you validate the set in shadow.
 ## Open item flagged back to the handoff
 
 OQ3(a) is fully resolved (TRICKSTER + digest). The v0.4 `choice` dependency the
-handoff said to wait on **has landed** (commit `23a4d88`), so the build-order gate
+handoff said to wait on **has landed** (commit `9d757e3`), so the build-order gate
 ("pause before Phase 3") no longer applies — Phases 0–4 shipped in one pass.

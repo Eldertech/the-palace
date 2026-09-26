@@ -17,7 +17,7 @@ forward_vector: "I am Map Build Ceremony's scroll — the one page that opens on
 
 > _Regenerated 2026-09-25T17:20:24.360Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v2.1 · the spec last changed 2026-09-25 (`c2dae8bd`) — edit(Map Build Ceremony): 2.1 — the version catches up with 8f3fe3f7
+- **Version:** v2.1 · the spec last changed 2026-09-25 (`0f95d3a9`) — edit(Map Build Ceremony): 2.1 — the version catches up with b8b83e37
 - **Runs since the change:** none yet — v2.1 has not run
 - **Last run:** 2026-09-24 — full, the September weave · nothing new (under v2.0)
 - **Owed in the ledger:** 2 — items 3, 4; the next run's tail read picks them up first
@@ -29,7 +29,7 @@ _None yet._
 
 ### Owed
 
-- **3.** The card says `_ops/` cards are not nodes; the builder has made them nodes since 2026-09-24. Ceremony cards with a canon type are nodes in `build-map-2026-09-24.py` (`5b21f070`;…
+- **3.** The card says `_ops/` cards are not nodes; the builder has made them nodes since 2026-09-24. Ceremony cards with a canon type are nodes in `build-map-2026-09-24.py` (`dd094117`;…
 - **4.** The last two full builds left no Map Log row. The newest row is 2026-07-04, but `_ops/maps/` holds full maps from 2026-08-26 and 2026-09-24. The postcondition still asks for the…
 
 <!-- scroll:now:end -->
@@ -43,13 +43,13 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="version-c2dae8bdcf2f271f4756dd74f8461844b2771a0f" -->
+<!-- scroll:entry id="version-0f95d3a93d6a6911b2617bec949f5c21c6455c5f" -->
 ### 2026-09-25 — the spec moved to v2.1
 
-edit(Map Build Ceremony): 2.1 — the version catches up with 8f3fe3f7
+edit(Map Build Ceremony): 2.1 — the version catches up with b8b83e37
 
-8f3fe3f7 gave the card an opening step (the tail read, :62) and a postcondition clause (the Map Log row names the version; its commit says what the run taught, :42), and turned `version: 2` into "2.0" — the same value. Both are procedure, so the version should have moved; the scroll kept counting every build since March as a run of the current spec.
-<sub>`c2dae8bd` · version change</sub>
+b8b83e37 gave the card an opening step (the tail read, :62) and a postcondition clause (the Map Log row names the version; its commit says what the run taught, :42), and turned `version: 2` into "2.0" — the same value. Both are procedure, so the version should have moved; the scroll kept counting every build since March as a run of the current spec.
+<sub>`0f95d3a9` · version change</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="run-ee75e7ff52" -->
@@ -70,14 +70,14 @@ edit(Map Build Ceremony): 2.1 — the version catches up with 8f3fe3f7
 ### 2026-07-05 — palace(map-build): skip @import symlinks; rebuild to 300 nodes; compost Streaming Details
 
 The Python map builder followed the five _-underscore @import symlinks at the palace root (Cooperation_Yields_Agency.md etc. -> spaced originals), minting phantom duplicate nodes with underscore ids and no bundle avatar. Add 'if p.is_symlink(): continue'. Rebuild reflects Loudon's frontmatter demotions (canon-only, 336 -> 300 nodes) and drops the composted orphan Streaming Details (chronic degree-0, two prior compost bounces) — graph is now fully connected, zero orphans, zero error-ghosts.
-<sub>`0e4bc5c3` · a run under v2.0</sub>
+<sub>`d7e65a06` · a run under v2.0</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="run-c76e38c759" -->
 ### 2026-07-04 — palace(map-build): full survey post-cleanup; re-promote Dialectics; fix error-ghost
 
 Ran the Map Build Ceremony (frontmatter-driven builder) after the bundle-hygiene sweep. 325 nodes, 2617 edges, 0 error-ghosts. The 30 demoted working-docs correctly dropped out of the node set.
-<sub>`0f5c70c0` · a run under v2.0</sub>
+<sub>`780194c4` · a run under v2.0</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="map-full-2026-07-04" -->
@@ -143,13 +143,13 @@ nothing new
 <sub>a run under v2.0 · its line in the tuning ledger</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="version-4fbb103fdd38ce27b4a1044fb3e0a9d7567b9b05" -->
+<!-- scroll:entry id="version-b54785f4b13a5385cdd09dd466e3594f7170758d" -->
 ### 2026-03-30 — the spec moved to v2.0
 
 Weave — 2026-03-30 — 56 links added, 4 entries promoted, 2 orphans flagged/deleted
 
 Unsung paths formalized (34): body-text connections registered as YAML typed links across Bessel Functions, Trickster, SCHEMA, SUBSTRATE, Differential Equations, Ohm's Law ↔ Piano String Inharmonicity, Mixture of Experts, Progressive Staging, Four Pillars of Enchanted Agency, BBS Blackboard, Swarm Weave, Generative Compression, Palace Enchantment, Map Build Ceremony, The Cooperation Path, Enchanted Conversation Archive.
-<sub>`4fbb103f` · version change</sub>
+<sub>`b54785f4` · version change</sub>
 <!-- /scroll:entry -->
 
 <!-- scroll:entry id="map-full-2026-03-27" -->

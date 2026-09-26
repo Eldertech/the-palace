@@ -21,7 +21,7 @@ forward_vector: "I am Shopkeeper's scroll — the page's front door, opening on 
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-09-25 (today) — I drafted the AuK stub Specialist and re-checked Stable Audio 3 on the Hub; the SA3 note turned out to be smaller than expected. (`shopkeeper-cycle-1-2026-09-25`)
-- **Last commit touching this page:** 2026-09-25 `c57679ee` — edit(Shopkeeper): a steward with Standing Orders; the executed commission retires
+- **Last commit touching this page:** 2026-09-25 `840cc037` — edit(Shopkeeper): a steward with Standing Orders; the executed commission retires
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

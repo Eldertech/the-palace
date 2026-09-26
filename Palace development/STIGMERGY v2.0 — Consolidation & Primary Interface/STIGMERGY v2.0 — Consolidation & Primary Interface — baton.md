@@ -10,7 +10,7 @@ forward_vector: "I carry the in-progress move on [[STIGMERGY v2.0 — Consolidat
 
 **Move.** Give the palace ONE constant or resolver for "the latest Opus," imported everywhere a script currently hard-codes an Opus id or alias, so a new Opus release stops requiring a manual sweep. Loudon's wish, verbatim: "Ideally, I'd like every time opus is chosen for it to automatically use the latest opus, but that seems like perhaps a more difficult change."
 
-**Why it matters.** The 2026-09-22 close landed a 33-file mechanical sweep to Opus 5.5 (`070a42b3`) — the same sweep will be needed again at the next Opus release unless the ten call sites read from one place instead of carrying their own pin.
+**Why it matters.** The 2026-09-22 close landed a 33-file mechanical sweep to Opus 5.5 (`9d443aba`) — the same sweep will be needed again at the next Opus release unless the ten call sites read from one place instead of carrying their own pin.
 
 **Call sites to import it (ten, named in the Sept-6 harvest review):** `launch.js`, `weave-generate.js`, `steward-lane.js`, `process-cycle.js`, `enchant.js`, `companion-lane.js` (still the `opus` alias), `run-steward-batch.sh`, `handoff-model.mjs`, `baton-executor.mjs`, and the pickup/close-handoff help text.
 

@@ -90,7 +90,7 @@ describe('validateCommitMessage', () => {
   });
 
   it('accepts a baton( subject as handoff, with either trailer spelling', () => {
-    // The shape a hand-written baton commit takes (c6839973).
+    // The shape a hand-written baton commit takes (4f9b178b).
     const hand = validateCommitMessage('baton(Palace Ceremonies): carry the rollout\n\nPalace-Kind: handoff\nPalace-Verify: verified');
     expect(hand.valid).toBe(true);
     expect(hand.parsed.kind).toBe('handoff');

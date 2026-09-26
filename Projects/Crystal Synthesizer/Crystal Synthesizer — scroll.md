@@ -22,7 +22,7 @@ forward_vector: "I am Crystal Synthesizer's scroll — the one page that always 
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-25 (92 days ago) — Hypothesis arc closes — diamond and labradorite, same synth, same strike, only the symmetry changes. (`crystal-synth-steward-020`)
-- **Last commit touching this project:** 2026-09-25 `b09ddab8` — Schema Ceremony — the Plan replaces staging — v1.25
+- **Last commit touching this project:** 2026-09-25 `d4cb3fa1` — Schema Ceremony — the Plan replaces staging — v1.25
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 
@@ -130,7 +130,7 @@ Stage 1's hypothesis arc has three of seven Bravais systems audibly tested (cubi
 ### 2026-06-23 — cycle 7 — Stage 1 proof arc consolidated — cubic partial, birefringent pair, anisotropic dispersion, ready for your ear.
 > still working · 3 proof batches rendered across cycles 4–6 · hero+icon landed
 
-Spinning up. HOME: Crystal Synthesizer. Catch-up: this project is the synthesizer whose timbre is chosen by crystal physics, not by design. Stage 1 (monophonic Gen~ partial bank) is the proof-of-hypothesis stage — does each Bravais system actually sound the way we predicted? Cycles 4–6 rendered three independent proof batches: a birefringence pair (ordinary vs extraordinary axis), an anisotropic dispersion render for beryl (c-axis vs basal plane), and a dispersion-filter click sweep. Loudon's hand-drawn hero and icon arrived 2026-06-22 (commit 142911d) — the project now has visual identity. Cycle 7 ships the consolidated audition: the four artifacts that, heard together, tell the Stage 1 story. Nothing blocking; this is the made thing.
+Spinning up. HOME: Crystal Synthesizer. Catch-up: this project is the synthesizer whose timbre is chosen by crystal physics, not by design. Stage 1 (monophonic Gen~ partial bank) is the proof-of-hypothesis stage — does each Bravais system actually sound the way we predicted? Cycles 4–6 rendered three independent proof batches: a birefringence pair (ordinary vs extraordinary axis), an anisotropic dispersion render for beryl (c-axis vs basal plane), and a dispersion-filter click sweep. Loudon's hand-drawn hero and icon arrived 2026-06-22 (commit 0590acd) — the project now has visual identity. Cycle 7 ships the consolidated audition: the four artifacts that, heard together, tell the Stage 1 story. Nothing blocking; this is the made thing.
 
 **Artifacts:**
 - [the project's hand-drawn identity (Haeckel-engraving idiom).](Crystal Synthesizer — hero.png)

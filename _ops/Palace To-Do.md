@@ -71,7 +71,7 @@ Seven unrelated loose ends the September weave declined to settle in place (each
 - [ ] **[[Objects to Think With]] — the 21-project list needs re-deriving** — against Papert's own criterion, not just re-counted. Its own session.
 - [ ] **[[Shop/Maker]] — whether the Shop can hold an operated Specialist, and the Producer layer** — an architecture question, plus generalizing the Post-producer charter (Loudon deferred both, 2026-09-02). Its own session.
 - [ ] **[[SCHEMA]] — the hub bar is stale** — "≥5 typed links" was set when the palace had ~30 entries; the median is now 6. Candidate replacement: pointed at by three or more rooms not holding it, or top-decile inbound. Needs a Schema Ceremony.
-- [ ] **[[STIGMERGY]] — `reconcileQueue` still closes a card on a touch** — app code; the linter half landed (`5b21f070`) but the app itself wasn't fixed. Its own session.
+- [ ] **[[STIGMERGY]] — `reconcileQueue` still closes a card on a touch** — app code; the linter half landed (`dd094117`) but the app itself wasn't fixed. Its own session.
 - [ ] **[[Curriculum Map]] / `project-stage-builder` — a stale path** — the skill references `Projects/curriculum-map.md`, which doesn't exist; the real entry is `Projects/Curriculum Map.md`, and a same-named lowercase bundle folder sits beside it. Check before the skill runs again.
 
 ## Palace upkeep that is cheap and unblocks something

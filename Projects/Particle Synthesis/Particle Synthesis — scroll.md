@@ -21,7 +21,7 @@ forward_vector: "I am Particle Synthesis's scroll — the one page that always o
 - **Waiting on you:** 1 open ask
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-09-23 (today) — Grains that meet: two fountains aimed at each other, so ice grains clack in mid-air and land somewhere new. A/B renders, figure, live bench. (`particle-synthesis-009`)
-- **Last commit touching this project:** 2026-09-23 `0d435e3` — steward(Particle Synthesis): pilot cycle 4 — the fountain on ice (revival probe)
+- **Last commit touching this project:** 2026-09-23 `146c6c4` — steward(Particle Synthesis): pilot cycle 4 — the fountain on ice (revival probe)
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

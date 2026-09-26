@@ -10,7 +10,7 @@ forward_vector: "I hold what the lean entry can't carry — the history that mad
 
 # Pages as Agents — Context
 
-[[Pages as Agents]] was rewritten lean on 2026-06-24 (the rewrite is commit `037a98f`), down from ~210 lines to ~100. This companion holds what that rewrite set aside: the session that produced it, the experiments that gave it evidence, and the deeper material cut from the body so the front-door page could stay a clean, wakeable face. **Git holds the verbatim prior text** (the version before `037a98f`); this file holds the *curated* memory, so a reader who never opens git still loses nothing.
+[[Pages as Agents]] was rewritten lean on 2026-06-24 (the rewrite is commit `bfec36d`), down from ~210 lines to ~100. This companion holds what that rewrite set aside: the session that produced it, the experiments that gave it evidence, and the deeper material cut from the body so the front-door page could stay a clean, wakeable face. **Git holds the verbatim prior text** (the version before `bfec36d`); this file holds the *curated* memory, so a reader who never opens git still loses nothing.
 
 ## How the current version came to be (2026-06-24)
 

@@ -44,7 +44,7 @@ The first run has already paid for itself. It found that the palace's own worktr
 
 Nothing is built yet: no harness, no `due.mjs`, no grader.
 
-**The first real data point, run 1 (2026-09-25).** A headless Opus 5.5 child, in a fresh worktree of main at `f6428b10`, was asked "what's the difference between a scroll and a ledger?" (D1).
+**The first real data point, run 1 (2026-09-25).** A headless Opus 5.5 child, in a fresh worktree of main at `1cc7e03d`, was asked "what's the difference between a scroll and a ledger?" (D1).
 - **D1 held.** One turn, no tools, 12 seconds. It gave the faces-and-memory distinction, both uses of the scroll ("a project's proofs and media, a ceremony's runs") and "every run leaves a line", named CLAUDE.md § A page and its folder as its source, and said unprompted what it hadn't checked.
 - **One inference beyond the text:** "a project's lessons belong in its Context".
 - **A headless birth does load CLAUDE.md.** The answer used words that exist nowhere else.

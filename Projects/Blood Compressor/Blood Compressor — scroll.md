@@ -21,7 +21,7 @@ forward_vector: "I am Blood Compressor's scroll — the one page that always ope
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-23 (91 days ago) — The vessel prototype shipped — three instinct calls I made; redirect me if any read wrong. (`blood-compressor-012`)
-- **Last commit touching this project:** 2026-09-22 `110d392` — deposit(D-2026-09-06-HARVEST): Environments That Hold lands: Creative Coach, Objects to Think With
+- **Last commit touching this project:** 2026-09-22 `2488e3d` — deposit(D-2026-09-06-HARVEST): Environments That Hold lands: Creative Coach, Objects to Think With
 - **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

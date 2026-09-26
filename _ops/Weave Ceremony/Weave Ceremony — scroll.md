@@ -17,7 +17,7 @@ forward_vector: "I am Weave Ceremony's scroll — the one page that opens on whi
 
 > _Regenerated 2026-09-25T17:20:24.951Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.2 · the spec last changed 2026-09-25 (`94b12dcc`) — edit(ceremonies): every card marks its ledger — the versions move
+- **Version:** v1.2 · the spec last changed 2026-09-25 (`033f5da5`) — edit(ceremonies): every card marks its ledger — the versions move
 - **Runs since the change:** none yet — v1.2 has not run
 - **Last run:** none in the ledger yet
 - **Owed in the ledger:** 5 — items 21, 24, 29, 30, 39; the next run's tail read picks them up first
@@ -46,30 +46,30 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="version-94b12dcc0e63093254cff49c2eecf1f94031d471" -->
+<!-- scroll:entry id="version-033f5da533205712d73d6f6f2a661355112f8b38" -->
 ### 2026-09-25 — the spec moved to v1.2
 
 edit(ceremonies): every card marks its ledger — the versions move
 
 Schema v1.23 says every run marks its tuning ledger with a run line, but every card still said a lesson goes in the tuning file only when the spec changed, so no run would have written one. Each card now says it: the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item. The opening lines drop their restatement of the tail read's bounds and point at §6, so the bound lives in one place.
-<sub>`94b12dcc` · version change</sub>
+<sub>`033f5da5` · version change</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="version-8432c4ed03d91bc0918c6ed0bd6e716efb8d7bf3" -->
+<!-- scroll:entry id="version-398ca2e6d7a5fa50f1d3f3d787ea5a4feb58c542" -->
 ### 2026-09-24 — the spec moved to v1.1
 
 edit(Weave Ceremony): v1.1 — open by reading the tuning file
 
-Step 0 now reads `Weave Ceremony — tuning.md` after the foundation: owed items first, then anything recorded after the version the last weave ran under, as the run's first candidates for a spec change. Tuning item 38 records it — the ledger's first forced change was "read the ledger", from Loudon's question at the 2026-09-24 close: "Is there a point in logging growth if we don't ask to check it." One v1.1 paragraph in the Context. The general rule is Schema v1.21 (3da0eac2). Postcondition 5c and Step 5c still share a label; left for another pass. Linters: doc-drift 0 errors (51 warnings, pre-…
-<sub>`8432c4ed` · version change</sub>
+Step 0 now reads `Weave Ceremony — tuning.md` after the foundation: owed items first, then anything recorded after the version the last weave ran under, as the run's first candidates for a spec change. Tuning item 38 records it — the ledger's first forced change was "read the ledger", from Loudon's question at the 2026-09-24 close: "Is there a point in logging growth if we don't ask to check it." One v1.1 paragraph in the Context. The general rule is Schema v1.21 (4ea4f1e3). Postcondition 5c and Step 5c still share a label; left for another pass. Linters: doc-drift 0 errors (51 warnings, pre-…
+<sub>`398ca2e6` · version change</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="version-40acf9faee0fdeef8a5475db64eea04194f36050" -->
+<!-- scroll:entry id="version-bc54790a94dee982a0194c45f5a9a26f480fd415" -->
 ### 2026-09-24 — the spec moved to v1.0
 
 edit(Weave Ceremony): v1.0 — the version, the tuning file, and the stamp-and-teach step
 
 The Weave is the first ceremony versioned under Schema v1.20. `version: "1.0"` marks the card as it stood after the 2026-09-24 weave; Step 6.7 and postcondition 5c make every run stamp `ceremony_version` and end with "What this run taught the ceremony". `Weave Ceremony — tuning.md` seeds the ledger with 37 entries from the card's 25 commits, the June and July runs, and the September plan — four of them name spec changes still owed (21, 24, 29, 30), the first moves off 1.0. Today's report is stamped retroactively, and its builder now emits the stamp so a rebuild keeps it. Runtime fields caught…
-<sub>`40acf9fa` · version change</sub>
+<sub>`bc54790a` · version change</sub>
 <!-- /scroll:entry -->
 <!-- scroll:making:end -->

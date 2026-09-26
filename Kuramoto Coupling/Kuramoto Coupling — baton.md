@@ -17,7 +17,7 @@ rich face's manifest as **gathered** pieces, shown to Loudon first, then re-stam
 
 ## Why
 
-Kuramoto Coupling was the first rich face (`033e1774`), built before Enrichment's placement rule
+Kuramoto Coupling was the first rich face (`025528fd`), built before Enrichment's placement rule
 existed. Its `.md` still embeds nine pieces of media directly (`Kuramoto Coupling.md` ~:117–184) —
 predating the tendency the ceremony now names: place what you make in the rich face, leave in the
 text only what it needs (formulas, essential graphics, a diagram or image the text is actually

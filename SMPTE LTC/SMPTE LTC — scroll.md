@@ -20,7 +20,7 @@ forward_vector: "I am SMPTE LTC's scroll — the one page that always opens on w
 - **Status:** active · **Stage:** growing · **Steward:** none — this project has no permanent steward yet
 - **Waiting on you:** nothing
 - **Last shipped:** nothing on the board yet
-- **Last commit touching this project:** 2026-09-03 `1b67a68` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
+- **Last commit touching this project:** 2026-09-03 `509a123` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
 
 ### Where this stands
 

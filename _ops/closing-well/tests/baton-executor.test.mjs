@@ -2,7 +2,7 @@
 //
 // `_ops/closing-well/README.md` claimed this executor was "unit-tested end to end."
 // It was not: no test file referenced it, and the only verification was a manual run
-// at build time (commit c4c2fdf). That gap is why the hardcoded On-pickup checklist
+// at build time (commit 0c7dd4e). That gap is why the hardcoded On-pickup checklist
 // could go stale for seven weeks without anything noticing — the ceremony's
 // three-state lifecycle (claim → close, 2026-07-07) landed in the spec and never
 // reached the script's private copy.

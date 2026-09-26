@@ -21,7 +21,7 @@ forward_vector: "I am Neural Granular Synthesis's scroll — the one page that a
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-09-24 (today) — A locked crowd is a dead-still tone. Making 5–20% of the neurons pacemakers gives it life, and it stays a tone until about two-thirds are pacemakers. (`ngs-steward-017`)
-- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Last commit touching this project:** 2026-09-23 `c666210b` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 - **Signal:** ⚠ **STALLED** — the last 2 cycles posted nothing. The loop is broken until a cycle ships; the lane retries once, then flags here.
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

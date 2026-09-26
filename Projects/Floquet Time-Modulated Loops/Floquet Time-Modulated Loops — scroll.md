@@ -21,7 +21,7 @@ forward_vector: "I am Floquet Time-Modulated Loops's scroll — the one page tha
 - **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Last shipped:** nothing on the board yet — but the bundle holds 28 media files (see the making trail)
-- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Last commit touching this project:** 2026-09-23 `c666210b` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 
 ### Where this stands
 

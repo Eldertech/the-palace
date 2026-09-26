@@ -166,8 +166,8 @@ reason is recorded, and a run never moves it. Beside it, each ceremony keeps a t
 (`[Ceremony] — tuning.md`), and every run report stamps `ceremony_version` and ends by saying what the run
 taught the ceremony. Separately, §8's `scroll` stops being a project-only file.
 
-**Why.** The ceremonies change often — the Harvest grew two modes this week (`bceb2d2e`), the Return was
-rewritten from its own first run's mistakes (`bb8e6b4a`) — and nothing on the page said which version you
+**Why.** The ceremonies change often — the Harvest grew two modes this week (`2fd29e7c`), the Return was
+rewritten from its own first run's mistakes (`4a402512`) — and nothing on the page said which version you
 were reading, or whether the last run had already changed it. A run report could not say which spec it ran
 under, so a finding from an old run looked the same as one the spec had already absorbed. [[Closing Well]]
 had solved this by hand for itself: its ledger records what each close taught it, and that record is why
@@ -182,7 +182,7 @@ tool, not by the palace's own practice. Closing Well's ledger is the model for t
 `Closing Well — tuning.md` when the ceremonies are versioned.
 
 **Every entry may carry a scroll.** The scroll replaced `plan.md` for stewarded projects on 2026-09-23
-(`313f7f3c`): the plan held decision state only and regenerated only on a cycle, so it lied whenever the
+(`75d04d75`): the plan held decision state only and regenerated only on a cycle, so it lied whenever the
 steward slept. §8 wrote it down as a project's file. Loudon, 2026-09-24: *"assume that all pages can have
 scrolls, we are moving in that direction."* §8 now states the three zones — Now, Standing Orders, the
 making — as a bundle file any entry may carry, and names what a ceremony's Now zone counts: runs since the
@@ -274,7 +274,7 @@ line. The ledgers merge by union. All of it is in [[SCHEMA — Reference]] §6.
 ran at all: a run that taught nothing left no mark, so "the spec held" looked the same as "never ran".
 The ceremony scroll filled the gap by matching commit subjects, one hand-kept pattern per ceremony, and
 the patterns drifted as fast as the cards. By the end of the day they were written they had missed both
-closes of 2026-09-25, a close whose subject carried a suffix (`cceec447`), and the Map Log's 2026-04-01
+closes of 2026-09-25, a close whose subject carried a suffix (`864b4fc4`), and the Map Log's 2026-04-01
 build, and had counted one July build twice. Loudon, 2026-09-25: every run marks the ledger, and
 "nothing" is data.
 
@@ -326,7 +326,7 @@ sweeps for what must not leave a public repository — secrets, personal data, t
 who read here, loose permissions, vulnerable dependencies, GitHub settings — and raises what it finds to
 Loudon, masked. Its one tooth is a pre-push gate that refuses a credential.
 
-**Why.** The palace is public on purpose and becoming more public ([[Loudon Live]], `c5240fac`: a read view on
+**Why.** The palace is public on purpose and becoming more public ([[Loudon Live]], `5eac9572`: a read view on
 GitHub Pages, and git as the second door). The 2026-09-25 hosting assessment checked only the working tree,
 and a tree scan cannot see history, which a public repo publishes whole. Nothing in the palace owned security:
 no entry named secret scanning, dependency audits or prompt injection in harvested content. Loudon asked for a

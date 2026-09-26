@@ -16,4 +16,4 @@ What each revival taught the ceremony, and the lessons that reached it from else
 
 ## From Schema v1.19, every agent is born a child — 2026-09-22
 
-1. **A revival writes a stage change and proposes typed links, so a child can't run it.** Forced: precondition 4, the operator has grown — [[ELDER]] and [[SCHEMA]] read (`46ce12da`).
+1. **A revival writes a stage change and proposes typed links, so a child can't run it.** Forced: precondition 4, the operator has grown — [[ELDER]] and [[SCHEMA]] read (`4dd9c51d`).

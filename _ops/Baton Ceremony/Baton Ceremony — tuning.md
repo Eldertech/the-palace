@@ -14,32 +14,32 @@ What each baton taught the ceremony. Each item names what the run showed and the
 
 ## From the first batons — 2026-06-09
 
-1. **The catcher reads the baton, never the spec.** So the checklist has to travel inside the artifact. Forced: the fixed On-pickup footer in every baton, and the catcher commits an uncommitted baton before anything else (`01d9ea92`).
+1. **The catcher reads the baton, never the spec.** So the checklist has to travel inside the artifact. Forced: the fixed On-pickup footer in every baton, and the catcher commits an uncommitted baton before anything else (`cd8b242a`).
 
 ## From the simplification pass — 2026-06-16
 
-2. **Guardrails written for weaker models had aged.** Forced: the spec-side Resumption Protocol was deleted, and its one unique check — the receiving surface's capability delta — folded into the footer (`49a45354`).
+2. **Guardrails written for weaker models had aged.** Forced: the spec-side Resumption Protocol was deleted, and its one unique check — the receiving surface's capability delta — folded into the footer (`d0b2ee24`).
 
 ## From the worktree practice — 2026-06-17
 
-3. **A baton on a feature branch is invisible from every other worktree.** Forced: a worktree coordinate in the baton and a required announcement on the owner's board (`2f43c6de`).
+3. **A baton on a feature branch is invisible from every other worktree.** Forced: a worktree coordinate in the baton and a required announcement on the owner's board (`5829d42a`).
 
 ## From the skepticism pass — 2026-07-03
 
-4. **A baton is a snapshot, and a stale one followed silently produces drift.** The spec already said so, but only in its Completion Signal, which the catcher never opens. Forced: the freshness gate, On-pickup step 2 (`f99e5160`).
+4. **A baton is a snapshot, and a stale one followed silently produces drift.** The spec already said so, but only in its Completion Signal, which the catcher never opens. Forced: the freshness gate, On-pickup step 2 (`2d6afc2e`).
 
 ## From Loudon's calibration and the cold-start catch — 2026-07-04
 
-5. **Finishing a plan's stage and pointing at the next is a handoff too.** The baton carries the session's calibrations, which the plan can't; "no half-finished move to rescue" is not a reason to skip one. Forced: § When to reach for a baton (`83dcfd98`).
-6. **The move a baton names is an entry point, not a scope limit.** A baton can commission the start of something large. Forced: the cold-start variant, with its own trigger and template note (`d4c0af41`).
+5. **Finishing a plan's stage and pointing at the next is a handoff too.** The baton carries the session's calibrations, which the plan can't; "no half-finished move to rescue" is not a reason to skip one. Forced: § When to reach for a baton (`131e1d76`).
+6. **The move a baton names is an entry point, not a scope limit.** A baton can commission the start of something large. Forced: the cold-start variant, with its own trigger and template note (`edcb9c9f`).
 
 ## From the Reliable Handoff ladder — 2026-07-07
 
-7. **A caught-then-dropped baton vanished from the queue.** Forced: the three-state lifecycle — claim at the catch, close at the landing — with deletion moved from the catch to the close (`7b2f750b`).
+7. **A caught-then-dropped baton vanished from the queue.** Forced: the three-state lifecycle — claim at the catch, close at the landing — with deletion moved from the catch to the close (`4e8a65df`).
 
 ## From the footer drift — 2026-08-25
 
-8. **A checklist that is copied drifts.** The lifecycle reached the spec on 07-07 and never reached `baton-executor.mjs`'s own copy, so for seven weeks machine-written batons shipped the pre-lifecycle text. Forced: one home for the checklist (`_ops/Baton Ceremony/Baton Ceremony — on-pickup.md`) and `lint-baton-footer.py` to guard it (`f6cf60c0`).
+8. **A checklist that is copied drifts.** The lifecycle reached the spec on 07-07 and never reached `baton-executor.mjs`'s own copy, so for seven weeks machine-written batons shipped the pre-lifecycle text. Forced: one home for the checklist (`_ops/Baton Ceremony/Baton Ceremony — on-pickup.md`) and `lint-baton-footer.py` to guard it (`1e796d5e`).
 - run · 2026-09-25 · v1.0 · Palace Ceremonies, phases 4–5 · nothing new
 - run · 2026-09-25 · v1.0 · Enrichment · nothing new
 - run · 2026-09-25 · v1.0 · Kuramoto Coupling · nothing new

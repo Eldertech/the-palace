@@ -250,7 +250,7 @@ The rule was set by the 2026-06-05 standalone trickster.html page,
 where the catchups (handwritten by Claude per card) made the four-card
 session collapse from ~60 seconds of reading to ~3 seconds of
 scanning + one click for the "agree with all leans" path. The full
-exemplar set is the eight cards committed at 6925781.
+exemplar set is the eight cards committed at c887379.
 
 ## Two link-handling clauses (added cycle 2)
 

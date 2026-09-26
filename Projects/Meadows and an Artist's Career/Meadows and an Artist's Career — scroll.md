@@ -21,7 +21,7 @@ forward_vector: "I am Meadows and an Artist's Career's scroll — the one page t
 - **Waiting on you:** nothing
 - **Ready to advance:** 1 answer filed since the steward last ran — a cycle will consume it
 - **Last shipped:** 2026-06-23 (91 days ago) — Worksheet sketch is up — does the next cycle harden it, or jump to Stage 3 case studies? (`meadows-career-steward-025`)
-- **Last commit touching this project:** 2026-09-22 `110d392` — deposit(D-2026-09-06-HARVEST): Environments That Hold lands: Creative Coach, Objects to Think With
+- **Last commit touching this project:** 2026-09-22 `2488e3d` — deposit(D-2026-09-06-HARVEST): Environments That Hold lands: Creative Coach, Objects to Think With
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

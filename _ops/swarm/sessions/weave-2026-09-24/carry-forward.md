@@ -42,11 +42,11 @@ forward_vector: "I hold what the September weave inherits: the July holds, the f
 
 ## Settled; don't reopen
 
-The citizen decision. Move 5 ran July 6–8: 11 seed citizens were rebuilt, Heidegger, Buber and McGilchrist were created (c7a06381), and 5 people were marked composting (9d0403a7).
+The citizen decision. Move 5 ran July 6–8: 11 seed citizens were rebuilt, Heidegger, Buber and McGilchrist were created (c05e100f), and 5 people were marked composting (75b1e449).
 
 ## The composting ten (one cycle up; SCHEMA §2)
 
-Tarkovsky · Goldberg · Schafer · Maloof · Malick (from 9d0403a7, whose body lists the inbound links they'll leave dangling) · Media Library · Octave Equivalence · Line-Art Layer Decomposition · Claude CLI Reference · Tristitia Generator.
+Tarkovsky · Goldberg · Schafer · Maloof · Malick (from 75b1e449, whose body lists the inbound links they'll leave dangling) · Media Library · Octave Equivalence · Line-Art Layer Decomposition · Claude CLI Reference · Tristitia Generator.
 
 ## Stale file (offer deletion; don't delete unasked)
 

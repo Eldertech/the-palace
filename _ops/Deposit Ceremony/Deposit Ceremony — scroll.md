@@ -17,7 +17,7 @@ forward_vector: "I am Deposit Ceremony's scroll — the one page that opens on w
 
 > _Regenerated 2026-09-25T17:20:24.054Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v2.1 · the spec last changed 2026-09-25 (`94b12dcc`) — edit(ceremonies): every card marks its ledger — the versions move
+- **Version:** v2.1 · the spec last changed 2026-09-25 (`033f5da5`) — edit(ceremonies): every card marks its ledger — the versions move
 - **Runs since the change:** none yet — v2.1 has not run
 - **Last run:** none in the ledger yet
 - **Owed in the ledger:** nothing
@@ -42,30 +42,30 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
-<!-- scroll:entry id="version-94b12dcc0e63093254cff49c2eecf1f94031d471" -->
+<!-- scroll:entry id="version-033f5da533205712d73d6f6f2a661355112f8b38" -->
 ### 2026-09-25 — the spec moved to v2.1
 
 edit(ceremonies): every card marks its ledger — the versions move
 
 Schema v1.23 says every run marks its tuning ledger with a run line, but every card still said a lesson goes in the tuning file only when the spec changed, so no run would have written one. Each card now says it: the run marks the tuning file with its run line, and a lesson that changes the spec also goes there as a numbered item. The opening lines drop their restatement of the tail read's bounds and point at §6, so the bound lives in one place.
-<sub>`94b12dcc` · version change</sub>
+<sub>`033f5da5` · version change</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="version-cb6f8ab793015a316ff1ae9fbe4f17ff5bd9f493" -->
+<!-- scroll:entry id="version-e4c50cbf616510ed21b318338f132140786ccac5" -->
 ### 2026-09-25 — the spec moved to v2.0
 
 edit(Deposit Ceremony): v2.0 — the gate for every find
 
 Loudon, 2026-09-25: a deposit is any larger addition to canon, not upkeep; it stays reflective, with a careful map and the elder consulted, whoever is asking; it is the palace's protection, carrying its values and caring for the palace and for whoever brings the find. Tuning item 14 forces v2.0.
-<sub>`cb6f8ab7` · version change</sub>
+<sub>`e4c50cbf` · version change</sub>
 <!-- /scroll:entry -->
 
-<!-- scroll:entry id="version-57a9f2bffce367abdfe382589559cb4cb6e54068" -->
+<!-- scroll:entry id="version-00d0e290b063288b0898bf38cfbef6b8272c6c6d" -->
 ### 2026-09-25 — the spec moved to v1.0
 
 edit(Deposit Ceremony): v1.0 — version, tuning ledger, the tail read
 
 Phase 3 of the ceremony versioning (palace-ceremonies-remainder-20260925T022957Z), the last of the nine. No run forced this change, so the reason lives here (SCHEMA — Reference §6).
-<sub>`57a9f2bf` · version change</sub>
+<sub>`00d0e290` · version change</sub>
 <!-- /scroll:entry -->
 <!-- scroll:making:end -->

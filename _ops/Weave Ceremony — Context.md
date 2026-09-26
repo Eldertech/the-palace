@@ -83,7 +83,7 @@ So the working shape, to be re-tested before it becomes a rule: workers stay chi
 
 ## The Version and the Tuning File (2026-09-24)
 
-Loudon decided on 2026-09-24 that ceremonies should change in plain view, and the Weave goes first because it is the one he reworks every run. The card is stamped **v1.0** as it stood after that day's weave (`b2e51e89`). This does not rank what came before. Twenty-five earlier commits shaped the card; 1.0 marks the point where changes start being counted.
+Loudon decided on 2026-09-24 that ceremonies should change in plain view, and the Weave goes first because it is the one he reworks every run. The card is stamped **v1.0** as it stood after that day's weave (`8972a53d`). This does not rank what came before. Twenty-five earlier commits shaped the card; 1.0 marks the point where changes start being counted.
 
 **What moves the number:** a change to the procedure — a step, a postcondition, a gate, a linter wired in or taken out. Prose edits, links and faces leave it alone. Each move gets a short paragraph here saying which tuning entry forced it.
 

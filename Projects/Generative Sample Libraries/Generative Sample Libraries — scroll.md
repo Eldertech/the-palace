@@ -22,7 +22,7 @@ forward_vector: "I am Generative Sample Libraries's scroll — the one page that
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-09-24 (2 days ago) — The fix works on a second instrument. The flute now has 26 real samples instead of 11, and all 59 keys play in tune. (`gsl-steward-067`)
-- **Last commit touching this project:** 2026-09-25 `3d7b1b54` — steward(Generative Sample Libraries): commit what was shipped before cycles committed their own work
+- **Last commit touching this project:** 2026-09-25 `da1ecd73` — steward(Generative Sample Libraries): commit what was shipped before cycles committed their own work
 - **Signal:** steady
 - **Drift:** 16 cycles since the entry was last consolidated (cycle 17) — the entry body may lag; this scroll does not.
 

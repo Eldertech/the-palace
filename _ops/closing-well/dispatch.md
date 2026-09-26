@@ -227,7 +227,7 @@ branch on his yes (`executor.md` § keep → deposit).
 
 **When an executor is cut off, verify the tree before believing its last sentence** (gotcha 22).
 A partial report's final claim is the least reliable thing in it — the 2026-08-25 run said
-"landed at abfa5d2" and was true about the commit, silent about the row it never reached.
+"landed at 333f246" and was true about the commit, silent about the row it never reached.
 
 ---
 

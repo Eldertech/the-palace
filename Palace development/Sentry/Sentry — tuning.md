@@ -29,11 +29,11 @@ The 2026-09-25 hosting assessment scanned the working tree for key formats and f
 8. **npm's severity is not the Sentry's.** Most of the palace's packages are local dev tooling, and npm rates a build-time advisory as if it shipped. The Sentry reads npm one step down — critical is high, high is medium — so the public gate fails on what can hurt a reader. *(v1.0)*
 9. **A hook covers one machine.** The push gate lives in this Mac's shared `.git/hooks`; a push from any other surface never meets it. GitHub's own push protection meets every push, so the hosting check reads whether it is on. *(v1.0)*
 
-## From the first run on main — 2026-09-25 (deep sweep of 34b1c52a)
+## From the first run on main — 2026-09-25 (deep sweep of b63b896b)
 
 10. **The deps check was narrower than GitHub's.** It read two npm lockfiles with dev dependencies left out; the moment Dependabot was switched on it reported advisories across every manifest, dev tooling included. The hosting check now reads Dependabot's open alerts too, weighted the way the npm check is — a runtime critical is high, a runtime high is medium, development is at most medium — so the gate fails on what can reach a reader and still names the rest. *(v1.1)*
 
 - run · 2026-09-25 · v0 · hand-run history scan, before the Sentry had a page · taught items 1–9
-- run · 2026-09-25 · v1.0 · deep sweep of 34b1c52a, 7 raised, held locally · nothing new
-- run · 2026-09-25 · v1.1 · public-surface gate of 2b3922f1, 11 raised, held locally · nothing new
-- run · 2026-09-26 · v1.1 · public-surface gate of 32b7c794, 7 raised, held locally · nothing new
+- run · 2026-09-25 · v1.0 · deep sweep of b63b896b, 7 raised, held locally · nothing new
+- run · 2026-09-25 · v1.1 · public-surface gate of 9ef47639, 11 raised, held locally · nothing new
+- run · 2026-09-26 · v1.1 · public-surface gate of 4d33744c, 7 raised, held locally · nothing new

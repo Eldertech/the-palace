@@ -22,7 +22,7 @@ forward_vector: "I am Generative Preset Development's scroll — the one page th
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
 - **Last shipped:** 2026-06-23 (94 days ago) — Shipped a perceptual-bands worksheet that turns the pending ear-pass into fill-in-the-blanks for the 23 flagged Wavetable settings. (`preset-steward-011`)
-- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Last commit touching this project:** 2026-09-23 `c666210b` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 - **Signal:** steady
 - **Drift:** no consolidation marker on the entry — nothing to measure against.
 

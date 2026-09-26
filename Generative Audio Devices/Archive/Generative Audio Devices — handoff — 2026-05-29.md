@@ -33,7 +33,7 @@ This session is also where three loose ends from phase 2 close naturally — see
 
 ## Current state
 
-- Phase 2 is closed cleanly (registry v2.3, `verify_t7a_phase2.js` 21/21). SEQ3 reconciliation followed in v2.4 with a behavior-affecting STEPS-index bug fix. Both committed (`b3188c0`, `180fe2e`).
+- Phase 2 is closed cleanly (registry v2.3, `verify_t7a_phase2.js` 21/21). SEQ3 reconciliation followed in v2.4 with a behavior-affecting STEPS-index bug fix. Both committed (`d5dbf96`, `e5928f7`).
 - The `sampleRegion(spec, regionName, pos)` seam is live in `PDL Renderer.html` at line 623. Phase 2's emit-call (line ~722) passes no `pos` and gets the midpoint. T7b's resolver is the first `pos`-passing caller.
 - The active handoff path (`Generative Audio Devices/Generative Audio Devices — handoff.md`) is free; the previous handoff is archived at `Generative Audio Devices/Archive/Generative Audio Devices — handoff 2026-05-26.md`.
 - **Two small entry drifts to fix as session warm-up** (also flagged in the last progress check): the entry's `forward_vector` still says *"registry is at v2.3"* but the file is at **v2.4** since the SEQ3 reconciliation. And the "Done recently" list has the v2.3 phase-2 bullet but no separate entry for the v2.4 SEQ3 reconciliation (which deserves its own — the STEPS-index correction is behavior-affecting). One paragraph patch and one new bullet.

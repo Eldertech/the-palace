@@ -16,18 +16,18 @@ What each return taught the ceremony, and the lessons that reached it from elsew
 
 ## From the first return — 2026-08-25
 
-1. **An assessment written before any query was wrong five times.** A dangling-link count off by 4×, a "breakthrough drought" that was a typing artifact, a proposal to build machinery that already existed, a deferred list holding something built six weeks earlier, a floor analysis already on record. One command corrected each, and the handoff board went unread for three exchanges. Forced: "the record answers, you do not" — the query block runs before any interpretation, postconditions 1–2 (`bb8e6b4a`).
-2. **A gap was read as a verdict.** Seven quiet weeks became a theory that upkeep had outgrown its payoff; the reason was elsewhere, and Loudon corrected it in a sentence. Forced: "a gap is not a finding" — report the length, never the cause; postcondition 5 (`2d086dab`, reworded in `bb8e6b4a`).
-3. **Choosing among batons in the main window skews the choice.** Opening every baton burns the window you came back to work in and favours whichever one reads as most urgent. Forced: Step 0, the Return is a companion job, and the Concierge's scout posture drafts the map (`bb8e6b4a`; the scout built in `30c3b8a3`).
-4. **The query block wanted to be one command.** Forced: `_ops/concierge/return-map.mjs` runs the whole block; the card keeps the list as the readable spec and the by-hand fallback (`30c3b8a3`).
+1. **An assessment written before any query was wrong five times.** A dangling-link count off by 4×, a "breakthrough drought" that was a typing artifact, a proposal to build machinery that already existed, a deferred list holding something built six weeks earlier, a floor analysis already on record. One command corrected each, and the handoff board went unread for three exchanges. Forced: "the record answers, you do not" — the query block runs before any interpretation, postconditions 1–2 (`4a402512`).
+2. **A gap was read as a verdict.** Seven quiet weeks became a theory that upkeep had outgrown its payoff; the reason was elsewhere, and Loudon corrected it in a sentence. Forced: "a gap is not a finding" — report the length, never the cause; postcondition 5 (`ad86efc0`, reworded in `4a402512`).
+3. **Choosing among batons in the main window skews the choice.** Opening every baton burns the window you came back to work in and favours whichever one reads as most urgent. Forced: Step 0, the Return is a companion job, and the Concierge's scout posture drafts the map (`4a402512`; the scout built in `fc0b9800`).
+4. **The query block wanted to be one command.** Forced: `_ops/concierge/return-map.mjs` runs the whole block; the card keeps the list as the readable spec and the by-hand fallback (`fc0b9800`).
 
 ## From the floor's purpose deposit — 2026-09-03
 
-5. **The companion is summoned at the open, not at the return.** By the time "I'm back" is said it should already exist. Forced: Step 0 resumes the resident and summons only when the surface couldn't at open (`ba32db12`).
+5. **The companion is summoned at the open, not at the return.** By the time "I'm back" is said it should already exist. Forced: Step 0 resumes the resident and summons only when the surface couldn't at open (`3fd7ee0d`).
 
 ## From a read of the tools — 2026-09-22
 
-6. **A Cowork commit handoff is invisible to the block.** Neither the card, `return-map.mjs`, nor `list-handoffs.mjs` knows `cowork-git`, so a return can report "nothing open" while one waits in `node _ops/cowork-git/handoff.mjs show`. Named in Open Questions and held (`f05382bc`). No spec change.
+6. **A Cowork commit handoff is invisible to the block.** Neither the card, `return-map.mjs`, nor `list-handoffs.mjs` knows `cowork-git`, so a return can report "nothing open" while one waits in `node _ops/cowork-git/handoff.mjs show`. Named in Open Questions and held (`ec7595ce`). No spec change.
 
 ## From the return of 2026-09-25 — ten hours, the first run under the scout
 

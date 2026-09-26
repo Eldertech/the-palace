@@ -27,7 +27,7 @@ STIGMERGY runs on Loudon's machine and holds his board — the palace's shared r
 
 ## Cold start
 
-COLD START — this work has not begun; no prior state, no tried-and-rejected. What already landed from the same review, so it isn't redone: the null-body crash, stream errors, body cap, Host-forwarded reviews, the parser's phantom section and door rule, the vacuous traversal test (`8d28ae7d`…`bbacfc63`).
+COLD START — this work has not begun; no prior state, no tried-and-rejected. What already landed from the same review, so it isn't redone: the null-body crash, stream errors, body cap, Host-forwarded reviews, the parser's phantom section and door rule, the vacuous traversal test (`c04b8c35`…`b1f7878f`).
 
 ## Next move
 
@@ -47,7 +47,7 @@ Claude Code on the Mac. Work in a worktree: `node _ops/worktree/new-worktree.mjs
 
 ## Load these files first
 
-1. This baton, and the close commit `2ea8f12e` (the whole re-check, item by item).
+1. This baton, and the close commit `b52a58e5` (the whole re-check, item by item).
 2. `STIGMERGY.md` § Rich faces, and `SCHEMA — Reference.md` §9 (the wire).
 3. `_ops/rich-face/rich.html`, `_ops/rich-face/rich-handler.mjs`, `_ops/stigmergy/app/server/api/rich.js`.
 4. `_ops/stigmergy/app/server/http.js` (the `/api/persistent` POST, `MAX_BODY_BYTES`), the Vite config, `ArtifactSlot.jsx`.

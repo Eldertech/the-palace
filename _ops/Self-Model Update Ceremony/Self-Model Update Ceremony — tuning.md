@@ -14,4 +14,4 @@ What each update taught the ceremony, and the lessons that reached it from elsew
 
 **v1.0 (2026-09-25)** is the card as it stood that day, plus the opening read. It marks where counting starts, not a ranking of what came before. The number moves when the procedure does — a step, a postcondition, a gate — never for prose. An update's record is its commit.
 
-No run has changed the ceremony since it took its present form in the March consolidation (`a17bbd72`); the edits since were the `SUBSTRATE.md` rename and boilerplate. No items yet.
+No run has changed the ceremony since it took its present form in the March consolidation (`46d904fe`); the edits since were the `SUBSTRATE.md` rename and boilerplate. No items yet.

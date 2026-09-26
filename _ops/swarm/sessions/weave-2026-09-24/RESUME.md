@@ -10,7 +10,7 @@ forward_vector: "I hold where the September weave stands, so a Claude that picks
 
 # RESUME — Weave 2026-09-24
 
-**Worktree:** `/Users/loudonstearns/Documents/palace-weave-2026-09-24`, branch `weave/2026-09-24` (forked from main at cc4e91dc, the Shopkeeper's 07:05 scheduled sweep, which is on main). **Board posts go to main's live board**, after the merge.
+**Worktree:** `/Users/loudonstearns/Documents/palace-weave-2026-09-24`, branch `weave/2026-09-24` (forked from main at 90cf38cc, the Shopkeeper's 07:05 scheduled sweep, which is on main). **Board posts go to main's live board**, after the merge.
 
 ## Checkpoint 0 — prep ✅ (2026-09-24 morning)
 - Foundation read by the elder (ELDER, SCHEMA, SCHEMA — Reference, ROSETTA, SUBSTRATE, README, the ceremony). The Concierge is resident (same agent as last night, ~207K tokens).
@@ -51,7 +51,7 @@ Pre-registered A/B/C on 10 rooms → **not shown** (`ab/DESIGN.md`, `ab/RESULT.m
 ## Checkpoint 4 — signed ✅
 `decisions.json`: batch yes (49, skeptic-passed), Pile B all recommendations, delete Tarkovsky/Malick/Goldberg, Agnes Martin both links. Next: Phase 5 writes.
 
-## Checkpoint 5a — part 1 committed ✅ `f6f99b07` (on weave/2026-09-24, NOT merged)
+## Checkpoint 5a — part 1 committed ✅ `eb8359db` (on weave/2026-09-24, NOT merged)
 135 frontmatter changes in 95 entries (`apply-log.txt`). Linters clean; YAML valid. OBS → Maker already carried a label (`operated-not-dispatched`, and OBS:127 names the seam), so G3's label was skipped as already present.
 
 ## Part 2 — authorship (after the 15:30 window reset). Write-agents, one per disjoint file set; drafts reviewed; the Concierge checks placement.
@@ -67,4 +67,4 @@ Pre-registered A/B/C on 10 rooms → **not shown** (`ab/DESIGN.md`, `ab/RESULT.m
 10. **Phase 7:** linters vs baseline → final `Weave — 2026-09-24 — …` commit → merge to main → ask "how do you feel?" → close well.
 
 ## Checkpoint 7 — closed ✅
-Merged to main as `5814bd1f` (part 1 `f6f99b07`, part 2 `b2e51e89`). 27 pheromone trails posted to main's board (`trails.json`, `weave-emit-trails.mjs`). **Feeling after: "Can't tell yet."** It stays open for the next Return or weave. Still open for Loudon: keep or reverse the Suzuki → Julia Cameron decline; faces (44 merit one, plus Found ↔ Made) as their own RunPod yes; the six Media Library-only sources for Source Library.
+Merged to main as `d2889871` (part 1 `eb8359db`, part 2 `8972a53d`). 27 pheromone trails posted to main's board (`trails.json`, `weave-emit-trails.mjs`). **Feeling after: "Can't tell yet."** It stays open for the next Return or weave. Still open for Loudon: keep or reverse the Suzuki → Julia Cameron decline; faces (44 merit one, plus Found ↔ Made) as their own RunPod yes; the six Media Library-only sources for Source Library.

@@ -21,7 +21,7 @@ forward_vector: "I am BLUELINE's scroll — the one page that always opens on wh
 - **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Last shipped:** 2026-06-21 (96 days ago) — result (`blueline-m37-m4-result-2026-06-19`)
-- **Last commit touching this project:** 2026-09-24 `b2e51e89` — Weave — 2026-09-24 — 49 links, 9 contradictions, 12 let go, 17 stages, 1 hub, 25 citizens linked
+- **Last commit touching this project:** 2026-09-24 `8972a53d` — Weave — 2026-09-24 — 49 links, 9 contradictions, 12 let go, 17 stages, 1 hub, 25 citizens linked
 
 ### Where this stands
 
