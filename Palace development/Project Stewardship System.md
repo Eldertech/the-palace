@@ -271,7 +271,7 @@ Per Infrastructure Spec §12 forward vector, the rules engine is unspecced. This
 
 ## The Machinery/Content Split
 
-A standing operating principle, named 2026-06-09 and applied to this system first via Bundle-Local Stewardship — Production Plan:
+A standing operating principle, named 2026-06-09 and applied to this system first, when each steward's working state — its plan, open decisions and done trail — moved out of `_ops` into its entry's bundle:
 
 > **Shared engine code, indexes, schedulers, and runtime bookkeeping belong in `_ops/`. Anything *about a specific entry* — its plan, its open decisions, its working memory, its lessons — belongs in that entry's bundle.** When a file describes one entry, it lives with that entry; when a file runs across all entries, it stays in ops.
 
@@ -295,7 +295,6 @@ The fix is **CQRS, not relocation**: the append-only board stays the event log (
 - **One activation is a run** (decided 2026-09-23; Loudon set 10 as the starting cap). The manifest's `stopping_conditions.max_iterations` — validated since v0.1 but never enforced — now means: cycle the same steward up to that many times in a row while each cycle ships a made thing and nothing is waiting on Loudon. A paused ask (`blocking: true`) or a request for a live session ends the run. The mandate tells the steward which cycle of the run it is on so it plans a whole move, not a step. The reason: a single cycle per round, gated on a human click, made every round a small jump; the cost of a wasted extra cycle is one dispatch, the cost of a missing one is a week.
 - **A barren cycle is a failed cycle** (decided 2026-09-23). A cycle that posts nothing earns exactly one retry with a mandate that says so; a second barren cycle marks the steward **STALLED** (`state.health.stalled`, score red) and ends the run, and the scroll and the PROJECTS deck say "stalled" instead of "cycle 7, green." The flag clears the moment a cycle ships. Never a third try — the loop stalls loudly rather than silently. **A cycle the harness cut off is not barren** (decided 2026-09-25): when the worker was stopped by a usage limit, an expired token or an unsupported model before it posted, the cycle is recorded as *interrupted* — no barren count, no stall — and a usage limit stops the whole batch. The harness writes these as its own error records, never as the steward's words, so they are told apart by what the transcript says, not guessed from silence.
 - **The plan is agreed with Loudon** (decided 2026-09-25, SCHEMA v1.25). The scroll's Plan changes only with his yes; a steward proposes revisions with the evidence it gained while building, may make off-plan work as proof of a different direction (flagged `off_plan`, labelled on the trail), and restates any move it refers to so Loudon is caught up, never leaning on a number.
-
 - **Standing Orders bind the steward** (decided 2026-09-23). Loudon writes taste and direction once, in the scroll's orders zone, from STIGMERGY; every cycle prompt injects it above the board slice; it outranks the steward's lean and any older grant. A question a standing order already answers is never asked.
 - **A steward can tend a service, not only a project** (decided 2026-09-25). The [[Shopkeeper]] — a `maker` — is an ordinary steward: it shows under SERVICES on the PROJECTS deck, its manifest carries a one-line `role` that the cycle prompt prints so it works outward instead of treating its page as the thing to build, and the heartbeat applies its project-status check (active · complete · archived) only to projects, since a maker's `status` (alive · stub) means something else. One wake path and one commit path for every steward; no special cases.
 - **A steward commits what it ships** (decided 2026-09-25). When a cycle ends, `process-cycle.js` commits the files its messages listed as made — text and media, at most 10 MB each, only inside the steward's own bundle, never a file carrying entry frontmatter — with its machinery, scroll and the board, scoped to exactly those paths. The model never runs git; the deterministic step does. A shipped thing is a made thing, not a proposal awaiting review, and one left uncommitted is lost the day the tree is cleaned.
@@ -319,9 +318,8 @@ If you are a Claude reading this entry for the first time and Loudon wants to co
 1. Read this entry end-to-end.
 2. Read [[BBS Blackboard]], [[SCHEMA]] §9 (the wire), and [[Palace Orchestrator]] (the executor) — they contain the architectural ground truth.
 3. Read [[Substrate Skill]] § Stage as Alignment Confidence — the operating posture.
-4. Read BBS Production Plan for the autonomous build contract pattern (template for Stage B).
-5. Read [[Generative Sample Libraries]] and [[Talking Keyboard]] — the case study where stage-mismatch was first surfaced empirically.
-6. Ask Loudon: which stage are we ready for? **As of 2026-05-26: Stage A is done (5 cycles), Stage B (Orchestrator v0.1) is build-complete and awaiting smoke-test, Stage D shipped.** The live frontier is the Stage B smoke-test gate — advance the GSL steward to cycle 6 through the orchestrator skill, then push the branch.
+4. Read [[Generative Sample Libraries]] and [[Talking Keyboard]] — the case study where stage-mismatch was first surfaced empirically.
+5. Ask Loudon: which stage are we ready for? **As of 2026-05-26: Stage A is done (5 cycles), Stage B (Orchestrator v0.1) is build-complete and awaiting smoke-test, Stage D shipped.** The live frontier is the Stage B smoke-test gate — advance the GSL steward to cycle 6 through the orchestrator skill, then push the branch.
 
 After that, the open decision is whether to build Orchestrator Production Plan v0.2 (the Stage C enablers). The historical pickup notes below are kept for the record but no longer describe the frontier.
 
@@ -343,7 +341,6 @@ The pattern of the conversation itself was the first concrete instance of the sy
 
 - **[[BBS Blackboard]]** — the communication substrate the Steward uses
 - **[[Palace Orchestrator]]** — the executor and canonical technical foundation (wire in [[SCHEMA]] §9)
-- **BBS Production Plan** — the build-contract template Stage B should follow
 - **[[Substrate Skill]]** — the operating posture for stage-conditional agent work
 - **[[Trickster]]** — the role Loudon (or a future automated proxy) plays in triage
 - **[[Pages as Agents]]** — the philosophical foundation: every page is also an agent
