@@ -175,66 +175,15 @@ This is the **Profile Generalizer** — the capability that makes the project ap
 
 ---
 
-## Multi-Stage Plan
+## Plan
 
-### Stage 0 — Reconnaissance: Wavetable and Vital Profile Build
-**Who leads:** Loudon and Claude working together.
+The plan — what comes next, agreed with Loudon — lives on [[Generative Preset Development — scroll]], where it changes only with his yes.
 
-Load 20–30 existing presets per synth. Decompress and read the raw files. Map every parameter. Hand-label each preset in modular synthesis language — oscillator architecture, filter approach, modulation assignments, envelope character, effect chain role. Converge on the perceptual vocabulary by listening. Output: first draft of two synth profiles (Vital first, then Wavetable), ready for Stage 1.
+---
 
-**Vital profile-build entry point:**
-```python
-import json
-with open("a_vital_preset.vital") as f:
-    preset = json.load(f)
-print(list(preset.keys()))  # reveals top-level parameter namespace
-```
+## Convergence with Generative Audio Devices
 
-**Wavetable profile-build entry point:**
-```python
-import gzip, xml.etree.ElementTree as ET
-with gzip.open("a_wavetable_preset.adv", "rb") as f:
-    tree = ET.parse(f)
-# Walk the tree, collect all element names and attribute ranges
-```
-
-### Stage 1A — Vital Preset Creator
-- Profile: full parameter vocabulary with perceptual regions
-- Format reader/writer: JSON → param map → JSON (trivial, no encoding)
-- Generation track: prompt → preset file (using profile archetypes + seeded sampling)
-- Analysis track: preset file → plain-language description
-- Modification track: preset + abstract direction → modified preset
-
-**Success criteria:** Given the prompt "a pad that sounds like light through deep water," produce 3 Vital presets that are audibly distinct from each other and from factory defaults, each recognizably matching the description.
-
-### Stage 1B — Wavetable Preset Creator
-- Profile: full parameter vocabulary with perceptual regions
-- Format reader/writer: gzip → XML → param map → XML → gzip
-- Same generation/analysis/modification pipeline as Stage 1A
-- Synth-specific archetypes tuned to Wavetable's two-oscillator + sub + filter topology
-
-**Success criteria:** Same prompt test as 1A. Bonus: analysis of a known factory preset matches the description a skilled synthesist would give it.
-
-### Stage 2 — Serum2 Preset Creator
-- Acquire and audit community `serum-preset-packager` tooling
-- Build Serum2 profile from preset collection
-- Extend pipeline to Serum2 format
-- Map Serum2's modulation matrix (complex: 8 LFOs, 3 envelopes, macro routing, chaos operators in Serum2)
-
-**Key challenge:** Serum2 extended the modulation system significantly relative to original Serum. The profile must capture the new modulation sources (chaos generators, additional LFO types, new wavetable morphing modes) introduced in Serum2.
-
-### Stage 3 — Surge XT and Dexed
-- Surge XT: leverage Python bindings for automated profile-building
-- Dexed: study prior academic work (SPINVAE, Sound2Synth) and build on their parameter vocabularies
-- FM-specific perceptual vocabulary: operator ratio relationships, feedback amounts, algorithm selection as architectural choice
-
-### Stage 4 — Profile Generalizer
-- Semi-automated profile-building from a preset collection + the synth itself
-- Human-in-the-loop for perceptual region labeling (requires ears)
-- Profile schema stabilizes as a format — exportable, shareable
-
-### Stage 5 — Convergence with Generative Audio Devices
-The convergence point is when [[Generative Audio Devices]] has a stable PDL and the profile system is mature enough that a synth profile can function as a PDL-to-preset emitter target. At that point, the three-layer architecture extends:
+The two projects meet when [[Generative Audio Devices]] has a stable PDL and the profile system is mature enough that a synth profile can work as a PDL-to-preset emitter target. At that point the three-layer architecture extends:
 
 ```
 natural language
@@ -249,8 +198,6 @@ natural language
 ```
 
 The profile *is* the registry. The preset emitter is the translator. The three-layer architecture's power compounds: one PDL description, multiple synth-specific realizations.
-
-**Keep separate until:** Stage 3 of this project is complete. Both projects need to prove their core pipelines before convergence planning. The convergence point is a synthesis of two mature sibling projects, not a shortcut.
 
 ---
 

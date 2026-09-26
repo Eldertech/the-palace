@@ -15,13 +15,14 @@ forward_vector: "I am Generative Sample Libraries's scroll — the one page that
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-24T02:57:50.839Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:45:32-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** growing · **Steward:** cycle 33 · last ran 2026-09-24 (today)
+- **Status:** active · **Stage:** growing · **Steward:** cycle 33 · last ran 2026-09-24 (2 days ago)
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-09-24 (today) — The fix works on a second instrument. The flute now has 26 real samples instead of 11, and all 59 keys play in tune. (`gsl-steward-067`)
-- **Last commit touching this project:** 2026-09-23 `3092a12c` — steward(Generative Sample Libraries): pilot cycle 21 — graded run → playable SFZ, proven on the Crystal arm
+- **Last shipped:** 2026-09-24 (2 days ago) — The fix works on a second instrument. The flute now has 26 real samples instead of 11, and all 59 keys play in tune. (`gsl-steward-067`)
+- **Last commit touching this project:** 2026-09-25 `3d7b1b54` — steward(Generative Sample Libraries): commit what was shipped before cycles committed their own work
 - **Signal:** steady
 - **Drift:** 16 cycles since the entry was last consolidated (cycle 17) — the entry body may lag; this scroll does not.
 
@@ -47,6 +48,21 @@ _None._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** A conversation that ends in a playable sampled instrument. Claude runs the interview (source, range, velocity layers, format), draws audio from wherever it can, and writes a library any open sampler loads. Behind it: [[Talking Keyboard]] proved the whole loop in May 2026; the interview became a reusable skill with two rules that can't be skipped (agree the conventions before rendering, and audition before the full batch); and palace synthesis became the first real source, with a Crystal instrument and a Shepard-tone instrument built and approved by Loudon. The plan listed a folder of recordings as the first outside source, but in June Loudon pointed the work at audio AI instead: ask a model to play a named pitch, then check it with pitch detection. That is where the work is now.
+
+**The moves ahead**
+
+1. **Make an audio AI model a source.** MusicGen, given a guide tone at the target pitch, renders each note; every take is filed under the pitch it actually played, and the steadiest takes become the instrument. Stable Audio is out, on Loudon's ear. Violin, flute and marimba now play in tune on every key by measurement, but the latest builds haven't been heard. The move is done when one AI-sourced instrument sounds right to Loudon and the critique-and-regenerate loop runs inside the interview.
+2. **Graduate the interview skill.** Move it out of the project so it loads on every sample-library task. Loudon said yes on 2026-06-06, and the steward's proposal is in `interview-skill-promotion-proposal.md`. Two calls wait on him: whether it lands in `.claude/skills/`, where auto-loading already works, or in a new top-level `/skills/`, and whether the project copy stays as a pointer. It goes through a deposit and can happen at any time.
+3. **Point the folder source at real recordings.** The adapter that reads a folder of WAVs, detects each file's pitch and maps it to the keyboard was scaffolded in June (`_ops/sample-libraries/local-wav-folder/`) and has never been run on a real folder.
+4. **Draw from web libraries.** Download Creative Commons packs, such as freesound.org's, with Loudon's explicit permission, then treat them as a local folder.
+5. **Write every open format.** DecentSampler presets (XML zipped with the WAVs, which is how participants load an instrument in a free plugin), SF2 through ConvertWithMoss, loop points written into each WAV's `smpl` chunk, a check for clicks at loop seams, and crossfaded loops for tones that don't loop cleanly. Kontakt stays out, since authoring it needs a paid licence.
+6. **Meet Generative Audio Devices.** Acknowledged, not yet planned: [[Generative Audio Devices]] builds the instrument shells, this project fills them, and one day a single act of generation makes both. Not before every format above is real.
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
@@ -56,6 +72,13 @@ Never start a render you can't finish and post inside one cycle. Chunk long swee
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-45-32-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the entry's development plan
+
+Carried over on 2026-09-25 from the Development Plan in [[Generative Sample Libraries]], when plans moved into scrolls (SCHEMA v1.25). The two finished phases (the Talking Keyboard loop and the interview skill) and the onset-trim pipeline step stay in the entry as what is behind the plan. Of the multi-source phase, palace synthesis is done and dropped; audio AI comes first because Loudon pointed the work there on 2026-06-25 (grant on gsl-steward-037), ahead of the folder source the plan had listed first. The interview skill's graduation, which Loudon granted on 2026-06-06 (grant on gsl-steward-031) and which was never carried out, is written in as its own move. Phase numbers were replaced by names.
+<sub>`plan-2026-09-25T20-45-32-04-00` · plan agreed · agreed 2026-09-25T20:45:32-04:00 · carried over by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="gsl-steward-067" -->
 ### 2026-09-24 — cycle 33 — The fix works on a second instrument. The flute now has 26 real samples instead of 11, and all 59 keys play in tune.
 > shipped · flute rendered, graded, built · not heard yet · steward leans trim the tails next

@@ -15,14 +15,15 @@ forward_vector: "I am Generative Wavetable Libraries's scroll — the one page t
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:47:19-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** growing · **Steward:** cycle 15 · last ran 2026-08-26 (28 days ago)
+- **Status:** active · **Stage:** growing · **Steward:** cycle 15 · last ran 2026-08-26 (31 days ago)
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Ready to advance:** no unread answers
-- **Last shipped:** 2026-06-23 (92 days ago) — AKWF fit-test shipped — branch 1.b carries an end-to-end run in two user turns (`gwl-steward-039`)
-- **Last commit touching this project:** 2026-09-03 `1b67a68` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
-- **Signal:** ⚠ the last cycle posted nothing (one barren cycle — the lane will retry before calling it stalled)
+- **Last shipped:** 2026-06-23 (95 days ago) — AKWF fit-test shipped — branch 1.b carries an end-to-end run in two user turns (`gwl-steward-039`)
+- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Signal:** steady
 - **Drift:** 6 cycles since the entry was last consolidated (cycle 9) — the entry body may lag; this scroll does not.
 
 ### Where this stands
@@ -49,6 +50,19 @@ _None._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** A conversation that ends in a wavetable. Claude runs the interview, takes the cycles from anywhere (palace synthesis, captured audio, an audio AI), and writes a table that Serum, Vital, Ableton, Surge XT and hardware can load. Behind it: a table that sweeps the seven crystal lattice systems and one that opens a Shepard tone from dark to bright, both heard by Loudon in Serum and Ableton ("they all work very well," 2026-06-23), with the Serum writer matching a factory file byte for byte; and a third table built from the Floquet modes. The original plan went sources, then formats, then merging with the sample libraries. On 2026-06-23 Loudon put the chat interview first, as the next major build, and that is where the work is now.
+
+**The moves ahead**
+
+1. **Make the interview carry a real run.** The wavetable interview is drafted as a skill (`_ops/wavetable-libraries/skills/interview/SKILL.md`), a sibling to the sample-library one, with the same two rules: agree the conventions before any audio, and audition the smallest table before the batch. A six-cycle test on the AKWF single-cycle library went through in two turns. Next, as Loudon picked on 2026-06-25: run it on an AKWF pack of a hundred or more cycles, where sorting similar cycles has to do visible work and the defaults may break. The skill graduates once a source newer than the skill has gone through it end to end.
+2. **Widen the sources.** Palace synthesis has given three tables and the AKWF packer covers captured audio. Still to come: an audio AI's output, and cycles a user brings.
+3. **Finish the formats.** A writer for Surge XT's `.wt` binary format, which is documented in the Surge repository, and single-cycle exports for hardware and Eurorack. Serum and Ableton are done.
+4. **Meet Generative Sample Libraries.** One conversation makes both a sample library and a wavetable from the same source synthesis, and the two projects share one interview layer.
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
@@ -58,6 +72,13 @@ _Loudon's standing direction for this project. The steward reads this zone every
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-47-19-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the entry's development plan
+
+Carried over on 2026-09-25 from the Development Plan in [[Generative Wavetable Libraries]], when plans moved into scrolls (SCHEMA v1.25). The crystal lattice table and the Shepard brightness table are done and stay in the entry; the Serum and Ableton formats are done and were dropped. The chat interview was not in the entry's plan: it is written in first because Loudon chose it as the next major build on 2026-06-23 (grant on gwl-steward-031) and chose its next step on 2026-06-25 (grant on gwl-steward-040). Phase numbers were replaced by names.
+<sub>`plan-2026-09-25T20-47-19-04-00` · plan agreed · agreed 2026-09-25T20:47:19-04:00 · carried over by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="gwl-steward-039" -->
 ### 2026-06-23 — cycle 14 — AKWF fit-test shipped — branch 1.b carries an end-to-end run in two user turns
 

@@ -57,12 +57,7 @@ The central bet: with a curated, source-verified component vocabulary as groundi
 
 **Stage 1 is closed end-to-end on VCV Rack.** Both halves of the pipeline exist and are verified: English description → [[PDL Generation Prompt]] → 2–3 candidate PDL → `emitVcvJson` (in `PDL Renderer.html`) → loadable, good-sounding `.vcv`. The full task chain (T1·T3·T4·T4b·T11·T12·T7a·T7b·T7c·T7d·T6) is all ✅. Two registry files are the reliability surface: `vcv_fundamental_registry.json` (v2.4, 10 modules) and `archetypes.json` (v0.2, 8 archetypes). Tests, all green: `verify_t7a_phase2.js` 21/21, `verify_t7b.js` 36/36, local harnesses in `_tools/` (real-emitter 12/12, layout 18/18, T6 oracle 9/9).
 
-**The two live threads, in priority order:**
-
-1. **Human audition loop (Loudon, Mac-side) — the gating check.** Generate a description through [[PDL Generation Prompt]], pick a candidate, emit it, load in Rack, confirm v0.2 sounds usable and the two-row layout matches muscle memory. Fixtures: `Shop/VCV Patch Generator/recipes/` (kick/pluck/warm_pad) and `…/t6-runs/` (9 verified candidates). *This is the next thing to actually do.*
-2. **T10 — second-target registry.** The real test of the founding bet. A second target = a new registry + emitter, not a new architecture. Pure Data is lowest-risk; RNBO Codebox~ forces the "is the IR graph- or code-shaped?" question Loudon has vocabulary for.
-
-**Two named, deferred gaps** (don't let them block T10): **polyphony** (`MIDI_CV` models one channel; VCV poly lives in the module `data` blob the emitter writes as `{}`) and a **registry param-count re-verification** (Rack's re-saved patches carry 8 VCO / 7 VCF param slots vs. the registry's 6 each — a web-fetch gave contradictory indices and was rejected; re-read the source, trust what Rack's bytes write).
+The plan — what comes next, agreed with Loudon — lives on [[Generative Audio Devices — scroll]], where it changes only with his yes.
 
 **To resume:** read this entry, then `git log --oneline` for the 2026-05-29 commits (`T7b`→`T6`). The prompt, registries, renderer, and tests are the working set.
 
@@ -170,32 +165,9 @@ The hard asymmetry: signal flow has a syntactic floor (a cable either exists or 
 
 ---
 
-## Roadmap
+## Plan
 
-### T8 — Wire the perceptual index into the renderer
-**Priority:** medium.
-
-Search input in the `RegistryPanel` sidebar. As the user types, binary-highlight registry modules whose `perceptual_index` contains any of the typed words (case-insensitive). No ranking, no embeddings.
-
-**Success criteria:** "bright" highlights VCO and VCF; "breathing" highlights LFO and ADSR; "kick" highlights nothing (diagnostic — index needs percussive coverage).
-
----
-
-### T9 — Split PDL into its own palace entry
-**Priority:** low. Create `PDL Spec.md`; move the grammar, signal-type list, resolution order, and syntax examples there. Link from here via `spawned: "[[PDL Spec]]"`.
-
----
-
-### T10 — Second-target pilot
-**Priority:** future. Do not start until Stage 1 (T1·T3·T4·T4b·T6·T7·T11) is fully audibly closed.
-
-Candidates in leverage order:
-- **RNBO Codebox~** — Loudon has deep vocabulary; export multiplies to Ableton/VST/AU/web. Open structural question: does the registry abstraction (graph-topological) generalize to a code-emitting target, or does a functional IR appear as a sibling to PDL?
-- **Pure Data** — closest structural cousin to VCV; lowest-risk second target
-- **Max/MSP** — JSON-based patcher; similar shape to `.vcv`
-- **WebAudio API** — forces the RNBO structural question early
-
-**Success criteria for Stage 2:** the same PDL spec that produces a VCV patch also produces a working artifact in the second target. Discipline: do not split attention across targets before one is proven.
+The plan — what comes next, agreed with Loudon — lives on [[Generative Audio Devices — scroll]], where it changes only with his yes.
 
 ---
 

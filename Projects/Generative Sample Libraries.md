@@ -191,7 +191,9 @@ ConvertWithMoss (open source, Java, free) converts between: WAV folders, SFZ, So
 
 ---
 
-## Development Plan
+## Plan
+
+The plan — what comes next, agreed with Loudon — lives on [[Generative Sample Libraries — scroll]], where it changes only with his yes. What is already built, and the rules it taught, stays below.
 
 ### Phase 1 — End-to-End MVP: One Chat → One SFZ Instrument ✓ Complete (2026-05-02)
 
@@ -233,37 +235,6 @@ ConvertWithMoss (open source, Java, free) converts between: WAV folders, SFZ, So
 
 ---
 
-### Phase 3 — Multi-Source
-
-**Goal:** Source-agnostic generation across the four named source types.
-
-**Front door:** every Phase 3 source first runs through [the Interview skill](obsidian://open?vault=The%20Palace&file=_ops/sample-libraries/skills/interview/SKILL.md) shipped in Phase 2. The question tree, the default presets, and the two hard gates are the mandatory entry path; Phase 3's per-source work is what the skill hands off to after both gates pass.
-
-**What we build (one source per sub-phase, in priority order):**
-- *Local WAV folder*: read filenames or detect pitch with librosa, map onto keyboard, generate SFZ. The simplest external source after palace synthesis.
-- *Palace synthesis*: wire up the existing `Projects/Generative Sample Libraries/crystal-audio/crystal_synth.py` and any other palace synthesis modules, generalize the interview to ask about synthesis parameters.
-- *AI audio sub-agents*: call generative audio models from inside the interview loop, with iterative critique-regenerate before committing to multisample.
-- *Web libraries*: download with explicit user permission, then process as local audio.
-
-The AI sub-agent path is the architecturally interesting one — it is where the conversational layer turns reflexive (Claude in dialogue with another model, mediated by Loudon's taste).
-
----
-
-### Phase 4 — Multi-Destination
-
-**Goal:** Render to whichever open sampler format the user names.
-
-**What we build:**
-- DecentSampler `.dspreset` / `.dslibrary` generator — XML + ZIP packaging
-- SF2 conversion path via ConvertWithMoss (already a CLI; wrap as Python subprocess call)
-- SMPL chunk writer for embedded loop points in WAV
-- Loop quality verifier (detect clicks, spectral discontinuities)
-- Crossfade loop generator for tonal sources that don't loop cleanly
-
-Kontakt NKI explicitly out of scope: proprietary format, requires paid licensing for authoring.
-
----
-
 ### Pipeline addition (2026-05-03, from the [[Phoneme Choir]] build) — Responsive-Onset Trim
 
 A new step now sits between rendering and SFZ writing: **per-file onset detection + sample-offset opcode + click-suppression fade-in**. Motivation: TTS sources (and AI audio sub-agents generally) emit variable amounts of leading silence and breath per voice — Phoneme Choir's render saw onsets ranging from 23 ms to 218 ms across 352 files for the same word in different voices. Without per-file trim, the resulting instrument feels inconsistently sluggish, with no audible reason from the player's perspective.
@@ -275,14 +246,6 @@ The step:
 3. **Click-suppression fade-in** — `ampeg_attack=0.003` (3 ms cosine fade) on every region. Smooths the discontinuity from starting mid-waveform.
 
 This is now the default for every TTS-source build and a recommended default for any source with variable lead-in (AI audio sub-agents, web library samples with inconsistent edits). Reference implementation: `_ops/sample-libraries/phoneme-choir/generate.py` — `detect_onset_sample()`, `offset_with_cushion()`, and the SFZ writer's per-region `offset=` and `ampeg_attack=` opcodes. Open question carried forward in [[Phoneme Choir]]: should this become a reusable utility module (`responsive_onset.py`) imported by every GSL build, rather than copy-pasted inline?
-
----
-
-### Phase 5 — Convergence with Generative Audio Devices (Future)
-
-This phase is acknowledged but not planned. The [[Generative Audio Devices]] project will eventually build the plugin shells — the instruments that play back sample banks. The current project generates the content those shells will use. The convergence point: a single act of generation produces both the shell and its content; the instrument emerges whole.
-
-**Keep separate until:** Phase 4 of this project is complete and the multi-format pipeline is real. At that point, revisit both projects for formal convergence planning.
 
 ---
 

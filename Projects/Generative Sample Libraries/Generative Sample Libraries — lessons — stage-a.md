@@ -28,6 +28,6 @@ The runtime artifacts remain in `_ops/agents/permanent/generative-sample-librari
 - `history.jsonl` — append-only event log for this agent's cycles
 - `pending-bbs-append.jsonl` — pre-fix forensic snapshot of BBS messages (pairs with the event log)
 
-The steward's *work state* (open/resolved decisions, done trail) now lives in the bundle's `Generative Sample Libraries — plan.md`, materialized from the board each cycle.
+The steward's *work state* now lives in the bundle's [[Generative Sample Libraries — scroll]]: where it stands and the decisions (regenerated from the board), the plan agreed with Loudon, and the trail of what it made.
 
 **Palace principle (recorded by Loudon 2026-05-03):** keep as much knowledge in the palace entry as possible until it becomes clearly unmanageable. Auxiliary markdown files for findings/lessons/decisions duplicate palace state — the entry is canonical.

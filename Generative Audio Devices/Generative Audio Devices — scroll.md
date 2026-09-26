@@ -15,26 +15,49 @@ forward_vector: "I am Generative Audio Devices's scroll — the one page that al
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:41:02-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
-- **Status:** active · **Stage:** sprout · **Steward:** none — this project has no permanent steward yet
+- **Status:** active · **Stage:** sprout · **Steward:** cycle 0 · last ran —
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
+- **Ready to advance:** no unread answers
 - **Last shipped:** nothing on the board yet
-- **Last commit touching this project:** 2026-09-03 `1b67a68` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
+- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
+- **Signal:** steady
+- **Drift:** no consolidation marker on the entry — nothing to measure against.
 
 ### Where this stands
 
-_No steward has spoken for this project. Its direction is the `forward_vector` in [[Generative Audio Devices]]'s frontmatter; enchant a steward to start the trail._
+_The steward has not spoken yet._
 
 ### Open asks
 
 _None — nothing is waiting on you._
+
+### Answered, not yet consumed
+
+_None._
 
 ### Decided
 
 _Nothing decided on the board yet._
 
 <!-- scroll:now:end -->
+
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** A pipeline that turns a plain description of a sound into a loadable instrument for any modular or DSP environment: English in, a target-neutral patch language (PDL) in the middle, and one verified vocabulary per target on the way out. VCV Rack is the first target, and the whole chain has worked there since May 2026: [[PDL Generation Prompt]] writes two or three candidate patches, [[PDL Renderer]] emits a `.vcv` that loads, and fresh agents went nine for nine. Nothing has moved since then, and the next step is Loudon's ear.
+
+**The moves ahead**
+
+1. **Hear it in Rack.** On the Mac, Loudon writes a description through the prompt, picks a candidate, emits it, loads it in Rack, and says whether the revised archetypes sound usable and the two-row layout matches his muscle memory. Starting material is in `Shop/VCV Patch Generator/recipes/` and `Shop/VCV Patch Generator/t6-runs/`. The second target waits on this.
+2. **Prove it on a second target.** A second environment gets its own vocabulary file and emitter, not a new architecture, and it passes when the same PDL that makes a VCV patch makes a working artifact there. Pure Data is the safest choice; RNBO codebox~ has the most reach and forces the real question, whether a code-emitting target fits a graph-shaped language. One target at a time.
+3. **Search the modules by feel.** A search box in the renderer's module sidebar that lights up every module whose description words match what you type. It passes when "bright" lights the oscillator and filter, "breathing" lights the LFO and envelope, and "kick" lights nothing, which is the sign the vocabulary still needs percussive words.
+4. **Give PDL its own page.** Move the grammar, the signal types and the port-resolution order out of [[Generative Audio Devices]] into a `PDL Spec` entry the project links to.
+
+The last two are side moves with no fixed place: the search box was marked medium priority and the PDL page low, and either can go whenever there is a spare hour. Two gaps are named and deliberately deferred, and neither may hold up the second target. One is polyphony, which the project's three layers can't yet represent: the keyboard module carries one voice, and Loudon labelled his warm-pad refinement in `recipes/` "should be polyphonic!" The other is a recount of the oscillator and filter parameters against Rack's own source, since patches Rack re-saves carry more parameter slots than the vocabulary lists.
+<!-- scroll:plan:end -->
 
 ## Standing Orders
 
@@ -45,5 +68,12 @@ _Loudon's standing direction for this project. The steward reads this zone every
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-41-02-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the entry's roadmap and pick-up note
+
+Carried over on 2026-09-25 from the Roadmap and the forward half of 'Pick Up Here' in [[Generative Audio Devices]], when plans moved into scrolls (SCHEMA v1.25). The order is the pick-up note's (the Rack audition, then the second target); the roadmap's two smaller moves follow as side moves, and the two deferred gaps are named at the end. Task ids (T8, T9, T10) were replaced by names. Nothing on the plan was done since 2026-05-29, so no move was dropped.
+<sub>`plan-2026-09-25T20-41-02-04-00` · plan agreed · agreed 2026-09-25T20:41:02-04:00 · carried over by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 _Nothing made yet — the first shipped thing will open the trail._
 <!-- scroll:making:end -->
