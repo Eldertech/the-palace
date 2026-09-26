@@ -1,0 +1,125 @@
+// =====================================================================
+// torus_2d_kuramoto.codebox
+//
+// 2D torus wavetable scanner with a KURAMOTO SCAN MODE: the two phasors
+// pull on each other toward a chosen rational ratio lockA/lockB instead
+// of running free. Generating Logic 3 as scan dynamics.
+//
+// Python reference (same equations, same one-Euler-step-per-sample):
+//   Tools/kuramoto_scan.py
+// Reference renders to A/B against by ear:
+//   Auditions/cycle-7/penrose_kuramoto_ramp.wav
+//   Auditions/cycle-7/penrose_kuramoto_three_regimes.wav
+//
+// THE EQUATIONS (phases in cycles, frequencies in Hz):
+//   psi      = lockB*phi2 - lockA*phi1            the lock phase
+//   dphi1/dt = baseHz         + coupling*sin(2pi*psi)
+//   dphi2/dt = baseHz*ratio   - coupling*sin(2pi*psi)
+//   => dpsi/dt = Delta - (lockA+lockB)*coupling*sin(2pi*psi)
+//      Delta = lockB*baseHz*ratio - lockA*baseHz
+//
+// The lock threshold is K* = |Delta| / (lockA + lockB).
+//   coupling < K*  : psi slips; the tone beats at
+//                    sqrt(Delta^2 - ((lockA+lockB)*coupling)^2) Hz,
+//                    slowing to hiccups as coupling nears K*
+//   coupling >= K* : the path snaps shut onto the (lockA, lockB) cable
+//                    curve; the tone is periodic
+//   coupling >> K* : still locked, but the curve slides across the
+//                    surface — coupling becomes a timbre knob
+// Worked example: baseHz 110, ratio 1.518181818, lock 3/2
+//   Delta = 4 Hz, K* = 0.8 Hz, locked f0 = 55.4 Hz.
+//
+// This is a THIRD prototype. Wire it only after the bare
+// torus_2d_lookup.codebox has passed its A/B against [2d.wave~].
+//
+// UNIT TEST: coupling = 0 and dcBlock = 0 must be sample-identical to
+// the bare prototype. Wire both in parallel, subtract, meter.
+//
+// PATCHER WIRING — identical to bare prototype, plus four params:
+//   coupling, lockA, lockB, dcBlock
+// =====================================================================
+
+const SURFACE_W = 1024;
+const SURFACE_H = 1024;
+
+// --- Core parameters (same as bare prototype) ---
+@param({ min: 20.0,  max: 2000.0 }) baseHz = 110.0;
+@param({ min: 0.1,   max: 4.0    }) ratio  = 1.518181818;
+@param({ min: 0.0,   max: 1.0    }) gain   = 0.5;
+
+// --- Kuramoto scan mode ---
+@param({ min: 0.0,   max: 20.0   }) coupling = 0.0;   // K, Hz. 0 = free scan
+@param({ min: 1,     max: 9      }) lockA    = 3;     // lock target lockA/lockB
+@param({ min: 1,     max: 9      }) lockB    = 2;
+@param({ min: 0,     max: 1      }) dcBlock  = 1;     // locked curves carry DC
+
+// --- State ---
+@state phi1 = 0.0;
+@state phi2 = 0.0;
+@state dcX = 0.0;
+@state dcY = 0.0;
+
+// --- Bilinear lookup (unchanged from bare prototype) ---
+function lookup2D(pos1, pos2) {
+    let p1 = pos1 - floor(pos1);
+    let p2 = pos2 - floor(pos2);
+
+    let xf = p1 * SURFACE_W;
+    let yf = p2 * SURFACE_H;
+
+    let x0 = floor(xf);
+    let y0 = floor(yf);
+    let xfrac = xf - x0;
+    let yfrac = yf - y0;
+
+    let x1 = x0 + 1; if (x1 >= SURFACE_W) x1 = 0;
+    let y1 = y0 + 1; if (y1 >= SURFACE_H) y1 = 0;
+
+    let s00 = peek("tablebuf", y0 * SURFACE_W + x0, 0);
+    let s10 = peek("tablebuf", y0 * SURFACE_W + x1, 0);
+    let s01 = peek("tablebuf", y1 * SURFACE_W + x0, 0);
+    let s11 = peek("tablebuf", y1 * SURFACE_W + x1, 0);
+
+    let row0 = s00 + xfrac * (s10 - s00);
+    let row1 = s01 + xfrac * (s11 - s01);
+    return row0 + yfrac * (row1 - row0);
+}
+
+// --- Per-sample tick ---
+let twopi = 6.283185307179586;
+let c = coupling * sin(twopi * (lockB * phi2 - lockA * phi1));
+let f1 = baseHz + c;
+let f2 = baseHz * ratio - c;
+phi1 = phi1 + f1 / samplerate;
+phi2 = phi2 + f2 / samplerate;
+phi1 = phi1 - floor(phi1);    // wrap both ways: strong coupling can
+phi2 = phi2 - floor(phi2);    // briefly push a rate negative
+
+let y = lookup2D(phi1, phi2);
+
+// One-pole DC blocker at ~10 Hz. The locked curve's average height on
+// the surface moves as coupling moves; this keeps that drift out of the
+// speakers. Off for the unit test.
+if (dcBlock > 0) {
+    let r = 1.0 - twopi * 10.0 / samplerate;
+    dcY = y - dcX + r * dcY;
+    dcX = y;
+    y = dcY;
+}
+
+out1 = y * gain;
+
+// =====================================================================
+// AUDITION ORDER (after the unit test passes):
+//   1. baseHz 110, ratio 1.518181818, lock 3/2, coupling 0.
+//      A 4 Hz shimmer — the free Kronecker-ish scan near a fifth.
+//   2. Raise coupling slowly toward 0.8. The shimmer slows into a
+//      breath, then into single hiccups a second or more apart.
+//   3. Cross 0.8. The hiccups stop. Periodic, 55.4 Hz fundamental.
+//   4. Keep raising to ~3. Still locked — listen for the timbre
+//      sliding as the closed curve moves across the surface.
+//   5. Detune ratio further (1.55): K* rises to 2.2 Hz (Delta = 11 Hz). Same story,
+//      faster shimmer, a bigger push needed to lock.
+//   6. Swap lock to 2/1 or 5/3 at a matching ratio — each lock target
+//      is a different cable curve, a different locked voice.
+// =====================================================================
