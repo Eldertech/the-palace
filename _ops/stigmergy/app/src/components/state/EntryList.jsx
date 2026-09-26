@@ -21,6 +21,7 @@ function EntryRow({ entry, onSelect }) {
   return (
     <div
       data-testid="pulse-row"
+      className="pulse-cols"
       data-path={entry.path}
       onClick={() => onSelect?.(entry.path)}
       style={{
@@ -145,7 +146,7 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
 
   return (
     <Box title={`PULSE  --  vitality lens  (${filtered.length}/${base.length} entries)`} tone="double">
-      <div style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
+      <div style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>
           filter:
         </span>
@@ -156,7 +157,7 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
           onChange={(e) => setFilter(e.target.value)}
           placeholder="title / type / path"
           style={{
-            flex: 1, maxWidth: '40ch',
+            flex: 1, minWidth: '12ch', maxWidth: '40ch',
             background: 'transparent', border: 'none',
             borderBottom: '1px dashed var(--phosphor-dim)',
             color: 'var(--phosphor)', textShadow: 'var(--glow)',
@@ -182,7 +183,7 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
         </label>
       </div>
 
-      <div data-testid="pulse-header" style={{
+      <div data-testid="pulse-header" className="pulse-cols" style={{
         display: 'grid',
         gridTemplateColumns: '8ch 9ch 1fr 16ch 10ch',
         gap: 12,

@@ -56,3 +56,10 @@ export function openUrl(relPath, { reveal = false } = {}) {
 export function dataUrl(name) {
   return `${BASE}data/${name}`;
 }
+
+// The snapshot's meta.json once PublicApp has read it — the repo the build
+// came from, its day, its counts. Nothing about the host is written into the
+// code: a renamed account or a new domain arrives with the next build.
+let siteMeta = null;
+export function setSiteMeta(m) { siteMeta = m && typeof m === 'object' ? m : null; }
+export function getSiteMeta() { return siteMeta; }

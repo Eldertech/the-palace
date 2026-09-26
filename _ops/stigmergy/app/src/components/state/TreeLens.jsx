@@ -282,7 +282,7 @@ export default function TreeLens({ onSelect, tree = null, defaultExpanded = null
   const c = state.counts ?? {};
   return (
     <Box title={`TREE  --  folder structure  (${c.entries ?? '?'} entries / ${c.folders ?? '?'} folders / ${c.bundles ?? '?'} bundles)`} tone="double">
-      <div style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
+      <div style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>filter:</span>
         <input
           data-testid="tree-filter"

@@ -145,7 +145,7 @@ function makeGroupRepel() {
   return force;
 }
 
-export default function TopologyLens({ onSelect, entries = [] }) {
+export default function TopologyLens({ onSelect, entries = [], defaultDim = DEFAULT_DIMENSION }) {
   const [state, setState] = useState({ kind: 'loading' });
   const canvasRef = useRef(null);
   const simRef = useRef(null);
@@ -206,8 +206,8 @@ export default function TopologyLens({ onSelect, entries = [] }) {
   // simulation live — no teardown, no position reset. applyGroupingRef is set
   // by the canvas effect and re-tags + re-anchors + restarts the sim;
   // groupColorsRef feeds the paint; groupSummaryState feeds the chip legend.
-  const [groupDim, setGroupDim] = useState(DEFAULT_DIMENSION);
-  const groupDimRef = useRef(DEFAULT_DIMENSION);
+  const [groupDim, setGroupDim] = useState(defaultDim);
+  const groupDimRef = useRef(defaultDim);
   const [groupStrength, setGroupStrength] = useState(DEFAULT_STRENGTH);
   const groupStrengthRef = useRef(DEFAULT_STRENGTH);
   const [groupSpacing, setGroupSpacing] = useState(DEFAULT_SPACING);
@@ -322,8 +322,13 @@ export default function TopologyLens({ onSelect, entries = [] }) {
     const dpr = window.devicePixelRatio || 1;
     canvas.width = WIDTH * dpr;
     canvas.height = HEIGHT * dpr;
-    canvas.style.width = `${WIDTH}px`;
-    canvas.style.height = `${HEIGHT}px`;
+    // The drawing space stays WIDTH × HEIGHT; on screen the canvas fits its
+    // column (a phone, a narrow window) and never grows past WIDTH. nodeAt()
+    // maps a pointer back into drawing space.
+    canvas.style.width = '100%';
+    canvas.style.maxWidth = `${WIDTH}px`;
+    canvas.style.height = 'auto';
+    canvas.style.aspectRatio = `${WIDTH} / ${HEIGHT}`;
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
@@ -606,8 +611,8 @@ export default function TopologyLens({ onSelect, entries = [] }) {
     // Hit-test helpers shared by mousemove + click.
     function nodeAt(clientX, clientY) {
       const rect = canvas.getBoundingClientRect();
-      const x = clientX - rect.left;
-      const y = clientY - rect.top;
+      const x = (clientX - rect.left) * (WIDTH / (rect.width || WIDTH));
+      const y = (clientY - rect.top) * (HEIGHT / (rect.height || HEIGHT));
       let best = null; let bestDist = Infinity;
       for (const n of graph.nodes) {
         if (typeof n.x !== 'number') continue;

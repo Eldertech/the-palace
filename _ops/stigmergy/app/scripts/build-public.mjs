@@ -3,7 +3,11 @@
 // deck, static and read-only (Loudon Live.md, the public surface settled
 // 2026-09-25: two doors — this read view, or git).
 //
-//   node scripts/build-public.mjs [--out dist-public] [--base /] [--root <palace>] [--no-vite]
+//   node scripts/build-public.mjs [--out dist-public] [--base /] [--site-url <url>] [--root <palace>] [--no-vite]
+//
+// --base is the path the site is served under ('/' on a domain of its own);
+// --site-url its full address, for link previews. The GitHub workflow takes
+// both from the Pages configuration, so nothing here names the account.
 //
 // 1. The app: `vite build` with VITE_PUBLIC=1, so only the STATE deck ships.
 // 2. The snapshot: the same functions the /api server runs (listEntries,
@@ -50,6 +54,18 @@ const args = parseArgs(process.argv.slice(2));
 const ROOT = resolve(args.root || process.env.PALACE_ROOT || resolve(APP, '../../..'));
 const OUT = resolve(APP, args.out || 'dist-public');
 const BASE = (() => { let b = String(args.base || '/'); if (!b.startsWith('/')) b = `/${b}`; return b.endsWith('/') ? b : `${b}/`; })();
+const SITE_URL = typeof args['site-url'] === 'string' ? args['site-url'].replace(/\/+$/, '') : null;
+// The repository the build came from — GitHub's own environment in Actions,
+// else this checkout's remote — so a renamed account needs no code change.
+const REPO = (() => {
+  if (process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY) return `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}`;
+  try {
+    const url = execFileSync('git', ['-C', ROOT, 'remote', 'get-url', 'origin'], { encoding: 'utf8' }).trim();
+    const m = url.match(/github\.com[:/](.+?)(?:\.git)?$/);
+    return m ? `https://github.com/${m[1]}` : null;
+  } catch { return null; }
+})();
+const escapeHtml = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // GitHub Pages refuses a file over 100 MB; stay well under, and say what was left out.
 const MAX_FILE = 25 * 1024 * 1024;
 
@@ -107,10 +123,6 @@ if (!args['no-vite']) {
     logLevel: 'warn',
     build: { outDir: OUT, emptyOutDir: true },
   });
-  const indexPath = join(OUT, 'index.html');
-  const html = readFileSync(indexPath, 'utf8')
-    .replace(/<title>[^<]*<\/title>/, '<title>The Palace · Loudon Stearns</title>\n    <meta name="description" content="A read view of Loudon Stearns\'s palace — a web of connected pages on music, tools, philosophy and practice." />');
-  writeFileSync(indexPath, html);
 } else {
   rmSync(join(OUT, 'data'), { recursive: true, force: true });
   rmSync(join(OUT, 'files'), { recursive: true, force: true });
@@ -293,12 +305,14 @@ function filterTree(node) {
 }
 writeJson('data/tree.json', { root: filterTree(tree.root), counts, ts: new Date().toISOString() });
 
+let linkCount = 0;
 const map = readLatestMap(ROOT);
 if (map) {
   const nodes = map.nodes.filter((n) => pubPaths.has(n.path));
   const ids = new Set(nodes.map((n) => n.id));
   const edges = map.edges.filter((e) => ids.has(e.source) && ids.has(e.target));
   const { ghost_taxonomy, ...meta } = map.meta || {};
+  linkCount = edges.length;
   writeJson('data/topology.json', { source: map.source, meta: { ...meta, node_count: nodes.length, edge_count: edges.length }, nodes, edges });
 }
 
@@ -346,7 +360,9 @@ for (const s of published) {
 writeJson('data/rich.json', { entries: rich });
 
 const richSrc = join(APP, '../../rich-face/rich.html');
-const richHtml = readFileSync(richSrc, 'utf8').replace('<script type="module">', '<script>window.RICH_STATIC = true;</script>\n<script type="module">');
+const richHtml = readFileSync(richSrc, 'utf8')
+  .replace('<script type="module">', '<script>window.RICH_STATIC = true;</script>\n<script type="module">')
+  .replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">');
 if (!richHtml.includes('window.RICH_STATIC = true')) throw new Error('rich.html: could not mark it static');
 mkdirSync(join(OUT, 'rich'), { recursive: true });
 writeFileSync(join(OUT, 'rich/index.html'), richHtml);
@@ -397,12 +413,104 @@ writeFileSync(join(OUT, '.nojekyll'), '');
 let commit = null;
 try { commit = execFileSync('git', ['-C', ROOT, 'rev-parse', '--short', 'HEAD'], { encoding: 'utf8' }).trim(); } catch { /* not a checkout */ }
 const meta = {
-  day, built: new Date().toISOString(), commit, base: BASE, images: IMG_TOOL || 'as-is',
-  counts: { entries: published.length, scrolls: scrollPaths.size, rich: Object.keys(rich).length, files: files.size, file_mb: +(bytes / 1048576).toFixed(1) },
+  day, built: new Date().toISOString(), commit, base: BASE, site: SITE_URL, repo: REPO, images: IMG_TOOL || 'as-is',
+  counts: { entries: published.length, links: linkCount, scrolls: scrollPaths.size, rich: Object.keys(rich).length, files: files.size, file_mb: +(bytes / 1048576).toFixed(1) },
   left_in_git: all.filter((e) => e.type && MEMORY.test(stemOf(e.path))).map((e) => e.path),
   skipped,
 };
 writeJson('data/meta.json', meta);
+
+// ── 7. the head, the 404, and staying out of search ─────────────────────────
+// Kept out of search engines for now (Loudon, 2026-09-26): a robots meta on
+// every page, and robots.txt for when the site has a domain of its own (a
+// robots.txt only counts at a host's root). Link previews still work — a
+// message app reads the og: tags whatever robots says.
+const DESCRIPTION = "A read view of Loudon Stearns's palace — a web of connected pages on music, tools, philosophy and practice.";
+const cardHero = (() => {
+  const four = published.find((e) => stemOf(e.path) === 'FOUR PILLARS');
+  const rel = four ? `${four.path.replace(/\.md$/, '')}/FOUR PILLARS — hero.png` : null;
+  return rel && files.has(rel) ? servedAs(rel) : null;
+})();
+const head = [
+  '<!-- read-view:head -->',
+  '<title>The Palace · Loudon Stearns</title>',
+  '<meta name="robots" content="noindex, nofollow" />',
+  `<meta name="description" content="${escapeHtml(DESCRIPTION)}" />`,
+  '<meta property="og:type" content="website" />',
+  '<meta property="og:site_name" content="The Palace" />',
+  '<meta property="og:title" content="The Palace · Loudon Stearns" />',
+  `<meta property="og:description" content="${escapeHtml(DESCRIPTION)}" />`,
+  ...(SITE_URL ? [
+    `<meta property="og:url" content="${escapeHtml(SITE_URL)}/" />`,
+    ...(cardHero ? [
+      `<meta property="og:image" content="${escapeHtml(`${SITE_URL}/files/${encodeSegments(cardHero)}`)}" />`,
+      '<meta name="twitter:card" content="summary_large_image" />',
+    ] : []),
+  ] : []),
+  '<!-- /read-view:head -->',
+].join('\n    ');
+const indexPath = join(OUT, 'index.html');
+const indexHtml = readFileSync(indexPath, 'utf8');
+writeFileSync(indexPath, indexHtml.includes('<!-- read-view:head -->')
+  ? indexHtml.replace(/<!-- read-view:head -->[\s\S]*?<!-- \/read-view:head -->/, head)
+  : indexHtml.replace(/<title>[^<]*<\/title>/, head));
+writeFileSync(join(OUT, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
+
+// A path that isn't there at all gets the BBS's own answer: the dial never
+// connects. Same words as the in-app screen (src/components/public/NoCarrier.jsx).
+const appCss = readdirSync(join(OUT, 'assets')).find((f) => /^index-.*\.css$/.test(f));
+const NO_CARRIER_HTML = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>NO CARRIER · The Palace</title>
+${appCss ? `<link rel="stylesheet" href="${BASE}assets/${appCss}" />` : ''}
+<style>
+  body { margin: 0; min-height: 100vh; background: var(--bg, #0a0f0a); color: var(--phosphor, #33ff66); font-family: var(--font-body, monospace); }
+  main { max-width: 80ch; margin: 0 auto; padding: 32px 20px; }
+  .dim { color: var(--phosphor-dim, #1f9e3f); text-shadow: none; font-size: 14px; line-height: 1.7; }
+  .dial { overflow-wrap: anywhere; }
+  h1 { margin: 10px 0 0; font: 400 44px/1 var(--font-display, monospace); color: var(--error, #ff4d4d); text-shadow: 0 0 8px var(--error, #ff4d4d); letter-spacing: .04em; }
+  .box { margin-top: 16px; border: 3px double var(--phosphor-dim, #1f9e3f); }
+  .box .t { padding: 2px 12px; border-bottom: 1px solid var(--phosphor-dim, #1f9e3f); font-size: 12px; letter-spacing: .06em; }
+  .box p { margin: 0; padding: 12px; font-size: 14px; line-height: 1.6; text-shadow: var(--glow, none); }
+  nav { margin-top: 14px; display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+  nav a { color: var(--phosphor, #33ff66); text-shadow: var(--glow, none); text-decoration: none; border: 2px solid var(--phosphor-dim, #1f9e3f); padding: 3px 10px; }
+  nav a:first-child { border-color: var(--phosphor, #33ff66); }
+  nav b { color: var(--phosphor-white, #eaffea); }
+</style>
+</head>
+<body>
+<main>
+  <div class="dim">
+    <div class="dial">ATDT <span id="dialed">???</span></div>
+    <div>RING... RING... RING...</div>
+    <div>BUSY</div>
+  </div>
+  <h1>NO CARRIER</h1>
+  <div class="box">
+    <div class="t">ERR 404 · NOT ON THIS BOARD</div>
+    <p>the page you dialed isn't in the read view. it may have moved or been renamed, or it lives in the palace's memory, which stays in git.</p>
+  </div>
+  <nav>
+    <a href="${BASE}">[<b>R</b>]&nbsp;redial the palace</a>
+    ${REPO ? `<a href="${escapeHtml(REPO)}" target="_blank" rel="noopener noreferrer">[<b>G</b>]&nbsp;the whole house, in git</a>` : ''}
+  </nav>
+</main>
+<script>
+  document.getElementById('dialed').textContent = decodeURIComponent(location.pathname + location.search);
+  addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'r' || e.key === 'R' || e.key === 'Enter') location.href = ${JSON.stringify(BASE)};
+    ${REPO ? `if (e.key === 'g' || e.key === 'G') open(${JSON.stringify(REPO)}, '_blank', 'noopener');` : ''}
+  });
+</script>
+</body>
+</html>
+`;
+writeFileSync(join(OUT, '404.html'), NO_CARRIER_HTML);
 
 console.log(`read view → ${relative(process.cwd(), OUT) || '.'}  (base ${BASE}, ${day}${commit ? `, ${commit}` : ''})`);
 console.log(`  ${published.length} entries · ${scrollPaths.size} scrolls · ${Object.keys(rich).length} rich · ${files.size} files, ${meta.counts.file_mb} MB`);

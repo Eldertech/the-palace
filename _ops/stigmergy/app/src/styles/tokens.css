@@ -299,3 +299,17 @@ html, body, #root { height: 100%; margin: 0; background: var(--bg); }
 button, input, textarea { font-family: var(--font-body); }
 
 ::placeholder { color: var(--fg3); opacity: 1; }
+
+/* ---- Narrow screens -------------------------------------------------------
+   The entry reader is text + a 360px typed-link rail; on a phone the rail
+   would squeeze the text to a sliver, so it drops below the text instead.
+   (Inline grid styles set the desktop layout; !important is the override.) */
+@media (max-width: 800px) {
+  .reader-grid { grid-template-columns: minmax(0, 1fr) !important; }
+}
+/* PULSE on a phone: pulse, type and title; stage and activity step aside
+   (the entry itself still shows both). */
+@media (max-width: 600px) {
+  .pulse-cols { grid-template-columns: 7ch 8ch minmax(0, 1fr) !important; }
+  .pulse-cols > :nth-child(n + 4) { display: none !important; }
+}
