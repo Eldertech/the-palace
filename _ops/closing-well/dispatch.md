@@ -231,11 +231,16 @@ A partial report's final claim is the least reliable thing in it — the 2026-08
 
 ---
 
-## The unverified part
+## What Path A still has to prove
 
-Path A has **never been run.** It is the design in [[Closing Well]] and the companion charter,
-written down as a runbook for the first time on 2026-08-26 — not a validated procedure. The
-first real `close well` with a warm resident is its test, and the things to watch are named
-above: does the resumed read stay genuinely cold, does "holds control + advocates" survive a full
-room, and is keeping pass 3 fresh right. Treat that close as tuning data for this file, per the
-open Concierge handoff (`concierge-remainder-20260825T225852Z`) — **use, not more building.**
+Path A runs: a warm resident has moderated real closes (tuning items 24, 25, and the two closes of
+2026-09-26, items 34–35). Two things are still open, and each real close is data for them: does the
+resumed read stay genuinely cold when the resident made part of the work it is judging, and is
+keeping pass 3 fresh right. Treat each close as tuning data per the open Concierge handoff
+(`concierge-remainder-20260825T225852Z`) — **use, not more building.**
+
+**The resident must be an unnamed subagent** (the `concierge` skill § The spawn). A resident spawned
+with a `name` becomes an agent-teams teammate wherever that flag is on, and its pass returns arrive
+truncated, late and duplicated, with no `<usage>` block to feed the dial (items 34–35). If you inherit
+a named resident anyway, tell it to return each pass by `SendMessage` in numbered parts and end on
+`sent` (its charter § Returning your work).

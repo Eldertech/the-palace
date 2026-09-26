@@ -30,6 +30,14 @@ product.** The search never enters this conversation; only the finished thing do
    ELDER, SCHEMA, then the **operational tier** as its standing expertise (SUBSTRATE · ROSETTA · Substrate Skill ·
    Palace Ceremonies · STIGMERGY + wire spec) — deeper in *how the palace runs* than you, so it
    validates/supports the palace in parallel while you work the task. Record its `agentId`.
+   **Spawn it without a `name`.** With agent teams enabled (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`,
+   on in Loudon's terminal sessions), a *named* Agent call launches a teammate, not a subagent: its
+   returns come back as idle notifications, cut off at a fixed length and arriving late and twice,
+   and the resume carries no `<usage>` block, so the dial below goes blind. Unnamed, it stays a
+   subagent in every mode — its result arrives whole, once, with its token count — and it is still
+   resumable by `SendMessage` to the held ID. (Docs: code.claude.com/docs/en/sub-agents § Subagent
+   names; verified across 23 session transcripts 2026-09-26 — the failures were exactly the named
+   spawns in CLI sessions.)
 2. **Every later address → resume the same agent** (`SendMessage` to the held ID), naming the
    posture and filling that posture prompt's slots. It carries its prior context forward — don't
    re-spawn, and don't re-feed what it already holds.
