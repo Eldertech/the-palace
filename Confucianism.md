@@ -6,8 +6,6 @@ born: 2026-03
 stage: growing
 confidence: working
 energy: high
-last_activated: 2026-03
-activation_count: 1
 links:
   - target: "[[Palace Philosophies]]"
     type: connects-to

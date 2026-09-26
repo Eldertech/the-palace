@@ -120,9 +120,9 @@ function collectLooseFiles(palaceRoot, folderIndex) {
 //   EntryNode  = { kind:'entry',  name, path, summary, bundle: BundleNode|null }
 //   BundleNode = { kind:'bundle', dir, files: [{name, relPath, kind, size, isEntry}] }
 //   LooseFile  = { kind:'loose-file', name, relPath, fileKind, size }
-export function buildEntryTree(palaceRoot) {
+export function buildEntryTree(palaceRoot, { use = null } = {}) {
   const root = resolve(palaceRoot);
-  const entries = listEntries(root);
+  const entries = listEntries(root, { use });
   // Bundle files are represented as their owning entry's children, not as
   // standalone org-tree nodes — drop them from placement here.
   const firstClass = entries.filter((e) => !e.is_bundle_file);

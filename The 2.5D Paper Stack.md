@@ -7,8 +7,6 @@ pillars:
   - practice
 born: 2026-06
 stage: growing
-last_activated: 2026-07-01
-activation_count: 3
 forward_vector: "I want to become the lens every frame technique passes through — to keep cataloguing each new way to cut, move, and stack a sheet, to give the bubbles and the breakouts their right depth, and to teach the frame maker to think in layers of breathing paper instead of flat finished pictures."
 links:
   - target: "[[Frame Designer]]"

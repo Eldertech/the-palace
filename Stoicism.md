@@ -3,8 +3,6 @@ title: Stoicism
 type: hub
 pillars: [philosophy, practice]
 born: 2026-03
-last_activated: 2026-06-26
-activation_count: 4
 stage: mature
 confidence: foundational
 energy: very high

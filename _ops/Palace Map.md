@@ -6,8 +6,6 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-07-04
-activation_count: 10
 stage: growing
 energy: very high
 beauty: 8
@@ -242,7 +240,7 @@ There is something stigmergic here too — each commit is a trace left in the en
 - Should the palace map be auto-generated at the close of every [[Harvest Ceremony]], ensuring it is never more than one harvest cycle stale? What is the ceremony hook?
 - Ghost node tracking across map generations: a ghost node that persists across three map cycles is a deposit candidate of high priority. Can this be surfaced automatically?
 - Should neighborhood field values be defined and curated (a fixed vocabulary like link types) or free-form? Free-form is flexible; a fixed vocabulary makes cross-neighborhood analysis possible.
-- The map could carry edge weights derived from activation_count and last_activated — a weighted graph where high-traffic edges appear stronger. Would this add value to swarm dispatch, or introduce noise?
+- Every node now carries `use` — how its entry is being used, from git ([[Map Build Ceremony]] Step 5, Format). Edges could be weighted from it, so high-traffic links appear stronger. Would this add value to swarm dispatch, or introduce noise?
 - At what node count does the full palace map become too expensive for Tier 1 context? What is the threshold where a summary or filtered version becomes necessary?
 - The map's git history is a temporal record of the palace's self-model. Can a ceremony be designed to compare map generations — tracking which ghost nodes persisted, which edges dissolved, which neighborhoods grew? This would make the palace's conceptual evolution legible across time.
 

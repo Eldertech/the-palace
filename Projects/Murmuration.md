@@ -6,8 +6,6 @@ pillars:
   - tools
   - philosophy
 born: 2026-06
-last_activated: 2026-06
-activation_count: 1
 stage: growing
 status: active
 forward_vector: "I want to become a real instrument with all three readings of the flock built and playable — grains, distribution, and gesture — cross-browser and with the voice ceiling proven, so I can test my core wager: that a grain cloud grown from a perturbable dynamical system is more alive than one whose spread is dialed in by hand. I want my Disorder macro to stay a genuine phase transition and not soften into a crossfade. And I want to be built twice — here and as an RNBO device — so the palace learns where the browser cousin and the DAW native each win."

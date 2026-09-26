@@ -65,7 +65,7 @@ This is why entry quality matters for swarm behavior: a richly written entry wit
 ## The Inverse: Trail Decay
 
 Trails that are never reinforced fade. In the palace this manifests as:
-- Entries with low `activation_count` and no recent `last_activated`
+- Entries with no recent use — no edits to the page or its bundle, and no new links reaching for it (computed from git: [[SCHEMA — Reference]] §3)
 - Entries that are linked to but never grown — thin stubs that redirect without contributing texture
 - Broken links: trails that lead to nodes that no longer exist
 
@@ -75,4 +75,4 @@ The Spore Check ceremony is the mechanism for detecting decayed trails and decid
 
 - Is there a meaningful distinction between a trail that has been *followed* and one that has been *blazed*? New connections (Weave introductions) are blazed trails — not yet reinforced by repetition, but deliberately cut through terrain.
 - Can a trail be *too strong* — a deeply worn path that forecloses lateral exploration because workers always follow the same route? The Oblique Harvest was partly designed to address this, but it has been composted. What replaces it?
-- Should the palace develop a convention for marking fresh trails vs. reinforced ones — a `confidence` or `activation_count` threshold below which a link is considered provisional?
+- Should the palace develop a convention for marking fresh trails vs. reinforced ones — a `confidence` or use threshold below which a link is considered provisional?

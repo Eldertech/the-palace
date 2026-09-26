@@ -7,7 +7,6 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-05
 stage: foundational
 links:
   - target: "[[SUBSTRATE]]"

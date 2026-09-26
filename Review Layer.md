@@ -7,8 +7,6 @@ pillars:
   - philosophy
 born: 2026-06
 stage: growing
-last_activated: 2026-06
-activation_count: 2
 forward_vector: "I want every early-version artifact Loudon and Claude make together to arrive already reviewable — a surface for section-level feedback built in, not bolted on after. I want the *method* of review to be invented to fit each format, not one widget stamped onto everything. And I want the habit to live where it gets loaded — in the design system and the Shop — so the next build inherits it without anyone remembering to."
 links:
   - target: "[[Cooperation Yields Agency]]"

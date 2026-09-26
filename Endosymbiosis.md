@@ -5,8 +5,6 @@ pillars:
   - philosophy
   - tools
 born: 2026-03
-last_activated: 2026-03
-activation_count: 3
 stage: mature
 links:
   - target: "[[Cooperation Yields Agency]]"

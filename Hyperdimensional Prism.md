@@ -6,8 +6,6 @@ pillars:
   - creation
   - tools
 born: 2025-09
-last_activated: 2026-03
-activation_count: 10
 stage: mature
 confidence: demonstrated
 energy: high

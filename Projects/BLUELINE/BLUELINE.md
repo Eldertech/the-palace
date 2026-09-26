@@ -4,8 +4,6 @@ type: project
 status: active
 pillars: [tools, creation, philosophy]
 born: 2026-06-13
-last_activated: 2026-06-26
-activation_count: 5
 stage: growing
 confidence: working
 energy: high

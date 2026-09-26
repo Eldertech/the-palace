@@ -10,7 +10,8 @@ applies the face policy (Weave Ceremony Step 5c) and produces two lists the Weav
               definite  = an always-type (foundational · hub / >=5 links · project ·
                           person · specialist · maker) - it gets a face regardless of stage.
               grey      = a judgment call the worker/Loudon rules: growing+ concepts
-                          (esp. philosophy-pillar), breakthroughs, high-activation entries.
+                          (esp. philosophy-pillar), breakthroughs, and the most-used entries
+                          (top tenth by use — entry-use.py, from git).
   RETIRE  - an entry wearing a face that no longer earns one: a spore or a composting entry.
             Face-loss is a degradation signal - a spore sheds its face as it goes dormant,
             and the state view should never wear a face for a dormant or dead entry.
@@ -45,14 +46,14 @@ NEVER_TYPES = {"spore", "question"}
 NEVER_STAGES = {"seed", "sprout", "composting"}
 # Stages that open the grey band for a concept.
 GREY_STAGES = {"growing", "mature", "fruiting"}
-HIGH_ACTIVATION = 5
+# The most-used tenth of the palace opens the grey band (use = entry-use.py, all-time).
+HIGH_USE_SHARE = 0.10
 
 PALACE_DEFAULT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 
 FIELD_RE = {
     "type": re.compile(r'^type:\s*(.+?)\s*$', re.M),
     "stage": re.compile(r'^stage:\s*(.+?)\s*$', re.M),
-    "activation_count": re.compile(r'^activation_count:\s*(\d+)', re.M),
 }
 
 
@@ -64,7 +65,7 @@ def _unquote(v):
 
 
 def read_frontmatter(path):
-    """Return a dict with type, stage, activation_count, pillars_has_philosophy, link_count.
+    """Return a dict with type, stage, pillars_has_philosophy, link_count.
     None if the file has no frontmatter block."""
     try:
         with open(path, encoding="utf-8", errors="ignore") as f:
@@ -77,11 +78,11 @@ def read_frontmatter(path):
     if end == -1:
         return None
     block = head[3:end]
-    fm = {"type": None, "stage": None, "activation_count": 0}
+    fm = {"type": None, "stage": None}
     for k, rx in FIELD_RE.items():
         m = rx.search(block)
         if m:
-            fm[k] = _unquote(m.group(1)) if k != "activation_count" else int(m.group(1))
+            fm[k] = _unquote(m.group(1))
     # philosophy-pillar: inspect the `pillars:` FIELD only (inline [a,b] or a bullet list),
     # never the whole block — a link label like "philosophy of science" must not read as a pillar.
     pm = re.search(r'^pillars:[ \t]*(\[[^\]]*\]|(?:\n[ \t]+-[^\n]*)+)', block, re.M)
@@ -91,6 +92,24 @@ def read_frontmatter(path):
     links_at = block.find("links:")
     fm["link_count"] = len(re.findall(r'^\s*-\s*target:', block[links_at:], re.M)) if links_at != -1 else 0
     return fm
+
+
+def most_used(root):
+    """Titles in the top HIGH_USE_SHARE of entries by all-time use. Empty when git history
+    is unavailable (a fixture palace, a tarball) — the grey band then rests on type and stage."""
+    import importlib.util
+    here = os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry-use.py")
+    try:
+        spec = importlib.util.spec_from_file_location("entry_use", here)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        entries = mod.compute(root)["entries"]
+    except Exception:
+        return set()
+    ranked = sorted(entries.items(), key=lambda kv: -kv[1]["use"])
+    keep = max(1, int(len(ranked) * HIGH_USE_SHARE))
+    floor = ranked[keep - 1][1]["use"] if ranked else 0
+    return {t for t, e in ranked if floor > 0 and e["use"] >= floor}
 
 
 def has_face(md_path):
@@ -146,13 +165,14 @@ def classify(fm):
         return "grey"
     if typ == "concept" and (stage in GREY_STAGES or fm["pillars_has_philosophy"]):
         return "grey"
-    if fm["activation_count"] >= HIGH_ACTIVATION:
+    if fm.get("high_use"):
         return "grey"
     return "never"
 
 
 def audit(root, only=None):
     add_definite, add_grey, retire = [], [], []
+    top_used = most_used(root)
     for dp, dns, fns in os.walk(root):
         dns[:] = [d for d in dns if d not in SKIP_DIRS]
         for fn in fns:
@@ -167,6 +187,7 @@ def audit(root, only=None):
             fm = read_frontmatter(ap)
             if not fm or fm["type"] not in CANON_TYPES:
                 continue
+            fm["high_use"] = fn[:-3] in top_used
             hero, icon = has_face(ap)
             faced = hero and icon
             # RETIRE: genuine degradation only - a spore or a composting entry that still

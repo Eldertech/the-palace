@@ -7,8 +7,6 @@ pillars:
   - creation
 born: 2026-03
 stage: growing
-last_activated: 2026-03
-activation_count: 1
 energy: high
 beauty: 9
 links:

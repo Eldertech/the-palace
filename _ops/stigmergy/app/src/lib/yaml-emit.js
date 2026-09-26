@@ -33,8 +33,6 @@ export const CANONICAL_ORDER = [
   'project',
   'pillars',
   'born',
-  'last_activated',
-  'activation_count',
   'stage',
   'version',
   'confidence',

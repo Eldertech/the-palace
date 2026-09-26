@@ -3,8 +3,6 @@ title: Leibniz
 type: person
 pillars: [philosophy, tools]
 born: 2026-06
-last_activated: 2026-07
-activation_count: 3
 stage: seed
 confidence: working
 energy: high

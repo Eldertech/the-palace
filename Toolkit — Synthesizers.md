@@ -7,8 +7,6 @@ pillars:
   - practice
 born: 2026-04
 stage: growing
-last_activated: 2026-05
-activation_count: 2
 links:
   - target: "[[Loudon's Toolkit]]"
     type: emerged-from

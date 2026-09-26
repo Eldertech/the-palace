@@ -34,7 +34,7 @@ function makeTempPalace() {
     '---\ntitle: CLAUDE\nversion: "1.8"\n---\n# Entry\n');
   // A concept with bundle + media.
   writeFileSync(resolve(root, 'Kuramoto.md'),
-    '---\ntitle: Kuramoto\ntype: concept\npillars: [tools, philosophy]\nstage: mature\nlast_activated: "2026-05"\nactivation_count: 12\nlinks:\n  - target: "[[CLAUDE]]"\n    type: mirrors\nforward_vector: "want to teach synchronization."\n---\n# Body\n\n## Active Handoff\nsee handoff.\n');
+    '---\ntitle: Kuramoto\ntype: concept\npillars: [tools, philosophy]\nstage: mature\nlinks:\n  - target: "[[CLAUDE]]"\n    type: mirrors\nforward_vector: "want to teach synchronization."\n---\n# Body\n\n## Active Handoff\nsee handoff.\n');
   mkdirSync(resolve(root, 'Kuramoto'));
   writeFileSync(resolve(root, 'Kuramoto/Kuramoto — handoff.md'), '# h\n');
   writeFileSync(resolve(root, 'Kuramoto/_intro.png'), 'PNGDATA');

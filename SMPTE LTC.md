@@ -4,8 +4,6 @@ type: project
 status: active
 pillars: [tools, creation]
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
 stage: growing
 confidence: working
 energy: medium

@@ -4,8 +4,6 @@ type: concept
 pillars: [creation, philosophy]
 born: 2026-06
 stage: sprout
-last_activated: 2026-06
-activation_count: 1
 confidence: working
 who_leads: shared
 forward_vector: "I name the two ways a picture can tell a story — the comic way that compresses and leaves gaps for you to fill, and the cinematic way that dilates and shows you everything moving. I want to make the difference usable: when to draw a single still that makes you do the work, and when to let it move and do the work for you. [[BLUELINE]] lives on the seam between us, and I want every storyteller in the palace to know which way they're working and why."

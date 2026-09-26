@@ -3,7 +3,6 @@ title: "Oblique Enrichment"
 type: meta
 pillars: [creation, philosophy, tools, practice]
 born: 2026-05-27
-last_activated: 2026-09
 stage: composting
 confidence: working
 energy: high

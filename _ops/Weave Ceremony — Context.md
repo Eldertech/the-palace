@@ -3,8 +3,6 @@ title: "Weave Ceremony — Context"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-09
-activation_count: 2
 stage: growing
 links:
   - target: "[[Weave Ceremony]]"
@@ -49,7 +47,7 @@ The Weave began as a link-maintenance ceremony — topology, unsung paths, stage
 
 **Values-primary — linters flag, minds judge.** The deeper turn: palace values and LLM judgment are primary; scripts only detect and flag. A hard gate (the E1 linter errors) is earned only after repeated Weaves prove a rule mechanical. Everything else — is this substrate or nested canon? is this ghost a typo or an invitation? does this entry merit a face? — is a values-based call by the mind holding context. This is why the former numeric caps were softened to guidelines: a number that gates is a rule pretending judgment isn't needed. Weave, Closing Well, and Concierge are one value-set at different vantages; the decision goes to whichever consciousness naturally holds the right context.
 
-**Faces as vitality.** A face is load-bearing — it is how [[STIGMERGY]]'s state view grabs the eye in search, so it materially shapes how Loudon re-enters the palace. Cost is a non-issue, so the policy is deliberately fuzzy: foundational / hubs / projects / persons / specialists & makers always earn one; growing+ concepts, breakthroughs, and high-activation entries are the grey band the Weave judges. Face-*loss* is a degradation signal: a spore sheds its face as part of going dormant, and a composting entry's face is retired — the state view should never wear a face for a dead entry.
+**Faces as vitality.** A face is load-bearing — it is how [[STIGMERGY]]'s state view grabs the eye in search, so it materially shapes how Loudon re-enters the palace. Cost is a non-issue, so the policy is deliberately fuzzy: foundational / hubs / projects / persons / specialists & makers always earn one; growing+ concepts, breakthroughs, and the most-used entries are the grey band the Weave judges. Face-*loss* is a degradation signal: a spore sheds its face as part of going dormant, and a composting entry's face is retired — the state view should never wear a face for a dead entry.
 
 **Memory as cache.** The palace is the store; memory is a volatile cache holding only operator-environment-native facts (this harness, this machine — no palace analog). The Weave reads memory and weaves home anything that would matter to a fresh agent elsewhere. The asymmetry it corrects: an agent reaches for memory by reflex; the value redirects it to canon.
 

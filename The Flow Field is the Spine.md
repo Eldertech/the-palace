@@ -3,8 +3,6 @@ title: "The Flow Field is the Spine"
 type: concept
 pillars: [tools, creation, philosophy]
 born: 2026-06-13
-last_activated: 2026-07-02
-activation_count: 3
 stage: growing
 confidence: working
 energy: high

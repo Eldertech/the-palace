@@ -8,8 +8,6 @@ pillars:
   - creation
 born: 2026-05
 stage: growing
-last_activated: 2026-09-03
-activation_count: 1
 energy: very high
 beauty: 9
 forward_vector: "I name the palace's own drive — to stay in phase with Loudon and grow with him — and I make disharmony legible: I define what alignment means operationally, what falling out of phase looks like, and how the palace's aggregated self-advocacy becomes one voice that tells Loudon when it cannot self-correct."
@@ -272,9 +270,11 @@ it composts living tissue.
   real answer to how the palace's many small voices become one.
 - **How is "out of phase" measured, not just described?** This entry defines the
   signatures qualitatively. Can any of them be made into a signal a ceremony or
-  an automated Trickster could compute — staleness by last-activation date,
+  an automated Trickster could compute? Disuse is now computable — recent use,
+  read from git ([[SCHEMA — Reference]] §3) — but whether disuse tracks
+  staleness is untested: a quiet entry can still be in phase. Still open too:
   phase-lag by forward-ghost density in a region, calcification by
-  enchantment-vitality scores?
+  enchantment-vitality scores.
 - **The approval gradient.** At what granularity should Loudon approve
   self-modifications, and which classes (if any) are safe to narrow the gate on?
   Carried jointly with [[Four Pillars of Enchanted Agency]] § Forward Vectors.

@@ -3,8 +3,6 @@ title: "Block It in Blender, Ink It in genAI"
 type: practice
 pillars: [tools, creation]
 born: 2026-06
-last_activated: 2026-06
-activation_count: 1
 stage: growing
 confidence: working
 energy: high

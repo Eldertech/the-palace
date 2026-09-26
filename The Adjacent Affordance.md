@@ -6,8 +6,6 @@ pillars:
   - tools
   - practice
 born: 2026-06
-last_activated: 2026-06
-activation_count: 1
 stage: seed
 links:
   - target: "[[The Dichotomy of Control]]"

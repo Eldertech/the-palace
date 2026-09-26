@@ -49,8 +49,8 @@ describe('MessageList from-header avatar', () => {
 
 describe('STATE EntryList row avatar', () => {
   const entries = [
-    { path: 'Projects/Quantum Synthesizer.md', title: 'Quantum Synthesizer', type: 'project', stage: 'fruiting', icon: ICON, activation_count: 3 },
-    { path: 'Projects/Bare Thing.md', title: 'Bare Thing', type: 'concept', stage: 'seed', activation_count: 0 },
+    { path: 'Projects/Quantum Synthesizer.md', title: 'Quantum Synthesizer', type: 'project', stage: 'fruiting', icon: ICON },
+    { path: 'Projects/Bare Thing.md', title: 'Bare Thing', type: 'concept', stage: 'seed' },
   ];
 
   it('renders the avatar only on entries that carry bundle art', () => {

@@ -5,7 +5,7 @@ pillars:
   - tools
   - practice
 born: 2026-09
-version: "1.25"
+version: "1.26"
 stage: foundational
 status: canonical
 links:
@@ -66,11 +66,15 @@ section, as it always has been.
 | Field | Type | Notes |
 |---|---|---|
 | `links` | array of {target, type, label?} | At minimum 1 typed link before an entry is considered a sprout. Use `[[Wiki Link]]` format for targets. Each link object may carry an optional `label` — see **Link Object Fields** note below. |
-| `last_activated` | YYYY-MM | Updated each time the entry is read or meaningfully engaged in a session. |
-| `activation_count` | integer | Incremented each activation. Tracks the entry's vitality. |
 | `forward_vector` | string (one sentence, first-person) | The entry's directional desire — what it wants to become or do, voiced as the entry itself. The forward vector is the entry's articulated *conatus*: see [[Entry Conatus]] for the discipline of writing one. Avoid stasis-verbs (*remain, stay, continue, be*); reach for verbs of striving (*teach, spawn, integrate, cast*); name the hunger. **Forward vectors are meant to evolve.** Tweaks, refinements, and even full overhauls are encouraged during ordinary work, conversations, and Weaves — vector tuning is a regular practice, not a ceremony. The palace stays lively precisely because directional desire adapts to what entries actually become. An unchanging vector on an entry that has grown is itself a sign of drift. See [[Project Stewardship System]] for the stewardship-side framing and [[Weave Ceremony]] §Step 5b for the Weave-side beat. |
 
 **Link Object Fields:** Each link requires `target` and `type`. The optional `label` field is a single word or hyphenated phrase naming the relationship with resonance and specificity. The `type` is the structural scaffold — it handles traversal, Weave topology analysis, and ceremony linting. The `label` is the semantic compression — it names the specific register of the relationship with cultural and emotional nuance. Examples: `midwifed`, `rhymes-with`, `fermented-from`, `argues-with-love`. Labels never require ceremony. They are the compression happening at the relational level.
+
+### Use is computed, never kept
+
+How much an entry is being used is not a frontmatter field. `_ops/swarm/entry-use.py` reads it from git as three kinds of activity: **page** (days the entry's `.md` was edited), **bundle** (days anything in its bundle was edited — where a page is played, run and made with), and **linked** (entries that formed a link to it). `use` is their sum, all-time and over the last 90 days, and `last_used` is the latest day of any of them; the script's docstring holds the counting rules. The Map Build writes both onto every map node, [[STIGMERGY]]'s PULSE sorts by them, and the Weave reads them for dormancy and faces.
+
+Reading is not recorded. A child reading a page may not write the house, so a count only some readers could bump measured who remembered to bump it. *(`activation_count` and `last_activated` were retired in v1.26 — see [[SCHEMA — Context]] §3. Do not add them.)*
 
 ### Enum values for the type-specific fields
 

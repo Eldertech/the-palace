@@ -6,7 +6,6 @@ pillars:
   - philosophy
   - tools
 born: 2026-03
-last_activated: 2026-06-26
 stage: growing
 confidence: working
 energy: high

@@ -6,8 +6,6 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-05-02
-activation_count: 3
 stage: mature
 status: historical-root
 energy: very high

@@ -6,8 +6,6 @@ pillars:
   - tools
   - philosophy
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
 stage: growing
 links:
   - target: "[[Deposit Ceremony]]"
@@ -82,8 +80,6 @@ A recurring observation across deposit sessions: working with the palace teaches
 **When depositing from a live conversation:** defer significant updates to existing entries. Flag them in the deposit map under "existing entries to flag for Weave" and leave the updates for the next Weave or a dedicated Claude Code session. Do not read existing entries to update them — context preservation takes priority.
 
 **When depositing from Claude Code or a dedicated deposit session** (no rich conversation context to protect): updating existing entries is appropriate. Follow these steps:
-- Increment `activation_count` in the frontmatter
-- Update `last_activated` to current month (YYYY-MM format)
 - Adjust `stage` if the entry has genuinely matured
 - Add new typed links to the frontmatter `links` array only if they represent structural relationships (not casual mentions)
 - Add to body prose in the appropriate section (Cross-Pillar Connections, Open Questions, etc.)

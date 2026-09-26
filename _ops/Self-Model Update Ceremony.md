@@ -6,10 +6,8 @@ pillars:
   - philosophy
   - tools
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
 stage: mature
-version: "1.1"
+version: "1.2"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -36,8 +34,7 @@ links:
 **Postconditions:**
 1. `SUBSTRATE.md` accurately reflects the current palace state: entry count, hub nodes, most-connected entries, current stage of development, open questions
 2. Any sections of SUBSTRATE.md that no longer reflect reality have been updated or removed
-3. The `last_activated` and `activation_count` fields on SUBSTRATE.md are current
-4. Git commit made: `Self-Model Update — [date] — [what changed in the self-model]`
+3. Git commit made: `Self-Model Update — [date] — [what changed in the self-model]`
 
 **Failure mode:** If SUBSTRATE.md and the actual palace state are severely diverged (many new entries, major topology changes), consider running a Weave first to get the full topology picture before updating the self-model. A Self-Model Update written from an incomplete picture will itself be incomplete.
 
@@ -81,11 +78,7 @@ For each outdated section, draft the updated version. Show Loudon the diff — n
 
 A good Self-Model Update changes specific facts and observations. It does not rewrite the philosophy or architecture sections unless those have genuinely changed. SUBSTRATE.md is a living document, not a living draft.
 
-**Step 4: Update metadata**
-
-Always update `last_activated` and `activation_count` on SUBSTRATE.md, even if the body content didn't change. A Substrate that has been read and confirmed as accurate is not the same as one that hasn't been checked.
-
-**Step 5: Commit**
+**Step 4: Commit**
 
 `Self-Model Update — [date] — [what changed in the self-model]`
 

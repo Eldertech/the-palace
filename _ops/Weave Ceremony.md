@@ -3,10 +3,8 @@ title: "Weave Ceremony"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-09-24
-activation_count: 8
 stage: mature
-version: "1.2"
+version: "1.3"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -121,7 +119,7 @@ Then take the tail read of `_ops/Weave Ceremony/Weave Ceremony — tuning.md` ([
 
 The youngest entries get the boldest care. A newborn entry is the least-alive node in the palace, and only a Weave can wire its *inbound* links — those live in other entries' files, so a deposit cannot place them. This step makes new entries the Weave's priority citizens.
 
-Identify the new arrivals: entries with `born` since the last Weave (or files git-added since the last Weave commit), plus any `activation_count: 1` entry that hasn't found its neighborhood. Then set a **catch-up target** — a guideline, not a gate: aim to close roughly **80% of each newcomer's gap** to a typical entry's connectedness (measured as *reach* — the entries that point at it, plus its partners on symmetric links, which hold both ways — against the median reach of established entries; `new-entry-catchup.py` computes it). These catch-up links are prioritized, not rationed — they don't count against the general introduction guideline (Step 3b), and in a Weave that welcomes new entries, widen that guideline by roughly a fifth to make room.
+Identify the new arrivals: entries with `born` since the last Weave, or files git-added since the last Weave commit (`new-entry-catchup.py` with no arguments finds them). Then set a **catch-up target** — a guideline, not a gate: aim to close roughly **80% of each newcomer's gap** to a typical entry's connectedness (measured as *reach* — the entries that point at it, plus its partners on symmetric links, which hold both ways — against the median reach of established entries; `new-entry-catchup.py` computes it). These catch-up links are prioritized, not rationed — they don't count against the general introduction guideline (Step 3b), and in a Weave that welcomes new entries, widen that guideline by roughly a fifth to make room.
 
 Then prime the whole swarm toward them: thread the new-entry list and a directive into **every** worker prompt — *"These entries were born this cycle and are under-connected. As you audit your entry, actively consider whether it should link to one of them; propose inbound links generously, but only genuine ones."* Because inbound links live in the established entries, meeting a newcomer's catch-up target is work spent *by the old graph on the new* — integrating the newcomer and enriching the old in a single motion. Genuine links only; reachability is never faked to hit a target.
 
@@ -131,7 +129,7 @@ Read every `.md` file in the palace root and any subdirectories. Build an intern
 - All entries and their types
 - All typed links (both directions)
 - All stage values
-- All `last_activated` dates
+- How each entry is being used — `python3 _ops/swarm/entry-use.py` reads it from git: days its page and its bundle were edited, and entries that formed a link to it
 - All entries with no outbound typed links (orphans)
 - All entries with no inbound typed links (isolated — no one points to them)
 
@@ -169,7 +167,7 @@ Report on:
 - **Most-connected entries** — top 5 by total typed link count. These are the palace's centers of gravity.
 - **Cross-pillar bridges** — entries that link entries from different pillars. These are often the most generative nodes.
 - **Dormant entries** — `stage: dormant`. Have conditions changed? Any ready for revival?
-- **Stale metadata** — entries missing `last_activated`, `activation_count`, or with stage that seems wrong given content.
+- **Stale metadata** — entries whose stage seems wrong given their content.
 - **Composting candidates** — entries at `stage: composting` from a prior Weave. Confirm deletion or revive.
 - **Bundle-frontmatter health** — files carrying canon frontmatter (`type`/`pillars`/`stage`) that live *inside a bundle folder* (a folder with a twin `.md`, per [[SCHEMA]] §8), or carrying a `type:` not in §1. These are demotion candidates — probably entry-owned working substrate that should wear minimal §8 bundle frontmatter. Flag them; the mind rules substrate-vs-nested-canon (nested canon always exists — Shop specialists, catalogue sub-entries). Demote confirmed substrate; leave real entries; promotion (bundle → canon) is deferred to Loudon. Canon frontmatter inside an *organizational* folder (`Projects/`, `Shop/`, `_ops/`) is normal — the twin-`.md` test is what separates the two.
 - **Ghost wikilinks** — body `[[wikilinks]]` whose target resolves to no file. Flag every one; the mind decides invitation (a deliberate forward-reference, per [[CLAUDE]]'s "missing connections are invitations") vs. typo or stale link (fix or cut). Detection is mechanical and can later be scripted; the disposition is judgment.
@@ -234,7 +232,7 @@ For any entries whose stage seems wrong given their content and connection densi
 - `seed` entries with substantial body content and multiple links → propose `sprout` or `growing`
 - `growing` entries that have been stable and well-connected for multiple Weave cycles → propose `mature`
 - `mature` entries generating new entries or connections → propose `fruiting`
-- Entries not activated in multiple Weave cycles with no connection to current work → propose `dormant`
+- Entries with no recent use (`entry-use.py`: no page or bundle edits and no new links in its 90-day window) and no connection to current work → propose `dormant`
 
 Show all proposed transitions to Loudon before applying.
 
@@ -262,7 +260,7 @@ Apply confirmed vector edits to entry frontmatter.
 
 Faces are load-bearing, not decoration — they are how [[STIGMERGY]]'s state view grabs the eye in search. The Swarm Weave worker's FACE CHECK already proposes a hero/icon for entries that merit one and lack it, in [[Hero and Avatar Maker]]'s locked art direction; the coordinator assembles these. Apply the policy and surface **two lists**:
 
-- **Faces to add** — entries that merit a face and lack one. *Always, regardless of stage:* foundational, hubs, projects, persons/citizens, and specialists & makers. *Grey — a judgment call:* `growing`+ concepts (especially philosophy-pillar or single-strong-metaphor ones), breakthroughs, and high-`activation_count` entries that surface often in search. The minimum bar is stage `growing` or one of the always-types.
+- **Faces to add** — entries that merit a face and lack one. *Always, regardless of stage:* foundational, hubs, projects, persons/citizens, and specialists & makers. *Grey — a judgment call:* `growing`+ concepts (especially philosophy-pillar or single-strong-metaphor ones), breakthroughs, and the most-used entries (the top tenth by use, which `face-audit.py` flags). The minimum bar is stage `growing` or one of the always-types.
 - **Faces to retire** — entries wearing a face that no longer earns one. Composting entries, and **spores**: a spore loses its face as part of going dormant — face-loss is one of the visible ways an entry degrades, so if a now-spore entry carried a face, retire it. The state view should never wear a face for a dormant or dead entry.
 
 Cost is not a constraint, so the policy is deliberately fuzzy: the Weave is exactly where promotions (an entry earns a face) and demotions (an entry loses one) get *seen*. Approved additions feed [[Hero and Avatar Maker]] as a gated batch, run after the Weave's link and metadata writes. (`question` and `spore` entries do not get faces.)

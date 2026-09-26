@@ -22,8 +22,13 @@ Usage:
 `--date` retires the copy-a-dated-builder habit: this file keeps its name as the newest
 builder (Weave Ceremony Step 6.5 runs the newest `build-map-*.py`), and the date is an
 argument. Output schema is the 08-26 builder's plus the `ops_card` node field.
+
+**Use replaces activation (SCHEMA v1.26, 2026-09-26).** Nodes no longer carry the hand-kept
+`last_activated` / `activation_count`; they carry `use` — page edit days, bundle edit days, and
+entries that formed a link to them, all-time and over the recent window — plus `last_used`,
+computed from git by `entry-use.py`. The map is a snapshot, so its `use` is as of `--date`.
 """
-import argparse, datetime
+import argparse, datetime, importlib.util
 import re, json
 from pathlib import Path
 from collections import defaultdict
@@ -66,8 +71,6 @@ def parse_fm(path: Path):
     ty = re.search(r"^type:\s*['\"]?([A-Za-z\-]+)", raw, re.M)
     stage = re.search(r"^stage:\s*(\S+)", raw, re.M)
     fv = re.search(r"^forward_vector:", raw, re.M)
-    last = re.search(r"^last_activated:\s*(\S+)", raw, re.M)
-    act = re.search(r"^activation_count:\s*(\S+)", raw, re.M)
     # links (target + nearest type + label), within the links: array
     links = []
     in_links = False
@@ -88,8 +91,6 @@ def parse_fm(path: Path):
     return {"type": ty.group(1).lower() if ty else None,
             "stage": stage.group(1) if stage else None,
             "has_forward_vector": fv is not None,
-            "last_activated": last.group(1) if last else None,
-            "activation_count": act.group(1) if act else None,
             "links": links}
 
 def basename(t):
@@ -147,15 +148,25 @@ for src, meta in node_meta.items():
         else:
             forward_ghosts[key].append(src)
 
+_spec = importlib.util.spec_from_file_location("entry_use", Path(__file__).with_name("entry-use.py"))
+_entry_use = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_entry_use)
+USE = _entry_use.compute(PALACE, today=DATE)
+def _use(nid):
+    u = USE["entries"].get(nid)
+    if not u:
+        return None
+    return {k: u[k] for k in ("page", "bundle", "linked", "use", "recent")}
+
 nodes_out = [{"id": nid, "path": node_meta[nid]["path"], "type": node_meta[nid]["fm"]["type"],
              "stage": node_meta[nid]["fm"]["stage"],
              "has_forward_vector": node_meta[nid]["fm"]["has_forward_vector"],
-             "last_activated": node_meta[nid]["fm"]["last_activated"],
-             "activation_count": node_meta[nid]["fm"]["activation_count"],
+             "last_used": (USE["entries"].get(nid) or {}).get("last_used"),
+             "use": _use(nid),
              "outbound_count": len(out_edges[nid]), "inbound_count": len(in_edges[nid]),
              "ops_card": node_meta[nid]["path"].startswith("_ops/")}
             for nid in sorted(node_ids)]
 json_data = {"meta": {"generated": DATE, "scope": "full", "node_count": len(node_ids),
+             "use": {k: USE["meta"][k] for k in ("head", "window_days", "window_since", "sweep_threshold")},
              "ops_node_count": len(ops_ids), "edge_count": len(edges),
              "ghost_taxonomy": {"error_ghosts": error_ghosts, "ops_ghosts": sorted(ops_ghosts),
              "forward_ghosts": [{"target": k, "sources": v} for k, v in sorted(forward_ghosts.items())]}},

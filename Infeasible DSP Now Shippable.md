@@ -12,8 +12,6 @@ energy: medium
 hook_quality: 8
 beauty: 7
 who_leads: shared
-last_activated: 2026-06
-activation_count: 1
 links:
   - target: "[[Loudon Live]]"
     type: connects-to

@@ -7,8 +7,6 @@ pillars:
   - philosophy
 born: 2026-05
 stage: growing
-last_activated: 2026-06-26
-activation_count: 2
 forward_vector: "I want every creative tool Loudon reaches for to find its home in me as a Specialist with accumulating wisdom — gotchas, defaults, voice — so the next brief isn't built from nothing. I want to test whether my singular Maker is the right answer, or whether [[Diversity of Thought in Many-Agent Systems]] eventually pulls me back toward plurality."
 links:
   - target: "[[Maker]]"

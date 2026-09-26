@@ -7,8 +7,6 @@ pillars:
   - creation
 born: 2026-05
 stage: seed
-last_activated: 2026-05
-activation_count: 1
 links:
   - target: "[[Phoneme Choir]]"
     type: emerged-from

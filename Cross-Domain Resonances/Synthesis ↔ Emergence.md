@@ -7,8 +7,6 @@ pillars:
   - philosophy
 born: 2026-03
 stage: mature
-last_activated: 2026-06-26
-activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10

@@ -11,8 +11,6 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: human
-last_activated: 2026-06
-activation_count: 1
 links:
   - target: "[[Floquet Theory]]"
     type: couples-with

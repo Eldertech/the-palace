@@ -10,12 +10,13 @@ import { listEntries, readEntry, walkEntryRecords } from '../../src/lib/entries.
 import { buildEntryTree } from '../../src/lib/entry-tree.js';
 import { readLatestMap } from '../../src/lib/topology.js';
 import { findUnsungEdges, buildPalaceIndex } from '../../src/lib/unsung-paths.js';
+import { entryUse } from '../../src/lib/entry-use.js';
 
 export async function entriesRoutes(ctx) {
   const { res, palaceRoot, urlPath, query, method } = ctx;
 
   if (urlPath === '/api/entries' && method === 'GET') {
-    const entries = listEntries(palaceRoot);
+    const entries = listEntries(palaceRoot, { use: await entryUse(palaceRoot) });
     jsonResponse(res, 200, { entries, count: entries.length, ts: new Date().toISOString() });
     return true;
   }
@@ -24,7 +25,7 @@ export async function entriesRoutes(ctx) {
   // and each bundled entry carries its owned files as children. Full walk like
   // /api/entries; no user input, so no path-safety surface.
   if (urlPath === '/api/tree' && method === 'GET') {
-    const tree = buildEntryTree(palaceRoot);
+    const tree = buildEntryTree(palaceRoot, { use: await entryUse(palaceRoot) });
     jsonResponse(res, 200, { ...tree, ts: new Date().toISOString() });
     return true;
   }
@@ -63,7 +64,7 @@ export async function entriesRoutes(ctx) {
       jsonResponse(res, 400, { error: 'missing ?path' });
       return true;
     }
-    const entry = readEntry(palaceRoot, rel);
+    const entry = readEntry(palaceRoot, rel, { use: await entryUse(palaceRoot) });
     if (!entry) {
       jsonResponse(res, 404, { error: 'entry not found or excluded', path: rel });
       return true;

@@ -5,8 +5,6 @@ pillars:
   - tools
   - practice
 born: 2026-03
-last_activated: 2026-05
-activation_count: 3
 stage: mature
 links:
   - target: "[[SUBSTRATE]]"
@@ -111,9 +109,7 @@ Don't force connections. Don't mention the palace in every message. But when a g
 
 ### Updating Entries
 
-When revisiting a topic that has a palace entry, update the metadata:
-- Increment `activation_count`
-- Update `last_activated` to current month
+When revisiting a topic that has a palace entry, update it where the conversation changed it:
 - Adjust `stage` if the entry has grown or matured
 - Add new typed links if the conversation revealed new connections
 - Add to the body prose if new understanding emerged

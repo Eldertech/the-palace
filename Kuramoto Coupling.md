@@ -6,8 +6,6 @@ pillars:
   - philosophy
   - creation
 born: 2025-11
-last_activated: 2026-09
-activation_count: 19
 stage: mature
 confidence: demonstrated
 energy: high
@@ -80,7 +78,7 @@ agency_profile:
   creation: "I want to generate working demonstrations — code artifacts, interactive tools — that let someone feel synchronization phase-locking rather than only understand it conceptually. One well-made demonstration does more than ten explanations."
   tools: "I need code generation and interactive mockup capabilities. For the next cycle: a Python implementation of the basic Kuramoto model with configurable N, K, and initial phases — estimated 2,000 tokens, one code-generation call."
   philosophy: "I am a hub organizing a dense synchronization cluster. My citizenship responsibility: keep that cluster coherent as new entries join. My world-currency concern: am I current with mathematical neuroscience literature on synchronization, or did I crystallize in 2025?"
-  practice: "At 16 activations I am the most-activated entry in the palace. This is both vitality and risk — high activation can mean deep use, or it can mean I am being used as a shortcut rather than read carefully. I want to know which."
+  practice: "I am one of the palace's most-used entries — more than eighty pages have linked to me. This is both vitality and risk — high use can mean deep reading, or it can mean I am being used as a shortcut rather than read carefully. I want to know which."
 ---
 # Kuramoto Coupling
 

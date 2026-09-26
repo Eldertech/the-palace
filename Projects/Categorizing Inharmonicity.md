@@ -3,8 +3,6 @@ title: "Categorizing Inharmonicity"
 type: concept
 pillars: [creation, tools, philosophy]
 born: 2026-02
-last_activated: 2026-03
-activation_count: 1
 stage: mature
 confidence: working
 energy: high

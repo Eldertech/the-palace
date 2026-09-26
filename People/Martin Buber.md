@@ -6,8 +6,6 @@ pillars:
   - practice
 born: 2026-07
 stage: seed
-last_activated: 2026-07
-activation_count: 1
 confidence: established
 energy: high
 hook_quality: 9

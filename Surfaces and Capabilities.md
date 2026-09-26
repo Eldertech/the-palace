@@ -5,8 +5,6 @@ pillars:
   - tools
   - practice
 born: 2026-05-26
-last_activated: 2026-05-29
-activation_count: 2
 stage: sprout
 confidence: demonstrated
 energy: medium

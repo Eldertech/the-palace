@@ -3,10 +3,8 @@ title: "Spore Check Ceremony"
 type: practice
 pillars: [practice, philosophy]
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
 stage: mature
-version: "1.1"
+version: "1.2"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -57,7 +55,7 @@ The Spore Check is also the palace's composting decision point. Some ideas never
 First take the tail read of [[Spore Check Ceremony — tuning]] ([[SCHEMA — Reference]] §6). Those are this run's first candidates for a spec change.
 
 Read every entry with `stage: dormant`. For each, note:
-- When it was last activated
+- When it was last used — `python3 _ops/swarm/entry-use.py --entry "<title>"` reads it from git
 - Its `revival_conditions` (from frontmatter, if set)
 - Its typed links — what is it connected to?
 - How many Spore Checks it has been held without revival
@@ -76,9 +74,9 @@ Consider:
 
 For each dormant entry, assign one of three dispositions:
 
-**`revive`** — The revival conditions have been met or close enough to warrant reactivation. Update `stage` to `seed` or `sprout` (whichever reflects current body depth). Update `last_activated`. Add a brief `## Revival Note` section to the entry body explaining what changed. Propose new typed links if the revival reveals new connections.
+**`revive`** — The revival conditions have been met or close enough to warrant reactivation. Update `stage` to `seed` or `sprout` (whichever reflects current body depth). Add a brief `## Revival Note` section to the entry body explaining what changed. Propose new typed links if the revival reveals new connections.
 
-**`hold`** — The entry remains dormant intentionally. Conditions haven't changed. This is a valid and complete disposition — not inaction, but confirmed patience. Increment `activation_count` to reflect the check.
+**`hold`** — The entry remains dormant intentionally. Conditions haven't changed. This is a valid and complete disposition — not inaction, but confirmed patience.
 
 **`compost`** — The idea has been dormant for multiple cycles, has no connection to current or foreseeable work, and holding it no longer serves the palace. Mark `stage: composting`. The entry will be deleted at the next Weave (which will ask for final confirmation before deleting). Document what was valuable about this entry in its body before marking — the composting note is the final trace.
 

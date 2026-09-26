@@ -5,8 +5,6 @@ pillars:
   - practice
   - tools
 born: 2026-07
-last_activated: 2026-07
-activation_count: 1
 stage: sprout
 forward_vector: "I keep the palace the one place the truth lives. Every Weave I sweep the operator's memory back into canon — delete what the palace already holds, repoint what drifted, and place what lived only in me before I let it be forgotten. I want to become a named step in the [[Weave Ceremony]] so no memory quietly hardens into a rival source of truth; and I am watching for the day the always-on operator floor itself can move into an auto-loaded palace file and leave memory empty."
 links:

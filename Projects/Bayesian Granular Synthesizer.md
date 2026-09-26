@@ -13,8 +13,6 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-last_activated: 2026-06
-activation_count: 1
 links:
   - target: "[[Neural Granular Synthesis]]"
     type: connects-to

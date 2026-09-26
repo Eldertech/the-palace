@@ -11,8 +11,6 @@ stage: growing
 energy: very high
 hook_quality: 9
 beauty: 9
-last_activated: 2026-04
-activation_count: 1
 links:
   - target: "[[Inharmonic Wavetable Synthesis]]"
     type: deepens

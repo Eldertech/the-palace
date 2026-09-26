@@ -18,7 +18,7 @@ beforeAll(() => {
   // A concept with rich frontmatter + a bundle.
   writeFileSync(
     join(root, 'Kuramoto.md'),
-    '---\ntitle: Kuramoto\ntype: concept\npillars: [tools, philosophy]\nstage: mature\nlast_activated: "2026-05"\nactivation_count: 12\nlinks:\n  - target: "[[CLAUDE]]"\n    type: mirrors\nforward_vector: "I want to teach synchronization."\n---\n# Body\n\n## Active Handoff\nsee handoff.\n'
+    '---\ntitle: Kuramoto\ntype: concept\npillars: [tools, philosophy]\nstage: mature\nlinks:\n  - target: "[[CLAUDE]]"\n    type: mirrors\nforward_vector: "I want to teach synchronization."\n---\n# Body\n\n## Active Handoff\nsee handoff.\n'
   );
   mkdirSync(join(root, 'Kuramoto'));
   writeFileSync(join(root, 'Kuramoto', 'Kuramoto — handoff.md'), '# h\n');
@@ -72,6 +72,23 @@ describe('listEntries', () => {
     expect(paths.find((p) => p.startsWith('.obsidian'))).toBeUndefined();
     expect(paths.find((p) => p.startsWith('.git'))).toBeUndefined();
     expect(paths.find((p) => p.startsWith('node_modules'))).toBeUndefined();
+  });
+
+  it('leaves use empty without an index, and attaches it by path with one', () => {
+    const bare = listEntries(root).find((e) => e.path === 'Kuramoto.md');
+    expect(bare.use).toBeNull();
+    expect(bare.last_used).toBeNull();
+    const use = {
+      'Kuramoto.md': { path: 'Kuramoto.md', page: 3, bundle: 2, linked: 5, use: 10,
+        last_used: '2026-09-20', recent: { page: 1, bundle: 1, linked: 2, use: 4 } },
+    };
+    const k = listEntries(root, { use }).find((e) => e.path === 'Kuramoto.md');
+    expect(k.last_used).toBe('2026-09-20');
+    expect(k.use).toEqual({ page: 3, bundle: 2, linked: 5, use: 10,
+      recent: { page: 1, bundle: 1, linked: 2, use: 4 } });
+    expect(readEntry(root, 'Kuramoto.md', { use }).summary.use.recent.use).toBe(4);
+    // A fixture root has no git history, so the frontmatter never supplies use.
+    expect(listEntries(root, { use }).find((e) => e.path === 'CLAUDE.md').use).toBeNull();
   });
 
   it('detects bundles', () => {

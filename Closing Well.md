@@ -6,8 +6,6 @@ pillars:
   - philosophy
   - tools
 born: 2026-05-26
-last_activated: 2026-09-24
-activation_count: 7
 stage: growing
 version: "1.3"
 links:

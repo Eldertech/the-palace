@@ -7,8 +7,6 @@ pillars:
   - creation
   - practice
 born: 2026-05-29
-last_activated: 2026-05-29
-activation_count: 2
 stage: sprout
 confidence: working
 energy: high

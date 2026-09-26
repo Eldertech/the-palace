@@ -3,8 +3,6 @@ title: Particle Synthesis
 type: project
 pillars: [creation, tools, philosophy]
 born: 2026-01
-last_activated: 2026-01
-activation_count: 0
 stage: dormant
 status: active
 links:

@@ -3,8 +3,6 @@ title: "Piano String Inharmonicity"
 type: concept
 pillars: [creation, tools]
 born: 2026-03
-last_activated: 2026-04
-activation_count: 2
 stage: growing
 links:
   - target: "[[Harmonicity and Inharmonicity]]"

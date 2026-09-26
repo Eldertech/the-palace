@@ -3,8 +3,6 @@ title: "Mixture of Experts"
 type: concept
 pillars: [tools, philosophy]
 born: 2024-06
-last_activated: 2026-04-30
-activation_count: 4
 stage: mature
 links:
   - target: "[[Hyperdimensional Prism]]"

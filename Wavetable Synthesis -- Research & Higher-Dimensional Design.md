@@ -4,8 +4,6 @@ type: concept
 stage: mature
 pillars: [creation, tools, philosophy]
 born: "2026-04-21"
-last_activated: 2026-06-05
-activation_count: 2
 tags: [synthesis, DSP, wavetable, inharmonicity, higher-dimensional, cross-disciplinary, design-plan]
 forward_vector: "I want to become the master research index that holds every speculative wavetable direction — neural latent tables, granular hybrids, T^N geometry, perceptual coordinates — until each branch is mature enough to fork into its own entry. I want every wavetable project to test itself against my open questions before claiming completeness."
 links:

@@ -32,6 +32,7 @@ import { listEntries, readEntry, walkEntryRecords } from '../src/lib/entries.js'
 import { buildEntryTree } from '../src/lib/entry-tree.js';
 import { readLatestMap } from '../src/lib/topology.js';
 import { findUnsungEdges, buildPalaceIndex } from '../src/lib/unsung-paths.js';
+import { loadEntryUse } from '../src/lib/entry-use.js';
 import { pathId, encodeSegments } from '../src/lib/public-mode.js';
 import { makeFinder } from '../../../rich-face/palace-find.mjs';
 
@@ -130,7 +131,8 @@ if (!args['no-vite']) {
 }
 
 // ── 2. the published set ────────────────────────────────────────────────────
-const all = listEntries(ROOT);
+const USE = loadEntryUse(ROOT);   // how each entry is used, from git (null without history)
+const all = listEntries(ROOT, { use: USE });
 const published = all.filter((e) => e.type && !MEMORY.test(stemOf(e.path)));
 const pubPaths = new Set(published.map((e) => e.path));
 // Each published entry's scroll, by the bundle convention (`<Name>/<Name> — scroll.md`).
@@ -239,7 +241,7 @@ function writeEntry(path, entry) {
 
 const scrollPaths = new Set();
 for (const s of published) {
-  const e = readEntry(ROOT, s.path);
+  const e = readEntry(ROOT, s.path, { use: USE });
   if (!e) continue;
   const bundleFiles = e.bundle?.files || [];
   const keep = new Map();
@@ -271,7 +273,7 @@ for (const s of published) {
 }
 
 for (const path of scrollPaths) {
-  const s = readEntry(ROOT, path);
+  const s = readEntry(ROOT, path, { use: USE });
   if (!s) continue;
   writeEntry(path, { ...s, body: publicBody(makingOnly(s.body || ''), path), bundle: null, summary: publicSummary(s.summary) });
 }
@@ -281,7 +283,7 @@ const day = localDay();
 writeJson('data/entries.json', { entries: published.map(publicSummary), count: published.length, ts: new Date().toISOString() });
 
 const shownPaths = new Set([...pubPaths, ...scrollPaths]);
-const tree = buildEntryTree(ROOT);
+const tree = buildEntryTree(ROOT, { use: USE });
 const counts = { folders: 0, entries: 0, bundles: 0, bundleFiles: 0, looseFiles: 0 };
 function filterTree(node) {
   if (node.kind === 'folder') {
@@ -326,7 +328,7 @@ const rich = {};
 const namePaths = Object.fromEntries(published.map((e) => [stemOf(e.path), e.path]));
 for (const s of published) {
   if (!Array.isArray(s.faces) || !s.faces.includes('rich')) continue;
-  const e = readEntry(ROOT, s.path);
+  const e = readEntry(ROOT, s.path, { use: USE });
   const stem = stemOf(e.path);
   const bundleRel = e.path.replace(/\.md$/, '');
   const manifestRel = e.face_files?.rich;

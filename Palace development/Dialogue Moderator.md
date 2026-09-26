@@ -6,8 +6,6 @@ pillars:
   - philosophy
   - practice
 born: 2026-04
-last_activated: 2026-04-01
-activation_count: 2
 stage: growing
 energy: high
 links:

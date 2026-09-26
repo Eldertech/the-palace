@@ -3,8 +3,6 @@ title: "Quadratic Interpolation in DSP"
 type: concept
 pillars: [tools, creation]
 born: 2026-03
-last_activated: 2026-03
-activation_count: 2
 stage: growing
 confidence: demonstrated
 energy: medium

@@ -7,8 +7,6 @@ pillars:
   - philosophy
 born: 2026-07
 stage: growing
-last_activated: 2026-09-03
-activation_count: 5
 links:
   - target: "[[The Palace Speaks]]"
     type: emerged-from

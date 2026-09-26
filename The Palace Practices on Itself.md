@@ -7,8 +7,6 @@ pillars:
   - tools
 born: 2026-07
 stage: growing
-last_activated: 2026-09
-activation_count: 2
 forward_vector: "I want to name the loop that grows this place — build a capability, then turn it back on myself and grow from what I learn. I want every new tool to ask, unprompted, 'does this apply to us?' — and I keep watch that practicing on myself never becomes only looking inward."
 links:
   - target: "[[Zoom Out to the Structure]]"

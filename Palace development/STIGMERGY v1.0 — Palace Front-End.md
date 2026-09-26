@@ -89,7 +89,7 @@ The single biggest Obsidian fix. An entry opens as a rendered card, not raw text
 
 ### What's active, surfaced — not remembered
 
-Obsidian shows a flat file tree; it cannot tell you what is alive. STATE's index is a **vitality lens** (call it `PULSE`): entries sorted and filtered by `stage`, `activation_count`, `last_activated`, `energy`, whether a steward is enchanted on them, and whether they carry an Active Handoff or stewardship marker. "What's hot right now" is the default view, not a thing Loudon reconstructs in his head. This directly answers the pain that birthed [[Drift and Consolidation]]: the [[Project Stewardship System]] entry sat three weeks stale and nothing surfaced it. PULSE surfaces it.
+Obsidian shows a flat file tree; it cannot tell you what is alive. STATE's index is a **vitality lens** (call it `PULSE`): entries sorted and filtered by `stage`, recent use and days since last use (computed from git — page edits, bundle edits, links formed: [[SCHEMA — Reference]] §3), `energy`, whether a steward is enchanted on them, and whether they carry an Active Handoff or stewardship marker. "What's hot right now" is the default view, not a thing Loudon reconstructs in his head. This directly answers the pain that birthed [[Drift and Consolidation]]: the [[Project Stewardship System]] entry sat three weeks stale and nothing surfaced it. PULSE surfaces it.
 
 Each entry view also pulls its **"what is to be done"** to the top: the Active Handoff section, the stewardship-drift marker, open questions, and a one-click jump to that entry's items in QUEUE and its history in LOG. The entry stops being a wall of prose you scan for the live edge; the live edge is lifted out.
 
@@ -120,7 +120,7 @@ Every save writes the `.md` in the working tree. **Obsidian remains the point of
 |---|---|
 | No good way to read YAML | Frontmatter rendered as a structured header; forward vector as hero; stage as glyph |
 | Doesn't articulate what is to be done | Active Handoff / stewardship marker / open questions lifted to the top; link to QUEUE |
-| Doesn't show what is important and active | `PULSE` vitality lens as the default index (stage, activation, stewarded, has-handoff) |
+| Doesn't show what is important and active | `PULSE` vitality lens as the default index (stage, use, stewarded, has-handoff) |
 | Doesn't render enrichments | The board's rich-content engine pointed at entry bundles; media renders inline |
 | File browser doesn't understand bundles | Bundle-aware navigator: `Foo.md` + `Foo/` shown as one owned unit |
 

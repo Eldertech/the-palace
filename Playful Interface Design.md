@@ -3,8 +3,6 @@ title: "Playful Interface Design"
 type: practice
 pillars: [creation, tools, philosophy]
 born: 2026-01
-last_activated: 2026-03
-activation_count: 1
 stage: growing
 confidence: working
 energy: high

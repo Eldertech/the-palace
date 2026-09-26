@@ -12,12 +12,12 @@ judgment is the worker's). Reads the latest palace map for inbound counts; reads
 files for newcomer detection.
 
 Newcomer (in precedence order) = young AND under the INBOUND target, where young =
-  --since-last-weave   -> git-added since the most recent 'Weave ' commit, OR born in/after
-                          that commit's month (born is often month-granular; the OR catches
-                          entries a git rename hid from --diff-filter=A) — use for a real Weave
-  --since-commit <ref> -> same, from an explicit ref
+  --since-commit <ref> -> git-added since ref, OR born in/after that commit's month (born is
+                          often month-granular; the OR catches entries a git rename hid from
+                          --diff-filter=A)
   --since YYYY-MM      -> born >= that month
-  (none)               -> activation_count == 1 (the card's Step 0b proxy)
+  --since-last-weave   -> the --since-commit rule from the most recent 'Weave ' commit
+  (none)               -> same as --since-last-weave — the rule a real Weave uses
 
 Measured on REACH (2026-09-24): entries that point at it, plus partners on symmetric links,
 which hold both ways. Originally (2026-09-23) inbound only: Step 0b exists for the links only a Weave can
@@ -42,7 +42,6 @@ import glob, json, math, os, re, statistics, subprocess, sys
 
 PALACE_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 BORN_RE = re.compile(r'^born:\s*["\']?(\d{4}-\d{2}(?:-\d{2})?)', re.M)
-ACT_RE = re.compile(r'^activation_count:\s*["\']?(\d+)', re.M)
 
 
 def _git(args):
@@ -86,15 +85,14 @@ def latest_map():
     return files[-1]
 
 
-def read_born_and_act(path):
+def read_born(path):
     try:
         with open(os.path.join(PALACE_ROOT, path), encoding="utf-8", errors="ignore") as f:
             head = f.read(4096)
     except OSError:
-        return None, None
+        return None
     b = BORN_RE.search(head)
-    a = ACT_RE.search(head)
-    return (b.group(1) if b else None), (int(a.group(1)) if a else None)
+    return b.group(1) if b else None
 
 
 def ref_month(ref):
@@ -103,7 +101,7 @@ def ref_month(ref):
     return out.strip()[:7] if out else None
 
 
-def compute(map_path, since, added_set=None, rule="activation_count == 1 (proxy)", born_floor=None):
+def compute(map_path, since, added_set=None, rule="born >= since", born_floor=None):
     """Inbound, not total degree: Step 0b exists for the links only a Weave can place —
     the ones in OTHER entries' files. Total degree hid the gap (OBS read as degree 7 with
     0 inbound). A newcomer is born since the last Weave OR git-added since it, AND under
@@ -126,16 +124,11 @@ def compute(map_path, since, added_set=None, rule="activation_count == 1 (proxy)
     nodes = []
     for n in data["nodes"]:
         inbound = len(reach[n["id"]])
-        born, act = read_born_and_act(n["path"])
-        if act is None:  # fall back to the activation_count carried in the map
-            act_raw = n.get("activation_count")
-            act = int(act_raw) if str(act_raw).isdigit() else None
+        born = read_born(n["path"])
         if added_set is not None:          # git-added since the last Weave, or born since its month
             young = n["path"] in added_set or (born_floor is not None and born is not None and born >= born_floor)
-        elif since:                        # born >= month (coarse; born is month-granular)
-            young = born is not None and born >= since
-        else:                              # proxy: never-reactivated entries
-            young = act == 1
+        else:                              # born >= month (coarse; born is month-granular)
+            young = born is not None and since is not None and born >= since
         nodes.append({"id": n["id"], "path": n["path"], "inbound": inbound,
                       "stage": n.get("stage"), "born": born, "young": young,
                       "ops_card": bool(n.get("ops_card"))})
@@ -197,8 +190,9 @@ def main():
         else:
             sys.exit(f"unknown arg: {args[i]}")
 
-    # Precise git-added scoping wins over coarse born-month; both over the activation proxy.
-    added_set, rule, born_floor = None, "activation_count == 1 (proxy)", None
+    # Precise git-added scoping wins over coarse born-month; with neither, since the last Weave.
+    added_set, rule, born_floor = None, None, None
+    since_last_weave = since_last_weave or not (since_commit or since)
     ref = since_commit or (last_weave_ref() if since_last_weave else None)
     if since_last_weave and not ref:
         sys.exit("could not find a prior 'Weave ' commit; pass --since-commit <ref> or --since <YYYY-MM>")

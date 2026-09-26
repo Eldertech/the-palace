@@ -118,7 +118,7 @@ append from that node        No │                    Yes
                                            existing JSONL      with new head
 ```
 
-**Content hash precision:** The hash is computed over body text plus semantically significant frontmatter only — `title`, `type`, `pillars`, `stage`, `links`, `forward_vector`. Excluded from hashing: `activation_count`, `last_activated`, any timestamp field, and any field that changes through routine palace maintenance without changing the page's meaning. A file touched without semantic change produces the same hash. Same JSONL.
+**Content hash precision:** The hash is computed over body text plus semantically significant frontmatter only — `title`, `type`, `pillars`, `stage`, `links`, `forward_vector`. Excluded from hashing: any timestamp field, and any field that changes through routine palace maintenance without changing the page's meaning. A file touched without semantic change produces the same hash. Same JSONL.
 
 **Stage as a semantic field:** A stage transition (`seed → growing`) is treated as a semantically significant change — it reflects a genuine shift in the page's maturity and identity. Stage is included in the hash.
 

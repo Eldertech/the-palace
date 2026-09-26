@@ -5,8 +5,6 @@ pillars:
   - philosophy
   - creation
 born: 2026-03
-last_activated: 2026-03
-activation_count: 2
 stage: seed
 links:
   - target: "[[Palace Philosophies]]"

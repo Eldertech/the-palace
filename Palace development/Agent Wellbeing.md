@@ -5,8 +5,6 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-07
-activation_count: 3
 stage: growing
 links:
   - target: "[[Palace as Context Injection System]]"

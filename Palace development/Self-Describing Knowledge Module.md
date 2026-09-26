@@ -6,8 +6,6 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-09
-activation_count: 2
 stage: growing
 links:
   - target: "[[Meaning and the Link]]"

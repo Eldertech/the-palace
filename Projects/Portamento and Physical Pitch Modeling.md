@@ -3,8 +3,6 @@ title: "Portamento and Physical Pitch Modeling"
 type: project
 pillars: [creation, tools, philosophy]
 born: 2026-01
-last_activated: 2026-03
-activation_count: 2
 stage: mature
 status: active
 confidence: working

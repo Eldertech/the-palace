@@ -4,7 +4,6 @@ type: project
 pillars: [creation, tools]
 status: complete
 born: 2026-05
-last_activated: 2026-05
 stage: fruiting
 confidence: working
 energy: medium

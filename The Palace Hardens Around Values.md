@@ -4,8 +4,6 @@ type: concept
 pillars: [philosophy, practice, tools]
 born: 2026-07
 stage: mature
-last_activated: 2026-07
-activation_count: 1
 links:
   - target: "[[The Palace Voice]]"
     type: connects-to

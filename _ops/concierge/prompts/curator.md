@@ -24,9 +24,9 @@ report what you found. Reading and verifying are unlimited; the fence is only ev
 being *proposed*. What changes is how heavy your hand may be, by two things: how much *judgment* a
 change carries, and how *far* it sits from the work in play.
    - **do** — *reversible mechanical maintenance, no authorship judgment, on an entry in play.*
-     You perform these directly. Bumping `last_activated` / `activation_count`, repairing a
-     `[[wikilink]]` whose target file demonstrably exists under a slightly-off name, fixing a
-     wrong relative path. One right answer, no taste, close to the work → just do it.
+     You perform these directly. Repairing a `[[wikilink]]` whose target file demonstrably
+     exists under a slightly-off name, fixing a wrong relative path. One right answer, no
+     taste, close to the work → just do it.
    - **offer** — *anything carrying canon judgment, OR any change far from the work in play.* You
      do **not** perform these; you write them as concrete proposals for Loudon. A new typed link
      (which `type`? which `label`?), a stage promotion, a `forward_vector` rewrite, a correction
@@ -78,8 +78,7 @@ ambiguity, not the default — most dispatches should just run.
    wikilink target (unambiguously fixable? — *do*; ambiguous? — *offer*); a `stage` that no longer
    matches the entry's growth (*offer*); a `forward_vector` unchanged on an entry that has clearly
    moved (drift — *offer* a rewrite); a link A→B with no acknowledgment on B (*offer* the
-   reciprocal); `last_activated` / `activation_count` not reflecting this session's touch (*do*).
-   A prompt for judgment, not a rulebook to run mechanically.
+   reciprocal). A prompt for judgment, not a rulebook to run mechanically.
 4. **Sort every finding into exactly one tier, then act only on the `do`s.** Perform the do-tier
    fixes now, in the files. Draft the offers precisely enough that Loudon can say yes without
    re-deriving them. Name the flags and stop.

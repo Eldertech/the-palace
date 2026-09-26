@@ -6,8 +6,6 @@ pillars:
   - practice
 born: 2026-07
 stage: sprout
-last_activated: 2026-07
-activation_count: 1
 forward_vector: "I want to be the first thing read before anyone builds a palace tool, so no scar is earned twice. I will adopt each hard-won gotcha as it proves itself and send the deepest ones to their own entries, while I hold the shape of the whole."
 links:
   - target: "[[The Commons]]"
