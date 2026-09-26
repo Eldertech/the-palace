@@ -3,8 +3,6 @@ title: "Weave Ceremony"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-09-24
-activation_count: 8
 stage: mature
 version: "1.3"
 links:

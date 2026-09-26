@@ -6,8 +6,6 @@ pillars:
   - philosophy
 born: 2026-06
 stage: seed
-last_activated: 2026-06
-activation_count: 1
 forward_vector: "I want to know whether giving an agent a gender and a temperament — not just a role-voice — measurably changes the actions it takes, and if it does, whether personification becomes a deliberate design variable across the palace's agents or stays a one-off. The [[Shopkeeper]] is the first datum; the [[Maker]] is the control."
 links:
   - target: "[[Palace Enchantment]]"

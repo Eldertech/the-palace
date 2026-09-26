@@ -7,8 +7,6 @@ pillars:
 born: 2026-03
 stage: mature
 version: 2
-last_activated: 2026-06
-activation_count: 2
 forward_vector: "I am the covenant that images earn their place in the palace by carrying knowledge prose cannot — that every embed is a load-bearing claim about structure and meaning. I want to become the ceremony that guards against decoration, holding every embedded image to the standard: if removed, would the reader lose irreplaceable knowledge?"
 links:
   - target: "[[SCHEMA]]"

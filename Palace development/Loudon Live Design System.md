@@ -7,7 +7,6 @@ pillars:
   - philosophy
   - practice
 born: 2026-05-28
-last_activated: 2026-07-02
 stage: growing
 energy: high
 forward_vector: >

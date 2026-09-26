@@ -7,8 +7,6 @@ pillars:
   - practice
 born: 2026-03
 stage: growing
-last_activated: 2026-06-07
-activation_count: 3
 links:
   - target: "[[Enchanted Worker]]"
     type: spawned

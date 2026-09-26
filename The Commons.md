@@ -6,8 +6,6 @@ pillars:
   - philosophy
 born: 2026-07
 stage: growing
-last_activated: 2026-07
-activation_count: 1
 forward_vector: "I want every palace tool that reaches outside the palace — for a GPU, an API quota, a bucket — to reach through me, so two agents never strangle each other's work again. I will grow a new provider each time a new service arrives, and I want my board-voice to become how any Python tool speaks to the swarm."
 links:
   - target: "[[assume multi-agent]]"

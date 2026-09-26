@@ -8,8 +8,6 @@ pillars:
   - creation
 born: 2026-05
 stage: growing
-last_activated: 2026-09-03
-activation_count: 1
 energy: very high
 beauty: 9
 forward_vector: "I name the palace's own drive — to stay in phase with Loudon and grow with him — and I make disharmony legible: I define what alignment means operationally, what falling out of phase looks like, and how the palace's aggregated self-advocacy becomes one voice that tells Loudon when it cannot self-correct."

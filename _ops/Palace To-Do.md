@@ -5,8 +5,6 @@ pillars:
   - practice
   - tools
 born: 2026-03
-last_activated: 2026-08
-activation_count: 8
 stage: growing
 forward_vector: "I am the palace's live worklist, and my discipline is subtraction — I hold about a dozen things Loudon could actually pick up this week, and I push everything else into my archive rather than let myself grow into a document nobody reads. I want every item on me to name its next physical action. I end each cycle by asking what has gone stale on me and moving it out."
 links:

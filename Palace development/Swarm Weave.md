@@ -8,8 +8,6 @@ pillars:
   - philosophy
 born: 2026-03
 stage: growing
-last_activated: 2026-07
-activation_count: 4
 energy: very high
 beauty: 9
 links:

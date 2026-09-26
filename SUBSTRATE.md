@@ -6,8 +6,6 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-08
-activation_count: 7
 stage: growing
 confidence: hypothesis
 energy: very high

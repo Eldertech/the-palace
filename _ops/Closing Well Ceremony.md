@@ -3,8 +3,6 @@ title: "Closing Well Ceremony"
 type: practice
 pillars: [practice, philosophy]
 born: 2026-07
-last_activated: 2026-07
-activation_count: 1
 stage: growing
 links:
   - target: "[[Closing Well]]"

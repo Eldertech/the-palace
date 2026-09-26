@@ -7,8 +7,6 @@ pillars:
   - tools
 born: 2026-03
 stage: growing
-last_activated: 2026-09
-activation_count: 2
 energy: high
 revival_conditions: Swarm Weave is ceremony-ified and running cleanly for two cycles. Revisit whether the Walk's single-agent, trail-following character suggests a third ceremony mode.
 links:

@@ -7,8 +7,6 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
 confidence: working
 energy: very high
 hook_quality: 9

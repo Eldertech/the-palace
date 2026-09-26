@@ -7,8 +7,6 @@ pillars:
   - practice
 born: 2026-04
 stage: fruiting
-last_activated: 2026-04
-activation_count: 1
 energy: high
 beauty: 9
 links:

@@ -3,8 +3,6 @@ title: "Hand-Drawn 3D Look"
 type: concept
 pillars: [tools, creation]
 born: 2026-06
-last_activated: 2026-06-26
-activation_count: 3
 stage: growing
 confidence: working
 energy: high

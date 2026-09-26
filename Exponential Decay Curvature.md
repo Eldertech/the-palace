@@ -11,8 +11,6 @@ energy: medium
 hook_quality: 8
 beauty: 9
 who_leads: shared
-last_activated: 2026-06
-activation_count: 1
 links:
   - target: "[[Frequency-Time Duality]]"
     type: deepens

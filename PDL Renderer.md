@@ -7,7 +7,6 @@ pillars:
 born: 2026-04
 stage: sprout
 status: active
-last_activated: 2026-05-26
 links:
   - target: "[[Generative Audio Devices]]"
     type: emerged-from

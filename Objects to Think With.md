@@ -6,8 +6,6 @@ pillars:
   - tools
   - practice
 born: 2026-09
-last_activated: 2026-09
-activation_count: 1
 stage: growing
 links:
   - target: "[[FOUR PILLARS]]"

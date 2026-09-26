@@ -6,8 +6,6 @@ pillars:
   - philosophy
   - creation
 born: 2025-09
-last_activated: 2026-06-26
-activation_count: 11
 stage: mature
 confidence: foundational
 energy: high

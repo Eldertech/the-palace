@@ -3,8 +3,6 @@ title: "The Metaphor Stretch"
 type: concept
 pillars: [creation, tools, philosophy, practice]
 born: 2026-04
-last_activated: 2026-04
-activation_count: 1
 stage: growing
 confidence: working
 energy: high

@@ -3,8 +3,6 @@ title: "Revival Ceremony"
 type: practice
 pillars: [practice, philosophy]
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
 stage: mature
 version: "1.2"
 links:

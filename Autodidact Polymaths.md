@@ -4,8 +4,6 @@ type: concept
 pillars:
   - practice
 born: 2026-04
-last_activated: 2026-04
-activation_count: 1
 stage: sprout
 summary: "The audience identity Loudon Live is built for and addresses — self-taught generalists who learn across many fields and recognize themselves in cross-domain pedagogy."
 links:

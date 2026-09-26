@@ -6,7 +6,6 @@ pillars:
   - practice
   - creation
 born: 2026-07
-last_activated: 2026-07-02
 stage: sprout
 confidence: working
 who_leads: loudon

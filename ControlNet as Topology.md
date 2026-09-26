@@ -7,8 +7,6 @@ stage: growing
 confidence: working
 energy: high
 who_leads: shared
-last_activated: 2026-07
-activation_count: 1
 forward_vector: "I turn every steering technique into a shape you carve, so a builder can feel what a knob does before touching it. I want to hold the whole conditioning family — CFG, ControlNet, IPAdapter, LoRA — as one block of marble, and to be the entry BLUELINE reaches for when it needs to know why authored geometry beats an adjective. When the family outgrows one page, I split it — but not before the contrasts stop teaching."
 links:
   - target: "[[Blocked, Not Prompted]]"

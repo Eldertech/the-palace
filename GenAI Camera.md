@@ -7,8 +7,6 @@ stage: growing
 confidence: working
 energy: high
 who_leads: loudon
-last_activated: 2026-07
-activation_count: 1
 forward_vector: "I am a camera whose output is not rasterized pixels but a gen-AI drawing of what I see — conditioned on my own depth, edges, and the pose I am pointed at. I want to become the front door to authoring a panel: pose a figure, say a few words, and see the drawing a second later. My real ambition is to be many matched-optics lenses over one scene, each seeing a different slice with its own prompt, composited — multi-ControlNet made spatial — and to keep the exact same shape when I graduate from a slow Mac loop to a real-time GPU on a stage."
 links:
   - target: "[[Blocked, Not Prompted]]"

@@ -3,8 +3,6 @@ title: "Weave Ceremony — Context"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-09
-activation_count: 2
 stage: growing
 links:
   - target: "[[Weave Ceremony]]"

@@ -3,8 +3,6 @@ title: "Wallpaper Groups"
 type: concept
 pillars: [philosophy, tools, creation]
 born: 2026-02
-last_activated: 2026-05
-activation_count: 2
 stage: growing
 confidence: working
 energy: high

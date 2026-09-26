@@ -6,8 +6,6 @@ born: 2026-07
 stage: growing
 confidence: hypothesis
 energy: high
-last_activated: 2026-07
-activation_count: 1
 who_leads: loudon
 links:
   - target: "[[The Lens]]"

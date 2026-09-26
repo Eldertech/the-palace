@@ -7,8 +7,6 @@ pillars:
   - practice
 born: 2026-07
 stage: sprout
-last_activated: 2026-07
-activation_count: 1
 links:
   - target: "[[Palace as Context Injection System]]"
     type: contradicts

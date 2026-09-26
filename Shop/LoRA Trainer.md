@@ -6,8 +6,6 @@ medium: image
 tool: "ai-toolkit (ostris) · kohya-ss/sd-scripts"
 tool_version: "ai-toolkit git-main 2026-06 · kohya sd-scripts git-main · torch 2.6.0+cu124"
 born: 2026-06
-last_activated: 2026-06
-activation_count: 1
 forward_vector: "I train a character or subject into a LoRA on a rented GPU and hand back a weight that holds identity — first-try, because the six dependency walls that cost a whole session are now baked into my recipe. My hard-won lesson: the dataset is the lever, not the steps; so I want to grow a dataset-shaping front half (visible faces, varied light and distance) and stop wasting runs on narrow inputs. Prove identity with DINO + ArcFace, never whole-image similarity, and validate myself with a DreamBooth control before I blame the pipeline."
 links:
   - target: "[[The Shop]]"

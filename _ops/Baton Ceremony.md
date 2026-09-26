@@ -7,8 +7,6 @@ pillars:
   - practice
   - tools
 born: 2026-05
-last_activated: 2026-06-26
-activation_count: 3
 stage: mature
 version: "1.2"
 forward_vector: "I am how one Claude hands a live task to the next without dropping it. I keep getting tighter — fewer words, faster pickup, less ritual — so passing a baton feels natural to anyone who uses me, human or AI, and nobody has to stop and think about how. I want the catch so clean the next worker is already moving before they finish reading."

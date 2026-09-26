@@ -8,8 +8,6 @@ pillars:
   - practice
 born: 2026-03
 stage: growing
-last_activated: 2026-06
-activation_count: 2
 energy: very high
 beauty: 9
 confidence: working

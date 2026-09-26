@@ -5,8 +5,6 @@ pillars:
   - tools
   - creation
 born: 2026-01
-last_activated: 2026-03
-activation_count: 3
 stage: sprout
 confidence: hypothesis
 energy: medium

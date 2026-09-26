@@ -7,8 +7,6 @@ pillars:
   - philosophy
   - practice
 born: 2024-01
-last_activated: 2026-06-26
-activation_count: 35
 stage: mature
 confidence: foundational
 energy: high

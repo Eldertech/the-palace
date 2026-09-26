@@ -6,8 +6,6 @@ pillars:
   - tools
 born: 2026-03
 stage: growing
-last_activated: 2026-03
-activation_count: 1
 links:
   - target: "[[Palace as Context Injection System]]"
     type: emerged-from

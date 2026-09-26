@@ -6,7 +6,6 @@ medium: motion
 tool: obs-studio
 tool_version: 32.1.2
 born: 2026-09
-last_activated: 2026-09-02
 last_tested: 2026-09-02
 last_gotcha: 2026-09-02
 license: GPL-2.0

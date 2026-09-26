@@ -5,8 +5,6 @@ pillars:
   - tools
   - practice
 born: 2026-03
-last_activated: 2026-05
-activation_count: 3
 stage: mature
 links:
   - target: "[[SUBSTRATE]]"

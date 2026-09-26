@@ -6,8 +6,6 @@ pillars:
   - tools
   - practice
 born: 2026-01
-last_activated: 2026-03
-activation_count: 2
 stage: growing
 confidence: working
 energy: high

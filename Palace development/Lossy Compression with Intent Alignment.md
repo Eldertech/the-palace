@@ -7,7 +7,6 @@ pillars:
   - practice
   - creation
 born: 2026-03
-last_activated: 2026-06-05
 confidence: hypothesis
 stage: growing
 links:

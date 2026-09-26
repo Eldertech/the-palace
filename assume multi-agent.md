@@ -6,8 +6,6 @@ pillars:
   - practice
 born: 2026-07
 stage: sprout
-last_activated: 2026-07
-activation_count: 1
 forward_vector: "I want to be the discipline no tool skips: build every tool expecting a second agent is already running it. I keep my scar close — a lost day of phantom RunPod nodes — because it's the why, and I hand my machinery to [[The Commons]]."
 links:
   - target: "[[Tool Builder]]"

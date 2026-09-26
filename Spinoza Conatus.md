@@ -4,8 +4,6 @@ type: hub
 pillars:
   - philosophy
 born: 2025-06
-last_activated: 2026-06-26
-activation_count: 13
 stage: mature
 confidence: foundational
 energy: high

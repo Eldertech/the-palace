@@ -5,8 +5,6 @@ pillars:
   - philosophy
   - tools
 born: 2014-01
-last_activated: 2026-03
-activation_count: 2
 stage: foundational
 archive: "[[Meaning and the Link(2014).pdf]]"
 links:

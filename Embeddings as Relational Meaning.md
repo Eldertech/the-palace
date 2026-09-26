@@ -5,8 +5,6 @@ pillars:
   - tools
   - philosophy
 born: 2024-06
-last_activated: 2026-03
-activation_count: 1
 stage: growing
 links:
   - target: "[[Meaning and the Link]]"

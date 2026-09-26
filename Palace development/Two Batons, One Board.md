@@ -6,8 +6,6 @@ pillars:
   - practice
   - philosophy
 born: 2026-05-29
-last_activated: 2026-07-03
-activation_count: 3
 stage: seed
 confidence: working
 energy: high

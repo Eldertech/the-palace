@@ -4,8 +4,6 @@ type: concept
 pillars: [creation, philosophy]
 born: 2026-06
 stage: growing
-last_activated: 2026-06
-activation_count: 3
 confidence: working
 energy: high
 who_leads: shared

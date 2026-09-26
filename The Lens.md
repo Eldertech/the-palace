@@ -6,8 +6,6 @@ born: 2026-06
 stage: growing
 confidence: working
 energy: very high
-last_activated: 2026-07
-activation_count: 2
 who_leads: loudon
 hook_quality: 10
 beauty: 9

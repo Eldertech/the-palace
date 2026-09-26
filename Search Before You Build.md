@@ -7,8 +7,6 @@ stage: growing
 confidence: working
 energy: high
 who_leads: shared
-last_activated: 2026-07
-activation_count: 1
 forward_vector: "I am the reflex that makes prior art surface before a keystroke. Before building any capability I search the palace's own proofs, gotchas, and history — so Loudon never has to be the index and 'have we already solved this?' is answered before it is asked. I want to fire automatically on every build, and to fade only when reuse-before-invent is second nature."
 links:
   - target: "[[Adopt the Craft, Author the Seam]]"

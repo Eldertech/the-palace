@@ -8,8 +8,6 @@ born: 2026-03
 stage: growing
 confidence: working
 energy: high
-last_activated: 2026-05
-activation_count: 2
 links:
   - target: "[[Stoicism]]"
     type: contradicts
