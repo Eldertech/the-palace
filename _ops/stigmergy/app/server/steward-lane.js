@@ -182,6 +182,20 @@ export function nextRunStep(run, stopHint) {
   return null;
 }
 
+/**
+ * The whole decision after a cycle: continue this steward's run, and whether to
+ * keep firing the queue. A usage limit (processCycle's `usage_limit`, set even
+ * when the cycle shipped) ends the run AND drops the rest of the queue — every
+ * steward after it would hit the same wall. Dropped stewards stay ready; the
+ * next advance after the reset picks them up.
+ */
+export function afterCycle(run, summary) {
+  const s = summary || {};
+  if (s.usage_limit) return { next: null, dropQueue: true, stoppedBecause: 'usage_limit' };
+  const next = nextRunStep(run, s.stop_hint);
+  return { next, dropQueue: false, stoppedBecause: next ? null : stopReason(run, s.stop_hint) };
+}
+
 /** Why a run ended, in one word for the log + the deck. */
 export function stopReason(run, stopHint) {
   if (stopHint === 'spawn_failed') return 'spawn_failed';
@@ -266,6 +280,7 @@ export function createStewardLane(opts = {}) {
     const meta = ctx && ctx.meta;
     const run = (meta && meta.run) || { cap: 1, position: 1, retried: false };
     let next = null; // the next fire of THIS steward's run, if any
+    let dropQueue = false; // a usage limit: stop firing the rest of the batch
     try {
       if (dryReap) {
         writeLastCycle({ ok: true, stub: true, name: meta && meta.home, cycle_n: meta && meta.cycleN, ts: meta && meta.tsNow, run });
@@ -290,18 +305,25 @@ export function createStewardLane(opts = {}) {
       // (processCycle flagged state + scroll) and the run stops. A paused ask
       // (`blocking: true`) or a live-session request also ends the run — the
       // next move is Loudon's, not another cycle.
-      next = nextRunStep(run, summary.stop_hint);
+      const step = afterCycle(run, summary);
+      next = step.next;
+      dropQueue = step.dropQueue;
       writeLastCycle({
         ok: summary.stop_hint !== 'spawn_failed' && summary.stop_hint !== 'interrupted', name: meta.home, cycle_n: meta.cycleN, ts: meta.tsNow, ...summary,
         ...(summary.stop_hint === 'spawn_failed' ? { error: 'the worker never spoke — see the lane log (auth? permission mode? root?); the cycle was not counted' } : {}),
         ...(summary.stop_hint === 'interrupted' ? { error: `the worker was cut off before posting (${(summary.errors && summary.errors[0] && summary.errors[0].error) || 'error'}); the cycle was not counted` } : {}),
-        run: { ...run, stop_hint: summary.stop_hint, continued: !!next, stopped_because: next ? null : stopReason(run, summary.stop_hint) },
+        run: { ...run, stop_hint: summary.stop_hint, continued: !!next, stopped_because: step.stoppedBecause },
       });
-      logLine(`run: ${meta.home} cycle ${meta.cycleN} (${run.position}/${run.cap}) -> ${summary.stop_hint}${next ? (next.retryOfBarren ? ' -> retrying once' : ` -> continuing (${next.position}/${next.cap})`) : ` -> run ends (${stopReason(run, summary.stop_hint)})`}`);
+      logLine(`run: ${meta.home} cycle ${meta.cycleN} (${run.position}/${run.cap}) -> ${summary.stop_hint}${next ? (next.retryOfBarren ? ' -> retrying once' : ` -> continuing (${next.position}/${next.cap})`) : ` -> run ends (${step.stoppedBecause})`}`);
     } catch (e) {
       logLine(`ERROR: steward reap failed: ${e.message}`);
       writeLastCycle({ ok: false, name: meta && meta.home, error: e.message, ts: meta && meta.tsNow, run });
     } finally {
+      if (dropQueue && queue.length > 0) {
+        logLine(`usage limit: not firing ${queue.length} queued steward(s) — they stay ready for after the reset: ${queue.join(', ')}`);
+        queue = [];
+        if (batch.total > 0) batch.total = batch.done + 1;
+      }
       if (next && meta && meta.home) {
         const r = fireOne(meta.home, next);
         if (!r.fired) { logLine(`run: could not continue ${meta.home}: ${r.msg}`); drainQueue(); }
