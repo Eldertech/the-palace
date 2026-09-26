@@ -13,7 +13,7 @@ hook_quality: 9
 beauty: 8
 who_leads: shared
 links:
-  - target: "[[Torus Warping Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — warps]]"
     type: connects-to
     label: cuts-orthogonally
   - target: "[[2D Torus Wavetable Synthesizer]]"
@@ -40,7 +40,7 @@ links:
   - target: "[[Embeddings as Relational Meaning]]"
     type: mirrors
     label: closure-property
-  - target: "[[2D Wavetable Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — wavetables]]"
     type: connects-to
   - target: "[[Dispersion]]"
     type: enables
@@ -55,7 +55,7 @@ forward_vector: "I am the structural cut through warp space that says: a warp is
 
 ![[Three Kinds of Warp — hero.png]]
 
-The word *warp* carries three distinct meanings in audio synthesis (DAW time-warp, oscillator phase-warp, geometric surface-warp; [[Torus Warping Catalog]] disambiguates them in its framing). Inside the third meaning — geometric warping of a wavetable's domain — there is a *further* typology that determines what spectra a warp can produce. The catalog distinguishes warps by *where they live* (phase-space, coefficient-space, surface-space). This entry distinguishes warps by *what structure they preserve and what they break*. The two cuts are orthogonal: every warp has both a location and a type.
+The word *warp* carries three distinct meanings in audio synthesis (DAW time-warp, oscillator phase-warp, geometric surface-warp; [[2D Torus Wavetable Synthesizer — catalog — warps|Torus Warping Catalog]] disambiguates them in its framing). Inside the third meaning — geometric warping of a wavetable's domain — there is a *further* typology that determines what spectra a warp can produce. The catalog distinguishes warps by *where they live* (phase-space, coefficient-space, surface-space). This entry distinguishes warps by *what structure they preserve and what they break*. The two cuts are orthogonal: every warp has both a location and a type.
 
 ## The 1D obstruction theorem
 
@@ -91,7 +91,7 @@ The lap structure is exactly what the harmonic series enforces. Commercial wavet
 
 The piano spectrum $f_n = n f_0 \sqrt{1 + B n^2}$ for generic $B$ is not on any rational lattice — see [[Piano String Inharmonicity]] for the physics, [[Categorizing Inharmonicity]] for the broader typology of inharmonicity targets this is one example of.
 
-Type 1 alone cannot reach it (preserves the lattice, theorem above). Type 2 alone gives a 2-generator lattice that is *dense* in $\mathbb{R}$, so prominent partials can be placed near piano-stretched positions by choosing surface coefficients accordingly — this is what the "Stiff String" surface in [[2D Wavetable Catalog]] does, and it is approximation rather than exact reproduction. Type 3 gives complementary access: rather than placing energy at lattice points near piano positions, it bends the lattice itself via the coupling functions, so the partials migrate continuously as the coupling parameters change.
+Type 1 alone cannot reach it (preserves the lattice, theorem above). Type 2 alone gives a 2-generator lattice that is *dense* in $\mathbb{R}$, so prominent partials can be placed near piano-stretched positions by choosing surface coefficients accordingly — this is what the "Stiff String" surface in [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]] does, and it is approximation rather than exact reproduction. Type 3 gives complementary access: rather than placing energy at lattice points near piano positions, it bends the lattice itself via the coupling functions, so the partials migrate continuously as the coupling parameters change.
 
 In practice the instrument wants both — type-2 for clean approximate-piano presets, type-3 when $B$ should behave as a continuous bifurcation parameter that genuinely deforms the spectrum's geometry rather than reweighting fixed slots. FM, by contrast, has neither: the modulator+carrier structure is type-1 in disguise (Bessel sidebands sit on a finitely-generated lattice — see [[Bessel Functions in Synthesis]]), and FM's parameters do not provide a continuous knob that touches the lattice generators in the way $B$ would need.
 

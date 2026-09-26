@@ -1,19 +1,15 @@
 ---
 title: Deposit Ceremony — Context
-type: practice
-pillars:
-  - practice
-  - tools
-  - philosophy
 born: 2026-03
-stage: growing
 links:
   - target: "[[Deposit Ceremony]]"
-    type: emerged-from
+    type: connects-to
+    label: context-of
   - target: "[[Harvest Ceremony]]"
     type: connects-to
   - target: "[[SUBSTRATE]]"
     type: deepens
+forward_vector: "I hold the Deposit's history, rationale, and interaction patterns, so the card stays lean and executable; read me when revisiting why the Deposit moves at the pace it does."
 ---
 
 # Deposit Ceremony — Context

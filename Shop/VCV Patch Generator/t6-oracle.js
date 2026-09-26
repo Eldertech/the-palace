@@ -6,8 +6,8 @@
 // distinctness check. No self-grading — the emitter is the oracle.
 //
 // Lives in this Specialist's bundle (relocated 2026-06-16 from the gitignored
-// _tools/; git is now its home). Reads `PDL Renderer.html` from the palace root,
-// two levels up from this bundle. The prompt it grades sits beside it, in
+// _tools/; git is now its home). Reads `PDL Renderer.html` from its home in the
+// Generative Audio Devices bundle (`Generative Audio Devices/pdl-renderer/`). The prompt it grades sits beside it, in
 // [[VCV Patch Generator — spec — PDL generation prompt]]; sample runs are in ./t6-runs/.
 //
 // Usage:  node "Shop/VCV Patch Generator/t6-oracle.js" <agent-output-file> [<label>]
@@ -16,7 +16,7 @@
 const fs   = require("fs");
 const path = require("path");
 const ROOT = path.resolve(__dirname, "..", "..");   // bundle is <root>/Shop/VCV Patch Generator/
-const html = fs.readFileSync(path.join(ROOT, "PDL Renderer.html"), "utf8");
+const html = fs.readFileSync(path.join(ROOT, "Generative Audio Devices", "pdl-renderer", "PDL Renderer.html"), "utf8");
 
 function between(s, a, b) { const i = s.indexOf(a); const j = s.indexOf(b, i + a.length); return s.slice(i + a.length, j); }
 const regText  = between(html, '<script type="application/json" id="vcv-registry">', "</script>").trim();

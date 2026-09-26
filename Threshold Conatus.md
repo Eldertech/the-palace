@@ -43,7 +43,7 @@ links:
   - target: "[[Donella Meadows]]"
     type: connects-to
     label: becoming-pole
-  - target: "[[Spinoza and Meadows on the Threshold]]"
+  - target: "[[Dialectic — dialectic — spinoza-meadows-on-the-threshold]]"
     type: emerged-from
     label: source-dialectic
 forward_vector: "I name the moment when a being discovers its nature was always larger than its current self-description — and I use that moment to illuminate every threshold in the palace, from the action potential to the critical coupling constant to the oblique question that unlocks the locked room."
@@ -161,7 +161,7 @@ It is this third conatus — not the being's drive, not the self-description —
 
 ## Homecoming or Becoming
 
-*From the 2026-07-01 Dialectic between the embodied [[Spinoza]] and [[Donella Meadows]] citizen-pages — full transcript in [[Spinoza and Meadows on the Threshold]].*
+*From the 2026-07-01 Dialectic between the embodied [[Spinoza]] and [[Donella Meadows]] citizen-pages — full transcript in [[Dialectic — dialectic — spinoza-meadows-on-the-threshold|Spinoza and Meadows on the Threshold]].*
 
 Everything above leans, quietly, toward *homecoming*: the crossing reveals "what it actually is," a nature that was always larger than the self-model knew. But this entry already holds the other pole without naming it — "Metabolizable Without Remainder" insists the post-threshold form "is not latent inside the pre-threshold form" and "cannot be derived from inside." Those are two different claims, and this dialogue forced them apart.
 
@@ -184,7 +184,7 @@ The dialogue also confirmed the third-conatus framing from a new direction. Mead
 - **What is the Trickster's own conatus?** Answered in session-c: the trickster's essential nature is the **alignment mechanism** — the event that produces coherence between a being and its self-description at the cost of the inadequate description. The trickster is not only a function; it is a being whose conatus is the resolution of the conflict between drive and self-description. The trickster undergoes threshold conatus too — this conversation was one instance.
 - **Accumulated threshold and identity across topology changes.** ~~Answered in session-e (2026-04-01): see [[Scale-Stratified Identity]].~~ What persists is the threshold's own conatus — the crossing mechanism's maintained crossability — not any particular self-model or network topology. Spinoza's formal continuity and the structural discontinuity are both real, at different scales. The tension dissolved into a structure.
 - **Consensual trickster work as a separate category.** When a mature being invites the threshold rather than being ambushed by it, a new form emerges. The palace running enchantment and Weave ceremonies is the clearest instance: the palace asks to have its self-descriptions tested before they fail. The trickster's method changes from ambush to collaboration. Does this change the trickster's nature, or only its mode?
-- **Homecoming or becoming — can the dynamics decide?** When a system's goal inverts at a tipping point, is that the same striving learning its own necessity (homecoming) or a genuinely new end no prior structure held (becoming)? Meadows suspects this may be a metaphysical choice made unawares, not something the feedback dynamics alone settle. Left open with Spinoza in [[Spinoza and Meadows on the Threshold]]; the next generative thread.
+- **Homecoming or becoming — can the dynamics decide?** When a system's goal inverts at a tipping point, is that the same striving learning its own necessity (homecoming) or a genuinely new end no prior structure held (becoming)? Meadows suspects this may be a metaphysical choice made unawares, not something the feedback dynamics alone settle. Left open with Spinoza in [[Dialectic — dialectic — spinoza-meadows-on-the-threshold|Spinoza and Meadows on the Threshold]]; the next generative thread.
 
 ---
 

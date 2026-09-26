@@ -25,8 +25,6 @@ links:
     label: pdl-as-intent-compression
   - target: "[[VCV Patch Generator — spec — PDL generation prompt]]"
     type: connects-to
-  - target: "[[PDL Renderer]]"
-    type: connects-to
   - target: "[[Registry Pattern]]"
     type: connects-to
   - target: "[[Web Audio Worklet]]"
@@ -155,13 +153,13 @@ In `Shop/VCV Patch Generator/recipes/` — the T7b audition triple, each a hand-
 - `warm_pad-seed-1.{pdl,vcv}` — slow LFO breathing on cutoff, pad attack/release
 - `pluck-seed-1.{pdl,vcv}` — instant attack, short decay, dark filter
 
-The palace-root PDL pair `house_bass.pdl` / `house_bass.vcv` remains the pre-archetype reference from the project's verification work.
+The PDL pair `house_bass.pdl` / `house_bass.vcv` in `Generative Audio Devices/pdl-renderer/` remains the pre-archetype reference from the project's verification work.
 
 ## Test Suite
 
 Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Shop/VCV Patch Generator/tests/test-plan.md`. Last run: **2026-05-29** (T7b audition). Determinism proof at `tests/determinism.txt` — all three audition patches byte-identical across reruns, zero warnings, zero skipped cables.
 
-**The T6 oracle is a runnable harness** in this bundle: `t6-oracle.js` (relocated 2026-06-16 from the gitignored `_tools/` into git). It judges candidate PDL by running each block through the *real* `emitVcvJson` from [[PDL Renderer]] — the emitter is the oracle, no self-grading: `node "Shop/VCV Patch Generator/t6-oracle.js" t6-runs/<input>.candidates.txt`. Per candidate it checks 0-warnings / 0-skipped-cables / registry-only modules / archetype applied / recommended cables present / reaches OUT, then a ≥2-distinct-topology check across the set; sample inputs + RUN-LOG in `t6-runs/`.
+**The T6 oracle is a runnable harness** in this bundle: `t6-oracle.js` (relocated 2026-06-16 from the gitignored `_tools/` into git). It judges candidate PDL by running each block through the *real* `emitVcvJson` from [[Generative Audio Devices|PDL Renderer]] — the emitter is the oracle, no self-grading: `node "Shop/VCV Patch Generator/t6-oracle.js" t6-runs/<input>.candidates.txt`. Per candidate it checks 0-warnings / 0-skipped-cables / registry-only modules / archetype applied / recommended cables present / reaches OUT, then a ≥2-distinct-topology check across the set; sample inputs + RUN-LOG in `t6-runs/`.
 
 The Determinism test is straightforward and load-bearing: same PDL + same registry version + same archetype seed → byte-identical `.vcv`. The harness confirms this; any divergence is a versioning or seed-path issue, not acceptable nondeterminism. The one probe the harness *can't* close is the Style Probe — whether the three archetypes are audibly distinct on load — which needs Rack on a Mac.
 

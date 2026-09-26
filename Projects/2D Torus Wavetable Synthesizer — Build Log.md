@@ -5,7 +5,7 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
     label: chronicles
-  - target: "[[2D Wavetable Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — wavetables]]"
     type: connects-to
     label: documents
   - target: "[[DSP in Looping Dimensions]]"
@@ -14,7 +14,7 @@ links:
     type: connects-to
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
-  - target: "[[Torus Warping Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — warps]]"
     type: connects-to
   - target: "[[Categorizing Inharmonicity]]"
     type: connects-to
@@ -64,7 +64,7 @@ Output:
 
 - `Tools/build_catalog.py` — idempotent generator script. Defines surface functions, a metadata table, and bespoke prose bodies for each entry's index markdown.
 - 10 (`.wav`, `.png`, `.md`) bundles in `Wavetables/`.
-- [[2D Wavetable Catalog]] — master index, organised by tier, with one-line summaries and forward-vector candidates.
+- [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]] — master index, organised by tier, with one-line summaries and forward-vector candidates.
 
 ## Session 2 — 2026-04-26 — Resolution change to 1024 × 1024
 
@@ -117,7 +117,7 @@ Loudon flagged a level-dip between anchors. Investigation produced two RMS-vs-Y 
 
 **Decision.**
 
-- The catalog landed as [[Torus Warping Catalog]] in the project subdirectory — sibling to [[2D Wavetable Catalog]]. Type `hub`, stage `growing`. Body is the full fifteen-entry catalog with palace frontmatter, typed links to the project hub, the wavetable catalog, [[DSP in Looping Dimensions]], [[Kuramoto Coupling]], [[Categorizing Inharmonicity]], and [[Frequency-Time Duality]].
+- The catalog landed as [[2D Torus Wavetable Synthesizer — catalog — warps|Torus Warping Catalog]] in the project subdirectory — sibling to [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]]. Type `hub`, stage `growing`. Body is the full fifteen-entry catalog with palace frontmatter, typed links to the project hub, the wavetable catalog, [[DSP in Looping Dimensions]], [[Kuramoto Coupling]], [[Categorizing Inharmonicity]], and [[Frequency-Time Duality]].
 - The project hub gained a *Warps — A Second Surface Library* section sitting just above *Hopf Fibration as Control Surface*, plus a `spawned/warps` link to the new catalog. Forward vectors rewritten so the RNBO prototype is the explicit immediate next step, followed by per-sample Tier-1 warps, then the lookup-and-crossfade infrastructure, then the rest. The "exotic frontier" line now explicitly names T³ and surface-morphing as the next directions after the 2D instrument is alive.
 - Status block dated 2026-04-27 and rewritten to capture Loudon's read that *each surface feels like a family of sounds*, which is the architectural promise paying out.
 
@@ -179,6 +179,6 @@ This is the canonical pickup point. A fresh Claude pointed at this project shoul
 2. **Interpolation strategy** for Y-axis morphs between dissimilar anchors — see "level-dip discovery" in Session 3 above. Recommended next move: constant-RMS post-normalization on the diagnostic and 01_sine_cycle_sweep when the dip becomes annoying. Spectral-domain interpolation is the tool to reach for when we get to surfaces that interpolate between symmetry classes.
 3. **Seventh surface** in the project's [[2D Torus Wavetable Synthesizer]] §"Seven Surfaces" — slot remains open. Candidates floated: a real Kuramoto-bake (Logic 3), a Matérn random-field (Logic 4), a log-likelihood-of-statistical-model surface (Logic 5), a (5,2) or (5,3) Knot Shadow variant.
 
-**The cleanest single next step** for a fresh session: read `RNBO/README — RNBO Prototype.md`, ask Loudon whether he's assembled the patch yet, and proceed from there. If yes and verification passed → first warp is **per-axis phase bend** from [[Torus Warping Catalog]] §1 (three lines of codebox to add a `tanh` curve on each phasor before lookup, exposing two new params). If yes and verification failed → debug from a screenshot using the README's triage list. If no → walk Loudon through the assembly steps in the README. Use the [[rnbo-codebox]] skill if available.
+**The cleanest single next step** for a fresh session: read `RNBO/README — RNBO Prototype.md`, ask Loudon whether he's assembled the patch yet, and proceed from there. If yes and verification passed → first warp is **per-axis phase bend** from [[2D Torus Wavetable Synthesizer — catalog — warps|Torus Warping Catalog]] §1 (three lines of codebox to add a `tanh` curve on each phasor before lookup, exposing two new params). If yes and verification failed → debug from a screenshot using the README's triage list. If no → walk Loudon through the assembly steps in the README. Use the [[rnbo-codebox]] skill if available.
 
 **The frontier beyond the prototype** (Loudon flagged this explicitly): T³ (3D wavetables — surfaces become volumes, the scan a 3-vector), and morphing 2D wavetables (surface-to-surface interpolation, where the symmetry-class problem becomes its own research direction). Both are downstream of the lookup-and-crossfade infrastructure that Tier-1/Tier-2 warps will require — same machinery, different application.

@@ -577,14 +577,9 @@ def write_master_index() -> str:
         tier_lines[tier].append(f"- [[{title}]] — {summary}")
     body = textwrap.dedent("""\
         ---
-        title: 2D Wavetable Catalog
-        type: hub
-        pillars:
-          - tools
-          - creation
+        title: "2D Torus Wavetable Synthesizer — catalog — wavetables"
         born: 2026-04-26
-        stage: growing
-        status: active
+        forward_vector: "I am the index of every surface in the 2D torus wavetable library — what each one is, how it sounds, and why it earns a slot — and I want to become the map a player reads to choose a starting surface and hear what the geometry promises."
         links:
           - target: "[[2D Torus Wavetable Synthesizer]]"
             type: connects-to
@@ -687,7 +682,7 @@ def write_master_index() -> str:
         - **Constant-RMS rebuild of [[00 — Test Diagnostic Wavetable]] and
           [[01 — Sine Cycle Sweep]]** when the level dip becomes annoying. Cheap.
         """)
-    out = f"{PROJ}/2D Wavetable Catalog.md"
+    out = f"{PROJ}/2D Torus Wavetable Synthesizer — catalog — wavetables.md"
     with open(out, "w") as f:
         f.write(body)
     return out
@@ -731,8 +726,8 @@ def build():
         print(f"  built {slug}: {len(audio)} samples, png {os.path.getsize(png_path)} bytes")
 
     idx_path = write_master_index()
-    # Note: master index lives at "2D Wavetable Catalog.md" (title-form,
-    # palace convention). See SCHEMA §3 "title must match filename".
+    # Note: the master index is a bundle file of the project, so its filename
+    # carries the entry prefix (SCHEMA — Reference §8) and matches its title.
     print(f"  wrote master index: {idx_path}")
 
 

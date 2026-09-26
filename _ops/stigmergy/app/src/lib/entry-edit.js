@@ -109,16 +109,18 @@ export const DENIED_CANON_PATHS = new Set([
   'SUBSTRATE.md',
   'JEWEL.md',
   'ELDER.md',
-  'Jewel — Context.md',
+  'JEWEL/Jewel — Context.md',
   'ROSETTA.md',
   'FOUR PILLARS.md',
   '_ops/Substrate Skill.md',
   '_ops/Palace Ceremonies.md',
 ]);
 
-// Canon path patterns -- ceremony cards in _ops/.
+// Canon path patterns -- ceremony cards in _ops/, and each ceremony's Context
+// companion, which lives in the ceremony's bundle (SCHEMA — Reference §6).
 const DENIED_CANON_PATTERNS = [
   /^_ops\/[^/]*Ceremony[^/]*\.md$/,
+  /^_ops\/([^/]*Ceremony)\/\1 — Context\.md$/,
 ];
 
 // SECURITY refusal — filesystem / repo integrity. Returns { allowed, reason }.

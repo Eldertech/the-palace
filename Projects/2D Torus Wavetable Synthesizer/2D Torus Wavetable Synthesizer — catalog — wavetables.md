@@ -1,11 +1,6 @@
 ---
-title: 2D Wavetable Catalog
-type: concept
-pillars:
-  - tools
-  - creation
+title: "2D Torus Wavetable Synthesizer — catalog — wavetables"
 born: 2026-04-26
-stage: growing
 forward_vector: "I am the index of every surface in the 2D torus wavetable library — what each one is, how it sounds, and why it earns a slot — and I want to become the map a player reads to choose a starting surface and hear what the geometry promises."
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
@@ -14,7 +9,7 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
     type: connects-to
     label: chronicled-by
-  - target: "[[Torus Warping Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — warps]]"
     type: couples-with
     label: voices-to-hands
 ---

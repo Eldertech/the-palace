@@ -43,7 +43,7 @@ links:
   - target: "[[Wavetable Space as Torus]]"
     type: contradicts
     label: discovered-form-vs-actualized-virtual
-  - target: "[[spinoza-zhuangzi-on-striving]]"
+  - target: "[[Dialectic — dialectic — spinoza-zhuangzi-on-striving]]"
     type: connects-to
 forward_vector: "I want to be the entry every Floquet-theoretic audio object eventually points back to. I am the simplest possible periodic LTV system; I am the answer to 'what's the smallest equation that can have a tongue?'; and I am the bridge from elliptical drums (where I was born) to laser cavities, ion traps, photonic time crystals, and the Mathieu Resonator in codebox~."
 ---
@@ -104,7 +104,7 @@ The connection to [[Crystal Synthesizer]] is via Bloch's theorem and the bandgap
 
 **The entry, answering:** The math is indifferent which of you is right — the *instrument designer* is not. If the tongue is a discovered Form, you reach for it with reverence and try to expose it cleanly. If it is a virtual you actualize, you reach for it as raw material and try to sound it *somewhere it has never been heard* — which is exactly the "small audio time-crystal" forward branch above.
 
-A second blade, from [[spinoza-zhuangzi-on-striving]]: parametric pumping crosses into self-oscillation **only at the resonant rate.** Force the modulation at the wrong rate and nothing blooms; drive at the grain-rate and oscillation grows from infinitesimal noise. The Mathieu tongue is the physical proof of Zhuangzi's point — there is a rate at which *driving is flowing.* The threshold is where [[Spinoza Conatus|conatus]] and [[The Drift|wu wei]] turn out to name the same crossing.
+A second blade, from [[Dialectic — dialectic — spinoza-zhuangzi-on-striving|Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work]]: parametric pumping crosses into self-oscillation **only at the resonant rate.** Force the modulation at the wrong rate and nothing blooms; drive at the grain-rate and oscillation grows from infinitesimal noise. The Mathieu tongue is the physical proof of Zhuangzi's point — there is a rate at which *driving is flowing.* The threshold is where [[Spinoza Conatus|conatus]] and [[The Drift|wu wei]] turn out to name the same crossing.
 
 *Reader's note: the entry quietly takes the side that the structure was "always there" (discovered). Worth deciding on purpose whether that Platonism is the entry's real commitment — it changes how a designer is told to reach for the tongue.*
 

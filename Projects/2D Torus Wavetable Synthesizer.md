@@ -26,10 +26,10 @@ links:
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
     label: shares-spine
-  - target: "[[2D Wavetable Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — wavetables]]"
     type: spawned
     label: catalogues
-  - target: "[[Torus Warping Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — warps]]"
     type: spawned
     label: warps
   - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
@@ -125,7 +125,7 @@ The seven surfaces are instances. The five logics are the *methods* by which sur
 
 ## Warps — A Second Surface Library
 
-The seven surfaces are *what the instrument is*; the warps are *what the player does to it while playing*. Together they form two orthogonal libraries: a library of voices (surfaces) and a library of hands (warps that reshape voices in real time). The full warp library is in [[Torus Warping Catalog]] — fifteen entries from per-axis phase bend (Tier 1, three lines of codebox) to Hopf-fibration parameterization (Tier 4, speculative).
+The seven surfaces are *what the instrument is*; the warps are *what the player does to it while playing*. Together they form two orthogonal libraries: a library of voices (surfaces) and a library of hands (warps that reshape voices in real time). The full warp library is in [[2D Torus Wavetable Synthesizer — catalog — warps|Torus Warping Catalog]] — fifteen entries from per-axis phase bend (Tier 1, three lines of codebox) to Hopf-fibration parameterization (Tier 4, speculative).
 
 Two architectural lessons from the warp catalog have already shaped the implementation path:
 
@@ -180,8 +180,8 @@ Paths opened across the source conversations and not folded into this project (e
 The instrument is at the *catalog-and-listen* phase, with the warp framework now folded in as planning material for what comes after the prototype. The math is real on disk; Loudon has confirmed the wavetables sound like they were promised to; each surface is reading as a *family* of sounds rather than a single voice — which is exactly the architectural promise paying out. Concretely:
 
 - **Diagnostic verified.** [[00 — Test Diagnostic Wavetable]] passes the Stage-1 patch tests; the 1024×1024 rebuild kept anchor positions exact at Y = k/16.
-- **Catalog built and verified.** [[2D Wavetable Catalog]] holds 14 entries (as of 2026-06-06): a 16-anchor diagnostic, four utility wavetables, and nine named surfaces (Membrane, Chladni Ghost, Theta, Stiff String, Knot Shadow, Penrose, Kuramoto Bloom, Matérn Field, Fisher Ridge). The 2026-06-06 expansion added the three Logic 3/4/5 surfaces, closing the five-generating-logics inventory. All entries are 1024×1024 (square — Y axis is sampled as densely as X so audio-rate Y phasors don't introduce row-stepping aliasing). Loudon's evaluation of the original 11: "these wavetables work well."
-- **Warp framework documented.** [[Torus Warping Catalog]] folds in the fifteen-warp design space developed in conversation — three places a warp can live (phase / coefficient / surface), four tiers of complexity, and the architectural lessons that fall out (linear phase-space warps are scan-rate-absorbed; lookup-table-and-crossfade is the dominant pattern). Companion to [[2D Wavetable Catalog]] — surfaces are voices, warps are hands.
+- **Catalog built and verified.** [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]] holds 14 entries (as of 2026-06-06): a 16-anchor diagnostic, four utility wavetables, and nine named surfaces (Membrane, Chladni Ghost, Theta, Stiff String, Knot Shadow, Penrose, Kuramoto Bloom, Matérn Field, Fisher Ridge). The 2026-06-06 expansion added the three Logic 3/4/5 surfaces, closing the five-generating-logics inventory. All entries are 1024×1024 (square — Y axis is sampled as densely as X so audio-rate Y phasors don't introduce row-stepping aliasing). Loudon's evaluation of the original 11: "these wavetables work well."
+- **Warp framework documented.** [[2D Torus Wavetable Synthesizer — catalog — warps|Torus Warping Catalog]] folds in the fifteen-warp design space developed in conversation — three places a warp can live (phase / coefficient / surface), four tiers of complexity, and the architectural lessons that fall out (linear phase-space warps are scan-rate-absorbed; lookup-table-and-crossfade is the dominant pattern). Companion to [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]] — surfaces are voices, warps are hands.
 - **Tools are in `Tools/`.** `visualize_wavetable.py` renders any well-formed wavetable WAV as a heightmap or stacked-rows PNG. `build_catalog.py` regenerates every catalog entry idempotently. `rebuild_diagnostic.py` regenerates the diagnostic. All three are dependency-light Python (numpy + Pillow).
 - **Loudon's read.** Each surface feels like a family of sounds, not a single voice. The next moves on the table are: an RNBO prototype to confirm the math under live control alongside Max's `2d.wave~`; then more exotic territory — 3D wavetables on T³ and surface-to-surface morphing.
 

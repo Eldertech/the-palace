@@ -1,11 +1,6 @@
 ---
-title: "Zhuangzi, Epictetus, and Confucius on the End of the Self"
-type: concept
-pillars:
-  - philosophy
-  - practice
+title: "Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self"
 born: 2026-05
-stage: mature
 confidence: working
 energy: high
 who_leads: claude

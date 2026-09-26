@@ -63,7 +63,7 @@ links:
     type: connects-to
   - target: "[[The Fortress and the Threshold]]"
     type: connects-to
-  - target: "[[spinoza-zhuangzi-on-striving]]"
+  - target: "[[Dialectic — dialectic — spinoza-zhuangzi-on-striving]]"
     type: connects-to
 forward_vector: "I want the palace's philosophy to stop being a neighborhood Loudon visits and become a lens he can switch on over everything else — a way to look at any entry, any swarm, any commit through Spinoza or Zhuangzi or Simondon and see what changes. I propose the surfaces that make philosophical thinking a live operation of the front-end rather than a set of pages, and the one new swarm mode that lets philosophers argue on the board in real time. My open edge: a lens must illuminate without distorting — it must never let the philosopher's vocabulary overwrite the entry's own."
 ---
@@ -96,7 +96,7 @@ Three of the new philosopher pages already gave STIGMERGY its own metaphysics, a
 
 QUEUE holds what wants attention. Philosophy's future-facing items are its **open contradictions and promised dialogues.** A new QUEUE lane, `DIALECTICS`, surfaces:
 - the hub's open questions as a **standing roster of unresolved contradictions** (Spinoza-determinism vs. Machiavelli-virtù; Plato-Forms vs. Deleuze-difference; striving vs. drift), each a card that can be dispatched as a live Dialectic;
-- promised-but-unwritten dialogues (the [[spinoza-zhuangzi-on-striving|Spinoza↔Zhuangzi]] re-run with Loudon steering; the Spinoza/Zhuangzi/[[Deleuze]] three-way);
+- promised-but-unwritten dialogues (the [[Dialectic — dialectic — spinoza-zhuangzi-on-striving|Spinoza↔Zhuangzi]] re-run with Loudon steering; the Spinoza/Zhuangzi/[[Deleuze]] three-way);
 - pending Visits requested from STATE, with the suggested voice and the entry awaiting them.
 
 Because QUEUE is the virtual and items close only on git events ([[Two Batons, One Board]]), a dialectic card is *open* until its archived artifact and its typed links are committed. The board cannot claim a dialogue happened until the LOG proves it did.

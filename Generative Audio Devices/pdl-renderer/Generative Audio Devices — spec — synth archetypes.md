@@ -1,11 +1,6 @@
 ---
-title: Synth Archetypes
-type: concept
-pillars:
-  - creation
-  - tools
+title: "Generative Audio Devices — spec — synth archetypes"
 born: 2026-05
-stage: seed
 forward_vector: "I keep pushing musical identity down into the static data layer — naming what a kick, a pad, a pluck *are* as constellations of parameter settings, so the generation layer can stay dumb and still sound like something. I will keep growing the vocabulary as the registry grows (a noise source unlocks hats and noise-hits), keep the constraint kinds honest (add soft tolerances only when the ear demands them), and keep myself target-agnostic so the same `warm_pad` survives the jump to a second synthesis target. My open question: when an archetype is chosen, how far should its cloud propagate *outward* through the signal graph — does `pluck` get to tell a downstream delay to keep its feedback short? That contextual propagation is the layer where musicality actually lives, and I don't reach it yet."
 links:
   - target: "[[Generative Audio Devices]]"

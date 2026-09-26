@@ -17,7 +17,7 @@ links:
   - target: "[[Dialectic]]"
     type: connects-to
     label: catchable-voice
-  - target: "[[Spinoza and Meadows on the Threshold]]"
+  - target: "[[Dialectic — dialectic — spinoza-meadows-on-the-threshold]]"
     type: exemplifies
     label: caught-and-went-deeper
   - target: "[[Cooperation Yields Agency]]"
@@ -42,7 +42,7 @@ A faithful voice must include an honest account of where the thing it speaks for
 
 The principle was discovered by its absence. Every one of the palace's original person entries was written as a flattering survey — all strengths, no fault line — and every one, when enchanted, produced the same smooth, agreeable house voice. The fix was a single mandatory beat, *"where they can't see"*: the thing the person got wrong, over-claims, or can't square. The moment it was added, the voices came alive — Cage owning that his "no intention" was policed; Marcus admitting his calm was a throne's privilege; Eno conceding that "the system did it" quietly credits the system for his taste. See [[Making a Palace Citizen]], where it is now the load-bearing rule.
 
-The [[Dialectic]] proved it twice over. Two embodied citizens, pressed on their blindspots, not only survived being caught — each discovered a *deeper* blindspot than its page had named (Spinoza's hidden premise that essence pre-exists; Meadows's leverage-ladder secretly assuming a conserved self). See [[Spinoza and Meadows on the Threshold]]. A voice with no blindspot cannot do this: it has nothing to be caught on, so it either caricatures or agrees with everything.
+The [[Dialectic]] proved it twice over. Two embodied citizens, pressed on their blindspots, not only survived being caught — each discovered a *deeper* blindspot than its page had named (Spinoza's hidden premise that essence pre-exists; Meadows's leverage-ladder secretly assuming a conserved self). See [[Dialectic — dialectic — spinoza-meadows-on-the-threshold|Spinoza and Meadows on the Threshold]]. A voice with no blindspot cannot do this: it has nothing to be caught on, so it either caricatures or agrees with everything.
 
 This generalizes past person pages. It is the **constructive form of anti-sycophancy** — the difference between a collaborator and a servant is that a collaborator can be wrong and say so ([[Cooperation Yields Agency]]). Any enchanted page ([[Palace Enchantment]]), any page acting as an agent, is more alive *and* more useful for naming its own limits — the way an honest handoff names what it couldn't verify ([[Closing Well]]). Seen from inside, the blindspot is [[Threshold Conatus]]'s "inadequate self-model": the wall you can't see until something presses you against it. And the friction it names is *generative* — the exact opposite of the depleting friction Spinoza catalogues as [[Spinoza Conatus#The Affects: Tristitia|tristitia]]: same word, opposite valence, one raising power-to-act and the other lowering it.
 

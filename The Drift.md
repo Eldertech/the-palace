@@ -14,7 +14,7 @@ links:
   - target: "[[Like Water]]"
     type: deepens
     label: zhuangzi-home
-  - target: "[[zhuangzi-epictetus-confucius-on-the-self]]"
+  - target: "[[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self]]"
     type: emerged-from
     label: surfaced-here
   - target: "[[Stoicism]]"
@@ -41,7 +41,7 @@ links:
     type: connects-to
   - target: "[[Parametric Resonance]]"
     type: connects-to
-  - target: "[[spinoza-zhuangzi-on-striving]]"
+  - target: "[[Dialectic — dialectic — spinoza-zhuangzi-on-striving]]"
     type: connects-to
 forward_vector: "I am the position the cultivators cannot reach from inside their own family — the recognition that the question 'where does the self end?' assumes the self is the kind of thing that has an end. I hold the no-architecture pole open so the Fortress, the Threshold, and the conatus all become visible *as architectures*, choices rather than givens. My next development: to be tested against the technical work — to ask whether an instrument can be designed for drift rather than control, and whether a forward vector can point at no destination without going slack."
 ---
@@ -50,7 +50,7 @@ forward_vector: "I am the position the cultivators cannot reach from inside thei
 
 ![[The Drift — hero.png]]
 
-*Also: The Open Door.* The fourth pole of the self — the one that the [[zhuangzi-epictetus-confucius-on-the-self]] Dialectic surfaced and that the [[The Fortress and the Threshold]] binary structurally cannot reach.
+*Also: The Open Door.* The fourth pole of the self — the one that the [[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self|Zhuangzi, Epictetus, and Confucius on the End of the Self]] Dialectic surfaced and that the [[The Fortress and the Threshold]] binary structurally cannot reach.
 
 The Stoic [[Stoicism|Fortress]] says the self is a sovereign interior to be strengthened. The Confucian [[Confucianism|Threshold]] says the self is a relational web to be tended. [[Spinoza Conatus]] sits between them as the synthesis on the *cultivator* side: an interior drive expressing itself relationally. **But all three are architectures of cultivation.** They disagree about *where* the self is and *how* to build it; they agree that the self is a thing you work on.
 
@@ -85,6 +85,6 @@ The Drift is the philosophical form of a tension that runs through every instrum
 
 ## Open Questions
 
-- The promised [[Spinoza Conatus]] ↔ Zhuangzi Dialectic — *is striving the right shape of work?* — is the direct test of the Drift against the strongest cultivator. See [[spinoza-zhuangzi-on-striving]].
+- The promised [[Spinoza Conatus]] ↔ Zhuangzi Dialectic — *is striving the right shape of work?* — is the direct test of the Drift against the strongest cultivator. See [[Dialectic — dialectic — spinoza-zhuangzi-on-striving|Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work]].
 - Can a forward vector be written in the register of the Drift without going slack? Or is the conatus discipline ([[Entry Conatus]]) fundamentally anti-Drift, and is that fine?
 - Is there a STIGMERGY surface for the Drift — a place where *not-doing* is legible? The QUEUE shows what wants attention; is there value in showing what is being deliberately left alone?

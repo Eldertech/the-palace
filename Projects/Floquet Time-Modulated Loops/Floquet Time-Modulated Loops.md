@@ -57,7 +57,7 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
     label: lti-to-ltv-boundary
-  - target: "[[2D Wavetable Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — wavetables]]"
     type: connects-to
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
@@ -279,7 +279,7 @@ The point of this section is not to be exhaustive. It's to give a student the st
 
 **Faraday waves.** Vertically vibrate a tray of water. Above a critical vibration amplitude, standing waves spontaneously appear on the surface — square patterns, hexagonal patterns, stripes, rotating spirals, depending on the drive frequency and depth. Faraday discovered these in 1831 and they are governed by a Mathieu-like equation for each spatial Fourier mode of the surface. Each mode has its own tongue; when the drive crosses into that mode's tongue, that wavelength of standing wave appears. The pattern is selected by which tongue you're inside. This is the same pattern-formation mechanism at work in vibrated granular media (the Chladni patterns are a static cousin), in pulsating fluid film deposition, and in some classes of pattern-forming chemical reactions.
 
-`media-14` (static): a Faraday-wave pattern diagram. A simulated standing-wave surface for one drive condition; an annotation showing which tongue's mode this pattern corresponds to. Cross-link explicitly to the Chladni surface in the [[2D Wavetable Catalog]] — the static Chladni patterns and the dynamic Faraday patterns are siblings.
+`media-14` (static): a Faraday-wave pattern diagram. A simulated standing-wave surface for one drive condition; an annotation showing which tongue's mode this pattern corresponds to. Cross-link explicitly to the Chladni surface in the [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]] — the static Chladni patterns and the dynamic Faraday patterns are siblings.
 
 **The Kapitza inverted pendulum.** The Mathieu equation can also be *stable* in regions where the un-pumped pendulum is *unstable*. The classical example: an inverted pendulum (think a pencil balanced on its tip) is unstable — the slightest perturbation knocks it over. But if you vertically oscillate the pivot fast enough, the inverted equilibrium becomes *stable*. The pendulum stands upside-down and stays there. This is **Kapitza stabilization** (Pyotr Kapitza, 1951), and it is one of the canonical demonstrations of how Floquet engineering can produce behavior the static system cannot. In the Strutt diagram, it lives in the negative-$a$ region (the un-pumped system has imaginary frequency, hence instability) where sufficient $q$ pulls the system back into stability. This is the matter-physics analog of every active feedback control system that "stabilizes the unstable" — but achieved by *modulation alone*, no measurement or control loop required. It is the prototype for an entire research program called **Floquet engineering** in cold-atom physics, where time-dependent driving is used to engineer Hamiltonians the static universe doesn't offer.
 
@@ -423,7 +423,7 @@ Implementation environment: still `codebox~`, now with a `delay` operator. Integ
 
 ### Stage 3 — Floquet Kernel (wavetable as filter)
 
-The 2D wavetable surfaces from the [[2D Wavetable Catalog]] are repurposed as Floquet *kernels*. One axis becomes impulse-response lag $\tau$; the other becomes modulation phase $t$. The audio is convolved along $\tau$ while $t$ is scanned at audio rate by an internal phasor. This is the convolutional sibling of the 2D Torus synthesizer, and it doubles the existing surface library's reach. The Penrose surface becomes a Penrose-filter; the Theta surface becomes a Theta-filter. Each surface's filter character is *the same* spectral signature its synthesis voice has, expressed as a kernel rather than a carrier.
+The 2D wavetable surfaces from the [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]] are repurposed as Floquet *kernels*. One axis becomes impulse-response lag $\tau$; the other becomes modulation phase $t$. The audio is convolved along $\tau$ while $t$ is scanned at audio rate by an internal phasor. This is the convolutional sibling of the 2D Torus synthesizer, and it doubles the existing surface library's reach. The Penrose surface becomes a Penrose-filter; the Theta surface becomes a Theta-filter. Each surface's filter character is *the same* spectral signature its synthesis voice has, expressed as a kernel rather than a carrier.
 
 Cross-domain hook: photonic time crystals as the operator-level realization of this. The audio Floquet kernel is the same object the photonics community is currently building at GHz scales.
 
@@ -802,7 +802,7 @@ If any validation fails, iterate. The first attempt is a draft; the second is th
 
 **File**: `static/14_faraday_wave_pattern.png` and `static/14_faraday_wave_pattern.py`
 
-**Teaching purpose**: A simulated standing-wave surface pattern from a vertically-vibrated fluid, with annotation showing the Mathieu-equation tongue that selects this mode. Cross-link in the caption to the Chladni surface in [[2D Wavetable Catalog]] — the static Chladni patterns and the dynamic Faraday patterns are siblings.
+**Teaching purpose**: A simulated standing-wave surface pattern from a vertically-vibrated fluid, with annotation showing the Mathieu-equation tongue that selects this mode. Cross-link in the caption to the Chladni surface in [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]] — the static Chladni patterns and the dynamic Faraday patterns are siblings.
 
 **Implementation**:
 - matplotlib's 3D plotting or a 2D contour/heightmap.
