@@ -192,6 +192,10 @@ Ollama (serialized, no tool calls, no parallelism; validated for focused
 single-entry work, not the full swarm). The current prompt scaffolds and helpers
 are what these read; this page does not restate them.
 
+The dispatch machinery underneath this moves fast. [[Palace Enchantment — proof — agent capabilities]]
+records what Claude Code's dynamic workflows and agent messaging did when last tested, and what waking
+each agent costs. Read its newest run before changing how the swarm is dispatched.
+
 ---
 
 ## The Multi-Lens Weave
