@@ -14,8 +14,6 @@ links:
     type: connects-to
   - target: "[[Spore Check Ceremony]]"
     type: connects-to
-  - target: "[[Deposit Archive]]"
-    type: connects-to
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
   - target: "[[Weave Ceremony — Context]]"

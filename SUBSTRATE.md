@@ -97,7 +97,7 @@ What followed was the palace's own origin ceremony: harvesting, depositing, buil
 
 - **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, SCHEMA — Reference.md, JEWEL, SUBSTRATE, ROSETTA, README, FOUR PILLARS) and knowledge entries of every type *except* specialist/maker: `concept`, `hub`, `project`, `source`, `meta`, `practice`, `person`, `question`, `spore`. Mostly flat, with optional entry bundles (`[Entry]/`) and themed subfolders (`Projects/`, `People/`, `Cross-Domain Resonances/`, `Palace development/`).
 - **`Shop/`** — The Shop sub-system: `specialist` + `maker` entries (use `status`, not `stage`).
-- **`_ops/`** — Ceremony machinery and working queues. Contains all ceremony specs, their Context companions (session history), and active working files (Deposit Archive, Palace Graffiti, Palace Quotes, Palace To-Do) plus machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, …). Underscore prefix sorts it to the top of any file explorer. Obsidian wikilinks resolve across folders.
+- **`_ops/`** — Ceremony machinery and working queues. Contains all ceremony specs, their Context companions (session history), and active working files (Palace Graffiti, Palace Quotes, Palace To-Do) plus machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, …). Underscore prefix sorts it to the top of any file explorer. Obsidian wikilinks resolve across folders.
 
 The distinction: root entries are *of* the palace; `_ops/` files *operate* the palace.
 
