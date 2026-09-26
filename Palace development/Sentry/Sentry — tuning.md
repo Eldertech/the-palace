@@ -36,3 +36,4 @@ The 2026-09-25 hosting assessment scanned the working tree for key formats and f
 - run · 2026-09-25 · v0 · hand-run history scan, before the Sentry had a page · taught items 1–9
 - run · 2026-09-25 · v1.0 · deep sweep of 34b1c52a, 7 raised, held locally · nothing new
 - run · 2026-09-25 · v1.1 · public-surface gate of 2b3922f1, 11 raised, held locally · nothing new
+- run · 2026-09-26 · v1.1 · public-surface gate of 32b7c794, 7 raised, held locally · nothing new
