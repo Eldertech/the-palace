@@ -278,7 +278,7 @@ Arrived May 2026 as a Claude Design handoff bundle — Loudon's second design-sy
 - [[Loudon Live — asset plan]] (the variant system that this entry cements)
 - [[Loudon Live — launch kit]] (channel copy, OBS scene specs, asset list)
 - [[Hyperdimensional Prism]] (Lissajous-in-sphere visual-identity essay)
-- [[FOUR PILLARS]] · [[Autodidact Polymaths]] · [[Progressive Staging]] (pedagogical spine)
+- [[FOUR PILLARS]] · [[Autodidact Polymaths]] · [[Progressive Staging]] (pedagogy)
 - [[Hilaritas Generator]] · [[Quality Manifesto]] · [[Trickster]] · [[Palace Philosophies]] · [[Playful Interface Design]] · [[The Shop]] · [[Oblique Enrichment]] (voice, tone, taste)
 
 The system is **cemented** — type stack locked, six skins specified, six generators built, slides and ui_kits drafted, voice rules itemised. Stage: `sprout`. It fruits when used. Track each artifact that adopts it via typed links back to this entry.

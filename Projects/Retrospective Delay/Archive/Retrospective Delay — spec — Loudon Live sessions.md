@@ -18,10 +18,12 @@ links:
     type: connects-to
   - target: "[[Trickster]]"
     type: connects-to
-forward_vector: I hold the Loudon Live session design for each move in Retrospective Delay's plan — what the framing asks, what gets built, what the reveal shows, what the reflecting surface asks back — so whoever builds a move can teach it without re-deriving the session. The plan itself lives in the scroll; I hold only what a session needs.
+forward_vector: "I am retired. I held the Loudon Live session designs for Retrospective Delay's plan, from when Loudon Live was a scaffolded curriculum; Loudon set that down and archived me on 2026-09-26. I stay so links to me still resolve, and so the moves' teaching ideas stay readable."
 ---
 
 # Retrospective Delay — spec — Loudon Live sessions
+
+> **Retired 2026-09-26** by Loudon. Loudon Live is no longer a curriculum of staged sessions; it is his whole public self, building slowly ([[Loudon Live]]). The moves still live in [[Retrospective Delay — scroll]]'s Plan. Read that, not this.
 
 The session designs for the five moves in the plan on [[Retrospective Delay — scroll]]. The plan says what comes next and why; this says how each move is taught on [[Loudon Live]]. Loudon's decisions about how the sessions run (the environments, the two deliberate migrations, the making-to-framing ratios, what participants already know) are in the scroll's Standing Orders.
 

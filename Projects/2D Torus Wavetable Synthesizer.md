@@ -147,7 +147,7 @@ Resolution and interpolation are open: 512×512 vs 1024×1024 surfaces; bilinear
 
 ## Four Pillars Design Plan
 
-This project genuinely activates all four pillars, which is what makes it the right project to anchor a [[Loudon Live]] cycle around.
+This project genuinely activates all four pillars, which makes it a strong project to build in the open on [[Loudon Live]].
 
 - **Creation.** Build the instrument. Compose with it. Develop the surface library to ten, twenty, fifty surfaces. Make recordings that demonstrate the territory.
 - **Tools.** The build itself — Max/MSP/RNBO/Gen~ implementation, surface authoring tools, a UI that exposes the design language without burying users in topology. A potential commercial release as the test of whether the tool is legible to others.

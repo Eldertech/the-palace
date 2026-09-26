@@ -48,15 +48,15 @@ _None._
 ## Plan
 
 <!-- scroll:plan:start -->
-**Where this is going.** A teaching instrument that reveals the endless-staircase illusion one layer at a time, from a rack anyone can build in Ableton to a plugin that tests the illusion outside equal temperament. Each move is also a [[Loudon Live]] session. What exists so far are proofs, not the session builds: the illusion as rendered drones (twelve of them), and the mechanism as a browser prototype with rendered variants that climb in discrete steps and leave the wrap seam audible. The Ableton rack and the Max patch those two sessions are designed around haven't been built yet. They are the steward's to make and demo; making Ableton and Max assets reliably is a skill the palace is still growing, so the proofs carry the idea while the builds catch up. Loudon chose the glide as the next move on 2026-06-25, and six glide renders followed on 2026-09-15, not yet posted to the board.
+**Where this is going.** A teaching instrument that reveals the endless-staircase illusion one layer at a time, from a rack anyone can build in Ableton to a plugin that tests the illusion outside equal temperament. Any move can happen in public as a [[Loudon Live]] build. What exists so far are proofs, not the builds: the illusion as rendered drones (twelve of them), and the mechanism as a browser prototype with rendered variants that climb in discrete steps and leave the wrap seam audible. The Ableton rack and the Max patch those two moves are designed around haven't been built yet. They are the steward's to make and demo; making Ableton and Max assets reliably is a skill the palace is still growing, so the proofs carry the idea while the builds catch up. Loudon chose the glide as the next move on 2026-06-25, and six glide renders followed on 2026-09-15, not yet posted to the board.
 
 **The moves ahead**
 
-1. **The glide.** In Gen~, every octave slides together as one voice at signal rate, so the pitch moves continuously instead of in steps, and the session asks why moving in lockstep keeps the illusion alive. The first renders include one where the voices drift out of sync, which is where the illusion breaks. Neighbor: [[Portamento and Physical Pitch Modeling]].
+1. **The glide.** In Gen~, every octave slides together as one voice at signal rate, so the pitch moves continuously instead of in steps, and the move asks why moving in lockstep keeps the illusion alive. The first renders include one where the voices drift out of sync, which is where the illusion breaks. Neighbor: [[Portamento and Physical Pitch Modeling]].
 2. **The timbre.** Give each voice its own key-tracked bandpass filter in Gen~, so the color changes across the octave stack, and hear what that does to the illusion. Neighbor: [[Piano String Inharmonicity]].
 3. **The portal.** Export to VST/AU through RNBO, then try the illusion outside equal temperament with microtuning. Neighbors: [[Kuramoto Coupling]], and the octave-equivalence theory in [[Shepard Tone Synthesizer]].
 
-Session designs, including the two moves whose proofs are behind us: [[Shepard Tone Synthesizer — spec — Loudon Live sessions]].
+The April session designs, including the two moves whose proofs are behind us, are archived: [[Shepard Tone Synthesizer — spec — Loudon Live sessions]].
 <!-- scroll:plan:end -->
 
 ## Standing Orders
@@ -73,6 +73,23 @@ Decided with Loudon when the Loudon Live arc was designed (April 2026), and seed
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-26T09-21-34-04-00" -->
+### 2026-09-26 — Plan revised: the moves are builds, not sessions
+
+Loudon, 2026-09-26: Loudon Live is no longer a scaffolded curriculum of staged sessions; it is his whole public self, building slowly, and any move can happen in public as a build. The moves themselves are unchanged. Only the framing that made each move a session was loosened, and the April session designs were archived (still readable at the same link).
+
+The plan it replaced said:
+
+> Each move is also a [[Loudon Live]] session. What exists so far are proofs, not the session builds:
+>
+> The Ableton rack and the Max patch those two sessions are designed around
+>
+> and the session asks why moving in lockstep
+>
+> Session designs, including the two moves whose proofs are behind us: [[Shepard Tone Synthesizer — spec — Loudon Live sessions]].
+<sub>`plan-2026-09-26T09-21-34-04-00` · plan revised · agreed 2026-09-26T09:21:34-04:00 · written by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="plan-2026-09-25T20-51-08-04-00" -->
 ### 2026-09-25 — Plan agreed: carried over from the retired staging file
 

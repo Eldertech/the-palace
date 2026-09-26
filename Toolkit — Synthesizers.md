@@ -113,7 +113,7 @@ The Nord was acquired specifically to serve the drum pad role while looking dyna
 Hardware synths are used for teaching in two specific contexts:
 
 1. **One-on-one clients** — Hydrasynth Explorer is used with certain clients when hardware-specific instruction is appropriate.
-2. **Manufacturer hire** — Teaching hardware synths is primarily envisioned as manufacturer-sponsored work ([[Loudon Live]] reputation enabling this).
+2. **Manufacturer hire** — Teaching hardware synths is primarily envisioned as manufacturer-sponsored work, one of Loudon's own hopes.
 
 For broad online teaching, **software synthesizers are strongly preferred** — they are screenable, cheaper for students, and accessible without physical gear. This is a deliberate teaching philosophy, not a limitation.
 
@@ -131,7 +131,7 @@ The hardware synthesizers sit at the **sound generation** layer of the signal ch
 
 **Performance Configuration** — Designing and stabilizing a consistent hardware setup that can be left assembled (space is the current bottleneck). Would benefit from a diagram and deliberate routing design.
 
-**Hardware Product (long-term)** — The aspiration to build and sell original synthesizer/effects hardware is a long-term goal, timed after establishing a strong [[Loudon Live]] reputation. Everything learned about hardware synthesis feeds this.
+**Hardware Product (long-term)** — The aspiration to build and sell original synthesizer/effects hardware is a long-term goal of Loudon's own. Everything learned about hardware synthesis feeds this.
 
 ---
 

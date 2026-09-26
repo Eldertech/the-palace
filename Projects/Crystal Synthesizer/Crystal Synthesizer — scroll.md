@@ -48,11 +48,11 @@ _None._
 ## Plan
 
 <!-- scroll:plan:start -->
-**Where this is going.** An instrument whose timbre is chosen by crystal physics rather than by taste, built in five moves that are also five [[Loudon Live]] sessions, each one testing a prediction the one before it made. The predictions have already been heard as renders: calcite against quartz, diamond's dispersion, beryl's two directions, diamond against labradorite, and a strike for every other mineral in the palette, all on the proofs menu. Next comes the instrument that lets anyone play them.
+**Where this is going.** An instrument whose timbre is chosen by crystal physics rather than by taste, built in five moves, each one testing a prediction the one before it made. Any move can happen in public as a [[Loudon Live]] build. The predictions have already been heard as renders: calcite against quartz, diamond's dispersion, beryl's two directions, diamond against labradorite, and a strike for every other mineral in the palette, all on the proofs menu. Next comes the instrument that lets anyone play them.
 
 **The moves ahead**
 
-1. **Make a playable crystal in Max.** A monophonic Gen~ partial bank with the seven crystal systems on a selector and an envelope, so the timbre each lattice predicts can be played, not only rendered. The first session; its design is in [[Crystal Synthesizer — spec — Loudon Live sessions]].
+1. **Make a playable crystal in Max.** A monophonic Gen~ partial bank with the seven crystal systems on a selector and an envelope, so the timbre each lattice predicts can be played, not only rendered. Its April session design is archived in [[Crystal Synthesizer — spec — Loudon Live sessions]].
 2. **Take it on the road.** Make it polyphonic, wrap it in RNBO, export it to the Eventide H90, and open the Faust path: one structure carried across four materials, the way one crystal symmetry shapes both its light and its sound.
 3. **Let the crystal ring.** Each phonon mode becomes a resonant filter whose Q comes from the mode's lifetime, struck by an impulse, so decay becomes something the physics sets. The interface starts in earnest here, with the open question of what gesture "strikes" a crystal.
 4. **Build the prism in time.** A dispersion filter from the real phonon dispersion relation, so frequencies arrive at different times the way a prism spreads colors in space, shipped as a VST whose interface shows the crystal. It wants its own interface design session first.
@@ -75,6 +75,19 @@ Decided with Loudon when the Loudon Live arc was designed (April 2026), and seed
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-26T09-21-34-04-00" -->
+### 2026-09-26 — Plan revised: the moves are builds, not sessions
+
+Loudon, 2026-09-26: Loudon Live is no longer a scaffolded curriculum of staged sessions; it is his whole public self, building slowly, and any move can happen in public as a build. The moves themselves are unchanged. Only the framing that made each move a session was loosened, and the April session designs were archived (still readable at the same link).
+
+The plan it replaced said:
+
+> built in five moves that are also five [[Loudon Live]] sessions, each one testing a prediction the one before it made.
+>
+> The first session; its design is in [[Crystal Synthesizer — spec — Loudon Live sessions]].
+<sub>`plan-2026-09-26T09-21-34-04-00` · plan revised · agreed 2026-09-26T09:21:34-04:00 · written by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="plan-2026-09-25T20-42-23-04-00" -->
 ### 2026-09-25 — Plan agreed: carried over from the retired staging file
 

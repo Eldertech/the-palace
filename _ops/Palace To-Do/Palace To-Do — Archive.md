@@ -278,6 +278,7 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 
 *Headlines only. Full audit trail lives in git.*
 
+- **Curriculum Map / `project-stage-builder` — the stale path** — 2026-09-26. Closed by retirement, not repair: the skill is composted, and the Curriculum Map is archived into Loudon Live's bundle now that Loudon Live is no longer a scaffolded curriculum.
 - **Artifacts → bundle migration** — 2026-05-28. Folded the loose `Artifacts/<Entry>/` dirs into their entries' bundles (Crystal Synthesizer, Action Potential Oscillator, Floquet, Shimmer Cloud, Kuramoto quizzes, Quantum, Retrospective Delay, Shepard, Portamento, Piano String, Logarithmic Interface Scaling, Ohm's Law, Fortress, Oblique Portrait, Meadows ERT, 2D-torus image). §8 frontmatter on bundle-root `.md` companions; all live references repointed (historical logs / illustrative examples left). Oblique Harvest renders archived to `_ops/Harvest Ceremony/Archive/`. Loudon Live toolchain kept in `Artifacts/` per Loudon. `Artifacts/` now holds only shared/category dirs (4 Pillars, Images, Tools, backup, the Meaning-and-the-Link PDF) + the Loudon Live toolchain.
 - **Full palace audit** — 2026-03-24. Harvest Archive → Deposit Archive. Embodied Council Method → Dialectic. Harvest Frontier + Queue composted. Harvest Ceremony rewritten. Linter → Ceremony Reader. Deposit/Weave ceremonies cleaned. Forward Vectors on 12 entries. Multiple graffiti addressed.
 - **Semantic Web Paper** — Entry written as [[Meaning and the Link]].

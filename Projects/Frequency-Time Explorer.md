@@ -137,5 +137,5 @@ Designed 2026-04-30 in dialogue with Claude. Five-movement structure with linear
 - **The build itself** — design is complete, audio engine and visual prototype are next. Build phase wants a separate session.
 - **Doppler shift as palace concept** — the M4 framing introduces it as a load-bearing analogy that probably wants its own page once the build session names it more.
 - **The 20 Hz perceptual threshold** as its own concept entry — it appears twice in this design, runs through [[Frequency-Time Duality]], anchors *Microsound*, and shows up in neuroscience-of-perception literature. May want its own page rather than living scattered in body text.
-- **First-rung tool for [[Loudon Live]]** — `Projects/Curriculum Map.md` should reflect FTE as the introductory pedagogy artifact, scaffolding into the three doorways.
+- **First-rung tool for [[Loudon Live]]** — the introductory pedagogy artifact, scaffolding into the three doorways.
 - **First test of the "HTML version of a palace page" question** raised in [[Piano String Inharmonicity]] graffiti — though FTE is being built standalone, the techniques and Web Audio scaffolding will inform that broader question.

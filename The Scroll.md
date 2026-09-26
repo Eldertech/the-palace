@@ -94,8 +94,8 @@ The Plan is what Loudon and the work have agreed to do next. It is short enough 
 screen: a sentence or two on where the work is going and what is already behind it, then the moves
 ahead, in order. Each move is named by what it does — "make the crystal polyphonic and portable,"
 never "Stage 2" — because the plan is read cold, by Loudon after time away and by a steward
-waking fresh. Detail a move needs, such as a Loudon Live session design, lives in a `spec` the
-plan links to. A spec is workshop: a steward develops a move's session design as part of building
+waking fresh. Detail a move needs, such as a patch spec, lives in a `spec` the
+plan links to. A spec is workshop: a steward develops it as part of building
 the move, while the plan itself changes only with Loudon's yes. A plan states the path; where the work stands on it is Now's job, in the steward's
 own catch-up.
 

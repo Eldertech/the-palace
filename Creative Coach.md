@@ -81,9 +81,9 @@ that need a person in the room. Both halves matter; the second is sharper.
 
 What it already does — and the list splits in a way worth noticing. Aimed at the viewer:
 
-- The **reflecting surface**. Every staged session must ship a question the viewer takes home. It is
-  gated in the production checklist, and Loudon holds authority over it rather than Claude — a
-  coaching move built into a pipeline. The one session artifact that exists carries one:
+- The **reflecting surface**. A session artifact ends on a question the viewer takes home, and the
+  question is Loudon's to set, not Claude's — a coaching move built into the making. The one session
+  artifact that exists carries one:
   `Projects/Shepard Tone Synthesizer/session-1-interactive.html` § 06 — Reflect, *"This is an
   auditory barber pole. What other visual illusions could you move into the audio domain?"*
 - Scaffolding **at the edge of capability** — *a tool that extends, at the edge of their current
@@ -95,8 +95,9 @@ What it already does — and the list splits in a way worth noticing. Aimed at t
 
 And aimed at Loudon:
 
-- **Ask before you produce.** The stage builder runs as dialogue, not generator — Claude proposes,
-  Loudon decides, and pedagogical calls are asked for rather than assumed.
+- **Ask before you produce.** The palace's working rule — show before writing, read before touching
+  ([[ELDER]]) — keeps Claude proposing and Loudon deciding, and pedagogical calls are asked for
+  rather than assumed.
 - **Values clarification with a worked instrument.** [[Quality Manifesto]]'s decision table filters
   choices through an authored definition of quality — *spend two hours on a thumbnail? No, it doesn't
   serve wellbeing.*
@@ -119,7 +120,7 @@ What it structurally cannot do:
   breadth**" — and it does not exist. Elsewhere the palace has gestured at a school, a course and a
   membership, none of them a closed room either.
 - There is no follow-up. Staging stages the *material*; nothing stages the *person*. Nobody
-  returns in session four to ask what happened with session one's question.
+  comes back weeks later to ask what happened with the first question.
 
 Loudon named this boundary himself, months before anyone proposed this page: *"Perhaps these are the
 types of lessons I MODEL instead of require others to do — by having a model to follow they can

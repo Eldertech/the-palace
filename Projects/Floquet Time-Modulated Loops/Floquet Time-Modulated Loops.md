@@ -53,7 +53,7 @@ links:
     label: floquet-engineered-targets
   - target: "[[Loudon Live]]"
     type: connects-to
-    label: candidate-five-session-arc
+    label: built-in-the-open
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
     label: lti-to-ltv-boundary
@@ -69,14 +69,14 @@ links:
     type: connects-to
   - target: "[[Progressive Staging]]"
     type: connects-to
-forward_vector: "I want to become a working set of five Loudon Live sessions, with Stage 1 (the Mathieu Resonator in codebox~) shipped first as a complete pedagogical artifact — every named object taught, every concept media-supported, every cross-domain hook landed. I want to be the entry every modulation-with-period device in the palace eventually links back to, and the proof that the LTI assumption is a choice, not the territory."
+forward_vector: "I want to become a five-stage teaching instrument, with Stage 1 (the Mathieu Resonator in codebox~) shipped first as a complete pedagogical artifact — every named object taught, every concept media-supported, every cross-domain hook landed. I want to be the entry every modulation-with-period device in the palace eventually links back to, and the proof that the LTI assumption is a choice, not the territory."
 ---
 
 # Floquet / Time-Modulated Loops
 
 ![[Floquet Time-Modulated Loops — hero.png]]
 
-A project, a five-stage Loudon Live arc, and — Stage 1 — a complete teaching document for the Mathieu Resonator in `codebox~`. The project's central claim: every audio object built around a delay loop, a feedback path, or a resonant mode has been quietly assuming that the loop's coefficients are **constant in time**. That assumption is called LTI — Linear, Time-Invariant. Releasing the time-invariance assumption opens a vast region of sound and behavior that the LTI worldview cannot reach: parametric resonance, sideband ladders that climb to extraordinary heights, frequency conversion without ring modulators, spontaneous oscillation from noise, frequency bandgaps, time crystals. The mathematical name for systems with periodically time-varying coefficients is **[[Floquet Theory|Floquet]]**, and the canonical instance is the **[[Mathieu Equation]]**.
+A project, a five-stage teaching arc, and — Stage 1 — a complete teaching document for the Mathieu Resonator in `codebox~`. The project's central claim: every audio object built around a delay loop, a feedback path, or a resonant mode has been quietly assuming that the loop's coefficients are **constant in time**. That assumption is called LTI — Linear, Time-Invariant. Releasing the time-invariance assumption opens a vast region of sound and behavior that the LTI worldview cannot reach: parametric resonance, sideband ladders that climb to extraordinary heights, frequency conversion without ring modulators, spontaneous oscillation from noise, frequency bandgaps, time crystals. The mathematical name for systems with periodically time-varying coefficients is **[[Floquet Theory|Floquet]]**, and the canonical instance is the **[[Mathieu Equation]]**.
 
 This document teaches everything Stage 1 requires before the codebox~ source is built. Stages 2–5 are sketched below. The plan — what comes next, agreed with Loudon — lives on [[Floquet Time-Modulated Loops — scroll]], where it changes only with his yes.
 
@@ -92,7 +92,7 @@ Three pressures converged.
 
 **The third** is the realization that Floquet is the operator-level statement of [[Frequency-Time Duality]]. Bloch's theorem in solid-state physics says that a wavefunction in a spatially periodic potential factors into a plane wave dressed by a periodic envelope; this produces electronic band structure and bandgaps. Floquet's theorem in dynamical systems says exactly the same thing with time in place of space and period in place of lattice constant; this produces *frequency* bandgaps and *parametric* instability. Crystals are Bloch in space; time-modulated systems are Floquet in time. The duality the palace has held as a perceptual continuum gets, in this project, its rigorous mathematical completion.
 
-The project also activates all four pillars in a way that makes it the right anchor for a Loudon Live arc. **Creation**: a working `codebox~` instrument and four further stages, with audio examples that nothing else on the market sounds quite like. **Tools**: the `codebox~` source, the visualization patches, the surface library extension to filter-kernels. **Philosophy**: the LTI / LTV boundary is a [[Boundary-Crossing Instruments|boundary-crossing]] of the deepest kind — most of audio engineering lives on one side of it without ever naming the wall. **Practice**: a five-stage arc that respects the [[Progressive Staging]] discipline, ending each stage with a complete, finishable instrument.
+The project also activates all four pillars in a way that makes it a strong project to build in the open on [[Loudon Live]]. **Creation**: a working `codebox~` instrument and four further stages, with audio examples that nothing else on the market sounds quite like. **Tools**: the `codebox~` source, the visualization patches, the surface library extension to filter-kernels. **Philosophy**: the LTI / LTV boundary is a [[Boundary-Crossing Instruments|boundary-crossing]] of the deepest kind — most of audio engineering lives on one side of it without ever naming the wall. **Practice**: a five-stage arc that respects the [[Progressive Staging]] discipline, ending each stage with a complete, finishable instrument.
 
 ---
 

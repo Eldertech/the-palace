@@ -54,7 +54,7 @@ _None._
 ## Plan
 
 <!-- scroll:plan:start -->
-**Where this is going.** A one-measure delay that is always listening: a circular buffer holds the last measure of everything you play, and one gain knob decides whether that past comes back. It is built in five moves that are also five [[Loudon Live]] sessions, and two of them are deliberate migrations (vanilla Max to Gen~, then Gen~ to RNBO) where the friction is the lesson. The first session is drafted and its patch specified. The character for the fourth move was made early: a séance cat in Gorey-style ink, drawn in three states and, after Loudon said on 2026-06-25 to wire it next, wired to the gain knob in JSUI with a preview rendered.
+**Where this is going.** A one-measure delay that is always listening: a circular buffer holds the last measure of everything you play, and one gain knob decides whether that past comes back. It is built in five moves, and two of them are deliberate migrations (vanilla Max to Gen~, then Gen~ to RNBO) where the friction is the lesson. Any move can happen in public as a [[Loudon Live]] build. The first move is drafted and its patch specified. The character for the fourth move was made early: a séance cat in Gorey-style ink, drawn in three states and, after Loudon said on 2026-06-25 to wire it next, wired to the gain knob in JSUI with a preview rendered.
 
 **The moves ahead**
 
@@ -62,9 +62,9 @@ _None._
 2. **The séance.** Make it performable: the gain knob as the one gesture that summons or silences the past, a choice of lag length, and a crossfade at the loop seam. Silence becomes the most expressive thing the player can do.
 3. **The grammar behind the spell.** Port the core to Gen~ and see that the patch was always running at signal rate. Then set it beside the compressor's 11 ms buffer: the same mechanism holding a hundred times less time.
 4. **The face.** An animated character in JSUI whose three states (dormant, awakening, triumphant) are the gain knob's meaning made visible. The cat is drawn and wired to the knob; it hasn't yet been played in Max.
-5. **The portal.** Port to RNBO and export as a VST/AU and to the Eventide H90, so the instrument lives outside Max. The session asks whether it is still the same instrument.
+5. **The portal.** Port to RNBO and export as a VST/AU and to the Eventide H90, so the instrument lives outside Max. Then ask whether it is still the same instrument.
 
-Session designs: [[Retrospective Delay — spec — Loudon Live sessions]].
+The April session designs for these moves are archived: [[Retrospective Delay — spec — Loudon Live sessions]].
 <!-- scroll:plan:end -->
 
 ## Standing Orders
@@ -82,6 +82,21 @@ Decided with Loudon when the Loudon Live arc was designed (April 2026), and seed
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-26T09-21-34-04-00" -->
+### 2026-09-26 — Plan revised: the moves are builds, not sessions
+
+Loudon, 2026-09-26: Loudon Live is no longer a scaffolded curriculum of staged sessions; it is his whole public self, building slowly, and any move can happen in public as a build. The moves themselves are unchanged. Only the framing that made each move a session was loosened, and the April session designs were archived (still readable at the same link).
+
+The plan it replaced said:
+
+> It is built in five moves that are also five [[Loudon Live]] sessions, and two of them are deliberate migrations (vanilla Max to Gen~, then Gen~ to RNBO) where the friction is the lesson. The first session is drafted and its patch specified.
+>
+> The session asks whether it is still the same instrument.
+>
+> Session designs: [[Retrospective Delay — spec — Loudon Live sessions]].
+<sub>`plan-2026-09-26T09-21-34-04-00` · plan revised · agreed 2026-09-26T09:21:34-04:00 · written by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="plan-2026-09-25T20-42-23-04-00" -->
 ### 2026-09-25 — Plan agreed: carried over from the retired staging file
 

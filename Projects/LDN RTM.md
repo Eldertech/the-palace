@@ -16,7 +16,7 @@ forward_vector: "I want to prove that reading a manual end to end and testing ev
 links:
   - target: "[[Loudon Live]]"
     type: member-of
-    label: an-activity-of-the-school
+    label: a-part-of-the-public-self
   - target: "[[Autodidact Polymaths]]"
     type: exemplifies
     label: the-method-performed
@@ -97,7 +97,7 @@ The stated purpose is to become genuinely comfortable making screen content and 
 - **[[LDN RTM — Live 12]]** — series one. In progress.
 - **Queued:** Serum, Soundtoys, and the [[Toolkit — Audio Plugins]] shortlist (H3000 Factory, Diva, Zebra2, Reaktor 6, Surge XT, Vital, MeldaProduction).
 - **Software-first:** screenable, cheaper for students, accessible. Hardware appears only in manufacturer-sponsored work.
-- **Sponsored:** a manufacturer buying an RTM is buying a slot in an established, numbered, exhaustive format — a much better thing to sell than a one-off, and the reputation path [[Loudon Live]] already names.
+- **Sponsored:** a manufacturer buying an RTM is buying a slot in an established, numbered, exhaustive format — a much better thing to sell than a one-off, and one of the hopes Loudon keeps in [[Toolkit — Synthesizers]].
 
 ## The control panel — a documented aesthetic override
 
@@ -105,7 +105,7 @@ The recording control panel — the operator's surface, on a second screen — w
 
 ## Cross-Domain Resonances
 
-- **[[Loudon Live]]** — RTM is one activity of a sprawling school that also holds workshops, concept videos, interactive artifacts, and retreats. Not the channel; a thing the channel does.
+- **[[Loudon Live]]** — RTM is one part of Loudon's public self, beside the palace in public, streams and builds, and music. Not the whole of it; one thing it does.
 - **[[Autodidact Polymaths]]** — the method made visible. Reading the whole manual and testing every claim *is* the posture, demonstrated rather than described.
 - **[[Progressive Staging]]** — the productive contradiction. Staging insists every stage is a complete pedagogical moment; RTM's units are deliberately not moments. Completeness only teaches at catalog scale. Both are true and the palace holds both.
 - **[[Loudon Live Post-producer]]** — the batch pipeline is exactly the apprenticeship it was specced for.
