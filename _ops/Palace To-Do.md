@@ -21,7 +21,7 @@ links:
     label: what-i-set-down
   - target: "[[Loudon Live]]"
     type: connects-to
-    label: what-im-aimed-at
+    label: what-i-feed
   - target: "[[README - The Palace Guide]]"
     type: connects-to
 ---
@@ -39,22 +39,22 @@ The list is capped by intent, not by rule: if it grows past roughly a dozen item
 signal to triage, not to scroll. It was 43 open items and 66KB on 2026-08-25, which is how a
 worklist stops being read.
 
-**The horizon this list is aimed at: Loudon Live launches September 2026.** An item earns a slot
+**What this list feeds: [[Loudon Live]], Loudon's public self, building slowly.** An item earns a slot
 here if it feeds that, or if it is cheap and unblocks something that does.
 
 ---
 
-## Feeding the September launch
+## Feeding Loudon Live
 
-- [ ] **AI and the Future of Higher Education** — Loudon's specific hopes, predictions, and the vision he wants to push. Not a brainstorm; a manifesto-level crystallization. This is the philosophy spine of the public channel, and it is the one entry on this list that is straightforwardly *content* rather than infrastructure. Next action: a dedicated session with Loudon talking, Claude drafting.
+- [ ] **AI and the Future of Higher Education** — Loudon's specific hopes, predictions, and the vision he wants to push. Not a brainstorm; a manifesto-level crystallization. This is the philosophy under [[Loudon Live]], and it is the one entry on this list that is straightforwardly *content* rather than infrastructure. Next action: a dedicated session with Loudon talking, Claude drafting.
 
 - [ ] **Loudon's Music-Making & Teaching Toolkit** — map the full hardware/software ecosystem (DAWs, hardware synths, Max/MSP, RNBO, Ableton, Python, visualization) and how the pieces relate. Feeds the RTM series directly and gives any Claude the instrument landscape without reassembling it from scattered sessions. Partial material already lives in the `Toolkit — *` entries. Next action: a session that consolidates those into one map.
 
-- [ ] **Legacy artifact migration to the AP Oscillator HTML pattern** — the palace has a canonical form for interactive teaching artifacts (self-contained single-file HTML, no build step, runs offline; reference `Projects/Action Potential Oscillator/neuron_oscillator.html`). Session artifacts for the channel should all be in it. First migration: `Projects/Piano String Inharmonicity/string_bending_inharmonicity.jsx` → single-file HTML; delete the `... 1.jsx` sync-duplicate while there.
+- [ ] **Legacy artifact migration to the AP Oscillator HTML pattern** — the palace has a canonical form for interactive teaching artifacts (self-contained single-file HTML, no build step, runs offline; reference `Projects/Action Potential Oscillator/neuron_oscillator.html`). Teaching artifacts made in public should all be in it. First migration: `Projects/Piano String Inharmonicity/string_bending_inharmonicity.jsx` → single-file HTML; delete the `... 1.jsx` sync-duplicate while there.
 
-- [ ] **Synthesis Topologies** — a hub for the family of synthesis architectures (subtractive, FM, granular, wavetable, physical modeling) that the curriculum keeps reaching for. Persistent forward-ghost from [[Generative Audio Devices]] and [[Generative Preset Development]]. Writing it makes the curriculum legible as a shape rather than a list of projects.
+- [ ] **[[Synthesis Topologies]]** — a hub for the family of synthesis architectures (subtractive, FM, granular, wavetable, physical modeling) that the instrument projects keep reaching for. Pointed at by [[Generative Audio Devices]] and [[Generative Preset Development]], and still a seed. Growing it makes the projects legible as a family rather than a list.
 
-- [ ] **Resonance and Damping** — persistent forward-ghost across four map cycles from [[Differential Equations]]. Central to filter design and physical modeling; several staged sessions will need it as a prerequisite.
+- [ ] **Resonance and Damping** — persistent forward-ghost across four map cycles from [[Differential Equations]]. Central to filter design and physical modeling; several instrument builds will need it underneath them.
 
 - [ ] **Donella Meadows** — person-page, persistent ghost across four cycles, referenced from [[Leverage Points Framework]]. Build her as an embodiable citizen per [[Making a Palace Citizen]], not a description — the leverage-points framing is going to do public work.
 
@@ -64,7 +64,7 @@ here if it feeds that, or if it is cheap and unblocks something that does.
 
 ## Own-session threads re-homed from the 2026-09-24 close
 
-Seven unrelated loose ends the September weave declined to settle in place (each wants its own session, not a weave touch). Re-homed here so they aren't lost — see `Weave Ceremony — Context` for the weave's own record of declining them.
+Unrelated loose ends the September weave declined to settle in place (each wants its own session, not a weave touch). Re-homed here so they aren't lost — see `Weave Ceremony — Context` for the weave's own record of declining them.
 
 - [ ] **[[Two Batons, One Board]] — the fixture that hardcodes its path** — the entry (and `Palace development/STIGMERGY v1.0 — Palace Front-End.md`) has three homes across the codebase, and `_ops/stigmergy/app/tests/e2e/state-deck.spec.js:255` hardcodes its exact path as a fixture. If the entry moves, the test breaks silently. Its own session.
 - [ ] **[[STIGMERGY Philosophical Lenses]] → The Lens — re-scope, not a fold** — The Lens's own body asks for this re-scope; the weave dropped it as too big for a fold. Its own session.
@@ -72,7 +72,6 @@ Seven unrelated loose ends the September weave declined to settle in place (each
 - [ ] **[[Shop/Maker]] — whether the Shop can hold an operated Specialist, and the Producer layer** — an architecture question, plus generalizing the Post-producer charter (Loudon deferred both, 2026-09-02). Its own session.
 - [ ] **[[SCHEMA]] — the hub bar is stale** — "≥5 typed links" was set when the palace had ~30 entries; the median is now 6. Candidate replacement: pointed at by three or more rooms not holding it, or top-decile inbound. Needs a Schema Ceremony.
 - [ ] **[[STIGMERGY]] — `reconcileQueue` still closes a card on a touch** — app code; the linter half landed (`dd094117`) but the app itself wasn't fixed. Its own session.
-- [ ] **[[Curriculum Map]] / `project-stage-builder` — a stale path** — the skill references `Projects/curriculum-map.md`, which doesn't exist; the real entry is `Projects/Curriculum Map.md`, and a same-named lowercase bundle folder sits beside it. Check before the skill runs again.
 
 ## Palace upkeep that is cheap and unblocks something
 

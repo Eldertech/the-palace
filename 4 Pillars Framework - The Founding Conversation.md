@@ -36,7 +36,7 @@ links:
     label: dialogic-emergence
   - target: "[[Loudon Live]]"
     type: connects-to
-    label: weekly-cadence-folded-here
+    label: teaching-roots
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
   - target: "[[Palace Enchantment]]"
@@ -70,7 +70,7 @@ That's the breakthrough moment. Everything downstream is its formalization.
 | [[Quality Manifesto]] | The paradigm itself, stated as operating covenant: quality is furtherance of *our* goals, not theirs. |
 | [[Leverage Points Framework]] | The decision lens — Meadows' 12 leverage points adapted to creative practice, with paradigm (#2) as where to operate from. |
 | [[Palace AI Partnership Philosophy]] | The collaboration doctrine — using AI to *become* better, not just *do* more. |
-| [[Loudon Live]] | The pedagogical cadence — folded in as Loudon Live's Stage 2 weekly structure. |
+| [[Loudon Live]] | The pedagogical cadence — a weekly teaching rhythm, later folded into Loudon Live. |
 | [[FOUR PILLARS]] (deepened) | The four pillars, articulated as a single integrated framework rather than four parallel concerns. |
 
 ## The Leverage-Point Analysis of Itself
@@ -100,7 +100,7 @@ Remove any one of the three and the breakthrough doesn't happen. This is why it'
 - **[[Cooperation Yields Agency]]** — the principle this conversation enacted in real time; collaboration produced articulation that neither participant could have produced alone.
 - **[[Donella Meadows]]** — the source thinker whose leverage-points framework supplied the structural vocabulary.
 - **[[Hyperdimensional Prism]]** — later articulation of the multi-projection property this conversation demonstrated.
-- **[[Loudon Live]]** — the curriculum platform whose curriculum spine emerged from this paradigm.
+- **[[Loudon Live]]** — Loudon's public self, whose teaching grew from this paradigm.
 - **[[Palace Enchantment]]** — the formalization, much later, of single-conversation crystallization as a palace ceremony.
 
 ## Open Questions

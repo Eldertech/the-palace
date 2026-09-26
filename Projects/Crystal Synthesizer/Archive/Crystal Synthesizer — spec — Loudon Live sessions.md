@@ -12,10 +12,12 @@ links:
     type: connects-to
   - target: "[[Loudon Live]]"
     type: connects-to
-forward_vector: I hold the Loudon Live session design for each move in Crystal Synthesizer's plan — what gets built on stream, what the framing asks, what the reflecting surface asks back — so whoever builds a move can teach it without re-deriving the session. The plan itself lives in the scroll; I hold only what a session needs.
+forward_vector: "I am retired. I held the Loudon Live session designs for Crystal Synthesizer's plan, from when Loudon Live was a scaffolded curriculum; Loudon set that down and archived me on 2026-09-26. I stay so links to me still resolve, and so the moves' teaching ideas stay readable."
 ---
 
 # Crystal Synthesizer — spec — Loudon Live sessions
+
+> **Retired 2026-09-26** by Loudon. Loudon Live is no longer a curriculum of staged sessions; it is his whole public self, building slowly ([[Loudon Live]]). The moves still live in [[Crystal Synthesizer — scroll]]'s Plan. Read that, not this.
 
 The session designs for the moves in the plan on [[Crystal Synthesizer — scroll]]. The plan says what comes next and why; this says how each move is taught on [[Loudon Live]]. Only the first move has a full session design so far. The others carry the scope and development notes written when the arc was planned, and each gets its full design when it comes up. Loudon's decisions about how sessions run (the Gen~-in-RNBO build, the hypothesis-testing frame, the 70/30 making-to-framing ratio, the audience) are in the scroll's Standing Orders.
 

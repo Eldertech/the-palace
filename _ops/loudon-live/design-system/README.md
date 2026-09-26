@@ -1,6 +1,6 @@
 # Loudon Live Design System
 
-The brand and visual system for **Loudon Live** — Loudon's primary public teaching space. A YouTube channel where instruments get built, sound gets studied, and music gets played; where DSP fundamentals are taught next to real music technique, and where the work-in-progress nature of the channel is the teaching.
+The brand and visual system for **Loudon Live** — Loudon's public self, a loose online presence building slowly: streams and builds, the RTM series, the palace in public, and his music. Instruments get built, sound gets studied, and music gets played; DSP fundamentals sit next to real music technique, and the work in progress is part of the teaching.
 
 > Building synths, effects, and tools — out loud.
 
@@ -8,11 +8,9 @@ The brand and visual system for **Loudon Live** — Loudon's primary public teac
 
 **Footer signature:** `Loud'n Live` — the wordmark alone. *(The `· Autodidact Polymaths` tagline was retired from the universal footer 2026-07; forward-only, already-shipped artifacts keep the old footer.)*
 
-**Editorial posture:** Subject is sound and music; tools are the medium. Honesty is a light touch, not a confession. The channel is itself a teaching artifact.
+**Editorial posture:** Subject is sound and music; tools are the medium. Honesty is a light touch, not a confession. The public self is itself a teaching artifact.
 
-**Curriculum spine:** The Four Pillars — *Creation · Tools · Philosophy · Practice* — four projections of a single higher-dimensional reality cast by the light of curiosity.
-
-**Format:** Progressive Staging — each session is one stage of one project; each stage is a complete pedagogical moment.
+**Pillars:** The Four Pillars — *Creation · Tools · Philosophy · Practice* — four projections of a single higher-dimensional reality cast by the light of curiosity.
 
 ## Sources
 
@@ -23,10 +21,10 @@ Synthesised from Loudon's personal knowledge base **"The Palace"** (mounted via 
 | `Loudon Live.md` | Channel charter, editorial posture, audience |
 | `Loudon Live/Loudon Live — launch kit.md` | Channel copy, OBS scene specs, asset list |
 | `Loudon Live/Archive/Loudon Live — asset plan.md` | The variant system — 6 palettes × 6 generators × seed (archived 2026-09-25; this system built it) |
-| `Artifacts/Loudon Live/toolchain/render_starting_soon.py` | Reference palette + generator code |
+| `Loudon Live/toolchain/render_starting_soon.py` | Reference palette + generator code |
 | `Projects/Shepard Tone Synthesizer/session-1-interactive.html` | Canonical session-artifact reference |
 | `Hyperdimensional Prism.md` | The Lissajous-in-sphere visual-identity essay |
-| `FOUR PILLARS.md` · `Autodidact Polymaths.md` · `Progressive Staging.md` | Pedagogical spine |
+| `FOUR PILLARS.md` · `Autodidact Polymaths.md` · `Progressive Staging.md` | Pedagogy |
 | `Hilaritas Generator.md` · `Quality Manifesto.md` · `Trickster.md` · `Palace Philosophies.md` · `Playful Interface Design.md` · `The Shop.md` · `Shop/Maker.md` · `Oblique Enrichment.md` | Voice, tone, taste |
 
 Snapshots of the most useful sources live under `_reference/` for offline use.

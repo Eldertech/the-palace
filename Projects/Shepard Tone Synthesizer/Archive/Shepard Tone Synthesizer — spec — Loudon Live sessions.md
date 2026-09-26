@@ -18,10 +18,12 @@ links:
     type: connects-to
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-forward_vector: I hold the Loudon Live session design for each move in the Shepard Tone Synthesizer's plan — the two already taught-ready and the three ahead — so whoever builds a move can teach it without re-deriving the session. The plan itself lives in the scroll; I hold only what a session needs.
+forward_vector: "I am retired. I held the Loudon Live session designs for Shepard Tone Synthesizer's plan, from when Loudon Live was a scaffolded curriculum; Loudon set that down and archived me on 2026-09-26. I stay so links to me still resolve, and so the moves' teaching ideas stay readable."
 ---
 
 # Shepard Tone Synthesizer — spec — Loudon Live sessions
+
+> **Retired 2026-09-26** by Loudon. Loudon Live is no longer a curriculum of staged sessions; it is his whole public self, building slowly ([[Loudon Live]]). The moves still live in [[Shepard Tone Synthesizer — scroll]]'s Plan. Read that, not this.
 
 The session designs for the moves in the plan on [[Shepard Tone Synthesizer — scroll]]. The plan says what comes next and why; this says how each move is taught on [[Loudon Live]]. The first two moves are designed and have proofs behind them; the three ahead carry their scope, and each gets its full design when it comes up. The project-wide decisions (the Escher anchor, the 85/15 making-to-framing ratio, the audience) are in the scroll's Standing Orders.
 

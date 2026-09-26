@@ -166,6 +166,8 @@ It also reinforces an important psychoacoustic insight: the Shepard tone proves 
 
 5. **Microtuning**: The Shepard effect relies on octave equivalence, which is assumed in equal temperament. What happens in other tuning systems? Could this be extended to other interval cycles (fifths, thirds)?
 
+6. **An auditory illusions series?** The Shepard tone is an auditory barber pole, and it has siblings, each a visual illusion moved into sound: Risset's accelerating rhythm (the Shepard tone in the time domain), digital aliasing as the wagon wheel (frequencies above Nyquist folding back like undersampled spokes), the continuity illusion (a tone heard through the noise that covers it, like a Kanizsa edge), and auditory streaming (one tone sequence heard as one melody or two, Rubin's vase in sound). Each could be its own small build — does the family want its own entry, [[Auditory Illusions]]?
+
 ## Theory — Octave Equivalence
 
 *This section absorbed the former Octave Equivalence entry (2026-07-06 Weave) — its theory-shadow, folded in whole because it had no independent life outside explaining this instrument.*

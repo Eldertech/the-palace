@@ -7,21 +7,19 @@ pillars:
   - practice
   - philosophy
 born: 2026-04
+last_activated: 2026-09
 stage: sprout
 status: active
 confidence: working
 energy: high
-forward_vector: "I keep growing into Loudon's primary public teaching space — exploring sound and music technique alongside the building of instruments, and modeling a way of working in public that is rigorous about craft, unpretentious about progress, and honest in presenting Loudon as an autodidact polymath."
+forward_vector: "I want to gather everything Loudon makes in the open into one slowly growing public self — manuals read aloud, the palace left open, builds, music — so that anyone curious can come to know him by exploring, and leave wanting to make something of their own."
 links:
   - target: "[[Creative Coach]]"
     type: exemplifies
     label: the-practice-behind-it
   - target: "[[Progressive Staging]]"
-    type: couples-with
-    label: stages-into-streams
-  - target: "[[Curriculum Map]]"
-    type: couples-with
-    label: makes-performable
+    type: connects-to
+    label: how-some-builds-grow
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: public-face
@@ -67,102 +65,68 @@ links:
 
 ![[Loudon Live — hero.png]]
 
-Loudon's primary public teaching space. A live YouTube channel where sound and music techniques are explored alongside the building of instruments, effects, and music-making tools.
+Loudon Live — Loud'N Live, if you like — is the name for Loudon's whole public self: everything he makes and shows in the open, under one name. It is building slowly, on purpose. There is no launch date and no schedule; it grows as its parts do, and a part can go quiet without anything breaking.
 
-The channel is a membrane between the palace's project work and the world. Projects staged through [[Progressive Staging]] become streams; the [[Curriculum Map]] becomes a performable cross-section; the [[FOUR PILLARS]] become legible to viewers because the work explicitly moves between them. Sound design and DSP fundamentals get taught next to real music technique, theory, and listening — not as separate concerns, because the palace doesn't treat them as separate concerns.
+## The parts, right now
+
+- **[[LDN RTM]]** — *Read The Manual*: one product's whole manual, read, tested, and covered one short video per section. The format, the rig, and the queue of manuals live there. The same rig records Loudon's audio commentary on student projects — for the students, not for a public catalog.
+- **The palace in public** — anyone can walk into the palace by two doors. The first is the **read view**, live at https://eldertech.github.io/the-palace/: [[STIGMERGY]]'s STATE deck built static and read-only — PULSE, TOPOLOGY, TREE and the entry reader — and rebuilt on every push to `main`. It shows an entry's faces (the text, the rich face where there is one, the scroll's making) and leaves its memory in git: the Context, the ledger, the baton, and the board. The second is **git** itself: the public repository carries the whole house. Widening the public surface past these two waits for Loudon's own yes and a clean [[Sentry]] gate (`node _ops/sentry/sweep.mjs --gate`).
+- **Streams and builds** — whenever they happen. One project pushed forward at a time: some deep dives into the foundations of sound, some hands-on builds, some music technique, some detours into theory or debugging. No outcome promises; the working is the deliverable. Any project in the palace can turn up here.
+- **Music and creative work** — Loudon's own music and projects like [[BLUELINE]], part of the public self rather than kept beside it.
+
+New parts join when they exist. Loose descriptors are welcome; the name holds the whole, not a format.
+
+## What the public self holds back
+
+Narrow, on purpose. Loudon wants anyone curious to come away with a full, honest picture of him — "those interested can understand who I am through exploring" — so the read view shows who he is and what he plans, [[Palace To-Do]] and the audits included, and keeps back only highly personal data and anything that puts his finances at risk. For now it stays out of search engines (a robots noindex on every page), and Loudon will revisit that.
 
 ## Editorial posture
 
-**Subject is sound and music; tools are the medium.** The channel is not a tools-brand identity. Specific software, hardware, and code appear only when the project requires them. The lasting questions — how a sound is shaped, why a phrase works, what your ears are doing — outlive any particular tool.
+**Subject is sound and music; tools are the medium.** Loudon Live is not a tools brand. Specific software, hardware, and code appear when the work requires them. The lasting questions — how a sound is shaped, why a phrase works, what your ears are doing — outlive any particular tool.
 
-**Honesty is a light touch, not a confession.** The work-in-progress nature of the channel is named once in the channel trailer; otherwise the work speaks. This is a stance about how authority and humility coexist in public teaching: rigor about craft, no pretense about progress.
+**Honesty is a light touch, not a confession.** The work-in-progress nature of the whole is named once and then left alone; the work speaks. Rigor about craft, no pretense about progress.
 
-**The channel is itself a teaching artifact.** It models a way of working — choosing a project, naming a loose goal, working through the wall, talking through the thinking — that demonstrates the autodidact polymath posture more efficiently than any one piece of content can.
+**The public self is itself a teaching artifact.** It models a way of working — choosing a project, naming a loose goal, working through the wall, talking through the thinking — that shows the autodidact polymath posture better than any one piece of content can.
 
-## Format
+## The look
 
-Each stream picks one project and pushes it forward. Some streams are deep dives into the foundations of sound. Some are hands-on builds. Some are music-technique sessions. Some are detours into theory or debugging. No outcome promises per stream — the working is the deliverable.
+The [[Loudon Live Design System]] is the look — palettes, type, stream cards, overlays — and it is now the palace's default dress (`_ops/loudon-live/design-system/`). Channel copy and stream-card templates live in this entry's bundle as the launch kit.
 
-The operational kit — channel copy and stream-card templates — lives in this entry's bundle as the launch kit. The asset variant system (palettes, generators, stream cards, overlays) lives in the [[Loudon Live Design System]], `_ops/loudon-live/design-system/`, and stream-pack rendering follows it.
-
-## The form: a session is the unit
-
-Every Loudon Live release is a **session** — roughly 60–90 minutes, one stage of one project. Sessions are not divided by topic but by **what gets built**. A session begins with a clear pedagogical target (the illusion of an infinite staircase, a polyphonic crystal, a Stage 4 theatrical interface) and ends with a working instrument that demonstrates it. The Stage 1 *Shepard Tone Synthesizer* artifact (`Projects/Shepard Tone Synthesizer/session-1-interactive.html`) is the existing reference for what a finished session looks like — interactive HTML framing, ~60–75 minutes, no Max required, footer reading *Loudon Live · Autodidact Polymaths*.
-
-## The curriculum: project-fueled, stage-shaped, pillar-organized
-
-Loudon Live does not have a topic curriculum. It has a **project curriculum**. Each project in the palace's `Projects/` directory is staged into 5 sessions via [[Progressive Staging]], and those staged sessions become the channel's content. Projects currently feeding the curriculum (or named as future feeders): [[Crystal Synthesizer]], [[Shepard Tone Synthesizer]], [[Retrospective Delay]], [[2D Torus Wavetable Synthesizer]], [[Generative Audio Devices]], [[Generative Preset Development]], [[Compressor Design]]. Cross-project prerequisites and entry-point recommendations live in [[Curriculum Map]] (`Projects/Curriculum Map.md`).
-
-The [[Four Pillars]] — creation, tools, philosophy, practice — are the curriculum's structural spine. A well-staged project activates all four; the [[2D Torus Wavetable Synthesizer]] is the canonical example, explicitly framed as *the right project to anchor a Loudon Live cycle around*. The pillar tagging makes the channel legible at the meta-level: across many sessions, viewers can trace any single pillar through the catalog.
-
-### The RTM series
-
-***Read The Manual*** runs alongside the project staging: one product's whole manual, read, tested, and covered one short video per section. The format, the rig, and the queue of manuals live in [[LDN RTM]].
-
-Loudon also records audio commentary on student projects the same way, for the students themselves rather than a public catalog; [[LDN RTM]] § Forward Vectors describes it.
-
-## The visual identity
-
-The channel's visual signature is the Lissajous trace inside a sphere — see [[Hyperdimensional Prism]] for the full identity essay. The image works at multiple interpretive depths simultaneously: an oscilloscope trace to a music producer, a path through knowledge space to a learner, a methodology made visible to a collaborator, a point tracing hyperdimensional space to a peer. Critically, the patch that *generates* the logo is itself a pedagogical artifact — students can download, modify, and run it. The visual identity is not decoration; it is a teaching object.
+The visual signature is the Lissajous trace inside a sphere — see [[Hyperdimensional Prism]] for the identity essay. It reads at several depths at once: an oscilloscope trace to a producer, a path through knowledge space to a learner, a method made visible to a collaborator. The patch that *generates* the logo is itself a teaching object anyone can download, modify, and run.
 
 ## The audience
 
-Loudon Live addresses [[Autodidact Polymaths]] — the audience the channel is being built for and named in conversation with. See the linked entry for the full articulation; this entry treats it as a given.
+[[Autodidact Polymaths]] — the people this is built for and named with. See that entry; this one treats it as a given.
 
-## Two doors into the palace
+## How it teaches
 
-The audience can walk into the palace itself by two doors. The first is the **read view**, live at https://eldertech.github.io/the-palace/: [[STIGMERGY]]'s STATE deck built static and read-only — PULSE, TOPOLOGY, TREE and the entry reader — and rebuilt on every push to `main`. It shows an entry's faces (the text, the rich face where there is one, the scroll's making) and leaves its memory in git: the Context, the ledger, the baton, and the board. The second is **git** itself: the public repository carries the whole house for anyone who wants it. Widening the public surface past these two waits for Loudon's own yes and a clean [[Sentry]] gate (`node _ops/sentry/sweep.mjs --gate`).
-
-What the read view holds back is narrow on purpose: Loudon wants anyone curious to come away with a full, honest picture of him — "those interested can understand who I am through exploring" — so it shows who he is and what he plans, [[Palace To-Do]] and the audits included, and keeps back only highly personal data and anything that puts his finances at risk. For now it stays out of search engines (a robots noindex on every page), and Loudon will revisit that.
-
-## The teaching philosophy
-
-A composite drawn from references across the palace:
-
-- **Each stage is a complete pedagogical moment, not just a step toward the next.** From [[Progressive Staging]]'s forward vector: every stage of every project must be a thing in itself.
-- **Always-positive, always-supportive-of-makers.** From the RTM concept in [[Toolkit — Synthesizers]] — the channel's stance toward the tools and the people who build them.
-- **Software-preferred for reach, hardware reserved for sponsored contexts.** Deliberate teaching philosophy, not a limitation.
-- **The instrument teaches while it sounds.** Specific-to-general pedagogy: the [[2D Torus Wavetable Synthesizer]] is articulated as *a concrete entry point to 2D Fourier analysis, torus geometry, quasi-periodicity, bifurcation theory, and quasicrystal mathematics. It teaches while it sounds.*
-- **Teaching as a Confucian act.** [[Confucianism]]'s forward vector explicitly names *the teacher-student relationship in Loudon Live* as a worked reading of *ren* and *li* — the channel's relational ethic.
-- **Theatrical / dub-lineage interface mythology where appropriate.** Some instruments will carry deliberate mythological framing (the séance-medium-as-dub-engineer in [[Retrospective Delay]]) — pedagogy doesn't require sober affect.
-
-## The reputation architecture
-
-Loudon Live is also a reputation engine for two downstream paths timed deliberately *after* the channel establishes audience and credibility (see [[Toolkit — Synthesizers]]):
-
-1. **An original synth/effects hardware product line.** The aspiration to build and sell hardware is *long-term, timed after establishing a strong Loudon Live reputation. Everything learned about hardware synthesis feeds this.*
-2. **Manufacturer-sponsored hardware teaching hire.** Working with synth manufacturers on commissioned educational content — *Loudon Live reputation enabling this.*
-
-The channel itself is not the monetization plan; it is the platform that makes the monetization possible.
+- **Always-positive, always-supportive-of-makers.** From the RTM stance in [[Toolkit — Synthesizers]] — toward the tools and the people who build them.
+- **The instrument teaches while it sounds.** Specific to general: the [[2D Torus Wavetable Synthesizer]] is *a concrete entry point to 2D Fourier analysis, torus geometry, quasi-periodicity, bifurcation theory, and quasicrystal mathematics.*
+- **Teaching as a Confucian act.** [[Confucianism]] names the teacher-student relationship here as a worked reading of *ren* and *li* — the relational ethic of the whole.
+- **Theatrical, dub-lineage interface mythology where it fits.** Some instruments carry deliberate mythological framing (the séance-medium-as-dub-engineer in [[Retrospective Delay]]); teaching doesn't require sober affect.
 
 ## Lost branches
 
-Paths visible at the moment of this deposit, deliberately not taken:
-
-- **Schedule cadence (day/time):** undecided. Streaming starts on demand until a rhythm emerges.
-- **Front-and-center confessional framing:** rejected as the primary register; archived as a position someone else might take.
-- **Tools-first identity:** rejected. The channel could have been a tools-brand show; it is not.
+- **A scaffolded curriculum.** Every project cut into five sessions, mapped by prerequisite, the Four Pillars as its spine, a launch in September 2026. Drawn in April 2026, set down 2026-09-26 in favor of a looser presence building slowly. Its map is archived as [[Loudon Live — Curriculum Map]].
+- **Loudon Live as a reputation engine** for later income (manufacturer-sponsored teaching, an original hardware line). Set down; those hopes stay Loudon's own in [[Toolkit — Synthesizers]].
+- **Front-and-center confessional framing:** rejected as the primary register.
+- **Tools-first identity:** rejected.
 
 ## Cross-Domain Resonances
 
-- **[[Four Pillars]]** — Loudon Live is the curriculum-shaped manifestation of the Four Pillars; every well-staged session activates more than one pillar.
-- **[[Progressive Staging]]** — the project-shaping discipline that makes session-by-session release coherent.
-- **[[Hyperdimensional Prism]]** — the visual identity entry; the Lissajous-in-sphere is the channel's logo and a working pedagogical artifact.
-- **[[Confucianism]]** — the relational ethic of the teaching itself.
+- **[[FOUR PILLARS]]** — the public face of the framework; the work moves between the pillars in plain view.
+- **[[Progressive Staging]]** — one way a build can grow in public, a stage at a time, each one complete.
+- **[[Hyperdimensional Prism]]** — the visual identity; the Lissajous-in-sphere is the logo and a working teaching object.
+- **[[Confucianism]]** — the relational ethic of the teaching.
 - **[[Autodidact Polymaths]]** — the audience.
-- **[[2D Torus Wavetable Synthesizer]]** — the candidate signature instrument for the channel's launch / first signature device.
-- **[[Curriculum Map]]** — the cross-project scaffolding that surfaces prerequisite chains between the projects' plans.
+- **[[2D Torus Wavetable Synthesizer]]** — a candidate signature instrument.
 
 ## Open Questions
 
-- **Cadence.** Per stage as soon as built? Weekly? In project-batches (release a full 5-stage arc together)? Currently undecided.
-- **Pre-launch threshold.** What inventory is enough to launch — one full project's 5 stages? Three projects' Stage 1s? The first complete RTM episode? The launch trigger has not been named.
-- **Monetization.** Channel ad revenue alone? + Patreon / membership? + Paid courses on the same projects? Hardware/manufacturer revenue is downstream; what funds the channel itself before reputation is established? Not yet decided.
-- **Signature instrument.** [[2D Torus Wavetable Synthesizer]]'s forward vector explicitly raises whether it ships as Loudon's signature device for the channel's launch. Open.
-- **Live moments.** All recorded long-form, or also occasional live streams (build-alongs, Q&As, jam sessions)? Not yet decided.
-- **Anthropic / palace work as topic.** Is the construction of the palace and the work-with-AI itself a session-worthy topic, or is that a different audience and channel?
-- **Autodidact polymath as own entry.** Does the autodidact polymath posture want its own palace entry, separate from this one? It is gestured at here; it does not contain itself here.
-- **Stream artifacts vs. project entries.** What is the relationship between live-stream output (streams as artifacts) and the underlying `Projects/` entries? Does each stream want a typed link from this page, or do they aggregate up through [[Curriculum Map]]?
+- **Live moments.** Recorded long-form, live streams, build-alongs, Q&As, jam sessions — which, and when? Undecided, and the first real ones should teach it.
+- **What funds it, if anything.** Ad revenue, membership, paid courses — not decided, and not urgent.
+- **Streams and the projects they touch.** Does a stream want a typed link from this page, or does it live on the project's scroll as a made thing?
+- **Search engines.** When does the read view drop its noindex?
 
 ## Forward Vectors
 

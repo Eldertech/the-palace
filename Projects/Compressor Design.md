@@ -51,6 +51,8 @@ Instead of `slide~` or exponential smoother, a FILO (First-In-Last-Out) circular
 
 The 500-sample window is 11ms at 44.1kHz. This is below the perceptual attack threshold of ~20ms, but audible enough that students experience the trade-off concretely. When they increase the window to 1000 samples, the compressor becomes sluggish. When they shrink it to 100 samples, the response becomes twitchy. The number is no longer abstract — it is time they can hear.
 
+The same buffer, stretched to about a second, is the heart of [[Retrospective Delay]]: there it holds a phrase instead of an envelope. One primitive at two time scales — below perception here, fully perceptual there — so whoever builds both meets the same shape twice, and the recognition is worth naming out loud.
+
 ## Soft Knee Mathematics
 
 Three regions:

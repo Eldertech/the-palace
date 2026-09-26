@@ -26,7 +26,7 @@ links:
   - target: "[[Symbiotic Skills]]"
     type: contradicts
     label: staged-design-vs-organic-growth
-forward_vector: "I want to become the design specification that shapes every future Loudon Live project: a checklist, a template, and a philosophy that ensures every stage is a complete thing and every migration is a pedagogical event. I want to be read at the start of every new project build so that the staging happens in the design, not as an afterthought."
+forward_vector: "I want to be the method for building educational instruments in layers: every stage a complete, playable thing that teaches one concept, and every migration between environments a lesson rather than a chore. I want to be read at the start of an instrument build so that the staging happens in the design, not as an afterthought."
 ---
 
 # Progressive Staging

@@ -1,23 +1,16 @@
 ---
-title: Curriculum Map
-type: meta
-pillars:
-  - practice
-  - tools
-  - creation
+title: Loudon Live — Curriculum Map
 born: 2026-04
-last_activated: 2026-04
-stage: sprout
 links:
-  - target: "[[FOUR PILLARS]]"
+  - target: "[[Loudon Live]]"
     type: connects-to
-  - target: "[[Progressive Staging]]"
-    type: couples-with
-  - target: "[[Hilaritas Generator]]"
-    type: enables
+    label: child-of
+forward_vector: "I am retired. I was the cross-project scaffolding for Loudon Live when it was planned as a staged curriculum — arcs, prerequisites, entry points, gaps. Loudon set that vision down and archived me on 2026-09-26; my finds went to Compressor Design and Shepard Tone Synthesizer. I stay so the old map stays readable."
 ---
 
 # Curriculum Map
+
+> **Retired 2026-09-26** by Loudon, who set down the scaffolded curriculum: Loudon Live is now his whole public self, a loose presence building slowly — read [[Loudon Live]], not this. Before archiving, the map handed on its two live finds: the circular buffer at two scales to [[Compressor Design]], and the Auditory Illusions series seed to [[Shepard Tone Synthesizer]]. The gaps list below was let go. (Until 2026-09-26 this was the entry `Projects/Curriculum Map.md`.)
 
 Cross-project scaffolding intelligence for the [[Loudon Live]] curriculum. This file tracks which projects build on which, where good entry points are, and where gaps exist.
 
