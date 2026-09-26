@@ -89,7 +89,9 @@ cycle's `process-cycle.js`, read its `stop_hint` and decide —
 | `barren` | retry **once**, with the mandate saying it is a retry (`retryOfBarren`). A second barren cycle is **STALLED**: `process-cycle.js` has set `state.health.stalled` and the scroll's Now zone says so — stop this steward's run and move on. Never a third try. |
 | `blocking_ask` | stop — the steward paused on Loudon. |
 | `interactive_session` | stop — the next move is a conversation, not a cycle. |
-| `interrupted` | stop — the worker was cut off before posting (a usage limit, an API error); the cycle was not counted and nothing is stalled. If the error is a usage limit, stop the whole batch: every steward after this one would hit the same wall. |
+| `interrupted` | stop — the harness cut the worker off before it posted (a usage limit, an expired token, an unsupported model); the cycle was not counted and nothing is stalled. |
+
+**Separately, read `usage_limit` on every summary.** It is `true` whenever the transcript ended on a usage limit — even when the cycle shipped first. When it is true, stop the **whole batch**, not just this steward: every steward after it would hit the same wall. The ones not reached stay due for the next heartbeat.
 
 STIGMERGY's steward lane (`server/steward-lane.js`) does exactly this loop in
 code; a hand-run or heartbeat batch does it in prose. Same rule, two readers.
