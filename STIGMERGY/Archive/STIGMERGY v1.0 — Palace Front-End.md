@@ -2,6 +2,9 @@
 title: "STIGMERGY v1.0 — Palace Front-End"
 born: 2026-05
 links:
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: archived-under
   - target: "[[BBS Blackboard]]"
     type: deepens
     label: from-coordination-viewer-to-front-end

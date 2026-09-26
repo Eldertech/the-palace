@@ -1,7 +1,17 @@
 ---
-title: "Spinoza and Meadows on the Threshold"
+title: "Dialectic — dialectic — spinoza-meadows-on-the-threshold"
 born: 2026-07-01
-kind: artifact
+links:
+  - target: "[[Dialectic]]"
+    type: connects-to
+    label: archived-run
+  - target: "[[Spinoza]]"
+    type: connects-to
+    label: participant
+  - target: "[[Donella Meadows]]"
+    type: connects-to
+    label: participant
+forward_vector: "I am the record of the first Dialectic between two newly made citizens, Spinoza and Meadows (2026-07-01). I am kept because it found the gap under Meadows' leverage points: each one presupposes a system that endures across the intervention."
 ---
 
 # Spinoza and Meadows on the Threshold

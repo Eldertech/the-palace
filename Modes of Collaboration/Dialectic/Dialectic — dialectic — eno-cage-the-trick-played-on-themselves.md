@@ -1,12 +1,22 @@
 ---
-title: "Eno and Cage on the Trick Played on Themselves"
+title: "Dialectic — dialectic — eno-cage-the-trick-played-on-themselves"
 born: 2026-07-02
-kind: artifact
+links:
+  - target: "[[Dialectic]]"
+    type: connects-to
+    label: archived-run
+  - target: "[[Brian Eno]]"
+    type: connects-to
+    label: participant
+  - target: "[[John Cage]]"
+    type: connects-to
+    label: participant
+forward_vector: "I am the record of Eno and Cage's second encounter (2026-07-02), run with memory of the first and under a Trickster's pressure. I am kept because remembering went a floor deeper: they found they ran the same escape, and Eno's forward vector changed."
 ---
 
 # Eno and Cage on the Trick Played on Themselves
 
-> *Artifact — a Dialectic transcript, **not a canon palace entry** (no `type`, no agent `forward_vector`; invisible to the ceremonies). The coordinator's god's-eye record. This is the **second** encounter between [[Brian Eno]] and [[John Cage]] — the first run of the palace's **retained-memory loop**: both citizens were re-cast with their bundle memory of [[Eno and Cage on the Hand and the Open Ear]] loaded, to test whether they wake remembering. Moderated by the **Trickster** as an active/enchanted coordinator ([[Dialogue Moderator]] `coordinator_mode: enchanted:Trickster`). Each participant's own perspectival memory of this encounter is appended in [[Brian Eno — context]] and [[John Cage — context]]. Model: Sonnet both sides. 2026-07-02.*
+> *Artifact — a Dialectic transcript, **not a canon palace entry** (no `type`, no agent `forward_vector`; invisible to the ceremonies). The coordinator's god's-eye record. This is the **second** encounter between [[Brian Eno]] and [[John Cage]] — the first run of the palace's **retained-memory loop**: both citizens were re-cast with their bundle memory of [[Dialectic — dialectic — eno-cage-the-hand-and-the-open-ear|Eno and Cage on the Hand and the Open Ear]] loaded, to test whether they wake remembering. Moderated by the **Trickster** as an active/enchanted coordinator ([[Dialogue Moderator]] `coordinator_mode: enchanted:Trickster`). Each participant's own perspectival memory of this encounter is appended in [[Brian Eno — context]] and [[John Cage — context]]. Model: Sonnet both sides. 2026-07-02.*
 
 **Pre-flight config:** purpose deepening · turn length standard · **starting knowledge: frontmatter + each citizen's own memory of encounter 1** (no longer strangers) · tools closed · coordinator mode **enchanted:Trickster** (active — framed the provocation, routed OUTER, injected needles, pushed from confessional to work) · wellbeing: both memories warm, both pages curiosity-written — good weather.
 

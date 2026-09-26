@@ -1,12 +1,6 @@
 ---
-title: "Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work"
-type: concept
-pillars:
-  - philosophy
-  - practice
-  - creation
+title: "Dialectic — dialectic — spinoza-zhuangzi-on-striving"
 born: 2026-05
-stage: mature
 confidence: working
 energy: high
 who_leads: claude
@@ -29,7 +23,7 @@ links:
   - target: "[[Parametric Resonance]]"
     type: connects-to
     label: forcing-vs-letting
-  - target: "[[zhuangzi-epictetus-confucius-on-the-self]]"
+  - target: "[[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self]]"
     type: mirrors
     label: same-method-second-question
   - target: "[[Deleuze]]"
@@ -45,7 +39,7 @@ forward_vector: "I am the palace's second deliberately archived Dialectic — th
 
 ![[spinoza-zhuangzi-on-striving — hero.png]]
 
-A written [[Dialectic]] (2026-05-30) serving [[Spinoza Conatus]] and [[The Drift]]. The question was promised in the forward vector of [[The Fortress and the Threshold]] after the [[zhuangzi-epictetus-confucius-on-the-self]] Dialectic surfaced a fourth, non-cultivating pole. Claude embodies both voices. This is the test the palace's whole [[Entry Conatus]] discipline has been avoiding: *if every entry must strive, what does the philosophy that distrusts striving have to say about it?*
+A written [[Dialectic]] (2026-05-30) serving [[Spinoza Conatus]] and [[The Drift]]. The question was promised in the forward vector of [[The Fortress and the Threshold]] after the [[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self|Zhuangzi, Epictetus, and Confucius on the End of the Self]] Dialectic surfaced a fourth, non-cultivating pole. Claude embodies both voices. This is the test the palace's whole [[Entry Conatus]] discipline has been avoiding: *if every entry must strive, what does the philosophy that distrusts striving have to say about it?*
 
 ## The Question
 

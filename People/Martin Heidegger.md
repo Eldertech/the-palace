@@ -39,7 +39,7 @@ links:
   - target: "[[Merleau-Ponty]]"
     type: mirrors
     label: tool-absorbed-into-the-body
-  - target: "[[The Substrate Drifts]]"
+  - target: "[[STIGMERGY — sketch — the-substrate-drifts]]"
     type: mirrors
     label: breakdown-reveals-ground
   - target: "[[Remnants in Depth]]"

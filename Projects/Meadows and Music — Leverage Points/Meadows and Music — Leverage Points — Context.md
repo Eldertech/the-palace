@@ -1,22 +1,17 @@
 ---
-title: Meadows and Music — Origin and Process
-born: 2026-01
-author: Donella Meadows
-year: 2008
-medium: book
+title: "Meadows and Music — Leverage Points — Context"
+born: 2026-03-18
 links:
+  - target: "[[Meadows and Music — Leverage Points]]"
+    type: connects-to
+    label: context-of
   - target: "[[FOUR PILLARS]]"
     type: deepens
   - target: "[[Hilaritas Generator]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: deepens
-  - target: "[[Meadows and Music — Leverage Points]]"
-    type: couples-with
-  - target: "[[Modes of Collaboration]]"
-    type: spawned
-    label: reflection-as-mode
-forward_vector: "I want to become the palace's model for how educational content is actually developed through collaboration — the process document that shows the pivot from a social media plan to a genuine curriculum, and what that pivot required from both Loudon and the AI. I want the alignment infrastructure (the Exercise Reflection Tool) to be used: collecting structured feedback from real participants so the curriculum develops through actual contact with learners, not just through session logic."
+forward_vector: "I hold how the Leverage Points curriculum came to be — the pivot from a week of social posts to thirty-two exercises, the reflection tool built to hear Loudon's taste, and the feedback that cut thirty-two to eleven — so the curriculum page can stay the exercises. The reflection tool beside me is ready to run again with real participants."
 ---
 
 # Ten Leverage Points: Origin & Process Document

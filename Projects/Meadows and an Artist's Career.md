@@ -18,7 +18,7 @@ links:
   - target: "[[Meadows and Music — Leverage Points]]"
     type: emerged-from
     label: refocus-of
-  - target: "[[Meadows and Music — Origin and Process]]"
+  - target: "[[Meadows and Music — Leverage Points — Context]]"
     type: connects-to
     label: companion-doc
   - target: "[[FOUR PILLARS]]"
@@ -111,12 +111,12 @@ The Meadows hierarchy diagram (rendered 2026-05-04 for [[Meadows and Music — L
 - Stage 1 — Spec the twelve levels with career examples (~current state)
 - Stage 2 — Self-diagnostic worksheet: ask reader to place their last 10 career decisions on the hierarchy
 - Stage 3 — Case studies: three artists' careers analyzed at each level
-- Stage 4 — Lesson series, in conversation with [[Meadows and Music — Origin and Process]] — origin first, then choice of leverage, then exercise
+- Stage 4 — Lesson series, in conversation with [[Meadows and Music — Leverage Points — Context|Meadows and Music — Origin and Process]] — origin first, then choice of leverage, then exercise
 
 ## Palace Connections
 
 - **[[Meadows and Music — Leverage Points]]** — the source project; this is its sibling, not its replacement
-- **[[Meadows and Music — Origin and Process]]** — companion philosophy
+- **[[Meadows and Music — Leverage Points — Context|Meadows and Music — Origin and Process]]** — companion philosophy
 - **[[FOUR PILLARS]]** — Practice pillar, primarily; Philosophy and Creation supporting
 - **[[Substrate Skill]]** § Stage as Alignment Confidence — *the same logic*: where in the hierarchy of confidence are we operating, and is our intervention sized to that level?
 

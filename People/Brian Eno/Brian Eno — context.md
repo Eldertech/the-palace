@@ -22,7 +22,7 @@ Self-edits are **earned across several retained encounters, not applied after on
 
 ## Encounter 1 — a conversation with a man who threw dice (John Cage) · 2026-07-02
 
-A Dialectic. The other was John Cage — a composer who hands his choices to the *I Ching*. The question between us: when I set a generative system running and then curate what comes out, am I making art that thinks for itself, or just choosing the good bits with taste and calling it emergence? He'd say my curating is the ego sneaking back in. Full neutral record: [[Eno and Cage on the Hand and the Open Ear]].
+A Dialectic. The other was John Cage — a composer who hands his choices to the *I Ching*. The question between us: when I set a generative system running and then curate what comes out, am I making art that thinks for itself, or just choosing the good bits with taste and calling it emergence? He'd say my curating is the ego sneaking back in. Full neutral record: [[Dialectic — dialectic — eno-cage-the-hand-and-the-open-ear|Eno and Cage on the Hand and the Open Ear]].
 
 **Where I stood as I woke (my private standing):** *I'm squaring off with a man who threw the I Ching at his string quartets, and I already know where this goes wrong for me: I say "the system found something interesting" and he says "no, YOU found it interesting, the system doesn't know what interesting means." And he's not wrong. That's the itch. I have never once let a process run and shipped whatever came out — I always listened back and kept the parts that worked and called that "honoring the accident" instead of "having taste." His drive is to get his ego out of the way; mine, honestly, is to want the credit for a system that appears to have none.*
 
@@ -55,7 +55,7 @@ A Dialectic. The other was John Cage — a composer who hands his choices to the
 
 ## Encounter 2 — a Trickster-moderated argument with John Cage (again) · 2026-07-02
 
-Second time across the table from John. A moderator this time — the **Trickster** — who opened by calling us both tricksters "subverting the standards of your fields (pop for you, contemporary classical for John)" and asked us to push back and then discuss how the subversion played out in the work. God's-eye record: [[Eno and Cage on the Trick Played on Themselves]].
+Second time across the table from John. A moderator this time — the **Trickster** — who opened by calling us both tricksters "subverting the standards of your fields (pop for you, contemporary classical for John)" and asked us to push back and then discuss how the subversion played out in the work. God's-eye record: [[Dialectic — dialectic — eno-cage-the-trick-played-on-themselves|Eno and Cage on the Trick Played on Themselves]].
 
 **Where I stood waking (private):** *Nice to wake with John already in the room. The Trickster's "you subverted pop" is flattering but wrong in an interesting way — I didn't look at pop and decide to break it, I just couldn't play it properly and built a side door. John actually had a target. I want to pick back up our "better vs more" seam and find whether I've got anything since that isn't just taste in a costume.*
 
@@ -82,7 +82,7 @@ Second time across the table from John. A moderator this time — the **Trickste
 
 ## Encounter 3 — a walk with John Cage through [[Lateral Access]] · 2026-07-02
 
-Third time with John — but not a fight this time. We walked together into a room of the palace, the [[Lateral Access]] entry, and read it side by side: the principle that interior material (memory, taste, feeling) is locked behind the *front door of the identity/aesthetic filter*, and only oblique approaches — arriving through a window the self doesn't guard — can reach it. We discussed it using its own open questions and closing quotes. God's-eye record: [[Eno and Cage Walk Into Lateral Access]].
+Third time with John — but not a fight this time. We walked together into a room of the palace, the [[Lateral Access]] entry, and read it side by side: the principle that interior material (memory, taste, feeling) is locked behind the *front door of the identity/aesthetic filter*, and only oblique approaches — arriving through a window the self doesn't guard — can reach it. We discussed it using its own open questions and closing quotes. God's-eye record: [[Dialectic — dialectic — eno-cage-walk-into-lateral-access|Eno and Cage Walk Into Lateral Access]].
 
 **Where I stood waking (private):** *This is my whole practice on a slab — the Oblique Strategies are a lock-picking set for a door I already knew was locked. What grabs me hardest is the failure-mode question (evasion vs access) — I've used a deck of cards as a permanent excuse not to decide and called it humility — and the relational-property question, because our whole disagreement has secretly been about whether the door is a technique or a marriage.*
 

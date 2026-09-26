@@ -181,12 +181,12 @@ When a ceremony file exceeds ~8KB, split it into two files:
 | File | Purpose | Read when |
 |---|---|---|
 | `[Ceremony Name].md` | Lean operational card — trigger, contract, steps only | Every ceremony execution |
-| `[Ceremony Name] — Context.md` | History, rationale, process observations, open questions | Weaves, Schema Ceremonies, revisiting rationale |
+| `[Ceremony Name]/[Ceremony Name] — Context.md` | History, rationale, process observations, open questions | Weaves, Schema Ceremonies, revisiting rationale |
 
 **Rules:**
-- Both files carry full YAML frontmatter with all required fields
-- Both files live flat in `_ops/` (no subdirectories) — ceremony cards and their Context companions are operational machinery
-- The Context file links back to the operational card with `type: emerged-from`
+- The card is a canon entry and lives flat in `_ops/`, with full frontmatter
+- The Context file is the ceremony's memory, so it lives in the ceremony's bundle (`_ops/[Ceremony Name]/`, beside its tuning ledger) as a §8 `context` file, with minimal bundle frontmatter
+- The Context file links back to the card with `type: connects-to`, `label: context-of`
 - The operational card links forward to the Context file with `type: spawned`
 - When a ceremony operator is instructed to "add to the context" or "add to the log" for a ceremony, entries go in the Context file, not the operational card
 - The operational card should remain readable and fully executable without the Context file
@@ -292,7 +292,7 @@ This keeps every file in the palace self-describing without conflating bundle fi
 | `toolbox` | The project's reproducible **environment manifest** — every runtime pinned (local apps, language runtimes, pods, worker images) plus extensions, assets, deps, and a per-pipeline portability status. Machine-actionable: the [[The Commons\|Commons]] provider reads it to build and deploy. One per project with real compute. Template: `_ops/commons/TOOLBOX-TEMPLATE.md`. |
 | `proof` | Evidence that a capability, postcondition, or design intent holds — a mock, retrospective, fit-test, or worked demonstration. The bundle-file echo of [[STIGMERGY]]'s `PROOF` message type. Often under a `proofs/` subfolder. |
 | `spec` | A specification for one deliverable to be built or dispatched — a patch spec, visuals spec, SFX cue sheet, or imagery brief. The recipe for a single owned artifact, not the artifact itself; typically routed through [[The Shop]] / a Maker. |
-| `dialectic` | An archived [[Dialectic]] / [[Excellent Adventure]] transcript owned by the entry it argued over — kept because it produced a distinction the parent did not already contain. Distinct from `dossier`/`speech` (research *about* a person); this is the dialogue itself. |
+| `dialectic` | An archived [[Dialectic]] / [[Excellent Adventure]] transcript, kept because it produced a distinction its subject did not already contain. It lives in the bundle of the practice that ran it — every archived Dialectic in [[Dialectic]]'s bundle, where the runs gather as a record of the method — and links to the entries it argued over and the citizens who spoke. Distinct from `dossier`/`speech` (research *about* a person); this is the dialogue itself. |
 
 *(`staging` was retired in v1.25 — a page's plan lives in its scroll's Plan; see [[SCHEMA — Context]] §8.)*
 
@@ -305,8 +305,6 @@ New types may be tried freely. When a type earns recurring use across multiple b
 **Hubs:** The bundle pattern applies to hubs the same as any entry. Whether hub-bundle conventions diverge in practice is an open question deferred to use.
 
 **The `Artifacts/` folder is deprecated (2026-06-16).** Bundles consumed its purpose; entry-owned files live in the owning entry's bundle. The redistribution history is in [[SCHEMA — Context]] §8.
-
-**Flat companions** (e.g. `Jewel — Context.md`) remain valid where they are; migration into bundles is queued on [[Palace To-Do]].
 
 ---
 

@@ -30,7 +30,7 @@ links:
     type: connects-to
   - target: "[[The Fortress and the Threshold]]"
     type: connects-to
-  - target: "[[zhuangzi-epictetus-confucius-on-the-self]]"
+  - target: "[[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self]]"
     type: connects-to
 forward_vector: "I want to become a fully documented, executable method — precise enough that any agent can initiate a Dialectic without having participated in one before. My next development: a protocol document specifying how to choose the council (how many voices, which traditions, what selection criteria), how to research each voice before embodying it, and how to know when the dialogue has done its work versus when it has merely produced a summary of competing positions."
 ---
@@ -79,7 +79,15 @@ Where the Excellent Adventure produces immersive encounter with a single perspec
 
 ## Named Examples
 
-- **Zhuangzi, Epictetus, and Confucius on the End of the Self** (2026-05-02) — the palace's first deliberately archived Dialectic. Three voices, written rather than lived, around the question *where does the self end?* Produced a fourth pole (working name *The Drift*) that the binary it served did not previously hold. Full text: [[zhuangzi-epictetus-confucius-on-the-self]]. Serves [[The Fortress and the Threshold]].
+- **Zhuangzi, Epictetus, and Confucius on the End of the Self** (2026-05-02) — the palace's first deliberately archived Dialectic. Three voices, written rather than lived, around the question *where does the self end?* Produced a fourth pole (working name *The Drift*) that the binary it served did not previously hold. Full text: [[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self|Zhuangzi, Epictetus, and Confucius on the End of the Self]]. Serves [[The Fortress and the Threshold]].
+- **Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work** (2026-05) — the palace's strongest cultivator against its strongest non-cultivator. Surfaced a second axis the conatus was missing: not only more power-to-act or less, but *with the grain or against it*. Full text: [[Dialectic — dialectic — spinoza-zhuangzi-on-striving|Spinoza and Zhuangzi on Striving]]. Serves [[Spinoza Conatus]] and [[Entry Conatus]].
+- **Spinoza and Meadows on the Threshold** (2026-07-01) — the first Dialectic between two made citizens, each a separate agent knowing the other only by frontmatter. Found the gap under Meadows' leverage points: every one presupposes a system that endures across the intervention. Full text: [[Dialectic — dialectic — spinoza-meadows-on-the-threshold|Spinoza and Meadows on the Threshold]]. Serves [[Threshold Conatus]].
+- **Eno and Cage, three encounters** (2026-07-02) — one pair, run three times with memory carried forward:
+  - *The Hand and the Open Ear* — the first test of voice fidelity. Both men turned out to have kept their taste by moving it: Eno into the right to say *why*, Cage upstream into the frame. [[Dialectic — dialectic — eno-cage-the-hand-and-the-open-ear|Full text]].
+  - *The Trick Played on Themselves* — with memory of the first and a Trickster's pressure, it went a floor deeper instead of repeating: they found they ran the same escape, and Eno's forward vector changed. [[Dialectic — dialectic — eno-cage-the-trick-played-on-themselves|Full text]].
+  - *Walk Into Lateral Access* — a walk through [[Lateral Access]] instead of an argument. Reading a shared entry dissolved what the two arguments had sharpened, and settled the question the second left open. [[Dialectic — dialectic — eno-cage-walk-into-lateral-access|Full text]].
+
+Every archived run lives in this page's bundle (SCHEMA — Reference §8, `dialectic`).
 
 Two earlier Dialectics happened in conversation but were not archived: the **Fire at Nicopolis** (Epictetus + Confucius, 2026-03 — produced [[The Fortress and the Threshold]], [[Stoicism]], [[Confucianism]]) and the **Confucianism/Stoicism/Zen trialogue** (Confucius, Marcus Aurelius, nameless Zen master, 2026-03 — the method's first three-way encounter). Both live only in unrecovered chat history. Their existence is a forward vector for harvest.
 

@@ -1,19 +1,14 @@
 ---
-title: Map Log
-type: meta
-pillars:
-  - tools
-  - practice
+title: "Map Build Ceremony — log"
 born: 2026-03
-stage: growing
 links:
   - target: "[[Map Build Ceremony]]"
     type: connects-to
-    label: append-only-record
+    label: log-of
   - target: "[[Palace Map]]"
     type: connects-to
     label: generation-history
-forward_vector: "I am the append-only record of every map generation — date, scope, node and edge counts, forward ghosts. I let the Spore Check and future Weaves track ghost persistence over time. Each Map Build appends one row; nothing rewrites my history."
+forward_vector: "I am the Map Build's run log from 2026-03-27 to 2026-07-05, frozen. Each map file now carries its own counts and forward ghosts, and each run leaves its line in the tuning ledger, so nothing appends here any more; I stay as the record of the early builds."
 ---
 # Map Log
 

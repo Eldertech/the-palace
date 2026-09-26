@@ -1,18 +1,12 @@
 ---
-title: Torus Warping Catalog
-type: hub
-pillars:
-  - tools
-  - creation
-  - philosophy
+title: "2D Torus Wavetable Synthesizer — catalog — warps"
 born: 2026-04-27
-stage: growing
 forward_vector: "I am the complete map of how to touch a two-dimensional wavetable surface and what each gesture produces — from front-panel phase bends to research-level reaction-diffusion. I want to become the reference that lets a player speak the language of warp composition and understand when a warp preserves structure versus when it genuinely breaks lattices."
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
     label: extends
-  - target: "[[2D Wavetable Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — wavetables]]"
     type: couples-with
     label: warps
   - target: "[[DSP in Looping Dimensions]]"
@@ -30,14 +24,12 @@ links:
   - target: "[[Three Kinds of Warp]]"
     type: connects-to
     label: cut-orthogonally-by
-  - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
-    type: connects-to
 ---
 # Torus Warping Catalog — A Catalog of 2D Warps
 
 ![[Torus Warping Catalog — hero.png]]
 
-> Sister catalog to [[2D Wavetable Catalog]]. The wavetable catalog answers *what surface*; this catalog answers *what to do to a surface*. Surfaces are voices; warps are the hands that reshape the voice in real time.
+> Sister catalog to [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]]. The wavetable catalog answers *what surface*; this catalog answers *what to do to a surface*. Surfaces are voices; warps are the hands that reshape the voice in real time.
 
 ## Framing
 
@@ -344,13 +336,13 @@ The deepest unresolved question the catalog points at: what *language* does the 
 
 ## Where this connects
 
-This catalog presupposes the surfaces in [[2D Wavetable Catalog]] as raw material. It also lives in the same conceptual neighbourhood as [[Categorizing Inharmonicity]] — the catalog provides *moves* through inharmonicity space, not just *positions* in it. The Kuramoto bifurcation in [[Kuramoto Coupling]] is structurally a phase-portrait warp (entry #11) with a particularly clean physical interpretation — the synchronization transition is the phase-space bifurcation made audible. The architecture itself, [[DSP in Looping Dimensions]], is what makes 2D-native warps possible at all; in 1D these reduce to the phase warps of conventional wavetable synths.
+This catalog presupposes the surfaces in [[2D Torus Wavetable Synthesizer — catalog — wavetables|2D Wavetable Catalog]] as raw material. It also lives in the same conceptual neighbourhood as [[Categorizing Inharmonicity]] — the catalog provides *moves* through inharmonicity space, not just *positions* in it. The Kuramoto bifurcation in [[Kuramoto Coupling]] is structurally a phase-portrait warp (entry #11) with a particularly clean physical interpretation — the synchronization transition is the phase-space bifurcation made audible. The architecture itself, [[DSP in Looping Dimensions]], is what makes 2D-native warps possible at all; in 1D these reduce to the phase warps of conventional wavetable synths.
 
 ## Forward vector
 
 The warps land *after* the RNBO prototype is alive, not before. The build order is:
 
-1. Get one surface and two phasors playing in RNBO codebox~. No warps. Confirm the math sounds the way the equations promise. (See [[2D Torus Wavetable Synthesizer — Build Log]] §"State at handoff".)
+1. Get one surface and two phasors playing in RNBO codebox~. No warps. Confirm the math sounds the way the equations promise. (See [[README — RNBO Prototype]] and the [[Verification Prep Checklist]].)
 2. Add the cheapest Tier-1 warps that run per-sample: per-axis phase bend (#1), variable-rate phase shear (#6), self-displacement (#12). These need no precomputation infrastructure — they're a few lines each in codebox~.
 3. Build the lookup-table-and-crossfade infrastructure once, and the rest of Tier 1 / Tier 2 unlock together: shear (#2), isotropic diffusion (#3), anisotropic diffusion (#4), rotation (#5), spectral masks (#7).
 4. Tier 3+ earns its turn when the language of warp composition becomes the question the player is asking.

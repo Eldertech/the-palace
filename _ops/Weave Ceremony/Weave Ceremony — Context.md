@@ -1,16 +1,15 @@
 ---
 title: "Weave Ceremony — Context"
-type: practice
-pillars: [practice, tools, philosophy]
 born: 2026-03
-stage: growing
 links:
   - target: "[[Weave Ceremony]]"
-    type: emerged-from
+    type: connects-to
+    label: context-of
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
   - target: "[[Palace Philosophies]]"
     type: connects-to
+forward_vector: "I hold the Weave's history, rationale, and open questions, so the card stays lean and executable; read me when revisiting why the Weave works the way it does."
 ---
 
 # Weave Ceremony — Context

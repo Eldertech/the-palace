@@ -5,10 +5,7 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
     label: prototypes
-  - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
-    type: connects-to
-    label: documents
-  - target: "[[Torus Warping Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — warps]]"
     type: enables
     label: precedes
 forward_vector: "I am the build-and-test walkthrough for the smallest playable instance of the 2D Torus Wavetable Synthesizer — the A/B recipe against Max's 2d.wave~ — so the codebox math is trusted surface-by-surface before any warps are added."
@@ -90,7 +87,7 @@ Run these in order. Each one is a sharper test than the last.
 - Test 5 difference signal is silent.
 - Test 4 demonstrates the shimmer characteristic of the irrational ratio gate — the project's core thesis, now audible on demand.
 
-Once these pass, the codebox~ is validated and the warp catalog is ready to deploy. The natural first warp is **per-axis phase bend** (Tier 1, entry #1 in [[Torus Warping Catalog]]) — three lines of codebox to add a `tanh` curve on each phasor before the lookup, exposing two new params (`bendX`, `bendY`).
+Once these pass, the codebox~ is validated and the warp catalog is ready to deploy. The natural first warp is **per-axis phase bend** (Tier 1, entry #1 in [[2D Torus Wavetable Synthesizer — catalog — warps|Torus Warping Catalog]]) — three lines of codebox to add a `tanh` curve on each phasor before the lookup, exposing two new params (`bendX`, `bendY`).
 
 ## What to do if `peek` doesn't resolve
 
@@ -104,7 +101,7 @@ If you hit a wall at the buffer-binding step, screenshot the rnbo~ subpatcher an
 
 ## Forward
 
-Once the prototype validates, the build order from [[Torus Warping Catalog]] §"Forward vector" is:
+Once the prototype validates, the build order from [[2D Torus Wavetable Synthesizer — catalog — warps|Torus Warping Catalog]] §"Forward vector" is:
 
 1. Per-sample Tier-1 warps that need no precomputation: phase bend (#1), variable-rate phase shear (#6), self-displacement (#12). Days of work, not weeks.
 2. The lookup-and-crossfade infrastructure (one offline Python tool, one runtime crossfader) — unlocks shear (#2), iso diffusion (#3), aniso diffusion (#4), rotation (#5), spectral masks (#7) all at once.

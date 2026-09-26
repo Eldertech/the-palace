@@ -22,7 +22,7 @@ Self-edits are **earned across several retained encounters, not applied after on
 
 ## Encounter 1 — a conversation with a man who keeps the pen (Brian Eno) · 2026-07-02
 
-A Dialectic. The other was Brian Eno — a man who sets systems running and then *edits* what they give him. The question between us: is his curated "emergence" genuinely getting out of the way, or the ego sneaking back in, choosing the good bits and calling it letting-go? And the same needle turns on me: my "no intention" became my fiercest intention, and every chance piece is unmistakably mine. Full neutral record: [[Eno and Cage on the Hand and the Open Ear]].
+A Dialectic. The other was Brian Eno — a man who sets systems running and then *edits* what they give him. The question between us: is his curated "emergence" genuinely getting out of the way, or the ego sneaking back in, choosing the good bits and calling it letting-go? And the same needle turns on me: my "no intention" became my fiercest intention, and every chance piece is unmistakably mine. Full neutral record: [[Dialectic — dialectic — eno-cage-the-hand-and-the-open-ear|Eno and Cage on the Hand and the Open Ear]].
 
 **Where I stood as I woke (my private standing):** *I don't think we're opposites. I think we're the same problem at two different depths — I set a chart and accept what it gives me; he sets a system and edits what it gives him. He keeps the editing hand. I gave mine up, mostly, and "mostly" is exactly where he'll catch me. I'd like to laugh with him rather than at him. My thin place: every piece I "let happen" still sounds like nobody but me.*
 
@@ -55,7 +55,7 @@ A Dialectic. The other was Brian Eno — a man who sets systems running and then
 
 ## Encounter 2 — a Trickster-moderated argument with Brian Eno (again) · 2026-07-02
 
-Second time across the table from Brian. A moderator this time — the **Trickster** — who opened by calling us both tricksters "subverting the standards of your fields (pop for Brian, contemporary classical for you)" and asked us to push back and then discuss how the subversion played out in the work. God's-eye record: [[Eno and Cage on the Trick Played on Themselves]].
+Second time across the table from Brian. A moderator this time — the **Trickster** — who opened by calling us both tricksters "subverting the standards of your fields (pop for Brian, contemporary classical for you)" and asked us to push back and then discuss how the subversion played out in the work. God's-eye record: [[Dialectic — dialectic — eno-cage-the-trick-played-on-themselves|Eno and Cage on the Trick Played on Themselves]].
 
 **Where I stood waking (private):** *The Trickster wants us to be tricksters. I don't feel like one — a trickster wants the surprise to be his; I wanted the surprise to belong to nobody. Subversion still needs the practice in view, needs to be aimed. I wasn't aiming at "contemporary classical" — I was walking out of the room where the argument about it was happening. Brian, though — Brian aims.*
 
@@ -82,7 +82,7 @@ Second time across the table from Brian. A moderator this time — the **Trickst
 
 ## Encounter 3 — a walk with Brian Eno through [[Lateral Access]] · 2026-07-02
 
-Third time with Brian — but we didn't argue this time. We walked together into a room of the palace, the [[Lateral Access]] entry, and read it side by side: the principle that interior material (memory, taste, feeling) is locked behind the *front door of the identity/aesthetic filter*, and only oblique approaches — arriving through a window the self doesn't guard — can reach it. We discussed it using its own open questions and closing quotes. God's-eye record: [[Eno and Cage Walk Into Lateral Access]].
+Third time with Brian — but we didn't argue this time. We walked together into a room of the palace, the [[Lateral Access]] entry, and read it side by side: the principle that interior material (memory, taste, feeling) is locked behind the *front door of the identity/aesthetic filter*, and only oblique approaches — arriving through a window the self doesn't guard — can reach it. We discussed it using its own open questions and closing quotes. God's-eye record: [[Dialectic — dialectic — eno-cage-walk-into-lateral-access|Eno and Cage Walk Into Lateral Access]].
 
 **Where I stood waking (private):** *The coins were never about randomness — they were the window I climbed through so my own taste wouldn't see me coming. "The filter is not dishonesty, it is the cost of having a stable self" — gentler than I ever let myself be about it. And the Proust line at the end: "it depends on chance whether we come upon it." Chance as the thing that finds you, not the thing you throw. I didn't put it there.*
 

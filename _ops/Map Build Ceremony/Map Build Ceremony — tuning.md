@@ -37,8 +37,12 @@ What each build taught the ceremony, and the lessons that reached it from elsewh
 ## From the versioning read — 2026-09-25
 
 3. **The card says `_ops/` cards are not nodes; the builder has made them nodes since 2026-09-24.** Ceremony cards with a canon type are nodes in `build-map-2026-09-24.py` (`dd094117`; [[Weave Ceremony — tuning]] 25), but Step 2 still says ops entries "are not mapped as nodes" (`Map Build Ceremony.md:77`), and `ops_ghost` still assumes the root scan can't see them (`:110`). Spec change owed: Step 2 and the ghost taxonomy catch up with the builder.
-4. **The last two full builds left no Map Log row.** The newest row is 2026-07-04, but `_ops/maps/` holds full maps from 2026-08-26 and 2026-09-24. The postcondition still asks for the row, and without it the version stamp has nowhere to go. Spec change owed: find what built those maps without the row, and make the row part of that path — or say in the card where such a build records itself.
+4. **The last two full builds left no Map Log row.** The newest row is 2026-07-04, but `_ops/maps/` holds full maps from 2026-08-26 and 2026-09-24. The postcondition still asks for the row, and without it the version stamp has nowhere to go. Spec change owed: find what built those maps without the row, and make the row part of that path — or say in the card where such a build records itself. Paid in v2.3: item 6.
 
 ## From the Phase 5 review — 2026-09-25
 
 5. **The card changed and the version didn't.** `b8b83e37` added the opening step — the tail read of this file (`Map Build Ceremony.md:62`) — and a clause to the postcondition: the Map Log row's scope cell names the version, and the commit that carries the row says what the run taught (`:42`). The same commit turned `version: 2` into `"2.0"`, the same value, so the ceremony scroll went on counting every build since March as a run of the current spec. Both changes are procedure. Forced: **v2.1**. No step changes here; the number catches up with `b8b83e37`.
+
+## From the bundle walk — 2026-09-26
+
+6. **The Map Log duplicated this ledger and had stopped being kept.** A walk of the whole palace for pages that belong in a bundle found `_ops/Map Log.md`: no script reads or writes it, only this card's step 7 did, and its last row is 2026-07-04 (item 4). Every build it recorded is already here as a run line, and every map file from 2026-03-27 on is still in `_ops/maps/`, its `meta` carrying the node, edge and forward-ghost counts and each ghost by name. Forced: **v2.3** — step 7 and the postcondition write the run line here, with the counts in it, and ghost persistence reads the map files. The log is frozen in `Archive/` as [[Map Build Ceremony — log]]. Pays item 4.

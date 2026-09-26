@@ -49,7 +49,7 @@ links:
   - target: "[[Found ↔ Made]]"
     type: exemplifies
     label: found-pole
-  - target: "[[Synth Archetypes]]"
+  - target: "[[Generative Audio Devices — spec — synth archetypes]]"
     type: mirrors
     label: pattern-language
   - target: "[[Iain McGilchrist]]"

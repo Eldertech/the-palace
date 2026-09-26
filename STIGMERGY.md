@@ -50,7 +50,7 @@ links:
   - target: "[[The Scroll]]"
     type: connects-to
     label: renders-the-front-door
-  - target: "[[The Substrate Drifts]]"
+  - target: "[[STIGMERGY — sketch — the-substrate-drifts]]"
     type: connects-to
     label: v0.3-session
 ---

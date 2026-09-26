@@ -1,7 +1,17 @@
 ---
-title: "Eno and Cage on the Hand and the Open Ear"
+title: "Dialectic — dialectic — eno-cage-the-hand-and-the-open-ear"
 born: 2026-07-02
-kind: artifact
+links:
+  - target: "[[Dialectic]]"
+    type: connects-to
+    label: archived-run
+  - target: "[[Brian Eno]]"
+    type: connects-to
+    label: participant
+  - target: "[[John Cage]]"
+    type: connects-to
+    label: participant
+forward_vector: "I am the record of Eno and Cage's first encounter (2026-07-02), the first Dialectic to test voice fidelity. I am kept because it found that both men kept their taste by moving it: Eno into the right to say why, Cage upstream into the frame."
 ---
 
 # Eno and Cage on the Hand and the Open Ear

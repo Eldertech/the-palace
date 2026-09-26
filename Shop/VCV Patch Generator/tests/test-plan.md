@@ -12,7 +12,7 @@ The probes the Specialist runs to declare a job done. Mirrors the Specialist's S
 
 ## Smoke
 Default PDL parses, emits a `.vcv` that is valid JSON, with `module_count > 0`, `cable_count > 0`, zero `skipped` cables, zero `warnings`.
-- **Automated:** `verify_t11.js`, `verify_t7a_phase2.js`, `verify_t7b.js` at palace root.
+- **Automated:** `verify_t7a_phase2.js` and `verify_t7b.js` in `Generative Audio Devices/pdl-renderer/`. (`verify_t11.js` is named here but is not in the palace.)
 
 ## Capability Probe
 Each registry feature emits correctly: numeric `*` params (T7a phase 1), named regions (`CUTOFF = dark`, phase 2), virtual endpoints (`KEYBOARD`/`OUT` auto-bind), and `# archetype:` pragmas (T7b).

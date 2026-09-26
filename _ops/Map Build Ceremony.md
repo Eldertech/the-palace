@@ -6,7 +6,7 @@ pillars:
   - practice
 born: 2026-03
 stage: growing
-version: "2.2"
+version: "2.3"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -37,7 +37,7 @@ links:
 | | |
 |---|---|
 | **Precondition** | Palace is accessible via filesystem. At least 5 entries exist. |
-| **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename. A one-line record is appended to `_ops/Map Log.md`; its scope cell names the version, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer), and the tuning file carries the run's run line. |
+| **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename; its `meta` carries the node, edge and ghost counts and names every forward ghost. The run's line is appended to [[Map Build Ceremony — tuning]], carrying the version and the counts, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer). |
 | **Does not do** | Read entry bodies. Propose link changes. Modify existing entries. |
 | **Produces** | An edge list (TSV default), bidirectional adjacency list, or JSON depending on scope and format request. |
 
@@ -171,15 +171,15 @@ Write map file to `/Users/loudonstearns/Documents/The Palace/_ops/maps/` (create
 
 **7. Register**
 
-Append a one-line record to `_ops/Map Log.md` (create file if absent):
+Append the run's line to the end of [[Map Build Ceremony — tuning]] (SCHEMA — Reference §6), with the counts in the slot for what it ran on:
 
 ```
-| YYYY-MM-DD | [scope] | [format] | [node_count] nodes | [edge_count] edges | [forward_ghost_count] forward ghosts | [forward_ghost_names] |
+- run · YYYY-MM-DD · v<version> · <scope>, <N> nodes, <E> edges, <G> forward ghosts · nothing new
 ```
 
-The final column stores the names of all `forward_ghost` nodes as a comma-separated list. This enables persistence tracking across map generations — a ghost that appears in three consecutive log entries is a deposit candidate.
+(`taught item N` in place of `nothing new` when the run changed the ceremony.) The forward ghosts themselves are named in the map file's `meta.ghost_taxonomy`, so tracking persistence is a read of the last three maps in `_ops/maps/`: a ghost present in all three is a deposit candidate.
 
-Do not read the log to do this — append only.
+Append only — the opening tail read is the only read of the ledger this ceremony makes.
 
 ---
 
@@ -210,7 +210,7 @@ The outgoing adjacency list is recommended for Tier 1 agent context loading — 
 ## Forward Vectors
 
 - Should map generation be triggered automatically at Harvest close, making it a required step rather than a separate ceremony?
-- Ghost persistence tracking: the Map Log now records forward ghost names. A ghost appearing in three consecutive entries is a deposit candidate. Should a ceremony step or a separate Spore Check variant surface these automatically?
+- Ghost persistence tracking: each map file names its forward ghosts in `meta.ghost_taxonomy`. A ghost appearing in three consecutive maps is a deposit candidate. Should a ceremony step or a separate Spore Check variant surface these automatically?
 - Should the ceremony produce a diff against the previous map — what edges were added, what ghost nodes appeared or resolved — making the palace's growth arc visible over time?
 - Weighted maps: nodes now carry `use` (page, bundle and link activity from git), which could weight edges so well-traveled links appear stronger. Useful for swarm dispatch prioritization?
 

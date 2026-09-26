@@ -37,7 +37,7 @@ links:
     type: spawned
   - target: "[[Meadows and an Artist's Career]]"
     type: spawned
-  - target: "[[Meadows and Music — Origin and Process]]"
+  - target: "[[Meadows and Music — Leverage Points — Context]]"
     type: connects-to
     label: applied-to-music
   - target: "[[Hilaritas Generator]]"

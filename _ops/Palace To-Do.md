@@ -64,7 +64,7 @@ here if it feeds that, or if it is cheap and unblocks something that does.
 
 Unrelated loose ends the September weave declined to settle in place (each wants its own session, not a weave touch). Re-homed here so they aren't lost — see `Weave Ceremony — Context` for the weave's own record of declining them.
 
-- [ ] **[[Two Batons, One Board]] — the fixture that hardcodes its path** — the entry (and `Palace development/STIGMERGY v1.0 — Palace Front-End.md`) has three homes across the codebase, and `_ops/stigmergy/app/tests/e2e/state-deck.spec.js:255` hardcodes its exact path as a fixture. If the entry moves, the test breaks silently. Its own session.
+- [ ] **[[Two Batons, One Board]] — the fixture that hardcodes its path** — the entry has three homes across the codebase, and `_ops/stigmergy/app/tests/e2e/state-deck.spec.js:255` hardcodes its exact path as a fixture. If the entry moves, the test breaks silently. Its own session.
 - [ ] **[[STIGMERGY Philosophical Lenses]] → The Lens — re-scope, not a fold** — The Lens's own body asks for this re-scope; the weave dropped it as too big for a fold. Its own session.
 - [ ] **[[Objects to Think With]] — the 21-project list needs re-deriving** — against Papert's own criterion, not just re-counted. Its own session.
 - [ ] **[[Shop/Maker]] — whether the Shop can hold an operated Specialist, and the Producer layer** — an architecture question, plus generalizing the Post-producer charter (Loudon deferred both, 2026-09-02). Its own session.
@@ -73,7 +73,7 @@ Unrelated loose ends the September weave declined to settle in place (each wants
 
 ## Palace upkeep that is cheap and unblocks something
 
-- [ ] **Finish the flat-file companion migration into bundles** — the steward half is done (19 stewards have bundle-local plans). Still flat: `Jewel — Context.md` and the three ceremony Context companions in `_ops/`. Per [[SCHEMA]] §8 they need only minimal frontmatter after the move. Next action: four `git mv`s and a link sweep.
+- [x] **Finish the flat-file companion migration into bundles** — the steward half is done (19 stewards have bundle-local plans). Still flat: `Jewel — Context.md` and the three ceremony Context companions in `_ops/`. Per [[SCHEMA]] §8 they need only minimal frontmatter after the move. Next action: four `git mv`s and a link sweep. — **done 2026-09-26**: all nine companions live in their bundles with bundle frontmatter — the five root ones (Jewel into `JEWEL/`, whose faces moved from `The Jewel/` so STIGMERGY can find them) and the four ceremony ones beside their tuning ledgers. [[SCHEMA — Reference]] §6 now says so, and the STIGMERGY write guard follows the new paths.
 
 - [ ] **Give the linters a scoped mode** — four of the five (`lint-doc-drift`, `lint-ghost-links`, `lint-link-directions`, `lint-entry-naming`) take no file argument; only `lint-bundle-hygiene` has `--paths`. So [[Deposit Ceremony]] Step 7c, which says run them "over the new files," can only ever ask *is the whole palace clean?* — and against a 52-warning standing baseline, an unchanged total is weak evidence that the work just done is clean. `lint-link-directions` is worse: it reads the newest map JSON, so it is structurally blind to anything deposited since that map was built. A `--paths` flag on the other four, plus a rebuild-or-warn in the direction linter, turns a claim into a check.
 

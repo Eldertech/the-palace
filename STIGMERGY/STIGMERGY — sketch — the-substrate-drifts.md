@@ -1,11 +1,6 @@
 ---
-title: The Substrate Drifts
-type: concept
-pillars:
-  - tools
-  - practice
+title: "STIGMERGY — sketch — the-substrate-drifts"
 born: 2026-05-29
-stage: seed
 forward_vector: >
   I keep reminding the palace's tool-builders that the substrate they build over
   is alive: it accumulates, it is multi-authored, it spans timezones, its payload
@@ -25,6 +20,9 @@ links:
   - target: "[[Pages as Agents]]"
     type: couples-with
     label: multi-author-heterogeneity
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: sketch-for
 ---
 
 # The Substrate Drifts

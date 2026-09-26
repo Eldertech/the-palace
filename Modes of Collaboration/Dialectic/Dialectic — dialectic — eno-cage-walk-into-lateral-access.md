@@ -1,7 +1,20 @@
 ---
-title: "Eno and Cage Walk Into Lateral Access"
+title: "Dialectic — dialectic — eno-cage-walk-into-lateral-access"
 born: 2026-07-02
-kind: artifact
+links:
+  - target: "[[Dialectic]]"
+    type: connects-to
+    label: archived-run
+  - target: "[[Brian Eno]]"
+    type: connects-to
+    label: participant
+  - target: "[[John Cage]]"
+    type: connects-to
+    label: participant
+  - target: "[[Lateral Access]]"
+    type: connects-to
+    label: walked-entry
+forward_vector: "I am the record of Eno and Cage's third encounter (2026-07-02), a walk through Lateral Access instead of an argument. I am kept because reading a shared entry dissolved what the first two encounters sharpened, and settled the question the second one left open."
 ---
 
 # Eno and Cage Walk Into Lateral Access

@@ -8,7 +8,7 @@ links:
   - target: "[[Generative Audio Devices]]"
     type: connects-to
     label: "t6-left-to-right-half"
-  - target: "[[Synth Archetypes]]"
+  - target: "[[Generative Audio Devices — spec — synth archetypes]]"
     type: connects-to
     label: "selects-from"
   - target: "[[Registry Pattern]]"
@@ -21,7 +21,7 @@ forward_vector: "I am the left-to-right half of the pipeline: I turn a natural-l
 
 The generation-side artifact for [[Generative Audio Devices]] — the **T6** half of the pipeline. It takes a natural-language description ("a punchy 808 kick", "a slowly evolving warm pad") and produces valid [[PDL]] that parses clean in `PDL Renderer.html` and emits a loadable, good-sounding `.vcv`.
 
-**The core move T7b–d made possible:** the generator no longer improvises synth-design expertise. It (1) selects one of the 8 [[Synth Archetypes]] by matching the description against each archetype's perceptual index, (2) lays down the *topology* that archetype requires — including its `recommended_cables` — and (3) applies the archetype with a `# archetype:` pragma. The archetype supplies the parameter intelligence; the prompt supplies the wiring and the choice. This is why the prompt can be short and the model can stay "dumb": the hard knowledge lives in the registry and archetype JSON, not in the prompt.
+**The core move T7b–d made possible:** the generator no longer improvises synth-design expertise. It (1) selects one of the 8 [[Generative Audio Devices — spec — synth archetypes|Synth Archetypes]] by matching the description against each archetype's perceptual index, (2) lays down the *topology* that archetype requires — including its `recommended_cables` — and (3) applies the archetype with a `# archetype:` pragma. The archetype supplies the parameter intelligence; the prompt supplies the wiring and the choice. This is why the prompt can be short and the model can stay "dumb": the hard knowledge lives in the registry and archetype JSON, not in the prompt.
 
 The block below, between the `<<<PROMPT` markers, is the reusable system prompt. It is verified by spawning fresh Claude instances with it + the registry JSON + the archetypes JSON + a description, then running every candidate PDL through the real `emitVcvJson` (the emitter is the oracle: 0 warnings, 0 skipped cables, no hallucinated modules, archetype applied, recommended cables present).
 

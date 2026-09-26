@@ -1,18 +1,15 @@
 ---
 title: Harvest Ceremony — Context
-type: practice
-pillars:
-  - practice
-  - tools
 born: 2026-03
-stage: growing
 links:
   - target: "[[Harvest Ceremony]]"
-    type: emerged-from
+    type: connects-to
+    label: context-of
   - target: "[[Deposit Ceremony — Context]]"
     type: connects-to
   - target: "[[Oblique Portrait]]"
     type: deepens
+forward_vector: "I hold the Harvest's history, rationale, and open questions, so the card stays lean and executable; read me when revisiting why the Harvest works the way it does."
 ---
 
 # Harvest Ceremony — Context

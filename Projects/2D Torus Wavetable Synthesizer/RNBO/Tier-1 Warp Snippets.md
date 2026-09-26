@@ -5,7 +5,7 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
     label: pre-stages-warps
-  - target: "[[Torus Warping Catalog]]"
+  - target: "[[2D Torus Wavetable Synthesizer — catalog — warps]]"
     type: connects-to
     label: implements-tier-1
   - target: "[[README — RNBO Prototype]]"
@@ -15,7 +15,7 @@ forward_vector: "I am the codebox drafts for the Tier-1 warps — half-formed sn
 ---
 # Tier-1 Warp Snippets — Codebox Drafts
 
-Companion to [[torus_2d_lookup.codebox]] and [[Torus Warping Catalog]]. These are the per-sample Tier-1 warps that need **no precomputation infrastructure** — they slot into the existing codebox as drop-in additions. Each is a few lines of math; the architectural cost is exactly the parameters they expose and the order they apply in.
+Companion to [[torus_2d_lookup.codebox]] and [[2D Torus Wavetable Synthesizer — catalog — warps|Torus Warping Catalog]]. These are the per-sample Tier-1 warps that need **no precomputation infrastructure** — they slot into the existing codebox as drop-in additions. Each is a few lines of math; the architectural cost is exactly the parameters they expose and the order they apply in.
 
 These drafts are not yet committed into `torus_2d_lookup.codebox`. Drop them in **only after** the bare-prototype A/B against `2d.wave~` passes the difference-monitor test described in [[Verification Prep Checklist]]. The verification is what proves the lookup is correct; the warps modify *what gets looked up*, so a warp-bug-on-top-of-a-lookup-bug is unreadable.
 

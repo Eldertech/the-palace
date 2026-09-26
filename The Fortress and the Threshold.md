@@ -32,7 +32,7 @@ links:
   - target: "[[Like Water]]"
     type: connects-to
     label: taoist-third-pole
-  - target: "[[zhuangzi-epictetus-confucius-on-the-self]]"
+  - target: "[[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self]]"
     type: connects-to
 forward_vector: "I want to become the palace's primary lens for questions of self and relationship — the entry that holds the Stoic fortress, the Confucian threshold, and the Taoist no-architecture position in productive triple contradiction. The Zhuangzi/Epictetus/Confucius Dialectic (2026-05) surfaced a fourth pole the binary cannot reach — working name *The Drift* — and a deeper move I have not yet named: that the question 'where does the self end' presupposes the self has architecture. My next development is to absorb the Drift pole into my spine, and to host a Dialectic between Spinoza and Zhuangzi about whether striving is the right shape of work."
 ---
@@ -48,7 +48,7 @@ This entry was deposited 2026-03-21 in Harvest H108 alongside [[Stoicism]] and [
 
 The entry's first `contradicts` links in the palace were the two `contradicts` between [[Stoicism]] and [[Confucianism]] that this entry sits between. The binary is not a thought experiment. It is the residue of an Adventure where two old teachers got honest with each other.
 
-The Zen master question — *how would a Zen master think of this binary?* — was carried in the entry as graffiti for six weeks before being answered. The answer arrived 2026-05-02 as a deliberate Dialectic: [[zhuangzi-epictetus-confucius-on-the-self]]. See § Excellent Adventure / Dialectic below.
+The Zen master question — *how would a Zen master think of this binary?* — was carried in the entry as graffiti for six weeks before being answered. The answer arrived 2026-05-02 as a deliberate Dialectic: [[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self|Zhuangzi, Epictetus, and Confucius on the End of the Self]]. See § Excellent Adventure / Dialectic below.
 
 **The Fortress ([[Stoicism]]):** The self is a sovereign interior. The *prohairesis* — the faculty of moral choice — is the one thing that cannot be owned, compelled, or taken. All external things (body, reputation, relationships, outcomes) are not truly ours. Virtue is the quality of the interior. The work is to strengthen the fortress: to become the kind of person whose equanimity cannot be disturbed by what happens outside. The good is within.
 
@@ -78,7 +78,7 @@ Meaning and the Link 2014 paper: Meaning is formed by relationships between, not
 
 ## Excellent Adventure / Dialectic
 
-[[zhuangzi-epictetus-confucius-on-the-self]] (2026-05-02) — the deliberate, archived Dialectic that brought a third voice into the binary. Zhuangzi entered askew, refused to answer the question, and surfaced a presupposition the entry had not previously named: that the question *where does the self end* assumes the self is the kind of thing with an end. The fortress and the threshold are both architectures of cultivation; Zhuangzi proposes the no-architecture position.
+[[Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self|Zhuangzi, Epictetus, and Confucius on the End of the Self]] (2026-05-02) — the deliberate, archived Dialectic that brought a third voice into the binary. Zhuangzi entered askew, refused to answer the question, and surfaced a presupposition the entry had not previously named: that the question *where does the self end* assumes the self is the kind of thing with an end. The fortress and the threshold are both architectures of cultivation; Zhuangzi proposes the no-architecture position.
 
 The Dialectic produced a yield this entry's prose alone could not reach:
 

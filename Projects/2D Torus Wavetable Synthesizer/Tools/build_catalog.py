@@ -577,21 +577,13 @@ def write_master_index() -> str:
         tier_lines[tier].append(f"- [[{title}]] — {summary}")
     body = textwrap.dedent("""\
         ---
-        title: 2D Wavetable Catalog
-        type: hub
-        pillars:
-          - tools
-          - creation
+        title: "2D Torus Wavetable Synthesizer — catalog — wavetables"
         born: 2026-04-26
-        stage: growing
-        status: active
+        forward_vector: "I am the index of every surface in the 2D torus wavetable library — what each one is, how it sounds, and why it earns a slot — and I want to become the map a player reads to choose a starting surface and hear what the geometry promises."
         links:
           - target: "[[2D Torus Wavetable Synthesizer]]"
             type: connects-to
             label: catalogues
-          - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
-            type: connects-to
-            label: chronicled-by
         ---
         # 2D Wavetable Catalog
 
@@ -663,8 +655,18 @@ def write_master_index() -> str:
         diagnostic and 01_sine_cycle_sweep when the dip becomes annoying; spectral-domain is
         the right tool when we get to surfaces that interpolate between symmetry classes
         (Membrane ↔ Chladni). Decision deferred — the current build is musical enough to keep
-        moving. See [[2D Torus Wavetable Synthesizer — Build Log]] §"The level-dip discovery"
-        for the math and the trade-off table.
+        moving.
+
+        **The math.** RMS² of a linear crossfade is `α²·rms₁² + (1−α)²·rms₂² + 2α(1−α)·⟨W₁, W₂⟩`.
+        The cross-term goes negative when the anchors are negatively correlated, which is what
+        produces the worst dip. For orthogonal anchors, like adjacent integer-cycle sines, it
+        vanishes and the midpoint RMS falls by √2.
+
+        | Approach | Behaviour | Trade-off |
+        |---|---|---|
+        | **Equal-power crossfade** (√α, √(1−α) factors) | Constant power for orthogonal anchors | Pumps up (+3 dB) for correlated anchors |
+        | **Constant-RMS post-normalization** (linear interp, then scale each row to target RMS = (1−α)·rms₁ + α·rms₂) | Robust for any pair, only modifies gain | Slight per-row gain rescaling; spectrum unchanged |
+        | **Spectral-domain interpolation** (interp magnitude spectra, choose phase) | Most musically correct cross-timbre morph (Serum-style) | More complex; phase choice matters; not a pure linear combination |
 
         ## Forward vectors
 
@@ -687,7 +689,7 @@ def write_master_index() -> str:
         - **Constant-RMS rebuild of [[00 — Test Diagnostic Wavetable]] and
           [[01 — Sine Cycle Sweep]]** when the level dip becomes annoying. Cheap.
         """)
-    out = f"{PROJ}/2D Wavetable Catalog.md"
+    out = f"{PROJ}/2D Torus Wavetable Synthesizer — catalog — wavetables.md"
     with open(out, "w") as f:
         f.write(body)
     return out
@@ -731,8 +733,8 @@ def build():
         print(f"  built {slug}: {len(audio)} samples, png {os.path.getsize(png_path)} bytes")
 
     idx_path = write_master_index()
-    # Note: master index lives at "2D Wavetable Catalog.md" (title-form,
-    # palace convention). See SCHEMA §3 "title must match filename".
+    # Note: the master index is a bundle file of the project, so its filename
+    # carries the entry prefix (SCHEMA — Reference §8) and matches its title.
     print(f"  wrote master index: {idx_path}")
 
 

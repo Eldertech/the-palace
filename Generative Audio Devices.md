@@ -19,13 +19,10 @@ links:
     type: connects-to
   - target: "[[Loudon Live]]"
     type: enables
-  - target: "[[PDL Renderer]]"
-    type: spawned
-    label: "first-fruit"
   - target: "[[VCV Patch Generator — spec — PDL generation prompt]]"
     type: spawned
     label: "left-to-right-half"
-  - target: "[[Synth Archetypes]]"
+  - target: "[[Generative Audio Devices — spec — synth archetypes]]"
     type: spawned
     label: "params-layer"
   - target: "[[Generative Preset Development]]"

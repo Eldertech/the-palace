@@ -51,7 +51,7 @@ links:
   - target: "[[The Drift]]"
     type: connects-to
     label: the-no-architecture-pole
-  - target: "[[spinoza-zhuangzi-on-striving]]"
+  - target: "[[Dialectic — dialectic — spinoza-zhuangzi-on-striving]]"
     type: connects-to
     label: archived-dialectic
   - target: "[[Philosopher Visits the Entry]]"

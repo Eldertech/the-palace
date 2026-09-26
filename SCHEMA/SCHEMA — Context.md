@@ -1,3 +1,13 @@
+---
+title: "SCHEMA — Context"
+born: 2026-07-08
+links:
+  - target: "[[SCHEMA]]"
+    type: connects-to
+    label: context-of
+forward_vector: "I hold the why behind SCHEMA — every version's rationale, keyed by section, and the design essays behind the vocabulary — so the card stays the live rules; read me in a Weave or a Schema Ceremony."
+---
+
 # SCHEMA — Context
 
 The rationale archive for [[SCHEMA]]. This is the card/context split of §6 applied to the type system itself: `SCHEMA.md` holds the **live TBox** an agent needs to create and validate entries; this companion holds the **change-history** — the dated Schema-Ceremony rationale blocks and the design essays that justify *why* the vocabulary is shaped the way it is.
@@ -58,7 +68,7 @@ Links: emerged-from [[SCHEMA]].
 
 ## §8 — Entry Bundles
 
-**Schema Ceremony rationale (2026-07-01, v1.14): ratified the person-citizen conventions; additive and descriptive.** The embodiable-citizen model for `person` entries — validated the same day by the first Dialectic between two made citizens ([[Spinoza and Meadows on the Threshold]]) and formalized in [[Making a Palace Citizen]] — carries three conventions this ceremony records: (1) the `dossier` bundle type (the deep research corpus for faithful embodiment); (2) `agency_profile` as a default on embodiable `person` entries, noted in §3.1 — the enchantment-target case the field was designed for; (3) the clarification in §1 that a `person` entry's `stage` tracks *palace citizenship* (born `seed`, growing through dispatch), not the human's completeness. **Additive and descriptive** — like v1.10–v1.12 it ratifies conventions already in practice. No entry type, link type, required field, stage lifecycle, or ceremony was added or removed; the `dossier` addition is a §8-exempt documentation act recorded here formally for discoverability. **Mirror impact: none** — no mirror doc (ROSETTA, README, SUBSTRATE, `_ops/Substrate Skill.md`, Palace Ceremonies) restates the §8 bundle-file vocabulary, `agency_profile`, or per-type stage semantics, and `person` already appears in every mirror's type list (added v1.11). Verified by `_ops/swarm/lint-doc-drift.py`.
+**Schema Ceremony rationale (2026-07-01, v1.14): ratified the person-citizen conventions; additive and descriptive.** The embodiable-citizen model for `person` entries — validated the same day by the first Dialectic between two made citizens ([[Dialectic — dialectic — spinoza-meadows-on-the-threshold|Spinoza and Meadows on the Threshold]]) and formalized in [[Making a Palace Citizen]] — carries three conventions this ceremony records: (1) the `dossier` bundle type (the deep research corpus for faithful embodiment); (2) `agency_profile` as a default on embodiable `person` entries, noted in §3.1 — the enchantment-target case the field was designed for; (3) the clarification in §1 that a `person` entry's `stage` tracks *palace citizenship* (born `seed`, growing through dispatch), not the human's completeness. **Additive and descriptive** — like v1.10–v1.12 it ratifies conventions already in practice. No entry type, link type, required field, stage lifecycle, or ceremony was added or removed; the `dossier` addition is a §8-exempt documentation act recorded here formally for discoverability. **Mirror impact: none** — no mirror doc (ROSETTA, README, SUBSTRATE, `_ops/Substrate Skill.md`, Palace Ceremonies) restates the §8 bundle-file vocabulary, `agency_profile`, or per-type stage semantics, and `person` already appears in every mirror's type list (added v1.11). Verified by `_ops/swarm/lint-doc-drift.py`.
 
 ---
 

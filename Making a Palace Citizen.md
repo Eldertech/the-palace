@@ -35,7 +35,7 @@ links:
   - target: "[[SCHEMA]]"
     type: connects-to
     label: needs-housekeeping
-  - target: "[[Spinoza and Meadows on the Threshold]]"
+  - target: "[[Dialectic — dialectic — spinoza-meadows-on-the-threshold]]"
     type: connects-to
     label: validation-run
   - target: "[[Threshold Conatus]]"
@@ -146,7 +146,7 @@ So a *single* lens is one citizen dispatched to one node; a *Dialectic* is sever
 
 - **[[Spinoza]]** — first flagship; the archetypal enchantment target.
 - **[[Donella Meadows]]** and **[[John Cage]]** — built the same day to test register spread (scientist, composer).
-- **Validation:** [[Spinoza and Meadows on the Threshold]] — the first Dialectic between two made citizens (true multi-agent isolation), which proved the model: distinct/opinionated/surprising voices, blindspots firing live, and the growth loop closing (both forward_vectors revised, link upgraded to `contradicts`). It also produced a real deposit — see [[Threshold Conatus]] § Homecoming or Becoming.
+- **Validation:** [[Dialectic — dialectic — spinoza-meadows-on-the-threshold|Spinoza and Meadows on the Threshold]] — the first Dialectic between two made citizens (true multi-agent isolation), which proved the model: distinct/opinionated/surprising voices, blindspots firing live, and the growth loop closing (both forward_vectors revised, link upgraded to `contradicts`). It also produced a real deposit — see [[Threshold Conatus]] § Homecoming or Becoming.
 
 ## The lab
 
