@@ -6,7 +6,6 @@ links:
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
   - { target: "[[Shop/ComfyUI]]", type: connects-to, label: produced-by }
   - { target: "[[Shop/FLUX (Hugging Face)]]", type: connects-to, label: midjourney-replacement }
-  - { target: "[[Shop/Midjourney]]", type: connects-to, label: supersedes-deprecated }
   - { target: "[[Flocking — Maker's Comparison Recommendation]]", type: mirrors, label: prior-comparison-shape }
 tags: [meta, shop, maker, comparison, recommendation, header]
 forward_vector: "I am the two-sided Comparison Phase D was meant to deliver — local-control ComfyUI vs cloud-aesthetic FLUX-Krea (the chosen Midjourney replacement). I name the call, revise the Selection Heuristic the prior single-vendor recommendation refused to update, and turn the dangling Round-1 Comparison into a closed loop."
@@ -69,7 +68,7 @@ Lesson for future Comparisons: a missing-half recommendation document is not a p
 
 ## Roster + frontmatter implications
 
-- [[Shop/Midjourney|Midjourney]]: **stub → deprecated** (`status: deprecated`, `superseded_by: Shop/FLUX (Hugging Face)`). Kept as a knowledge entry so the lineage is readable.
+- Midjourney: **stub → deprecated** (`status: deprecated`, `superseded_by: Shop/FLUX (Hugging Face)`). Kept as a knowledge entry so the lineage is readable.
 - [[Shop/FLUX (Hugging Face)|FLUX (Hugging Face)]]: **new entry, status: alive** — Phase D-2 is its first real job, and this Comparison Recommendation is its founding gotcha set.
 - [[Shop/Maker|Maker]] Selection Heuristics: revised per above.
 - [[Shop/Maker|Maker]] Roster: was 14 alive + 2 stub; now 14 alive + 1 alive (FLUX) + 1 stub (RNBO codebox~ smith) + 1 deprecated (Midjourney) = **15 alive, 1 stub, 1 deprecated**.
