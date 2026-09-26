@@ -219,7 +219,11 @@ describe('a ceremony in a real repo', () => {
     expect(r1.created).toBe(true);
     const file = path.join(root, '_ops/Return Ceremony/Return Ceremony — scroll.md');
     const text = readFileSync(file, 'utf8');
-    for (const m of Object.values(MARK)) expect(text).toContain(m);
+    for (const m of Object.values(MARK)) {
+      // A ceremony has no Plan zone — its plan is its tuning ledger's owed lines.
+      if (m === MARK.planStart || m === MARK.planEnd) expect(text).not.toContain(m);
+      else expect(text).toContain(m);
+    }
     expect(text).toContain('label: scroll-for');
     expect(text).toContain('The card [[Return Ceremony]] stays the spec');
     expect(readStandingOrders(text)).toBe('');   // the ceremony placeholder reads as no orders

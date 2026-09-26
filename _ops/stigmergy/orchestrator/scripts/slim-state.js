@@ -5,7 +5,7 @@
 //
 // Why this is safe to do as a bulk pass: after the cutover the orchestrator
 // reads stage/forward_vector LIVE from the entry frontmatter and derives
-// decision state from the append-only board (process-cycle.js / plan-file.js),
+// decision state from the append-only board (process-cycle.js),
 // so nothing reads these fields anymore. `process-cycle` also deletes them on
 // every write, so this script just brings the existing 19 to that state at once
 // instead of waiting for each to next cycle.

@@ -40,7 +40,7 @@ function buildConstruction({ home, stage, cycle, inc }) {
     inc.board && 'board slice since cursor (neighborhood-filtered)',
     inc.history && 'recent history',
     inc.pageChange && 'page-change notice',
-    inc.staging && 'staging arc when present',
+    inc.scroll && 'the scroll — Standing Orders, the Plan, Now',
     inc.schema !== false && 'then SCHEMA, the type system, after the page',
   ].filter(Boolean);
   const tier3What = `${home} injected in full as identity · state (iteration ${Math.max(0, cycle - 1)} · cursor · forward_vector)`
@@ -96,7 +96,7 @@ async function handleAgentLaunch(ctx) {
     board: includeRaw.board !== false,
     history: includeRaw.history !== false,
     pageChange: includeRaw.pageChange !== false,
-    staging: includeRaw.staging !== false,
+    scroll: includeRaw.scroll !== false,
   };
 
   // Build the interactive cycle prompt (injectable for tests so the route can be
@@ -142,7 +142,7 @@ async function handleAgentLaunch(ctx) {
 
 // The construction summary for an enchanted (awakened) page, by palace TIER.
 // Distinct from buildConstruction (the steward cycle): the woken page is not a
-// steward, so there is no posting discipline, no board/state/staging layers, no
+// steward, so there is no posting discipline, no board/state/scroll layers, no
 // cycle. Tier 3 is just the active surface a page wakes from — itself, its
 // desire, its neighbors — and the posture is the three desires.
 function buildAwakenConstruction({ home, stage }) {
@@ -182,7 +182,7 @@ async function handleEphemeralLaunch(ctx) {
 
   // `mandate` is an optional human note for this session ("wake and let's work on
   // X"). There are no context-layer toggles — a woken page is not a steward, so it
-  // has no board/state/history/staging layers to trim.
+  // has no board/state/history/scroll layers to trim.
   const mandate = typeof body.mandate === 'string' ? body.mandate.trim() : '';
 
   // `lensSubject` turns this wake into a LENS session ([[The Lens]]): the page

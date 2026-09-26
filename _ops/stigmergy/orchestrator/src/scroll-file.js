@@ -11,13 +11,19 @@
 //     entry's frontmatter + git EVERY time it is materialized — a grant Loudon
 //     files after the steward's last cycle shows up as "answered, not yet
 //     consumed" without waiting for a cycle;
+//   - its PLAN zone is the path agreed with Loudon. It is never regenerated:
+//     it changes only when Loudon agrees — saved on the deck, written by an
+//     elder on his yes, or a steward's proposal he adopts (a plan_revision ask
+//     granted with option `adopt`, applied here) — and every change lands on
+//     the making trail as a `plan-` section saying what changed and why;
 //   - its STANDING ORDERS zone is Loudon's and is never regenerated — the
 //     steward reads it every cycle before anything else;
 //   - its MAKING zone is append-only: each shipped thing on the board becomes
 //     one section keyed on the message id, so re-materializing never
 //     duplicates or deletes, and a human may append sections by hand.
 //
-// Three HTML-comment marker pairs delimit the zones. Regeneration rewrites ONLY
+// Four HTML-comment marker pairs delimit the zones (a ceremony's scroll has
+// no plan — its tuning ledger's owed lines are its plan). Regeneration rewrites ONLY
 // the text between `scroll:now:start/end`, and INSERTS new making sections
 // directly after `scroll:making:start` — every other byte is preserved.
 //
@@ -35,6 +41,8 @@ import { reconcilePendingRequests } from './process-cycle.js';
 export const MARK = {
   nowStart: '<!-- scroll:now:start -->',
   nowEnd: '<!-- scroll:now:end -->',
+  planStart: '<!-- scroll:plan:start -->',
+  planEnd: '<!-- scroll:plan:end -->',
   ordersStart: '<!-- scroll:orders:start -->',
   ordersEnd: '<!-- scroll:orders:end -->',
   makingStart: '<!-- scroll:making:start -->',
@@ -49,6 +57,9 @@ export const CEREMONY_ORDERS_PLACEHOLDER =
 
 export const PAGE_ORDERS_PLACEHOLDER =
   '_Loudon\'s standing direction for this page — never regenerated. A steward, if the page ever has one, reads it every cycle before anything else._';
+
+export const PLAN_PLACEHOLDER =
+  '_No plan agreed yet. Until there is one, the work leans on the page\'s forward vector. A plan is agreed with Loudon — he writes it here, or a steward proposes one as an ask and it lands here when he says yes._';
 
 const ORDERS_PLACEHOLDERS = new Set([ORDERS_PLACEHOLDER, CEREMONY_ORDERS_PLACEHOLDER, PAGE_ORDERS_PLACEHOLDER]);
 
@@ -87,7 +98,7 @@ function firstParagraph(text, max = 700) {
 }
 
 // Payload keys that are wire plumbing, never prose worth showing on a trail.
-const PLUMBING_KEYS = new Set(['kind', 'entry', 'entry_path', 'turn_id', 'in_reply_to', 'worktree', 'headline', 'ground', 'catchup', 'content', 'rationale', 'summary', 'subject', 'artifacts', 'artifact_path', 'caption', 'options', 'table', 'left_rough', 'next_moves', 'equations', 'resource', 'blocking', 'choice_mode', 'prompt', 'request_id']);
+const PLUMBING_KEYS = new Set(['kind', 'entry', 'entry_path', 'turn_id', 'in_reply_to', 'worktree', 'headline', 'ground', 'catchup', 'content', 'rationale', 'summary', 'subject', 'artifacts', 'artifact_path', 'caption', 'options', 'table', 'left_rough', 'next_moves', 'equations', 'resource', 'blocking', 'choice_mode', 'prompt', 'request_id', 'plan', 'off_plan']);
 
 /**
  * The prose a message carries, in order of preference: the canonical fields,
@@ -198,15 +209,27 @@ function cycleIndex(history) {
   return idx;
 }
 
+/**
+ * A made thing a steward flagged as off plan: `payload.off_plan` is the one-line
+ * direction it argues for (or `true`). Returns the direction ('' when only
+ * flagged), or null when the thing was made on plan.
+ */
+export function offPlanDirection(p) {
+  if (!p || p.off_plan == null || p.off_plan === false) return null;
+  return typeof p.off_plan === 'string' ? p.off_plan.trim() : '';
+}
+
 /** Render one shipped message as a making section. */
 export function renderMakingSection(m, { cycle } = {}) {
   const p = m.payload || {};
   const headline = p.headline || p.subject || p.move || p.verdict || p.note || (p.kind ? p.kind.replace(/_/g, ' ') : m.type.toLowerCase());
   const cyc = cycle != null ? ` — cycle ${cycle}` : '';
+  const offPlan = offPlanDirection(p);
   const lines = [];
   lines.push(`<!-- scroll:entry id="${m.id}" -->`);
-  lines.push(`### ${day(m.ts)}${cyc} — ${headline}`);
+  lines.push(`### ${day(m.ts)}${cyc} — ${offPlan != null ? 'Off plan — ' : ''}${headline}`);
   if (p.ground) lines.push(`> ${p.ground}`);
+  if (offPlan != null) { lines.push(''); lines.push(`_Off plan${offPlan ? ` — ${offPlan}` : ''}. Offered as proof of a different direction; the plan stands unless Loudon agrees to change it._`); }
   const body = payloadProse(p);
   if (body) { lines.push(''); lines.push(body); }
   const artifacts = [];
@@ -283,7 +306,7 @@ export function lastGitTouch(palaceRoot, paths) {
  * (board, state, history, entry meta) — the filesystem/git reads happen in
  * materializeScroll and are passed in.
  */
-export function computeNow({ home, board = [], state = null, history = [], meta = {}, entryText = '', tsNow, lastTouch = null, bundleMedia = [] }) {
+export function computeNow({ home, board = [], state = null, history = [], meta = {}, entryText = '', tsNow, lastTouch = null, bundleMedia = [], plan = null }) {
   const own = ownMessages(board, home);
   const { stillPending, nowResolved } = reconcilePendingRequests(board, home);
   const lastActiveMs = state && state.last_active ? Date.parse(state.last_active) : NaN;
@@ -317,6 +340,17 @@ export function computeNow({ home, board = [], state = null, history = [], meta 
   for (let i = spoken.length - 1; i >= 0 && !stands; i--) if (isMakingMessage(spoken[i])) stands = firstParagraph(payloadProse(spoken[i].payload));
   for (let i = spoken.length - 1; i >= 0 && !stands; i--) stands = firstParagraph(payloadProse(spoken[i].payload));
 
+  // The plan: agreed or not, when it last changed, how much has been made since,
+  // and whether a proposed revision is waiting on Loudon.
+  const planInfo = plan || { text: '', revised: null };
+  const revisedMs = planInfo.revised ? Date.parse(planInfo.revised) : NaN;
+  const planView = {
+    agreed: !!planInfo.text,
+    revised: planInfo.revised || null,
+    shipped_since: Number.isNaN(revisedMs) ? null : shipped.filter((m) => { const t = Date.parse(m.ts); return !Number.isNaN(t) && t > revisedMs; }).length,
+    waiting: stillPending.filter((r) => r.kind === 'plan_revision').length,
+  };
+
   return {
     type: typeof meta?.data?.type === 'string' ? meta.data.type : null,
     status: typeof meta?.data?.status === 'string' ? meta.data.status : null,
@@ -331,11 +365,22 @@ export function computeNow({ home, board = [], state = null, history = [], meta 
     latest_spoken_ts: latestSpoken ? latestSpoken.ts : null,
     stall,
     drift,
+    plan: planView,
     stands,
     last_touch: lastTouch,
     bundle_media_count: bundleMedia.length,
     ts_now: tsNow,
   };
+}
+
+/** The Now zone's one-line read of the plan. */
+function planLine(now) {
+  const p = now.plan || { agreed: false };
+  const waiting = p.waiting ? ` · **a proposed revision is waiting on you**` : '';
+  if (!p.agreed) return `none agreed yet — the work leans on the forward vector${waiting}`;
+  if (!p.revised) return `agreed (no dated change on the trail yet)${waiting}`;
+  const made = p.shipped_since == null ? '' : ` · ${p.shipped_since} made thing${p.shipped_since === 1 ? '' : 's'} since`;
+  return `agreed ${day(p.revised)} (${ago(p.revised, now.ts_now)})${made}${waiting}`;
 }
 
 /** Render the NOW zone (between the markers, markers excluded). */
@@ -344,12 +389,13 @@ export function renderNow(now, { home }) {
   const L = [];
   L.push('## Now');
   L.push('');
-  L.push(`> _Regenerated ${dash(now.ts_now)} from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._`);
+  L.push(`> _Regenerated ${dash(now.ts_now)} from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the ${noun} is steered by the **Plan** and **Standing Orders** below, never here._`);
   L.push('');
   const stewardBit = now.stewarded
     ? `**Steward:** cycle ${dash(now.iteration)} · last ran ${day(now.last_active)}${now.last_active ? ` (${ago(now.last_active, now.ts_now)})` : ''}`
     : `**Steward:** none — this ${noun} has no permanent steward yet`;
   L.push(`- **Status:** ${dash(now.status)} · **Stage:** ${dash(now.stage)} · ${stewardBit}`);
+  L.push(`- **Plan:** ${planLine(now)}`);
   L.push(`- **Waiting on you:** ${now.open.length ? `${now.open.length} open ask${now.open.length === 1 ? '' : 's'}${now.open.some((r) => r.blocking) ? ' — one of them has the steward paused' : ''}` : 'nothing'}`);
   if (now.stewarded) {
     L.push(`- **Ready to advance:** ${now.answered_unconsumed.length ? `${now.answered_unconsumed.length} answer${now.answered_unconsumed.length === 1 ? '' : 's'} filed since the steward last ran — a cycle will consume ${now.answered_unconsumed.length === 1 ? 'it' : 'them'}` : 'no unread answers'}`);
@@ -377,7 +423,7 @@ export function renderNow(now, { home }) {
   L.push('');
   if (!now.open.length) L.push('_None — nothing is waiting on you._');
   for (const r of now.open) {
-    L.push(`- \`${r.request_id}\` — ${dash(r.decision_topic || r.resource)}${r.blocking ? ' · **steward paused on this**' : ''} · posted ${day(r.posted_at)}${optionsLine(r.options) ? ` · options: ${optionsLine(r.options)}` : ''}`);
+    L.push(`- \`${r.request_id}\` — ${r.kind === 'plan_revision' ? 'proposed plan revision: ' : ''}${dash(r.decision_topic || r.resource)}${r.blocking ? ' · **steward paused on this**' : ''} · posted ${day(r.posted_at)}${optionsLine(r.options) ? ` · options: ${optionsLine(r.options)}` : ''}`);
   }
   if (now.stewarded) {
     L.push('');
@@ -402,20 +448,20 @@ export function renderNow(now, { home }) {
 // has run since it changed; any other page's on its state and what was made.
 const SKELETON_VOICE = {
   project: {
-    vector: (h) => `I am ${h}'s scroll — the one page that always opens on where the project stands now, then reads down through everything it has made, newest first. My top is regenerated from the board and the palace whenever anyone looks; my standing orders are Loudon's and never regenerated; my trail only ever grows.`,
-    intro: (h) => `> The project's front door. **Now** is regenerated on every look; **Standing Orders** are Loudon's; **The making** is the trail, newest first. Rendered in [[STIGMERGY]]'s PROJECTS deck; the entry [[${h}]] stays the considered truth and this is the live one. See [[The Scroll]].`,
+    vector: (h) => `I am ${h}'s scroll — the one page that always opens on where the project stands now and the plan it is following, then reads down through everything it has made, newest first. My top is regenerated from the board and the palace whenever anyone looks; my plan changes only when Loudon agrees, and every change is logged on my trail; my standing orders are Loudon's; my trail only ever grows.`,
+    intro: (h) => `> The project's front door. **Now** is regenerated on every look; the **Plan** is the path agreed with Loudon, changed only with his yes; **Standing Orders** are Loudon's; **The making** is the trail, newest first. Rendered in [[STIGMERGY]]'s PROJECTS deck; the entry [[${h}]] stays the considered truth and this is the live one. See [[The Scroll]].`,
   },
   ceremony: {
     vector: (h) => `I am ${h}'s scroll — the one page that opens on which version of the ceremony is live, whether it has run since it last changed, and what its tuning ledger still owes, then reads down through its runs and version changes, newest first. My top is regenerated whenever anyone looks; my standing orders are Loudon's; my trail only ever grows.`,
     intro: (h) => `> The ceremony's front door. **Now** is regenerated on every look — its version, its runs since the spec last changed, what its ledger owes; **Standing Orders** are Loudon's; **The making** is the trail of runs and version changes, newest first. The card [[${h}]] stays the spec, and its lessons live in [[${h} — tuning]]. Rendered in [[STIGMERGY]]'s PROJECTS deck. See [[The Scroll]].`,
   },
   page: {
-    vector: (h) => `I am ${h}'s scroll — the page's front door, opening on where it stands now and reading down through what was made from it, newest first. My top is regenerated whenever anyone looks; my standing orders are Loudon's; my trail only ever grows.`,
-    intro: (h) => `> The page's front door. **Now** is regenerated on every look; **Standing Orders** are Loudon's; **The making** is the trail, newest first. The entry [[${h}]] stays the considered truth and this is the live one. See [[The Scroll]].`,
+    vector: (h) => `I am ${h}'s scroll — the page's front door, opening on where it stands now and the plan it is following, then reading down through what was made from it, newest first. My top is regenerated whenever anyone looks; my plan changes only when Loudon agrees; my standing orders are Loudon's; my trail only ever grows.`,
+    intro: (h) => `> The page's front door. **Now** is regenerated on every look; the **Plan** is the path agreed with Loudon, changed only with his yes; **Standing Orders** are Loudon's; **The making** is the trail, newest first. The entry [[${h}]] stays the considered truth and this is the live one. See [[The Scroll]].`,
   },
 };
 
-export function renderSkeleton({ home, born, nowText, ordersText = ORDERS_PLACEHOLDER, makingText = '', kind = 'project' }) {
+export function renderSkeleton({ home, born, nowText, planText = PLAN_PLACEHOLDER, ordersText = ORDERS_PLACEHOLDER, makingText = '', kind = 'project' }) {
   const voice = SKELETON_VOICE[kind] || SKELETON_VOICE.project;
   const fm = [
     '---',
@@ -439,6 +485,8 @@ export function renderSkeleton({ home, born, nowText, ordersText = ORDERS_PLACEH
     nowText,
     MARK.nowEnd,
     '',
+    // A ceremony's plan is its tuning ledger's owed lines, which Now shows.
+    ...(kind === 'ceremony' ? [] : ['## Plan', '', MARK.planStart, planText, MARK.planEnd, '']),
     '## Standing Orders',
     '',
     MARK.ordersStart,
@@ -469,6 +517,129 @@ export function readStandingOrders(text) {
   if (z == null) return '';
   const t = z.trim();
   return ORDERS_PLACEHOLDERS.has(t) ? '' : t;
+}
+
+/** Read the agreed plan from a scroll (placeholder or no zone → ''). */
+export function readPlan(text) {
+  const z = readZone(text, MARK.planStart, MARK.planEnd);
+  if (z == null) return '';
+  const t = z.trim();
+  return t === PLAN_PLACEHOLDER ? '' : t;
+}
+
+/**
+ * The plan and when it last changed: the newest `plan-` section on the making
+ * trail (the trail is newest-first, so the first one found) carries the moment
+ * Loudon agreed in its footer (`agreed <iso>`), or at least in its heading date.
+ */
+export function readPlanInfo(text) {
+  const plan = readPlan(text);
+  const making = readZone(text, MARK.makingStart, MARK.makingEnd) || '';
+  const m = /<!--\s*scroll:entry id="(plan-[^"]+)"\s*-->([\s\S]*?)<!--\s*\/scroll:entry\s*-->/.exec(making);
+  if (!m) return { text: plan, revised: null, id: null };
+  const agreed = /agreed (\d{4}-\d{2}-\d{2}T[0-9:.]+Z?)/.exec(m[2]);
+  const heading = /^###\s+(\d{4}-\d{2}-\d{2})/m.exec(m[2]);
+  return { text: plan, revised: agreed ? agreed[1] : (heading ? heading[1] : null), id: m[1] };
+}
+
+/**
+ * Give an older scroll its Plan zone (empty, the placeholder) just above
+ * Standing Orders. Idempotent; a scroll that already has one is untouched.
+ */
+export function ensurePlanZone(text) {
+  const t = String(text || '');
+  if (t.includes(MARK.planStart)) return t;
+  const zone = `## Plan\n\n${MARK.planStart}\n${PLAN_PLACEHOLDER}\n${MARK.planEnd}\n\n`;
+  const os = t.indexOf(MARK.ordersStart);
+  if (os >= 0) {
+    const h = t.lastIndexOf('## Standing Orders', os);
+    const at = h >= 0 ? h : os;
+    return t.slice(0, at) + zone + t.slice(at);
+  }
+  const ne = t.indexOf(MARK.nowEnd);
+  if (ne < 0) return t;
+  const at = ne + MARK.nowEnd.length;
+  return t.slice(0, at) + '\n\n' + zone.trimEnd() + t.slice(at);
+}
+
+/** The trail section a plan change leaves: what changed, why, and the plan it replaced. */
+export function renderPlanSection({ id, headline = '', why = '', by = '', ts, previous = '' }) {
+  const L = [];
+  L.push(`<!-- scroll:entry id="${id}" -->`);
+  L.push(`### ${day(ts)} — ${previous ? 'Plan revised' : 'Plan agreed'}${headline ? `: ${headline}` : ''}`);
+  if (why && String(why).trim()) { L.push(''); L.push(String(why).trim()); }
+  if (previous) {
+    L.push('');
+    L.push('_The plan before this change:_');
+    L.push('');
+    L.push(previous.split('\n').map((l) => (l.trim() ? `> ${l}` : '>')).join('\n'));
+  }
+  L.push(`<sub>\`${id}\` · plan ${previous ? 'revised' : 'agreed'} · agreed ${ts}${by ? ` · ${by}` : ''}</sub>`);
+  L.push('<!-- /scroll:entry -->');
+  return L.join('\n');
+}
+
+/**
+ * Change the plan: replace the Plan zone and log the change as a `plan-` section
+ * at the top of the making trail. The one write path for every plan change —
+ * the deck, an elder's CLI write on Loudon's yes, and an adopted proposal all
+ * come through here. Idempotent on `id`; refuses text carrying scroll markers.
+ */
+export function applyPlan(existing, { plan, id, headline = '', why = '', by = '', ts = new Date().toISOString() }) {
+  const text = ensurePlanZone(existing);
+  const pid = id || `plan-${ts.replace(/[:.]/g, '-')}`;
+  if (existingEntryIds(text).has(pid)) return { applied: false, text, reason: 'already-applied' };
+  const body = String(plan || '').trim();
+  if (/<!--\s*\/?scroll:/.test(body)) return { applied: false, text, reason: 'plan-contains-scroll-markers' };
+  const previous = readPlan(text);
+  if (body === previous) return { applied: false, text, reason: 'unchanged' };
+  const ps = text.indexOf(MARK.planStart);
+  const pe = text.indexOf(MARK.planEnd, ps);
+  const ms = text.indexOf(MARK.makingStart);
+  if (ps < 0 || pe < 0) return { applied: false, text, reason: 'plan-markers-missing' };
+  if (ms < 0) return { applied: false, text, reason: 'making-marker-missing' };
+  let next = text.slice(0, ps + MARK.planStart.length) + '\n' + (body || PLAN_PLACEHOLDER) + '\n' + text.slice(pe);
+  const at = next.indexOf(MARK.makingStart) + MARK.makingStart.length;
+  next = next.slice(0, at) + '\n' + renderPlanSection({ id: pid, headline, why, by, ts, previous }) + '\n' + next.slice(at);
+  return { applied: true, text: next, id: pid };
+}
+
+/**
+ * A steward's proposed plans that Loudon adopted: its `plan_revision` asks
+ * (a RESOURCE_REQUEST carrying the whole revised plan in `payload.plan`) whose
+ * latest answer is a RESOURCE_GRANT choosing option `adopt`. Board order.
+ */
+export function adoptedPlanRevisions(board, home) {
+  const answers = new Map();
+  for (const m of board) if (m && (m.type === 'RESOURCE_GRANT' || m.type === 'RESOURCE_DENY') && m.re) answers.set(m.re, m);
+  const out = [];
+  for (const m of board) {
+    if (!m || m.type !== 'RESOURCE_REQUEST' || m.from !== home) continue;
+    const p = m.payload || {};
+    if (p.kind !== 'plan_revision' || typeof p.plan !== 'string' || !p.plan.trim()) continue;
+    const rid = m.request_id || m.id;
+    const g = answers.get(rid);
+    if (!g || g.type !== 'RESOURCE_GRANT' || (g.payload && g.payload.option_id) !== 'adopt') continue;
+    out.push({ ask: m, grant: g, request_id: rid });
+  }
+  return out;
+}
+
+/** Apply every adopted proposal not yet on the trail (keyed `plan-<request id>`). */
+export function applyAdoptedPlans(text, board, home) {
+  let t = text;
+  const applied = [];
+  for (const { ask, grant, request_id: rid } of adoptedPlanRevisions(board, home)) {
+    const p = ask.payload || {};
+    const notes = grant.payload && grant.payload.notes ? `Loudon: "${String(grant.payload.notes).trim()}"` : '';
+    const why = [firstParagraph(p.rationale || p.content || p.catchup || '', 1200), notes].filter(Boolean).join('\n\n');
+    const r = applyPlan(t, {
+      plan: p.plan, id: `plan-${rid}`, headline: p.headline || p.decision_topic || '', why,
+      by: `proposed by ${home}'s steward (\`${rid}\`), adopted by Loudon (\`${grant.id}\`)`, ts: grant.ts,
+    });
+    if (r.applied) { t = r.text; applied.push(rid); }
+  }
+  return { text: t, applied };
 }
 
 /**
@@ -535,9 +706,6 @@ export function materializeScroll(opts) {
   const lastTouch = lastGitTouch(palaceRoot, [relative(palaceRoot, entryFile), relative(palaceRoot, bundleDir)].filter(Boolean));
   const bundleMedia = scanBundleMediaFiles(palaceRoot, bundleDir);
 
-  const now = computeNow({ home, board, state, history, meta, entryText, tsNow, lastTouch, bundleMedia });
-  const nowText = renderNow(now, { home });
-
   const scrollPath = join(bundleDir, `${home} — scroll.md`);
   const existing = existsSync(scrollPath) ? readFileSync(scrollPath, 'utf8') : null;
   const have = existingEntryIds(existing || '');
@@ -547,7 +715,6 @@ export function materializeScroll(opts) {
   const newSections = making.slice().reverse().map((m) => renderMakingSection(m, { cycle: cycles.get(m.id) }));
 
   let text;
-  let applied = true;
   if (existing == null) {
     let seed = newSections.join('\n\n');
     if (!seed && bundleMedia.length) {
@@ -557,16 +724,23 @@ export function materializeScroll(opts) {
     }
     const kind = fm.type && fm.type !== 'project' ? 'page' : 'project';
     text = renderSkeleton({
-      home, born: day(tsNow), nowText, kind,
+      home, born: day(tsNow), nowText: '', kind,
       ordersText: kind === 'page' && !state ? PAGE_ORDERS_PLACEHOLDER : ORDERS_PLACEHOLDER,
       makingText: seed || '_Nothing made yet — the first shipped thing will open the trail._',
     });
   } else {
-    const r = updateScrollText(existing, { nowText, newSections });
-    applied = r.applied;
-    text = r.text;
-    if (!applied) return { written: false, reason: r.reason, scrollPath };
+    const r = updateScrollText(existing, { nowText: '', newSections });
+    if (!r.applied) return { written: false, reason: r.reason, scrollPath };
+    // An older scroll gains its (empty) Plan zone the first time it is regenerated.
+    text = ensurePlanZone(r.text);
   }
+
+  // A proposal Loudon adopted since the last look becomes the plan, and the
+  // change lands on the trail. Then Now is computed against the plan as it stands.
+  const adopted = applyAdoptedPlans(text, board, home);
+  text = adopted.text;
+  const now = computeNow({ home, board, state, history, meta, entryText, tsNow, lastTouch, bundleMedia, plan: readPlanInfo(text) });
+  text = updateScrollText(text, { nowText: renderNow(now, { home }), newSections: [] }).text;
 
   if (!dryRun) {
     if (!existsSync(bundleDir)) mkdirSync(bundleDir, { recursive: true });
@@ -578,8 +752,30 @@ export function materializeScroll(opts) {
     scrollPath,
     bundleDir,
     added_sections: newSections.length,
+    plan_adopted: adopted.applied,
     now: { open: now.open.length, answered_unconsumed: now.answered_unconsumed.length, stalled: now.stall.stalled, iteration: now.iteration },
   };
+}
+
+/**
+ * Write an agreed plan into a project's (or page's) scroll — the deck's save and
+ * an elder's CLI write on Loudon's yes. Creates the scroll first if needed, logs
+ * the change on the trail (`why` says what changed and why), then regenerates Now.
+ * Not for ceremonies: a ceremony's plan is its tuning ledger's owed lines.
+ */
+export function writePlan({ palaceRoot, home, plan, headline = '', why = '', by = 'Loudon', agentDir, ts = new Date().toISOString() }) {
+  const bundle = resolveBundleDir(palaceRoot, home);
+  if (!bundle) return { error: 'entry-file-not-found' };
+  const scrollPath = join(bundle.bundleDir, `${home} — scroll.md`);
+  if (!existsSync(scrollPath)) {
+    const r = materializeScroll({ palaceRoot, home, agentDir, tsNow: ts });
+    if (!r.written) return { error: r.reason || 'could-not-create-scroll' };
+  }
+  const r = applyPlan(readFileSync(scrollPath, 'utf8'), { plan, headline, why, by, ts });
+  if (!r.applied) return { error: r.reason, path: relative(palaceRoot, scrollPath) };
+  writeFileSync(scrollPath, r.text);
+  materializeScroll({ palaceRoot, home, agentDir, tsNow: ts });
+  return { written: true, id: r.id, path: relative(palaceRoot, scrollPath) };
 }
 
 /** Palace-relative path of a project's scroll, or null if the entry is missing. */

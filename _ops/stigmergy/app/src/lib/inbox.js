@@ -314,6 +314,9 @@ export function buildInbox(messages) {
         // path already provides. The steward should say so itself (see
         // prompts/shared.md); this derivation catches the ones that don't.
         kind: deriveKind(payload),
+        // A plan revision carries the whole proposed plan; the card shows it
+        // above the question so Loudon reads what he is adopting.
+        proposed_plan: payload.kind === 'plan_revision' && typeof payload.plan === 'string' && payload.plan.trim() ? payload.plan.trim() : null,
         headline,
         ground,
         rationale,

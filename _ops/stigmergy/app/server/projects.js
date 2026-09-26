@@ -28,6 +28,7 @@ import { listProjectEntries, stewardIndex } from '../../orchestrator/src/scroll.
 import {
   MARK, ORDERS_PLACEHOLDER, computeNow, renderNow, renderSkeleton, readZone, readStandingOrders,
   updateScrollText, materializeScroll, lastGitTouch, scanBundleMediaFiles,
+  readPlan, readPlanInfo, ensurePlanZone, applyAdoptedPlans, writePlan as writePlanFile,
 } from '../../orchestrator/src/scroll-file.js';
 import { resolveBundleDir, findEntryFile } from '../../orchestrator/src/entry-paths.js';
 import {
@@ -243,6 +244,7 @@ function readCeremonyScroll({ palaceRoot, home, write, now }) {
     text: r.text,
     zones: {
       now: readZone(r.text, MARK.nowStart, MARK.nowEnd) || '',
+      plan: '',
       orders: readStandingOrders(r.text),
       making: readZone(r.text, MARK.makingStart, MARK.makingEnd) || '',
     },
@@ -289,18 +291,17 @@ export function readScroll({ palaceRoot, home, write = false, now = new Date().t
   const fm = parseFrontmatter(entryText);
   const lastTouch = lastGitTouch(palaceRoot, [relative(palaceRoot, bundle.entryFile), relative(palaceRoot, bundle.bundleDir)]);
   const bundleMedia = scanBundleMediaFiles(palaceRoot, bundle.bundleDir);
-  const nowView = computeNow({ home, board, state, history, meta: { stage: fm.stage, data: fm }, entryText, tsNow: now, lastTouch, bundleMedia });
-  const nowText = renderNow(nowView, { home });
 
+  // The same steps the materializer takes, in memory: the Plan zone an older
+  // scroll lacks, any proposal Loudon adopted since the last write, then Now.
   const exists = existsSync(scrollPath);
-  let text;
-  if (exists) {
-    const onDisk = readFileSync(scrollPath, 'utf8');
-    const r = updateScrollText(onDisk, { nowText, newSections: [] });
-    text = r.applied ? r.text : onDisk;
-  } else {
-    text = renderSkeleton({ home, born: now.slice(0, 10), nowText, makingText: '_Nothing made yet — the first shipped thing will open the trail._' });
-  }
+  let text = exists
+    ? ensurePlanZone(readFileSync(scrollPath, 'utf8'))
+    : renderSkeleton({ home, born: now.slice(0, 10), nowText: '', makingText: '_Nothing made yet — the first shipped thing will open the trail._' });
+  text = applyAdoptedPlans(text, board, home).text;
+  const nowView = computeNow({ home, board, state, history, meta: { stage: fm.stage, data: fm }, entryText, tsNow: now, lastTouch, bundleMedia, plan: readPlanInfo(text) });
+  const r = updateScrollText(text, { nowText: renderNow(nowView, { home }), newSections: [] });
+  if (r.applied) text = r.text;
   return {
     home,
     path: relative(palaceRoot, scrollPath),
@@ -308,13 +309,14 @@ export function readScroll({ palaceRoot, home, write = false, now = new Date().t
     text,
     zones: {
       now: readZone(text, MARK.nowStart, MARK.nowEnd) || '',
+      plan: readPlan(text),
       orders: readStandingOrders(text),
       making: readZone(text, MARK.makingStart, MARK.makingEnd) || '',
     },
     now: {
       status: nowView.status, stage: nowView.stage, stewarded: nowView.stewarded, iteration: nowView.iteration,
       last_active: nowView.last_active, open: nowView.open, answered_unconsumed: nowView.answered_unconsumed,
-      stalled: nowView.stall.stalled, drift: nowView.drift, stands: nowView.stands,
+      stalled: nowView.stall.stalled, drift: nowView.drift, stands: nowView.stands, plan: nowView.plan,
       last_shipped: nowView.last_shipped ? { id: nowView.last_shipped.id, ts: nowView.last_shipped.ts } : null,
     },
     steward: s ? { dir: s.dir, agent_id: s.agent_id } : null,
@@ -362,6 +364,21 @@ export function writeStandingOrders({ palaceRoot, home, orders, now = new Date()
   writeFileSync(scrollPath, next);
   // Refresh the Now zone on disk too (a save is a look).
   materializeAnyScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, tsNow: now });
+  return readScroll({ palaceRoot, home, now });
+}
+
+/**
+ * Write the agreed plan from the deck — Loudon's own edit, so it goes in as
+ * agreed. The change is logged on the scroll's trail with his `why`. A
+ * ceremony has no Plan zone (its plan is its tuning ledger's owed lines).
+ * Returns the updated readScroll.
+ */
+export function writePlan({ palaceRoot, home, plan, why = '', headline = '', now = new Date().toISOString() }) {
+  if (!resolveBundleDir(palaceRoot, home)) return { error: 'entry-file-not-found' };
+  if (isCeremony(palaceRoot, home)) return { error: 'ceremony-has-no-plan' };
+  const s = stewardIndex(palaceRoot).get(home) || null;
+  const r = writePlanFile({ palaceRoot, home, plan, why, headline, by: 'Loudon, on the PROJECTS deck', agentDir: s ? s.dir : undefined, ts: now });
+  if (r.error) return r;
   return readScroll({ palaceRoot, home, now });
 }
 

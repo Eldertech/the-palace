@@ -7,6 +7,8 @@
 //   node _ops/stigmergy/orchestrator/src/scroll.js --all --dry-run  # report, write nothing
 //   node _ops/stigmergy/orchestrator/src/scroll.js --ceremonies     # every ceremony (entries with a tuning ledger)
 //   node _ops/stigmergy/orchestrator/src/scroll.js --home "Weave Ceremony"   # any page; a ceremony gets a ceremony's scroll
+//   node _ops/stigmergy/orchestrator/src/scroll.js --home "Crystal Synthesizer" --plan plan.md --why "what changed and why" [--headline "…"] [--by "…"]
+//        # write an agreed plan (only on Loudon's yes); the change is logged on the trail
 //
 // `--all` walks every `type: project` entry whose status is `active` (or has
 // no status) — stewarded or not — and joins each to its steward via
@@ -17,8 +19,8 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { resolve, join, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { materializeScroll } from './scroll-file.js';
-import { listCeremonies, materializeCeremonyScroll, materializeAnyScroll } from './ceremony-scroll.js';
+import { materializeScroll, writePlan } from './scroll-file.js';
+import { listCeremonies, materializeCeremonyScroll, materializeAnyScroll, isCeremony } from './ceremony-scroll.js';
 import { parseFrontmatter } from './entry-frontmatter.js';
 import { EXCLUDE_DIRS } from './entry-paths.js';
 import { readRegistry } from './registry.js';
@@ -78,6 +80,15 @@ function main() {
   const palaceRoot = resolve(arg('--root', PALACE_ROOT_DEFAULT));
   const dryRun = argv.includes('--dry-run');
   const home = arg('--home');
+  if (home && arg('--plan')) {
+    if (isCeremony(palaceRoot, home)) { process.stderr.write('a ceremony has no Plan zone — its plan is its tuning ledger\'s owed lines\n'); process.exit(2); }
+    const s = stewardIndex(palaceRoot).get(home);
+    const plan = readFileSync(resolve(arg('--plan')), 'utf8');
+    const r = writePlan({ palaceRoot, home, plan, headline: arg('--headline', ''), why: arg('--why', ''), by: arg('--by', 'Loudon'), agentDir: s ? s.dir : undefined });
+    process.stdout.write(JSON.stringify(r, null, 2) + '\n');
+    if (r.error) process.exit(1);
+    return;
+  }
   if (home) {
     const s = stewardIndex(palaceRoot).get(home);
     const { text, state, ...r } = materializeAnyScroll({ palaceRoot, home, agentDir: s ? s.dir : undefined, dryRun });
@@ -97,7 +108,7 @@ function main() {
     process.stdout.write(JSON.stringify(rs, null, 2) + '\n');
     return;
   }
-  process.stderr.write('usage: node scroll.js (--home "<Title>" | --all [--include-inactive] | --ceremonies) [--dry-run] [--root <palace>]\n');
+  process.stderr.write('usage: node scroll.js (--home "<Title>" [--plan <file> --why "…"] | --all [--include-inactive] | --ceremonies) [--dry-run] [--root <palace>]\n');
   process.exit(2);
 }
 

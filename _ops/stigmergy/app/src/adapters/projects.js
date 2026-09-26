@@ -37,6 +37,21 @@ export async function saveStandingOrders(home, orders) {
   }
 }
 
+export async function savePlan(home, plan, why) {
+  try {
+    const res = await fetch('/api/projects/plan', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ home, plan, why }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return { ok: false, status: res.status, error: data.error || `http ${res.status}` };
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}
+
 export async function enchantProject(home) {
   try {
     const res = await fetch('/api/projects/enchant', {

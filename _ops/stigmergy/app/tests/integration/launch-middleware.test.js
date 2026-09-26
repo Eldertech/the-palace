@@ -133,10 +133,10 @@ describe('POST /api/launch/agent', () => {
     let built = null;
     const buildCyclePromptImpl = (o) => { built = o; return { full: 'P' }; };
     const res = await request(makeServer(root, { stewardLane, buildCyclePromptImpl }))
-      .post('/api/launch/agent').send({ home: 'Kuramoto Coupling', include: { board: false, staging: false }, preview: true });
+      .post('/api/launch/agent').send({ home: 'Kuramoto Coupling', include: { board: false, scroll: false }, preview: true });
     expect(res.status).toBe(200);
     // normalized: only the toggled-off layers go false; the rest default true
-    expect(built.include).toEqual({ board: false, history: true, pageChange: true, staging: false });
+    expect(built.include).toEqual({ board: false, history: true, pageChange: true, scroll: false });
     expect(res.body.construction.include.board).toBe(false);
     // Tier-3 text reflects the trim
     expect(res.body.construction.tiers[3].what).not.toMatch(/board slice/i);

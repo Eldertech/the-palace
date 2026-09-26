@@ -1,13 +1,13 @@
 // entry-paths.js — resolve a palace entry's file and its bundle folder from a
 // title alone. The orchestrator joins a steward to its entry by `home` (the
-// exact entry title); everything entry-local — the bundle, its plan.md, its
-// staging.md — is derivable from that one field. This module is that hinge.
+// exact entry title); everything entry-local — the bundle, its scroll — is
+// derivable from that one field. This module is that hinge.
 //
 // Obsidian resolves [[wikilinks]] flatly across the vault regardless of folder,
 // so a title is enough to locate the entry; the bundle is its sibling folder of
 // the same name (SCHEMA §8). Extracted as the canonical home for findEntryFile
-// (build-cycle-prompt.js re-exports it for back-compat) so the plan materializer
-// and the prompt builder resolve paths the same way.
+// (build-cycle-prompt.js re-exports it for back-compat) so the scroll
+// materializer and the prompt builder resolve paths the same way.
 
 import { readdirSync } from 'node:fs';
 import { join, dirname, basename } from 'node:path';

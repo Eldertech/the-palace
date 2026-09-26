@@ -294,6 +294,22 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
           </details>
         ) : null}
 
+        {/* 3c. the proposed plan — a plan_revision ask carries the whole revised
+            plan; it opens by default because it is what an "adopt" would make
+            the plan. */}
+        {item.proposed_plan ? (
+          <details data-testid="card-proposed-plan" open style={{ margin: '0 0 10px' }}>
+            <summary style={foldSummary}>the proposed plan — what “adopt” makes the plan</summary>
+            <div style={{
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+              fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.4,
+              margin: '6px 0', whiteSpace: 'pre-wrap', borderLeft: '2px solid var(--phosphor-dim)', paddingLeft: 8,
+            }}>
+              <Linkify text={item.proposed_plan} />
+            </div>
+          </details>
+        ) : null}
+
         {/* 4. question — the ask, bright, sitting DIRECTLY above the options so a
             label like "approve stage 2" reads against its own buttons. */}
         {item.headline ? (

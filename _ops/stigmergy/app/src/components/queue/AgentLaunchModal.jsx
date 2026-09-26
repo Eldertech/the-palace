@@ -39,7 +39,7 @@ const LAYER_TOGGLES = [
   { key: 'board', label: 'board slice' },
   { key: 'history', label: 'recent history' },
   { key: 'pageChange', label: 'page-change' },
-  { key: 'staging', label: 'staging arc' },
+  { key: 'scroll', label: 'scroll (plan · orders · now)' },
 ];
 
 function ModalButton({ children, onClick, tone = 'default', disabled, testId }) {
@@ -96,7 +96,7 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
   const [mandate, setMandate] = useState(mandateSeed);
   // Context-layer toggles — which OPTIONAL Tier-3 layers to inject. Default all
   // on (the canonical cycle). The identity (the page) + state are never toggled.
-  const [include, setInclude] = useState({ board: true, history: true, pageChange: true, staging: true });
+  const [include, setInclude] = useState({ board: true, history: true, pageChange: true, scroll: true });
   const [preview, setPreview] = useState(null);   // { construction, prompt, cycle, stage }
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -236,7 +236,7 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
                   <div><b style={{ color: 'var(--phosphor)' }}>framing</b> · {construction.framing}</div>
                 </div>
                 {/* Context-layer toggles — trim the OPTIONAL Tier-3 layers. Steward
-                    only: a woken page (ephemeral) has no board/state/staging layers
+                    only: a woken page (ephemeral) has no board/state/scroll layers
                     to trim — it wakes from itself, its desire, and its neighbors. */}
                 {!isEphemeral ? (
                 <div data-testid="agent-toggles" style={{ marginTop: 8, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>

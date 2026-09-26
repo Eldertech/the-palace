@@ -179,6 +179,7 @@ export function reconcilePendingRequests(board, home) {
       blocking: ask.payload?.blocking === true,
       posted_at: ask.ts,
     };
+    if (ask.payload?.kind) askEntry.kind = ask.payload.kind;
     const opts = ask.payload?.options ?? ask.options;
     if (Array.isArray(opts)) {
       askEntry.options = opts.map((o) => (typeof o === 'string' ? o : o.id || o.label || String(o)));
