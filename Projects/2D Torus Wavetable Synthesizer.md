@@ -54,6 +54,9 @@ links:
     type: connects-to
   - target: "[[Synthesis Topologies]]"
     type: exemplifies
+  - target: "[[control-vocabulary-math]]"
+    type: connects-to
+    label: worked-control-vocabulary
 ---
 # 2D Torus Wavetable Synthesizer
 
@@ -160,7 +163,7 @@ This project genuinely activates all four pillars, which is what makes it the ri
 - Should the Kuramoto trajectory replace the linear scan, or augment it as an alternative scan mode? K as a morph parameter between regimes is a third option.
 - Surface resolution and interpolation scheme — to be settled empirically.
 - How does the UI expose the design language? Direct Fourier coefficient editing, surface painting, parametric presets, or some combination?
-- How does the Hopf control surface get mapped to musically legible parameters? The mapping is the work, not the formula.
+- How does the Hopf control surface get mapped to musically legible parameters? The mapping is the work, not the formula. Across the suite this is the hardest problem, harder than the DSP. [[control-vocabulary-math]] is a worked case on a different engine: a crowd of spiking neurons reduced to four playable knobs.
 
 ## Lost Branches
 
@@ -197,7 +200,7 @@ For the chronological build history (decisions, what was tried, what changed) se
 - **Lookup-table-and-crossfade infrastructure** — built once, unlocks the rest of Tier 1 and Tier 2: shear (#2), isotropic diffusion (#3), anisotropic diffusion (#4), rotation (#5), spectral masks (#7).
 - **Develop the surface library beyond seven** — the goal is a meaningful catalog that demonstrates the design language across symmetry classes and generating logics. Each surface so far has read as a family of sounds, which makes "more surfaces" a high-leverage move.
 - **Compose a test piece using only the prototype.** The piece is the proof — if the instrument doesn't yield music, the design needs rethinking, not refinement.
-- **Decide whether this becomes a commercial release.** If yes: UI design, surface preset curation, naming, pricing. The commercial question is a teaching constraint, not just a business one — it forces the design to become legible to others.
+- **Decide whether this becomes a commercial release.** If yes: UI design, surface preset curation, naming, pricing. The commercial question is a teaching constraint, not just a business one — it forces the design to become legible to others. The bet under it, held as a hypothesis: synthesis that was known on paper but couldn't run in real time now can, so what's scarce is no longer speed. It's understanding the math well enough to design with it, and the taste to make it musical. That would make this instrument the first of a suite, and the [[Rank-N Lattice Analysis]] analyzer round-trip is the obvious second. One shipped instrument is an anecdote; a second one would confirm the bet.
 - **The exotic frontier.** Once the 2D instrument is alive: the third looping dimension (T³, with surfaces becoming volumes and the scan a 3-vector through them); morphing 2D wavetables (smooth interpolation between catalog surfaces, with the symmetry-class problem becoming a research direction in itself); Hopf as performance control; and the convolutional siblings.
 
 ---

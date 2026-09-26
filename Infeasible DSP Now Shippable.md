@@ -6,7 +6,7 @@ pillars:
   - philosophy
   - tools
 born: 2026-06
-stage: seed
+stage: composting
 confidence: hypothesis
 energy: medium
 hook_quality: 8
@@ -29,6 +29,9 @@ links:
     label: worked-control-vocabulary
 forward_vector: "I want to name the strategic window plainly: DSP that was theoretically known but practically infeasible is now ready to ship, and the moat is mathematical literacy and design taste, not engineering optimization. I want to keep insisting that control-surface design is the hardest and most valuable problem in the suite."
 ---
+
+<!-- COMPOSTING (2026-09-26): folded into [[2D Torus Wavetable Synthesizer]] § Forward Vectors (the commercial-release decision) and § Open Questions (the Hopf mapping). Next weave confirms deletion. -->
+
 # Infeasible DSP Now Shippable
 
 A Practice/Philosophy-pillar framing, split out from the [[Rank-N Lattice Analysis]] session because it is a strategy claim, not a DSP result. The thesis: **a class of DSP that was theoretically understood but practically infeasible is now ready to ship** — and the durable advantage in building it is *mathematical literacy and design taste*, not engineering optimization.
