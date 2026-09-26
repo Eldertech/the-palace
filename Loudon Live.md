@@ -58,6 +58,9 @@ links:
     type: connects-to
   - target: "[[Shepard Tone Synthesizer]]"
     type: connects-to
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: audience-door
 ---
 
 # Loudon Live
@@ -105,6 +108,10 @@ The channel's visual signature is the Lissajous trace inside a sphere — see [[
 ## The audience
 
 Loudon Live addresses [[Autodidact Polymaths]] — the audience the channel is being built for and named in conversation with. See the linked entry for the full articulation; this entry treats it as a given.
+
+## Two doors into the palace
+
+The audience can walk into the palace itself by two doors. The first is the **read view**, live at https://eldertech.github.io/the-palace/: [[STIGMERGY]]'s STATE deck built static and read-only — PULSE, TOPOLOGY, TREE and the entry reader — and rebuilt on every push to `main`. It shows an entry's faces (the text, the rich face where there is one, the scroll's making) and leaves its memory in git: the Context, the ledger, the baton, and the board. The second is **git** itself: the public repository carries the whole house for anyone who wants it. Widening the public surface past these two waits for Loudon's own yes and a clean [[Sentry]] gate (`node _ops/sentry/sweep.mjs --gate`).
 
 ## The teaching philosophy
 
@@ -154,7 +161,6 @@ Paths visible at the moment of this deposit, deliberately not taken:
 - **Anthropic / palace work as topic.** Is the construction of the palace and the work-with-AI itself a session-worthy topic, or is that a different audience and channel?
 - **Autodidact polymath as own entry.** Does the autodidact polymath posture want its own palace entry, separate from this one? It is gestured at here; it does not contain itself here.
 - **Stream artifacts vs. project entries.** What is the relationship between live-stream output (streams as artifacts) and the underlying `Projects/` entries? Does each stream want a typed link from this page, or do they aggregate up through [[Curriculum Map]]?
-- ~~**Public-facing palace surface.**~~ **Settled 2026-09-25.** Two doors. The audience enters through a **public read view**: a static, read-only build of [[STIGMERGY]]'s STATE deck (PULSE, TOPOLOGY, TREE and the entry reader), with a switch from an entry's text to its rich face where it has one. It shows an entry's faces (the text, the rich face, the scroll) and leaves its memory out: the Context, the ledger, the baton, and the board. Or the audience enters through **git**: the public repository carries the whole house for anyone who wants it. The read view is to be hosted on GitHub Pages and rebuilt on each push to `main`. Decided, not yet built or published; turning Pages on waits for Loudon's own yes, and for a clean [[Sentry]] gate (`node _ops/sentry/sweep.mjs --gate`).
 
 ## Forward Vectors
 

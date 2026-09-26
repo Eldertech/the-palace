@@ -137,6 +137,10 @@ The consolidation left one gap Loudon named plainly: no big-picture view of the 
 
 The terminal also serves every entry's **rich face** at `/rich/?entry=<Entry>`: the entry's words read live, with the sound, image and interactives [[Enrichment]] made laid beside its headings, and a note per section that lands on the board as a `human_eval` from TRICKSTER. The entry reader, the scroll view and the rich face share one face switch at the right of the top bar — text, rich, scroll, only the faces the entry's bundle holds, and `F` cycles them. The handler lives with the renderer in `_ops/rich-face/`; STIGMERGY only mounts it.
 
+## The read view (2026-09)
+
+The STATE deck also ships to the public as a static, read-only **read view** — the audience's door into the palace ([[Loudon Live]]) — built by `_ops/stigmergy/app/scripts/build-public.mjs` on every push to `main` and published at https://eldertech.github.io/the-palace/, carrying entries' faces and nothing from the board.
+
 ## Forward Vector
 
 Become the front door — the single surface Loudon opens to run the palace, where the seams between writing an entry, coordinating a swarm, and committing the result disappear entirely. Keep the wire exact and the surface human. Make completion impossible to fake. The scroll is the newest test of that: a project's state must be readable in one screen, true without a cycle, and steerable in place.

@@ -6,9 +6,13 @@ serve. The ceremony (when and how to enrich a page) is `Enrichment.md`; this fol
 
 ## Open one
 
+- From an entry in STIGMERGY: the face switch (`F`), when the entry's bundle holds the manifest.
 - With STIGMERGY running: `http://localhost:5173/rich/?entry=Kuramoto%20Coupling`
 - Standalone: `node _ops/rich-face/rich-server.mjs` → `http://127.0.0.1:8842/?entry=Kuramoto%20Coupling`
   (or the `rich-face` launch config). Reviews still post to STIGMERGY (`--app`, default :5173).
+- Public: the read view ships this page static under `rich/`. `_ops/stigmergy/app/scripts/build-public.mjs`
+  sets `RICH_STATIC`, so its lookups come from the snapshot (`data/rich.json`), its text is the
+  snapshot's rather than re-read live, and nothing is posted.
 
 Any entry opens. `&review=0` hides the review layer.
 
@@ -22,7 +26,7 @@ Any entry opens. `&review=0` hides the review layer.
 | `rich-server.mjs` | the standalone server |
 | `palace-find.mjs` | find an entry or a media file by name, Obsidian-style |
 | `fingerprint.mjs` | section fingerprints and drift; `--stamp [section…]` records the "still true" verdict |
-| `manifests/` | a workshop home for a manifest before its entry is placed; a manifest in the entry's bundle wins |
+| `manifests/` | a workshop home for a manifest before its entry is placed; a manifest in the entry's bundle wins, and the face switch offers only the bundle's |
 
 ## The manifest — `[Entry]/[Entry] — rich.json`
 

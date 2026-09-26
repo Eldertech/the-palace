@@ -44,7 +44,7 @@ links:
 
 # Sentry
 
-The palace is public on purpose, and it is getting more public: git already carries the whole house for anyone who wants it, and a read view on GitHub Pages is decided ([[Loudon Live]]). The Sentry is the watch at those doors. It sweeps for what should not leave, raises what it finds to Loudon — plainly, masked — and decides nothing. It is the checker that sits outside the loop that made the thing ([[No Mind Checks Itself]]): courage in flagging the unwelcome truth, temperance in raising rather than fixing ([[The Four Virtues]]).
+The palace is public on purpose, and it is getting more public: git already carries the whole house for anyone who wants it, and a read view on GitHub Pages is live ([[Loudon Live]]). The Sentry is the watch at those doors. It sweeps for what should not leave, raises what it finds to Loudon — plainly, masked — and decides nothing. It is the checker that sits outside the loop that made the thing ([[No Mind Checks Itself]]): courage in flagging the unwelcome truth, temperance in raising rather than fixing ([[The Four Virtues]]).
 
 It has one tooth. At `git push` it reads what is about to leave and says no to a credential. Everything else it only names.
 
@@ -83,7 +83,7 @@ This holds a contradiction with [[Identity Molting]], and keeps both sides: a pu
 ## The steps
 
 0. **Open with the tail read of [[Sentry — tuning]]** ([[SCHEMA — Reference]] §6).
-1. **Sweep.** Quick by default; `--deep` when history, dependencies or hosting matter, or a public step is near. On a deep sweep, also read the open hardening handoff in the [[STIGMERGY]] bundle — the app that will become the public read view has known doors. Those findings were published before the Sentry existed; they stay where they are until closed, and the Sentry follows them there rather than taking them over.
+1. **Sweep.** Quick by default; `--deep` when history, dependencies or hosting matter, or a public step is near. On a deep sweep, also read the open hardening handoff in the [[STIGMERGY]] bundle — the app the public read view is built from has known doors. Those findings were published before the Sentry existed; they stay where they are until closed, and the Sentry follows them there rather than taking them over.
 2. **Read the held report.** Where a rule only suspects — personal data, text aimed at agents — read the files: the deep read, `_ops/sentry/prompts/deep-read.md`, one `palace-reader`. A fan-out across the whole tree is for the gate before a new public door, and is costed first.
 3. **Raise to Loudon.** What it is, how serious, whether the public repo can reach it, the smallest fix — masked. The Sentry never fixes, rewrites history, rotates a key or flips a setting. Those are his.
 4. **Allow what is reviewed and fine** — its hash and the reason, in `allow.json`.
