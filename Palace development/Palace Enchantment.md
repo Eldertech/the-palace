@@ -635,6 +635,8 @@ COORDINATOR synthesizes from complete record (all inner + outer).
 
 **Implementation note:** The Agent tool's `SendMessage` supports continuing a previously spawned agent with full context preserved. Spawn once per agent; SendMessage for each subsequent turn. The coordinator instance holds the routing logic and the full archive record.
 
+**Check the machinery before building on it.** Claude Code's agent tools change faster than this page: whether agents can message each other directly, what teams and dynamic workflows do, what waking an agent costs. [[Palace Enchantment — proof — agent capabilities]] records what they did when last tested, on which version and when. Read its newest run before designing a dialogue around any of it.
+
 ### What the Enchanted Agent Does NOT Do
 
 The enchanted agent does not write back to the palace without Loudon's

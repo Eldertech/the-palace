@@ -45,5 +45,10 @@ _Loudon's standing direction for this project. The steward reads this zone every
 ## The making
 
 <!-- scroll:making:start -->
-_Nothing made yet — the first shipped thing will open the trail._
+<!-- scroll:entry id="proof-agent-capabilities-2026-09-26" -->
+### 2026-09-26 — Proof: what the agent machinery did when tested
+
+About 15 probes on Claude Code 2.1.280 — subagents, messages between sessions, teams, dynamic workflows — kept as Run 1 of [[Palace Enchantment — proof — agent capabilities]]. Made off plan (no plan was agreed yet); it serves the coming talk on how the Concierge, Closing Well, songlines and the weave should change.
+<sub>hand-appended · proof</sub>
+<!-- /scroll:entry -->
 <!-- scroll:making:end -->
