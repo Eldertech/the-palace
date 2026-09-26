@@ -584,9 +584,6 @@ def write_master_index() -> str:
           - target: "[[2D Torus Wavetable Synthesizer]]"
             type: connects-to
             label: catalogues
-          - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
-            type: connects-to
-            label: chronicled-by
         ---
         # 2D Wavetable Catalog
 
@@ -658,8 +655,18 @@ def write_master_index() -> str:
         diagnostic and 01_sine_cycle_sweep when the dip becomes annoying; spectral-domain is
         the right tool when we get to surfaces that interpolate between symmetry classes
         (Membrane ↔ Chladni). Decision deferred — the current build is musical enough to keep
-        moving. See [[2D Torus Wavetable Synthesizer — Build Log]] §"The level-dip discovery"
-        for the math and the trade-off table.
+        moving.
+
+        **The math.** RMS² of a linear crossfade is `α²·rms₁² + (1−α)²·rms₂² + 2α(1−α)·⟨W₁, W₂⟩`.
+        The cross-term goes negative when the anchors are negatively correlated, which is what
+        produces the worst dip. For orthogonal anchors, like adjacent integer-cycle sines, it
+        vanishes and the midpoint RMS falls by √2.
+
+        | Approach | Behaviour | Trade-off |
+        |---|---|---|
+        | **Equal-power crossfade** (√α, √(1−α) factors) | Constant power for orthogonal anchors | Pumps up (+3 dB) for correlated anchors |
+        | **Constant-RMS post-normalization** (linear interp, then scale each row to target RMS = (1−α)·rms₁ + α·rms₂) | Robust for any pair, only modifies gain | Slight per-row gain rescaling; spectrum unchanged |
+        | **Spectral-domain interpolation** (interp magnitude spectra, choose phase) | Most musically correct cross-timbre morph (Serum-style) | More complex; phase choice matters; not a pure linear combination |
 
         ## Forward vectors
 

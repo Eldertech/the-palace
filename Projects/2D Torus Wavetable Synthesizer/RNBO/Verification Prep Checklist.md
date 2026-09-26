@@ -8,9 +8,6 @@ links:
   - target: "[[README — RNBO Prototype]]"
     type: connects-to
     label: companion-to
-  - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
-    type: connects-to
-    label: documents
 forward_vector: "I am the pre-flight checklist for verifying the RNBO prototype — the steps to run before trusting a surface — so verification is repeatable rather than remembered."
 ---
 # RNBO Prototype — Verification Prep Checklist

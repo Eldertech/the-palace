@@ -32,9 +32,6 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer — catalog — warps]]"
     type: spawned
     label: warps
-  - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
-    type: spawned
-    label: chronicles
   - target: "[[Three Kinds of Warp]]"
     type: connects-to
     label: clarifies-mechanism
@@ -185,7 +182,7 @@ The instrument is at the *catalog-and-listen* phase, with the warp framework now
 - **Tools are in `Tools/`.** `visualize_wavetable.py` renders any well-formed wavetable WAV as a heightmap or stacked-rows PNG. `build_catalog.py` regenerates every catalog entry idempotently. `rebuild_diagnostic.py` regenerates the diagnostic. All three are dependency-light Python (numpy + Pillow).
 - **Loudon's read.** Each surface feels like a family of sounds, not a single voice. The next moves on the table are: an RNBO prototype to confirm the math under live control alongside Max's `2d.wave~`; then more exotic territory — 3D wavetables on T³ and surface-to-surface morphing.
 
-For the chronological build history (decisions, what was tried, what changed) see [[2D Torus Wavetable Synthesizer — Build Log]].
+For what the project has made, newest first, and where it stands now, see [[2D Torus Wavetable Synthesizer — scroll]].
 
 ## Open Decisions
 

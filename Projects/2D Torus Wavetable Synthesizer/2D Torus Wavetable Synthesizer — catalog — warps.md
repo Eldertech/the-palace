@@ -24,8 +24,6 @@ links:
   - target: "[[Three Kinds of Warp]]"
     type: connects-to
     label: cut-orthogonally-by
-  - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
-    type: connects-to
 ---
 # Torus Warping Catalog — A Catalog of 2D Warps
 
@@ -344,7 +342,7 @@ This catalog presupposes the surfaces in [[2D Torus Wavetable Synthesizer — ca
 
 The warps land *after* the RNBO prototype is alive, not before. The build order is:
 
-1. Get one surface and two phasors playing in RNBO codebox~. No warps. Confirm the math sounds the way the equations promise. (See [[2D Torus Wavetable Synthesizer — Build Log]] §"State at handoff".)
+1. Get one surface and two phasors playing in RNBO codebox~. No warps. Confirm the math sounds the way the equations promise. (See [[README — RNBO Prototype]] and the [[Verification Prep Checklist]].)
 2. Add the cheapest Tier-1 warps that run per-sample: per-axis phase bend (#1), variable-rate phase shear (#6), self-displacement (#12). These need no precomputation infrastructure — they're a few lines each in codebox~.
 3. Build the lookup-table-and-crossfade infrastructure once, and the rest of Tier 1 / Tier 2 unlock together: shear (#2), isotropic diffusion (#3), anisotropic diffusion (#4), rotation (#5), spectral masks (#7).
 4. Tier 3+ earns its turn when the language of warp composition becomes the question the player is asking.

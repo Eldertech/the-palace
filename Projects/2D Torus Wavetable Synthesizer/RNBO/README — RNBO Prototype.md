@@ -5,9 +5,6 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
     label: prototypes
-  - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
-    type: connects-to
-    label: documents
   - target: "[[2D Torus Wavetable Synthesizer — catalog — warps]]"
     type: enables
     label: precedes
