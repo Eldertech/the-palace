@@ -186,4 +186,4 @@ That's the portability question, and it opens the RNBO conversation.
 |---|---|---|
 | `session-1-interactive.html` | `Projects/Crystal Synthesizer/` | HTML framing artifact for stream |
 | `session-1-implementation.md` | `Projects/Crystal Synthesizer/` | This file — patch architecture |
-| `Crystal Synthesizer — Staging.md` | `Projects/` | Full staging record |
+| `Crystal Synthesizer — spec — Loudon Live sessions.md` | `Projects/Crystal Synthesizer/` | Session designs for every move; the plan is in the scroll |

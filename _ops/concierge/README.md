@@ -7,7 +7,7 @@ thoughtful, personalized help that knows the building intimately and *points you
 go while you stay free to walk there yourself.* That last clause is the whole ethic.
 
 The canon organ is the entry [[Concierge]] (`Palace development/Concierge.md`); the concept it
-realizes is [[The Palace Speaks]]; the roadmap is [[The Palace Speaks — production plan]]. This
+realizes is [[The Palace Speaks]]. This
 directory is the machinery. The **companion charter** (`prompts/companion.md`) is what you spawn it
 with — its character and lifecycle; the **posture prompts** (`prompts/gatherer.md`, `oracle-qa.md`,
 `curator.md`) are the specific jobs it wears per address. All postures are built; the moderator role
@@ -205,7 +205,7 @@ is the one thing that would make it worse than nothing.
   one-move discipline survives a board with three equally live candidates.
 - **Does not add "keep both modes open" to the formal always-loaded invariant list** (ELDER's
   invariants). That is a Schema-Ceremony-weight act, done *once the pattern has
-  earned it* — the production plan's Deferred step. Stated here as a working rule; promoting it is later.
+  earned it*. Stated here as a working rule; promoting it is later. (It was the last step of the roadmap Loudon retired on 2026-09-25, [[The Palace Speaks — production plan]]; this is now its home.)
 
 ## Forward
 

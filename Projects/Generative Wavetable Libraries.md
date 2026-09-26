@@ -119,7 +119,9 @@ At the simplest end: a single WAV file containing exactly one cycle of a wavefor
 
 ---
 
-## Development Plan
+## Plan
+
+The plan — what comes next, agreed with Loudon — lives on [[Generative Wavetable Libraries — scroll]], where it changes only with his yes. What is already built stays below.
 
 ### Phase 1 — Crystal Bravais Wavetable
 
@@ -144,21 +146,6 @@ At the simplest end: a single WAV file containing exactly one cycle of a wavefor
 Generalize the source: any palace synthesis ([[Shepard Tone Synthesizer]] partial stacks, neural granular cycles, etc.), AI-audio sub-agent output, or user-provided cycle audio can become a wavetable through the same pipeline.
 
 **First proof — Shepard CENTROID-FREQ wavetable.** Shipped 2026-06-06, auditioned and accepted cycle 9. The sweep parameter is spectral-centroid frequency: position 0 holds the centroid low (dark fundamental-weighted Shepard cloud); position 1 holds it high (bright upper-octave-weighted cloud). One note brightens monotonically as the position sweeps. Built from the [[Shepard Tone Synthesizer]] steward's documented octave-stack recipe. Files at `Projects/Generative Wavetable Libraries/shepard-centroid/` (Ableton + audition sweep WAVs). This is the cross-steward source-reuse pattern the multi-source pipeline promised.
-
----
-
-### Phase 3 — Format Coverage
-
-- Serum/CLM: from Phase 1
-- Ableton: from Phase 1
-- Surge XT .wt: binary writer
-- Single-cycle exports for hardware
-
----
-
-### Phase 4 — Convergence with Sample Libraries
-
-Eventually, an instrument is generated from a single conversation that produces both a sample library and a wavetable from the same source synthesis. At that point [[Generative Sample Libraries]] and this project functionally re-merge for at least the conversational layer.
 
 ---
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import FaceSwitch from '../FaceSwitch.jsx';
 import { orderFaces, nextFace, richHref } from '../../lib/faces.js';
 import { Box, Button } from '../primitives.jsx';
-import { fetchScroll, saveStandingOrders } from '../../adapters/projects.js';
+import { fetchScroll, saveStandingOrders, savePlan } from '../../adapters/projects.js';
 import { parseMakingSections } from '../../lib/scroll-view.js';
 import { buildInbox } from '../../lib/inbox.js';
 import EntryBody from '../state/EntryBody.jsx';
@@ -17,6 +17,12 @@ import { RunningTag } from './status.jsx';
 //   Now              — the regenerated top zone (server computes it on every
 //                      fetch, so an answer Loudon filed a minute ago already
 //                      shows as "ready to advance").
+//   Plan             — the path agreed with Loudon (not for a ceremony, whose
+//                      plan is its tuning ledger's owed lines). Revised here
+//                      and saved with a line on what changed and why, which
+//                      lands on the making trail; a steward's proposed
+//                      revision arrives as an ask below and becomes the plan
+//                      when he adopts it.
 //   Open asks        — the project's pending TRICKSTER cards, answerable here
 //                      with the same TricksterCard the TRICKSTER deck uses
 //                      (one card component, one grant builder — no fork).
@@ -59,6 +65,11 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(null);
   const [launch, setLaunch] = useState(false);
+  const [planEditing, setPlanEditing] = useState(false);
+  const [planDraft, setPlanDraft] = useState('');
+  const [planWhy, setPlanWhy] = useState('');
+  const [planSaving, setPlanSaving] = useState(false);
+  const [planSaved, setPlanSaved] = useState(null);
   const isCeremony = !!row && row.kind === 'ceremony';
   const palace = usePalaceRef();
   useEffect(() => { palace?.ensureLoaded?.(); }, [palace?.ensureLoaded]);
@@ -118,6 +129,21 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
     setSaving(false);
   }
 
+  function startPlanEdit() {
+    setPlanDraft(scroll?.zones?.plan || '');
+    setPlanWhy('');
+    setPlanSaved(null);
+    setPlanEditing(true);
+  }
+
+  async function doSavePlan() {
+    setPlanSaving(true); setPlanSaved(null);
+    const r = await savePlan(home, planDraft, planWhy);
+    if (r.ok) { setScroll(r); setPlanEditing(false); setPlanSaved({ tone: 'ok', text: 'saved — the change is logged at the top of the making trail' }); }
+    else setPlanSaved({ tone: 'err', text: r.error === 'unchanged' ? 'the plan is unchanged' : (r.error || 'save failed') });
+    setPlanSaving(false);
+  }
+
   const fbColor = { ok: 'var(--phosphor)', warn: 'var(--warn)', err: 'var(--error)', dim: 'var(--phosphor-dim)' };
 
   return (
@@ -164,6 +190,44 @@ export default function ScrollView({ home, row, worker, messages = [], onConfirm
           </Box>
 
           {isCeremony ? null : <>
+          <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>agreed with you — it changes only with your yes, and every change lands on the trail</span>}>Plan</ZoneTitle>
+          <div data-testid="scroll-plan">
+            {planEditing ? (
+              <>
+                <textarea
+                  data-testid="scroll-plan-input"
+                  value={planDraft}
+                  onChange={(e) => { setPlanDraft(e.target.value); setPlanSaved(null); }}
+                  placeholder="Where this is going, in a sentence or two — then the moves ahead, in order, each named by what it does."
+                  rows={Math.max(6, Math.min(24, (planDraft.match(/\n/g) || []).length + 2))}
+                  style={{ width: '100%', boxSizing: 'border-box', background: 'var(--phosphor-deep)', color: 'var(--phosphor)', textShadow: 'var(--glow)', border: '1px solid var(--phosphor-dim)', borderRadius: 0, fontFamily: 'var(--font-mono)', fontSize: 13, padding: 8, outline: 'none', caretColor: 'var(--phosphor-white)', resize: 'vertical' }}
+                />
+                <input
+                  data-testid="scroll-plan-why"
+                  value={planWhy}
+                  onChange={(e) => setPlanWhy(e.target.value)}
+                  placeholder="What changed, and why — this line goes on the making trail"
+                  style={{ width: '100%', boxSizing: 'border-box', marginTop: 6, background: 'var(--phosphor-deep)', color: 'var(--phosphor)', textShadow: 'var(--glow)', border: '1px solid var(--phosphor-dim)', borderRadius: 0, fontFamily: 'var(--font-mono)', fontSize: 13, padding: 6, outline: 'none' }}
+                />
+                <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginTop: 6 }}>
+                  <span data-testid="scroll-plan-save"><Button tone="primary" disabled={planSaving || planDraft.trim() === (scroll.zones.plan || '').trim()} onClick={doSavePlan}>{planSaving ? 'saving…' : 'save the plan'}</Button></span>
+                  <Button tone="default" onClick={() => { setPlanEditing(false); setPlanSaved(null); }}>cancel</Button>
+                  {planSaved ? <span style={{ color: fbColor[planSaved.tone], textShadow: 'var(--glow)', fontSize: 11 }}>{planSaved.text}</span> : null}
+                </div>
+              </>
+            ) : (
+              <>
+                {scroll.zones.plan
+                  ? <EntryBody body={scroll.zones.plan} index={index} refIndex={refIndex} onNavigate={onNavigate} />
+                  : <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>no plan agreed yet — the work leans on the forward vector.</div>}
+                <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginTop: 6 }}>
+                  <span data-testid="scroll-plan-edit"><Button tone="default" onClick={startPlanEdit}>{scroll.zones.plan ? 'revise the plan' : 'write a plan'}</Button></span>
+                  {planSaved ? <span style={{ color: fbColor[planSaved.tone], textShadow: 'var(--glow)', fontSize: 11 }}>{planSaved.text}</span> : null}
+                </div>
+              </>
+            )}
+          </div>
+
           <ZoneTitle right={<span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{myAsks.length ? 'answer here — same cards as the TRICKSTER deck' : 'nothing waiting on you'}</span>}>Open asks</ZoneTitle>
           <div data-testid="scroll-asks">
             {myAsks.length === 0 ? <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>none.</div> : null}

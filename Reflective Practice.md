@@ -76,7 +76,7 @@ and no entry owns it. It is used in three senses:
   (see [[Creative Coach]] § If the room held three).
 - **The felt reading.** [[Hilaritas Generator]]'s fourth design primitive: a surface that asks *"How do
   you feel?"* It reads wellbeing; capability is what the reading measures.
-- **The reframing question.** [[Creative Coach]] and every Loudon Live staging file: a question the
+- **The reframing question.** [[Creative Coach]] and every Loudon Live session design: a question the
   viewer takes home, gated in the checklist, with Loudon holding authority over it. Retrospective Delay
   says what it is for: *"the question changes how they play in the next session."*
 

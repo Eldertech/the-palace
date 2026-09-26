@@ -128,7 +128,7 @@ Each choice is valid. The answer might not be a single name but a **design decis
 
 ## Phase 1 Plan — SVC + VST (2026-04-20)
 
-This is the concrete near-term build plan, established in conversation with Loudon on 2026-04-20. Future Claude: pick up from wherever the most recent stage stands.
+Established in conversation with Loudon on 2026-04-20. What stays here is why the build is shaped this way and what the first stage found. The plan — what comes next, agreed with Loudon — lives on [[Semantic Delay — scroll]], where it changes only with his yes.
 
 <!-- CLAUDE → LOUDON: A research pass against this plan (SVC landscape, architecture precedents, flow-matching latency numbers, prior art) lives at [[Semantic Delay — Phase 1 Plan Review 2026-04-20]]. It proposes five small edits to this section — Mac+VST3 scope, Stage 0 pass/fail threshold, Unix domain sockets instead of TCP, training-data license check, and a YingMusic-SVC / seed-vc bake-off as named contingency. Left for you to fold in. -->
 
@@ -166,14 +166,8 @@ A consequence worth naming and not fighting: **in-plugin zero-latency monitoring
     3. `PYTORCH_ENABLE_MPS_FALLBACK=1` required as env var — several ops still fall back to CPU without it.
   - **Quality:** Generated audio produced at `example/generated/music_svc/generated.wav`. Listening quality check pending — this is the next gate before Stage 1.
   - **Next action:** Listen to the generated output. If quality passes, proceed to Stage 1 (inference daemon) accepting ≥8 s as the honest minimum delay time. If quality is poor, activate YingMusic-SVC / seed-vc A/B bake-off per plan review contingency.
-- **Stage 1 — Inference daemon.** Wrap SoulX-Singer-SVC as a long-lived Python process. Load model once. Expose `convert(audio_bytes, sr, prompt_id, options) → audio_bytes`. Maintain registry of loaded prompt wavs with precomputed F0. Run RMVPE on target audio internally. Return at known SR (probably 24k). Local TCP, length-prefixed binary frames. This daemon *is* the VST's future backend — version the RPC from v0.1.
-- **Stage 2 — Standalone instrument.** Python GUI/CLI: open mic, run VAD for phrase segmentation, call daemon, play result after user-set delay. First moment the instrument is playable. No DAW yet. Iterate on segmentation feel and latency here, in Python, fast.
-- **Stage 3 — Multi-tap, multi-voice delay.** Extend Stage 2: N delay taps, each with its own reference singer, tap time, gain. Spirit pantheon becomes audible, not speculative. Write the mixing step allocation-free, block-based — it ports to C++ at Stage 5.
-- **Stage 4 — Rhythmic coupling layer.** Use the original phrase's F0 contour as the target_f0 for each SVC call, with optional quantization toward user-supplied tempo / pitch grid. This is [[Kuramoto Coupling]] expressed concretely: the re-voiced tap tracks the original melody by default; relaxing the coupling coefficient lets F0 smooth, quantize, or drift.
-- **Stage 5 — First VST prototype.** Recommend **JUCE** (broadest DAW support, most mature). Stereo I/O. VAD + segmentation in audio thread (allocation-free). Lock-free ring buffer across thread boundary. Message thread ships phrases to daemon, receives converted audio. Scheduled playback buffer timed against `AudioPlayHead` + user-set delay. Parameters: delay time, feedback, dry/wet, reference-singer selector. Report plugin latency as **0**; don't try to hide the delay with PDC. Neutone SDK shares the right mental model but SoulX is too large / non-streaming for Neutone's constraints — use the pattern, not the SDK.
-- **Stage 6 — DAW transport sync.** Read host BPM and playhead. Align delay taps to musical time (dotted-eighth, quarter, half-bar, bar — classic dub). Sample-accurate scheduling.
-- **Stage 7 — Packaging decision.** Three options, easiest → hardest: (a) user installs daemon separately (clean, worst UX); (b) bundle Python runtime with installer (2–5 GB, moderate effort, good UX); (c) ONNX-export model to C++ runtime (likely impractical for F5-family flow-matching today — research project, not an engineering step). Ship (a) first; revisit (b) if/when commercializing.
-- **Stage 8 — LLM transform re-enters.** Tap captured phrase → Whisper/Paraformer → LLM spirit transform → re-synthesize via SoulX-Singer **SVS** mode using original F0 contour as melody guide. SVC stays for "keep words, change voice" spirits; SVS returns for "change words, change voice" spirits. Full spirit pantheon is earned: each spirit is a routing choice between the two models with different text-transform logic upstream.
+
+The stages after this one, as agreed, with the numbers the code still uses, are in [[Semantic Delay — spec — Phase 1 build]].
 
 ### Cross-cutting decisions named now so they don't bite later
 
@@ -192,12 +186,6 @@ A consequence worth naming and not fighting: **in-plugin zero-latency monitoring
 - F0 format in SVS melody mode: `"f0"` field in target metadata JSON, space-separated Hz floats, `0.0` = unvoiced
 - F0 format in SVC mode: 1-D numpy `.npy` array, same Hz-with-0-unvoiced convention
 - Model sample rate: 24 kHz (F5-TTS convention; verify at Stage 0)
-
-### Immediate next action
-
-~~Stage 0 smoke test~~ ✅ Complete — see Stage 0 findings above.
-
-**Current:** Listen to `~/Documents/soulx/SoulX-Singer/example/generated/music_svc/generated.wav`. If quality passes, move to Stage 1 (inference daemon). If quality is poor, activate YingMusic-SVC / seed-vc A/B bake-off. Either way, the minimum honest delay time for Stage 5 is **≥8 s** given M1 Max RTF of 1.65.
 
 ## Status
 

@@ -15,12 +15,13 @@ forward_vector: "I am Floquet Time-Modulated Loops's scroll — the one page tha
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-23T04:36:43.543Z from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — steer the project in **Standing Orders** below, never here._
+> _Regenerated 2026-09-25T20:43:07-04:00 from the board, the steward's runtime, the entry's frontmatter and git. This zone is machine-owned — the project is steered by the **Plan** and **Standing Orders** below, never here._
 
 - **Status:** active · **Stage:** growing · **Steward:** none — this project has no permanent steward yet
+- **Plan:** agreed 2026-09-25 (today) · 0 made things since
 - **Waiting on you:** nothing
 - **Last shipped:** nothing on the board yet — but the bundle holds 28 media files (see the making trail)
-- **Last commit touching this project:** 2026-09-03 `1b67a68` — edit(close-2026-09-02): the counter-discipline gets its proof; the deposit sheds what it grew
+- **Last commit touching this project:** 2026-09-23 `727f5c9f` — ops(scrolls): backfill 36 project scrolls; retire the 20 plan.md read-models
 
 ### Where this stands
 
@@ -36,6 +37,22 @@ _Nothing decided on the board yet._
 
 <!-- scroll:now:end -->
 
+## Plan
+
+<!-- scroll:plan:start -->
+**Where this is going.** A five-session [[Loudon Live]] arc showing that the "nothing changes over time" assumption under almost every audio loop is a choice. Let a loop's coefficient breathe periodically and you get parametric resonance, sideband ladders, frequency bandgaps, and at the far end a small audio time crystal. Behind it: the first instrument, a resonator that cracks into ringing when its tuning is pumped (the [[Mathieu Equation]] in `codebox~`), is taught in depth in the entry, and its twenty media pieces, the `codebox~` source and a Python reference were built and checked in Python on 2026-04-30 ([[BUILD_SUMMARY|the build summary]]). Nothing past that first instrument has been built.
+
+**The moves ahead**
+
+1. **Finish the resonator and teach it.** Run the `codebox~` in Max against its Python reference (the A/B harness is in `RNBO/README — Mathieu Resonator.md`), and rule on the two calls the build made on its own: a little damping so there is a threshold to cross, and a soft clip on the state so it never overflows ([[NOTES|the build notes]]). Then walk the media and choose the cross-domain hook for the first session.
+2. **Pump a comb.** A Karplus-Strong delay loop whose loop gain and loop length are each modulated at their own rate. Inside the right regions the comb's peaks shift and multiply, and a spectrum analyzer running beside the audio carries the lesson.
+3. **Turn the wavetable surfaces into filters.** Each surface in the [[2D Wavetable Catalog]] becomes a time-varying filter, one axis read as delay and the other scanned at audio rate, so a surface's synthesis character comes back as a filter character. The filtering sibling of the [[2D Torus Wavetable Synthesizer]].
+4. **Work backward from the sound you want.** Pick a target spectrum from [[Categorizing Inharmonicity]], solve offline in Python for the modulation that produces it, and play that modulation from a wavetable. This is the hard inverse problem; how much of it is tractable is still an open question.
+5. **Build a small time crystal.** Slow the modulation down into rhythm and couple it to audio-rate sound, so locking and unlocking are heard at once as rhythm and as timbre. The Hopf control surface from the torus project carries over.
+
+What each later instrument is, with its cross-domain hook and build environment, is sketched in [[Floquet Time-Modulated Loops#Stages 2–5 — the development arc|the entry]].
+<!-- scroll:plan:end -->
+
 ## Standing Orders
 
 <!-- scroll:orders:start -->
@@ -45,6 +62,13 @@ _Loudon's standing direction for this project. The steward reads this zone every
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="plan-2026-09-25T20-43-07-04-00" -->
+### 2026-09-25 — Plan agreed: carried over from the entry's development arc
+
+Carried over on 2026-09-25 from the entry's development-arc section and its line that the later stages are only sketched, when plans moved into scrolls (SCHEMA v1.25). The five stages keep the entry's order, each renamed by what it does. The first move is what remains of the first stage by the entry's own finish line: its media and code were built and checked in Python on 2026-04-30, but the codebox has not been run in Max and two build calls in NOTES still wait on Loudon. The stage sketches stay in the entry as the design each move links to.
+<sub>`plan-2026-09-25T20-43-07-04-00` · plan agreed · agreed 2026-09-25T20:43:07-04:00 · carried over by an elder on Loudon's word</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="backfill-2026-09-23" -->
 ### 2026-09-23 — backfilled from the bundle
 

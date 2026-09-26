@@ -132,7 +132,7 @@ one edge blocked by the standing **"staged, not simulated"** scope lock — **Lo
 2026-07-03** ([[BLUELINE]] scope decisions): the *held-pose* constraint is lifted for a **bounded
 pose-blend-along-flow experiment** (simulated physical *contact* between figures stays out of scope).
 The technique was already ready and needed only the scope call — so this now moves into the build queue
-([[BLUELINE — Production Plan]] §The horizon, item 6). **Scope of the first build:** a single figure,
+(the plan on [[BLUELINE — scroll]], where letting a pose move along the wind is the last of the moves ready to build). **Scope of the first build:** a single figure,
 one key-pose pair (e.g. coil→leap), the in-betweens driven by the flow field along the line of action,
 staying a pure function of the song playhead (so it remains an instrument, not a simulation).
 

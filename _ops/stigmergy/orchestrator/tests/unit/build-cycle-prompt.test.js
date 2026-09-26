@@ -3,7 +3,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { sliceBoardSinceCursor, filterBoardForAgent, buildCyclePrompt, findEntryFile, defaultMandate } from '../../src/build-cycle-prompt.js';
-import { MARK, ORDERS_PLACEHOLDER } from '../../src/scroll-file.js';
+import { MARK, ORDERS_PLACEHOLDER, PLAN_PLACEHOLDER } from '../../src/scroll-file.js';
 
 describe('sliceBoardSinceCursor', () => {
   const lines = [
@@ -90,7 +90,7 @@ describe('buildCyclePrompt (integration)', () => {
   let root;
   afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
 
-  function makePalace({ state, history = '', board = [], home = 'My Project', neighborhood = [], frontmatterStage = 'growing', stagingBody = null } = {}) {
+  function makePalace({ state, history = '', board = [], home = 'My Project', neighborhood = [], frontmatterStage = 'growing' } = {}) {
     root = mkdtempSync(path.join(tmpdir(), 'palace-bcp-'));
     const agentRel = '_ops/agents/permanent/my-project';
     const agentDir = path.join(root, agentRel);
@@ -108,11 +108,6 @@ describe('buildCyclePrompt (integration)', () => {
     writeFileSync(path.join(agentDir, 'history.jsonl'), history);
     // Home entry + board.
     writeFileSync(path.join(root, `${home}.md`), `---\ntitle: "${home}"\nstage: ${frontmatterStage}\n---\n# ${home}\nbody text here\n`);
-    // Optional bundle-local staging file (the teaching arc the steward reads).
-    if (stagingBody != null) {
-      mkdirSync(path.join(root, home), { recursive: true });
-      writeFileSync(path.join(root, home, `${home} — Staging.md`), stagingBody);
-    }
     writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), board.map((m) => JSON.stringify(m)).join('\n'));
     return { agentRel, home };
   }
@@ -196,24 +191,15 @@ describe('buildCyclePrompt (integration)', () => {
     expect(systemPrompt).not.toContain('stage=seed');
   });
 
-  test('Phase 1d — a bundle-local staging file is loaded into the steward context, read-only', () => {
-    const { agentRel } = makePalace({
-      stagingBody: '# Teaching arc\nStage 1 isolates the illusion. Stage 2 exposes the wrap seam.',
+  test('a retired staging file is not read — the plan lives in the scroll', () => {
+    const { agentRel, home } = makePalace({
       state: { iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'c0' },
     });
+    mkdirSync(path.join(root, home), { recursive: true });
+    writeFileSync(path.join(root, home, `${home} — Staging.md`), '# Teaching arc\nStage 2 exposes the wrap seam.');
     const { userTurn } = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27' });
-    expect(userTurn).toContain('Your staging arc — My Project — Staging');
-    expect(userTurn).toContain('Stage 2 exposes the wrap seam');
-    expect(userTurn).toContain('READ, do not rewrite');
-    expect(userTurn).toContain('FLAG it to Loudon');
-  });
-
-  test('no staging section when the entry has no staging file', () => {
-    const { agentRel } = makePalace({
-      state: { iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'c0' },
-    });
-    const { userTurn } = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27' });
-    expect(userTurn).not.toContain('Your staging arc');
+    expect(userTurn).not.toContain('staging arc');
+    expect(userTurn).not.toContain('Stage 2 exposes the wrap seam');
   });
 
   test('mode defaults to headless — the orchestrator output protocol is present', () => {
@@ -247,19 +233,17 @@ describe('buildCyclePrompt (integration)', () => {
 
   test('include flags omit only the toggled OPTIONAL layers; identity + state always stay', () => {
     const { agentRel } = makePalace({
-      stagingBody: '# Teaching arc\nStage 2 exposes the wrap seam.',
       state: { iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'c0' },
       board: [{ id: 'c0', type: 'BROADCAST' }, { id: 'c1', type: 'BROADCAST' }],
     });
     const { userTurn } = buildCyclePrompt({
       palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27',
-      include: { board: false, history: false, pageChange: false, staging: false },
+      include: { board: false, history: false, pageChange: false, scroll: false },
     });
     // the toggled-off optional layers are gone
     expect(userTurn).not.toContain('Blackboard slice');
     expect(userTurn).not.toContain('Your recent history');
     expect(userTurn).not.toContain('Page-change notice');
-    expect(userTurn).not.toContain('Your staging arc');
     // the identity + state are NEVER toggled — they ARE the agent
     expect(userTurn).toContain('Your home entry');
     expect(userTurn).toContain('body text here');
@@ -331,7 +315,7 @@ describe('the scroll seam + the run mandate (2026-09-23)', () => {
   let root;
   afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
 
-  function palace({ orders } = {}) {
+  function palace({ orders, plan = PLAN_PLACEHOLDER } = {}) {
     root = mkdtempSync(path.join(tmpdir(), 'palace-bcp-scroll-'));
     const agentDir = path.join(root, '_ops/agents/permanent/shep');
     mkdirSync(agentDir, { recursive: true });
@@ -349,6 +333,7 @@ describe('the scroll seam + the run mandate (2026-09-23)', () => {
       writeFileSync(path.join(root, 'Projects', 'Shep', 'Shep — scroll.md'), [
         '---\ntitle: "Shep — scroll"\n---\n# Shep — scroll',
         MARK.nowStart, '## Now\n- **Status:** active · **Stage:** growing', MARK.nowEnd,
+        '## Plan', MARK.planStart, plan, MARK.planEnd,
         '## Standing Orders', MARK.ordersStart, orders, MARK.ordersEnd,
         '## The making', MARK.makingStart, '', MARK.makingEnd,
       ].join('\n'));
@@ -365,6 +350,27 @@ describe('the scroll seam + the run mandate (2026-09-23)', () => {
     expect(userTurn).toContain('## Where you stand');
     expect(userTurn).toContain('**Stage:** growing');
     expect(userTurn).toContain('You do not edit the scroll yourself');
+  });
+
+  test('injects the agreed Plan with the propose-with-evidence, off-plan and catch-up rules', () => {
+    const { agentDir } = palace({ orders: ORDERS_PLACEHOLDER, plan: 'Where this is going: an endless staircase you can play.\n\n1. Make the illusion hold on its own.\n2. Give it a glide.' });
+    const { userTurn, plan } = buildCyclePrompt({ palaceRoot: root, agentDir, cycleN: 4, skillRoot: path.join(root, '_ops/orchestrator'), today: '2026-09-25' });
+    expect(plan).toContain('Make the illusion hold on its own.');
+    expect(userTurn).toContain('## The Plan (agreed with Loudon');
+    expect(userTurn).toContain('Give it a glide.');
+    expect(userTurn).toContain('`plan_revision` ask');
+    expect(userTurn).toContain('`off_plan`');
+    expect(userTurn).toContain('assume Loudon has forgotten the plan');
+    // Standing Orders come first, then the plan, then Now
+    expect(userTurn.indexOf('## Standing Orders')).toBeLessThan(userTurn.indexOf('## The Plan'));
+    expect(userTurn.indexOf('## The Plan')).toBeLessThan(userTurn.indexOf('## Where you stand'));
+  });
+
+  test('the placeholder plan reads as "no plan agreed yet"', () => {
+    const { agentDir } = palace({ orders: ORDERS_PLACEHOLDER });
+    const r = buildCyclePrompt({ palaceRoot: root, agentDir, cycleN: 4, skillRoot: path.join(root, '_ops/orchestrator'), today: '2026-09-25' });
+    expect(r.plan).toBe('');
+    expect(r.userTurn).toContain('_No plan agreed yet.');
   });
 
   test('a scroll with the placeholder orders reads as "none written yet"; no scroll → no section', () => {

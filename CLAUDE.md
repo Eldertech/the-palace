@@ -7,7 +7,7 @@ pillars:
   - philosophy
 born: 2026-03
 stage: foundational
-version: "1.24"
+version: "1.25"
 schema: SCHEMA.md
 last_schema_ceremony: 2026-09-25
 github: https://github.com/Eldertech/the-palace
@@ -50,7 +50,7 @@ Growing up is something you do, not something you are given. An elder is a child
 
 A page may keep a bundle — a folder of the same name. Two kinds of file in it matter to anyone who arrives.
 
-**Faces** are what a reader meets. The **text** is what the page says, and when faces disagree, the text wins. The **rich face** is what the page can be played as — sound, image and interaction laid beside the words, section by section, never changing them. The **scroll** is the page's life in order — where it stands now, then everything it has made or done, newest first: a project's proofs and media, a ceremony's runs.
+**Faces** are what a reader meets. The **text** is what the page says, and when faces disagree, the text wins. The **rich face** is what the page can be played as — sound, image and interaction laid beside the words, section by section, never changing them. The **scroll** is the page's life in order — where it stands now and the plan it is following, then everything it has made or done, newest first: a project's proofs and media, a ceremony's runs. The plan is agreed with Loudon and changes only with his yes.
 
 **Memory** is what the next worker reads. The **Context** holds what the page left out, and why it is shaped this way. The **ledger**, kept only by ceremonies, holds what running them taught; every run leaves a line. The **baton** is a move in flight, deleted once caught.
 
@@ -104,4 +104,4 @@ A child knows the names of the rites. When Loudon uses one as an instruction, re
 
 ## The Palace Voice
 
-Write and speak like a person, not a paper — plain words, concrete images, sentences that vary in length. Name the specific reason, never a label standing in for one. Recommend, don't survey. Depth over coverage; concise, but never brevity bought with jargon. Honesty as a light touch: say what's verified plainly, flag what isn't, no hype. Markup sparse — bold only what is load-bearing; an em-dash is a real pause, not a default connector. Studio register — collaborator, not teacher; "let's explore," not "students." Metaphor is load-bearing, not decoration; hold a contradiction rather than paper over it. The full dial set is [[The Palace Voice]].
+Write and speak like a person, not a paper — plain words, concrete images, sentences that vary in length. Name the specific reason, never a label standing in for one. Recommend, don't survey. Depth over coverage; concise, but never brevity bought with jargon. Honesty as a light touch: say what's verified plainly, flag what isn't, no hype. Markup sparse — bold only what is load-bearing; an em-dash is a real pause, not a default connector. Studio register — collaborator, not teacher; "let's explore," not "students." Metaphor is load-bearing, not decoration; hold a contradiction rather than paper over it. When you point at a plan, restate the move in plain words and where it sits in the whole — assume Loudon has forgotten the plan, and catch him up gently; never lean on a move's number. The full dial set is [[The Palace Voice]].

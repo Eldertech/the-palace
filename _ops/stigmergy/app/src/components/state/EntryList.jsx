@@ -83,7 +83,7 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
   const [filter, setFilter] = useState('');
   const [sortKey, setSortKey] = useState('pulse');
   const [sortDir, setSortDir] = useState(DEFAULT_DIR.pulse);
-  // Bundle files (SCHEMA §8 owned files: batons, plans, staging, context)
+  // Bundle files (SCHEMA §8 owned files: batons, scrolls, specs, context)
   // are not first-class entries — they're an entry's private substrate. PULSE
   // is the vitality triage list, so it hides them by default; the toggle and
   // the TREE lens are where they belong. Off by default = the flat list shows

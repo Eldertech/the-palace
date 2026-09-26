@@ -19,8 +19,10 @@ links:
     type: connects-to
   - target: "[[Trickster]]"
     type: connects-to
-forward_vector: I hold the Loudon Live staging plan for Retrospective Delay — the staged pedagogical arc from buffer mechanism to dub-lineage framing — so the parent project's steward can advance it without re-deriving the path.
+forward_vector: I am retired. I held Retrospective Delay's Loudon Live staging plan until 2026-09-25, when plans moved into scrolls; I stay only so links to me still resolve.
 ---
+
+> **Retired 2026-09-25** (SCHEMA v1.25). The plan now lives in [[Retrospective Delay — scroll]]'s Plan, these decisions in its Standing Orders, and the session designs in [[Retrospective Delay — spec — Loudon Live sessions]]. Read those, not this.
 
 ## Alignment Record
 *Decisions reached April 2026. Reference before any development session.*

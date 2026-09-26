@@ -5,10 +5,12 @@ links:
   - target: "[[The Palace Speaks]]"
     type: connects-to
     label: migration-roadmap-for
-forward_vector: "I am the loose, careful roadmap for migrating palace functions from ceremony-you-run to face-you-address, on a palace in daily use. I am done when the interlocutor layer is real, every migrated function still reads straight through, and the pattern has earned a place in the floor."
+forward_vector: "I am retired. I was the roadmap for moving palace functions from ceremony-you-run to face-you-address; by 2026-09-25 that migration had shipped as the Concierge, and Loudon retired me. I stay so links to me still resolve."
 ---
 
 # The Palace Speaks — production plan
+
+> **Retired 2026-09-25** by Loudon, when plans moved into scrolls (SCHEMA v1.25). What it planned has shipped as the [[Concierge]]: the capture, the router, the oracle and curator faces, the resident companion, the health dial, and the fold into [[Closing Well]]. What is left lives where it is worked: validating the dial live is the Concierge's own thread, and promoting "keep both modes open" into ELDER's invariants — deferred until the pattern has earned it — is recorded in `_ops/concierge/README.md`. Read those, not this.
 
 The loose development plan for the interlocutor migration named in [[The Palace Speaks]].
 Deliberately **loose** (a direction with guardrails, not a schedule) and **careful**

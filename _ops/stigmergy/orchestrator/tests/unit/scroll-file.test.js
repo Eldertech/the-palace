@@ -3,9 +3,10 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import {
-  MARK, ORDERS_PLACEHOLDER, computeNow, renderNow, renderMakingSection, isMakingMessage,
+  MARK, ORDERS_PLACEHOLDER, PLAN_PLACEHOLDER, computeNow, renderNow, renderMakingSection, isMakingMessage,
   existingEntryIds, updateScrollText, readZone, readStandingOrders, readStall,
   readConsolidationCycle, materializeScroll, scrollPathFor,
+  readPlan, readPlanInfo, ensurePlanZone, applyPlan, adoptedPlanRevisions, writePlan,
 } from '../../src/scroll-file.js';
 import { resolveBundleDir } from '../../src/entry-paths.js';
 
@@ -183,7 +184,7 @@ describe('materializeScroll', () => {
     return agentDir;
   }
 
-  test('creates the scroll in the bundle with all three zones, then re-materializes idempotently', () => {
+  test('creates the scroll in the bundle with all four zones, then re-materializes idempotently', () => {
     const agentDir = palace();
     const r1 = materializeScroll({ palaceRoot: root, home: HOME, agentDir, tsNow: '2026-06-10T00:00:00Z' });
     expect(r1.written).toBe(true);
@@ -194,6 +195,12 @@ describe('materializeScroll', () => {
     expect(t1).toContain('title: "Shepard Tone Synthesizer — scroll"');
     expect(t1).toContain('label: scroll-for');
     expect(t1).toContain(MARK.ordersStart);
+    expect(t1).toContain(PLAN_PLACEHOLDER);
+    // Now · Plan · Standing Orders · The making
+    expect(t1.indexOf(MARK.nowEnd)).toBeLessThan(t1.indexOf(MARK.planStart));
+    expect(t1.indexOf(MARK.planEnd)).toBeLessThan(t1.indexOf(MARK.ordersStart));
+    expect(t1.indexOf(MARK.ordersEnd)).toBeLessThan(t1.indexOf(MARK.makingStart));
+    expect(t1).toContain('- **Plan:** none agreed yet');
     expect(t1).toContain('id="shep-003"');
     // hand-write standing orders, then regenerate: orders survive, no duplicate section
     const edited = t1.replace(ORDERS_PLACEHOLDER, 'Never ask me about crossfades again. Prefer the illusion.');
@@ -258,5 +265,110 @@ describe('payloadProse — messages with no canonical prose still read on the tr
     expect(s).toContain('[b.png](Projects/BLUELINE/proofs/b.png)');
     expect(payloadProse({ content: 'canon wins' , move: 'x' })).toBe('canon wins');
     expect(payloadProse(null)).toBe('');
+  });
+});
+
+describe('the plan', () => {
+  const OLD = [
+    'head', MARK.nowStart, 'NOW', MARK.nowEnd, '', '## Standing Orders', '', MARK.ordersStart, 'prefer beryl', MARK.ordersEnd, '',
+    '## The making', '', MARK.makingStart, '<!-- scroll:entry id="a" -->\n### 2026-09-01 — old\n<!-- /scroll:entry -->', MARK.makingEnd, '',
+  ].join('\n');
+
+  test('an older scroll gains an empty Plan zone just above Standing Orders, once', () => {
+    const t = ensurePlanZone(OLD);
+    expect(t.indexOf('## Plan')).toBeLessThan(t.indexOf('## Standing Orders'));
+    expect(t.indexOf(MARK.nowEnd)).toBeLessThan(t.indexOf(MARK.planStart));
+    expect(readPlan(t)).toBe('');
+    expect(ensurePlanZone(t)).toBe(t);
+    expect(readStandingOrders(t)).toBe('prefer beryl');
+  });
+
+  test('applyPlan replaces the zone and logs the change on the trail, quoting the plan it replaced', () => {
+    const first = applyPlan(OLD, { plan: 'Go up.\n\n1. Make the stair.', id: 'plan-1', why: 'agreed in the 2026-09-25 session', ts: '2026-09-25T10:00:00Z' });
+    expect(first.applied).toBe(true);
+    expect(readPlan(first.text)).toBe('Go up.\n\n1. Make the stair.');
+    expect(first.text).toContain('### 2026-09-25 — Plan agreed');
+    expect(first.text).toContain('agreed in the 2026-09-25 session');
+    // the plan section is the newest on the trail
+    expect(first.text.indexOf('id="plan-1"')).toBeLessThan(first.text.indexOf('id="a"'));
+    expect(readPlanInfo(first.text)).toEqual({ text: 'Go up.\n\n1. Make the stair.', revised: '2026-09-25T10:00:00Z', id: 'plan-1' });
+
+    const second = applyPlan(first.text, { plan: 'Go down.', id: 'plan-2', headline: 'reverse the staircase', why: 'the descent reads clearer', ts: '2026-09-26T10:00:00Z' });
+    expect(second.applied).toBe(true);
+    expect(second.text).toContain('### 2026-09-26 — Plan revised: reverse the staircase');
+    expect(second.text).toContain('_The plan before this change:_');
+    expect(second.text).toContain('> Go up.');
+    expect(readPlanInfo(second.text).id).toBe('plan-2');
+    // idempotent on id; unchanged text and scroll markers are refused
+    expect(applyPlan(second.text, { plan: 'Go sideways.', id: 'plan-2' }).reason).toBe('already-applied');
+    expect(applyPlan(second.text, { plan: 'Go down.', id: 'plan-3' }).reason).toBe('unchanged');
+    // two direct writes in the same second are two changes, not one
+    const a = applyPlan(second.text, { plan: 'Go left.', ts: '2026-09-27T10:00:00-04:00' });
+    const b = applyPlan(a.text, { plan: 'Go right.', ts: '2026-09-27T10:00:00-04:00' });
+    expect(b.applied).toBe(true);
+    expect(b.id).toBe(`${a.id}-2`);
+    expect(readPlan(b.text)).toBe('Go right.');
+    expect(applyPlan(second.text, { plan: `x ${MARK.makingStart}`, id: 'plan-4' }).reason).toBe('plan-contains-scroll-markers');
+  });
+
+  const ASK = msg({ id: 'shep-010', ts: '2026-09-25T09:00:00Z', to: 'TRICKSTER', type: 'RESOURCE_REQUEST', board: 'TRICKSTER', request_id: 'shep-010',
+    payload: { kind: 'plan_revision', decision_topic: 'glide before timbre', headline: 'put the glide before the timbre', rationale: 'Catch-up — the staircase holds. Building it showed the glide is what sells it.', plan: 'Go up, gliding.\n\n1. Add the glide.\n2. Then the timbre.', options: [{ id: 'adopt', label: 'adopt' }, { id: 'keep', label: 'keep' }] } });
+
+  test('a plan_revision ask is adopted only by a grant choosing "adopt"', () => {
+    const adopt = msg({ id: 'g1', ts: '2026-09-25T11:00:00Z', from: 'TRICKSTER', to: HOME, type: 'RESOURCE_GRANT', board: 'TRICKSTER', re: 'shep-010', payload: { option_id: 'adopt' } });
+    const keep = { ...adopt, id: 'g2', payload: { option_id: 'keep' } };
+    const deny = { ...adopt, id: 'g3', type: 'RESOURCE_DENY', payload: {} };
+    expect(adoptedPlanRevisions([ASK], HOME)).toEqual([]);
+    expect(adoptedPlanRevisions([ASK, adopt], HOME).map((r) => r.request_id)).toEqual(['shep-010']);
+    expect(adoptedPlanRevisions([ASK, keep], HOME)).toEqual([]);
+    expect(adoptedPlanRevisions([ASK, adopt, deny], HOME)).toEqual([]);
+  });
+
+  test('an open plan_revision ask shows in Now; an off-plan made thing is labelled on the trail', () => {
+    const now = computeNow({ home: HOME, board: [ASK], state: null, tsNow: '2026-09-25T00:00:00Z', plan: { text: 'Go up.', revised: '2026-09-20T00:00:00Z' } });
+    const text = renderNow(now, { home: HOME });
+    expect(text).toContain('- **Plan:** agreed 2026-09-20 (5 days ago) · 0 made things since · **a proposed revision is waiting on you**');
+    expect(text).toContain('proposed plan revision: glide before timbre');
+    const s = renderMakingSection(msg({ id: 'o1', payload: { kind: 'shipped_artifact', headline: 'a descending version', off_plan: 'descent might teach the illusion faster' } }));
+    expect(s).toContain('— Off plan — a descending version');
+    expect(s).toContain('_Off plan — descent might teach the illusion faster. Offered as proof of a different direction');
+    expect(s).not.toContain('**off plan:**');
+  });
+
+  describe('on disk', () => {
+    let root;
+    afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
+    function palace(board) {
+      root = mkdtempSync(path.join(tmpdir(), 'palace-plan-'));
+      mkdirSync(path.join(root, 'Projects'), { recursive: true });
+      writeFileSync(path.join(root, 'Projects', `${HOME}.md`), '---\ntype: project\nstatus: active\nstage: growing\n---\n# x');
+      mkdirSync(path.join(root, '_ops/swarm/persistent'), { recursive: true });
+      writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), board.map((m) => JSON.stringify(m)).join('\n') + '\n');
+    }
+
+    test('an adopted proposal becomes the plan on the next look, once', () => {
+      const adopt = msg({ id: 'g1', ts: '2026-09-25T11:00:00Z', from: 'TRICKSTER', to: HOME, type: 'RESOURCE_GRANT', board: 'TRICKSTER', re: 'shep-010', payload: { option_id: 'adopt', notes: 'yes, glide first' } });
+      palace([ASK, adopt]);
+      const r1 = materializeScroll({ palaceRoot: root, home: HOME, tsNow: '2026-09-25T12:00:00Z' });
+      expect(r1.plan_adopted).toEqual(['shep-010']);
+      const t1 = readFileSync(r1.scrollPath, 'utf8');
+      expect(readPlan(t1)).toBe('Go up, gliding.\n\n1. Add the glide.\n2. Then the timbre.');
+      expect(t1).toContain('### 2026-09-25 — Plan agreed: put the glide before the timbre');
+      expect(t1).toContain('Loudon: "yes, glide first"');
+      expect(t1).toContain('- **Plan:** agreed 2026-09-25 (today)');
+      const r2 = materializeScroll({ palaceRoot: root, home: HOME, tsNow: '2026-09-25T13:00:00Z' });
+      expect(r2.plan_adopted).toEqual([]);
+      expect((readFileSync(r2.scrollPath, 'utf8').match(/id="plan-shep-010"/g) || []).length).toBe(1);
+    });
+
+    test('writePlan creates the scroll if needed and logs the change', () => {
+      palace([]);
+      const r = writePlan({ palaceRoot: root, home: HOME, plan: 'Go up.', why: 'agreed with Loudon', ts: '2026-09-25T10:00:00Z' });
+      expect(r.written).toBe(true);
+      const t = readFileSync(path.join(root, r.path), 'utf8');
+      expect(readPlan(t)).toBe('Go up.');
+      expect(t).toContain('agreed with Loudon');
+      expect(writePlan({ palaceRoot: root, home: HOME, plan: 'Go up.' }).error).toBe('unchanged');
+    });
   });
 });

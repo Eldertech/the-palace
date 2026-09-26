@@ -114,8 +114,8 @@ permanent.
 - The `forward_vector` of a permanent agent's home entry has changed
   since `state.last_active`. Per §3.2, this is session-invalidation
   territory. Stop and consult.
-- The skill encounters any spec ambiguity not covered in this file or the
-  Production Plan.
+- The skill encounters any spec ambiguity not covered in this file or
+  [[Palace Orchestrator]].
 
 ## Files this skill writes
 
@@ -198,7 +198,6 @@ that to Loudon.
 
 - `Palace development/Palace Orchestrator.md` — **the canon organ** ([[Palace Orchestrator]]); this skill is its shim
 - `_ops/stigmergy/orchestrator/README.md` — helper script reference
-- `Palace development/Orchestrator Production Plan.md` — build contract
 - `Palace development/Project Stewardship System.md` — Stage A lessons
 
 ## Batch mode (Stage C — added 2026-05-26)

@@ -5,10 +5,12 @@ links:
   - target: "[[Loudon Live]]"
     type: connects-to
     label: child-of
-forward_vector: "I am the visual system and variant-rendering plan for Loudon Live. I want to grow into a working pipeline — palette library, generator catalog, render scripts — that produces a fresh stream pack with one command, and that hooks into the maker specialists once they exist."
+forward_vector: "I am retired. I was the visual system and variant-rendering plan for Loudon Live; the Loudon Live Design System built everything I planned, and Loudon archived me on 2026-09-25. I stay so links to me still resolve."
 ---
 
 # Loudon Live — Asset Plan & Variant System
+
+> **Retired 2026-09-25** by Loudon. Everything it planned was built by the [[Loudon Live Design System]] (`_ops/loudon-live/design-system/`, efbdc551): the six palettes, the stream cards and banner, the brand marks and generators, the cam frame and lower-third. Read that, not this.
 
 How I'll build the images, and how we keep them fresh stream-to-stream without re-doing the work each time. Companion to `loudon-live-launch-kit.md`.
 

@@ -11,7 +11,7 @@ links:
   - target: "[[Retrospective Delay]]"
     type: spawned
     label: stage-1-draft
-  - target: "[[Retrospective Delay — Staging]]"
+  - target: "[[Retrospective Delay — spec — Loudon Live sessions]]"
     type: deepens
     label: fills-in-stage-1
   - target: "[[Progressive Staging]]"

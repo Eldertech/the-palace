@@ -27,7 +27,7 @@ links:
 
 > **The re-founding (2026-06-17).** BLUELINE does not need an invented process — it needs the *established* one with a render-AI dropped in. The founding rationale is [[Adopt the Craft, Author the Seam]]: adopt a century of codified craft, author only the seams. This doc names every stage with the industry's own word, so we stop reinventing. It reframes the substrate-first tracks of [[BLUELINE — Production Plan]] as stages of a real pipeline; the tracks didn't change, their *names* did.
 
-> **This is the conceptual map; [[BLUELINE — Production Plan]] is the status/threads/horizon front door.** Three subsystems
+> **This is the conceptual map; [[BLUELINE — Production Plan]] is the status and threads map; what comes next is the plan on [[BLUELINE — scroll]].** Three subsystems
 > that grew after this doc map onto its stages: **Text & Lettering** ([[BLUELINE — Text Layer]]) is the
 > overlay at stage 7 (words over art, never diffused); **Line-Art Decomposition**
 > ([[Animate the Background#The N-Layer Case (Line-Art Decomposition)|Animate the Background § The N-Layer Case]]) serves Seam A / compositing (convert flat-ink → flat-cel → layers);

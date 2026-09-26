@@ -4,10 +4,11 @@
 //   GET /api/projects/scroll?home=     — one project's scroll, Now zone regenerated live
 //                                        (&write=1 also persists the regeneration)
 //   PUT /api/projects/orders           — { home, orders } → write Standing Orders
+//   PUT /api/projects/plan             — { home, plan, why } → write the agreed Plan (logged on the trail)
 //   POST /api/projects/enchant         — { home } → give the project a steward (idempotent)
 
 import { jsonResponse, readBody } from '../http.js';
-import { buildProjectRows, buildServiceRows, buildCeremonyRows, readScroll, writeStandingOrders, enchantProject } from '../projects.js';
+import { buildProjectRows, buildServiceRows, buildCeremonyRows, readScroll, writeStandingOrders, writePlan, enchantProject } from '../projects.js';
 
 export async function projectsRoutes(ctx) {
   const { req, res, palaceRoot, urlPath, query, method, stewardLane } = ctx;
@@ -57,6 +58,28 @@ export async function projectsRoutes(ctx) {
       jsonResponse(res, 200, r);
     } catch (err) {
       jsonResponse(res, 500, { error: `write orders failed: ${err.message}` });
+    }
+    return true;
+  }
+
+  if (urlPath === '/api/projects/plan' && (method === 'PUT' || method === 'POST')) {
+    const bodyText = await readBody(req, res);
+    if (bodyText === null) return true;
+    let body;
+    try { body = JSON.parse(bodyText); } catch (e) {
+      jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+      return true;
+    }
+    const home = body && typeof body.home === 'string' ? body.home.trim() : '';
+    if (!home) { jsonResponse(res, 400, { error: 'missing home' }); return true; }
+    if (body.plan != null && typeof body.plan !== 'string') { jsonResponse(res, 400, { error: 'plan must be a string' }); return true; }
+    if (body.why != null && typeof body.why !== 'string') { jsonResponse(res, 400, { error: 'why must be a string' }); return true; }
+    try {
+      const r = writePlan({ palaceRoot, home, plan: body.plan || '', why: body.why || '' });
+      if (r && r.error) { jsonResponse(res, r.error === 'entry-file-not-found' ? 404 : 422, r); return true; }
+      jsonResponse(res, 200, r);
+    } catch (err) {
+      jsonResponse(res, 500, { error: `write plan failed: ${err.message}` });
     }
     return true;
   }

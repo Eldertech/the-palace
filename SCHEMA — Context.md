@@ -76,7 +76,7 @@ The always-loaded `@import` floor measured 24.7K tokens against a documented ~20
 
 ### Bundle-type additions — what earned its slot, and when
 
-New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are. `plan` and `staging` were added 2026-06-09 once the 19-steward stewardship migration gave them recurring use across many bundles — documentation, not ceremony; `dossier` was added 2026-07-01 with the embodiable-citizen model ([[Making a Palace Citizen]]), likewise documentation, formalized in the v1.14 descriptive ceremony below for discoverability; `toolbox` was added 2026-07-02 with [[The Commons]]' serverless direction (the project's frozen compute-environment spec) — documentation, not ceremony. `proof` and `spec` were added 2026-07-04 after a bundle-audit cleanup found ~15 files carrying them jammed into the entry-level `type:` field (invalid there); both had earned recurring use (8 proofs, 4 specs). A broader `artifact` type was considered and **rejected** — too vague to carry signal; specific types beat one catch-all, and further ones (`script`, `audition`) join the table as they recur. `dialectic` was added the same day (two archived Dialectics across two bundles — [[Spinoza Conatus]], [[The Fortress and the Threshold]] — met the recurring-use bar), alongside the code-folder-README naming exception above. `rich` was added 2026-09-24 with [[Enrichment]] v2.0 — the rich face's manifest and pieces, defined by the ceremony and used first by [[Kuramoto Coupling]] — documentation, not ceremony, with precedent in `tuning`, which entered the table before its first ledger existed. The `enrichment` row was kept and reworded to what its two live files are (small pieces embedded in the entry's own body); pieces laid beside the text are `rich`.
+New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are. `plan` and `staging` were added 2026-06-09 once the 19-steward stewardship migration gave them recurring use across many bundles — documentation, not ceremony; `dossier` was added 2026-07-01 with the embodiable-citizen model ([[Making a Palace Citizen]]), likewise documentation, formalized in the v1.14 descriptive ceremony below for discoverability; `toolbox` was added 2026-07-02 with [[The Commons]]' serverless direction (the project's frozen compute-environment spec) — documentation, not ceremony. `proof` and `spec` were added 2026-07-04 after a bundle-audit cleanup found ~15 files carrying them jammed into the entry-level `type:` field (invalid there); both had earned recurring use (8 proofs, 4 specs). A broader `artifact` type was considered and **rejected** — too vague to carry signal; specific types beat one catch-all, and further ones (`script`, `audition`) join the table as they recur. `dialectic` was added the same day (two archived Dialectics across two bundles — [[Spinoza Conatus]], [[The Fortress and the Threshold]] — met the recurring-use bar), alongside the code-folder-README naming exception above. `rich` was added 2026-09-24 with [[Enrichment]] v2.0 — the rich face's manifest and pieces, defined by the ceremony and used first by [[Kuramoto Coupling]] — documentation, not ceremony, with precedent in `tuning`, which entered the table before its first ledger existed. The `enrichment` row was kept and reworded to what its two live files are (small pieces embedded in the entry's own body); pieces laid beside the text are `rich`. `staging` was retired in v1.25 (below): its plan moved into the scroll's Plan, its decisions into Standing Orders, its session designs into `spec` files.
 
 ### §9 — the retired design proposals
 
@@ -356,3 +356,50 @@ Sentry's own rules still read every blob.
 `_ops/Substrate Skill.md` defers to [[Palace Ceremonies]] and is unchanged; [[Agent Toolbox]] is unchanged —
 the deep read dispatches the existing `palace-reader`. **Additive:** no type, link type, required field, or
 stage changed.
+
+## The Plan — v1.25 (2026-09-25)
+
+**The scroll gains a fourth zone, the Plan, and the `staging` bundle type is retired.** The Plan sits
+between Now and Standing Orders: where the work is going, then the moves ahead, each named by what it
+does. Loudon, 2026-09-25: *"Plans are always agreed upon based on my approval."* So the zone changes only
+with his yes — his own edit on the PROJECTS deck, an elder's write on his word, or a steward's
+`plan_revision` proposal he adopts — and every change lands on the making trail with what changed, why,
+and the plan it replaced. A steward that learns something while building proposes a revision with the
+evidence; it may also make off-plan work as proof of a different direction, declared `off_plan` and
+labelled so on the trail. Any reference to the plan restates the move in plain words and catches Loudon
+up; a move's number is never enough.
+
+**Why.** Plans were scattered — three `staging` files, a handful of standalone production and build
+plans, a dozen `## Development Plan` or `## Roadmap` sections inside entry bodies — and stewards were
+already reading the staging files as their roadmap ("the staging plan's Stage 3 is The Glide"), though
+§8 called them a learner-facing teaching arc. Only three staging files were ever made, all in April, all
+still marked `planning`. Each one held four things in one coat: decisions Loudon had made (Standing
+Orders, in all but name), the ordered arc (the plan), per-stage Loudon Live session designs (specs), and
+open questions. The retirement splits them along those seams. A plan is live state — the entry is the
+considered truth and the scroll the live one ([[Drift and Consolidation]]) — so plans inside entry
+bodies move to their scrolls too.
+
+**Why the zone is written, not read from the board.** The scroll replaced `plan.md` because a
+read-model regenerated on a cycle lied whenever the steward slept (v1.20). The Plan is not a
+read-model: it is agreed text, stored in the scroll so it survives board archiving and reads in
+Obsidian without machinery. Its freshness is still computed — Now shows when it was agreed and how much
+has been made since — which is the half of the old failure that computation can fix.
+
+**Why "Plan".** It is Loudon's own word ("off plan"), it needs no explaining, and it means nothing else to
+an agent. "Staging" collided with the `stage` lifecycle field, git staging, BLUELINE's shot staging and
+[[Progressive Staging]] (which stays: it is a way of shaping some plans, not a file); "chart" and
+"score" read to an agent as a graph and a metric. A plan is made of **moves**, the palace's word for a
+unit of work in flight.
+
+**What moved with it.** A staging file was read-only to a steward; a `spec` is workshop, so a steward now develops a move's session design as part of building the move, and the cycle prompt no longer loads session designs — the plan links to them. The three converted scrolls' Standing Orders were seeded once, from the staging files' decision tables, on Loudon's word; the PROJECTS deck stays the only place orders are edited after that. Only project-wide direction went to orders; a choice that belongs to one session went to that session's spec, because orders outrank later grants.
+
+**Ceremonies.** A ceremony's scroll has no Plan zone: its tuning ledger's owed lines are its plan, and
+Now already shows them. The `project-stage-builder` skill, which wrote staging files, is composted.
+
+**Mirrors.** SCHEMA, SCHEMA — Reference, CLAUDE.md and [[ELDER]] (version); CLAUDE.md § A page and its
+folder (the scroll sentence) and § The Palace Voice (the catch-up rule); SCHEMA — Reference §8 (the
+`scroll` row, the `staging` row retired, `spec` names session designs); [[README - The Palace Guide]]
+(the scroll paragraph); SUBSTRATE (the census line); `_ops/Substrate Skill.md` (the marker contract and
+the read seam); [[ROSETTA]] states no bundle vocabulary and is unchanged; [[Palace Ceremonies]] is
+unchanged — no ceremony was added or removed. **Structural, not breaking:** no entry type, link type,
+required field or stage changed; older scrolls gain an empty Plan zone on their next regeneration.

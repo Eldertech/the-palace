@@ -13,15 +13,14 @@
 // the board-slice logic is extracted as sliceBoardSinceCursor for unit testing.
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { resolve, join, relative, basename, dirname } from 'node:path';
+import { resolve, join, relative, basename } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { loadAndRender } from './prompts.js';
 import { checkPageChange } from './git.js';
 import { findEntryFile } from './entry-paths.js';
 import { readEntryMeta } from './entry-frontmatter.js';
-import { findStagingTitle } from './plan-file.js';
 import { reconcilePendingRequests } from './process-cycle.js';
-import { MARK, readZone, readStandingOrders } from './scroll-file.js';
+import { MARK, readZone, readStandingOrders, readPlan } from './scroll-file.js';
 import { resolveBundleDir } from './entry-paths.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
@@ -125,7 +124,7 @@ export function buildCyclePrompt(opts) {
     // write" and the steward posts to the board itself. The CONTEXT (identity,
     // state, board, posture) is identical across modes — one source of truth.
     mode = 'headless',
-    // include = { board, history, pageChange, staging, scroll } — which OPTIONAL
+    // include = { board, history, pageChange, scroll } — which OPTIONAL
     // context layers to inject. Omitted/true = present (the canonical cycle,
     // unchanged). The identity (the home page) and the injected state are NEVER
     // toggled — they ARE the agent. Used by the interactive launcher's toggles.
@@ -144,7 +143,6 @@ export function buildCyclePrompt(opts) {
     board: include.board !== false,
     history: include.history !== false,
     pageChange: include.pageChange !== false,
-    staging: include.staging !== false,
     schema: include.schema !== false,
     scroll: include.scroll !== false,
   };
@@ -195,37 +193,22 @@ export function buildCyclePrompt(opts) {
     }
   }
 
-  // Phase 1d — the read seam. When the entry has a bundle-local staging file
-  // (the teaching arc), load it into the steward's context so decisions are
-  // weighed against the staged design. The steward READS it but never rewrites
-  // it; arc-level changes are flagged to Loudon (Substrate Skill § read seam).
-  let stagingSection = '';
-  if (homeFile && inc.staging) {
-    const stagingTitle = findStagingTitle(join(dirname(homeFile), manifest.home), manifest.home);
-    if (stagingTitle) {
-      let stagingBody = '';
-      try { stagingBody = readFileSync(join(dirname(homeFile), manifest.home, `${stagingTitle}.md`), 'utf8'); } catch { /* unreadable */ }
-      if (stagingBody) {
-        stagingSection = `\n# Your staging arc — ${stagingTitle} (teaching design; READ, do not rewrite)\n\n`
-          + 'This is your stage-by-stage Loudon Live teaching arc. Weigh each decision against it — note in your plan when a choice advances or threatens a staged goal. You do **not** edit this file; if a decision implies the arc itself should change, FLAG it to Loudon (a RESOURCE_REQUEST / FLAG), do not silently rewrite the design.\n\n'
-          + '```markdown\n' + stagingBody + '\n```\n';
-      }
-    }
-  }
-
   // A steward that tends a service rather than a project (the Shopkeeper, a
   // `maker`) carries one line of role framing in its manifest, so it works
   // outward instead of treating its own page as the thing to build.
   const roleSection = manifest.role ? `\n# Your role\n\n${manifest.role}\n` : '';
 
-  // The scroll seam (2026-09-23). The project's `[Entry] — scroll.md` carries
-  // two things the steward must read before it acts: Loudon's STANDING ORDERS
-  // (taste and direction written once, so the steward stops re-asking) and the
-  // NOW zone (where the project stands, including answers filed since the last
-  // cycle). The steward never writes the scroll — process-cycle regenerates it
-  // from what the steward posts.
+  // The scroll seam (2026-09-23; the Plan, v1.25). The project's
+  // `[Entry] — scroll.md` carries three things the steward must read before it
+  // acts: Loudon's STANDING ORDERS (taste and direction written once, so the
+  // steward stops re-asking), the PLAN (the path agreed with Loudon, changed
+  // only with his yes), and the NOW zone (where the project stands, including
+  // answers filed since the last cycle). The steward never writes the scroll —
+  // process-cycle regenerates it from what the steward posts, and a plan
+  // revision the steward proposes lands there only when Loudon adopts it.
   let scrollSection = '';
   let standingOrders = '';
+  let plan = '';
   if (inc.scroll) {
     const bundle = resolveBundleDir(palaceRoot, manifest.home);
     const scrollPath = bundle ? join(bundle.bundleDir, `${manifest.home} — scroll.md`) : null;
@@ -233,11 +216,15 @@ export function buildCyclePrompt(opts) {
     if (scrollPath && existsSync(scrollPath)) { try { scrollText = readFileSync(scrollPath, 'utf8'); } catch { /* unreadable */ } }
     if (scrollText) {
       standingOrders = readStandingOrders(scrollText);
+      plan = readPlan(scrollText);
       const nowZone = readZone(scrollText, MARK.nowStart, MARK.nowEnd) || '';
-      scrollSection = `# Your scroll — standing orders and where you stand\n\n`
+      scrollSection = `# Your scroll — standing orders, the plan, and where you stand\n\n`
         + (standingOrders
           ? `## Standing Orders (Loudon's direction — written once, binding every cycle)\n\n${standingOrders}\n\nThese outrank your own lean and any older grant. Do not ask a question a standing order already answers; act on it and say that you did.\n\n`
           : `## Standing Orders\n\n_None written yet. When Loudon writes standing orders on your scroll they appear here and bind every cycle._\n\n`)
+        + (plan
+          ? `## The Plan (agreed with Loudon — the path you build along)\n\n${plan}\n\nBuild along this path. The plan changes only when Loudon agrees: when what you learn while building argues for a different path, propose a revision as a \`plan_revision\` ask carrying your evidence and the whole revised plan — never change course silently. You may also make off-plan work as proof of a different direction; flag it \`off_plan\` when you post it, so it is never mistaken for progress on the plan. Whenever you refer to any part of the plan, restate the move in plain words and where it sits in the whole — assume Loudon has forgotten the plan, and catch him up gently. Never cite a move by its number alone.\n\n`
+          : `## The Plan\n\n_No plan agreed yet. Work toward your home entry's forward vector. If a plan would help, propose one as a \`plan_revision\` ask carrying the whole plan; it becomes the plan when Loudon adopts it._\n\n`)
         + `## Where you stand (the scroll's Now zone, regenerated before this cycle)\n\n${nowZone.trim() || '(empty)'}\n\n`
         + `Your scroll is the project's front door in STIGMERGY; every made thing you post becomes a section of its making trail. You do not edit the scroll yourself.\n\n`;
     }
@@ -347,7 +334,7 @@ ${roleSection}
 \`\`\`markdown
 ${homeBody}
 \`\`\`
-${stagingSection}${schemaSection}
+${schemaSection}
 # Your injected state (NOT a file you should open from disk)
 
 \`\`\`json
@@ -361,7 +348,7 @@ ${extraMandate || defaultMandate({ cycleN, runPosition, runCap, retryOfBarren })
 ${closingSection}
 `;
 
-  return { systemPrompt, userTurn, full: systemPrompt + '\n\n---\n\n' + userTurn, standingOrders };
+  return { systemPrompt, userTurn, full: systemPrompt + '\n\n---\n\n' + userTurn, standingOrders, plan };
 }
 
 /**

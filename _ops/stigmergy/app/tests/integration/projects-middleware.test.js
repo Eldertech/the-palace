@@ -146,6 +146,24 @@ describe('GET /api/projects/scroll + PUT /api/projects/orders', () => {
     expect(readFileSync(resolve(root, put.body.path), 'utf8')).toContain(ORDERS_PLACEHOLDER);
   });
 
+  test('PUT plan writes the agreed plan, logs the change on the trail, and the next read carries it', async () => {
+    const put = await request(server).put('/api/projects/plan').send({ home: 'Shepard Tone Synthesizer', plan: 'An endless staircase you can play.\n\n1. Make the illusion hold.', why: 'agreed with Loudon' });
+    expect(put.status).toBe(200);
+    expect(put.body.zones.plan).toBe('An endless staircase you can play.\n\n1. Make the illusion hold.');
+    expect(put.body.now.plan.agreed).toBe(true);
+    const onDisk = readFileSync(resolve(root, put.body.path), 'utf8');
+    expect(onDisk).toContain('agreed with Loudon');
+    expect(onDisk).toContain('Loudon, on the PROJECTS deck');
+    expect(onDisk).toContain('id="shep-003"'); // the making trail survived the plan write
+    const again = await request(server).get('/api/projects/scroll?home=' + encodeURIComponent('Shepard Tone Synthesizer'));
+    expect(again.body.zones.plan).toBe('An endless staircase you can play.\n\n1. Make the illusion hold.');
+    const same = await request(server).put('/api/projects/plan').send({ home: 'Shepard Tone Synthesizer', plan: 'An endless staircase you can play.\n\n1. Make the illusion hold.' });
+    expect(same.status).toBe(422);
+    expect(same.body.error).toBe('unchanged');
+    expect((await request(server).put('/api/projects/plan').send({ home: 'Ghost', plan: 'x' })).status).toBe(404);
+    expect((await request(server).put('/api/projects/plan').send({ home: 'Murmuration', plan: 5 })).status).toBe(400);
+  });
+
   test('PUT orders: 404 unknown project, 400 bad body', async () => {
     expect((await request(server).put('/api/projects/orders').send({ home: 'Ghost', orders: 'x' })).status).toBe(404);
     expect((await request(server).put('/api/projects/orders').send({ orders: 'x' })).status).toBe(400);

@@ -122,7 +122,7 @@ function summarize(relPath, fm, body) {
     icon: null,        // patched in caller — palace-relative path to the bundle avatar, if any
     faces: ['text'],   // patched in caller — the faces its bundle carries (text, rich, scroll)
     // True when this .md lives INSIDE some entry's bundle folder (SCHEMA §8
-    // owned file: a baton/plan/staging/context/sketch, not a first-class
+    // owned file: a baton/scroll/spec/context/sketch, not a first-class
     // entry). Patched in listEntries' second pass — it needs the full set of
     // bundle dirs, which isn't known per-file. PULSE hides these by default;
     // the TREE lens nests them under their owning entry.

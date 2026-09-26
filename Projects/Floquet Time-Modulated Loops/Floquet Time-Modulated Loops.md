@@ -78,7 +78,7 @@ forward_vector: "I want to become a working set of five Loudon Live sessions, wi
 
 A project, a five-stage Loudon Live arc, and — Stage 1 — a complete teaching document for the Mathieu Resonator in `codebox~`. The project's central claim: every audio object built around a delay loop, a feedback path, or a resonant mode has been quietly assuming that the loop's coefficients are **constant in time**. That assumption is called LTI — Linear, Time-Invariant. Releasing the time-invariance assumption opens a vast region of sound and behavior that the LTI worldview cannot reach: parametric resonance, sideband ladders that climb to extraordinary heights, frequency conversion without ring modulators, spontaneous oscillation from noise, frequency bandgaps, time crystals. The mathematical name for systems with periodically time-varying coefficients is **[[Floquet Theory|Floquet]]**, and the canonical instance is the **[[Mathieu Equation]]**.
 
-This document teaches everything Stage 1 requires before the codebox~ source is built. Stages 2–5 are sketched; each will become its own teaching arc in turn.
+This document teaches everything Stage 1 requires before the codebox~ source is built. Stages 2–5 are sketched below. The plan — what comes next, agreed with Loudon — lives on [[Floquet Time-Modulated Loops — scroll]], where it changes only with his yes.
 
 ---
 
@@ -413,7 +413,7 @@ The session does *not* assume:
 
 ## Stages 2–5 — the development arc
 
-Sketched here at the level of "what's at each stop." Each stage will become its own teaching document in turn, deepened with the same media discipline as Stage 1.
+Sketched here at the level of "what's at each stop": what each later instrument is, its cross-domain hook, and where it gets built. The plan — what comes next, agreed with Loudon — lives on [[Floquet Time-Modulated Loops — scroll]], where it changes only with his yes.
 
 ### Stage 2 — Floquet Comb
 

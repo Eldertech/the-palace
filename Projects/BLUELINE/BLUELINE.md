@@ -73,7 +73,7 @@ links:
     label: speaks-comics-first
   - target: "[[BLUELINE — Production Plan]]"
     type: connects-to
-    label: the-front-door
+    label: the-map
   - target: "[[BLUELINE — Motion and Flow]]"
     type: spawned
     label: unified-motion-subsystem
@@ -99,10 +99,10 @@ tags: [project, blueline, music-video, generative, pipeline, sprout]
 
 ![[BLUELINE — hero.png]]
 
-> **▸ Front door: [[BLUELINE — Production Plan]].** For where the project stands, its goals, the eight
-> threads, and the prioritized next steps, read the Production Plan — it is the single, current source
-> of truth (what it is · goals · status · threads · horizon). This entry is the palace *face*; the plan
-> is the map.
+> **▸ Front door: [[BLUELINE — scroll]].** Where the project stands now and the plan it follows (what
+> comes next, agreed with Loudon) live on the scroll. [[BLUELINE — Production Plan]] is the map: what
+> BLUELINE is, its goals, where each thread stands, and every proof placed. This entry is the palace
+> *face*.
 
 > Working title — placeholder, rename freely. The brief lives in the project bundle; this entry is the palace face.
 
@@ -137,9 +137,9 @@ The June 2026 research found nearly every piece exists off the shelf: the Blende
 
 ## Where it stands
 
-`stage: growing`. **The full status map, threads, and next steps are in [[BLUELINE — Production Plan]]**
-— every proof placed, each thread marked proven / partial / retired, with the prioritized horizon. In
-brief: **Clock & Sync** shipped and
+`stage: growing`. **The full status map and threads are in [[BLUELINE — Production Plan]]**
+— every proof placed, each thread marked proven / partial / retired; what comes next is the plan on
+[[BLUELINE — scroll]]. In brief: **Clock & Sync** shipped and
 live-validated (the rendered-board **animatic** plays on *Ascension_v8*, 120 BPM → 12 fr/beat);
 **Figure & Pose** is mature ([[Shop/Figure Rig]], hands shipped); **Style & Identity** locked the
 `pen-flow` house look (identity → InstantID next); **Text & Lettering** proved rung 1 (material register
@@ -153,15 +153,17 @@ multi-ControlNet; [[Blocked, Not Prompted]]) and the **flow-field spine** (Sessi
 character-aware; [[The Flow Field is the Spine]]). The conceptual map is [[BLUELINE — Production Pipeline]];
 the contracts are [[BLUELINE — Render Backend]] · [[BLUELINE — Board Record Schema]] · [[BLUELINE — toolbox]].
 *(The per-rung M0→M4 history that used to live here is preserved in the proof reports under `proofs/` and
-in git; the [[BLUELINE — Production Plan]] is the front door as of 2026-07-03.)*
+in git; the [[BLUELINE — Production Plan]] is the map of threads and proofs.)*
 
 ## Bundle
 
-> **New here?** Read `BLUELINE — Production Plan.md` (the front door) and stop there until you need
-> depth. The historical/archived docs below are kept for reasoning, not orientation — skip them.
+> **New here?** Read `BLUELINE — scroll.md` (the front door), then `BLUELINE — Production Plan.md`
+> (the map), and stop there until you need depth. The historical/archived docs below are kept for
+> reasoning, not orientation — skip them.
 
 **Front door — read first**
-- `BLUELINE — Production Plan.md` — **read first**: what it is · goals · where it stands · the eight threads · the horizon (next steps). Every proof placed.
+- `BLUELINE — scroll.md` — **read first**: where it stands now, the plan agreed with Loudon (what comes next), and everything made, newest first.
+- `BLUELINE — Production Plan.md` — the map: what it is · goals · where it stands · the threads. Every proof placed.
 
 **Conceptual map + contracts (canonical)**
 - `BLUELINE — Production Pipeline.md` — the established stage/role pipeline (anime backbone · comics skin · feature tissue · music-video clock) + the two seams.

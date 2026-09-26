@@ -16,10 +16,12 @@ links:
     type: connects-to
   - target: "[[Signal-Rate CV Architecture]]"
     type: connects-to
-forward_vector: I hold the Loudon Live staging plan for the Shepard Tone Synthesizer — the progressive-revelation stage sequence pairing each synth stage with its Octave Equivalence theory section — so the parent project's steward can advance it without re-deriving the arc.
+forward_vector: I am retired. I held Shepard Tone Synthesizer's Loudon Live staging plan until 2026-09-25, when plans moved into scrolls; I stay only so links to me still resolve.
 ---
 
 # Shepard Tone Synthesizer — Staging
+
+> **Retired 2026-09-25** (SCHEMA v1.25). The plan now lives in [[Shepard Tone Synthesizer — scroll]]'s Plan, these decisions in its Standing Orders, and the session designs in [[Shepard Tone Synthesizer — spec — Loudon Live sessions]]. Read those, not this.
 
 Someone reading this file and [[Shepard Tone Synthesizer]] has everything needed to build and present every stage.
 
