@@ -22,7 +22,7 @@
  },
  {
   "title": "SMPTE LTC",
-  "path": "SMPTE LTC.md",
+  "path": "Projects/SMPTE LTC.md",
   "idiom": "Bauhaus geometric screenprint",
   "hero_prompt": "A wide Bauhaus-style geometric screenprint of a single unbroken waveform ribbon threading through and phase-locking a row of gear-wheels and clock-faces of different sizes, flat bold color blocks in primary red, black, and ochre. No letters, numerals, words, labels, or inscriptions — purely pictorial. Hand-made Bauhaus geometric screenprint, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
   "icon_prompt": "A bold screenprint emblem of one thick zigzag waveform pulse locked inside a single gear-tooth circle, flat high-contrast black-on-white silhouette. No fine linework, no letters or text — reads clearly at small size."
@@ -252,8 +252,8 @@
   "icon_prompt": "A bold black ink-wash silhouette of one root forking into three branches against a pale ground, thick confident brushstrokes, no fine linework, reading clearly as a single emblem at small size."
  },
  {
-  "title": "Palace AI Partnership Philosophy",
-  "path": "Palace development/Palace AI Partnership Philosophy.md",
+  "title": "AI Partnership Philosophy",
+  "path": "Palace development/AI Partnership Philosophy.md",
   "idiom": "Klee/Kandinsky gouache",
   "hero_prompt": "A wide Klee-and-Kandinsky-style gouache painting, flat warm color shapes and thin hand-drawn lines: a lone female thinker stands at a fork where a thin brittle mechanical line runs one way and a deep spiraling luminous line curves the other, both rooted in the same small seed at her feet. The single dominant metaphor is the fork itself — efficiency versus becoming, drawn from one root.",
   "icon_prompt": "A bold gouache-style emblem of a spiral curling out of a small seed shape, flat high-contrast color fields, no fine linework, legible as a single mark at 24px. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels."

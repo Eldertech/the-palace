@@ -21,6 +21,9 @@ links:
     type: enables
   - target: "[[Crystal Synthesizer]]"
     type: connects-to
+  - target: "[[SMPTE LTC]]"
+    type: connects-to
+    label: time-as-signal
   - target: "[[Progressive Staging]]"
     type: couples-with
     label: pedagogical-method
@@ -48,7 +51,7 @@ All inputs declared as `in N` (signal-rate inlets), never `param`. Default value
 
 ## The Boundary It Crosses
 
-This principle is itself a [[Boundary-Crossing Instruments]] case. It crosses the boundary between synthesis engineering convention (where control rate is the default for "slow" parameters) and neurobiology (where there is no control rate — only continuous process). The decision to model everything at signal rate is simultaneously a technical architecture choice, a biological fidelity commitment, and a pedagogical stance. The three domains reinforce rather than compete.
+This principle is itself a [[Boundary-Crossing Instruments]] case. It crosses the boundary between synthesis engineering convention (where control rate is the default for "slow" parameters) and neurobiology (where there is no control rate — only continuous process). The decision to model everything at signal rate is simultaneously a technical architecture choice, a biological fidelity commitment, and a pedagogical stance. The three domains reinforce rather than compete. [[SMPTE LTC]] takes the same move to its limit: time itself encoded as an audio signal, so anything that can hear audio can follow the clock.
 
 ## Open Questions
 
