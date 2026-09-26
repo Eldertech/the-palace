@@ -64,7 +64,7 @@ here if it feeds that, or if it is cheap and unblocks something that does.
 
 Unrelated loose ends the September weave declined to settle in place (each wants its own session, not a weave touch). Re-homed here so they aren't lost — see `Weave Ceremony — Context` for the weave's own record of declining them.
 
-- [ ] **[[Two Batons, One Board]] — the fixture that hardcodes its path** — the entry (and `Palace development/STIGMERGY v1.0 — Palace Front-End.md`) has three homes across the codebase, and `_ops/stigmergy/app/tests/e2e/state-deck.spec.js:255` hardcodes its exact path as a fixture. If the entry moves, the test breaks silently. Its own session.
+- [ ] **[[Two Batons, One Board]] — the fixture that hardcodes its path** — the entry has three homes across the codebase, and `_ops/stigmergy/app/tests/e2e/state-deck.spec.js:255` hardcodes its exact path as a fixture. If the entry moves, the test breaks silently. Its own session.
 - [ ] **[[STIGMERGY Philosophical Lenses]] → The Lens — re-scope, not a fold** — The Lens's own body asks for this re-scope; the weave dropped it as too big for a fold. Its own session.
 - [ ] **[[Objects to Think With]] — the 21-project list needs re-deriving** — against Papert's own criterion, not just re-counted. Its own session.
 - [ ] **[[Shop/Maker]] — whether the Shop can hold an operated Specialist, and the Producer layer** — an architecture question, plus generalizing the Post-producer charter (Loudon deferred both, 2026-09-02). Its own session.

@@ -253,7 +253,7 @@ test.describe('STATE deck — robustness against real palace shape', () => {
       'SCHEMA.md',
       'Kuramoto Coupling.md',
       'Palace development/Two Batons, One Board.md',
-      'Palace development/STIGMERGY v1.0 — Palace Front-End.md',
+      'STIGMERGY.md',
     ];
     await page.goto('/');
     await expect(page.getByTestId('pulse-header')).toBeVisible({ timeout: 20_000 });
