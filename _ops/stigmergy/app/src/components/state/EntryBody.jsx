@@ -586,7 +586,7 @@ function renderBlock(block, ctx, key) {
         <Tag
           key={key}
           data-testid={block.ordered ? 'list-ol' : 'list-ul'}
-          style={{ margin: '8px 0 12px', paddingLeft: 22, maxWidth: '78ch' }}
+          style={{ margin: '8px 0 12px', paddingLeft: 22, maxWidth: '100%' }}
         >
           {block.items.map((it, j) => (
             <li
@@ -608,7 +608,7 @@ function renderBlock(block, ctx, key) {
             borderLeft: '3px double var(--phosphor-dim)',
             margin: '10px 0', padding: '4px 12px',
             color: 'var(--phosphor-dim)', textShadow: 'none',
-            fontStyle: 'italic', maxWidth: '78ch',
+            fontStyle: 'italic', maxWidth: '100%',
           }}
         >
           {renderInline(block.text, { ...ctx, keyPrefix: `${key}-` })}
@@ -617,7 +617,7 @@ function renderBlock(block, ctx, key) {
     case 'paragraph':
       return (
         <p key={key} style={{
-          margin: '0 0 12px', maxWidth: '78ch',
+          margin: '0 0 12px', maxWidth: '100%',
           color: 'var(--phosphor)', textShadow: 'var(--glow)',
           lineHeight: 1.5,
         }}>
@@ -683,7 +683,7 @@ function renderBlock(block, ctx, key) {
           data-testid="graffiti"
           data-form={block.form}
           style={{
-            margin: '12px 0', padding: '6px 10px', maxWidth: '78ch',
+            margin: '12px 0', padding: '6px 10px', maxWidth: '100%',
             borderLeft: '2px solid var(--ansi-bright-yellow)',
             background: 'color-mix(in srgb, var(--ansi-bright-yellow) 7%, transparent)',
           }}
@@ -711,7 +711,7 @@ function renderBlock(block, ctx, key) {
       if (!resolved) {
         return (
           <div key={key} data-testid="image-embed-missing" style={{
-            margin: '12px 0', padding: '4px 10px', maxWidth: '78ch',
+            margin: '12px 0', padding: '4px 10px', maxWidth: '100%',
             border: '1px dotted var(--phosphor-dim)',
             color: 'var(--phosphor-dim)', textShadow: 'none',
             fontFamily: 'var(--font-mono)', fontSize: 12,

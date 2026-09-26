@@ -399,8 +399,12 @@ export default function EntryReader({
         summary={entry.summary ?? {}}
       />
 
+      {/* The text fills its column the way a diagram does — no line cap of its
+          own — and the typed-link rail widens a little on a wide screen so its
+          labels and targets stop wrapping. Below 800px the rail drops under
+          the text (tokens.css .reader-grid). */}
       <div className="reader-grid" style={{
-        display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 360px',
+        display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) clamp(360px, 24vw, 480px)',
         gap: 24, alignItems: 'flex-start',
       }}>
         <div style={{ minWidth: 0 }}>

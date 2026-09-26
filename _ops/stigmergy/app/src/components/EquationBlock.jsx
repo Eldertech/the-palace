@@ -43,7 +43,7 @@ export default function EquationBlock({ payload }) {
               fontFamily: 'var(--font-mono)', fontSize: 13,
               color: 'var(--phosphor)', textShadow: 'var(--glow)',
               marginTop: 4, whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-              maxWidth: '78ch',
+              maxWidth: '100%',
             }}>{eq.worded}</div>
           ) : null}
 
