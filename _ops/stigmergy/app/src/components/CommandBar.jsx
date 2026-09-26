@@ -43,7 +43,9 @@ function LiveIndicator({ liveState = 'offline' }) {
 // Numeric-key commands (1..6) get an inverted active state when their board
 // matches activeBoard — same inversion treatment as the top ChannelTabs.
 export default function CommandBar({ commands = [], onCommand, activeBoard, liveState = 'offline' }) {
-  if (commands.length === 0) return null;
+  // The read view has no commands, but still says what it is: a snapshot.
+  const snapshot = typeof liveState === 'string' && liveState.startsWith('snapshot');
+  if (commands.length === 0 && !snapshot) return null;
 
   return (
     <div data-testid="command-bar" style={{
