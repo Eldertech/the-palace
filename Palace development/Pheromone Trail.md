@@ -65,7 +65,7 @@ This is why entry quality matters for swarm behavior: a richly written entry wit
 ## The Inverse: Trail Decay
 
 Trails that are never reinforced fade. In the palace this manifests as:
-- Entries with no recent use — no edits to the page or its bundle, and no new links reaching for it (computed from git: [[SCHEMA — Reference]] §3). A new link *to* an entry is the trail being walked again.
+- Entries with no recent use — no edits to the page or its bundle, and no new links reaching for it (computed from git: [[SCHEMA — Reference]] §3)
 - Entries that are linked to but never grown — thin stubs that redirect without contributing texture
 - Broken links: trails that lead to nodes that no longer exist
 

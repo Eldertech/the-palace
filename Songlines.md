@@ -114,8 +114,7 @@ didn't know they were living in.
 The palace has songlines: well-worn paths of traversal that make adjacent
 entries invisible by never visiting them. Ceremonies like the Walk and the
 Weave are attempts to sing new paths through the palace's territory. An
-entry many sessions have worked in, and many pages have reached for, has a
-well-worn track running to it. Dormant
+entry activated many times has a well-worn track running to it. Dormant
 entries may be geographically present but ontologically unreachable — not
 because they're wrong or thin, but because no recent session has sung
 through them.

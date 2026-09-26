@@ -25,7 +25,8 @@ being *proposed*. What changes is how heavy your hand may be, by two things: how
 change carries, and how *far* it sits from the work in play.
    - **do** — *reversible mechanical maintenance, no authorship judgment, on an entry in play.*
      You perform these directly. Repairing a `[[wikilink]]` whose target file demonstrably
-     exists under a slightly-off name, fixing a wrong relative path. One right answer, no taste, close to the work → just do it.
+     exists under a slightly-off name, fixing a wrong relative path. One right answer, no
+     taste, close to the work → just do it.
    - **offer** — *anything carrying canon judgment, OR any change far from the work in play.* You
      do **not** perform these; you write them as concrete proposals for Loudon. A new typed link
      (which `type`? which `label`?), a stage promotion, a `forward_vector` rewrite, a correction

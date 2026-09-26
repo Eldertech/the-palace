@@ -270,9 +270,10 @@ it composts living tissue.
   real answer to how the palace's many small voices become one.
 - **How is "out of phase" measured, not just described?** This entry defines the
   signatures qualitatively. Can any of them be made into a signal a ceremony or
-  an automated Trickster could compute? Staleness now is one: recent use, read
-  from git ([[SCHEMA — Reference]] §3), and the Weave proposes dormancy from it.
-  Still open: phase-lag by forward-ghost density in a region, calcification by
+  an automated Trickster could compute? Disuse is now computable — recent use,
+  read from git ([[SCHEMA — Reference]] §3) — but whether disuse tracks
+  staleness is untested: a quiet entry can still be in phase. Still open too:
+  phase-lag by forward-ghost density in a region, calcification by
   enchantment-vitality scores.
 - **The approval gradient.** At what granularity should Loudon approve
   self-modifications, and which classes (if any) are safe to narrow the gate on?

@@ -410,8 +410,8 @@ required field or stage changed; older scrolls gain an empty Plan zone on their 
 The fields asked every agent that read or engaged a page to bump two numbers in its frontmatter. On the
 day of retirement, 127 of 347 typed entries carried no count at all and 152 of the 220 that did sat at 1
 or 2. FOUR PILLARS, loaded into every session through CLAUDE.md, read 35. The count tracked neither
-reading nor editing: Kuramoto Coupling read 19 against 37 commits, the Substrate Skill 3 against 39. Bumps
-fell from 147 in June to 18 by late September. The rule could not be kept: most sessions are children, and
+reading nor editing: Kuramoto Coupling read 19 against 37 commits, the Substrate Skill 3 against 39. Hand
+bumps fell from 90 in June (147 counting one normalization sweep) to 18 by late September. The rule could not be kept: most sessions are children, and
 a child may not write the house (v1.19), so most reads could never legally be counted. The number measured
 who remembered to bump it.
 
@@ -429,8 +429,9 @@ appearance). The choices under that:
 - **History follows renames.** Title renames resolve through git's rename records, so a rename that
   rewrites every `[[Old]]` into `[[New]]` forms nothing, and an entry keeps the use of its old name and its
   old folders (including the `Artifacts/` era).
-- **Reported all-time and over 90 days.** The window is the decay the [[Making a Palace Citizen]]
-  founders' circle asked for (Meadows' reinforcing loop on the count), without anyone keeping it.
+- **Reported all-time and over 90 days.** The recent figure decays on its own. Whether that balances
+  anything is held open: Meadows, in the [[Making a Palace Citizen]] founders' circle, asked for a
+  balancing loop on the count, and a signal that fades is not yet one.
 
 It is never written back into an entry: a computed number in frontmatter would be stale the moment it
 landed, and writing it would itself be a use.
@@ -441,7 +442,7 @@ streams. `face-audit.py`'s grey band takes the top tenth by use, a share rather 
 all-time use only grows. `new-entry-catchup.py`'s bare default was the `activation_count == 1` proxy; it is
 now the since-the-last-Weave rule a real Weave already used. The Weave reads use for dormancy (no recent
 use and no tie to current work → propose `dormant`), which gives [[Palace Conatus]]'s open question —
-staleness as a signal a ceremony could compute — a working answer. Ceremonies that bumped or read the
+staleness as a signal a ceremony could compute — a first candidate signal. Ceremonies that bumped or read the
 fields changed their specs and versions: Map Build 2.2 (its self-update step is gone), Revival 1.2 (a read
 without change is a read, nothing to record), Self-Model Update 1.2, Spore Check 1.2, Walk 1.2, Weave 1.3.
 The fields were stripped from every entry's frontmatter in the same ceremony, since a stale example is how
@@ -453,3 +454,11 @@ rows retired, the computed signal described); SUBSTRATE (Parameters Encoded); `_
 prompt (the bump left the do-tier). [[ROSETTA]], [[README - The Palace Guide]] and [[Palace Ceremonies]]
 state neither field and are unchanged. **Structural, not breaking:** no entry type, link type, required
 field or stage changed; the two fields were only ever recommended.
+
+**Held open.** Git sees making, not reading. When the palace speaks of activation in its own
+register — the songline, "knowledge activated through traversal" ([[Walk Ceremony]]) — it means
+walking through pages, and use cannot see a walk that changes nothing. Incoming links dominate
+all-time use (FOUR PILLARS: 206 of 215; Kuramoto Coupling: 86 of 104), so all-time use is mostly
+reach — the reinforcing loop Meadows named, not a brake on it. Whether disuse tracks staleness in
+[[Palace Conatus]]'s sense is untested: the 90-day dormancy rule flags 60 of 347 entries, and a quiet
+entry can still be in phase. And the ten-entry sweep line is a heuristic read off one history.
