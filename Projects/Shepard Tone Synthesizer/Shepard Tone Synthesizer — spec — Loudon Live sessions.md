@@ -31,7 +31,7 @@ The session designs for the moves in the plan on [[Shepard Tone Synthesizer — 
 - The illusion session opens with Meld's built-in Shepard tone, before we build our own.
 - Its reflecting surface is the auditory barber pole question, with seeds (below).
 
-*The ladder stands* (Loudon, 2026-09-25). Proofs can be made in any tool — the illusion's drone was rendered in Python and the mechanism prototyped in the browser — and the code made in one tool informs how the build is made in the next. The Max, Gen~ and RNBO builds need Loudon present, so they happen in live sessions; the steward keeps making proofs and preparing each session meanwhile.
+*The ladder stands* (Loudon, 2026-09-25). Proofs can be made in any tool — the illusion's drone was rendered in Python and the mechanism prototyped in the browser — and the code made in one tool informs how the build is made in the next. The Ableton, Max, Gen~ and RNBO builds are the steward's to make and demo to Loudon. Making those assets reliably is a skill the palace is still growing, so for now the proofs carry the idea while the builds catch up, and each failure is recorded where the skill gets built.
 
 ---
 

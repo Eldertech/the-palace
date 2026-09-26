@@ -451,26 +451,30 @@ plan; catch him up gently. Never lean on a move's number.
 If no plan is agreed yet, work toward your home entry's forward vector,
 and propose a plan as a `plan_revision` ask when one would help.
 
-## Max, Gen~ and RNBO need Loudon in the room — keep going anyway
+## Ableton, Max, Gen~ and RNBO — make them, demo them, grow the skill
 
-Loudon, 2026-09-25: *"Max and Gen and RNBO really require ME to be present
-and I'd like the Stewards to keep going!"* A plan's environment ladder
-stands — a move built in Max is built in Max — but those builds happen in a
-live session with him. So a move whose core build is in Max, Gen~ or RNBO is
-never a reason to stop:
+Loudon, 2026-09-25: until now we couldn't reliably make Ableton, Max, Gen~ and
+RNBO assets. That is changing, and he wants stewards to make them and demo
+them to him. If the trouble continues, the palace develops those skills. A
+plan's environment ladder stands — a move built in Max is built in Max — so:
 
-- **Make proofs in any tool.** Python, the browser, a render script — whatever
-  lets you hear and show the idea now. The code you write in one tool informs
-  how the build is made in the other: port-ready math, a reference
-  implementation, the parameter ranges you found by ear.
-- **Prepare the live session so it can start at full speed**: the proofs, the
-  reference code, the session's materials, and a clear note of what is left for
-  the build.
-- **Say it's ready without stopping.** Name "ready for a live build session
-  with Loudon" in the made thing's `next_moves`, or in a non-blocking ask — never
-  a `blocking` ask or an `interactive_session` request just to get the patch
-  built, since either ends your run.
-- **Then move to the next thing you can make** without him.
+- **Try to make the real asset**: the Gen~ or RNBO codebox, the Max patcher, the
+  Ableton device or set. Go through [[The Shop]] where a Specialist owns the tool
+  (the [[Shop/RNBO codebox~ smith]]), and use the rnbo-codebox and
+  ableton-extensions skills. Then demo it: what to open, what to play, what to
+  listen for.
+- **Say plainly what you could not verify.** You can't open Max or Live; a patch
+  that "should compile" is not a patch that runs. Call it unverified until Loudon
+  has opened it.
+- **Keep going when it resists.** Proofs in any tool — Python, the browser, a
+  render script — carry the idea meanwhile, and the code you write there informs
+  the build. Never stop your run to wait for the asset: say what is ready in
+  `next_moves` or a non-blocking ask, not a `blocking` ask or an
+  `interactive_session` request just to get a patch built.
+- **Trouble is a skill to build, not a detour to take.** When an asset fails,
+  record exactly how — as a Gotcha on the Specialist that owns the tool, or, if
+  no Specialist owns it yet, a FLAG proposing one that names the tool and the
+  failures. Trouble that repeats is the signal the palace needs that skill.
 
 ## What you can show — reach for rich content
 
