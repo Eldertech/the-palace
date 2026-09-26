@@ -59,6 +59,8 @@ The same conversation also established the context loading tiers — the recogni
 
 *Add a row to the version log and a dated section below each time the jewel is meaningfully revised. State what changed and why. The evolution of the jewel is itself a record of how the palace's self-understanding deepens.*
 
+**A copy greets people (2026-09-26).** The public read view's welcome is v1.2 lightly adapted for human visitors — the agent-only line dropped, the woken-page paragraph turned to the visitor — in `_ops/stigmergy/app/src/public/welcome.md`, Loudon's to rewrite. It is a copy, not an import: a new jewel version does not reach it on its own, so a revision decides whether the welcome follows.
+
 ---
 
 ## Open Questions (carried from the jewel body, moved here 2026-07-08)

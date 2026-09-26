@@ -139,7 +139,7 @@ The terminal also serves every entry's **rich face** at `/rich/?entry=<Entry>`: 
 
 ## The read view (2026-09)
 
-The STATE deck also ships to the public as a static, read-only **read view** — the audience's door into the palace ([[Loudon Live]]) — built by `_ops/stigmergy/app/scripts/build-public.mjs` on every push to `main` and published at https://eldertech.github.io/the-palace/, carrying entries' faces and nothing from the board.
+The STATE deck also ships to the public as a static, read-only **read view** — the audience's door into the palace ([[Loudon Live]]) — built by `_ops/stigmergy/app/scripts/build-public.mjs` on every push to `main` and published at https://eldertech.github.io/the-palace/, carrying entries' faces and nothing from the board. A first visit dials in to a BBS welcome — its text the [[JEWEL|Seed Jewel]], lightly adapted for people, kept in `_ops/stigmergy/app/src/public/welcome.md` for Loudon to rewrite — and lands on TOPOLOGY, grouped by the Four Pillars.
 
 ## Forward Vector
 

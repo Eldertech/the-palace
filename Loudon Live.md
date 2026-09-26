@@ -113,6 +113,8 @@ Loudon Live addresses [[Autodidact Polymaths]] — the audience the channel is b
 
 The audience can walk into the palace itself by two doors. The first is the **read view**, live at https://eldertech.github.io/the-palace/: [[STIGMERGY]]'s STATE deck built static and read-only — PULSE, TOPOLOGY, TREE and the entry reader — and rebuilt on every push to `main`. It shows an entry's faces (the text, the rich face where there is one, the scroll's making) and leaves its memory in git: the Context, the ledger, the baton, and the board. The second is **git** itself: the public repository carries the whole house for anyone who wants it. Widening the public surface past these two waits for Loudon's own yes and a clean [[Sentry]] gate (`node _ops/sentry/sweep.mjs --gate`).
 
+What the read view holds back is narrow on purpose: Loudon wants anyone curious to come away with a full, honest picture of him — "those interested can understand who I am through exploring" — so it shows who he is and what he plans, [[Palace To-Do]] and the audits included, and keeps back only highly personal data and anything that puts his finances at risk. For now it stays out of search engines (a robots noindex on every page), and Loudon will revisit that.
+
 ## The teaching philosophy
 
 A composite drawn from references across the palace:
