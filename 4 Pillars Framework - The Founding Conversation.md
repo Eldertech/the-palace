@@ -20,7 +20,7 @@ links:
   - target: "[[Leverage Points Framework]]"
     type: spawned
     label: decision-lens
-  - target: "[[Palace AI Partnership Philosophy]]"
+  - target: "[[AI Partnership Philosophy]]"
     type: spawned
     label: collaboration-doctrine
   - target: "[[FOUR PILLARS]]"
@@ -67,7 +67,7 @@ That's the breakthrough moment. Everything downstream is its formalization.
 |---|---|
 | [[Quality Manifesto]] | The paradigm itself, stated as operating covenant: quality is furtherance of *our* goals, not theirs. |
 | [[Leverage Points Framework]] | The decision lens — Meadows' 12 leverage points adapted to creative practice, with paradigm (#2) as where to operate from. |
-| [[Palace AI Partnership Philosophy]] | The collaboration doctrine — using AI to *become* better, not just *do* more. |
+| [[AI Partnership Philosophy]] | The collaboration doctrine — using AI to *become* better, not just *do* more. |
 | [[Loudon Live]] | The pedagogical cadence — a weekly teaching rhythm, later folded into Loudon Live. |
 | [[FOUR PILLARS]] (deepened) | The four pillars, articulated as a single integrated framework rather than four parallel concerns. |
 
