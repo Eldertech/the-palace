@@ -71,9 +71,16 @@ export function extractMessagesFromTranscript(transcriptText) {
     cache_read_input_tokens_sum: 0,
     cache_creation_input_tokens_sum: 0,
   };
-  // The run's closing `result` record, when it reports an error (a usage
-  // limit, an API failure): the text says why the worker stopped.
-  let errorResult = null;
+  // Why the worker stopped, when the harness says so. A usage limit or an API
+  // failure is written as a SYNTHETIC assistant record: `error` set (e.g.
+  // "rate_limit"), an API-error flag (`is_api_error_message` in `claude -p`
+  // stream-json, `isApiErrorMessage` in session and subagent files), and
+  // `model: "<synthetic>"`. It is not a model turn, so it is never counted as
+  // one and its text is never read for messages. A closing stream-json
+  // `result` with `is_error` is the same signal from the other end; subagent
+  // transcripts have no `result` record, which is why the synthetic record is
+  // the one to trust.
+  let interruption = null;
 
   for (const rawLine of String(transcriptText).split('\n')) {
     const line = rawLine.trim();
@@ -81,12 +88,18 @@ export function extractMessagesFromTranscript(transcriptText) {
     let rec;
     try { rec = JSON.parse(line); } catch { continue; }
     if (rec && rec.type === 'result' && rec.is_error === true) {
-      errorResult = String(rec.result || rec.subtype || 'error');
+      const text = String(rec.result || rec.subtype || 'error');
+      if (!interruption) interruption = { reason: classifyInterruption(null, text), error: text };
       continue;
     }
     if (!rec || rec.type !== 'assistant') continue;
 
     const msg = rec.message || {};
+    if (isHarnessError(rec)) {
+      const text = (msg.content || []).map((b) => (b && typeof b.text === 'string' ? b.text : '')).join(' ').trim();
+      interruption = { reason: classifyInterruption(rec.error, text), error: text || String(rec.error || 'api error') };
+      continue;
+    }
     usage.n_assistant_turns += 1;
     const u = msg.usage || {};
     usage.total_input_tokens += u.input_tokens || 0;
@@ -114,7 +127,21 @@ export function extractMessagesFromTranscript(transcriptText) {
     }
   }
 
-  return { messages: [...seen.values()], usage, errorResult };
+  return { messages: [...seen.values()], usage, interruption };
+}
+
+/** A record the harness wrote to report an API error — not a model turn. */
+export function isHarnessError(rec) {
+  if (!rec || rec.type !== 'assistant') return false;
+  const flagged = rec.isApiErrorMessage === true || rec.is_api_error_message === true;
+  const synthetic = rec.message && rec.message.model === '<synthetic>';
+  return flagged || (synthetic && !!rec.error);
+}
+
+/** `usage_limit` for a session/usage/rate limit; `api_error` for any other failure. */
+export function classifyInterruption(kind, text) {
+  if (kind === 'rate_limit') return 'usage_limit';
+  return /\b(session|usage|weekly|daily) limit\b|rate[ _-]?limit/i.test(String(text || '')) ? 'usage_limit' : 'api_error';
 }
 
 /**
@@ -223,12 +250,38 @@ export function processCycle(opts) {
     : resolve(palaceRoot, '_ops/swarm/persistent/blackboard.jsonl');
 
   const transcriptText = readFileSync(resolve(transcriptPath), 'utf8');
-  const { messages, usage, errorResult } = extractMessagesFromTranscript(transcriptText);
+  const { messages, usage, interruption } = extractMessagesFromTranscript(transcriptText);
+  // Carried on every summary, shipped or not: the lane and the batch stop
+  // firing stewards once the account is out of session.
+  const usage_limit = !!(interruption && interruption.reason === 'usage_limit');
 
   const state = JSON.parse(readFileSync(join(agentDirAbs, 'state.json'), 'utf8'));
   const manifest = JSON.parse(readFileSync(join(agentDirAbs, 'manifest.json'), 'utf8'));
   const home = manifest.home;
   const model = modelOverride || manifest.model?.name || 'claude-opus-5-5';
+
+  // ── A cycle cut off by the harness is INTERRUPTED, not barren ────────────
+  // (found 2026-09-25: two Neural Granular Synthesis cycles ended on "You've
+  // hit your session limit"; both were scored barren and a working steward went
+  // STALLED.) A worker that posted nothing and was stopped by a usage limit or
+  // an API error did not fail to ship — it was cut off. No iteration advance,
+  // no barren accounting, no stall. Checked before the spawn-failure guard: a
+  // limit on the very first call leaves zero model turns, and that is a cut-off,
+  // not a launch that never ran.
+  if (messages.length === 0 && interruption) {
+    appendFileSync(join(agentDirAbs, 'history.jsonl'), JSON.stringify({
+      event: 'CYCLE_INTERRUPTED', ts: tsNow, attempted_cycle: cycleN, dispatched_by: dispatchedBy, model,
+      reason: interruption.reason,
+      error: interruption.error.slice(0, 300),
+      note: 'the worker was cut off before posting anything (usage limit or API error); not a barren cycle, iteration not advanced',
+    }) + '\n');
+    return {
+      posted_ids: [], valid_count: 0, invalid_ids: [], errors: [{ interrupted: true, reason: interruption.reason, error: interruption.error.slice(0, 300) }],
+      pending_after: null, resolved_count_after: null, backstop: [], artifact_lint_warnings: [],
+      stop_hint: 'interrupted', barren: false, stalled: false, spawn_failed: false, interrupted: true, usage_limit,
+      scroll: { written: false, reason: 'interrupted' }, commit: null,
+    };
+  }
 
   // ── A worker that never spoke is a SPAWN FAILURE, not a barren cycle ─────
   // (found 2026-09-23: `claude -p --permission-mode bypassPermissions` refuses
@@ -248,29 +301,8 @@ export function processCycle(opts) {
     return {
       posted_ids: [], valid_count: 0, invalid_ids: [], errors: [{ spawn_failed: true, transcriptPath }],
       pending_after: null, resolved_count_after: null, backstop: [], artifact_lint_warnings: [],
-      stop_hint: 'spawn_failed', barren: false, stalled: false, spawn_failed: true,
+      stop_hint: 'spawn_failed', barren: false, stalled: false, spawn_failed: true, usage_limit: false,
       scroll: { written: false, reason: 'spawn-failed' },
-    };
-  }
-
-  // ── A cycle cut off by an error is INTERRUPTED, not barren ───────────────
-  // (found 2026-09-25: two Neural Granular Synthesis cycles ended on "You've
-  // hit your session limit". The limit message counts as an assistant turn, so
-  // the guard above missed it; both were scored barren and a working steward
-  // went STALLED.) A worker that posted nothing and ended in an error was
-  // stopped, not idle: no iteration advance, no barren accounting, no stall.
-  // Record why, and hand the lane an `interrupted` stop hint that ends the run.
-  if (messages.length === 0 && errorResult) {
-    appendFileSync(join(agentDirAbs, 'history.jsonl'), JSON.stringify({
-      event: 'CYCLE_INTERRUPTED', ts: tsNow, attempted_cycle: cycleN, dispatched_by: dispatchedBy, model,
-      error: errorResult.slice(0, 300),
-      note: 'the worker ended in an error before posting anything (usage limit, API failure); not a barren cycle, iteration not advanced',
-    }) + '\n');
-    return {
-      posted_ids: [], valid_count: 0, invalid_ids: [], errors: [{ interrupted: true, error: errorResult.slice(0, 300) }],
-      pending_after: null, resolved_count_after: null, backstop: [], artifact_lint_warnings: [],
-      stop_hint: 'interrupted', barren: false, stalled: false, spawn_failed: false, interrupted: true,
-      scroll: { written: false, reason: 'interrupted' }, commit: null,
     };
   }
 
@@ -466,6 +498,9 @@ export function processCycle(opts) {
     stop_hint,
     barren,
     stalled,
+    // True when the transcript ended on a usage limit, even after shipping:
+    // the lane and the batch stop firing stewards until the limit resets.
+    usage_limit,
     // Where the project's scroll landed (replaces the plan.md read-model).
     scroll,
     // What the cycle committed (null when the caller did not opt in).

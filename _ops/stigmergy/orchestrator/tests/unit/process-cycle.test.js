@@ -492,3 +492,69 @@ describe('processCycle — a cycle cut off by an error is interrupted, not barre
     expect(history.some((e) => e.event === 'CYCLE_BARREN')).toBe(false);
   });
 });
+
+describe('processCycle — usage limits are never barren', () => {
+  let root;
+  afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
+
+  const LIMIT = "You've hit your session limit · resets 1am (America/New_York)";
+  // The harness writes the limit as a synthetic assistant record. Its flag is
+  // snake_case in `claude -p` stream-json and camelCase in session/subagent files.
+  const limitStream = () => JSON.stringify({ type: 'assistant', error: 'rate_limit', is_api_error_message: true, message: { model: '<synthetic>', usage: {}, content: [{ type: 'text', text: LIMIT }] } });
+  const limitSession = () => JSON.stringify({ type: 'assistant', error: 'rate_limit', isApiErrorMessage: true, message: { model: '<synthetic>', usage: {}, content: [{ type: 'text', text: LIMIT }] } });
+  const modelTurn = (text) => JSON.stringify({ type: 'assistant', message: { model: 'claude-opus-5-5', usage: { output_tokens: 40 }, content: [{ type: 'text', text }] } });
+
+  function setup(previousCycleBarren = true) {
+    root = mkdtempSync(path.join(tmpdir(), 'palace-pc-lim-'));
+    const agentDir = '_ops/agents/permanent/test-steward';
+    mkdirSync(path.join(root, agentDir), { recursive: true });
+    mkdirSync(path.join(root, '_ops/swarm/persistent'), { recursive: true });
+    writeFileSync(path.join(root, agentDir, 'manifest.json'), JSON.stringify({ agent_id: 'Test Steward', home: 'Test Steward', mode: 'long_duration_background', session_id: 's', model: { name: 'claude-opus-5-5' } }));
+    writeFileSync(path.join(root, agentDir, 'state.json'), JSON.stringify({ iteration: 10, last_active: '2026-09-25T02:37:00Z', last_read_cursor: 'x' }));
+    writeFileSync(path.join(root, agentDir, 'history.jsonl'), previousCycleBarren ? JSON.stringify({ event: 'CYCLE_COMPLETE', posted_messages: [] }) + '\n' : '');
+    writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), '');
+    return agentDir;
+  }
+  function run(agentDir, lines) {
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    writeFileSync(transcriptPath, lines.join('\n'));
+    return processCycle({ palaceRoot: root, transcriptPath, agentDir, cycleN: 11, iteration: 11, tsNow: '2026-09-25T02:40:22Z' });
+  }
+  const history = (agentDir) => readFileSync(path.join(root, agentDir, 'history.jsonl'), 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
+
+  test('a subagent transcript (no result record) that hits the limit mid-work is interrupted, not barren', () => {
+    const agentDir = setup();
+    const s = run(agentDir, [modelTurn('building the crowd instrument now'), modelTurn('writing the engine'), limitSession()]);
+    expect(s.stop_hint).toBe('interrupted');
+    expect(s.usage_limit).toBe(true);
+    expect(s.barren).toBe(false);
+    expect(s.stalled).toBe(false);
+    const h = history(agentDir);
+    expect(h.some((e) => e.event === 'CYCLE_BARREN')).toBe(false);
+    expect(h[h.length - 1]).toMatchObject({ event: 'CYCLE_INTERRUPTED', reason: 'usage_limit' });
+  });
+
+  test('a limit on the very first call is interrupted, not a spawn failure', () => {
+    const agentDir = setup();
+    const s = run(agentDir, [JSON.stringify({ type: 'system', subtype: 'init' }), limitStream(), JSON.stringify({ type: 'result', subtype: 'success', is_error: true, result: LIMIT })]);
+    expect(s.stop_hint).toBe('interrupted');
+    expect(s.spawn_failed).toBe(false);
+    expect(s.usage_limit).toBe(true);
+  });
+
+  test('a steward that shipped before the limit keeps its cycle, and the flag still stops the run', () => {
+    const agentDir = setup(false);
+    const shipped = { schema_version: '1.0', id: 'ship-1', ts: '2026-09-25T02:39:00Z', session_id: 's', from: 'Test Steward', to: '*', type: 'BROADCAST', board: 'GENERAL', payload: { kind: 'shipped_artifact', headline: 'made a thing' } };
+    const s = run(agentDir, [modelTurn('```json\n' + JSON.stringify(shipped) + '\n```'), limitSession()]);
+    expect(s.posted_ids).toEqual(['ship-1']);
+    expect(s.stop_hint).toBe('shipped');
+    expect(s.usage_limit).toBe(true);
+  });
+
+  test('an ordinary quiet cycle with no error is still barren', () => {
+    const agentDir = setup(false);
+    const s = run(agentDir, [modelTurn('I looked around and made nothing')]);
+    expect(s.stop_hint).toBe('barren');
+    expect(s.usage_limit).toBe(false);
+  });
+});

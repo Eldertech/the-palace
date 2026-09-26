@@ -4,7 +4,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   slugFromDir, transcriptNameFor, stewardArgv, grantsWaitingFor, stewardRow,
-  runCapFor, nextRunStep, stopReason,
+  runCapFor, nextRunStep, stopReason, afterCycle,
 } from '../../server/steward-lane.js';
 import { extractMessagesFromTranscript } from '../../../orchestrator/src/process-cycle.js';
 import { resolveClaudeBin } from '../../server/claude-bin.js';
@@ -123,6 +123,15 @@ describe('the run controller (multi-cycle activation, 2026-09-23)', () => {
     expect(nextRunStep({ cap: 3, position: 1, retried: false }, 'shipped')).toEqual({ cap: 3, position: 2, retried: false });
     expect(nextRunStep({ cap: 3, position: 3, retried: false }, 'shipped')).toBeNull();
     expect(nextRunStep({ cap: 1, position: 1, retried: false }, 'shipped')).toBeNull();
+  });
+
+  test('afterCycle: a usage limit ends the run AND drops the queue, even after a shipped cycle', () => {
+    const run = { cap: 10, position: 2, retried: false };
+    expect(afterCycle(run, { stop_hint: 'shipped', usage_limit: true })).toEqual({ next: null, dropQueue: true, stoppedBecause: 'usage_limit' });
+    expect(afterCycle(run, { stop_hint: 'interrupted', usage_limit: true })).toEqual({ next: null, dropQueue: true, stoppedBecause: 'usage_limit' });
+    // No limit: the ordinary run rules, and the queue carries on.
+    expect(afterCycle(run, { stop_hint: 'shipped', usage_limit: false })).toEqual({ next: { cap: 10, position: 3, retried: false }, dropQueue: false, stoppedBecause: null });
+    expect(afterCycle({ cap: 1, position: 1, retried: false }, { stop_hint: 'shipped' })).toEqual({ next: null, dropQueue: false, stoppedBecause: 'run_cap' });
   });
 
   test('nextRunStep: an interrupted cycle (usage limit) stops the run, no retry', () => {
