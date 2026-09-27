@@ -205,7 +205,11 @@ def embed_hero(md: Path, title: str) -> bool:
 
 
 def write_face_json(bundle: Path, title: str, spec: dict, seeds: dict) -> Path:
-    """Record the art direction so the companion can iterate from the prior prompt."""
+    """Record the art direction so the companion can iterate from the prior prompt.
+
+    A side the spec leaves without a prompt was not remade: it keeps its prior prompt
+    and seed, so a one-sided redo leaves the other side's record alone. The prior
+    record moves into history."""
     face = bundle / f"{title} — face.json"
     prior = {}
     if face.exists():
@@ -213,15 +217,19 @@ def write_face_json(bundle: Path, title: str, spec: dict, seeds: dict) -> Path:
             prior = json.loads(face.read_text())
         except Exception:
             prior = {}
-    history = prior.get("history", []) if isinstance(prior, dict) else []
+    if not isinstance(prior, dict):
+        prior = {}
+    history = prior.get("history", [])
     if prior.get("idiom") or prior.get("hero_prompt") or prior.get("icon_prompt"):
-        history.append({k: prior.get(k) for k in ("idiom", "hero_prompt", "icon_prompt", "rendered_at")})
+        history.append({k: prior.get(k) for k in ("idiom", "hero_prompt", "icon_prompt", "seeds", "rendered_at")})
+    kept_seeds = {side: s for side, s in (prior.get("seeds") or {}).items()
+                  if not (spec.get(f"{side}_prompt") or "").strip()}
     record = {
         "title": title,
-        "idiom": spec.get("idiom", ""),
+        "idiom": spec.get("idiom", "") or prior.get("idiom", ""),
         "hero_prompt": spec.get("hero_prompt", "") or prior.get("hero_prompt", ""),
         "icon_prompt": spec.get("icon_prompt", "") or prior.get("icon_prompt", ""),
-        "seeds": seeds,
+        "seeds": {**kept_seeds, **(seeds or {})},
         "rendered_at": _now_iso(),
         "history": history[-12:],               # keep the tail bounded
     }

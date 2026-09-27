@@ -11,16 +11,22 @@ Lives in tracked Shop space (the Maker's own bundle) so the render path ships in
 every checkout — NOT in gitignored _ops/scratch/. Working renders land in the
 gitignored ./_renders/ scratch dir; only finals are copied into each entry bundle.
 
-  make_faces.py generate [--palace ROOT] [--only SLUG,SLUG] [--mock]   # render to _renders/
-  make_faces.py place    [--palace ROOT]                                # copy into bundles + embed + sidecar
+  make_faces.py generate [--palace ROOT] [--only SLUG,SLUG] [--mock]   # render to _renders/ (+ each render's seed)
+  make_faces.py place    [--palace ROOT] [--only SLUG,SLUG]             # copy the rendered sides into bundles + embed + sidecar
   make_faces.py gallery  [--palace ROOT]                                # _renders/gallery.html contact sheet
-  make_faces.py plan     [--palace ROOT]                                # tab-sep git-add paths per entry
+  make_faces.py plan     [--only SLUG,SLUG]                             # tab-sep git-add paths per entry
+
+A side is rendered, and later placed, only when its spec carries a prompt for it, so
+an entry can be redone on one side: give it an icon_prompt and no hero_prompt, and
+`place` puts the new icon in and leaves the bundle's hero and its record alone.
+`generate` keeps each render's seed beside it (`<slug>-<side>.seed.json`, tied to the
+render's bytes), and `place` writes it into the face.json.
 
 prompts.json (sibling of this file) — a list of specs:
   [ { "title", "path" (palace-relative .md), "idiom", "hero_prompt", "icon_prompt" }, ... ]
 """
 from __future__ import annotations
-import argparse, importlib.util, json, os, shutil, sys
+import argparse, hashlib, importlib.util, json, os, shutil, sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -49,6 +55,26 @@ def only_filter(argv, items):
         return [s for s in items if R.slug(s["title"]) in want]
     return items
 
+def _sha(p: Path) -> str:
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def seed_path(render: Path) -> Path:
+    return render.with_name(render.stem + ".seed.json")        # found-made-hero.png -> found-made-hero.seed.json
+
+def record_seed(render: Path, seed: int) -> None:
+    """Keep the seed beside its render, tied to the render's bytes, so `place` can trust it."""
+    sp = seed_path(render); tmp = sp.with_name(f"{sp.name}.{os.getpid()}.tmp")
+    tmp.write_text(json.dumps({"seed": seed, "sha256": _sha(render)}) + "\n")
+    os.replace(tmp, sp)
+
+def read_seed(render: Path):
+    """The seed that made this exact render, or None — no sidecar, or the png changed since (a trim, a composite)."""
+    try:
+        d = json.loads(seed_path(render).read_text())
+    except Exception:
+        return None
+    return d.get("seed") if d.get("sha256") == _sha(render) else None
+
 def generate(argv):
     palace = palace_of(argv); mock = "--mock" in argv
     RENDERS.mkdir(parents=True, exist_ok=True)
@@ -74,7 +100,8 @@ def generate(argv):
                 if not p:
                     print(f"[batch] SKIP {sl}-{side}: no prompt"); continue
                 try:
-                    R.render_side(ep_obj, RENDERS, side, p + R.ANTI_TEXT, final, mock)
+                    seed = R.render_side(ep_obj, RENDERS, side, p + R.ANTI_TEXT, final, mock)
+                    record_seed(final, seed)
                     done += 1
                 except Exception as ex:
                     failed += 1; print(f"[batch] !! {sl}-{side} FAILED: {ex}")
@@ -88,23 +115,52 @@ def generate(argv):
             except Exception as ex: print(f"[batch] WARN park: {ex}")
         print(f"[batch] generate done. rendered={done} failed={failed}")
 
+def sides_to_place(s: dict) -> list:
+    """The sides the spec asks for (a prompt) that have a render waiting in _renders/."""
+    sl = R.slug(s["title"])
+    return [side for side in ("hero", "icon")
+            if (s.get(f"{side}_prompt") or "").strip() and (RENDERS / f"{sl}-{side}.png").exists()]
+
 def place(argv):
+    """Copy each entry's rendered sides into its bundle — hero, icon, or both.
+
+    The other side's file in the bundle, and its prompt and seed in the face.json, are
+    left alone. A render in _renders/ for a side the spec doesn't ask for is reported,
+    not placed: _renders/ keeps old batches, and a stale render must not overwrite a
+    good face."""
     palace = palace_of(argv); placed = 0
-    for s in specs():
+    for s in only_filter(argv, specs()):
         title, rel_md = s["title"], s.get("path", "")
         md = palace / rel_md
         if not md.exists():
             print(f"[place] SKIP {title}: md not found ({rel_md})"); continue
         sl = R.slug(title)
-        hero_src, icon_src = RENDERS / f"{sl}-hero.png", RENDERS / f"{sl}-icon.png"
-        if not (hero_src.exists() and icon_src.exists()):
-            print(f"[place] SKIP {title}: renders missing"); continue
+        sides = sides_to_place(s)
+        for side in ("hero", "icon"):
+            if side in sides:
+                continue
+            if (s.get(f"{side}_prompt") or "").strip():
+                print(f"[place] note {title}: {side} asked for but not rendered — the bundle's {side} is left as it is")
+            elif (RENDERS / f"{sl}-{side}.png").exists():
+                print(f"[place] note {title}: _renders/ holds a {side} the spec doesn't ask for — not placed")
+        if not sides:
+            print(f"[place] SKIP {title}: nothing rendered to place"); continue
+        seeds = {}
+        for side in sides:
+            seed = read_seed(RENDERS / f"{sl}-{side}.png")
+            if seed is None:
+                print(f"[place] note {title}: no seed on record for this {side} render (none kept, or the png changed)")
+            else:
+                seeds[side] = seed
         bundle = md.parent / md.stem; bundle.mkdir(parents=True, exist_ok=True)   # by FILE name (SCHEMA §8), not title
-        shutil.copyfile(hero_src, bundle / f"{title} — hero.png")
-        shutil.copyfile(icon_src, bundle / f"{title} — icon.png")
-        R.embed_hero(md, title)
-        R.write_face_json(bundle, title, s, {})
-        placed += 1; print(f"[place] {title}")
+        for side in sides:
+            shutil.copyfile(RENDERS / f"{sl}-{side}.png", bundle / f"{title} — {side}.png")
+        if "hero" in sides:
+            R.embed_hero(md, title)
+        # write_face_json reads a blank prompt as "this side wasn't remade" and keeps its prior prompt + seed
+        placed_spec = {**s, **{f"{side}_prompt": "" for side in ("hero", "icon") if side not in sides}}
+        R.write_face_json(bundle, title, placed_spec, seeds)
+        placed += 1; print(f"[place] {title}: {' + '.join(sides)}")
     print(f"[place] placed {placed}")
 
 def gallery(argv):
@@ -132,11 +188,15 @@ def gallery(argv):
     print(f"[batch] wrote {RENDERS/'gallery.html'}")
 
 def plan(argv):
-    for s in specs():
-        title = s["title"]; d = str(Path(s.get("path","")).parent)
-        base = f"{d}/{title}" if d and d != "." else title
-        print("\t".join([s.get("path",""), f"{base}/{title} — hero.png",
-                          f"{base}/{title} — icon.png", f"{base}/{title} — face.json"]))
+    """Tab-separated paths `place` writes per entry: the md, the sides it places, the face.json."""
+    for s in only_filter(argv, specs()):
+        title, rel = s["title"], s.get("path", "")
+        sides = sides_to_place(s)
+        if not sides:
+            continue
+        bundle = Path(rel).parent / Path(rel).stem                  # by FILE name, as place does
+        print("\t".join([rel] + [str(bundle / f"{title} — {side}.png") for side in sides]
+                         + [str(bundle / f"{title} — face.json")]))
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(add_help=True)
