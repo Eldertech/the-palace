@@ -313,7 +313,8 @@ if (map) {
   const nodes = map.nodes.filter((n) => pubPaths.has(n.path));
   const ids = new Set(nodes.map((n) => n.id));
   const edges = map.edges.filter((e) => ids.has(e.source) && ids.has(e.target));
-  const { ghost_taxonomy, ...meta } = map.meta || {};
+  // Ghost lists and frontmatter errors name private pages; they stay home.
+  const { ghost_taxonomy, yaml_errors, ...meta } = map.meta || {};
   linkCount = edges.length;
   writeJson('data/topology.json', { source: map.source, meta: { ...meta, node_count: nodes.length, edge_count: edges.length }, nodes, edges });
 }

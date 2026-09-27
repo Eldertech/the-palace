@@ -1,6 +1,6 @@
 ---
 title: "{{Project}} — toolbox"
-born: {{YYYY-MM-DD}}
+born: "{{YYYY-MM-DD}}"
 links:
   - target: "[[{{Project}}]]"
     type: connects-to

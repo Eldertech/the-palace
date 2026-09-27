@@ -6,7 +6,7 @@ pillars:
   - practice
 born: 2026-03
 stage: growing
-version: "2.3"
+version: "2.4"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -45,7 +45,7 @@ links:
 
 ## Modes
 
-**Full Survey** — scans every `.md` file in the palace root. Builds the complete edge list. Used for: pre-swarm context loading, palace-wide Enchantment, JEWEL updates.
+**Full Survey** — reads the frontmatter of every `.md` in the palace. Builds the complete edge list. Used for: pre-swarm context loading, palace-wide Enchantment, JEWEL updates.
 
 **Bounded Survey** — scans only entries whose frontmatter contains a matching `neighborhood:` or `cluster:` field. Used for: neighborhood swarm sessions, focused enchantment runs, partial map export for external tools.
 
@@ -67,12 +67,12 @@ Receive scope: `full`, `neighborhood:[name]`, or a list of entry filenames. Dete
 **2. Scan**
 
 Read frontmatter only from every entry in scope. **Never open entry bodies.** Collect:
-- Entry ID (filename without `.md`) from **palace root** → these are the known nodes
-- Entry ID from **`_ops/`** → these are known ops nodes (not mapped, but used for ghost classification)
+- Entry ID (filename without `.md`) of every file whose frontmatter carries a canon `type` ([[SCHEMA]] §1) → the nodes, `_ops/` ceremony cards included (directly in `_ops/` or one folder down), outside the machinery and vendored folders the builder skips
+- Entry ID of every other `.md` — bundle files, materials, `_ops/` cards without a canon type → a file target (not mapped, used for ghost classification)
 - Entry type and neighborhood field
 - All typed link targets from the `links:` array
 
-Ops entries (`_ops/*.md`) are valid targets and are part of the palace. They are not mapped as nodes in the graph but must be recognized as existing entries during ghost detection.
+Frontmatter is read as YAML, the way [[STIGMERGY]] reads it, so the map and PULSE agree on what is canon. A file whose frontmatter will not parse is not a node; the map names it in `meta.yaml_errors`, so it gets fixed rather than silently dropped.
 
 This step is fast. Frontmatter is 20–40 lines per file. A 100-entry palace completes in seconds.
 
@@ -94,26 +94,26 @@ Produces: `Striatum  drives  Hilaritas`
 
 Build:
 - **Edge list** — all `(source, relation, target)` triples
-- **Node registry** — all entries observed as sources or targets that exist in the palace root
+- **Node registry** — every canon entry found in Step 2
 - **Ghost manifest** — typed by category (see below)
 
 ### Ghost Taxonomy
 
-Every target that does not exist as a palace root entry is a ghost. But not all ghosts are the same. Classify each one:
+Every target that is not a node is a ghost. But not all ghosts are the same. Classify each one:
 
 **`error_ghost`** — A target whose name matches an existing entry title under case-insensitive comparison. The entry exists; the link is broken. These require immediate correction.
 
 Example: target `Four Pillars` when `FOUR PILLARS.md` exists → `error_ghost`.
 
-**`ops_ghost`** — A target whose name matches an `_ops/` entry filename (without `.md`). The entry exists in ops; the link is valid but the ceremony's root scan made it invisible.
+**`file_ghost`** — A target whose name matches a file in the palace that is not a node: a bundle file, a frontmatter-less material, an `_ops/` card without a canon type. The file exists; the link is valid.
 
-Example: target `Harvest Ceremony` when `_ops/Harvest Ceremony.md` exists → `ops_ghost`.
+Example: target `SCHEMA — Context` when `SCHEMA/SCHEMA — Context.md` exists → `file_ghost`.
 
 **`forward_ghost`** — A target with no match anywhere in the palace. The entry does not yet exist. This is forward tension made visible — the organism reaching toward something not yet written.
 
 Example: target `Resonance and Damping` with no corresponding file → `forward_ghost`.
 
-Report all three categories separately. Only `forward_ghosts` belong in the `ghost_nodes` field of the map output. `error_ghosts` should be flagged for immediate correction. `ops_ghosts` are informational — they confirm valid links, no action needed.
+Report all three categories separately. Only forward ghosts are entries not yet written. `error_ghosts` should be flagged for immediate correction. `file_ghosts` are informational — they confirm valid links, no action needed.
 
 **5. Format**
 
@@ -149,10 +149,11 @@ JSON:
     "scope": "full",
     "node_count": 94,
     "edge_count": 544,
+    "yaml_errors": [],
     "ghost_taxonomy": {
-      "error_ghosts": [{"target": "Four Pillars", "resolves_to": "FOUR PILLARS"}],
-      "ops_ghosts": ["Harvest Ceremony", "Weave Ceremony"],
-      "forward_ghosts": ["Resonance and Damping", "Donella Meadows"]
+      "error_ghosts": [{"source": "Hilaritas Generator", "target": "Four Pillars", "resolves_to": "FOUR PILLARS"}],
+      "file_ghosts": ["SCHEMA — Context"],
+      "forward_ghosts": [{"target": "Resonance and Damping", "sources": ["Differential Equations"]}]
     }
   },
   "nodes": [ ... ],
