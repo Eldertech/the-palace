@@ -30,7 +30,7 @@ Stage 1 is the buffer-mechanism-first teaching moment. The student spends 45 of 
 3. **Shows the M4L device UI** as it will exist at end of Stage 1 — one knob, no character, monaural. This is the *anti-mockup* — the explicit demonstration that the Stage 1 UI is bare.
 4. **Anchors the cross-domain moment** (compressor's 11 ms buffer next to the delay's 2-s buffer) without the student needing to switch between two devices.
 
-Per Maker's selection heuristics: math/system-content goes to **Mermaid** (system diagrams) and **Manim CE** (math-typed animation); UI mockups go to **Remotion** or **p5.js** (UI mockups → Remotion is the heuristic); narration goes to **Kokoro**. Mood imagery for the framing slide can go to **Midjourney** or **ComfyUI** (the witness as motif).
+Per Maker's selection heuristics: math/system-content goes to **Mermaid** (system diagrams) and **Manim CE** (math-typed animation); UI mockups go to **Remotion** or **p5.js** (UI mockups → Remotion is the heuristic); narration goes to **Kokoro**. Mood imagery for the framing slide goes to whichever image generator the Maker chooses at dispatch (the witness as motif).
 
 ## The Five Mockup Assets
 
@@ -117,19 +117,19 @@ If the team wants to skip Remotion's commercial-license complexity for a single 
 
 **What it is:** A single mood image used at the start of the framing block — visual seed for the *witness* mental model before any technical content. **Not a literal illustration of a circular buffer**; this asset is supposed to *evoke*, not *explain*. The literal explanation is Asset 1's job. A good Asset 5 is: an empty stage with a single microphone; a quiet listener in the corner of an old recording studio; an open notebook beside a candle. *Always present, not waiting to be asked.*
 
-**Routing:** Mood / atmospheric / editorial → Midjourney for highest aesthetic ceiling, or ComfyUI when palette discipline matters. The Maker's default-when-in-doubt is **ComfyUI** (local-first).
+**Routing:** Mood / atmospheric / editorial imagery. No generator is named here: the Maker chooses one at dispatch, by its mood-imagery rule and what the Shop can run that day.
 
-**Maker's recommendation:** **Midjourney Study tier**. The image runs once at the top of the session and frames the entire 75-minute arc. It needs aesthetic ceiling. ComfyUI's structural control is wasted here — we are not iterating against a pose reference, and the image will be replaced if Loudon doesn't like it after one Study. Run as Study tier with a project `--sref` if one is named (none yet for Retrospective Delay).
+**Maker's recommendation:** **Study tier**. The image runs once at the top of the session and frames the entire 75-minute arc, so it needs aesthetic ceiling more than structural control — there is no pose or layout to hold, and the image will be replaced if Loudon doesn't like it after one Study.
 
-**Tier:** Study. 4-image grid at default Midjourney resolution, Maker selects one, then a single variation pass. Prompt seed: *"an empty recording studio at night, a single condenser microphone on a stand, faint amber light, the witness, no people, --ar 16:9 --no text"*. Variations should preserve composition but explore lighting register (warm amber vs. cool indigo vs. neutral).
+**Tier:** Study. A few candidates, the Maker selects one, then a single variation pass. Prompt seed: *"an empty recording studio at night, a single condenser microphone on a stand, faint amber light, the witness, no people, no text"*, 16:9. Variations should preserve composition but explore lighting register (warm amber vs. cool indigo vs. neutral).
 
 **Output:** `Projects/Retrospective Delay/stage-1/assets/frame-block-opener.png`
 
-**Specialist:** Midjourney (with [[Shop/ComfyUI|ComfyUI]] as fallback if subscription is unavailable that day).
+**Specialist:** the Maker's choice at dispatch.
 
 **House standards in effect:** Palette = palace base (indigo + amber as accent colors guide the prompt's "amber light" descriptor); aspect ratio = 16:9.
 
-**Resource note (Maker):** This is the only credit-consuming asset in the brief. At Study tier with one variation, ~5 Midjourney credits. If Loudon's session budget is tight that day, drop to Sketch and accept the first grid without variation (~1 credit).
+**Resource note (Maker):** This is the only asset that may use a paid or GPU generator; the Maker names the cost when it routes. If the budget is tight that day, drop to Sketch and accept the first candidates without a variation pass.
 
 ## Brief Summary — One Table
 
@@ -139,9 +139,9 @@ If the team wants to skip Remotion's commercial-license complexity for a single 
 | 2 | Phrase vs. tap waveform diagram | Matplotlib | Sketch | `assets/phrase-vs-tap.png` |
 | 3 | Stage-1 M4L device mockup | Remotion (or Matplotlib fallback) | Sketch | `assets/device-mockup.png` |
 | 4 | Cross-domain buffer table | Matplotlib | Sketch | `assets/cross-domain-buffer-table.png` |
-| 5 | Frame-block opening image | Midjourney (ComfyUI fallback) | Study | `assets/frame-block-opener.png` |
+| 5 | Frame-block opening image | Maker's choice at dispatch | Study | `assets/frame-block-opener.png` |
 
-Total: 4 Sketch-tier deliverables (cheap-and-fast) + 1 Study-tier deliverable (working draft worth iterating). Total estimated time across the brief at Maker's pace: ~3.5 hours of Specialist-execution time if dispatched serially; ~1.5 hours if parallelized where resources don't compete (assets 1, 2, 3, 4 can run in parallel; asset 5 runs alone because Midjourney is rate-limited).
+Total: 4 Sketch-tier deliverables (cheap-and-fast) + 1 Study-tier deliverable (working draft worth iterating). Total estimated time across the brief at Maker's pace: ~3.5 hours of Specialist-execution time if dispatched serially; ~1.5 hours if parallelized where resources don't compete (assets 1, 2, 3, 4 can run in parallel; asset 5 runs alone, on whatever generator the Maker routes it to).
 
 ## House-Standards Cascade Resolved By Maker
 
@@ -163,9 +163,9 @@ Per [[Shop/Maker|Maker]] standards, this brief inherits the palace base layer:
 
 ## Open Decisions For Trickster
 
-1. **Greenlight the full Sketch-tier brief (assets 1–4)?** Each is sub-30-minutes of Specialist time and uses local tools. Asset 5 (Midjourney Study) is the only credit-consuming asset and the only one with a real cost discussion.
+1. **Greenlight the full Sketch-tier brief (assets 1–4)?** Each is sub-30-minutes of Specialist time and uses local tools. Asset 5 (Study, generator chosen at dispatch) is the only asset that may cost money, and the only one with a real cost discussion.
 2. **Asset 3 routing — Remotion or Matplotlib fallback?** Remotion gives a reusable React scaffold for future stages; Matplotlib is faster and license-clean. Maker leans Remotion if Stage 2's UI mockup is on the near horizon; Matplotlib if it isn't.
-3. **Asset 5 tier — Study or drop to Sketch?** Study uses ~5 credits, gives one round of variations and Maker-selected best; Sketch uses ~1 credit, takes the first 4-grid without iteration.
+3. **Asset 5 tier — Study or drop to Sketch?** Study gives one round of variations and a Maker-selected best; Sketch takes the first candidates without iteration.
 
 ## Dispatch Status
 
@@ -177,10 +177,10 @@ Per [[Shop/Maker|Maker]] standards, this brief inherits the palace base layer:
 | 2 | Phrase vs. tap waveform | Matplotlib | `assets/phrase-vs-tap.png` | built (cycle 4) |
 | 3 | Stage-1 M4L device mockup | Matplotlib (license-clean fallback) | `assets/device-mockup.png` | built (cycle 4) |
 | 4 | Cross-domain buffer table | Matplotlib | `assets/cross-domain-buffer-table.png` | built (cycle 4) |
-| 5 | Frame-block opening image | Midjourney (Study) | `assets/frame-block-opener.png` | **not built — needs Loudon's credits/Mac** |
+| 5 | Frame-block opening image | Maker's choice at dispatch (Study) | `assets/frame-block-opener.png` | **not built — needs an image generator the sandbox can't run** |
 
 Cycle 4 took the Matplotlib route for Asset 3 (the device mockup) rather than Remotion, because Remotion's commercial-license complexity is not worth it for a single still frame and the sandbox can build a clean Max-styled panel directly. If Stage 2's UI mockup arrives and wants a reusable React scaffold, that is a fresh decision then — it does not block Stage 1.
 
-Asset 5 is the only remaining asset and the only credit-consuming one. It needs Loudon's Midjourney subscription (or a ComfyUI run on his Mac); the Cowork sandbox cannot run either. The cycle-4 TRICKSTER ask consolidates the two prior open questions into a single decision about Asset 5.
+Asset 5 is the only remaining asset and the only one that may cost money. It needs an image generator the Cowork sandbox cannot run; the Maker routes it at dispatch. The cycle-4 TRICKSTER ask consolidates the two prior open questions into a single decision about Asset 5.
 
 **Original planning note:** This brief began as a cycle-2 planning artifact. Loudon's cycle-1 grant said *create some mock up interfaces and appropriate imagery*, honored by spec'ing through the Shop and asking before Specialists ran. Cycle 4 then executed every asset that did not require Loudon's resources.
