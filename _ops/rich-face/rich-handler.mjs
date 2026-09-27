@@ -4,8 +4,9 @@
 //   · standalone at /             (rich-server.mjs)      — when STIGMERGY is down
 //
 // Four jobs, all same-origin so the page has no CORS to fight:
-//   1. Serve the renderer (rich.html, _rich/*) and any palace file — the live
-//      .md, the bundle's media — with byte ranges, so video and audio can seek.
+//   1. Serve the renderer (rich.html, _rich/*), its two libraries (_vendor/*,
+//      from STIGMERGY's own install — never a CDN) and any palace file — the
+//      live .md, the bundle's media — with byte ranges, so video and audio can seek.
 //   2. Resolve an entry name to its .md, its bundle and its manifest.
 //   3. Find media by bare filename, the way an Obsidian embed does.
 //   4. Forward review notes to STIGMERGY as a `human_eval` BROADCAST — the
@@ -16,7 +17,8 @@
 // It never writes to the palace.
 
 import { createReadStream, existsSync, statSync, readdirSync } from 'node:fs';
-import { join, extname, normalize, relative, sep, resolve } from 'node:path';
+import { join, extname, normalize, relative, sep, resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { makeFinder } from './palace-find.mjs';
 
 const CT = {
@@ -29,6 +31,47 @@ const CT = {
 };
 // The renderer's own files; nothing else in this folder is served as _rich/*.
 const RENDERER_FILES = new Set(['parse.js']);
+
+// The page's two libraries — marked, and mermaid with its chunks — come from STIGMERGY's
+// install, which npm checked against the lockfile's hashes, so a reader never runs code
+// a CDN handed over. They are looked up the way node resolves them from the app — its own
+// node_modules first, then the workspace's — so the app's exact pin on marked wins over
+// the newer copy mermaid pulls in. Only these files are ever served as _vendor/*.
+const STIGMERGY = resolve(dirname(fileURLToPath(import.meta.url)), '../stigmergy');
+const MERMAID_CHUNK = /^chunks\/mermaid\.esm\.min\/[\w.-]+\.mjs$/;
+
+function packageDir(name) {
+  for (const d of [join(STIGMERGY, 'app/node_modules', name), join(STIGMERGY, 'node_modules', name)]) {
+    if (existsSync(join(d, 'package.json'))) return d;
+  }
+  return null;
+}
+
+/** The file on disk behind a _vendor/ path, or null for anything not on the list. */
+export function vendorFile(rel) {
+  const [lib, ...rest] = String(rel).split('/');
+  const tail = rest.join('/');
+  if (lib === 'marked' && tail === 'marked.esm.js') {
+    const d = packageDir('marked');
+    return d && join(d, 'lib/marked.esm.js');
+  }
+  if (lib === 'mermaid' && (tail === 'mermaid.esm.min.mjs' || MERMAID_CHUNK.test(tail))) {
+    const d = packageDir('mermaid');
+    return d && join(d, 'dist', tail);
+  }
+  return null;
+}
+
+/** Every _vendor/ file that exists, for the static build to copy: [{ rel, abs }]. */
+export function vendorFiles() {
+  const rels = ['marked/marked.esm.js', 'mermaid/mermaid.esm.min.mjs'];
+  const d = packageDir('mermaid');
+  const chunks = d && join(d, 'dist/chunks/mermaid.esm.min');
+  if (chunks && existsSync(chunks)) {
+    for (const f of readdirSync(chunks)) if (MERMAID_CHUNK.test(`chunks/mermaid.esm.min/${f}`)) rels.push(`mermaid/chunks/mermaid.esm.min/${f}`);
+  }
+  return rels.map((rel) => ({ rel, abs: vendorFile(rel) })).filter((f) => f.abs && existsSync(f.abs));
+}
 
 const json = (res, code, obj) => { res.writeHead(code, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(obj)); };
 const statOrNull = (p) => { try { return statSync(p); } catch { return null; } };
@@ -192,7 +235,8 @@ export function createRichHandler({ root, here, base = '', app }) {
     else if (path.startsWith('/_rich/')) {
       const name = path.slice('/_rich/'.length);
       file = RENDERER_FILES.has(name) ? join(HERE, name) : null;
-    } else file = inside(ROOT, path);
+    } else if (path.startsWith('/_vendor/')) file = vendorFile(path.slice('/_vendor/'.length));
+    else file = inside(ROOT, path);
     const st = file ? statOrNull(file) : null;
     if (!st || !st.isFile()) { res.writeHead(404); res.end('not found: ' + path); return true; }
     serveFile(req, res, file, st.size);
