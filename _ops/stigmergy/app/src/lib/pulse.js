@@ -11,6 +11,8 @@
 // Pure function over the normalized entry summary shape from entries.js.
 // Higher score = more alive.
 
+import { ENTRY_TYPES } from './entry-edit.js';
+
 const STAGE_WEIGHT = {
   fruiting: 1.0,
   growing: 0.75,
@@ -66,4 +68,21 @@ export function pulseSort(entries, now = new Date()) {
       return (a.e.title ?? '').localeCompare(b.e.title ?? '');
     })
     .map(({ e, s }) => ({ ...e, pulse: s }));
+}
+
+// What PULSE triages: canon only. SCHEMA §1 makes frontmatter the membership
+// card, so a row needs a real §1 `type` — READMEs, SKILL.md, build logs and
+// other machinery have none and stay in the TREE lens, which walks folders.
+// withBundles adds a canon entry's bundle files (`Foo/…` belongs to `Foo.md`),
+// but only the ones carrying the §8 minimum — born, links, forward_vector —
+// so scrolls, Contexts and batons come in and bare workshop files stay out.
+export function pulseUniverse(entries, { withBundles = false } = {}) {
+  if (!Array.isArray(entries)) return [];
+  const isCanon = (e) => !e.is_bundle_file && ENTRY_TYPES.includes(e.type);
+  const canon = entries.filter(isCanon);
+  if (!withBundles) return canon;
+  const dirs = canon.filter((e) => e.has_bundle).map((e) => e.path.replace(/\.md$/, '/'));
+  const selfDescribing = (e) => Boolean(e.born || e.forward_vector || e.link_count > 0);
+  return entries.filter((e) => isCanon(e)
+    || (e.is_bundle_file && selfDescribing(e) && dirs.some((d) => e.path.startsWith(d))));
 }

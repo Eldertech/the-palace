@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Box } from '../primitives.jsx';
+import { Box, Check } from '../primitives.jsx';
 import StageGlyph from './StageGlyph.jsx';
-import { pulseSort } from '../../lib/pulse.js';
+import { pulseSort, pulseUniverse } from '../../lib/pulse.js';
 import { sortEntries, DEFAULT_DIR, SORT_KEYS } from '../../lib/entry-sort.js';
 import { activeIndex, stepCursor } from '../../lib/list-cursor.js';
 import { parseFilterFromUrl, replaceFilterInUrl } from '../../lib/url-nav.js';
@@ -105,11 +105,11 @@ export default function EntryList({ entries = [], loadState, error, onSelect, in
   );
   const [sortKey, setSortKey] = useState('pulse');
   const [sortDir, setSortDir] = useState(DEFAULT_DIR.pulse);
-  // Bundle files (SCHEMA §8 owned files: batons, scrolls, specs, context)
-  // are not first-class entries — they're an entry's private substrate. PULSE
-  // is the vitality triage list, so it hides them by default; the toggle and
-  // the TREE lens are where they belong. Off by default = the flat list shows
-  // only entries that stand on their own.
+  // PULSE is canon only (lib/pulse.js pulseUniverse): entries with a real
+  // SCHEMA §1 type. Bundle files (§8 owned files: batons, scrolls, specs,
+  // context) are an entry's private substrate, so they join only when the
+  // toggle is on; files with no frontmatter at all (READMEs, SKILL.md, build
+  // logs) never do — the TREE lens is where the folders live.
   const [showBundleFiles, setShowBundleFiles] = useState(false);
 
   // Always pulse-stamp first (the dot meter shows score regardless of sort
@@ -129,11 +129,10 @@ export default function EntryList({ entries = [], loadState, error, onSelect, in
     }
   };
 
-  // Hide bundle files unless the toggle is on. This is the universe the
-  // filter and the header count operate over, so "N/M entries" reflects what
-  // PULSE actually triages, not the raw .md count.
+  // The universe the filter and the header count operate over, so "N/M
+  // entries" reflects what PULSE actually triages, not the raw .md count.
   const base = useMemo(
-    () => (showBundleFiles ? sorted : sorted.filter((e) => !e.is_bundle_file)),
+    () => pulseUniverse(sorted, { withBundles: showBundleFiles }),
     [sorted, showBundleFiles],
   );
 
@@ -260,22 +259,12 @@ export default function EntryList({ entries = [], loadState, error, onSelect, in
         }}>
           [↑↓] move  [enter] open
         </span>
-        <label
-          data-testid="pulse-bundle-toggle"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: 6,
-            cursor: 'pointer', whiteSpace: 'nowrap',
-            color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12,
-          }}
-        >
-          <input
-            type="checkbox"
-            checked={showBundleFiles}
-            onChange={(e) => setShowBundleFiles(e.target.checked)}
-            style={{ accentColor: 'var(--phosphor)', cursor: 'pointer', margin: 0 }}
-          />
-          show bundle files
-        </label>
+        <Check
+          testId="pulse-bundle-toggle"
+          checked={showBundleFiles}
+          onToggle={setShowBundleFiles}
+          title="add the files inside each entry's bundle"
+        >bundle files</Check>
       </div>
 
       <div data-testid="pulse-header" className="pulse-cols" style={{

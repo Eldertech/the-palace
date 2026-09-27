@@ -5,7 +5,7 @@ import {
   forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide,
   forceX, forceY,
 } from 'd3-force';
-import { Box } from '../primitives.jsx';
+import { Box, Check } from '../primitives.jsx';
 import { fetchTopology, fetchUnsungPaths } from '../../adapters/topology.js';
 import { assignRoles, roleCounts } from '../../lib/topology-roles.js';
 import {
@@ -888,16 +888,12 @@ function GroupControls({
           {Number(spacing).toFixed(2)}
         </span>
       </label>
-      <label style={{ display: 'inline-flex', gap: 6, alignItems: 'center', cursor: 'pointer' }}>
-        <input type="checkbox" data-testid="topology-group-tint" checked={!!tint} onChange={onToggleTint}
-          style={{ accentColor: 'var(--phosphor)', cursor: 'pointer', margin: 0 }} />
+      <Check testId="topology-group-tint" checked={!!tint} onToggle={onToggleTint}>
         tint by group
-      </label>
-      <label style={{ display: 'inline-flex', gap: 6, alignItems: 'center', cursor: 'pointer' }}>
-        <input type="checkbox" data-testid="topology-group-labels" checked={!!labels} onChange={onToggleLabels}
-          style={{ accentColor: 'var(--phosphor)', cursor: 'pointer', margin: 0 }} />
+      </Check>
+      <Check testId="topology-group-labels" checked={!!labels} onToggle={onToggleLabels}>
         labels
-      </label>
+      </Check>
       {summary && summary.length ? (
         <span data-testid="topology-group-chips" style={{
           display: 'inline-flex', flexWrap: 'wrap', gap: 8, alignItems: 'center',
@@ -972,20 +968,12 @@ function Legend({ stats, showAvatars, onToggleAvatars }) {
         <strong style={{ color: 'var(--phosphor)' }}>{stats.unsung}</strong> unsung paths
         <span style={{ opacity: 0.6 }}> (body wikilinks not in YAML)</span>
       </span>
-      <label
-        data-testid="topology-legend-avatars"
-        style={{ display: 'inline-flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}
-      >
-        <input
-          type="checkbox"
-          data-testid="topology-avatars-toggle"
-          checked={!!showAvatars}
-          onChange={onToggleAvatars}
-          style={{ accentColor: 'var(--phosphor)', cursor: 'pointer', margin: 0 }}
-        />
-        <strong style={{ color: 'var(--phosphor)' }}>{stats.avatars}</strong> avatars
-        <span style={{ opacity: 0.6 }}> (bundle art)</span>
-      </label>
+      <span data-testid="topology-legend-avatars">
+        <Check testId="topology-avatars-toggle" checked={!!showAvatars} onToggle={onToggleAvatars}>
+          <strong style={{ color: 'var(--phosphor)' }}>{stats.avatars}</strong> avatars
+          <span style={{ opacity: 0.6 }}> (bundle art)</span>
+        </Check>
+      </span>
     </div>
   );
 }
