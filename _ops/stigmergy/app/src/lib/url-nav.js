@@ -181,6 +181,34 @@ export function useEntryNavigation() {
   };
 }
 
+// The PULSE filter rides in the URL as `?q=`, so opening an entry and coming
+// back -- by the reader's [back] or the browser's -- lands on the same
+// filtered list. buildEntrySearch and the deck/lens builders already carry
+// sibling params through, so nothing else has to know about it. Written with
+// replaceState, never pushState: a keystroke is not a step in history.
+export function parseFilterFromUrl(searchString) {
+  if (typeof searchString !== 'string') return '';
+  return new URLSearchParams(searchString).get('q') ?? '';
+}
+
+// Build a search string preserving every param except `q`; a blank filter
+// clears it so an unfiltered PULSE keeps a clean URL.
+export function buildFilterSearch(searchString, q) {
+  const params = new URLSearchParams(searchString || '');
+  params.delete('q');
+  if (q && q.trim()) params.set('q', q);
+  const s = params.toString();
+  return s === '' ? '' : `?${s}`;
+}
+
+export function replaceFilterInUrl(q) {
+  if (typeof window === 'undefined') return;
+  const nextSearch = buildFilterSearch(window.location.search, q);
+  if (nextSearch === (window.location.search || '')) return;
+  const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
+  window.history.replaceState(window.history.state, '', nextUrl);
+}
+
 // The STATE lenses. The default is implicit (omitted from the URL): PULSE in
 // STIGMERGY, TOPOLOGY in the public read view, whose visitors land on the
 // graph. Unknown values fall back to the default.

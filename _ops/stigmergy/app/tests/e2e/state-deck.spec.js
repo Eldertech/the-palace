@@ -82,6 +82,68 @@ test.describe('STATE deck — PULSE lens (index of real palace entries)', () => 
     expect(firstText?.toLowerCase()).toContain('kuramoto');
   });
 
+  test('filter, then ↓ / ↑ walk the matches and Enter opens the highlighted entry', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByTestId('pulse-header')).toBeVisible({ timeout: 20_000 });
+    const filter = page.getByTestId('pulse-filter');
+    await filter.fill('ceremony');
+    const rows = page.locator('[data-testid="pulse-row"]');
+    expect(await rows.count()).toBeGreaterThan(3);
+
+    // Typing highlights the top match.
+    await expect(rows.nth(0)).toHaveAttribute('data-active', '1');
+
+    // ↓↓↓ then ↑ lands on the third row, and focus never leaves the filter.
+    for (let i = 0; i < 3; i++) await filter.press('ArrowDown');
+    await filter.press('ArrowUp');
+    await expect(rows.nth(2)).toHaveAttribute('data-active', '1');
+    await expect(page.locator('[data-testid="pulse-row"][data-active="1"]')).toHaveCount(1);
+    const picked = await rows.nth(2).getAttribute('data-path');
+
+    await filter.press('Enter');
+    await expect(page.getByTestId('entry-reader')).toHaveAttribute('data-path', picked, { timeout: 10_000 });
+
+    // Coming back (browser back) restores the filter and the highlight on the
+    // row you left from, so ↓ carries on to the next match.
+    await page.goBack();
+    await expect(page.getByTestId('pulse-filter')).toHaveValue('ceremony', { timeout: 10_000 });
+    await expect(page.locator(`[data-testid="pulse-row"][data-path="${picked}"]`)).toHaveAttribute('data-active', '1');
+    await page.keyboard.press('ArrowDown');
+    await expect(rows.nth(3)).toHaveAttribute('data-active', '1');
+  });
+
+  test("the reader's [B] pulse button also returns to the filtered list", async ({ page }) => {
+    await page.goto('/?q=kuramoto');
+    await expect(page.getByTestId('pulse-filter')).toHaveValue('kuramoto', { timeout: 20_000 });
+    await page.getByTestId('pulse-filter').press('Enter');
+    await expect(page.getByTestId('entry-reader')).toBeVisible({ timeout: 10_000 });
+    await page.getByTestId('back-to-index').click();
+    await expect(page.getByTestId('pulse-filter')).toHaveValue('kuramoto', { timeout: 10_000 });
+  });
+
+  test('↓ works from the bare page too, and Esc in the filter clears it then lets go', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByTestId('pulse-header')).toBeVisible({ timeout: 20_000 });
+    const rows = page.locator('[data-testid="pulse-row"]');
+
+    // Nothing is highlighted until the keyboard asks.
+    await expect(page.locator('[data-testid="pulse-row"][data-active="1"]')).toHaveCount(0);
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await expect(rows.nth(1)).toHaveAttribute('data-active', '1');
+
+    const filter = page.getByTestId('pulse-filter');
+    await filter.fill('weave');
+    await filter.press('Escape');
+    await expect(filter).toHaveValue('');
+    await expect(filter).toBeFocused();
+    await filter.press('Escape');
+    await expect(filter).not.toBeFocused();
+    // Focus released, so the deck hotkeys answer again.
+    await page.keyboard.press('l');
+    await expect(page.getByTestId('log-deck')).toBeVisible({ timeout: 5_000 });
+  });
+
   test('clicking a column header sorts by that column; clicking again toggles direction', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByTestId('pulse-header')).toBeVisible({ timeout: 20_000 });
