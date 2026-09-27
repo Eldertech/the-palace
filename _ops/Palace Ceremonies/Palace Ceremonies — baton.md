@@ -45,7 +45,19 @@ Nothing built. What's known:
   - where a script drives a run, the script does the tail read itself
   - automated runs mark the ledger too
   - a fixed gotcha leaves the page when its item is paid
-- *A test case waiting*: the faces batch of 2026-09-26 taught six lessons that are written nowhere (in the faces agent's report). They are: `make_faces.py` submits before the endpoint's worker change applies (409 `ENDPOINT_PAUSED`); parking isn't ref-counted like `_ops/commons/endpoint.py`'s `EndpointWorkers`; two people close in a warm room reads as a couple; naming a shape by an everyday object draws the object; FLUX won't draw a shadow "shaped like" something; and `_renders/` must be carried out of a worktree before removing it.
+- *A test case waiting*: the faces batches of 2026-09-26 taught lessons a ledger would have caught. One line each:
+  - Two figures close in a warm room read as a couple — fixed with ages, a pointing gesture, seen from behind.
+  - Naming a shape after an everyday object draws the object.
+  - FLUX won't draw a shadow "shaped like" something; it draws the thing.
+  - Carry `_renders/` out of a worktree before removing it.
+  - FLUX can't draw a bowtie inlay as hero or icon — composite it instead.
+  - A print inside a framed panel can't be strip-trimmed — patch the flat margin.
+  - FLUX turns an arrow into its up-and-right growth sign, and once into a letter N.
+  - A front-view shape sorter reads as a traffic light.
+  - FLUX cuts every hole round.
+  - The endpoint's GPU list can run dry late at night; the client's 15-minute wait covered it.
+  - Tool: the 409 from submitting too soon, and GPU parking not shared between agents — fixed in `43f53bae`.
+  - Tool: one-sided place and unrecorded seeds — fixed in `5d3c0d60`.
 - *Related*: [[Revival Ceremony — baton]], which also touches what a ceremony is.
 
 ## Next move
