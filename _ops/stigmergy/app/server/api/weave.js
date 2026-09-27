@@ -59,7 +59,8 @@ async function handleApply(ctx) {
 
 async function handleEmitUnsung(ctx) {
   const { req, res, palaceRoot, opts } = ctx;
-  // The body is optional: a bare POST runs a dry-run audit with the defaults.
+  // The body is optional: an empty one (still sent as application/json — the
+  // request guard refuses a typeless write) runs a dry-run audit with the defaults.
   const body = await readJsonBody(req, res, { allowEmpty: true });
   if (body === null) return true;
 
