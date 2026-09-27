@@ -67,7 +67,7 @@ It is two things at once. Seen by a human, it is a **front-end** — a phosphor 
 
 > **[[STIGMERGY — baton — bundle-hygiene demote-op]]** (2026-07-05) — held work: wire bundle-hygiene's invalid-`type:` finding into the app as a **`demote-bundle`** apply-op — *not* `set-type` (retyping substrate to `concept` would promote it to canon, the opposite of the fix). Loudon held this deliberately; the baton carries the 9-file seam and the demote-op design. Delete on pickup.
 
-> **[[STIGMERGY — baton]]** (2026-09-25) — hardening: close the doors the [[No Mind Checks Itself]] re-check found open — sandbox the rich face's pieces and pin its CDN scripts, stop cross-site writes to the board, move the host check ahead of the palace's routes, settle the review wire, steady the regen-lane test.
+> **[[STIGMERGY — baton]]** (2026-09-25) — hardening: close the doors the [[No Mind Checks Itself]] re-check found open — sandbox the rich face's pieces and give its CDN scripts an integrity check, settle the review wire, the smaller rich-face fixes, steady the regen-lane test. Cross-site writes and the late host check are closed (2026-09-26).
 
 > **[[STIGMERGY — baton — latest-opus-resolver]]** (2026-09-22, re-homed 2026-09-26) — one resolver for "the latest Opus," imported by the ten scripts that hard-code an Opus id, so the next release needs no sweep. It moved here when STIGMERGY v2.0 was archived; the move is untouched.
 
