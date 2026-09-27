@@ -1,11 +1,11 @@
 ---
-title: "STIGMERGY v2.0 — Consolidation & Primary Interface — baton"
+title: "STIGMERGY — baton — latest-opus-resolver"
 born: 2026-09-22
 links:
-  - target: "[[STIGMERGY v2.0 — Consolidation & Primary Interface]]"
+  - target: "[[STIGMERGY]]"
     type: connects-to
     label: "baton-for"
-forward_vector: "I carry the in-progress move on [[STIGMERGY v2.0 — Consolidation & Primary Interface]] across a boundary, waiting to be caught by the next Claude and deleted once the move is picked up."
+forward_vector: "I carry the in-progress move on [[STIGMERGY]] across a boundary, waiting to be caught by the next Claude and deleted once the move is picked up."
 ---
 
 **Move.** Give the palace ONE constant or resolver for "the latest Opus," imported everywhere a script currently hard-codes an Opus id or alias, so a new Opus release stops requiring a manual sweep. Loudon's wish, verbatim: "Ideally, I'd like every time opus is chosen for it to automatically use the latest opus, but that seems like perhaps a more difficult change."
