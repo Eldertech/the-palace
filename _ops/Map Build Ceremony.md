@@ -85,10 +85,10 @@ Parse remaining typed links into triples: `(source, relation, target)`.
 For each `links:` entry in a file's YAML:
 ```yaml
 links:
-  - target: "[[Hilaritas]]"
-    type: drives
+  - target: "[[Excellent Adventure]]"
+    type: deepens
 ```
-Produces: `Striatum  drives  Hilaritas`
+Produces: `Striatum  deepens  Excellent Adventure`
 
 **4. Compile**
 
@@ -122,21 +122,21 @@ Write output in requested format.
 TSV (default):
 ```
 source	relation	target
-Striatum	drives	Hilaritas
-Hilaritas	grounds	FOUR PILLARS
-LateralAccess	enables	ObliquePortraitMethod
+Striatum	deepens	Excellent Adventure
+Striatum	connects-to	Hilaritas Generator
+Excellent Adventure	deepens	Hilaritas Generator
 ```
 
 Adjacency list (default — outgoing only):
 ```
-Striatum: drives:Hilaritas, seeds:Rhythm
-Hilaritas: grounds:FOUR PILLARS, resonates:Spinoza
+Striatum: deepens:Excellent Adventure, connects-to:Hilaritas Generator
+Excellent Adventure: deepens:Hilaritas Generator, couples-with:Dialectic
 ```
 
 Adjacency list (bidirectional — use when agents need self-location):
 ```
-Striatum: out[drives:Hilaritas, seeds:Rhythm] in[deepens:FOUR PILLARS]
-Hilaritas: out[grounds:FOUR PILLARS, resonates:Spinoza] in[drives:Striatum]
+Striatum: out[deepens:Excellent Adventure, connects-to:Hilaritas Generator] in[deepens:Hilaritas Generator, mirrors:Palace Map]
+Excellent Adventure: out[deepens:Hilaritas Generator, couples-with:Dialectic] in[deepens:Striatum]
 ```
 
 The default outgoing-only format is the most token-efficient (~half the size of bidirectional) and sufficient for most uses. Use the bidirectional format when spawned agents need to answer "who points at me?" without scanning the full edge list — primarily for swarm self-location and hub detection.
