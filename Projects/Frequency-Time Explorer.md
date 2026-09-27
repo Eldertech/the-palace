@@ -4,7 +4,7 @@ type: project
 pillars: [creation, tools, practice]
 born: 2026-04
 stage: growing
-status: design-complete
+status: active
 links:
   - target: "[[Frequency-Time Duality]]"
     type: emerged-from
@@ -130,7 +130,7 @@ Web app, single page, browser-only, audio via Web Audio API. **Standalone** — 
 
 ## Design Provenance
 
-Designed 2026-04-30 in dialogue with Claude. Five-movement structure with linear walk and locked-until-M5 free explore. M4 modulation extended to FM and Doppler at Loudon's direction (the move that closed the design). Three forward doorways at end of M5: waveguides, FM synthesis, wavetable synthesis. Standalone web app form. Beautiful enough to share standalone.
+Designed 2026-04-30 in dialogue with Claude. The design is complete; the build has not started. Five-movement structure with linear walk and locked-until-M5 free explore. M4 modulation extended to FM and Doppler at Loudon's direction (the move that closed the design). Three forward doorways at end of M5: waveguides, FM synthesis, wavetable synthesis. Standalone web app form. Beautiful enough to share standalone.
 
 ## Forward Vectors
 

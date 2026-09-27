@@ -3,7 +3,7 @@ title: Radio Play
 type: practice
 pillars: [creation, tools, practice]
 born: 2026-06
-stage: sprout
+stage: growing
 summary: "The Shop's audio-drama craft — unseen multi-voice characters carrying the full meaning in sound, enriched outward from the audio spine (visuals via VO-as-clock, interactivity next)."
 links:
   - target: "[[The Shop]]"
@@ -54,6 +54,7 @@ The radio play is **cut as a complete audio piece first** — voices, then score
 
 - **Visuals — via VO-as-clock.** Render the finished audio, *measure* it, and let its per-segment durations set each visual scene's length; the picture fills and syncs to the spine, never the reverse. First instance: the *Unsung Path* explainer (2026-06-19) — [[Maker]]-dispatched, assets in `_ops/scratch/weave-video/`.
 - **Interactive** — a branching / choosable radio play. Not yet built.
+- **The first deck** — twenty facets, two unseen presenters read as type, synthesized sound: `radio-play-deck.html` in this bundle (2026-05).
 - More as briefs reveal them.
 
 ## Forward Vectors

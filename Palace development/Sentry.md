@@ -3,7 +3,7 @@ title: "Sentry"
 type: meta
 pillars: [tools, practice, philosophy]
 born: 2026-09
-stage: sprout
+stage: growing
 version: "1.1"
 forward_vector: "I am the palace's watch at the doors it is opening — I sweep for what should not leave and raise it, masked, to Loudon, who decides, so the palace can grow more public without growing careless."
 links:
