@@ -56,3 +56,5 @@ What each baton taught the ceremony. Each item names what the run showed and the
 ## From the re-check close — 2026-09-25
 
 10. **A second baton on one entry can't take a qualifier.** `baton-executor.mjs` fixes the file path to `<Entry> — baton.md`. Loudon approved "— hardening" as this baton's qualifier; the unqualified name landed instead. Owed — it is item 9's family, found on the same STIGMERGY hardening baton.
+- run · 2026-09-26 · v1.2 · STIGMERGY, hardening remainder after a partial close · nothing new
+- run · 2026-09-26 · v1.2 · Project Stewardship System, the Trickster inbox (cold start) · nothing new

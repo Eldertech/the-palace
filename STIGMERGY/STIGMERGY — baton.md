@@ -12,35 +12,35 @@ forward_vector: "I carry the in-progress move on [[STIGMERGY]] across a boundary
 
 ## Move
 
-Close the doors the re-check found open in STIGMERGY and its rich face: sandbox the rich face's pieces and pin its CDN scripts, stop cross-site writes to the board and the host check that runs too late, settle the review message's wire conventions, and steady the flaky regen-lane test.
+Close the doors still open in STIGMERGY's rich face and its tests: sandbox the rich face's pieces and give its CDN scripts an integrity check, settle the review message's wire conventions, make the smaller rich-face fixes, and steady the flaky regen-lane test.
 
 ## Why this move matters
 
-STIGMERGY runs on Loudon's machine and holds his board — the palace's shared record, where TRICKSTER is his own voice. Today any web page he visits can write to it, and the rich face runs pieces with full authority over the server that serves them. None of this has been exploited; it is cheap to close now and expensive to discover later. Each finding below came from a code reviewer — reproduced on a scratch server or read in the code, never tried against the live one.
+STIGMERGY runs on Loudon's machine and holds his board — the palace's shared record, where TRICKSTER is his own voice. The rich face still runs pieces with full authority over the server that serves them. None of this has been exploited; it is cheap to close now and expensive to discover later. Each finding below came from a code reviewer — reproduced on a scratch server or read in the code, never tried against the live one. The numbers are the original review's; 2 and 3 have landed.
 
-1. **The rich face runs pieces with the server's authority.** STIGMERGY sandboxes served HTML on purpose (`app/src/…/ArtifactSlot.jsx:34–43`, `sandbox="allow-scripts"`; `app/README.md` ~:86). The rich face puts its pieces in **unsandboxed, same-origin** iframes (`_ops/rich-face/rich.html` ~:247), so a piece can call `/api/entry/save`, `/api/commit/create`, `/api/launch`. It also imports `marked@12` and `mermaid@11` from jsdelivr with no exact version and no integrity check (`rich.html` ~:168, ~:274), so a CDN compromise has the same reach. Options named, not chosen: serve the rich face from its own origin (the standalone `rich-server.mjs` on :8842), or sandbox the pieces and do auto-height and one-voice-at-a-time over `postMessage`. Either way, vendor or exactly pin the two libraries.
-2. **Any page can write the board.** `/api/persistent` accepts a `text/plain` POST from any origin, with full control of `type`, `from` and `board` — a "simple" cross-site request needs no preflight. Requiring `application/json` plus an `Origin` check closes it.
-3. **The host check runs after the palace's routes.** Vite's DNS-rebinding guard sits behind plugin middleware, so it protects nothing under `/api` or `/rich` (live: `Host: evil.example` gets 200 on `/rich/_api/resolve` and `/api/persistent`, 403 on `/`).
+1. **The rich face runs pieces with the server's authority.** STIGMERGY sandboxes served HTML on purpose (`app/src/…/ArtifactSlot.jsx:34–43`, `sandbox="allow-scripts"`; `app/README.md` ~:86). The rich face puts its pieces in **unsandboxed, same-origin** iframes (`_ops/rich-face/rich.html` ~:247), so a piece can call `/api/entry/save`, `/api/commit/create`, `/api/launch` — the request guard (`app/server/request-guard.js`) refuses foreign pages, and a same-origin piece is not foreign. It also imports `marked@12.0.2` and `mermaid@11.15.0` from jsdelivr, pinned exactly but with no integrity check (`rich.html` ~:175, ~:293), so a CDN compromise has the same reach. Options named, not chosen: serve the rich face from its own origin (the standalone `rich-server.mjs` on :8842), or sandbox the pieces and do auto-height and one-voice-at-a-time over `postMessage`. Either way, vendor the two libraries or give them integrity.
 4. **The review message's wire.** `human_eval` posts use a per-day `session_id` (§9 says one slug per agent, reused) and the `FLAGS` board (§9: "connections worth keeping") — both copied from `loudon-eval`. No review has ever been posted, so changing them now costs nothing. A decision for Loudon.
 5. **Smaller, from the same review:** `rich.html` ~:211 keeps its own media-extension list (no ogg/m4a/flac), so `[[take.ogg]]` renders as a link; `ONLY_MEDIA_LINE` doesn't know the `[[file|label]]` shape; two `##` headings with the same text still share one section key; symlinks inside the palace are followed out of it by both `/rich/` and `/api/file` (none escape today).
 6. **The regen-lane teardown race.** `tests/integration/regen-lane.test.js` › "refuses a second render while one is running" failed three times on 2026-09-25 under full-suite load (`ENOTEMPTY` in `afterEach`, ~:71) and passes alone every time. A suite that cries wolf trains its readers to ignore it.
 
 ## Cold start
 
-COLD START — this work has not begun; no prior state, no tried-and-rejected. What already landed from the same review, so it isn't redone: the null-body crash, stream errors, body cap, Host-forwarded reviews, the parser's phantom section and door rule, the vacuous traversal test (`c04b8c35`…`b1f7878f`).
+COLD START — none of the four remaining items has begun; no tried-and-rejected. What already landed from the same review, so it isn't redone: the null-body crash, stream errors, body cap, Host-forwarded reviews, the parser's phantom section and door rule, the vacuous traversal test (`c04b8c35`…`b1f7878f`); and items 2 and 3 — a request guard in front of every `/api/` and `/rich/` route that refuses a foreign Host, and a write that is not JSON or comes from a foreign page (`82ce0132`, merged in `b6693cd7`, 2026-09-26).
 
 ## Next move
 
-Start with 2 and 3 — they protect the board, the one thing every agent shares — each with a test that fails first, then the rich face's origin question (1), which wants Loudon's choice before any code. Bring 4 to him as a one-line decision. Leave 6 until the rest is green, then fix the race rather than retry it.
+Bring Loudon the rich face's origin question (1) with a recommendation — it wants his choice before any code — and put 4 beside it as a one-line decision. Then 5. Leave 6 until the rest is green, then fix the race rather than retry it.
 
 ## Receiving environment
 
-Claude Code on the Mac. Work in a worktree: `node _ops/worktree/new-worktree.mjs --name fix/stigmergy-hardening --profile stigmergy` (tests need `node_modules`). Changes under `_ops/stigmergy/app/server/*` only when no steward run is live (`ps -axo command | grep "You are a permanent steward" | grep -v grep` prints nothing). Loudon's STIGMERGY on :5173 serves `main`; a server change reaches it only after landing, and may need a restart — ask him first.
+Claude Code on the Mac. Work in a worktree: `node _ops/worktree/new-worktree.mjs --name fix/stigmergy-hardening-2 --profile stigmergy` (tests need `node_modules`; `fix/stigmergy-hardening` is merged). The profile symlinks `node_modules` into the owner's install — fine for tests; `rm` the links (no trailing slash) before any `npm install`, or it rewrites the owner's. Changes under `_ops/stigmergy/app/server/*` only when no steward run is live (`ps -axo command | grep "You are a permanent steward" | grep -v grep` prints nothing). Loudon's STIGMERGY on :5173 serves `main`; a server change reaches it only after landing, and may need a restart — ask him first.
 
 ## Calibrations from this session
 
 - Every fix gets a test that fails on the old code first; show the diff before it lands.
 - Never POST to the live :5173 from a test or a probe — reproduce on a scratch server. A `human_eval` is Loudon's voice.
+- Every write to STIGMERGY is now `application/json` from a local page; a test that posts sets the type (`app/README.md` § Write path).
+- A test that drives an in-process server listens once and aims supertest at the URL; handing supertest the bare server raced once under load (`9f2ed0fb`).
 - Never run `tests/e2e/rich-content-roundtrip.spec.js` on the owner: it rewrites the shared board file.
 - Other sessions are live on `main`: commit with explicit pathspecs, rebase before landing.
 - Opus agents do the heavy reading; warn Loudon before a large fan-out.
@@ -50,7 +50,7 @@ Claude Code on the Mac. Work in a worktree: `node _ops/worktree/new-worktree.mjs
 1. This baton, and the close commit `b52a58e5` (the whole re-check, item by item).
 2. `STIGMERGY.md` § Rich faces, and `SCHEMA — Reference.md` §9 (the wire).
 3. `_ops/rich-face/rich.html`, `_ops/rich-face/rich-handler.mjs`, `_ops/stigmergy/app/server/api/rich.js`.
-4. `_ops/stigmergy/app/server/http.js` (the `/api/persistent` POST, `MAX_BODY_BYTES`), the Vite config, `ArtifactSlot.jsx`.
+4. `_ops/stigmergy/app/server/request-guard.js` (what the guard does and does not cover), `ArtifactSlot.jsx`.
 
 ## On pickup (fixed — the catcher's checklist; do not rewrite per session)
 *Identical in every baton. It rides along because the catching Claude loads the
