@@ -1,0 +1,11 @@
+{
+  "title": "SCHEMA",
+  "idiom": "graphite construction drawing on cream (hero); icon: black-on-cream linocut of a shape-sorting cube (FLUX cut every hole round) with a triangle piece in the air above it: does this fit here, the question a schema answers",
+  "hero_prompt": "",
+  "icon_prompt": "Bold linocut emblem printed in black on cream paper, flat single-colour black shapes, no shading or gradients, not a photograph, not a 3D render: a child's shape-sorting box, a solid black block sitting low toward the left of the frame, seen slightly from above so its top face shows three holes cut through in cream: a round hole, a square hole and a triangular hole. Above and to the right, a single small solid black triangle piece tilts in the air, about to drop into the triangular hole, the one hole it fits. A plain wooden toy with no letters, numbers, pictures or markings on any face. Lopsided composition, nothing centred, no ring, no crosshair, no frame. Bold, high-contrast, thick shapes only, reads clearly at 24 pixels.",
+  "seeds": {
+    "icon": 252356
+  },
+  "rendered_at": "2026-09-27T03:25:52Z",
+  "history": []
+}
