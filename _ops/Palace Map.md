@@ -61,13 +61,13 @@ A new enchanted agent, spawned into one entry, has local awareness by default �
 
 ## What the Map Is
 
-An edge list. Nothing more. No entry bodies, no frontmatter metadata beyond what's needed to name the nodes. Each line is a triple:
+An edge list at heart. No entry bodies; the TSV is triples only, and the JSON adds a little per node — type, stage, degree, use. Each line is a triple:
 
 ```
 source   relation   target
-Striatum   drives   Hilaritas
-Hilaritas   grounds   FourPillars
-LateralAccess   enables   ObliquePortraitMethod
+Striatum   deepens   Excellent Adventure
+Striatum   connects-to   Hilaritas Generator
+Striatum   connects-to   Kuramoto Coupling
 ```
 
 Three tokens per edge. At roughly 40–50 characters per line, a 200-node palace with an average of 4 typed links each produces ~800 edges — approximately 35–45KB of raw text. Well within a context window. A 500-node palace remains under 80KB. The map is cheap.
@@ -75,8 +75,7 @@ Three tokens per edge. At roughly 40–50 characters per line, a 200-node palace
 A compact adjacency list format reduces the token count further:
 
 ```
-Striatum: drives:Hilaritas, seeds:Rhythm
-Hilaritas: grounds:FourPillars, resonates:Spinoza
+Striatum: deepens:Excellent Adventure, connects-to:Hilaritas Generator, connects-to:Kuramoto Coupling
 ```
 
 This halves the size and remains human-readable — but it is not neutral. The next section names why.
@@ -102,7 +101,7 @@ The choice between formats is not about token economy alone. It is about which r
 
 **Path planning without traversal.** Instead of hopping file by file to find a connection, the agent inspects the graph and identifies that a 2-hop path exists between itself and a candidate neighbor. It can decide whether the traversal is worth the cost before paying it.
 
-**Serendipity detection.** The agent can notice that it shares a link type with a distant node it wouldn't naturally reach. A `[[Striatum]] --drives--> [[Hilaritas]]` edge visible in the map tells the Striatum agent that Hilaritas is a relevant neighbor even if it's not in the immediate neighborhood.
+**Serendipity detection.** The agent can notice that it shares a link type with a distant node it wouldn't naturally reach. A `[[Striatum]] --connects-to--> [[Hilaritas Generator]]` edge visible in the map tells the Striatum agent that Hilaritas Generator is a relevant neighbor even if it's not in the immediate neighborhood.
 
 **Avoiding redundant work in a swarm.** If multiple agents are running in parallel, each one can see which nodes are topologically close to others' home entries and self-organize to avoid overlap — without a coordinator. The map makes distributed coordination possible.
 
@@ -127,23 +126,32 @@ When the map is passed to a swarm coordinator or enchanted agent programmaticall
 ```json
 {
   "meta": {
-    "generated": "2026-03-26",
-    "scope": "neighborhood:hilaritas-generator",
-    "node_count": 12,
-    "edge_count": 47,
-    "ghost_nodes": ["Oscillator", "NeuralTiming", "Conatus"]
+    "generated": "2026-09-26",
+    "scope": "full",
+    "node_count": 316,
+    "edge_count": 2772,
+    "ghost_taxonomy": {
+      "error_ghosts": [],
+      "file_ghosts": ["SCHEMA — Context"],
+      "forward_ghosts": [
+        { "target": "Capability-first prototyping",
+          "sources": ["Steer the Generator", "Search Before You Build", "LoRA Trainer", "RunPod GPU Backend"] }
+      ]
+    }
   },
   "nodes": [
-    { "id": "Striatum", "type": "concept", "neighborhood": "hilaritas-generator" }
+    { "id": "Striatum", "path": "Striatum.md", "type": "concept", "stage": "growing",
+      "outbound_count": 5, "inbound_count": 5 }
   ],
   "edges": [
-    { "from": "Striatum", "rel": "drives", "to": "Hilaritas" },
-    { "from": "Hilaritas", "rel": "grounds", "to": "FourPillars" }
+    { "source": "Striatum", "type": "deepens", "target": "Excellent Adventure", "label": null }
   ]
 }
 ```
 
-The `ghost_nodes` field is not a deficiency report — it is a **gift to the swarm**. Ghost nodes are entries referenced in the graph but not yet written. They name the palace's growing edge. A swarm agent can see them and choose to investigate, flag them for deposit, or carry them as open questions. The map makes the palace's gaps as visible as its content.
+Nodes also carry `use`, `last_used`, `has_forward_vector` and `ops_card`; the [[Map Build Ceremony]] holds the whole shape.
+
+The forward ghosts are not a deficiency report — they are a **gift to the swarm**. Each is an entry some page links to but no one has written yet, listed with the pages that link to it. They name the palace's growing edge. A swarm agent can see them and choose to investigate, flag them for deposit, or carry them as open questions. The map makes the palace's gaps as visible as its content.
 
 ## Ghost Nodes as Forward Tension
 
@@ -161,7 +169,9 @@ This is the [[Trickster]]'s structural role in the palace. The trickster's job, 
 
 This reframes ghost nodes as **forward tension declared by an existing entry** rather than failed cross-reference. An entry that links to `[[Conatus]]` before any `Conatus.md` file exists has done the palace a service: it has named what is missing in a way that makes the missing thing legible, and committed an existing entry to needing it. Tracking which ghost nodes persist across map generations is therefore not bug-tracking but desire-tracking — and the trickster, the figure whose drive is to add links to nowhere, is the agent whose work makes desire-tracking possible at all.
 
-The schema linter consequence is small but important: a typed link to a nonexistent target is not an error. It *is* information. The Map Build Ceremony's `ghost_nodes` listing is the palace's running account of where the trickster has been at work, and where the next deposit cycles should be focused. A persistent ghost node — one that survives across three or more map generations — is not a stale reference but a high-priority deposit candidate the palace has been requesting for months.
+The schema linter consequence is small but important: a typed link to a nonexistent target is not an error. It *is* information. The map's forward ghosts (`meta.ghost_taxonomy.forward_ghosts`) are the palace's running account of where the trickster has been at work, and where the next deposit cycles should be focused. A persistent ghost node — one that survives across three or more map generations — is not a stale reference but a high-priority deposit candidate the palace has been requesting for months.
+
+Only forward ghosts carry that desire. A link to a file that exists but is not an entry — a bundle file such as a Context page — is a *file ghost*: the object is already there, so the link points rather than reaches, and it never counts toward persistence.
 
 ## The Map as Tier 1 Context
 
