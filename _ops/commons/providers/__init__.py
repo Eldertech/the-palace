@@ -5,6 +5,7 @@ service is: implement the right protocol, register it here, done — no core cha
 Entries are factories (callables returning a provider) so construction (config,
 API keys) is lazy and only happens for providers actually used.
 """
+import sys
 from .runpod_pod import RunpodPodProvider
 from .runpod_serverless import RunpodServerlessProvider
 
@@ -30,7 +31,10 @@ def instance_providers(**kwargs):
         try:
             p = factory(**kwargs) if _accepts_kwargs(factory) else factory()
         except Exception as e:
-            print(f"[providers] skip {name}: {type(e).__name__}: {e}")
+            # Loud, on stderr: a skipped provider is one whose resources nobody is
+            # watching or reaping this run — pods on it keep billing.
+            print(f"[providers] WARNING: skipping {name} — its resources will NOT be listed or reaped "
+                  f"this run. {type(e).__name__}: {e}", file=sys.stderr)
             continue
         if isinstance(p, InstanceProvider):
             yield name, p
