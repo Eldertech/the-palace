@@ -211,8 +211,8 @@ The override carve-out: when an artifact has its own established visual context 
 | **Matplotlib** | rcParams recipe pulling active-skin foreground/accent; font switch to Cormorant or Manrope |
 | **Manim CE** | LaTeX / Pango font configuration for Anton + Cormorant; the font-loading gotchas it produces are the entry's first real specialist test |
 | **Mermaid** | Theme override mapping the six skins to Mermaid's themeVariables |
-| **ComfyUI** | Palette-discipline LoRAs or prompt-suffix recipes per skin; ComfyUI's reason-for-being over Midjourney is exactly this |
-| **Midjourney** | Style-reference URLs (`--sref`) anchored to specimen cards from `_ops/loudon-live/design-system/preview/` |
+| **ComfyUI** | Palette-discipline LoRAs or prompt-suffix recipes per skin; ComfyUI's reason-for-being over FLUX (Hugging Face) is exactly this |
+| **FLUX (Hugging Face)** | Prompt-suffix recipes per skin, naming its palette and the specimen-card language from `_ops/loudon-live/design-system/preview/` (HF Inference takes text only — no style-reference image) |
 | **Remotion** | `import` of `colors_and_type.css` tokens; reusable React components for the wordmark and skin switcher |
 | **p5.js** | Tokens consumed from CSS custom properties; the canonical Lissajous sketch at `_ops/loudon-live/design-system/assets/logo-lissajous.live.html` is already a p5.js artifact |
 | **Tone.js** | Visual UI components reading the same tokens Remotion uses |
