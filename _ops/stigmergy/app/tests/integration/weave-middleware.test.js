@@ -82,9 +82,9 @@ describe('POST /api/weave/emit-unsung', () => {
   test('defaults to a DRY RUN (dryRun:true, limit:8) and passes palaceRoot/boardPath', async () => {
     let seen = null;
     const runUnsungEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 3, eligible: 2, planned: 2, proposals: [] }; };
-    // A bare POST (empty body) must run the audit, not error.
+    // An empty JSON POST (no fields) must run the audit, not error.
     const res = await request(makeServer(root, { runUnsungEmissionImpl }))
-      .post('/api/weave/emit-unsung').send();
+      .post('/api/weave/emit-unsung').set('Content-Type', 'application/json').send();
     expect(res.status).toBe(200);
     expect(res.body.ok).toBe(true);
     expect(seen.dryRun).toBe(true);   // safe by default — no write without intent
@@ -128,7 +128,7 @@ describe('POST /api/weave/emit-hub', () => {
     let seen = null;
     const runHubEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 2, eligible: 2, planned: 2, proposals: [] }; };
     const res = await request(makeServer(root, { runHubEmissionImpl }))
-      .post('/api/weave/emit-hub').send();
+      .post('/api/weave/emit-hub').set('Content-Type', 'application/json').send();
     expect(res.status).toBe(200);
     expect(res.body.ok).toBe(true);
     expect(seen.dryRun).toBe(true);
@@ -174,7 +174,7 @@ describe('POST /api/weave/emit-vector-tuning', () => {
     let seen = null;
     const runVectorTuningEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 2, eligible: 2, planned: 2, candidates: [] }; };
     const res = await request(makeServer(root, { runVectorTuningEmissionImpl }))
-      .post('/api/weave/emit-vector-tuning').send();
+      .post('/api/weave/emit-vector-tuning').set('Content-Type', 'application/json').send();
     expect(res.status).toBe(200);
     expect(res.body.ok).toBe(true);
     expect(seen.dryRun).toBe(true);   // safe by default — the dry run is a cheap scan
@@ -219,7 +219,7 @@ describe('POST /api/weave/emit-stage', () => {
     let seen = null;
     const runStageEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 1, eligible: 1, planned: 1, proposals: [] }; };
     const res = await request(makeServer(root, { runStageEmissionImpl }))
-      .post('/api/weave/emit-stage').send();
+      .post('/api/weave/emit-stage').set('Content-Type', 'application/json').send();
     expect(res.status).toBe(200);
     expect(res.body.ok).toBe(true);
     expect(seen.dryRun).toBe(true);
@@ -263,7 +263,7 @@ describe('POST /api/weave/emit-label', () => {
     let seen = null;
     const runLabelEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 2, eligible: 2, planned: 2, candidates: [] }; };
     const res = await request(makeServer(root, { runLabelEmissionImpl }))
-      .post('/api/weave/emit-label').send();
+      .post('/api/weave/emit-label').set('Content-Type', 'application/json').send();
     expect(res.status).toBe(200);
     expect(res.body.ok).toBe(true);
     expect(seen.dryRun).toBe(true);

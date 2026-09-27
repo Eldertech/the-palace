@@ -21,6 +21,7 @@
 
 import { buildWorkers } from './workers.js';
 import { dispatch } from './router.js';
+import { guardRequest } from './request-guard.js';
 
 // Re-exported from http.js so direct importers keep working (middleware.test.js).
 export { resolveInsidePalace, contentTypeFor, readPersistent, listSessions, readSession } from './http.js';
@@ -34,12 +35,16 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
   return {
     name: 'stigmergy-blackboard-middleware',
     configureServer(server) {
+      const allowedHosts = server.config?.server?.allowedHosts;
       server.middlewares.use(async (req, res, next) => {
         // Strip query string for routing; keep it (in ctx.query) for the handlers.
         const rawUrl = req.url || '';
         const [urlPath, queryString] = rawUrl.split('?');
         const query = new URLSearchParams(queryString || '');
         const method = (req.method || 'GET').toUpperCase();
+
+        // Foreign hosts and cross-site actions stop here (server/request-guard.js).
+        if (guardRequest(req, res, { urlPath, method, allowedHosts })) return;
 
         const ctx = { req, res, palaceRoot, urlPath, query, method, stewardLane, companionLane, opts };
         if (await dispatch(ctx)) return; // a family owned the response
