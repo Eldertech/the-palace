@@ -9,7 +9,7 @@ and Loudon decides. The one thing with teeth is the push gate, and it only says 
 | Run | What it does | Cost |
 |---|---|---|
 | `node _ops/sentry/sweep.mjs` | **quick** — the working tree (secrets, personal data, text aimed at agents), tracked paths that should never be tracked, agent permissions, the script census | offline, ~20 s |
-| `node _ops/sentry/sweep.mjs --deep` | quick **+ history** (every blob in every ref, and gitleaks over the full log) **+ deps** (`npm audit` per lockfile) **+ hosting** (GitHub repo settings and alerts via `gh`) | network, ~3 min |
+| `node _ops/sentry/sweep.mjs --deep` | quick **+ history** (every blob in every ref, and gitleaks over the full log) **+ deps** (`npm audit` per lockfile) **+ hosting** (GitHub repo settings, each open Dependabot alert, and each open Dependabot pull request's lockfile against its title, via `gh`) | network, ~3 min |
 | `node _ops/sentry/sweep.mjs --gate` | the check before anything widens the public surface: `--deep`, and exits 1 on any open high finding | same as deep |
 | `node _ops/sentry/sweep.mjs --only history,hosting` | named checks only | — |
 | `node _ops/sentry/sweep.mjs --record [--taught "item N"]` | also marks the ledger with the run's line (scope and a bare count, never a finding) and rebuilds the scroll with the palace's own generator | — |

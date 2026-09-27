@@ -33,7 +33,12 @@ The 2026-09-25 hosting assessment scanned the working tree for key formats and f
 
 10. **The deps check was narrower than GitHub's.** It read two npm lockfiles with dev dependencies left out; the moment Dependabot was switched on it reported advisories across every manifest, dev tooling included. The hosting check now reads Dependabot's open alerts too, weighted the way the npm check is — a runtime critical is high, a runtime high is medium, development is at most medium — so the gate fails on what can reach a reader and still names the rest. *(v1.1)*
 
+## From a deep sweep — 2026-09-27 (deep sweep of c80ff992)
+
+11. **A count per manifest is not a work list, and a bot's pull request is not a fix until its lockfile says so.** This sweep folded Dependabot's alerts into one finding per manifest — enough to say how much was open, not which package, which advisory, or which version closes it; that had to be read off GitHub by hand. And a Dependabot pull request's title names the version it moves to, while only its lockfile says what installs; the two can disagree, and a merge taken on the title closes nothing. So the hosting check now raises each open alert on its own, with a fingerprint that holds as long as the alert does, and reads each open Dependabot npm pull request's lockfile at its head, raising one that lacks the version its title claims. *(v1.2)*
+
 - run · 2026-09-25 · v0 · hand-run history scan, before the Sentry had a page · taught items 1–9
 - run · 2026-09-25 · v1.0 · deep sweep of b63b896b, 7 raised, held locally · nothing new
 - run · 2026-09-25 · v1.1 · public-surface gate of 9ef47639, 11 raised, held locally · nothing new
 - run · 2026-09-26 · v1.1 · public-surface gate of 4d33744c, 7 raised, held locally · nothing new
+- run · 2026-09-27 · v1.1 · deep sweep of c80ff992, 4 raised, held locally · taught item 11
