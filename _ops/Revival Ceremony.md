@@ -129,3 +129,7 @@ The Revival Ceremony closes the loop between dormancy and active life. It can ca
 ---
 
 *The version and what each revival taught the ceremony: [[Revival Ceremony — tuning]].*
+
+## Active Baton
+
+[[Revival Ceremony — baton]] — drafted 2026-09-26
