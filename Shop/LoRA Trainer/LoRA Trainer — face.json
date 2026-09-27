@@ -1,9 +1,16 @@
 {
   "title": "LoRA Trainer",
-  "idiom": "charcoal figure-study atelier sketches",
-  "hero_prompt": "",
+  "idiom": "cut-paper profile silhouettes (eighteenth-century silhouette tradition)",
+  "hero_prompt": "Cut-paper silhouette art in the eighteenth-century profile tradition, flat black paper shapes on warm cream paper, hand-cut edges, flat and graphic, not a photograph, not a 3D render, no depth-of-field: the same woman's black profile silhouette repeated five times in a row across the banner, identical every time, each set against a different small cut-paper backdrop: a leafy tree, a tall window, a breaking wave, a crescent moon, a rolling hill. One likeness holding true in every new scene.",
   "icon_prompt": "A bold, high-contrast emblem of a single stylized profile face-mark \u2014 thick black silhouette with one sharp jaw and brow line \u2014 reading clearly as a small mark with no fine crosshatching.",
   "seeds": {},
-  "rendered_at": "2026-09-25T02:18:56Z",
-  "history": []
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": [
+    {
+      "idiom": "charcoal figure-study atelier sketches",
+      "hero_prompt": "",
+      "icon_prompt": "A bold, high-contrast emblem of a single stylized profile face-mark \u2014 thick black silhouette with one sharp jaw and brow line \u2014 reading clearly as a small mark with no fine crosshatching.",
+      "rendered_at": "2026-09-25T02:18:56Z"
+    }
+  ]
 }

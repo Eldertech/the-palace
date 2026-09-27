@@ -1,0 +1,9 @@
+{
+  "title": "The Practice Rediscovers Its Philosophy",
+  "idiom": "bold linocut shadow-play (hero); flat charcoal-silhouette emblem (icon)",
+  "hero_prompt": "Bold linocut print in black and warm ochre on cream paper, thick carved shapes and visible ink texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: a shadow sculpture in the manner of Tim Noble and Sue Webster, a messy heap of scrap tools and gears on a low plinth at the left lit by a single lamp, and projected from that heap onto the bare wall behind it one large solid black shadow that forms the clean profile silhouette of a bearded philosopher's head. The heap and the shadow are joined; the portrait exists only as the shadow of the tools.",
+  "icon_prompt": "Charcoal emblem, a flat single-colour black silhouette on a warm cream ground, no shading or gradients: a single cog-wheel on the left, and falling from it to the right its long shadow shaped like a bearded human head in profile. Bold, high-contrast, no fine linework, reads clearly at 24 pixels.",
+  "seeds": {},
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": []
+}

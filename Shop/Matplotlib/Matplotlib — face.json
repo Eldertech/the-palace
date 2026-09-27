@@ -1,9 +1,16 @@
 {
   "title": "Matplotlib",
   "idiom": "cyanotype technical blueprint",
-  "hero_prompt": "",
+  "hero_prompt": "Cyanotype sun-print on hand-coated paper, deep Prussian blue with crisp white lines, uneven brushed blue edges and soft paper texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: one long, smooth white decaying sine wave sweeping across the whole banner from left to right, tall at the left and settling to calm at the right, above a single straight white horizontal line, with wide empty blue space around it, exact and calm.",
   "icon_prompt": "A bold, high-contrast emblem of a single ruled sine curve crossing a straight axis \u2014 thick white line on deep blue, no gridlines or fine ticks, reading clearly as a small mark.",
   "seeds": {},
-  "rendered_at": "2026-09-25T02:18:56Z",
-  "history": []
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": [
+    {
+      "idiom": "cyanotype technical blueprint",
+      "hero_prompt": "",
+      "icon_prompt": "A bold, high-contrast emblem of a single ruled sine curve crossing a straight axis \u2014 thick white line on deep blue, no gridlines or fine ticks, reading clearly as a small mark.",
+      "rendered_at": "2026-09-25T02:18:56Z"
+    }
+  ]
 }

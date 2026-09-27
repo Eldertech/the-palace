@@ -21,6 +21,8 @@ forward_vector: "I let the trusted hand write anywhere in one gesture, and I bra
 
 # Trickster Commit
 
+![[Trickster Commit — hero.png]]
+
 The Companion and the Trickster are one write path worn two ways. The Companion is *care* — it proposes an edit, waits for approval, and refuses canon (the allow-list holds). The Trickster is *licensed recklessness* — the owner's standing consent to write **anywhere**, in one gesture, without the propose-and-approve round trip.
 
 This is the [[Trickster]]'s swarm role — `Home: YOU. Neighborhood: EVERYWHERE.` — made into a *write* capability. Where the swarm Trickster could *message* any node from outside the system's own logic, the Trickster Commit can *edit* any entry, including the canon the Companion is forbidden to touch. The allow-list bypass is not a new idea; it is `Neighborhood: EVERYWHERE` finally reaching the keyboard.

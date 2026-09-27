@@ -1,9 +1,16 @@
 {
   "title": "SCHEMA \u2014 Reference",
-  "idiom": "engraved technical/blueprint etching",
-  "hero_prompt": "",
+  "idiom": "bold black-and-cream linocut, set-square and plumb bob",
+  "hero_prompt": "Bold linocut print in black on cream paper, thick carved shapes with white gouge marks, no fine hatching, flat and graphic, not a photograph, not a 3D render, no depth-of-field: seen from the side, a large plain wooden set-square standing upright on a bare table, and beside it a plumb bob hanging perfectly still on a straight line from above, the two together the measure of square and true; solid black shapes, generous empty cream space, a quiet plain workroom wall behind.",
   "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: a set-square triangle overlapping one plain circle",
   "seeds": {},
-  "rendered_at": "2026-09-25T02:18:56Z",
-  "history": []
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": [
+    {
+      "idiom": "engraved technical/blueprint etching",
+      "hero_prompt": "",
+      "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: a set-square triangle overlapping one plain circle",
+      "rendered_at": "2026-09-25T02:18:56Z"
+    }
+  ]
 }

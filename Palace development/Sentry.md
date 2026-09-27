@@ -44,6 +44,8 @@ links:
 
 # Sentry
 
+![[Sentry — hero.png]]
+
 The palace is public on purpose, and it is getting more public: git already carries the whole house for anyone who wants it, and a read view on GitHub Pages is live ([[Loudon Live]]). The Sentry is the watch at those doors. It sweeps for what should not leave, raises what it finds to Loudon — plainly, masked — and decides nothing. It is the checker that sits outside the loop that made the thing ([[No Mind Checks Itself]]): courage in flagging the unwelcome truth, temperance in raising rather than fixing ([[The Four Virtues]]).
 
 It has one tooth. At `git push` it reads what is about to leave and says no to a credential. Everything else it only names.

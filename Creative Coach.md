@@ -57,6 +57,8 @@ forward_vector: "I am the practice behind the channel: what a creative coach act
 
 # Creative Coach
 
+![[Creative Coach — hero.png]]
+
 Twenty years of teaching produced one line in [[FOUR PILLARS]]: *creative coach, not teacher — the
 relationship develops.* That is all the palace had said about the role until now, and it is a claim
 about **relation**, not content. A teacher transmits, and the relationship is incidental. A coach

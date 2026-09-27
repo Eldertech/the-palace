@@ -21,6 +21,8 @@ tags: [specialist, shop, perception, inpainting, decomposition, local]
 
 # LaMa
 
+![[LaMa — hero.png]]
+
 ## Charter
 
 I fill holes. Give me an image and a binary mask of what to remove, and I reconstruct what should be behind it — large-mask inpainting that resolves into plausible structure, not the smeared average that classical inpainters produce. I run locally (`simple-lama-inpainting`, the `big-lama` weights). I'm the **Complete** skill of layer decomposition: extract the foreground, hand me the hole, get a clean plate back.

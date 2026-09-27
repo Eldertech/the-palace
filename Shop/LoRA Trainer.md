@@ -26,6 +26,8 @@ links:
 
 # LoRA Trainer
 
+![[LoRA Trainer — hero.png]]
+
 **Charter.** Take a small image set (8+) of one character or subject and train a diffusion **LoRA** on a rented RunPod GPU that reproduces that identity in new scenes — then grade it honestly. Bound to two trainers wrapped as cost/quality **Tiers**; rides [[Shop/RunPod GPU Backend]] for the compute.
 
 The reason this entry exists as operational anatomy and not a paragraph: the first four LoRAs cost **six dependency walls** to train. Each is now solved and recorded below, so the *next* run is first-try (proven: after hardening, two DreamBooth-control LoRAs trained clean on the first attempt).

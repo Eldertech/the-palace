@@ -1,9 +1,16 @@
 {
   "title": "LaMa",
   "idiom": "old-master fresco-restoration ink wash",
-  "hero_prompt": "",
+  "hero_prompt": "Old-master ink-and-wash drawing on paper, flat and graphic with visible brush and paper texture, not a photograph, not a 3D render, no depth-of-field: a long faded fresco of a garden arcade, a row of painted arches with climbing vines and flowers, and in the middle one large jagged-edged patch where the old plaster was lost has been freshly repainted, its colours a little brighter, the arches and vines continuing unbroken straight through it so the eye barely finds the repair. Warm umber, ochre, sage green and faded terracotta washes.",
   "icon_prompt": "A bold, high-contrast emblem of a jagged hole shape being closed by a single thick trowel stroke \u2014 stark black-on-white silhouette, no fine crosshatching, reading clearly as a small mark.",
   "seeds": {},
-  "rendered_at": "2026-09-25T02:18:56Z",
-  "history": []
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": [
+    {
+      "idiom": "old-master fresco-restoration ink wash",
+      "hero_prompt": "",
+      "icon_prompt": "A bold, high-contrast emblem of a jagged hole shape being closed by a single thick trowel stroke \u2014 stark black-on-white silhouette, no fine crosshatching, reading clearly as a small mark.",
+      "rendered_at": "2026-09-25T02:18:56Z"
+    }
+  ]
 }

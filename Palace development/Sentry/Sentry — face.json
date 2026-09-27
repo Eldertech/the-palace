@@ -1,0 +1,9 @@
+{
+  "title": "Sentry",
+  "idiom": "black-and-ochre woodcut night scene",
+  "hero_prompt": "Black-and-ochre woodcut print on paper, bold carved lines and visible wood-grain texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: at night a lone watchman stands on a stone wall above a wide open city gate, holding a lantern out over the road below to light what passes through, the gate open and the road leading away into dark country under a few stars; calm, alert, the only warm light in the picture is his lantern.",
+  "icon_prompt": "Woodcut emblem, a flat single-colour black silhouette on a warm ochre ground, no shading or gradients: one old-fashioned hand lantern with a ring handle on top, its glass panes cut out so the ochre glows through them, a few short thick rays of light around it. Bold, high-contrast, no fine linework, reads clearly at 24 pixels.",
+  "seeds": {},
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": []
+}
