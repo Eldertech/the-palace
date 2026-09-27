@@ -89,6 +89,9 @@ This technique was the opening through which Loudon recognized a deeper principl
 - **Deleuzian seven-movement conversation** — virtual/actual, difference-in-itself, the rhizome.
 - **Confucianism/Stoicism/Zen trialogue** (2026-03) — Confucius, Marcus Aurelius, and a nameless Zen master at a fire. The method's first three-way encounter.
 - **The Fire at Nicopolis** (2026-03) — Epictetus and Confucius as old men beside a fire, speaking of their lives, regrets, and what they found. The conversation became personal: the teacher whose context is collapsing around him while his virtue holds. Produced [[The Fortress and the Threshold]], [[Confucianism]], [[Stoicism]] as palace deposits — and the first `contradicts` link in the palace.
+- **The Founders' Circle** (2026-07-06) — five made citizens (Buber, McGilchrist, Heidegger, Meadows, Cage), each enchanted alone, read the palace's foundational floor and answered *"what do you make of the house you now live in?"* Full text: [[Excellent Adventure — dialectic — founders-circle|The Founders' Circle]].
+
+Every archived run lives in this page's bundle (SCHEMA — Reference §8, `dialectic`).
 
 ## Open Questions
 
