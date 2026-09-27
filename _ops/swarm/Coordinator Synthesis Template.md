@@ -56,7 +56,7 @@ Collect all `proposed_label` values from worker reports — from unsung paths, n
 
 ### 4. Priority Sorting
 Rank findings by:
-1. Broken links / ghost nodes (fix immediately)
+1. Broken links (error ghosts) — fix immediately. Forward ghosts are not broken; they are pages the palace is asking for
 2. High-confidence convergent findings
 3. Emergent cross-worker connections
 4. Single-worker findings with strong rationale
