@@ -125,6 +125,38 @@ export function Tag({ children, tone = 'default' }) {
   );
 }
 
+// A typed-glyph checkbox: [x] / [ ] in a chip, dashed when off, solid and lit
+// when on -- the house stand-in for <input type="checkbox">, which renders as
+// an OS widget the phosphor can't reach.
+export function Check({ checked, onToggle, children, title, testId }) {
+  const toggle = () => onToggle?.(!checked);
+  return (
+    <span
+      data-testid={testId}
+      role="checkbox"
+      aria-checked={!!checked}
+      tabIndex={0}
+      title={title}
+      onClick={toggle}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      }}
+      style={{
+        display: 'inline-flex', alignItems: 'baseline', gap: '1ch',
+        cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
+        fontFamily: 'var(--font-mono)', fontSize: 11, padding: '0 5px',
+        color: checked ? 'var(--phosphor)' : 'var(--phosphor-dim)',
+        textShadow: checked ? 'var(--glow)' : 'none',
+        border: `1px ${checked ? 'solid var(--phosphor)' : 'dashed var(--phosphor-dim)'}`,
+        background: checked ? 'var(--fill-card)' : 'transparent',
+      }}
+    >
+      <span>{checked ? '[x]' : '[ ]'}</span>
+      <span>{children}</span>
+    </span>
+  );
+}
+
 export function Field({ prompt = '>', value, onChange, onSubmit, placeholder, password, autoFocus }) {
   const ref = useRef(null);
   useEffect(() => { if (autoFocus && ref.current) ref.current.focus(); }, [autoFocus]);

@@ -17,7 +17,10 @@ links:
   - target: "[[Toolkit — Audio Effects]]"
     type: connects-to
     label: overlaps-fx
-forward_vector: Grow toward an annotated, opinionated plugin inventory — noting RTM candidates, teaching use, creative role, and depth of relationship per plugin. Eventually: a curated shortlist for Loudon Live RTM series.
+  - target: "[[LDN RTM]]"
+    type: connects-to
+    label: feeds-the-queue
+forward_vector: "I grow into an annotated, opinionated plugin inventory — RTM candidates, teaching use, creative role and depth of relationship per plugin — and feed a curated shortlist to the LDN RTM queue."
 ---
 
 # Toolkit — Audio Plugins
@@ -123,7 +126,7 @@ VST3 plugin inventory from `/Library/Audio/Plug-Ins/VST3`. Organized by manufact
 ## Notes for Future Sessions
 
 - **Manufacturer attribution: COMPLETE.** All plugins fully attributed as of v6. RC 24/RC 48 were removed — Loudon does not recognize them; RC-20 Retro Color (XLN Audio) is the correct plugin and already in the table.
-- **[[Loudon Live]] RTM shortlist** — Prime candidates: Eventide H3000 Factory, u-he Diva + Zebra2, Reaktor 6, Newfangled Pendulate, MeldaProduction full suite, Surge XT, Vital, Soundtoys complete bundle, Polyverse full collection, Klevgrand Tomofon.
+- **[[LDN RTM]] shortlist** — Prime candidates: Eventide H3000 Factory, u-he Diva + Zebra2, Reaktor 6, Newfangled Pendulate, MeldaProduction full suite, Surge XT, Vital, Soundtoys complete bundle, Polyverse full collection, Klevgrand Tomofon.
 - **LDN full plugin list** — Hello World confirmed. Full list: click LDN in Ableton's plugin browser to see all custom exports.
 - **Custom plugin ecosystem** — Loudon builds with RNBO and Max/MSP. The LDN manufacturer tag identifies his own VST3 exports. Worth a future palace entry on the plugin-building practice itself.
 - **Expressive E / Touché** — Lié plugin is installed. Confirm Touché hardware for the MIDI Controllers category entry.
