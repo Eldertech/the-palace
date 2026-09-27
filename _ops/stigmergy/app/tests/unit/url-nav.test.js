@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   parseEntryFromUrl, buildEntrySearch,
+  parseFilterFromUrl, buildFilterSearch,
   parseLensFromUrl, buildLensSearch,
   parseTreeTargetFromUrl, buildTreeTargetSearch,
   deckFromSearch, buildDeckSearch,
@@ -73,6 +74,32 @@ describe('buildEntrySearch', () => {
   it('encodes path with spaces and slashes', () => {
     expect(buildEntrySearch('', { path: 'Palace development/Two Batons.md' }))
       .toBe('?entry=Palace+development%2FTwo+Batons.md');
+  });
+
+  it('carries the PULSE filter through opening and closing an entry', () => {
+    const opened = buildEntrySearch('?q=ceremony', { path: 'Foo.md' });
+    expect(parseFilterFromUrl(opened)).toBe('ceremony');
+    expect(buildEntrySearch(opened, { path: null })).toBe('?q=ceremony');
+  });
+});
+
+describe('parseFilterFromUrl / buildFilterSearch', () => {
+  it('reads ?q=, empty when absent, SSR-safe', () => {
+    expect(parseFilterFromUrl('?q=weave+ceremony')).toBe('weave ceremony');
+    expect(parseFilterFromUrl('')).toBe('');
+    expect(parseFilterFromUrl(undefined)).toBe('');
+  });
+
+  it('sets q and preserves every other param', () => {
+    const out = buildFilterSearch('?deck=STATE&lens=tree', 'kur');
+    expect(out).toContain('deck=STATE');
+    expect(out).toContain('lens=tree');
+    expect(out).toContain('q=kur');
+  });
+
+  it('clears q for a blank filter', () => {
+    expect(buildFilterSearch('?q=kur&deck=STATE', '')).toBe('?deck=STATE');
+    expect(buildFilterSearch('?q=kur', '   ')).toBe('');
   });
 });
 

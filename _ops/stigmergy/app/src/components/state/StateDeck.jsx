@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import EntryList from './EntryList.jsx';
 import EntryReader from './EntryReader.jsx';
 import EntryEditor from './EntryEditor.jsx';
@@ -33,6 +33,15 @@ export default function StateDeck({ jumpTarget = null, onEntryPathChange, reload
   const nav = useEntryNavigation();
   const selected = nav.path;
   const editing = nav.edit;
+
+  // The row last opened from PULSE. The list unmounts while an entry is open,
+  // so StateDeck holds this and hands it back as the list's starting
+  // highlight: you return to where you left, and ↓ moves on to the next one.
+  const pickedRef = useRef(null);
+  const openFromList = useCallback((path) => {
+    pickedRef.current = path;
+    nav.openEntry(path);
+  }, [nav.openEntry]);
 
   // Report the open entry up to App so the global Companion can ground in it.
   // StateDeck owns the URL-driven entry navigation, so it is the source of
@@ -127,7 +136,8 @@ export default function StateDeck({ jumpTarget = null, onEntryPathChange, reload
               entries={state.kind === 'ok' ? state.entries : []}
               loadState={state.kind === 'ok' ? 'ok' : 'loading'}
               error={null}
-              onSelect={nav.openEntry}
+              onSelect={openFromList}
+              initialCursor={pickedRef.current}
             />
           )}
         </>

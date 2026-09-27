@@ -1,8 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Box } from '../primitives.jsx';
 import StageGlyph from './StageGlyph.jsx';
 import { pulseSort } from '../../lib/pulse.js';
 import { sortEntries, DEFAULT_DIR, SORT_KEYS } from '../../lib/entry-sort.js';
+import { activeIndex, stepCursor } from '../../lib/list-cursor.js';
+import { parseFilterFromUrl, replaceFilterInUrl } from '../../lib/url-nav.js';
 import EntryAvatar from '../EntryAvatar.jsx';
 import PulseDot from './PulseDot.jsx';
 import { typeColor } from '../../lib/entry-style.js';
@@ -14,15 +16,22 @@ import { IS_PUBLIC } from '../../lib/public-mode.js';
 // the whole point of leaving Obsidian's file browser behind for triage.
 //
 // A filter input narrows by title/type/path; clicking a row opens that
-// entry in EntryReader.
+// entry in EntryReader. From the keyboard, ↑/↓ move a highlight through the
+// list and Enter opens the highlighted entry; typing a filter highlights the
+// top match, so filter-then-Enter opens the best hit.
 
-function EntryRow({ entry, onSelect }) {
+// Memoized so holding ↓ repaints the two rows whose highlight changed, not
+// the whole several-hundred-row index.
+const EntryRow = React.memo(function EntryRow({ entry, onSelect, active }) {
   const rowColor = typeColor(entry.type);
   return (
     <div
       data-testid="pulse-row"
       className="pulse-cols"
       data-path={entry.path}
+      data-active={active ? '1' : '0'}
+      role="option"
+      aria-selected={active}
       onClick={() => onSelect?.(entry.path)}
       style={{
         display: 'grid',
@@ -31,6 +40,11 @@ function EntryRow({ entry, onSelect }) {
         padding: '4px 6px',
         borderBottom: '1px dashed var(--phosphor-dim)',
         cursor: 'pointer',
+        // Deep-green fill + a phosphor bar on the left: the row reads as
+        // picked without inverting it, so the type colours and chips stay
+        // legible.
+        background: active ? 'var(--fill-card)' : 'transparent',
+        boxShadow: active ? 'inset 3px 0 0 var(--phosphor)' : 'none',
       }}
     >
       <PulseDot score={entry.pulse ?? 0} />
@@ -78,10 +92,17 @@ function EntryRow({ entry, onSelect }) {
       </span>
     </div>
   );
-}
+});
 
-export default function EntryList({ entries = [], loadState, error, onSelect }) {
-  const [filter, setFilter] = useState('');
+// initialCursor: the row to highlight on mount -- StateDeck hands back the
+// entry you last opened from here, so coming back puts you where you left and
+// ↓ carries on to the next match.
+export default function EntryList({ entries = [], loadState, error, onSelect, initialCursor = null }) {
+  // The filter lives in the URL (?q=), so it outlives this component, which
+  // unmounts whenever an entry is open.
+  const [filter, setFilter] = useState(
+    () => (typeof window === 'undefined' ? '' : parseFilterFromUrl(window.location.search)),
+  );
   const [sortKey, setSortKey] = useState('pulse');
   const [sortDir, setSortDir] = useState(DEFAULT_DIR.pulse);
   // Bundle files (SCHEMA §8 owned files: batons, scrolls, specs, context)
@@ -126,6 +147,63 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
     );
   }, [filter, base]);
 
+  // The keyboard cursor. Held as a path (see lib/list-cursor.js) and reset on
+  // every keystroke in the filter, so a fresh query always starts from its
+  // top match.
+  const [cursorPath, setCursorPath] = useState(initialCursor);
+  const active = activeIndex(filtered, cursorPath, filter);
+  const boxRef = useRef(null);
+  const listRef = useRef(null);
+
+  const onFilterChange = (value) => {
+    setFilter(value);
+    setCursorPath(null);
+    replaceFilterInUrl(value);
+  };
+
+  // On a return from an entry the list mounts scrolled to the top; bring the
+  // row you left from back into view.
+  useEffect(() => {
+    if (initialCursor && active >= 0) {
+      listRef.current?.children[active]?.scrollIntoView?.({ block: 'nearest' });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ↑/↓ move the highlight, Enter opens it. Shift/Cmd/Ctrl/Alt combos pass
+  // through untouched (text selection, browser shortcuts).
+  const onNavKey = (e) => {
+    if (e.shiftKey || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (filtered.length === 0) return;
+      e.preventDefault();
+      const next = stepCursor(active, e.key === 'ArrowDown' ? 1 : -1, filtered.length);
+      setCursorPath(filtered[next].path);
+      listRef.current?.children[next]?.scrollIntoView?.({ block: 'nearest' });
+    } else if (e.key === 'Enter' && active >= 0) {
+      e.preventDefault();
+      onSelect?.(filtered[active].path);
+    }
+  };
+
+  // The same keys when you haven't clicked into the filter: the list answers
+  // from the bare page or from anywhere inside the PULSE box, but never while
+  // you are typing somewhere else (the Companion, an editor), and never for a
+  // key a focused control already claimed -- a sort header keeps its Enter.
+  const navKeyRef = useRef(onNavKey);
+  navKeyRef.current = onNavKey;
+  useEffect(() => {
+    function onKey(e) {
+      if (e.defaultPrevented) return;
+      const t = e.target;
+      if (t !== document.body && !boxRef.current?.contains(t)) return;
+      if (/^(input|textarea|select)$/i.test(t.tagName) || t.isContentEditable) return;
+      navKeyRef.current(e);
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
   if (loadState === 'loading') {
     return (
       <div data-testid="pulse-loading" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
@@ -145,6 +223,7 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
   }
 
   return (
+    <div ref={boxRef}>
     <Box title={`PULSE  --  vitality lens  (${filtered.length}/${base.length} entries)`} tone="double">
       <div style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>
@@ -154,7 +233,18 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
           data-testid="pulse-filter"
           type="text"
           value={filter}
-          onChange={(e) => setFilter(e.target.value)}
+          onChange={(e) => onFilterChange(e.target.value)}
+          onKeyDown={(e) => {
+            // Esc clears the filter; a second Esc lets go of the input so the
+            // deck hotkeys (S / Q / L ...) answer again.
+            if (e.key === 'Escape') {
+              e.preventDefault();
+              if (filter) onFilterChange('');
+              else e.currentTarget.blur();
+              return;
+            }
+            onNavKey(e);
+          }}
           placeholder="title / type / path"
           style={{
             flex: 1, minWidth: '12ch', maxWidth: '40ch',
@@ -165,6 +255,11 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
             outline: 'none', padding: '2px 0',
           }}
         />
+        <span data-testid="pulse-keys-hint" style={{
+          color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, whiteSpace: 'nowrap',
+        }}>
+          [↑↓] move  [enter] open
+        </span>
         <label
           data-testid="pulse-bundle-toggle"
           style={{
@@ -224,8 +319,10 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
         })}
       </div>
 
-      <div style={{ maxHeight: '60vh', overflowY: 'auto' }}>
-        {filtered.map((e) => <EntryRow key={e.path} entry={e} onSelect={onSelect} />)}
+      <div ref={listRef} role="listbox" style={{ maxHeight: '60vh', overflowY: 'auto' }}>
+        {filtered.map((e, i) => (
+          <EntryRow key={e.path} entry={e} onSelect={onSelect} active={i === active} />
+        ))}
         {filtered.length === 0 ? (
           <div style={{
             color: 'var(--phosphor-dim)', textShadow: 'none',
@@ -236,5 +333,6 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
         ) : null}
       </div>
     </Box>
+    </div>
   );
 }
