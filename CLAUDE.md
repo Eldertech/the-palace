@@ -94,7 +94,7 @@ A child knows the names of the rites. When Loudon uses one as an instruction, re
 | "sentry sweep", "security sweep", "sentry, check [X]" | [[Sentry]] — also before anything widens the public surface |
 | "spore check" | [[Spore Check Ceremony]] |
 | "revive [entry]", "let's revive [entry]", "time to revive [entry]" | [[Revival Ceremony]] |
-| "map build", "build the map", "neighborhood map for [X]" | [[Map Build Ceremony]] |
+| "map build", "build the map" | [[Map Build Ceremony]] |
 | "self-model update" | [[Self-Model Update Ceremony]] |
 | "connect this", "connect [X] to the palace" | Connection — [[Palace Ceremonies]] |
 | "what does the palace say about [topic]?" | Query — [[Palace Ceremonies]] |

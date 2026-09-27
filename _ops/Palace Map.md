@@ -105,19 +105,13 @@ The choice between formats is not about token economy alone. It is about which r
 
 **Avoiding redundant work in a swarm.** If multiple agents are running in parallel, each one can see which nodes are topologically close to others' home entries and self-organize to avoid overlap — without a coordinator. The map makes distributed coordination possible.
 
-## Bounded Survey: Neighborhood Maps
+## Bounded Survey: Neighborhood Maps (grown toward)
 
-The map need not be the whole palace. An agent working within a bounded region — the Hilaritas Generator neighborhood, the Philosophy Core, the DSP cluster — only needs the subgraph relevant to its work.
+The map need not be the whole palace. An agent working inside one region — the Hilaritas Generator neighborhood, the philosophy core, the DSP cluster — only needs the subgraph around its work. The [[Map Build Ceremony]] does not build these yet; it builds the full map.
 
-Bounded maps are defined by a frontmatter field in entry files:
+What a neighborhood *is* stays open, and it is not a partition. A page lives in several neighborhoods at once — [[Kuramoto Coupling]] is at home with the synthesis projects and with the philosophy of cooperation — and a neighborhood can be drawn many ways: a shared frontmatter field, a hub and the pages a few links out, a pillar, a community the graph finds for itself. Each way is a lens on the same palace, and each lens draws a different map. The Weave already works this way: `_ops/swarm/partition-palace.py` cuts the full map one lens at a time, and an entry lands in every group it belongs to ([[Swarm Weave]] § The Multi-Lens Weave).
 
-```yaml
-neighborhood: hilaritas-generator
-```
-
-Any entry carrying this field is included in a bounded survey of that region. The [[Map Build Ceremony]] scans frontmatter only, collects all entries sharing the neighborhood value, and builds the subgraph. The bounds self-define passively — no external configuration needed.
-
-For [[Swarm Weave]] sessions scoped to a single neighborhood, the bounded map is the appropriate Tier 1 context. For palace-wide [[Palace Enchantment]] runs, the full map.
+For [[Swarm Weave]] sessions scoped to one region, a bounded map would be the right Tier 1 context; for palace-wide [[Palace Enchantment]] runs, the full map.
 
 ## The JSON Schema (Swarm Use)
 
@@ -249,7 +243,7 @@ There is something stigmergic here too — each commit is a trace left in the en
 
 - Should the palace map be auto-generated at the close of every [[Harvest Ceremony]], ensuring it is never more than one harvest cycle stale? What is the ceremony hook?
 - Ghost node tracking across map generations: a ghost node that persists across three map cycles is a deposit candidate of high priority. Can this be surfaced automatically?
-- Should neighborhood field values be defined and curated (a fixed vocabulary like link types) or free-form? Free-form is flexible; a fixed vocabulary makes cross-neighborhood analysis possible.
+- How do we calculate neighborhoods? Not as one partition: a page can live in many, and each way of drawing them — a frontmatter field, a hub's radius, a pillar, a graph community, the Weave's lenses — is a lens of its own. Which lenses earn a bounded map, and should each node carry its neighborhoods as a list rather than a single value?
 - Every node now carries `use` — how its entry is being used, from git ([[Map Build Ceremony]] Step 5, Format). Edges could be weighted from it, so high-traffic links appear stronger. Would this add value to swarm dispatch, or introduce noise?
 - At what node count does the full palace map become too expensive for Tier 1 context? What is the threshold where a summary or filtered version becomes necessary?
 - The map's git history is a temporal record of the palace's self-model. Can a ceremony be designed to compare map generations — tracking which ghost nodes persisted, which edges dissolved, which neighborhoods grew? This would make the palace's conceptual evolution legible across time.
