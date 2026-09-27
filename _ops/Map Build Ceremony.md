@@ -39,7 +39,7 @@ links:
 | **Precondition** | Palace is accessible via filesystem. At least 5 entries exist. |
 | **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename; its `meta` carries the node, edge and ghost counts and names every forward ghost. The run's line is appended to [[Map Build Ceremony — tuning]], carrying the version and the counts, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer). |
 | **Does not do** | Read entry bodies. Propose link changes. Modify existing entries. |
-| **Produces** | An edge list (TSV default), bidirectional adjacency list, or JSON depending on scope and format request. |
+| **Produces** | An edge list (TSV default), bidirectional adjacency list, or JSON depending on the format requested. |
 
 ---
 
@@ -47,7 +47,7 @@ links:
 
 **Full Survey** — reads the frontmatter of every `.md` in the palace and builds the complete edge list. The mode the builder runs. Used for: pre-swarm context loading, palace-wide Enchantment, JEWEL updates.
 
-**Bounded Survey** — *grown toward, not yet built.* A map of one neighborhood rather than the whole palace, for an agent that only needs the region it works in. What makes a neighborhood is an open question with more than one answer: a page can live in several neighborhoods at once, and a neighborhood can be drawn many ways — a shared frontmatter field, a hub and the pages a few links out, a pillar, a community the graph finds for itself. The nearest thing today is the Weave's `_ops/swarm/partition-palace.py`, which cuts the full map one lens at a time (folder, community, mirror, random cover, lifecycle, bridge) and lets an entry land in every group it belongs to ([[Swarm Weave]] § The Multi-Lens Weave). The question lives in [[Palace Map]] § Forward Vectors.
+**Bounded Survey** — *grown toward, not yet built.* A map of one neighborhood rather than the whole palace, for an agent that only needs the region it works in. What makes a neighborhood is an open question with more than one answer: a page can live in several neighborhoods at once, and a neighborhood can be drawn many ways — a shared frontmatter field, a hub and the pages a few links out, a pillar, a community the graph finds for itself. The nearest thing today is the Weave's `_ops/swarm/partition-palace.py`, which cuts the full map one lens at a time (folder, community, mirror, random cover, lifecycle, bridge) and, across lenses, lets an entry land in each family it belongs to ([[Swarm Weave]] § The Multi-Lens Weave). The question lives in [[Palace Map]] § Forward Vectors.
 
 ---
 

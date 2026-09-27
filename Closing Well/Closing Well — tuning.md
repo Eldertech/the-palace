@@ -12,8 +12,8 @@ forward_vector: "I am Closing Well's record of what its closes taught it, number
 
 What each close taught the ceremony. This is what makes the Agent *professional* — a track
 record, not a fresh subagent spun up cold. Items 1–24 were appended one per close, before
-Closing Well carried a version; from 25 on, an item is written only when a close changed the
-spec, and it names the change and the version that change produced. Two numbers were used
+Closing Well carried a version; from 25 on, an item is written only when a close — or a lesson
+that reached it from elsewhere — changed the spec, and it names the change and the version that change produced. Two numbers were used
 twice early on; they are 12a/12b and 13a/13b, four different traps. Newest last.
 
 ## From the first close — 2026-07-03 (hand-run pilot, the design of Closing Well itself)
@@ -141,4 +141,4 @@ twice early on; they are 12a/12b and 13a/13b, four different traps. Newest last.
 
 ## From the canon-agreement session — 2026-09-26
 
-36. **The deposit check would have refused a page the palace was asking for.** The executor's routing rules and its prompt both said "links resolve (no ghost nodes)" (`_ops/closing-well/executor.md:72`, `_ops/closing-well/prompts/closing-well-executor.md:53`). A link to a page not yet written is a forward ghost — the palace asking for that page ([[Palace Map]] § Links Before Objects) — and a deposit row's words, links included, are ones Loudon has already approved. The rule most likely meant to catch typos, and as written it caught requests too. Found in the Concierge's review of Map Build v2.4, not in a close. Forced: **v1.5** — the check lets forward ghosts through and stops only on a link that matches an existing entry in another case or spelling.
+36. **The deposit check would have refused a page the palace was asking for.** The executor's routing rules and its prompt both said "links resolve (no ghost nodes)" (`_ops/closing-well/executor.md:72`, `_ops/closing-well/prompts/closing-well-executor.md:53`). A link to a page not yet written is a forward ghost — the palace asking for that page ([[Palace Map]] § Links Before Objects) — and a deposit row's words, links included, are ones Loudon has already approved. The rule most likely meant to catch typos, and as written it caught requests too. Found in the Concierge's review of Map Build v2.4, not in a close. Forced: **v1.5** — the check lets forward ghosts through and stops only on a link that matches an existing entry ignoring case (the map's own `error_ghost` rule); a near-spelling becomes a punchlist question, not a stop.

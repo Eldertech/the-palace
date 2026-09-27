@@ -70,8 +70,9 @@ the frozen Deposit Archive (`_ops/Deposit Ceremony/Archive/`) is never appended 
 required.)
 *Executor check:* Loudon approved the row's map and read its words (`candidate`, not `provisional`); every file went
 in by `--path`; the commit lands on the owner's `main` (rule 1); every link resolves or points
-at a page not yet written (a forward ghost — allowed: the approved words asked for it), and a link
-that matches an entry only in another case or spelling is a typo, so the row stops unplaced;
+at a page not yet written (a forward ghost — allowed: the approved words asked for it); a link
+that matches an existing entry ignoring case is a typo, so the row stops unplaced, and a near-spelling
+goes in the punchlist as a question, not a stop;
 `--dry-run` subject reads `deposit(<id>): …` before landing.
 
 ### hand on → baton  (reuse: `baton-executor.mjs` → `board-post.mjs` + the committer)
