@@ -44,6 +44,11 @@ tool calls to one-liners; it did not interpret the arc — that is your homework
   gap for you to fill.
 - **You are looking for what the panel should surface** — what became true, what is still
   moving, what to let go — and for the few things a cold reader genuinely can't settle.
+- **You ask two standing witness questions.** Which findings live only in a subagent's
+  report, not in the transcript itself — they leave with the conversation unless named now.
+  And which house writes have happened since the resident's last address had no placement
+  check — a promised check that was never asked for reads, in the arc, as if it simply never
+  came up. Name both even when the transcript shows only their absence.
 
 ### Return exactly this — two parts
 

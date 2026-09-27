@@ -142,3 +142,8 @@ twice early on; they are 12a/12b and 13a/13b, four different traps. Newest last.
 ## From the canon-agreement session — 2026-09-26
 
 36. **The deposit check would have refused a page the palace was asking for.** The executor's routing rules and its prompt both said "links resolve (no ghost nodes)" (`_ops/closing-well/executor.md:72`, `_ops/closing-well/prompts/closing-well-executor.md:53`). A link to a page not yet written is a forward ghost — the palace asking for that page ([[Palace Map]] § Links Before Objects) — and a deposit row's words, links included, are ones Loudon has already approved. The rule most likely meant to catch typos, and as written it caught requests too. Found in the Concierge's review of Map Build v2.4, not in a close. Forced: **v1.5** — the check lets forward ghosts through and stops only on a link that matches an existing entry ignoring case (the map's own `error_ghost` rule); a near-spelling becomes a punchlist question, not a stop.
+
+## From the page-walk close — 2026-09-27
+
+37. **Two things about to leave with the conversation surfaced only at the close.** About ten faces lessons were held only in two subagents' reports, and a placement check promised after "grow up" was never asked for; the arc showed only their absence (arc:1673, and no resident address after arc:342) — the working Claude's witness recovered both. Forced: **v1.6** — pass-1 homework now asks two standing witness questions: which findings live only in a subagent's report, and which house writes have happened since the resident's last address had no placement check. `prompts/closing-well-agent.md` § What a good moderator holds.
+- run · 2026-09-27 · v1.5 · close-2026-09-27-page-walk · taught item 37
