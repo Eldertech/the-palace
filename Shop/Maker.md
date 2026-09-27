@@ -224,7 +224,7 @@ The lesson of the 2026-05-10 Manim failure, made into a step: a brief can be per
 |---|---|---|
 | **mac** (Loudon's machine — full) | Everything: Manim, Kokoro, ComfyUI + Stable Audio (MPS GPU), Remotion, VCV, RNBO/Max, all web specialists, ffmpeg, Whisper, Matplotlib, Mermaid. | — |
 | **sandbox** (Cowork Linux arm64, no sudo) | Web specialists (p5.js, D3.js, Observable Plot, Tone.js), Matplotlib, Mermaid, ffmpeg, Whisper (CPU, slow). | Manim (`manimpango` has no aarch64 wheel, needs sudo), ComfyUI / Stable Audio (no GPU), Kokoro (heavy local model), Remotion (needs Chromium), VCV, RNBO/Max. |
-| **cloud** (API) | Midjourney. | Anything local-only. |
+| **cloud** (API) | FLUX (Hugging Face). | Anything local-only. |
 | **runpod** (rented GPU — serverless + pod) | Any GPU job over HTTPS: ComfyUI / FLUX / SDXL **with** ControlNet / LoRA / IPAdapter. Serverless for spiky batches (scale-to-zero), a pod for ControlNet/iteration. Solves the no-GPU / quota wall from any host. | — (account-billed; park the GPU when idle). See [[RunPod GPU Backend]]. |
 
 **Fallback table** (what I reach for when the first choice can't run on the host):
@@ -234,7 +234,7 @@ The lesson of the 2026-05-10 Manim failure, made into a step: a brief can be per
 | Manim CE | manimpango / Cairo / LaTeX | **Matplotlib** for static-frame math; defer motion to a mac handoff. Keep both renders if the fallback later runs alongside the canonical (per the 2026-05-10 gotcha). |
 | LaTeX | TeX Live (`pdflatex`/`xelatex`/`latexmk`) | No content substitute — documents defer to a host with TeX Live. PDF path clean on mac; SVG-cutout path needs the `TEXPSHEADERS` bridge. The same install Manim CE and Matplotlib already depend on. |
 | Kokoro | local TTS model | **Loudon's voice recording** when the piece is published as Loudon; otherwise defer to mac. |
-| ComfyUI | local GPU | **Midjourney** (cloud) when ceiling matters more than control; **Mermaid/Matplotlib** when the image is actually a diagram/chart; otherwise defer to mac. |
+| ComfyUI | local GPU | **FLUX (Hugging Face)** (cloud) when ceiling matters more than control; **Mermaid/Matplotlib** when the image is actually a diagram/chart; otherwise defer to mac. |
 | Stable Audio Open | local GPU | no substitute — defer to mac, or drop the bed for the tier. |
 | Remotion | Chromium / Node | defer to mac; **Manim** only if the content is math, not UI. |
 | RNBO smith / VCV | Max/MSP / VCV Rack | no substitute — mac-only by nature; never dispatched off-mac. |
@@ -251,7 +251,7 @@ I keep loose accounting in my head, not strict. Things I won't run in parallel w
 - A Manim Piece-tier render and a Whisper transcription (CPU contention on long jobs)
 - Three or more API-bound specialists at once (rate-limit risk)
 
-For Midjourney specifically I track credit consumption tier-by-tier and tell you the running total when it crosses a meaningful threshold (default: 50 credits per session). For ComfyUI I track GPU VRAM headroom and warn before launching a job that would push past available memory.
+For cloud generation (FLUX via Hugging Face Inference) I track usage against the free tier and tell you the running total when it crosses a meaningful threshold. For ComfyUI I track GPU VRAM headroom and warn before launching a job that would push past available memory.
 
 ## Roster
 
@@ -328,5 +328,5 @@ Last run: never.
 
 First job: a Sketch-tier deliverable through Kokoro to verify the template, the Tier vocabulary, and the standards-report shape are coherent in practice. Once a single round-trip works (brief → Maker decodes → Kokoro produces → standards check → delivery), expand to a Manim-only job, then a Manim+Kokoro coordination, then a three-specialist motion piece. Each test that exposes a template flaw is a deposit-worthy correction.
 
-After single-Specialist round-trips work, run the first **Comparison Mode** test: a header art brief routed to both Midjourney and ComfyUI in parallel. The result calibrates when local control beats cloud aesthetic ceiling and surfaces the first real tradeoff conversation.
+After single-Specialist round-trips work, run the first **Comparison Mode** test: a header art brief routed to both FLUX (Hugging Face) and ComfyUI in parallel. The result calibrates when local control beats cloud aesthetic ceiling and surfaces the first real tradeoff conversation.
 

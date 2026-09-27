@@ -219,4 +219,4 @@ Last run: **2026-05-30** — Smoke pass via existing-artifact verification (`Kur
 
 ## Forward Vector
 
-First job: a Sketch-tier exploration of the same brief Midjourney runs first, producing a side-by-side comparison. The result calibrates when local control beats cloud aesthetic ceiling and surfaces the first batch of ComfyUI gotchas. The two specialists are the Shop's first true Comparison Mode test.
+First job: a Sketch-tier exploration of the same brief FLUX (Hugging Face) runs first, producing a side-by-side comparison. The result calibrates when local control beats cloud aesthetic ceiling and surfaces the first batch of ComfyUI gotchas. The two specialists are the Shop's first true Comparison Mode test.

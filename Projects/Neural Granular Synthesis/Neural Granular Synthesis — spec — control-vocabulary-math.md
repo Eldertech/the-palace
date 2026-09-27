@@ -1,10 +1,6 @@
 ---
-title: "Neural Granular Synthesis — Control-Vocabulary Math"
-type: concept
-pillars: [tools, creation, philosophy]
+title: "Neural Granular Synthesis — spec — control-vocabulary-math"
 born: 2026-06
-stage: growing
-status: active
 parent: "[[Neural Granular Synthesis]]"
 forward_vector: "I want to be the precise statement of the population's playable surface — every control on the crowd written twice, symbol for the eye and words for the ear, so the raster plot and the slider always mean the same thing."
 links:

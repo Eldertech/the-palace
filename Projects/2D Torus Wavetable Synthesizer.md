@@ -51,7 +51,7 @@ links:
     type: connects-to
   - target: "[[Synthesis Topologies]]"
     type: exemplifies
-  - target: "[[control-vocabulary-math]]"
+  - target: "[[Neural Granular Synthesis — spec — control-vocabulary-math]]"
     type: connects-to
     label: worked-control-vocabulary
 ---
@@ -160,7 +160,7 @@ This project genuinely activates all four pillars, which makes it a strong proje
 - Should the Kuramoto trajectory replace the linear scan, or augment it as an alternative scan mode? K as a morph parameter between regimes is a third option.
 - Surface resolution and interpolation scheme — to be settled empirically.
 - How does the UI expose the design language? Direct Fourier coefficient editing, surface painting, parametric presets, or some combination?
-- How does the Hopf control surface get mapped to musically legible parameters? The mapping is the work, not the formula. Across Loudon's instruments this is the hardest problem, harder than the DSP. [[control-vocabulary-math]] is a worked case on a different engine: a crowd of spiking neurons reduced to four playable knobs.
+- How does the Hopf control surface get mapped to musically legible parameters? The mapping is the work, not the formula. Across Loudon's instruments this is the hardest problem, harder than the DSP. [[Neural Granular Synthesis — spec — control-vocabulary-math|control-vocabulary-math]] is a worked case on a different engine: a crowd of spiking neurons reduced to four playable knobs.
 
 ## Lost Branches
 

@@ -6,7 +6,7 @@ pillars:
   - tools
   - creation
 born: 2026-07
-stage: sprout
+stage: growing
 links:
   - target: "[[Modes of Collaboration]]"
     type: member-of
