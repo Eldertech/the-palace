@@ -39,7 +39,7 @@ For any sustained, commit-producing work in the palace, spin up an isolated **gi
 Born 2026-06-16, after a concurrent agent switched the shared working tree's branch out from under an in-progress session and a commit landed on the wrong branch. Two failure modes, two fixes:
 
 - **Branch thrashing.** Many agents sharing one checkout switch its branch continuously; a commit lands on whatever branch HEAD points to *at commit time*. An own-worktree has its own HEAD — immune.
-- **Missing tooling.** A fresh worktree holds only *tracked* files, so the 16 GB gitignored `_tools/` (ComfyUI venv + weights) is absent. The companion practice — symlinking the heavy/secret state back from the canonical owner — fixes that without a re-download. Profiles (`docs`, `shop`, `blueline`, `stigmergy`, `full`) pick the smallest symlink set that fits the work.
+- **Missing tooling.** A fresh worktree holds only *tracked* files, so the 16 GB gitignored `_tools/` (ComfyUI venv + weights) is absent. The companion practice — symlinking the heavy/secret state back from the canonical owner — fixes that without a re-download. Profiles (`docs`, `shop`, `blueline`, `stigmergy`, `full`) pick the smallest symlink set that fits the work. A mirrored `node_modules` is the owner's install itself, so a dependency change cuts those links before installing (`_ops/worktree/SKILL.md`).
 
 ## The primary is the canon trunk
 

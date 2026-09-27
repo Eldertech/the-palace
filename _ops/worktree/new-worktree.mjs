@@ -208,6 +208,7 @@ for (const rel of autoMirror) {
   if (ok) autoMade++;
 }
 if (autoMirror.length) console.log(`  auto-mirror: ${autoMade} made, ${autoSkipped} skipped`);
+if (autoMade) console.log(`  ! these node_modules ARE the owner's install — before any npm install/ci/update here, rm the links (no trailing slash); see _ops/worktree/SKILL.md`);
 
 // ---- memory (outside the repo) ----
 function printMemory() {
