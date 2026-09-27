@@ -1,16 +1,24 @@
 {
   "title": "SCHEMA \u2014 Reference",
-  "idiom": "bold black-and-cream linocut, set-square and plumb bob",
+  "idiom": "bold black-and-cream linocut, set-square and plumb bob (hero); icon: a drafting triangle with a pen at its foot ruling a line onward, the rules read at the pen",
   "hero_prompt": "Bold linocut print in black on cream paper, thick carved shapes with white gouge marks, no fine hatching, flat and graphic, not a photograph, not a 3D render, no depth-of-field: seen from the side, a large plain wooden set-square standing upright on a bare table, and beside it a plumb bob hanging perfectly still on a straight line from above, the two together the measure of square and true; solid black shapes, generous empty cream space, a quiet plain workroom wall behind.",
-  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: a set-square triangle overlapping one plain circle",
-  "seeds": {},
-  "rendered_at": "2026-09-27T00:57:30Z",
+  "icon_prompt": "Bold linocut emblem printed in black on cream paper, flat single-colour black shapes, no shading or gradients, not a photograph, not a 3D render: a plain black drafting set-square, a right-angled triangle with a triangular hole through its middle, standing with its right angle at the lower left, its upright edge on the left and its flat base along the bottom. From the set-square's right-hand tip one bold straight black line runs on to the right along the ground, and at the end of that line a single plain steel pen nib, pointed and unmarked, leans forward, still drawing it. No pen holder, no hand. The set-square is completely bare: no graduations, no ticks, no scale, no markings of any kind on its edges. Nothing centred, no circle. Bold, high-contrast, thick shapes only, reads clearly at 24 pixels.",
+  "seeds": {
+    "icon": 144886
+  },
+  "rendered_at": "2026-09-27T02:46:06Z",
   "history": [
     {
       "idiom": "engraved technical/blueprint etching",
       "hero_prompt": "",
       "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: a set-square triangle overlapping one plain circle",
       "rendered_at": "2026-09-25T02:18:56Z"
+    },
+    {
+      "idiom": "bold black-and-cream linocut, set-square and plumb bob",
+      "hero_prompt": "Bold linocut print in black on cream paper, thick carved shapes with white gouge marks, no fine hatching, flat and graphic, not a photograph, not a 3D render, no depth-of-field: seen from the side, a large plain wooden set-square standing upright on a bare table, and beside it a plumb bob hanging perfectly still on a straight line from above, the two together the measure of square and true; solid black shapes, generous empty cream space, a quiet plain workroom wall behind.",
+      "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: a set-square triangle overlapping one plain circle",
+      "rendered_at": "2026-09-27T00:57:30Z"
     }
   ]
 }
