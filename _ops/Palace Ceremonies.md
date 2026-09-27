@@ -141,3 +141,7 @@ The report is a gift to the ceremony's author, not a verdict. A ceremony can pro
 
 - Should the Walk ceremony be updated to acknowledge the Swarm Weave as a future path — the difference between walking alone and walking with a colony?
 - Is anything in onboarding a new Claude instance left that only a ceremony would do? Birth and growing up now carry most of it — [[CLAUDE]] (including § A page and its folder), then [[ELDER]].
+
+## Active Baton
+
+[[Palace Ceremonies — baton]] — drafted 2026-09-26
