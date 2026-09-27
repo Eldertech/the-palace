@@ -118,7 +118,11 @@ def slug(t: str) -> str:
 
 
 def creds(palace: Path):
-    cfg = palace / "Shop" / "RunPod GPU Backend" / "studio" / "config.json"
+    try:   # the one place that knows where the key lives (falls back to the primary checkout)
+        from commons.runpod_config import runpod_config_path
+        cfg = runpod_config_path()
+    except ImportError:
+        cfg = palace / "Shop" / "RunPod GPU Backend" / "studio" / "config.json"
     c = json.loads(cfg.read_text())
     return c["api_key"], c["endpoint_id"]
 

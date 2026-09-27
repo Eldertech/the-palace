@@ -10,9 +10,7 @@ attributed to `owner_of_name(name)`. Pods without the `--<slug>` marker are trea
 as not-Commons-managed (owner None → never reaped).
 """
 import json
-import os
 import ssl
-import subprocess
 import time
 import urllib.error
 import urllib.request
@@ -24,13 +22,6 @@ from ..provider import InstanceProvider, Resource
 
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
-
-
-def _repo_root() -> Path:
-    here = os.path.dirname(os.path.abspath(__file__))
-    out = subprocess.run(["git", "-C", here, "rev-parse", "--show-toplevel"],
-                         capture_output=True, text=True, timeout=5).stdout.strip()
-    return Path(out) if out else Path(here)
 
 
 def _ctx():
@@ -68,7 +59,8 @@ class RunpodPodProvider(InstanceProvider):
         if api_key:
             self.key = api_key
         else:
-            cfg = Path(config_path) if config_path else (_repo_root() / "Shop" / "RunPod GPU Backend" / "studio" / "config.json")
+            from ..runpod_config import runpod_config_path   # the one place that knows where the key lives
+            cfg = Path(config_path) if config_path else runpod_config_path()
             self.key = json.load(open(cfg))["api_key"]
 
     # ── transport ────────────────────────────────────────────────────────────
