@@ -105,6 +105,8 @@ export const DENIED_PATH_PREFIXES = [...DENIED_SECURITY_PREFIXES, ...DENIED_CANO
 export const DENIED_CANON_PATHS = new Set([
   'CLAUDE.md',
   'SCHEMA.md',
+  'SCHEMA — Reference.md',          // the writing rules an elder reads at the pen
+  'SCHEMA/SCHEMA — Context.md',     // why each rule is the way it is
   'README - The Palace Guide.md',
   'SUBSTRATE.md',
   'JEWEL.md',
