@@ -35,6 +35,7 @@ import { findUnsungEdges, buildPalaceIndex } from '../src/lib/unsung-paths.js';
 import { loadEntryUse } from '../src/lib/entry-use.js';
 import { pathId, encodeSegments } from '../src/lib/public-mode.js';
 import { makeFinder } from '../../../rich-face/palace-find.mjs';
+import { vendorFiles } from '../../../rich-face/rich-handler.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const APP = resolve(HERE, '..');
@@ -372,6 +373,16 @@ writeFileSync(join(OUT, 'rich/index.html'), richHtml);
 // The renderer's own module, which the live handler serves as _rich/parse.js.
 mkdirSync(join(OUT, 'rich/_rich'), { recursive: true });
 copyFileSync(join(APP, '../../rich-face/parse.js'), join(OUT, 'rich/_rich/parse.js'));
+// Its two libraries, which the live handler serves as _vendor/* from the install npm
+// just checked against the lockfile — so the published page loads nothing from a CDN.
+const vendor = vendorFiles();
+if (!vendor.some((f) => f.rel === 'marked/marked.esm.js') || !vendor.some((f) => f.rel === 'mermaid/mermaid.esm.min.mjs')) {
+  throw new Error('rich face: marked or mermaid is not installed — run npm ci in _ops/stigmergy');
+}
+for (const { rel, abs } of vendor) {
+  mkdirSync(dirname(join(OUT, 'rich/_vendor', rel)), { recursive: true });
+  copyFileSync(abs, join(OUT, 'rich/_vendor', rel));
+}
 const css = '_ops/loudon-live/design-system/colors_and_type.css';
 mkdirSync(dirname(join(OUT, 'rich', css)), { recursive: true });
 copyFileSync(join(ROOT, css), join(OUT, 'rich', css));

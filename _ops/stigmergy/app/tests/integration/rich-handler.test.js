@@ -2,9 +2,10 @@ import { describe, test, expect, beforeAll, afterAll, beforeEach } from 'vitest'
 import http from 'node:http';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mkdtempSync, rmSync, mkdirSync, writeFileSync, copyFileSync, chmodSync } from 'node:fs';
+import { mkdtempSync, rmSync, mkdirSync, writeFileSync, copyFileSync, chmodSync, readFileSync, readdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { createRichHandler, buildReviewMessage } from '../../../../rich-face/rich-handler.mjs';
+import * as richHandler from '../../../../rich-face/rich-handler.mjs';
 
 // The rich-face handler on its own (the way rich-server.mjs mounts it), against
 // a temp palace. Reviews forward to a capture server standing in for STIGMERGY,
@@ -157,5 +158,51 @@ describe('the rich-face handler', () => {
     const part = await send(port, '/Demo%20Entry/bed.wav', { method: 'GET', headers: { Range: 'bytes=0-3' } });
     expect(part.status).toBe(206);
     expect(part.text).toBe('RIFF');
+  });
+
+  // ── the page's own libraries, served from STIGMERGY's install, never a CDN ──
+  const MERMAID_CHUNKS = resolve(RICH_SRC, '../stigmergy/node_modules/mermaid/dist/chunks/mermaid.esm.min');
+
+  test('rich.html imports nothing from another origin', () => {
+    const html = readFileSync(resolve(RICH_SRC, 'rich.html'), 'utf8');
+    const imports = [...html.matchAll(/\bimport\s*(?:[^'"()]*\bfrom\s*)?\(?\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
+    expect(imports.length).toBeGreaterThan(0);
+    for (const spec of imports) expect(spec, spec).toMatch(/^\.\//);
+    expect(html).not.toMatch(/cdn\.jsdelivr|unpkg\.com|cdnjs/);
+  });
+
+  test('marked is served from the install, at the version the page pins', async () => {
+    const r = await send(port, '/_vendor/marked/marked.esm.js', { method: 'GET' });
+    expect(r.status).toBe(200);
+    expect(r.headers['content-type']).toMatch(/javascript/);
+    expect(r.text).toMatch(/marked v12\.0\.2/);
+  });
+
+  test('mermaid and its chunks are served from the install', async () => {
+    const entry = await send(port, '/_vendor/mermaid/mermaid.esm.min.mjs', { method: 'GET' });
+    expect(entry.status).toBe(200);
+    expect(entry.text).toMatch(/\.\/chunks\/mermaid\.esm\.min\//);
+    const chunk = readdirSync(MERMAID_CHUNKS).find((f) => f.endsWith('.mjs'));
+    const r = await send(port, `/_vendor/mermaid/chunks/mermaid.esm.min/${chunk}`, { method: 'GET' });
+    expect(r.status).toBe(200);
+  });
+
+  test.each([
+    '/_vendor/mermaid/mermaid.core.mjs',
+    '/_vendor/mermaid/package.json',
+    '/_vendor/marked/package.json',
+    '/_vendor/marked/lib/marked.esm.js',
+    '/_vendor/react/index.js',
+    '/_vendor/mermaid/chunks/mermaid.esm.min/%2e%2e%2f%2e%2e%2fmermaid.core.mjs',
+  ])('%s is not served — only the two libraries the page imports', async (path) => {
+    expect((await send(port, path, { method: 'GET' })).status).toBe(404);
+  });
+
+  test('vendorFiles lists what the static build copies: marked, mermaid and every chunk', () => {
+    const files = richHandler.vendorFiles();
+    const rels = files.map((f) => f.rel);
+    expect(rels).toContain('marked/marked.esm.js');
+    expect(rels).toContain('mermaid/mermaid.esm.min.mjs');
+    expect(rels.filter((r) => r.startsWith('mermaid/chunks/')).length).toBe(readdirSync(MERMAID_CHUNKS).filter((f) => f.endsWith('.mjs')).length);
   });
 });
