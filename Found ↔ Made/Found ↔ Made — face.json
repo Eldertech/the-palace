@@ -1,16 +1,24 @@
 {
   "title": "Found \u2194 Made",
-  "idiom": "wood engraving, grain-following naturalist style (hero); icon: FLUX woodcut plank with the bowtie inlay composited by hand, because FLUX drew the inlay as a butterfly, an hourglass or nothing across six tries",
-  "hero_prompt": "A wood engraving of a split log spanned by a single dark butterfly key, the grain on one half flowing unbroken as if found whole, the grain on the other half cut and joined by hand, both halves held together as one board.",
+  "idiom": "two-colour woodcut in walnut brown and black on cream. Hero: a FLUX plank (knot at the left, a split notched in from both edges) with two pale-maple bowtie inlays cut in by hand across the split, because FLUX drew the inlay as neckwear bow ties, sideways arrowheads or a leaf row across four tries; its margin signatures were patched from the clean margin beneath. Icon: FLUX woodcut plank with the bowtie inlay composited by hand, because FLUX drew the inlay as a butterfly, an hourglass or nothing across six tries",
+  "hero_prompt": "Two-colour woodcut print on cream paper, flat walnut-brown and black ink, bold carved lines with visible gouge marks, no shading, no cast shadows, no gradients, not a photograph, not a 3D render: a long live-edge slab of wood seen straight down from above, stretching across the banner, its grain in long flowing black lines that bend around one dark knot toward the left. A single natural crack runs in from the right end along the grain, wandering and narrowing as it goes, and stops short of the knot. The surface of the wood is otherwise plain: nothing lies on it, no objects, no inlays, no marks. Calm cream margins above and below.",
   "icon_prompt": "Woodcut emblem, a flat single-colour black silhouette on a cream ground, no shading or gradients: a short thick black plank split across its middle by one jagged cream crack, and set across the crack a single dovetail inlay, a solid shape of two trapezoid wedges joined at their narrow ends, cut out in cream so it reads against the black, holding the two halves together. Bold, high-contrast, no wood-grain lines, reads clearly at 24 pixels.",
-  "seeds": {},
-  "rendered_at": "2026-09-27T00:57:30Z",
+  "seeds": {
+    "hero": 535240
+  },
+  "rendered_at": "2026-09-27T02:46:06Z",
   "history": [
     {
       "idiom": "wood engraving, grain-following naturalist style",
       "hero_prompt": "A wood engraving of a split log spanned by a single dark butterfly key, the grain on one half flowing unbroken as if found whole, the grain on the other half cut and joined by hand, both halves held together as one board.",
       "icon_prompt": "",
       "rendered_at": "2026-09-25T02:18:56Z"
+    },
+    {
+      "idiom": "wood engraving, grain-following naturalist style (hero); icon: FLUX woodcut plank with the bowtie inlay composited by hand, because FLUX drew the inlay as a butterfly, an hourglass or nothing across six tries",
+      "hero_prompt": "A wood engraving of a split log spanned by a single dark butterfly key, the grain on one half flowing unbroken as if found whole, the grain on the other half cut and joined by hand, both halves held together as one board.",
+      "icon_prompt": "Woodcut emblem, a flat single-colour black silhouette on a cream ground, no shading or gradients: a short thick black plank split across its middle by one jagged cream crack, and set across the crack a single dovetail inlay, a solid shape of two trapezoid wedges joined at their narrow ends, cut out in cream so it reads against the black, holding the two halves together. Bold, high-contrast, no wood-grain lines, reads clearly at 24 pixels.",
+      "rendered_at": "2026-09-27T00:57:30Z"
     }
   ]
 }

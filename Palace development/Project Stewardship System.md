@@ -353,3 +353,7 @@ The pattern of the conversation itself was the first concrete instance of the sy
 - How does this system interact with existing palace ceremonies (Weave, Spore Check, Deposit)? Are Stewards full participants, or do ceremonies remain human-led?
 - What is the relationship between the Steward's per-project schedule and the natural rhythm of the work? A weekly Steward on a `seed` project that wants daily attention is wrong; so is a daily Steward on a `mature` project that wants quarterly review.
 - Does this entry itself benefit from an `agency_profile` (per [[SCHEMA]] §3.1)? The four-pillar expansion is plausible — tools dimension is heavy (orchestrator build), philosophy dimension is heavy (governance posture), practice dimension is heavy (when ceremonies trigger). First enchantment will reveal whether the single forward vector carries the load.
+
+## Active Baton
+
+> **[[Project Stewardship System — baton]]** (2026-09-26) — cold start: decide what the Trickster inbox does with requests that carry no `request_id` (reader, writers, or both), weighed against the 2026-09-25 stewardship changes.
