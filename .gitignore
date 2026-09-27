@@ -107,3 +107,7 @@ Projects/LDN RTM/obs-backup-*/*.profile.basic.ini
 # Secrets — a second guard behind studio/.gitignore, so the RunPod key stays ignored
 # even if that folder's own rule is ever edited or lost.
 Shop/RunPod GPU Backend/studio/config.json
+
+# Blender writes its wavelet-noise cache into whatever folder a smoke sim with
+# high-res noise runs from (BLUELINE smoke_sim.py --noise); it regenerates itself.
+waveletNoiseTile.bin
