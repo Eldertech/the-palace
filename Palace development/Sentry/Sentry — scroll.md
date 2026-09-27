@@ -15,18 +15,17 @@ forward_vector: "I am Sentry's scroll — the one page that opens on which versi
 <!-- scroll:now:start -->
 ## Now
 
-> _Regenerated 2026-09-26T00:04:23.688Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
+> _Regenerated 2026-09-27T02:38:21.730Z from the card's frontmatter, its tuning ledger and git. This zone is machine-owned — steer the ceremony in **Standing Orders** below, never here._
 
-- **Version:** v1.1 · the spec last changed 2026-09-25 (`aff66bc6`) — edit(Sentry): v1.1 — the hosting check reads Dependabot's alerts; 10
-- **Runs since the change:** 2 runs on 2 days, counted from the ledger's run lines
-- **Last run:** 2026-09-26 — public-surface gate of 4d33744c, 7 raised, held locally · nothing new (under v1.1)
+- **Version:** v1.2 · the spec last changed 2026-09-26 (`99a91587`) — edit(Sentry): v1.2 — each alert on its own; bot PRs read by lockfile
+- **Runs since the change:** none yet — v1.2 has not run
+- **Last run:** 2026-09-27 — deep sweep of c80ff992, 4 raised, held locally · taught item 11 (under v1.1)
 - **Owed in the ledger:** 1 — item 4; the next run's tail read picks it up first
-- **Latest lesson:** item 10, from the first run on main — 2026-09-25 (deep sweep of b63b896b) — [[Sentry — tuning]]
+- **Latest lesson:** item 11, from a deep sweep — 2026-09-27 (deep sweep of c80ff992) — [[Sentry — tuning]]
 
-### Runs since v1.1
+### Runs since v1.2
 
-- 2026-09-26 — public-surface gate of 4d33744c, 7 raised, held locally · nothing new
-- 2026-09-25 — public-surface gate of 9ef47639, 11 raised, held locally · nothing new
+_None yet._
 
 ### Owed
 
@@ -43,6 +42,22 @@ _Loudon's standing direction for this ceremony. An order saved on the PROJECTS d
 ## The making
 
 <!-- scroll:making:start -->
+<!-- scroll:entry id="version-99a91587d588ba6aaa3e28b70b62019dfcd18ba0" -->
+### 2026-09-26 — the spec moved to v1.2
+
+edit(Sentry): v1.2 — each alert on its own; bot PRs read by lockfile
+
+The hosting check raises every open Dependabot alert as its own finding — package, advisory, scope, the version that closes it — fingerprinted by advisory, manifest and package, so an allow entry holds as long as that alert does (the per-manifest count changed its fingerprint whenever a count moved). It also reads each open Dependabot npm pull request's lockfile at its head and raises one that lacks the version its title claims. Severity keeps item 10's weighting; a mismatch is medium, raised and never blocking.
+<sub>`99a91587` · version change</sub>
+<!-- /scroll:entry -->
+
+<!-- scroll:entry id="run-aba612b6e8" -->
+### 2026-09-27 — deep sweep of c80ff992, 4 raised, held locally
+
+taught item 11
+<sub>a run under v1.1 · its line in the tuning ledger</sub>
+<!-- /scroll:entry -->
+
 <!-- scroll:entry id="run-3ad60fc42f" -->
 ### 2026-09-26 — public-surface gate of 4d33744c, 7 raised, held locally
 
