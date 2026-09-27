@@ -1,5 +1,7 @@
 ---
 title: Meaning and the Link (2014)
+aliases:
+  - "Meaning and the Link (2014)"
 type: source
 pillars:
   - philosophy

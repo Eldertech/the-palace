@@ -117,9 +117,9 @@ def has_face(md_path):
     Bundle = sibling folder named exactly like the entry (SCHEMA §8). Accepts the
     title-matched name or any `* — hero.png` / `* — icon.png` (STIGMERGY's rule)."""
     stem = os.path.basename(md_path)[:-3]
-    # A face may be filed under the filename OR the frontmatter title (JEWEL keeps its face in
-    # "The Jewel/", ROSETTA in "Rosetta Stone/"). Checking only the stem re-flagged six faced
-    # entries on 2026-09-24 and a batch gave them duplicate faces.
+    # Faces belong in the filename folder (the tools place them there since 2026-09-26), but a
+    # face filed under the frontmatter title is still counted, so an old stray is caught as
+    # present rather than given a duplicate — checking only the stem did that to six on 2026-09-24.
     names = [stem]
     try:
         with open(md_path, encoding="utf-8") as fh:

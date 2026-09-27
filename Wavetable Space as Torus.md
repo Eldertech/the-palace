@@ -21,7 +21,7 @@ links:
   - target: "[[DSP in Looping Dimensions]]"
     type: exemplifies
     label: two-dimensional-case
-  - target: "[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]"
+  - target: "[[Wavetable Synthesis — Deep Research & Higher-Dimensional Design]]"
     type: deepens
     label: cube-abandoned
   - target: "[[Harmonicity and Inharmonicity]]"

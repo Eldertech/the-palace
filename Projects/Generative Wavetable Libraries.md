@@ -14,7 +14,7 @@ links:
   - target: "[[Generative Sample Libraries]]"
     type: couples-with
     label: parallel-deployment
-  - target: "[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]"
+  - target: "[[Wavetable Synthesis — Deep Research & Higher-Dimensional Design]]"
     type: mirrors
     label: wavetable-space
   - target: "[[Inharmonic Wavetable Synthesis]]"
@@ -151,7 +151,7 @@ Generalize the source: any palace synthesis ([[Shepard Tone Synthesizer]] partia
 ## Palace Connections
 
 - **[[Generative Sample Libraries]]** — sister project; same backbone, different format family
-- **[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]** — the theoretical home for wavetable-space concepts
+- **[[Wavetable Synthesis — Deep Research & Higher-Dimensional Design]]** — the theoretical home for wavetable-space concepts
 - **[[Inharmonic Wavetable Synthesis]]** — adjacent palace research on inharmonic wavetable design
 - **[[2D Torus Wavetable Synthesizer]]** — adjacent project exploring 2D wavetable forms
 - **[[Crystal Synthesizer]]** — phonon partial structures as wavetable source

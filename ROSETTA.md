@@ -1,5 +1,7 @@
 ---
 title: Rosetta Stone
+aliases:
+  - "Rosetta Stone"
 type: meta
 pillars:
   - tools
