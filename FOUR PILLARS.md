@@ -39,6 +39,9 @@ links:
     label: audience-it-names
   - target: "[[The Multilinear Self]]"
     type: connects-to
+  - target: "[[Zoom Out to the Structure]]"
+    type: connects-to
+    label: same-instinct-as-a-menu-option
 forward_vector: "I take all available opportunities to integrate creation, tools, philosophy, and practice in the task of the moment — always asking if any pillars are absent and including any that are missing."
 ---
 
@@ -59,6 +62,8 @@ The Palace framework for learning: four projections of a single higher-dimension
 ## The trajectory: specific → general
 
 Music tech is the concrete entry point; human flourishing through joyful creation is the destination. The trajectory doesn't abandon the specific — it discovers that the specific was always a case of the general. [[Kuramoto Coupling]] was learned through audio synthesis but helps describe all systems seeking coherence; the pillars were learned through music education but describe any practice of learning through making. The flow between specific and general is generative.
+
+**A habit inside the trajectory.** Offer a few ways forward, and one of them tends to zoom out — trading the specific option for the general structure it's an instance of, without replacing the others. Naming the habit is itself the trajectory at work: the specific choices on the table were always cases of a more general move. See [[Zoom Out to the Structure]] for the same instinct pointed at a single fix rather than a menu.
 
 ## Integrate the pillars
 
