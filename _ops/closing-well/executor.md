@@ -111,7 +111,7 @@ entry grown to merit one, a memory to weave home. Post **one** `weave_flag` thro
 the same one write path the [[Deposit Ceremony]] uses (step 7). It builds the §9 envelope,
 validates before it writes, and resolves the **owner's** persistent WEAVE board from a linked
 worktree. Pass `--flag-type --source-entries --target-entry --proposed-action --rationale
---source-deposit-id` (for a close, the close's id, e.g. `close-YYYY-MM-DD`); `--dry-run`
+--source-deposit-id --sender` (for a close, the close's id, e.g. `close-YYYY-MM-DD`; `--sender "Closing Well"` — the writer has no default); `--dry-run`
 prints and validates without posting. **Do not hand-append the line** — that is how malformed
 flags and invented field names reached the board (2026-09-02); the arg parser now enforces the
 payload shape the Weave's Step 1c reader expects.
