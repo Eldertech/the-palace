@@ -53,14 +53,17 @@ def generate(argv):
     palace = palace_of(argv); mock = "--mock" in argv
     RENDERS.mkdir(parents=True, exist_ok=True)
     todo = only_filter(argv, specs())
-    key = ep = ep_obj = None
+    key = ep = ep_obj = workers = None
     done = failed = 0
     try:
         if not mock:
             rp = R.load_client(palace); key, ep = R.creds(palace)
             ep_obj = rp.RunPodEndpoint(endpoint_id=ep, api_key=key,
                                        poll=rp.PollPolicy(total_timeout_seconds=900))
-            R.set_workers(key, ep, 1)
+            if R.EndpointWorkers is not None:
+                workers = R.EndpointWorkers(ep, key); workers.enter()   # ref-counted: parks only when the last renderer leaves
+            else:
+                R.set_workers(key, ep, 1)                                  # fallback: single-tenant scaling
         for s in todo:
             sl = R.slug(s["title"])
             for side in ("hero", "icon"):
@@ -77,7 +80,11 @@ def generate(argv):
                     failed += 1; print(f"[batch] !! {sl}-{side} FAILED: {ex}")
     finally:
         if not mock and key and ep:
-            try: R.set_workers(key, ep, 0)
+            try:
+                if workers is not None:
+                    workers.exit()               # park to 0 only if this was the last renderer (board ref-count)
+                else:
+                    R.set_workers(key, ep, 0)    # fallback: naive park (single-tenant)
             except Exception as ex: print(f"[batch] WARN park: {ex}")
         print(f"[batch] generate done. rendered={done} failed={failed}")
 

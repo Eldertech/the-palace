@@ -204,6 +204,8 @@ The symlink to the current page is never used for checkpoint reconstruction. The
 
 ## The Entries Folder Structure
 
+*No `entries/` folder exists today. The April 2026 prototype's five logs were composted on 2026-09-26 and live in git history; the layout below is the design, not a live folder.*
+
 ```
 The Palace/
 ├── [all palace entries flat]     ← unchanged, no hierarchy disruption

@@ -2,8 +2,11 @@
 """
 build_catalog.py — generate the Stage-3 surfaces-led 2D-wavetable catalog.
 
-Run from anywhere; paths are absolute. Produces 10 (.wav, .png, .md) bundles
-plus the master Wavetable Catalog.md index. Idempotent — safe to re-run.
+Run from anywhere; paths resolve from this script's location. Renders the .wav and
+.png for the 10 surfaces it knows. The markdown — each surface's page and the
+catalog (2D Torus Wavetable Synthesizer — catalog — wavetables.md) — is hand-kept
+in the palace now: this script writes a page only when it doesn't exist yet and
+never overwrites one, so a re-run can't flatten edits made since.
 
 All entries are 1024 × 1024 (square): Y axis is sampled as cleanly as X, so
 audio-rate Y phasors do not introduce row-stepping aliasing. Tier 1 utility
@@ -35,7 +38,7 @@ import textwrap
 import numpy as np
 
 
-PROJ = "/sessions/optimistic-eager-bell/mnt/The Palace/Projects/2D Torus Wavetable Synthesizer"
+PROJ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # Tools/ -> the project bundle
 WT_DIR = f"{PROJ}/Wavetables"
 TOOLS_DIR = f"{PROJ}/Tools"
 SR = 48000
@@ -690,6 +693,8 @@ def write_master_index() -> str:
           [[01 — Sine Cycle Sweep]]** when the level dip becomes annoying. Cheap.
         """)
     out = f"{PROJ}/2D Torus Wavetable Synthesizer — catalog — wavetables.md"
+    if os.path.exists(out):
+        return None   # hand-kept in the palace; seed it only when absent
     with open(out, "w") as f:
         f.write(body)
     return out
@@ -727,15 +732,17 @@ def build():
         # by slug, so they don't need to change.
         title = BODIES[slug]["title"]
         md_path = f"{WT_DIR}/{title}.md"
-        with open(md_path, "w") as f:
-            f.write(md_for_entry(slug, tier, rows, row_len, summary))
+        if not os.path.exists(md_path):   # seed only — never overwrite a hand-kept page
+            with open(md_path, "w") as f:
+                f.write(md_for_entry(slug, tier, rows, row_len, summary))
 
         print(f"  built {slug}: {len(audio)} samples, png {os.path.getsize(png_path)} bytes")
 
     idx_path = write_master_index()
-    # Note: the master index is a bundle file of the project, so its filename
-    # carries the entry prefix (SCHEMA — Reference §8) and matches its title.
-    print(f"  wrote master index: {idx_path}")
+    # The master index is a bundle file of the project, so its filename carries the
+    # entry prefix (SCHEMA — Reference §8) and matches its title.
+    print(f"  wrote master index: {idx_path}" if idx_path else
+          "  master index exists — left as is (hand-kept; seeded only when absent)")
 
 
 if __name__ == "__main__":

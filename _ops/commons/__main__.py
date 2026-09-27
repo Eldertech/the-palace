@@ -100,7 +100,7 @@ def cmd_weave_flag(args):
         "source_deposit_id": args.source_deposit_id,
     }
     msg = _board.make_message("BROADCAST", "WEAVE", payload,
-                              from_=args.sender or _board.STEWARD_DEFAULT, session_id=args.session_id)
+                              from_=args.sender, session_id=args.session_id)
     if args.dry_run:
         print(json.dumps(msg, ensure_ascii=False, indent=2))
         res = _board.validate(msg)
@@ -141,7 +141,9 @@ def main(argv=None):
     wf.add_argument("--proposed-action", required=True, help="the concrete change to consider")
     wf.add_argument("--rationale", required=True, help="why, in the flag's own words")
     wf.add_argument("--source-deposit-id", required=True, help="deposit id (D-YYYY-MM-DD-SLUG) or close id")
-    wf.add_argument("--sender", default=None, help="the posting steward page title (from)")
+    wf.add_argument("--sender", required=True,
+                    help="whose flag this is: the posting page's title, or TRICKSTER when Loudon asked for it. "
+                         "Required — a default once signed every unsigned flag as RunPod GPU Backend.")
     wf.add_argument("--session-id", default=None)
     wf.add_argument("--dry-run", action="store_true", help="print + validate the envelope, do not post")
     wf.set_defaults(func=cmd_weave_flag)
