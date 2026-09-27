@@ -30,7 +30,7 @@ links:
     type: connects-to
   - target: "[[Volterra Kernels and the Torus]]"
     type: connects-to
-  - target: "[[control-vocabulary-math]]"
+  - target: "[[Neural Granular Synthesis — spec — control-vocabulary-math]]"
     type: connects-to
     label: worked-control-vocabulary
   - target: "[[Wavetable Scanner]]"
@@ -76,7 +76,7 @@ The source session also extended the torus to **T³** — three simultaneous har
 ## Forward Vectors
 
 - Prototype the analyzer → synth round-trip as a single tool: record, watch the lattice converge, play it back.
-- Invent control vocabularies for high-dimensional instrument spaces — the recurring hardest problem. [[control-vocabulary-math]] is one worked instance; the Torus's Hopf control surface is the open one.
+- Invent control vocabularies for high-dimensional instrument spaces — the recurring hardest problem. [[Neural Granular Synthesis — spec — control-vocabulary-math|control-vocabulary-math]] is one worked instance; the Torus's Hopf control surface is the open one.
 - Does measured rank correlate with perceived inharmonicity, or do listeners hear something the rank doesn't capture? An empirical question.
 
 ## Lost Branches
