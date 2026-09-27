@@ -8,7 +8,7 @@ contract (board_template.txt), different transport: serverless takes the full wo
 /run payload (no WAF, no upload step), so this half needs no browser-UA hardening.
 
 Stdlib only — no pip install. Reads key+endpoint from (in order): env RUNPOD_API_KEY /
-RUNPOD_ENDPOINT_ID, then ../../RunPod Images/studio/config.json, then a --config path.
+RUNPOD_ENDPOINT_ID, then ../../Shop/RunPod GPU Backend/studio/config.json, then a --config path.
 The key is never printed.
 
   python3 serverless_runner.py --template ../render-backend/board_template.txt --shot 04A
@@ -21,7 +21,7 @@ HERE = Path(__file__).resolve().parent
 def load_cfg(explicit=None):
     key = os.environ.get("RUNPOD_API_KEY"); ep = os.environ.get("RUNPOD_ENDPOINT_ID")
     paths = [Path(explicit)] if explicit else []
-    paths.append(HERE.parents[2] / "RunPod Images" / "studio" / "config.json")
+    paths.append(HERE.parents[2] / "Shop" / "RunPod GPU Backend" / "studio" / "config.json")
     for cf in paths:
         if (not key or not ep) and cf.exists():
             c = json.loads(cf.read_text())

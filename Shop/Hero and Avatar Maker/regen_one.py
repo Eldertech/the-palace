@@ -118,7 +118,7 @@ def slug(t: str) -> str:
 
 
 def creds(palace: Path):
-    cfg = palace / "RunPod Images" / "studio" / "config.json"
+    cfg = palace / "Shop" / "RunPod GPU Backend" / "studio" / "config.json"
     c = json.loads(cfg.read_text())
     return c["api_key"], c["endpoint_id"]
 

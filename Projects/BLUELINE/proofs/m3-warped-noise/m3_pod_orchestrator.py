@@ -36,7 +36,7 @@ from agent_ns import SLUG, pod_name, pod_id_file
 from commons.providers.runpod_pod import RunpodPodProvider   # pod lifecycle lives in the Commons provider
 
 PALACE = Path("/Users/loudonstearns/Documents/The Palace")
-CONFIG = PALACE / "RunPod Images" / "studio" / "config.json"
+CONFIG = PALACE / "Shop" / "RunPod GPU Backend" / "studio" / "config.json"
 HERE = Path(__file__).resolve().parent
 NODE = HERE / "comfy_inject_node.py"
 

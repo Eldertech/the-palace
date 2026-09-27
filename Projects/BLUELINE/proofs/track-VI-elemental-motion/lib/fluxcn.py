@@ -8,7 +8,7 @@ import os, ssl, json, time, base64, urllib.request, urllib.error
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[5]
-CFG = json.load(open(ROOT / "RunPod Images" / "studio" / "config.json"))
+CFG = json.load(open(ROOT / "Shop" / "RunPod GPU Backend" / "studio" / "config.json"))
 KEY, ENDPOINT = CFG["api_key"], CFG.get("endpoint_id")
 FLUX_CKPT = "flux1-dev-fp8.safetensors"
 UNION = "flux-union-pro.safetensors"

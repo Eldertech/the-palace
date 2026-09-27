@@ -6,7 +6,7 @@ every result (with its prompt) on disk. Your prompts go to the GPU **verbatim**.
 ## Run
 
 ```bash
-cd "The Palace/RunPod Images/studio"
+cd "The Palace/Shop/RunPod GPU Backend/studio"
 export RUNPOD_API_KEY=your_key
 export RUNPOD_ENDPOINT_ID=iy3ybd7qjl2trj      # the palace-flux endpoint
 python3 palace_studio.py

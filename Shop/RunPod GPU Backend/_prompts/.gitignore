@@ -1,0 +1,3 @@
+# palace_send.py writes its renders and its job state beside itself; neither belongs in git.
+out/
+.state.json

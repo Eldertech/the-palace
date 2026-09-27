@@ -44,7 +44,7 @@ from commons.providers.runpod_pod import RunpodPodProvider   # pod lifecycle liv
 from commons import reaper                             # noqa: E402  (best-effort self-reap backstop)
 
 PALACE = Path("/Users/loudonstearns/Documents/The Palace")
-CONFIG = PALACE / "RunPod Images" / "studio" / "config.json"
+CONFIG = PALACE / "Shop" / "RunPod GPU Backend" / "studio" / "config.json"
 HERE = Path(__file__).resolve().parent
 
 VOLUME_ID = "aqm8oev4b0"                       # blueline-models (EU-RO-1)

@@ -11,7 +11,8 @@
 import { existsSync, readdirSync, statSync } from 'node:fs';
 import { extname, join, resolve, sep, dirname, basename } from 'node:path';
 
-const BUNDLE_HIDDEN = new Set(['Archive', '__pycache__', 'node_modules', 'test-results']);
+// config.json holds a live credential (RunPod GPU Backend/studio/) — never listed in a bundle.
+const BUNDLE_HIDDEN = new Set(['Archive', '__pycache__', 'node_modules', 'test-results', 'config.json']);
 
 // Given an entry's absolute path (e.g. /palace/Kuramoto Coupling.md),
 // return the absolute path to its sibling bundle folder if it exists,

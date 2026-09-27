@@ -75,7 +75,7 @@ Render the subject across **new contexts × different seeds** (where seed-lockin
 
 ## Resource Footprint
 
-~$0.44–0.77/hr (48GB secure), ~**$2 per LoRA** end to end. Terminate on completion. Balance lives in `RunPod Images/studio/config.json` (gitignored).
+~$0.44–0.77/hr (48GB secure), ~**$2 per LoRA** end to end. Terminate on completion. The key lives in `Shop/RunPod GPU Backend/studio/config.json` (gitignored).
 
 ## Self-Check
 

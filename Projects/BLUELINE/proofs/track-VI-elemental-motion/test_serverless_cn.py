@@ -10,7 +10,7 @@ svc = importlib.util.module_from_spec(spec)
 sys.modules["svc"] = svc                      # dataclasses needs the module registered (py3.14)
 spec.loader.exec_module(svc)
 
-cfg = json.load(open(os.path.join(ROOT, "RunPod Images", "studio", "config.json")))
+cfg = json.load(open(os.path.join(ROOT, "Shop", "RunPod GPU Backend", "studio", "config.json")))
 ep = svc.RunPodEndpoint(endpoint_id=cfg["endpoint_id"], api_key=cfg["api_key"],
                         poll=svc.PollPolicy(total_timeout_seconds=600, cold_start_grace_seconds=300))
 

@@ -68,7 +68,7 @@ class RunpodPodProvider(InstanceProvider):
         if api_key:
             self.key = api_key
         else:
-            cfg = Path(config_path) if config_path else (_repo_root() / "RunPod Images" / "studio" / "config.json")
+            cfg = Path(config_path) if config_path else (_repo_root() / "Shop" / "RunPod GPU Backend" / "studio" / "config.json")
             self.key = json.load(open(cfg))["api_key"]
 
     # ── transport ────────────────────────────────────────────────────────────

@@ -1,0 +1,11 @@
+# RunPod GPU Backend's proofs: commit the reports and contact sheets only. The heavy
+# galleries (SDXL variations / landscapes / posters, FLUX heroes, the Icon) and the
+# movies (gif/mp4) stay on local disk, out of the palace repo (decided 2026-06-14).
+*.png
+*.gif
+*.mp4
+# ...but keep the contact sheets (they ARE the evidence we want in git):
+!*contact_sheet*.png
+
+**/__pycache__/
+.DS_Store

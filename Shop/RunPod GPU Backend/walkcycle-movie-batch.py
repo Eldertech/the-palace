@@ -23,7 +23,7 @@ if _ns_dir and _ns_dir not in sys.path:
 from agent_ns import read_pod_id, SLUG
 
 POSES = Path("/sessions/beautiful-zen-allen/mnt/outputs/runpod-backend/walkcycle")
-OUT = Path("/sessions/beautiful-zen-allen/mnt/The Palace/RunPod Images/flux/walk_movie")
+OUT = Path(__file__).resolve().parent / "proofs" / "flux" / "walk_movie"
 STATE = Path(f"/tmp/walkmovie-{SLUG}.json")
 SEED = 555
 

@@ -12,7 +12,7 @@ import urllib.request, urllib.error
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[5]
-CONFIG = ROOT / "RunPod Images" / "studio" / "config.json"
+CONFIG = ROOT / "Shop" / "RunPod GPU Backend" / "studio" / "config.json"
 IMAGE = "runpod/worker-comfyui:5.8.4-flux1-dev-fp8"
 VOLUME_ID = "aqm8oev4b0"                       # blueline-models (EU-RO-1) — holds flux-union-pro
 GPU_IDS = ["NVIDIA GeForce RTX 4090", "NVIDIA L40S", "NVIDIA L40",

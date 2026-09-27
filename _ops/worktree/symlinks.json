@@ -6,9 +6,9 @@
   "profiles": {
     "docs":      [],
     "shop":      ["_tools", ".venvs", ".claude/settings.local.json"],
-    "blueline":  ["_tools", "RunPod Images/studio/config.json", ".claude/settings.local.json"],
+    "blueline":  ["_tools", "Shop/RunPod GPU Backend/studio/config.json", ".claude/settings.local.json"],
     "stigmergy": [".claude/settings.local.json"],
-    "full":      ["_tools", ".venvs", "RunPod Images/studio/config.json", ".claude/settings.local.json"]
+    "full":      ["_tools", ".venvs", "Shop/RunPod GPU Backend/studio/config.json", ".claude/settings.local.json"]
   },
 
   "auto_mirror": {
@@ -36,12 +36,12 @@
       "why": "Per-Specialist Python venvs (Kokoro, Whisper, …) live in .venvs/<specialist>/. Symlink to skip rebuilding each."
     },
     {
-      "path": "RunPod Images/studio/config.json",
+      "path": "Shop/RunPod GPU Backend/studio/config.json",
       "kind": "file",
       "size": "tiny",
       "secret": true,
       "regenerable": false,
-      "why": "RunPod API key + endpoint id (gitignored secret). Needed to dispatch cloud renders. The parent 'RunPod Images/studio/' is tracked and already present in the worktree — only this file is missing, so symlink the FILE, not the dir. Never commit it."
+      "why": "RunPod API key + endpoint id (gitignored secret). Needed to dispatch cloud renders. The parent 'Shop/RunPod GPU Backend/studio/' is tracked and already present in the worktree — only this file is missing, so symlink the FILE, not the dir. Never commit it."
     },
     {
       "path": ".claude/settings.local.json",

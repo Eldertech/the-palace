@@ -22,7 +22,7 @@ import argparse, json, ssl, subprocess, sys, time, urllib.request, urllib.error
 from pathlib import Path
 
 PALACE = Path("/Users/loudonstearns/Documents/The Palace")
-CONFIG = PALACE / "RunPod Images" / "studio" / "config.json"
+CONFIG = PALACE / "Shop" / "RunPod GPU Backend" / "studio" / "config.json"
 HERE = Path(__file__).resolve().parent
 IMAGE = "runpod/worker-comfyui:5.8.4-flux1-dev-fp8"
 GPU_IDS = ["NVIDIA GeForce RTX 4090","NVIDIA GeForce RTX 3090","NVIDIA RTX A5000","NVIDIA L40",

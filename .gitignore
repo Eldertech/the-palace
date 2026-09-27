@@ -103,3 +103,7 @@ Projects/BLUELINE/proofs/cloud-i2v/renders/fire_m160_morph.gif
 
 # OBS profile backups carry the YouTube OAuth token — never commit them
 Projects/LDN RTM/obs-backup-*/*.profile.basic.ini
+
+# Secrets — a second guard behind studio/.gitignore, so the RunPod key stays ignored
+# even if that folder's own rule is ever edited or lost.
+Shop/RunPod GPU Backend/studio/config.json

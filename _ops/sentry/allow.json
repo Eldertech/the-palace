@@ -1,7 +1,7 @@
 {
   "about": "Reviewed exceptions for the Sentry. Entries carry a hash of the finding, never its value or its path, so this file can be public without pointing anywhere. Add an entry only after reading the finding; give the reason.",
   "must_stay_ignored": [
-    "RunPod Images/studio/config.json"
+    "Shop/RunPod GPU Backend/studio/config.json"
   ],
   "skip": [
     {

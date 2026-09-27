@@ -69,8 +69,7 @@ node _ops/worktree/new-worktree.mjs --name feature/blueline --profile blueline
 
 The authoritative list is `symlinks.json`. In short:
 
-- **Symlinked (heavy/secret, not cheaply regenerable):** `_tools/` (16 G), `.venvs/` (1.1 G), `RunPod
-  Images/studio/config.json` (secret), `.claude/settings.local.json`.
+- **Symlinked (heavy/secret, not cheaply regenerable):** `_tools/` (16 G), `.venvs/` (1.1 G), `Shop/RunPod GPU Backend/studio/config.json` (secret), `.claude/settings.local.json`.
 - **Auto-mirrored by class (`stigmergy` / `full` profiles):** every ignored `node_modules` in the owner
   (workspace root + app + orchestrator + …, ~237 M) — discovered, not enumerated, so a new workspace
   package needs no manifest edit. See `symlinks.json` → `auto_mirror`.
@@ -159,7 +158,7 @@ OWNER="/Users/loudonstearns/Documents/The Palace"
 git worktree add ../palace-blueline -b feature/blueline main
 ln -s "$OWNER/_tools" ../palace-blueline/_tools
 ln -s "$OWNER/.venvs" ../palace-blueline/.venvs
-ln -s "$OWNER/RunPod Images/studio/config.json" "../palace-blueline/RunPod Images/studio/config.json"
+ln -s "$OWNER/Shop/RunPod GPU Backend/studio/config.json" "../palace-blueline/Shop/RunPod GPU Backend/studio/config.json"
 # teardown: rm the symlinks, then `git worktree remove ../palace-blueline`
 ```
 
