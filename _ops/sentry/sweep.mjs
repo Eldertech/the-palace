@@ -170,7 +170,7 @@ const CHECKS = {
     let slug;
     try { slug = git(ROOT, ['remote', 'get-url', 'origin']).trim().replace(/^.*github\.com[:\/]/, '').replace(/\.git$/, ''); }
     catch { return { findings, meta: { summary: 'no origin remote' } }; }
-    const gh = path => { try { return JSON.parse(execFileSync('gh', ['api', path], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })); } catch (e) { return { __error: String(e.status ?? e.message) }; } };
+    const gh = path => { try { return JSON.parse(execFileSync('gh', ['api', path], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 64 << 20 })); } catch (e) { return { __error: String(e.status ?? e.message) }; } };
     const repo = gh(`repos/${slug}`);
     if (repo.__error) return { findings: [finding('hosting', 'gh-unreachable', 'low', slug, 0, slug, 'could not read repo settings via gh', allow, null, slug)], meta: { summary: 'gh unavailable' } };
     const sa = repo.security_and_analysis || {};
@@ -180,29 +180,64 @@ const CHECKS = {
       if (status !== 'enabled') findings.push(finding('hosting', `github-${k.replace(/_/g, '-')}`, sev, slug, 0, `${slug}:${k}`, `${k} is ${status}`, allow, null, k));
     }
     // GitHub's Dependabot reads every manifest, dev dependencies included — wider than the deps check.
-    // Weighted like it: a runtime critical is high, a runtime high is medium, development is at most medium.
+    // One finding per open alert, so the held report is a work list: package, advisory, scope, the version
+    // that closes it. Weighted like the deps check: a runtime critical is high, a runtime high is medium,
+    // development is at most medium. The fp is advisory, manifest and package — never a count — so an
+    // allow entry holds exactly as long as that alert does.
     const dep = gh(`repos/${slug}/dependabot/alerts?state=open&per_page=100`);
     if (Array.isArray(dep)) {
-      const byManifest = {};
       for (const al of dep) {
-        const m = al.dependency?.manifest_path || '?', sc = al.dependency?.scope || 'runtime', sv = al.security_advisory?.severity || 'low';
-        const k = (byManifest[m] ||= { runtime: {}, development: {} });
-        k[sc] = k[sc] || {}; k[sc][sv] = (k[sc][sv] || 0) + 1;
+        const m = al.dependency?.manifest_path || '?', pkg = al.dependency?.package?.name || '?';
+        const sc = al.dependency?.scope || 'runtime', sv = al.security_advisory?.severity || 'low';
+        const ghsa = al.security_advisory?.ghsa_id || `alert-${al.number}`;
+        const sev = sc === 'runtime' ? ({ critical: 'high', high: 'medium' }[sv] || 'low') : sv === 'critical' ? 'medium' : 'low';
+        const fixed = al.security_vulnerability?.first_patched_version?.identifier || 'no fix yet';
+        findings.push(finding('hosting', 'dependabot-alert', sev, m, 0, `${ghsa}:${m}:${pkg}`,
+          `${sc} ${sv} · ${al.security_vulnerability?.vulnerable_version_range || '?'} · fixed in ${fixed} · ${al.dependency?.relationship || '?'} · alert #${al.number}`,
+          allow, null, `${pkg} ${ghsa}`));
       }
-      for (const [m, c] of Object.entries(byManifest)) {
-        const r = c.runtime || {}, d = c.development || {};
-        const sev = r.critical ? 'high' : r.high || d.critical ? 'medium' : 'low';
-        const fmt = o => ['critical', 'high', 'medium', 'low'].filter(x => o[x]).map(x => `${x} ${o[x]}`).join(' · ') || 'none';
-        findings.push(finding('hosting', 'dependabot-alerts', sev, m, 0, `${m}:${JSON.stringify(c)}`, `runtime: ${fmt(r)} — development: ${fmt(d)}`, allow, null, m));
-      }
+    }
+    // A bot's pull request names the version it moves to; only its lockfile says what installs. Read each
+    // open Dependabot npm pull request's lockfile at its head, and raise one whose lockfile lacks the
+    // version its title claims — a merge taken on the title closes nothing.
+    const pulls = gh(`repos/${slug}/pulls?state=open&per_page=100`);
+    const botPulls = Array.isArray(pulls) ? pulls.filter(p => p.user?.login === 'dependabot[bot]' && /^dependabot\/npm_and_yarn\//.test(p.head?.ref || '')) : [];
+    for (const pr of botPulls) {
+      const claim = parseBotTitle(pr.title);
+      if (!claim) { report.notes.push(`hosting: Dependabot pull request #${pr.number} not read — its title is not a single bump`); continue; }
+      const lockPath = [claim.dir.replace(/^\/+|\/+$/g, ''), 'package-lock.json'].filter(Boolean).join('/');
+      const meta = gh(`repos/${slug}/contents/${lockPath.split('/').map(encodeURIComponent).join('/')}?ref=${pr.head.sha}`);
+      const blob = meta.sha ? gh(`repos/${slug}/git/blobs/${meta.sha}`) : {};
+      let lock = null;
+      try { lock = JSON.parse(Buffer.from(blob.content || '', 'base64').toString('utf8')); } catch { /* judged unreadable below */ }
+      const installs = judgeBotPull(claim, lock);
+      if (installs) findings.push(finding('hosting', 'dependabot-pr-mismatch', 'medium', lockPath, 0, `pr:${pr.number}:${claim.pkg}:${claim.to}`,
+        `pull request #${pr.number} claims ${claim.pkg} ${claim.to}; its lockfile installs ${installs}`, allow, null, `#${pr.number} ${claim.pkg}`));
     }
     const pages = gh(`repos/${slug}/pages`);
     const alerts = gh(`repos/${slug}/secret-scanning/alerts?state=open&per_page=100`);
     if (Array.isArray(alerts) && alerts.length) findings.push(finding('hosting', 'github-secret-alerts', 'high', slug, 0, `${slug}:alerts:${alerts.length}`, `${alerts.length} open GitHub secret-scanning alert(s)`, allow, null, String(alerts.length)));
-    report.notes.push(`hosting: ${slug} is ${repo.visibility}; Pages ${pages.__error ? 'off' : `on (${pages.html_url})`}; secret-scanning alerts ${Array.isArray(alerts) ? alerts.length : 'unreadable'}; Dependabot alerts ${Array.isArray(dep) ? dep.length : 'unreadable'}`);
+    report.notes.push(`hosting: ${slug} is ${repo.visibility}; Pages ${pages.__error ? 'off' : `on (${pages.html_url})`}; secret-scanning alerts ${Array.isArray(alerts) ? alerts.length : 'unreadable'}; Dependabot alerts ${Array.isArray(dep) ? dep.length : 'unreadable'}, open Dependabot pull requests ${Array.isArray(pulls) ? botPulls.length : 'unreadable'}`);
     return { findings, meta: { visibility: repo.visibility, pages: !pages.__error, summary: `${repo.visibility}, Pages ${pages.__error ? 'off' : 'on'}` } };
   },
 };
+
+// A Dependabot title — "Bump x from 1.0.0 to 1.1.0 in /dir", with or without a conventional prefix —
+// read as the one bump it claims. A grouped update is not a single claim, and returns null.
+function parseBotTitle(title) {
+  const m = /\bbump (@?[\w.\/-]+) from (\S+) to (\S+?)(?: in (\S+))?$/i.exec(String(title || '').trim());
+  return m ? { pkg: m[1], from: m[2], to: m[3], dir: m[4] || '/' } : null;
+}
+
+// What a lockfile installs of the claimed package: null when the claimed version is there, else the
+// versions it does install (or a word for why none can be read).
+function judgeBotPull(claim, lock) {
+  if (!lock?.packages) return 'an unreadable lockfile';
+  const got = [...new Set(Object.entries(lock.packages)
+    .filter(([k]) => k === `node_modules/${claim.pkg}` || k.endsWith(`/node_modules/${claim.pkg}`))
+    .map(([, v]) => v.version))];
+  return got.includes(claim.to) ? null : got.length ? got.join(', ') : 'none of it';
+}
 
 function judgeSettings(file, allow) {
   const out = [];
@@ -329,6 +364,13 @@ function selftest() {
     const hit = paths.has(p); ok &&= hit; console.log(`${hit ? 'caught' : 'MISSED'}  path ${p}`);
   }
   const fp = paths.has('dotenv:ok/.env.example'); ok &&= !fp; console.log(`${fp ? 'FALSE+' : 'passed'}  .env.example is allowed`);
+  // a bot pull request whose lockfile lacks the version its title claims (an invented package)
+  const claim = parseBotTitle('build(deps-dev): bump plank-kit from 1.2.0 to 1.3.0 in /tools/plank');
+  const stale = { packages: { 'tools/node_modules/plank-kit': { version: '1.2.0' } } };
+  const fresh = { packages: { 'node_modules/plank-kit': { version: '1.3.0' } } };
+  const bot = claim?.pkg === 'plank-kit' && claim.to === '1.3.0' && claim.dir === '/tools/plank' && !!judgeBotPull(claim, stale) && !judgeBotPull(claim, fresh)
+    && parseBotTitle('Bump the npm_and_yarn group across 1 directory with 3 updates') === null;
+  ok &&= bot; console.log(`${bot ? 'caught' : 'MISSED'}  a bot pull request whose lockfile lacks its claim`);
   console.log(ok ? '\nselftest: every planted secret caught' : '\nselftest: FAILED');
   process.exitCode = ok ? 0 : 1;
 }
