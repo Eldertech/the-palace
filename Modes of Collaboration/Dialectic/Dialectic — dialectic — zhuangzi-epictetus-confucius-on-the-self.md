@@ -1,9 +1,6 @@
 ---
 title: "Dialectic — dialectic — zhuangzi-epictetus-confucius-on-the-self"
 born: 2026-05
-confidence: working
-energy: high
-who_leads: claude
 links:
   - target: "[[The Fortress and the Threshold]]"
     type: emerged-from
@@ -12,7 +9,7 @@ links:
     label: dialectic-form
   - target: "[[Dialectic]]"
     type: connects-to
-    label: archived-instance
+    label: archived-run
   - target: "[[Stoicism]]"
     type: connects-to
   - target: "[[Confucianism]]"

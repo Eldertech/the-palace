@@ -1,9 +1,6 @@
 ---
 title: "Dialectic — dialectic — spinoza-zhuangzi-on-striving"
 born: 2026-05
-confidence: working
-energy: high
-who_leads: claude
 links:
   - target: "[[Spinoza Conatus]]"
     type: emerged-from
@@ -16,7 +13,7 @@ links:
     label: zhuangzi-home
   - target: "[[Dialectic]]"
     type: connects-to
-    label: archived-instance
+    label: archived-run
   - target: "[[Entry Conatus]]"
     type: connects-to
     label: tests-the-striving-vector
