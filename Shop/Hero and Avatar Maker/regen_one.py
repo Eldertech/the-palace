@@ -41,6 +41,7 @@ import shutil
 import ssl
 import sys
 import tempfile
+import time
 import urllib.request
 from pathlib import Path
 
@@ -153,6 +154,10 @@ def flux(prompt: str, w: int, h: int, seed: int, steps: int = 28, guidance: floa
     }
 
 
+SUBMIT_RETRIES = 6   # × SUBMIT_WAIT: about a minute of patience for a paused endpoint
+SUBMIT_WAIT = 10
+
+
 def render_side(ep_obj, out_dir: Path, side: str, prompt: str, out_png: Path, mock: bool) -> int:
     """Render one side (hero|icon) to out_png. Returns the seed used."""
     w, h = HERO if side == "hero" else ICON
@@ -162,7 +167,19 @@ def render_side(ep_obj, out_dir: Path, side: str, prompt: str, out_png: Path, mo
         log(f"mock {side} -> {out_png.name} (seed {seed})")
         return seed
     log(f"render {side} ({w}x{h}, seed {seed})")
-    output = ep_obj.run({"workflow": flux(prompt, w, h, seed)})
+    # RunPod pauses an endpoint for a few seconds while a worker-count change applies,
+    # and a job submitted then gets `HTTP 409 … ENDPOINT_PAUSED` before it is queued —
+    # so retrying that one refusal can't double-submit. Anything else raises at once.
+    for attempt in range(SUBMIT_RETRIES):
+        try:
+            output = ep_obj.run({"workflow": flux(prompt, w, h, seed)})
+            break
+        except Exception as ex:
+            msg = str(ex)
+            if "HTTP 409" not in msg or attempt == SUBMIT_RETRIES - 1:
+                raise
+            log(f"endpoint paused while its workers change — retry {attempt + 1} in {SUBMIT_WAIT}s")
+            time.sleep(SUBMIT_WAIT)
     saved = ep_obj.save_outputs(output, str(out_dir / f"{side}-tmp"))
     png = next((p for p in saved if p.lower().endswith(".png")), None)
     if not png:
