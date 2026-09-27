@@ -1,9 +1,16 @@
 {
   "title": "Creative Coach",
-  "idiom": "warm loose gouache figure study",
-  "hero_prompt": "",
-  "icon_prompt": "A bold, high-contrast icon: two facing chairs and a small table drawn as one continuous thick black gouache stroke, simple and warm, no fine detail.",
+  "idiom": "flat gouache cut-paper interior (late Matisse); icon as a warm asymmetric linocut silhouette",
+  "hero_prompt": "Flat gouache and cut-paper painting in the manner of a late Matisse interior, hand-made on paper, flat and graphic with visible brush and paper texture, not a photograph, not a 3D render, no depth-of-field: the view from behind two people seated side by side on one long low bench in a warm potter's studio, an older grey-haired woman with her hair in a bun on the left and a young man on the right, both facing away from us toward a window shelf of simple clay pots he has made; she leans a little toward him and points up at one of the pots. We see their backs, not their faces. Warm orange walls, ochre, rose and deep blue, simple flat shapes.",
+  "icon_prompt": "Linocut emblem, a flat single-colour black silhouette on a warm orange ground, no shading or gradients: seen from behind, two people seated side by side on one low bench at the left of the frame, a woman with her hair in a bun and a young man, both facing a small pot that sits on the ground to the right, her arm raised and pointing at it. One warm asymmetric shape, the two figures on the same side looking at the work together. Bold, high-contrast, no fine linework, reads clearly at 24 pixels.",
   "seeds": {},
-  "rendered_at": "2026-09-25T02:18:56Z",
-  "history": []
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": [
+    {
+      "idiom": "warm loose gouache figure study",
+      "hero_prompt": "",
+      "icon_prompt": "A bold, high-contrast icon: two facing chairs and a small table drawn as one continuous thick black gouache stroke, simple and warm, no fine detail.",
+      "rendered_at": "2026-09-25T02:18:56Z"
+    }
+  ]
 }

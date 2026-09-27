@@ -2,8 +2,15 @@
   "title": "Skills Are Enchantable Pages",
   "idiom": "illuminated manuscript",
   "hero_prompt": "A wide illuminated-manuscript gouache-and-gold-leaf painting of a single open page whose vine-work border blooms outward into four small glowing wax seals along its edge, purely pictorial vine and seal ornament, no lettering. The one dominant image is a page giving rise to many seals \u2014 one enchanted surface wearing several faces.",
-  "icon_prompt": "",
+  "icon_prompt": "Flat gouache emblem, a single gold silhouette on a deep teal ground, no shading or gradients: an open book seen from above with its two blank pages curving outward like wings, and one round wax seal pressed onto the corner of the right-hand page, one bold, slightly asymmetric shape. Bold, high-contrast, no fine linework, no vine detail, reads clearly at 24 pixels.",
   "seeds": {},
-  "rendered_at": "2026-09-25T02:18:56Z",
-  "history": []
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": [
+    {
+      "idiom": "illuminated manuscript",
+      "hero_prompt": "A wide illuminated-manuscript gouache-and-gold-leaf painting of a single open page whose vine-work border blooms outward into four small glowing wax seals along its edge, purely pictorial vine and seal ornament, no lettering. The one dominant image is a page giving rise to many seals \u2014 one enchanted surface wearing several faces.",
+      "icon_prompt": "",
+      "rendered_at": "2026-09-25T02:18:56Z"
+    }
+  ]
 }

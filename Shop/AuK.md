@@ -18,6 +18,8 @@ links:
 
 # AuK
 
+![[AuK — hero.png]]
+
 **Status: STUB** — drafted by the [[Shopkeeper]] from two probe sessions (2026-09-12, 2026-09-15); approved as a stub by Loudon and landed 2026-09-25, with the paper id, the endpoint and the duration rule checked against the model card and the Space. Not yet dispatched on a real brief.
 
 ## Charter

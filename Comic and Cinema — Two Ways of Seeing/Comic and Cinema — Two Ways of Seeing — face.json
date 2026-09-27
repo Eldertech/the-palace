@@ -1,0 +1,9 @@
+{
+  "title": "Comic and Cinema \u2014 Two Ways of Seeing",
+  "idiom": "split image: stark ink comic panels beside a hand-drawn ink-wash motion study",
+  "hero_prompt": "Brush-and-ink drawing on cream paper, bold graphic lines and flat grey washes, hand-drawn, not a photograph, not a 3D render, no depth-of-field: one long strip of film running the whole width of the banner, its square frames bordered with thick black ink; in the frames on the left a running woman is drawn in stark black comic-book inking, one frozen stride per frame with bold white gutters between them, and toward the right the frame borders fade away and the same running woman blurs into one continuous smear of soft grey motion. Cream paper, black ink, soft greys.",
+  "icon_prompt": "Ink emblem, a flat single-colour black silhouette on a cream ground, no shading or gradients: on the left, three small solid black squares stacked in a column with clear cream gaps between them, and on the right one tall solid black rectangle whose right edge dissolves into soft horizontal streaks of motion, still frames on one side and continuous movement on the other. Bold, high-contrast, reads clearly at 24 pixels.",
+  "seeds": {},
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": []
+}

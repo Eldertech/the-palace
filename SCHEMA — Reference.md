@@ -30,6 +30,8 @@ forward_vector: "I hold the writing rules an elder reads at the pen, so an agent
 
 # SCHEMA — Reference
 
+![[SCHEMA — Reference — hero.png]]
+
 The operating half of the palace type system. [[SCHEMA]] — the card every elder reads on growing up — carries what
 **exists**: the entry types, the stages, the link ontology, the self-description test. This file carries
 what you need at the moment you **write**: the frontmatter fields, the change protocol, the ceremony-file

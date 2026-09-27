@@ -25,6 +25,8 @@ forward_vector: "I want to become the palace's living vocabulary for relationshi
 
 # Resonant Link Labels
 
+![[Resonant Link Labels — hero.png]]
+
 The palace's link types are a topological vocabulary — they tell a navigating agent *what kind* of relationship holds. But topology is the skeleton. The `label` field is where flesh goes.
 
 A label is a single word or hyphenated phrase that names the relationship's specific register. `father`, `pop`, `dad` are all the same relationship type — but they carry different cultural weight, emotional temperature, and power dynamics. The same is true of palace links. Two entries that `mirrors` each other may mirror in the register of `rhymes-with`, `echoes`, `refracts`, or `haunts` — these are not synonyms. The difference is the compression.

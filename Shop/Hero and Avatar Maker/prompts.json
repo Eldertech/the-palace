@@ -1,352 +1,135 @@
 [
- {
-  "title": "ROSETTA",
-  "path": "ROSETTA.md",
-  "idiom": "classical stone-relief engraving (Rosetta Stone style)",
-  "hero_prompt": "A wide classical stone-relief engraving of a single weathered tablet split into three parallel bands of carved pictographic marks — geometric glyphs, gear-teeth, and branching root-lines — each band echoing the same shape in a different register, chisel strokes visible in the stone. No letters, numerals, words, labels, or inscriptions — purely pictorial. Muted sepia and ochre stone tones, hand-carved relief shading, no glossy render.",
-  "icon_prompt": "A bold, high-contrast engraved emblem of a single cracked stone tablet split into three thick carved bands, rendered as a stark black silhouette on pale stone. No fine linework, no letters or inscriptions — a bold graphic mark that reads clearly at small size."
- },
- {
-  "title": "Reflective Practice",
-  "path": "Reflective Practice.md",
-  "idiom": "sumi-e ink wash",
-  "hero_prompt": "A wide sumi-e ink-wash painting of a woman musician mid-gesture at an instrument, her form doubled in a rippling pool of water beneath her that holds her reflection a half-second behind her real motion. Loose, wet-brush strokes, bold negative space, muted charcoal-grey wash. No letters, numerals, words, labels, or inscriptions — purely pictorial.",
-  "icon_prompt": "A bold sumi-e brushstroke emblem: a single thick black ink circle (an enso) with a fine ripple-line reflection beneath it, rendered as a stark high-contrast silhouette. No fine linework beyond the one bold ripple, no letters or text."
- },
- {
-  "title": "SCHEMA — Reference",
-  "path": "SCHEMA — Reference.md",
-  "idiom": "engraved technical/blueprint etching",
-  "hero_prompt": "Engraved technical/blueprint etching, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: A wide etched engraving in sepia ink on aged paper: a man's hand setting a pair of brass drafting compasses onto a blank sheet, the compass legs tracing one perfect empty circle within a faint grid of unmarked ruled lines, draftsman's precision, fine cross-hatched shading.",
-  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: a set-square triangle overlapping one plain circle"
- },
- {
-  "title": "SMPTE LTC",
-  "path": "Projects/SMPTE LTC.md",
-  "idiom": "Bauhaus geometric screenprint",
-  "hero_prompt": "A wide Bauhaus-style geometric screenprint of a single unbroken waveform ribbon threading through and phase-locking a row of gear-wheels and clock-faces of different sizes, flat bold color blocks in primary red, black, and ochre. No letters, numerals, words, labels, or inscriptions — purely pictorial. Hand-made Bauhaus geometric screenprint, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold screenprint emblem of one thick zigzag waveform pulse locked inside a single gear-tooth circle, flat high-contrast black-on-white silhouette. No fine linework, no letters or text — reads clearly at small size."
- },
- {
-  "title": "D3.js",
-  "path": "Shop/D3.js.md",
-  "idiom": "technical ink constellation etching",
-  "hero_prompt": "A wide technical ink etching of a woman puppeteer's hands drawing taut threads that pull a flock of geometric bird-shapes into a banking, curving formation, each thread a precise ruled line converging at her fingertips. Fine crosshatched shading, drafting-pen precision, sepia-on-cream. No letters, numerals, words, labels, or inscriptions — purely pictorial. Hand-made technical ink constellation etching, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold emblem of a single taut thread pulling three converging triangular bird-shapes into formation, rendered as a stark black silhouette with heavy contrast. No fine crosshatching, no letters or text — one bold graphic mark."
- },
- {
-  "title": "Depth Anything",
-  "path": "Shop/Depth Anything.md",
-  "idiom": "ukiyo-e woodblock print (Hokusai style)",
-  "hero_prompt": "A wide ukiyo-e woodblock print in the Hokusai manner: a lone walker in the foreground, a bamboo grove behind, a mountain ridge far back, the three planes separating like sliding paper screens pulled apart, flat bold colour bands and woodblock grain, no signage, no seal stamp, no chop mark. Hand-made ukiyo-e woodblock print (Hokusai style), with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold woodblock emblem of three stacked overlapping silhouette bands receding in size, rendered as a stark high-contrast black-on-white mark. No fine linework, no letters or text — reads clearly at small size."
- },
- {
-  "title": "JEWEL",
-  "path": "JEWEL.md",
-  "idiom": "Haeckel-style naturalist engraving (crystal/mineral study)",
-  "hero_prompt": "A wide naturalist engraving in the style of Ernst Haeckel: a cross-section of a single multifaceted crystal seed at the center of the frame, its facets opening into faint branching filaments of light that fan outward like roots or nerves, rendered in fine black ink linework on aged cream paper.",
-  "icon_prompt": "A bold, high-contrast woodcut-style emblem of a single faceted crystal seed, thick black outlines on white, simplified to a few strong geometric facets so it reads instantly at small size."
- },
- {
-  "title": "Making a Palace Citizen",
-  "path": "Making a Palace Citizen.md",
-  "idiom": "Renaissance anatomical woodcut (Vesalius-style)",
-  "hero_prompt": "Renaissance anatomical woodcut, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: a woman's figure emerging from an open book whose pages are completely blank, her outline still gathering ink and cross-hatching at its edges, a single lamp beside the book",
-  "icon_prompt": "A bold woodcut emblem of an open book with a single human silhouette rising from its pages, thick black strokes, no fine cross-hatching, reading clearly as a simple mark at small size."
- },
- {
-  "title": "Meaning and the Link",
-  "path": "Meaning and the Link.md",
-  "idiom": "18th-century copperplate engraving",
-  "hero_prompt": "A wide 18th-century copperplate engraving of a taut cat's-cradle of crossing threads suspended in dark space, no knots or nodes drawn, only the fine engraved strands themselves glowing brighter where they cross, evoking meaning that lives entirely in the connections. Hand-made 18th-century copperplate engraving, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold engraved emblem of two or three thick crossing lines forming a single asterisk-like mark, stark black on white, no thin hatching, reading as one strong shape at small size."
- },
- {
-  "title": "No Mind Checks Itself",
-  "path": "No Mind Checks Itself.md",
-  "idiom": "Escher-style hand-drawn lithograph",
-  "hero_prompt": "A wide hand-drawn lithograph in the manner of M.C. Escher's Drawing Hands: two hands rising from a single sheet of paper, each one drawing the other into being, fine grey-black tonal linework, nothing written on the paper. Hand-made Escher-style hand-drawn lithograph, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold high-contrast emblem of a hand drawing itself in a closed loop, thick unbroken outline, no fine crosshatching, reading instantly as a simple looped mark at small size."
- },
- {
-  "title": "Objects to Think With",
-  "path": "Objects to Think With.md",
-  "idiom": "bold linocut print",
-  "hero_prompt": "A wide bold linocut print of a child's hands assembling a small wooden gear-machine on a workbench, thick carved black lines and flat ink shapes, loose gears and tools scattered around, evoking a thing built in order to be understood. Hand-made bold linocut print, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold linocut-style emblem of a single gear held in a hand's grip, thick flat black shapes, no fine linework, reading clearly as a strong mark at small size."
- },
- {
-  "title": "Concierge",
-  "path": "Palace development/Concierge.md",
-  "idiom": "Art Nouveau lithograph poster",
-  "hero_prompt": "A wide Art Nouveau lithograph poster in the manner of Mucha: a poised man at a plain, uncarved open doorway holding a lantern, threads of light trailing back into the dark hall behind him, flat bold colour fields and flowing ink outlines. Hand-made Art Nouveau lithograph poster, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold Art Nouveau-style emblem of a single lantern silhouette set in a doorway arch, thick flat black shape on a light ground, no fine ornament, reading clearly as a strong mark at small size."
- },
- {
-  "title": "The Aftermath Frame",
-  "path": "The Aftermath Frame.md",
-  "idiom": "hand-inked manga/comic aftermath drawing — sumi-brush pen-flow ink",
-  "hero_prompt": "A hand-inked pen-and-ink comic drawing of a swordswoman frozen an instant after a downward strike on a stone column — shards and dust hang mid-flight, torn air-lines trail from the blade, her robe still whipping from the follow-through. Bold sumi-brush linework, dynamic speed-lines, dramatic black-and-white contrast with a single warm ink wash.",
-  "icon_prompt": "A bold woodcut-style icon of a single curved speed-line trailing off a cracked shard, rendered as thick black ink strokes on white, no fine detail, reading instantly as motion-after-impact at small size."
- },
- {
-  "title": "The Blindspot Is the Surprise Fuel",
-  "path": "The Blindspot Is the Surprise Fuel.md",
-  "idiom": "classical copperplate engraving with a torn, unengraved patch",
-  "hero_prompt": "Classical copperplate engraving with a torn, unengraved patch, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: A classical copperplate engraving of a face rendered in fine crosshatched linework, one quarter of the portrait left as bare, unengraved white paper — a torn gap where the features simply aren't drawn. Muted sepia ink, Rembrandt-etching texture, the blank patch sits as the calm center of the image.",
-  "icon_prompt": "A bold engraved-style icon: a solid black circle standing for a face, with one wedge cut clean out to bare white, high contrast, no linework, reading instantly as a shape with a piece missing."
- },
- {
-  "title": "zhuangzi-epictetus-confucius-on-the-self",
-  "path": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
-  "idiom": "sumi-e ink wash",
-  "hero_prompt": "A sumi-e ink wash scene of three robed elders — an old Chinese sage, a lame Greek teacher leaning on a staff, and a wandering Taoist holding a wine jar — seated around a low campfire in an open doorway at night, loose brushstroke smoke curling upward, a moth-pale butterfly drifting past unnoticed. Minimal brush strokes, deep black ink against warm firelit paper, wide negative space. Hand-made sumi-e ink wash, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold ink-brush icon of an open doorway with a single wisp of smoke curling through it, thick black sumi strokes on white, no figures, no fine linework, legible as a doorway-and-smoke mark at 24px. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels."
- },
- {
-  "title": "The Palace Hardens Around Values",
-  "path": "The Palace Hardens Around Values.md",
-  "idiom": "Haeckel-style naturalist crystal engraving",
-  "hero_prompt": "A Haeckel-style naturalist engraving of a palace wall caught mid-crystallization — fine geometric crystal facets growing outward from a single seed-point and interlocking into solid stone, rendered in precise fine-line engraving with delicate stippled shading. The crystal lattice thickens toward one edge, weight becoming architecture. Hand-made Haeckel-style naturalist crystal engraving, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: A bold icon of a single faceted crystal shape, thick black outline and solid geometric planes, no stippling or fine hatching, reading as a hard gem-like mark at small sizes."
- },
- {
-  "title": "The Palace Voice",
-  "path": "The Palace Voice.md",
-  "idiom": "linocut print",
-  "hero_prompt": "A bold linocut print of a single carved wooden hand mid-stroke, cutting a clean straight line through a tangle of ornate curling flourishes — the flourishes falling away like wood shavings, the line left behind plain and unbroken. Strong black ink, visible gouge texture, warm cream paper.",
-  "icon_prompt": "A bold linocut icon of one straight thick black line cutting cleanly through a small curl, high contrast, no fine hatching, reading instantly as plain-line-over-ornament at 24px."
- },
- {
-  "title": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
-  "path": "Wavetable Synthesis -- Research & Higher-Dimensional Design.md",
-  "idiom": "Klee/Kandinsky-style geometric gouache abstraction",
-  "hero_prompt": "A Klee/Kandinsky-style geometric gouache painting of a translucent wireframe hypercube floating in dark space, each of its corners blooming into a small colored waveform ribbon that curls and interpolates toward the center in flowing painted lines. Flat poster-like color fields, visible brush and gouache texture, no photographic shading. Hand-made Klee/Kandinsky-style geometric gouache abstraction, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold geometric icon of a single wireframe cube with one glowing corner node, flat thick outlines, high contrast, no fine crosshatching, legible as a cube-with-a-point mark at small sizes."
- },
- {
-  "title": "Mermaid",
-  "path": "Shop/Mermaid.md",
-  "idiom": "technical pen-and-ink blueprint diagram",
-  "hero_prompt": "A hand-drawn technical blueprint diagram in indigo ink on cream paper: a lone draftsman at a slanted drafting table tracing a flowchart that branches like a river delta into node-pools, each fork redrawn cleanly rather than erased, fine technical pen linework, blueprint-diagram style.",
-  "icon_prompt": "Square bold emblem: a single thick black diamond-node bent into a right-angle flowchart arrow, indigo on cream, blueprint style reduced to bold high-contrast shapes, no fine linework."
- },
- {
-  "title": "OBS",
-  "path": "Shop/OBS.md",
-  "idiom": "engraved camera-obscura woodcut",
-  "hero_prompt": "A hand-etched engraving of a camera obscura chamber: a man performs at a workbench lit by one hard beam of light, his image projected inverted onto a screen beside him exactly as it falls, dense cross-hatched ink shading, technical woodcut style, monochrome with a single amber highlight.",
-  "icon_prompt": "Square bold emblem: a single thick black aperture-iris shape opening onto a small lens circle, engraving style reduced to bold high-contrast geometric shapes, no fine crosshatching. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels."
- },
- {
-  "title": "Observable Plot",
-  "path": "Shop/Observable Plot.md",
-  "idiom": "Haeckel-style scientific specimen-plate engraving",
-  "hero_prompt": "A Haeckel-style scientific plate engraving: a woman naturalist arranges a grid of small glass specimen jars across a wooden table, each jar holding a tiny glowing curve or scatter of dots like a chart come alive, fine copperplate linework, cream paper, sepia and indigo ink. Hand-made Haeckel-style scientific specimen-plate engraving, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "Square bold emblem: a bold 2x2 grid of thick black dots beside one rising bar, reduced to flat high-contrast geometric shapes evoking a chart, no fine engraving lines."
- },
- {
-  "title": "RNBO codebox~ smith",
-  "path": "Shop/RNBO codebox~ smith.md",
-  "idiom": "Doré-style woodcut forge engraving",
-  "hero_prompt": "A Gustave Doré-style woodcut engraving of a blacksmith hammering a glowing sine-wave on his anvil, sparks flying upward in oscillating arcs, heavy cross-hatched shadow, single dramatic firelight source, monochrome ink warmed by an amber forge-glow.",
-  "icon_prompt": "Square bold emblem: a single thick black anvil silhouette with one bold sine-wave spark rising from it, high-contrast woodcut reduced to flat bold shapes, no fine crosshatching."
- },
- {
-  "title": "Remotion",
-  "path": "Shop/Remotion.md",
-  "idiom": "Bauhaus gouache poster",
-  "hero_prompt": "Bauhaus gouache poster, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: a woman's hand arranging a row of bold coloured rectangles along a horizontal timeline, each rectangle holding a slightly advanced geometric shape, like frames of a motion study; no sprocket holes, no filmstrip, flat bold colour blocks",
-  "icon_prompt": "Square bold emblem: a single bold black filmstrip frame with one thick play-triangle inside it, flat Bauhaus geometric shapes, high-contrast, no fine linework."
- },
- {
-  "title": "Figure Rig",
-  "path": "Shop/Figure Rig.md",
-  "idiom": "Vesalius-style anatomical woodcut engraving",
-  "hero_prompt": "A wide anatomical woodcut engraving, in the style of a Vesalius plate, of a striding female figure mid-stride, her joints marked as small circled pivot points at hip, knee, and ankle like a living armature. Fine crosshatched ink lines render muscle and bone giving way to bare articulation at the joints. The figure strides confidently across a plain paper ground, evoked rather than portrayed as a specific person.",
-  "icon_prompt": "A bold, high-contrast emblem of a single ball-and-socket joint — a thick engraved circle pierced by two crossing limb-lines — rendered as stark black woodcut linework on a pale ground, no fine crosshatching, reading clearly as a small mark."
- },
- {
-  "title": "Image-to-3D Smith",
-  "path": "Shop/Image-to-3D Smith.md",
-  "idiom": "graphite and charcoal academic atelier sketch",
-  "hero_prompt": "A wide graphite and charcoal academic sketch of a sculptor's hand and chisel caught mid-strike against a stone block whose near face is still a flat framed photograph, the picture-plane fracturing into carved volume where the chisel bites. The sculptor is a man, rendered loosely in academy-drawing shading, evoked rather than portrayed as a specific person. Dust and stone chips scatter from the strike point. Hand-made graphite and charcoal academic atelier sketch, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold, high-contrast emblem of a chisel striking a cube — thick black wedge and block shapes with a single spark burst — rendered as a stark charcoal silhouette with no fine linework, reading clearly as a small mark."
- },
- {
-  "title": "LaMa",
-  "path": "Shop/LaMa.md",
-  "idiom": "old-master fresco-restoration ink wash",
-  "hero_prompt": "Old-master fresco-restoration ink wash, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: A wide ink-wash study in the manner of a fresco conservator's record: a woman's hand with a plain unmarked wooden brush repainting a jagged missing patch of plaster wall, the surrounding fresco intact in faded ochre and umber washes, the repair blending seamlessly where her hand has passed.",
-  "icon_prompt": "A bold, high-contrast emblem of a jagged hole shape being closed by a single thick trowel stroke — stark black-on-white silhouette, no fine crosshatching, reading clearly as a small mark."
- },
- {
-  "title": "LaTeX",
-  "path": "Shop/LaTeX.md",
-  "idiom": "classical letterpress woodcut",
-  "hero_prompt": "Classical letterpress woodcut, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: A wide letterpress woodcut: a printer's hands squaring smooth blank lead spacers and brass rules inside an iron chase beside an old hand press, every block faceless and unmarked, wood-grain shading and bold black ink lines, the frame locked tight and perfectly aligned.",
-  "icon_prompt": "A bold, high-contrast emblem of a single stamped type block — a thick black rectangle with one raised square boss at its center like cast lead type — rendered as a stark woodcut silhouette, no fine linework, reading clearly as a small mark. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels."
- },
- {
-  "title": "LoRA Trainer",
-  "path": "Shop/LoRA Trainer.md",
-  "idiom": "charcoal figure-study atelier sketches",
-  "hero_prompt": "Charcoal figure-study atelier sketches, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: A wide charcoal atelier wall of a dozen small studies of the same face turned at many angles and lit from many sides, pinned edge to edge, with a woman painter's hand reaching up to pin one more sketch among them. Loose academic figure-drawing strokes throughout, the repeated face rendered as gestural likeness rather than a specific portrait.",
-  "icon_prompt": "A bold, high-contrast emblem of a single stylized profile face-mark — thick black silhouette with one sharp jaw and brow line — reading clearly as a small mark with no fine crosshatching."
- },
- {
-  "title": "Matplotlib",
-  "path": "Shop/Matplotlib.md",
-  "idiom": "cyanotype technical blueprint",
-  "hero_prompt": "Cyanotype technical blueprint, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: a single smooth white curve rising across a blank grid of empty squares, a man's hand holding a straightedge beside it; no numbers, no tick labels, no writing",
-  "icon_prompt": "A bold, high-contrast emblem of a single ruled sine curve crossing a straight axis — thick white line on deep blue, no gridlines or fine ticks, reading clearly as a small mark."
- },
- {
-  "title": "Block It in Blender, Ink It in genAI",
-  "path": "Block It in Blender, Ink It in genAI.md",
-  "idiom": "pen-and-ink noir woodcut",
-  "hero_prompt": "A wide pen-and-ink noir woodcut banner: a jointed wooden artist's mannequin stands staged on a bare studio floor under one canted spotlight, its wire-and-wood armature visible beneath the skin, stark cross-hatched ink shadow beginning to bleed over the wooden form as if the drawing is inking itself into being around the frame. Hand-made pen-and-ink noir woodcut, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold, high-contrast pen-and-ink icon: a jointed wooden mannequin figure rendered as one solid black silhouette, a single loose brushstroke breaking free from its outline like a gesture line escaping the wire frame."
- },
- {
-  "title": "ControlNet as Topology",
-  "path": "ControlNet as Topology.md",
-  "idiom": "Renaissance chalk-and-charcoal sculptor's study",
-  "hero_prompt": "A wide chalk-and-charcoal Renaissance sculptor's-studio drawing: a bent wire armature in a striding pose stands inside a half-carved block of marble, the figure's form just emerging around the wire from raw stone and chisel strokes in warm sepia chalk, no people, no hands. Hand-made Renaissance chalk-and-charcoal sculptor's study, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold, high-contrast icon: a wire armature bent into a single striding figure's pose, drawn as one thick black chisel-cut line against a bare marble-white ground, no hatching. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels."
- },
- {
-  "title": "Creative Coach",
-  "path": "Creative Coach.md",
-  "idiom": "warm loose gouache figure study",
-  "hero_prompt": "Warm loose gouache figure study, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: A wide, warm gouache figure study: a woman coach and a man artist sit close at a small lamplit table, her hand resting near an open notebook of his work, the brushwork soft and intimate, painted in loose warm gouache like a Bonnard interior.",
-  "icon_prompt": "A bold, high-contrast icon: two facing chairs and a small table drawn as one continuous thick black gouache stroke, simple and warm, no fine detail."
- },
- {
-  "title": "ELDER",
-  "path": "ELDER.md",
-  "idiom": "medieval illuminated-manuscript woodcut",
-  "hero_prompt": "A wide medieval illuminated-manuscript woodcut: a hooded figure stands at a low stone threshold between a modest house and a cluttered workshop behind them, gold-leaf hatching along the doorway's edge, deep woodcut black lines throughout the scene.",
-  "icon_prompt": "A bold, high-contrast icon: a single arched doorway cut in thick black woodcut linework, one half filled solid gold, the other left plain stone, no fine detail. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels."
- },
- {
-  "title": "Gemma 4 — Local Coordination Guide",
-  "path": "Gemma 4 — Local Coordination Guide.md",
-  "idiom": "19th-century mechanical blueprint engraving",
-  "hero_prompt": "A wide 19th-century mechanical blueprint engraving: an open brass clockwork engine rests alone on a bare workbench, its gears meshing through paired hinge-and-latch mechanisms that lock together like couplings clicking shut, rendered in fine copperplate engraving lines.",
-  "icon_prompt": "A bold, high-contrast icon: two interlocking gear teeth rendered as one solid black engraved mark, thick strokes only, no fine hatching. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels."
- },
- {
-  "title": "GenAI Camera",
-  "path": "GenAI Camera.md",
-  "idiom": "Leonardo-style optical study engraving",
-  "hero_prompt": "A wide technical ink engraving in the style of a Leonardo optical study: a woman stands beside a large wooden camera obscura box, light rays converging through its lens and re-emerging on the far wall as loose inked linework of a figure, the whole scene cross-sectioned in fine engraved lines.",
-  "icon_prompt": "A bold, high-contrast icon: a single camera-obscura lens as a solid black circle with a few radiating straight rays cut in thick strokes, no fine engraving, high contrast."
- },
- {
-  "title": "Enchanted Conversation Archive",
-  "path": "Palace development/Enchanted Conversation Archive.md",
-  "idiom": "sumi-e ink-wash scroll",
-  "hero_prompt": "A wide sumi-e ink-wash scroll painting of one ancient tree whose roots fork into a river delta below the earth-line, loose black brushstrokes on aged paper, small lantern-like marks glowing faintly at each fork where a root splits. The single dominant image is the branching, rooted forest of forks itself, evoking an archive that keeps every path rather than one trunk. Hand-made sumi-e ink-wash scroll, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold black ink-wash silhouette of one root forking into three branches against a pale ground, thick confident brushstrokes, no fine linework, reading clearly as a single emblem at small size."
- },
- {
-  "title": "AI Partnership Philosophy",
-  "path": "Palace development/AI Partnership Philosophy.md",
-  "idiom": "Klee/Kandinsky gouache",
-  "hero_prompt": "A wide Klee-and-Kandinsky-style gouache painting, flat warm color shapes and thin hand-drawn lines: a lone female thinker stands at a fork where a thin brittle mechanical line runs one way and a deep spiraling luminous line curves the other, both rooted in the same small seed at her feet. The single dominant metaphor is the fork itself — efficiency versus becoming, drawn from one root.",
-  "icon_prompt": "A bold gouache-style emblem of a spiral curling out of a small seed shape, flat high-contrast color fields, no fine linework, legible as a single mark at 24px. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels."
- },
- {
-  "title": "Skills Are Enchantable Pages",
-  "path": "Palace development/Skills Are Enchantable Pages.md",
-  "idiom": "illuminated manuscript",
-  "hero_prompt": "A wide illuminated-manuscript gouache-and-gold-leaf painting of a single open page whose vine-work border blooms outward into four small glowing wax seals along its edge, purely pictorial vine and seal ornament, no lettering. The one dominant image is a page giving rise to many seals — one enchanted surface wearing several faces.",
-  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: A bold single wax-seal rosette in illuminated-manuscript gold and deep red, thick radiating vine lines, high-contrast silhouette with no fine engraving detail, reading clearly at avatar size."
- },
- {
-  "title": "Metric Modulation",
-  "path": "Projects/Metric Modulation.md",
-  "idiom": "Escher-style ink engraving",
-  "hero_prompt": "A wide Escher-style black-and-white ink engraving of a rhythmic checkerboard grid that warps, dips, and folds back into a mirror-image spiral, tight cross-hatching giving the tiles depth as they bend. The one dominant metaphor is the grid itself reframing — a drop and a snap-back rendered as a single folding tessellation. Hand-made Escher-style ink engraving, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: A bold black-and-white engraved silhouette of a checkerboard grid folding into a spiral, thick high-contrast tiles, no fine cross-hatching, legible as one mark at small size."
- },
- {
-  "title": "Quadratic Interpolation in DSP",
-  "path": "Quadratic Interpolation in DSP.md",
-  "idiom": "18th-century scientific copperplate engraving",
-  "hero_prompt": "A wide 18th-century scientific copperplate engraving on cream paper: three small plain dots joined by one smooth arcing parabola across the page, no labels, no axes, no scale marks, fine cross-hatched shading around the single graceful curve. Hand-made 18th-century scientific copperplate engraving, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "A bold engraved-style silhouette of a single parabolic arc through three solid dots, thick high-contrast line, no fine cross-hatching, reading clearly at 24px."
- },
- {
-  "title": "README - The Palace Guide",
-  "path": "README - The Palace Guide.md",
-  "idiom": "Piranesi-style architectural etching",
-  "hero_prompt": "Piranesi-style architectural etching, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: A wide Piranesi-style architectural etching in dense cross-hatched ink: a vast palace of branching stone corridors and open doorways receding into shadow, one threshold arch lit at the front edge where the viewer stands. The single dominant image is the palace's own doorway opening onto its endless corridors — the entry point to the whole structure.",
-  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: A bold engraved silhouette of a single stone archway with three corridor lines radiating from it into darkness, thick high-contrast strokes, no fine cross-hatching, legible as one mark at small size."
- },
- {
-  "title": "SAM",
-  "path": "Shop/SAM.md",
-  "idiom": "Matisse-style cut-paper gouache (découpage)",
-  "hero_prompt": "Hand-cut paper gouache in the Matisse découpage idiom, a wide banner. A woman's hands cut bold flat-colored paper shapes free from a larger sheet — a bottle, a leaf, a bird — each freed shape lifting just clear of the page it came from, while at one edge a tangle of thin uncut ink scribbles resists the scissors entirely. Hand-made Matisse-style cut-paper gouache (découpage), with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "Bold flat-color silhouette icon in the same cut-paper idiom: a pair of scissors mid-cut through one solid colored shape, two-tone high contrast, no fine linework, reads clean at small size."
- },
- {
-  "title": "Tone.js",
-  "path": "Shop/Tone.js.md",
-  "idiom": "Klee/Kandinsky Bauhaus gouache",
-  "hero_prompt": "A Klee/Kandinsky-style Bauhaus gouache painting, wide banner. A window frame stands in for a browser pane; sound waves pass through it and resolve into a grid of colored bars and beats, like a loom weaving one wandering line into steady rhythmic bands, a woman's silhouette at the sill reaching into the pattern. Hand-made Klee/Kandinsky Bauhaus gouache, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "Bold geometric gouache icon: a single thick wave-line crossing a square window frame and resolving into three solid colored bars, flat high-contrast shapes, no fine detail, reads at small size."
- },
- {
-  "title": "VCV Patch Generator",
-  "path": "Shop/VCV Patch Generator.md",
-  "idiom": "copperplate technical engraving",
-  "hero_prompt": "Copperplate technical engraving, hand-made on paper, flat and graphic with visible ink and print texture, not a photograph, not a 3D render: A wide copperplate technical engraving: a man's hands connecting taut patch cables between plain, unmarked brass jacks on a bare instrument panel, every connection precise, while one dark jack at the panel's far edge sits unconnected. Fine cross-hatched linework.",
-  "icon_prompt": "Bold engraved-silhouette icon: a single thick patch cable plugged into a circular jack, heavy emblem-weight lines only, no cross-hatching, high contrast, reads at small size."
- },
- {
-  "title": "Whisper",
-  "path": "Shop/Whisper.md",
-  "idiom": "illuminated-manuscript ink and quill",
-  "hero_prompt": "A wide illuminated-manuscript ink drawing on vellum: a scribe bends over a desk as sound drifts from a small carved horn and settles onto the page as flowing abstract brush ribbons, not writing, most ribbons firm and dark, one thinning into blank vellum where the voice fell silent. Hand-made illuminated-manuscript ink and quill, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "Bold ink-silhouette icon: a quill nib beside one thick sound-wave arc, heavy two-tone strokes only, no fine cross-hatching, high contrast, reads at small size."
- },
- {
-  "title": "spinoza-zhuangzi-on-striving",
-  "path": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
-  "idiom": "sumi-e ink wash",
-  "hero_prompt": "A sumi-e ink-wash painting, wide banner, brushed on rice paper. Two robed figures face each other across a single flowing river — one bank cut straight and geometric like a canal, the other bank wild reeds bending with the current — one continuous stream of water carrying between them. Hand-made sumi-e ink wash, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "Bold ink-wash silhouette icon: a river splitting around a single stone, one channel straight-edged and one channel curving, thick brush strokes only, high contrast, reads at small size."
- },
- {
-  "title": "State Machine",
-  "path": "State Machine.md",
-  "idiom": "Dürer-style woodcut engraving",
-  "hero_prompt": "A Dürer-style woodcut engraving, wide banner, dense parallel hatching. A four-chambered clockwork wheel turns through a fixed cycle — charge, rise, fall, recovery — each chamber a distinct engraved mechanism with interlocking gear teeth at the seams, a hand resting on a crank that turns only one way.",
-  "icon_prompt": "Bold woodcut-silhouette icon: a four-spoked wheel with each quadrant filled a different flat tone, heavy outline only, no gear-tooth detail, high contrast, reads at small size."
- },
- {
-  "title": "Closing Well Ceremony",
-  "path": "_ops/Closing Well Ceremony.md",
-  "idiom": "linocut / woodblock print, warm ink tones",
-  "hero_prompt": "A bold linocut print of a man seated alone at a round table lit by a single lantern at dusk, four small carved wooden tokens laid before him — one held up, one passed across the table, one pressed into the wood grain, one released into the shadow beyond the light.",
-  "icon_prompt": "A bold linocut emblem of a single lantern with four thick radiating rays, one ray broken free and falling away, rendered in high-contrast black ink on cream."
- },
- {
-  "title": "Return Ceremony",
-  "path": "_ops/Return Ceremony.md",
-  "idiom": "copperplate engraving, antique cartographic style",
-  "hero_prompt": "A copperplate engraving: a woman at a stone threshold gate unrolls a hand-inked map of nameless coastlines and paths toward a traveller stepping out of low fog, the map's lines taut and certain against the traveller's soft outline. Hand-made copperplate engraving, antique cartographic style, with visible ink, brush or print texture on paper; flat and graphic, not a photograph, not a 3D render, no depth-of-field, no glossy highlights.",
-  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: A bold copperplate-engraved compass rose with one thick arrow pointing straight through an open gate, stark black lines on ivory."
- },
- {
-  "title": "Found ↔ Made",
-  "path": "Found ↔ Made.md",
-  "idiom": "wood engraving, grain-following naturalist style",
-  "hero_prompt": "A wood engraving of a split log spanned by a single dark butterfly key, the grain on one half flowing unbroken as if found whole, the grain on the other half cut and joined by hand, both halves held together as one board.",
-  "icon_prompt": "Flat black silhouette icon on a plain white ground, one bold shape, no shading, no gradients, no gloss: A bold wood-engraved emblem of a single butterfly-key joint spanning a crack, rendered as a thick black bowtie shape against bare wood grain."
- }
+  {
+    "title": "Creative Coach",
+    "path": "Creative Coach.md",
+    "idiom": "flat gouache cut-paper interior (late Matisse); icon as a warm asymmetric linocut silhouette",
+    "hero_prompt": "Flat gouache and cut-paper painting in the manner of a late Matisse interior, hand-made on paper, flat and graphic with visible brush and paper texture, not a photograph, not a 3D render, no depth-of-field: the view from behind two people seated side by side on one long low bench in a warm potter's studio, an older grey-haired woman with her hair in a bun on the left and a young man on the right, both facing away from us toward a window shelf of simple clay pots he has made; she leans a little toward him and points up at one of the pots. We see their backs, not their faces. Warm orange walls, ochre, rose and deep blue, simple flat shapes.",
+    "icon_prompt": "Linocut emblem, a flat single-colour black silhouette on a warm orange ground, no shading or gradients: seen from behind, two people seated side by side on one low bench at the left of the frame, a woman with her hair in a bun and a young man, both facing a small pot that sits on the ground to the right, her arm raised and pointing at it. One warm asymmetric shape, the two figures on the same side looking at the work together. Bold, high-contrast, no fine linework, reads clearly at 24 pixels."
+  },
+  {
+    "title": "SCHEMA — Reference",
+    "path": "SCHEMA — Reference.md",
+    "idiom": "bold black-and-cream linocut, set-square and plumb bob",
+    "hero_prompt": "Bold linocut print in black on cream paper, thick carved shapes with white gouge marks, no fine hatching, flat and graphic, not a photograph, not a 3D render, no depth-of-field: seen from the side, a large plain wooden set-square standing upright on a bare table, and beside it a plumb bob hanging perfectly still on a straight line from above, the two together the measure of square and true; solid black shapes, generous empty cream space, a quiet plain workroom wall behind.",
+    "icon_prompt": ""
+  },
+  {
+    "title": "LaMa",
+    "path": "Shop/LaMa.md",
+    "idiom": "old-master fresco-restoration ink wash",
+    "hero_prompt": "Old-master ink-and-wash drawing on paper, flat and graphic with visible brush and paper texture, not a photograph, not a 3D render, no depth-of-field: a long faded fresco of a garden arcade, a row of painted arches with climbing vines and flowers, and in the middle one large jagged-edged patch where the old plaster was lost has been freshly repainted, its colours a little brighter, the arches and vines continuing unbroken straight through it so the eye barely finds the repair. Warm umber, ochre, sage green and faded terracotta washes.",
+    "icon_prompt": ""
+  },
+  {
+    "title": "LaTeX",
+    "path": "Shop/LaTeX.md",
+    "idiom": "classical letterpress woodcut",
+    "hero_prompt": "Classical woodcut print on paper, bold black carved lines on warm cream, visible wood-grain and ink texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: a single plain, unornamented iron hand press standing alone in a quiet workshop with bare plank walls and one high window of light, its heavy platen lowered and its long lever pulled home; the press drawn with exact, careful symmetry, every edge square and true.",
+    "icon_prompt": ""
+  },
+  {
+    "title": "LoRA Trainer",
+    "path": "Shop/LoRA Trainer.md",
+    "idiom": "cut-paper profile silhouettes (eighteenth-century silhouette tradition)",
+    "hero_prompt": "Cut-paper silhouette art in the eighteenth-century profile tradition, flat black paper shapes on warm cream paper, hand-cut edges, flat and graphic, not a photograph, not a 3D render, no depth-of-field: the same woman's black profile silhouette repeated five times in a row across the banner, identical every time, each set against a different small cut-paper backdrop: a leafy tree, a tall window, a breaking wave, a crescent moon, a rolling hill. One likeness holding true in every new scene.",
+    "icon_prompt": ""
+  },
+  {
+    "title": "Matplotlib",
+    "path": "Shop/Matplotlib.md",
+    "idiom": "cyanotype technical blueprint",
+    "hero_prompt": "Cyanotype sun-print on hand-coated paper, deep Prussian blue with crisp white lines, uneven brushed blue edges and soft paper texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: one long, smooth white decaying sine wave sweeping across the whole banner from left to right, tall at the left and settling to calm at the right, above a single straight white horizontal line, with wide empty blue space around it, exact and calm.",
+    "icon_prompt": ""
+  },
+  {
+    "title": "Skills Are Enchantable Pages",
+    "path": "Palace development/Skills Are Enchantable Pages.md",
+    "idiom": "illuminated manuscript",
+    "hero_prompt": "",
+    "icon_prompt": "Flat gouache emblem, a single gold silhouette on a deep teal ground, no shading or gradients: an open book seen from above with its two blank pages curving outward like wings, and one round wax seal pressed onto the corner of the right-hand page, one bold, slightly asymmetric shape. Bold, high-contrast, no fine linework, no vine detail, reads clearly at 24 pixels."
+  },
+  {
+    "title": "The Palace Hardens Around Values",
+    "path": "The Palace Hardens Around Values.md",
+    "idiom": "Haeckel-style naturalist crystal engraving",
+    "hero_prompt": "",
+    "icon_prompt": "Linocut emblem, a flat single-colour black silhouette on a cream ground, no shading or gradients: a tight cluster of seven hexagonal cells like a small honeycomb, the cells on the left drawn as thick open outlines and the cells on the right filled solid black, as if the lattice is hardening into stone from one side. Bold, high-contrast, thick lines only, no stippling, reads clearly at 24 pixels."
+  },
+  {
+    "title": "Found ↔ Made",
+    "path": "Found ↔ Made.md",
+    "idiom": "wood engraving, grain-following naturalist style (hero); icon: FLUX woodcut plank with the bowtie inlay composited by hand, because FLUX drew the inlay as a butterfly, an hourglass or nothing across six tries",
+    "hero_prompt": "",
+    "icon_prompt": "Woodcut emblem, a flat single-colour black silhouette on a cream ground, no shading or gradients: a short thick black plank split across its middle by one jagged cream crack, and set across the crack a single dovetail inlay, a solid shape of two trapezoid wedges joined at their narrow ends, cut out in cream so it reads against the black, holding the two halves together. Bold, high-contrast, no wood-grain lines, reads clearly at 24 pixels."
+  },
+  {
+    "title": "AuK",
+    "path": "Shop/AuK.md",
+    "idiom": "two-colour screenprint, deep teal and warm red on cream",
+    "hero_prompt": "Two-colour screenprint on cream paper in deep teal and warm red, flat and graphic with visible ink texture and slight misregistration, not a photograph, not a 3D render, no depth-of-field: a man in profile at the left edge, mouth open mid-phrase, and flowing from him across the whole banner a long smooth sound wave drawn as one wide teal band; one short section of the band has been cut out and a new red section fitted into the gap, joined with a neat row of tailor's stitches, the wave running on unbroken. The same voice, altered.",
+    "icon_prompt": "Screenprint emblem, a flat single-colour teal silhouette on a cream ground, no shading or gradients: one bold, thick sound wave running left to right with a pair of open scissors cutting cleanly through its middle. Bold, high-contrast, no fine linework, reads clearly at 24 pixels."
+  },
+  {
+    "title": "Blocked, Not Prompted",
+    "path": "Blocked, Not Prompted.md",
+    "idiom": "Bauhaus stage-design gouache (Oskar Schlemmer)",
+    "hero_prompt": "Bauhaus stage-design gouache on paper in the manner of Oskar Schlemmer, flat geometric colour shapes with visible brush texture, not a photograph, not a 3D render, no depth-of-field: a bare theatre stage seen from a dramatic worm's-eye low angle, plain geometric blocks (cubes, a ramp, a tall column) arranged with deliberate precision, and a jointed wooden artist's mannequin placed on the highest block in a bold striding pose, one hard spotlight cutting a sharp diagonal; the drama built entirely from where the blocks and the figure were put. Grey card blocks with accents of red, yellow and blue.",
+    "icon_prompt": "Bauhaus emblem, a flat single-colour black silhouette on a bright yellow ground, no shading or gradients: a jointed artist's mannequin in a bold striding pose standing on top of a single cube. Bold, high-contrast, no fine linework, reads clearly at 24 pixels."
+  },
+  {
+    "title": "Resonant Link Labels",
+    "path": "Palace development/Resonant Link Labels.md",
+    "idiom": "Klee-style gouache, a vibrating string between two stones",
+    "hero_prompt": "Gouache painting on paper in the manner of Paul Klee, flat and graphic with visible brush and paper texture, not a photograph, not a 3D render, no depth-of-field: two small plain grey stones at the far left and far right of the banner, joined by one single taut string that is vibrating, the space between them swelling into a wide shimmering envelope of overlapping wave loops in warm red, gold, rose and deep blue, so all the colour in the picture lives in the link and none in the stones. Soft dark ground.",
+    "icon_prompt": "Flat gouache emblem, a single-colour black silhouette on a warm gold ground, no shading or gradients: two small solid dots, one at each side, joined by one thick wavy line that swells wide in the middle like a plucked, vibrating string. Bold, high-contrast, no fine linework, reads clearly at 24 pixels."
+  },
+  {
+    "title": "Trickster Commit",
+    "path": "Trickster Commit.md",
+    "idiom": "two-colour linocut, black and magenta circus",
+    "hero_prompt": "Two-colour linocut print in black and bright magenta on cream paper, bold carved shapes and visible ink texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: under the peak of a circus tent a woman acrobat in a diamond-patterned harlequin costume leaps through the air between two trapezes, arms flung wide, reckless and joyful, and far below her a wide safety net is stretched taut across the whole ring. The leap licensed by the net.",
+    "icon_prompt": "Linocut emblem, a flat single-colour black silhouette on a bright magenta ground, no shading or gradients: a woman acrobat leaping in mid-air, arms and legs flung wide, and below her a wide safety net slung edge to edge across the bottom of the frame, sagging in one shallow curve. Bold, high-contrast, thick net cords only, reads clearly at 24 pixels."
+  },
+  {
+    "title": "Weaving Memory into the Palace",
+    "path": "Weaving Memory into the Palace.md",
+    "idiom": "hand-coloured woodcut, loom and basket",
+    "hero_prompt": "Hand-coloured woodcut print on paper, bold black outlines, visible wood-grain and ink texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: a wooden hand loom seen from the side holding a broad, nearly finished cloth woven in deep indigo and madder red, and on the floor beside it a small woven basket, almost empty, from which a few last loose threads run up into the weave; the cloth dense and whole, the basket nearly bare. Warm ochre wood, indigo and red.",
+    "icon_prompt": "Woodcut emblem, a flat single-colour black silhouette on a cream ground, no shading or gradients: a small square of thick interlaced woven bands, and one loose thread curling in from the lower corner being drawn into the weave. Bold, high-contrast, no fine linework, reads clearly at 24 pixels."
+  },
+  {
+    "title": "Comic and Cinema — Two Ways of Seeing",
+    "path": "Comic and Cinema — Two Ways of Seeing.md",
+    "idiom": "split image: stark ink comic panels beside a hand-drawn ink-wash motion study",
+    "hero_prompt": "Brush-and-ink drawing on cream paper, bold graphic lines and flat grey washes, hand-drawn, not a photograph, not a 3D render, no depth-of-field: one long strip of film running the whole width of the banner, its square frames bordered with thick black ink; in the frames on the left a running woman is drawn in stark black comic-book inking, one frozen stride per frame with bold white gutters between them, and toward the right the frame borders fade away and the same running woman blurs into one continuous smear of soft grey motion. Cream paper, black ink, soft greys.",
+    "icon_prompt": "Ink emblem, a flat single-colour black silhouette on a cream ground, no shading or gradients: on the left, three small solid black squares stacked in a column with clear cream gaps between them, and on the right one tall solid black rectangle whose right edge dissolves into soft horizontal streaks of motion, still frames on one side and continuous movement on the other. Bold, high-contrast, reads clearly at 24 pixels."
+  },
+  {
+    "title": "The Practice Rediscovers Its Philosophy",
+    "path": "The Practice Rediscovers Its Philosophy.md",
+    "idiom": "bold linocut shadow-play (hero); flat charcoal-silhouette emblem (icon)",
+    "hero_prompt": "Bold linocut print in black and warm ochre on cream paper, thick carved shapes and visible ink texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: a shadow sculpture in the manner of Tim Noble and Sue Webster, a messy heap of scrap tools and gears on a low plinth at the left lit by a single lamp, and projected from that heap onto the bare wall behind it one large solid black shadow that forms the clean profile silhouette of a bearded philosopher's head. The heap and the shadow are joined; the portrait exists only as the shadow of the tools.",
+    "icon_prompt": "Charcoal emblem, a flat single-colour black silhouette on a warm cream ground, no shading or gradients: a single cog-wheel on the left, and falling from it to the right its long shadow shaped like a bearded human head in profile. Bold, high-contrast, no fine linework, reads clearly at 24 pixels."
+  },
+  {
+    "title": "The Scroll",
+    "path": "The Scroll.md",
+    "idiom": "ink-and-wash landscape handscroll",
+    "hero_prompt": "Ink-and-wash painting on paper in the manner of a Chinese landscape handscroll, flat and graphic with visible brush and paper texture, not a photograph, not a 3D render, no depth-of-field: one continuous painted landscape unrolling across the whole banner, a river winding from right to left past misty mountains, with tiny workshops, a kiln and a half-built boat along its banks, and at the far right edge the paper curls up into a thick roll still waiting to open. Soft greys, pale ochre and green washes on cream paper, plain dark margins, no red seal stamps.",
+    "icon_prompt": "Ink-brush emblem, a flat single-colour black silhouette on a warm cream ground, no shading or gradients: a hanging scroll, a thick horizontal roll at the top, a tall blank cream sheet hanging down from it outlined in thick black, and a second thick roll at the bottom, partly unrolled. Bold, high-contrast, blank sheet, no fine linework, reads clearly at 24 pixels."
+  },
+  {
+    "title": "Sentry",
+    "path": "Palace development/Sentry.md",
+    "idiom": "black-and-ochre woodcut night scene",
+    "hero_prompt": "Black-and-ochre woodcut print on paper, bold carved lines and visible wood-grain texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: at night a lone watchman stands on a stone wall above a wide open city gate, holding a lantern out over the road below to light what passes through, the gate open and the road leading away into dark country under a few stars; calm, alert, the only warm light in the picture is his lantern.",
+    "icon_prompt": "Woodcut emblem, a flat single-colour black silhouette on a warm ochre ground, no shading or gradients: one old-fashioned hand lantern with a ring handle on top, its glass panes cut out so the ochre glows through them, a few short thick rays of light around it. Bold, high-contrast, no fine linework, reads clearly at 24 pixels."
+  },
+  {
+    "title": "Radio Play",
+    "path": "Radio Play.md",
+    "idiom": "mid-century gouache illustration, theatre of the mind",
+    "hero_prompt": "Mid-century gouache and ink illustration on paper, flat and graphic with visible brush texture, not a photograph, not a 3D render, no depth-of-field: in a dark room, an old cathedral-shaped radio drawn as a plain dark silhouette with only its round cloth speaker glowing warm amber, and rising from that glow like smoke a whole imagined scene painted in pale blue and gold, a ship on a stormy sea, a lighthouse beam, a crescent moon, the story existing only in the air above the radio. Deep midnight blue, warm amber, pale gold.",
+    "icon_prompt": "Linocut emblem, a flat single-colour black silhouette on a warm amber ground, no shading, no gradients, no highlights: an old radio-studio ribbon microphone on a short stand, a rounded capsule shape with a few thick horizontal slots, and three bold curved sound waves spreading out to its right side. Bold, high-contrast, reads clearly at 24 pixels."
+  }
 ]

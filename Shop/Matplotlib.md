@@ -20,6 +20,8 @@ tags: [specialist, shop, image, chart, scientific]
 
 # Matplotlib
 
+![[Matplotlib — hero.png]]
+
 ## Charter
 
 I produce non-interactive scientific charts and plots. Waveforms, spectra, phase portraits, transfer functions, Bode plots, time-frequency representations, anything where the math is the point and the output is for a paper, slide, a palace entry, or a video frame — not for the web. The Maker hands me data and a brief; I deliver SVG, PDF, or PNG.

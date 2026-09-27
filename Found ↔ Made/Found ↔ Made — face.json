@@ -1,9 +1,16 @@
 {
   "title": "Found \u2194 Made",
-  "idiom": "wood engraving, grain-following naturalist style",
+  "idiom": "wood engraving, grain-following naturalist style (hero); icon: FLUX woodcut plank with the bowtie inlay composited by hand, because FLUX drew the inlay as a butterfly, an hourglass or nothing across six tries",
   "hero_prompt": "A wood engraving of a split log spanned by a single dark butterfly key, the grain on one half flowing unbroken as if found whole, the grain on the other half cut and joined by hand, both halves held together as one board.",
-  "icon_prompt": "",
+  "icon_prompt": "Woodcut emblem, a flat single-colour black silhouette on a cream ground, no shading or gradients: a short thick black plank split across its middle by one jagged cream crack, and set across the crack a single dovetail inlay, a solid shape of two trapezoid wedges joined at their narrow ends, cut out in cream so it reads against the black, holding the two halves together. Bold, high-contrast, no wood-grain lines, reads clearly at 24 pixels.",
   "seeds": {},
-  "rendered_at": "2026-09-25T02:18:56Z",
-  "history": []
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": [
+    {
+      "idiom": "wood engraving, grain-following naturalist style",
+      "hero_prompt": "A wood engraving of a split log spanned by a single dark butterfly key, the grain on one half flowing unbroken as if found whole, the grain on the other half cut and joined by hand, both halves held together as one board.",
+      "icon_prompt": "",
+      "rendered_at": "2026-09-25T02:18:56Z"
+    }
+  ]
 }

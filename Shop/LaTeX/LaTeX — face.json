@@ -1,9 +1,16 @@
 {
   "title": "LaTeX",
   "idiom": "classical letterpress woodcut",
-  "hero_prompt": "",
+  "hero_prompt": "Classical woodcut print on paper, bold black carved lines on warm cream, visible wood-grain and ink texture, flat and graphic, not a photograph, not a 3D render, no depth-of-field: a single plain, unornamented iron hand press standing alone in a quiet workshop with bare plank walls and one high window of light, its heavy platen lowered and its long lever pulled home; the press drawn with exact, careful symmetry, every edge square and true.",
   "icon_prompt": "A bold, high-contrast emblem of a single stamped type block \u2014 a thick black rectangle with one raised square boss at its center like cast lead type \u2014 rendered as a stark woodcut silhouette, no fine linework, reading clearly as a small mark. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels.",
   "seeds": {},
-  "rendered_at": "2026-09-25T02:18:56Z",
-  "history": []
+  "rendered_at": "2026-09-27T00:57:30Z",
+  "history": [
+    {
+      "idiom": "classical letterpress woodcut",
+      "hero_prompt": "",
+      "icon_prompt": "A bold, high-contrast emblem of a single stamped type block \u2014 a thick black rectangle with one raised square boss at its center like cast lead type \u2014 rendered as a stark woodcut silhouette, no fine linework, reading clearly as a small mark. A flat single-colour silhouette on a plain ground: no shading, no gradients, no glossy highlights, no fine lines; one bold shape that reads at 24 pixels.",
+      "rendered_at": "2026-09-25T02:18:56Z"
+    }
+  ]
 }

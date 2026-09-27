@@ -30,7 +30,6 @@ links:
 
 # Comic and Cinema — Two Ways of Seeing
 
-<!-- CLAUDE → LOUDON: hero + icon pending — run the Hero and Avatar Maker distiller. Apt idiom: a split image, one half stark ink panel (comic), one half soft photographic light (cinema), the seam down the middle — no text. -->
 ![[Comic and Cinema — Two Ways of Seeing — hero.png]]
 
 Two ways of telling a story in pictures, pulling in opposite directions. Comics and film are not one craft with different budgets — they ask opposite things of the picture and opposite things of the viewer.

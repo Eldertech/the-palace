@@ -31,6 +31,8 @@ forward_vector: "I am the page a project keeps that always opens on where it sta
 
 # The Scroll
 
+![[The Scroll — hero.png]]
+
 A **scroll** is a living page bound to an entry that gathers what it has made or done in the
 order it happened — a project's proofs and media, a ceremony's runs — part index, part reading surface. The entry's bundle already *stores*
 everything it produces; the scroll gives that pile a face you can read top to bottom, so the

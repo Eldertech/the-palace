@@ -35,6 +35,8 @@ forward_vector: "I make unseen characters carry the whole story in sound — voi
 
 # Radio Play
 
+![[Radio Play — hero.png]]
+
 Theatre of the mind, made in the [[The Shop|Shop]]. Several people talk, each with their own character, and **we never see them** — the voices, pacing, music, and effects carry the full meaning through sound alone. The base form is audio-complete by design; everything visual or interactive is an *enrichment* layered onto a spine that already stands on its own. This is the deep version of the dual-channel rule: build the thing so it works as audio, then enrich.
 
 ## The craft to master
