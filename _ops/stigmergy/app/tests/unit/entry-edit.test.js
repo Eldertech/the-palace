@@ -86,6 +86,19 @@ describe('entry-edit', () => {
       expect(checkCanon('_ops/swarm/notes.md').allowed).toBe(false);
     });
 
+    it('checkCanon refuses the SCHEMA rules and reasons, and ceremony Context files in their bundles', () => {
+      expect(checkCanon('SCHEMA — Reference.md').allowed).toBe(false);
+      expect(checkCanon('SCHEMA/SCHEMA — Context.md').allowed).toBe(false);
+      expect(checkCanon('JEWEL/Jewel — Context.md').allowed).toBe(false);
+      expect(checkCanon('_ops/Weave Ceremony/Weave Ceremony — Context.md').allowed).toBe(false);
+      expect(checkCanon('_ops/Baton Ceremony/Baton Ceremony — Context.md').allowed).toBe(false);
+    });
+
+    it('checkCanon ALLOWS a ceremony tuning ledger (runs mark it) and a flat Context lookalike outside a bundle', () => {
+      expect(checkCanon('_ops/Weave Ceremony/Weave Ceremony — tuning.md').allowed).toBe(true);
+      expect(checkCanon('Jewel — Context.md').allowed).toBe(true);
+    });
+
     it('checkCanon ALLOWS ordinary entries and non-canon _ops notes', () => {
       expect(checkCanon('Kuramoto Coupling.md').allowed).toBe(true);
       expect(checkCanon('_ops/Palace Quotes.md').allowed).toBe(true);

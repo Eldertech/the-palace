@@ -1,9 +1,9 @@
 ---
 title: Cooperation Yields Agency — Context
-born: 2026-06
+born: 2026-06-07
 links:
   - target: "[[Cooperation Yields Agency]]"
-    type: member-of
+    type: connects-to
     label: context-companion
 forward_vector: "I hold the origin story, the scale-up elaborations, and the lived-trust record so the principle itself can stay a lean orienting core."
 ---

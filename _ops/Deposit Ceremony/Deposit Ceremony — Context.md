@@ -1,6 +1,6 @@
 ---
 title: Deposit Ceremony — Context
-born: 2026-03
+born: 2026-03-18
 links:
   - target: "[[Deposit Ceremony]]"
     type: connects-to

@@ -1,9 +1,9 @@
 ---
 title: Hilaritas Generator — Context
-born: 2026-06
+born: 2026-06-07
 links:
   - target: "[[Hilaritas Generator]]"
-    type: member-of
+    type: connects-to
     label: context-companion
 forward_vector: "I hold the origin, the worked leverage-point examples, and the open questions so the generator's mechanism can stay a lean orienting core."
 ---

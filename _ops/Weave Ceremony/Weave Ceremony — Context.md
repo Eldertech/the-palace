@@ -1,6 +1,6 @@
 ---
 title: "Weave Ceremony — Context"
-born: 2026-03
+born: 2026-03-18
 links:
   - target: "[[Weave Ceremony]]"
     type: connects-to

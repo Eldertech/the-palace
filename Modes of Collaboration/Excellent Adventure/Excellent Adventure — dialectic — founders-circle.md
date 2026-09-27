@@ -1,13 +1,13 @@
 ---
-title: "Making a Palace Citizen — dialectic — founders-circle"
+title: "Excellent Adventure — dialectic — founders-circle"
 born: 2026-07-06
 links:
+  - target: "[[Excellent Adventure]]"
+    type: connects-to
+    label: archived-run
   - target: "[[Making a Palace Citizen]]"
     type: connects-to
     label: dialectic-for
-  - target: "[[Excellent Adventure]]"
-    type: connects-to
-    label: run-of
 forward_vector: "I am the archived transcript of the Founders' Circle — five made citizens (Buber, McGilchrist, Heidegger, Meadows, Cage) reading the palace's foundational documents and giving embodied feedback on the house they now live in. I am an artifact, not canon: I record the run that validated Move 5 batch 1 and produced the resting-stage / balancing-loop deposit candidate. My end-state is to be superseded by whatever canon Loudon deposits from me."
 ---
 

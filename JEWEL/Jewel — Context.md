@@ -1,9 +1,10 @@
 ---
-title: The Jewel — Context
-born: 2026-03
+title: "Jewel — Context"
+born: 2026-03-21
 links:
   - target: "[[JEWEL]]"
-    type: emerged-from
+    type: connects-to
+    label: context-of
   - target: "[[Swarm Weave]]"
     type: connects-to
   - target: "[[Self-Describing Knowledge Module]]"

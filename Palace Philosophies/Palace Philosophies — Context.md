@@ -1,9 +1,9 @@
 ---
 title: Palace Philosophies — Context
-born: 2026-06
+born: 2026-06-07
 links:
   - target: "[[Palace Philosophies]]"
-    type: member-of
+    type: connects-to
     label: context-companion
 forward_vector: "I hold the full per-tradition treatments and the neighborhood's circulation machinery so the hub itself can stay a lean register — read me when you need a tradition's detail or how the philosophy neighborhood keeps itself alive."
 ---

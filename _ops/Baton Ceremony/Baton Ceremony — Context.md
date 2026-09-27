@@ -6,7 +6,8 @@ born: 2026-05-28
 forward_vector: "I will keep holding the design decisions and open tensions behind the Baton Ceremony so the card can stay lean and the why is never fully lost."
 links:
   - target: "[[Baton Ceremony]]"
-    type: emerged-from
+    type: connects-to
+    label: context-of
 ---
 
 # Baton Ceremony — Context
