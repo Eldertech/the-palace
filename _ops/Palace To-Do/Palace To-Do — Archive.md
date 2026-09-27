@@ -200,7 +200,7 @@ Items extracted from in-file `<!-- ... -->` comments during the first systematic
 ### From Claude to Loudon (CLAUDE→LOUDON observations awaiting response)
 
 - [ ] **[[Wavetable Space as Torus]]** — Three cross-domain sub-sections (Orbital Resonance, Kuramoto Coupling, Bessel Functions in Synthesis via Hopf discussion) need claim-level verification.
-- [ ] **[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]** — Inharmonicity section surfaces a design principle worth dwelling on: wavetable synthesis defines harmonic purity as ground, treats inharmonicity as modulation of that ground.
+- [ ] **[[Wavetable Synthesis — Deep Research & Higher-Dimensional Design]]** — Inharmonicity section surfaces a design principle worth dwelling on: wavetable synthesis defines harmonic purity as ground, treats inharmonicity as modulation of that ground.
 - [ ] **[[DSP Frameworks]]** — "This hub maps frameworks to goals, not features. The key insight — plugin as teaching artifact — deserves its own entry or deep exploration."
 - [ ] **[[Enchanted Conversation Archive]]** — Flag that [[Enchanted Worker]] may want a link back through the synthesis phase.
 - [ ] **[[AI Partnership Philosophy]]** — Would benefit from a concrete example showing the difference between "AI helped me become better" vs "AI just completed a task."

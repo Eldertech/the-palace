@@ -99,7 +99,7 @@ def place(argv):
         hero_src, icon_src = RENDERS / f"{sl}-hero.png", RENDERS / f"{sl}-icon.png"
         if not (hero_src.exists() and icon_src.exists()):
             print(f"[place] SKIP {title}: renders missing"); continue
-        bundle = md.parent / title; bundle.mkdir(parents=True, exist_ok=True)
+        bundle = md.parent / md.stem; bundle.mkdir(parents=True, exist_ok=True)   # by FILE name (SCHEMA §8), not title
         shutil.copyfile(hero_src, bundle / f"{title} — hero.png")
         shutil.copyfile(icon_src, bundle / f"{title} — icon.png")
         R.embed_hero(md, title)

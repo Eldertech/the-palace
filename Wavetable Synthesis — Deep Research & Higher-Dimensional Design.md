@@ -197,7 +197,7 @@ Moving from (0,0,0) to (1,1,1) is a path from pure harmonic wavetable tone to fu
 
 ## Connections to the Palace
 
-[[Wavetable Synthesis -- Research & Higher-Dimensional Design]] connects directly to:
+[[Wavetable Synthesis — Deep Research & Higher-Dimensional Design]] connects directly to:
 - [[RNBO Synthesis]] — implementation pathway
 - [[Inharmonicity]] — the core tension explored in Part IV
 - [[Latent Space Navigation]] — Part V's neural extension

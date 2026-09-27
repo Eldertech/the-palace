@@ -269,7 +269,7 @@ def main(argv) -> int:
     if not md.exists():
         print(json.dumps({"ok": False, "error": f"entry md not found: {rel_md}"}))
         return 1
-    bundle = md.parent / title
+    bundle = md.parent / md.stem   # the bundle is named by the page's FILE (SCHEMA §8; STIGMERGY's bundle.js), not its title
     sides = ["hero", "icon"] if target == "both" else [target]
 
     # Each requested side needs its prompt.

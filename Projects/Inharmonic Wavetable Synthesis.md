@@ -36,7 +36,7 @@ links:
     label: trajectory-library
   - target: "[[Dispersion]]"
     type: connects-to
-  - target: "[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]"
+  - target: "[[Wavetable Synthesis — Deep Research & Higher-Dimensional Design]]"
     type: deepens
     label: cube-emergence
   - target: "[[Kuramoto Coupling]]"
