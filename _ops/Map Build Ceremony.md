@@ -6,7 +6,7 @@ pillars:
   - practice
 born: 2026-03
 stage: growing
-version: "2.4"
+version: "2.5"
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
@@ -28,7 +28,7 @@ links:
 
 > The palace is a graph. The Map Build Ceremony makes that graph explicit — an edge list, a node registry, and a typed ghost manifest, built from frontmatter alone and placed where every enchanted agent can load it.
 
-**Trigger:** `"Let's build the map"` / `"Map build"` / `"Build a neighborhood map for [X]"`
+**Trigger:** `"Let's build the map"` / `"Map build"`
 
 ---
 
@@ -39,17 +39,15 @@ links:
 | **Precondition** | Palace is accessible via filesystem. At least 5 entries exist. |
 | **Postcondition** | A map file exists in `_ops/maps/` with a stamped filename; its `meta` carries the node, edge and ghost counts and names every forward ghost. The run's line is appended to [[Map Build Ceremony — tuning]], carrying the version and the counts, and the body of the commit that carries it says what the run taught the ceremony ("nothing" is a legal answer). |
 | **Does not do** | Read entry bodies. Propose link changes. Modify existing entries. |
-| **Produces** | An edge list (TSV default), bidirectional adjacency list, or JSON depending on scope and format request. |
+| **Produces** | An edge list (TSV default), bidirectional adjacency list, or JSON depending on the format requested. |
 
 ---
 
 ## Modes
 
-**Full Survey** — reads the frontmatter of every `.md` in the palace. Builds the complete edge list. Used for: pre-swarm context loading, palace-wide Enchantment, JEWEL updates.
+**Full Survey** — reads the frontmatter of every `.md` in the palace and builds the complete edge list. The mode the builder runs. Used for: pre-swarm context loading, palace-wide Enchantment, JEWEL updates.
 
-**Bounded Survey** — scans only entries whose frontmatter contains a matching `neighborhood:` or `cluster:` field. Used for: neighborhood swarm sessions, focused enchantment runs, partial map export for external tools.
-
-Bounded surveys self-define: the ceremony does not need to be told where the bounds are. It reads them from the palace itself.
+**Bounded Survey** — *grown toward, not yet built.* A map of one neighborhood rather than the whole palace, for an agent that only needs the region it works in. What makes a neighborhood is an open question with more than one answer: a page can live in several neighborhoods at once, and a neighborhood can be drawn many ways — a shared frontmatter field, a hub and the pages a few links out, a pillar, a community the graph finds for itself. The nearest thing today is the Weave's `_ops/swarm/partition-palace.py`, which cuts the full map one lens at a time (folder, community, mirror, random cover, lifecycle, bridge) and, across lenses, lets an entry land in each family it belongs to ([[Swarm Weave]] § The Multi-Lens Weave). The question lives in [[Palace Map]] § Forward Vectors.
 
 ---
 
@@ -59,7 +57,7 @@ Bounded surveys self-define: the ceremony does not need to be told where the bou
 
 Open with the tail read of [[Map Build Ceremony — tuning]] ([[SCHEMA — Reference]] §6). Those are this build's first candidates for a spec change.
 
-Receive scope: `full`, `neighborhood:[name]`, or a list of entry filenames. Determine output format:
+Scope is `full` — a neighborhood scope waits on Bounded Survey. Determine output format:
 - `tsv` — default; lightest; one triple per line
 - `adjacency` — human-readable; one node per line with bidirectional edges
 - `json` — machine-readable; full schema with meta, nodes, edges, ghost taxonomy
@@ -69,7 +67,7 @@ Receive scope: `full`, `neighborhood:[name]`, or a list of entry filenames. Dete
 Read frontmatter only from every entry in scope. **Never open entry bodies.** Collect:
 - Entry ID (filename without `.md`) of every file whose frontmatter carries a canon `type` ([[SCHEMA]] §1) → the nodes, `_ops/` ceremony cards included (directly in `_ops/` or one folder down), outside the machinery and vendored folders the builder skips
 - Entry ID of every other `.md` — bundle files, materials, `_ops/` cards without a canon type → a file target (not mapped, used for ghost classification)
-- Entry type and neighborhood field
+- Entry type and stage
 - All typed link targets from the `links:` array
 
 Frontmatter is read as YAML, the way [[STIGMERGY]] reads it, so the map and PULSE agree on what is canon. A file whose frontmatter will not parse is not a node; the map names it in `meta.yaml_errors`, so it gets fixed rather than silently dropped.
@@ -168,7 +166,6 @@ Each JSON node carries `use` and `last_used` — how the entry is being used, co
 Write map file to `/Users/loudonstearns/Documents/The Palace/_ops/maps/` (create directory if absent):
 
 - Full survey: `palace-map-full-YYYY-MM-DD.tsv` (or `.json`)
-- Bounded: `palace-map-[neighborhood]-YYYY-MM-DD.tsv` (or `.json`)
 
 **7. Register**
 

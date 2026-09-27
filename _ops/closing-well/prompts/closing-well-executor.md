@@ -50,8 +50,12 @@ worktree + announced on the owner board), and the end-to-end gate. These rules a
 
 - **deposit** → run the **owner's** committer from the owner tree (it has the deps; canon
   lands there): `node "{{OWNER}}/_ops/stigmergy/app/scripts/palace-commit.mjs" --kind deposit
-  --scope <id> --paths … --summary … --verify <how>`. Verify links resolve (no ghost nodes)
-  and the `--dry-run` subject reads `deposit(<id>): …` **before** dropping `--dry-run`.
+  --scope <id> --paths … --summary … --verify <how>`. Verify every link resolves or points at
+  a page not yet written — a forward ghost is allowed, since Loudon approved the words that ask
+  for it. A link that matches an existing entry ignoring case is a typo: stop and report the row
+  unplaced. A near-spelling is not a stop — land the row as approved and name the link in the
+  placement report as a question. Check the `--dry-run` subject reads `deposit(<id>): …`
+  **before** dropping `--dry-run`.
 - **baton** → run `node {{WORKTREE_DIR}}/_ops/closing-well/baton-executor.mjs --entry … --move …
   --body-file <drafted-baton.md> --wt-branch {{WORKTREE_BRANCH}} --wt-dir {{WORKTREE_DIR}}
   --session-id {{SESSION_ID}} --owner "{{OWNER}}" --write --post`, then run the plain `git

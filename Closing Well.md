@@ -7,7 +7,7 @@ pillars:
   - tools
 born: 2026-05-26
 stage: growing
-version: "1.4"
+version: "1.5"
 links:
   - target: "[[Maker]]"
     type: enables
