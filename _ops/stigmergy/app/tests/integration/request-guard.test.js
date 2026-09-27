@@ -57,24 +57,28 @@ const boardLines = (root) => readFileSync(resolve(root, BOARD), 'utf8').split('\
 
 let root;
 let server;
+let base; // one listening port for the whole file — handing supertest the bare server lets it
+          // listen and close around every request, and a close still in flight drops the next one
 
-beforeAll(() => {
+beforeAll(async () => {
   root = mkdtempSync(resolve(tmpdir(), 'stigmergy-guard-'));
   mkdirSync(resolve(root, '_ops/swarm/persistent'), { recursive: true });
   mkdirSync(resolve(root, '_ops/swarm/sessions'), { recursive: true });
   writeFileSync(resolve(root, BOARD), '', 'utf8');
   server = makeServer(root, ['.palace.test']);
+  await new Promise((done) => server.listen(0, '127.0.0.1', done));
+  base = `http://127.0.0.1:${server.address().port}`;
 });
 
-afterAll(() => {
-  server.close();
+afterAll(async () => {
+  await new Promise((done) => server.close(done));
   rmSync(root, { recursive: true, force: true });
 });
 
 describe('a write to the board from a foreign page is refused', () => {
   test('a text/plain body — the no-preflight form — is refused and nothing is written', async () => {
     const before = boardLines(root);
-    const res = await request(server)
+    const res = await request(base)
       .post('/api/persistent')
       .set('Content-Type', 'text/plain')
       .send(JSON.stringify(makeMessage()));
@@ -83,7 +87,7 @@ describe('a write to the board from a foreign page is refused', () => {
   });
 
   test('a write with no content type is refused', async () => {
-    const res = await request(server)
+    const res = await request(base)
       .post('/api/persistent')
       .set('Content-Type', '')
       .send(Buffer.from(JSON.stringify(makeMessage())));
@@ -92,7 +96,7 @@ describe('a write to the board from a foreign page is refused', () => {
 
   test('JSON from a foreign Origin is refused', async () => {
     const before = boardLines(root);
-    const res = await request(server)
+    const res = await request(base)
       .post('/api/persistent')
       .set('Origin', 'https://evil.example')
       .send(makeMessage());
@@ -101,18 +105,18 @@ describe('a write to the board from a foreign page is refused', () => {
   });
 
   test('a sandboxed page (Origin: null) is refused', async () => {
-    const res = await request(server).post('/api/persistent').set('Origin', 'null').send(makeMessage());
+    const res = await request(base).post('/api/persistent').set('Origin', 'null').send(makeMessage());
     expect(res.status).toBe(403);
   });
 
   test('a browser that names the request cross-site is refused, Origin or not', async () => {
-    const res = await request(server).post('/api/persistent').set('Sec-Fetch-Site', 'cross-site').send(makeMessage());
+    const res = await request(base).post('/api/persistent').set('Sec-Fetch-Site', 'cross-site').send(makeMessage());
     expect(res.status).toBe(403);
   });
 
   test('every write route is behind the same door, not only the board', async () => {
     for (const path of ['/api/entry/save', '/api/commit/create', '/api/launch', '/api/steward/advance', '/rich/_api/review']) {
-      const res = await request(server).post(path).set('Origin', 'https://evil.example').send({});
+      const res = await request(base).post(path).set('Origin', 'https://evil.example').send({});
       expect(res.status, path).toBe(403);
     }
   });
@@ -121,7 +125,7 @@ describe('a write to the board from a foreign page is refused', () => {
 describe('the app and its own tools still write', () => {
   test('JSON from STIGMERGY’s own page is appended', async () => {
     const before = boardLines(root);
-    const res = await request(server)
+    const res = await request(base)
       .post('/api/persistent')
       .set('Origin', 'http://localhost:5173')
       .set('Sec-Fetch-Site', 'same-origin')
@@ -131,12 +135,12 @@ describe('the app and its own tools still write', () => {
   });
 
   test('JSON with no Origin (curl, node fetch, the eval server) is appended', async () => {
-    const res = await request(server).post('/api/persistent').send(makeMessage());
+    const res = await request(base).post('/api/persistent').send(makeMessage());
     expect(res.status).toBe(200);
   });
 
   test('another loopback port (the standalone rich server) may write', async () => {
-    const res = await request(server)
+    const res = await request(base)
       .post('/api/persistent')
       .set('Origin', 'http://127.0.0.1:8842')
       .set('Sec-Fetch-Site', 'same-site')
@@ -148,17 +152,17 @@ describe('the app and its own tools still write', () => {
 describe('GET /api/open refuses a foreign page', () => {
   // The path does not exist, so the old code answers 404 without opening anything.
   test('cross-site: refused before the handler runs', async () => {
-    const res = await request(server).get('/api/open?path=no/such/file.command').set('Sec-Fetch-Site', 'cross-site');
+    const res = await request(base).get('/api/open?path=no/such/file.command').set('Sec-Fetch-Site', 'cross-site');
     expect(res.status).toBe(403);
   });
 
   test('same-origin: reaches the handler', async () => {
-    const res = await request(server).get('/api/open?path=no/such/file.command').set('Sec-Fetch-Site', 'same-origin');
+    const res = await request(base).get('/api/open?path=no/such/file.command').set('Sec-Fetch-Site', 'same-origin');
     expect(res.status).toBe(404);
   });
 
   test('other reads stay open cross-site (sandboxed artifacts load media this way)', async () => {
-    const res = await request(server).get('/api/persistent').set('Sec-Fetch-Site', 'cross-site');
+    const res = await request(base).get('/api/persistent').set('Sec-Fetch-Site', 'cross-site');
     expect(res.status).toBe(200);
   });
 });
@@ -166,19 +170,19 @@ describe('GET /api/open refuses a foreign page', () => {
 describe('the host check runs before the palace routes', () => {
   test('a rebinding name is refused on /api and /rich', async () => {
     for (const path of ['/api/persistent', '/rich/_api/resolve?entry=STIGMERGY']) {
-      const res = await request(server).get(path).set('Host', 'evil.example');
+      const res = await request(base).get(path).set('Host', 'evil.example');
       expect(res.status, path).toBe(403);
     }
   });
 
   test('a rebinding name cannot write', async () => {
-    const res = await request(server).post('/api/persistent').set('Host', 'evil.example:5173').send(makeMessage());
+    const res = await request(base).post('/api/persistent').set('Host', 'evil.example:5173').send(makeMessage());
     expect(res.status).toBe(403);
   });
 
   test('localhost, loopback addresses and allowedHosts are answered', async () => {
     for (const host of ['localhost:5173', '127.0.0.1:5173', '[::1]:5173', 'app.localhost', 'studio.palace.test']) {
-      const res = await request(server).get('/api/persistent').set('Host', host);
+      const res = await request(base).get('/api/persistent').set('Host', host);
       expect(res.status, host).toBe(200);
     }
   });
